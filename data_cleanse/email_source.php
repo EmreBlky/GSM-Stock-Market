@@ -23,7 +23,7 @@ if ($_FILES[csv][size] > 0) {
     do { 
         if ($data[0]) { 
             //mysql_select_db('gsmstock_master', $link);
-            $dupesql = "SELECT email_address FROM gsmstock_master.master_data WHERE email_address = '".$data[0]."'";
+            $dupesql = "SELECT email_address FROM gsmstock_master.master_data WHERE email_address = '02willy.schepers@skynet.be'";
 
             $duperaw = mysql_query($dupesql) or die (mysql_error());
 
