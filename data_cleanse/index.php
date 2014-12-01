@@ -30,7 +30,8 @@ if($_POST['submit_form']){
     $linkedin = mysql_real_escape_string($_POST['linkedin']);
     $skype = mysql_real_escape_string($_POST['skype']);
     
-    mysql_query("UPDATE master_data SET 
+    mysql_query("UPDATE master_data SET
+                                    email_address = '".strtolower($email)."',
                                     title = '".$title."', 
                                     first_name = '".$first_name."', 
                                     last_name = '".$last_name."',
