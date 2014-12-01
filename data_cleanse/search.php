@@ -1,7 +1,9 @@
 <?php
 	
-$link = mysql_connect('109.203.125.38', 'gsmstock_admin', 'zv.4qAb17ph$;?$PF!') or die("Database Error");	
+include('db_connect.php');
+
 mysql_select_db('gsmstock_master', $link);
+
 $return_arr = array();
 
 $term = $_GET['term'];//retrieve the search term that autocomplete sends

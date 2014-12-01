@@ -1,8 +1,10 @@
 <?php
 
-if($_POST['submit_form']){
+include('db_connect.php');
+
+$message = '';
+if(isset($_POST['submit_form'])){
     
-    $link = mysql_connect('109.203.125.38', 'gsmstock_admin', 'zv.4qAb17ph$;?$PF!') or die("Database Error");	
     mysql_select_db('gsmstock_master', $link);
     
     $email = mysql_real_escape_string($_POST['email']);
@@ -70,7 +72,7 @@ if($_POST['submit_form']){
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Auto Complete Input box</title>
+<title>GSM Data Auto Complete</title>
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <script src="js/jquery-1.10.2.js"></script>
 <script src="js/jquery-ui.js"></script>
