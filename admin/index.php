@@ -1,5 +1,5 @@
 <?php include("includes/head.php"); ?>
-
+<?php echo 'THIS IS A TEST!'?>
   <body>
   
 <?php include("includes/top-nav.php"); ?>
