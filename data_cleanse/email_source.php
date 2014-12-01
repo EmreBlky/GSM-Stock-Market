@@ -27,7 +27,7 @@ if ($_FILES[csv][size] > 0) {
 
             $duperaw = mysql_query($dupesql) or die (mysql_error());
 
-            if (mysql_num_rows($duberaw) > 0) {
+            if (mysql_num_rows($duberaw) < 0) {
               //your code ...
                     mysql_query("INSERT INTO gsmstock_generator.emails (email_address, source, date_created) VALUES 
                         ( 
