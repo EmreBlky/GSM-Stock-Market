@@ -1,5 +1,5 @@
 <?php include("includes/head.php"); ?>
-<?php echo 'THIS IS A TEST!'?>
+
   <body>
   
 <?php include("includes/top-nav.php"); ?>
@@ -30,7 +30,7 @@
             <div class="col-xs-6 col-sm-3 placeholder">
               <img data-src="holder.js/200x200/auto/vine" class="img-responsive" alt="Generic placeholder thumbnail">
               <h4>Label</h4>
-              <span class="text-muted">Something else</span>
+              <span class="text-muted">Something else</span><?php echo 'THIS IS A TEST!'?>
             </div>
           </div>
 
