@@ -6,7 +6,7 @@ echo 'CHANGES!';
 $link = mysql_connect('109.203.125.38', 'gsmstock_admin', 'zv.4qAb17ph$;?$PF!') or die("Database Error");	
 //mysql_select_db('gsmstock_generator', $link);
  
-$result = mysql_query("SELECT * FROM emails");
+$result = mysql_query("SELECT * FROM gsmstock_generator.emails");
 $num_rows = mysql_num_rows($result);
 // 
 $source = mysql_real_escape_string($_POST['source']);
@@ -23,7 +23,7 @@ if ($_FILES[csv][size] > 0) {
     do { 
         if ($data[0]) { 
             
-            $dupesql = "SELECT email_address FROM gsmstock_master.master_data WHERE email_address = '".$data[0]."'";
+            $dupesql = "SELECT email_address FROM gsmstock_master.master_data WHERE email_address = '02willy.schepers@skynet.be'";
 
             $duperaw = mysql_query($dupesql) or die (mysql_error());
 
