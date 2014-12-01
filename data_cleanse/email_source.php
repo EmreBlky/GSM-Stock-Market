@@ -1,8 +1,10 @@
 <?php
 
+echo 'CHANGES!'; 
+
 //connect to the database 
 $link = mysql_connect('109.203.125.38', 'gsmstock_admin', 'zv.4qAb17ph$;?$PF!') or die("Database Error");	
- mysql_select_db('gsmstock_generator', $link);
+//mysql_select_db('gsmstock_generator', $link);
  
 $result = mysql_query("SELECT * FROM emails");
 $num_rows = mysql_num_rows($result);
@@ -23,11 +25,11 @@ if ($_FILES[csv][size] > 0) {
             
             $dupesql = "SELECT email_address FROM gsmstock_master.master_data WHERE email_address = ".$data[0]."";
 
-            $duperaw = mysql_query($dupesql);
+            $duperaw = mysql_query($dupesql) or die (mysql_error());
 
-            if (mysql_num_rows($duberaw) < 0) {
+            if (mysql_num_rows($duberaw) > 0) {
               //your code ...
-                    mysql_query("INSERT INTO emails (email_address, source, date_created) VALUES 
+                    mysql_query("INSERT INTO gsmstock_generator.emails (email_address, source, date_created) VALUES 
                         ( 
                             '".addslashes($data[0])."', 
                             '".$source."',
