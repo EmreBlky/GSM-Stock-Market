@@ -22,8 +22,8 @@ if ($_FILES[csv][size] > 0) {
     //loop through the csv file and insert into database 
     do { 
         if ($data[0]) { 
-            mysql_select_db('gsmstock_master', $link);
-            $dupesql = "SELECT email_address FROM master_data WHERE email_address = '02willy.schepers@skynet.be'";
+            //mysql_select_db('gsmstock_master', $link);
+            $dupesql = "SELECT email_address FROM gsmstock_master.master_data WHERE email_address = '".$data[0]."'";
 
             $duperaw = mysql_query($dupesql) or die (mysql_error());
 
