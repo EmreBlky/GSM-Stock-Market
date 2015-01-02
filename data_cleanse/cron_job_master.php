@@ -37,17 +37,17 @@ if (mysql_num_rows($results) > 0) {
             $response = $mySforceConnection->query(($query));
 
             foreach ($response->records as $record) { 
-                echo $id = $record->Id.'<br/>';
-                echo $email = $record->Email.'<br/>';
-		//$id = $record->Id;
-                //$email = $record->Email;
+                //echo $id = $record->Id.'<br/>';
+                //echo $email = $record->Email.'<br/>';
+		$id = $record->Id;
+                $email = $record->Email;
 
             }
-            /*
+            
             if($email != $row['email_address']){
 
-                //echo 'NOT SAME EMAIL!<br/>';
-				
+                echo $email.' IS NOT SAME EMAIL!<br/>';
+		/*		
                 $sObject = new stdclass();
                 $sObject->FirstName = $row['first_name'];
                 $sObject->LastName = $row['last_name'];
@@ -75,11 +75,12 @@ if (mysql_num_rows($results) > 0) {
                 $sObject->Position__c = $row['role'];
 
                 $createResponse = $mySforceConnection->create(array($sObject), 'Lead');
-				
+		*/		
             }
             else{
-                 //echo 'SAME EMAIL!<br/>';
-				
+                
+                echo $email.' IS SAME EMAIL!<br/>';
+		/*		
                 $sObject = new stdclass();
                 $sObject->Id = $id;
                 $sObject->FirstName = $row['first_name'];
@@ -108,9 +109,9 @@ if (mysql_num_rows($results) > 0) {
                 $sObject->Position__c = $row['role'];
 
                 $createResponse = $mySforceConnection->update(array($sObject), 'Lead');
-				
+		*/		
             }
-            */
+            
            unset($row['email_address']);
        }
     }            
