@@ -37,13 +37,13 @@ if (mysql_num_rows($results) > 0) {
             $response = $mySforceConnection->query(($query));
 
             foreach ($response->records as $record) { 
-                //echo $id = $response->Id.'<br/>';
-                //echo $email = $record->Email.'<br/>';
-		$id = $record->Id;
-                $email = $record->Email;
+                echo $id = $response->Id.'<br/>';
+                echo $email = $record->Email.'<br/>';
+		//$id = $record->Id;
+                //$email = $record->Email;
 
             }
-
+            /*
             if($email != $row['email_address']){
 
                 //echo 'NOT SAME EMAIL!<br/>';
@@ -109,7 +109,8 @@ if (mysql_num_rows($results) > 0) {
 
                 $createResponse = $mySforceConnection->update(array($sObject), 'Lead');
 				
-            }	
+            }
+            */
        }
     }            
 }
