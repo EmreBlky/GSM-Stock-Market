@@ -35,7 +35,7 @@ if ($_FILES[csv][size] > 0) {
             
             mysql_query("INSERT INTO emails (email_address, source, date_created) VALUES 
                         ( 
-                            '".addslashes($data[0])."', 
+                            '".strtolower(addslashes($data[0]))."', 
                             '".$source."',
                             '".date('Y-m-d H:i:s')."'
                         ) 

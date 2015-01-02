@@ -41,8 +41,8 @@ if(!empty($getUpdateddResponse->ids)){
                     
                     //echo 'IN DATBASE';
                     mysql_query("UPDATE master_data SET 
-                                                  first_name = '".$record->FirstName."',
-                                                  last_name = '".$record->LastName."', 
+                                                  first_name = '".ucfirst(strtolower($record->FirstName))."',
+                                                  last_name = '".ucfirst(strtolower($record->LastName))."', 
                                                   company_name = '".$record->Company."', 
                                                   address_line_1 = '".$record->Address_Line_1__c."', 
                                                   address_line_2 = '".$record->Address_Line_2__c."', 
@@ -70,9 +70,9 @@ if(!empty($getUpdateddResponse->ids)){
                                                             date_updated
                                                            )
                                                         VALUES (
-                                                            '".$record->Email."',
-                                                            '".$record->FirstName."',
-                                                            '".$record->LastName."', 
+                                                            '".strtolower($record->Email)."',
+                                                            '".ucfirst(strtolower($record->FirstName))."',
+                                                            '".ucfirst(strtolower($record->LastName))."', 
                                                             '".$record->Company."', 
                                                             '".$record->Address_Line_1__c."', 
                                                             '".$record->Address_Line_2__c."', 

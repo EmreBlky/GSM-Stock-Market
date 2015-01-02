@@ -149,10 +149,10 @@ $result_active = $wrap->get_active_subscribers('', $count, NULL, 'email', 'asc')
                                                     )  
                                                     VALUES 
                                                     ( 
-                                                    '".$email_address."', 
+                                                    '".strtolower($email_address)."', 
                                                     '".$title."', 
-                                                    '".$first_name."', 
-                                                    '".$last_name."', 
+                                                    '".ucfirst(strtolower($first_name))."', 
+                                                    '".ucfirst(strtolower($last_name))."', 
                                                     '".$company_name."', 
                                                     '".$phone_number."', 
                                                     '".$mobile_number."', 
