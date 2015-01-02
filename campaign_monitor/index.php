@@ -1,6 +1,7 @@
 <?php
 
 ini_set('max_execution_time', 0);
+include('db_connect.php');
 //mysql_select_db('gsmstock_master', $conn);
 
 require_once 'csrest_lists.php';
