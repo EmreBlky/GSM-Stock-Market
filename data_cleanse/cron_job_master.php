@@ -1,4 +1,8 @@
 <?php
+
+echo '<h1>MASTER DATABASE</h1>';
+echo 'Cron Job started at: '.date('d-m-Y H:i:s').'<br/>';
+
 error_reporting(E_ALL);
 $dateTime = new DateTime(date('Y-m-d H:i:s'));
 $dateTime->modify('-5 minutes');
@@ -109,5 +113,7 @@ if (mysql_num_rows($results) > 0) {
        }
     }            
 }
+
+echo 'Cron Job completed at: '.date('d-m-Y H:i:s');
 
 

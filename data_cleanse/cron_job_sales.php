@@ -1,5 +1,8 @@
 <?php
 
+echo '<h1>SALESFORCE DATABASE</h1>';
+echo 'Cron Job started at: '.date('d-m-Y H:i:s').'<br/>';
+
 ini_set('max_execution_time', 300);
 ini_set('soap.wsdl_cache_enabled', '0');
 //require('../../salesforce');
@@ -100,3 +103,4 @@ if(!empty($getUpdateddResponse->ids)){
             }
     }
 }
+echo 'Cron Job completed at: '.date('d-m-Y H:i:s');
