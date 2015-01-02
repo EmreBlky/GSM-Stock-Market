@@ -111,6 +111,7 @@ if (mysql_num_rows($results) > 0) {
 				
             }
             */
+           unset($row['email_address']);
        }
     }            
 }
