@@ -37,7 +37,7 @@ if (mysql_num_rows($results) > 0) {
             $response = $mySforceConnection->query(($query));
 
             foreach ($response->records as $record) { 
-                echo $id = $response->Id.'<br/>';
+                echo $id = $record->Id.'<br/>';
                 echo $email = $record->Email.'<br/>';
 		//$id = $record->Id;
                 //$email = $record->Email;
