@@ -33,7 +33,7 @@ $result_active = $wrap->get_active_subscribers('', $count, NULL, 'email', 'asc')
 
                 if (mysqli_num_rows($results) > 0) {
                     
-                    echo $result->EmailAddress.'<br/>';
+                    //echo $result->EmailAddress.'<br/>';
                     
                 }
                 else{
