@@ -24,7 +24,7 @@ $result_info = $conn->query($sql);
         
         while($obj = $result_info->fetch_object()){
             
-            if($obj->date_updated > $updated_date){
+            //if($obj->date_updated > $updated_date){
             
             $email_add = $obj->email_address;
             $fname = $obj->first_name;
@@ -294,7 +294,8 @@ $result_info = $conn->query($sql);
                                                                                         'Resubscribe' => true
                                                                                 )
                                                                         );
-                }		}
+                }
+            //}
         }
     }
     $result_info->close();
