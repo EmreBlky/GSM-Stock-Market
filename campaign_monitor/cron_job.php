@@ -5,7 +5,8 @@ include('db_connect.php');
 
 $dateTime = new DateTime(date('Y-m-d H:i:s'));
 $dateTime->modify('-30 minutes');
-$updated_date = $dateTime->format('Y-m-d H:i:s');
+//$updated_date = $dateTime->format('Y-m-d H:i:s');
+$updated_date = $dateTime->format('2014-12-01 00:00:00');
 
 require_once 'csrest_subscribers.php';
 //$wrap_get = new CS_REST_Subscribers('7d12ef820da06a613ce63e94c6d38dbe', $auth);
@@ -24,7 +25,7 @@ $result_info = $conn->query($sql);
         
         while($obj = $result_info->fetch_object()){
             
-            //if($obj->date_updated > $updated_date){
+            if($obj->date_updated > $updated_date){
             
             $email_add = $obj->email_address;
             $fname = $obj->first_name;
@@ -295,7 +296,7 @@ $result_info = $conn->query($sql);
                                                                                 )
                                                                         );
                 }
-            //}
+            }
         }
     }
     $result_info->close();
