@@ -5,8 +5,8 @@ include('db_connect.php');
 
 $dateTime = new DateTime(date('Y-m-d H:i:s'));
 $dateTime->modify('-30 minutes');
-//$updated_date = $dateTime->format('Y-m-d H:i:s');
-$updated_date = $dateTime->format('2014-12-01 00:00:00');
+$updated_date = $dateTime->format('Y-m-d H:i:s');
+//$updated_date = $dateTime->format('2014-12-01 00:00:00');
 
 require_once 'csrest_subscribers.php';
 //$wrap_get = new CS_REST_Subscribers('7d12ef820da06a613ce63e94c6d38dbe', $auth);
