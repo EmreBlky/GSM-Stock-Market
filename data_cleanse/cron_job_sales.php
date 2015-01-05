@@ -1,6 +1,6 @@
 <?php
 
-echo '<h1>SALESFORCE DATABASE</h1>';
+echo '<h1>SALESFORCE TO MASTER DATABASE</h1>';
 echo 'Cron Job started at: '.date('d-m-Y H:i:s').'<br/>';
 
 ini_set('max_execution_time', 300);
@@ -18,7 +18,8 @@ $mySoapClient = $mySforceConnection->createConnection(SOAP_CLIENT_BASEDIR.'/soap
 $mylogin = $mySforceConnection->login($USERNAME, $PASSWORD);
 
 $currentTime = mktime();
-$startTime = $currentTime-(60*120);
+//$startTime = $currentTime-(60*120);
+$startTime = mktime(date("00"), date("00"), date("00"), date("12"), date("1"), date("2014"));
 $endTime = $currentTime;
 
 $getUpdateddResponse = $mySforceConnection->getUpdated('Lead', $startTime, $endTime);

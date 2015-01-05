@@ -1,6 +1,6 @@
 <?php
 
-echo '<h1>MASTER DATABASE</h1>';
+echo '<h1>MASTER TO SALESFORCE DATABASE</h1>';
 echo 'Cron Job started at: '.date('d-m-Y H:i:s').'<br/>';
 
 error_reporting(E_ALL);
