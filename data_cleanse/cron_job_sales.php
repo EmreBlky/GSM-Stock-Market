@@ -19,7 +19,7 @@ $mylogin = $mySforceConnection->login($USERNAME, $PASSWORD);
 
 $currentTime = mktime();
 //$startTime = $currentTime-(60*120);
-$startTime = mktime(date("00"), date("00"), date("00"), date("12"), date("6"), date("2014"));
+$startTime = mktime(date("00"), date("00"), date("00"), date("12"), date("8"), date("2014"));
 $endTime = $currentTime;
 
 $getUpdateddResponse = $mySforceConnection->getUpdated('Lead', $startTime, $endTime);
