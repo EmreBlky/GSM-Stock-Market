@@ -27,7 +27,32 @@ if(!empty($getUpdateddResponse->ids)){
     //print_r($getUpdateddResponse);
     foreach($getUpdateddResponse->ids as $id){
         //echo $id.'<br/>';
-        $query =  "SELECT Id, Title, FirstName, LastName, Email, Company, Address_Line_1__c, Address_Line_2__c, Town_City__c, County__c, Position__c FROM Lead WHERE Id = '".$id."' ";
+        $query =  "SELECT 
+                        Id, 
+                        Title, 
+                        FirstName, 
+                        LastName, 
+                        Email, 
+                        Company, 
+                        Phone, 
+                        Address_Line_1__c, 
+                        Address_Line_2__c, 
+                        Town_City__c, 
+                        County__c, 
+                        Postal_Zip_Code__c, 
+                        Website,
+                        Business_Sectors__c,
+                        Other_Business_Sectors__c,
+                        VAT_Tax_Number__c,
+                        Company_Number__c,
+                        Language__c,
+                        Deskcom__twitter_username__c,
+                        Facebook__c,
+                        Google_Plus__c,
+                        Linkedin__c,
+                        Skype__c,
+                        Position__c 
+                 FROM Lead WHERE Id = '".$id."' ";
         
         $response = $mySforceConnection->query(($query));
 
@@ -56,7 +81,7 @@ if(!empty($getUpdateddResponse->ids)){
                                                   business_sectors = '".$record->Business_Sectors__c."',
                                                   other_sectors = '".$record->Other_Business_Sectors__c."',
                                                   vat_tax = '".$record->VAT_Tax_Number__c."',
-                                                  company_number = '".$record->Company."', 
+                                                  company_number = '".$record->Company_Number__c."', 
                                                   language = '".$record->Language__c."',
                                                   twitter = '".$record->Deskcom__twitter_username__c."',
                                                   facebook = '".$record->Facebook__c."',
@@ -116,7 +141,7 @@ if(!empty($getUpdateddResponse->ids)){
                                                             '".$record->Business_Sectors__c."',
                                                             '".$record->Other_Business_Sectors__c."',
                                                             '".$record->VAT_Tax_Number__c."',
-                                                            '".$record->Company."',
+                                                            '".$record->Company_Number__c."',
                                                             '".$record->Language__c."',
                                                             '".$record->Deskcom__twitter_username__c."',
                                                             '".$record->Facebook__c."',
