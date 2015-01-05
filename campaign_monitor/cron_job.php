@@ -5,8 +5,8 @@ include('db_connect.php');
 
 $dateTime = new DateTime(date('Y-m-d H:i:s'));
 $dateTime->modify('-30 minutes');
-$updated_date = $dateTime->format('Y-m-d H:i:s');
-//$updated_date = $dateTime->format('2014-12-01 00:00:00');
+//$updated_date = $dateTime->format('Y-m-d H:i:s');
+$updated_date = $dateTime->format('2014-12-01 00:00:00');
 
 require_once 'csrest_subscribers.php';
 //$wrap_get = new CS_REST_Subscribers('7d12ef820da06a613ce63e94c6d38dbe', $auth);
@@ -62,6 +62,14 @@ $result_info = $conn->query($sql);
                                                             'EmailAddress' => $email_add,
                                                             'Name' => $fname.' '.$lname,
                                                             'CustomFields' => array(
+                                                                                    array(
+                                                                                            'Key' => 'Company Name',
+                                                                                            'Value' => $company_name
+                                                                                            ),
+                                                                                    array(
+                                                                                            'Key' => 'Company Number',
+                                                                                            'Value' => $company_number
+                                                                                            ),
                                                                                     array(
                                                                                             'Key' => 'AddressLine1',
                                                                                             'Value' => $address_line_1
@@ -159,10 +167,6 @@ $result_info = $conn->query($sql);
                                                                                             'Value' => $role
                                                                                             ),
                                                                                     array(
-                                                                                            'Key' => 'Company Number',
-                                                                                            'Value' => $company_number
-                                                                                            ),
-                                                                                    array(
                                                                                             'Key' => 'Linkedin',
                                                                                             'Value' => $linkedin
                                                                                             ),
@@ -183,6 +187,14 @@ $result_info = $conn->query($sql);
                                                                         'EmailAddress' => $email_add,
                                                                         'Name' => $fname.' '.$lname,
                                                                         'CustomFields' => array(
+                                                                                                array(
+                                                                                                        'Key' => 'Company Name',
+                                                                                                        'Value' => $company_name
+                                                                                                        ),
+                                                                                                array(
+                                                                                                        'Key' => 'Company Number',
+                                                                                                        'Value' => $company_number
+                                                                                                        ),        
                                                                                                 array(
                                                                                                         'Key' => 'AddressLine1',
                                                                                                         'Value' => $address_line_1
@@ -278,11 +290,7 @@ $result_info = $conn->query($sql);
                                                                                                 array(
                                                                                                         'Key' => 'Role',
                                                                                                         'Value' => $role
-                                                                                                        ),
-                                                                                                array(
-                                                                                                        'Key' => 'Company Number',
-                                                                                                        'Value' => $company_number
-                                                                                                        ),
+                                                                                                        ),                                                                                                
                                                                                                 array(
                                                                                                         'Key' => 'Linkedin',
                                                                                                         'Value' => $linkedin
