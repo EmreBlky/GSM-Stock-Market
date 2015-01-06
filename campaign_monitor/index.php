@@ -14,16 +14,17 @@ $result_active = $wrap->get_active_subscribers('', NULL, NULL, 'email', 'asc');
 //$result_unsubscribed = $wrap->get_unsubscribed_subscribers('', NULL, NULL, 'email', 'asc');
 //$result_unconfirmed = $wrap->get_unconfirmed_subscribers('', NULL, NULL, 'email', 'asc');
 
-echo '<h1>GET INFORMATION</h1>';
-echo '<pre>';
-echo '<h2>GET ALL</h2>';
-print_r($result_get);
-echo '<h2>GET PAGE</h2>';
-print_r($result_page);
-echo '<h2>GET ACTIVE</h2>';
-print_r($result_active);
-echo '</pre>';
-exit;
+//echo '<h1>GET INFORMATION</h1>';
+//echo '<pre>';
+//echo '<h2>GET ALL</h2>';
+//print_r($result_get);
+//echo '<h2>GET PAGE</h2>';
+//print_r($result_page);
+//echo '<h2>GET ACTIVE</h2>';
+//print_r($result_active);
+//echo '</pre>';
+//exit;
+
 $count = 1;
 $page_count = $result_page->response->NumberOfPages;
 
@@ -34,15 +35,8 @@ $result_active = $wrap->get_active_subscribers('', $count, NULL, 'email', 'asc')
 	foreach($result_active->response->Results as $result){
             
             $results = $conn->query("SELECT * FROM master_data WHERE email_address = '".$result->EmailAddress."'") or die (mysql_error());
-
-                if (mysqli_num_rows($results) > 0) {
-                    
-                    echo $result->EmailAddress.'<br/>';
-                    
-                }
-                else{
-                    
-                    $name =  explode(' ', $result->Name);
+            
+            $name =  explode(' ', $result->Name);
                     $first_name = ucfirst($name[0]);
                     $last_name = ucfirst($name[1]);
                     
@@ -121,6 +115,42 @@ $result_active = $wrap->get_active_subscribers('', $count, NULL, 'email', 'asc')
 
                     }
 
+                if (mysqli_num_rows($results) > 0) {
+                    
+                    $sql = "UPDATE master_data SET
+                                                    email_address = '".strtolower($email_address)."',
+                                                    title = '".$title."',
+                                                    first_name = '".ucfirst(strtolower($first_name))."', 
+                                                    last_name = '".ucfirst(strtolower($last_name))."',
+                                                    company_name = '".$company_name."',
+                                                    phone_number = '".$phone_number."',
+                                                    mobile_number = '".$mobile_number."',
+                                                    address_line_1 = '".$address_line_1."',
+                                                    address_line_2 = '".$address_line_2."',
+                                                    town_city = '".$town_city."',
+                                                    county = '".$county."',
+                                                    country = '".$country."',
+                                                    post_code = '".$post_code."',
+                                                    website = '".$website."',
+                                                    business_sectors = '".$business_sectors."',
+                                                    other_sectors = '".$other_sectors."',
+                                                    vat_tax = '".$vat_tax."',
+                                                    company_number = '".$company_number."',
+                                                    language = '".$language."',
+                                                    twitter = '".$twitter."',
+                                                    facebook = '".$facebook."',
+                                                    gplus = '".$gplus."',
+                                                    linkedin = '".$linkedin."',
+                                                    skype = '".$skype."',
+                                                    role = '".$role."',
+                                                    date_updated = '".$date_updated."',
+                                                    subscribe_status = '".$subscribe_status."'
+                                        WHERE email_address = '".$result->EmailAddress."'";
+                $conn->query($sql);
+                    
+                }
+                else{ 
+
                     $sql = "INSERT INTO master_data (
                                                     email_address,
                                                     title,
@@ -182,8 +212,9 @@ $result_active = $wrap->get_active_subscribers('', $count, NULL, 'email', 'asc')
                                                     '".$date_updated."', 
                                                     '".$subscribe_status."'
                                                     )";
-                $conn->query($sql);	
-
+                $conn->query($sql);
+                
+                }                
                 unset($phone_number);
                 unset($vat_tax);
                 unset($website);
@@ -195,8 +226,6 @@ $result_active = $wrap->get_active_subscribers('', $count, NULL, 'email', 'asc')
                 unset($business_sectors);
                 unset($other_sectors);
                 unset($language);
-                    
-                }
 		
 	}               
 
