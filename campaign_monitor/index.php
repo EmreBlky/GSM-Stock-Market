@@ -15,11 +15,7 @@ $result_active = $wrap->get_active_subscribers('', NULL, NULL, 'email', 'asc');
 //$result_unconfirmed = $wrap->get_unconfirmed_subscribers('', NULL, NULL, 'email', 'asc');
 
 echo '<h2>GET</h2>';
-echo '<pre>';
-print_r($result_get);
-print_r($result_page);
-print_r($result_active);
-echo '</pre>';
+
 exit;
 $count = 1;
 $page_count = $result_page->response->NumberOfPages;
