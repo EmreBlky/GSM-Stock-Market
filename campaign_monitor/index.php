@@ -52,6 +52,11 @@ $result_active = $wrap->get_active_subscribers('', $count, NULL, 'email', 'asc')
                                     $phone_number = $key->Value;
 
                             }
+                            if($key->Key == '[MobileNumber]'){
+
+                                    $mobile_number = $key->Value;
+
+                            }
 
                             if($key->Key == '[VAT/TaxNumber]'){
 
@@ -82,7 +87,18 @@ $result_active = $wrap->get_active_subscribers('', $count, NULL, 'email', 'asc')
                                     $address_line_1 = $key->Value;
 
                             }
+                            if($key->Key == '[AddressLine2]'){
 
+                                    $address_line_2 = $key->Value;
+
+                            }
+                            
+                            if($key->Key == '[County]'){
+
+                                    $county = $key->Value;
+
+                            }
+                            
                             if($key->Key == '[Country]'){
 
                                     $country = $key->Value;
@@ -94,14 +110,19 @@ $result_active = $wrap->get_active_subscribers('', $count, NULL, 'email', 'asc')
                                     $company_name =  $key->Value;
 
                             }
+                            
+                            if($key->Key == '[CompanyNumber]'){
 
+                                    $company_number =  $key->Value;
+
+                            }
                             if($key->Key == '[BusinessSectors]'){
 
                                     $business_sectors =  $key->Value;
 
                             }
 
-                            if($key->Key == '[BusinessSectors]'){
+                            if($key->Key == '[Pleasestateotherbusiness]'){
 
                                     $other_sectors =  $key->Value;
 
@@ -112,9 +133,60 @@ $result_active = $wrap->get_active_subscribers('', $count, NULL, 'email', 'asc')
                                     $language =  $key->Value;
 
                             }
+                            if($key->Key == '[ClickMobileShopRetail]'){
+
+                                    $clickretail =  strtolower($key->Value);
+
+                            }
+                            if($key->Key == '[ClickMobileShopTrade]'){
+
+                                    $clicktrade =  strtolower($key->Value);
+
+                            }
                             if($key->Key == '[GSMStockMarket]'){
 
                                     $gsmstock =  strtolower($key->Value);
+
+                            }
+                            if($key->Key == '[Group]'){
+
+                                    $group =  $key->Value;
+
+                            }
+                            
+                            if($key->Key == '[Facebook]'){
+
+                                    $facebook =  $key->Value;
+
+                            }
+                            
+                            if($key->Key == '[Twitter]'){
+
+                                    $twitter =  $key->Value;
+
+                            }
+                            
+                            if($key->Key == '[GooglePlus]'){
+
+                                    $gplus =  $key->Value;
+
+                            }
+                            
+                            if($key->Key == '[Linkedin]'){
+
+                                    $linkedin =  $key->Value;
+
+                            }
+                            
+                            if($key->Key == '[Skype]'){
+
+                                    $skype =  $key->Value;
+
+                            }
+                            
+                            if($key->Key == '[Role]'){
+
+                                    $role =  $key->Value;
 
                             }
 
@@ -150,7 +222,10 @@ $result_active = $wrap->get_active_subscribers('', $count, NULL, 'email', 'asc')
                                                     role = '".$role."',
                                                     date_updated = '".$date_updated."',
                                                     subscribe_status = '".$subscribe_status."',
-                                                    gsmstockmarket = '".$gsmstock."'
+                                                    gsmstockmarket = '".$gsmstock."',
+                                                    clicktrade = '".$clicktrade."',
+                                                    clickretail = '".$clickretail."',
+                                                    group = '".$group."'    
                                         WHERE email_address = '".$result->EmailAddress."'";
                 $conn->query($sql);
                     
@@ -186,7 +261,10 @@ $result_active = $wrap->get_active_subscribers('', $count, NULL, 'email', 'asc')
                                                     date_created,
                                                     date_updated,
                                                     subscribe_status,
-                                                    gsmstockmarket
+                                                    gsmstockmarket,
+                                                    clicktrade,
+                                                    clickretail,
+                                                    group
                                                     )  
                                                     VALUES 
                                                     ( 
@@ -218,7 +296,10 @@ $result_active = $wrap->get_active_subscribers('', $count, NULL, 'email', 'asc')
                                                     '".$date_created."', 
                                                     '".$date_updated."', 
                                                     '".$subscribe_status."',
-                                                    '".$gsmstock."'
+                                                    '".$gsmstock."',
+                                                    '".$clicktrade."',
+                                                    '".$clickretail."',
+                                                    '".$group."'    
                                                     )";
                 $conn->query($sql);
                 
