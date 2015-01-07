@@ -36,7 +36,7 @@ $result_active = $wrap->get_active_subscribers('', $count, NULL, 'email', 'asc')
             
             $results = $conn->query("SELECT * FROM master_data WHERE email_address = '".$result->EmailAddress."'") or die (mysql_error());
             
-            $name =  explode(' ', $result->Name);
+                    $name =  explode(' ', $result->Name);
                     $first_name = ucfirst($name[0]);
                     $last_name = ucfirst($name[1]);
                     
@@ -147,6 +147,18 @@ $result_active = $wrap->get_active_subscribers('', $count, NULL, 'email', 'asc')
                                                     subscribe_status = '".$subscribe_status."'
                                         WHERE email_address = '".$result->EmailAddress."'";
                 $conn->query($sql);
+                
+                unset($phone_number);
+                unset($vat_tax);
+                unset($website);
+                unset($post_code);
+                unset($town_city);
+                unset($address_line_1);
+                unset($country);
+                unset($company_name);
+                unset($business_sectors);
+                unset($other_sectors);
+                unset($language);
                     
                 }
                 else{ 
@@ -214,7 +226,6 @@ $result_active = $wrap->get_active_subscribers('', $count, NULL, 'email', 'asc')
                                                     )";
                 $conn->query($sql);
                 
-                }                
                 unset($phone_number);
                 unset($vat_tax);
                 unset($website);
@@ -226,6 +237,9 @@ $result_active = $wrap->get_active_subscribers('', $count, NULL, 'email', 'asc')
                 unset($business_sectors);
                 unset($other_sectors);
                 unset($language);
+                
+                }                
+                
 		
 	}               
 
