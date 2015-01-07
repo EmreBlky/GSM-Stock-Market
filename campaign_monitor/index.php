@@ -231,6 +231,15 @@ $result_active = $wrap->get_active_subscribers('', $count, NULL, 'email', 'asc')
                                                     group = '".$group."'    
                                         WHERE email_address = '".$result->EmailAddress."'";
                 $conn->query($sql);
+                
+                if ($conn->error) {
+                    try {    
+                        throw new Exception("MySQL error $mysqli->error <br> Query:<br> $query", $msqli->errno);    
+                    } catch(Exception $e ) {
+                        echo "Error No: ".$e->getCode(). " - ". $e->getMessage() . "<br >";
+                        echo nl2br($e->getTraceAsString());
+                    }
+                }
                     
                 }
                 else{ 
@@ -305,6 +314,15 @@ $result_active = $wrap->get_active_subscribers('', $count, NULL, 'email', 'asc')
                                                     '".$group."'    
                                                     )";
                 $conn->query($sql);
+                
+                if ($conn->error) {
+                    try {    
+                        throw new Exception("MySQL error $mysqli->error <br> Query:<br> $query", $msqli->errno);    
+                    } catch(Exception $e ) {
+                        echo "Error No: ".$e->getCode(). " - ". $e->getMessage() . "<br >";
+                        echo nl2br($e->getTraceAsString());
+                    }
+                }
                 
                 }                
                         //unset($email_address); 
