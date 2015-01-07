@@ -181,129 +181,129 @@ $result_info = $conn->query($sql);
 			
 			
 		}
-//		else{
-//		
-//			$result = $wrap_update->update($email_add, array(
-//                                                                        'EmailAddress' => $email_add,
-//                                                                        'Name' => $fname.' '.$lname,
-//                                                                        'CustomFields' => array(
-//                                                                                                array(
-//                                                                                                        'Key' => 'Company Name',
-//                                                                                                        'Value' => $company_name
-//                                                                                                        ),
-//                                                                                                array(
-//                                                                                                        'Key' => 'Company Number',
-//                                                                                                        'Value' => $company_number
-//                                                                                                        ),        
-//                                                                                                array(
-//                                                                                                        'Key' => 'AddressLine1',
-//                                                                                                        'Value' => $address_line_1
-//                                                                                                        ),																		
-//                                                                                                array(
-//                                                                                                        'Key' => 'Address Line 2',
-//                                                                                                        'Value' => $address_line_2
-//                                                                                                        ),
-//                                                                                                array(
-//                                                                                                        'Key' => 'Town/City',
-//                                                                                                        'Value' => $town_city
-//                                                                                                        ),
-//                                                                                                array(
-//                                                                                                        'Key' => 'County',
-//                                                                                                        'Value' => $county
-//                                                                                                        ),
-//                                                                                                array(
-//                                                                                                        'Key' => 'Country',
-//                                                                                                        'Value' => $country
-//                                                                                                        ),
-//                                                                                                array(
-//                                                                                                        'Key' => 'Postal/ZipCode',
-//                                                                                                        'Value' => $post_code
-//                                                                                                        ),
-//                                                                                                array(
-//                                                                                                        'Key' => 'ClickMobileShopRetail',
-//                                                                                                        'Value' => ''
-//                                                                                                        ),
-//                                                                                                array(
-//                                                                                                        'Key' => 'SentFirstEmail',
-//                                                                                                        'Value' => ''
-//                                                                                                        ),
-//                                                                                                array(
-//                                                                                                        'Key' => 'Website',
-//                                                                                                        'Value' => $website
-//                                                                                                        ),
-//                                                                                                array(
-//                                                                                                        'Key' => 'Business Sectors',
-//                                                                                                        'Value' => $business_sectors
-//                                                                                                        ),
-//                                                                                                array(
-//                                                                                                        'Key' => 'VAT/Tax Number',
-//                                                                                                        'Value' => $vat_tax
-//                                                                                                        ),
-//                                                                                                array(
-//                                                                                                        'Key' => 'Group',
-//                                                                                                        'Value' => ''
-//                                                                                                        ),
-//                                                                                                array(
-//                                                                                                        'Key' => 'Please state other business',
-//                                                                                                        'Value' => $other_sectors
-//                                                                                                        ),
-//                                                                                                array(
-//                                                                                                        'Key' => 'Mobile Number',
-//                                                                                                        'Value' => $mobile_number
-//                                                                                                        ),
-//                                                                                                array(
-//                                                                                                        'Key' => 'Phone Number',
-//                                                                                                        'Value' => $phone_number
-//                                                                                                        ),
-//                                                                                                array(
-//                                                                                                        'Key' => 'ClickMobileShop Trade',
-//                                                                                                        'Value' => 'No'
-//                                                                                                        ),
-//                                                                                                array(
-//                                                                                                        'Key' => 'ClickMobileShop Retail',
-//                                                                                                        'Value' => 'No'
-//                                                                                                        ),
-//                                                                                                array(
-//                                                                                                        'Key' => 'GSMStockMarket',
-//                                                                                                        'Value' => 'No'
-//                                                                                                        ),
-//                                                                                                array(
-//                                                                                                        'Key' => 'Language',
-//                                                                                                        'Value' => $language
-//                                                                                                        ),
-//                                                                                                array(
-//                                                                                                        'Key' => 'Sent First Email',
-//                                                                                                        'Value' => ''
-//                                                                                                        ),
-//                                                                                                array(
-//                                                                                                        'Key' => 'Twitter',
-//                                                                                                        'Value' => $twitter
-//                                                                                                        ),
-//                                                                                                array(
-//                                                                                                        'Key' => 'Facebook',
-//                                                                                                        'Value' => $facebook
-//                                                                                                        ),
-//                                                                                                array(
-//                                                                                                        'Key' => 'GooglePlus',
-//                                                                                                        'Value' => $gplus
-//                                                                                                        ),
-//                                                                                                array(
-//                                                                                                        'Key' => 'Role',
-//                                                                                                        'Value' => $role
-//                                                                                                        ),                                                                                                
-//                                                                                                array(
-//                                                                                                        'Key' => 'Linkedin',
-//                                                                                                        'Value' => $linkedin
-//                                                                                                        ),
-//                                                                                                array(
-//                                                                                                        'Key' => 'Skype',
-//                                                                                                        'Value' => $skype
-//                                                                                                        )
-//                                                                                        ),
-//                                                                                        'Resubscribe' => true
-//                                                                                )
-//                                                                        );
-//                }
+		else{
+		
+			$result = $wrap_update->update($email_add, array(
+                                                                        'EmailAddress' => $email_add,
+                                                                        'Name' => $fname.' '.$lname,
+                                                                        'CustomFields' => array(
+                                                                                                array(
+                                                                                                        'Key' => 'Company Name',
+                                                                                                        'Value' => $company_name
+                                                                                                        ),
+                                                                                                array(
+                                                                                                        'Key' => 'Company Number',
+                                                                                                        'Value' => $company_number
+                                                                                                        ),        
+                                                                                                array(
+                                                                                                        'Key' => 'AddressLine1',
+                                                                                                        'Value' => $address_line_1
+                                                                                                        ),																		
+                                                                                                array(
+                                                                                                        'Key' => 'Address Line 2',
+                                                                                                        'Value' => $address_line_2
+                                                                                                        ),
+                                                                                                array(
+                                                                                                        'Key' => 'Town/City',
+                                                                                                        'Value' => $town_city
+                                                                                                        ),
+                                                                                                array(
+                                                                                                        'Key' => 'County',
+                                                                                                        'Value' => $county
+                                                                                                        ),
+                                                                                                array(
+                                                                                                        'Key' => 'Country',
+                                                                                                        'Value' => $country
+                                                                                                        ),
+                                                                                                array(
+                                                                                                        'Key' => 'Postal/ZipCode',
+                                                                                                        'Value' => $post_code
+                                                                                                        ),
+                                                                                                array(
+                                                                                                        'Key' => 'ClickMobileShopRetail',
+                                                                                                        'Value' => ''
+                                                                                                        ),
+                                                                                                array(
+                                                                                                        'Key' => 'SentFirstEmail',
+                                                                                                        'Value' => ''
+                                                                                                        ),
+                                                                                                array(
+                                                                                                        'Key' => 'Website',
+                                                                                                        'Value' => $website
+                                                                                                        ),
+                                                                                                array(
+                                                                                                        'Key' => 'Business Sectors',
+                                                                                                        'Value' => $business_sectors
+                                                                                                        ),
+                                                                                                array(
+                                                                                                        'Key' => 'VAT/Tax Number',
+                                                                                                        'Value' => $vat_tax
+                                                                                                        ),
+                                                                                                array(
+                                                                                                        'Key' => 'Group',
+                                                                                                        'Value' => ''
+                                                                                                        ),
+                                                                                                array(
+                                                                                                        'Key' => 'Please state other business',
+                                                                                                        'Value' => $other_sectors
+                                                                                                        ),
+                                                                                                array(
+                                                                                                        'Key' => 'Mobile Number',
+                                                                                                        'Value' => $mobile_number
+                                                                                                        ),
+                                                                                                array(
+                                                                                                        'Key' => 'Phone Number',
+                                                                                                        'Value' => $phone_number
+                                                                                                        ),
+                                                                                                array(
+                                                                                                        'Key' => 'ClickMobileShop Trade',
+                                                                                                        'Value' => 'No'
+                                                                                                        ),
+                                                                                                array(
+                                                                                                        'Key' => 'ClickMobileShop Retail',
+                                                                                                        'Value' => 'No'
+                                                                                                        ),
+                                                                                                array(
+                                                                                                        'Key' => 'GSMStockMarket',
+                                                                                                        'Value' => 'No'
+                                                                                                        ),
+                                                                                                array(
+                                                                                                        'Key' => 'Language',
+                                                                                                        'Value' => $language
+                                                                                                        ),
+                                                                                                array(
+                                                                                                        'Key' => 'Sent First Email',
+                                                                                                        'Value' => ''
+                                                                                                        ),
+                                                                                                array(
+                                                                                                        'Key' => 'Twitter',
+                                                                                                        'Value' => $twitter
+                                                                                                        ),
+                                                                                                array(
+                                                                                                        'Key' => 'Facebook',
+                                                                                                        'Value' => $facebook
+                                                                                                        ),
+                                                                                                array(
+                                                                                                        'Key' => 'GooglePlus',
+                                                                                                        'Value' => $gplus
+                                                                                                        ),
+                                                                                                array(
+                                                                                                        'Key' => 'Role',
+                                                                                                        'Value' => $role
+                                                                                                        ),                                                                                                
+                                                                                                array(
+                                                                                                        'Key' => 'Linkedin',
+                                                                                                        'Value' => $linkedin
+                                                                                                        ),
+                                                                                                array(
+                                                                                                        'Key' => 'Skype',
+                                                                                                        'Value' => $skype
+                                                                                                        )
+                                                                                        ),
+                                                                                        'Resubscribe' => true
+                                                                                )
+                                                                        );
+                }
             }
         }
     }
