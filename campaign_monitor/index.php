@@ -228,7 +228,7 @@ $result_active = $wrap->get_active_subscribers('', $count, NULL, 'email', 'asc')
                                                     gsmstockmarket = '".$gsmstock."',
                                                     clicktrade = '".$clicktrade."',
                                                     clickretail = '".$clickretail."',
-                                                    group = '".$group."'    
+                                                    clickgroup = '".$group."'    
                                         WHERE email_address = '".$result->EmailAddress."'";
                 $conn->query($sql) or die(mysqli_error($conn));                
                     
@@ -267,7 +267,7 @@ $result_active = $wrap->get_active_subscribers('', $count, NULL, 'email', 'asc')
                                                     gsmstockmarket,
                                                     clicktrade,
                                                     clickretail,
-                                                    group
+                                                    clickgroup
                                                     )  
                                                     VALUES 
                                                     ( 
