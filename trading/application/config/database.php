@@ -67,7 +67,7 @@ $db['default']['stricton'] = FALSE;
 */
 
 //LIVE DATABASE:
-$db['default']['hostname'] = 'localhost';
+$db['default']['hostname'] = '109.203.125.38';
 $db['default']['username'] = 'gsmstock_admin';
 $db['default']['password'] = 'zv.4qAb17ph$;?$PF!';
 $db['default']['database'] = 'gsmstock_secure';
