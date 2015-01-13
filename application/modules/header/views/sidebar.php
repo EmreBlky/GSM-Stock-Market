@@ -80,6 +80,22 @@
                         </ul>
                     </li>
                     
+                    <li>
+                        <a href="/"><i class="fa fa-support"></i> <span class="nav-label">Support</span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Submit a Ticket</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a href="/"><i class="fa fa-cog"></i> <span class="nav-label">Preferences</span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="#">Manage Subscription</a></li>
+                            <li><a href="#">Newsletter</a></li>
+                        </ul>
+                    </li>
+                    
                     
                     
                 </ul>
