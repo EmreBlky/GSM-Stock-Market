@@ -47,8 +47,8 @@
                     <li>
                         <a href="/"><i class="fa fa-book"></i> <span class="nav-label">Address Book</span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="#">User</a></li>
-                            <li><a href="#">Companies</a></li>
+                            <li><a href="#"><i class="fa fa-user"></i> <span class="nav-label">Users</span></a></li>
+                            <li><a href="#"><i class="fa fa-users"></i> <span class="nav-label">Companies</span></a></li>
                             <li><a href="#">Favourites</a></li>
                         </ul>
                     </li>
