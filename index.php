@@ -6,6 +6,10 @@ if(! $link )
 {
   die('Could not connect: ' . mysql_error());
 }
+else{
+    
+    echo 'Connection has been made.';
+}
 exit;
 
 ini_set('display_errors',1);
