@@ -28,7 +28,7 @@
                         <li>
                             <div class="dropdown-messages-box">
                                 <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="img/a7.jpg">
+                                    <img alt="image" class="img-circle" src="/public/main/img/a7.jpg">
                                 </a>
                                 <div>
                                     <small class="pull-right">46h ago</small>
@@ -41,7 +41,7 @@
                         <li>
                             <div class="dropdown-messages-box">
                                 <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="img/a4.jpg">
+                                    <img alt="image" class="img-circle" src="/public/main/img/a4.jpg">
                                 </a>
                                 <div>
                                     <small class="pull-right text-navy">5h ago</small>
@@ -54,7 +54,7 @@
                         <li>
                             <div class="dropdown-messages-box">
                                 <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="img/profile.jpg">
+                                    <img alt="image" class="img-circle" src="/public/main/img/profile.jpg">
                                 </a>
                                 <div>
                                     <small class="pull-right">23h ago</small>
