@@ -1,0 +1,159 @@
+body, html {
+	padding:0;
+	margin:0;
+	background:#184a8d;
+	font-family: Arial, Verdana, sans-serif;
+	font-size: 1em;
+}
+/* Text */
+h1 {font-weight:bold;font-size:1em;color:#FFF;margin:12px 0 0 40px;padding:0;text-align:center}
+h2 {font-weight:bold;font-size:18px;color:#000;margin:15px 20px;padding:0}
+h2.profile {margin:15px 33px}
+p {font-size:14px;}
+p.vat_summary {font-size:12px;margin:0 0 0 165px;}
+.pink {color:#936;}
+
+
+/* Main Menu */
+#menu	{list-style:none;padding:0;margin:0;width:700px;height:auto;text-align:center;position:relative;float:left;}
+#menu li a {display: inline-block;position: absolute;text-indent: -9999px;width: 90px;height: 40px;}
+#menu span {position: absolute;top: 0; left: 0; bottom: 0; right: 0;}
+.whos_looked { background: url(../images/menu/whos_looked.png) no-repeat;left:0}
+.whos_looked span {background: url(../images/menu/whos_looked_glow.png) no-repeat;}
+.mailbox {background: url(../images/menu/mailbox.png) no-repeat;left:90px}
+.mailbox span {background: url(../images/menu/mailbox_glow.png) no-repeat;}
+.address_book {background: url(../images/menu/address_book.png) no-repeat;left:180px}
+.address_book span {background: url(../images/menu/address_book_glow.png) no-repeat;}
+.search {background: url(../images/menu/search.png) no-repeat;left:270px}
+.search span {background: url(../images/menu/search_glow.png) no-repeat;}
+.buying {background: url(../images/menu/buying.png) no-repeat;left:360px}
+.buying span {background: url(../images/menu/buying_glow.png) no-repeat;}
+.selling {background: url(../images/menu/selling.png) no-repeat;left:450px}
+.selling span {background: url(../images/menu/selling_glow.png) no-repeat;}
+.my_offers {background: url(../images/menu/my_offers.png) no-repeat;left:540px}
+.my_offers span {background: url(../images/menu/my_offers_glow.png) no-repeat;}
+.my_profile {background: url(../images/menu/my_profile.png) no-repeat;left:630px}
+.my_profile span {background: url(../images/menu/my_profile_glow.png) no-repeat;}
+
+div#container {
+	width:950px;
+	min-height:900px;
+	margin:0 auto;
+	background-color:#FFF;
+	border-top-left-radius:8px;
+	-moz-border-radius-topleft:8px;
+	border-top-right-radius:8px;
+	-moz-border-radius-topright:8px;
+	-moz-box-shadow: 0 0 10px #000;
+	-webkit-box-shadow: 0 0 10px #000;
+	box-shadow: 0 0 10px #000;
+	overflow:hidden
+}
+.right {
+	text-align:right;
+	position:absolute;
+	top:0;right:0;
+	width:200px
+}
+
+header#main {
+	width:950px;
+	height:150px;
+	margin: 15px 0;
+	background:url(http://www.gsmstockmarket.com/logo.png)  no-repeat center;
+}
+
+div#world-clock {
+	height:15px;
+	width:860px;
+	margin:10px auto;
+	color: #FFF;
+	font-size: 10px;
+	clear: none;
+}
+
+#world-clock DL {
+	padding: 0px;
+	margin: 0px;
+	list-style: none;
+	float: left;
+	clear: none;
+}
+
+#world-clock DT {
+	margin: 0 5px 0 0; padding: 0;
+	width:60px;
+	text-align: right;
+	float: left;
+	clear: none;
+}
+#world-clock DD {
+	margin: 0; padding: 0;
+	width: 40px;
+	text-align: left;
+	float: left;
+	clear: none;
+}
+
+dd#timeMoscow {
+	width:60px
+}
+
+#menu-bar {
+	height:40px;
+	margin:0 25px;
+	width:900px;
+	border-top:1px solid #EEE;
+	border-bottom:1px solid #EEE;
+	background:#FFF;
+	position:relative;
+}
+
+#content-left {
+	width:300px;
+	margin:20px 40px;
+	min-height:800px;
+	float:left;
+}
+
+#content-right {
+	width:530px;
+	margin:20px 40px 0 0;
+	min-height:800px;
+	float:right;
+}
+
+#content {
+	width:900px;
+	min-height:750px;
+	padding:0;
+	margin:0 auto;
+}
+
+#search {
+	margin:50px auto;
+	text-align:center;
+}
+
+/* Contact Form-Homepage */
+
+#contact-area {width: 680px;margin:20px 230px 0 0;min-height:800px;float:right;position:relative}
+#contact-area input, #contact-area textarea {padding: 5px;width: 286px;font-family: Helvetica, sans-serif;font-size: 12px;margin: 0px 0px 15px 0px;border: 1px solid #CCC;}
+#contact-area textarea:focus, #contact-area input:focus {border: 1px solid #936}
+#contact-area input.submit-button {width: 120px;float:right}
+#contact-area label {float: left;text-align: right;margin-right: 15px;width: 300px;padding-top: 5px;font-size: 12px;}
+#contact-area select, #contact-area option {margin-bottom:15px;width:143px}
+#contact-area span.required {color:#FF0000}
+
+/* MY PROFILE */
+#profile-left {width:425px;height:570px; margin:0 0 0 12.5px;float:left}
+#profile-right {width:450px;height:570px; margin:0 12.5px 0 0;float:right}
+#profile-left input, #profile-left textarea, #profile-right input, #profile-right textarea {padding: 5px;width: 225px;font-family: Helvetica, sans-serif;font-size: 12px;margin: 0px 0px 15px 0px;border: 1px solid #CCC;}
+#profile-left textarea:focus, #profile-left input:focus ,#profile-right textarea:focus, #profile-right input:focus {border: 1px solid #936}
+#profile-left label, #profile-right label {float: left;text-align: right;margin-right: 15px;width: 125px;padding-top: 5px;font-size: 12px;}
+#profile-left select, #profile-left option, #profile-right select, #profile-right option {margin-bottom:15px;width:143px}
+#profile-left span.required, #profile-right span.required {color:#FF0000}
+#profile_additional {height:250px;width:800px;margin:0 12.5px;float:left}
+
+/* buying selling */
+td {font-size:10px;font-family: Arial, Verdana, sans-serif;}
