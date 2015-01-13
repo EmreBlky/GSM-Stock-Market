@@ -30,7 +30,16 @@
                     <li>
                         <a href="/"><i class="fa fa-user"></i> <span class="nav-label">My Profile</span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="#">Who's Viewed <span class="label label-warning pull-right">6</span></a></li>
+                            <li><a href="#">Who's Viewed <span class="label label-primary pull-right">6</span></a></li>
+                            <li><a href="#">View Profile</a></li>
+                            <li><a href="#">Edit Profile</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a href="/"><i class="fa fa-users"></i> <span class="nav-label">My Company</span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="#">Who's Viewed <span class="label label-primary pull-right">12</span></a></li>
                             <li><a href="#">View Profile</a></li>
                             <li><a href="#">Edit Profile</a></li>
                         </ul>
