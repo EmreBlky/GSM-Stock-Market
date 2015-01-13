@@ -15,7 +15,7 @@
 
 	<!-- Styling -->
     <link href="/public/main/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/public/main/css/font-awesome.css" rel="stylesheet">
+    <link href="/public/main/font-awesome/css/font-awesome.css" rel="stylesheet">
     
     <!-- Morris -->
     <link href="/public/main/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
