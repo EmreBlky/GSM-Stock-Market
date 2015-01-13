@@ -111,9 +111,11 @@ class Register extends MX_Controller{
                                         <br/>                                        
                                         <br/>
                                         <br/>
-                                        Email: '.$this->input->post('email').'<br/>
-                                        Username: '.$this->input->post('username').'<br/><br/>
+                                        Email: '.$this->input->post('email').'
+                                        <br/>
+                                        <br/>                                        
                                         Please <a href="'.$this->config->item('base_url').'register/confirm/'.$validation_code.'">CLICK HERE</a> to validate your email.
+                                        <br/>
                                         <br/>
                                         Many Thanks,<br/><br/>
                                         ------ Team
