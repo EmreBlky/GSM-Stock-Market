@@ -68,9 +68,9 @@ $db['default']['stricton'] = FALSE;
 
 //LIVE DATABASE:
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'gsmstock_admin';
-$db['default']['password'] = 'zv.4qAb17ph$;?$PF!';
-$db['default']['database'] = 'gsmstock_master';
+$db['default']['username'] = 'gsmstock_secure';
+$db['default']['password'] = 'z4NAq4=4)F=!';
+$db['default']['database'] = 'gsmstock_secure';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
