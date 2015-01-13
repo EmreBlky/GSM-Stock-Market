@@ -101,7 +101,7 @@ class Register extends MX_Controller{
                         
                         $this->load->library('email', $config);
 
-                        $this->email->from('server.gsmstockmarket.com');			
+                        $this->email->from('noreply@gsmstockmarket.com');			
                         $to = $this->input->post('email');
                         $this->email->to($to);
                         $this->email->subject('Registration Complete');		
