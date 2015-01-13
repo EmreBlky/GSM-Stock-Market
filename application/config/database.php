@@ -67,13 +67,13 @@ $db['default']['stricton'] = FALSE;
 */
 
 //LIVE DATABASE:
-$db['default']['hostname'] = $_SERVER['SERVER_NAME'];
+$db['default']['hostname'] = '109.203.125.38';
 $db['default']['username'] = 'gsmstock_admin';
 $db['default']['password'] = 'zv.4qAb17ph$;?$PF!';
 $db['default']['database'] = 'gsmstock_secure';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
-$db['default']['pconnect'] = TRUE;
+$db['default']['pconnect'] = FALSE;
 $db['default']['db_debug'] = TRUE;
 $db['default']['cache_on'] = FALSE;
 $db['default']['cachedir'] = '';
