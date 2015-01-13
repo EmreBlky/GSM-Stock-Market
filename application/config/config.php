@@ -18,7 +18,7 @@
 //$config['base_url']	= 'http://localhost/framework_gsm/';
 
 //SERVER SITE:
-$config['base_url']	= 'http://secure-dev.gsmstockmarket.com/trading/';
+$config['base_url']	= 'http://secure-dev.gsmstockmarket.com/';
 
 //LIVE SITE:
 //$config['base_url']	= '';
