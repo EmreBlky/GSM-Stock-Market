@@ -1,5 +1,9 @@
 <div id="wrapper">
         <!-- SIDEBAR CODE HERE -->
+		<?php 
+		$this->load->module('header');
+		$this->load->view('sidebar');
+		?>
 
         <div id="page-wrapper" class="gray-bg">
         <div class="row border-bottom">
