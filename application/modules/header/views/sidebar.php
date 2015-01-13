@@ -28,7 +28,7 @@
                     </li>
                     
                     <li>
-                        <a href="/"><i class="fa fa-user"></i> <span class="nav-label">My Profile</span></a>
+                        <a href="/"><i class="fa fa-user"></i> <span class="nav-label"> My Profile</span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="#">Who's Viewed <span class="label label-primary pull-right">6</span></a></li>
                             <li><a href="#">View Profile</a></li>
