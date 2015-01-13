@@ -9,11 +9,11 @@
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Daniel Gregory</strong>
                              </span> <span class="text-muted text-xs block">GSM Stock Market <b class="caret"></b></span> </span> </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                <li><a href="profile.html">Profile</a></li>
-                                <li><a href="contacts.html">Contacts</a></li>
-                                <li><a href="mailbox.html">Mailbox</a></li>
+                                <li><a href="/">Profile</a></li>
+                                <li><a href="/">Contacts</a></li>
+                                <li><a href="/">Mailbox</a></li>
                                 <li class="divider"></li>
-                                <li><a href="login.html">Logout</a></li>
+                                <li><a href="/">Logout</a></li>
                             </ul>
                         </div>
                         <div class="logo-element">
@@ -30,8 +30,9 @@
                     <li>
                         <a href="/"><i class="fa fa-user"></i> <span class="nav-label">My Profile</span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="#">Edit Profile</a></li>
                             <li><a href="#">Who's Viewed <span class="label label-warning pull-right">6</span></a></li>
+                            <li><a href="#">View Profile</a></li>
+                            <li><a href="#">Edit Profile</a></li>
                         </ul>
                     </li>
                     
@@ -39,16 +40,16 @@
                         <a href="/mailbox"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span><span class="label label-warning pull-right">16/24</span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="#">Inbox</a></li>
-                            <li><a href="#">Email view</a></li>
-                            <li><a href="#">Compose email</a></li>
+                            <li><a href="#">Compose Email</a></li>
+                            <li><a href="#">Archive</a></li>
                         </ul>
                     </li>
                     
                     <li>
                         <a href="/"><i class="fa fa-book"></i> <span class="nav-label">Address Book</span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="#"><i class="fa fa-user"></i> <span class="nav-label">Users</span></a></li>
-                            <li><a href="#"><i class="fa fa-users"></i> <span class="nav-label">Companies</span></a></li>
+                            <li><a href="#">Individuals</a></li>
+                            <li><a href="#">Companies</a></li>
                             <li><a href="#">Favourites</a></li>
                         </ul>
                     </li>
