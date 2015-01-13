@@ -1,17 +1,5 @@
 <?php
 
-$link = mysql_connect('localhost', 'gsmstock_admin', 'zv.4qAb17ph$;?$PF!') or die("Database Error");
-
-if(! $link )
-{
-  die('Could not connect: ' . mysql_error());
-}
-else{
-    
-    echo 'Connection has been made.';
-}
-exit;
-
 ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
 error_reporting(-1);
