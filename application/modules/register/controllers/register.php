@@ -122,6 +122,9 @@ class Register extends MX_Controller{
                         $this->email->message($body);
 
                         $this->email->send();
+                        
+                        echo $this->email->print_debugger();
+                        exit;
 
                         $this->session->set_flashdata('message', '<h2>Thank you. You will receive an email shortly</h2>');
 
