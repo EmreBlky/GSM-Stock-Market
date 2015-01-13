@@ -40,5 +40,5 @@ function googleTranslateElementInit() {
 		<div id="menu-bar" style="height:auto;text-align:center">
         	<h1 style="color:black">Join the worlds biggest B2B mobile phone trading platform</h1>
             <p>For a limited time only! Get your company listed for free!</p>
-			<p>Advertise your company for free and keep up-to date with the latest deals, news and companies in the mobile phone business sector. Simply update your details by creating an account and we will send you a free access account when we launch!</p>
+            <p>Advertise your company for free and <a href="contact/">keep up-to date</a> with the latest deals, news and companies in the mobile phone business sector. Simply update your details by creating an account and we will send you a free access account when we launch!</p>
 		</div><!-- /menu-bar -->
