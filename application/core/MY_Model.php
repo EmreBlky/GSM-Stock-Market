@@ -226,5 +226,26 @@ class MY_Model extends CI_Model {
 		return $query;
 	
 	}
+        
+        function canLogIn()
+        {
+
+            $id = '';
+            $table = $this->table;
+
+            $query = $this->db->query("SELECT * FROM $table WHERE (username = '".$this->input->post('username')."' AND password = '".md5($this->input->post('password'))."') OR (email = '".$this->input->post('username')."' AND password = '".md5($this->input->post('password'))."')");
+
+            foreach ($query->result() as $row)
+            {
+                $id = $row->id;
+            }
+
+            return $id;
+        }
+        function truncate()
+        {
+            $table = $this->table;
+            $this->db->truncate($table);
+        }
 
 }

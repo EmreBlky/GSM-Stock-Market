@@ -2,24 +2,18 @@
 
 class Templates extends MX_Controller{
     
-    function login($data)
-    {
-
-            $this->load->view('login', $data);
-
-    }
 
     function forgot_password($data)
     {
 
-            $this->load->view('forgot_password', $data);
+            $this->load->view('pages/forgot_password', $data);
 
     }
 
     function password_reset($data)
     {
 
-            $this->load->view('password_reset', $data);
+            $this->load->view('pages/password_reset', $data);
 
     }
     
@@ -35,6 +29,13 @@ class Templates extends MX_Controller{
     {
 
             $this->load->view('pages/home', $data);
+
+    }
+    
+    function login($data)
+    {
+
+            $this->load->view('pages/login', $data);
 
     }
     

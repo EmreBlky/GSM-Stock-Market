@@ -44,4 +44,18 @@ class Header extends MX_Controller
     {
         $this->load->view('admin-header');		
     }
+    
+    function login_pre_header()
+    {
+        $data['base'] = $this->config->item('base_url');
+
+        $this->load->view('login-register-pre-header', $data);
+    }
+
+    function login_main_header()
+    {
+        $data['base'] = $this->config->item('base_url');
+
+        $this->load->view('login-register-header', $data);		
+    }
 }

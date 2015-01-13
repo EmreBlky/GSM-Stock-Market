@@ -38,4 +38,17 @@ class Footer extends MX_Controller
 	{		
 		$this->load->view('admin-post-footer');
 	}
+        
+        function login_main_footer()
+	{		
+		//$data['base_nav'] = $this->pages->get_where_multiples('bottom_navigation', 'yes');
+                $data['base_nav'] = '';
+		
+		$this->load->view('login-register-footer', $data);		
+	}
+        
+	function login_post_footer()
+	{		
+		$this->load->view('login-register-post-footer');
+	}
 }
