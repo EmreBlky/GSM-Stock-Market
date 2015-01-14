@@ -27,6 +27,11 @@ class Templates extends MX_Controller{
         $this->load->view('pages/profile', $data);
     }
     
+    function company($data)
+    {
+        $this->load->view('pages/company', $data);
+    }
+    
     function login($data)
     {
         $this->load->view('pages/login', $data);
