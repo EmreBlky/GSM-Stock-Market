@@ -91,6 +91,7 @@
                     <li>
                         <a href="/"><i class="fa fa-cog"></i> <span class="nav-label">Preferences</span></a>
                         <ul class="nav nav-second-level">
+                            <li><a href="#">Change Password</a></li>
                             <li><a href="#">Manage Subscription</a></li>
                             <li><a href="#">Newsletter</a></li>
                         </ul>
