@@ -28,7 +28,7 @@
                     </li>
                     
                     <li>
-                        <a href="/"><i class="fa fa-user"></i> <span class="nav-label"> My Profile</span></a>
+                        <a href="/"><i class="fa fa-user"></i> <span class="nav-label"> My Profile</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="#">Who's Viewed <span class="label label-primary pull-right">6</span></a></li>
                             <li><a href="#">View Profile</a></li>
@@ -37,7 +37,7 @@
                     </li>
                     
                     <li>
-                        <a href="/"><i class="fa fa-users"></i> <span class="nav-label">My Company</span></a>
+                        <a href="/"><i class="fa fa-users"></i> <span class="nav-label">My Company</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="#">Who's Viewed <span class="label label-primary pull-right">12</span></a></li>
                             <li><a href="#">View Profile</a></li>
@@ -46,7 +46,7 @@
                     </li>
                     
                     <li>
-                        <a href="/mailbox"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span><span class="label label-warning pull-right">16/24</span></a>
+                        <a href="/mailbox"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span><span class="label label-warning pull-right">16/24</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="#">Inbox</a></li>
                             <li><a href="#">Compose Email</a></li>
@@ -55,7 +55,7 @@
                     </li>
                     
                     <li>
-                        <a href="/"><i class="fa fa-book"></i> <span class="nav-label">Address Book</span></a>
+                        <a href="/"><i class="fa fa-book"></i> <span class="nav-label">Address Book</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="#">Individuals</a></li>
                             <li><a href="#">Companies</a></li>
@@ -64,7 +64,7 @@
                     </li>
                     
                     <li>
-                        <a href="/"><i class="fa fa-money"></i> <span class="nav-label">Marketplace</span></a>
+                        <a href="/"><i class="fa fa-money"></i> <span class="nav-label">Marketplace</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="#">Buy</a></li>
                             <li><a href="#">Sell</a></li>
@@ -73,7 +73,7 @@
                     </li>
                     
                     <li>
-                        <a href="/"><i class="fa fa-search"></i> <span class="nav-label">Search</span></a>
+                        <a href="/"><i class="fa fa-search"></i> <span class="nav-label">Search</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="#">User Search</a></li>
                             <li><a href="#">Company Search</a></li>
@@ -81,7 +81,7 @@
                     </li>
                     
                     <li>
-                        <a href="/"><i class="fa fa-support"></i> <span class="nav-label">Support</span></a>
+                        <a href="/"><i class="fa fa-support"></i> <span class="nav-label">Support</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="#">FAQ</a></li>
                             <li><a href="#">Submit a Ticket</a></li>
@@ -89,7 +89,7 @@
                     </li>
                     
                     <li>
-                        <a href="/"><i class="fa fa-cog"></i> <span class="nav-label">Preferences</span></a>
+                        <a href="/"><i class="fa fa-cog"></i> <span class="nav-label">Preferences</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="#">Change Password</a></li>
                             <li><a href="#">Manage Subscription</a></li>
