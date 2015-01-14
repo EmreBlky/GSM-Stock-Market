@@ -9,7 +9,25 @@ class Profile extends MX_Controller
 
     function index()
     {
+        $data['page'] = 'index';
+        
+        $this->load->module('templates');
+        $this->templates->profile($data);
+    }
+    
+    function who_viewed()
+    {
 
-    }	
+    }
+    
+    function viewed_profile()
+    {
+
+    }
+    
+    function edit_profile()
+    {
+
+    }
 	
 }
