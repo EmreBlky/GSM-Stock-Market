@@ -1,3 +1,4 @@
+<?php echo $this->session->flashdata('confirm-login'); ?>
 <div class="wrapper wrapper-content">
         <div class="row">
                     <div class="col-lg-3">
