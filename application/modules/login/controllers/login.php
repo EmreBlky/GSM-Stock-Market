@@ -90,7 +90,9 @@ class Login extends MX_Controller{
 
                     $user_data = array(
                                                     'members_id'  	=> $mid,
-                                                    'username'  	=> $member->username,
+                                                    //'username'  	=> $member->username,
+                                                    'firstname'         => $member->firstname,
+                                                    'lastname'         => $member->lastname,
                                                     'logged_in' 	=> TRUE
                                                     );
 
@@ -114,7 +116,8 @@ class Login extends MX_Controller{
     {
         $this->session->unset_userdata('members_id');
         $this->session->unset_userdata('username');
-        redirect('home');
+        $this->session->unset_userdata('logged_in');
+        redirect('login');
     }
        
 	

@@ -150,15 +150,18 @@ class Register extends MX_Controller{
         {
             $this->load->model('member/member_model', 'member_model');
             
-            $mid = $this->member_model->get_where_multiple('validation_code', $vcode)->id;
+            $mid = $this->member_model->get_where_multiple('validation_code', $vcode);
             
             $data = array(
                             'validated' => 'yes'
                           );            
-            $this->member_model->_update($mid, $data);
+            $this->member_model->_update($mid->id, $data);
             
             $user_data = array(
-                                'members_id'  	=> $mid,
+                                'members_id'  	=> $mid->id,
+                                //'username'  	=> $member->username,
+                                'firstname'     => $mid->firstname,
+                                'lastname'      => $mid->lastname,
                                 'logged_in' 	=> TRUE
                                 );
 
@@ -169,12 +172,7 @@ class Register extends MX_Controller{
                                                                 </div>
                                                             </div>');
             
-            redirect('home/');            
-//            echo '<pre>';
-//            echo 'TEST!';
-//            print_r($mid);
-            //$this->member_model->_insert($data);
-            
+            redirect('home/');
             
         }
 	
