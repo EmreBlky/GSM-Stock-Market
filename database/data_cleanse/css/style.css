@@ -1,0 +1,35 @@
+.ui-helper-hidden-accessible{
+top: 0;
+margin-left:250px;
+}
+.drop-result{
+top: 0;
+clear:both;
+float:left;
+margin-left:250px;
+width: 300px;
+color:#f06;
+}
+.result_info{
+clear:both;
+float:left;
+}
+#wrapper{
+width:655px;
+height:auto;
+}
+.wrap{
+float:left;
+width:650px;
+height:auto;
+margin-bottom:5px;
+}
+.lable_wrap{
+width:150px;
+float:left;
+}
+.input_wrap{
+width:400px;
+float:left;
+margin-left:5px;
+}
