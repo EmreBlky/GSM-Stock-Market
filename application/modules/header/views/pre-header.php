@@ -3,7 +3,7 @@
 
 <head>
 
-	<base href="<?php echo $base;?>">
+    <base href="<?php echo $base;?>">
     
     <!-- Meta Data --> 
     <meta charset="utf-8">
@@ -14,16 +14,16 @@
     <meta name="google-translate-customization" content=""/>
 
 	<!-- Styling -->
-    <link href="/public/main/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/public/main/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="public/main/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/main/font-awesome/css/font-awesome.css" rel="stylesheet">
     
     <!-- Morris -->
-    <link href="/public/main/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+    <link href="public/main/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
     <!-- Gritter -->
-    <link href="/public/main/js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+    <link href="public/main/js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
 
-    <link href="/public/main/css/animate.css" rel="stylesheet">
-    <link href="/public/main/css/style.css" rel="stylesheet">
+    <link href="public/main/css/animate.css" rel="stylesheet">
+    <link href="public/main/css/style.css" rel="stylesheet">
 
 </head>
 
