@@ -1,5 +1,5 @@
 <?php
-class Change_this extends MX_Controller 
+class Profile extends MX_Controller 
 {
     function __construct()
     {

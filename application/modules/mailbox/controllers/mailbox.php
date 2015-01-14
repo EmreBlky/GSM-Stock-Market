@@ -1,5 +1,5 @@
 <?php
-class mailbox extends MX_Controller 
+class Mailbox extends MX_Controller 
 {
     function __construct()
     {

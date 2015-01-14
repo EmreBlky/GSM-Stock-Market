@@ -1,5 +1,5 @@
 <?php
-class Change_this extends MX_Controller 
+class Addressbook extends MX_Controller 
 {
     function __construct()
     {
