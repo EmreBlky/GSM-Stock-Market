@@ -68,7 +68,9 @@
                         <ul class="nav nav-second-level">
                             <li><a href="#"><i class="fa fa-shopping-cart"></i> Buy</a></li>
                             <li><a href="#"><i class="fa fa-tag"></i> Sell</a></li>
+                            <li><a href="#"><i class="fa fa-eye"></i> Watching</a></li>
                             <li><a href="#"><i class="fa fa-list"></i> My Listings</a></li>
+                            <li><a href="#"><i class="fa fa-file-text"></i> Order History</a></li>
                         </ul>
                     </li>
                     
