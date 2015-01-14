@@ -59,7 +59,10 @@ h5 {
 }
 .nav > li > a i {
   margin-right: 6px;
-  min-width:15px;
+  min-width:15px; /* added and below */
+  width:15px;
+  text-align:center;
+  
 }
 .navbar {
   border: 0;
