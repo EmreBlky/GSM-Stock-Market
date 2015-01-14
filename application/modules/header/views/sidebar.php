@@ -46,7 +46,7 @@
                     </li>
                     
                     <li>
-                        <a href="/mailbox"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span><span class="label label-warning pull-right">16/24</span> <span class="fa arrow"></span></a>
+                        <a href="/mailbox"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span><span class="label label-warning pull-right">16/24</span></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="#">Inbox</a></li>
                             <li><a href="#">Compose Email</a></li>
