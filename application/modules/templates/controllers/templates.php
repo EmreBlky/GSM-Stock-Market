@@ -27,9 +27,34 @@ class Templates extends MX_Controller{
         $this->load->view('pages/profile', $data);
     }
     
+    function mailbox($data)
+    {
+        $this->load->view('pages/mailbox', $data);
+    }
+    
+    function addressbook($data)
+    {
+        $this->load->view('pages/addressbook', $data);
+    }
+    
+    function marketplace($data)
+    {
+        $this->load->view('pages/marketplace', $data);
+    }
+    
+    function support($data)
+    {
+        $this->load->view('pages/support', $data);
+    }
+    
     function company($data)
     {
         $this->load->view('pages/company', $data);
+    }
+    
+    function preferences($data)
+    {
+        $this->load->view('pages/preferences', $data);
     }
     
     function login($data)

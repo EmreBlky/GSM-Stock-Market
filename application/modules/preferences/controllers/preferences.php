@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Mailbox extends MX_Controller 
+class Preferences extends MX_Controller 
 {
     function __construct()
     {
@@ -12,31 +12,31 @@ class Mailbox extends MX_Controller
         $data['page'] = 'index';
         
         $this->load->module('templates');
-        $this->templates->mailbox($data);
+        $this->templates->preferences($data);
     }
     
-    function inbox()
+    function password()
     {
-        $data['page'] = 'inbox';
+        $data['page'] = 'password';
         
         $this->load->module('templates');
-        $this->templates->mailbox($data);
+        $this->templates->preferences($data);
     }
     
-    function compose()
+    function newsletter()
     {
-        $data['page'] = 'compose';
+        $data['page'] = 'newsletter';
         
         $this->load->module('templates');
-        $this->templates->mailbox($data);
+        $this->templates->preferences($data);
     }
     
-    function archive()
+    function subscription()
     {
-        $data['page'] = 'archive';
+        $data['page'] = 'subscription';
         
         $this->load->module('templates');
-        $this->templates->mailbox($data);
-    }	
+        $this->templates->preferences($data);
+    }
 	
 }

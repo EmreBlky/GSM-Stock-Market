@@ -7,8 +7,8 @@ $this->header->main_header();
 
 <?php 
 
-    $this->load->module('search');
-    $this->search->view($page);
+    $this->load->module('marketplace');
+    $this->marketplace->view($page);
         
 ?>
 
