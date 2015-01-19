@@ -24,7 +24,7 @@
                     
 
                     <li>
-                        <a href="/"><i class="fa fa-desktop"></i> <span class="nav-label">Dashboard</span></a>
+                        <a href="<?php echo $base; ?>"><i class="fa fa-desktop"></i> <span class="nav-label">Dashboard</span></a>
                     </li>
                     
                     <li>

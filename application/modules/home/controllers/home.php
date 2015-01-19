@@ -17,10 +17,11 @@ class Home extends MX_Controller
 	function index()
 	{
             
+            $data['main'] = 'home';        
             $data['page'] = 'index';
 
             $this->load->module('templates');
-            $this->templates->home($data);
+            $this->templates->page($data);
 		
 	}
         
@@ -29,10 +30,11 @@ class Home extends MX_Controller
         function confirmation($var = NULL)
 	{
             
+            $data['main'] = 'home';        
             $data['page'] = 'cofirm';
 
             $this->load->module('templates');
-            $this->templates->home($data);
+            $this->templates->page($data);
 		
 	}
         

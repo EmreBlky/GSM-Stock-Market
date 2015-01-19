@@ -13,9 +13,10 @@ class Login extends MX_Controller{
     {                      
         $data['base'] = $this->config->item('base_url');
         $data['message'] = '';
+        $data['main'] = 'login';
         $data['page'] = 'index';
         $this->load->module('templates');
-        $this->templates->login($data);
+        $this->templates->page($data);
 
     }
     
@@ -23,9 +24,10 @@ class Login extends MX_Controller{
     {                      
         $data['base'] = $this->config->item('base_url');
         $data['message'] = '';
+        $data['main'] = 'login';
         $data['page'] = 'forgotten-password';
         $this->load->module('templates');
-        $this->templates->login($data);
+        $this->templates->page($data);
 
     }
         
@@ -46,10 +48,11 @@ class Login extends MX_Controller{
             if($member->validated == 'no'){
                 
                 $data['base'] = $this->config->item('base_url');
+                $data['main'] = 'login';
                 $data['page'] = 'index';
                 $data['error'] = '<h2>Please validate your email by clicking on the validate link you recieved in your email. If you would like a new one sent, please click here.<h2>';
                 $this->load->module('templates');
-                $this->templates->login($data);
+                $this->templates->page($data);
                 return FALSE;
 
             }
@@ -62,19 +65,21 @@ class Login extends MX_Controller{
 
                 }else{
                         $data['base'] = $this->config->item('base_url');
+                        $data['main'] = 'login';
                         $data['page'] = 'index';
                         $data['error'] = '<h2>THERE HAS BEEN AN ERROR! Please try again.</h2>';
                         $this->load->module('templates');
-                        $this->templates->login($data);
+                        $this->templates->page($data);
                 } 
             }
         }
         else{
                 $data['base'] = $this->config->item('base_url');
+                $data['main'] = 'login';
                 $data['page'] = 'index';
                 $data['error'] = '<h2>Username and (or) Password invalid. Please try again.</h2>';
                 $this->load->module('templates');
-                $this->templates->login($data);
+                $this->templates->page($data);
         }
     }
 
@@ -103,10 +108,11 @@ class Login extends MX_Controller{
             else {
 
                     $data['base'] = $this->config->item('base_url');
+                    $data['main'] = 'login';
                     $data['page'] = 'index';
                     $data['error'] = '<h2>That username has not been recognised. Please register HERE.</h2>';
                     $this->load->module('templates');
-                    $this->templates->login($data);
+                    $this->templates->page($data);
 
             }
 
