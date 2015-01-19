@@ -14,6 +14,7 @@ class Mailbox extends MX_Controller
     function index()
     {
         $data['main'] = 'mailbox';        
+        $data['title'] = 'GSM - Mailbox';        
         $data['page'] = 'index';
         
         $this->load->module('templates');
@@ -23,6 +24,7 @@ class Mailbox extends MX_Controller
     function inbox()
     {
         $data['main'] = 'mailbox';        
+        $data['title'] = 'GSM - Inbox';        
         $data['page'] = 'inbox';
         
         $this->load->module('templates');
@@ -32,6 +34,7 @@ class Mailbox extends MX_Controller
     function compose()
     {
         $data['main'] = 'mailbox';        
+        $data['title'] = 'GSM - Compose Mail';        
         $data['page'] = 'compose';
         
         $this->load->module('templates');
@@ -41,6 +44,7 @@ class Mailbox extends MX_Controller
     function archive()
     {
         $data['main'] = 'mailbox';        
+        $data['title'] = 'GSM - Archive Mail';        
         $data['page'] = 'archive';
         
         $this->load->module('templates');

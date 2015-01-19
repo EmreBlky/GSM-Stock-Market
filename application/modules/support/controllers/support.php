@@ -14,6 +14,7 @@ class Support extends MX_Controller
     function index()
     {
         $data['main'] = 'support';        
+        $data['title'] = 'GSM - Support';        
         $data['page'] = 'index';
         
         $this->load->module('templates');
@@ -23,6 +24,7 @@ class Support extends MX_Controller
     function faq()
     {
         $data['main'] = 'support';        
+        $data['title'] = 'GSM - FAQ';        
         $data['page'] = 'faq';
         
         $this->load->module('templates');
@@ -32,6 +34,7 @@ class Support extends MX_Controller
     function submit_ticket()
     {
         $data['main'] = 'support';        
+        $data['title'] = 'GSM - Submit A Ticket';        
         $data['page'] = 'submit-ticket';
         
         $this->load->module('templates');

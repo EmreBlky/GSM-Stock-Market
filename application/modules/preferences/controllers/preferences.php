@@ -14,6 +14,7 @@ class Preferences extends MX_Controller
     function index()
     {
         $data['main'] = 'preferences';        
+        $data['title'] = 'GSM - Preferences';        
         $data['page'] = 'index';
         
         $this->load->module('templates');
@@ -23,6 +24,7 @@ class Preferences extends MX_Controller
     function password()
     {
         $data['main'] = 'preferences';        
+        $data['title'] = 'GSM - Change Password';        
         $data['page'] = 'password';
         
         $this->load->module('templates');
@@ -32,6 +34,7 @@ class Preferences extends MX_Controller
     function newsletter()
     {
         $data['main'] = 'preferences';        
+        $data['title'] = 'GSM - Newsletter';        
         $data['page'] = 'newsletter';
         
         $this->load->module('templates');
@@ -41,6 +44,7 @@ class Preferences extends MX_Controller
     function subscription()
     {
         $data['main'] = 'preferences';        
+        $data['title'] = 'GSM - Manage Subscription';        
         $data['page'] = 'subscription';
         
         $this->load->module('templates');

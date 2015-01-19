@@ -14,6 +14,7 @@ class Company extends MX_Controller
     function index()
     {
         $data['main'] = 'company';
+        $data['title'] = 'GSM - Company';        
         $data['page'] = 'index';
         
         $this->load->module('templates');
@@ -23,6 +24,7 @@ class Company extends MX_Controller
     function who_viewed()
     {
         $data['main'] = 'company';        
+        $data['title'] = 'GSM - Who Has Viewed';        
         $data['page'] = 'whos-viewed';
         
         $this->load->module('templates');
@@ -32,6 +34,7 @@ class Company extends MX_Controller
     function viewed_company()
     {
         $data['main'] = 'company';        
+        $data['title'] = 'GSM - Viewed Companies';        
         $data['page'] = 'view-company';
         
         $this->load->module('templates');
@@ -41,6 +44,7 @@ class Company extends MX_Controller
     function edit_company()
     {
         $data['main'] = 'company';        
+        $data['title'] = 'GSM - Edit Company Details';        
         $data['page'] = 'edit-company';
         
         $this->load->module('templates');

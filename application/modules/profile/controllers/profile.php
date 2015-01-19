@@ -14,6 +14,7 @@ class Profile extends MX_Controller
     function index()
     {
         $data['main'] = 'profile';        
+        $data['title'] = 'GSM - Profile';        
         $data['page'] = 'index';
         
         $this->load->module('templates');
@@ -23,6 +24,7 @@ class Profile extends MX_Controller
     function who_viewed()
     {
         $data['main'] = 'profile';        
+        $data['title'] = 'GSM - Whos Viewed Profile';        
         $data['page'] = 'whos-viewed';
         
         $this->load->module('templates');
@@ -32,6 +34,7 @@ class Profile extends MX_Controller
     function viewed_profile()
     {
         $data['main'] = 'profile';        
+        $data['title'] = 'GSM - Viewed Profiles';        
         $data['page'] = 'view-profile';
         
         $this->load->module('templates');
@@ -41,6 +44,7 @@ class Profile extends MX_Controller
     function edit_profile()
     {
         $data['main'] = 'profile';        
+        $data['title'] = 'GSM - Edit Profile';        
         $data['page'] = 'edit-profile';
         
         $this->load->module('templates');

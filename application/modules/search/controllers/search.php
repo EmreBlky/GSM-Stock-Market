@@ -14,6 +14,7 @@ class Search extends MX_Controller
     function index()
     {
         $data['main'] = 'search';        
+        $data['title'] = 'GSM - Search';        
         $data['page'] = 'index';
         
         $this->load->module('templates');
@@ -23,6 +24,7 @@ class Search extends MX_Controller
     function user()
     {
         $data['main'] = 'search';        
+        $data['title'] = 'GSM - Search User';        
         $data['page'] = 'user';
         
         $this->load->module('templates');
@@ -32,6 +34,7 @@ class Search extends MX_Controller
     function company()
     {
         $data['main'] = 'search';        
+        $data['title'] = 'GSM - Search Company';        
         $data['page'] = 'company';
         
         $this->load->module('templates');

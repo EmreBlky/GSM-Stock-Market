@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>INSPINIA | Login</title>
+    <title><?php echo $title; ?></title>
 
     <link href="public/main/css/bootstrap.min.css" rel="stylesheet">
     <link href="public/main/font/css/font-awesome.css" rel="stylesheet">

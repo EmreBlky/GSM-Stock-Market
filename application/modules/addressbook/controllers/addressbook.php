@@ -14,6 +14,7 @@ class Addressbook extends MX_Controller
     function index()
     {
         $data['main'] = 'addressbook';
+        $data['title'] = 'GSM - Addressbook';        
         $data['page'] = 'index';
         
         $this->load->module('templates');
@@ -23,6 +24,7 @@ class Addressbook extends MX_Controller
     function individual()
     {
         $data['main'] = 'addressbook';
+        $data['title'] = 'GSM - Individuals';        
         $data['page'] = 'individuals';
         
         $this->load->module('templates');
@@ -32,6 +34,7 @@ class Addressbook extends MX_Controller
     function company()
     {
         $data['main'] = 'addressbook';
+        $data['title'] = 'GSM - Company';        
         $data['page'] = 'companies';
         
         $this->load->module('templates');
@@ -41,6 +44,7 @@ class Addressbook extends MX_Controller
     function favourite()
     {
         $data['main'] = 'addressbook';
+        $data['title'] = 'GSM - Favourites';        
         $data['page'] = 'favourites';
         
         $this->load->module('templates');

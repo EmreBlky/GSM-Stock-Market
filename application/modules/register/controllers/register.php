@@ -16,6 +16,7 @@ class Register extends MX_Controller{
             $data['base'] = $this->config->item('base_url');
             $data['query'] = '';
             $data['main'] = 'register';        
+            $data['title'] = 'Please Register';        
             $data['page'] = 'index';
             $this->load->module('templates');
             $this->templates->page($data);
@@ -40,6 +41,7 @@ class Register extends MX_Controller{
                     $data['base'] = $this->config->item('base_url');
                     $data['error'] = '<h2>That email is already in use. Please <a href="login">CLICK HERE</a> to login.</h2>';
                     $data['main'] = 'register';        
+                    $data['title'] = 'Register - Email in Use';        
                     $data['page'] = 'index';
                     $this->load->module('templates');
                     $this->templates->page($data);
@@ -142,6 +144,7 @@ class Register extends MX_Controller{
                 $data['base'] = $this->config->item('base_url');
                 $data['error'] =  '<h2>Passwords do not match. Please try again.</h2>';
                 $data['main'] = 'register';        
+                $data['title'] = 'Register - Password Missmatch';        
                 $data['page'] = 'index';
                 $this->load->module('templates');
                 $this->templates->page($data);
