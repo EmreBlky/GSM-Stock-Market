@@ -43,11 +43,11 @@
                                         <h5><strong>169</strong> Posts</h5>
                                     </div>
                                     <div class="col-md-4">
-                                        <span class="line">5,3,9,6,5,9,7,3,5,2</span>
+                                        <span class="line">5,7,3,5,2</span>
                                         <h5><strong>28</strong> Following</h5>
                                     </div>
                                     <div class="col-md-4">
-                                        <span class="bar">5,3,2,-1,-3,-2,2,3,5,2</span>
+                                        <span class="bar">5</span>
                                         <h5><strong>240</strong> Followers</h5>
                                     </div>
                                 </div>
