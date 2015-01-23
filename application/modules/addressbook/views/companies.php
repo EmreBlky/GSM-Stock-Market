@@ -27,12 +27,12 @@
                         </div>
                     </div>
                     <div class="col-sm-8">
-                        <h3><strong>John Smith</strong></h3>
-                        <p><i class="fa fa-map-marker"></i> Riviera State 32/106</p>
+                        <h3><strong>GSMStockMarket</strong></h3>
+                        <p><i class="fa fa-map-marker"></i> United Kingdom</p>
                         <address>
-                            <strong>Twitter, Inc.</strong><br>
-                            795 Folsom Ave, Suite 600<br>
-                            San Francisco, CA 94107<br>
+                            <strong>Contact Details</strong><br>
+                            <abbr title="Phone">M:</abbr> (123) 456-7890
+                            <abbr title="Phone">F:</abbr> (123) 456-7890
                             <abbr title="Phone">P:</abbr> (123) 456-7890
                         </address>
                     </div>
