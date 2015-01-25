@@ -24,7 +24,7 @@
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                        <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
+                        <i class="fa fa-envelope"></i>  <span class="label label-warning"><?php $this->load->model('mailbox/mailbox_model', 'mailbox_model'); echo $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'read', 'no');?></span>
                     </a>
                     <ul class="dropdown-menu dropdown-messages">
                         <li>
