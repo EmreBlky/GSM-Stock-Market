@@ -49,7 +49,7 @@
                     </li>
                     
                     <li>
-                        <a href="/"><i class="fa fa-wechat"></i> <span class="nav-label">Messenger</span> <span class="fa arrow"></span></a>
+                        <a href="/"><i class="fa fa-wechat"></i> <span class="nav-label">Messenger</span></a>
                     </li>
                     
                     <li>
@@ -81,7 +81,7 @@
                     </li>
                     
                     <li>
-                        <a href="/"><i class="fa fa-money"></i> <span class="nav-label">My Wallet</span> <span class="fa arrow"></span></a>
+                        <a href="/"><i class="fa fa-money"></i> <span class="nav-label">My Wallet</span></a>
                     </li>
                     
                     <li>
