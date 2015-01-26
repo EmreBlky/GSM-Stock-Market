@@ -5,11 +5,11 @@
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
                                 <span class="label label-success pull-right">Monthly</span>
-                                <h5>Income</h5>
+                                <h5>Sales</h5>
                             </div>
-                            <div class="ibox-content">
-                                <h1 class="no-margins">40 886,200</h1>
-                                <div class="stat-percent font-bold text-success">98% <i class="fa fa-bolt"></i></div>
+                            <div class="ibox-content" style="min-height:89px">
+                                <h1 class="no-margins">£886,200</h1>
+                                <div class="stat-percent font-bold text-success">23% <i class="fa fa-level-up"></i></div>
                                 <small>Total income</small>
                             </div>
                         </div>
@@ -18,23 +18,23 @@
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
                                 <span class="label label-info pull-right">Annual</span>
-                                <h5>Orders</h5>
+                                <h5>Purchases</h5>
                             </div>
-                            <div class="ibox-content">
-                                <h1 class="no-margins">275,800</h1>
+                            <div class="ibox-content" style="min-height:89px">
+                                <h1 class="no-margins">£275,800</h1>
                                 <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
-                                <small>New orders</small>
+                                <small>My Purchases</small>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <span class="label label-primary pull-right">Today</span>
-                                <h5>Vistits</h5>
+                                <span class="label label-success pull-right">Monthly</span>
+                                <h5>Visits</h5>
                             </div>
-                            <div class="ibox-content">
-                                <h1 class="no-margins">106,120</h1>
+                            <div class="ibox-content" style="min-height:89px">
+                                <h1 class="no-margins">1,320</h1>
                                 <div class="stat-percent font-bold text-navy">44% <i class="fa fa-level-up"></i></div>
                                 <small>New visits</small>
                             </div>
@@ -43,13 +43,13 @@
                     <div class="col-lg-3">
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
-                                <span class="label label-danger pull-right">Low value</span>
-                                <h5>User activity</h5>
+                                <span class="label label-primary pull-right">Good Standing</span>
+                                <h5>Feedback Score</h5>
                             </div>
-                            <div class="ibox-content">
-                                <h1 class="no-margins">80,600</h1>
-                                <div class="stat-percent font-bold text-danger">38% <i class="fa fa-level-down"></i></div>
-                                <small>In first month</small>
+                            <div class="ibox-content" style="min-height:89px;padding:0 20px;text-align:center">
+                              		<div class="m-r-md inline">
+                            			<input type="text" value="94" class="dial m-r" data-fgColor="#1AB394" data-width="85" data-height="85" data-angleOffset=-125 data-angleArc=250 readonly/>
+                            		</div>
                             </div>
                         </div>
             </div>
@@ -78,7 +78,7 @@
                                     <ul class="stat-list">
                                         <li>
                                             <h2 class="no-margins">2,346</h2>
-                                            <small>Total orders in period</small>
+                                            <small>Total sales orders in period</small>
                                             <div class="stat-percent">48% <i class="fa fa-level-up text-navy"></i></div>
                                             <div class="progress progress-mini">
                                                 <div style="width: 48%;" class="progress-bar"></div>
@@ -125,7 +125,7 @@
                                 </div>
                             </div>
                             <div class="ibox-content ibox-heading">
-                                <h3><i class="fa fa-envelope-o"></i> New messages</h3>
+                                <h3><i class="fa fa-envelope-o"></i> 10 Most Recent messages</h3>
                                 <small><i class="fa fa-tim"></i> You have 22 new messages and 16 waiting in draft folder.</small>
                             </div>
                             <div class="ibox-content">
@@ -192,19 +192,42 @@
                                             <small class="text-muted">Yesterday 8:48 pm - 10.06.2014</small>
                                         </div>
                                     </div>
+                                    <div class="feed-element">
+                                        <div>
+                                            <small class="pull-right">5m ago</small>
+                                            <strong>Gary Smith</strong>
+                                            <div>200 Latin words, combined with a handful</div>
+                                            <small class="text-muted">Yesterday 8:48 pm - 10.06.2014</small>
+                                        </div>
+                                    </div>
+                                    <div class="feed-element">
+                                        <div>
+                                            <small class="pull-right">5m ago</small>
+                                            <strong>Gary Smith</strong>
+                                            <div>200 Latin words, combined with a handful</div>
+                                            <small class="text-muted">Yesterday 8:48 pm - 10.06.2014</small>
+                                        </div>
+                                    </div>
+                                    <div class="feed-element">
+                                        <div>
+                                            <small class="pull-right">5m ago</small>
+                                            <strong>Gary Smith</strong>
+                                            <div>200 Latin words, combined with a handful</div>
+                                            <small class="text-muted">Yesterday 8:48 pm - 10.06.2014</small>
+                                        </div>
+                                    </div>
 
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="col-lg-4">
 
-                    <div class="col-lg-8">
-
-                        <div class="row">
-                            <div class="col-lg-6">
+                          <div class="col-lg-12">
                                 <div class="ibox float-e-margins">
                                     <div class="ibox-title">
-                                        <h5>User project list</h5>
+                                        <h5>Buying Requests</h5>
                                         <div class="ibox-tools">
                                             <a class="collapse-link">
                                                 <i class="fa fa-chevron-up"></i>
@@ -218,116 +241,66 @@
                                         <table class="table table-hover no-margins">
                                             <thead>
                                             <tr>
+                                            	<th>Make</th>
+                                                <th>Model</th>
+                                                <th>Qty</th>
+                                                <th>Price</th>
                                                 <th>Status</th>
-                                                <th>Date</th>
-                                                <th>User</th>
-                                                <th>Value</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <tr>
-                                                <td><small>Pending...</small></td>
-                                                <td><i class="fa fa-clock-o"></i> 11:20pm</td>
-                                                <td>Samantha</td>
-                                                <td class="text-navy"> <i class="fa fa-level-up"></i> 24% </td>
+                                            	<td>Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td>400</td>
+                                                <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                                <td><span class="label label-warning">Canceled</span> </td>
-                                                <td><i class="fa fa-clock-o"></i> 10:40am</td>
-                                                <td>Monica</td>
-                                                <td class="text-navy"> <i class="fa fa-level-up"></i> 66% </td>
+                                            	<td>Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td>400</td>
+                                                <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                                <td><small>Pending...</small> </td>
-                                                <td><i class="fa fa-clock-o"></i> 01:30pm</td>
-                                                <td>John</td>
-                                                <td class="text-navy"> <i class="fa fa-level-up"></i> 54% </td>
+                                            	<td>Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td>400</td>
+                                                <td><span class="label label-success">Completed</span></td>
                                             </tr>
                                             <tr>
-                                                <td><small>Pending...</small> </td>
-                                                <td><i class="fa fa-clock-o"></i> 02:20pm</td>
-                                                <td>Agnes</td>
-                                                <td class="text-navy"> <i class="fa fa-level-up"></i> 12% </td>
+                                            	<td>Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td>400</td>
+                                                <td><span class="label label-success">Completed</span></td>
                                             </tr>
                                             <tr>
-                                                <td><small>Pending...</small> </td>
-                                                <td><i class="fa fa-clock-o"></i> 09:40pm</td>
-                                                <td>Janet</td>
-                                                <td class="text-navy"> <i class="fa fa-level-up"></i> 22% </td>
+                                            	<td>Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td>400</td>
+                                                <td><span class="label label-warning">Pending</span></td>
                                             </tr>
                                             <tr>
-                                                <td><span class="label label-primary">Completed</span> </td>
-                                                <td><i class="fa fa-clock-o"></i> 04:10am</td>
-                                                <td>Amelia</td>
-                                                <td class="text-navy"> <i class="fa fa-level-up"></i> 66% </td>
-                                            </tr>
-                                            <tr>
-                                                <td><small>Pending...</small> </td>
-                                                <td><i class="fa fa-clock-o"></i> 12:08am</td>
-                                                <td>Damian</td>
-                                                <td class="text-navy"> <i class="fa fa-level-up"></i> 23% </td>
+                                            	<td>Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td>400</td>
+                                                <td><span class="label label-danger">Cancelled</span></td>
                                             </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
-                                <div class="ibox float-e-margins">
-                                    <div class="ibox-title">
-                                        <h5>Small todo list</h5>
-                                        <div class="ibox-tools">
-                                            <a class="collapse-link">
-                                                <i class="fa fa-chevron-up"></i>
-                                            </a>
-                                            <a class="close-link">
-                                                <i class="fa fa-times"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="ibox-content">
-                                        <ul class="todo-list m-t small-list">
-                                            <li>
-                                                <a href="#" class="check-link"><i class="fa fa-check-square"></i> </a>
-                                                <span class="m-l-xs todo-completed">Buy a milk</span>
-
-                                            </li>
-                                            <li>
-                                                <a href="#" class="check-link"><i class="fa fa-square-o"></i> </a>
-                                                <span class="m-l-xs">Go to shop and find some products.</span>
-
-                                            </li>
-                                            <li>
-                                                <a href="#" class="check-link"><i class="fa fa-square-o"></i> </a>
-                                                <span class="m-l-xs">Send documents to Mike</span>
-                                                <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 mins</small>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="check-link"><i class="fa fa-square-o"></i> </a>
-                                                <span class="m-l-xs">Go to the doctor dr Smith</span>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="check-link"><i class="fa fa-check-square"></i> </a>
-                                                <span class="m-l-xs todo-completed">Plan vacation</span>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="check-link"><i class="fa fa-square-o"></i> </a>
-                                                <span class="m-l-xs">Create new stuff</span>
-                                            </li>
-                                            <li>
-                                                <a href="#" class="check-link"><i class="fa fa-square-o"></i> </a>
-                                                <span class="m-l-xs">Call to Anna for dinner</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
+                            
                             <div class="col-lg-12">
                                 <div class="ibox float-e-margins">
                                     <div class="ibox-title">
-                                        <h5>Transactions worldwide</h5>
+                                        <h5>Selling Offers</h5>
                                         <div class="ibox-tools">
                                             <a class="collapse-link">
                                                 <i class="fa fa-chevron-up"></i>
@@ -338,75 +311,297 @@
                                         </div>
                                     </div>
                                     <div class="ibox-content">
-
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <table class="table table-hover margin bottom">
-                                                    <thead>
-                                                    <tr>
-                                                        <th style="width: 1%" class="text-center">No.</th>
-                                                        <th>Transaction</th>
-                                                        <th class="text-center">Date</th>
-                                                        <th class="text-center">Amount</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td class="text-center">1</td>
-                                                        <td> Security doors
-                                                            </td>
-                                                        <td class="text-center small">16 Jun 2014</td>
-                                                        <td class="text-center"><span class="label label-primary">$483.00</span></td>
-
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-center">2</td>
-                                                        <td> Wardrobes
-                                                        </td>
-                                                        <td class="text-center small">10 Jun 2014</td>
-                                                        <td class="text-center"><span class="label label-primary">$327.00</span></td>
-
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-center">3</td>
-                                                        <td> Set of tools
-                                                        </td>
-                                                        <td class="text-center small">12 Jun 2014</td>
-                                                        <td class="text-center"><span class="label label-warning">$125.00</span></td>
-
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-center">4</td>
-                                                        <td> Panoramic pictures</td>
-                                                        <td class="text-center small">22 Jun 2013</td>
-                                                        <td class="text-center"><span class="label label-primary">$344.00</span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-center">5</td>
-                                                        <td>Phones</td>
-                                                        <td class="text-center small">24 Jun 2013</td>
-                                                        <td class="text-center"><span class="label label-primary">$235.00</span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-center">6</td>
-                                                        <td>Monitors</td>
-                                                        <td class="text-center small">26 Jun 2013</td>
-                                                        <td class="text-center"><span class="label label-primary">$100.00</span></td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div id="world-map" style="height: 300px;"></div>
-                                            </div>
+                                        <table class="table table-hover no-margins">
+                                            <thead>
+                                            <tr>
+                                            	<th>Make</th>
+                                                <th>Model</th>
+                                                <th>Qty</th>
+                                                <th>Price</th>
+                                                <th>Status</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                            	<td>Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td>400</td>
+                                                <td><span class="label label-primary">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td>Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td>400</td>
+                                                <td><span class="label label-primary">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td>Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td>400</td>
+                                                <td><span class="label label-success">Completed</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td>Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td>400</td>
+                                                <td><span class="label label-success">Completed</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td>Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td>400</td>
+                                                <td><span class="label label-warning">Pending</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td>Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td>400</td>
+                                                <td><span class="label label-danger">Cancelled</span></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-12">
+                                <div class="ibox float-e-margins">
+                                    <div class="ibox-title">
+                                        <h5>Watch List</h5>
+                                        <div class="ibox-tools">
+                                            <a class="collapse-link">
+                                                <i class="fa fa-chevron-up"></i>
+                                            </a>
+                                            <a class="close-link">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </div>
                                     </div>
+                                    <div class="ibox-content">
+                                        <table class="table table-hover no-margins">
+                                            <thead>
+                                            <tr>
+                                            	<th>Make</th>
+                                                <th>Model</th>
+                                                <th>Qty</th>
+                                                <th>Price</th>
+                                                <th>Status</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                            	<td>Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td>400</td>
+                                                <td><span class="label label-primary">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td>Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td>400</td>
+                                                <td><span class="label label-primary">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td>Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td>400</td>
+                                                <td><span class="label label-success">Completed</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td>Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td>400</td>
+                                                <td><span class="label label-success">Completed</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td>Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td>400</td>
+                                                <td><span class="label label-warning">Pending</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td>Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td>400</td>
+                                                <td><span class="label label-danger">Cancelled</span></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                       </div>
+                       
+                    
+                    <div class="col-lg-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Newsfeed</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="ibox-content inspinia-timeline">
+
+                        <div class="timeline-item">
+                            <div class="row">
+                                <div class="col-xs-3 date">
+                                    <i class="fa fa-user-md"></i>
+                                    6:00 am
+                                    <br/>
+                                    <small class="text-navy">2 hour ago</small>
+                                </div>
+                                <div class="col-xs-9 content no-top-border">
+                                    <p class="m-b-xs"><strong>Meeting</strong></p>
+
+                                    <p>Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products. Below please find the current status of the
+                                        sale.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="row">
+                                <div class="col-xs-3 date">
+                                    <i class="fa fa-user-md"></i>
+                                    7:00 am
+                                    <br/>
+                                    <small class="text-navy">3 hour ago</small>
+                                </div>
+                                <div class="col-xs-9 content">
+                                    <p class="m-b-xs"><strong>Send documents to Mike</strong></p>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="row">
+                                <div class="col-xs-3 date">
+                                    <i class="fa fa-user-md"></i>
+                                    8:00 am
+                                    <br/>
+                                </div>
+                                <div class="col-xs-9 content">
+                                    <p class="m-b-xs"><strong>Coffee Break</strong></p>
+                                    <p>
+                                     Go to shop and find some products.
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="row">
+                                <div class="col-xs-3 date">
+                                    <i class="fa fa-user-md"></i>
+                                    11:00 am
+                                    <br/>
+                                    <small class="text-navy">21 hour ago</small>
+                                </div>
+                                <div class="col-xs-9 content">
+                                    <p class="m-b-xs"><strong>Phone with Jeronimo</strong></p>
+                                    <p>
+                                    Lorem Ipsum has been the industry's standard dummy text ever since.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="row">
+                                <div class="col-xs-3 date">
+                                    <i class="fa fa-user-md"></i>
+                                    09:00 pm
+                                    <br/>
+                                    <small>21 hour ago</small>
+                                </div>
+                                <div class="col-xs-9 content">
+                                    <p class="m-b-xs"><strong>Go to the doctor dr Smith</strong></p>
+                                    <p>
+                                        Find some issue and go to doctor.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="row">
+                                <div class="col-xs-3 date">
+                                    <i class="fa fa-user-md"></i>
+                                    11:10 pm
+                                </div>
+                                <div class="col-xs-9 content">
+                                    <p class="m-b-xs"><strong>Chat with Sandra</strong></p>
+                                    <p>
+                                        Lorem Ipsum has been the industry's standard dummy text ever since.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="row">
+                                <div class="col-xs-3 date">
+                                    <i class="fa fa-user-md"></i>
+                                    12:50 pm
+                                    <br/>
+                                    <small class="text-navy">48 hour ago</small>
+                                </div>
+                                <div class="col-xs-9 content">
+                                    <p class="m-b-xs"><strong>Chat with Monica and Sandra</strong></p>
+                                    <p>
+                                        Web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="row">
+                                <div class="col-xs-3 date">
+                                    <i class="fa fa-user-md"></i>
+                                    08:50 pm
+                                    <br/>
+                                    <small class="text-navy">68 hour ago</small>
+                                </div>
+                                <div class="col-xs-9 content">
+                                    <p class="m-b-xs"><strong>Phone to James</strong></p>
+                                    <p>
+                                        Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="row">
+                                <div class="col-xs-3 date">
+                                    <i class="fa fa-user-md"></i>
+                                    7:00 am
+                                    <br/>
+                                    <small class="text-navy">3 hour ago</small>
+                                </div>
+                                <div class="col-xs-9 content">
+                                    <p class="m-b-xs"><strong>Send documents to Mike</strong></p>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
                                 </div>
                             </div>
                         </div>
 
                     </div>
-
+                </div>
 
                 </div>
                 </div>
