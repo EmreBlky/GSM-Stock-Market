@@ -23,7 +23,17 @@
                     <div class="col-sm-4">
                         <div class="text-center">
                             <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/a2.jpg">
-                            <div class="m-t-xs font-bold btn-circle">Online</div>
+                            <button class="btn btn-primary btn-circle" type="button"><i class="fa fa-facebook"></i></button>
+                            <button class="btn btn-primary btn-circle" type="button"><i class="fa fa-twitter"></i></button>
+                            <button class="btn btn-primary btn-circle" type="button"><i class="fa fa-linkedin"></i></button>
+                            <button class="btn btn-primary btn-circle" type="button"><i class="fa fa-skype"></i></button>
+                            
+                            
+                            
+                            
+                            <button class="btn btn-primary btn-circle" type="button"><i class="fa fa-list"></i>
+                            </button>
+                            <div class="m-t-xs font-bold">Online</div>
                         </div>
                     </div>
                     <div class="col-sm-8">
