@@ -403,7 +403,7 @@
                                     <br/>
                                     <small class="text-navy">2 hour ago</small>
                                 </div>
-                                <div class="col-xs-7 content no-top-border">
+                                <div class="col-xs-9 content no-top-border">
                                     <p class="m-b-xs"><strong>Meeting</strong></p>
 
                                     <p>Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products. Below please find the current status of the
@@ -421,7 +421,7 @@
                                     <br/>
                                     <small class="text-navy">3 hour ago</small>
                                 </div>
-                                <div class="col-xs-7 content">
+                                <div class="col-xs-9 content">
                                     <p class="m-b-xs"><strong>Send documents to Mike</strong></p>
                                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
                                 </div>
@@ -434,7 +434,7 @@
                                     8:00 am
                                     <br/>
                                 </div>
-                                <div class="col-xs-7 content">
+                                <div class="col-xs-9 content">
                                     <p class="m-b-xs"><strong>Coffee Break</strong></p>
                                     <p>
                                      Go to shop and find some products.
@@ -451,7 +451,7 @@
                                     <br/>
                                     <small class="text-navy">21 hour ago</small>
                                 </div>
-                                <div class="col-xs-7 content">
+                                <div class="col-xs-9 content">
                                     <p class="m-b-xs"><strong>Phone with Jeronimo</strong></p>
                                     <p>
                                     Lorem Ipsum has been the industry's standard dummy text ever since.
@@ -467,7 +467,7 @@
                                     <br/>
                                     <small>21 hour ago</small>
                                 </div>
-                                <div class="col-xs-7 content">
+                                <div class="col-xs-9 content">
                                     <p class="m-b-xs"><strong>Go to the doctor dr Smith</strong></p>
                                     <p>
                                         Find some issue and go to doctor.
@@ -481,7 +481,7 @@
                                     <i class="fa fa-user-md"></i>
                                     11:10 pm
                                 </div>
-                                <div class="col-xs-7 content">
+                                <div class="col-xs-9 content">
                                     <p class="m-b-xs"><strong>Chat with Sandra</strong></p>
                                     <p>
                                         Lorem Ipsum has been the industry's standard dummy text ever since.
@@ -497,7 +497,7 @@
                                     <br/>
                                     <small class="text-navy">48 hour ago</small>
                                 </div>
-                                <div class="col-xs-7 content">
+                                <div class="col-xs-9 content">
                                     <p class="m-b-xs"><strong>Chat with Monica and Sandra</strong></p>
                                     <p>
                                         Web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
@@ -513,7 +513,7 @@
                                     <br/>
                                     <small class="text-navy">68 hour ago</small>
                                 </div>
-                                <div class="col-xs-7 content">
+                                <div class="col-xs-9 content">
                                     <p class="m-b-xs"><strong>Phone to James</strong></p>
                                     <p>
                                         Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
@@ -529,7 +529,7 @@
                                     <br/>
                                     <small class="text-navy">3 hour ago</small>
                                 </div>
-                                <div class="col-xs-7 content">
+                                <div class="col-xs-9 content">
                                     <p class="m-b-xs"><strong>Send documents to Mike</strong></p>
                                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
                                 </div>
