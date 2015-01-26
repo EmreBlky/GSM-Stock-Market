@@ -46,14 +46,10 @@
                                 <span class="label label-danger pull-right">Low value</span>
                                 <h5>Feedback Score</h5>
                             </div>
-                            <div class="ibox-content">
-                                <h1 class="no-margins">
+                            <div class="ibox-content" style="text-align:center">
                               		<div class="m-r-md inline">
                             			<input type="text" value="60" class="dial m-r" data-fgColor="#ED5565" data-width="85" data-height="85" data-angleOffset=-125 data-angleArc=250 />
                             		</div>
-                            	</h1>
-                                <div class="stat-percent font-bold text-danger">10 <i class="fa fa-level-down"></i></div>
-                                <small>Rating</small>
                             </div>
                         </div>
             </div>
