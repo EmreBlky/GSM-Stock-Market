@@ -46,7 +46,7 @@
                                 <span class="label label-primary pull-right">Good Standing</span>
                                 <h5>Feedback Score</h5>
                             </div>
-                            <div class="ibox-content" style="min-height:89px;text-align:center">
+                            <div class="ibox-content" style="min-height:89px;padding:0 20px;text-align:center">
                               		<div class="m-r-md inline">
                             			<input type="text" value="94" class="dial m-r" data-fgColor="#1AB394" data-width="85" data-height="85" data-angleOffset=-125 data-angleArc=250 readonly/>
                             		</div>
