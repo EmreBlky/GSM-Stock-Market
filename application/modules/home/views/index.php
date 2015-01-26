@@ -261,7 +261,7 @@
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
                                                 <td>400</td>
-                                                <td><span class="label label-primary">Active/span></td>
+                                                <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
                                             	<td>Samsung</td>
@@ -334,7 +334,7 @@
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
                                                 <td>400</td>
-                                                <td><span class="label label-primary">Active/span></td>
+                                                <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
                                             	<td>Samsung</td>
@@ -407,7 +407,7 @@
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
                                                 <td>400</td>
-                                                <td><span class="label label-primary">Active/span></td>
+                                                <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
                                             	<td>Samsung</td>
