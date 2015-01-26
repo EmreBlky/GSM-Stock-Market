@@ -1,4 +1,4 @@
-<!-- Mainly scripts -->
+	<!-- Mainly scripts -->
     <script src="/public/main/js/jquery-2.1.1.js"></script>
     <script src="/public/main/js/bootstrap.min.js"></script>
     <script src="/public/main/js/plugins/metisMenu/jquery.metisMenu.js"></script>
@@ -29,6 +29,10 @@
 
     <!-- EayPIE -->
     <script src="/public/main/js/plugins/easypiechart/jquery.easypiechart.js"></script>
+    
+
+   	<!-- JSKnob -->
+   	<script src="js/plugins/jsKnob/jquery.knob.js"></script>
 
     <!-- Sparkline -->
     <script src="/public/main/js/plugins/sparkline/jquery.sparkline.min.js"></script>
@@ -38,6 +42,7 @@
 
     <script>
         $(document).ready(function() {
+			$(".dial").knob();
             $('.chart').easyPieChart({
                 barColor: '#f8ac59',
 //                scaleColor: false,
