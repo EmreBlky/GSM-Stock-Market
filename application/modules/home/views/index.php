@@ -225,7 +225,7 @@
                     <div class="row">
                     <div class="col-lg-4">
 
-                          <div class="col-lg-4">
+                          <div class="col-lg-12">
                                 <div class="ibox float-e-margins">
                                     <div class="ibox-title">
                                         <h5>User project list</h5>
@@ -297,7 +297,7 @@
                                 </div>
                             </div>
                             
-                            <div class="col-lg-4">
+                            <div class="col-lg-12">
                                 <div class="ibox float-e-margins">
                                     <div class="ibox-title">
                                         <h5>User project list</h5>
@@ -368,7 +368,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>  
                         
                         </div>
                         </div>  
