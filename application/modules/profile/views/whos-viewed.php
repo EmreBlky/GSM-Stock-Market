@@ -40,8 +40,8 @@
                         </address>
                     </div>
                     <div class="col-sm-12">
-                            <button class="btn btn-primary" type="button" style="font-size:10px;float:right"><i class="fa fa-envelope"></i>&nbsp;Message</button>
                             <button class="btn btn-danger" type="button" style="font-size:10px;float:right"><i class="fa fa-times"></i>&nbsp;Remove</button>
+                            <button class="btn btn-primary" type="button" style="font-size:10px;float:right;margin-right:10px"><i class="fa fa-envelope"></i>&nbsp;Message</button>
                     </div>
                     <div class="clearfix"></div>
                         </a>
