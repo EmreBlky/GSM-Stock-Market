@@ -5,16 +5,9 @@
                         <div class="dropdown profile-element"> <span>
                             <img alt="image" class="img-circle" src="/public/main/img/profile_small.jpg" />
                              </span>
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?php echo $this->session->userdata('firstname');?> <?php echo $this->session->userdata('lastname');?></strong>
-                             </span> <span class="text-muted text-xs block">GSM Stock Market <b class="caret"></b></span> </span> </a>
-                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                <li><a href="/">Profile</a></li>
-                                <li><a href="/">Contacts</a></li>
-                                <li><a href="/">Mailbox</a></li>
-                                <li class="divider"></li>
-                                <li><a href="/">Logout</a></li>
-                            </ul>
+                             </span> <span class="text-muted text-xs block">GSM Stock Market <b class="caret"></b></span> </span>
+                             </span> <span class="text-muted text-xs block">Gold Member <b class="caret"></b></span> </span>
                         </div>
                         <div class="logo-element">
                             GSM
@@ -35,7 +28,7 @@
                             <li><a href="profile/edit_profile"><i class="fa fa-cogs"></i> Edit Profile</a></li>
                         </ul>
                     </li>
-                    
+                    <!--
                     <li>
                         <a href="company/"><i class="fa fa-users"></i> <span class="nav-label">My Company</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
@@ -44,7 +37,7 @@
                             <li><a href="company/edit_company"><i class="fa fa-cogs"></i> Edit Company</a></li>
                         </ul>
                     </li>
-                    
+                    -->
                     <li>
                         <?php $this->load->model('mailbox/mailbox_model', 'mailbox_model'); ?>
                         <a href="/mailbox"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span><span class="label label-warning pull-right"><?php echo $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'read', 'no');?>/<?php echo $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'));?></span></span></a>
@@ -53,6 +46,10 @@
                             <li><a href="mailbox/compose"><i class="fa fa-pencil"></i> Compose Email</a></li>
                             <li><a href="mailbox/archive"><i class="fa fa-archive"></i> Archive</a></li>
                         </ul>
+                    </li>
+                    
+                    <li>
+                        <a href="/"><i class="fa fa-wechat"></i> <span class="nav-label">Messenger</span> <span class="fa arrow"></span></a>
                     </li>
                     
                     <li>
@@ -65,7 +62,7 @@
                     </li>
                     
                     <li>
-                        <a href="/"><i class="fa fa-money"></i> <span class="nav-label">Marketplace</span> <span class="fa arrow"></span></a>
+                        <a href="/"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Marketplace</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Buy</a></li>
                             <li><a href="marketplace/sell"><i class="fa fa-tag"></i> Sell</a></li>
@@ -80,6 +77,17 @@
                         <ul class="nav nav-second-level">
                             <li><a href="search/user"><i class="fa fa-user"></i> User Search</a></li>
                             <li><a href="search/company"><i class="fa fa-users"></i> Company Search</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a href="/"><i class="fa fa-money"></i> <span class="nav-label">My Wallet</span> <span class="fa arrow"></span></a>
+                    </li>
+                    
+                    <li>
+                        <a href="/"><i class="fa fa-barcode"></i> <span class="nav-label">IMEI Services</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="#"><i class="fa fa-unlock-alt"></i> Mobile Unlocking</a></li>
                         </ul>
                     </li>
                     
