@@ -41,7 +41,7 @@
                     -->
                     <li>
                         <?php $this->load->model('mailbox/mailbox_model', 'mailbox_model'); ?>
-                        <a href="/mailbox"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span><span class="label label-warning pull-right"><?php echo $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'read', 'no');?>/<?php echo $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'));?></span></span></a>
+                        <a href="/mailbox"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span><span class="label label-warning pull-right"><?php echo $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'read', 'no');?>/<?php echo $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'));?></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="mailbox/inbox"><i class="fa fa-inbox"></i> Inbox</a></li>
                             <li><a href="mailbox/compose"><i class="fa fa-pencil"></i> Compose Email</a></li>
@@ -50,7 +50,7 @@
                     </li>
                     
                     <li>
-                        <a href="/"><i class="fa fa-wechat"></i> <span class="nav-label">Messenger</span></a>
+                        <a href="/"><i class="fa fa-wechat"></i> <span class="nav-label">Messenger</span><span class="label label-warning pull-right">0/1</span></a></a>
                     </li>
                     
                     <li>
@@ -82,7 +82,7 @@
                     </li>
                     
                     <li>
-                        <a href="/"><i class="fa fa-money"></i> <span class="nav-label">My Wallet</span></a>
+                        <a href="/"><i class="fa fa-money"></i> <span class="nav-label">My Wallet</span><span class="label label-primary pull-right">£5.00</span></a>
                     </li>
                     
                     <li>

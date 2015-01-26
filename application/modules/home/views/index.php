@@ -268,14 +268,14 @@
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
                                                 <td>400</td>
-                                                <td><span class="label label-success">Sold</span></td>
+                                                <td><span class="label label-success">Completed</span></td>
                                             </tr>
                                             <tr>
                                             	<td>Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
                                                 <td>400</td>
-                                                <td><span class="label label-success">Sold</span></td>
+                                                <td><span class="label label-success">Completed</span></td>
                                             </tr>
                                             <tr>
                                             	<td>Samsung</td>
@@ -341,14 +341,14 @@
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
                                                 <td>400</td>
-                                                <td><span class="label label-success">Sold</span></td>
+                                                <td><span class="label label-success">Completed</span></td>
                                             </tr>
                                             <tr>
                                             	<td>Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
                                                 <td>400</td>
-                                                <td><span class="label label-success">Sold</span></td>
+                                                <td><span class="label label-success">Completed</span></td>
                                             </tr>
                                             <tr>
                                             	<td>Samsung</td>
@@ -414,14 +414,14 @@
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
                                                 <td>400</td>
-                                                <td><span class="label label-success">Sold</span></td>
+                                                <td><span class="label label-success">Completed</span></td>
                                             </tr>
                                             <tr>
                                             	<td>Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
                                                 <td>400</td>
-                                                <td><span class="label label-success">Sold</span></td>
+                                                <td><span class="label label-success">Completed</span></td>
                                             </tr>
                                             <tr>
                                             	<td>Samsung</td>
@@ -464,7 +464,7 @@
                         <div class="timeline-item">
                             <div class="row">
                                 <div class="col-xs-3 date">
-                                    <i class="fa fa-briefcase"></i>
+                                    <i class="fa fa-user-md"></i>
                                     6:00 am
                                     <br/>
                                     <small class="text-navy">2 hour ago</small>
@@ -474,15 +474,13 @@
 
                                     <p>Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products. Below please find the current status of the
                                         sale.</p>
-
-                                    <p><span data-diameter="40" class="updating-chart">5,3,9,6,5,9,7,3,5,2,5,3,9,6,5,9,4,7,3,2,9,8,7,4,5,1,2,9,5,4,7,2,7,7,3,5,2</span></p>
                                 </div>
                             </div>
                         </div>
                         <div class="timeline-item">
                             <div class="row">
                                 <div class="col-xs-3 date">
-                                    <i class="fa fa-file-text"></i>
+                                    <i class="fa fa-user-md"></i>
                                     7:00 am
                                     <br/>
                                     <small class="text-navy">3 hour ago</small>
@@ -496,7 +494,7 @@
                         <div class="timeline-item">
                             <div class="row">
                                 <div class="col-xs-3 date">
-                                    <i class="fa fa-coffee"></i>
+                                    <i class="fa fa-user-md"></i>
                                     8:00 am
                                     <br/>
                                 </div>
@@ -512,7 +510,7 @@
                         <div class="timeline-item">
                             <div class="row">
                                 <div class="col-xs-3 date">
-                                    <i class="fa fa-phone"></i>
+                                    <i class="fa fa-user-md"></i>
                                     11:00 am
                                     <br/>
                                     <small class="text-navy">21 hour ago</small>
@@ -558,7 +556,7 @@
                         <div class="timeline-item">
                             <div class="row">
                                 <div class="col-xs-3 date">
-                                    <i class="fa fa-comments"></i>
+                                    <i class="fa fa-user-md"></i>
                                     12:50 pm
                                     <br/>
                                     <small class="text-navy">48 hour ago</small>
@@ -574,7 +572,7 @@
                         <div class="timeline-item">
                             <div class="row">
                                 <div class="col-xs-3 date">
-                                    <i class="fa fa-phone"></i>
+                                    <i class="fa fa-user-md"></i>
                                     08:50 pm
                                     <br/>
                                     <small class="text-navy">68 hour ago</small>
@@ -590,7 +588,7 @@
                         <div class="timeline-item">
                             <div class="row">
                                 <div class="col-xs-3 date">
-                                    <i class="fa fa-file-text"></i>
+                                    <i class="fa fa-user-md"></i>
                                     7:00 am
                                     <br/>
                                     <small class="text-navy">3 hour ago</small>
