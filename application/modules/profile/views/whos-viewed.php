@@ -23,7 +23,7 @@
                     <div class="col-sm-4">
                         <div class="text-center">
                             <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/a2.jpg">          
-                            <button class="btn btn-primary btn-circle" type="button"><i class="fa"></i>
+                            <button class="btn btn-primary btn-circle" type="button" style="height:15px;width:15px"><i class="fa"></i>
                             </button>
                             <div class="m-t-xs font-bold">Online</div>
                         </div>
@@ -32,13 +32,14 @@
                         <h3><strong>John Smith</strong></h3>
                         <p><i class="fa fa-map-marker"></i> TebiHost Limited</p>
                         <address>
-                            <abbr title="Phone">P:</abbr> +44 (0)7512 245 522<br />                            
-                            <button class="btn btn-primary btn-circle" type="button"><i class="fa fa-facebook"></i></button>
-                            <button class="btn btn-primary btn-circle" type="button"><i class="fa fa-twitter"></i></button>
-                            <button class="btn btn-primary btn-circle" type="button"><i class="fa fa-linkedin"></i></button>
-                            <button class="btn btn-primary btn-circle" type="button"><i class="fa fa-skype"></i></button>
-                            <br />
-                            <button class="btn btn-primary " type="button"><i class="fa fa-envelope"></i>&nbsp;Message</button>
+                            <abbr title="Phone">P:</abbr> +44 (0)7512 245 522<br />     <br />                     
+                            <button class="btn btn-circle" type="button" style="color:#fff;background-color:#3b5998;border-color:#3b5998"></h3>><i class="fa fa-facebook"></i></button>
+                            <button class="btn btn-primary btn-circle" type="button" style="color:#fff;background-color:#00aced;border-color:#00aced"><i class="fa fa-twitter"></i></button>
+                            <button class="btn btn-primary btn-circle" type="button" style="color:#fff;background-color:#007bb6;border-color:#007bb6"><i class="fa fa-linkedin"></i></button>
+                            <button class="btn btn-primary btn-circle" type="button" style="color:#fff;background-color:#12A5F4;border-color:#12A5F4"><i class="fa fa-skype"></i></button>
+                            <br /><br />
+                            <button class="btn btn-primary" type="button" style="font-size:10px"><i class="fa fa-envelope"></i>&nbsp;Message</button>
+                            <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i>&nbsp;Remove</button>
                         </address>
                     </div>
                     <div class="clearfix"></div>
