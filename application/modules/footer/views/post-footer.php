@@ -32,7 +32,7 @@
     
 
    	<!-- JSKnob -->
-   	<script src="js/plugins/jsKnob/jquery.knob.js"></script>
+   	<script src="/public/main/js/plugins/jsKnob/jquery.knob.js"></script>
 
     <!-- Sparkline -->
     <script src="/public/main/js/plugins/sparkline/jquery.sparkline.min.js"></script>
@@ -42,7 +42,6 @@
 
     <script>
         $(document).ready(function() {
-			$(".dial").knob();
             $('.chart').easyPieChart({
                 barColor: '#f8ac59',
 //                scaleColor: false,
@@ -203,7 +202,10 @@
                     }]
                 },
             });
+			$(".dial").knob();
         });
+		
+		
     </script>
     <?php 
 
