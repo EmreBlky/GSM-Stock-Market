@@ -22,16 +22,8 @@
                     <a href="profile.html">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/a2.jpg">
-                            <button class="btn btn-primary btn-circle" type="button"><i class="fa fa-facebook"></i></button>
-                            <button class="btn btn-primary btn-circle" type="button"><i class="fa fa-twitter"></i></button>
-                            <button class="btn btn-primary btn-circle" type="button"><i class="fa fa-linkedin"></i></button>
-                            <button class="btn btn-primary btn-circle" type="button"><i class="fa fa-skype"></i></button>
-                            
-                            
-                            
-                            
-                            <button class="btn btn-primary btn-circle" type="button"><i class="fa fa-list"></i>
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/a2.jpg">          
+                            <button class="btn btn-primary btn-circle" type="button"><i class="fa"></i>
                             </button>
                             <div class="m-t-xs font-bold">Online</div>
                         </div>
@@ -40,11 +32,13 @@
                         <h3><strong>John Smith</strong></h3>
                         <p><i class="fa fa-map-marker"></i> TebiHost Limited</p>
                         <address>
-                            <strong>10 Swallow Drive</strong><br>
-                            Hazlemere<br>
-                            High Wycombe<br>
-                            Buckinghamshire, HP15 7JB<br>
-                            <abbr title="Phone">P:</abbr> +44 (0)7512 245 522
+                            <abbr title="Phone">P:</abbr> +44 (0)7512 245 522<br />                            
+                            <button class="btn btn-primary btn-circle" type="button"><i class="fa fa-facebook"></i></button>
+                            <button class="btn btn-primary btn-circle" type="button"><i class="fa fa-twitter"></i></button>
+                            <button class="btn btn-primary btn-circle" type="button"><i class="fa fa-linkedin"></i></button>
+                            <button class="btn btn-primary btn-circle" type="button"><i class="fa fa-skype"></i></button>
+                            <br />
+                            <button class="btn btn-primary " type="button"><i class="fa fa-envelope"></i>&nbsp;Message</button>
                         </address>
                     </div>
                     <div class="clearfix"></div>
