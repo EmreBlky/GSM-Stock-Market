@@ -5,9 +5,11 @@
                         <div class="dropdown profile-element"> <span>
                             <img alt="image" class="img-circle" src="/public/main/img/profile_small.jpg" />
                              </span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?php echo $this->session->userdata('firstname');?> <?php echo $this->session->userdata('lastname');?></strong>
-                             </span> <span class="text-muted text-xs block">GSM Stock Market <b class="caret"></b></span> </span>
-                             </span> <span class="text-muted text-xs block">Gold Member <b class="caret"></b></span> </span>
+                            	<span class="text-muted text-xs block">GSM Stock Market <b class="caret"></b></span>
+                            	<span class="text-muted text-xs block">Gold Member <b class="caret"></b></span>
+                             </a>
                         </div>
                         <div class="logo-element">
                             GSM
