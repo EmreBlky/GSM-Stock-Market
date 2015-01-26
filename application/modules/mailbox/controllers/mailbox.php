@@ -36,6 +36,150 @@ class Mailbox extends MX_Controller
         $this->load->module('templates');
         $this->templates->page($data);
     }
+    
+    function sent($mid = NULL)
+    {
+        
+        $data['main'] = 'mailbox';        
+        $data['title'] = 'GSM - Inbox';        
+        $data['page'] = 'sent';
+        $data['inbox_count'] = $this->mailbox_model->count_where_multiple('member_id',$this->session->userdata('members_id'), 'sent', 'yes');
+        $data['inbox_message'] = $this->mailbox_model->get_where_multiples('member_id',$this->session->userdata('members_id'), 'sent', 'yes');
+        
+        $data['message'] = $this->mailbox_model->get_where_multiple('id', $mid);
+        
+        $this->load->module('templates');
+        $this->templates->page($data);
+    }
+    
+    function mark_read($mid)
+    {
+        $data = array(
+                        'read'     => 'yes'
+                      );
+
+        $this->load->model('mailbox/mailbox_model', 'mailbox_model');
+        $this->mailbox_model->_update($mid, $data);
+        
+        redirect('mailbox/inbox');
+    }
+    
+    function mark_unread($mid)
+    {
+        $data = array(
+                        'read'     => 'no'
+                      );
+
+        $this->load->model('mailbox/mailbox_model', 'mailbox_model');
+        $this->mailbox_model->_update($mid, $data);
+        
+        redirect('mailbox/inbox');
+    }
+    
+    function important($mid = NULL)
+    {
+        
+        $data['main'] = 'mailbox';        
+        $data['title'] = 'GSM - Inbox';        
+        $data['page'] = 'important';
+        $data['inbox_count'] = $this->mailbox_model->count_where_multiple('member_id',$this->session->userdata('members_id'), 'important', 'yes');
+        $data['inbox_message'] = $this->mailbox_model->get_where_multiples('member_id',$this->session->userdata('members_id'), 'important', 'yes');
+        
+        $data['message'] = $this->mailbox_model->get_where_multiple('id', $mid);
+        
+        $this->load->module('templates');
+        $this->templates->page($data);
+    }
+    
+    function important_move($mid)
+    {
+        $data = array(
+                        'trash'     => 'no',
+                        'sent'      => 'no',
+                        'important' => 'yes',
+                        'draft'     => 'no'
+                      );
+
+        $this->load->model('mailbox/mailbox_model', 'mailbox_model');
+        $this->mailbox_model->_update($mid, $data);
+        
+        redirect('mailbox/important');
+    }
+    
+    function draft($mid = NULL)
+    {
+        
+        $data['main'] = 'mailbox';        
+        $data['title'] = 'GSM - Inbox';        
+        $data['page'] = 'draft';
+        $data['inbox_count'] = $this->mailbox_model->count_where_multiple('member_id',$this->session->userdata('members_id'), 'draft', 'yes');
+        $data['inbox_message'] = $this->mailbox_model->get_where_multiples('member_id',$this->session->userdata('members_id'), 'draft', 'yes');
+        
+        $data['message'] = $this->mailbox_model->get_where_multiple('id', $mid);
+        
+        $this->load->module('templates');
+        $this->templates->page($data);
+    }
+    
+    function daft_move($mid)
+    {
+        $data = array(
+                        'trash'     => 'no',
+                        'sent'      => 'no',
+                        'important' => 'no',
+                        'draft'     => 'yes'
+                      );
+
+        $this->load->model('mailbox/mailbox_model', 'mailbox_model');
+        $this->mailbox_model->_update($mid, $data);
+        
+        redirect('mailbox/draft');
+    }
+    
+    function trash($mid = NULL)
+    {
+        
+        $data['main'] = 'mailbox';        
+        $data['title'] = 'GSM - Inbox';        
+        $data['page'] = 'trash';
+        $data['inbox_count'] = $this->mailbox_model->count_where_multiple('member_id',$this->session->userdata('members_id'), 'trash', 'yes');
+        $data['inbox_message'] = $this->mailbox_model->get_where_multiples('member_id',$this->session->userdata('members_id'), 'trash', 'yes');
+        
+        $data['message'] = $this->mailbox_model->get_where_multiple('id', $mid);
+        
+        $this->load->module('templates');
+        $this->templates->page($data);
+    }
+    
+    function trash_move($mid)
+    {
+        $data = array(
+                        'trash'     => 'yes',
+                        'sent'      => 'no',
+                        'important' => 'no',
+                        'draft'     => 'no'
+                      );
+
+        $this->load->model('mailbox/mailbox_model', 'mailbox_model');
+        $this->mailbox_model->_update($mid, $data);
+        
+        redirect('mailbox/trash');
+    }
+    
+    function delete($mid)
+    {
+        $data = array(
+                        'deleted'     => 'yes'
+                      );
+
+        $this->load->model('mailbox/mailbox_model', 'mailbox_model');
+        $this->mailbox_model->_update($mid, $data);
+        
+        $this->mailbox_model->_delete_where('deleted', 'yes');
+        
+        redirect('mailbox/trash');
+    }
+    
     function side_mail()
     { 
         $data['inbox'] = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'read', 'no');
