@@ -30,17 +30,18 @@
                     </div>
                     <div class="col-sm-8">
                         <h3><strong>John Smith</strong></h3>
-                        <p><i class="fa fa-map-marker"></i> TebiHost Limited</p>
+                        <p><strong>TebiHost Limited</strong></p>
                         <address>
                             <abbr title="Phone">P:</abbr> +44 (0)7512 245 522<br />     <br />                     
-                            <button class="btn btn-circle" type="button" style="color:#fff;background-color:#3b5998;border-color:#3b5998"></h3>><i class="fa fa-facebook"></i></button>
+                            <button class="btn btn-circle" type="button" style="color:#fff;background-color:#3b5998;border-color:#3b5998"></h3><i class="fa fa-facebook"></i></button>
                             <button class="btn btn-primary btn-circle" type="button" style="color:#fff;background-color:#00aced;border-color:#00aced"><i class="fa fa-twitter"></i></button>
                             <button class="btn btn-primary btn-circle" type="button" style="color:#fff;background-color:#007bb6;border-color:#007bb6"><i class="fa fa-linkedin"></i></button>
                             <button class="btn btn-primary btn-circle" type="button" style="color:#fff;background-color:#12A5F4;border-color:#12A5F4"><i class="fa fa-skype"></i></button>
-                            <br /><br />
-                            <button class="btn btn-primary" type="button" style="font-size:10px"><i class="fa fa-envelope"></i>&nbsp;Message</button>
-                            <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i>&nbsp;Remove</button>
                         </address>
+                    </div>
+                    <div class="col-sm-12">
+                            <button class="btn btn-primary" type="button" style="font-size:10px;float:right"><i class="fa fa-envelope"></i>&nbsp;Message</button>
+                            <button class="btn btn-danger" type="button" style="font-size:10px;float:right"><i class="fa fa-times"></i>&nbsp;Remove</button>
                     </div>
                     <div class="clearfix"></div>
                         </a>
