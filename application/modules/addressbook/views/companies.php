@@ -22,17 +22,17 @@
                     <a href="profile.html">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="img/a2.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/a2.jpg">
                             <div class="m-t-xs font-bold">Graphics designer</div>
                         </div>
                     </div>
                     <div class="col-sm-8">
-                        <h3><strong>John Smith</strong></h3>
-                        <p><i class="fa fa-map-marker"></i> Riviera State 32/106</p>
+                        <h3><strong>GSMStockMarket</strong></h3>
+                        <p><i class="fa fa-map-marker"></i> United Kingdom</p>
                         <address>
-                            <strong>Twitter, Inc.</strong><br>
-                            795 Folsom Ave, Suite 600<br>
-                            San Francisco, CA 94107<br>
+                            <strong>Contact Details</strong><br>
+                            <abbr title="Phone">M:</abbr> (123) 456-7890
+                            <abbr title="Phone">F:</abbr> (123) 456-7890
                             <abbr title="Phone">P:</abbr> (123) 456-7890
                         </address>
                     </div>
@@ -45,7 +45,7 @@
                     <a href="profile.html">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="img/a1.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/a1.jpg">
                             <div class="m-t-xs font-bold">CEO</div>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
                     <a href="profile.html">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="img/a3.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/a3.jpg">
                             <div class="m-t-xs font-bold">Marketing manager</div>
                         </div>
                     </div>
@@ -91,7 +91,7 @@
                     <a href="profile.html">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="img/a4.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/a4.jpg">
                             <div class="m-t-xs font-bold">Sales manager</div>
                         </div>
                     </div>
@@ -114,7 +114,7 @@
                     <a href="profile.html">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="img/a5.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/a5.jpg">
                             <div class="m-t-xs font-bold">Graphics designer</div>
                         </div>
                     </div>
@@ -137,7 +137,7 @@
                     <a href="profile.html">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="img/a6.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/a6.jpg">
                             <div class="m-t-xs font-bold">Graphics designer</div>
                         </div>
                     </div>
@@ -160,7 +160,7 @@
                     <a href="profile.html">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="img/a1.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/a1.jpg">
                             <div class="m-t-xs font-bold">CEO</div>
                         </div>
                     </div>
@@ -183,7 +183,7 @@
                     <a href="profile.html">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="img/a2.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/a2.jpg">
                             <div class="m-t-xs font-bold">Graphics designer</div>
                         </div>
                     </div>
@@ -206,7 +206,7 @@
                     <a href="profile.html">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="img/a3.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/a3.jpg">
                             <div class="m-t-xs font-bold">Marketing manager</div>
                         </div>
                     </div>
@@ -229,7 +229,7 @@
                     <a href="profile.html">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="img/a4.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/a4.jpg">
                             <div class="m-t-xs font-bold">Sales manager</div>
                         </div>
                     </div>
@@ -252,7 +252,7 @@
                     <a href="profile.html">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="img/a5.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/a5.jpg">
                             <div class="m-t-xs font-bold">Graphics designer</div>
                         </div>
                     </div>
@@ -275,7 +275,7 @@
                     <a href="profile.html">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="img/a6.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/a6.jpg">
                             <div class="m-t-xs font-bold">Graphics designer</div>
                         </div>
                     </div>
@@ -299,7 +299,7 @@
                     <a href="profile.html">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="img/a1.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/a1.jpg">
                             <div class="m-t-xs font-bold">CEO</div>
                         </div>
                     </div>
@@ -322,7 +322,7 @@
                     <a href="profile.html">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="img/a2.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/a2.jpg">
                             <div class="m-t-xs font-bold">Graphics designer</div>
                         </div>
                     </div>
