@@ -44,7 +44,7 @@
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
                                 <span class="label label-primary pull-right">Good Standing</span>
-                                <h5>Feedback Score</h5>
+                                <h5>My Rating</h5>
                             </div>
                             <div class="ibox-content" style="min-height:89px;padding:0 20px;text-align:center">
                               		<div class="m-r-md inline">

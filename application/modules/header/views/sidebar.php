@@ -29,16 +29,7 @@
                             <li><a href="profile/edit_profile"><i class="fa fa-cogs"></i> Edit Profile</a></li>
                         </ul>
                     </li>
-                    <!--
-                    <li>
-                        <a href="company/"><i class="fa fa-users"></i> <span class="nav-label">My Company</span> <span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a href="company/who_viewed"><i class="fa fa-eye"></i> Who's Viewed <span class="label label-primary pull-right">12</span></a></li>
-                            <li><a href="company/"><i class="fa fa-users"></i> View Company</a></li>
-                            <li><a href="company/edit_company"><i class="fa fa-cogs"></i> Edit Company</a></li>
-                        </ul>
-                    </li>
-                    -->
+                    
                     <li>
                         <?php $this->load->model('mailbox/mailbox_model', 'mailbox_model'); ?>
                         <a href="/mailbox"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span><span class="label label-warning pull-right"><?php echo $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'read', 'no');?>/<?php echo $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'));?></span></a>
@@ -90,6 +81,10 @@
                         <ul class="nav nav-second-level">
                             <li><a href="#"><i class="fa fa-unlock-alt"></i> Mobile Unlocking</a></li>
                         </ul>
+                    </li>
+                    
+                    <li>
+                        <a href="#"><i class="fa fa-users"></i> <span class="nav-label">Social Hub</span></a>
                     </li>
                     
                     <li>
