@@ -22,16 +22,57 @@ class Mailbox extends MX_Controller
         $this->templates->page($data);
     }
     
-    function inbox($mid = NULL)
+    function inbox($from = NULL, $mid = NULL)
     {
         
         $data['main'] = 'mailbox';        
         $data['title'] = 'GSM - Inbox';        
-        $data['page'] = 'inbox';
-        $data['inbox_count'] = $this->mailbox_model->count_where('sent_member_id',$this->session->userdata('members_id'));
-        $data['inbox_message'] = $this->mailbox_model->get_where_multiples('sent_member_id',$this->session->userdata('members_id'));
-        
+        $data['page'] = 'inbox';        
         $data['message'] = $this->mailbox_model->get_where_multiple('id', $mid);
+        
+        
+        if($from == 'member'){
+
+            $data['header'] = 'From Member';
+            $data['inbox_count'] = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'sent_from', $from);
+            $data['inbox_message'] = $this->mailbox_model->get_where_multiples('sent_member_id',$this->session->userdata('members_id'), 'sent_from', $from);
+        
+
+        }
+        elseif($from == 'market'){
+
+            $data['header'] = 'From Marketplace';
+            $data['inbox_count'] = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'sent_from', $from);
+            $data['inbox_message'] = $this->mailbox_model->get_where_multiples('sent_member_id',$this->session->userdata('members_id'), 'sent_from', $from);
+        
+
+        }
+        elseif($from == 'support'){
+
+            $data['header'] = 'From Support Team';
+            $data['inbox_count'] = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'sent_from', $from);
+            $data['inbox_message'] = $this->mailbox_model->get_where_multiples('sent_member_id',$this->session->userdata('members_id'), 'sent_from', $from);
+        
+
+        }else{
+
+            $data['header'] = 'Inbox';
+            $data['inbox_count'] = $this->mailbox_model->count_where('sent_member_id',$this->session->userdata('members_id'));
+            $data['inbox_message'] = $this->mailbox_model->get_where_multiples('sent_member_id',$this->session->userdata('members_id'));
+        
+
+        }
+        
+        $this->load->module('templates');
+        $this->templates->page($data);
+    }
+    
+    function reply($mid)
+    {
+        echo $mid;
+        $data['main'] = 'mailbox';        
+        $data['title'] = 'GSM - Compose Mail';        
+        $data['page'] = 'reply';
         
         $this->load->module('templates');
         $this->templates->page($data);
@@ -52,7 +93,7 @@ class Mailbox extends MX_Controller
         $this->templates->page($data);
     }
     
-    function mark_read($mid)
+    function mark_read($from, $mid)
     {
         $data = array(
                         'read'     => 'yes'
@@ -61,10 +102,10 @@ class Mailbox extends MX_Controller
         $this->load->model('mailbox/mailbox_model', 'mailbox_model');
         $this->mailbox_model->_update($mid, $data);
         
-        redirect('mailbox/inbox');
+        redirect('mailbox/inbox/'.$from);
     }
     
-    function mark_unread($mid)
+    function mark_unread($from, $mid)
     {
         $data = array(
                         'read'     => 'no'
@@ -73,7 +114,7 @@ class Mailbox extends MX_Controller
         $this->load->model('mailbox/mailbox_model', 'mailbox_model');
         $this->mailbox_model->_update($mid, $data);
         
-        redirect('mailbox/inbox');
+        redirect('mailbox/inbox/'.$from);
     }
     
     function important($mid = NULL)
@@ -82,8 +123,8 @@ class Mailbox extends MX_Controller
         $data['main'] = 'mailbox';        
         $data['title'] = 'GSM - Inbox';        
         $data['page'] = 'important';
-        $data['inbox_count'] = $this->mailbox_model->count_where_multiple('member_id',$this->session->userdata('members_id'), 'important', 'yes');
-        $data['inbox_message'] = $this->mailbox_model->get_where_multiples('member_id',$this->session->userdata('members_id'), 'important', 'yes');
+        $data['inbox_count'] = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'important', 'yes');
+        $data['inbox_message'] = $this->mailbox_model->get_where_multiples('sent_member_id',$this->session->userdata('members_id'), 'important', 'yes');
         
         $data['message'] = $this->mailbox_model->get_where_multiple('id', $mid);
         
@@ -202,6 +243,9 @@ class Mailbox extends MX_Controller
     
     function composeMail()
     {
+        echo '<pre>';
+        print_r($_POST);
+        exit;
         $this->load->library('form_validation');
         
         $this->form_validation->set_rules('email_address', 'Email Address', 'xss_clean');
@@ -220,7 +264,8 @@ class Mailbox extends MX_Controller
                                 'body'              => $this->input->post('body'),
                                 'sent'              => 'yes',
                                 'date'              => date('d-m-Y'),
-                                'time'              => date('H:i')
+                                'time'              => date('H:i'),
+                                'parent_id'         => $this->input->post('parent_id')
                               );
 
                 $this->load->model('mailbox/mailbox_model', 'mailbox_model');
