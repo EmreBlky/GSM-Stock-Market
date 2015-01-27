@@ -23,7 +23,7 @@
                     <div class="ibox">
                         <div class="ibox-content">
                             <div class="row">
-                                <div class="col-lg-12">
+                                <div class="col-lg-7">
                                     <div class="m-b-md">
                                         <a href="#" class="btn btn-white btn-xs pull-right">Edit Profile</a>
                                         <h2>GSMStockMarket.com Limited</h2>
@@ -34,12 +34,7 @@
                                     <dl class="dl-horizontal">
                                         <dt>Company Number:</dt> <dd>0123456789</dd>
                                         <dt>VAT/Tax Number:</dt> <dd>GB 019 292 11</dd>
-                                    </dl>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-5">
-                                    
+                                    </dl>                                    
                                     <dl class="dl-horizontal">
                                         <dt>Address:</dt> <dd>  Units 1 & 2 The Old Dairy<br/ >Hazlemere Crossroads<br />High Wycombe<br />Buckinghamshire<br />HP15 7LG<br />United Kingdom</dd>
                                     </dl>
@@ -61,9 +56,10 @@
                                     </dl>
                                     
                                 </div>
-                                <div class="col-lg-7" id="cluster_info">
+                                <div class="col-lg-5" id="cluster_info">
                               		<div class="m-r-md inline">
                             			<input type="text" value="94" class="dial m-r" data-fgColor="#1AB394" data-width="85" data-height="85" data-angleOffset=-125 data-angleArc=250 readonly/>
+                                        <h1><i class="fa fa-star"></i></h1>
                             		</div>
                                     <dl class="dl-horizontal" >
 
@@ -405,16 +401,16 @@
                     <p class="small">
 						Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable. Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable.
                     </p>
-					<div class="row" style="margin-bottom:15px">
+					<div class="row">
                     	<div class="col-lg-12">
                         	<button type="button" class="btn btn-info btn-sm btn-block"><i class="fa fa-check-square-o"></i> Credit Check</button>
                         </div>
                    </div>
 					<div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-6" style="margin-top:15px">
                          	<button type="button" class="btn btn-warning btn-sm btn-block"><i class="fa fa-exclamation"></i> Report</button>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-6" style="margin-top:15px">
                          	<button type="button" class="btn btn-danger btn-sm btn-block"><i class="fa fa-ban"></i> Block</button>
                         </div>
                    </div>
