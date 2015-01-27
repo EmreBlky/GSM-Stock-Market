@@ -224,7 +224,6 @@
                     
                     <div class="col-lg-4">
 
-                          <div class="col-lg-12">
                                 <div class="ibox float-e-margins">
                                     <div class="ibox-title">
                                         <h5>Buying Requests</h5>
@@ -241,63 +240,61 @@
                                         <table class="table table-hover no-margins">
                                             <thead>
                                             <tr>
-                                            	<th>Make</th>
+                                            	<th class="mobihide">Make</th>
                                                 <th>Model</th>
-                                                <th>Qty</th>
                                                 <th>Price</th>
+                                                <th class="mobihide">Qty</th>
                                                 <th>Status</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-success">Completed</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-success">Completed</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-warning">Pending</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-danger">Cancelled</span></td>
                                             </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <div class="col-lg-12">
+                                
                                 <div class="ibox float-e-margins">
                                     <div class="ibox-title">
                                         <h5>Selling Offers</h5>
@@ -314,63 +311,61 @@
                                         <table class="table table-hover no-margins">
                                             <thead>
                                             <tr>
-                                            	<th>Make</th>
+                                            	<th class="mobihide">Make</th>
                                                 <th>Model</th>
-                                                <th>Qty</th>
                                                 <th>Price</th>
+                                                <th class="mobihide">Qty</th>
                                                 <th>Status</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-success">Completed</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-success">Completed</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-warning">Pending</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-danger">Cancelled</span></td>
                                             </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <div class="col-lg-12">
+                                
                                 <div class="ibox float-e-margins">
                                     <div class="ibox-title">
                                         <h5>Watch List</h5>
@@ -387,54 +382,54 @@
                                         <table class="table table-hover no-margins">
                                             <thead>
                                             <tr>
-                                            	<th>Make</th>
+                                            	<th class="mobihide">Make</th>
                                                 <th>Model</th>
-                                                <th>Qty</th>
                                                 <th>Price</th>
+                                                <th class="mobihide">Qty</th>
                                                 <th>Status</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-success">Completed</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-success">Completed</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-warning">Pending</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-danger">Cancelled</span></td>
                                             </tr>
                                             </tbody>
@@ -442,7 +437,6 @@
                                     </div>
                                 </div>
                             </div>
-                       </div>
                        
                     
                     <div class="col-lg-4">
