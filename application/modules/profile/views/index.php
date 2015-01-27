@@ -18,7 +18,7 @@
                 </div>
             </div>
             
-                    <div class="row">
+            <div class="row">
             <div class="col-lg-9">
                 <div class="wrapper wrapper-content animated fadeInUp">
                     <div class="ibox">
@@ -26,36 +26,42 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="m-b-md">
-                                        <a href="#" class="btn btn-white btn-xs pull-right">Edit project</a>
-                                        <h2>Contract with Zender Company</h2>
+                                        <a href="#" class="btn btn-white btn-xs pull-right">Edit Profile</a>
+                                        <h2>GSMStockMarket.com Limited</h2>
                                     </div>
                                     <dl class="dl-horizontal">
                                         <dt>Status:</dt> <dd><span class="label label-primary">Active</span></dd>
+                                        <dt>Company Number:</dt> <dd>0123456789</dd>
+                                        <dt>VAT/Tax Number:</dt> <dd>  GB 019 292 11/dd>
                                     </dl>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-5">
+                                    
                                     <dl class="dl-horizontal">
 
-                                        <dt>Created by:</dt> <dd>Alex Smith</dd>
-                                        <dt>Messages:</dt> <dd>  162</dd>
-                                        <dt>Client:</dt> <dd><a href="#" class="text-navy"> Zender Company</a> </dd>
-                                        <dt>Version:</dt> <dd> 	v1.4.2 </dd>
+                                        <dt>Address:</dt> <dd>  Units 1 & 2 The Old Dairy<br/ >Hazlemere Crossroads<br />High Wycombe<br />Buckinghamshire<br />HP15 7LG<br />United Kingdom</dd>
+                                        <dt>Website:</dt> <dd>  www.GSMStockMarket.com</dd>
+                                        <dt>Primary Business:</dt> <dd>  New Mobiles (Sim Free) </dd>
+                                        <dt>Secondary Business:</dt> <dd> 	14 Day Mobiles </dd>
+                                        <dt>Tertiary Business:</dt> <dd> 	BER Mobiles </dd>
+                                        <dt>Additional Business Activities:</dt> <dd> 	Mobile Spare Parts, Wearable Technology, Network Operator </dd>
                                     </dl>
+                                    
                                 </div>
                                 <div class="col-lg-7" id="cluster_info">
                                     <dl class="dl-horizontal" >
 
-                                        <dt>Last Updated:</dt> <dd>16.08.2014 12:15:57</dd>
-                                        <dt>Created:</dt> <dd> 	10.07.2014 23:36:57 </dd>
-                                        <dt>Participants:</dt>
+                                        <dt>Date Created:</dt> <dd> 16.08.2014 12:15:57</dd>
+                                        <dt>Last Online:</dt> <dd> 	10.07.2014 23:36:57 </dd>
+                                        <dt>Company Users:</dt>
                                         <dd class="project-people">
-                                        <a href=""><img alt="image" class="img-circle" src="img/a3.jpg"></a>
-                                        <a href=""><img alt="image" class="img-circle" src="img/a1.jpg"></a>
-                                        <a href=""><img alt="image" class="img-circle" src="img/a2.jpg"></a>
-                                        <a href=""><img alt="image" class="img-circle" src="img/a4.jpg"></a>
-                                        <a href=""><img alt="image" class="img-circle" src="img/a5.jpg"></a>
+                                        <a href=""><img alt="image" class="img-circle" src="/public/main/img/a3.jpg"></a>
+                                        <a href=""><img alt="image" class="img-circle" src="/public/main/img/a1.jpg"></a>
+                                        <a href=""><img alt="image" class="img-circle" src="/public/main/img/a2.jpg"></a>
+                                        <a href=""><img alt="image" class="img-circle" src="/public/main/img/a4.jpg"></a>
+                                        <a href=""><img alt="image" class="img-circle" src="/public/main/img/a5.jpg"></a>
                                         </dd>
                                     </dl>
                                 </div>
