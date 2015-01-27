@@ -31,8 +31,10 @@
                                     </div>
                                     <dl class="dl-horizontal">
                                         <dt>Status:</dt> <dd><span class="label label-primary">Active</span></dd>
+                                    </dl>
+                                    <dl class="dl-horizontal">
                                         <dt>Company Number:</dt> <dd>0123456789</dd>
-                                        <dt>VAT/Tax Number:</dt> <dd>  GB 019 292 11/dd>
+                                        <dt>VAT/Tax Number:</dt> <dd>GB 019 292 11</dd>
                                     </dl>
                                 </div>
                             </div>
@@ -40,17 +42,30 @@
                                 <div class="col-lg-5">
                                     
                                     <dl class="dl-horizontal">
-
                                         <dt>Address:</dt> <dd>  Units 1 & 2 The Old Dairy<br/ >Hazlemere Crossroads<br />High Wycombe<br />Buckinghamshire<br />HP15 7LG<br />United Kingdom</dd>
+                                    </dl>
+                                    
+                                    <dl class="dl-horizontal">
+                                        <dt>Phone:</dt> <dd>  +44 (0)7512 245 522</dd>
+                                        <dt>Skype:</dt> <dd>  @gsmstockmarket</dd>
                                         <dt>Website:</dt> <dd>  www.GSMStockMarket.com</dd>
+                                        <dt>Facebook:</dt> <dd>  @gsmstockmarket</dd>
+                                        <dt>Twitter:</dt> <dd>  @gsmstockmarket</dd>
+                                        <dt>Linkedin:</dt> <dd>  @gsmstockmarket</dd>
+                                    </dl>
+                                    
+                                    <dl class="dl-horizontal">
                                         <dt>Primary Business:</dt> <dd>  New Mobiles (Sim Free) </dd>
                                         <dt>Secondary Business:</dt> <dd> 	14 Day Mobiles </dd>
                                         <dt>Tertiary Business:</dt> <dd> 	BER Mobiles </dd>
-                                        <dt>Additional Business Activities:</dt> <dd> 	Mobile Spare Parts, Wearable Technology, Network Operator </dd>
+                                        <dt>Other Activities:</dt> <dd> 	Mobile Spare Parts<br/ >Wearable Technology<br /> Network Operator </dd>
                                     </dl>
                                     
                                 </div>
                                 <div class="col-lg-7" id="cluster_info">
+                              		<div class="m-r-md inline">
+                            			<input type="text" value="94" class="dial m-r" data-fgColor="#1AB394" data-width="85" data-height="85" data-angleOffset=-125 data-angleArc=250 readonly/>
+                            		</div>
                                     <dl class="dl-horizontal" >
 
                                         <dt>Date Created:</dt> <dd> 16.08.2014 12:15:57</dd>
