@@ -54,7 +54,7 @@
                     </li>
                     
                     <li>
-                        <a href="/"><i class="fa fa-shopping-cart"></i> <span class="nav-label">Marketplace</span> <span class="fa arrow"></span></a>
+                        <a href="/"><i class="fa fa-line-chart"></i> <span class="nav-label">Marketplace</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Buy</a></li>
                             <li><a href="marketplace/sell"><i class="fa fa-tag"></i> Sell</a></li>
