@@ -24,6 +24,40 @@
     <!-- Custom and plugin javascript -->
     <script src="/public/main/js/inspinia.js"></script>
     <script src="/public/main/js/plugins/pace/pace.min.js"></script>
+    <script src="/public/main/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Chosen -->
+    <script src="/public/main/js/plugins/chosen/chosen.jquery.js"></script>
+
+   <!-- JSKnob -->
+   <script src="/public/main/js/plugins/jsKnob/jquery.knob.js"></script>
+
+   <!-- Input Mask-->
+    <script src="/public/main/js/plugins/jasny/jasny-bootstrap.min.js"></script>
+
+   <!-- Data picker -->
+   <script src="/public/main/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+
+   <!-- NouSlider -->
+   <script src="/public/main/js/plugins/nouslider/jquery.nouislider.min.js"></script>
+
+   <!-- Switchery -->
+   <script src="/public/main/js/plugins/switchery/switchery.js"></script>
+
+    <!-- IonRangeSlider -->
+    <script src="/public/main/js/plugins/ionRangeSlider/ion.rangeSlider.min.js"></script>
+
+    <!-- iCheck -->
+    <script src="/public/main/js/plugins/iCheck/icheck.min.js"></script>
+
+    <!-- MENU -->
+    <script src="/public/main/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+    <!-- Color picker -->
+    <script src="/public/main/js/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+
+    <!-- Image cropper -->
+    <script src="/public/main/js/plugins/cropper/cropper.min.js"></script>
 
     <!-- jQuery UI -->
     <script src="/public/main/js/plugins/jquery-ui/jquery-ui.min.js"></script>
@@ -42,9 +76,6 @@
 
     <!-- ChartJS-->
     <script src="/public/main/js/plugins/chartJs/Chart.min.js"></script>
-
-   	<!-- JSKnob -->
-   	<script src="/public/main/js/plugins/jsKnob/jquery.knob.js"></script>
 
     <script>
         $(document).ready(function() {
