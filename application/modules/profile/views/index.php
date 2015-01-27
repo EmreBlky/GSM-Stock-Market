@@ -58,11 +58,14 @@
                 </div>
                     </div>
                 <div class="col-md-8">
-                    <div class="ibox-content">
+                    <div class="ibox float-e-margins">
                         <div class="ibox-title">
                             <h5>Company Information</h5>
                         </div>
                        	
+                        
+                        <div class="ibox-content">
+                        
                         <div class="col-md-6">
 							<h4><strong>TebiHost Limited</strong></h4>
                         </div>
@@ -72,8 +75,9 @@
                                 <img alt="image" class="img-responsive" src="/public/main/img/profile_big.jpg">
                         </div>
                         
-                        
                         <div>
+                        
+                    </div>
                     </div>
 
 
