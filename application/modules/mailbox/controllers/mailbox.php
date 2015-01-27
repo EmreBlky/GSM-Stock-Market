@@ -183,6 +183,9 @@ class Mailbox extends MX_Controller
     function side_mail()
     { 
         $data['inbox'] = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'read', 'no');
+        $data['member'] = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'sent_from', 'member', 'read', 'no');
+        $data['market'] = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'sent_from', 'market', 'read', 'no');
+        $data['support'] = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'sent_from', 'support', 'read', 'no');        
         $data['draft'] = $this->mailbox_model->count_where_multiple('member_id',$this->session->userdata('members_id'), 'draft', 'yes');
         $this->load->view('side-mail', $data);
     }
