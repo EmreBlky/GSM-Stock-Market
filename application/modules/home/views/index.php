@@ -44,7 +44,7 @@
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
                                 <span class="label label-primary pull-right">Good Standing</span>
-                                <h5>Feedback Score</h5>
+                                <h5>My Rating</h5>
                             </div>
                             <div class="ibox-content" style="min-height:89px;padding:0 20px;text-align:center">
                               		<div class="m-r-md inline">
@@ -222,9 +222,8 @@
                         </div>
                     </div>
                     
-                    <div class="col-lg-4">
+                    <div class="col-lg-8">
 
-                          <div class="col-lg-12">
                                 <div class="ibox float-e-margins">
                                     <div class="ibox-title">
                                         <h5>Buying Requests</h5>
@@ -241,63 +240,61 @@
                                         <table class="table table-hover no-margins">
                                             <thead>
                                             <tr>
-                                            	<th>Make</th>
+                                            	<th class="mobihide">Make</th>
                                                 <th>Model</th>
-                                                <th>Qty</th>
                                                 <th>Price</th>
+                                                <th class="mobihide">Qty</th>
                                                 <th>Status</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-success">Completed</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-success">Completed</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-warning">Pending</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-danger">Cancelled</span></td>
                                             </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <div class="col-lg-12">
+                                
                                 <div class="ibox float-e-margins">
                                     <div class="ibox-title">
                                         <h5>Selling Offers</h5>
@@ -314,63 +311,61 @@
                                         <table class="table table-hover no-margins">
                                             <thead>
                                             <tr>
-                                            	<th>Make</th>
+                                            	<th class="mobihide">Make</th>
                                                 <th>Model</th>
-                                                <th>Qty</th>
                                                 <th>Price</th>
+                                                <th class="mobihide">Qty</th>
                                                 <th>Status</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-success">Completed</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-success">Completed</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-warning">Pending</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-danger">Cancelled</span></td>
                                             </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <div class="col-lg-12">
+                                
                                 <div class="ibox float-e-margins">
                                     <div class="ibox-title">
                                         <h5>Watch List</h5>
@@ -387,54 +382,54 @@
                                         <table class="table table-hover no-margins">
                                             <thead>
                                             <tr>
-                                            	<th>Make</th>
+                                            	<th class="mobihide">Make</th>
                                                 <th>Model</th>
-                                                <th>Qty</th>
                                                 <th>Price</th>
+                                                <th class="mobihide">Qty</th>
                                                 <th>Status</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-success">Completed</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-success">Completed</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-warning">Pending</span></td>
                                             </tr>
                                             <tr>
-                                            	<td>Samsung</td>
+                                            	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
-                                                <td>400</td>
+                                                <td class="mobihide">400</td>
                                                 <td><span class="label label-danger">Cancelled</span></td>
                                             </tr>
                                             </tbody>
@@ -442,166 +437,8 @@
                                     </div>
                                 </div>
                             </div>
-                       </div>
                        
                     
-                    <div class="col-lg-4">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h5>Newsfeed</h5>
-                        <div class="ibox-tools">
-                            <a class="collapse-link">
-                                <i class="fa fa-chevron-up"></i>
-                            </a>
-                            <a class="close-link">
-                                <i class="fa fa-times"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="ibox-content inspinia-timeline">
-
-                        <div class="timeline-item">
-                            <div class="row">
-                                <div class="col-xs-3 date">
-                                    <i class="fa fa-user-md"></i>
-                                    6:00 am
-                                    <br/>
-                                    <small class="text-navy">2 hour ago</small>
-                                </div>
-                                <div class="col-xs-9 content no-top-border">
-                                    <p class="m-b-xs"><strong>Meeting</strong></p>
-
-                                    <p>Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products. Below please find the current status of the
-                                        sale.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="row">
-                                <div class="col-xs-3 date">
-                                    <i class="fa fa-user-md"></i>
-                                    7:00 am
-                                    <br/>
-                                    <small class="text-navy">3 hour ago</small>
-                                </div>
-                                <div class="col-xs-9 content">
-                                    <p class="m-b-xs"><strong>Send documents to Mike</strong></p>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="row">
-                                <div class="col-xs-3 date">
-                                    <i class="fa fa-user-md"></i>
-                                    8:00 am
-                                    <br/>
-                                </div>
-                                <div class="col-xs-9 content">
-                                    <p class="m-b-xs"><strong>Coffee Break</strong></p>
-                                    <p>
-                                     Go to shop and find some products.
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="row">
-                                <div class="col-xs-3 date">
-                                    <i class="fa fa-user-md"></i>
-                                    11:00 am
-                                    <br/>
-                                    <small class="text-navy">21 hour ago</small>
-                                </div>
-                                <div class="col-xs-9 content">
-                                    <p class="m-b-xs"><strong>Phone with Jeronimo</strong></p>
-                                    <p>
-                                    Lorem Ipsum has been the industry's standard dummy text ever since.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="row">
-                                <div class="col-xs-3 date">
-                                    <i class="fa fa-user-md"></i>
-                                    09:00 pm
-                                    <br/>
-                                    <small>21 hour ago</small>
-                                </div>
-                                <div class="col-xs-9 content">
-                                    <p class="m-b-xs"><strong>Go to the doctor dr Smith</strong></p>
-                                    <p>
-                                        Find some issue and go to doctor.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="row">
-                                <div class="col-xs-3 date">
-                                    <i class="fa fa-user-md"></i>
-                                    11:10 pm
-                                </div>
-                                <div class="col-xs-9 content">
-                                    <p class="m-b-xs"><strong>Chat with Sandra</strong></p>
-                                    <p>
-                                        Lorem Ipsum has been the industry's standard dummy text ever since.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="row">
-                                <div class="col-xs-3 date">
-                                    <i class="fa fa-user-md"></i>
-                                    12:50 pm
-                                    <br/>
-                                    <small class="text-navy">48 hour ago</small>
-                                </div>
-                                <div class="col-xs-9 content">
-                                    <p class="m-b-xs"><strong>Chat with Monica and Sandra</strong></p>
-                                    <p>
-                                        Web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="row">
-                                <div class="col-xs-3 date">
-                                    <i class="fa fa-user-md"></i>
-                                    08:50 pm
-                                    <br/>
-                                    <small class="text-navy">68 hour ago</small>
-                                </div>
-                                <div class="col-xs-9 content">
-                                    <p class="m-b-xs"><strong>Phone to James</strong></p>
-                                    <p>
-                                        Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="row">
-                                <div class="col-xs-3 date">
-                                    <i class="fa fa-user-md"></i>
-                                    7:00 am
-                                    <br/>
-                                    <small class="text-navy">3 hour ago</small>
-                                </div>
-                                <div class="col-xs-9 content">
-                                    <p class="m-b-xs"><strong>Send documents to Mike</strong></p>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
+                    
                 </div>
                 </div>

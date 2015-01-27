@@ -4564,3 +4564,9 @@ body.skin-3 {
     display: none;
   }
 }
+/* Mobile fix - Dashboard */
+@media (max-width: 660px) {
+  .mobihide {
+    display: none;
+  }
+}
