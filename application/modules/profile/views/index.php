@@ -34,6 +34,7 @@
                                 <div class="col-lg-7">
                                     <dl class="dl-horizontal">
                                         <dt>Status:</dt> <dd><span class="label label-primary">Active</span></dd>
+                                        <dt>Subscription:</dt> <dd>Gold Member</dd>
                                     </dl>
                                     <dl class="dl-horizontal">
                                         <dt>Company Number:</dt> <dd>0123456789</dd>
@@ -63,7 +64,7 @@
                                 <div class="col-lg-5" id="cluster_info">
                               		<div class="m-r-md inline">
                             			<input type="text" value="94" class="dial m-r" data-fgColor="#1AB394" data-width="85" data-height="85" data-angleOffset=-125 data-angleArc=250 readonly/>
-                                        <div style="display:inline;height:65px;width:65px;padding:10px;margin-left:20px;vertical-align:top"><i class="fa fa-star" style="font-size:75px;color:#FC6"></i></div>
+                                        <div style="display:inline;height:65px;width:65px;padding:10px;margin-left:20px;"><i class="fa fa-star" style="font-size:75px;color:#FC6;vertical-align:top"></i></div>
                             		</div>
                                     <dl class="dl-horizontal" >
 
@@ -103,8 +104,11 @@
                                 <div class="panel-heading">
                                     <div class="panel-options">
                                         <ul class="nav nav-tabs">
-                                            <li class="active"><a href="#tab-1" data-toggle="tab">Users messages</a></li>
-                                            <li class=""><a href="#tab-2" data-toggle="tab">Last activity</a></li>
+                                            <li class="active"><a href="#tab-1" data-toggle="tab">Feed Posts</a></li>
+                                            <li class=""><a href="#tab-2" data-toggle="tab">Feedback</a></li>
+                                            <li class=""><a href="#tab-2" data-toggle="tab">Selling Offers</a></li>
+                                            <li class=""><a href="#tab-2" data-toggle="tab">Buy Requests</a></li>
+                                            <li class=""><a href="#tab-2" data-toggle="tab">Badges</a></li>
                                         </ul>
                                     </div>
                                 </div>
