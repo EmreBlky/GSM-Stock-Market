@@ -24,19 +24,6 @@
                     <div class="ibox">
                         <div class="ibox-content">
                             <div class="row">
-                    <div class="col-lg-3">
-                        <div class="ibox float-e-margins">
-                            <div class="ibox-title">
-                                <span class="label label-primary pull-right">Good Standing</span>
-                                <h5>My Rating</h5>
-                            </div>
-                            <div class="ibox-content" style="min-height:89px;padding:0 20px;text-align:center">
-                              		<div class="m-r-md inline">
-                            			<input type="text" value="94" class="dial m-r" data-fgColor="#1AB394" data-width="85" data-height="85" data-angleOffset=-125 data-angleArc=250 readonly/>
-                            		</div>
-                            </div>
-                        </div>
-            </div>
                                 <div class="col-lg-12">
                                     <div class="m-b-md">
                                         <a href="#" class="btn btn-white btn-xs pull-right">Edit Profile</a>
@@ -76,6 +63,9 @@
                                     
                                 </div>
                                 <div class="col-lg-7" id="cluster_info">
+                              		<div class="m-r-md inline">
+                            			<input type="text" value="94" class="dial m-r" data-fgColor="#1AB394" data-width="85" data-height="85" data-angleOffset=-125 data-angleArc=250 readonly/>
+                            		</div>
                                     <dl class="dl-horizontal" >
 
                                         <dt>Date Created:</dt> <dd> 16.08.2014 12:15:57</dd>
