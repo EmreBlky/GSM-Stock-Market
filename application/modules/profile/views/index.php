@@ -24,6 +24,19 @@
                     <div class="ibox">
                         <div class="ibox-content">
                             <div class="row">
+                    <div class="col-lg-3">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <span class="label label-primary pull-right">Good Standing</span>
+                                <h5>My Rating</h5>
+                            </div>
+                            <div class="ibox-content" style="min-height:89px;padding:0 20px;text-align:center">
+                              		<div class="m-r-md inline">
+                            			<input type="text" value="94" class="dial m-r" data-fgColor="#1AB394" data-width="85" data-height="85" data-angleOffset=-125 data-angleArc=250 readonly/>
+                            		</div>
+                            </div>
+                        </div>
+            </div>
                                 <div class="col-lg-12">
                                     <div class="m-b-md">
                                         <a href="#" class="btn btn-white btn-xs pull-right">Edit Profile</a>
@@ -63,18 +76,6 @@
                                     
                                 </div>
                                 <div class="col-lg-7" id="cluster_info">
-                        <div class="text-center">
-                            <small>Dynamic knob example</small><br/><br/>
-                            <div class="m-r-md inline">
-                            <input type="text" value="75" class="dial m-r-sm" data-fgColor="#ED5565" data-width="85" data-height="85" data-cursor=true data-thickness=.3/>
-                            </div>
-                            <div class="m-r-md inline">
-                            <input type="text" value="25" class="dial m-r" data-fgColor="#ED5565" data-width="85" data-height="85" data-step="1000" data-min="-15000" data-max="15000" data-displayPrevious=true/>
-                            </div>
-                            <div class="m-r-md inline">
-                            <input type="text" value="60" class="dial m-r" data-fgColor="#ED5565" data-width="85" data-height="85" data-angleOffset=-125 data-angleArc=250 />
-                            </div>
-                        </div>
                                     <dl class="dl-horizontal" >
 
                                         <dt>Date Created:</dt> <dd> 16.08.2014 12:15:57</dd>
@@ -122,7 +123,7 @@
                                     <div class="feed-activity-list">
                                         <div class="feed-element">
                                             <a href="#" class="pull-left">
-                                                <img alt="image" class="img-circle" src="img/a2.jpg">
+                                                <img alt="image" class="img-circle" src="/public/main/img/a2.jpg">
                                             </a>
                                             <div class="media-body ">
                                                 <small class="pull-right">2h ago</small>
@@ -136,7 +137,7 @@
                                         </div>
                                         <div class="feed-element">
                                             <a href="#" class="pull-left">
-                                                <img alt="image" class="img-circle" src="img/a3.jpg">
+                                                <img alt="image" class="img-circle" src="/public/main/img/a3.jpg">
                                             </a>
                                             <div class="media-body ">
                                                 <small class="pull-right">2h ago</small>
@@ -146,7 +147,7 @@
                                         </div>
                                         <div class="feed-element">
                                             <a href="#" class="pull-left">
-                                                <img alt="image" class="img-circle" src="img/a4.jpg">
+                                                <img alt="image" class="img-circle" src="/public/main/img/a4.jpg">
                                             </a>
                                             <div class="media-body ">
                                                 <small class="pull-right text-navy">5h ago</small>
@@ -160,7 +161,7 @@
                                         </div>
                                         <div class="feed-element">
                                             <a href="#" class="pull-left">
-                                                <img alt="image" class="img-circle" src="img/a5.jpg">
+                                                <img alt="image" class="img-circle" src="/public/main/img/a5.jpg">
                                             </a>
                                             <div class="media-body ">
                                                 <small class="pull-right">2h ago</small>
@@ -174,7 +175,7 @@
                                         </div>
                                         <div class="feed-element">
                                             <a href="#" class="pull-left">
-                                                <img alt="image" class="img-circle" src="img/profile.jpg">
+                                                <img alt="image" class="img-circle" src="/public/main/img/profile.jpg">
                                             </a>
                                             <div class="media-body ">
                                                 <small class="pull-right">23h ago</small>
@@ -184,7 +185,7 @@
                                         </div>
                                         <div class="feed-element">
                                             <a href="#" class="pull-left">
-                                                <img alt="image" class="img-circle" src="img/a7.jpg">
+                                                <img alt="image" class="img-circle" src="/public/main/img/a7.jpg">
                                             </a>
                                             <div class="media-body ">
                                                 <small class="pull-right">46h ago</small>
@@ -407,7 +408,7 @@
             <div class="col-lg-3">
                 <div class="wrapper wrapper-content project-manager">
                     <h4>Project description</h4>
-                    <img src="img/zender_logo.png" class="img-responsive">
+                    <img src="/public/main/img/zender_logo.png" class="img-responsive">
                     <p class="small">
                         There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look
                         even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
