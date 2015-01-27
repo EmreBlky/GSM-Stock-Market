@@ -405,14 +405,16 @@
                     <p class="small">
 						Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable. Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable.
                     </p>
-					<div class="row">
-                    	<div class="col-md-4">
+					<div class="row" style="margin-bottom:15px">
+                    	<div class="col-lg-12">
                         	<button type="button" class="btn btn-info btn-sm btn-block"><i class="fa fa-check-square-o"></i> Credit Check</button>
                         </div>
-                        <div class="col-md-4">
-                         	<button type="button" class="btn btn-warning btn-sm btn-block"><i class="fa fa-exclamtion"></i> Report</button>
+                   </div>
+					<div class="row">
+                        <div class="col-lg-6">
+                         	<button type="button" class="btn btn-warning btn-sm btn-block"><i class="fa fa-exclamation"></i> Report</button>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-lg-6">
                          	<button type="button" class="btn btn-danger btn-sm btn-block"><i class="fa fa-ban"></i> Block</button>
                         </div>
                    </div>
