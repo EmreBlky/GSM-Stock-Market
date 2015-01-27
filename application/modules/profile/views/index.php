@@ -150,7 +150,7 @@
                                         
                                     </div>
 
-                                </div>>
+                                </div>
                                 <div class="tab-pane" id="feedback">
                                     <div class="feed-activity-list">
                                         <div class="feed-element">
