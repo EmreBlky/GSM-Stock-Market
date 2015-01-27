@@ -104,12 +104,12 @@
                                 <div class="panel-heading">
                                     <div class="panel-options">
                                         <ul class="nav nav-tabs">
-                                            <li class="active"><a href="#tab-1" data-toggle="tab">Feed Posts</a></li>
-                                            <li class=""><a href="#tab-2" data-toggle="tab">Feedback</a></li>
-                                            <li class=""><a href="#tab-2" data-toggle="tab">Selling Offers</a></li>
-                                            <li class=""><a href="#tab-2" data-toggle="tab">Buying Requests</a></li>
-                                            <li class=""><a href="#tab-2" data-toggle="tab">Badges</a></li>
-                                            <li class=""><a href="#tab-2" data-toggle="tab">Credit Information</a></li>
+                                            <li class="active"><a href="#feedposts" data-toggle="tab">Feed Posts</a></li>
+                                            <li class=""><a href="#feedback" data-toggle="tab">Feedback</a></li>
+                                            <li class=""><a href="#selling-offers" data-toggle="tab">Selling Offers</a></li>
+                                            <li class=""><a href="#buying-requests" data-toggle="tab">Buying Requests</a></li>
+                                            <li class=""><a href="#badges" data-toggle="tab">Badges</a></li>
+                                            <li class=""><a href="#credit-information" data-toggle="tab">Credit Information</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -117,7 +117,7 @@
                                 <div class="panel-body">
 
                                 <div class="tab-content">
-                                <div class="tab-pane active" id="tab-1">
+                                <div class="tab-pane active" id="feedposts">
                                     <div class="feed-activity-list">
                                         <div class="feed-element">
                                             <a href="#" class="pull-left">
@@ -150,205 +150,148 @@
                                         
                                     </div>
 
-                                </div>
-                                <div class="tab-pane" id="tab-2">
+                                </div>>
+                                <div class="tab-pane" id="feedback">
+                                    <div class="feed-activity-list">
+                                        <div class="feed-element">
+                                            <a href="#" class="pull-left">
+                                                <img alt="image" class="img-circle" src="/public/main/img/profile_small.jpg">
+                                            </a>
+                                            <div class="media-body ">
+                                                <small class="pull-right">2h ago</small>
+                                                <strong>Daniel Gregory</strong> posted message on <strong>GSMStockMarket.com Limited's</strong> news feed. <br>
+                                                <small class="text-muted">Today 2:10 pm - 12.06.2014</small>
+                                                <div class="well">
+                                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                                                    Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
 
-                                    <table class="table table-striped">
+                                </div>
+                                <div class="tab-pane" id="selling-offers">
+                                	<table class="table table-striped">
                                         <thead>
-                                        <tr>
-                                            <th>Status</th>
-                                            <th>Title</th>
-                                            <th>Start Time</th>
-                                            <th>End Time</th>
-                                            <th>Comments</th>
-                                        </tr>
+                                            <tr>
+                                            	<th class="mobihide">Make</th>
+                                                <th>Model</th>
+                                                <th>Price</th>
+                                                <th class="mobihide">Qty</th>
+                                                <th>Status</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>
-                                                <span class="label label-primary"><i class="fa fa-check"></i> Completed</span>
-                                            </td>
-                                            <td>
-                                               Create project in webapp
-                                            </td>
-                                            <td>
-                                               12.07.2014 10:10:1
-                                            </td>
-                                            <td>
-                                                14.07.2014 10:16:36
-                                            </td>
-                                            <td>
-                                            <p class="small">
-                                                Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable.
-                                            </p>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <span class="label label-primary"><i class="fa fa-check"></i> Accepted</span>
-                                            </td>
-                                            <td>
-                                                Various versions
-                                            </td>
-                                            <td>
-                                                12.07.2014 10:10:1
-                                            </td>
-                                            <td>
-                                                14.07.2014 10:16:36
-                                            </td>
-                                            <td>
-                                                <p class="small">
-                                                    Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-                                                </p>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <span class="label label-primary"><i class="fa fa-check"></i> Sent</span>
-                                            </td>
-                                            <td>
-                                                There are many variations
-                                            </td>
-                                            <td>
-                                                12.07.2014 10:10:1
-                                            </td>
-                                            <td>
-                                                14.07.2014 10:16:36
-                                            </td>
-                                            <td>
-                                                <p class="small">
-                                                    There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which
-                                                </p>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <span class="label label-primary"><i class="fa fa-check"></i> Reported</span>
-                                            </td>
-                                            <td>
-                                                Latin words
-                                            </td>
-                                            <td>
-                                                12.07.2014 10:10:1
-                                            </td>
-                                            <td>
-                                                14.07.2014 10:16:36
-                                            </td>
-                                            <td>
-                                                <p class="small">
-                                                    Latin words, combined with a handful of model sentence structures
-                                                </p>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <span class="label label-primary"><i class="fa fa-check"></i> Accepted</span>
-                                            </td>
-                                            <td>
-                                                The generated Lorem
-                                            </td>
-                                            <td>
-                                                12.07.2014 10:10:1
-                                            </td>
-                                            <td>
-                                                14.07.2014 10:16:36
-                                            </td>
-                                            <td>
-                                                <p class="small">
-                                                    The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
-                                                </p>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <span class="label label-primary"><i class="fa fa-check"></i> Sent</span>
-                                            </td>
-                                            <td>
-                                                The first line
-                                            </td>
-                                            <td>
-                                                12.07.2014 10:10:1
-                                            </td>
-                                            <td>
-                                                14.07.2014 10:16:36
-                                            </td>
-                                            <td>
-                                                <p class="small">
-                                                    The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-                                                </p>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <span class="label label-primary"><i class="fa fa-check"></i> Reported</span>
-                                            </td>
-                                            <td>
-                                                The standard chunk
-                                            </td>
-                                            <td>
-                                                12.07.2014 10:10:1
-                                            </td>
-                                            <td>
-                                                14.07.2014 10:16:36
-                                            </td>
-                                            <td>
-                                                <p class="small">
-                                                    The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
-                                                </p>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <span class="label label-primary"><i class="fa fa-check"></i> Completed</span>
-                                            </td>
-                                            <td>
-                                                Lorem Ipsum is that
-                                            </td>
-                                            <td>
-                                                12.07.2014 10:10:1
-                                            </td>
-                                            <td>
-                                                14.07.2014 10:16:36
-                                            </td>
-                                            <td>
-                                                <p class="small">
-                                                    Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable.
-                                                </p>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <span class="label label-primary"><i class="fa fa-check"></i> Sent</span>
-                                            </td>
-                                            <td>
-                                                Contrary to popular
-                                            </td>
-                                            <td>
-                                                12.07.2014 10:10:1
-                                            </td>
-                                            <td>
-                                                14.07.2014 10:16:36
-                                            </td>
-                                            <td>
-                                                <p class="small">
-                                                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical
-                                                </p>
-                                            </td>
-
-                                        </tr>
-
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td class="mobihide">400</td>
+                                                <td><span class="label label-primary">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td class="mobihide">400</td>
+                                                <td><span class="label label-primary">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td class="mobihide">400</td>
+                                                <td><span class="label label-success">Completed</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td class="mobihide">400</td>
+                                                <td><span class="label label-success">Completed</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td class="mobihide">400</td>
+                                                <td><span class="label label-warning">Pending</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td class="mobihide">400</td>
+                                                <td><span class="label label-danger">Cancelled</span></td>
+                                            </tr>
                                         </tbody>
                                     </table>
-
                                 </div>
+                                <div class="tab-pane" id="buying-requests">
+                                	<table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                            	<th class="mobihide">Make</th>
+                                                <th>Model</th>
+                                                <th>Price</th>
+                                                <th class="mobihide">Qty</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td class="mobihide">400</td>
+                                                <td><span class="label label-primary">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td class="mobihide">400</td>
+                                                <td><span class="label label-primary">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td class="mobihide">400</td>
+                                                <td><span class="label label-success">Completed</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td class="mobihide">400</td>
+                                                <td><span class="label label-success">Completed</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td class="mobihide">400</td>
+                                                <td><span class="label label-warning">Pending</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td class="mobihide">400</td>
+                                                <td><span class="label label-danger">Cancelled</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="tab-pane" id="badges">
+                                </div>
+                                
+                                <div class="tab-pane" id="credit-information">
+                                </div>
+                                
                                 </div>
 
                                 </div>
