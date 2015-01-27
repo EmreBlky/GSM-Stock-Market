@@ -75,23 +75,21 @@
                                         <a href=""><img alt="image" class="img-circle" src="/public/main/img/a3.jpg"></a>
                                         <a href=""><img alt="image" class="img-circle" src="/public/main/img/a1.jpg"></a>
                                         <a href=""><img alt="image" class="img-circle" src="/public/main/img/a2.jpg"></a>
-                                        <a href=""><img alt="image" class="img-circle" src="/public/main/img/a4.jpg"></a>
-                                        <a href=""><img alt="image" class="img-circle" src="/public/main/img/a5.jpg"></a>
                                         </dd>
                                     </dl>
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-6" style="margin-top:15px">
                                             <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-envelope"></i> Send Message</button>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-6" style="margin-top:15px">
                                             <button type="button" class="btn btn-default btn-sm btn-block"><i class="fa fa-wechat"></i> Start Conversation</button>
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-6" style="margin-top:15px">
                                             <button type="button" class="btn btn-success btn-sm btn-block"><i class="fa fa-book"></i> Add Contact</button>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-6" style="margin-top:15px">
                                             <button type="button" class="btn btn-warning btn-sm btn-block"><i class="fa fa-star"></i> Add Favourite</button>
                                         </div>
                                     </div>
