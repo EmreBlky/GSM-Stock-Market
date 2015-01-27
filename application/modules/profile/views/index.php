@@ -63,18 +63,18 @@
                             <h5>Company Information</h5>
                         </div>
                        	
-                    <div class="ibox content">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
+                    		<div class="ibox-content">
 							<h4><strong>TebiHost Limited</strong></h4>
+                            </div>
                         </div>
                         
                         
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="ibox-content no-padding border-left-right">
                                 <img alt="image" class="img-responsive" src="/public/main/img/profile_big.jpg">
                             </div>
                         </div>
-                    </div>
                         
                         
                         <div>
