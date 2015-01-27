@@ -80,19 +80,7 @@
                                     </dl>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <dl class="dl-horizontal">
-                                        <dt>Completed:</dt>
-                                        <dd>
-                                            <div class="progress progress-striped active m-b-sm">
-                                                <div style="width: 60%;" class="progress-bar"></div>
-                                            </div>
-                                            <small>Project completed in <strong>60%</strong>. Remaining close the project, sign a contract and invoice.</small>
-                                        </dd>
-                                    </dl>
-                                </div>
-                            </div>
+                            
                             <div class="row m-t-sm">
                                 <div class="col-lg-12">
                                 <div class="panel blank-panel">
@@ -397,7 +385,7 @@
             <div class="col-lg-3">
                 <div class="wrapper wrapper-content project-manager">
                     <h4>Project description</h4>
-                    <img src="/public/main/img/zender_logo.png" class="img-responsive">
+                    <img src="/public/main/img/gsm-profile.png" class="img-responsive" style="margin:0 auto">
                     <p class="small">
                         There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look
                         even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
