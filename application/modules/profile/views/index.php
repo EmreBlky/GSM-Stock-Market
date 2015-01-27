@@ -108,8 +108,7 @@
                                             <li class=""><a href="#feedback" data-toggle="tab">Feedback</a></li>
                                             <li class=""><a href="#selling-offers" data-toggle="tab">Selling Offers</a></li>
                                             <li class=""><a href="#buying-requests" data-toggle="tab">Buying Requests</a></li>
-                                            <li class=""><a href="#badges" data-toggle="tab">Badges</a></li>
-                                            <li class=""><a href="#credit-information" data-toggle="tab">Credit Information</a></li>
+                                            <li class=""><a href="#credit-information" data-toggle="tab">Credit Info</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -286,18 +285,15 @@
                                     </table>
                                 </div>
                                 
-                                <div class="tab-pane" id="badges">
-                                </div>
-                                
                                 <div class="tab-pane" id="credit-information">
 									<div class="row">
-                    					<div class="col-lg-12" style="text-align:center">
-                        					<p>Request a credit check to be done on this company. You will be able to view their credit score within a few minutes of ordering.</p>
+                    					<div class="col-lg-12" style="text-align:center;margin:15px 0">
+                        					<p>Request a credit check to be done on this company.</p>
                                             <p>Payment will be taken from your GSM Wallet and the credit data for this company will be viewable from your account while your subscription lasts.</p>
                         				</div>
                    					</div>
 									<div class="row">
-                    					<div class="col-lg-6" style="float:none;margin:0 auto">
+                    					<div class="col-lg-4" style="float:none;margin:0 auto">
                         					<button type="button" class="btn btn-info btn-sm btn-block"><i class="fa fa-check-square-o"></i>Buy Credit Check</button>
                         				</div>
                    					</div>
