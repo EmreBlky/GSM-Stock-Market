@@ -10,9 +10,9 @@
                                     <i class="fa fa-inbox "></i> Inbox 
                                     <ul>
                                         <li><a href="mailbox/inbox/">ALL <?php if($inbox > 0){ echo '<span class="label label-warning pull-right">'.$inbox.'</span>';}?></a></li>
-                                        <li><a href="mailbox/inbox/">From Members</a></li>
-                                        <li><a href="mailbox/inbox/">From Marketplace</a></li>
-                                        <li><a href="mailbox/inbox/">From Support</a></li>
+                                        <li><a href="mailbox/inbox/">From Members <?php if($member > 0){ echo '<span class="label label-warning pull-right">'.$member.'</span>';}?></a></li>
+                                        <li><a href="mailbox/inbox/">From Marketplace <?php if($market > 0){ echo '<span class="label label-warning pull-right">'.$market.'</span>';}?></a></li>
+                                        <li><a href="mailbox/inbox/">From Support <?php if($support > 0){ echo '<span class="label label-warning pull-right">'.$support.'</span>';}?></a></li>
                                     </ul>
                                 </li>
                                 <li>

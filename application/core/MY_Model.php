@@ -194,14 +194,16 @@ class MY_Model extends CI_Model {
 	
 	}
         
-        function count_where_multiple($column, $value, $column2 = NULL, $value2 = NULL) 
+        function count_where_multiple($column, $value, $column2 = NULL, $value2 = NULL,  $column3 = NULL, $value3 = NULL) 
 	{
 		
 		$table = $this->table;
 		$this->db->where($column, $value);
-                if($column2 == NULL){
-		}else{
+                if($column2 != NULL){
 		$this->db->where($column2, $value2);
+		}
+                if($column3 != NULL){
+		$this->db->where($column3, $value3);
 		}
 		$query=$this->db->get($table);
 		$num_rows = $query->num_rows();
