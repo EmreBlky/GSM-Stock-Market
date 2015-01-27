@@ -168,6 +168,7 @@
 									div#feedback dl.dl-horizontal {float:right}
 									div#feedback dt {width:120px}
 									div#feedback dd {margin-left:130px}
+									</style>
 									
                                     <dl class="dl-horizontal">
                                         <dt>Communication:</dt> <dd>  <i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i></dd>
