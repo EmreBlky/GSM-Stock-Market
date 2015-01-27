@@ -62,7 +62,7 @@
                                     
                                 </div>
                                 <div class="col-lg-5" id="cluster_info">
-                              		<div class="m-r-md inline">
+                              		<div class="m-r-md" style="text-align:center">
                             			<input type="text" value="94" class="dial m-r" data-fgColor="#1AB394" data-width="85" data-height="85" data-angleOffset=-125 data-angleArc=250 readonly/>
                                         <div style="display:inline;height:65px;width:65px;padding:10px;margin-left:20px;"><i class="fa fa-star" style="font-size:75px;color:#FC6;vertical-align:top"></i></div>
                             		</div>
@@ -307,7 +307,7 @@
                    					</div>
 									<div class="row">
                     					<div class="col-lg-4" style="float:none;margin:0 auto">
-                        					<button type="button" class="btn btn-info btn-sm btn-block"><i class="fa fa-check-square-o"></i>Buy Credit Check</button>
+                        					<button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#buycreditcheck"><i class="fa fa-check-square-o"></i>Buy Credit Check</button>
                         				</div>
                    					</div>
                                 	
@@ -333,7 +333,7 @@
                     </p>
 					<div class="row">
                     	<div class="col-lg-12">
-                        	<button type="button" class="btn btn-info btn-sm btn-block"><i class="fa fa-check-square-o"></i> Credit Check</button>
+                        	<button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#buycreditcheck"><i class="fa fa-check-square-o"></i> Credit Check</button>
                         </div>
                    </div>
 					<div class="row">
@@ -347,6 +347,29 @@
                 </div>
             </div>
         </div>
+        
+        
+                            <div class="modal inmodal fade" id="buycreditcheck" tabindex="-1" role="dialog"  aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">Buy Credit Check</h4>
+                                            <small class="font-bold">This transaction will buy you the credit data for GSMStockMarket.com Limited.</small>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p><strong>Payment will be taken from your GSM Wallet</strong> and the credit data for this company will be viewable from your account while your subscription lasts.</p>
+                                            <p><strong>£5.00 Credit available</strong></p>
+                                            <p><strong>£15.00 Credit required</strong></p>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Confirm Purchase</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
             
             
             
