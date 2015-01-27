@@ -63,9 +63,18 @@
                                     
                                 </div>
                                 <div class="col-lg-7" id="cluster_info">
-                              		<div class="m-r-md inline">
-                            			<input type="text" value="94" class="dial m-r" data-fgColor="#1AB394" data-width="85" data-height="85" data-angleOffset=-125 data-angleArc=250 readonly/>
-                            		</div>
+                        <div class="text-center">
+                            <small>Dynamic knob example</small><br/><br/>
+                            <div class="m-r-md inline">
+                            <input type="text" value="75" class="dial m-r-sm" data-fgColor="#ED5565" data-width="85" data-height="85" data-cursor=true data-thickness=.3/>
+                            </div>
+                            <div class="m-r-md inline">
+                            <input type="text" value="25" class="dial m-r" data-fgColor="#ED5565" data-width="85" data-height="85" data-step="1000" data-min="-15000" data-max="15000" data-displayPrevious=true/>
+                            </div>
+                            <div class="m-r-md inline">
+                            <input type="text" value="60" class="dial m-r" data-fgColor="#ED5565" data-width="85" data-height="85" data-angleOffset=-125 data-angleArc=250 />
+                            </div>
+                        </div>
                                     <dl class="dl-horizontal" >
 
                                         <dt>Date Created:</dt> <dd> 16.08.2014 12:15:57</dd>
