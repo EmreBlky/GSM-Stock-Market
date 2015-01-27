@@ -158,12 +158,21 @@
                                             </a>
                                             <div class="media-body ">
                                                 <small class="pull-right">2h ago</small>
-                                                <strong>Daniel Gregory</strong> posted message on <strong>GSMStockMarket.com Limited's</strong> news feed. <br>
-                                                <small class="text-muted">Today 2:10 pm - 12.06.2014</small>
-                                                <div class="well">
-                                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                                                    Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                                                <strong>Daniel Gregory</strong> from <strong>GSMStockMarket.com Limited</strong> <br>
+                                                <div class="row">
+                    							<div class="col-lg-8">
+                        							<p>Fantastic customer to do business with</p>
+                        						</div>
+                    							<div class="col-lg-4">
+                                    
+                                    <dl class="dl-horizontal">
+                                        <dt>Communication:</dt> <dd>  <i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i></dd>
+                                        <dt>Shipping:</dt> <dd>  <i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i></dd>
+                                        <dt>Accuracy:</dt> <dd>  <i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i></dd>
+                                    </dl>
+                        						</div>
                                                 </div>
+                                                    
                                             </div>
                                         </div>
                                         
