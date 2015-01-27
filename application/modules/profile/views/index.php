@@ -23,11 +23,15 @@
                     <div class="ibox">
                         <div class="ibox-content">
                             <div class="row">
-                                <div class="col-lg-7">
+                                <div class="col-lg-12">
                                     <div class="m-b-md">
                                         <a href="#" class="btn btn-white btn-xs pull-right">Edit Profile</a>
                                         <h2>GSMStockMarket.com Limited</h2>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-7">
                                     <dl class="dl-horizontal">
                                         <dt>Status:</dt> <dd><span class="label label-primary">Active</span></dd>
                                     </dl>
@@ -59,7 +63,7 @@
                                 <div class="col-lg-5" id="cluster_info">
                               		<div class="m-r-md inline">
                             			<input type="text" value="94" class="dial m-r" data-fgColor="#1AB394" data-width="85" data-height="85" data-angleOffset=-125 data-angleArc=250 readonly/>
-                                        <h1><i class="fa fa-star"></i></h1>
+                                        <div style="display:inline;height:65px;width:65px;padding:10px;margin-left:20px;vertical-align:top"><i class="fa fa-star" style="font-size:75px;color:#FC6"></i></div>
                             		</div>
                                     <dl class="dl-horizontal" >
 
