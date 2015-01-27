@@ -78,6 +78,22 @@
                                         <a href=""><img alt="image" class="img-circle" src="/public/main/img/a5.jpg"></a>
                                         </dd>
                                     </dl>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-envelope"></i> Send Message</button>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button type="button" class="btn btn-default btn-sm btn-block"><i class="fa fa-wechat"></i> Start Conversation</button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <button type="button" class="btn btn-success btn-sm btn-block"><i class="fa fa-book"></i> Add Contact</button>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button type="button" class="btn btn-warning btn-sm btn-block"><i class="fa fa-star"></i> Add Favourite</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             
@@ -387,27 +403,19 @@
                     <h4>Company Bio</h4>
                     <img src="/public/main/img/gsm-profile.png" class="img-responsive" style="margin:0 auto">
                     <p class="small">
-                        There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look
-                        even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
+						Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable. Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable.
                     </p>
-                                <div class="user-button">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-envelope"></i> Send Message</button>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <button type="button" class="btn btn-default btn-sm btn-block"><i class="fa fa-wechat"></i> Start Conversation</button>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <button type="button" class="btn btn-success btn-sm btn-block"><i class="fa fa-book"></i> Add Contact</button>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <button type="button" class="btn btn-warning btn-sm btn-block"><i class="fa fa-star"></i> Add Favourite</button>
-                                        </div>
-                                    </div>
-                                </div>
+					<div class="row">
+                    	<div class="col-md-4">
+                        	<button type="button" class="btn btn-info btn-sm btn-block"><i class="fa fa-check-square-o"></i> Credit Check</button>
+                        </div>
+                        <div class="col-md-4">
+                         	<button type="button" class="btn btn-warning btn-sm btn-block"><i class="fa fa-exclamtion"></i> Report</button>
+                        </div>
+                        <div class="col-md-4">
+                         	<button type="button" class="btn btn-danger btn-sm btn-block"><i class="fa fa-ban"></i> Block</button>
+                        </div>
+                   </div>
                 </div>
             </div>
         </div>
