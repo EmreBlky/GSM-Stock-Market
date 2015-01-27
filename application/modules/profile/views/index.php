@@ -290,6 +290,18 @@
                                 </div>
                                 
                                 <div class="tab-pane" id="credit-information">
+									<div class="row">
+                    					<div class="col-lg-12" style="text-align:center">
+                        					<p>Request a credit check to be done on this company. You will be able to view their credit score within a few minutes of ordering.</p>
+                                            <p>Payment will be taken from your GSM Wallet and the credit data for this company will be viewable from your account while your subscription lasts.</p>
+                        				</div>
+                   					</div>
+									<div class="row">
+                    					<div class="col-lg-6" style="float:none;margin:0 auto">
+                        					<button type="button" class="btn btn-info btn-sm btn-block"><i class="fa fa-check-square-o"></i>Buy Credit Check</button>
+                        				</div>
+                   					</div>
+                                	
                                 </div>
                                 
                                 </div>
