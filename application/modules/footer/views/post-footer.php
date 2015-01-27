@@ -34,9 +34,6 @@
     <!-- EayPIE -->
     <script src="/public/main/js/plugins/easypiechart/jquery.easypiechart.js"></script>
 
-   	<!-- JSKnob -->
-   	<script src="/public/main/js/plugins/jsKnob/jquery.knob.js"></script>
-
     <!-- Sparkline -->
     <script src="/public/main/js/plugins/sparkline/jquery.sparkline.min.js"></script>
 
@@ -45,6 +42,9 @@
 
     <!-- ChartJS-->
     <script src="/public/main/js/plugins/chartJs/Chart.min.js"></script>
+
+   	<!-- JSKnob -->
+   	<script src="/public/main/js/plugins/jsKnob/jquery.knob.js"></script>
 
     <script>
         $(document).ready(function() {
