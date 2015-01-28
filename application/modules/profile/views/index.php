@@ -96,9 +96,8 @@
                                         <div class="col-md-6" style="margin-top:15px">
                                             <button type="button" class="btn btn-warning btn-sm btn-block"><i class="fa fa-star"></i> Add Favourite</button>
                                         </div>
-                            			
                                         
-  <a id='linkButton'>ClickMe</a>
+                                        <a id='linkButton'>ClickMe</a>
                                         
                                     </div>
                                 </div>
