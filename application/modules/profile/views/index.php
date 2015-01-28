@@ -414,8 +414,8 @@
                     onclick: null,
 					showDuration: 400,
 					hideDuration: 1000,
-					timeOut: 7000,
-					extendedTimeOut: 1000,
+					timeOut: 700000,
+					extendedTimeOut: 100000,
 					showEasing: 'swing',
 					hideEasing: 'linear',
 					showMethod: 'fadeIn',
@@ -425,16 +425,16 @@
                 toastr.success('This user has been added to your address book.', 'Contact Added');
             });
             $('#contact_removed').click(function (){
-                toastr.danger('This user has been removed from your address book.', 'Contact Removed');
+                toastr.error('This user has been removed from your address book.', 'Contact Removed');
             });
             $('#favourite_added').click(function (){
                 toastr.success('This user has been added to your favourites.', 'Favourite Added');
             });
             $('#favourite_removed').click(function (){
-                toastr.danger('This user has been removed from your favourites.', 'Favourite Removed');
+                toastr.error('This user has been removed from your favourites.', 'Favourite Removed');
             });
             $('#blocked').click(function (){
-                toastr.danger('They are unable to communicate or see you in anyway on this website.', 'User Blocked!');
+                toastr.error('They are unable to communicate or see you in anyway on this website.', 'User Blocked!');
             });
             $('#unblocked').click(function (){
                 toastr.success('You will now be visible to this user again and can communicate with them.', 'User Unblocked');
