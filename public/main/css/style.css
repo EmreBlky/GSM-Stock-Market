@@ -2135,10 +2135,10 @@ label.error {
   content: "\f003";
 }
 #toast-container > .toast-error:before {
-  content: "\f001";
+  content: "\f00d";
 }
 #toast-container > .toast-info:before {
-  content: "\f005";
+  content: "\f086";
 }
 #toast-container > .toast-success:before {
   content: "\f00C";
@@ -4561,12 +4561,6 @@ body.skin-3 {
 /* Only demo */
 @media (max-width: 1000px) {
   .welcome-message {
-    display: none;
-  }
-}
-/* Mobile fix - Dashboard */
-@media (max-width: 660px) {
-  .mobihide {
     display: none;
   }
 }
