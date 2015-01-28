@@ -412,7 +412,6 @@
         $(function () {
             $('#showsimple').click(function (){
                 // Display a success toast, with a title
-                toastr.success('Without any options','Simple notification!');
                 toastr.options = {
                     closeButton: $('#closeButton').prop('checked'),
                     debug: $('#debugInfo').prop('checked'),
@@ -428,6 +427,7 @@
 					showMethod: 'fadeIn',
 					hideMethod: 'fadeOut',
                 };
+                toastr.success('Without any options','Simple notification!');
             });
         })
     </script>
