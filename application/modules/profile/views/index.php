@@ -91,14 +91,11 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6" style="margin-top:15px">
-                                            <button type="button" class="btn btn-success btn-sm btn-block" id="addcontact"><i class="fa fa-book"></i> Add Contact</button>
+                                            <button type="button" class="btn btn-success btn-sm btn-block" id="contact_added"><i class="fa fa-book"></i> Add Contact</button>
                                         </div>
                                         <div class="col-md-6" style="margin-top:15px">
-                                            <button type="button" class="btn btn-warning btn-sm btn-block"><i class="fa fa-star"></i> Add Favourite</button>
+                                            <button type="button" class="btn btn-warning btn-sm btn-block" id="favourite_added"><i class="fa fa-star"></i> Add Favourite</button>
                                         </div>
-                                        
-                                        <button type="button" class="btn btn-primary" id="showsimple">Popup Test</button>
-                                        
                                     </div>
                                 </div>
                             </div>
@@ -373,7 +370,7 @@
                          	<button type="button" class="btn btn-warning btn-sm btn-block"><i class="fa fa-exclamation"></i> Report</button>
                         </div>
                         <div class="col-lg-6" style="margin-top:15px">
-                         	<button type="button" class="btn btn-danger btn-sm btn-block"><i class="fa fa-ban"></i> Block</button>
+                         	<button type="button" class="btn btn-danger btn-sm btn-block" id="blocked"><i class="fa fa-ban"></i> Block</button>
                         </div>
                    </div>
                 </div>
@@ -404,14 +401,43 @@
                             </div>
             
             
-            <!-- Page Specific Scripts -->
-    
+	<!-- Page Specific Scripts -->    
     <!-- Toastr script -->
     <script src="/public/main/js/plugins/toastr/toastr.min.js"></script>
     <script type="text/javascript">
         $(function () {
-            $('#showsimple').click(function (){
-                toastr.success('Without any options','Simple notification!');
+                toastr.options = {
+                    closeButton: false,
+                    debug:false,
+                    progressBar: false,
+                    positionClass: 'toast-bottom-right',
+                    onclick: null,
+					showDuration: 400,
+					hideDuration: 1000,
+					timeOut: 7000,
+					extendedTimeOut: 1000,
+					showEasing: 'swing',
+					hideEasing: 'linear',
+					showMethod: 'fadeIn',
+					hideMethod: 'fadeOut',
+				};
+            $('#contact_added').click(function (){
+                toastr.success('Contact Added','This user has been added to your address book.');
+            });
+            $('#contact_removed').click(function (){
+                toastr.warning('Contact Removed','This user has been removed from your address book.');
+            });
+            $('#favourite_added').click(function (){
+                toastr.success('Favourite Added','This user has been added to your favourites.');
+            });
+            $('#favourite_removed').click(function (){
+                toastr.warning('Favourite Removed','This user has been removed from your favourites.');
+            });
+            $('#blocked').click(function (){
+                toastr.warning('User Blocked!','They are unable to communicate or see you in anyway on this website.');
+            });
+            $('#unblocked').click(function (){
+                toastr.success('User Unblocked','You will now be visible to this user again and can communicate with them.');
             });
         })
     </script>
