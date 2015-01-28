@@ -34,7 +34,7 @@
                         <?php $this->load->model('mailbox/mailbox_model', 'mailbox_model'); ?>
                         <a href="/mailbox"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span><span class="label label-warning pull-right"><?php echo $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'read', 'no');?>/<?php echo $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'));?></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="mailbox/inbox"><i class="fa fa-inbox"></i> Inbox</a></li>
+                            <li><a href="mailbox/inbox/all"><i class="fa fa-inbox"></i> Inbox</a></li>
                             <li><a href="mailbox/compose"><i class="fa fa-pencil"></i> Compose Email</a></li>
                             <li><a href="mailbox/archive"><i class="fa fa-archive"></i> Archive</a></li>
                         </ul>

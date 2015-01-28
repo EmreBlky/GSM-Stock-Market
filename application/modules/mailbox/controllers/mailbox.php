@@ -25,7 +25,7 @@ class Mailbox extends MX_Controller
     function inbox($from = NULL, $mid = NULL)
     {
         
-        $data['main'] = 'mailbox';        
+        $data['main'] = 'mailbox';
         $data['title'] = 'GSM - Inbox';        
         $data['page'] = 'inbox';        
         $data['message'] = $this->mailbox_model->get_where_multiple('id', $mid);
@@ -68,10 +68,9 @@ class Mailbox extends MX_Controller
     }
     
     function reply($mid)
-    {
-        echo $mid;
+    {        
         $data['main'] = 'mailbox';        
-        $data['title'] = 'GSM - Compose Mail';        
+        $data['title'] = 'GSM - Reply Mail';        
         $data['page'] = 'reply';
         
         $this->load->module('templates');
@@ -243,15 +242,41 @@ class Mailbox extends MX_Controller
     
     function composeMail()
     {
-        echo '<pre>';
-        print_r($_POST);
-        exit;
         $this->load->library('form_validation');
         
         $this->form_validation->set_rules('email_address', 'Email Address', 'xss_clean');
         $this->form_validation->set_rules('subject', 'Subject', 'xss_clean');
         $this->form_validation->set_rules('body', 'Message Body', 'xss_clean');
         
+        $submit = $this->input->post('submit');
+//        
+        if($submit == 'Send'){
+            
+            if($this->form_validation->run()){
+                
+                $this->load->model('member/member_model', 'member_model');
+                $sid = $this->member_model->get_where_multiple('email', $this->input->post('email_address'))->id;
+
+                $data = array(
+                                'member_id'         => $this->session->userdata('members_id'),
+                                'sent_member_id'    => $sid,
+                                'subject'           => $this->input->post('subject'),
+                                'body'              => nl2br($this->input->post('body')),
+                                'sent'              => 'yes',
+                                'date'              => date('d-m-Y'),
+                                'time'              => date('H:i'),
+                                'sent_from'         => 'member',
+                                'parent_id'         => $this->input->post('parent_id')
+                              );
+
+                $this->load->model('mailbox/mailbox_model', 'mailbox_model');
+                $this->mailbox_model->_insert($data);
+            }            
+            
+            redirect('mailbox/inbox/all', 'refresh');
+        }
+        elseif($submit == 'Draft'){
+            
             if($this->form_validation->run()){
                 
                 $this->load->model('member/member_model', 'member_model');
@@ -262,9 +287,10 @@ class Mailbox extends MX_Controller
                                 'sent_member_id'    => $sid,
                                 'subject'           => $this->input->post('subject'),
                                 'body'              => $this->input->post('body'),
-                                'sent'              => 'yes',
+                                'draft'              => 'yes',
                                 'date'              => date('d-m-Y'),
                                 'time'              => date('H:i'),
+                                'sent_from'         => 'member',
                                 'parent_id'         => $this->input->post('parent_id')
                               );
 
@@ -272,7 +298,14 @@ class Mailbox extends MX_Controller
                 $this->mailbox_model->_insert($data);
             }
             
-        redirect('mailbox/inbox');
+            redirect('mailbox/inbox/all', 'refresh');
+        }
+        elseif($submit == 'Discard'){
+            
+            redirect('mailbox/inbox/all', 'refresh');
+        }
+//       
+            
         
     }
             

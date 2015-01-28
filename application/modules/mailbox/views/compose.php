@@ -11,11 +11,7 @@
                 echo form_open('mailbox/composeMail', $attributes); 
             ?>
             <div class="col-lg-9 animated fadeInRight">
-            <div class="mail-box-header">
-                <div class="pull-right tooltip-demo">
-                    <input name="submit_draft" type="submit" class="btn btn-white btn-sm" value="Draft"/>
-                    <input name="submit_discard" type="submit" class="btn btn-danger btn-sm" value="Discard"/>
-                </div>
+            <div class="mail-box-header">                
                 <h2>Compse mail</h2>
             </div>
                 <div class="mail-box">
@@ -74,9 +70,9 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="mail-body text-right tooltip-demo">
-                        <input name="submit_send" type="submit" class="btn btn-sm btn-primary" value="Send"/>
-                        <input name="submit_discard" type="submit" class="btn btn-white btn-sm" value="Discard"/>
-                        <input name="submit_draft" type="submit" class="btn btn-white btn-sm" value="Draft"/>
+                        <input name="submit" type="submit" class="btn btn-sm btn-primary" value="Send"/>
+                        <input name="submit" type="submit" class="btn btn-white btn-sm" value="Discard"/>
+                        <input name="submit" type="submit" class="btn btn-white btn-sm" value="Draft"/>
                     </div>
                     <div class="clearfix"></div>
                     
