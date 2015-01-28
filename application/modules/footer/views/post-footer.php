@@ -2,6 +2,18 @@
 
     <!-- Mainly scripts -->
     <script src="/public/main/js/jquery-2.1.1.js"></script>
+
+	<!-- notifications -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+    toastr.options.timeOut = 1500; // 1.5s
+    toastr.info('Page Loaded!');
+    $('#linkButton').click(function() {
+       toastr.success('Click Button');
+    });
+  });
+  </script>
     <script src="/public/main/js/bootstrap.min.js"></script>
     <script src="/public/main/js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="/public/main/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
@@ -234,18 +246,6 @@
         };
 
     </script>
-
-	<!-- notifications -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
-  <script type="text/javascript">
-  $(document).ready(function() {
-    toastr.options.timeOut = 1500; // 1.5s
-    toastr.info('Page Loaded!');
-    $('#linkButton').click(function() {
-       toastr.success('Click Button');
-    });
-  });
-  </script>
     <?php 
 
 $this->load->module('analytics');
