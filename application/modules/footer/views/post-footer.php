@@ -236,6 +236,7 @@
     </script>
 
 	<!-- notifications -->
+  <a id='linkButton'>ClickMe</a>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
   <script type="text/javascript">
   $(document).ready(function() {
