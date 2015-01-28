@@ -412,23 +412,22 @@
         $(function () {
             $('#showsimple').click(function (){
                 // Display a success toast, with a title
-               toastr[success]("Hi, welcome to Inspinia. This is example of Toastr notification box.")
-
-toastr.options = {
-  "closeButton": false,
-  "debug": false,
-  "progressBar": false,
-  "positionClass": "toast-bottom-right",
-  "onclick": null,
-  "showDuration": "400",
-  "hideDuration": "1000",
-  "timeOut": "7000",
-  "extendedTimeOut": "1000",
-  "showEasing": "swing",
-  "hideEasing": "linear",
-  "showMethod": "fadeIn",
-  "hideMethod": "fadeOut"
-}
+                toastr.options = {
+                    closeButton: $('#closeButton'),
+                    debug: $('#debugInfo'),
+                    progressBar: $('#progressBar'),
+                    positionClass: 'toast-bottom-right',
+                    onclick: null,
+					showDuration: 400,
+					hideDuration: 1000,
+					timeOut: 7000,
+					extendedTimeOut: 1000,
+					showEasing: 'swing',
+					hideEasing: 'linear',
+					showMethod: 'fadeIn',
+					hideMethod: 'fadeOut',
+                };
+                toastr.success('Without any options','Simple notification!');
             });
         })
     </script>
