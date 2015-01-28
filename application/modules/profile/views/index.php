@@ -412,7 +412,7 @@
         $(function () {
             $('#showsimple').click(function (){
                 // Display a success toast, with a title
-				toastr.success('Hello World', 'New Message', { positionClass: 'toast-bottom-right' });
+                toastr.success('Without any options','Simple notification!');
                 toastr.options = {
                     closeButton: $('#closeButton').prop('checked'),
                     debug: $('#debugInfo').prop('checked'),
