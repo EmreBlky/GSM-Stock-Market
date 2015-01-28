@@ -353,7 +353,7 @@ class Mailbox extends MX_Controller
                                 'member_id'         => $this->session->userdata('members_id'),
                                 'sent_member_id'    => $sid,
                                 'subject'           => $this->input->post('subject'),
-                                'body'              => $this->input->post('body'),
+                                'body'              => nl2br($this->input->post('body')),
                                 'draft'              => 'yes',
                                 'date'              => date('d-m-Y'),
                                 'time'              => date('H:i'),
