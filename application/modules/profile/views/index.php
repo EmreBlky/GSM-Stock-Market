@@ -403,44 +403,6 @@
             
 	<!-- Page Specific Scripts -->    
     <!-- Toastr script -->
-    <script src="/public/main/js/plugins/toastr/toastr.min.js"></script>
-    <script type="text/javascript">
-        $(function () {
-                toastr.options = {
-                    closeButton: false,
-                    debug:false,
-                    progressBar: false,
-                    positionClass: 'toast-bottom-right',
-                    onclick: null,
-					showDuration: 400,
-					hideDuration: 1000,
-					timeOut: 7000,
-					extendedTimeOut: 1000,
-					showEasing: 'swing',
-					hideEasing: 'linear',
-					showMethod: 'fadeIn',
-					hideMethod: 'fadeOut',
-				};
-            $('#contact_added').click(function (){
-                toastr.success('This user has been added to your address book.', 'Contact Added');
-            });
-            $('#contact_removed').click(function (){
-                toastr.error('This user has been removed from your address book.', 'Contact Removed');
-            });
-            $('#favourite_added').click(function (){
-                toastr.success('This user has been added to your favourites.', 'Favourite Added');
-            });
-            $('#favourite_removed').click(function (){
-                toastr.error('This user has been removed from your favourites.', 'Favourite Removed');
-            });
-            $('#blocked').click(function (){
-                toastr.error('They are unable to communicate or see you in anyway on this website.', 'User Blocked!');
-            });
-            $('#unblocked').click(function (){
-                toastr.success('You will now be visible to this user again and can communicate with them.', 'User Unblocked');
-            });
-        })
-    </script>
             
             
             
