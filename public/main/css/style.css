@@ -2132,7 +2132,7 @@ label.error {
   margin: auto 0.5em auto -1.5em;
 }
 #toast-container > .toast-warning:before {
-  content: "\f003";
+  content: "\f071";
 }
 #toast-container > .toast-error:before {
   content: "\f00d";
