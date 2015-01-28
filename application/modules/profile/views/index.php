@@ -404,6 +404,25 @@
                             </div>
             
             
+            <!-- Page Specific Scripts -->
+    
+    <!-- Toastr script -->
+    <script src="/public/main/js/plugins/toastr/toastr.min.js"></script>
+    <script>
+	$(document).ready(function() {
+
+    // show when page load
+    toastr.info('Page Loaded!');
+
+    $('#linkButton').click(function() {
+       // show when the button is clicked
+       toastr.success('Click Button');
+
+    });
+
+});
+</script>
+            
             
             
             

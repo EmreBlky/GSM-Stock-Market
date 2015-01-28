@@ -24,6 +24,12 @@
 
     <link href="public/main/css/animate.css" rel="stylesheet">
     <link href="public/main/css/style.css" rel="stylesheet">
+    
+    <!-- Mainly scripts -->
+    <script src="/public/main/js/jquery-2.1.1.js"></script>
+    <script src="/public/main/js/bootstrap.min.js"></script>
+    <script src="/public/main/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/public/main/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
 </head>
 

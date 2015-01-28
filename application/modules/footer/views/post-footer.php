@@ -1,31 +1,6 @@
-
-
-    <!-- Mainly scripts -->
-    <script src="/public/main/js/jquery-2.1.1.js"></script>
-    <script src="/public/main/js/bootstrap.min.js"></script>
-    <script src="/public/main/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="/public/main/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-
-    <!-- Custom and plugin javascript -->
+	<!-- Custom and plugin javascript -->
     <script src="/public/main/js/inspinia.js"></script>
     <script src="/public/main/js/plugins/pace/pace.min.js"></script>
-    
-    <!-- Toastr script -->
-    <script src="/public/main/js/plugins/toastr/toastr.min.js"></script>
-    <script>
-	$(document).ready(function() {
-
-    // show when page load
-    toastr.info('Page Loaded!');
-
-    $('#linkButton').click(function() {
-       // show when the button is clicked
-       toastr.success('Click Button');
-
-    });
-
-});
-</script>
 
     <!-- jQuery UI -->
     <script src="/public/main/js/plugins/jquery-ui/jquery-ui.min.js"></script>
