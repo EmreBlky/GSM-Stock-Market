@@ -24,6 +24,10 @@
                         <div class="ibox-content">
                             <div class="row">
                                 <div class="col-lg-12">
+                                    <div class="alert alert-danger alert-dismissable">
+                                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                                        <i class="fa fa-ban"></i> You have blocked this company. They are unable to communicate or see you in anyway on this website. <a class="alert-link" href="#">Unblock</a>.
+                                    </div>
                                     <div class="m-b-md">
                                         <a href="#" class="btn btn-white btn-xs pull-right">Edit Profile</a>
                                         <h2>GSMStockMarket.com Limited</h2>
@@ -209,7 +213,7 @@
 
                                 </div>
                                 <div class="tab-pane" id="selling-offers">
-                                	<table class="table table-striped">
+                                	<table class="table table-hover no-margins">
                                         <thead>
                                             <tr>
                                             	<th class="mobihide">Make</th>
@@ -266,7 +270,7 @@
                                     </table>
                                 </div>
                                 <div class="tab-pane" id="buying-requests">
-                                	<table class="table table-striped">
+                                	<table class="table table-hover no-margins">
                                         <thead>
                                             <tr>
                                             	<th class="mobihide">Make</th>
