@@ -414,22 +414,6 @@
     <script type="text/javascript">
         $(function () {
             $('#showsimple').click(function (){
-                // Display a success toast, with a title
-                toastr.options = {
-                    closeButton: $('#closeButton'),
-                    debug: $('#debugInfo'),
-                    progressBar: $('#progressBar'),
-                    positionClass: 'toast-bottom-right',
-                    onclick: null,
-					showDuration: 43300,
-					hideDuration: 1000,
-					timeOut: 7000,
-					extendedTimeOut: 1000,
-					showEasing: 'swing',
-					hideEasing: 'linear',
-					showMethod: 'fadeIn',
-					hideMethod: 'fadeOut',
-                };
                 toastr.success('Without any options','Simple notification!');
             });
         })
