@@ -420,7 +420,23 @@
 
             $('#showsimple').click(function (){
                 // Display a success toast, with a title
-                toastr.success('Without any options','Simple notification!')
+                toastr.success('Without any options','Simple notification!');
+                toastr.options = {
+                    closeButton: $('#closeButton').prop('checked'),
+                    debug: $('#debugInfo').prop('checked'),
+                    progressBar: $('#progressBar').prop('checked'),
+                    positionClass: 'toast-bottom-right',
+                    onclick: null,
+					showDuration: 400,
+					hideDuration: 1000,
+					timeOut: 7000,
+					extendedTimeOut: 1000,
+					showEasing: 'swing',
+					hideEasing: 'linear',
+					showMethod: 'fadeIn',
+					hideMethod: 'fadeOut',
+                };
+				
             });
             $('#showtoast').click(function () {
                 var shortCutFunction = $("#toastTypeGroup input:radio:checked").val();
@@ -439,9 +455,18 @@
                     closeButton: $('#closeButton').prop('checked'),
                     debug: $('#debugInfo').prop('checked'),
                     progressBar: $('#progressBar').prop('checked'),
-                    positionClass: $('#positionGroup input:radio:checked').val() || 'toast-top-right',
-                    onclick: null
-                };
+                    positionClass: 'toast-bottom-right',
+                    onclick: null,
+					showDuration: 400,
+					hideDuration: 1000,
+					timeOut: 7000,
+					extendedTimeOut: 1000,
+					showEasing: 'swing',
+					hideEasing: 'linear',
+					showMethod: 'fadeIn',
+					hideMethod: 'fadeOut',
+                };	
+				
                 if ($('#addBehaviorOnToastClick').prop('checked')) {
                     toastr.options.onclick = function () {
                         alert('You can perform some custom action after a toast goes away');
