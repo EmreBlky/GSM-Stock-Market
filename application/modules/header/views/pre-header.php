@@ -21,6 +21,8 @@
     <link href="public/main/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
     <!-- Gritter -->
     <link href="public/main/js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+    <!-- Toastr style -->
+    <link href="/public/main/css/plugins/toastr/toastr.min.css" rel="stylesheet">
 
     <link href="public/main/css/animate.css" rel="stylesheet">
     <link href="public/main/css/style.css" rel="stylesheet">

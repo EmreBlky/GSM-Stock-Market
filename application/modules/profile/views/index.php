@@ -405,9 +405,6 @@
             
             
             <!-- Page Specific Scripts -->
-
-    <!-- Toastr style -->
-    <link href="/public/main/css/plugins/toastr/toastr.min.css" rel="stylesheet">
     
     <!-- Toastr script -->
     <script src="/public/main/js/plugins/toastr/toastr.min.js"></script>
