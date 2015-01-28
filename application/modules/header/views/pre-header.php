@@ -33,6 +33,14 @@
     <script src="/public/main/js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="/public/main/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
+    <!-- Custom and plugin javascript -->
+    <script src="/public/main/js/inspinia.js"></script>
+    <script src="/public/main/js/plugins/pace/pace.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="/public/main/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+
 </head>
 
 <body class="skin-1">

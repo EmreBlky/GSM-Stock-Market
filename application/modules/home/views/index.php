@@ -456,14 +456,6 @@
     <!-- Peity -->
     <script src="/public/main/js/plugins/peity/jquery.peity.min.js"></script>
     <script src="/public/main/js/demo/peity-demo.js"></script>
-
-    <!-- Custom and plugin javascript -->
-    <script src="/public/main/js/inspinia.js"></script>
-    <script src="/public/main/js/plugins/pace/pace.min.js"></script>
-
-    <!-- jQuery UI -->
-    <script src="/public/main/js/plugins/jquery-ui/jquery-ui.min.js"></script>
-
     <!-- EayPIE -->
     <script src="/public/main/js/plugins/easypiechart/jquery.easypiechart.js"></script>
 
