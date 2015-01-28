@@ -422,22 +422,22 @@
 					hideMethod: 'fadeOut',
 				};
             $('#contact_added').click(function (){
-                toastr.success('Contact Added','This user has been added to your address book.');
+                toastr.success('This user has been added to your address book.', 'Contact Added');
             });
             $('#contact_removed').click(function (){
-                toastr.warning('Contact Removed','This user has been removed from your address book.');
+                toastr.danger('This user has been removed from your address book.', 'Contact Removed');
             });
             $('#favourite_added').click(function (){
-                toastr.success('Favourite Added','This user has been added to your favourites.');
+                toastr.success('This user has been added to your favourites.', 'Favourite Added');
             });
             $('#favourite_removed').click(function (){
-                toastr.warning('Favourite Removed','This user has been removed from your favourites.');
+                toastr.danger('This user has been removed from your favourites.', 'Favourite Removed');
             });
             $('#blocked').click(function (){
-                toastr.warning('User Blocked!','They are unable to communicate or see you in anyway on this website.');
+                toastr.danger('They are unable to communicate or see you in anyway on this website.', 'User Blocked!');
             });
             $('#unblocked').click(function (){
-                toastr.success('User Unblocked','You will now be visible to this user again and can communicate with them.');
+                toastr.success('You will now be visible to this user again and can communicate with them.', 'User Unblocked');
             });
         })
     </script>
