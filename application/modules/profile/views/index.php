@@ -96,6 +96,7 @@
                                         <div class="col-md-6" style="margin-top:15px">
                                             <button type="button" class="btn btn-warning btn-sm btn-block"><i class="fa fa-star"></i> Add Favourite</button>
                                         </div>
+                            <button type="button" class="btn btn-primary" id="showtoast">Show Toast</button>
                                     </div>
                                 </div>
                             </div>

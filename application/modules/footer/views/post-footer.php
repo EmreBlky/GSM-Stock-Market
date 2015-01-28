@@ -250,7 +250,7 @@
                 return msg;
             };
 
-            $('#addcontact').click(function (){
+            $('#showsimple').click(function (){
                 // Display a success toast, with a title
                 toastr.success('Without any options','Simple notification!')
             });
@@ -339,7 +339,6 @@
             });
         })
     </script>
-
     <?php 
 
 $this->load->module('analytics');
