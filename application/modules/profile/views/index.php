@@ -119,7 +119,7 @@
                 							<div class="chat-activity-list">
 											<div class="chat-element">
                                                	<a href="#" class="pull-left">
-                                                    <img alt="image" class="img-circle" src="/public/img/a2.jpg">
+                                                    <img alt="image" class="img-circle" src="/public/main/img/a2.jpg">
                                                 </a>
                                                 <div class="media-body ">
                                                     <small class="pull-right text-navy">1m ago</small>
@@ -166,7 +166,7 @@
                                         <textarea class="form-control" placeholder="Message"></textarea>
                                     </div>
                                     <div class="text-right">
-                                        <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Send message</strong></button>
+                                        <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Post to Feed</strong></button>
                                     </div>
                                 </form>
                             </div>
@@ -356,6 +356,11 @@
                     <p class="small">
 						Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable. Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable.
                     </p>
+					<div class="row">
+                    	<div class="col-lg-12">
+                        	<button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#buycreditcheck"><i class="fa fa-check-square-o"></i> Credit Check</button>
+                        </div>
+                   </div>
 					<div class="row">
                         <div class="col-lg-6" style="margin-top:15px">
                          	<button type="button" class="btn btn-warning btn-sm btn-block"><i class="fa fa-exclamation"></i> Report</button>
