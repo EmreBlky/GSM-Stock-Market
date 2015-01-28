@@ -1,4 +1,24 @@
-	<!-- Custom and plugin javascript -->
+
+
+    <!-- Mainly scripts -->
+    <script src="/public/main/js/jquery-2.1.1.js"></script>
+    <script src="/public/main/js/bootstrap.min.js"></script>
+    <script src="/public/main/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/public/main/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Flot -->
+    <script src="/public/main/js/plugins/flot/jquery.flot.js"></script>
+    <script src="/public/main/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="/public/main/js/plugins/flot/jquery.flot.spline.js"></script>
+    <script src="/public/main/js/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="/public/main/js/plugins/flot/jquery.flot.pie.js"></script>
+    <script src="/public/main/js/plugins/flot/jquery.flot.symbol.js"></script>
+
+    <!-- Peity -->
+    <script src="/public/main/js/plugins/peity/jquery.peity.min.js"></script>
+    <script src="/public/main/js/demo/peity-demo.js"></script>
+
+    <!-- Custom and plugin javascript -->
     <script src="/public/main/js/inspinia.js"></script>
     <script src="/public/main/js/plugins/pace/pace.min.js"></script>
 
