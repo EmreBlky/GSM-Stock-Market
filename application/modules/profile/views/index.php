@@ -116,52 +116,55 @@
                                 <div class="tab-content">
                                 <div class="tab-pane active" id="feedposts">
                                     <div class="feed-activity-list">
+                                    
                                         <div>
-                <div class="chat-activity-list">
+                							<div class="chat-activity-list">
 
-                    <div class="chat-element">
-                        <a href="#" class="pull-left">
-                            <img alt="image" class="img-circle" src="/public/img/a2.jpg">
-                        </a>
-                        <div class="media-body ">
-                            <small class="pull-right text-navy">1m ago</small>
-                            <strong>Mike Smith</strong>
-                            <p class="m-b-xs">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                            </p>
-                            <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
-                        </div>
-                    </div>
-
-                    <div class="chat-element right">
-                        <a href="#" class="pull-right">
-                            <img alt="image" class="img-circle" src="/public/main/img/a4.jpg">
-                        </a>
-                        <div class="media-body text-right ">
-                            <small class="pull-left">5m ago</small>
-                            <strong>John Smith</strong>
-                            <p class="m-b-xs">
-                                Lorem Ipsum is simply dummy text of the printing.
-                            </p>
-                            <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
-                        </div>
-                    </div>
-
-                    <div class="chat-element ">
-                        <a href="#" class="pull-left">
-                            <img alt="image" class="img-circle" src="/public/main/img/a2.jpg">
-                        </a>
-                        <div class="media-body ">
-                            <small class="pull-right">2h ago</small>
-                            <strong>Mike Smith</strong>
-                            <p class="m-b-xs">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                            </p>
-                            <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
-                        </div>
-                    </div>
-                </div>
-                </div>
+                    						<div class="chat-element">
+                                               	<a href="#" class="pull-left">
+                                                    <img alt="image" class="img-circle" src="/public/main/img/a2.jpg">
+                                                </a>
+                                                <div class="media-body ">
+                                                    <small class="pull-right text-navy">1m ago</small>
+                                                    <strong>Mike Smith</strong>
+                                                    <p class="m-b-xs">
+                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                                                    </p>
+                                                    <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
+                                                </div>
+                                            </div>
+                        
+                                            <div class="chat-element right">
+                                                <a href="#" class="pull-right">
+                                                    <img alt="image" class="img-circle" src="/public/main/img/a4.jpg">
+                                                </a>
+                                                <div class="media-body text-right ">
+                                                    <small class="pull-left">5m ago</small>
+                                                    <strong>John Smith</strong>
+                                                    <p class="m-b-xs">
+                                                        Lorem Ipsum is simply dummy text of the printing.
+                                                    </p>
+                                                    <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
+                                                </div>
+                                            </div>
+                        
+                                            <div class="chat-element ">
+                                                <a href="#" class="pull-left">
+                                                    <img alt="image" class="img-circle" src="/public/main/img/a2.jpg">
+                                                </a>
+                                                <div class="media-body ">
+                                                    <small class="pull-right">2h ago</small>
+                                                    <strong>Mike Smith</strong>
+                                                    <p class="m-b-xs">
+                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                                                    </p>
+                                                    <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        </div>
+                                        
                         <div class="chat-form">
                             <form role="form">
                                 <div class="form-group">
@@ -172,7 +175,7 @@
                                 </div>
                             </form>
                         </div>
-                </div>
+               							 </div></div>
                                         
                                     </div>
 
