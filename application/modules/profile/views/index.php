@@ -96,7 +96,20 @@
                                         <div class="col-md-6" style="margin-top:15px">
                                             <button type="button" class="btn btn-warning btn-sm btn-block"><i class="fa fa-star"></i> Add Favourite</button>
                                         </div>
-                            <button type="button" class="btn btn-primary" id="showtoast">Show Toast</button>
+                            			
+                                        
+  <a id='linkButton'>ClickMe</a>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+    toastr.options.timeOut = 1500; // 1.5s
+    toastr.info('Page Loaded!');
+    $('#linkButton').click(function() {
+       toastr.success('Click Button');
+    });
+  });
+  </script>
+                                        
                                     </div>
                                 </div>
                             </div>
