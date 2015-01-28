@@ -24,6 +24,10 @@
                         <div class="ibox-content">
                             <div class="row">
                                 <div class="col-lg-12">
+                                    <div class="alert alert-danger alert-dismissable">
+                                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                                        <i class="fa fa-ban"></i> You have blocked this company. They are unable to communicate or see you in anyway on this website. <a class="alert-link" href="#">Unblock</a>.
+                                    </div>
                                     <div class="m-b-md">
                                         <a href="#" class="btn btn-white btn-xs pull-right">Edit Profile</a>
                                         <h2>GSMStockMarket.com Limited</h2>
@@ -79,18 +83,18 @@
                                     </dl>
                                     <div class="row">
                                         <div class="col-md-6" style="margin-top:15px">
-                                            <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-envelope"></i> Send Message</button>
+                                            <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#profile_message"><i class="fa fa-envelope"></i> Send Message</button>
                                         </div>
                                         <div class="col-md-6" style="margin-top:15px">
-                                            <button type="button" class="btn btn-default btn-sm btn-block"><i class="fa fa-wechat"></i> Start Conversation</button>
+                                            <button type="button" class="btn btn-default btn-sm btn-block" id="conversation"><i class="fa fa-wechat"></i> Start Conversation</button>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6" style="margin-top:15px">
-                                            <button type="button" class="btn btn-success btn-sm btn-block"><i class="fa fa-book"></i> Add Contact</button>
+                                            <button type="button" class="btn btn-success btn-sm btn-block" id="contact_added"><i class="fa fa-book"></i> Add Contact</button>
                                         </div>
                                         <div class="col-md-6" style="margin-top:15px">
-                                            <button type="button" class="btn btn-warning btn-sm btn-block"><i class="fa fa-star"></i> Add Favourite</button>
+                                            <button type="button" class="btn btn-warning btn-sm btn-block" id="favourite_added"><i class="fa fa-star"></i> Add Favourite</button>
                                         </div>
                                     </div>
                                 </div>
@@ -115,39 +119,64 @@
 
                                 <div class="tab-content">
                                 <div class="tab-pane active" id="feedposts">
-                                    <div class="feed-activity-list">
-                                        <div class="feed-element">
-                                            <a href="#" class="pull-left">
-                                                <img alt="image" class="img-circle" src="/public/main/img/profile_small.jpg">
-                                            </a>
-                                            <div class="media-body ">
-                                                <small class="pull-right">2h ago</small>
-                                                <strong>Daniel Gregory</strong> posted message on <strong>GSMStockMarket.com Limited's</strong> news feed. <br>
-                                                <small class="text-muted">Today 2:10 pm - 12.06.2014</small>
-                                                <div class="well">
-                                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                                                    Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                                    <div>
+                							<div class="chat-activity-list">
+											<div class="chat-element">
+                                               	<a href="#" class="pull-left">
+                                                    <img alt="image" class="img-circle" src="/public/main/img/a2.jpg">
+                                                </a>
+                                                <div class="media-body ">
+                                                    <small class="pull-right text-navy">1m ago</small>
+                                                    <strong>Mike Smith</strong>
+                                                    <p class="m-b-xs">
+                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                                                    </p>
+                                                    <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="feed-element">
-                                            <a href="#" class="pull-left">
-                                                <img alt="image" class="img-circle" src="/public/main/img/profile_small.jpg">
-                                            </a>
-                                            <div class="media-body ">
-                                                <small class="pull-right">2h ago</small>
-                                                <strong>Daniel Gregory</strong> posted message on <strong>GSMStockMarket.com Limited's</strong> news feed. <br>
-                                                <small class="text-muted">Today 2:10 pm - 12.06.2014</small>
-                                                <div class="well">
-                                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                                                    Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                                            <div class="chat-element right">
+                                                <a href="#" class="pull-right">
+                                                    <img alt="image" class="img-circle" src="/public/main/img/a4.jpg">
+                                                </a>
+                                                <div class="media-body text-right ">
+                                                    <small class="pull-left">5m ago</small>
+                                                    <strong>John Smith</strong>
+                                                    <p class="m-b-xs">
+                                                        Lorem Ipsum is simply dummy text of the printing.
+                                                    </p>
+                                                    <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
                                                 </div>
                                             </div>
-                                        </div>
-                                        
+                                            <div class="chat-element ">
+                                                <a href="#" class="pull-left">
+                                                    <img alt="image" class="img-circle" src="/public/main/img/a2.jpg">
+                                                </a>
+                                                <div class="media-body ">
+                                                    <small class="pull-right">2h ago</small>
+                                                    <strong>Mike Smith</strong>
+                                                    <p class="m-b-xs">
+                                                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+                                                    </p>
+                                                    <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
+                                                </div>
+                                            </div>
+                                            
+                                        </div><!-- /chat-activity-list-->
+                            	</div>
+                                            
+                            <div class="chat-form"><!-- Profile Owner Only -->
+                                <form role="form">
+                                    <div class="form-group">
+                                        <textarea class="form-control" placeholder="Message"></textarea>
                                     </div>
+                                    <div class="text-right">
+                                        <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Post to Feed</strong></button>
+                                    </div>
+                                </form>
+                            </div>
 
-                                </div>
+                            </div>
+                                
                                 <div class="tab-pane" id="feedback">
                                     <div class="feed-activity-list">
                                         <div class="feed-element">
@@ -184,7 +213,7 @@
 
                                 </div>
                                 <div class="tab-pane" id="selling-offers">
-                                	<table class="table table-striped">
+                                	<table class="table table-hover no-margins">
                                         <thead>
                                             <tr>
                                             	<th class="mobihide">Make</th>
@@ -241,7 +270,7 @@
                                     </table>
                                 </div>
                                 <div class="tab-pane" id="buying-requests">
-                                	<table class="table table-striped">
+                                	<table class="table table-hover no-margins">
                                         <thead>
                                             <tr>
                                             	<th class="mobihide">Make</th>
@@ -338,10 +367,10 @@
                    </div>
 					<div class="row">
                         <div class="col-lg-6" style="margin-top:15px">
-                         	<button type="button" class="btn btn-warning btn-sm btn-block"><i class="fa fa-exclamation"></i> Report</button>
+                         	<button type="button" class="btn btn-warning btn-sm btn-block" data-toggle="modal" data-target="#report_user"><i class="fa fa-exclamation"></i> Report</button>
                         </div>
                         <div class="col-lg-6" style="margin-top:15px">
-                         	<button type="button" class="btn btn-danger btn-sm btn-block"><i class="fa fa-ban"></i> Block</button>
+                         	<button type="button" class="btn btn-danger btn-sm btn-block" id="blocked"><i class="fa fa-ban"></i> Block</button>
                         </div>
                    </div>
                 </div>
@@ -360,7 +389,7 @@
                                         <div class="modal-body">
                                             <p><strong>Payment will be taken from your GSM Wallet</strong> and the credit data for this company will be viewable from your account while your subscription lasts.</p>
                                             <p><strong>£5.00 Credit available</strong></p>
-                                            <p><strong>£15.00 Credit required</strong></p>
+                                            <p><strong>£5.00 Credit required</strong></p>
                                         </div>
 
                                         <div class="modal-footer">
@@ -369,8 +398,92 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>        
+                            
+                            <div class="modal inmodal fade" id="profile_message" tabindex="-1" role="dialog"  aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">Send Message</h4>
+                                            <small class="font-bold">Send a message to GSMStockMarket.com Limited</small>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p><strong>Form here</strong> generic stuff bla bla</p>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Send Message</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>   
+                                 
+                            <div class="modal inmodal fade" id="report_user" tabindex="-1" role="dialog"  aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">Report this user!</h4>
+                                            <small class="font-bold">Please fill in the form below to submit a report</small>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p><strong>Form to support service.</strong></p>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Send Report</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
             
+            
+	<!-- Page Specific Scripts -->    
+    <!-- Toastr script -->
+    <script src="/public/main/js/plugins/toastr/toastr.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+                toastr.options = {
+                    closeButton: false,
+                    debug:false,
+                    progressBar: false,
+                    positionClass: 'toast-bottom-right',
+                    onclick: null,
+					showDuration: 400,
+					hideDuration: 1000,
+					timeOut: 7000,
+					extendedTimeOut: 1000,
+					showEasing: 'swing',
+					hideEasing: 'linear',
+					showMethod: 'fadeIn',
+					hideMethod: 'fadeOut',
+				};
+            $('#contact_added').click(function (){
+                toastr.success('This user has been added to your address book.', 'Contact Added');
+            });
+            $('#contact_removed').click(function (){
+                toastr.error('This user has been removed from your address book.', 'Contact Removed');
+            });
+            $('#favourite_added').click(function (){
+                toastr.success('This user has been added to your favourites.', 'Favourite Added');
+            });
+            $('#favourite_removed').click(function (){
+                toastr.error('This user has been removed from your favourites.', 'Favourite Removed');
+            });
+            $('#blocked').click(function (){
+                toastr.error('They are unable to communicate or see you in anyway on this website.', 'User Blocked!');
+            });
+            $('#unblocked').click(function (){
+                toastr.success('You will now be visible to this user again and can communicate with them.', 'User Unblocked');
+            });
+            $('#conversation').click(function (){
+                toastr.warning('Both users need to add each other as a contact before they can use GSM Messenger!', 'Chat Unavailable');
+            });
+        })
+    </script>
             
             
             
