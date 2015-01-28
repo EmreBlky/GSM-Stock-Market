@@ -11,13 +11,6 @@
             
             if($message) {
 
-                $data = array(                
-                                'read'              => 'yes'
-                              );
-
-                $this->load->model('mailbox/mailbox_model', 'mailbox_model');
-
-                $this->mailbox_model->_update($message->id, $data);
 
                 //echo '<pre>';
                 //print_r($message);
@@ -32,6 +25,7 @@
                 </div>
                 <div class="pull-right tooltip-demo">
                     <!-- <a href="mail_compose.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Reply"><i class="fa fa-reply"></i> Reply</a> -->
+                    <a href="mailbox/archive/<?php echo $this->uri->segment(4);?>" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Reply"><i class="fa fa-archive"></i> Archive</a>                    
                     <button onclick="window.print()" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Print email"><i class="fa fa-print"></i></button>
                     <a href="mailbox/trash_move/<?php echo $this->uri->segment(3);?>" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </a>
                 </div>
@@ -86,7 +80,7 @@
                     Important (<?php echo $inbox_count;?>)
                 </h2>
                 <div class="mail-tools tooltip-demo m-t-md">                    
-                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh</button>
+                    <a href="mailbox/refresh" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh</a>
                     <!-- <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as read"><i class="fa fa-eye"></i> </button>
                     <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as important"><i class="fa fa-exclamation"></i> </button> -->
                     <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </button>
@@ -110,13 +104,19 @@
                                                 <td class="check-mail">
                                                     <input type="checkbox" class="i-checks">
                                                 </td>
-                                                <td class="mail-ontact"><a href="mailbox/important/'.$inbox->id.'">'.$this->member_model->get_where($inbox->sent_member_id)->firstname.' '.$this->member_model->get_where($inbox->sent_member_id)->lastname.'</a> 
+                                                <td class="mail-ontact"><a href="mailbox/important/'.$inbox->id.'">'.$this->member_model->get_where($inbox->member_id)->firstname.' '.$this->member_model->get_where($inbox->member_id)->lastname.'</a> 
                                                     <!-- <span class="label label-warning pull-right">Clients</span> </td> -->
                                                 </td>
                                                 <td class="mail-subject"><a href="mailbox/important/'.$inbox->id.'">'.$inbox->subject.'</a></td>
-                                                <td class=""></td>
-                                                <td class="text-right mail-date">Jan 16</td>
-                                            </tr>';
+                                                <td class="">&nbsp;<!-- <i class="fa fa-paperclip"> --></i></td>';
+                                                    if($inbox->date < date('d-m-Y')){
+                                                       echo '<td class="text-right mail-date">'.$inbox->time.' '.date_format(date_create($inbox->date), 'jS F').'</td>'; 
+                                                    }
+                                                    else{
+                                                        echo '<td class="text-right mail-date">'.$inbox->time.'</td>';
+                                                    }
+                                                
+                                            echo '</tr>';
                                     
                                 }
                             

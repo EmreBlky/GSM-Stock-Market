@@ -2,7 +2,7 @@
                 <div class="ibox float-e-margins">
                     <div class="ibox-content mailbox-content">
                         <div class="file-manager">
-                            <a class="btn btn-block btn-primary compose-mail" href="mail_compose.html">Compose Mail</a>
+                            <!-- <a class="btn btn-block btn-primary compose-mail" href="mail_compose.html">Compose Mail</a> -->
                             <div class="space-25"></div>
                             <h5>Folders</h5>
                             <ul class="folder-list m-b-md" style="padding: 0">
@@ -20,6 +20,9 @@
                                 </li>
                                 <li>
                                     <a href="mailbox/important"> <i class="fa fa-certificate"></i> Important</a>
+                                </li>
+                                <li>
+                                    <a href="mailbox/archive"> <i class="fa fa-archive"></i> Archive</a>
                                 </li>
                                 <li>
                                     <a href="mailbox/draft"> <i class="fa fa-file-text-o"></i> Drafts <?php if($draft > 0){ echo '<span class="label label-danger pull-right">'.$draft.'</span>';}?></a>
