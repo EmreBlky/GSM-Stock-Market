@@ -124,6 +124,34 @@ class MY_Model extends CI_Model {
 		return $data;
 	
 	}
+        
+        function get_where_multiples_order($order_by, $order, $chose, $value, $chose2 = NULL, $value2 = NULL, $chose3 = NULL, $value3 = NULL)
+	{
+		//$data = '';
+		
+		$table = $this->table;
+		$this->db->where($chose, $value);
+		if($chose2 != NULL){
+		$this->db->where($chose2, $value2);
+		}
+                if($chose3 != NULL){
+		$this->db->where($chose3, $value3);
+		}
+                $this->db->order_by($order_by, $order);
+		$query = $this->db->get($table);
+                
+		if($query->num_rows() > 0){
+				
+                    foreach ($query->result() as $row)
+                    {
+                            $data[] = $row;
+                    }
+				
+		}		
+		
+		return $data;
+	
+	}
 	
 	function get_where_custom($col, $value) 
 	{
@@ -182,11 +210,20 @@ class MY_Model extends CI_Model {
 	
 	}
 	
-	function count_where($column, $value) 
+	function count_where($column, $value, $column2 = NULL, $value2 = NULL, $column3 = NULL, $value3 = NULL, $column4 = NULL, $value4 = NULL) 
 	{
 		
 		$table = $this->table;
 		$this->db->where($column, $value);
+                if($column2 != NULL){
+		$this->db->where($column2, $value2);
+		}
+                if($column3 != NULL){
+		$this->db->where($column3, $value3);
+		}
+                if($column4 != NULL){
+		$this->db->where($column4, $value4);
+		}
 		$query=$this->db->get($table);
 		$num_rows = $query->num_rows();
 		
