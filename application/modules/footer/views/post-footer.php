@@ -21,6 +21,23 @@
     <!-- Custom and plugin javascript -->
     <script src="/public/main/js/inspinia.js"></script>
     <script src="/public/main/js/plugins/pace/pace.min.js"></script>
+    
+    <!-- Toastr script -->
+    <script src="/public/main/js/plugins/toastr/toastr.min.js"></script>
+    <script>
+	$(document).ready(function() {
+
+    // show when page load
+    toastr.info('Page Loaded!');
+
+    $('#linkButton').click(function() {
+       // show when the button is clicked
+       toastr.success('Click Button');
+
+    });
+
+});
+</script>
 
     <!-- jQuery UI -->
     <script src="/public/main/js/plugins/jquery-ui/jquery-ui.min.js"></script>
@@ -235,19 +252,6 @@
 
     </script>
 
-	<!-- notifications -->
-  <a id='linkButton'>ClickMe</a>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
-  <script type="text/javascript">
-  $(document).ready(function() {
-    toastr.options.timeOut = 1500; // 1.5s
-    toastr.info('Page Loaded!');
-    $('#linkButton').click(function() {
-       toastr.success('Click Button');
-    });
-  });
-  </script>
     <?php 
 
 $this->load->module('analytics');
