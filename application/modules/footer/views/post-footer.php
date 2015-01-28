@@ -235,6 +235,27 @@
 
     </script>
 
+	<!-- notifications -->
+
+    <!-- Toastr script -->
+    <script src="/public/main/js/plugins/toastr/toastr.min.js"></script>
+    
+    <script>
+		$(document).ready(function() {
+	
+		// show when page load
+		toastr.info('Page Loaded!');
+	
+		$('#addcontact').click(function() {
+		   // show when the button is clicked
+		   toastr.success('Click Button');
+	
+		});
+	
+	});
+	</script>
+
+
     <?php 
 
 $this->load->module('analytics');
