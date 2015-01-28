@@ -236,6 +236,16 @@
     </script>
 
 	<!-- notifications -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+    toastr.options.timeOut = 1500; // 1.5s
+    toastr.info('Page Loaded!');
+    $('#linkButton').click(function() {
+       toastr.success('Click Button');
+    });
+  });
+  </script>
     <?php 
 
 $this->load->module('analytics');
