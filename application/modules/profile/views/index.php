@@ -116,7 +116,34 @@
                                 <div class="tab-content">
                                 <div class="tab-pane active" id="feedposts">
                                     <div class="feed-activity-list">
-               							 </div>
+                                        <div class="feed-element">
+                                            <a href="#" class="pull-left">
+                                                <img alt="image" class="img-circle" src="/public/main/img/profile_small.jpg">
+                                            </a>
+                                            <div class="media-body ">
+                                                <small class="pull-right">2h ago</small>
+                                                <strong>Daniel Gregory</strong> posted message on <strong>GSMStockMarket.com Limited's</strong> news feed. <br>
+                                                <small class="text-muted">Today 2:10 pm - 12.06.2014</small>
+                                                <div class="well">
+                                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                                                    Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="feed-element">
+                                            <a href="#" class="pull-left">
+                                                <img alt="image" class="img-circle" src="/public/main/img/profile_small.jpg">
+                                            </a>
+                                            <div class="media-body ">
+                                                <small class="pull-right">2h ago</small>
+                                                <strong>Daniel Gregory</strong> posted message on <strong>GSMStockMarket.com Limited's</strong> news feed. <br>
+                                                <small class="text-muted">Today 2:10 pm - 12.06.2014</small>
+                                                <div class="well">
+                                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                                                    Over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                                                </div>
+                                            </div>
+                                        </div>
                                         
                                     </div>
 
@@ -333,7 +360,7 @@
                                         <div class="modal-body">
                                             <p><strong>Payment will be taken from your GSM Wallet</strong> and the credit data for this company will be viewable from your account while your subscription lasts.</p>
                                             <p><strong>£5.00 Credit available</strong></p>
-                                            <p><strong>£15.00 Credit required</strong></p>
+                                            <p><strong>£5.00 Credit required</strong></p>
                                         </div>
 
                                         <div class="modal-footer">
