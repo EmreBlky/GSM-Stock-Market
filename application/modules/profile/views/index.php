@@ -412,13 +412,21 @@
         $(function () {
             $('#showsimple').click(function (){
                 // Display a success toast, with a title
-                toastr.success('Without any options','Simple notification!');
+				toastr.success('Hello World', 'New Message', { positionClass: 'toast-bottom-right' });
                 toastr.options = {
                     closeButton: $('#closeButton').prop('checked'),
                     debug: $('#debugInfo').prop('checked'),
                     progressBar: $('#progressBar').prop('checked'),
-                    positionClass: $('#positionGroup input:radio:checked').val() || 'toast-top-right',
-                    onclick: null
+                    positionClass: 'toast-bottom-right',
+                    onclick: null,
+					showDuration: 400,
+					hideDuration: 1000,
+					timeOut: 7000,
+					extendedTimeOut: 1000,
+					showEasing: 'swing',
+					hideEasing: 'linear',
+					showMethod: 'fadeIn',
+					hideMethod: 'fadeOut',
                 };
             });
         })
