@@ -421,7 +421,7 @@
                     progressBar: $('#progressBar'),
                     positionClass: 'toast-bottom-right',
                     onclick: null,
-					showDuration: 400,
+					showDuration: 43300,
 					hideDuration: 1000,
 					timeOut: 7000,
 					extendedTimeOut: 1000,
