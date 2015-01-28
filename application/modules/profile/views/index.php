@@ -83,10 +83,10 @@
                                     </dl>
                                     <div class="row">
                                         <div class="col-md-6" style="margin-top:15px">
-                                            <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-envelope"></i> Send Message</button>
+                                            <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#profile_message"><i class="fa fa-envelope"></i> Send Message</button>
                                         </div>
                                         <div class="col-md-6" style="margin-top:15px">
-                                            <button type="button" class="btn btn-default btn-sm btn-block"><i class="fa fa-wechat"></i> Start Conversation</button>
+                                            <button type="button" class="btn btn-default btn-sm btn-block" id="conversation"><i class="fa fa-wechat"></i> Start Conversation</button>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -367,7 +367,7 @@
                    </div>
 					<div class="row">
                         <div class="col-lg-6" style="margin-top:15px">
-                         	<button type="button" class="btn btn-warning btn-sm btn-block"><i class="fa fa-exclamation"></i> Report</button>
+                         	<button type="button" class="btn btn-warning btn-sm btn-block" data-toggle="modal" data-target="#report_user"><i class="fa fa-exclamation"></i> Report</button>
                         </div>
                         <div class="col-lg-6" style="margin-top:15px">
                          	<button type="button" class="btn btn-danger btn-sm btn-block" id="blocked"><i class="fa fa-ban"></i> Block</button>
@@ -395,6 +395,46 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
                                             <button type="button" class="btn btn-primary">Confirm Purchase</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>        
+                            
+                            <div class="modal inmodal fade" id="profile_message" tabindex="-1" role="dialog"  aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">Send Message</h4>
+                                            <small class="font-bold">Send a message to GSMStockMarket.com Limited</small>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p><strong>Form here</strong> generic stuff bla bla</p>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Send Message</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>   
+                                 
+                            <div class="modal inmodal fade" id="report_user" tabindex="-1" role="dialog"  aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">Report this user!</h4>
+                                            <small class="font-bold">Please fill in the form below to submit a report</small>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p><strong>Form to support service.</strong></p>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Send Report</button>
                                         </div>
                                     </div>
                                 </div>
@@ -438,6 +478,9 @@
             });
             $('#unblocked').click(function (){
                 toastr.success('You will now be visible to this user again and can communicate with them.', 'User Unblocked');
+            });
+            $('#conversation').click(function (){
+                toastr.warning('Both users need to add each other as a contact before they can use GSM Messenger!', 'Chat Unavailable');
             });
         })
     </script>
