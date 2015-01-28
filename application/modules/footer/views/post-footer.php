@@ -240,21 +240,15 @@
     <!-- Toastr script -->
     <script src="/public/main/js/plugins/toastr/toastr.min.js"></script>
     
-    <script>
-		$(document).ready(function() {
-	
-		// show when page load
-		toastr.info('Page Loaded!');
-	
-		$('#addcontact').click(function() {
-		   // show when the button is clicked
-		   toastr.success('Click Button');
-	
-		});
-	
-	});
-	</script>
-
+    <script type="text/javascript">
+  $(document).ready(function() {
+    toastr.options.timeOut = 1500; // 1.5s
+    toastr.info('Page Loaded!');
+    $('#addcontact').click(function() {
+       toastr.success('Click Button');
+    });
+  });
+  </script>
 
     <?php 
 
