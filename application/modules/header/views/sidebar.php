@@ -24,20 +24,15 @@
                     <li>
                         <a href="profile/"><i class="fa fa-user"></i> <span class="nav-label"> My Profile</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="profile/who_viewed"><i class="fa fa-eye"></i> Who's Viewed <span class="label label-primary pull-right">6</span></a></li>
                             <li><a href="profile/"><i class="fa fa-user"></i> View Profile</a></li>
+                            <li><a href="profile/who_viewed"><i class="fa fa-eye"></i> Who's Viewed <span class="label label-primary pull-right">6</span></a></li>
                             <li><a href="profile/edit_profile"><i class="fa fa-cogs"></i> Edit Profile</a></li>
                         </ul>
                     </li>
                     
                     <li>
                         <?php $this->load->model('mailbox/mailbox_model', 'mailbox_model'); ?>
-                        <a href="/mailbox"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span><span class="label label-warning pull-right"><?php echo $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'read', 'no', 'inbox', 'yes');?>/<?php echo $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'));?></span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a href="mailbox/inbox/all"><i class="fa fa-inbox"></i> Inbox</a></li>
-                            <li><a href="mailbox/compose"><i class="fa fa-pencil"></i> Compose Email</a></li>
-                            <li><a href="mailbox/archive"><i class="fa fa-archive"></i> Archive</a></li>
-                        </ul>
+                        <a href="/mailbox/inbox/all"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span><span class="label label-warning pull-right"><?php echo $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'read', 'no', 'inbox', 'yes');?>/<?php echo $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'));?></span></a>
                     </li>
                     
                     <li>
