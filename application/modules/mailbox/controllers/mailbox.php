@@ -520,11 +520,14 @@ class Mailbox extends MX_Controller
     function mail_dropdown($mail_count){
         
         $data['base'] = $this->config->item('base_url');
-        $count = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'inbox', 'yes');
+        $count = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'inbox', 'yes', 'mail_read', 'no');
         
         if($count > 0){            
             //$data['inbox_count'] = $count;
-            //$data['inbox_message'] = $this->mailbox_model->_custom_query("SELECT * FROM mailbox WHERE mail_read = 'no' AND sent_member_id = '".$this->session->userdata('members_id')."' AND inbox = 'yes' ORDER BY datetime ASC LIMIT ".$mail_count."");
+            $data['inbox_message'] = $this->mailbox_model->_custom_query("SELECT * FROM mailbox WHERE mail_read = 'no' AND sent_member_id = '".$this->session->userdata('members_id')."' AND inbox = 'yes' ORDER BY datetime ASC LIMIT ".$mail_count."");
+        }
+        else{
+            $data['inbox_message'] = '';
         }
         $this->load->view('dropdown', $data);
     }
