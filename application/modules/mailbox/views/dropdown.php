@@ -4,7 +4,7 @@
         <?php foreach($inbox_message as $inbox){?>
             <li>
                 <div class="dropdown-messages-box">
-                    <a href="mailbox/inbox/<?php echo $inbox->member_id; ?>">
+                    <a href="mailbox/inbox/<?php echo $inbox->member_id; ?>" class="pull-left">
                         <?php if(file_exists($base."public/main/images/members/'.$inbox->member_id.'.jpg")){?>
                             <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/images/members/<?php echo $inbox->member_id; ?>.jpg">
                         <?php } else {?>
@@ -20,10 +20,10 @@
                     </div>
                 </div>
             </li>
-            
+            <li class="divider"></li>
         <?php } ?>
     <?php }?>
-    <li class="divider"></li>        
+            
     <li>
         <div class="text-center link-block">
             <a href=mailbox/inbox">
