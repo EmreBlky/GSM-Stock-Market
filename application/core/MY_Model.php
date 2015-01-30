@@ -75,7 +75,7 @@ class MY_Model extends CI_Model {
 	
 	}
 	
-	function get_where_multiple($chose, $value, $chose2 = NULL, $value2 = NULL)
+	function get_where_multiple($chose, $value, $chose2 = NULL, $value2 = NULL, $limit = NULL, $offset = NULL)
 	{
 		$data = '';
 		
@@ -85,7 +85,7 @@ class MY_Model extends CI_Model {
 		}else{
 		$this->db->where($chose2, $value2);
 		}
-		$query=$this->db->get($table);
+		$query=$this->db->get($table, $limit, $offset);
 		
 		if($query->num_rows() > 0){
 				
@@ -100,7 +100,7 @@ class MY_Model extends CI_Model {
 	
 	}
 	
-	function get_where_multiples($chose, $value, $chose2 = NULL, $value2 = NULL)
+	function get_where_multiples($chose, $value, $chose2 = NULL, $value2 = NULL, $limit = NULL, $offset = NULL)
 	{
 		$data = '';
 		
@@ -110,7 +110,7 @@ class MY_Model extends CI_Model {
 		}else{
 		$this->db->where($chose2, $value2);
 		}
-		$query=$this->db->get($table);
+		$query=$this->db->get($table, $limit, $offset);
 		
 		if($query->num_rows() > 0){
 				
@@ -125,7 +125,7 @@ class MY_Model extends CI_Model {
 	
 	}
         
-        function get_where_multiples_order($order_by, $order, $chose, $value, $chose2 = NULL, $value2 = NULL, $chose3 = NULL, $value3 = NULL)
+        function get_where_multiples_order($order_by, $order, $chose, $value, $chose2 = NULL, $value2 = NULL, $chose3 = NULL, $value3 = NULL, $chose4 = NULL, $value4 = NULL, $limit = NULL, $offset = NULL)
 	{
 		//$data = '';
 		
@@ -137,8 +137,11 @@ class MY_Model extends CI_Model {
                 if($chose3 != NULL){
 		$this->db->where($chose3, $value3);
 		}
+                if($chose4 != NULL){
+		$this->db->where($chose4, $value4);
+		}
                 $this->db->order_by($order_by, $order);
-		$query = $this->db->get($table);
+		$query = $this->db->get($table, $limit, $offset);
                 
 		if($query->num_rows() > 0){
 				
@@ -210,7 +213,7 @@ class MY_Model extends CI_Model {
 	
 	}
 	
-	function count_where($column, $value, $column2 = NULL, $value2 = NULL, $column3 = NULL, $value3 = NULL, $column4 = NULL, $value4 = NULL) 
+	function count_where($column, $value, $column2 = NULL, $value2 = NULL, $column3 = NULL, $value3 = NULL, $column4 = NULL, $value4 = NULL, $limit = NULL, $offset = NULL) 
 	{
 		
 		$table = $this->table;
@@ -224,7 +227,7 @@ class MY_Model extends CI_Model {
                 if($column4 != NULL){
 		$this->db->where($column4, $value4);
 		}
-		$query=$this->db->get($table);
+		$query=$this->db->get($table, $limit, $offset);
 		$num_rows = $query->num_rows();
 		
 		return $num_rows;
@@ -274,11 +277,19 @@ class MY_Model extends CI_Model {
 	}
 	
 	function _custom_query($mysql_query) 
-	{
-		
-		$query = $this->db->query($mysql_query);
-		
-		return $query;
+	{		
+            $query = $this->db->query($mysql_query);
+        
+            if($query->num_rows() > 0){
+
+                    foreach ($query->result() as $row)
+               {
+                       $data[] = $row;
+               }
+
+            }		
+
+            return $data;
 	
 	}
         
