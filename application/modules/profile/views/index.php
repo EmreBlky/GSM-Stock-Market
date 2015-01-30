@@ -100,6 +100,11 @@
                                 </div>
                             </div>
                             
+                            
+                    <p class="small">
+						Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable. Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable.
+                    </p>
+                            
                             <div class="row m-t-sm">
                                 <div class="col-lg-12">
                                 <div class="panel blank-panel">
@@ -357,9 +362,11 @@
                 <div class="wrapper wrapper-content project-manager">
                     <h4>Company Bio</h4>
                     <img src="/public/main/img/gsm-profile.png" class="img-responsive" style="margin:0 auto">
-                    <p class="small">
-						Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable. Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable.
-                    </p>
+                    <dl class="dl-horizontal">
+                    	<dt><i class="fa fa-linkedin"></i></dt> <dd>  @gsmstockmarket</dd>
+                    	<dt><i class="fa fa-facebook"></i></dt> <dd>  @gsmstockmarket</dd>
+                    	<dt><i class="fa fa-twitter"></i></dt> <dd>  @gsmstockmarket</dd>
+                    </dl>
 					<div class="row">
                     	<div class="col-lg-12">
                         	<button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#buycreditcheck"><i class="fa fa-check-square-o"></i> Credit Check</button>
