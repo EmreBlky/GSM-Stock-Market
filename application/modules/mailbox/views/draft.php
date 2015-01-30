@@ -24,6 +24,7 @@
                 </div>
                 <div class="pull-right tooltip-demo">
                     <!-- <a href="mail_compose.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Reply"><i class="fa fa-reply"></i> Reply</a> -->
+                    <a href="mailbox/compose/<?php echo $this->uri->segment(3);?>" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Reply"><i class="fa fa-archive"></i> Continue Edit</a>
                     <a href="mailbox/archive/<?php echo $this->uri->segment(4);?>" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Reply"><i class="fa fa-archive"></i> Archive</a>                    
                     <a href="mailbox/important_move/<?php echo $this->uri->segment(3);?>" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as important"><i class="fa fa-exclamation"></i></a>
                     <button onclick="window.print()" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Print email"><i class="fa fa-print"></i></button>
@@ -80,9 +81,9 @@
                     Draft (<?php echo $inbox_count;?>)
                 </h2>
                 <div class="mail-tools tooltip-demo m-t-md">                    
-                    <a href="mailbox/refresh" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh</a>
+                    <!-- <a href="mailbox/refresh" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh</a>
                     <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as read"><i class="fa fa-eye"></i> </button>
-                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as important"><i class="fa fa-exclamation"></i> </button>
+                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as important"><i class="fa fa-exclamation"></i> </button> -->
                     <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </button>
 
                 </div>
@@ -95,15 +96,15 @@
                             if($inbox_count > 0) {
                                 
                                 $this->load->model('member/member_model', 'member_model');
-                                
-                                foreach($inbox_message as $inbox){                                    
+                                                                
+                                foreach($inbox_draft as $inbox){                                    
                                     
                                         
                                         echo '<tr class="read">
                                                 <td class="check-mail">
                                                     <input type="checkbox" class="i-checks">
                                                 </td>
-                                                <td class="mail-ontact"><a href="mailbox/draft/'.$inbox->id.'">'.$this->member_model->get_where($inbox->member_id)->firstname.' '.$this->member_model->get_where($inbox->member_id)->lastname.'</a> 
+                                                <td class="mail-ontact"><a href="mailbox/draft/'.$inbox->id.'">'.$this->member_model->get_where($inbox->sent_member_id)->firstname.' '.$this->member_model->get_where($inbox->sent_member_id )->lastname.'</a> 
                                                     <!-- <span class="label label-warning pull-right">Clients</span> </td> -->
                                                 </td>
                                                 <td class="mail-subject"><a href="mailbox/draft/'.$inbox->id.'">'.$inbox->subject.'</a></td>

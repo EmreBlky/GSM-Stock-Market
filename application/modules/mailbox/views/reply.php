@@ -95,7 +95,7 @@
                                 $data = array(
                                             'name'          => 'body',
                                             'class'         => 'form-control', 
-                                            'value'         => nl2br($this->mailbox_model->get_where_multiple('id', $this->uri->segment(3))->body),
+                                            'value'         => strip_tags($this->mailbox_model->get_where_multiple('id', $this->uri->segment(3))->body),
                                             'style'         => 'border:none',
                                             'required'      => 'required'
                                           );

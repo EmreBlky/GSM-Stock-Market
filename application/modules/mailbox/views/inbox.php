@@ -12,7 +12,7 @@
                 if($message) {
                     
                     $data = array(                
-                                    'read'              => 'yes'
+                                    'mail_read'              => 'yes'
                                   );
 
                     $this->load->model('mailbox/mailbox_model', 'mailbox_model');
@@ -89,9 +89,10 @@
                 </h2>
                 <div class="mail-tools tooltip-demo m-t-md">
                     <a href="mailbox/refresh" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh</a>
-                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="bottom" name="button" value="read" title="Mark as Read"><i class="fa fa-eye"></i></button>
-                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="bottom" name="button" value="unread" title="Mark as Unread"><i class="fa fa-eye-slash"></i></button>
-                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="bottom" name="button" value="important" title="Mark as Important"><i class="fa fa-exclamation"></i></button>
+                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="bottom" name="button" value="read" title="Mark as Read"><i class="fa fa-eye"></i> Mark Read</button>
+                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="bottom" name="button" value="unread" title="Mark as Unread"><i class="fa fa-eye-slash"> Mark Unread</i></button>
+                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="bottom" name="button" value="important" title="Mark as Important"><i class="fa fa-exclamation"> Mark Important</i></button>
+                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="bottom" name="button" value="archive" title="Archive"><i class="fa fa-archive"> Archive</i></button>
                     <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="bottom" name="button" value="trash" title="Move to Trash"><i class="fa fa-trash-o"></i></button>
 
                 </div>
@@ -105,9 +106,12 @@
                                 
                                 $this->load->model('member/member_model', 'member_model');
                                 
-                                foreach($inbox_message as $inbox){
+                                if(isset($inbox_all)){
                                     
-                                    if($inbox->read == 'no'){
+                                    
+                                    foreach($inbox_all as $inbox){
+                                    
+                                    if($inbox->mail_read == 'no'){
                                         
                                         echo '<tr class="unread">
                                                 <td class="check-mail">
@@ -151,6 +155,162 @@
                                     }
                                     
                                 }
+                                }
+                                elseif(isset($inbox_member)){
+                                    
+                                    //echo 'INBOX FROM MEMBER';
+                                    foreach($inbox_member as $inbox){
+                                    
+                                    if($inbox->mail_read == 'no'){
+                                        
+                                        echo '<tr class="unread">
+                                                <td class="check-mail">
+                                                    <input type="checkbox" class="i-checks" name="'.$inbox->id.'">
+                                                </td>
+                                                <td class="mail-ontact"><a href="mailbox/inbox/'.$this->uri->segment(3).'/'.$inbox->id.'">'.$this->member_model->get_where($inbox->member_id)->firstname.' '.$this->member_model->get_where($inbox->member_id)->lastname.'</a>
+                                                    <!-- <span class="label label-warning pull-right">Clients</span> </td> -->
+                                                </td>
+                                                <td class="mail-subject"><a href="mailbox/inbox/'.$this->uri->segment(3).'/'.$inbox->id.'">'.$inbox->subject.'</a></td>
+                                                    <td class="">&nbsp;<!-- <i class="fa fa-paperclip"> --></i></td>';
+                                                    if($inbox->date < date('d-m-Y')){
+                                                       echo '<td class="text-right mail-date">'.$inbox->time.' '.date_format(date_create($inbox->date), 'jS F').'</td>'; 
+                                                    }
+                                                    else{
+                                                        echo '<td class="text-right mail-date">'.$inbox->time.'</td>';
+                                                    }
+                                                
+                                            echo '</tr>';
+                                        
+                                    }
+                                    else{
+                                        
+                                        echo '<tr class="read">
+                                                <td class="check-mail">
+                                                    <input type="checkbox" class="i-checks" name="'.$inbox->id.'">
+                                                </td>
+                                                <td class="mail-ontact"><a href="mailbox/inbox/'.$this->uri->segment(3).'/'.$inbox->id.'">'.$this->member_model->get_where($inbox->member_id)->firstname.' '.$this->member_model->get_where($inbox->member_id)->lastname.'</a> 
+                                                    <!-- <span class="label label-warning pull-right">Clients</span> </td> -->
+                                                </td>
+                                                <td class="mail-subject"><a href="mailbox/inbox/'.$this->uri->segment(3).'/'.$inbox->id.'">'.$inbox->subject.'</a></td>
+                                                <td class="">&nbsp;<!-- <i class="fa fa-paperclip"> --></i></td>';
+                                                    if($inbox->date < date('d-m-Y')){
+                                                       echo '<td class="text-right mail-date">'.$inbox->time.' '.date_format(date_create($inbox->date), 'jS F').'</td>'; 
+                                                    }
+                                                    else{
+                                                        echo '<td class="text-right mail-date">'.$inbox->time.'</td>';
+                                                    }
+                                                
+                                            echo '</tr>';
+                                        
+                                    }
+                                    
+                                }
+                                    
+                                }
+                                elseif(isset($inbox_market)){
+                                    
+                                    //echo 'INBOX FROM MEMBER';
+                                    foreach($inbox_market as $inbox){
+                                    
+                                    if($inbox->mail_read == 'no'){
+                                        
+                                        echo '<tr class="unread">
+                                                <td class="check-mail">
+                                                    <input type="checkbox" class="i-checks" name="'.$inbox->id.'">
+                                                </td>
+                                                <td class="mail-ontact"><a href="mailbox/inbox/'.$this->uri->segment(3).'/'.$inbox->id.'">'.$this->member_model->get_where($inbox->member_id)->firstname.' '.$this->member_model->get_where($inbox->member_id)->lastname.'</a>
+                                                    <!-- <span class="label label-warning pull-right">Clients</span> </td> -->
+                                                </td>
+                                                <td class="mail-subject"><a href="mailbox/inbox/'.$this->uri->segment(3).'/'.$inbox->id.'">'.$inbox->subject.'</a></td>
+                                                    <td class="">&nbsp;<!-- <i class="fa fa-paperclip"> --></i></td>';
+                                                    if($inbox->date < date('d-m-Y')){
+                                                       echo '<td class="text-right mail-date">'.$inbox->time.' '.date_format(date_create($inbox->date), 'jS F').'</td>'; 
+                                                    }
+                                                    else{
+                                                        echo '<td class="text-right mail-date">'.$inbox->time.'</td>';
+                                                    }
+                                                
+                                            echo '</tr>';
+                                        
+                                    }
+                                    else{
+                                        
+                                        echo '<tr class="read">
+                                                <td class="check-mail">
+                                                    <input type="checkbox" class="i-checks" name="'.$inbox->id.'">
+                                                </td>
+                                                <td class="mail-ontact"><a href="mailbox/inbox/'.$this->uri->segment(3).'/'.$inbox->id.'">'.$this->member_model->get_where($inbox->member_id)->firstname.' '.$this->member_model->get_where($inbox->member_id)->lastname.'</a> 
+                                                    <!-- <span class="label label-warning pull-right">Clients</span> </td> -->
+                                                </td>
+                                                <td class="mail-subject"><a href="mailbox/inbox/'.$this->uri->segment(3).'/'.$inbox->id.'">'.$inbox->subject.'</a></td>
+                                                <td class="">&nbsp;<!-- <i class="fa fa-paperclip"> --></i></td>';
+                                                    if($inbox->date < date('d-m-Y')){
+                                                       echo '<td class="text-right mail-date">'.$inbox->time.' '.date_format(date_create($inbox->date), 'jS F').'</td>'; 
+                                                    }
+                                                    else{
+                                                        echo '<td class="text-right mail-date">'.$inbox->time.'</td>';
+                                                    }
+                                                
+                                            echo '</tr>';
+                                        
+                                    }
+                                    
+                                }
+                                    
+                                }
+                                elseif(isset($inbox_support)){
+                                    
+                                    //echo 'INBOX FROM MEMBER';
+                                    foreach($inbox_support as $inbox){
+                                    
+                                    if($inbox->mail_read == 'no'){
+                                        
+                                        echo '<tr class="unread">
+                                                <td class="check-mail">
+                                                    <input type="checkbox" class="i-checks" name="'.$inbox->id.'">
+                                                </td>
+                                                <td class="mail-ontact"><a href="mailbox/inbox/'.$this->uri->segment(3).'/'.$inbox->id.'">'.$this->member_model->get_where($inbox->member_id)->firstname.' '.$this->member_model->get_where($inbox->member_id)->lastname.'</a>
+                                                    <!-- <span class="label label-warning pull-right">Clients</span> </td> -->
+                                                </td>
+                                                <td class="mail-subject"><a href="mailbox/inbox/'.$this->uri->segment(3).'/'.$inbox->id.'">'.$inbox->subject.'</a></td>
+                                                    <td class="">&nbsp;<!-- <i class="fa fa-paperclip"> --></i></td>';
+                                                    if($inbox->date < date('d-m-Y')){
+                                                       echo '<td class="text-right mail-date">'.$inbox->time.' '.date_format(date_create($inbox->date), 'jS F').'</td>'; 
+                                                    }
+                                                    else{
+                                                        echo '<td class="text-right mail-date">'.$inbox->time.'</td>';
+                                                    }
+                                                
+                                            echo '</tr>';
+                                        
+                                    }
+                                    else{
+                                        
+                                        echo '<tr class="read">
+                                                <td class="check-mail">
+                                                    <input type="checkbox" class="i-checks" name="'.$inbox->id.'">
+                                                </td>
+                                                <td class="mail-ontact"><a href="mailbox/inbox/'.$this->uri->segment(3).'/'.$inbox->id.'">'.$this->member_model->get_where($inbox->member_id)->firstname.' '.$this->member_model->get_where($inbox->member_id)->lastname.'</a> 
+                                                    <!-- <span class="label label-warning pull-right">Clients</span> </td> -->
+                                                </td>
+                                                <td class="mail-subject"><a href="mailbox/inbox/'.$this->uri->segment(3).'/'.$inbox->id.'">'.$inbox->subject.'</a></td>
+                                                <td class="">&nbsp;<!-- <i class="fa fa-paperclip"> --></i></td>';
+                                                    if($inbox->date < date('d-m-Y')){
+                                                       echo '<td class="text-right mail-date">'.$inbox->time.' '.date_format(date_create($inbox->date), 'jS F').'</td>'; 
+                                                    }
+                                                    else{
+                                                        echo '<td class="text-right mail-date">'.$inbox->time.'</td>';
+                                                    }
+                                                
+                                            echo '</tr>';
+                                        
+                                    }
+                                    
+                                }
+                                    
+                                }
+                                
+                                
                             
                         } 
                         else {?>

@@ -12,7 +12,7 @@
                 if($message) {
                     
                     $data = array(                
-                                    'read'              => 'yes'
+                                    'mail_read'              => 'yes'
                                   );
 
                     $this->load->model('mailbox/mailbox_model', 'mailbox_model');
@@ -91,8 +91,8 @@
                         <button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i></button>
 
                     </div>
-                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh</button>
-                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as read"><i class="fa fa-eye"></i> </button>
+                    <!-- <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh</button>
+                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as read"><i class="fa fa-eye"></i> </button> -->
                     <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as important"><i class="fa fa-exclamation"></i> </button>
                     <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </button>
 
@@ -109,7 +109,7 @@
                                 
                                 foreach($inbox_message as $inbox){
                                     
-                                    if($inbox->read == 'no'){
+                                    if($inbox->mail_read == 'no'){
                                         
                                         echo '  <tr class="unread">
                                                 <td class="check-mail">
