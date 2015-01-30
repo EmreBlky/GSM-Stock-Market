@@ -1,6 +1,6 @@
 
 <ul class="dropdown-menu dropdown-messages">
-    <?php if($count){ > 0?>
+    <?php if($count > 0){?>
         <?php foreach($inbox_message as $inbox){?>
             <li>
                 <div class="dropdown-messages-box">
