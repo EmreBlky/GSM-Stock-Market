@@ -20,9 +20,10 @@
                     </div>
                 </div>
             </li>
-            <li class="divider"></li>
+            
         <?php } ?>
     <?php }?>
+    <li class="divider"></li>        
     <li>
         <div class="text-center link-block">
             <a href=mailbox/inbox">
