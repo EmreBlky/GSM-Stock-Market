@@ -9,6 +9,7 @@ class Profile extends MX_Controller
         { 
             redirect('login');
         }
+        $this->load->model('member/member_model', 'member_model');
     }
 
     function index()
@@ -16,6 +17,7 @@ class Profile extends MX_Controller
         $data['main'] = 'profile';        
         $data['title'] = 'GSM - Profile';        
         $data['page'] = 'index';
+        $data['member_info'] = $sid = $this->member_model->get_where_multiple('id', $this->session->userdata('members_id'));
         
         $this->load->module('templates');
         $this->templates->page($data);

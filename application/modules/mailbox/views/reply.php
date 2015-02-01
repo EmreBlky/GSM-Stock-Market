@@ -142,3 +142,9 @@
             <?php echo form_close()?>
         </div>
         </div>
+        <?php 
+        
+            echo '<pre>';
+            print_r($inbox_reply);
+            echo '</pre>';
+        ?>

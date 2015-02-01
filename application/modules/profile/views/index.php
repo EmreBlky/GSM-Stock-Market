@@ -1,9 +1,17 @@
-	<div class="row wrapper border-bottom white-bg page-heading">
+<?php
+
+//echo '<pre>';
+//print_r($member_info);
+//exit;
+
+?>	
+
+<div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
                     <h2>View Profile</h2>
                     <ol class="breadcrumb">
                         <li>
-                            <a href="/">Home</a>
+                            <a href="home">Home</a>
                         </li>
                         <li>
                             My Profile
@@ -24,13 +32,13 @@
                         <div class="ibox-content">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <div class="alert alert-danger alert-dismissable">
+                                    <!--<div class="alert alert-danger alert-dismissable">
                                         <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
                                         <i class="fa fa-ban"></i> You have blocked this company. They are unable to communicate or see you in anyway on this website. <a class="alert-link" href="#">Unblock</a>.
-                                    </div>
+                                    </div> -->
                                     <div class="m-b-md">
-                                        <a href="#" class="btn btn-white btn-xs pull-right">Edit Profile</a>
-                                        <h2>GSMStockMarket.com Limited</h2>
+                                        <a href="profile/edit_profile" class="btn btn-white btn-xs pull-right">Edit Profile</a>
+                                        <h2><?php echo $member_info->company_name;?></h2>
                                     </div>
                                 </div>
                             </div>
@@ -41,20 +49,26 @@
                                         <dt>Subscription:</dt> <dd>Gold Member</dd>
                                     </dl>
                                     <dl class="dl-horizontal">
-                                        <dt>Company Number:</dt> <dd>0123456789</dd>
-                                        <dt>VAT/Tax Number:</dt> <dd>GB 019 292 11</dd>
+                                        <dt>Company Number:</dt> <dd><?php echo $member_info->company_number;?></dd>
+                                        <dt>VAT/Tax Number:</dt> <dd><?php echo $member_info->vat_tax;?></dd>
                                     </dl>                                    
                                     <dl class="dl-horizontal">
-                                        <dt>Address:</dt> <dd>  Units 1 & 2 The Old Dairy<br/ >Hazlemere Crossroads<br />High Wycombe<br />Buckinghamshire<br />HP15 7LG<br />United Kingdom</dd>
+                                        <dt>Address:</dt> <dd>  
+                                            <?php echo $member_info->address_line_1;?><br/>
+                                            <?php echo $member_info->address_line_2;?><br />
+                                            <?php echo $member_info->town_city;?><br />
+                                            <?php echo $member_info->county;?><br />
+                                            <?php echo $member_info->post_code;?><br />
+                                            <?php echo $member_info->country;?></dd>
                                     </dl>
                                     
                                     <dl class="dl-horizontal">
-                                        <dt>Phone:</dt> <dd>  +44 (0)7512 245 522</dd>
-                                        <dt>Skype:</dt> <dd>  @gsmstockmarket</dd>
-                                        <dt>Website:</dt> <dd>  www.GSMStockMarket.com</dd>
-                                        <dt>Facebook:</dt> <dd>  @gsmstockmarket</dd>
-                                        <dt>Twitter:</dt> <dd>  @gsmstockmarket</dd>
-                                        <dt>Linkedin:</dt> <dd>  @gsmstockmarket</dd>
+                                        <dt>Phone:</dt> <dd>  <?php echo $member_info->phone_number;?></dd>
+                                        <dt>Skype:</dt> <dd>  <?php echo $member_info->skype;?></dd>
+                                        <dt>Website:</dt> <dd>  <?php echo $member_info->website;?></dd>
+                                        <dt>Facebook:</dt> <dd>  <?php echo $member_info->facebook;?></dd>
+                                        <dt>Twitter:</dt> <dd>  <?php echo $member_info->twitter;?></dd>
+                                        <dt>Linkedin:</dt> <dd>  <?php echo $member_info->linkedin;?></dd>
                                     </dl>
                                     
                                     <dl class="dl-horizontal">
@@ -72,7 +86,7 @@
                             		</div>
                                     <dl class="dl-horizontal" >
 
-                                        <dt>Date Created:</dt> <dd> 16.08.2014 12:15:57</dd>
+                                        <dt>Date Created:</dt> <dd> <?php echo $member_info->date?></dd>
                                         <dt>Last Online:</dt> <dd> 	10.07.2014 23:36:57 </dd>
                                         <dt>Company Users:</dt>
                                         <dd class="project-people">
@@ -410,13 +424,28 @@
                             <div class="modal inmodal fade" id="profile_message" tabindex="-1" role="dialog"  aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
+                                        <?php
+                                            echo form_open('mailbox/composeMail'); 
+                                        ?>
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                                             <h4 class="modal-title">Send Message</h4>
-                                            <small class="font-bold">Send a message to GSMStockMarket.com Limited</small>
+                                            <small class="font-bold">Send a message to <?php echo $member_info->company_name?></small>
                                         </div>
                                         <div class="modal-body">
-                                            <p><strong>Form here</strong> generic stuff bla bla</p>
+                                            <!-- <p><strong>Form here</strong> generic stuff bla bla</p> -->
+                                            <?php 
+
+                                                $data = array(
+                                                            'name'        => 'body',
+                                                            'class'       => 'form-control', 
+                                                            'style'     => 'border:none',
+                                                            'required'      => 'required'
+                                                          );
+
+                                                echo form_textarea($data);
+
+                                            ?>
                                         </div>
 
                                         <div class="modal-footer">
@@ -424,6 +453,7 @@
                                             <button type="button" class="btn btn-primary">Send Message</button>
                                         </div>
                                     </div>
+                                    <?php echo form_close()?>
                                 </div>
                             </div>   
                                  

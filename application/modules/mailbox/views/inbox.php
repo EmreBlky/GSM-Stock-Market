@@ -85,7 +85,15 @@
                 </form>
                 <?php echo form_open('mailbox/mass_process'); ?>
                 <h2>
-                    <?php echo $header; ?> (<?php echo $inbox_count;?>)
+                    <?php if(isset($inbox_count)){?>
+                        <?php echo $header; ?> (<?php echo $inbox_ncount;?>)
+                    <?php } elseif(isset($inbox_s_count)){?>
+                        <?php echo $header; ?> (<?php echo $inbox_s_ncount;?>)
+                    <?php } elseif(isset($inbox_mem_count)){?>
+                        <?php echo $header; ?> (<?php echo $inbox_mem_ncount;?>)
+                    <?php } elseif(isset($inbox_mark_count)){?>
+                        <?php echo $header; ?> (<?php echo $inbox_mark_ncount;?>)
+                    <?php }?>
                 </h2>
                 <div class="mail-tools tooltip-demo m-t-md">
                     <a href="mailbox/refresh" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh</a>
@@ -102,7 +110,7 @@
                 <table class="table table-hover table-mail">
                     <tbody>
                         <?php 
-                            if($inbox_count > 0) {
+                            //if($inbox_count) {
                                 
                                 $this->load->model('member/member_model', 'member_model');
                                 
@@ -308,7 +316,7 @@
                                     
                                 }
                                     
-                                }
+                                //}
                                 
                                 
                             
