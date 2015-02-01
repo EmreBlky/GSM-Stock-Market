@@ -117,6 +117,7 @@ class Mailbox extends MX_Controller
             $cid = $row->cid;
         }
         
+        
         if($cid > 0){
             $data['reply_count'] = $cid;
             $data['inbox_reply'] = $this->mailbox_model->_custom_query("SELECT * FROM mailbox WHERE (sent_member_id = '".$this->session->userdata('members_id')."' AND parent_id = '".$oid."') OR (member_id = '".$this->session->userdata('members_id')."' AND parent_id = '".$oid."') ORDER BY datetime DESC");
@@ -369,9 +370,9 @@ class Mailbox extends MX_Controller
     
     function composeMail()
     {
-        //echo '<pre>';
-        //print_r($_POST);
-        //exit;
+//        echo '<pre>';
+//        print_r($_POST);
+//        exit;
         
         $this->load->library('form_validation');
         
@@ -381,6 +382,14 @@ class Mailbox extends MX_Controller
         
         $submit = $this->input->post('submit');
         $mail_type = $this->input->post('mail_type');
+        $pid = $this->input->post('parent_id');
+        
+        if($pid > 0){
+            $parent_id = $pid;
+        }
+        else{
+            
+        }
 //        
         if($submit == 'Send'){
             
