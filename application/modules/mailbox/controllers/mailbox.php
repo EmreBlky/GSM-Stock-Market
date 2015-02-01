@@ -104,14 +104,27 @@ class Mailbox extends MX_Controller
         $this->templates->page($data);
     }
     
-    function reply($mid)
+    function reply($oid, $mid = NULL)
     {        
         $data['main'] = 'mailbox';        
         $data['title'] = 'GSM - Reply Mail';        
         $data['page'] = 'reply';
         
-        $data['inbox_reply'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'member_id',$this->session->userdata('members_id'), 'inbox', 'yes', 'parent_id', $mid);
+        $count = $this->mailbox_model->_custom_query("SELECT COUNT(id) AS cid FROM mailbox WHERE (sent_member_id = '".$this->session->userdata('members_id')."' AND parent_id = '".$oid."') OR (member_id = '".$this->session->userdata('members_id')."' AND parent_id = '".$oid."')");
         
+        foreach ($count as $row)
+        {
+            $cid = $row->cid;
+        }
+        
+        if($cid > 0){
+            $data['reply_count'] = $cid;
+            $data['inbox_reply'] = $this->mailbox_model->_custom_query("SELECT * FROM mailbox WHERE (sent_member_id = '".$this->session->userdata('members_id')."' AND parent_id = '".$oid."') OR (member_id = '".$this->session->userdata('members_id')."' AND parent_id = '".$oid."') ORDER BY datetime DESC");
+        }
+        else{
+             $data['reply_count'] = 0;
+        }
+        $data['inbox_original'] = $this->mailbox_model->get_where($oid);
         $this->load->module('templates');
         $this->templates->page($data);
     }
@@ -126,11 +139,11 @@ class Mailbox extends MX_Controller
         $count = $this->mailbox_model->count_where_multiple('member_id',$this->session->userdata('members_id'), 'sent', 'yes');
         
         if($count > 0){            
-            $data['inbox_count'] = $count;
-            $data['inbox_message'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'member_id',$this->session->userdata('members_id'), 'sent', 'yes');
+            $data['inbox_sent_count'] = $count;
+            $data['inbox_sent_message'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'member_id',$this->session->userdata('members_id'), 'sent', 'yes');
         }
         else{            
-            $data['inbox_count'] = 0;
+            $data['inbox_sent_count'] = 0;
         }
         
         $data['message'] = $this->mailbox_model->get_where_multiple('id', $mid);
@@ -180,11 +193,11 @@ class Mailbox extends MX_Controller
         $count = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'important', 'yes');
         
         if($count > 0){            
-            $data['inbox_count'] = $count;
-             $data['inbox_message'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'sent_member_id',$this->session->userdata('members_id'), 'important', 'yes');
+            $data['inbox_important_count'] = $count;
+             $data['inbox_important_message'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'sent_member_id',$this->session->userdata('members_id'), 'important', 'yes');
         }
         else{            
-            $data['inbox_count'] = 0;
+            $data['inbox_important_count'] = 0;
         }
         
         $data['message'] = $this->mailbox_model->get_where_multiple('id', $mid);
@@ -216,11 +229,11 @@ class Mailbox extends MX_Controller
         $count = $this->mailbox_model->count_where_multiple('member_id',$this->session->userdata('members_id'), 'draft', 'yes', 'sent', 'no');
         
         if($count > 0){            
-            $data['inbox_count'] = $count;
-            $data['inbox_draft'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'member_id',$this->session->userdata('members_id'), 'draft', 'yes', 'sent', 'no');
+            $data['inbox_draft_count'] = $count;
+            $data['inbox_draft_message'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'member_id',$this->session->userdata('members_id'), 'draft', 'yes', 'sent', 'no');
         }
         else{            
-            $data['inbox_count'] = 0;
+            $data['inbox_draft_count'] = 0;
         }
         
         $data['message'] = $this->mailbox_model->get_where_multiple('id', $mid);
@@ -250,13 +263,16 @@ class Mailbox extends MX_Controller
         $data['title'] = 'GSM - Inbox';        
         $data['page'] = 'trash';
         
-        $count = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'trash', 'yes');
+        $count_sent = $this->mailbox_model->count_where_multiple('member_id', $this->session->userdata('members_id'), 'trash', 'yes');
+        $count_received = $this->mailbox_model->count_where_multiple('sent_member_id', $this->session->userdata('members_id'), 'trash', 'yes');
         
-        if($count > 0){            
-            $data['inbox_count'] = $count;
-            $data['inbox_message'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'sent_member_id',$this->session->userdata('members_id'), 'trash', 'yes');        }
+        if($count_sent > 0 || $count_received > 0){            
+            $data['inbox_trash_count'] = $count_sent+$count_received;
+            $data['inbox_trash_message_in'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'member_id',$this->session->userdata('members_id'), 'trash', 'yes');                    
+            $data['inbox_trash_message_out'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'sent_member_id',$this->session->userdata('members_id'), 'trash', 'yes');                    
+        }
         else{            
-            $data['inbox_count'] = 0;
+            $data['inbox_trash_count'] = 0;
         }
         
         
@@ -298,11 +314,42 @@ class Mailbox extends MX_Controller
     
     function side_mail()
     { 
-        $data['inbox'] = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'mail_read', 'no', 'inbox', 'yes');
-        $data['member'] = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'sent_from', 'member', 'mail_read', 'no', 'inbox', 'yes');
-        $data['market'] = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'sent_from', 'market', 'mail_read', 'no', 'inbox', 'yes');
-        $data['support'] = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'sent_from', 'support', 'mail_read', 'no', 'inbox', 'yes');        
-        $data['draft'] = $this->mailbox_model->count_where_multiple('member_id',$this->session->userdata('members_id'), 'draft', 'yes', 'inbox', 'yes');
+        $inbox_count = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'mail_read', 'no', 'inbox', 'yes');
+        $inbox_mem = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'sent_from', 'member', 'mail_read', 'no', 'inbox', 'yes');
+        $inbox_mark = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'sent_from', 'market', 'mail_read', 'no', 'inbox', 'yes');
+        $inbox_support = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'sent_from', 'support', 'mail_read', 'no', 'inbox', 'yes');
+        $inbox_draft = $this->mailbox_model->count_where_multiple('member_id',$this->session->userdata('members_id'), 'draft', 'yes', 'inbox', 'yes');
+        
+        if( $inbox_count > 0){
+            $data['inbox'] = $inbox_count;
+        }else{
+            $data['inbox'] = 0;
+        }
+        
+        if( $inbox_mem > 0){
+            $data['member'] = $inbox_mem;
+        }else{
+            $data['member'] = 0;
+        }
+        
+        if( $inbox_mark > 0){
+            $data['market'] = $inbox_mark;
+        }else{
+            $data['market'] = 0;
+        }
+        
+        if( $inbox_support > 0){
+            $data['support'] = $inbox_support;
+        }else{
+            $data['support'] = 0;
+        }
+        
+        if( $inbox_draft > 0){
+            $data['draft'] = $inbox_draft;
+        }else{
+            $data['draft'] = 0;
+        }
+        
         $this->load->view('side-mail', $data);
     }
             
@@ -427,11 +474,11 @@ class Mailbox extends MX_Controller
         $count = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'archive', 'yes');
         
         if($count > 0){            
-            $data['inbox_count'] = $count;
-            $data['inbox_message'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'sent_member_id', $this->session->userdata('members_id'), 'archive', 'yes');
+            $data['inbox_archive_count'] = $count;
+            $data['inbox_archive_message'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'sent_member_id', $this->session->userdata('members_id'), 'archive', 'yes');
         }
         else{            
-            $data['inbox_count'] = 0;
+            $data['inbox_archive_count'] = 0;
         }        
         
        $data['message'] = $this->mailbox_model->get_where_multiple('id', $mid);
@@ -488,6 +535,7 @@ class Mailbox extends MX_Controller
                 
                 $data = array(
                         'important'     => 'yes',
+                        'sent' => 'no',
                         'sent_from'     => 'moved',                        
                         'inbox'         => 'no'
                       );
@@ -501,7 +549,8 @@ class Mailbox extends MX_Controller
             foreach($_POST as $post_vale => $post_key){
                 
                 $data = array(
-                        'archive'     => 'yes',
+                        'archive'       => 'yes',
+                        'sent'          => 'no',
                         'sent_from'     => 'moved',                        
                         'inbox'         => 'no'
                       );
@@ -516,6 +565,7 @@ class Mailbox extends MX_Controller
                 
                 $data = array(
                         'trash'     => 'yes',
+                        'sent'      => 'no',
                         'sent_from' => 'moved',
                         'inbox'     => 'no'
                       );
@@ -574,7 +624,39 @@ class Mailbox extends MX_Controller
             $data['inbox_count'] = $count;
             $data['inbox_recent'] = $this->mailbox_model->_custom_query("SELECT * FROM mailbox WHERE sent_member_id = '".$this->session->userdata('members_id')."' AND inbox = 'yes' ORDER BY datetime DESC LIMIT ".$mail_count."");
         }
+        else{
+            $data['inbox_count'] = 0;
+        }
         $this->load->view('recent', $data);
+    }
+    
+    function messages_count(){
+        echo $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'mail_read', 'no', 'inbox', 'yes').'/'.$this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'));        
+        
+    }    
+    function new_message(){
+        $count = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'mail_read', 'no', 'inbox', 'yes');
+        if($count > 0){
+            echo $count;            
+        }        
+    }
+    function new_message_member(){
+        $count = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'mail_read', 'no', 'inbox', 'yes', 'sent_from', 'member');        
+        if($count > 0){
+            echo $count;            
+        }
+    }
+    function new_message_market(){
+        $count = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'mail_read', 'no', 'inbox', 'yes', 'sent_from', 'market');        
+        if($count > 0){
+            echo $count;            
+        }
+    }
+    function new_message_support(){
+        $count = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'mail_read', 'no', 'inbox', 'yes', 'sent_from', 'support');        
+        if($count > 0){
+            echo $count;            
+        }
     }
     
     function refresh()

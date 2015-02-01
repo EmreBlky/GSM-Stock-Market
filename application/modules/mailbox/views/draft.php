@@ -77,8 +77,9 @@
                         </div>
                     </div>
                 </form>
+                <?php echo form_open('mailbox/mass_process'); ?>
                 <h2>
-                    Draft (<?php echo $inbox_count;?>)
+                    Draft (<?php echo $inbox_draft_count;?>)
                 </h2>
                 <div class="mail-tools tooltip-demo m-t-md">                    
                     <!-- <a href="mailbox/refresh" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh</a>
@@ -93,16 +94,16 @@
                 <table class="table table-hover table-mail">
                     <tbody>
                         <?php 
-                            if($inbox_count > 0) {
+                            if($inbox_draft_count > 0) {
                                 
                                 $this->load->model('member/member_model', 'member_model');
                                                                 
-                                foreach($inbox_draft as $inbox){                                    
+                                foreach($inbox_draft_message as $inbox){                                    
                                     
                                         
                                         echo '<tr class="read">
                                                 <td class="check-mail">
-                                                    <input type="checkbox" class="i-checks">
+                                                    <input type="checkbox" class="i-checks" name="'.$inbox->id.'">
                                                 </td>
                                                 <td class="mail-ontact"><a href="mailbox/draft/'.$inbox->id.'">'.$this->member_model->get_where($inbox->sent_member_id)->firstname.' '.$this->member_model->get_where($inbox->sent_member_id )->lastname.'</a> 
                                                     <!-- <span class="label label-warning pull-right">Clients</span> </td> -->
@@ -137,6 +138,7 @@
                 </table>
                     
                 </div>
+        <?php echo form_close(); ?>
             </div>
         <?php } ?>
 </div>

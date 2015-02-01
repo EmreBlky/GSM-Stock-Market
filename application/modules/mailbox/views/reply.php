@@ -32,7 +32,7 @@
                                 $data = array(
                                             'name'      => 'email_address',
                                             'class'     => 'form-control',
-                                            'value'     => $this->member_model->get_where_multiple('id', $this->mailbox_model->get_where_multiple('id', $this->uri->segment(3))->member_id)->email,     
+                                            'value'     => $this->member_model->get_where_multiple('id', $this->mailbox_model->get_where_multiple('id', $this->uri->segment(4))->member_id)->email,     
                                             'required'  => 'required'
                                           );
 
@@ -89,21 +89,21 @@
                         <div class="summernote">
                            
                             <?php
-                            $body = $this->input->post('body');
-                            if($body == ''){
-                                
-                                $data = array(
-                                            'name'          => 'body',
-                                            'class'         => 'form-control', 
-                                            'value'         => strip_tags($this->mailbox_model->get_where_multiple('id', $this->uri->segment(3))->body),
-                                            'style'         => 'border:none',
-                                            'required'      => 'required'
-                                          );
-
-                                echo form_textarea($data);
-                                
-                            }
-                            else{
+//                            $body = $this->input->post('body');
+//                            if($body == ''){
+//                                
+//                                $data = array(
+//                                            'name'          => 'body',
+//                                            'class'         => 'form-control', 
+//                                            'value'         => strip_tags($this->mailbox_model->get_where_multiple('id', $this->uri->segment(3))->body),
+//                                            'style'         => 'border:none',
+//                                            'required'      => 'required'
+//                                          );
+//
+//                                echo form_textarea($data);
+//                                
+//                            }
+//                            else{
                             
                                 $data = array(
                                             'name'        => 'body',
@@ -113,7 +113,7 @@
                                           );
 
                                 echo form_textarea($data);
-                            }
+                            //}
                             
                             ?>
 
@@ -141,10 +141,48 @@
             </div>
             <?php echo form_close()?>
         </div>
+             
         </div>
-        <?php 
-        
-            echo '<pre>';
-            print_r($inbox_reply);
-            echo '</pre>';
-        ?>
+<div class="wrapper wrapper-content">
+        <div class="row">
+            <div class="col-lg-3">
+                
+            </div>
+            <div class="col-lg-9 animated fadeInRight">
+            <?php 
+                $this->load->model('member/member_model', 'member_model');
+                if($reply_count > 0){
+            
+                    foreach($inbox_reply as $reply){
+                ?>
+
+                        <div class="mail-box-header" style="border-bottom: 1px solid #e6e6e6">
+                            <div class="pull-right tooltip-demo">
+                                <p><?php echo $reply->time;?> &amp; <?php echo $reply->date;?></p>
+                            </div>
+                            <h2><?php echo $reply->subject;?></h2>
+                            <p><?php echo $this->member_model->get_where($reply->member_id)->firstname.' '.$this->member_model->get_where($reply->member_id)->lastname?></p>
+                        </div>
+                        <div class="mail-box" style="padding:10px;">
+                            <?php echo $reply->body;?>
+                        </div>
+
+                <?php 
+                    }
+                }
+
+                ?>
+                <div class="mail-box-header" style="border-bottom: 1px solid #e6e6e6">
+                            <div class="pull-right tooltip-demo">
+                                <p><?php echo $inbox_original->time;?> &amp; <?php echo $inbox_original->date;?></p>
+                            </div>
+                            <h2><?php echo $inbox_original->subject;?></h2>
+                            <p><?php echo $this->member_model->get_where($inbox_original->member_id)->firstname.' '.$this->member_model->get_where($inbox_original->member_id)->lastname?></p>
+                        </div>
+                        <div class="mail-box" style="padding:10px;">
+                            <?php echo $inbox_original->body;?>
+                        </div>
+                </div>
+        </div>
+</div>
+       

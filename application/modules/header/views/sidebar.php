@@ -32,7 +32,7 @@
                     
                     <li>
                         <?php $this->load->model('mailbox/mailbox_model', 'mailbox_model'); ?>
-                        <a href="mailbox/inbox/all"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span><span class="label label-warning pull-right"><?php echo $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'mail_read', 'no', 'inbox', 'yes');?>/<?php echo $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'));?></span></a>
+                        <a href="mailbox/inbox/all"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span><span class="label label-warning pull-right"><div id="result"></div></span></a>
                     </li>
                     
                     <li>

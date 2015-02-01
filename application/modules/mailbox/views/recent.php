@@ -23,6 +23,7 @@
                                 <div class="feed-activity-list">
                                     
                                     <?php 
+                                    if($inbox_count > 0){
                                         foreach($inbox_recent as $inbox) {
                                             $this->load->model('member/member_model', 'member_model');
                                     ?>
@@ -55,7 +56,17 @@
 
                                         <?php }?>
                                     
-                                    <?php }?>
+                                        <?php }} else {?>
+                                        <table>
+                                            <tr class="read">
+                                                <td class="check-mail"></td>
+                                                <td class="mail-ontact">&nbsp;</td>
+                                                <td class="mail-subject">You have no messages in your inbox.</td>
+                                                <td class=""></td>
+                                                <td class="text-right mail-date">&nbsp;</td>
+                                            </tr>                                        
+                                        </table>
+                                        <?php }?>
                                 </div>
                             </div>
                         </div>

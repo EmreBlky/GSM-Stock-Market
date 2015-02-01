@@ -82,8 +82,9 @@
                         </div>
                     </div>
                 </form>
+                <?php echo form_open('mailbox/mass_process'); ?>
                 <h2>
-                    Archive (<?php if(isset($inbox_count)){echo $inbox_count;};?>)
+                    Archive (<?php echo $inbox_archive_count;?>)
                 </h2>
                 <div class="mail-tools tooltip-demo m-t-md">
                     <div class="btn-group pull-right">
@@ -103,17 +104,17 @@
                     <table class="table table-hover table-mail">
                         <tbody>
                             <?php 
-                            if($inbox_count > 0) {
+                            if($inbox_archive_count > 0) {
                                 
                                 $this->load->model('member/member_model', 'member_model');
                                 
-                                foreach($inbox_message as $inbox){
+                                foreach($inbox_archive_message as $inbox){
                                     
                                     if($inbox->mail_read == 'no'){
                                         
                                         echo '  <tr class="unread">
                                                 <td class="check-mail">
-                                                    <input type="checkbox" class="i-checks">
+                                                    <input type="checkbox" class="i-checks" name="'.$inbox->id.'">
                                                 </td>
                                                 <td class="mail-ontact"><a href="mailbox/archive/'.$inbox->id.'">'.$this->member_model->get_where($inbox->member_id)->firstname.' '.$this->member_model->get_where($inbox->member_id)->lastname.'</a></td>
                                                 <td class="mail-subject"><a href="mailbox/archive/'.$inbox->id.'">'.$inbox->subject.'</a></td>
@@ -132,7 +133,7 @@
 
                                         echo '  <tr class="read">
                                                 <td class="check-mail">
-                                                    <input type="checkbox" class="i-checks">
+                                                    <input type="checkbox" class="i-checks" name="'.$inbox->id.'">
                                                 </td>
                                                 <td class="mail-ontact">
                                                     <a href="mailbox/archive/'.$inbox->id.'">'.$this->member_model->get_where($inbox->member_id)->firstname.' '.$this->member_model->get_where($inbox->member_id)->lastname.'</a>
@@ -171,6 +172,7 @@
                     </table>
                     
                 </div>
+                <?php echo form_close(); ?>
             </div>
         <?php } ?>
         </div>
