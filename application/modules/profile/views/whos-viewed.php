@@ -22,7 +22,7 @@
                     <a href="profile.html">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.png">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
                             <div class="m-t-xs font-bold">Director</div>
                             <span class="label label-primary">Online</span>
                         </div>
@@ -46,9 +46,9 @@
                     <a href="profile.html">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.png">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
                             <div class="m-t-xs font-bold">Director</div>
-                            <span class="label label-dangery">Offline</span>
+                            <span class="label label-danger">Offline</span>
                         </div>
                     </div>
                     <div class="col-sm-8">
