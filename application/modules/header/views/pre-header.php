@@ -12,6 +12,21 @@
 	<meta name="description" content="GSM Stock Market The ultimate trading platform for mobile phone trade companies globally. Members are retailers, wholesalers, distributors, manufacturers, network operators and service centres from all over the world." />
 	<meta name="keywords" content="gsm stock market, gsm trading, gsm market, gsm stock, mobile trading, phone trading, mobile phone, phone companies, mobile phone directory" />
     <meta name="google-translate-customization" content=""/>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+   <script>
+        function autoRefresh_div()
+        {
+            $("#result").load("mailbox/messages_count");
+            $("#inbox_count").load("mailbox/new_message");
+            $("#inbox_all").load("mailbox/new_message");
+            $("#inbox_market").load("mailbox/new_message_market");
+            $("#inbox_member").load("mailbox/new_message_member");
+            $("#inbox_support").load("mailbox/new_message_support");
+         }
+
+         setInterval('autoRefresh_div()', 50); // refresh div after 5 secs
+    </script>
 
 	<!-- Styling -->
     <link href="public/main/css/bootstrap.min.css" rel="stylesheet">
@@ -40,20 +55,7 @@
     <!-- jQuery UI -->
     <script src="/public/main/js/plugins/jquery-ui/jquery-ui.min.js"></script>
 
-   <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
-   <script>
-        function autoRefresh_div()
-        {
-            $("#result").load("mailbox/messages_count");
-            $("#inbox_count").load("mailbox/new_message");
-            $("#inbox_all").load("mailbox/new_message");
-            $("#inbox_market").load("mailbox/new_message_market");
-            $("#inbox_member").load("mailbox/new_message_member");
-            $("#inbox_support").load("mailbox/new_message_support");
-         }
-
-         setInterval('autoRefresh_div()', 50); // refresh div after 5 secs
-    </script>
+   
 </head>
 
 <body class="skin-1">
