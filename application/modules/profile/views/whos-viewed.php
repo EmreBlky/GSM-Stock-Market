@@ -57,15 +57,15 @@
                         </div>
                     </div>
                     <div class="col-sm-8">
-                        <h3><strong>Alex Johnatan</strong></h3>
+                        <h3><strong>Alex Johnatan</strong></h3> <span class="label label-primary">Online</span>
                         <p>GSMStockMarket.com Limited</p>
                         <p><strong>Top Business Activities</strong><br />- Mobile Repair<br />Network Operator<br />- Insurance</p>
                         
                     </div>
                     <div class="col-sm-12">
                             <button class="btn btn-danger" type="button" style="font-size:10px;float:right"><i class="fa fa-ban"></i>&nbsp;Block</button>
-                            <button class="btn btn-primary" type="button" style="font-size:10px;float:right;margin-right:10px"><i class="fa fa-envelope"></i>&nbsp;Message</button>
-                            <button class="btn btn-sucess" type="button" style="font-size:10px;float:right;margin-right:10px"><i class="fa fa-use"></i>&nbsp;View Profile</button>
+                            <button class="btn btn-primary" type="button" style="font-size:10px;float:right;margin-right:10px" data-target="#profile_message"><i class="fa fa-envelope"></i>&nbsp;Message</button>
+                            <button class="btn btn-success" type="button" style="font-size:10px;float:right;margin-right:10px"><i class="fa fa-user"></i>&nbsp;View Profile</button>
                     </div>
                     <div class="clearfix"></div>
                         </a>
@@ -347,6 +347,30 @@
                     <div class="clearfix"></div>
                     </a>
                 </div>
-            </div>
+            </div>        
+                            
+                            <div class="modal inmodal fade" id="profile_message" tabindex="-1" role="dialog"  aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">Send Message</h4>
+                                            <small class="font-bold">Send a message to GSMStockMarket.com</small>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p><strong>Form here</strong> generic stuff bla bla</p>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Send Message</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>   
+            
+            
+            
+            
         </div>
         </div>
