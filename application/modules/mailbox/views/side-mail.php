@@ -9,10 +9,10 @@
                                 <li style="border-bottom: none;">
                                     <i class="fa fa-inbox "></i> Inbox 
                                     <ul>
-                                        <li><a href="mailbox/inbox/all">ALL <?php if($inbox > 0){ echo '<span class="label label-warning pull-right"><div id="inbox_all"></div></span>';}?></a></li>
-                                        <li><a href="mailbox/inbox/member">From Members <?php if($member > 0){ echo '<span class="label label-warning pull-right"><div id="inbox_member"></div></span>';}?></a></li>
-                                        <li><a href="mailbox/inbox/market">From Marketplace <?php if($market > 0){ echo '<span class="label label-warning pull-right"><div id="inbox_market"></div></span>';}?></a></li>
-                                        <li><a href="mailbox/inbox/support">From Support <?php if($support > 0){ echo '<span class="label label-warning pull-right"><div id="inbox_support"></div></span>';}?></a></li>
+                                        <li><a href="mailbox/inbox/all">ALL <div id="inbox_all_message" style="float: right;"></div> </a></li>
+                                        <li><a href="mailbox/inbox/member">From Members <div id="inbox_member" style="float: right;"></div></a></li>
+                                        <li><a href="mailbox/inbox/market">From Marketplace <div id="inbox_market" style="float: right;"></div></a></li>
+                                        <li><a href="mailbox/inbox/support">From Support <div id="inbox_support" style="float: right;"></div></a></li>
                                     </ul>
                                 </li>
                                 <li>

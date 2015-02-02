@@ -20,6 +20,7 @@
             $("#result").load("mailbox/messages_count");
             $("#inbox_count").load("mailbox/new_message");
             $("#inbox_all").load("mailbox/new_message");
+            $("#inbox_all_message").load("mailbox/new_message_all");
             $("#inbox_market").load("mailbox/new_message_market");
             $("#inbox_member").load("mailbox/new_message_member");
             $("#inbox_support").load("mailbox/new_message_support");
