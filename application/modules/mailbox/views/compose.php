@@ -66,7 +66,7 @@
                                             'name'        => 'body',
                                             'class'       => 'form-control', 
                                             'style'     => 'border:none',
-                                            'value'     => $this->mailbox_model->get_where_multiple('id', $this->uri->segment(3))->body,
+                                            'value'     => strip_tags ($this->mailbox_model->get_where_multiple('id', $this->uri->segment(3))->body),
                                             'required'      => 'required'
                                           );
 

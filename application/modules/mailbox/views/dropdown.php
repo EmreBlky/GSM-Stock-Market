@@ -26,7 +26,7 @@
             
     <li>
         <div class="text-center link-block">
-            <a href=mailbox/inbox">
+            <a href="mailbox/inbox">
                 <i class="fa fa-envelope"></i> <strong>Read All Messages</strong>
             </a>
         </div>

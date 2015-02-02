@@ -9,6 +9,7 @@ class Search extends MX_Controller
         { 
             redirect('login');
         }
+        $this->load->model('search_model');
     }
 
     function index()
@@ -27,11 +28,17 @@ class Search extends MX_Controller
         $this->load->view('email-search', $data);
     }
     
-    function emailSearch($category){
+    function emailSearch($category)
+    {
         
-        echo $category;
+        //echo $category;
+        //echo '<pre>';
+        //print_r($_POST);
+        
+        $test = $this->search_model->search_email($category);
+        //return $test;
         echo '<pre>';
-        print_r($_POST);
+        print_r($test);
     }
             
     function user()
