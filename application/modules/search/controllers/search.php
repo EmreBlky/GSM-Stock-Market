@@ -21,6 +21,19 @@ class Search extends MX_Controller
         $this->templates->page($data);
     }
     
+    function email($var)
+    {
+        $data['category'] = $var;
+        $this->load->view('email-search', $data);
+    }
+    
+    function emailSearch($category){
+        
+        echo $category;
+        echo '<pre>';
+        print_r($_POST);
+    }
+            
     function user()
     {
         $data['main'] = 'search';        
