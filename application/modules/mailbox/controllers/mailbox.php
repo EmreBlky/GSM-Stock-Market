@@ -640,7 +640,7 @@ class Mailbox extends MX_Controller
     }
     
     function messages_count(){
-        echo $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'mail_read', 'no', 'inbox', 'yes').'/'.$this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'));        
+        echo $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'mail_read', 'no', 'inbox', 'yes').'/'.$this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'inbox', 'yes');        
         
     }    
     function new_message(){
