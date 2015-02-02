@@ -4,11 +4,11 @@
                     <li class="nav-header">
                         <div class="dropdown profile-element">
                             <span>
-                                <?php //if(file_exists($base."public/main/images/members/".$this->session->userdata('members_id').".jpg")){?>
+                                <?php if(file_exists("public/main/images/members/".$this->session->userdata('members_id').".jpg")){?>
                                     <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/images/members/<?php echo $this->session->userdata('members_id'); ?>.jpg">
-                                <?php //} else {?>
-                                    <!-- <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/images/members/no_profile.jpg" height="128" width="128"> -->
-                                <?php //}?>                            
+                                <?php } else {?>
+                                    <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/images/members/no_profile.jpg" height="128" width="128">
+                                <?php }?>                            
                             </span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?php echo $this->session->userdata('firstname');?> <?php echo $this->session->userdata('lastname');?></strong>
