@@ -40,7 +40,7 @@
     <!-- jQuery UI -->
     <script src="/public/main/js/plugins/jquery-ui/jquery-ui.min.js"></script>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+   <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
    <script>
         function autoRefresh_div()
         {
