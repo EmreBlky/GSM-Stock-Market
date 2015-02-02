@@ -22,15 +22,15 @@
                     <a href="/profile/">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/images/members/2.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/daniel_big.jpg">
                             <span class="label label-primary">Online</span>
                         </div>
                     </div>
                     </a>
                     <div class="col-sm-8">
-                        <h3 style="margin-bottom:0"><strong>Alex Johnatan</strong></h3>
+                        <h3 style="margin-bottom:0"><strong>Daniel Gregory</strong></h3>
                             <div>Director</div>
-                        <h4 style="margin-bottom:0"><strong>GSMStockMarket.com Limited</strong></h4>
+                        <h4 style="margin-bottom:0"><strong>TebiHost Limited</strong></h4>
                         	<p>- Mobile Repair<br />- Network Operator<br />- Insurance</p>
                         
                     </div>
