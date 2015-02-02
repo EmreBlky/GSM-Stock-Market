@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="contact-box">
-                    <a href="profile.html">
+                    <a href="/profile/">
                     <div class="col-sm-4">
                         <div class="text-center">
                             <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
@@ -27,6 +27,7 @@
                             <span class="label label-primary">Online</span>
                         </div>
                     </div>
+                    </a>
                     <div class="col-sm-8">
                         <h3><strong>Alex Johnatan</strong></h3>
                         <p class="small">GSMStockMarket.com Limited</p>
@@ -38,22 +39,22 @@
                             <button class="btn btn-success" type="button" style="font-size:10px;float:right;margin-right:10px"><i class="fa fa-user"></i>&nbsp;View Profile</button>
                     </div>
                     <div class="clearfix"></div>
-                        </a>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="contact-box">
-                    <a href="profile.html">
+                    <a href="/profile/">
                     <div class="col-sm-4">
                         <div class="text-center">
                             <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
-                            <div class="m-t-xs font-bold">Director</div>
                             <span class="label label-danger">Offline</span>
                         </div>
                     </div>
+                    </a>
                     <div class="col-sm-8">
-                        <h3><strong>Alex Johnatan</strong></h3>
-                        <p class="small">GSMStockMarket.com Limited</p>
+                        <h3 style="margin-bottom:0"><strong>Alex Johnatan</strong></h3>
+                            <div class="m-t-xs font-bold">Director</div>
+                            <div class="m-t-xs font-bold">GSMStockMarket.com Limited</div>
                         <p><strong>Top Activities</strong><br />- Mobile Repair<br />Network Operator<br />- Insurance</p>
                         
                     </div>
@@ -62,7 +63,6 @@
                             <button class="btn btn-success" type="button" style="font-size:10px;float:right;margin-right:10px"><i class="fa fa-user"></i>&nbsp;View Profile</button>
                     </div>
                     <div class="clearfix"></div>
-                        </a>
                 </div>
             </div>
             </div>        
