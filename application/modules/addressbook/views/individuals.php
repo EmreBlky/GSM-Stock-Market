@@ -25,7 +25,7 @@
                             <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
-                            <span class="label label-danger">Offline</span><br />
+                            <span class="label label-danger">Offline</span><br /><br />
                             <i class="small">1/1/2015 @ 14:22pm</i>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                             <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
-                            <span class="label label-danger">Offline</span><br />
+                            <span class="label label-danger">Offline</span><br /><br />
                             <i class="small">1/1/2015 @ 14:22pm</i>
                         </div>
                     </div>
@@ -93,7 +93,7 @@
                             <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
-                            <span class="label label-danger">Offline</span><br />
+                            <span class="label label-danger">Offline</span><br /><br />
                             <i class="small">1/1/2015 @ 14:22pm</i>
                         </div>
                     </div>
@@ -127,7 +127,7 @@
                             <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
-                            <span class="label label-danger">Offline</span><br />
+                            <span class="label label-danger">Offline</span><br /><br />
                             <i class="small">1/1/2015 @ 14:22pm</i>
                         </div>
                     </div>
@@ -161,7 +161,7 @@
                             <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
-                            <span class="label label-danger">Offline</span><br />
+                            <span class="label label-danger">Offline</span><br /><br />
                             <i class="small">1/1/2015 @ 14:22pm</i>
                         </div>
                     </div>
@@ -195,7 +195,7 @@
                             <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
-                            <span class="label label-danger">Offline</span><br />
+                            <span class="label label-danger">Offline</span><br /><br />
                             <i class="small">1/1/2015 @ 14:22pm</i>
                         </div>
                     </div>
@@ -229,7 +229,7 @@
                             <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
-                            <span class="label label-danger">Offline</span><br />
+                            <span class="label label-danger">Offline</span><br /><br />
                             <i class="small">1/1/2015 @ 14:22pm</i>
                         </div>
                     </div>
@@ -263,7 +263,7 @@
                             <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
-                            <span class="label label-danger">Offline</span><br />
+                            <span class="label label-danger">Offline</span><br /><br />
                             <i class="small">1/1/2015 @ 14:22pm</i>
                         </div>
                     </div>
@@ -297,7 +297,7 @@
                             <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
-                            <span class="label label-danger">Offline</span><br />
+                            <span class="label label-danger">Offline</span><br /><br />
                             <i class="small">1/1/2015 @ 14:22pm</i>
                         </div>
                     </div>
@@ -331,7 +331,7 @@
                             <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
-                            <span class="label label-danger">Offline</span><br />
+                            <span class="label label-danger">Offline</span><br /><br />
                             <i class="small">1/1/2015 @ 14:22pm</i>
                         </div>
                     </div>
@@ -365,7 +365,7 @@
                             <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
-                            <span class="label label-danger">Offline</span><br />
+                            <span class="label label-danger">Offline</span><br /><br />
                             <i class="small">1/1/2015 @ 14:22pm</i>
                         </div>
                     </div>
@@ -399,7 +399,7 @@
                             <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
-                            <span class="label label-danger">Offline</span><br />
+                            <span class="label label-danger">Offline</span><br /><br />
                             <i class="small">1/1/2015 @ 14:22pm</i>
                         </div>
                     </div>
@@ -433,7 +433,7 @@
                             <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
-                            <span class="label label-danger">Offline</span><br />
+                            <span class="label label-danger">Offline</span><br /><br />
                             <i class="small">1/1/2015 @ 14:22pm</i>
                         </div>
                     </div>
@@ -467,7 +467,7 @@
                             <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
-                            <span class="label label-danger">Offline</span><br />
+                            <span class="label label-danger">Offline</span><br /><br />
                             <i class="small">1/1/2015 @ 14:22pm</i>
                         </div>
                     </div>
@@ -501,7 +501,7 @@
                             <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
-                            <span class="label label-danger">Offline</span><br />
+                            <span class="label label-danger">Offline</span><br /><br />
                             <i class="small">1/1/2015 @ 14:22pm</i>
                         </div>
                     </div>
@@ -535,7 +535,7 @@
                             <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
-                            <span class="label label-danger">Offline</span><br />
+                            <span class="label label-danger">Offline</span><br /><br />
                             <i class="small">1/1/2015 @ 14:22pm</i>
                         </div>
                     </div>
@@ -569,7 +569,7 @@
                             <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
-                            <span class="label label-danger">Offline</span><br />
+                            <span class="label label-danger">Offline</span><br /><br />
                             <i class="small">1/1/2015 @ 14:22pm</i>
                         </div>
                     </div>
@@ -603,7 +603,7 @@
                             <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
-                            <span class="label label-danger">Offline</span><br />
+                            <span class="label label-danger">Offline</span><br /><br />
                             <i class="small">1/1/2015 @ 14:22pm</i>
                         </div>
                     </div>
