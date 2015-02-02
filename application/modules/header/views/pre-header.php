@@ -25,7 +25,7 @@
             $("#inbox_support").load("mailbox/new_message_support");
          }
 
-         setInterval('autoRefresh_div()', 50); // refresh div after 5 secs
+         setInterval('autoRefresh_div()', 1000); // refresh div after 5 secs
     </script>
 
 	<!-- Styling -->
