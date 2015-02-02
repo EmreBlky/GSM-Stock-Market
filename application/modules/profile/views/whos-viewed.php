@@ -24,11 +24,20 @@
                         <div class="text-center">
                             <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/daniel_big.jpg">
                         </div>
+                        <div class="text-center" style="margin-top:10px">
                             <span class="label label-primary">Online</span>
+                        </div>
                     </div>
                     </a>
                     <div class="col-sm-8">
+                    	<div class="col-sm-12" style="padding:0">
+                    	<div class="col-sm-8" style="padding:0">
                         <h3 style="margin-bottom:0"><strong>Daniel Gregory</strong></h3>
+                        </div>
+                        <div class="col-sm-4" style="padding:5px 0">
+                            <img alt="image" style="float:right" src="/public/main/img/flags/United_Kingdom.png">
+                        </div>
+                        </div>
                             <div>Director</div>
                         <h4 style="margin-bottom:0"><strong>TebiHost Limited</strong></h4>
                         	<p>- Mobile Repair<br />- Network Operator<br />- Insurance</p>
@@ -48,8 +57,10 @@
                         <div class="text-center">
                             <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
                         </div>
-                            <span class="label label-danger">Offline</span>
-                            <i>Last Online: 1/1/2015 @ 14:22pm</i>
+                        <div class="text-center" style="margin-top:10px">
+                            <span class="label label-danger">Offline</span><br />
+                            <i class="small">1/1/2015 @ 14:22pm</i>
+                        </div>
                     </div>
                     </a>
                     <div class="col-sm-8">
