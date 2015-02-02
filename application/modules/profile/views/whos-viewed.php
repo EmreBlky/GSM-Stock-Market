@@ -23,8 +23,8 @@
                     <div class="col-sm-4">
                         <div class="text-center">
                             <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/daniel_big.jpg">
-                            <span class="label label-primary">Online</span>
                         </div>
+                            <span class="label label-primary">Online</span>
                     </div>
                     </a>
                     <div class="col-sm-8">
@@ -47,8 +47,9 @@
                     <div class="col-sm-4">
                         <div class="text-center">
                             <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
-                            <span class="label label-danger">Offline</span>
                         </div>
+                            <span class="label label-danger">Offline</span>
+                            <i>Last Online: 1/1/2015 @ 14:22pm</i>
                     </div>
                     </a>
                     <div class="col-sm-8">
