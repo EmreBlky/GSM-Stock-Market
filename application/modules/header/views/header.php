@@ -24,7 +24,14 @@
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                        <i class="fa fa-envelope"></i> <?php $this->load->model('mailbox/mailbox_model', 'mailbox_model'); $in_count = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'mail_read', 'no', 'inbox', 'yes'); if($in_count > 0){?> <span class="label label-warning"><div id="inbox_count"></div></span> <?php }?>
+                        <i class="fa fa-envelope"></i> 
+                            <?php 
+                                $this->load->model('mailbox/mailbox_model', 'mailbox_model'); 
+                                $in_count = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'mail_read', 'no', 'inbox', 'yes'); 
+                                
+                                if($in_count > 0){?> 
+                                    <span class="label label-warning"><div id="inbox_count"></div></span> 
+                            <?php }?>
                     </a>
                     <?php
                     
