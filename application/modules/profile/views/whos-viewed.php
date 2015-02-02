@@ -47,22 +47,20 @@
                     <div class="col-sm-4">
                         <div class="text-center">
                             <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
-                            <div class="m-t-xs font-bold"><img alt="image" src="/public/main/img/flags/United_Kingdom.png"> United Kingdom</div>
-                            <div class="m-t-xs font-bold">GSMStockMarket.com Limited</div>
                             <span class="label label-danger">Offline</span>
                         </div>
                     </div>
                     </a>
                     <div class="col-sm-8">
                         <h3 style="margin-bottom:0"><strong>Alex Johnatan</strong></h3>
-                            <div class="m-t-xs font-bold">Director</div>
-                            <div class="m-t-xs font-bold">GSMStockMarket.com Limited</div>
-                        <p><strong>Top Activities</strong><br />- Mobile Repair<br />- Network Operator<br />- Insurance</p>
+                            <div>Director</div>
+                        <h4 style="margin-bottom:0"><strong>GSMStockMarket.com Limited</strong></h4>
+                        	<p>- Mobile Repair<br />- Network Operator<br />- Insurance</p>
                         
                     </div>
                     <div class="col-sm-12">
                             <button class="btn btn-primary" type="button" style="font-size:10px;float:right;margin-right:10px" data-toggle="modal" data-target="#profile_message"><i class="fa fa-envelope"></i>&nbsp;Message</button>
-                            <button class="btn btn-success" type="button" style="font-size:10px;float:right;margin-right:10px"><i class="fa fa-user"></i>&nbsp;View Profile</button>
+                            <button class="btn btn-success" type="button" style="font-size:10px;float:right;margin-right:0"><i class="fa fa-user"></i>&nbsp;View Profile</button>
                     </div>
                     <div class="clearfix"></div>
                 </div>
