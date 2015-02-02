@@ -72,16 +72,13 @@
             <div class="col-lg-9 animated fadeInRight">
             <div class="mail-box-header">
 
-                <form method="get" action="index.html" class="pull-right mail-search">
-                    <div class="input-group">
-                        <input type="text" class="form-control input-sm" name="search" placeholder="Search email">
-                        <div class="input-group-btn">
-                            <button type="submit" class="btn btn-sm btn-primary">
-                                Search
-                            </button>
-                        </div>
-                    </div>
-                </form>
+                <?php
+                
+                    $this->load->module('search');
+                    $this->search->email('archive');
+                
+                ?>
+                
                 <?php echo form_open('mailbox/mass_process'); ?>
                 <h2>
                     Archive (<?php echo $inbox_archive_count;?>)
