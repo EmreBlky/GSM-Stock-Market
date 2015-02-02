@@ -22,20 +22,20 @@
                     <a href="/profile/">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
-                            <div class="m-t-xs font-bold">Director</div>
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/images/members/2.jpg">
                             <span class="label label-primary">Online</span>
                         </div>
                     </div>
                     </a>
                     <div class="col-sm-8">
-                        <h3><strong>Alex Johnatan</strong></h3>
-                        <p class="small">GSMStockMarket.com Limited</p>
-                        <p><strong>Top Activities</strong><br />- Mobile Repair<br />Network Operator<br />- Insurance</p>
+                        <h3 style="margin-bottom:0"><strong>Alex Johnatan</strong></h3>
+                            <div>Director</div>
+                        <h4 style="margin-bottom:0"><strong>GSMStockMarket.com Limited</strong></h4>
+                        	<p>- Mobile Repair<br />- Network Operator<br />- Insurance</p>
                         
                     </div>
                     <div class="col-sm-12">
-                            <button class="btn btn-primary" type="button" style="font-size:10px;float:right;margin-right:10px" data-toggle="modal" data-target="#profile_message"><i class="fa fa-envelope"></i>&nbsp;Message</button>
+                            <button class="btn btn-primary" type="button" style="font-size:10px;float:right;margin-right:0" data-toggle="modal" data-target="#profile_message"><i class="fa fa-envelope"></i>&nbsp;Message</button>
                             <button class="btn btn-success" type="button" style="font-size:10px;float:right;margin-right:10px"><i class="fa fa-user"></i>&nbsp;View Profile</button>
                     </div>
                     <div class="clearfix"></div>
@@ -59,8 +59,8 @@
                         
                     </div>
                     <div class="col-sm-12">
-                            <button class="btn btn-primary" type="button" style="font-size:10px;float:right;margin-right:10px" data-toggle="modal" data-target="#profile_message"><i class="fa fa-envelope"></i>&nbsp;Message</button>
-                            <button class="btn btn-success" type="button" style="font-size:10px;float:right;margin-right:0"><i class="fa fa-user"></i>&nbsp;View Profile</button>
+                            <button class="btn btn-primary" type="button" style="font-size:10px;float:right;margin-right:0" data-toggle="modal" data-target="#profile_message"><i class="fa fa-envelope"></i>&nbsp;Message</button>
+                            <button class="btn btn-success" type="button" style="font-size:10px;float:right;margin-right:10px"><i class="fa fa-user"></i>&nbsp;View Profile</button>
                     </div>
                     <div class="clearfix"></div>
                 </div>
