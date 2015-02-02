@@ -47,6 +47,8 @@
                     <div class="col-sm-4">
                         <div class="text-center">
                             <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
+                            <div class="m-t-xs font-bold"><img alt="image" src="/public/main/img/flags/United_Kingdom.png"> United Kingdom</div>
+                            <div class="m-t-xs font-bold">GSMStockMarket.com Limited</div>
                             <span class="label label-danger">Offline</span>
                         </div>
                     </div>
@@ -55,7 +57,7 @@
                         <h3 style="margin-bottom:0"><strong>Alex Johnatan</strong></h3>
                             <div class="m-t-xs font-bold">Director</div>
                             <div class="m-t-xs font-bold">GSMStockMarket.com Limited</div>
-                        <p><strong>Top Activities</strong><br />- Mobile Repair<br />Network Operator<br />- Insurance</p>
+                        <p><strong>Top Activities</strong><br />- Mobile Repair<br />- Network Operator<br />- Insurance</p>
                         
                     </div>
                     <div class="col-sm-12">
