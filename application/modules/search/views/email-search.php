@@ -7,7 +7,7 @@
         <input type="text" class="form-control input-sm" id="search_email" name="search" placeholder="Search email">        
         <div class="input-group-btn">
             <button type="submit" class="btn btn-sm btn-primary">
-                Searching
+                Search
             </button>
         </div>
     </div>

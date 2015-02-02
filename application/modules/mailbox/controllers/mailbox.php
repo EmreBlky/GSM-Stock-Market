@@ -266,11 +266,26 @@ class Mailbox extends MX_Controller
         
         $count_sent = $this->mailbox_model->count_where_multiple('member_id', $this->session->userdata('members_id'), 'trash', 'yes');
         $count_received = $this->mailbox_model->count_where_multiple('sent_member_id', $this->session->userdata('members_id'), 'trash', 'yes');
+         
         
-        if($count_sent > 0 || $count_received > 0){            
+        if($count_sent > 0 && $count_received > 0){            
             $data['inbox_trash_count'] = $count_sent+$count_received;
             $data['inbox_trash_message_in'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'member_id',$this->session->userdata('members_id'), 'trash', 'yes');                    
             $data['inbox_trash_message_out'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'sent_member_id',$this->session->userdata('members_id'), 'trash', 'yes');                    
+        }
+        elseif($count_sent < 1 && $count_received > 0){            
+            $data['inbox_trash_count'] = $count_sent+$count_received;
+            $data['inbox_trash_message_in'] = 0;                    
+            $data['inbox_trash_message_out'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'sent_member_id',$this->session->userdata('members_id'), 'trash', 'yes');                    
+        
+            
+        }
+        elseif($count_sent > 0 && $count_received < 1){            
+            $data['inbox_trash_count'] = $count_sent+$count_received;
+            $data['inbox_trash_message_in'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'member_id',$this->session->userdata('members_id'), 'trash', 'yes');                    
+            $data['inbox_trash_message_out'] = 0;                    
+        
+            
         }
         else{            
             $data['inbox_trash_count'] = 0;

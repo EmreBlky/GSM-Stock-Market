@@ -94,9 +94,8 @@
                                 
                                 $this->load->model('member/member_model', 'member_model');
                                 
-                                foreach($inbox_trash_message_in as $inbox){
-                                    
-                                    
+                                if($inbox_trash_message_in != 0){
+                                    foreach($inbox_trash_message_in as $inbox){
                                         
                                         echo '<tr class="read">
                                                 <td class="check-mail">
@@ -114,14 +113,15 @@
                                                         echo '<td class="text-right mail-date">'.$inbox->time.'</td>';
                                                     }
                                                 
-                                            echo '</tr>';
+                                        echo '</tr>';
                                      
+                                    }
                                 }
-                                foreach($inbox_trash_message_out as $inbox){
-                                    
-                                    
-                                        
-                                        echo '<tr class="read">
+                                
+                                if($inbox_trash_message_out != 0){
+                                     foreach($inbox_trash_message_out as $inbox){
+                                         
+                                         echo '<tr class="read">
                                                 <td class="check-mail">
                                                     <input type="checkbox" class="i-checks" name="'.$inbox->id.'">
                                                 </td>
@@ -137,8 +137,9 @@
                                                         echo '<td class="text-right mail-date">'.$inbox->time.'</td>';
                                                     }
                                                 
-                                            echo '</tr>';
+                                        echo '</tr>';
                                      
+                                    }
                                 }
                             
                         } 
