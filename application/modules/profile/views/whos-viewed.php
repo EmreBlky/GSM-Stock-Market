@@ -52,19 +52,20 @@
                     <a href="profile.html">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/a1.jpg">
-                            <div class="m-t-xs font-bold">CEO</div>
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-profile.png">
+                            <div class="m-t-xs font-bold">Director</div>
                         </div>
                     </div>
                     <div class="col-sm-8">
                         <h3><strong>Alex Johnatan</strong></h3>
-                        <p><i class="fa fa-map-marker"></i> Riviera State 32/106</p>
-                        <address>
-                            <strong>Twitter, Inc.</strong><br>
-                            795 Folsom Ave, Suite 600<br>
-                            San Francisco, CA 94107<br>
-                            <abbr title="Phone">P:</abbr> (123) 456-7890
-                        </address>
+                        <p>GSMStockMarket.com Limited</p>
+                        <p><strong>Top Business Activities</strong><br />- Mobile Repair<br />Network Operator<br />- Insurance</p>
+                        
+                    </div>
+                    <div class="col-sm-12">
+                            <button class="btn btn-danger" type="button" style="font-size:10px;float:right"><i class="fa fa-ban"></i>&nbsp;Block</button>
+                            <button class="btn btn-primary" type="button" style="font-size:10px;float:right;margin-right:10px"><i class="fa fa-envelope"></i>&nbsp;Message</button>
+                            <button class="btn btn-sucess" type="button" style="font-size:10px;float:right;margin-right:10px"><i class="fa fa-use"></i>&nbsp;View Profile</button>
                     </div>
                     <div class="clearfix"></div>
                         </a>
