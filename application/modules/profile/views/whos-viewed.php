@@ -25,7 +25,7 @@
                             <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/daniel_big.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
-                            <span class="label label-primary"Online</span>
+                            <span class="label label-primary">Online</span>
                         </div>
                     </div>
                     </a>
