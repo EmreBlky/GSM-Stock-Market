@@ -81,7 +81,7 @@
                         <input type="hidden" name="mail_type" value="draft"/>
                         <input type="hidden" name="mail_id" value="<?php echo $this->uri->segment(3);?>"/>
                         <input name="submit" type="submit" class="btn btn-sm btn-primary" value="Send"/>
-                        <input name="submit" type="submit" class="btn btn-white btn-sm" value="Discard"/>
+                        <input name="submit" type="submit" class="btn btn-white btn-sm" value="Delete"/>
                         <input name="submit" type="submit" class="btn btn-white btn-sm" value="Draft"/>
                     </div>
                     <div class="clearfix"></div>

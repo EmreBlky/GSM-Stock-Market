@@ -24,6 +24,13 @@ class Mailbox extends MX_Controller
     
     function inbox($from = NULL, $mid = NULL)
     {
+        if(isset($mid)){
+            $belong = $this->mailbox_model->get_where($mid)->sent_member_id;
+            
+            if($belong != $this->session->userdata('members_id')){
+               redirect('mailbox/inbox/all');
+            }
+        }
         
         $data['main'] = 'mailbox';
         $data['title'] = 'GSM - Inbox';        
@@ -33,6 +40,14 @@ class Mailbox extends MX_Controller
         
         
         if($from == 'member'){
+            
+            if(isset($mid)){
+                $sent_from = $this->mailbox_model->get_where($mid)->sent_from;                
+
+                if($from != $sent_from){
+                   redirect('mailbox/inbox/'.$from);
+                }
+            }
 
             $data['header'] = 'From Member';
             
@@ -50,6 +65,14 @@ class Mailbox extends MX_Controller
             
         }
         elseif($from == 'market'){
+            
+            if(isset($mid)){
+                $sent_from = $this->mailbox_model->get_where($mid)->sent_from;                
+
+                if($from != $sent_from){
+                   redirect('mailbox/inbox/'.$from);
+                }
+            }
 
             $data['header'] = 'From Marketplace';
             
@@ -67,6 +90,14 @@ class Mailbox extends MX_Controller
             
         }
         elseif($from == 'support'){
+            
+            if(isset($mid)){
+                $sent_from = $this->mailbox_model->get_where($mid)->sent_from;                
+
+                if($from != $sent_from){
+                   redirect('mailbox/inbox/'.$from);
+                }
+            }
 
             $data['header'] = 'From Support Team';
             
@@ -105,7 +136,10 @@ class Mailbox extends MX_Controller
     }
     
     function reply($oid, $mid = NULL)
-    {        
+    { 
+//        if(){
+//            redirect('mailbox/inbox', 'refresh')
+//        }
         $data['main'] = 'mailbox';        
         $data['title'] = 'GSM - Reply Mail';        
         $data['page'] = 'reply';
@@ -132,6 +166,13 @@ class Mailbox extends MX_Controller
     
     function sent($mid = NULL)
     {
+        if(isset($mid)){
+            $cid = $this->mailbox_model->get_where($mid)->member_id;                
+
+            if($cid != $this->session->userdata('members_id')){
+               redirect('mailbox/sent/');
+            }
+        }
         
         $data['main'] = 'mailbox';        
         $data['title'] = 'GSM - Inbox';        
@@ -186,6 +227,13 @@ class Mailbox extends MX_Controller
     
     function important($mid = NULL)
     {
+        if(isset($mid)){
+            $cid = $this->mailbox_model->get_where($mid)->member_id;                
+
+            if($cid != $this->session->userdata('members_id')){
+               redirect('mailbox/important/');
+            }
+        }
         
         $data['main'] = 'mailbox';        
         $data['title'] = 'GSM - Inbox';        
@@ -222,6 +270,13 @@ class Mailbox extends MX_Controller
     
     function draft($mid = NULL)
     {
+        if(isset($mid)){
+            $cid = $this->mailbox_model->get_where($mid)->member_id;                
+
+            if($cid != $this->session->userdata('members_id')){
+               redirect('mailbox/draft/');
+            }
+        }
         
         $data['main'] = 'mailbox';        
         $data['title'] = 'GSM - Inbox';        
@@ -243,7 +298,7 @@ class Mailbox extends MX_Controller
         $this->templates->page($data);
     }
     
-    function daft_move($mid)
+    function draft_move($mid)
     {
         $data = array(
                         'trash'     => 'no',
@@ -259,39 +314,29 @@ class Mailbox extends MX_Controller
     
     function trash($mid = NULL)
     {
+        if(isset($mid)){
+            $cid = $this->mailbox_model->get_where($mid)->trash_belong;
+            
+
+            if($cid != $this->session->userdata('members_id')){
+               redirect('mailbox/trash/');
+            }
+        }
         
         $data['main'] = 'mailbox';        
         $data['title'] = 'GSM - Inbox';        
         $data['page'] = 'trash';
         
-        $count_sent = $this->mailbox_model->count_where_multiple('member_id', $this->session->userdata('members_id'), 'trash', 'yes');
-        $count_received = $this->mailbox_model->count_where_multiple('sent_member_id', $this->session->userdata('members_id'), 'trash', 'yes');
-         
         
-        if($count_sent > 0 && $count_received > 0){            
-            $data['inbox_trash_count'] = $count_sent+$count_received;
-            $data['inbox_trash_message_in'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'member_id',$this->session->userdata('members_id'), 'trash', 'yes');                    
-            $data['inbox_trash_message_out'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'sent_member_id',$this->session->userdata('members_id'), 'trash', 'yes');                    
-        }
-        elseif($count_sent < 1 && $count_received > 0){            
-            $data['inbox_trash_count'] = $count_sent+$count_received;
-            $data['inbox_trash_message_in'] = 0;                    
-            $data['inbox_trash_message_out'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'sent_member_id',$this->session->userdata('members_id'), 'trash', 'yes');                    
+        $count = $this->mailbox_model->count_where_multiple('trash_belong', $this->session->userdata('members_id'), 'trash', 'yes'); 
         
-            
+        if($count > 0){            
+            $data['inbox_trash_count'] = $count;
+            $data['inbox_trash_message'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'trash_belong',$this->session->userdata('members_id'), 'trash', 'yes');                    
         }
-        elseif($count_sent > 0 && $count_received < 1){            
-            $data['inbox_trash_count'] = $count_sent+$count_received;
-            $data['inbox_trash_message_in'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'member_id',$this->session->userdata('members_id'), 'trash', 'yes');                    
-            $data['inbox_trash_message_out'] = 0;                    
-        
-            
-        }
-        else{            
+        else{
             $data['inbox_trash_count'] = 0;
         }
-        
-        
         
         $data['message'] = $this->mailbox_model->get_where_multiple('id', $mid);
         
@@ -302,10 +347,11 @@ class Mailbox extends MX_Controller
     function trash_move($mid)
     {
         $data = array(
-                        'trash'     => 'yes',
-                        'sent'      => 'no',
-                        'important' => 'no',
-                        'draft'     => 'no'
+                        'trash'             => 'yes',
+                        'trash_belong'      => $this->session->userdata('members_id'),
+                        'sent'              => 'no',
+                        'important'         => 'no',
+                        'draft'             => 'no'
                       );
 
         
@@ -459,28 +505,49 @@ class Mailbox extends MX_Controller
                 
                 $this->load->model('member/member_model', 'member_model');
                 $sid = $this->member_model->get_where_multiple('email', $this->input->post('email_address'))->id;
+                $mail_id = $this->input->post('mail_id');
+                if(isset($mail_id)){
+                    
+                    $data = array(
+                                    
+                                    'body'              => nl2br($this->input->post('body')),                                    
+                                    'date'              => date('d-m-Y'),
+                                    'time'              => date('H:i'),
+                                    'datetime'          => date('Y-m-d H:i:s')
+                                  );
+                    
+                    $this->mailbox_model->_update($mail_id, $data);
+                    
+                }
+                else{
 
-                $data = array(
-                                'member_id'         => $this->session->userdata('members_id'),
-                                'sent_member_id'    => $sid,
-                                'subject'           => $this->input->post('subject'),
-                                'body'              => nl2br($this->input->post('body')),
-                                'draft'              => 'yes',
-                                'date'              => date('d-m-Y'),
-                                'time'              => date('H:i'),
-                                'sent_from'         => 'member',
-                                'parent_id'         => $this->input->post('parent_id'),
-                                'datetime'          => date('Y-m-d H:i:s')
-                              );
-
-                $this->load->model('mailbox/mailbox_model', 'mailbox_model');
-                $this->mailbox_model->_insert($data);
+                    $data = array(
+                                    'member_id'         => $this->session->userdata('members_id'),
+                                    'sent_member_id'    => $sid,
+                                    'subject'           => $this->input->post('subject'),
+                                    'body'              => nl2br($this->input->post('body')),
+                                    'draft'              => 'yes',
+                                    'date'              => date('d-m-Y'),
+                                    'time'              => date('H:i'),
+                                    'sent_from'         => 'member',
+                                    'parent_id'         => $this->input->post('parent_id'),
+                                    'datetime'          => date('Y-m-d H:i:s')
+                                  );
+                    
+                    $this->mailbox_model->_insert($data);
+                }
             }
             
             redirect('mailbox/inbox/all', 'refresh');
         }
-        elseif($submit == 'Discard'){
+        elseif($submit == 'Delete'){
             
+            $mail_id = $this->input->post('mail_id');            
+            $this->mailbox_model->_delete($mail_id);
+            redirect('mailbox/draft', 'refresh');
+            
+        }
+        elseif($submit == 'Discard'){            
             redirect('mailbox/inbox/all', 'refresh');
         }
 //       
@@ -490,6 +557,13 @@ class Mailbox extends MX_Controller
             
     function archive($mid = NULL)
     {
+        if(isset($mid)){
+            $cid = $this->mailbox_model->get_where($mid)->member_id;                
+
+            if($cid != $this->session->userdata('members_id')){
+               redirect('mailbox/archive/');
+            }
+        }
         
         $data['main'] = 'mailbox';        
         $data['title'] = 'GSM - Archive Mail';        
@@ -560,7 +634,7 @@ class Mailbox extends MX_Controller
                 $data = array(
                         'important'     => 'yes',
                         'sent' => 'no',
-                        'sent_from'     => 'moved',                        
+                        'sent_from'     => 'moved_important',                        
                         'inbox'         => 'no'
                       );
         
@@ -575,7 +649,7 @@ class Mailbox extends MX_Controller
                 $data = array(
                         'archive'       => 'yes',
                         'sent'          => 'no',
-                        'sent_from'     => 'moved',                        
+                        'sent_from'     => 'moved_archive',                        
                         'inbox'         => 'no'
                       );
         
@@ -588,10 +662,11 @@ class Mailbox extends MX_Controller
             foreach($_POST as $post_vale => $post_key){
                 
                 $data = array(
-                        'trash'     => 'yes',
-                        'sent'      => 'no',
-                        'sent_from' => 'moved',
-                        'inbox'     => 'no'
+                        'trash'         => 'yes',
+                        'trash_belong'  => $this->session->userdata('members_id'),
+                        'sent'          => 'no',
+                        'sent_from'     => 'moved_trash',
+                        'inbox'         => 'no'
                       );
         
                 $this->mailbox_model->_update($post_vale, $data);
