@@ -432,9 +432,9 @@ class Mailbox extends MX_Controller
     
     function composeMail()
     {
-        echo '<pre>';
-        print_r($_POST);
-        exit;
+//        echo '<pre>';
+//        print_r($_POST);
+//        exit;
         
         $this->load->library('form_validation');
         
