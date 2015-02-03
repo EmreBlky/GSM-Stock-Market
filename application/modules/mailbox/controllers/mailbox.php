@@ -459,6 +459,7 @@ class Mailbox extends MX_Controller
                 
                 $this->load->model('member/member_model', 'member_model');
                 $sid = $this->member_model->get_where_multiple('email', $this->input->post('email_address'))->id;
+                $message_type = $this->input->post('message_type');
                 
                 if($mail_type == 'draft'){
 
@@ -479,21 +480,41 @@ class Mailbox extends MX_Controller
                     $this->mailbox_model->_update($this->input->post('mail_id'), $data);
                 }
                 else{
+                    if($message_type == 'profile_message'){
+                        
+                        $data = array(
+                                        'member_id'         => $this->session->userdata('members_id'),
+                                        'sent_member_id'    => $this->input->post('mid'),
+                                        'subject'           => $this->input->post('subject'),
+                                        'body'              => nl2br($this->input->post('body')),
+                                        'inbox'             => 'yes',
+                                        'sent'              => 'yes',
+                                        'date'              => date('d-m-Y'),
+                                        'time'              => date('H:i'),
+                                        'sent_from'         => 'member',
+                                        'parent_id'         => $this->input->post('parent_id'),
+                                        'datetime'          => date('Y-m-d H:i:s')
+                                      );                    
+                        $this->mailbox_model->_insert($data);
+                        
+                    }
+                    else{
 
-                    $data = array(
-                                    'member_id'         => $this->session->userdata('members_id'),
-                                    'sent_member_id'    => $sid,
-                                    'subject'           => $this->input->post('subject'),
-                                    'body'              => nl2br($this->input->post('body')),
-                                    'inbox'             => 'yes',
-                                    'sent'              => 'yes',
-                                    'date'              => date('d-m-Y'),
-                                    'time'              => date('H:i'),
-                                    'sent_from'         => 'member',
-                                    'parent_id'         => $this->input->post('parent_id'),
-                                    'datetime'          => date('Y-m-d H:i:s')
-                                  );                    
-                    $this->mailbox_model->_insert($data);
+                        $data = array(
+                                        'member_id'         => $this->session->userdata('members_id'),
+                                        'sent_member_id'    => $sid,
+                                        'subject'           => $this->input->post('subject'),
+                                        'body'              => nl2br($this->input->post('body')),
+                                        'inbox'             => 'yes',
+                                        'sent'              => 'yes',
+                                        'date'              => date('d-m-Y'),
+                                        'time'              => date('H:i'),
+                                        'sent_from'         => 'member',
+                                        'parent_id'         => $this->input->post('parent_id'),
+                                        'datetime'          => date('Y-m-d H:i:s')
+                                      );                    
+                        $this->mailbox_model->_insert($data);
+                    }
                 }
             }            
             
