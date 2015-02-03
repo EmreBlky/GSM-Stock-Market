@@ -24,8 +24,14 @@
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                        <i class="fa fa-envelope"></i> 
-                             <div id="inbox_count"></div>                            
+                        <i class="fa fa-envelope"></i>
+                            <div id="inbox_count_remove">
+                                <?php
+                                    $this->load->module('mailbox');
+                                    $this->mailbox->new_message();
+                                ?>
+                            </div>
+                            <div id="inbox_count"></div>                            
                     </a>
                     <?php
                     

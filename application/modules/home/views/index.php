@@ -114,10 +114,12 @@
                     
                     <?php
                     
-                        $this->load->module('mailbox');
-                        $this->mailbox->mail_recent(10);
-                    
+                        //$this->load->module('mailbox');
+                        //$this->mailbox->mail_recent(10);
+                        
                     ?>
+                    <div id="status"></div>
+                    
                     <div class="col-lg-8">
 
                                 <div class="ibox float-e-margins">

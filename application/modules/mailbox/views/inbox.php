@@ -82,8 +82,8 @@
                 
                 <?php echo form_open('mailbox/mass_process'); ?>
                 <h2>
-                    <?php if(isset($inbox_count)){?>
-                        <?php echo $header; ?> (<?php echo $inbox_ncount;?>)
+                    <?php if(isset($inbox_i_count)){?>
+                        <?php echo $header; ?> (<?php echo $inbox_i_ncount;?>)
                     <?php } elseif(isset($inbox_s_count)){?>
                         <?php echo $header; ?> (<?php echo $inbox_s_ncount;?>)
                     <?php } elseif(isset($inbox_mem_count)){?>

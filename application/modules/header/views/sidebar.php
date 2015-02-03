@@ -37,7 +37,19 @@
                     
                     <li>
                         <?php $this->load->model('mailbox/mailbox_model', 'mailbox_model'); ?>
-                        <a href="mailbox/inbox/all"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span><span class="label label-warning pull-right"><div id="result"></div></span></a>
+                        <a href="mailbox/inbox/all">
+                            <i class="fa fa-envelope"></i> 
+                            <span class="nav-label">Mailbox </span>
+                            <span class="label label-warning pull-right">
+                                <div id="result_remove">
+                                    <?php
+                                        $this->load->module('mailbox');
+                                        $this->mailbox->messages_count();
+                                    ?>
+                                </div>
+                                <div id="result"></div>
+                            </span>
+                        </a>
                     </li>
                     
                     <li>
