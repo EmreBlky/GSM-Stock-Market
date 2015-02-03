@@ -1,8 +1,6 @@
 <?php
     $this->load->module('mailbox');
-   
 ?>
-
 <div class="col-lg-3">
                 <div class="ibox float-e-margins">
                     <div class="ibox-content mailbox-content">

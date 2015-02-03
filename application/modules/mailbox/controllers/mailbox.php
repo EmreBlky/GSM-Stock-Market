@@ -605,6 +605,7 @@ class Mailbox extends MX_Controller
 //        print_r($_POST);
 //        exit;
         $submit = $this->input->post('button');
+        $back = $this->input->post('page_from');
         
         if($submit == 'read'){
             
@@ -676,7 +677,7 @@ class Mailbox extends MX_Controller
             }
         }
         
-        redirect('mailbox/inbox');
+        redirect('mailbox/inbox/'.$back);
     }
     
     function mail_dropdown($mail_count){
