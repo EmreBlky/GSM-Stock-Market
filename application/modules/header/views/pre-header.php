@@ -73,7 +73,7 @@
             
             function getStatus() {
 
-                $('#status').load('http://localhost/gsm/gsm-secure/mailbox/mail_recent/10');
+                $('#status').load('<?php echo $base;?>mailbox/mail_recent/10'); 
                 setTimeout("getStatus()",500);
             }
             
