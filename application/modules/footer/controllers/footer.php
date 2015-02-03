@@ -19,7 +19,15 @@ class Footer extends MX_Controller
 		//$data['base_nav'] = $this->pages->get_where_multiples('bottom_navigation', 'yes');
                 $data['base_nav'] = '';
                 $this->load->model('login/login_model', 'login_model');
-                $data['logged'] = $this->login_model->get_where_multiple('member_id', $this->session->userdata('members_id'), 'logged', 'yes');
+                $log_count  = $this->login_model->count_where('member_id', $this->session->userdata('members_id'), 'logged', 'yes');
+                if($log_count > 0){
+                    $data['log_count'] = $log_count;
+                    $data['logged'] = $this->login_model->get_where_multiple('member_id', $this->session->userdata('members_id'), 'logged', 'yes');
+                }
+                else{
+                   $data['log_count'] = 0;
+                }
+                
 		
 		$this->load->view('footer', $data);		
 	}
