@@ -18,6 +18,8 @@ class Footer extends MX_Controller
 	{		
 		//$data['base_nav'] = $this->pages->get_where_multiples('bottom_navigation', 'yes');
                 $data['base_nav'] = '';
+                $this->load->model('login/login_model', 'login_model');
+                $data['logged'] = $this->login_model->get_where_multiple('member_id', $this->session->userdata('members_id'), 'logged', 'yes');
 		
 		$this->load->view('footer', $data);		
 	}

@@ -28,6 +28,10 @@
                                 echo '<pre>';
                                 print_r($member);
                                 echo '</pre>';
+                                
+                                echo '<pre>';
+                                print_r($company);
+                                echo '</pre>';
                             
                             ?>
                         </div>
@@ -162,12 +166,12 @@
                                         <div class="lable_wrap"><label>Company Name:</label></div>
                                         <?php
 
-                                            if($member->company_name){
+                                            if($company->company_name){
 
                                                 $data = array(
                                                             'name'        => 'company_name',
                                                             'id'          => 'company_name',
-                                                            'value'     => $member->company_name,     
+                                                            'value'     => $company->company_name,     
                                                             'required'  => 'required'
                                                           );
 
@@ -248,12 +252,12 @@
                                         <div class="lable_wrap"><label>Address Line 1:</label></div>
                                         <?php
 
-                                            if($member->address_line_1){
+                                            if($company->address_line_1){
 
                                                 $data = array(
                                                             'name'        => 'address_line_1',
                                                             'id'          => 'address_line_1',
-                                                            'value'     => $member->address_line_1,     
+                                                            'value'     => $company->address_line_1,     
                                                             'required'  => 'required'
                                                           );
 
@@ -277,12 +281,12 @@
                                         <div class="lable_wrap"><label>Address Line 2:</label></div>
                                         <?php
 
-                                            if($member->address_line_2){
+                                            if($company->address_line_2){
 
                                                 $data = array(
                                                             'name'        => 'address_line_2',
                                                             'id'          => 'address_line_2',
-                                                            'value'     => $member->address_line_2,     
+                                                            'value'     => $company->address_line_2,     
                                                             'required'  => 'required'
                                                           );
 
@@ -305,12 +309,12 @@
                                         <div class="lable_wrap"><label>City:</label></div>
                                         <?php
 
-                                            if($member->town_city){
+                                            if($company->town_city){
 
                                                 $data = array(
                                                             'name'        => 'town_city',
                                                             'id'          => 'town_city',
-                                                            'value'     => $member->town_city,     
+                                                            'value'     => $company->town_city,     
                                                             'required'  => 'required'
                                                           );
 
@@ -334,12 +338,12 @@
                                         <div class="lable_wrap"><label>County:</label></div>
                                         <?php
 
-                                            if($member->county){
+                                            if($company->county){
 
                                                 $data = array(
                                                             'name'        => 'county',
                                                             'id'          => 'county',
-                                                            'value'     => $member->county,     
+                                                            'value'     => $company->county,     
                                                             'required'  => 'required'
                                                           );
 
@@ -363,12 +367,12 @@
                                         <div class="lable_wrap"><label>Country:</label></div>
                                         <?php
 
-                                            if($member->country){
+                                            if($company->country){
 
                                                 $data = array(
                                                             'name'        => 'country',
                                                             'id'          => 'country',
-                                                            'value'     => $member->country,     
+                                                            'value'     => $company->country,     
                                                             'required'  => 'required'
                                                           );
 
@@ -392,12 +396,12 @@
                                         <div class="lable_wrap"><label>Postcode:</label></div>
                                         <?php
 
-                                            if($member->post_code){
+                                            if($company->post_code){
 
                                                 $data = array(
                                                             'name'        => 'post_code',
                                                             'id'          => 'post_code',
-                                                            'value'     => $member->post_code,     
+                                                            'value'     => $company->post_code,     
                                                             'required'  => 'required'
                                                           );
 
@@ -421,12 +425,12 @@
                                         <div class="lable_wrap"><label>Website:</label></div>
                                         <?php
 
-                                            if($member->website){
+                                            if($company->website){
 
                                                 $data = array(
                                                             'name'        => 'website',
                                                             'id'          => 'website',
-                                                            'value'     => $member->website,     
+                                                            'value'     => $company->website,     
                                                             'required'  => 'required'
                                                           );
 
@@ -449,12 +453,12 @@
                                         <div class="lable_wrap"><label>Business Sector 1:</label></div>
                                         <?php
 
-                                            if($member->business_sector_1){
+                                            if($company->business_sector_1){
 
                                                 $data = array(
                                                             'name'        => 'business_sector_1',
                                                             'id'          => 'business_sector_1',
-                                                            'value'     => $member->business_sector_1,     
+                                                            'value'     => $company->business_sector_1,     
                                                             'required'  => 'required'
                                                           );
 
@@ -477,12 +481,12 @@
                                         <div class="lable_wrap"><label>Business Sector 2:</label></div>
                                         <?php
 
-                                            if($member->business_sector_2){
+                                            if($company->business_sector_2){
 
                                                 $data = array(
                                                             'name'        => 'business_sector_2',
                                                             'id'          => 'business_sector_2',
-                                                            'value'     => $member->business_sector_2,     
+                                                            'value'     => $company->business_sector_2,     
                                                             'required'  => 'required'
                                                           );
 
@@ -505,12 +509,12 @@
                                         <div class="lable_wrap"><label>VAT Number:</label></div>
                                         <?php
 
-                                            if($member->vat_tax){
+                                            if($company->vat_tax){
 
                                                 $data = array(
                                                             'name'        => 'vat_tax',
                                                             'id'          => 'vat_tax',
-                                                            'value'     => $member->vat_tax,     
+                                                            'value'     => $company->vat_tax,     
                                                             'required'  => 'required'
                                                           );
 
@@ -533,12 +537,12 @@
                                         <div class="lable_wrap"><label>Company Number:</label></div>
                                         <?php
 
-                                            if($member->company_number){
+                                            if($company->company_number){
 
                                                 $data = array(
                                                             'name'        => 'company_number',
                                                             'id'          => 'company_number',
-                                                            'value'     => $member->company_number,     
+                                                            'value'     => $company->company_number,     
                                                             'required'  => 'required'
                                                           );
 

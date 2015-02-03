@@ -6,7 +6,7 @@ class Login extends MX_Controller{
     {
 
             parent::__construct();
-
+            $this->load->model('login/login_model', 'login_model');
     }
         
     function index()
@@ -107,6 +107,22 @@ class Login extends MX_Controller{
                                                     );
 
                     $this->session->set_userdata($user_data);
+                    
+                    $this->login_model->_delete_where('member_id', $mid, 'logged', 'yes');
+                    
+                    $data = array(
+                                      'logged' => 'yes'
+                                     );
+                    $this->login_model->_update_where($data, 'logged', 'no', 'member_id', $mid);
+                    
+                    $data = array(
+                                        'member_id' => $mid,
+                                        'time' => date('H:i:s'),
+                                        'date' => date('d-m-Y'),
+                                        'ip_address' => $_SERVER['REMOTE_ADDR'],
+                                        'logged' => 'no'
+                                     );
+                    $this->login_model->_insert($data);
 
                     redirect('home/');
             }

@@ -186,11 +186,20 @@ class MY_Model extends CI_Model {
 	
 	}
 	
-	function _update_where($type, $value, $data)
+	function _update_where($data, $type, $value, $column2 = NULL, $value2 = NULL, $column3 = NULL, $value3 = NULL, $column4 = NULL, $value4 = NULL)
 	{
 		
 		$table = $this->table;
 		$this->db->where($type, $value);
+                if($column2 != NULL){
+		$this->db->where($column2, $value2);
+		}
+                if($column3 != NULL){
+		$this->db->where($column3, $value3);
+		}
+                if($column4 != NULL){
+		$this->db->where($column4, $value4);
+		}
 		$this->db->update($table, $data);
 	
 	}
@@ -204,11 +213,20 @@ class MY_Model extends CI_Model {
 	
 	}
 	
-	function _delete_where($chose, $value)
+	function _delete_where($chose, $value, $column2 = NULL, $value2 = NULL, $column3 = NULL, $value3 = NULL, $column4 = NULL, $value4 = NULL)
 	{
 		
 		$table = $this->table;
 		$this->db->where($chose, $value);
+                if($column2 != NULL){
+		$this->db->where($column2, $value2);
+		}
+                if($column3 != NULL){
+		$this->db->where($column3, $value3);
+		}
+                if($column4 != NULL){
+		$this->db->where($column4, $value4);
+		}
 		$this->db->delete($table);
 	
 	}

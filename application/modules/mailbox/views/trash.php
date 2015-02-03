@@ -25,7 +25,7 @@
                 <div class="pull-right tooltip-demo">
                     <!-- <a href="mail_compose.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Reply"><i class="fa fa-reply"></i> Reply</a> -->
                     <a href="mailbox/important_move/<?php echo $this->uri->segment(3);?>" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as important"><i class="fa fa-exclamation"></i></a>
-                    <a href="mailbox/archive/<?php echo $this->uri->segment(4);?>" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Reply"><i class="fa fa-archive"></i> Archive</a>                    
+                    <a href="mailbox/archive_move/<?php echo $this->uri->segment(3);?>" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Reply"><i class="fa fa-archive"></i> Archive</a>                    
                     <button onclick="window.print()" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Print email"><i class="fa fa-print"></i></button>
                     <a href="mailbox/delete/<?php echo $this->uri->segment(3);?>" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Delete Message"><i class="fa fa-trash-o"></i> </a>
                 </div>
@@ -40,7 +40,7 @@
                     </h3>
                     <h5>
                         <span class="pull-right font-noraml"><?php echo $message->time;?> <?php echo $message->date;?></span>
-                        <span class="font-noraml">To: </span><?php $this->load->model('member/member_model', 'member_model'); echo $this->member_model->get_where($message->sent_member_id)->firstname.' '.$this->member_model->get_where($message->sent_member_id)->lastname.' ('.$this->member_model->get_where($message->sent_member_id)->company_name.')'; ?>
+                        <span class="font-noraml">To: </span><?php $this->load->model('member/member_model', 'member_model'); $this->load->model('company/company_model', 'company_model'); echo $this->member_model->get_where($message->sent_member_id)->firstname.' '.$this->member_model->get_where($message->sent_member_id)->lastname.' ('.$this->company_model->get_where($this->member_model->get_where($message->sent_member_id)->company_id)->company_name.')'; ?>
                     </h5>
                 </div>
             </div>
@@ -78,10 +78,10 @@
                 </h2>
                 <div class="mail-tools tooltip-demo m-t-md">
                     
-                    <!-- <a href="mailbox/refresh" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh</a> -->
-                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as read"><i class="fa fa-eye"></i> </button>
-                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as important"><i class="fa fa-exclamation"></i> </button>
-                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </button>
+                    <!-- <a href="mailbox/refresh" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh</a>
+                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as read"><i class="fa fa-eye"></i> </button> -->
+                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" name="button" value="important"  title="Mark as important"><i class="fa fa-exclamation"></i> </button>
+                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" name="button" value="delete" title="Delete All"><i class="fa fa-trash-o"></i> </button>
 
                 </div>
             </div>
@@ -131,7 +131,7 @@
 
                     </tbody>
                 </table>
-                    
+                    <input type="hidden" name="page_from" value="<?php echo $this->uri->segment(2);?>"/>
                 </div>
             <?php echo form_close(); ?>
             </div>

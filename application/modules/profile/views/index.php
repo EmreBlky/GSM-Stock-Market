@@ -1,7 +1,7 @@
 <?php
-
+//
 //echo '<pre>';
-//print_r($member_info);
+//print_r($company_users);
 //exit;
 
 ?>	
@@ -38,7 +38,7 @@
                                     </div> -->
                                     <div class="m-b-md">
                                         <a href="profile/edit_profile" class="btn btn-white btn-xs pull-right">Edit Profile</a>
-                                        <h2><?php echo $member_info->company_name;?></h2>
+                                        <h2><?php echo $member_company->company_name;?></h2>
                                     </div>
                                 </div>
                             </div>
@@ -49,33 +49,37 @@
                                         <dt>Subscription:</dt> <dd>Gold Member</dd>
                                     </dl>
                                     <dl class="dl-horizontal">
-                                        <dt>Company Number:</dt> <dd><?php echo $member_info->company_number;?></dd>
-                                        <dt>VAT/Tax Number:</dt> <dd><?php echo $member_info->vat_tax;?></dd>
+                                        <dt>Company Number:</dt> <dd><?php echo $member_company->company_number;?></dd>
+                                        <dt>VAT/Tax Number:</dt> <dd><?php echo $member_company->vat_tax;?></dd>
                                     </dl>                                    
                                     <dl class="dl-horizontal">
                                         <dt>Address:</dt> <dd>  
-                                            <?php echo $member_info->address_line_1;?><br/>
-                                            <?php echo $member_info->address_line_2;?><br />
-                                            <?php echo $member_info->town_city;?><br />
-                                            <?php echo $member_info->county;?><br />
-                                            <?php echo $member_info->post_code;?><br />
-                                            <?php echo $member_info->country;?></dd>
+                                            <?php echo $member_company->address_line_1;?><br/>
+                                            <?php echo $member_company->address_line_2;?><br />
+                                            <?php echo $member_company->town_city;?><br />
+                                            <?php echo $member_company->county;?><br />
+                                            <?php echo $member_company->post_code;?><br />
+                                            <?php echo $member_company->country;?></dd>
                                     </dl>
                                     
                                     <dl class="dl-horizontal">
                                         <dt>Phone:</dt> <dd>  <?php echo $member_info->phone_number;?></dd>
                                         <dt>Skype:</dt> <dd>  <?php echo $member_info->skype;?></dd>
-                                        <dt>Website:</dt> <dd>  <?php echo $member_info->website;?></dd>
+                                        <dt>Website:</dt> <dd>  <?php echo $member_company->website;?></dd>
                                         <dt>Facebook:</dt> <dd>  <?php echo $member_info->facebook;?></dd>
                                         <dt>Twitter:</dt> <dd>  <?php echo $member_info->twitter;?></dd>
                                         <dt>Linkedin:</dt> <dd>  <?php echo $member_info->linkedin;?></dd>
                                     </dl>
                                     
                                     <dl class="dl-horizontal">
-                                        <dt>Primary Business:</dt> <dd>  New Mobiles (Sim Free) </dd>
-                                        <dt>Secondary Business:</dt> <dd> 	14 Day Mobiles </dd>
-                                        <dt>Tertiary Business:</dt> <dd> 	BER Mobiles </dd>
-                                        <dt>Other Activities:</dt> <dd> 	Mobile Spare Parts<br/ >Wearable Technology<br /> Network Operator </dd>
+                                        <dt>Primary Business:</dt>
+                                        <dd><?php echo $member_company->business_sector_1;?></dd>
+                                        <dt>Secondary Business:</dt>
+                                        <dd><?php echo $member_company->business_sector_2;?></dd>
+                                        <dt>Tertiary Business:</dt>
+                                        <dd><?php echo $member_company->business_sector_3;?></dd>
+                                        <dt>Other Activities:</dt>
+                                        <dd><?php echo $member_company->other_activity;?></dd>
                                     </dl>
                                     
                                 </div>
@@ -90,9 +94,20 @@
                                         <dt>Last Online:</dt> <dd> 	10.07.2014 23:36:57 </dd>
                                         <dt>Company Users:</dt>
                                         <dd class="project-people">
-                                        <a href=""><img alt="image" class="img-circle" src="/public/main/img/a3.jpg"></a>
-                                        <a href=""><img alt="image" class="img-circle" src="/public/main/img/a1.jpg"></a>
-                                        <a href=""><img alt="image" class="img-circle" src="/public/main/img/a2.jpg"></a>
+                                            <?php if($company_users){
+                                                
+                                                foreach($company_users as $user){
+                                                    
+                                            ?>
+                                            
+                                                <a href="#"><img alt="image" class="img-circle" src="public/main/images/members/<?php echo $user->id;?>.jpg"></a>
+                                            
+                                            <?php
+
+                                                    }
+                                                }
+                                            ?>  
+                                        
                                         </dd>
                                     </dl>
                                     <div class="row">
@@ -113,9 +128,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                            <p>Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable. Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable.</p>
-                            
+                            <?php echo $member_company->company_profile;?>
                             <div class="row m-t-sm">
                                 <div class="col-lg-12">
                                 <div class="panel blank-panel">
@@ -372,7 +385,12 @@
             <div class="col-lg-3">
                 <div class="wrapper wrapper-content project-manager">
                     <h4>Company Bio</h4>
-                    <img src="/public/main/img/gsm-profile.png" class="img-responsive" style="margin:0 auto">
+                    <?php if(file_exists("public/main/images/company/".$member_company->id.".jpg")){?>
+                        <img src="public/main/images/company/<?php echo $member_company->id; ?>.jpg" class="img-responsive" style="margin:0 auto">
+                    <?php } else {?>
+                        <img src="public/main/images/company/no_company.jpg" class="img-responsive" style="margin:0 auto">
+                    <?php }?>
+                    
                     <dl class="dl-horizontal">
                     	<dt><i class="fa fa-linkedin"></i></dt> <dd>  @gsmstockmarket</dd>
                     	<dt><i class="fa fa-facebook"></i></dt> <dd>  @gsmstockmarket</dd>

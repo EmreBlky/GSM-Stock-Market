@@ -10,6 +10,7 @@ class Profile extends MX_Controller
             redirect('login');
         }
         $this->load->model('member/member_model', 'member_model');
+        $this->load->model('company/company_model', 'company_model');
     }
 
     function index()
@@ -17,7 +18,11 @@ class Profile extends MX_Controller
         $data['main'] = 'profile';        
         $data['title'] = 'GSM - Profile';        
         $data['page'] = 'index';
-        $data['member_info'] = $sid = $this->member_model->get_where_multiple('id', $this->session->userdata('members_id'));
+        
+        $cid = $this->member_model->get_where_multiple('id', $this->session->userdata('members_id'))->company_id;
+        $data['member_info'] = $this->member_model->get_where_multiple('id', $this->session->userdata('members_id'));
+        $data['company_users'] = $this->member_model->get_where_multiples('company_id', $cid);
+        $data['member_company'] = $this->company_model->get_where_multiple('id', $cid);
         
         $this->load->module('templates');
         $this->templates->page($data);
@@ -55,6 +60,7 @@ class Profile extends MX_Controller
     {
         $this->load->model('member/member_model', 'member_model');
         $data['member'] = $this->member_model->get_where($this->session->userdata('members_id'));
+        $data['company'] = $this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id);
         
         $data['main'] = 'profile';        
         $data['title'] = 'GSM - Edit Profile';        
@@ -100,7 +106,20 @@ class Profile extends MX_Controller
                                         'email' => $this->input->post('email'),
                                         'title' => $this->input->post('title'),
                                         'firstname' => $this->input->post('firstname'),
-                                        'lastname' => $this->input->post('lastname'),
+                                        'lastname' => $this->input->post('lastname'),                                        
+                                        'language' => $this->input->post('language'),
+                                        'facebook' => $this->input->post('facebook'),
+                                        'twitter' => $this->input->post('twitter'),
+                                        'gplus' => $this->input->post('gplus'),
+                                        'linkedin' => $this->input->post('linkedin'),
+                                        'skype' => $this->input->post('skype'),
+                                        'role' => $this->input->post('role')
+                                      );
+
+                        $this->load->model('member/member_model', 'member_model');
+                        $this->member_model->_update($this->session->userdata('members_id'), $data);
+                        
+                         $data = array(
                                         'company_name' => $this->input->post('company_name'),
                                         'phone_number' => $this->input->post('phone_number'),
                                         'mobile_number' => $this->input->post('mobile_number'),
@@ -115,17 +134,8 @@ class Profile extends MX_Controller
                                         'business_sector_2' => $this->input->post('business_sector_2'),
                                         'vat_tax' => $this->input->post('vat_tax'),
                                         'company_number' => $this->input->post('company_number'),
-                                        'language' => $this->input->post('language'),
-                                        'facebook' => $this->input->post('facebook'),
-                                        'twitter' => $this->input->post('twitter'),
-                                        'gplus' => $this->input->post('gplus'),
-                                        'linkedin' => $this->input->post('linkedin'),
-                                        'skype' => $this->input->post('skype'),
-                                        'role' => $this->input->post('role')
-                                      );
-
-                        $this->load->model('member/member_model', 'member_model');
-                        $this->member_model->_update($this->session->userdata('members_id'), $data);
+                                     );
+                         $this->company_model->_update($this->member_model->get_where($this->session->userdata('members_id'))->company_id, $data);
                     }
                     
                     redirect('profile/');

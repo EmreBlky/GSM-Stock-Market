@@ -229,7 +229,7 @@ class Mailbox extends MX_Controller
     function important($mid = NULL)
     {
         if(isset($mid)){
-            $cid = $this->mailbox_model->get_where($mid)->member_id;                
+            $cid = $this->mailbox_model->get_where($mid)->important_belong;                
 
             if($cid != $this->session->userdata('members_id')){
                redirect('mailbox/important/');
@@ -259,9 +259,10 @@ class Mailbox extends MX_Controller
     function important_move($mid)
     {
         $data = array(
-                        'trash'     => 'no',
-                        'important' => 'yes',
-                        'draft'     => 'no'
+                        'trash'             => 'no',
+                        'important'         => 'yes',
+                        'important_belong'  => $this->session->userdata('members_id'),
+                        'draft'             => 'no'
                       );
         
         $this->mailbox_model->_update($mid, $data);
@@ -561,7 +562,7 @@ class Mailbox extends MX_Controller
     function archive($mid = NULL)
     {
         if(isset($mid)){
-            $cid = $this->mailbox_model->get_where($mid)->member_id;                
+            $cid = $this->mailbox_model->get_where($mid)->archive_belong;                
 
             if($cid != $this->session->userdata('members_id')){
                redirect('mailbox/archive/');
@@ -591,7 +592,12 @@ class Mailbox extends MX_Controller
     function archive_move($mid)
     {
         $data = array(
-                        'archive'     => 'yes'
+                        'archive'           => 'yes',
+                        'important'         => 'no',
+                        'sent'              => 'no',
+                        'sent_from'         => 'moved_archive',                        
+                        'inbox'             => 'no',
+                        'archive_belong'    => $this->session->userdata('members_id')
                       );
         
         $this->mailbox_model->_update($mid, $data);
@@ -674,6 +680,14 @@ class Mailbox extends MX_Controller
                       );
         
                 $this->mailbox_model->_update($post_vale, $data);
+            }
+        }
+        
+        elseif($submit == 'delete'){
+            
+            foreach($_POST as $post_vale => $post_key){
+                
+                $this->mailbox_model->_delete($post_vale);
             }
         }
         

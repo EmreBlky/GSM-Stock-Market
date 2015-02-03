@@ -46,7 +46,7 @@
                     </h3>
                     <h5>
                         <span class="pull-right font-noraml"><?php echo $message->time;?> <?php echo $message->date;?></span>
-                        <span class="font-noraml">From: </span><?php $this->load->model('member/member_model', 'member_model'); echo $this->member_model->get_where($message->member_id)->firstname.' '.$this->member_model->get_where($message->member_id)->lastname.' ('.$this->member_model->get_where($message->member_id)->company_name.')'; ?>
+                        <span class="font-noraml">From: </span><?php $this->load->model('member/member_model', 'member_model'); $this->load->model('company/company_model', 'company_model'); echo $this->member_model->get_where($message->member_id)->firstname.' '.$this->member_model->get_where($message->member_id)->lastname.' ('.$this->company_model->get_where($this->member_model->get_where($message->member_id)->company_id)->company_name.')'; ?>
                     </h5>
                 </div>
             </div>
