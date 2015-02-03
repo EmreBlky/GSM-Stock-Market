@@ -8,7 +8,7 @@
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h4 class="modal-title">Send Message</h4>
                 <small class="font-bold">Send a message to <?php echo $member_info->company_name?></small>
-                <input type="hidden" name="email" value="<?php echo $member_info->email; ?>"/>
+                <input type="hidden" name="email_address" value="<?php echo $member_info->email; ?>"/>
                 <input type="hidden" name="subject" value="Profile Message"/>
             </div>
             <div class="modal-body">
