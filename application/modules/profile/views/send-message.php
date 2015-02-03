@@ -29,7 +29,7 @@
 
             <div class="modal-footer">                
                 <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                <input type="submit" class="btn btn-primary" name="profile" value="Send Message">
+                <input type="submit" class="btn btn-primary" name="submit" value="Send Message">
             </div>
         </div>
         <?php echo form_close()?>

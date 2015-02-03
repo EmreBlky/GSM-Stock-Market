@@ -453,7 +453,7 @@ class Mailbox extends MX_Controller
             
         }
 //        
-        if($submit == 'Send'){
+        if($submit == 'Send' || $submit == 'Send Message'){
             
             if($this->form_validation->run()){
                 
