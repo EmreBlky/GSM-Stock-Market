@@ -13,7 +13,6 @@
 	<meta name="keywords" content="gsm stock market, gsm trading, gsm market, gsm stock, mobile trading, phone trading, mobile phone, phone companies, mobile phone directory" />
     <meta name="google-translate-customization" content=""/>
     
-    <script src="public/main/js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
    <script>
         function autoRefresh_div()
@@ -27,7 +26,7 @@
             
             var inbox_count = "<?php
                                 $this->load->module('mailbox');
-                                $this->mailbox->new_message();
+                                $this->mailbox->messages_count();
                             ?>";
             $("#inbox_count_remove").replaceWith('<div id="inbox_count">'+inbox_count+'</div>');
             $("#inbox_count").load("mailbox/new_message");
@@ -80,7 +79,7 @@
             
         </script>
 
-    <!-- Styling -->
+	<!-- Styling -->
     <link href="public/main/css/bootstrap.min.css" rel="stylesheet">
     <link href="public/main/font-awesome/css/font-awesome.css" rel="stylesheet">
     
@@ -93,16 +92,12 @@
 
     <link href="public/main/css/animate.css" rel="stylesheet">
     <link href="public/main/css/style.css" rel="stylesheet">
-    <link href="public/main/css/gsm.css" rel="stylesheet"> <!-- GSM Overrides -->
     
     <!-- Mainly scripts -->
     <script src="public/main/js/jquery-2.1.1.js"></script>
     <script src="public/main/js/bootstrap.min.js"></script>
-    
+    <script src="public/main/js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="public/main/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-    
-    <!-- Toastr script -->
-    <script src="public/main/js/plugins/toastr/toastr.min.js"></script>
 
     <!-- Custom and plugin javascript -->
     <script src="public/main/js/inspinia.js"></script>
