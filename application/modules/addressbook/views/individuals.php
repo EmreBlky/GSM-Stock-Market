@@ -22,7 +22,7 @@
                     <a href="/profile/">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
                             <span class="label label-danger">Offline</span><br /><br />
@@ -36,7 +36,7 @@
                         <h3 style="margin-bottom:0"><strong>Daniel Gregory</strong></h3>
                         </div>
                         <div class="col-sm-4" style="padding:5px 0">
-                            <img alt="image" style="float:right" src="/public/main/img/flags/Andorra.png" title="Andorra.png">
+                            <img alt="image" style="float:right" src="public/main/img/flags/Andorra.png" title="Andorra.png">
                         </div>
                         </div>
                             <div>Director</div>
@@ -56,7 +56,7 @@
                     <a href="/profile/">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
                             <span class="label label-danger">Offline</span><br /><br />
@@ -70,7 +70,7 @@
                         <h3 style="margin-bottom:0"><strong>Daniel Gregory</strong></h3>
                         </div>
                         <div class="col-sm-4" style="padding:5px 0">
-                            <img alt="image" style="float:right" src="/public/main/img/flags/Andorra.png" title="Andorra.png">
+                            <img alt="image" style="float:right" src="public/main/img/flags/Andorra.png" title="Andorra.png">
                         </div>
                         </div>
                             <div>Director</div>
@@ -90,7 +90,7 @@
                     <a href="/profile/">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
                             <span class="label label-danger">Offline</span><br /><br />
@@ -104,7 +104,7 @@
                         <h3 style="margin-bottom:0"><strong>Daniel Gregory</strong></h3>
                         </div>
                         <div class="col-sm-4" style="padding:5px 0">
-                            <img alt="image" style="float:right" src="/public/main/img/flags/Andorra.png" title="Andorra.png">
+                            <img alt="image" style="float:right" src="public/main/img/flags/Andorra.png" title="Andorra.png">
                         </div>
                         </div>
                             <div>Director</div>
@@ -124,7 +124,7 @@
                     <a href="/profile/">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
                             <span class="label label-danger">Offline</span><br /><br />
@@ -138,7 +138,7 @@
                         <h3 style="margin-bottom:0"><strong>Daniel Gregory</strong></h3>
                         </div>
                         <div class="col-sm-4" style="padding:5px 0">
-                            <img alt="image" style="float:right" src="/public/main/img/flags/Andorra.png" title="Andorra.png">
+                            <img alt="image" style="float:right" src="public/main/img/flags/Andorra.png" title="Andorra.png">
                         </div>
                         </div>
                             <div>Director</div>
@@ -158,7 +158,7 @@
                     <a href="/profile/">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
                             <span class="label label-danger">Offline</span><br /><br />
@@ -172,7 +172,7 @@
                         <h3 style="margin-bottom:0"><strong>Daniel Gregory</strong></h3>
                         </div>
                         <div class="col-sm-4" style="padding:5px 0">
-                            <img alt="image" style="float:right" src="/public/main/img/flags/Andorra.png" title="Andorra.png">
+                            <img alt="image" style="float:right" src="public/main/img/flags/Andorra.png" title="Andorra.png">
                         </div>
                         </div>
                             <div>Director</div>
@@ -192,7 +192,7 @@
                     <a href="/profile/">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
                             <span class="label label-danger">Offline</span><br /><br />
@@ -206,7 +206,7 @@
                         <h3 style="margin-bottom:0"><strong>Daniel Gregory</strong></h3>
                         </div>
                         <div class="col-sm-4" style="padding:5px 0">
-                            <img alt="image" style="float:right" src="/public/main/img/flags/Andorra.png" title="Andorra.png">
+                            <img alt="image" style="float:right" src="public/main/img/flags/Andorra.png" title="Andorra.png">
                         </div>
                         </div>
                             <div>Director</div>
@@ -226,7 +226,7 @@
                     <a href="/profile/">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
                             <span class="label label-danger">Offline</span><br /><br />
@@ -240,7 +240,7 @@
                         <h3 style="margin-bottom:0"><strong>Daniel Gregory</strong></h3>
                         </div>
                         <div class="col-sm-4" style="padding:5px 0">
-                            <img alt="image" style="float:right" src="/public/main/img/flags/Andorra.png" title="Andorra.png">
+                            <img alt="image" style="float:right" src="public/main/img/flags/Andorra.png" title="Andorra.png">
                         </div>
                         </div>
                             <div>Director</div>
@@ -260,7 +260,7 @@
                     <a href="/profile/">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
                             <span class="label label-danger">Offline</span><br /><br />
@@ -274,7 +274,7 @@
                         <h3 style="margin-bottom:0"><strong>Daniel Gregory</strong></h3>
                         </div>
                         <div class="col-sm-4" style="padding:5px 0">
-                            <img alt="image" style="float:right" src="/public/main/img/flags/Andorra.png" title="Andorra.png">
+                            <img alt="image" style="float:right" src="public/main/img/flags/Andorra.png" title="Andorra.png">
                         </div>
                         </div>
                             <div>Director</div>
@@ -294,7 +294,7 @@
                     <a href="/profile/">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
                             <span class="label label-danger">Offline</span><br /><br />
@@ -308,7 +308,7 @@
                         <h3 style="margin-bottom:0"><strong>Daniel Gregory</strong></h3>
                         </div>
                         <div class="col-sm-4" style="padding:5px 0">
-                            <img alt="image" style="float:right" src="/public/main/img/flags/Andorra.png" title="Andorra.png">
+                            <img alt="image" style="float:right" src="public/main/img/flags/Andorra.png" title="Andorra.png">
                         </div>
                         </div>
                             <div>Director</div>
@@ -328,7 +328,7 @@
                     <a href="/profile/">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
                             <span class="label label-danger">Offline</span><br /><br />
@@ -342,7 +342,7 @@
                         <h3 style="margin-bottom:0"><strong>Daniel Gregory</strong></h3>
                         </div>
                         <div class="col-sm-4" style="padding:5px 0">
-                            <img alt="image" style="float:right" src="/public/main/img/flags/Andorra.png" title="Andorra.png">
+                            <img alt="image" style="float:right" src="public/main/img/flags/Andorra.png" title="Andorra.png">
                         </div>
                         </div>
                             <div>Director</div>
@@ -362,7 +362,7 @@
                     <a href="/profile/">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
                             <span class="label label-danger">Offline</span><br /><br />
@@ -376,7 +376,7 @@
                         <h3 style="margin-bottom:0"><strong>Daniel Gregory</strong></h3>
                         </div>
                         <div class="col-sm-4" style="padding:5px 0">
-                            <img alt="image" style="float:right" src="/public/main/img/flags/Andorra.png" title="Andorra.png">
+                            <img alt="image" style="float:right" src="public/main/img/flags/Andorra.png" title="Andorra.png">
                         </div>
                         </div>
                             <div>Director</div>
@@ -396,7 +396,7 @@
                     <a href="/profile/">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
                             <span class="label label-danger">Offline</span><br /><br />
@@ -410,7 +410,7 @@
                         <h3 style="margin-bottom:0"><strong>Daniel Gregory</strong></h3>
                         </div>
                         <div class="col-sm-4" style="padding:5px 0">
-                            <img alt="image" style="float:right" src="/public/main/img/flags/Andorra.png" title="Andorra.png">
+                            <img alt="image" style="float:right" src="public/main/img/flags/Andorra.png" title="Andorra.png">
                         </div>
                         </div>
                             <div>Director</div>
@@ -430,7 +430,7 @@
                     <a href="/profile/">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
                             <span class="label label-danger">Offline</span><br /><br />
@@ -444,7 +444,7 @@
                         <h3 style="margin-bottom:0"><strong>Daniel Gregory</strong></h3>
                         </div>
                         <div class="col-sm-4" style="padding:5px 0">
-                            <img alt="image" style="float:right" src="/public/main/img/flags/Andorra.png" title="Andorra.png">
+                            <img alt="image" style="float:right" src="public/main/img/flags/Andorra.png" title="Andorra.png">
                         </div>
                         </div>
                             <div>Director</div>
@@ -464,7 +464,7 @@
                     <a href="/profile/">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
                             <span class="label label-danger">Offline</span><br /><br />
@@ -478,7 +478,7 @@
                         <h3 style="margin-bottom:0"><strong>Daniel Gregory</strong></h3>
                         </div>
                         <div class="col-sm-4" style="padding:5px 0">
-                            <img alt="image" style="float:right" src="/public/main/img/flags/Andorra.png" title="Andorra.png">
+                            <img alt="image" style="float:right" src="public/main/img/flags/Andorra.png" title="Andorra.png">
                         </div>
                         </div>
                             <div>Director</div>
@@ -498,7 +498,7 @@
                     <a href="/profile/">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
                             <span class="label label-danger">Offline</span><br /><br />
@@ -512,7 +512,7 @@
                         <h3 style="margin-bottom:0"><strong>Daniel Gregory</strong></h3>
                         </div>
                         <div class="col-sm-4" style="padding:5px 0">
-                            <img alt="image" style="float:right" src="/public/main/img/flags/Andorra.png" title="Andorra.png">
+                            <img alt="image" style="float:right" src="public/main/img/flags/Andorra.png" title="Andorra.png">
                         </div>
                         </div>
                             <div>Director</div>
@@ -532,7 +532,7 @@
                     <a href="/profile/">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
                             <span class="label label-danger">Offline</span><br /><br />
@@ -546,7 +546,7 @@
                         <h3 style="margin-bottom:0"><strong>Daniel Gregory</strong></h3>
                         </div>
                         <div class="col-sm-4" style="padding:5px 0">
-                            <img alt="image" style="float:right" src="/public/main/img/flags/Andorra.png" title="Andorra.png">
+                            <img alt="image" style="float:right" src="public/main/img/flags/Andorra.png" title="Andorra.png">
                         </div>
                         </div>
                             <div>Director</div>
@@ -566,7 +566,7 @@
                     <a href="/profile/">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
                             <span class="label label-danger">Offline</span><br /><br />
@@ -580,7 +580,7 @@
                         <h3 style="margin-bottom:0"><strong>Daniel Gregory</strong></h3>
                         </div>
                         <div class="col-sm-4" style="padding:5px 0">
-                            <img alt="image" style="float:right" src="/public/main/img/flags/Andorra.png" title="Andorra.png">
+                            <img alt="image" style="float:right" src="public/main/img/flags/Andorra.png" title="Andorra.png">
                         </div>
                         </div>
                             <div>Director</div>
@@ -600,7 +600,7 @@
                     <a href="/profile/">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="/public/main/img/gsm-small.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="public/main/img/gsm-small.jpg">
                         </div>
                         <div class="text-center" style="margin-top:10px">
                             <span class="label label-danger">Offline</span><br /><br />
@@ -614,7 +614,7 @@
                         <h3 style="margin-bottom:0"><strong>Daniel Gregory</strong></h3>
                         </div>
                         <div class="col-sm-4" style="padding:5px 0">
-                            <img alt="image" style="float:right" src="/public/main/img/flags/Andorra.png" title="Andorra.png">
+                            <img alt="image" style="float:right" src="public/main/img/flags/Andorra.png" title="Andorra.png">
                         </div>
                         </div>
                             <div>Director</div>
