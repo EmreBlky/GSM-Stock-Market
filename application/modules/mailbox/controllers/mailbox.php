@@ -786,6 +786,17 @@ class Mailbox extends MX_Controller
         }
     }
     
+    function results($result)
+    {
+        $data['results'] = $result;
+        $data['main'] = 'mailbox';        
+        $data['title'] = 'GSM - Email Search Results';        
+        $data['page'] = 'results';
+        
+        $this->load->module('templates');
+        $this->templates->page($data);
+    }
+            
     function refresh()
     {
          redirect($_SERVER['HTTP_REFERER'], 'refresh');  
