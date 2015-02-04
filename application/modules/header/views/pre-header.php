@@ -13,6 +13,7 @@
 	<meta name="keywords" content="gsm stock market, gsm trading, gsm market, gsm stock, mobile trading, phone trading, mobile phone, phone companies, mobile phone directory" />
     <meta name="google-translate-customization" content=""/>
     
+    <script src="public/main/js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
    <script>
         function autoRefresh_div()
