@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <title><?php echo $title; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"
-	<meta name="description" content="GSM Stock Market The ultimate trading platform for mobile phone trade companies globally. Members are retailers, wholesalers, distributors, manufacturers, network operators and service centres from all over the world." />
+    <meta name="description" content="GSM Stock Market The ultimate trading platform for mobile phone trade companies globally. Members are retailers, wholesalers, distributors, manufacturers, network operators and service centres from all over the world." />
 	<meta name="keywords" content="gsm stock market, gsm trading, gsm market, gsm stock, mobile trading, phone trading, mobile phone, phone companies, mobile phone directory" />
     <meta name="google-translate-customization" content=""/>
     
@@ -92,7 +92,6 @@
 
     <link href="public/main/css/animate.css" rel="stylesheet">
     <link href="public/main/css/style.css" rel="stylesheet">
-    <link href="public/main/css/gsm.css" rel="stylesheet"> <!-- GSM Override -->
     
     <!-- Mainly scripts -->
     <script src="public/main/js/jquery-2.1.1.js"></script>
