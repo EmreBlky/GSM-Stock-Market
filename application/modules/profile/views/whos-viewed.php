@@ -534,7 +534,19 @@
                 </div>
             </div><!-- Profile Widget End -->
             
-       	</div><!-- Row End -->    
+       	</div><!-- Row End -->
+        <div class="row" style="margin:0 0 25px 0">
+        <div class="btn-group pull-right">
+        	<button type="button" class="btn btn-white"><i class="fa fa-chevron-left"></i></button>
+            <button class="btn btn-white">1</button>
+            <button class="btn btn-white  active">2</button>
+            <button class="btn btn-white">3</button>
+            <button class="btn btn-white">4</button>
+            <button type="button" class="btn btn-white"><i class="fa fa-chevron-right"></i> </button>
+        </div>
+        </div>
+        
+           
         </div>
                             
                             <div class="modal inmodal fade" id="profile_message" tabindex="-1" role="dialog"  aria-hidden="true">

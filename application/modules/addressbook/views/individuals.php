@@ -16,6 +16,39 @@
                 </div>
             </div>
         <div class="wrapper wrapper-content animated fadeInRight">
+        
+        <div class="row">
+            <div class="col-lg-12">
+                    <div class="ibox-content">
+                    <div class="col-lg-3">
+                    	<label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1" checked="checked"> Favourites </label> 
+                    	<label class="checkbox-inline"> <input type="checkbox" value="option2" id="inlineCheckbox2" checked="checked"> Individuals </label>
+                        <label class="checkbox-inline"> <input type="checkbox" value="option3" id="inlineCheckbox3" checked="checked"> Companies </label>
+                    </div>
+                    <div class="col-lg-3">
+                    	<select class="form-control m-b" name="business_activity">
+                        	<option selected="selected">All Business Activities</option>
+                            <option>Insurance</option>
+                            <option>Mobile Repair</option>
+                            <option>Network Operator</option>
+                    	</select>
+                    </div>
+                    <div class="col-lg-3">
+                    	<select class="form-control m-b" name="country">
+                        	<option selected="selected">All Countries</option>
+                            <option>France</option>
+                            <option>United Kingdom</option>
+                            <option>United States</option>
+                    	</select>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="input-group"><input type="text" class="form-control"> <span class="input-group-btn"> <button type="button" class="btn btn-primary">Search</button> </span></div>
+                    </div>
+                    </div><!-- ibox-content -->
+            </div>
+        </div><!-- row end -->      
+        
+        
         <div class="row">
         
             <div class="col-lg-4"><!-- Profile Widget Start -->
@@ -582,7 +615,19 @@
                 </div>
             </div><!-- Profile Widget End -->
             
-       	</div><!-- Row End -->    
+       	</div><!-- Row End -->
+        
+        <div class="row" style="margin:0 0 25px 0">
+        <div class="btn-group pull-right">
+        	<button type="button" class="btn btn-white"><i class="fa fa-chevron-left"></i></button>
+            <button class="btn btn-white">1</button>
+            <button class="btn btn-white  active">2</button>
+            <button class="btn btn-white">3</button>
+            <button class="btn btn-white">4</button>
+            <button type="button" class="btn btn-white"><i class="fa fa-chevron-right"></i> </button>
+        </div>
+        </div>   
+         
         </div>
                             
                             <div class="modal inmodal fade" id="profile_message" tabindex="-1" role="dialog"  aria-hidden="true">

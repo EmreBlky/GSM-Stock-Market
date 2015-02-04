@@ -152,7 +152,7 @@
                 							<div class="chat-activity-list">
 											<div class="chat-element">
                                                	<a href="#" class="pull-left">
-                                                    <img alt="image" class="img-circle" src="/public/main/img/a2.jpg">
+                                                    <img alt="image" class="img-circle" src="public/main/img/a2.jpg">
                                                 </a>
                                                 <div class="media-body ">
                                                     <small class="pull-right text-navy">1m ago</small>
@@ -165,7 +165,7 @@
                                             </div>
                                             <div class="chat-element right">
                                                 <a href="#" class="pull-right">
-                                                    <img alt="image" class="img-circle" src="/public/main/img/a4.jpg">
+                                                    <img alt="image" class="img-circle" src="public/main/img/a4.jpg">
                                                 </a>
                                                 <div class="media-body text-right ">
                                                     <small class="pull-left">5m ago</small>
@@ -178,7 +178,7 @@
                                             </div>
                                             <div class="chat-element ">
                                                 <a href="#" class="pull-left">
-                                                    <img alt="image" class="img-circle" src="/public/main/img/a2.jpg">
+                                                    <img alt="image" class="img-circle" src="public/main/img/a2.jpg">
                                                 </a>
                                                 <div class="media-body ">
                                                     <small class="pull-right">2h ago</small>
@@ -210,7 +210,7 @@
                                     <div class="feed-activity-list">
                                         <div class="feed-element">
                                             <a href="#" class="pull-left">
-                                                <img alt="image" class="img-circle" src="/public/main/img/profile_small.jpg">
+                                                <img alt="image" class="img-circle" src="public/main/img/profile_small.jpg">
                                             </a>
                                             <div class="media-body ">
                                                 <div class="row">
@@ -391,12 +391,7 @@
                         <img src="public/main/images/company/no_company.jpg" class="img-responsive" style="margin:0 auto">
                     <?php }?>
                     
-                    <dl class="dl-horizontal">
-                    	<dt><i class="fa fa-linkedin"></i></dt> <dd>  @gsmstockmarket</dd>
-                    	<dt><i class="fa fa-facebook"></i></dt> <dd>  @gsmstockmarket</dd>
-                    	<dt><i class="fa fa-twitter"></i></dt> <dd>  @gsmstockmarket</dd>
-                    </dl>
-					<div class="row">
+					<div class="row" style="margin-top:20px">
                     	<div class="col-lg-12">
                         	<button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#buycreditcheck"><i class="fa fa-check-square-o"></i> Credit Check</button>
                         </div>
