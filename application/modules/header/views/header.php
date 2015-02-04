@@ -1,6 +1,6 @@
 <div id="wrapper">
         <!-- SIDEBAR CODE HERE -->
-		<?php
+    	<?php
                 
                     $this->load->module('header');
                     $this->load->view('sidebar');
