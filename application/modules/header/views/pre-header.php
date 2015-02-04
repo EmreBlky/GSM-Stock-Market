@@ -29,7 +29,7 @@
                                 $this->mailbox->new_message();
                             ?>";
             $("#inbox_count_remove").replaceWith('<div id="inbox_count">'+inbox_count+'</div>');
-            //$("#inbox_count").load("mailbox/new_message");
+            $("#inbox_count").load("mailbox/new_message");
             
             var inbox_all_message = "<?php
                                 $this->load->module('mailbox');
