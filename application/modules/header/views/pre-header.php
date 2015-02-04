@@ -79,7 +79,7 @@
             
         </script>
 
-	<!-- Styling -->
+    <!-- Styling -->
     <link href="public/main/css/bootstrap.min.css" rel="stylesheet">
     <link href="public/main/font-awesome/css/font-awesome.css" rel="stylesheet">
     
@@ -97,8 +97,11 @@
     <!-- Mainly scripts -->
     <script src="public/main/js/jquery-2.1.1.js"></script>
     <script src="public/main/js/bootstrap.min.js"></script>
-    <script src="public/main/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    
     <script src="public/main/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    
+    <!-- Toastr script -->
+    <script src="public/main/js/plugins/toastr/toastr.min.js"></script>
 
     <!-- Custom and plugin javascript -->
     <script src="public/main/js/inspinia.js"></script>
