@@ -9,6 +9,7 @@ class Company extends MX_Controller
         { 
             redirect('login');
         }
+        $this->load->model('company/company_model', 'company_model');
     }
 
     function index()
@@ -16,6 +17,8 @@ class Company extends MX_Controller
         $data['main'] = 'company';
         $data['title'] = 'GSM - Company';        
         $data['page'] = 'index';
+        
+        $data['list_company'] = $this->company_model->get_all();
         
         $this->load->module('templates');
         $this->templates->page($data);
