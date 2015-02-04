@@ -344,21 +344,21 @@
                 <!-- Page Specific Scripts -->
 
     <!-- Flot -->
-    <script src="/public/main/js/plugins/flot/jquery.flot.js"></script>
-    <script src="/public/main/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-    <script src="/public/main/js/plugins/flot/jquery.flot.spline.js"></script>
-    <script src="/public/main/js/plugins/flot/jquery.flot.resize.js"></script>
-    <script src="/public/main/js/plugins/flot/jquery.flot.pie.js"></script>
-    <script src="/public/main/js/plugins/flot/jquery.flot.symbol.js"></script>
+    <script src="public/main/js/plugins/flot/jquery.flot.js"></script>
+    <script src="public/main/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="public/main/js/plugins/flot/jquery.flot.spline.js"></script>
+    <script src="public/main/js/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="public/main/js/plugins/flot/jquery.flot.pie.js"></script>
+    <script src="public/main/js/plugins/flot/jquery.flot.symbol.js"></script>
 
     <!-- Peity -->
-    <script src="/public/main/js/plugins/peity/jquery.peity.min.js"></script>
-    <script src="/public/main/js/demo/peity-demo.js"></script>
+    <script src="public/main/js/plugins/peity/jquery.peity.min.js"></script>
+    <script src="public/main/js/demo/peity-demo.js"></script>
     <!-- EayPIE -->
-    <script src="/public/main/js/plugins/easypiechart/jquery.easypiechart.js"></script>
+    <script src="public/main/js/plugins/easypiechart/jquery.easypiechart.js"></script>
 
     <!-- Sparkline -->
-    <script src="/public/main/js/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <script src="public/main/js/plugins/sparkline/jquery.sparkline.min.js"></script>
 
     <!-- Sparkline demo data  -->
-    <script src="/public/main/js/demo/sparkline-demo.js"></script>
+    <script src="public/main/js/demo/sparkline-demo.js"></script>

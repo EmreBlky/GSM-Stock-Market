@@ -466,7 +466,7 @@
             
 	<!-- Page Specific Scripts -->    
     <!-- Toastr script -->
-    <script src="/public/main/js/plugins/toastr/toastr.min.js"></script>
+    <script src="public/main/js/plugins/toastr/toastr.min.js"></script>
     <script type="text/javascript">
         $(function () {
                 toastr.options = {

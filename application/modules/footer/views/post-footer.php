@@ -1,6 +1,6 @@
 
    <!-- JSKnob -->
-   <script src="/public/main/js/plugins/jsKnob/jquery.knob.js"></script>
+   <script src="public/main/js/plugins/jsKnob/jquery.knob.js"></script>
 
     <script>
         $(document).ready(function() {
@@ -172,10 +172,10 @@
     <!-- mailbox -->
 
     <!-- iCheck -->
-    <script src="/public/main/js/plugins/iCheck/icheck.min.js"></script>
+    <script src="public/main/js/plugins/iCheck/icheck.min.js"></script>
 
     <!-- SUMMERNOTE -->
-    <script src="/public/main/js/plugins/summernote/summernote.min.js"></script>
+    <script src="public/main/js/plugins/summernote/summernote.min.js"></script>
     <script>
         $(document).ready(function(){
             $('.i-checks').iCheck({
