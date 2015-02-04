@@ -30,15 +30,10 @@ class Search extends MX_Controller
     
     function emailSearch($category)
     {
-        
-        //echo $category;
-        //echo '<pre>';
-        //print_r($_POST);
-        
-        $test = $this->search_model->search_email($category);
-        //return $test;
-        echo '<pre>';
-        print_r($test);
+        $data['search_emails'] = $this->search_model->search_email($category);
+        $data['category'] = $category;
+        $this->load->module('mailbox');
+        $this->mailbox->results($data);
     }
             
     function user()
