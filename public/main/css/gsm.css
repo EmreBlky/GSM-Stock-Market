@@ -1,1 +1,76 @@
 /* GSM Template Overides */
+
+/* Who's Viewed & Address Book */
+.gsm-contact {margin-top:10px}
+img.fullhw {height:100%;width:100%}
+.nopadding {padding:0}
+
+@media (min-width: 768px) {
+.gsm-contact {text-align:right}
+.gsm-contact button {font-size:10px}
+.gsm-contact div {display:inline}
+}
+
+@media (min-width: 1200px) {
+.gsm-contact button:nth-last-child(1), .gsm-contact button:nth-last-child(2) {margin-top:15px}
+.gsm-contact div {display:block}
+.profile-minh {min-height:160px}
+}
+
+@media (min-width: 1650px) {
+.gsm-contact div {display:inline}
+}
+
+@media (max-width: 767px) {
+.gsm-contact div {display:block}
+.gsm-contact button:nth-last-child(1), .gsm-contact button:nth-last-child(2) {margin-top:15px}
+.contact-box {text-align:center}
+.profile-minh {margin-top:15px}
+}
+
+
+/* Buttons */
+.btn-profile {background-color: #1c84c6;border-color: #1c84c6;color: #FFFFFF;}
+
+.btn-profile:hover,
+.btn-profile:focus,
+.btn-profile:active,
+.btn-profile.active,
+.open .dropdown-toggle.btn-profile {
+  background-color: #1a7bb9;
+  border-color: #1a7bb9;
+  color: #FFFFFF;
+}
+
+.btn-messenger {background-color: #23c6c8;border-color: #23c6c8;color:  #FFFFFF;}
+.btn-messenger:hover,
+.btn-messenger:focus,
+.btn-messenger:active,
+.btn-messenger.active,
+.open .dropdown-toggle.btn-messenger {
+  background-color: #21b9bb;
+  border-color: #21b9bb;
+  color: #FFFFFF;
+}
+
+.btn-message {background-color: #1ab394;border-color: #1ab394;color: #FFFFFF;}
+.btn-message:hover,
+.btn-message:focus,
+.btn-message:active,
+.btn-message.active,
+.open .dropdown-toggle.btn-message {
+  background-color: #18a689;
+  border-color: #18a689;
+  color: #FFFFFF;
+}
+
+.btn-favourite {background-color: #f8ac59;border-color: #f8ac59;color: #FFFFFF;}
+.btn-favourite:hover,
+.btn-favourite:focus,
+.btn-favourite:active,
+.btn-favourite.active,
+.open .dropdown-toggle.btn-favourite {
+  background-color: #f7a54a;
+  border-color: #f7a54a;
+  color: #FFFFFF;
+}
