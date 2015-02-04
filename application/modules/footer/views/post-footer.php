@@ -197,10 +197,10 @@
 
     </script>
 
-<?php 
+    <?php 
 
-    //$this->load->module('analytics');
-    //$this->analytics->google_analytics('','');
+$this->load->module('analytics');
+$this->analytics->google_analytics('','');
 
 ?>
 </body>
