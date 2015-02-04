@@ -14,6 +14,70 @@
     <meta name="google-translate-customization" content=""/>
     
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+   <script>
+        function autoRefresh_div()
+        {
+            var result = "<?php
+                            $this->load->module('mailbox');
+                            $this->mailbox->messages_count();
+                        ?>";
+            $("#result_remove").replaceWith('<div id="result">'+result+'</div>');
+            $("#result").load("mailbox/messages_count");
+            
+            var inbox_count = "<?php
+                                $this->load->module('mailbox');
+                                $this->mailbox->messages_count();
+                            ?>";
+            $("#inbox_count_remove").replaceWith('<div id="inbox_count">'+inbox_count+'</div>');
+            $("#inbox_count").load("mailbox/new_message");
+            
+            var inbox_all_message = "<?php
+                                $this->load->module('mailbox');
+                                $this->mailbox->new_message_all();
+                            ?>";
+            $("#inbox_all_message_remove").replaceWith('<div id="inbox_all_message" style="float: right;">'+inbox_all_message+'</div>');            
+            $("#inbox_all_message").load("mailbox/new_message_all");
+            
+            var inbox_market = "<?php
+                                $this->load->module('mailbox');
+                                $this->mailbox->new_message_market();
+                            ?>";
+            $("#inbox_market_remove").replaceWith('<div id="inbox_market" style="float: right;">'+inbox_market+'</div>'); 
+            $("#inbox_market").load("mailbox/new_message_market");
+            
+            var inbox_member = "<?php
+                                $this->load->module('mailbox');
+                                $this->mailbox->new_message_member();
+                            ?>";
+            $("#inbox_member_remove").replaceWith('<div id="inbox_member" style="float: right;">'+inbox_member+'</div>'); 
+            $("#inbox_member").load("mailbox/new_message_member");
+            
+            var inbox_support = "<?php
+                                $this->load->module('mailbox');
+                                $this->mailbox->new_message_support();
+                            ?>";
+            $("#inbox_support_remove").replaceWith('<div id="inbox_support" style="float: right;">'+inbox_support+'</div>'); 
+            $("#inbox_support").load("mailbox/new_message_support");
+         }
+
+         setInterval('autoRefresh_div()', 500);
+    </script>
+    
+    <script type="text/javascript">
+        
+            $(function() {
+
+                getStatus();
+
+            });
+            
+            function getStatus() {
+
+                $('#status').load('<?php echo $base;?>mailbox/mail_recent/10'); 
+                setTimeout("getStatus()",500);
+            }
+            
+        </script>
 
 	<!-- Styling -->
     <link href="public/main/css/bootstrap.min.css" rel="stylesheet">
