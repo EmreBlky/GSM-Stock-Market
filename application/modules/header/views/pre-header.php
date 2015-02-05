@@ -60,7 +60,7 @@
             $("#inbox_support").load("mailbox/new_message_support");
          }
 
-         /*setInterval('autoRefresh_div()', 500);*/
+         setInterval('autoRefresh_div()', 500);
     </script>
     
     <script type="text/javascript">
@@ -74,7 +74,7 @@
             function getStatus() {
 
                 $('#status').load('<?php echo $base;?>mailbox/mail_recent/10'); 
-                /*setTimeout("getStatus()",500);*/
+                setTimeout("getStatus()",500);
             }
             
         </script>
