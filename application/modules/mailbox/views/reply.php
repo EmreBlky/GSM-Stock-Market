@@ -17,7 +17,7 @@
                     <a href="mailbox/draft/<?php echo $this->uri->segment(3);?>" class="btn btn-white btn-sm">Draft</a>
                     <a href="mailbox/inbox/<?php echo $this->uri->segment(3);?>" class="btn btn-danger btn-sm">Discard</a>
                 </div>
-                <h2>Compse mail</h2>
+                <h2>Reply Mail</h2>
             </div>
                 <div class="mail-box">
                 <div class="mail-body">

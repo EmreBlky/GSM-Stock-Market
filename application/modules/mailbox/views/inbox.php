@@ -76,7 +76,7 @@
                 <?php
                 
                     $this->load->module('search');
-                    $this->search->email('all');
+                    $this->search->email($this->uri->segment(3));
                 
                 ?>
                 

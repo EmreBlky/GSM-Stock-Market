@@ -22,8 +22,15 @@
             </li>
             <li class="divider"></li>
         <?php } ?>
-    <?php }?>
             
+    <?php } else {?> 
+    <li>
+        <div class="text-center link-block">           
+                No New Messages           
+        </div>
+    </li>
+    <li class="divider"></li>
+    <?php }?>        
     <li>
         <div class="text-center link-block">
             <a href="mailbox/inbox">

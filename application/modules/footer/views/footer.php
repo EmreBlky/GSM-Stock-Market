@@ -3,7 +3,7 @@
 //    echo '<pre>';
 //    print_r($logged);
 //    exit;
-?>			
+?>    		
 
     <div class="footer">
             <div class="pull-right">
