@@ -60,7 +60,7 @@
             $("#inbox_support").load("mailbox/new_message_support");
          }
 
-         setInterval('autoRefresh_div()', 500);
+         /*setInterval('autoRefresh_div()', 500);*/
     </script>
     
     <script type="text/javascript">
