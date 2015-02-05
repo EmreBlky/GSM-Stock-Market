@@ -65,8 +65,6 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
-*/
-
 /*
 //LIVE DATABASE:
 $db['default']['hostname'] = '109.203.125.38';
@@ -85,5 +83,6 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 */
+
 /* End of file database.php */
 /* Location: ./application/config/database.php */
