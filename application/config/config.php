@@ -18,7 +18,7 @@
 $config['base_url']	= 'http://localhost/gsm/gsm-secure/';
 
 //SERVER SITE:
-//$config['base_url']	= 'http://secure-staging.gsmstockmarket.com/';
+$config['base_url']	= 'http://secure-staging.gsmstockmarket.com/';
 
 //LIVE SITE:
 //$config['base_url']	= '';

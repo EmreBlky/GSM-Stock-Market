@@ -92,6 +92,7 @@
 
     <link href="public/main/css/animate.css" rel="stylesheet">
     <link href="public/main/css/style.css" rel="stylesheet">
+    <link href="public/main/css/gsm.css" rel="stylesheet"> <!-- GSM Override -->
     
     <!-- Mainly scripts -->
     <script src="public/main/js/jquery-2.1.1.js"></script>
