@@ -37,9 +37,7 @@
                                         <i class="fa fa-ban"></i> You have blocked this company. They are unable to communicate or see you in anyway on this website. <a class="alert-link" href="#">Unblock</a>.
                                     </div> -->
                                     <div class="m-b-md">
-                                        <?php if($member_company->admin_member_id == $this->session->userdata('members_id')){?>
-                                            <a href="profile/edit_profile" class="btn btn-white btn-xs pull-right">Edit Profile</a>
-                                        <?php }?>
+                                        <a href="profile/edit_profile" class="btn btn-white btn-xs pull-right">Edit Profile</a>
                                         <h2><?php echo $member_company->company_name;?></h2>
                                     </div>
                                 </div>
@@ -112,7 +110,22 @@
                                         
                                         </dd>
                                     </dl>
-                                    
+                                    <div class="row">
+                                        <div class="col-md-6" style="margin-top:15px">
+                                            <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#profile_message"><i class="fa fa-envelope"></i> Send Message</button>
+                                        </div>
+                                        <div class="col-md-6" style="margin-top:15px">
+                                            <button type="button" class="btn btn-default btn-sm btn-block" id="conversation"><i class="fa fa-wechat"></i> Start Conversation</button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6" style="margin-top:15px">
+                                            <button type="button" class="btn btn-success btn-sm btn-block" id="contact_added"><i class="fa fa-book"></i> Add Contact</button>
+                                        </div>
+                                        <div class="col-md-6" style="margin-top:15px">
+                                            <button type="button" class="btn btn-warning btn-sm btn-block" id="favourite_added"><i class="fa fa-star"></i> Add Favourite</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <?php echo $member_company->company_profile;?>
@@ -179,7 +192,7 @@
                                             
                                         </div><!-- /chat-activity-list-->
                             	</div>
-                            <?php if($member_company->admin_member_id == $this->session->userdata('members_id')){?>                
+                                            
                             <div class="chat-form"><!-- Profile Owner Only -->
                                 <form role="form">
                                     <div class="form-group">
@@ -190,7 +203,7 @@
                                     </div>
                                 </form>
                             </div>
-                            <?php }?>
+
                             </div>
                                 
                                 <div class="tab-pane" id="feedback">
@@ -418,6 +431,13 @@
                                 </div>
                             </div>        
                             
+                            <?php
+                            
+                                $this->load->module('profile');
+                                $this->profile->send_message();
+                            
+                            ?>   
+                                 
                             <div class="modal inmodal fade" id="report_user" tabindex="-1" role="dialog"  aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">

@@ -28,10 +28,10 @@ class Profile extends MX_Controller
         $this->templates->page($data);
     }
     
-    function send_message($mid)
+    function send_message()
     {
         
-        $data['member_info'] = $this->member_model->get_where_multiple('id', $mid);
+        $data['member_info'] = $sid = $this->member_model->get_where_multiple('id', $this->session->userdata('members_id'));
         
         $this->load->view('send-message', $data);
     }

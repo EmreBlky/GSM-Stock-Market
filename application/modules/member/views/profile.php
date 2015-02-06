@@ -1,7 +1,7 @@
 <?php
-//
+
 //echo '<pre>';
-//print_r($company_users);
+//print_r($member);
 //exit;
 
 ?>	
@@ -12,12 +12,9 @@
                     <ol class="breadcrumb">
                         <li>
                             <a href="home">Home</a>
-                        </li>
-                        <li>
-                            My Profile
-                        </li>
+                        </li>                        
                         <li class="active">
-                            <strong>View Profile</strong>
+                            <strong><?php echo $member_info->firstname.' '.$member_info->lastname; ?></strong>
                         </li>
                     </ol>
                 </div>
@@ -36,10 +33,7 @@
                                         <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
                                         <i class="fa fa-ban"></i> You have blocked this company. They are unable to communicate or see you in anyway on this website. <a class="alert-link" href="#">Unblock</a>.
                                     </div> -->
-                                    <div class="m-b-md">
-                                        <?php if($member_company->admin_member_id == $this->session->userdata('members_id')){?>
-                                            <a href="profile/edit_profile" class="btn btn-white btn-xs pull-right">Edit Profile</a>
-                                        <?php }?>
+                                    <div class="m-b-md">                                        
                                         <h2><?php echo $member_company->company_name;?></h2>
                                     </div>
                                 </div>
@@ -47,12 +41,29 @@
                             <div class="row">
                                 <div class="col-lg-7">
                                     <dl class="dl-horizontal">
-                                        <dt>Status:</dt> <dd><span class="label label-primary">Active</span></dd>
-                                        <dt>Subscription:</dt> <dd>Gold Member</dd>
+                                        <dt>
+                                        <dd>
+                                            <span>
+                                                <?php if(file_exists("public/main/images/members/".$member_info->id.".jpg")){?>
+                                                    <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/images/members/<?php echo $member_info->id; ?>.jpg">
+                                                <?php } else {?>
+                                                    <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/images/members/no_profile.jpg" height="128" width="128">
+                                                <?php }?>                            
+                                            </span>
+                                        </dd>
+                                        </dt>
                                     </dl>
                                     <dl class="dl-horizontal">
-                                        <dt>Company Number:</dt> <dd><?php echo $member_company->company_number;?></dd>
-                                        <dt>VAT/Tax Number:</dt> <dd><?php echo $member_company->vat_tax;?></dd>
+                                        <dt>Status:  </dt> 
+                                        <dd><span class="label label-primary">Active</span></dd>
+                                        <dt>Subscription:</dt> 
+                                        <dd>Gold Member</dd>
+                                    </dl>
+                                    <dl class="dl-horizontal">
+                                        <dt>Company Number:</dt> 
+                                        <dd><?php echo $member_company->company_number;?></dd>
+                                        <dt>VAT/Tax Number:</dt> 
+                                        <dd><?php echo $member_company->vat_tax;?></dd>
                                     </dl>                                    
                                     <dl class="dl-horizontal">
                                         <dt>Address:</dt> <dd>  
@@ -62,15 +73,6 @@
                                             <?php echo $member_company->county;?><br />
                                             <?php echo $member_company->post_code;?><br />
                                             <?php echo $member_company->country;?></dd>
-                                    </dl>
-                                    
-                                    <dl class="dl-horizontal">
-                                        <dt>Phone:</dt> <dd>  <?php echo $member_info->phone_number;?></dd>
-                                        <dt>Skype:</dt> <dd>  <?php echo $member_info->skype;?></dd>
-                                        <dt>Website:</dt> <dd>  <?php echo $member_company->website;?></dd>
-                                        <dt>Facebook:</dt> <dd>  <?php echo $member_info->facebook;?></dd>
-                                        <dt>Twitter:</dt> <dd>  <?php echo $member_info->twitter;?></dd>
-                                        <dt>Linkedin:</dt> <dd>  <?php echo $member_info->linkedin;?></dd>
                                     </dl>
                                     
                                     <dl class="dl-horizontal">
@@ -91,28 +93,46 @@
                                         <div style="display:inline;height:65px;width:65px;padding:10px;margin-left:20px;"><i class="fa fa-star" style="font-size:75px;color:#FC6;vertical-align:top"></i></div>
                             		</div>
                                     <dl class="dl-horizontal" >
-
-                                        <dt>Date Created:</dt> <dd> <?php echo $member_info->date?></dd>
-                                        <dt>Last Online:</dt> <dd> 	10.07.2014 23:36:57 </dd>
-                                        <dt>Company Users:</dt>
-                                        <dd class="project-people">
-                                            <?php if($company_users){
-                                                
-                                                foreach($company_users as $user){
-                                                    
-                                            ?>
-                                            
-                                                <a href="#"><img alt="image" class="img-circle" src="public/main/images/members/<?php echo $user->id;?>.jpg"></a>
-                                            
-                                            <?php
-
-                                                    }
-                                                }
-                                            ?>  
+                                        <dt>Title:  </dt> 
+                                        <dd> <?php echo $member_info->title?></dd>
+                                        <dt>Firstname:</dt> 
+                                        <dd> <?php echo $member_info->firstname?></dd>
+                                        <dt>Surname:</dt> 
+                                        <dd> <?php echo $member_info->lastname?></dd>
+                                        <dt>Role:</dt> 
+                                        <dd> <?php echo $member_info->role?></dd>
+                                        <dt>Phone Number:</dt>
+                                        <dd> <?php echo $member_info->phone_number?></dd>
+                                        <dt>Mobile Number:</dt> 
+                                        <dd> <?php echo $member_info->mobile_number?></dd>
+                                        <dt>Facebook:</dt> 
+                                        <dd> <?php echo $member_info->facebook?></dd>
+                                        <dt>Twitter:</dt> 
+                                        <dd> <?php echo $member_info->twitter?></dd>
+                                        <dt>Google Plus:</dt>
+                                        <dd> <?php echo $member_info->gplus?></dd>
+                                        <dt>LinkedIn:</dt> 
+                                        <dd> <?php echo $member_info->linkedin?></dd>
+                                        <dt>Skype:</dt> 
+                                        <dd> <?php echo $member_info->skype?></dd>
                                         
-                                        </dd>
                                     </dl>
-                                    
+                                    <div class="row">
+                                        <div class="col-md-6" style="margin-top:15px">
+                                            <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#profile_message"><i class="fa fa-envelope"></i> Send Message</button>
+                                        </div>
+                                        <div class="col-md-6" style="margin-top:15px">
+                                            <button type="button" class="btn btn-default btn-sm btn-block" id="conversation"><i class="fa fa-wechat"></i> Start Conversation</button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6" style="margin-top:15px">
+                                            <button type="button" class="btn btn-success btn-sm btn-block" id="contact_added"><i class="fa fa-book"></i> Add Contact</button>
+                                        </div>
+                                        <div class="col-md-6" style="margin-top:15px">
+                                            <button type="button" class="btn btn-warning btn-sm btn-block" id="favourite_added"><i class="fa fa-star"></i> Add Favourite</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <?php echo $member_company->company_profile;?>
@@ -179,18 +199,7 @@
                                             
                                         </div><!-- /chat-activity-list-->
                             	</div>
-                            <?php if($member_company->admin_member_id == $this->session->userdata('members_id')){?>                
-                            <div class="chat-form"><!-- Profile Owner Only -->
-                                <form role="form">
-                                    <div class="form-group">
-                                        <textarea class="form-control" placeholder="Message"></textarea>
-                                    </div>
-                                    <div class="text-right">
-                                        <button type="submit" class="btn btn-sm btn-primary m-t-n-xs"><strong>Post to Feed</strong></button>
-                                    </div>
-                                </form>
-                            </div>
-                            <?php }?>
+                                    
                             </div>
                                 
                                 <div class="tab-pane" id="feedback">
@@ -418,6 +427,13 @@
                                 </div>
                             </div>        
                             
+                            <?php
+                            
+                                $this->load->module('profile');
+                                $this->profile->send_message($member_company->id);
+                            
+                            ?>   
+                                 
                             <div class="modal inmodal fade" id="report_user" tabindex="-1" role="dialog"  aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
