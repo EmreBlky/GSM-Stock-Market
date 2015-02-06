@@ -25,15 +25,28 @@
                     <div class="ibox-content" id="ibox-content">
 
                         <div id="vertical-timeline" class="vertical-container center-orientation light-timeline">
+                        
                             <div class="vertical-timeline-block">
-                                <div class="vertical-timeline-icon navy-bg">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="public/main/img/daniel_big.jpg">
+                                <div class="vertical-timeline-icon" style="background-image:url(public/main/img/daniel_big.jpg);background-position:center;background-size:100%">
                                 </div>
 
                                 <div class="vertical-timeline-content">
-                                    <h2>Meeting</h2>
-                                    <p>Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products. Below please find the current status of the sale.
-                                    </p>
+                                    <h2>Daniel Gregory</h2>
+                                    <p>Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products. Below please find the current status of the sale.</p>
+                                    <span class="vertical-date">
+                                        Today <br/>
+                                        <small>Dec 24</small>
+                                    </span>
+                                </div>
+                            </div>
+                        
+                            <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon" style="background-image:url(public/main/img/daniel_big.jpg);background-position:center;background-size:100%">
+                                </div>
+
+                                <div class="vertical-timeline-content">
+                                    <h2>Daniel Gregory</h2>
+                                    <p>Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products. Below please find the current status of the sale.</p>
                                     <span class="vertical-date">
                                         Today <br/>
                                         <small>Dec 24</small>
