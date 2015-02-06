@@ -1,16 +1,13 @@
 
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-9">
-                    <h2>Individuals</h2>
+                    <h2>Address Book</h2>
                     <ol class="breadcrumb">
                         <li>
                             <a href="/">Home</a>
                         </li>
-                        <li>
-                            Address Book
-                        </li>
                         <li class="active">
-                            <strong>Individuals</strong>
+                            <strong>Address Book</strong>
                         </li>
                     </ol>
                 </div>
@@ -19,31 +16,34 @@
         
         <div class="row">
             <div class="col-lg-12">
+            	<div class="ibox float-e-margins">
                     <div class="ibox-content">
-                    <div class="col-lg-3">
-                    	<label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1" checked="checked"> Favourites </label> 
-                    	<label class="checkbox-inline"> <input type="checkbox" value="option2" id="inlineCheckbox2" checked="checked"> Individuals </label>
-                        <label class="checkbox-inline"> <input type="checkbox" value="option3" id="inlineCheckbox3" checked="checked"> Companies </label>
-                    </div>
-                    <div class="col-lg-3">
-                    	<select class="form-control m-b" name="business_activity">
-                        	<option selected="selected">All Business Activities</option>
-                            <option>Insurance</option>
-                            <option>Mobile Repair</option>
-                            <option>Network Operator</option>
-                    	</select>
-                    </div>
-                    <div class="col-lg-3">
-                    	<select class="form-control m-b" name="country">
-                        	<option selected="selected">All Countries</option>
-                            <option>France</option>
-                            <option>United Kingdom</option>
-                            <option>United States</option>
-                    	</select>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="input-group"><input type="text" class="form-control"> <span class="input-group-btn"> <button type="button" class="btn btn-primary">Search</button> </span></div>
-                    </div>
+            			<div class="row">
+                        <div class="col-lg-3">
+                            <label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1" checked="checked"> Favourites </label> 
+                            <label class="checkbox-inline"> <input type="checkbox" value="option2" id="inlineCheckbox2" checked="checked"> Individuals </label>
+                            <label class="checkbox-inline"> <input type="checkbox" value="option3" id="inlineCheckbox3" checked="checked"> Companies </label>
+                        </div>
+                        <div class="col-lg-3">
+                            <select class="form-control m-b" name="business_activity">
+                                <option selected="selected">All Business Activities</option>
+                                <option>Insurance</option>
+                                <option>Mobile Repair</option>
+                                <option>Network Operator</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-3">
+                            <select class="form-control m-b" name="country">
+                                <option selected="selected">All Countries</option>
+                                <option>France</option>
+                                <option>United Kingdom</option>
+                                <option>United States</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="input-group"><input type="text" class="form-control"> <span class="input-group-btn"> <button type="button" class="btn btn-primary">Search</button> </span></div>
+                        </div>
+                    	</div><!-- row -->
                     </div><!-- ibox-content -->
             </div>
         </div><!-- row end -->      

@@ -53,16 +53,11 @@
                     </li>
                     
                     <li>
-                        <a href="/"><i class="fa fa-wechat"></i> <span class="nav-label">Messenger</span><span class="label label-warning pull-right">0/1</span></a></a>
+                        <a href="messenger"><i class="fa fa-wechat"></i> <span class="nav-label">Messenger</span><span class="label label-warning pull-right">0/1</span></a></a>
                     </li>
                     
                     <li>
-                        <a href="/"><i class="fa fa-book"></i> <span class="nav-label">Address Book</span> <span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a href="addressbook/individual"><i class="fa fa-user"></i> Individuals</a></li>
-                            <li><a href="addressbook/company"><i class="fa fa-users"></i> Companies</a></li>
-                            <li><a href="addressbook/favourite"><i class="fa fa-star"></i> Favourites</a></li>
-                        </ul>
+                        <a href="addressbook/individual"><i class="fa fa-book"></i> <span class="nav-label">Address Book</span></a>
                     </li>
                     
                     <li>
