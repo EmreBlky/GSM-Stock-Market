@@ -10,10 +10,11 @@ class Fourofour extends MX_Controller
 
     function index()
     {
-        $data['main'] = 'fourofour';
+        //$data['main'] = 'fourofour';
         $data['title'] = 'GSM - 404 Page Not Found';
-        $data['page'] = 'index';
-        $this->load->module('templates');
-        $this->templates->page($data);
+        //$data['page'] = 'index';
+        //$this->load->module('templates');
+        //$this->templates->page($data);
+        $this->load->view('index', $data);
     } 
 }
