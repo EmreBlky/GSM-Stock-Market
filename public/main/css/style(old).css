@@ -4564,22 +4564,3 @@ body.skin-3 {
     display: none;
   }
 }
-/*DIPO ADDED*/
-a.btn-success:link {
-    color: #FFF;
-}
-
-/* visited link */
-a.btn-success:visited {
-    color: #FFF;
-}
-
-/* mouse over link */
-a.btn-success:hover {
-    color: #FFF;
-}
-
-/* selected link */
-a.btn-success:active {
-    color: #FFF;
-}
