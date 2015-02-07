@@ -349,14 +349,28 @@
                                 </div>  
                                 
                                 <div class="form-group">
-                                    <label class="col-sm-2 control-label">Company Number</label>
+                                    <label class="col-sm-2 control-label">Full Name</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control">
                                     </div>
                                 </div>     
                                 
                                 <div class="form-group">
-                                    <label class="col-sm-2 col-sm-2 control-label">VAT/Tax Number</label>
+                                    <label class="col-sm-2 col-sm-2 control-label">Email Address</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" >
+                                    </div>  
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="col-sm-2 col-sm-2 control-label">Mobile Number</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" >
+                                    </div>  
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="col-sm-2 col-sm-2 control-label">Language</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" >
                                         <span class="help-block">e.g GB 029 392 23</span>
