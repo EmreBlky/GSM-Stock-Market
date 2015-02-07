@@ -36,7 +36,7 @@ class Search_model extends MY_Model {
         
         if($category == 'sent'){
             
-            $sql = "SELECT * FROM mailbox WHERE (subject LIKE '%$q%' AND $category = 'yes' AND member_id = '".$this->session->userdata('members_id')."') OR (body LIKE '%$q%' AND $category = 'yes' AND member_id = '".$this->session->userdata('members_id')."')";
+            $sql = "SELECT * FROM mailbox WHERE (subject LIKE '%$q%' AND $category = 'yes' AND member_id = '".$this->session->userdata('members_id')."') OR (body LIKE '%$q%' AND $category = 'yes' AND member_id = '".$this->session->userdata('members_id')."') ORDER BY datetime DESC";
             $query = $this->db->query($sql);
         
             if($query->num_rows() > 0){
@@ -56,7 +56,7 @@ class Search_model extends MY_Model {
         }
         elseif($category == 'important'){
            
-            $sql = "SELECT * FROM mailbox WHERE (subject LIKE '%$q%' AND $category = 'yes' AND sent_member_id = '".$this->session->userdata('members_id')."') OR (body LIKE '%$q%' AND $category = 'yes' AND sent_member_id = '".$this->session->userdata('members_id')."')";
+            $sql = "SELECT * FROM mailbox WHERE (subject LIKE '%$q%' AND $category = 'yes' AND sent_member_id = '".$this->session->userdata('members_id')."') OR (body LIKE '%$q%' AND $category = 'yes' AND sent_member_id = '".$this->session->userdata('members_id')."') ORDER BY datetime DESC";
             $query = $this->db->query($sql);
         
             if($query->num_rows() > 0){
@@ -75,7 +75,7 @@ class Search_model extends MY_Model {
         }
         elseif($category == 'archive'){
             
-            $sql = "SELECT * FROM mailbox WHERE (subject LIKE '%$q%' AND $category = 'yes' AND sent_member_id = '".$this->session->userdata('members_id')."') OR (body LIKE '%$q%' AND $category = 'yes' AND sent_member_id = '".$this->session->userdata('members_id')."')";
+            $sql = "SELECT * FROM mailbox WHERE (subject LIKE '%$q%' AND $category = 'yes' AND sent_member_id = '".$this->session->userdata('members_id')."') OR (body LIKE '%$q%' AND $category = 'yes' AND sent_member_id = '".$this->session->userdata('members_id')."') ORDER BY datetime DESC";
             $query = $this->db->query($sql);
         
             if($query->num_rows() > 0){
@@ -94,7 +94,7 @@ class Search_model extends MY_Model {
         }
         elseif($category == 'draft'){
            
-            $sql = "SELECT * FROM mailbox WHERE (subject LIKE '%$q%' AND $category = 'yes' AND member_id = '".$this->session->userdata('members_id')."') OR (body LIKE '%$q%' AND $category = 'yes' AND member_id = '".$this->session->userdata('members_id')."')";
+            $sql = "SELECT * FROM mailbox WHERE (subject LIKE '%$q%' AND $category = 'yes' AND member_id = '".$this->session->userdata('members_id')."') OR (body LIKE '%$q%' AND $category = 'yes' AND member_id = '".$this->session->userdata('members_id')."') ORDER BY datetime DESC";
             $query = $this->db->query($sql);
         
             if($query->num_rows() > 0){
@@ -113,7 +113,7 @@ class Search_model extends MY_Model {
         }
         elseif($category == 'trash'){
             
-            $sql = "SELECT * FROM mailbox WHERE (subject LIKE '%$q%' AND $category = 'yes' AND sent_member_id = '".$this->session->userdata('members_id')."') OR (body LIKE '%$q%' AND $category = 'yes' AND sent_member_id = '".$this->session->userdata('members_id')."')";
+            $sql = "SELECT * FROM mailbox WHERE (subject LIKE '%$q%' AND $category = 'yes' AND sent_member_id = '".$this->session->userdata('members_id')."') OR (body LIKE '%$q%' AND $category = 'yes' AND sent_member_id = '".$this->session->userdata('members_id')."') ORDER BY datetime DESC";
             $query = $this->db->query($sql);
         
             if($query->num_rows() > 0){

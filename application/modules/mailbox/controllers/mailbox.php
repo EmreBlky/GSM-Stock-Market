@@ -183,7 +183,7 @@ class Mailbox extends MX_Controller
         
         if($count > 0){            
             $data['inbox_sent_count'] = $count;
-            $data['inbox_sent_message'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'member_id',$this->session->userdata('members_id'), 'sent', 'yes');
+            $data['inbox_sent_message'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'member_id', $this->session->userdata('members_id'), 'sent', 'yes');
         }
         else{            
             $data['inbox_sent_count'] = 0;
@@ -479,6 +479,7 @@ class Mailbox extends MX_Controller
                                     'datetime'          => date('Y-m-d H:i:s')
                                   );                    
                     $this->mailbox_model->_update($this->input->post('mail_id'), $data);
+                    redirect('mailbox/draft');
                 }
                 else{                    
 
@@ -496,11 +497,12 @@ class Mailbox extends MX_Controller
                                     'datetime'          => date('Y-m-d H:i:s')
                                   );                    
                     $this->mailbox_model->_insert($data);
+                    redirect('mailbox/inbox/all');
                 }
                 
             }            
             
-            redirect('mailbox/inbox/all', 'refresh');
+            
             
         }
         elseif($submit == 'Draft'){
@@ -521,6 +523,7 @@ class Mailbox extends MX_Controller
                                   );
                     
                     $this->mailbox_model->_update($mail_id, $data);
+                    redirect('mailbox/draft');
                     
                 }
                 else{
@@ -539,6 +542,7 @@ class Mailbox extends MX_Controller
                                   );
                     
                     $this->mailbox_model->_insert($data);
+                    redirect('mailbox/inbox/all');
                 }
             }
             

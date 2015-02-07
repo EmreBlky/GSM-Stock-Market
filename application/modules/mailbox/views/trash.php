@@ -19,12 +19,12 @@
         <div class="col-lg-9 animated fadeInRight">
             <div class="mail-box-header">
                 <div class="btn-group pull-right">
-                    <a href="#" class="btn btn-white btn-sm" style="margin-left: 3px;" title="Previous"><i class="fa fa-arrow-left"></i></a>
-                    <a href="#" class="btn btn-white btn-sm"><i class="fa fa-arrow-right" title="Next"></i></a>
+<!--                    <a href="#" class="btn btn-white btn-sm" style="margin-left: 3px;" title="Previous"><i class="fa fa-arrow-left"></i></a>
+                    <a href="#" class="btn btn-white btn-sm"><i class="fa fa-arrow-right" title="Next"></i></a>-->
                 </div>
                 <div class="pull-right tooltip-demo">
                     <!-- <a href="mail_compose.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Reply"><i class="fa fa-reply"></i> Reply</a> -->
-                    <a href="mailbox/important_move/<?php echo $this->uri->segment(3);?>" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as important"><i class="fa fa-exclamation"></i></a>
+                    <a href="mailbox/important_move/<?php echo $this->uri->segment(3);?>" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as important"><i class="fa fa-exclamation"></i> Mark Important</a>
                     <a href="mailbox/archive_move/<?php echo $this->uri->segment(3);?>" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Reply"><i class="fa fa-archive"></i> Archive</a>                    
                     <button onclick="window.print()" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Print email"><i class="fa fa-print"></i></button>
                     <a href="mailbox/delete/<?php echo $this->uri->segment(3);?>" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Delete Message"><i class="fa fa-trash-o"></i> </a>
