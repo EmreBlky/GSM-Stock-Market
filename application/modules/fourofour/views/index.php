@@ -1,15 +1,44 @@
 <!DOCTYPE html>
-<html xml:lang="en" lang="en">
-<head>
-<meta name="format-detection" content="telephone=no">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title><?php echo $title?></title>
+<html>
 
-<meta name="description" content=""/>
-<meta name="keywords" content=""/>
-<meta name="robots" content="INDEX,FOLLOW"/>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"
+    <meta name="description" content="GSM Stock Market The ultimate trading platform for mobile phone trade companies globally. Members are retailers, wholesalers, distributors, manufacturers, network operators and service centres from all over the world." />
+	<meta name="keywords" content="gsm stock market, gsm trading, gsm market, gsm stock, mobile trading, phone trading, mobile phone, phone companies, mobile phone directory" />
+    <meta name="google-translate-customization" content=""/>
+
+    <title>Page Not Found - 404 Error</title>
+
+    <link href="public/main/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/main/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="public/main/css/animate.css" rel="stylesheet">
+    <link href="public/main/css/style.css" rel="stylesheet">
+
 </head>
-<body>
-    404 - PAGE NOT FOUND.
+
+<body class="gray-bg">
+
+
+    <div class="middle-box text-center animated fadeInDown">
+        <h1>404</h1>
+        <h3 class="font-bold">Page Not Found</h3>
+
+        <div class="error-desc">
+            Sorry, but the page you are looking for has not been found. Try checking the URL for error, then hit the refresh button on your browser or go back.
+            <form class="form-inline m-t" role="form">
+                <button type="submit" class="btn btn-primary"onclick="goBack()">Go Back</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="public/main/js/jquery-2.1.1.js"></script>
+    <script src="public/main/js/bootstrap.min.js"></script>
+	<script>function goBack() {window.history.back()}</script>
+
 </body>
+
 </html>
