@@ -66,7 +66,7 @@
                     </li>
                     
                     <li>
-                        <a href="addressbook/individual"><i class="fa fa-book"></i> <span class="nav-label">Address Book</span></a>
+                        <a href="addressbook"><i class="fa fa-book"></i> <span class="nav-label">Address Book</span></a>
                     </li>
                     
                     <li>
