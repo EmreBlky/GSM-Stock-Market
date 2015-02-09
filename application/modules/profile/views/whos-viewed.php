@@ -33,7 +33,7 @@
             
             <div class="col-lg-4"><!-- Profile Widget Start -->
                 <div class="contact-box">
-                    <a href="/profile/">
+                    <a href="member/profile/<?php echo $view->viewer_id?>">
                     <div class="col-sm-4">
                         <div class="text-center">
 <!--                            <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/img/daniel_big.jpg">-->
