@@ -13,7 +13,7 @@
                                     <i class="fa fa-inbox "></i> Inbox 
                                     <ul>
                                         <li>
-                                            <a href="mailbox/inbox/page/all">ALL
+                                            <a href="mailbox/inbox/all">ALL
                                                 <div id="inbox_all_message_remove" style="float: right;">
                                                     <?php
 
