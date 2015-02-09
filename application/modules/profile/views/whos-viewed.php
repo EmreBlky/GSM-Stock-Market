@@ -55,7 +55,7 @@
                         	<?php echo $this->member_model->get_where_multiple('id', $view->viewer_id)->role; ?>
                         </div>
                         <div class="col-sm-1" style="padding:5px 0">
-                            <img alt="image" src="public/main/img/flags/United_Kingdom.png" title="United Kingdom">
+                            <img alt="image" src="public/main/template/gsm/img/flags/United_Kingdom.png" title="United Kingdom">
                         </div>
                         </div>
                         
