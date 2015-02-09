@@ -57,7 +57,9 @@ $this->load->model('company/company_model', 'company_model');
         </div><!-- row end --> 
         
         <div class="row">
-        <?php foreach ($address_book as $address) {?>
+        <?php 
+            if($addressbook_count > 0){
+            foreach ($address_book as $address) {?>
             <div class="col-lg-4"><!-- Profile Widget Start -->
                 <div class="contact-box">
                     <a href="/profile/">
@@ -110,7 +112,10 @@ $this->load->model('company/company_model', 'company_model');
                 </div>
             </div><!-- Profile Widget End -->
         
-        <?php } ?>    
+        <?php 
+        
+        } 
+            }?>    
             
        	</div><!-- Row End -->
         

@@ -18,7 +18,16 @@ class Addressbook extends MX_Controller
         $data['title'] = 'GSM - Addressbook';        
         $data['page'] = 'index';
         
-        $data['address_book'] = $this->addressbook_model->get_where_multiples('member_id', $this->session->userdata('members_id'));
+        $add_count = $this->addressbook_model->count_where('member_id', $this->session->userdata('members_id'));
+        
+        if($add_count > 0){
+            $data['addressbook_count'] = $add_count;
+            $data['address_book'] = $this->addressbook_model->get_where_multiples('member_id', $this->session->userdata('members_id'));
+        }
+        else{
+            $data['addressbook_count'] = 0;
+        }
+        
         
         $this->load->module('templates');
         $this->templates->page($data);
