@@ -102,7 +102,7 @@
                                                     
                                             ?>
                                             
-                                                <a href="#"><img alt="image" class="img-circle" src="public/main/images/members/<?php echo $user->id;?>.jpg"></a>
+                                                <a href="#"><img alt="image" class="img-circle" src="public/main/template/gsm/images/members/<?php echo $user->id;?>.jpg"></a>
                                             
                                             <?php
 
@@ -139,7 +139,7 @@
                 							<div class="chat-activity-list">
 											<div class="chat-element">
                                                	<a href="#" class="pull-left">
-                                                    <img alt="image" class="img-circle" src="public/main/img/a2.jpg">
+                                                    <img alt="image" class="img-circle" src="public/main/template/core/img/a2.jpg">
                                                 </a>
                                                 <div class="media-body ">
                                                     <small class="pull-right text-navy">1m ago</small>
@@ -152,7 +152,7 @@
                                             </div>
                                             <div class="chat-element right">
                                                 <a href="#" class="pull-right">
-                                                    <img alt="image" class="img-circle" src="public/main/img/a4.jpg">
+                                                    <img alt="image" class="img-circle" src="public/main/template/core/img/a4.jpg">
                                                 </a>
                                                 <div class="media-body text-right ">
                                                     <small class="pull-left">5m ago</small>
@@ -165,7 +165,7 @@
                                             </div>
                                             <div class="chat-element ">
                                                 <a href="#" class="pull-left">
-                                                    <img alt="image" class="img-circle" src="public/main/img/a2.jpg">
+                                                    <img alt="image" class="img-circle" src="public/main/template/core/img/a2.jpg">
                                                 </a>
                                                 <div class="media-body ">
                                                     <small class="pull-right">2h ago</small>
@@ -197,7 +197,7 @@
                                     <div class="feed-activity-list">
                                         <div class="feed-element">
                                             <a href="#" class="pull-left">
-                                                <img alt="image" class="img-circle" src="public/main/img/profile_small.jpg">
+                                                <img alt="image" class="img-circle" src="public/main/template/core/img/profile_small.jpg">
                                             </a>
                                             <div class="media-body ">
                                                 <div class="row">
@@ -372,10 +372,10 @@
             <div class="col-lg-3">
                 <div class="wrapper wrapper-content project-manager">
                     <h4>Company Bio</h4>
-                    <?php if(file_exists("public/main/images/company/".$member_company->id.".jpg")){?>
-                        <img src="public/main/images/company/<?php echo $member_company->id; ?>.jpg" class="img-responsive" style="margin:0 auto">
+                    <?php if(file_exists("public/main/template/gsm/images/company/".$member_company->id.".jpg")){?>
+                        <img src="public/main/template/gsm/images/company/<?php echo $member_company->id; ?>.jpg" class="img-responsive" style="margin:0 auto">
                     <?php } else {?>
-                        <img src="public/main/images/company/no_company.jpg" class="img-responsive" style="margin:0 auto">
+                        <img src="public/main/template/gsm/images/company/no_company.jpg" class="img-responsive" style="margin:0 auto">
                     <?php }?>
                     
 					<div class="row" style="margin-top:20px">
@@ -441,7 +441,7 @@
             
 	<!-- Page Specific Scripts -->    
     <!-- Toastr script -->
-    <script src="public/main/js/plugins/toastr/toastr.min.js"></script>
+    <script src="public/main/template/core/js/plugins/toastr/toastr.min.js"></script>
     <script type="text/javascript">
         $(function () {
                 toastr.options = {

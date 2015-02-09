@@ -26,7 +26,7 @@
                         </div>
                         <div>
                             <div class="ibox-content no-padding border-left-right">
-                                <img alt="image" class="img-responsive" src="/public/main/img/profile_big.jpg">
+                                <img alt="image" class="img-responsive" src="/public/main/template/core/img/profile_big.jpg">
                             </div>
                             <div class="ibox-content profile-content">
                                 <h4><strong>Daniel Gregory</strong></h4>
@@ -86,7 +86,7 @@
 
                                     <div class="feed-element">
                                         <a href="#" class="pull-left">
-                                            <img alt="image" class="img-circle" src="/public/main/img/a1.jpg">
+                                            <img alt="image" class="img-circle" src="/public/main/template/core/img/a1.jpg">
                                         </a>
                                         <div class="media-body ">
                                             <small class="pull-right text-navy">1m ago</small>
@@ -101,7 +101,7 @@
 
                                     <div class="feed-element">
                                         <a href="#" class="pull-left">
-                                            <img alt="image" class="img-circle" src="/public/main/img/profile.jpg">
+                                            <img alt="image" class="img-circle" src="/public/main/template/core/img/profile.jpg">
                                         </a>
                                         <div class="media-body ">
                                             <small class="pull-right">5m ago</small>
@@ -113,7 +113,7 @@
 
                                     <div class="feed-element">
                                         <a href="#" class="pull-left">
-                                            <img alt="image" class="img-circle" src="/public/main/img/a2.jpg">
+                                            <img alt="image" class="img-circle" src="/public/main/template/core/img/a2.jpg">
                                         </a>
                                         <div class="media-body ">
                                             <small class="pull-right">2h ago</small>
@@ -132,7 +132,7 @@
                                     </div>
                                     <div class="feed-element">
                                         <a href="#" class="pull-left">
-                                            <img alt="image" class="img-circle" src="/public/main/img/a3.jpg">
+                                            <img alt="image" class="img-circle" src="/public/main/template/core/img/a3.jpg">
                                         </a>
                                         <div class="media-body ">
                                             <small class="pull-right">2h ago</small>
@@ -146,7 +146,7 @@
                                     </div>
                                     <div class="feed-element">
                                         <a href="#" class="pull-left">
-                                            <img alt="image" class="img-circle" src="/public/main/img/a4.jpg">
+                                            <img alt="image" class="img-circle" src="/public/main/template/core/img/a4.jpg">
                                         </a>
                                         <div class="media-body ">
                                             <small class="pull-right text-navy">5h ago</small>
@@ -160,7 +160,7 @@
                                     </div>
                                     <div class="feed-element">
                                         <a href="#" class="pull-left">
-                                            <img alt="image" class="img-circle" src="/public/main/img/a5.jpg">
+                                            <img alt="image" class="img-circle" src="/public/main/template/core/img/a5.jpg">
                                         </a>
                                         <div class="media-body ">
                                             <small class="pull-right">2h ago</small>
@@ -177,7 +177,7 @@
                                     </div>
                                     <div class="feed-element">
                                         <a href="#" class="pull-left">
-                                            <img alt="image" class="img-circle" src="/public/main/img/profile.jpg">
+                                            <img alt="image" class="img-circle" src="/public/main/template/core/img/profile.jpg">
                                         </a>
                                         <div class="media-body ">
                                             <small class="pull-right">23h ago</small>
@@ -187,7 +187,7 @@
                                     </div>
                                     <div class="feed-element">
                                         <a href="#" class="pull-left">
-                                            <img alt="image" class="img-circle" src="/public/main/img/a7.jpg">
+                                            <img alt="image" class="img-circle" src="/public/main/template/core/img/a7.jpg">
                                         </a>
                                         <div class="media-body ">
                                             <small class="pull-right">46h ago</small>

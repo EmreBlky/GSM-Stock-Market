@@ -37,10 +37,10 @@
                     <div class="col-sm-4">
                         <div class="text-center">
 <!--                            <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/img/daniel_big.jpg">-->
-                            <?php if(file_exists("public/main/images/members/".$view->viewer_id.".jpg")){?>
-                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/images/members/<?php echo $view->viewer_id; ?>.jpg" height="128" width="128"/>
+                            <?php if(file_exists("public/main/template/gsm/images/members/".$view->viewer_id.".jpg")){?>
+                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/<?php echo $view->viewer_id; ?>.jpg" height="128" width="128"/>
                             <?php } else {?>
-                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/images/members/no_profile.jpg" height="128" width="128"/>
+                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/no_profile.jpg" height="128" width="128"/>
                             <?php }?>
                         </div>
                         <div class="text-center" style="margin-top:10px">
@@ -55,7 +55,7 @@
                         	<?php echo $this->member_model->get_where_multiple('id', $view->viewer_id)->role; ?>
                         </div>
                         <div class="col-sm-1" style="padding:5px 0">
-                            <img alt="image" src="public/main/img/flags/United_Kingdom.png" title="United Kingdom">
+                            <img alt="image" src="public/main/template/gsm/img/flags/United_Kingdom.png" title="United Kingdom">
                         </div>
                         </div>
                         

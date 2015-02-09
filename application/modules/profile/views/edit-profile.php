@@ -1356,4 +1356,4 @@
         
 
    <!-- Input Mask-->
-    <script src="public/main/js/plugins/jasny/jasny-bootstrap.min.js"></script>
+    <script src="public/main/template/core/js/plugins/jasny/jasny-bootstrap.min.js"></script>

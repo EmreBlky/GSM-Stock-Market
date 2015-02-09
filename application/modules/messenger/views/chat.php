@@ -1,127 +1,189 @@
-		<div class="row wrapper border-bottom white-bg page-heading">
-            <div class="col-lg-10">
-                <h2>Messenger Chat</h2>
-                <ol class="breadcrumb">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                    <li>
-                        Messenger
-                    </li>
-                    <li class="active">
-                        <strong>Chat</strong>
-                    </li>
-                </ol>
-            </div>
-            <div class="col-lg-2">
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Chat view</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="/">Home</a>
+            </li>
+            <li class="active">
+                <strong>Chat view</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-2">
 
+    </div>
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+
+                    <strong>Chat room v.1</strong> can be used to create chat room in your app. In first version there is a html template.
+                    In next versions of Inspinia we will add more design options. Feel free to write to us on <span class="text-navy">support@webapplayer.com</span>  if you need any help with implemnetation.
+
+                </div>
             </div>
         </div>
-        
-        <div class="wrapper wrapper-content">
-            <div class="row animated fadeInRight">
-                <div class="col-lg-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-content" id="ibox-content">
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
 
-                        <div id="vertical-timeline" class="vertical-container center-orientation light-timeline">
-                        
-                            <div class="vertical-timeline-block">
-                                <div class="vertical-timeline-icon" style="background-image:url(public/main/img/daniel_big.jpg);background-position:center;background-size:100%">
+                <div class="ibox chat-view">
+
+                    <div class="ibox-title">
+                        <small class="pull-right text-muted">Last message:  Mon Jan 26 2015 - 18:39:23</small>
+                         Chat room panel
+                    </div>
+
+
+                    <div class="ibox-content">
+
+                        <div class="row">
+
+                            <div class="col-md-9 ">
+                                <div class="chat-discussion">
+
+                                    <div class="chat-message">
+                                        <img class="message-avatar" src="public/main/template/core/img/a1.jpg" alt="" >
+                                        <div class="message">
+                                            <a class="message-author" href="#"> Michael Smith </a>
+											<span class="message-date"> Mon Jan 26 2015 - 18:39:23 </span>
+                                            <span class="message-content">
+											Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="chat-message">
+                                        <img class="message-avatar" src="public/main/template/core/img/a4.jpg" alt="" >
+                                        <div class="message">
+                                            <a class="message-author" href="#"> Karl Jordan </a>
+                                            <span class="message-date">  Fri Jan 25 2015 - 11:12:36 </span>
+                                            <span class="message-content">
+											Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover.
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="chat-message">
+                                        <img class="message-avatar" src="public/main/template/core/img/a2.jpg" alt="" >
+                                        <div class="message">
+                                            <a class="message-author" href="#"> Michael Smith </a>
+                                            <span class="message-date">  Fri Jan 25 2015 - 11:12:36 </span>
+                                            <span class="message-content">
+											There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="chat-message">
+                                        <img class="message-avatar" src="public/main/template/core/img/a5.jpg" alt="" >
+                                        <div class="message">
+                                            <a class="message-author" href="#"> Alice Jordan </a>
+                                            <span class="message-date">  Fri Jan 25 2015 - 11:12:36 </span>
+                                            <span class="message-content">
+											All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.
+                                                It uses a dictionary of over 200 Latin words.
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="chat-message">
+                                        <img class="message-avatar" src="public/main/template/core/img/a6.jpg" alt="" >
+                                        <div class="message">
+                                            <a class="message-author" href="#"> Mark Smith </a>
+                                            <span class="message-date">  Fri Jan 25 2015 - 11:12:36 </span>
+                                            <span class="message-content">
+											All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.
+                                                It uses a dictionary of over 200 Latin words.
+                                            </span>
+                                        </div>
+                                    </div>
+
                                 </div>
 
-                                <div class="vertical-timeline-content">
-                                    <h2>Daniel Gregory</h2>
-                                    <p>Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products. Below please find the current status of the sale.</p>
-                                    <span class="vertical-date">
-                                        Today <br/>
-                                        <small>Dec 24</small>
-                                    </span>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="chat-users">
+
+
+                                    <div class="users-list">
+                                        <div class="chat-user">
+                                            <img class="chat-avatar" src="public/main/template/core/img/a4.jpg" alt="" >
+                                            <div class="chat-user-name">
+                                                <a href="#">Karl Jordan</a>
+                                            </div>
+                                        </div>
+                                        <div class="chat-user">
+                                            <img class="chat-avatar" src="public/main/template/core/img/a1.jpg" alt="" >
+                                            <div class="chat-user-name">
+                                                <a href="#">Monica Smith</a>
+                                            </div>
+                                        </div>
+                                        <div class="chat-user">
+                                            <span class="pull-right label label-primary">Online</span>
+                                            <img class="chat-avatar" src="public/main/template/core/img/a2.jpg" alt="" >
+                                            <div class="chat-user-name">
+                                                <a href="#">Michael Smith</a>
+                                            </div>
+                                        </div>
+                                        <div class="chat-user">
+                                            <span class="pull-right label label-primary">Online</span>
+                                            <img class="chat-avatar" src="img/a3.jpg" alt="" >
+                                            <div class="chat-user-name">
+                                                <a href="#">Janet Smith</a>
+                                            </div>
+                                        </div>
+                                        <div class="chat-user">
+                                            <img class="chat-avatar" src="public/main/template/core/img/a5.jpg" alt="" >
+                                            <div class="chat-user-name">
+                                                <a href="#">Alice Smith</a>
+                                            </div>
+                                        </div>
+                                        <div class="chat-user">
+                                            <img class="chat-avatar" src="public/main/template/core/img/a6.jpg" alt="" >
+                                            <div class="chat-user-name">
+                                                <a href="#">Monica Cale</a>
+                                            </div>
+                                        </div>
+                                        <div class="chat-user">
+                                            <img class="chat-avatar" src="public/main/template/core/img/a2.jpg" alt="" >
+                                            <div class="chat-user-name">
+                                                <a href="#">Mark Jordan</a>
+                                            </div>
+                                        </div>
+                                        <div class="chat-user">
+                                            <span class="pull-right label label-primary">Online</span>
+                                            <img class="chat-avatar" src="public/main/template/core/img/a3.jpg" alt="" >
+                                            <div class="chat-user-name">
+                                                <a href="#">Janet Smith</a>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
                                 </div>
                             </div>
-                        
-                            <div class="vertical-timeline-block">
-                                <div class="vertical-timeline-icon" style="background-image:url(public/main/img/daniel_big.jpg);background-position:center;background-size:100%">
-                                </div>
 
-                                <div class="vertical-timeline-content">
-                                    <h2>Daniel Gregory</h2>
-                                    <p>Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products. Below please find the current status of the sale.</p>
-                                    <span class="vertical-date">
-                                        Today <br/>
-                                        <small>Dec 24</small>
-                                    </span>
-                                </div>
-                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="chat-message-form">
 
-                            <div class="vertical-timeline-block">
-                                <div class="vertical-timeline-icon blue-bg">
-                                    <i class="fa fa-file-text"></i>
-                                </div>
+                                    <div class="form-group">
 
-                                <div class="vertical-timeline-content">
-                                    <h2>Send documents to Mike</h2>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
-                                    <a href="#" class="btn btn-sm btn-success"> Download document </a>
-                                    <span class="vertical-date">
-                                        Today <br/>
-                                        <small>Dec 24</small>
-                                    </span>
-                                </div>
-                            </div>
+                                        <textarea class="form-control message-input" name="message" placeholder="Enter message text"></textarea>
+                                    </div>
 
-                            <div class="vertical-timeline-block">
-                                <div class="vertical-timeline-icon lazur-bg">
-                                    <i class="fa fa-coffee"></i>
-                                </div>
-
-                                <div class="vertical-timeline-content">
-                                    <h2>Coffee Break</h2>
-                                    <p>Go to shop and find some products. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's. </p>
-                                    <a href="#" class="btn btn-sm btn-info">Read more</a>
-                                    <span class="vertical-date"> Yesterday <br/><small>Dec 23</small></span>
-                                </div>
-                            </div>
-
-                            <div class="vertical-timeline-block">
-                                <div class="vertical-timeline-icon yellow-bg">
-                                    <i class="fa fa-phone"></i>
-                                </div>
-
-                                <div class="vertical-timeline-content">
-                                    <h2>Phone with Jeronimo</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
-                                    <span class="vertical-date">Yesterday <br/><small>Dec 23</small></span>
-                                </div>
-                            </div>
-
-                            <div class="vertical-timeline-block">
-                                <div class="vertical-timeline-icon lazur-bg">
-                                    <i class="fa fa-user-md"></i>
-                                </div>
-
-                                <div class="vertical-timeline-content">
-                                    <h2>Go to the doctor dr Smith</h2>
-                                    <p>Find some issue and go to doctor. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. </p>
-                                    <span class="vertical-date">Yesterday <br/><small>Dec 23</small></span>
-                                </div>
-                            </div>
-
-                            <div class="vertical-timeline-block">
-                                <div class="vertical-timeline-icon navy-bg">
-                                    <i class="fa fa-comments"></i>
-                                </div>
-
-                                <div class="vertical-timeline-content">
-                                    <h2>Chat with Monica and Sandra</h2>
-                                    <p>Web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). </p>
-                                    <span class="vertical-date">Yesterday <br/><small>Dec 23</small></span>
                                 </div>
                             </div>
                         </div>
 
+
                     </div>
+
                 </div>
-            </div>
-            </div>
         </div>
+
+    </div>

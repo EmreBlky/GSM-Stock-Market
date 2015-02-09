@@ -27,10 +27,10 @@
                     <a href="member/profile/<?php echo $member->id; ?>">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <?php if(file_exists("public/main/images/company/".$member->id.".jpg")){?>
-                                <img alt="image" class="img-circle m-t-xs img-responsive" src="public/main/images/members/<?php echo $member->id; ?>.jpg" height="128" width="128"/>
+                            <?php if(file_exists("public/main/template/gsm/images/company/".$member->id.".jpg")){?>
+                                <img alt="image" class="img-circle m-t-xs img-responsive" src="public/main/template/gsm/images/members/<?php echo $member->id; ?>.jpg" height="128" width="128"/>
                             <?php } else {?>
-                                <img src="public/main/images/company/no_company.jpg" height="128" width="128"/>
+                                <img src="public/main/template/gsm/images/company/no_company.jpg" height="128" width="128"/>
                             <?php }?>
                             
                             <div class="m-t-xs font-bold"><?php echo $member->role;?></div>
