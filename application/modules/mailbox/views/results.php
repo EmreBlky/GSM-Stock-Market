@@ -72,10 +72,10 @@
                                                         <td class="check-mail">
                                                             <input type="checkbox" class="i-checks" name="'.$inbox->id.'">
                                                         </td>
-                                                        <td class="mail-ontact"><a href="mailbox/'.$this->uri->segment(3).'/'.$inbox->id.'">'.$this->member_model->get_where($inbox->member_id)->firstname.' '.$this->member_model->get_where($inbox->member_id)->lastname.'</a>
+                                                        <td class="mail-ontact"><a href="mailbox/inbox/'.$this->uri->segment(3).'/'.$inbox->id.'">'.$this->member_model->get_where($inbox->member_id)->firstname.' '.$this->member_model->get_where($inbox->member_id)->lastname.'</a>
                                                             <!-- <span class="label label-warning pull-right">Clients</span> </td> -->
                                                         </td>
-                                                        <td class="mail-subject"><a href="mailbox/'.$this->uri->segment(3).'/'.$inbox->id.'">'.$inbox->subject.'</a></td>
+                                                        <td class="mail-subject"><a href="mailbox/inbox/'.$this->uri->segment(3).'/'.$inbox->id.'">'.$inbox->subject.'</a></td>
                                                             <td class="">&nbsp;<!-- <i class="fa fa-paperclip"> --></i></td>';
                                                             if($inbox->date < date('d-m-Y')){
                                                                echo '<td class="text-right mail-date">'.$inbox->time.' '.date_format(date_create($inbox->date), 'jS F').'</td>'; 
@@ -93,10 +93,10 @@
                                                         <td class="check-mail">
                                                             <input type="checkbox" class="i-checks" name="'.$inbox->id.'">
                                                         </td>
-                                                        <td class="mail-ontact"><a href="mailbox/'.$this->uri->segment(3).'/'.$inbox->id.'">'.$this->member_model->get_where($inbox->member_id)->firstname.' '.$this->member_model->get_where($inbox->member_id)->lastname.'</a> 
+                                                        <td class="mail-ontact"><a href="mailbox/inbox/'.$this->uri->segment(3).'/'.$inbox->id.'">'.$this->member_model->get_where($inbox->member_id)->firstname.' '.$this->member_model->get_where($inbox->member_id)->lastname.'</a> 
                                                             <!-- <span class="label label-warning pull-right">Clients</span> </td> -->
                                                         </td>
-                                                        <td class="mail-subject"><a href="mailbox/'.$this->uri->segment(3).'/'.$inbox->id.'">'.$inbox->subject.'</a></td>
+                                                        <td class="mail-subject"><a href="mailbox/inbox/'.$this->uri->segment(3).'/'.$inbox->id.'">'.$inbox->subject.'</a></td>
                                                         <td class="">&nbsp;<!-- <i class="fa fa-paperclip"> --></i></td>';
                                                             if($inbox->date < date('d-m-Y')){
                                                                echo '<td class="text-right mail-date">'.$inbox->time.' '.date_format(date_create($inbox->date), 'jS F').'</td>'; 
@@ -116,10 +116,10 @@
                                                     <td class="check-mail">
                                                         <input type="checkbox" class="i-checks" name="'.$inbox->id.'">
                                                     </td>
-                                                    <td class="mail-ontact"><a href="mailbox/'.$this->uri->segment(3).'/'.$inbox->id.'">'.$this->member_model->get_where($inbox->sent_member_id)->firstname.' '.$this->member_model->get_where($inbox->sent_member_id)->lastname.'</a> 
+                                                    <td class="mail-ontact"><a href="mailbox/inbox/'.$this->uri->segment(3).'/'.$inbox->id.'">'.$this->member_model->get_where($inbox->sent_member_id)->firstname.' '.$this->member_model->get_where($inbox->sent_member_id)->lastname.'</a> 
                                                         <!-- <span class="label label-warning pull-right">Clients</span> </td> -->
                                                     </td>
-                                                    <td class="mail-subject"><a href="mailbox/'.$this->uri->segment(3).'/'.$inbox->id.'">'.$inbox->subject.'</a></td>
+                                                    <td class="mail-subject"><a href="mailbox/inbox/'.$this->uri->segment(3).'/'.$inbox->id.'">'.$inbox->subject.'</a></td>
                                                     <td class="">&nbsp;<!-- <i class="fa fa-paperclip"> --></i></td>';
                                                         if($inbox->date < date('d-m-Y')){
                                                            echo '<td class="text-right mail-date">'.$inbox->time.' '.date_format(date_create($inbox->date), 'jS F').'</td>'; 
