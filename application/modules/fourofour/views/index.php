@@ -11,11 +11,11 @@
 
     <title>Page Not Found - 404 Error</title>
 
-    <link href="public/main/css/bootstrap.min.css" rel="stylesheet">
-    <link href="public/main/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="public/main/template/core/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/main/template/core/font-awesome/css/font-awesome.css" rel="stylesheet">
 
-    <link href="public/main/css/animate.css" rel="stylesheet">
-    <link href="public/main/css/style.css" rel="stylesheet">
+    <link href="public/main/template/core/css/animate.css" rel="stylesheet">
+    <link href="public/main/template/core/css/style.css" rel="stylesheet">
 
 </head>
 
@@ -35,8 +35,8 @@
     </div>
 
     <!-- Mainly scripts -->
-    <script src="public/main/js/jquery-2.1.1.js"></script>
-    <script src="public/main/js/bootstrap.min.js"></script>
+    <script src="public/main/template/core/js/jquery-2.1.1.js"></script>
+    <script src="public/main/template/core/js/bootstrap.min.js"></script>
 	<script>function goBack() {window.history.back()}</script>
 
 </body>

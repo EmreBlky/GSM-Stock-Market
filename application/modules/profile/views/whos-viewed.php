@@ -37,10 +37,10 @@
                     <div class="col-sm-4">
                         <div class="text-center">
 <!--                            <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/img/daniel_big.jpg">-->
-                            <?php if(file_exists("public/main/images/members/".$view->viewer_id.".jpg")){?>
-                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/images/members/<?php echo $view->viewer_id; ?>.jpg" height="128" width="128"/>
+                            <?php if(file_exists("public/main/template/gsm/images/members/".$view->viewer_id.".jpg")){?>
+                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/<?php echo $view->viewer_id; ?>.jpg" height="128" width="128"/>
                             <?php } else {?>
-                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/images/members/no_profile.jpg" height="128" width="128"/>
+                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/no_profile.jpg" height="128" width="128"/>
                             <?php }?>
                         </div>
                         <div class="text-center" style="margin-top:10px">

@@ -5,10 +5,10 @@
             <li>
                 <div class="dropdown-messages-box">
                     <a href="mailbox/inbox/all/<?php echo $inbox->id; ?>" class="pull-left">
-                        <?php if(file_exists($base."public/main/images/members/'.$inbox->member_id.'.jpg")){?>
-                            <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/images/members/<?php echo $inbox->member_id; ?>.jpg" height="128" width="128">
+                        <?php if(file_exists($base."public/main/template/gsm/images/members/'.$inbox->member_id.'.jpg")){?>
+                            <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/template/gsm/images/members/<?php echo $inbox->member_id; ?>.jpg" height="128" width="128">
                         <?php } else {?>
-                            <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/images/members/no_profile.jpg" height="128" width="128">
+                            <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/template/gsm/images/members/no_profile.jpg" height="128" width="128">
                         <?php }?>
                     </a>
                     <div>
