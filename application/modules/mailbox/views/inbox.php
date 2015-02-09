@@ -18,9 +18,12 @@
                     $this->load->model('mailbox/mailbox_model', 'mailbox_model');
 
                     $this->mailbox_model->_update($message->id, $data);
+                    
+                    $draft_message_count = $this->mailbox_model->count_where('parent_id', $this->uri->segment(4), 'draft', 'yes');
 
-                    //echo '<pre>';
-                    //print_r($message);
+//                   echo '<pre>';
+//                   print_r($test);
+//                   exit;
                     //echo '</pre>';
             ?>
             
@@ -28,7 +31,14 @@
              <div class="col-lg-9 animated fadeInRight">
             <div class="mail-box-header">
                 <div class="pull-right tooltip-demo">
-                    <a href="mailbox/reply/<?php if($this->mailbox_model->get_where_multiple('id', $this->uri->segment(4))->parent_id > 0){echo $this->mailbox_model->get_where_multiple('id', $this->uri->segment(4))->parent_id;}else{echo $this->uri->segment(4);}?>/<?php echo $this->uri->segment(4)?>" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Reply"><i class="fa fa-reply"></i> Reply</a>
+                    <?php 
+                        if($draft_message_count > 0){
+                        $draft_message = $this->mailbox_model->get_where_multiple('parent_id', $this->uri->segment(4), 'draft', 'yes');   
+                    ?>
+                        <a href="mailbox/draft/<?php echo $draft_message->id;?>" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Continue Draft"><i class="fa fa-reply"></i> Continue Draft</a>
+                    <?php }else{?>
+                        <a href="mailbox/reply/<?php if($this->mailbox_model->get_where_multiple('id', $this->uri->segment(4))->parent_id > 0){echo $this->mailbox_model->get_where_multiple('id', $this->uri->segment(4))->parent_id;}else{echo $this->uri->segment(4);}?>/<?php echo $this->uri->segment(4)?>" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Reply"><i class="fa fa-reply"></i> Reply</a>
+                    <?php }?>
                     <a href="mailbox/archive_move/<?php echo $this->uri->segment(4);?>" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Reply"><i class="fa fa-archive"></i> Archive</a>                    
                     <a href="mailbox/mark_unread/<?php echo $this->uri->segment(3);?>/<?php echo $this->uri->segment(4);?>" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as Unread"><i class="fa fa-eye"></i> Mark Unread</a>
                     <a href="mailbox/important_move/<?php echo $this->uri->segment(4);?>" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as important"><i class="fa fa-exclamation"></i> Mark Important</a>
@@ -58,7 +68,14 @@
                 </div>
                     
                 <div class="mail-body text-right tooltip-demo">
+                    <?php 
+                        if($draft_message_count > 0){
+                        $draft_message = $this->mailbox_model->get_where_multiple('parent_id', $this->uri->segment(4), 'draft', 'yes');   
+                    ?>
+                        <a href="mailbox/draft/<?php echo $draft_message->id;?>" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Continue Draft"><i class="fa fa-reply"></i> Continue Draft</a>
+                    <?php }else{?>
                         <a class="btn btn-sm btn-white" href="mailbox/reply/<?php if($this->mailbox_model->get_where_multiple('id', $this->uri->segment(4))->parent_id > 0){echo $this->mailbox_model->get_where_multiple('id', $this->uri->segment(4))->parent_id;}else{echo $this->uri->segment(4);}?>/<?php echo $this->uri->segment(4);?>"><i class="fa fa-reply"></i> Reply</a>
+                    <?php }?>
 <!--                        <a class="btn btn-sm btn-white" href="mailbox/forward/<?php echo $this->uri->segment(4);?>"><i class="fa fa-arrow-right"></i> Forward</a>-->
                         <button onclick="window.print()" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Print email"><i class="fa fa-print"></i></button>
                         <a href="mailbox/trash_move/<?php echo $this->uri->segment(4);?>" title="" data-placement="top" data-toggle="tooltip" data-original-title="Trash" class="btn btn-sm btn-white"><i class="fa fa-trash-o"></i> Remove</a>

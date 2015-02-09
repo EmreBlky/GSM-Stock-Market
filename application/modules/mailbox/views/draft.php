@@ -1,3 +1,11 @@
+<?php
+
+//echo '<pre>';
+//print_r($inbox_draft_message);
+//exit;
+
+?>
+
 <div class="wrapper wrapper-content">
     <div class="row">
         <?php
@@ -61,6 +69,51 @@
 
                 </div>
             </div>
+            
+            <?php 
+                if($inbox_draft_count_reply > 0){
+            ?>
+                <div class="col-lg-9 animated fadeInRight"> 
+            <?php
+                    
+                    foreach($inbox_draft_message_reply as $idmr){
+                        $last = $this->uri->segment(3);
+                        if($idmr->id != $last){
+            ?>
+                    <div class="mail-box-header" style="border-bottom: 1px solid #e6e6e6">
+                        <div class="pull-right tooltip-demo">
+                            <p><?php echo $idmr->time;?> &amp; <?php echo $idmr->date;?></p>
+                        </div>
+                        <h2><?php echo $idmr->subject;?></h2>
+                        <p><?php echo $this->member_model->get_where($idmr->member_id)->firstname.' '.$this->member_model->get_where($idmr->member_id)->lastname?></p>
+                    </div>
+                    <div class="mail-box" style="padding:10px;">
+                        <?php echo $idmr->body;?>
+                    </div>
+            <?php
+                        }  
+                        //echo $idmr->id.'<br/>';
+                
+                    }
+                    $parent_mail = $this->mailbox_model->get_where($idmr->parent_id);
+            ?>
+                    <div class="mail-box-header" style="border-bottom: 1px solid #e6e6e6">
+                            <div class="pull-right tooltip-demo">
+                                <p><?php echo $parent_mail->time;?> &amp; <?php echo $parent_mail->date;?></p>
+                            </div>
+                            <h2><?php echo $parent_mail->subject;?></h2>
+                            <p><?php echo $this->member_model->get_where($parent_mail->member_id)->firstname.' '.$this->member_model->get_where($parent_mail->member_id)->lastname?></p>
+                        </div>
+                        <div class="mail-box" style="padding:10px;">
+                            <?php echo $parent_mail->body;?>
+                        </div>
+            <?php
+            ?>
+                    <div>
+            <?php            
+                    //echo $idmr->parent_id.'<br/>';
+                }
+            ?>
         
         <?php } else { ?>
     
@@ -111,7 +164,8 @@
                                                        echo '<td class="text-right mail-date">'.$inbox->time.' '.date_format(date_create($inbox->date), 'jS F').'</td>'; 
                                                     }
                                                     else{
-                                                        echo '<td class="text-right mail-date">'.$inbox->time.'</td>';
+                                                        echo '<td class="text-right mail-date">'.$inbox->time.'</td>
+                                                                <input type="hidden" name="parent_id" value="'.$inbox->parent_id.'"/>';
                                                     }
                                                 
                                             echo '</tr>';
@@ -133,7 +187,7 @@
 
                     </tbody>
                 </table>
-                    
+                    <input type="hidden" name="parent_id" value=""/> 
                 </div>
         <?php echo form_close(); ?>
             </div>

@@ -119,6 +119,7 @@
                                         
                                     </dl>
                                     <div class="row">
+                                        <?php ?>
                                         <div class="col-md-6" style="margin-top:15px">
                                             <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#profile_message"><i class="fa fa-envelope"></i> Send Message</button>
                                         </div>
@@ -481,7 +482,7 @@
 
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Send Report</button>
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Send Report</button>
                                         </div>
                                     </div>
                                 </div>

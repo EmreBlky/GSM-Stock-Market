@@ -282,7 +282,24 @@ class Mailbox extends MX_Controller
     function draft($mid = NULL)
     {
         if(isset($mid)){
-            $cid = $this->mailbox_model->get_where($mid)->member_id;                
+            
+            $pid = $this->mailbox_model->get_where_multiple('id', $mid)->parent_id;
+            $cid = $this->mailbox_model->get_where($mid)->member_id;
+            if($pid > 0){
+                
+                $d_count = $this->mailbox_model->count_where_multiple('member_id',$this->session->userdata('members_id'), 'draft', 'yes', 'parent_id', $this->mailbox_model->get_where_multiple('id', $mid)->parent_id);
+            
+                if($d_count > 0){            
+                    $data['inbox_draft_count_reply'] = $d_count;
+                    $data['inbox_draft_message_reply'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'member_id',$this->session->userdata('members_id'), 'draft', 'yes', 'parent_id', $this->mailbox_model->get_where_multiple('id', $mid)->parent_id);
+                }
+            }
+            else{
+                        
+                $data['inbox_draft_count_reply'] = 0;
+            
+            }
+        
 
             if($cid != $this->session->userdata('members_id')){
                redirect('mailbox/draft/');
@@ -295,6 +312,7 @@ class Mailbox extends MX_Controller
         
         $count = $this->mailbox_model->count_where_multiple('member_id',$this->session->userdata('members_id'), 'draft', 'yes', 'sent', 'no');
         
+        
         if($count > 0){            
             $data['inbox_draft_count'] = $count;
             $data['inbox_draft_message'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'member_id',$this->session->userdata('members_id'), 'draft', 'yes', 'sent', 'no');
@@ -302,6 +320,8 @@ class Mailbox extends MX_Controller
         else{            
             $data['inbox_draft_count'] = 0;
         }
+        
+        
         
         $data['message'] = $this->mailbox_model->get_where_multiple('id', $mid);
         
@@ -521,7 +541,8 @@ class Mailbox extends MX_Controller
                 $this->load->model('member/member_model', 'member_model');
                 $sid = $this->member_model->get_where_multiple('email', $this->input->post('email_address'))->id;
                 $mail_id = $this->input->post('mail_id');
-                if(isset($mail_id)){
+                
+                if($mail_id != ''){
                     
                     $data = array(
                                     
@@ -542,7 +563,8 @@ class Mailbox extends MX_Controller
                                     'sent_member_id'    => $sid,
                                     'subject'           => $this->input->post('subject'),
                                     'body'              => nl2br($this->input->post('body')),
-                                    'draft'              => 'yes',
+                                    'inbox'             => 'yes',
+                                    'draft'             => 'yes',
                                     'date'              => date('d-m-Y'),
                                     'time'              => date('H:i'),
                                     'sent_from'         => 'member',
@@ -551,7 +573,7 @@ class Mailbox extends MX_Controller
                                   );
                     
                     $this->mailbox_model->_insert($data);
-                    redirect('mailbox/inbox/all');
+                    redirect('mailbox/draft');
                 }
             }
             

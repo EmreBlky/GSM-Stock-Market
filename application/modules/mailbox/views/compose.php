@@ -41,8 +41,7 @@
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Subject:</label>
-
-                        <div class="col-sm-10">
+                        <input type="hidden" name="parent_id" value="<?php echo $this->mailbox_model->get_where_multiple('id', $this->uri->segment(3))->parent_id?>"/>                        <div class="col-sm-10">
                             <?php
                                 $data = array(
                                             'name'      => 'subject',
