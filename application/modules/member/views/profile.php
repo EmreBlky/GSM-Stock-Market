@@ -33,6 +33,7 @@
                                         <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
                                         <i class="fa fa-ban"></i> You have blocked this company. They are unable to communicate or see you in anyway on this website. <a class="alert-link" href="#">Unblock</a>.
                                     </div> -->
+                                    <?php echo $this->session->flashdata('message');?>
                                     <div class="m-b-md">                                        
                                         <h2><?php echo $member_company->company_name;?></h2>
                                     </div>
@@ -126,12 +127,32 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6" style="margin-top:15px">
-                                            <button type="button" class="btn btn-success btn-sm btn-block" id="contact_added"><i class="fa fa-book"></i> Add Contact</button>
-                                        </div>
-                                        <div class="col-md-6" style="margin-top:15px">
-                                            <button onclick="location.href='<?php echo $base;?>favourite/add/<?php echo $member_info->id?>'" type="button" class="btn btn-warning btn-sm btn-block" id="favourite_added"><i class="fa fa-star"></i> Add Favourite</button>
-                                        </div>
+                                        <?php 
+                                        
+                                        $this->load->model('addressbook/addressbook_model', 'addressbook_model');
+                                        $a_count =  $this->addressbook_model->count_where('member_id', $this->session->userdata('members_id'), 'address_member_id', $member_info->id);
+                                        
+                                        if($a_count < 1){
+                                        ?>
+                                            <div class="col-md-6" style="margin-top:15px">
+                                                <button onclick="location.href='<?php echo $base;?>addressbook/add/<?php echo $member_info->id?>/individual'" type="button" class="btn btn-success btn-sm btn-block" id="contact_added"><i class="fa fa-book"></i> Add Contact</button>
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
+                                        <?php 
+                                        
+                                        $this->load->model('favourite/favourite_model', 'favourite_model');
+                                        $f_count =  $this->favourite_model->count_where('member_id', $this->session->userdata('members_id'), 'favourite_id', $member_info->id);
+                                        
+                                        if($f_count < 1){
+                                        ?>
+                                            <div class="col-md-6" style="margin-top:15px">
+                                                <button onclick="location.href='<?php echo $base;?>favourite/add/<?php echo $member_info->id?>'" type="button" class="btn btn-warning btn-sm btn-block" id="favourite_added"><i class="fa fa-star"></i> Add Favourite</button>
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
                                     </div>
                                 </div>
                             </div>

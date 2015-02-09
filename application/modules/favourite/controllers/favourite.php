@@ -27,5 +27,8 @@ class Favourite extends MX_Controller
                         'favourite_id'  => $mid
                     );
         $this->favourite_model->_insert($data);
+        
+        $this->session->set_flashdata('message', 'That user has been added to your favourites');
+        redirect('member/profile/'.$mid);
     }
 }

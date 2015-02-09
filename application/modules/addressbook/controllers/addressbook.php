@@ -9,6 +9,7 @@ class Addressbook extends MX_Controller
         { 
             redirect('login');
         }
+        $this->load->model('addressbook/addressbook_model', 'addressbook_model');
     }
 
     function index()
@@ -16,6 +17,8 @@ class Addressbook extends MX_Controller
         $data['main'] = 'addressbook';
         $data['title'] = 'GSM - Addressbook';        
         $data['page'] = 'index';
+        
+        $data['address_book'] = $this->addressbook_model->get_where_multiples('member_id', $this->session->userdata('members_id'));
         
         $this->load->module('templates');
         $this->templates->page($data);
@@ -49,6 +52,22 @@ class Addressbook extends MX_Controller
         
         $this->load->module('templates');
         $this->templates->page($data);
-    }	
+    }
+    
+    function add($mid, $type)
+    {
+        $data = array(
+                        'member_id'             => $this->session->userdata('members_id'),
+                        'address_member_id'     => $mid,
+                        'type'                  => $type,
+                        'favourite'             => '',
+                        'business_activities'   => '',
+                        'country'               => ''
+                    );
+        $this->addressbook_model->_insert($data);
+        
+        $this->session->set_flashdata('message', 'That user has been added to your Address Book');
+        redirect('member/profile/'.$mid);
+    }
 	
 }
