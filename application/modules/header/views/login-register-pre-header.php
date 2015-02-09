@@ -8,11 +8,11 @@
 
     <title><?php echo $title; ?></title>
 
-    <link href="public/main/css/bootstrap.min.css" rel="stylesheet">
-    <link href="public/main/font/css/font-awesome.css" rel="stylesheet">
+    <link href="public/main/template/core/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/main/template/core/font/css/font-awesome.css" rel="stylesheet">
 
-    <link href="public/main/css/animate.css" rel="stylesheet">
-    <link href="public/main/css/style.css" rel="stylesheet">
+    <link href="public/main/template/core/css/animate.css" rel="stylesheet">
+    <link href="public/main/template/core/css/style.css" rel="stylesheet">
 
 </head>
 

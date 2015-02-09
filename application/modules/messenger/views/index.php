@@ -22,7 +22,7 @@
                     <a href="messenger/chat/">
                     <div class="col-xs-4">
                         <div class="text-center">
-                            <img alt="image" class="img-circle m-t-xs img-responsive" src="public/main/template/core/img/daniel_big.jpg">
+                            <img alt="image" class="img-circle m-t-xs img-responsive" src="public/main/template/gsm/img/daniel_big.jpg">
                         </div>
                     </div>
                     <div class="col-xs-8">
