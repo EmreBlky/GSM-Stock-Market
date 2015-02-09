@@ -30,7 +30,16 @@
                         <a href="profile/"><i class="fa fa-user"></i> <span class="nav-label"> My Profile</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="profile/"><i class="fa fa-user"></i> View Profile</a></li>
-                            <li><a href="profile/who_viewed"><i class="fa fa-eye"></i> Who's Viewed <span class="label label-primary pull-right">6</span></a></li>
+                            <li><a href="profile/who_viewed"><i class="fa fa-eye"></i> Who's Viewed                                     
+                                    <div id="who_viewed_remove" style="float: right;">
+                                    <?php
+                                        $this->load->module('profile');
+                                        $this->profile->who_viewed_count();
+                                    ?>
+                                </div>
+                                    <div id="who_viewed"></div>
+                                </a>
+                            </li>
                             <li><a href="profile/edit_profile"><i class="fa fa-cogs"></i> Edit Profile</a></li>
                         </ul>
                     </li>

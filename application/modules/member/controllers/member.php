@@ -38,6 +38,7 @@ class Member extends MX_Controller
         
         $this->viewed_model->_insert($data);
         
+        $data['base'] = $this->config->item('base_url');
         $data['main'] = 'member';        
         $data['title'] = 'GSM - Members Page';        
         $data['page'] = 'profile';

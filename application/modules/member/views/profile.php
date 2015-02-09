@@ -130,7 +130,7 @@
                                             <button type="button" class="btn btn-success btn-sm btn-block" id="contact_added"><i class="fa fa-book"></i> Add Contact</button>
                                         </div>
                                         <div class="col-md-6" style="margin-top:15px">
-                                            <button type="button" class="btn btn-warning btn-sm btn-block" id="favourite_added"><i class="fa fa-star"></i> Add Favourite</button>
+                                            <button onclick="location.href='<?php echo $base;?>favourite/add/<?php echo $member_info->id?>'" type="button" class="btn btn-warning btn-sm btn-block" id="favourite_added"><i class="fa fa-star"></i> Add Favourite</button>
                                         </div>
                                     </div>
                                 </div>

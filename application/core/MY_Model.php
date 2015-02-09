@@ -314,6 +314,23 @@ class MY_Model extends CI_Model {
 	
 	}
         
+        function _custom_query_count($mysql_query) 
+	{		
+            $query = $this->db->query($mysql_query);
+        
+            if($query->num_rows() > 0){
+
+                    foreach ($query->result() as $row)
+               {
+                       $data[] = $row;
+               }
+
+            }		
+
+            return $data;
+	
+	}
+        
         function canLogIn()
         {
 

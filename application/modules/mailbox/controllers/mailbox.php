@@ -24,7 +24,16 @@ class Mailbox extends MX_Controller
     
     function inbox($from = NULL, $mid = NULL)
     {
-        if(isset($mid)){
+        $this->load->library('pagination');
+
+        $config['base_url'] = 'http://localhost/gsm/gsm-secure/mailbox/inbox/'.$from.'/page';
+        $config['total_rows'] = 200;
+        $config['per_page'] = 20;
+
+        $this->pagination->initialize($config);
+
+        $data['pagination'] = $this->pagination->create_links();
+        if(isset($mid) && $mid != 'page'){
             $belong = $this->mailbox_model->get_where($mid)->sent_member_id;
             
             if($belong != $this->session->userdata('members_id')){

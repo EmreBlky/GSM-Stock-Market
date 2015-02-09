@@ -11,6 +11,7 @@ class Profile extends MX_Controller
         }
         $this->load->model('member/member_model', 'member_model');
         $this->load->model('company/company_model', 'company_model');
+        $this->load->model('viewed/viewed_model', 'viewed_model');
     }
 
     function index()
@@ -32,8 +33,23 @@ class Profile extends MX_Controller
     {
         
         $data['member_info'] = $this->member_model->get_where_multiple('id', $mid);
+        $data['member_company'] = $this->company_model->get_where_multiple('id', $this->member_model->get_where_multiple('id', $mid)->company_id);
         
         $this->load->view('send-message', $data);
+    }
+    
+    function who_viewed_count()
+    {
+        $viewed_count = $this->viewed_model->_custom_query_count("SELECT COUNT(DISTINCT viewer_id) AS 'viewed' FROM gsmstock_secure.viewed WHERE viewed_id = '".$this->session->userdata('members_id')."' AND date = '".date('d-m-Y')."' AND notified = 'no'");
+        
+        foreach ($viewed_count as $viewed){
+            $viewed = $viewed->viewed;
+        }
+        
+        if($viewed > 0){
+            
+            echo '<span class="label label-primary pull-right">'.$viewed.'</span>';
+        }
     }
             
     function who_viewed()
@@ -41,6 +57,14 @@ class Profile extends MX_Controller
         $data['main'] = 'profile';        
         $data['title'] = 'GSM - Whos Viewed Profile';        
         $data['page'] = 'whos-viewed';
+        
+        $datas = array(
+                        'notified' => 'yes'
+                      );
+        $this->viewed_model->_update_where($datas, 'viewed_id', $this->session->userdata('members_id'), 'notified', 'no');
+//        
+        //$data['viewed'] = $this->viewed_model->get_where_multiples('viewed_id', $this->session->userdata('members_id'));
+        $data['viewed'] = $this->viewed_model->_custom_query("SELECT DISTINCT viewer_id FROM gsmstock_secure.viewed WHERE viewed_id = '".$this->session->userdata('members_id')."' ORDER BY datetime DESC");
         
         $this->load->module('templates');
         $this->templates->page($data);

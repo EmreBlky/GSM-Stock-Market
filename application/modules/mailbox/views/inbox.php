@@ -339,4 +339,5 @@
             </div>
             <?php } ?>
         </div>
+            <?php echo $pagination; ?>
         </div>

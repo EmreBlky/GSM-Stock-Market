@@ -14,6 +14,7 @@ class Change_this extends MX_Controller
     function index()
     {
         $data['main'] = 'Change_this';
+		$data['title'] = 'Change_this';
         $data['page'] = 'index';
         $this->load->module('templates');
         $this->templates->page($data);
