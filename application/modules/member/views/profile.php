@@ -138,6 +138,12 @@
                                                 <button onclick="location.href='<?php echo $base;?>addressbook/add/<?php echo $member_info->id?>/individual'" type="button" class="btn btn-success btn-sm btn-block" id="contact_added"><i class="fa fa-book"></i> Add Contact</button>
                                             </div>
                                         <?php
+                                        } else{
+                                        ?>
+                                            <div class="col-md-6" style="margin-top:15px">
+                                                <button onclick="location.href='<?php echo $base;?>addressbook/remove/<?php echo $member_info->id?>/individual'" type="button" class="btn btn-success btn-sm btn-block" id="contact_added"><i class="fa fa-book"></i> Remove Contact</button>
+                                            </div>
+                                        <?php
                                         }
                                         ?>
                                         <?php 
@@ -149,6 +155,12 @@
                                         ?>
                                             <div class="col-md-6" style="margin-top:15px">
                                                 <button onclick="location.href='<?php echo $base;?>favourite/add/<?php echo $member_info->id?>'" type="button" class="btn btn-warning btn-sm btn-block" id="favourite_added"><i class="fa fa-star"></i> Add Favourite</button>
+                                            </div>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <div class="col-md-6" style="margin-top:15px">
+                                                <button onclick="location.href='<?php echo $base;?>favourite/remove/<?php echo $member_info->id?>'" type="button" class="btn btn-warning btn-sm btn-block" id="favourite_added"><i class="fa fa-star"></i> Remove Favourite</button>
                                             </div>
                                         <?php
                                         }
