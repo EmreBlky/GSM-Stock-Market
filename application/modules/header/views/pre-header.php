@@ -61,7 +61,7 @@
             
             function getStatus() { 
                 $('#status').load('<?php echo $base;?>mailbox/mail_recent/10'); 
-                setTimeout("getStatus()",500);
+                setTimeout("getStatus()",10000);
             }
             
         </script>
