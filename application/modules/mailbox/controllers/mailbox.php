@@ -22,17 +22,13 @@ class Mailbox extends MX_Controller
         $this->templates->page($data);
     }
     
-    function inbox($from = NULL, $mid = NULL)
+    function inbox($from = NULL, $mid = NULL, $off = NULL)
     {
         $this->load->library('pagination');
 
-        $config['base_url'] = 'http://localhost/gsm/gsm-secure/mailbox/inbox/'.$from.'/page';
-        $config['total_rows'] = 200;
-        $config['per_page'] = 20;
-
-        $this->pagination->initialize($config);
-
-        $data['pagination'] = $this->pagination->create_links();
+        $config['base_url'] = $this->config->item('base_url').'mailbox/inbox/'.$from.'/page';
+        $config['uri_segment'] = 2;
+        
         if(isset($mid) && $mid != 'page'){
             $belong = $this->mailbox_model->get_where($mid)->sent_member_id;
             
@@ -41,6 +37,13 @@ class Mailbox extends MX_Controller
             }
         }
         
+//        if(isset($off)){
+//              $offset = 20;
+//            }
+//            else{
+//                $offset = 0;
+//            }
+//        
         $data['main'] = 'mailbox';
         $data['title'] = 'GSM - Inbox';        
         $data['page'] = 'inbox';        
@@ -50,12 +53,19 @@ class Mailbox extends MX_Controller
         
         if($from == 'member'){
             
-            if(isset($mid)){
+            if(isset($mid) && $mid != 'page'){
                 $sent_from = $this->mailbox_model->get_where($mid)->sent_from;                
 
                 if($from != $sent_from){
                    redirect('mailbox/inbox/'.$from);
                 }
+            }
+            
+            if(isset($off) && $off > 1){
+              $offset = 20;
+            }
+            else{
+                $offset = 0;
             }
 
             $data['header'] = 'From Member';
@@ -65,8 +75,36 @@ class Mailbox extends MX_Controller
             if($mem_count > 0){            
                 $data['inbox_mem_count'] = $mem_count;
                 $data['inbox_mem_ncount'] = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'sent_from', $from, 'inbox', 'yes', 'mail_read', 'no');
-                $data['inbox_member'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'sent_member_id',$this->session->userdata('members_id'), 'sent_from', $from, 'inbox', 'yes');      
+                $data['inbox_member'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'sent_member_id', $this->session->userdata('members_id'), 'sent_from', $from, 'inbox', 'yes', NULL, NULL, 20, $offset);      
                 $data['inbox_ncount'] = 0;
+                
+                
+                $config['total_rows'] = $mem_count;
+                $config['per_page'] = 20;
+                $config["uri_segment"] = 5;
+                $config['use_page_numbers'] = TRUE;
+                $config["per_page"];
+                $config['full_tag_open'] = '<div class="btn-group pull-right">';
+                $config['full_tag_close'] = '</div>';
+                $config['next_tag_open'] = '<div class="btn btn-white">';
+                $config['next_tag_close'] = '</div>';
+                $config['prev_tag_open'] = ' <div class="btn btn-white">';
+                $config['prev_tag_close'] = '</div>';
+                $config['cur_tag_open'] = '<div class="btn btn-white  active">';
+                $config['cur_tag_close'] = '</div>';
+                $config['num_tag_open'] = '<div class="btn btn-white">';                
+                $config['num_tag_close'] = '</div>';
+                $config['prev_link'] = '<i class="fa fa-chevron-left"></i>';
+                $config['next_link'] = '<i class="fa fa-chevron-right"></i>';
+                
+                $this->pagination->initialize($config);
+                
+                if(!is_numeric($mid)){
+                    $data['pagination'] = $this->pagination->create_links();
+                }
+                else{
+                    $data['pagination'] = '';
+                }
             }
             else{            
                 $data['inbox_mem_count'] = 0;
@@ -76,12 +114,19 @@ class Mailbox extends MX_Controller
         }
         elseif($from == 'market'){
             
-            if(isset($mid)){
+            if(isset($mid) && $mid != 'page'){
                 $sent_from = $this->mailbox_model->get_where($mid)->sent_from;                
 
                 if($from != $sent_from){
                    redirect('mailbox/inbox/'.$from);
                 }
+            }
+            
+            if(isset($off) && $off > 1){
+              $offset = 20;
+            }
+            else{
+                $offset = 0;
             }
 
             $data['header'] = 'From Marketplace';
@@ -91,7 +136,34 @@ class Mailbox extends MX_Controller
             if($mark_count > 0){            
                 $data['inbox_mark_count'] = $mark_count;
                 $data['inbox_mark_ncount'] = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'sent_from', $from, 'inbox', 'yes', 'mail_read', 'no');
-                $data['inbox_market'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'sent_member_id',$this->session->userdata('members_id'), 'sent_from', $from, 'inbox', 'yes');        
+                $data['inbox_market'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'sent_member_id', $this->session->userdata('members_id'), 'sent_from', $from, 'inbox', 'yes', NULL, NULL, 20, $offset);        
+                
+                $config['total_rows'] = $mark_count;
+                $config['per_page'] = 20;
+                $config["uri_segment"] = 5;
+                $config['use_page_numbers'] = TRUE;
+                $config["per_page"];
+                $config['full_tag_open'] = '<div class="btn-group pull-right">';
+                $config['full_tag_close'] = '</div>';
+                $config['next_tag_open'] = '<div class="btn btn-white">';
+                $config['next_tag_close'] = '</div>';
+                $config['prev_tag_open'] = ' <div class="btn btn-white">';
+                $config['prev_tag_close'] = '</div>';
+                $config['cur_tag_open'] = '<div class="btn btn-white  active">';
+                $config['cur_tag_close'] = '</div>';
+                $config['num_tag_open'] = '<div class="btn btn-white">';                
+                $config['num_tag_close'] = '</div>';
+                $config['prev_link'] = '<i class="fa fa-chevron-left"></i>';
+                $config['next_link'] = '<i class="fa fa-chevron-right"></i>';
+
+                $this->pagination->initialize($config);
+
+                if(!is_numeric($mid)){
+                    $data['pagination'] = $this->pagination->create_links();
+                }
+                else{
+                    $data['pagination'] = '';
+                }
             }
             else{            
                 $data['inbox_mark_count'] = 0;
@@ -101,12 +173,19 @@ class Mailbox extends MX_Controller
         }
         elseif($from == 'support'){
             
-            if(isset($mid)){
+            if(isset($mid) && $mid != 'page'){
                 $sent_from = $this->mailbox_model->get_where($mid)->sent_from;                
 
                 if($from != $sent_from){
                    redirect('mailbox/inbox/'.$from);
                 }
+            }
+            
+            if(isset($off) && $off > 1){
+              $offset = 20;
+            }
+            else{
+                $offset = 0;
             }
 
             $data['header'] = 'From Support Team';
@@ -116,7 +195,34 @@ class Mailbox extends MX_Controller
             if($s_count > 0){            
                 $data['inbox_s_count'] = $s_count;
                 $data['inbox_s_ncount'] = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'sent_from', $from, 'inbox', 'yes', 'mail_read', 'no');
-                $data['inbox_support'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'sent_member_id',$this->session->userdata('members_id'), 'sent_from', $from, 'inbox', 'yes');
+                $data['inbox_support'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'sent_member_id', $this->session->userdata('members_id'), 'sent_from', $from, 'inbox', 'yes', NULL, NULL, 20, $offset);
+                
+                $config['total_rows'] = $s_count;
+                $config['per_page'] = 20;
+                $config["uri_segment"] = 5;
+                $config['use_page_numbers'] = TRUE;
+                $config["per_page"];
+                $config['full_tag_open'] = '<div class="btn-group pull-right">';
+                $config['full_tag_close'] = '</div>';
+                $config['next_tag_open'] = '<div class="btn btn-white">';
+                $config['next_tag_close'] = '</div>';
+                $config['prev_tag_open'] = ' <div class="btn btn-white">';
+                $config['prev_tag_close'] = '</div>';
+                $config['cur_tag_open'] = '<div class="btn btn-white  active">';
+                $config['cur_tag_close'] = '</div>';
+                $config['num_tag_open'] = '<div class="btn btn-white">';                
+                $config['num_tag_close'] = '</div>';
+                $config['prev_link'] = '<i class="fa fa-chevron-left"></i>';
+                $config['next_link'] = '<i class="fa fa-chevron-right"></i>';
+
+                $this->pagination->initialize($config);
+
+                if(!is_numeric($mid)){
+                    $data['pagination'] = $this->pagination->create_links();
+                }
+                else{
+                    $data['pagination'] = '';
+                }
             }
             else{            
                 $data['inbox_s_count'] = 0;
@@ -124,6 +230,13 @@ class Mailbox extends MX_Controller
             }
 
         }elseif($from == 'all'){
+            
+            if(isset($off) && $off > 1){
+              $offset = 20;
+            }
+            else{
+                $offset = 0;
+            }
 
             $data['header'] = 'Inbox';
             
@@ -132,7 +245,34 @@ class Mailbox extends MX_Controller
             if($count > 0){            
                 $data['inbox_i_count'] = $count;
                 $data['inbox_i_ncount'] = $this->mailbox_model->count_where('sent_member_id',$this->session->userdata('members_id'), 'inbox', 'yes', 'mail_read', 'no');
-                $data['inbox_all'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'sent_member_id',$this->session->userdata('members_id'), 'inbox', 'yes');
+                $data['inbox_all'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'sent_member_id',$this->session->userdata('members_id'), 'inbox', 'yes', NULL, NULL, NULL, NULL, 20, $offset);
+                
+                $config['total_rows'] = $count;
+                $config['per_page'] = 20;
+                $config["uri_segment"] = 5;
+                $config['use_page_numbers'] = TRUE;
+                $config["per_page"];
+                $config['full_tag_open'] = '<div class="btn-group pull-right">';
+                $config['full_tag_close'] = '</div>';
+                $config['next_tag_open'] = '<div class="btn btn-white">';
+                $config['next_tag_close'] = '</div>';
+                $config['prev_tag_open'] = ' <div class="btn btn-white">';
+                $config['prev_tag_close'] = '</div>';
+                $config['cur_tag_open'] = '<div class="btn btn-white  active">';
+                $config['cur_tag_close'] = '</div>';
+                $config['num_tag_open'] = '<div class="btn btn-white">';                
+                $config['num_tag_close'] = '</div>';
+                $config['prev_link'] = '<i class="fa fa-chevron-left"></i>';
+                $config['next_link'] = '<i class="fa fa-chevron-right"></i>';
+
+                $this->pagination->initialize($config);
+
+                if(!is_numeric($mid)){
+                    $data['pagination'] = $this->pagination->create_links();
+                }
+                else{
+                    $data['pagination'] = '';
+                }
             }
             else{            
                 $data['inbox_count'] = 0;

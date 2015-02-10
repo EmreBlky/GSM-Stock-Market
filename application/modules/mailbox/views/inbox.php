@@ -347,14 +347,27 @@
                             </tr>
                             
                         <?php }?>
-
+                            <?php if(isset($inbox_all) || isset($inbox_member) || isset($inbox_market) || isset($inbox_support)){?>
+                            <tr>
+                                <td class=""></td>
+                                <td class=""></td>
+                                <td class=""></td>
+                                <td class=""></td>
+                                <td class="text-right mail-date">
+                                    <?php echo $pagination; ?>
+                                </td>
+                                
+                            </tr>
+                            <?php } ?>
                     </tbody>
                 </table>
-                    
+                     
                 </div>
+                
                 <?php echo form_close(); ?>
+                
             </div>
             <?php } ?>
         </div>
-            <?php echo $pagination; ?>
+           
         </div>

@@ -121,7 +121,7 @@ $this->load->model('company/company_model', 'company_model');
         
         <div class="row" style="margin:0 0 25px 0">
         <div class="btn-group pull-right">
-        	<button type="button" class="btn btn-white"><i class="fa fa-chevron-left"></i></button>
+            <button type="button" class="btn btn-white"><i class="fa fa-chevron-left"></i></button>
             <button class="btn btn-white">1</button>
             <button class="btn btn-white  active">2</button>
             <button class="btn btn-white">3</button>

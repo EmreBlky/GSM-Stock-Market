@@ -55,7 +55,7 @@ $(document).ready(function(){
          $.ajax({
                 type: "POST",
                 url: "mailbox/composeAjaxMail/"+ mid +"/"+ sid +"/"+ subject +"/"+body +"",
-                dataType: "text",
+                dataType: "html",
                 success:function(data){
                   $('#profile_message').modal('hide');
                 },
