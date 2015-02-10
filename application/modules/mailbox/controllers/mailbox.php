@@ -600,7 +600,7 @@ class Mailbox extends MX_Controller
                                     'member_id'         => $mid,
                                     'sent_member_id'    => $sid,
                                     'subject'           => str_replace('%20', ' ',$subject),
-                                    'body'              => nl2br($body),
+                                    'body'              => nl2br(str_replace('%20', ' ',$body)),
                                     'inbox'             => 'yes',
                                     'sent'              => 'yes',
                                     'date'              => date('d-m-Y'),
