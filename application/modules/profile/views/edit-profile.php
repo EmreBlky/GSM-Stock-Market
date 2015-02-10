@@ -403,6 +403,7 @@
                                         <option>option 3</option>
                                         <option>option 4</option>
                                     </select>
+                                    <small class="text-navy">Please make sure you select in order of actual business relevance as this will affect search results and our dedicated account managers promoting your business on your behalf with other suitable companies.</small>
                                 	</div>
                                </div>
                                 
