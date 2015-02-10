@@ -482,6 +482,13 @@
             });
         })
     </script>
+    <script type="text/javascript">
+	$(function() {
+    if (window.location.hash.indexOf("reportuser/") !== -1) {
+        $("#report_user").modal();
+    }
+});
+</script>
             
             
             
