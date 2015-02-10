@@ -593,6 +593,25 @@ class Mailbox extends MX_Controller
             
         
     }
+    
+    function composeAjaxMail($mid, $sid, $subject, $body)
+    {        
+        $data = array(
+                                    'member_id'         => $mid,
+                                    'sent_member_id'    => $sid,
+                                    'subject'           => str_replace('%20', ' ',$subject),
+                                    'body'              => nl2br(str_replace('%20', ' ',$body)),
+                                    'inbox'             => 'yes',
+                                    'sent'              => 'yes',
+                                    'date'              => date('d-m-Y'),
+                                    'time'              => date('H:i'),
+                                    'sent_from'         => 'member',
+                                    'parent_id'         => '',
+                                    'datetime'          => date('Y-m-d H:i:s')
+                                  );                    
+                    $this->mailbox_model->_insert($data);
+                    redirect('mailbox/inbox/all');
+    }
             
     function archive($mid = NULL)
     {
