@@ -31,8 +31,8 @@
 					$attributes = array('class' => 'form-horizontal');
 					echo form_open('profile/profileEdit', $attributes);
 							?>
-                            	<div class="form-group"><label class="col-sm-4 control-label">Company Name</label>
-                                    <div class="col-sm-8">
+                            	<div class="form-group"><label class="col-md-3 control-label">Company Name</label>
+                                    <div class="col-md-9">
                                         <?php
 
                                             if($company->company_name){
@@ -62,8 +62,8 @@
                                 </div>  
                                 
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">Company Number</label>
-                                    <div class="col-sm-8">
+                                    <label class="col-md-3 control-label">Company Number</label>
+                                    <div class="col-md-9">
                                         <?php
 
                                             if($company->company_number){
@@ -93,8 +93,8 @@
                                 </div>     
                                 
                                 <div class="form-group">
-                                    <label class="col-sm-4 col-sm-4 control-label">VAT/Tax Number</label>
-                                    <div class="col-sm-8">
+                                    <label class="col-md-3 col-md-4 control-label">VAT/Tax Number</label>
+                                    <div class="col-md-9">
                                         <?php
 
                                             if($company->vat_tax){
@@ -125,10 +125,9 @@
                                 
                                 <div class="hr-line-dashed"></div>
                                 
-                                <h4 class="col-md-offset-4">Address</h4>
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">Address Line 1</label>
-                                    <div class="col-sm-8">
+                                    <label class="col-md-3 control-label">Address Line 1</label>
+                                    <div class="col-md-9">
                                         <?php
 
                                             if($company->address_line_1){
@@ -159,8 +158,8 @@
                                 </div>  
                                 
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">Address Line 2</label>
-                                    <div class="col-sm-8">
+                                    <label class="col-md-3 control-label">Address Line 2</label>
+                                    <div class="col-md-9">
                                         <?php
 
                                             if($company->address_line_2){
@@ -191,8 +190,8 @@
                                 </div>  
                                 
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">Town/City</label>
-                                    <div class="col-sm-8">
+                                    <label class="col-md-3 control-label">Town/City</label>
+                                    <div class="col-md-9">
                                         <?php
 
                                             if($company->town_city){
@@ -223,8 +222,8 @@
                                 </div>     
                                 
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">County</label>
-                                    <div class="col-sm-8">
+                                    <label class="col-md-3 control-label">County</label>
+                                    <div class="col-md-9">
                                         <?php
 
                                             if($company->county){
@@ -255,8 +254,8 @@
                                 </div>  
                                 
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">Postal/Zip Code</label>
-                                    <div class="col-sm-8">
+                                    <label class="col-md-3 control-label">Postal/Zip Code</label>
+                                    <div class="col-md-9">
                                         <?php
 
                                             if($company->post_code){
@@ -286,9 +285,9 @@
                                     </div>
                                 </div>   
                                 
-                                <div class="form-group"><label class="col-sm-4 control-label">Country</label>
+                                <div class="form-group"><label class="col-md-3 control-label">Country</label>
 
-                                    <div class="col-sm-8">
+                                    <div class="col-md-9">
                                         <?php
 
                                             if($company->country){
@@ -327,15 +326,20 @@
                                 </div>    
                                 
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">Phone Number</label>
-                                    <div class="col-sm-8">
+                                    <label class="col-md-3 control-label">Phone Number</label>
+                                    <div class="col-md-3" style="padding-right:0">
+                                    <select class="form-control" name="account">
+                                        <option>United Kingdom (+44)</option>
+                                    </select>
+                                    </div>
+                                    <div class="col-md-6">
                                         <?php
 
                                             if($member->phone_number){
 
                                                 $data = array(
                                                             'name'        => 'phone_number',
-                                                        'class'          => 'form-control',
+                                                        	'class'          => 'form-control',
                                                             'value'     => $member->phone_number,     
                                                             'required'  => 'required'
                                                           );
@@ -356,13 +360,65 @@
                                             }
                                         ?>
                                     </div>
-                                </div>  
+                                </div>
+                                
+                                
+                                <div class="form-group">
+                                	<label class="col-md-3 control-label">Business Sectors <br/><small class="text-navy">Select up to 5</small></label>
+									<div class="col-md-4">
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="" name="bsectors"> <i></i> New Mobiles (Sim Free) </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="" name="bsectors"> <i></i> New Mobiles (Network Stocks) </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="" name="bsectors"> <i></i> 14 Day Mobiles </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="" name="bsectors"> <i></i> Refurbished Mobiles </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="" name="bsectors"> <i></i> Used Mobiles </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="" name="bsectors"> <i></i> BER Mobiles </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="" name="bsectors"> <i></i> Mobile Accessories </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="" name="bsectors"> <i></i> Wearable Technology </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="" name="bsectors"> <i></i> Bluetooth Products </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="" name="bsectors"> <i></i> Mobile Spare Parts </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="" name="bsectors"> <i></i> Mobile Service and Repair Centre </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="" name="bsectors"> <i></i> Network Operator </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="" name="bsectors"> <i></i> Freight Forwarding </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="" name="bsectors"> <i></i> Insurance </label></div>
+                                	</div>
+									<div class="col-md-4">
+                                    <label class="col-md-12">Primary Business</label>
+                                    <select class="form-control m-b" name="account">
+                                        <option>option 1</option>
+                                        <option>option 2</option>
+                                        <option>option 3</option>
+                                        <option>option 4</option>
+                                    </select>
+                                    <label class="col-md-12">Secondary Business</label>
+                                    <select class="form-control m-b" name="account">
+                                        <option>option 1</option>
+                                        <option>option 2</option>
+                                        <option>option 3</option>
+                                        <option>option 4</option>
+                                    </select>
+                                    <label class="col-md-12">Tertiary Business</label>
+                                    <select class="form-control m-b" name="account">
+                                        <option>option 1</option>
+                                        <option>option 2</option>
+                                        <option>option 3</option>
+                                        <option>option 4</option>
+                                    </select>
+                                	</div>
+                               </div>
+                                
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Other Sectors<br /><small class="text-navy">List seperated by commas</small></label>
+                                    <div class="col-md-9">  
+                                        <input type="text" class="form-control" />
+                                        <span class="help-block m-b-none">e.g Mobile Phones, Broken LCDs, e.t.c</span>
+                                    </div>
+                                </div>
                                 
                                 <div class="hr-line-dashed"></div>
                                 
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">Website</label>
-                                    <div class="col-sm-8">
+                                    <label class="col-md-3 control-label">Website</label>
+                                    <div class="col-md-9">
                                         <div class="input-group m-b"><span class="input-group-addon">http://</span> 
                                         <?php
 
@@ -394,8 +450,8 @@
                                 </div>   
                                 
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">Skype</label>
-                                    <div class="col-sm-8">
+                                    <label class="col-md-3 control-label">Skype</label>
+                                    <div class="col-md-9">
                                         <div class="input-group m-b"><span class="input-group-addon"><i class="fa fa-skype"></i></span> 
                                         <?php
 
@@ -427,8 +483,8 @@
                                 </div>      
                                 
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">Facebook</label>
-                                    <div class="col-sm-8">
+                                    <label class="col-md-3 control-label">Facebook</label>
+                                    <div class="col-md-9">
                                         <div class="input-group m-b"><span class="input-group-addon"><i class="fa fa-facebook"></i></span> 
                                         <?php
 
@@ -460,8 +516,8 @@
                                 </div>  
                                 
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">Twitter</label>
-                                    <div class="col-sm-8">
+                                    <label class="col-md-3 control-label">Twitter</label>
+                                    <div class="col-md-9">
                                         <div class="input-group m-b"><span class="input-group-addon"><i class="fa fa-twitter"></i></span>  
                                         <?php
 
@@ -493,8 +549,8 @@
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">Linkedin</label>
-                                    <div class="col-sm-8">
+                                    <label class="col-md-3 control-label">Linkedin</label>
+                                    <div class="col-md-9">
                                         <div class="input-group m-b"><span class="input-group-addon"><i class="fa fa-linkedin"></i></span>  
                                         <?php
 
@@ -526,8 +582,8 @@
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">Google +</label>
-                                    <div class="col-sm-8">
+                                    <label class="col-md-3 control-label">Google +</label>
+                                    <div class="col-md-9">
                                         <div class="input-group m-b"><span class="input-group-addon"><i class="fa fa-google-plus"></i></span>  
                                         <?php
 
@@ -603,9 +659,9 @@
                             <h5>Personal Details</h5>
                         </div>
                         <div class="ibox-content form-horizontal">
-                                <div class="form-group"><label class="col-sm-4 control-label">Title</label>
-                                    <div class="col-sm-8">
-                                        <?php
+                                <div class="form-group"><label class="col-md-3 control-label">Title</label>
+                                    <div class="col-md-2">
+                                        <?php /*
 
                                             if($member->title){
 
@@ -630,21 +686,19 @@
 
                                                 echo form_input($data);
                                             }
-                                        ?>                                 
-                                    <!--
-                                    <select class="form-control m-b" name="country">
-                                        <option>option 1</option>
-                                        <option>option 2</option>
-                                        <option>option 3</option>
-                                        <option>option 4</option>
+                                       */ ?>   
+                                    <select class="form-control" name="title">
+                                        <option>Mr.</option>
+                                        <option>Mrs.</option>
+                                        <option>Miss.</option>
+                                        <option>Ms.</option>
                                     </select>
-                                    -->
                                     </div>
                                 </div>  
                                 
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">First Name</label>
-                                    <div class="col-sm-8">
+                                    <label class="col-md-3 control-label">First Name</label>
+                                    <div class="col-md-9">
                                         <?php
 
                                             if($member->firstname){
@@ -675,8 +729,8 @@
                                 </div>    
                                 
                                 <div class="form-group">
-                                    <label class="col-sm-4 control-label">Last Name</label>
-                                    <div class="col-sm-8">
+                                    <label class="col-md-3 control-label">Last Name</label>
+                                    <div class="col-md-9">
                                         <?php
 
                                             if($member->lastname){
@@ -707,8 +761,8 @@
                                 </div>   
                                 
                                 <div class="form-group">
-                                    <label class="col-sm-4 col-sm-4 control-label">Company Role</label>
-                                    <div class="col-sm-8">
+                                    <label class="col-md-3 col-md-4 control-label">Company Role</label>
+                                    <div class="col-md-9">
                                         <?php
 
                                             if($member->role){
@@ -739,8 +793,8 @@
                                 </div>  
                                 
                                 <div class="form-group">
-                                    <label class="col-sm-4 col-sm-4 control-label">Email Address</label>
-                                    <div class="col-sm-8">
+                                    <label class="col-md-3 col-md-4 control-label">Email Address</label>
+                                    <div class="col-md-9">
                                         <?php
 
                                             if($member->email){
@@ -771,8 +825,13 @@
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label class="col-sm-4 col-sm-4 control-label">Mobile Number</label>
-                                    <div class="col-sm-8">
+                                    <label class="col-md-3 control-label">Mobile Number</label>
+                                    <div class="col-md-3" style="padding-right:0">
+                                    <select class="form-control m-b" name="account">
+                                        <option>United Kingdom (+44)</option>
+                                    </select>
+                                    </div>
+                                    <div class="col-md-6">
                                         <?php
 
                                             if($member->mobile_number){
@@ -802,9 +861,9 @@
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label class="col-sm-4 col-sm-4 control-label">Language</label>
-                                    <div class="col-sm-8">
-                                        <?php
+                                    <label class="col-md-3 col-md-4 control-label">Language</label>
+                                    <div class="col-md-4">
+                                        <?php /*
 
                                             if($member->language){
 
@@ -828,13 +887,58 @@
 
                                                 echo form_input($data);
                                             }
-                                        ?>
+                                        */ ?>
+                                    <select class="form-control" name="title">
+                                        <option value=""></option>
+                                        <option value="276451">Arabic</option>
+                                        <option value="276452">Austrian</option>
+                                        <option value="276453">Bosnian</option>
+                                        <option value="276454">Bulgarian</option>
+                                        <option value="276455">Croatian</option>
+                                        <option value="276456">Czech</option>
+                                        <option value="276457">Danish</option>
+                                        <option value="276458">Dutch</option>
+                                        <option value="276459">English</option>
+                                        <option value="276460">Estonian</option>
+                                        <option value="276461">Filipino</option>
+                                        <option value="276462">Finnish</option>
+                                        <option value="276463">French</option>
+                                        <option value="276464">German</option>
+                                        <option value="276465">Greek</option>
+                                        <option value="276466">Hebrew</option>
+                                        <option value="276467">Hindi</option>
+                                        <option value="276468">Hungarian</option>
+                                        <option value="276469">Indonesian</option>
+                                        <option value="276470">Italian</option>
+                                        <option value="276471">Japanese</option>
+                                        <option value="276472">Korean</option>
+                                        <option value="276473">Lithuanian</option>
+                                        <option value="276474">Macedonian</option>
+                                        <option value="276475">Malaysian</option>
+                                        <option value="276476">Nepali</option>
+                                        <option value="276477">Norwegian</option>
+                                        <option value="276478">Persian</option>
+                                        <option value="276479">Polish</option>
+                                        <option value="276480">Portuguese</option>
+                                        <option value="276481">Romanian</option>
+                                        <option value="276482">Russian</option>
+                                        <option value="276483">Serbian</option>
+                                        <option value="276484">Slovak</option>
+                                        <option value="276485">Slovenian</option>
+                                        <option value="276486">Spanish</option>
+                                        <option value="276487">Standard Mandarin</option>
+                                        <option value="276488">Swedish</option>
+                                        <option value="276489">Thai</option>
+                                        <option value="276490">Turkish</option>
+                                        <option value="276491">Ukrainian</option>
+                                        <option value="276492">Vietnamese</option>
+                                    </select>
                                     </div>  
                                 </div>
                                 
                                 <div class="hr-line-dashed"></div>
                                 <div class="form-group">
-                                    <div class="col-sm-4 col-sm-offset-2">
+                                    <div class="col-md-4 col-md-offset-2">
                                         <button class="btn btn-white" type="submit">Cancel</button>
                                         <button class="btn btn-primary" name="submit_form" type="submit" id="submit_form">Save changes</button>
                                     </div>
@@ -883,7 +987,19 @@
         
         
         
-        
+    <!-- checkbox css -->
+    <link href="public/main/template/core/css/plugins/iCheck/custom.css" rel="stylesheet">
+
+    <!-- iCheck -->
+    <script src="js/plugins/iCheck/icheck.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.i-checks').iCheck({
+                    checkboxClass: 'icheckbox_square-green',
+                    radioClass: 'iradio_square-green',
+                });
+            });
+    </script>
            
 
    	<!-- Input Mask-->
@@ -943,3 +1059,16 @@
 			
             });
     </script>
+    
+    <script type="text/javascript">
+	$(document).ready(function () {
+    $("input[name='bsectors']").change(function () {
+        var maxAllowed = 5;
+        var cnt = $("input[name='bsectors']:checked").length;
+        if (cnt > maxAllowed) {
+            $(this).prop("checked", "");
+            alert('You can select maximum a ' + maxAllowed + ' business sectors');
+        }
+    });
+});
+</script>
