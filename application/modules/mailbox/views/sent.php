@@ -4,7 +4,7 @@
 //print_r($inbox_sent_message);
 //echo '</pre>';
 //exit;
-
+//$this->load->model('member/member_model', 'member_model');
 ?>
 
 <div class="wrapper wrapper-content">
@@ -133,6 +133,19 @@
                             </tr>
                             
                         <?php }?>
+                        
+                        <?php if(isset($pagination)){?>
+                            <tr>
+                                <td class=""></td>
+                                <td class=""></td>
+                                <td class=""></td>
+                                <td class=""></td>
+                                <td class="text-right mail-date">
+                                    <?php echo $pagination; ?>
+                                </td>
+                                
+                            </tr>
+                        <?php } ?>    
 
                     </tbody>
                 </table>                    

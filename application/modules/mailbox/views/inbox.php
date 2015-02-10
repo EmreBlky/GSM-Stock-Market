@@ -347,7 +347,7 @@
                             </tr>
                             
                         <?php }?>
-                            <?php if(isset($inbox_all) || isset($inbox_member) || isset($inbox_market) || isset($inbox_support)){?>
+                            <?php if(isset($pagination)){?>
                             <tr>
                                 <td class=""></td>
                                 <td class=""></td>
