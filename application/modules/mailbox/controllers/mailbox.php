@@ -62,7 +62,8 @@ class Mailbox extends MX_Controller
             }
             
             if(isset($off) && $off > 1){
-              $offset = $off-1*20;
+                $new_mem = $off-1;
+                $offset = 20*$new_mem;
             }
             else{
                 $offset = 0;
@@ -123,7 +124,8 @@ class Mailbox extends MX_Controller
             }
             
             if(isset($off) && $off > 1){
-              $offset = $off-1*20;
+                $new_mem = $off-1;
+                $offset = 20*$new_mem;
             }
             else{
                 $offset = 0;
@@ -182,7 +184,8 @@ class Mailbox extends MX_Controller
             }
             
             if(isset($off) && $off > 1){
-              $offset = $off-1*20;
+                $new_mem = $off-1;
+                $offset = 20*$new_mem;
             }
             else{
                 $offset = 0;
@@ -232,7 +235,8 @@ class Mailbox extends MX_Controller
         }elseif($from == 'all'){
             
             if(isset($off) && $off > 1){
-              $offset = $off-1*20;
+                $new_mem = $off-1;
+                $offset = 20*$new_mem;
             }
             else{
                 $offset = 0;
