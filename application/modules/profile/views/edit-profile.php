@@ -402,6 +402,14 @@
                                 	</div>
                                </div>
                                 
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label">Other Sectors<br /><small class="text-navy">List seperated by commas</small></label>
+                                    <div class="col-md-8">  
+                                        <input type="text" class="form-control" />
+                                        <span class="help-block m-b-none">e.g Mobile Phones, Broken LCDs, e.t.c</span>
+                                    </div>
+                                </div>
+                                
                                 <div class="hr-line-dashed"></div>
                                 
                                 <div class="form-group">
