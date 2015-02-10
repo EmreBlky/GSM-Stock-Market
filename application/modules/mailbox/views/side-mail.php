@@ -14,50 +14,49 @@
                                     <ul>
                                         <li>
                                             <a href="mailbox/inbox/all">ALL
-                                                <div id="inbox_all_message_remove" style="float: right;">
+                                                
+                                                <div id="inbox_all_message" style="float: right;">
                                                     <?php
 
                                                         $this->mailbox->new_message_all();
 
                                                     ?>
-                                                </div>
-                                                <div id="inbox_all_message" style="float: right;"></div> 
+                                                </div> 
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="mailbox/inbox/member">From Members
-                                                <div id="inbox_member_remove" style="float: right;">
+                                            <a href="mailbox/inbox/member">From Members                                                
+                                                <div id="inbox_member" style="float: right;">
                                                     <?php
 
                                                         $this->mailbox->new_message_member();
 
                                                     ?>
                                                 </div>
-                                                <div id="inbox_member" style="float: right;"></div>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="mailbox/inbox/market">From Marketplace 
-                                                <div id="inbox_market_remove" style="float: right;">
+                                                
+                                                <div id="inbox_market" style="float: right;">
                                                     <?php
 
                                                         $this->mailbox->new_message_market();
 
                                                     ?>
                                                 </div>
-                                                <div id="inbox_market" style="float: right;"></div>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="mailbox/inbox/support">From Support
-                                                <div id="inbox_support_remove" style="float: right;">
+                                                
+                                                <div id="inbox_support" style="float: right;">
                                                     <?php
 
                                                         $this->mailbox->new_message_support();
 
                                                     ?>
                                                 </div>
-                                                <div id="inbox_support" style="float: right;"></div>
                                             </a>
                                         </li>
                                     </ul>

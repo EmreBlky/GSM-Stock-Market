@@ -50,13 +50,13 @@
                             <i class="fa fa-envelope"></i> 
                             <span class="nav-label">Mailbox </span>
                             <span class="label label-warning pull-right">
-                                <div id="result_remove">
+                                
+                                <div id="result">
                                     <?php
                                         $this->load->module('mailbox');
                                         $this->mailbox->messages_count();
                                     ?>
                                 </div>
-                                <div id="result"></div>
                             </span>
                         </a>
                     </li>
