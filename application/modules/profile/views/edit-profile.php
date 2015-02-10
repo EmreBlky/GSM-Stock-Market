@@ -28,7 +28,7 @@
                         </div>
                         <div class="ibox-content">
                             <?php 
-					$attributes = array('class' => 'form-horizontal');
+					$attributes = array('class' => 'form-horizontal validation');
 					echo form_open('profile/profileEdit', $attributes);
 							?>
                             	<div class="form-group"><label class="col-md-3 control-label">Company Name</label>
@@ -102,6 +102,7 @@
                                                 $data = array(
                                                             'name'        => 'vat_tax',
                                                         	'class'          => 'form-control',
+															'data-mask'		=> 'aa 999 999 99',
                                                             'value'     => $company->vat_tax,     
                                                             'required'  => 'required'
                                                           );
@@ -114,6 +115,7 @@
                                                 $data = array(
                                                         'name'        => 'vat_tax',
                                                         'class'          => 'form-control',
+														'data-mask'		=> 'aa 999 999 99',
                                                         'value'     => $this->input->post('vat_tax')
                                                       );
 
@@ -362,33 +364,54 @@
                                     </div>
                                 </div>
                                 
+                                <script type="text/javascript">
+								$(function() {
+									$( 'input[name=bsectors]' ).on( 'change', function() {
+										var sel = $('#bprimary'), opt = $( '<option/>' );
+										sel.html( opt.clone().text( '[Select One]' ) );
+										$( 'input[name=besectors]:checked' ).each( function() {
+											sel.append( opt.clone().text( this.value ) );
+										});            
+										if( sel.find( 'option' ).length > 1 ) {
+											$( '#primary-business' ).show();
+											if( sel.find( 'option' ).length === 2 ) {
+												sel.find( 'option' ).eq( 1 ).attr( 'selected',true );
+											}
+										} else {
+											$( '#primary-business' ).hide();
+										}
+									});
+								});
+								</script>
+                                <style>#primary-business{display:none}
+								</style>
                                 
                                 <div class="form-group">
                                 	<label class="col-md-3 control-label">Business Sectors <br/><small class="text-navy">Select up to 5</small></label>
 									<div class="col-md-4">
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="" name="bsectors"> <i></i> New Mobiles (Sim Free) </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="" name="bsectors"> <i></i> New Mobiles (Network Stocks) </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="" name="bsectors"> <i></i> 14 Day Mobiles </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="" name="bsectors"> <i></i> Refurbished Mobiles </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="" name="bsectors"> <i></i> Used Mobiles </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="" name="bsectors"> <i></i> BER Mobiles </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="" name="bsectors"> <i></i> Mobile Accessories </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="" name="bsectors"> <i></i> Wearable Technology </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="" name="bsectors"> <i></i> Bluetooth Products </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="" name="bsectors"> <i></i> Mobile Spare Parts </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="" name="bsectors"> <i></i> Mobile Service and Repair Centre </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="" name="bsectors"> <i></i> Network Operator </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="" name="bsectors"> <i></i> Freight Forwarding </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="" name="bsectors"> <i></i> Insurance </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="New Mobiles (Sim Free)" name="bsectors"> <i></i> New Mobiles (Sim Free) </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="New Mobiles (Network Stocks)" name="bsectors"> <i></i> New Mobiles (Network Stocks) </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="14 Day Mobiles" name="bsectors"> <i></i> 14 Day Mobiles </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Refurbished Mobiles" name="bsectors"> <i></i> Refurbished Mobiles </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Used Mobiles" name="bsectors"> <i></i> Used Mobiles </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="BER Mobiles" name="bsectors"> <i></i> BER Mobiles </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Mobile Accessories" name="bsectors"> <i></i> Mobile Accessories </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Wearable Technology" name="bsectors"> <i></i> Wearable Technology </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Bluetooth Products" name="bsectors"> <i></i> Bluetooth Products </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Mobile Spare Parts" name="bsectors"> <i></i> Mobile Spare Parts </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Mobile Service and Repair Centre" name="bsectors"> <i></i> Mobile Service and Repair Centre </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Network Operator" name="bsectors"> <i></i> Network Operator </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Freight Forwarding" name="bsectors"> <i></i> Freight Forwarding </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Insurance" name="bsectors"> <i></i> Insurance </label></div>
                                 	</div>
 									<div class="col-md-4">
+                                    <div id="primary-business">
                                     <label class="col-md-12">Primary Business</label>
-                                    <select class="form-control m-b" name="account">
-                                        <option>option 1</option>
-                                        <option>option 2</option>
-                                        <option>option 3</option>
-                                        <option>option 4</option>
+                                    <select id="bprimary">
+                                        <option>[Select One]</option>
                                     </select>
+                                    </div>
+                                    <div id="secondary-business">
                                     <label class="col-md-12">Secondary Business</label>
                                     <select class="form-control m-b" name="account">
                                         <option>option 1</option>
@@ -396,6 +419,8 @@
                                         <option>option 3</option>
                                         <option>option 4</option>
                                     </select>
+                                    </div>
+                                    <div id="tertiary-business">
                                     <label class="col-md-12">Tertiary Business</label>
                                     <select class="form-control m-b" name="account">
                                         <option>option 1</option>
@@ -403,7 +428,8 @@
                                         <option>option 3</option>
                                         <option>option 4</option>
                                     </select>
-                                    <small class="text-navy">Please make sure you select in order of actual business relevance as this will affect search results and our dedicated account managers promoting your business on your behalf with other suitable companies.</small>
+                                    </div>
+                                    <small class="text-navy">Please make sure you select in order of actual business relevance as this will affect search results and our dedicated account managers will actively promote your business on your behalf with other suitable companies.</small>
                                 	</div>
                                </div>
                                 
@@ -614,6 +640,18 @@
                                         </div>
                                     </div>
                                 </div>
+                                
+                                <div class="hr-line-dashed"></div>
+                                
+                                                            
+                                <div class="form-group">
+                                    <label class="col-md-3 col-md-4 control-label">Company Bio</label>
+                                    <div class="col-md-9">
+                                    <textarea class="form-control" rows="5" id="companybio"></textarea>
+                                    <div id="charNum"></div>
+                                    </div>  
+                                </div>
+                                
 						</div>
                         </div></div>
                         
@@ -939,7 +977,7 @@
                                 
                                 <div class="hr-line-dashed"></div>
                                 <div class="form-group">
-                                    <div class="col-md-4 col-md-offset-2">
+                                    <div class="col-md-4 col-md-offset-3">
                                         <button class="btn btn-white" type="submit">Cancel</button>
                                         <button class="btn btn-primary" name="submit_form" type="submit" id="submit_form">Save changes</button>
                                     </div>
@@ -1073,3 +1111,186 @@
     });
 });
 </script>
+
+   <script>/**
+ * Character counter and limiter plugin for textfield and textarea form elements
+ * @author Sk8erPeter
+ */ (function ($) {
+    $.fn.characterCounter = function (params) {
+        // merge default and user parameters
+        params = $.extend({
+            // define maximum characters
+            maximumCharacters: 1000,
+            // create typed character counter DOM element on the fly
+            characterCounterNeeded: true,
+            // create remaining character counter DOM element on the fly
+            charactersRemainingNeeded: true,
+            // chop text to the maximum characters
+            chopText: false,
+            // place character counter before input or textarea element
+            positionBefore: false,
+            // class for limit excess
+            limitExceededClass: "character-counter-limit-exceeded",
+            // suffix text for typed characters
+            charactersTypedSuffix: " characters typed",
+            // suffix text for remaining characters
+            charactersRemainingSuffixText: " characters left",
+            // whether to use the short format (e.g. 123/1000)
+            shortFormat: false,
+            // separator for the short format
+            shortFormatSeparator: "/"
+        }, params);
+
+        // traverse all nodes
+        this.each(function () {
+            var $this = $(this),
+                $pluginElementsWrapper,
+                $characterCounterSpan,
+                $charactersRemainingSpan;
+
+            // return if the given element is not a textfield or textarea
+            if (!$this.is("input[type=text]") && !$this.is("textarea")) {
+                return this;
+            }
+
+            // create main parent div
+            if (params.characterCounterNeeded || params.charactersRemainingNeeded) {
+                // create the character counter element wrapper
+                $pluginElementsWrapper = $('<div>', {
+                    'class': 'character-counter-main-wrapper'
+                });
+
+                if (params.positionBefore) {
+                    $pluginElementsWrapper.insertBefore($this);
+                } else {
+                    $pluginElementsWrapper.insertAfter($this);
+                }
+            }
+
+            if (params.characterCounterNeeded) {
+                $characterCounterSpan = $('<span>', {
+                    'class': 'counter character-counter',
+                        'text': 0
+                });
+
+                if (params.shortFormat) {
+                    $characterCounterSpan.appendTo($pluginElementsWrapper);
+
+                    var $shortFormatSeparatorSpan = $('<span>', {
+                        'html': params.shortFormatSeparator
+                    }).appendTo($pluginElementsWrapper);
+
+                } else {
+                    // create the character counter element wrapper
+                    var $characterCounterWrapper = $('<div>', {
+                        'class': 'character-counter-wrapper',
+                            'html': params.charactersTypedSuffix
+                    });
+
+                    $characterCounterWrapper.prepend($characterCounterSpan);
+                    $characterCounterWrapper.appendTo($pluginElementsWrapper);
+                }
+            }
+
+            if (params.charactersRemainingNeeded) {
+
+                $charactersRemainingSpan = $('<span>', {
+                    'class': 'counter characters-remaining',
+                        'text': params.maximumCharacters
+                });
+
+                if (params.shortFormat) {
+                    $charactersRemainingSpan.appendTo($pluginElementsWrapper);
+                } else {
+                    // create the character counter element wrapper
+                    var $charactersRemainingWrapper = $('<div>', {
+                        'class': 'characters-remaining-wrapper',
+                            'html': params.charactersRemainingSuffixText
+                    });
+                    $charactersRemainingWrapper.prepend($charactersRemainingSpan);
+                    $charactersRemainingWrapper.appendTo($pluginElementsWrapper);
+                }
+            }
+
+            $this.keyup(function () {
+
+                var typedText = $this.val();
+                var textLength = typedText.length;
+                var charactersRemaining = params.maximumCharacters - textLength;
+
+                // chop the text to the desired length
+                if (charactersRemaining < 0 && params.chopText) {
+                    $this.val(typedText.substr(0, params.maximumCharacters));
+                    charactersRemaining = 0;
+                    textLength = params.maximumCharacters;
+                }
+
+                if (params.characterCounterNeeded) {
+                    $characterCounterSpan.text(textLength);
+                }
+
+                if (params.charactersRemainingNeeded) {
+                    $charactersRemainingSpan.text(charactersRemaining);
+
+                    if (charactersRemaining <= 0) {
+                        if (!$charactersRemainingSpan.hasClass(params.limitExceededClass)) {
+                            $charactersRemainingSpan.addClass(params.limitExceededClass);
+                        }
+                    } else {
+                        $charactersRemainingSpan.removeClass(params.limitExceededClass);
+                    }
+                }
+            });
+
+        });
+
+        // allow jQuery chaining
+        return this;
+
+    };
+})(jQuery);
+
+$(document).ready(function () {
+    $('#companybio').characterCounter({
+        maximumCharacters: 500,
+        characterCounterNeeded: false,
+        chopText: true
+    });
+
+});
+    </script>
+    
+    
+
+    <!-- Jquery Validate -->
+    <script src="public/main/template/core/js/plugins/validate/jquery.validate.min.js"></script>
+
+    <script>
+         $(document).ready(function(){
+
+             $(".validation").validate({
+                 rules: {
+                     password: {
+                         required: true,
+                         minlength: 3
+                     },
+                     url: {
+                         required: true,
+                         url: true
+                     },
+                     number: {
+                         required: true,
+                         number: true
+                     },
+                     min: {
+                         required: true,
+                         minlength: 6
+                     },
+                     max: {
+                         required: true,
+                         maxlength: 4
+                     }
+                 }
+             });
+        });
+    </script>
