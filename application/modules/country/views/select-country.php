@@ -2,7 +2,7 @@
     <?php 
         if(isset($cid) && $cid > 0){
     ?>
-        <option value="<?php echo $cid; ?>"><?php echo 'Selected Country: '.$country; ?></option>
+        <option value="<?php echo $cid; ?>"><?php echo $country; ?></option>
     <?php 
 
         } else{
