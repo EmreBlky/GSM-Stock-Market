@@ -28,6 +28,12 @@
              <div class="col-lg-9 animated fadeInRight">
             <div class="mail-box-header">
                 <div class="pull-right tooltip-demo">
+                    
+<!--                    <div class="btn-group pull-right" style="padding-left: 10px;">
+                        <button class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i></button>
+                        <button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i></button>
+
+                    </div>-->
                     <!-- <a href="mailbox/reply/<?php echo $this->uri->segment(3);?>" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Reply"><i class="fa fa-reply"></i> Reply</a>
                     <a href="mailbox/mark_unread/archive/<?php echo $this->uri->segment(3);?>/<?php echo $this->uri->segment(4);?>" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as read"><i class="fa fa-eye"></i></a> -->
                     <a href="mailbox/important_move/<?php echo $this->uri->segment(3);?>" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as important"><i class="fa fa-exclamation"></i> Mark Important</a>
@@ -84,11 +90,7 @@
                     Archive (<?php echo $inbox_archive_count;?>)
                 </h2>
                 <div class="mail-tools tooltip-demo m-t-md">
-                    <div class="btn-group pull-right">
-                        <!-- <button class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i></button>
-                        <button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i></button> -->
-
-                    </div>
+                    
                     <!-- <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh</button>
                     <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as read"><i class="fa fa-eye"></i> </button> -->
                     <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as important"><i class="fa fa-exclamation"></i> </button>
@@ -97,11 +99,14 @@
                 </div>
             </div>
                 <div class="mail-box">
+                    
 
                     <table class="table table-hover table-mail">
                         <tbody>
                             <?php 
                             if($inbox_archive_count > 0) {
+                                
+                                
                                 
                                 $this->load->model('member/member_model', 'member_model');
                                 

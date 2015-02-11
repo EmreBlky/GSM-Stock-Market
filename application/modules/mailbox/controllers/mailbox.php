@@ -250,7 +250,17 @@ class Mailbox extends MX_Controller
                 $data['inbox_i_count'] = $count;
                 $data['inbox_i_ncount'] = $this->mailbox_model->count_where('sent_member_id',$this->session->userdata('members_id'), 'inbox', 'yes', 'mail_read', 'no');
                 $data['inbox_all'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'sent_member_id',$this->session->userdata('members_id'), 'inbox', 'yes', NULL, NULL, NULL, NULL, 20, $offset);
+                $array = $this->mailbox_model->_custom_query("SELECT id FROM mailbox WHERE sent_member_id = '".$this->session->userdata('members_id')."'");
                 
+                echo '<pre>';
+                $count = 0;
+                print_r($array);
+                echo $array[$count+1]->id;
+//                foreach ($array as $id => $value){
+//                    echo $id->id.'<br/>';
+//                }
+                exit;
+
                 $config['total_rows'] = $count;
                 $config['per_page'] = 20;
                 $config["uri_segment"] = 5;
@@ -1023,7 +1033,8 @@ class Mailbox extends MX_Controller
                 $data = array(
                         'important'     => 'yes',
                         'sent' => 'no',
-                        'sent_from'     => 'moved_important',                        
+                        'sent_from'     => 'moved_important',
+                        'imortant_belong' => $this->session->userdata('members_id'),
                         'inbox'         => 'no'
                       );
         
@@ -1038,7 +1049,8 @@ class Mailbox extends MX_Controller
                 $data = array(
                         'archive'       => 'yes',
                         'sent'          => 'no',
-                        'sent_from'     => 'moved_archive',                        
+                        'sent_from'     => 'moved_archive',
+                        'archive_belong' => $this->session->userdata('members_id'),
                         'inbox'         => 'no'
                       );
         
@@ -1055,6 +1067,7 @@ class Mailbox extends MX_Controller
                         'trash_belong'  => $this->session->userdata('members_id'),
                         'sent'          => 'no',
                         'sent_from'     => 'moved_trash',
+                        'trash_belong' => $this->session->userdata('members_id'),
                         'inbox'         => 'no'
                       );
         
