@@ -447,11 +447,11 @@ class Mailbox extends MX_Controller
         $data['title'] = 'GSM - Inbox';        
         $data['page'] = 'important';
         
-        $count = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'important', 'yes');
+        $count = $this->mailbox_model->count_where_multiple('important_belong',$this->session->userdata('members_id'), 'important', 'yes');
         
         if($count > 0){            
             $data['inbox_important_count'] = $count;
-             $data['inbox_important_message'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'sent_member_id', $this->session->userdata('members_id'), 'important', 'yes', NULL, NULL, NULL, NULL, 20, $offset);
+             $data['inbox_important_message'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'important_belong', $this->session->userdata('members_id'), 'important', 'yes', NULL, NULL, NULL, NULL, 20, $offset);
              
              $config['base_url'] = $this->config->item('base_url').'mailbox/important/page/';           
             $config['total_rows'] = $count;
@@ -496,6 +496,8 @@ class Mailbox extends MX_Controller
                         'trash'             => 'no',
                         'important'         => 'yes',
                         'important_belong'  => $this->session->userdata('members_id'),
+                        'archive_belong'    => '',
+                        'trash_belong'      => '',
                         'draft'             => 'no'
                       );
         
@@ -678,11 +680,13 @@ class Mailbox extends MX_Controller
     function trash_move($mid)
     {
         $data = array(
-                        'trash'             => 'yes',
-                        'trash_belong'      => $this->session->userdata('members_id'),
-                        'sent'              => 'no',
-                        'important'         => 'no',
-                        'draft'             => 'no'
+                        'trash'                 => 'yes',
+                        'trash_belong'          => $this->session->userdata('members_id'),
+                        'archive_belong'        => '',
+                        'important_belong'      => '',
+                        'sent'                  => 'no',
+                        'important'             => 'no',
+                        'draft'                 => 'no'
                       );
 
         
@@ -935,11 +939,11 @@ class Mailbox extends MX_Controller
         $data['title'] = 'GSM - Archive Mail';        
         $data['page'] = 'archive';
         
-        $count = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'archive', 'yes');
+        $count = $this->mailbox_model->count_where_multiple('archive_belong',$this->session->userdata('members_id'), 'archive', 'yes');
         
         if($count > 0){            
             $data['inbox_archive_count'] = $count;
-            $data['inbox_archive_message'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'sent_member_id', $this->session->userdata('members_id'), 'archive', 'yes', NULL, NULL, NULL, NULL, 20, $offset);
+            $data['inbox_archive_message'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'archive_belong', $this->session->userdata('members_id'), 'archive', 'yes', NULL, NULL, NULL, NULL, 20, $offset);
             
             $config['base_url'] = $this->config->item('base_url').'mailbox/archive/page/';           
             $config['total_rows'] = $count;
@@ -983,10 +987,10 @@ class Mailbox extends MX_Controller
         $data = array(
                         'archive'           => 'yes',
                         'important'         => 'no',
-                        'sent'              => 'no',
-                        'sent_from'         => 'moved_archive',                        
-                        'inbox'             => 'no',
-                        'archive_belong'    => $this->session->userdata('members_id')
+                        'sent_from'         => 'moved_archive',
+                        'archive_belong'    => $this->session->userdata('members_id'),
+                        'trash_belong'      => '',
+                        'important_belong'  => ''
                       );
         
         $this->mailbox_model->_update($mid, $data);
@@ -1031,11 +1035,13 @@ class Mailbox extends MX_Controller
             foreach($_POST as $post_vale => $post_key){
                 
                 $data = array(
-                        'important'     => 'yes',
-                        'sent' => 'no',
-                        'sent_from'     => 'moved_important',
-                        'imortant_belong' => $this->session->userdata('members_id'),
-                        'inbox'         => 'no'
+                        'important'         => 'yes',
+                        'mail_read'         => 'yes',
+                        'inbox'             => 'no',
+                        'sent_from'         => 'moved_important',
+                        'important_belong'  => $this->session->userdata('members_id'),
+                        'archive_belong'    => '',
+                        'trash_belong'      => ''
                       );
         
                 $this->mailbox_model->_update($post_vale, $data);
@@ -1047,11 +1053,13 @@ class Mailbox extends MX_Controller
             foreach($_POST as $post_vale => $post_key){
                 
                 $data = array(
-                        'archive'       => 'yes',
-                        'sent'          => 'no',
-                        'sent_from'     => 'moved_archive',
-                        'archive_belong' => $this->session->userdata('members_id'),
-                        'inbox'         => 'no'
+                        'archive'           => 'yes',
+                        'mail_read'         => 'yes',
+                        'inbox'             => 'no',
+                        'sent_from'         => 'moved_archive',
+                        'archive_belong'    => $this->session->userdata('members_id'),
+                        'trash_belong'      => '',
+                        'important_belong'  => ''
                       );
         
                 $this->mailbox_model->_update($post_vale, $data);
@@ -1063,12 +1071,14 @@ class Mailbox extends MX_Controller
             foreach($_POST as $post_vale => $post_key){
                 
                 $data = array(
-                        'trash'         => 'yes',
-                        'trash_belong'  => $this->session->userdata('members_id'),
-                        'sent'          => 'no',
-                        'sent_from'     => 'moved_trash',
-                        'trash_belong' => $this->session->userdata('members_id'),
-                        'inbox'         => 'no'
+                        'trash'             => 'yes',
+                        'trash_belong'      => $this->session->userdata('members_id'),
+                        'inbox'             => 'no',                   
+                        'mail_read'         => 'yes',
+                        'sent_from'         => 'moved_trash',
+                        'trash_belong'      => $this->session->userdata('members_id'),
+                        'important_belong'  => '',
+                        'archive_belong'    => '',
                       );
         
                 $this->mailbox_model->_update($post_vale, $data);
