@@ -290,7 +290,7 @@
                                 <div class="form-group"><label class="col-md-3 control-label">Country</label>
 
                                     <div class="col-md-9">
-                                        <?php
+                                        <?php /*
 
                                             if($company->country){
 
@@ -315,15 +315,12 @@
 
                                                 echo form_input($data);
                                             }
-                                        ?>                                    
-                                    <!--
+                                        */?>  
                                     <select class="form-control m-b" name="country">
-                                        <option>option 1</option>
-                                        <option>option 2</option>
-                                        <option>option 3</option>
-                                        <option>option 4</option>
+                                        <option>United Kingdom</option>
+                                        <option>United States</option>
+                                        <option>Turkey</option>
                                     </select>
-                                    -->
                                     </div>
                                 </div>    
                                 
@@ -383,8 +380,6 @@
 									});
 								});
 								</script>
-                                <style>#primary-business{display:none}
-								</style>
                                 
                                 <div class="form-group">
                                 	<label class="col-md-3 control-label">Business Sectors <br/><small class="text-navy">Select up to 5</small></label>
