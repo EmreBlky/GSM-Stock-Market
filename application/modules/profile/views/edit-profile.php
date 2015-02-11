@@ -1,4 +1,13 @@
-		<div class="row wrapper border-bottom white-bg page-heading">
+	
+<?php
+
+//echo '<pre>';
+//print_r($country);
+//exit;
+
+?>	
+
+<div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
                     <h2>View Profile</h2>
                     <ol class="breadcrumb">
@@ -290,47 +299,21 @@
                                 
                                 <div class="form-group"><label class="col-md-3 control-label">Country</label>
 
-                                    <div class="col-md-9">
-                                        <?php /*
-
-                                            if($company->country){
-
-                                                $data = array(
-                                                            'name'        => 'country',
-                                                        	'class'          => 'form-control',
-                                                            'value'     => $company->country,     
-                                                            'required'  => 'required'
-                                                          );
-
-                                                echo form_input($data);
-
-                                            }
-                                            else{
-
-                                                $data = array(
-                                                        'name'        => 'country',
-                                                        'class'          => 'form-control',
-                                                        'value'     => $this->input->post('country'),     
-                                                        'required'  => 'required'
-                                                      );
-
-                                                echo form_input($data);
-                                            }
-                                        */?>  
-                                    <select class="form-control m-b" name="country">
-                                        <option>United Kingdom</option>
-                                        <option>United States</option>
-                                        <option>Turkey</option>
-                                    </select>
+                                    <div class="col-md-9">                                       
+                                    <?php
+                                        $this->load->module('country');
+                                        $this->country->select_country($member->id);
+                                    ?>
                                     </div>
                                 </div>    
                                 
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">Phone Number</label>
                                     <div class="col-md-3" style="padding-right:0">
-                                    <select class="form-control" name="account">
-                                        <option>United Kingdom (+44)</option>
-                                    </select>
+                                    <?php
+                                        $this->load->module('country');
+                                        $this->country->select_phone($member->id);
+                                    ?>
                                     </div>
                                     <div class="col-md-6">
                                         <?php
@@ -862,9 +845,10 @@
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">Mobile Number</label>
                                     <div class="col-md-3" style="padding-right:0">
-                                    <select class="form-control m-b" name="account">
-                                        <option>United Kingdom (+44)</option>
-                                    </select>
+                                    <?php
+                                        $this->load->module('country');
+                                        $this->country->select_mobile($member->id);
+                                    ?>
                                     </div>
                                     <div class="col-md-6">
                                         <?php
@@ -897,77 +881,11 @@
                                 
                                 <div class="form-group">
                                     <label class="col-md-3 col-md-4 control-label">Language</label>
-                                    <div class="col-md-4">
-                                        <?php /*
-
-                                            if($member->language){
-
-                                                $data = array(
-                                                            'name'        => 'language',
-                                                        	'class'          => 'form-control',
-                                                            'value'     => $member->language,     
-                                                            'required'  => 'required'
-                                                          );
-
-                                                echo form_input($data);
-
-                                            }
-                                            else{
-
-                                                $data = array(
-                                                        'name'        => 'language',
-                                                        'class'          => 'form-control',
-                                                        'value'     => $this->input->post('language')
-                                                      );
-
-                                                echo form_input($data);
-                                            }
-                                        */ ?>
-                                    <select class="form-control" name="title">
-                                        <option value=""></option>
-                                        <option value="276451">Arabic</option>
-                                        <option value="276452">Austrian</option>
-                                        <option value="276453">Bosnian</option>
-                                        <option value="276454">Bulgarian</option>
-                                        <option value="276455">Croatian</option>
-                                        <option value="276456">Czech</option>
-                                        <option value="276457">Danish</option>
-                                        <option value="276458">Dutch</option>
-                                        <option value="276459">English</option>
-                                        <option value="276460">Estonian</option>
-                                        <option value="276461">Filipino</option>
-                                        <option value="276462">Finnish</option>
-                                        <option value="276463">French</option>
-                                        <option value="276464">German</option>
-                                        <option value="276465">Greek</option>
-                                        <option value="276466">Hebrew</option>
-                                        <option value="276467">Hindi</option>
-                                        <option value="276468">Hungarian</option>
-                                        <option value="276469">Indonesian</option>
-                                        <option value="276470">Italian</option>
-                                        <option value="276471">Japanese</option>
-                                        <option value="276472">Korean</option>
-                                        <option value="276473">Lithuanian</option>
-                                        <option value="276474">Macedonian</option>
-                                        <option value="276475">Malaysian</option>
-                                        <option value="276476">Nepali</option>
-                                        <option value="276477">Norwegian</option>
-                                        <option value="276478">Persian</option>
-                                        <option value="276479">Polish</option>
-                                        <option value="276480">Portuguese</option>
-                                        <option value="276481">Romanian</option>
-                                        <option value="276482">Russian</option>
-                                        <option value="276483">Serbian</option>
-                                        <option value="276484">Slovak</option>
-                                        <option value="276485">Slovenian</option>
-                                        <option value="276486">Spanish</option>
-                                        <option value="276487">Standard Mandarin</option>
-                                        <option value="276488">Swedish</option>
-                                        <option value="276489">Thai</option>
-                                        <option value="276490">Turkish</option>
-                                        <option value="276491">Ukrainian</option>
-                                        <option value="276492">Vietnamese</option>
-                                    </select>
+                                    <div class="col-md-4">                                     
+                                    <?php
+                                        $this->load->module('language');
+                                        $this->language->select($member->id);
+                                    ?>
                                     </div>  
                                 </div>
                                 
