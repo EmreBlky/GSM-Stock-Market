@@ -351,11 +351,11 @@ class Mailbox extends MX_Controller
         $data['title'] = 'GSM - Inbox';        
         $data['page'] = 'sent';
         
-        $count = $this->mailbox_model->count_where_multiple('member_id',$this->session->userdata('members_id'), 'sent', 'yes');
+        $count = $this->mailbox_model->count_where_multiple('sent_belong',$this->session->userdata('members_id'), 'sent', 'yes');
         
         if($count > 0){            
             $data['inbox_sent_count'] = $count;
-            $data['inbox_sent_message'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'member_id', $this->session->userdata('members_id'), 'sent', 'yes', NULL, NULL, NULL, NULL, 20, $offset);
+            $data['inbox_sent_message'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'sent_belong', $this->session->userdata('members_id'), 'sent', 'yes', NULL, NULL, NULL, NULL, 20, $offset);
             
             $config['base_url'] = $this->config->item('base_url').'mailbox/sent/page/';           
             $config['total_rows'] = $count;
@@ -498,6 +498,7 @@ class Mailbox extends MX_Controller
                         'important_belong'  => $this->session->userdata('members_id'),
                         'archive_belong'    => '',
                         'trash_belong'      => '',
+                        'sent_belong'      => '',
                         'draft'             => 'no'
                       );
         
@@ -684,7 +685,7 @@ class Mailbox extends MX_Controller
                         'trash_belong'          => $this->session->userdata('members_id'),
                         'archive_belong'        => '',
                         'important_belong'      => '',
-                        'sent'                  => 'no',
+                        'sent_belong'           => '',
                         'important'             => 'no',
                         'draft'                 => 'no'
                       );
@@ -804,6 +805,7 @@ class Mailbox extends MX_Controller
                                     'body'              => nl2br($this->input->post('body')),
                                     'inbox'             => 'yes',
                                     'sent'              => 'yes',
+                                    'sent_belong'       => $this->session->userdata('members_id'),
                                     'draft'             => 'no',
                                     'date'              => date('d-m-Y'),
                                     'time'              => date('H:i'),
@@ -823,6 +825,7 @@ class Mailbox extends MX_Controller
                                     'body'              => nl2br($this->input->post('body')),
                                     'inbox'             => 'yes',
                                     'sent'              => 'yes',
+                                    'sent_belong'       => $this->session->userdata('members_id'),
                                     'date'              => date('d-m-Y'),
                                     'time'              => date('H:i'),
                                     'sent_from'         => 'member',
@@ -990,6 +993,7 @@ class Mailbox extends MX_Controller
                         'sent_from'         => 'moved_archive',
                         'archive_belong'    => $this->session->userdata('members_id'),
                         'trash_belong'      => '',
+                        'sent_belong'      => '',                        
                         'important_belong'  => ''
                       );
         
@@ -1015,6 +1019,7 @@ class Mailbox extends MX_Controller
                       );
         
                 $this->mailbox_model->_update($post_vale, $data);
+                redirect('mailbox/inbox/'.$back);
             }
         }
         elseif($submit == 'unread'){
@@ -1026,6 +1031,7 @@ class Mailbox extends MX_Controller
                       );
         
                 $this->mailbox_model->_update($post_vale, $data);
+                redirect('mailbox/inbox/'.$back);
             }
             
         }
@@ -1041,6 +1047,8 @@ class Mailbox extends MX_Controller
                         'sent_from'         => 'moved_important',
                         'important_belong'  => $this->session->userdata('members_id'),
                         'archive_belong'    => '',
+                        'draft_belong'      => '',
+                        'sent_belong'       => '',
                         'trash_belong'      => ''
                       );
         
@@ -1058,7 +1066,9 @@ class Mailbox extends MX_Controller
                         'inbox'             => 'no',
                         'sent_from'         => 'moved_archive',
                         'archive_belong'    => $this->session->userdata('members_id'),
+                        'draft_belong'      => '',
                         'trash_belong'      => '',
+                        'sent_belong'       => '',                        
                         'important_belong'  => ''
                       );
         
@@ -1077,8 +1087,10 @@ class Mailbox extends MX_Controller
                         'mail_read'         => 'yes',
                         'sent_from'         => 'moved_trash',
                         'trash_belong'      => $this->session->userdata('members_id'),
-                        'important_belong'  => '',
-                        'archive_belong'    => '',
+                        'draft_belong'      => '',
+                        'important_belong'  => '',                        
+                        'sent_belong'      => '',                        
+                        'archive_belong'    => ''
                       );
         
                 $this->mailbox_model->_update($post_vale, $data);
@@ -1093,7 +1105,7 @@ class Mailbox extends MX_Controller
             }
         }
         
-        redirect('mailbox/inbox/'.$back);
+        redirect('mailbox/'.$back);
     }
     
     function mail_dropdown($mail_count){

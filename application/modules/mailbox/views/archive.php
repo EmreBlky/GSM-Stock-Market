@@ -201,6 +201,7 @@
                             
                         </tbody>
                     </table>
+                    <input type="hidden" name="page_from" value="<?php echo $this->uri->segment(2);?>"/>
                     
                 </div>
                 <?php echo form_close(); ?>

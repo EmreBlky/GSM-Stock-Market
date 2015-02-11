@@ -27,7 +27,8 @@
                                                        echo '<td class="text-right mail-date">'.$inbox->time.' '.date_format(date_create($inbox->date), 'jS F').'</td>'; 
                                                     }
                                                     else{
-                                                        echo '<td class="text-right mail-date">'.$inbox->time.'</td>';
+                                                        echo '<td class="text-right mail-date">'.$inbox->time.'</td>  
+                                                                <input type="hidden" name="page_from" value="'.$this->uri->segment(3).'"/>';
                                                     }
                                                 
                                             echo '</tr>';
@@ -48,7 +49,8 @@
                                                        echo '<td class="text-right mail-date">'.$inbox->time.' '.date_format(date_create($inbox->date), 'jS F').'</td>'; 
                                                     }
                                                     else{
-                                                        echo '<td class="text-right mail-date">'.$inbox->time.'</td>';
+                                                        echo '<td class="text-right mail-date">'.$inbox->time.'</td>  
+                                                                <input type="hidden" name="page_from" value="'.$this->uri->segment(3).'"/>';
                                                     }
                                                 
                                             echo '</tr>';
@@ -77,7 +79,8 @@
                                                        echo '<td class="text-right mail-date">'.$inbox->time.' '.date_format(date_create($inbox->date), 'jS F').'</td>'; 
                                                     }
                                                     else{
-                                                        echo '<td class="text-right mail-date">'.$inbox->time.'</td>';
+                                                        echo '<td class="text-right mail-date">'.$inbox->time.'</td>  
+                                                                <input type="hidden" name="page_from" value="'.$this->uri->segment(3).'"/>';
                                                     }
                                                 
                                             echo '</tr>';
@@ -98,7 +101,8 @@
                                                        echo '<td class="text-right mail-date">'.$inbox->time.' '.date_format(date_create($inbox->date), 'jS F').'</td>'; 
                                                     }
                                                     else{
-                                                        echo '<td class="text-right mail-date">'.$inbox->time.'</td>';
+                                                        echo '<td class="text-right mail-date">'.$inbox->time.'</td>  
+                                                                <input type="hidden" name="page_from" value="'.$this->uri->segment(3).'"/>';
                                                     }
                                                 
                                             echo '</tr>';
@@ -128,7 +132,8 @@
                                                        echo '<td class="text-right mail-date">'.$inbox->time.' '.date_format(date_create($inbox->date), 'jS F').'</td>'; 
                                                     }
                                                     else{
-                                                        echo '<td class="text-right mail-date">'.$inbox->time.'</td>';
+                                                        echo '<td class="text-right mail-date">'.$inbox->time.'</td>  
+                                                                <input type="hidden" name="page_from" value="'.$this->uri->segment(3).'"/>';
                                                     }
                                                 
                                             echo '</tr>';
@@ -149,7 +154,8 @@
                                                        echo '<td class="text-right mail-date">'.$inbox->time.' '.date_format(date_create($inbox->date), 'jS F').'</td>'; 
                                                     }
                                                     else{
-                                                        echo '<td class="text-right mail-date">'.$inbox->time.'</td>';
+                                                        echo '<td class="text-right mail-date">'.$inbox->time.'</td>  
+                                                                <input type="hidden" name="page_from" value="'.$this->uri->segment(3).'"/>';
                                                     }
                                                 
                                             echo '</tr>';
@@ -179,7 +185,8 @@
                                                        echo '<td class="text-right mail-date">'.$inbox->time.' '.date_format(date_create($inbox->date), 'jS F').'</td>'; 
                                                     }
                                                     else{
-                                                        echo '<td class="text-right mail-date">'.$inbox->time.'</td>';
+                                                        echo '<td class="text-right mail-date">'.$inbox->time.'</td>  
+                                                                <input type="hidden" name="page_from" value="'.$this->uri->segment(3).'"/>';
                                                     }
                                                 
                                             echo '</tr>';
@@ -200,7 +207,8 @@
                                                        echo '<td class="text-right mail-date">'.$inbox->time.' '.date_format(date_create($inbox->date), 'jS F').'</td>'; 
                                                     }
                                                     else{
-                                                        echo '<td class="text-right mail-date">'.$inbox->time.'</td>';
+                                                        echo '<td class="text-right mail-date">'.$inbox->time.'</td>  
+                                                                <input type="hidden" name="page_from" value="'.$this->uri->segment(3).'"/>';
                                                     }
                                                 
                                             echo '</tr>';
