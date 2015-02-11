@@ -6,7 +6,22 @@
 //exit;
 //$this->load->model('member/member_model', 'member_model');
 ?>
-
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('#select_all').click(function(event) {  //on click
+        if(this.checked) { // check select status
+            $('.i-checks').each(function() { //loop through each checkbox
+                this.checked = true;  //select all checkboxes with class "checkbox1"              
+            });
+        }else{
+            $('.i-checks').each(function() { //loop through each checkbox
+                this.checked = false; //deselect all checkboxes with class "checkbox1"                      
+            });        
+        }
+    });
+   
+});        
+</script>
 <div class="wrapper wrapper-content">
     <div class="row">
         <?php
@@ -85,7 +100,8 @@
                 <h2>
                     Sent Mail (<?php echo $inbox_sent_count;?>)
                 </h2>
-                <div class="mail-tools tooltip-demo m-t-md">                    
+                <div class="mail-tools tooltip-demo m-t-md"> 
+                    <input type="checkbox" id="select_all"/> Selecct All
                     <!-- <a href="mailbox/refresh" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh</a>
                     <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as read"><i class="fa fa-eye"></i> </button>
                     <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as important"><i class="fa fa-exclamation"></i> </button> -->
