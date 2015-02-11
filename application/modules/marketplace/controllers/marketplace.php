@@ -51,6 +51,46 @@ class Marketplace extends MX_Controller
         $this->templates->page($data);
     }
     
+    function all()
+    {
+        $data['main'] = 'marketplace';        
+        $data['title'] = 'GSM - Market Place: All';        
+        $data['page'] = 'all';
+        
+        $this->load->module('templates');
+        $this->templates->page($data);
+    }
+    
+    function invoice()
+    {
+        $data['main'] = 'marketplace';        
+        $data['title'] = 'GSM - Market Place: Invoice';        
+        $data['page'] = 'invoice';
+        
+        $this->load->module('templates');
+        $this->templates->page($data);
+    }
+    
+    function create_listing()
+    {
+        $data['main'] = 'marketplace';        
+        $data['title'] = 'GSM - Market Place: Create Listing';        
+        $data['page'] = 'create-listing';
+        
+        $this->load->module('templates');
+        $this->templates->page($data);
+    }
+    
+    function deals()
+    {
+        $data['main'] = 'marketplace';        
+        $data['title'] = 'GSM - Market Place: Deals';        
+        $data['page'] = 'deals';
+        
+        $this->load->module('templates');
+        $this->templates->page($data);
+    }
+    
     function listing()
     {
         $data['main'] = 'marketplace';        
