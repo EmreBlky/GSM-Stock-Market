@@ -252,14 +252,14 @@ class Mailbox extends MX_Controller
                 $data['inbox_all'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'sent_member_id',$this->session->userdata('members_id'), 'inbox', 'yes', NULL, NULL, NULL, NULL, 20, $offset);
                 $array = $this->mailbox_model->_custom_query("SELECT id FROM mailbox WHERE sent_member_id = '".$this->session->userdata('members_id')."'");
                 
-                echo '<pre>';
-                $count = 0;
-                print_r($array);
-                echo $array[$count+1]->id;
+//                echo '<pre>';
+//                $count = 0;
+//                print_r($array);
+//                echo $array[$count+1]->id;
 //                foreach ($array as $id => $value){
 //                    echo $id->id.'<br/>';
 //                }
-                exit;
+//                exit;
 
                 $config['total_rows'] = $count;
                 $config['per_page'] = 20;
