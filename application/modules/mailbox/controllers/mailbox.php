@@ -524,8 +524,8 @@ class Mailbox extends MX_Controller
                 
                 $count = $this->mailbox_model->count_where_multiple('member_id',$this->session->userdata('members_id'), 'draft', 'yes', 'parent_id', $this->mailbox_model->get_where_multiple('id', $mid)->parent_id);
             
-                if($d_count > 0){            
-                    $data['inbox_draft_count_reply'] = $d_count;
+                if($count > 0){            
+                    $data['inbox_draft_count_reply'] = $count;
                     $data['inbox_draft_message_reply'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'member_id', $this->session->userdata('members_id'), 'draft', 'yes', 'parent_id', $this->mailbox_model->get_where_multiple('id', $mid)->parent_id, NULL, NULL, 20, $offset);
                     
                     $config['base_url'] = $this->config->item('base_url').'mailbox/draft/page/';           
