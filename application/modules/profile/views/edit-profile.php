@@ -23,10 +23,7 @@
 
                 </div>
             </div>
-    
-    
-
-    <link href="public/main/template/core/css/plugins/cropper/cropper.min.css" rel="stylesheet">
+   
             
         <div class="wrapper wrapper-content">
         	<div class="row">
@@ -344,7 +341,7 @@
                                         ?>
                                     </div>
                                 </div>
-                                
+                                <!-- DYNAMO LOGIC - THIS IS EXAMPLE CODE I TRIED
                                 <script type="text/javascript">
 								$(function() {
 									$( 'input[name=bsectors]' ).on( 'change', function() {
@@ -364,6 +361,7 @@
 									});
 								});
 								</script>
+                                -->
                                 
                                 <div class="form-group">
                                 	<label class="col-md-3 control-label">Business Sectors <br/><small class="text-navy">Select up to 5</small></label>
@@ -386,13 +384,13 @@
 									<div class="col-md-4">
                                     <div id="primary-business">
                                     <label class="col-md-12">Primary Business</label>
-                                    <select class="form-control m-b" id="bprimary">
+                                    <select class="form-control m-b" id="bprimary" style="float:left">
                                         <option>[Select One]</option>
                                     </select>
                                     </div>
                                     <div id="secondary-business">
                                     <label class="col-md-12">Secondary Business</label>
-                                    <select class="form-control m-b" name="account">
+                                    <select class="form-control m-b" name="bsecondary" style="float:left">
                                         <option>option 1</option>
                                         <option>option 2</option>
                                         <option>option 3</option>
@@ -401,7 +399,7 @@
                                     </div>
                                     <div id="tertiary-business">
                                     <label class="col-md-12">Tertiary Business</label>
-                                    <select class="form-control m-b" name="account">
+                                    <select class="form-control m-b" name="btertiary" style="float:left">
                                         <option>option 1</option>
                                         <option>option 2</option>
                                         <option>option 3</option>
@@ -425,7 +423,7 @@
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">Website</label>
                                     <div class="col-md-9">
-                                        <div class="input-group m-b"><span class="input-group-addon">http://</span> 
+                                        <div class="input-group m-b"> 
                                         <?php
 
                                             if($company->website){
@@ -939,7 +937,9 @@
         
         
         
-        
+    <!-- PLACEHOLDER LOCATION -->
+    <link href="public/main/template/core/css/plugins/cropper/cropper.min.css" rel="stylesheet">
+            
     <!-- checkbox css -->
     <link href="public/main/template/core/css/plugins/iCheck/custom.css" rel="stylesheet">
 
@@ -1012,19 +1012,6 @@
 			
             });
     </script>
-    
-    <script type="text/javascript">
-	$(document).ready(function () {
-    $("input[name='bsectors']").change(function () {
-        var maxAllowed = 5;
-        var cnt = $("input[name='bsectors']:checked").length;
-        if (cnt > maxAllowed) {
-            $(this).prop("checked", "");
-            alert('You can select maximum a ' + maxAllowed + ' business sectors');
-        }
-    });
-});
-</script>
 
    <script>/**
  * Character counter and limiter plugin for textfield and textarea form elements
