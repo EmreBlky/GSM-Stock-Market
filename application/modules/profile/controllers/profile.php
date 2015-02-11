@@ -40,8 +40,8 @@ class Profile extends MX_Controller
     
     function who_viewed_count()
     {
-        $viewed_count = $this->viewed_model->_custom_query_count("SELECT COUNT(DISTINCT viewer_id) AS 'viewed' FROM gsmstock_secure.viewed WHERE viewed_id = '".$this->session->userdata('members_id')."' AND date = '".date('d-m-Y')."' AND notified = 'no'");
-        
+        $viewed_count = $this->viewed_model->_custom_query_count("SELECT COUNT(DISTINCT viewer_id) AS 'viewed' FROM gsmstock_secure.viewed WHERE viewed_id = '".$this->session->userdata('members_id')."' AND notified = 'no'");
+
         foreach ($viewed_count as $viewed){
             $viewed = $viewed->viewed;
         }

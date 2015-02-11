@@ -58,7 +58,8 @@
 
                                                 echo form_input($data);
                                             }    
-                                        ?></div>
+                                        ?>
+                                    </div>
                                 </div>  
                                 
                                 <div class="form-group">

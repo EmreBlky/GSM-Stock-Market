@@ -22,36 +22,38 @@
             
             <?php foreach ($list_member as $member){?> 
             
-            <div class="col-lg-4">
-                <div class="contact-box">
-                    <a href="member/profile/<?php echo $member->id; ?>">
-                    <div class="col-sm-4">
-                        <div class="text-center">
-                            <?php if(file_exists("public/main/template/gsm/images/company/".$member->id.".jpg")){?>
-                                <img alt="image" class="img-circle m-t-xs img-responsive" src="public/main/template/gsm/images/members/<?php echo $member->id; ?>.jpg" height="128" width="128"/>
-                            <?php } else {?>
-                                <img src="public/main/template/gsm/images/company/no_company.jpg" height="128" width="128"/>
-                            <?php }?>
-                            
-                            <div class="m-t-xs font-bold"><?php echo $member->role;?></div>
+                <?php if($member->id != $this->session->userdata('members_id')){?>
+
+                <div class="col-lg-4">
+                    <div class="contact-box">
+                        <a href="member/profile/<?php echo $member->id; ?>">
+                        <div class="col-sm-4">
+                            <div class="text-center">
+                                <?php if(file_exists("public/main/template/gsm/images/members/".$member->id.".jpg")){?>
+                                    <img alt="image" class="img-circle m-t-xs img-responsive" src="public/main/template/gsm/images/members/<?php echo $member->id; ?>.jpg" height="128" width="128"/>
+                                <?php } else {?>
+                                    <img src="public/main/template/gsm/images/members/no_profile.jpg" height="128" width="128"/>
+                                <?php }?>
+
+                                <div class="m-t-xs font-bold"><?php echo $member->role;?></div>
+                            </div>
                         </div>
+                        <div class="col-sm-8">
+                            <h3><strong><?php echo $member->firstname.' '.$member->lastname;?></strong></h3>
+                            <p><i class="fa fa-map-marker"></i> United Kingdom</p>
+                            <p><i class="small">1/1/2015 @ 14:22pm</i></p>
+                            <address>
+                                <strong>Contact Details</strong><br>
+                                <abbr title="Phone">M:</abbr> <?php echo $member->phone_number;?><br/>
+                                <abbr title="Phone">F:</abbr> <?php echo $member->mobile_number;?><br/>
+                                <abbr title="Phone">E:</abbr> <?php echo $member->email;?><br/>
+                            </address>
+                        </div>
+                        <div class="clearfix"></div>
+                            </a>
                     </div>
-                    <div class="col-sm-8">
-                        <h3><strong><?php echo $member->firstname.' '.$member->lastname;?></strong></h3>
-                        <p><i class="fa fa-map-marker"></i> United Kingdom</p>
-                        <p><i class="small">1/1/2015 @ 14:22pm</i></p>
-                        <address>
-                            <strong>Contact Details</strong><br>
-                            <abbr title="Phone">M:</abbr> <?php echo $member->phone_number;?><br/>
-                            <abbr title="Phone">F:</abbr> <?php echo $member->mobile_number;?><br/>
-                            <abbr title="Phone">E:</abbr> <?php echo $member->email;?><br/>
-                        </address>
-                    </div>
-                    <div class="clearfix"></div>
-                        </a>
                 </div>
-            </div>
-            
+                <?php } ?>
             <?php } ?>
             
         </div>

@@ -587,6 +587,7 @@ class Mailbox extends MX_Controller
                         'trash'     => 'no',
                         'sent'      => 'no',
                         'important' => 'no',
+                        'inbox'     => 'yes',
                         'draft'     => 'yes'
                       );
         
@@ -1079,7 +1080,7 @@ class Mailbox extends MX_Controller
         
         if($count > 0){            
             $data['count'] = $count;
-            $data['inbox_message'] = $this->mailbox_model->_custom_query("SELECT * FROM mailbox WHERE mail_read = 'no' AND sent_member_id = '".$this->session->userdata('members_id')."' AND inbox = 'yes' ORDER BY datetime ASC LIMIT ".$mail_count."");
+            $data['inbox_message'] = $this->mailbox_model->_custom_query("SELECT * FROM mailbox WHERE mail_read = 'no' AND sent_member_id = '".$this->session->userdata('members_id')."' AND inbox = 'yes' ORDER BY datetime DESC LIMIT ".$mail_count."");
         }
         else{
             $data['count'] = 0;
@@ -1178,6 +1179,12 @@ class Mailbox extends MX_Controller
     function refresh()
     {
          redirect($_SERVER['HTTP_REFERER'], 'refresh');  
+    }
+    
+    function ajaxRefresh()
+    {
+        //echo 'TEST!';
+        $this->load->view('inbox-ajax');
     }
 	
 }

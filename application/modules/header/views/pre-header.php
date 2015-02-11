@@ -47,6 +47,9 @@
             $.get("mailbox/new_message_support", function(data) {
                 $("#inbox_support").html(data);    
             });
+//            $.get("mailbox/inbox", function(data) {
+//                $("#inbox_ajax").html(data);    
+//            });
          }
 
     </script>
