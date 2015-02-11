@@ -35,21 +35,7 @@
             $.get("mailbox/new_message", function(data) {
                 $("#inbox_count").html(data);    
             });
-            $.get("mailbox/new_message_all", function(data) {
-                $("#inbox_all_message").html(data);    
-            });
-            $.get("mailbox/new_message_market", function(data) {
-                $("#inbox_market").html(data);    
-            });
-            $.get("mailbox/new_message_member", function(data) {
-                $("#inbox_member").html(data);    
-            });
-            $.get("mailbox/new_message_support", function(data) {
-                $("#inbox_support").html(data);    
-            });
-//            $.get("mailbox/inbox", function(data) {
-//                $("#inbox_ajax").html(data);    
-//            });
+            
          }
 
     </script>
