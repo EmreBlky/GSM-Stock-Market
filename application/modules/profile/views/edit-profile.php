@@ -402,7 +402,7 @@
 									<div class="col-md-4">
                                     <div id="primary-business">
                                     <label class="col-md-12">Primary Business</label>
-                                    <select id="bprimary">
+                                    <select class="form-control m-b" id="bprimary">
                                         <option>[Select One]</option>
                                     </select>
                                     </div>
