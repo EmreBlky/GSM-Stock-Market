@@ -522,7 +522,7 @@ class Mailbox extends MX_Controller
         
             if($pid > 0){
                 
-                $d_count = $this->mailbox_model->count_where_multiple('member_id',$this->session->userdata('members_id'), 'draft', 'yes', 'parent_id', $this->mailbox_model->get_where_multiple('id', $mid)->parent_id);
+                $count = $this->mailbox_model->count_where_multiple('member_id',$this->session->userdata('members_id'), 'draft', 'yes', 'parent_id', $this->mailbox_model->get_where_multiple('id', $mid)->parent_id);
             
                 if($d_count > 0){            
                     $data['inbox_draft_count_reply'] = $d_count;
