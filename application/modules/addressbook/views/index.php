@@ -62,7 +62,7 @@ $this->load->model('company/company_model', 'company_model');
             foreach ($address_book as $address) {?>
             <div class="col-lg-4"><!-- Profile Widget Start -->
                 <div class="contact-box">
-                    <a href="/profile/">
+                    <a href="member/profile/<?php echo $address->address_member_id?>">
                     <div class="col-sm-4">
                         <div class="text-center">
                             <?php if(file_exists("public/main/template/gsm/images/members/".$address->address_member_id.".jpg")){?>
