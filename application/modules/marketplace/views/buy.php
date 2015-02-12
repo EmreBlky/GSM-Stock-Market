@@ -1,6 +1,7 @@
+
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
-                    <h2>Buy</h2>
+                    <h2>Data Tables</h2>
                     <ol class="breadcrumb">
                         <li>
                             <a href="/">Home</a>
@@ -22,7 +23,7 @@
                 <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Basic Data Tables example with responsive plugin</h5>
+                        <h5>Live Marketplace - Buy</h5>
                         <div class="ibox-tools">
                             <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
@@ -46,921 +47,655 @@
                     <table class="table table-striped table-bordered table-hover dataTables-example" >
                     <thead>
                     <tr>
-                        <th>Rendering engine</th>
-                        <th>Browser</th>
-                        <th>Platform(s)</th>
-                        <th>Engine version</th>
-                        <th>CSS grade</th>
+                        <th>Country</th>
+                        <th>I.D</th>
+                        <th>Listed Time</th>
+                        <th>Product</th>
+                        <th>Condition</th>
+                        <th>Manufacturer</th>
+                        <th>Model</th>
+                        <th>Memory</th>
+                        <th>QTY</th>
+                        <th>Price</th>
+                        <th>Spec</th>
+                        <th>More Info</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr class="gradeX">
-                        <td>Trident</td>
-                        <td>Internet
-                            Explorer 4.0
-                        </td>
-                        <td>Win 95+</td>
-                        <td class="center">4</td>
-                        <td class="center">X</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeC">
-                        <td>Trident</td>
-                        <td>Internet
-                            Explorer 5.0
-                        </td>
-                        <td>Win 95+</td>
-                        <td class="center">5</td>
-                        <td class="center">C</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Trident</td>
-                        <td>Internet
-                            Explorer 5.5
-                        </td>
-                        <td>Win 95+</td>
-                        <td class="center">5.5</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Trident</td>
-                        <td>Internet
-                            Explorer 6
-                        </td>
-                        <td>Win 98+</td>
-                        <td class="center">6</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Trident</td>
-                        <td>Internet Explorer 7</td>
-                        <td>Win XP SP2+</td>
-                        <td class="center">7</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Trident</td>
-                        <td>AOL browser (AOL desktop)</td>
-                        <td>Win XP</td>
-                        <td class="center">6</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Firefox 1.0</td>
-                        <td>Win 98+ / OSX.2+</td>
-                        <td class="center">1.7</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Firefox 1.5</td>
-                        <td>Win 98+ / OSX.2+</td>
-                        <td class="center">1.8</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Firefox 2.0</td>
-                        <td>Win 98+ / OSX.2+</td>
-                        <td class="center">1.8</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Firefox 3.0</td>
-                        <td>Win 2k+ / OSX.3+</td>
-                        <td class="center">1.9</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Camino 1.0</td>
-                        <td>OSX.2+</td>
-                        <td class="center">1.8</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 3G Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 3G</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Camino 1.5</td>
-                        <td>OSX.3+</td>
-                        <td class="center">1.8</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 3G Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 3G</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Netscape 7.2</td>
-                        <td>Win 95+ / Mac OS 8.6-9.2</td>
-                        <td class="center">1.7</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 3G Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 3G</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Netscape Browser 8</td>
-                        <td>Win 98SE+</td>
-                        <td class="center">1.7</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 3G Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 3G</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Netscape Navigator 9</td>
-                        <td>Win 98+ / OSX.2+</td>
-                        <td class="center">1.8</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 3G Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 3G</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Mozilla 1.0</td>
-                        <td>Win 95+ / OSX.1+</td>
-                        <td class="center">1</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 5S Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 5S</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Mozilla 1.1</td>
-                        <td>Win 95+ / OSX.1+</td>
-                        <td class="center">1.1</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 5S Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 5S</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Mozilla 1.2</td>
-                        <td>Win 95+ / OSX.1+</td>
-                        <td class="center">1.2</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 5S Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 5S</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Mozilla 1.3</td>
-                        <td>Win 95+ / OSX.1+</td>
-                        <td class="center">1.3</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 5S Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Mozilla 1.4</td>
-                        <td>Win 95+ / OSX.1+</td>
-                        <td class="center">1.4</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS White</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Mozilla 1.5</td>
-                        <td>Win 95+ / OSX.1+</td>
-                        <td class="center">1.5</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS White</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Mozilla 1.6</td>
-                        <td>Win 95+ / OSX.1+</td>
-                        <td class="center">1.6</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS White</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Mozilla 1.7</td>
-                        <td>Win 98+ / OSX.1+</td>
-                        <td class="center">1.7</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS White</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Win 98+ / OSX.2+</td>
-                        <td class="center">1.8</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS White</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Epiphany 2.20</td>
-                        <td>Gnome</td>
-                        <td class="center">1.8</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS White</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Webkit</td>
-                        <td>Safari 1.2</td>
-                        <td>OSX.3</td>
-                        <td class="center">125.5</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS White</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Webkit</td>
-                        <td>Safari 1.3</td>
-                        <td>OSX.3</td>
-                        <td class="center">312.8</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS White</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Webkit</td>
-                        <td>Safari 2.0</td>
-                        <td>OSX.4+</td>
-                        <td class="center">419.3</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS White</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Webkit</td>
-                        <td>Safari 3.0</td>
-                        <td>OSX.4+</td>
-                        <td class="center">522.1</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS White</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Webkit</td>
-                        <td>OmniWeb 5.5</td>
-                        <td>OSX.4+</td>
-                        <td class="center">420</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS White</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Webkit</td>
-                        <td>iPod Touch / iPhone</td>
-                        <td>iPod</td>
-                        <td class="center">420.1</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS White</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Webkit</td>
-                        <td>S60</td>
-                        <td>S60</td>
-                        <td class="center">413</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Presto</td>
-                        <td>Opera 7.0</td>
-                        <td>Win 95+ / OSX.1+</td>
-                        <td class="center">-</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Presto</td>
-                        <td>Opera 7.5</td>
-                        <td>Win 95+ / OSX.2+</td>
-                        <td class="center">-</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Presto</td>
-                        <td>Opera 8.0</td>
-                        <td>Win 95+ / OSX.2+</td>
-                        <td class="center">-</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Presto</td>
-                        <td>Opera 8.5</td>
-                        <td>Win 95+ / OSX.2+</td>
-                        <td class="center">-</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Presto</td>
-                        <td>Opera 9.0</td>
-                        <td>Win 95+ / OSX.3+</td>
-                        <td class="center">-</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Presto</td>
-                        <td>Opera 9.2</td>
-                        <td>Win 88+ / OSX.3+</td>
-                        <td class="center">-</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Presto</td>
-                        <td>Opera 9.5</td>
-                        <td>Win 88+ / OSX.3+</td>
-                        <td class="center">-</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Presto</td>
-                        <td>Opera for Wii</td>
-                        <td>Wii</td>
-                        <td class="center">-</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Presto</td>
-                        <td>Nokia N800</td>
-                        <td>N800</td>
-                        <td class="center">-</td>
-                        <td class="center">A</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Presto</td>
-                        <td>Nintendo DS browser</td>
-                        <td>Nintendo DS</td>
-                        <td class="center">8.5</td>
-                        <td class="center">C/A<sup>1</sup></td>
-                    </tr>
-                    <tr class="gradeC">
-                        <td>KHTML</td>
-                        <td>Konqureror 3.1</td>
-                        <td>KDE 3.1</td>
-                        <td class="center">3.1</td>
-                        <td class="center">C</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>KHTML</td>
-                        <td>Konqureror 3.3</td>
-                        <td>KDE 3.3</td>
-                        <td class="center">3.3</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>KHTML</td>
-                        <td>Konqureror 3.5</td>
-                        <td>KDE 3.5</td>
-                        <td class="center">3.5</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeX">
-                        <td>Tasman</td>
-                        <td>Internet Explorer 4.5</td>
-                        <td>Mac OS 8-9</td>
-                        <td class="center">-</td>
-                        <td class="center">X</td>
-                    </tr>
-                    <tr class="gradeC">
-                        <td>Tasman</td>
-                        <td>Internet Explorer 5.1</td>
-                        <td>Mac OS 7.6-9</td>
-                        <td class="center">1</td>
-                        <td class="center">C</td>
-                    </tr>
-                    <tr class="gradeC">
-                        <td>Tasman</td>
-                        <td>Internet Explorer 5.2</td>
-                        <td>Mac OS 8-X</td>
-                        <td class="center">1</td>
-                        <td class="center">C</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Misc</td>
-                        <td>NetFront 3.1</td>
-                        <td>Embedded devices</td>
-                        <td class="center">-</td>
-                        <td class="center">C</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Misc</td>
-                        <td>NetFront 3.4</td>
-                        <td>Embedded devices</td>
-                        <td class="center">-</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeX">
-                        <td>Misc</td>
-                        <td>Dillo 0.8</td>
-                        <td>Embedded devices</td>
-                        <td class="center">-</td>
-                        <td class="center">X</td>
-                    </tr>
-                    <tr class="gradeX">
-                        <td>Misc</td>
-                        <td>Links</td>
-                        <td>Text only</td>
-                        <td class="center">-</td>
-                        <td class="center">X</td>
-                    </tr>
-                    <tr class="gradeX">
-                        <td>Misc</td>
-                        <td>Lynx</td>
-                        <td>Text only</td>
-                        <td class="center">-</td>
-                        <td class="center">X</td>
-                    </tr>
-                    <tr class="gradeC">
-                        <td>Misc</td>
-                        <td>IE Mobile</td>
-                        <td>Windows Mobile 6</td>
-                        <td class="center">-</td>
-                        <td class="center">C</td>
-                    </tr>
-                    <tr class="gradeC">
-                        <td>Misc</td>
-                        <td>PSP browser</td>
-                        <td>PSP</td>
-                        <td class="center">-</td>
-                        <td class="center">C</td>
-                    </tr>
-                    <tr class="gradeU">
-                        <td>Other browsers</td>
-                        <td>All others</td>
-                        <td>-</td>
-                        <td class="center">-</td>
-                        <td class="center">U</td>
+                    <tr>
+                        <td class="center"><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                        <td>00000001</td>
+                        <td>02.06.15 - 12:12pm</td>
+                        <td>iPhone 4GS Black</td>
+                        <td>Used</td>
+                        <td>Apple</td>
+                        <td>iPhone 4GS</td>
+                        <td>16GB</td>
+                        <td>23</td>
+                        <td>£235.00</td>
+                        <td>UK</td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
                     </tr>
                     </tbody>
-                    <tfoot>
-                    <tr>
-                        <th>Rendering engine</th>
-                        <th>Browser</th>
-                        <th>Platform(s)</th>
-                        <th>Engine version</th>
-                        <th>CSS grade</th>
-                    </tr>
-                    </tfoot>
                     </table>
 
                     </div>
                 </div>
             </div>
             </div>
-            <div class="row">
-            <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-            <div class="ibox-title">
-                <h5>Editable Table in- combination with jEditable</h5>
-                <div class="ibox-tools">
-                    <a class="collapse-link">
-                        <i class="fa fa-chevron-up"></i>
-                    </a>
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-wrench"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#">Config option 1</a>
-                        </li>
-                        <li><a href="#">Config option 2</a>
-                        </li>
-                    </ul>
-                    <a class="close-link">
-                        <i class="fa fa-times"></i>
-                    </a>
-                </div>
+            
             </div>
-            <div class="ibox-content">
-            <div class="">
-            <a onclick="fnClickAddRow();" href="javascript:void(0);" class="btn btn-primary ">Add a new row</a>
-            </div>
-            <table class="table table-striped table-bordered table-hover " id="editable" >
-            <thead>
-            <tr>
-                <th>Rendering engine</th>
-                <th>Browser</th>
-                <th>Platform(s)</th>
-                <th>Engine version</th>
-                <th>CSS grade</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr class="gradeX">
-                <td>Trident</td>
-                <td>Internet
-                    Explorer 4.0
-                </td>
-                <td>Win 95+</td>
-                <td class="center">4</td>
-                <td class="center">X</td>
-            </tr>
-            <tr class="gradeC">
-                <td>Trident</td>
-                <td>Internet
-                    Explorer 5.0
-                </td>
-                <td>Win 95+</td>
-                <td class="center">5</td>
-                <td class="center">C</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Trident</td>
-                <td>Internet
-                    Explorer 5.5
-                </td>
-                <td>Win 95+</td>
-                <td class="center">5.5</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Trident</td>
-                <td>Internet
-                    Explorer 6
-                </td>
-                <td>Win 98+</td>
-                <td class="center">6</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Trident</td>
-                <td>Internet Explorer 7</td>
-                <td>Win XP SP2+</td>
-                <td class="center">7</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Trident</td>
-                <td>AOL browser (AOL desktop)</td>
-                <td>Win XP</td>
-                <td class="center">6</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Firefox 1.0</td>
-                <td>Win 98+ / OSX.2+</td>
-                <td class="center">1.7</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Firefox 1.5</td>
-                <td>Win 98+ / OSX.2+</td>
-                <td class="center">1.8</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Firefox 2.0</td>
-                <td>Win 98+ / OSX.2+</td>
-                <td class="center">1.8</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Firefox 3.0</td>
-                <td>Win 2k+ / OSX.3+</td>
-                <td class="center">1.9</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Camino 1.0</td>
-                <td>OSX.2+</td>
-                <td class="center">1.8</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Camino 1.5</td>
-                <td>OSX.3+</td>
-                <td class="center">1.8</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Netscape 7.2</td>
-                <td>Win 95+ / Mac OS 8.6-9.2</td>
-                <td class="center">1.7</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Netscape Browser 8</td>
-                <td>Win 98SE+</td>
-                <td class="center">1.7</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Netscape Navigator 9</td>
-                <td>Win 98+ / OSX.2+</td>
-                <td class="center">1.8</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Mozilla 1.0</td>
-                <td>Win 95+ / OSX.1+</td>
-                <td class="center">1</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Mozilla 1.1</td>
-                <td>Win 95+ / OSX.1+</td>
-                <td class="center">1.1</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Mozilla 1.2</td>
-                <td>Win 95+ / OSX.1+</td>
-                <td class="center">1.2</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Mozilla 1.3</td>
-                <td>Win 95+ / OSX.1+</td>
-                <td class="center">1.3</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Mozilla 1.4</td>
-                <td>Win 95+ / OSX.1+</td>
-                <td class="center">1.4</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Mozilla 1.5</td>
-                <td>Win 95+ / OSX.1+</td>
-                <td class="center">1.5</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Mozilla 1.6</td>
-                <td>Win 95+ / OSX.1+</td>
-                <td class="center">1.6</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Mozilla 1.7</td>
-                <td>Win 98+ / OSX.1+</td>
-                <td class="center">1.7</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Mozilla 1.8</td>
-                <td>Win 98+ / OSX.1+</td>
-                <td class="center">1.8</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Seamonkey 1.1</td>
-                <td>Win 98+ / OSX.2+</td>
-                <td class="center">1.8</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Epiphany 2.20</td>
-                <td>Gnome</td>
-                <td class="center">1.8</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Webkit</td>
-                <td>Safari 1.2</td>
-                <td>OSX.3</td>
-                <td class="center">125.5</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Webkit</td>
-                <td>Safari 1.3</td>
-                <td>OSX.3</td>
-                <td class="center">312.8</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Webkit</td>
-                <td>Safari 2.0</td>
-                <td>OSX.4+</td>
-                <td class="center">419.3</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Webkit</td>
-                <td>Safari 3.0</td>
-                <td>OSX.4+</td>
-                <td class="center">522.1</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Webkit</td>
-                <td>OmniWeb 5.5</td>
-                <td>OSX.4+</td>
-                <td class="center">420</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Webkit</td>
-                <td>iPod Touch / iPhone</td>
-                <td>iPod</td>
-                <td class="center">420.1</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Webkit</td>
-                <td>S60</td>
-                <td>S60</td>
-                <td class="center">413</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Presto</td>
-                <td>Opera 7.0</td>
-                <td>Win 95+ / OSX.1+</td>
-                <td class="center">-</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Presto</td>
-                <td>Opera 7.5</td>
-                <td>Win 95+ / OSX.2+</td>
-                <td class="center">-</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Presto</td>
-                <td>Opera 8.0</td>
-                <td>Win 95+ / OSX.2+</td>
-                <td class="center">-</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Presto</td>
-                <td>Opera 8.5</td>
-                <td>Win 95+ / OSX.2+</td>
-                <td class="center">-</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Presto</td>
-                <td>Opera 9.0</td>
-                <td>Win 95+ / OSX.3+</td>
-                <td class="center">-</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Presto</td>
-                <td>Opera 9.2</td>
-                <td>Win 88+ / OSX.3+</td>
-                <td class="center">-</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Presto</td>
-                <td>Opera 9.5</td>
-                <td>Win 88+ / OSX.3+</td>
-                <td class="center">-</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Presto</td>
-                <td>Opera for Wii</td>
-                <td>Wii</td>
-                <td class="center">-</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Presto</td>
-                <td>Nokia N800</td>
-                <td>N800</td>
-                <td class="center">-</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Presto</td>
-                <td>Nintendo DS browser</td>
-                <td>Nintendo DS</td>
-                <td class="center">8.5</td>
-                <td class="center">C/A<sup>1</sup></td>
-            </tr>
-            <tr class="gradeC">
-                <td>KHTML</td>
-                <td>Konqureror 3.1</td>
-                <td>KDE 3.1</td>
-                <td class="center">3.1</td>
-                <td class="center">C</td>
-            </tr>
-            <tr class="gradeA">
-                <td>KHTML</td>
-                <td>Konqureror 3.3</td>
-                <td>KDE 3.3</td>
-                <td class="center">3.3</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>KHTML</td>
-                <td>Konqureror 3.5</td>
-                <td>KDE 3.5</td>
-                <td class="center">3.5</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeX">
-                <td>Tasman</td>
-                <td>Internet Explorer 4.5</td>
-                <td>Mac OS 8-9</td>
-                <td class="center">-</td>
-                <td class="center">X</td>
-            </tr>
-            <tr class="gradeC">
-                <td>Tasman</td>
-                <td>Internet Explorer 5.1</td>
-                <td>Mac OS 7.6-9</td>
-                <td class="center">1</td>
-                <td class="center">C</td>
-            </tr>
-            <tr class="gradeC">
-                <td>Tasman</td>
-                <td>Internet Explorer 5.2</td>
-                <td>Mac OS 8-X</td>
-                <td class="center">1</td>
-                <td class="center">C</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Misc</td>
-                <td>NetFront 3.1</td>
-                <td>Embedded devices</td>
-                <td class="center">-</td>
-                <td class="center">C</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Misc</td>
-                <td>NetFront 3.4</td>
-                <td>Embedded devices</td>
-                <td class="center">-</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeX">
-                <td>Misc</td>
-                <td>Dillo 0.8</td>
-                <td>Embedded devices</td>
-                <td class="center">-</td>
-                <td class="center">X</td>
-            </tr>
-            <tr class="gradeX">
-                <td>Misc</td>
-                <td>Links</td>
-                <td>Text only</td>
-                <td class="center">-</td>
-                <td class="center">X</td>
-            </tr>
-            <tr class="gradeX">
-                <td>Misc</td>
-                <td>Lynx</td>
-                <td>Text only</td>
-                <td class="center">-</td>
-                <td class="center">X</td>
-            </tr>
-            <tr class="gradeC">
-                <td>Misc</td>
-                <td>IE Mobile</td>
-                <td>Windows Mobile 6</td>
-                <td class="center">-</td>
-                <td class="center">C</td>
-            </tr>
-            <tr class="gradeC">
-                <td>Misc</td>
-                <td>PSP browser</td>
-                <td>PSP</td>
-                <td class="center">-</td>
-                <td class="center">C</td>
-            </tr>
-            <tr class="gradeU">
-                <td>Other browsers</td>
-                <td>All others</td>
-                <td>-</td>
-                <td class="center">-</td>
-                <td class="center">U</td>
-            </tr>
-            </tbody>
-            <tfoot>
-            <tr>
-                <th>Rendering engine</th>
-                <th>Browser</th>
-                <th>Platform(s)</th>
-                <th>Engine version</th>
-                <th>CSS grade</th>
-            </tr>
-            </tfoot>
-            </table>
+            
+            
+                            <div class="modal inmodal fade" id="myModal5" tabindex="-1" role="dialog"  aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">Modal title</h4>
+                                            <small class="font-bold">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</small>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p><strong>Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+                                                printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+                                                remaining essentially unchanged.</p>
+                                            <p><strong>Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+                                                printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+                                                remaining essentially unchanged.</p>
+                                        </div>
 
-            </div>
-            </div>
-            </div>
-            </div>
-        </div>
-        <div class="footer">
-            <div class="pull-right">
-                10GB of <strong>250GB</strong> Free.
-            </div>
-            <div>
-                <strong>Copyright</strong> Example Company &copy; 2014-2015
-            </div>
-        </div>
-
-        </div>
-        </div>
-
-
-
-    <!-- Mainly scripts -->
-    <script src="js/jquery-2.1.1.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="js/plugins/jeditable/jquery.jeditable.js"></script>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            
 
     <!-- Data Tables -->
-    <script src="js/plugins/dataTables/jquery.dataTables.js"></script>
-    <script src="js/plugins/dataTables/dataTables.bootstrap.js"></script>
-    <script src="js/plugins/dataTables/dataTables.responsive.js"></script>
-    <script src="js/plugins/dataTables/dataTables.tableTools.min.js"></script>
+    <link href="public/main/template/core/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="public/main/template/core/css/plugins/dataTables/dataTables.responsive.css" rel="stylesheet">
+    <link href="public/main/template/core/css/plugins/dataTables/dataTables.tableTools.min.css" rel="stylesheet">
 
-    <!-- Custom and plugin javascript -->
-    <script src="js/inspinia.js"></script>
-    <script src="js/plugins/pace/pace.min.js"></script>
+    <!-- Data Tables -->
+    <script src="public/main/template/core/js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="public/main/template/core/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <script src="public/main/template/core/js/plugins/dataTables/dataTables.responsive.js"></script>
+    <script src="public/main/template/core/js/plugins/dataTables/dataTables.tableTools.min.js"></script>
 
     <!-- Page-Level Scripts -->
     <script>
@@ -969,42 +704,12 @@
                 responsive: true,
                 "dom": 'T<"clear">lfrtip',
                 "tableTools": {
-                    "sSwfPath": "js/plugins/dataTables/swf/copy_csv_xls_pdf.swf"
+                    "sSwfPath": "public/main/template/core/js/plugins/dataTables/swf/copy_csv_xls_pdf.swf"
                 }
             });
 
-            /* Init DataTables */
-            var oTable = $('#editable').dataTable();
-
-            /* Apply the jEditable handlers to the table */
-            oTable.$('td').editable( '../example_ajax.php', {
-                "callback": function( sValue, y ) {
-                    var aPos = oTable.fnGetPosition( this );
-                    oTable.fnUpdate( sValue, aPos[0], aPos[1] );
-                },
-                "submitdata": function ( value, settings ) {
-                    return {
-                        "row_id": this.parentNode.getAttribute('id'),
-                        "column": oTable.fnGetPosition( this )[2]
-                    };
-                },
-
-                "width": "90%",
-                "height": "100%"
-            } );
-
 
         });
-
-        function fnClickAddRow() {
-            $('#editable').dataTable().fnAddData( [
-                "Custom row",
-                "New row",
-                "New row",
-                "New row",
-                "New row" ] );
-
-        }
     </script>
 <style>
     body.DTTT_Print {
