@@ -42,8 +42,39 @@
                             </a>
                         </div>
                     </div>
+                    
                     <div class="ibox-content">
-                    </div></div>
+                    	<div class="row">
+                        	<div class="col-lg-3">
+                            	<select class="form-control">
+                                	<option value="" selected>All Makes</option>
+                                    <option>Apple</option>
+                                    <option>BlackBerry</option>
+                                    <option>Samsung</option>
+                                </select>
+                            </div>
+                        	<div class="col-lg-3">
+                        		<input type="text" class="form-control" placeholder="Enter Model"/>
+                            </div>
+                        	<div class="col-lg-3">
+                            	<select class="form-control">
+                                	<option value="" selected>Any Condition</option>
+                                    <option>New</option>
+                                    <option>Used</option>
+                                    <option>Refurbished</option>
+                                </select>
+                            </div>
+                        	<div class="col-lg-3">
+                            	<select class="form-control">
+                                	<option value="" selected>All Countries</option>
+                                    <option>Germany</option>
+                                    <option>United Kingdom</option>
+                                    <option>United States</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div><!-- /ibox-content -->
+                    </div>
                 </div>
             </div>
         
@@ -73,7 +104,7 @@
                     </div>
                     <div class="ibox-content">
 
-                    <table class="table table-striped table-bordered table-hover dataTables-example" >
+                    <table id="marketplace" class="table table-striped table-bordered table-hover dataTables-example" >
                     <thead>
                     <tr>
                         <th>ID</th>
