@@ -2,24 +2,21 @@
 <ul class="dropdown-menu dropdown-messages">
     <?php if($count > 0){?>
         <?php foreach($inbox_message as $inbox){?>
+			<a href="mailbox/inbox/all/<?php echo $inbox->id; ?>" class="message_alert">
             <li>
                 <div class="dropdown-messages-box">
-                    <a href="mailbox/inbox/all/<?php echo $inbox->id; ?>" class="pull-left">
                         <?php if(file_exists($base."public/main/template/gsm/images/members/'.$inbox->member_id.'.jpg")){?>
-                            <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/template/gsm/images/members/<?php echo $inbox->member_id; ?>.jpg" height="128" width="128">
+                            <img alt="image" class="img-circle pull-left message_alert" src="<?php echo $base; ?>public/main/template/gsm/images/members/<?php echo $inbox->member_id; ?>.jpg" height="128" width="128">
                         <?php } else {?>
-                            <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/template/gsm/images/members/no_profile.jpg" height="128" width="128">
+                            <img alt="image" class="img-circle pull-left message_alert" src="<?php echo $base; ?>public/main/template/gsm/images/members/no_profile.jpg" height="128" width="128">
                         <?php }?>
-                    </a>
-                    <div>
-                        <a href="mailbox/inbox/all/<?php echo $inbox->id; ?>">
-                        <small class="pull-right"><?php echo $inbox->time; ?> <?php echo $inbox->date; ?></small>
+                    <div class="media-body">
                         <strong><?php echo $inbox->subject; ?></strong>. <br>
-                        <!-- <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small> -->
-                        </a>
+                        <small class="text-muted"><?php echo $inbox->time; ?> - <?php echo $inbox->date; ?></small>
                     </div>
                 </div>
             </li>
+            </a>
             <li class="divider"></li>
         <?php } ?>
             
