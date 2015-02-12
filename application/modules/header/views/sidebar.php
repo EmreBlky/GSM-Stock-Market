@@ -1,7 +1,13 @@
-	<nav class="navbar-default navbar-static-side" role="navigation">
+	<?php
+            $this->load->model('member/member_model', 'member_model');
+            $member = $this->member_model->get_where($this->session->userdata('members_id'));
+            //echo $member->membership;
+            //exit;
+        ?>
+        <nav class="navbar-default navbar-static-side" role="navigation">
             <div class="sidebar-collapse">
-                <ul class="nav" id="side-menu">
-                    <li class="nav-header">
+                <ul class="nav" id="side-menu">                    
+                        <li class="nav-header <?php echo $member->membership; ?>">                                
                         <div class="dropdown profile-element">
                             <span>
                                 <?php if(file_exists("public/main/template/gsm/images/members/".$this->session->userdata('members_id').".jpg")){?>
@@ -12,7 +18,7 @@
                             </span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?php echo $this->session->userdata('firstname');?> <?php echo $this->session->userdata('lastname');?></strong>
-                            	<span class="text-muted text-xs block">Gold Member</span>
+                            	<span class="text-muted text-xs block"><?php echo ucfirst($member->membership); ?> Member</span>
                              </a>
                         </div>
                         <div class="logo-element">

@@ -65,14 +65,18 @@ $this->load->model('company/company_model', 'company_model');
                     <a href="/profile/">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <?php if(file_exists("public/main/images/members/".$address->address_member_id.".jpg")){?>
-                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/images/members/<?php echo $address->address_member_id; ?>.jpg" height="128" width="128"/>
+                            <?php if(file_exists("public/main/template/gsm/images/members/".$address->address_member_id.".jpg")){?>
+                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/<?php echo $address->address_member_id; ?>.jpg" height="128" width="128"/>
                             <?php } else {?>
-                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/images/members/no_profile.jpg" height="128" width="128"/>
+                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/no_profile.jpg" height="128" width="128"/>
                             <?php }?>
                         </div>
                         <div class="text-center" style="margin-top:10px">
-                            <span class="label label-primary">Online</span>
+                             <?php if($this->member_model->get_where_multiple('id', $address->address_member_id)->online_status == 'online'){?>
+                                <span class="label label-primary">Online</span>
+                            <?php } else {?>
+                                <span class="label label-secondary">Offline</span>
+                            <?php }?>
                         </div>
                     </div>
                     </a>
@@ -83,7 +87,7 @@ $this->load->model('company/company_model', 'company_model');
                         <?php echo $this->member_model->get_where_multiple('id', $address->address_member_id)->role ?>
                         </div>
                         <div class="col-sm-1" style="padding:5px 0">
-                            <img alt="image" src="public/main/img/flags/United_Kingdom.png" title="United Kingdom">
+                            <img alt="image" src="public/main/template/gsm/img/flags/United_Kingdom.png" title="United Kingdom">
                         </div>
                         </div>
                         
@@ -104,13 +108,18 @@ $this->load->model('company/company_model', 'company_model');
                             <button class="btn btn-messenger" type="button"><i class="fa fa-wechat"></i>&nbsp;Messenger</button>
                             </div>
                             <div>
-                            <button class="btn btn-message" type="button" data-toggle="modal" data-target="#profile_message"><i class="fa fa-envelope"></i>&nbsp;Message</button>
-                            <button <?php $address->address_member_id ?> class="btn btn-profile" type="button"><i class="fa fa-user"></i>&nbsp;View Profile</button>
+<!--                            <button class="btn btn-message" type="button" data-toggle="modal" data-target="#profile_message"><i class="fa fa-envelope"></i>&nbsp;Message</button>-->
+                            <button  onclick="location.href='member/profile/<?php echo $address->address_member_id ?>'" class="btn btn-profile" type="button"><i class="fa fa-user"></i>&nbsp;View Profile</button>
                             </div>
                     </div>
                     <div class="clearfix"></div>
                 </div>
             </div><!-- Profile Widget End -->
+            <?php
+        
+            $this->load->module('profile');
+            $this->profile->send_message($address->address_member_id);
+            ?>
         
         <?php 
         
@@ -131,24 +140,3 @@ $this->load->model('company/company_model', 'company_model');
         </div>   
          
         </div>
-                            
-                            <div class="modal inmodal fade" id="profile_message" tabindex="-1" role="dialog"  aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                            <h4 class="modal-title">Send Message</h4>
-                                            <small class="font-bold">Send a message to GSMStockMarket.com</small>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p><strong>Form here</strong> generic stuff bla bla</p>
-                                        </div>
-
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Send Message</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>   
-            

@@ -1019,7 +1019,7 @@ class Mailbox extends MX_Controller
                       );
         
                 $this->mailbox_model->_update($post_vale, $data);
-                redirect('mailbox/inbox/'.$back);
+                //redirect('mailbox/inbox/'.$back);
             }
         }
         elseif($submit == 'unread'){
@@ -1031,7 +1031,7 @@ class Mailbox extends MX_Controller
                       );
         
                 $this->mailbox_model->_update($post_vale, $data);
-                redirect('mailbox/inbox/'.$back);
+                //redirect('mailbox/inbox/'.$back);
             }
             
         }
@@ -1104,8 +1104,11 @@ class Mailbox extends MX_Controller
                 $this->mailbox_model->_delete($post_vale);
             }
         }
-        
-        redirect('mailbox/'.$back);
+        if($submit == 'read' || $submit == 'unread'){
+            redirect('mailbox/inbox/all');
+        }else{
+            redirect('mailbox/'.$submit);
+        }
     }
     
     function mail_dropdown($mail_count){

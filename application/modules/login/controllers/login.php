@@ -7,6 +7,7 @@ class Login extends MX_Controller{
 
             parent::__construct();
             $this->load->model('login/login_model', 'login_model');
+            $this->load->model('member/member_model', 'member_model');
     }
         
     function index()
@@ -36,7 +37,7 @@ class Login extends MX_Controller{
     function login_validation(){
         
         $this->load->library('form_validation');
-        $this->load->model('member/member_model', 'member_model');
+        
         
         $this->form_validation->set_rules('username', 'Username', 'xss_clean');
         $this->form_validation->set_rules('password', 'Password', 'xss_clean');
@@ -89,20 +90,23 @@ class Login extends MX_Controller{
     }
 
     function validate_user(){
-
-            $this->load->model('member/member_model', 'member_model');
             
             if($this->member_model->canLogIn($this->input->post('username'), $this->input->post('password')) > 0){
                 
                     $mid = $this->member_model->canLogIn();
                 
                     $member = $this->member_model->get_where($mid);
+                    
+                    $data = array(
+                                    'online_status' => 'online'
+                                  );
+                    $this->member_model->_update($mid, $data);
 
                     $user_data = array(
                                                     'members_id'  	=> $mid,
                                                     //'username'  	=> $member->username,
                                                     'firstname'         => $member->firstname,
-                                                    'lastname'         => $member->lastname,
+                                                    'lastname'          => $member->lastname,
                                                     'logged_in' 	=> TRUE
                                                     );
 
@@ -142,9 +146,17 @@ class Login extends MX_Controller{
     
     function logout()
     {
+        $mid = $this->session->userdata('members_id');
+                
+        $data = array(
+                        'online_status' => 'offline'
+                      );
+        $this->member_model->_update($mid, $data);
+        
         $this->session->unset_userdata('members_id');
         $this->session->unset_userdata('username');
         $this->session->unset_userdata('logged_in');
+        $this->session->unset_userdata('online_status');
         redirect('login');
     }
        

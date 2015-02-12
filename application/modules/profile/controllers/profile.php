@@ -30,8 +30,7 @@ class Profile extends MX_Controller
     }
     
     function send_message($mid)
-    {
-        
+    {        
         $data['member_info'] = $this->member_model->get_where_multiple('id', $mid);
         $data['member_company'] = $this->company_model->get_where_multiple('id', $this->member_model->get_where_multiple('id', $mid)->company_id);
         
@@ -62,9 +61,23 @@ class Profile extends MX_Controller
                         'notified' => 'yes'
                       );
         $this->viewed_model->_update_where($datas, 'viewed_id', $this->session->userdata('members_id'), 'notified', 'no');
+        
+        $viewed_count = $this->viewed_model->_custom_query_count("SELECT COUNT(DISTINCT viewer_id) AS 'viewed' FROM gsmstock_secure.viewed WHERE viewed_id = '".$this->session->userdata('members_id')."'");
+
+        foreach ($viewed_count as $viewed){
+            $viewed = $viewed->viewed;
+        }
+        
+        if($viewed > 0){
+            
+            $data['viewed_count'] = $viewed;
+            $data['viewed'] = $this->viewed_model->_custom_query("SELECT DISTINCT viewer_id FROM gsmstock_secure.viewed WHERE viewed_id = '".$this->session->userdata('members_id')."' ORDER BY datetime DESC");            
+        }
+        else{
+            $data['viewed_count'] = 0;
+        }
 //        
         //$data['viewed'] = $this->viewed_model->get_where_multiples('viewed_id', $this->session->userdata('members_id'));
-        $data['viewed'] = $this->viewed_model->_custom_query("SELECT DISTINCT viewer_id FROM gsmstock_secure.viewed WHERE viewed_id = '".$this->session->userdata('members_id')."' ORDER BY datetime DESC");
         
         $this->load->module('templates');
         $this->templates->page($data);

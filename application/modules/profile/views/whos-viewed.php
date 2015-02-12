@@ -26,8 +26,9 @@
         <div class="row">
             
             <?php 
-            
-            foreach ($viewed as $view) {
+            if($viewed_count > 0){
+                foreach ($viewed as $view) {
+                    if($view->viewer_id != $this->session->userdata('members_id')){
                 
             ?>
             
@@ -44,7 +45,12 @@
                             <?php }?>
                         </div>
                         <div class="text-center" style="margin-top:10px">
-                            <span class="label label-primary">Online</span>
+                            <?php if($this->member_model->get_where_multiple('id', $view->viewer_id)->online_status == 'online'){?>
+                                <span class="label label-primary">Online</span>
+                            <?php } else {?>
+                                <span class="label label-secondary">Offline</span>
+                            <?php }?>
+                            
                         </div>
                     </div>
                     </a>
@@ -72,22 +78,71 @@
                     </div>
                     <div class="col-sm-12 gsm-contact">
                             <div>
-                            <button class="btn btn-message" type="button" data-toggle="modal" data-target="#profile_message"><i class="fa fa-envelope"></i>&nbsp;Message</button>
+<!--                            <button class="btn btn-message" type="button" data-toggle="modal" data-target="#profile_message_<?php echo $view->viewer_id;?>"><i class="fa fa-envelope"></i>&nbsp;Message</button>-->
                             <button onclick="location.href='member/profile/<?php echo $view->viewer_id?>'" class="btn btn-profile" type="button" data-toggle="modal" ><i class="fa fa-user"></i>&nbsp;View Profile</button>
                             </div>
                     </div>
                     <div class="clearfix"></div>
                 </div>
             </div><!-- Profile Widget End -->
-            <?php
-                            
-                                $this->load->module('profile');
-                                $this->profile->send_message($view->viewer_id);
-                            
+            
+            <div class="modal inmodal fade" id="profile_message_<?php echo $view->viewer_id;?>" tabindex="-1" role="dialog"  aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <?php
+                            $this->load->model('member/member_model', 'member_model');
+                            $this->load->model('company/company_model', 'company_model');
+                            $membs = $this->member_model->get_where($view->viewer_id);
+                            $member_company = $this->company_model->get_where($view->viewer_id);
+                        ?>
+                        <?php
+                             $attributes = array('id' => 'form');
+                             echo form_open('mailbox/composeMail', $attributes); 
+                        ?>
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title" data-dismiss="modal">Send Message</h4>
+                            <small class="font-bold">Send a message to <?php echo $member_company->company_name?></small>
+                            <input type="hidden" id="sent_by" name="sent_by" value="<?php echo $this->session->userdata('members_id'); ?>"/>
+                            <input type="hidden" id="sent_to" name="sent_to" value="<?php echo $membs->id; ?>"/>                
+                            <input type="hidden" id="email_address" name="email_address" value="<?php echo $membs->email; ?>"/>
+                            <input type="hidden" id="subject" name="subject" value="Profile Message"/>
+                        </div>
+                        <div class="modal-body">
+                            <!-- <p><strong>Form here</strong> generic stuff bla bla</p> -->
+                            <?php 
+
+                                $data = array(
+                                            'name'          => 'body',
+                                            'id'            => 'body',
+                                            'class'         => 'form-control', 
+                                            'style'         => 'border:none',
+                                            'required'      => 'required'
+                                          );
+
+                                echo form_textarea($data);
+
                             ?>
-            <?php } ?>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="hidden" name="submit" value="Send Message"/>
+                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                            <button type="button" id="submit_message" class="btn btn-primary">Send Message</button>
+            <!--                <input type="submit" id="submit_message" class="btn btn-primary" name="submit" value="Send Message">-->
+                        </div>
+                    </div>
+                    <?php echo form_close()?>
+                </div>
+            </div>
+
+            
+            <?php         }
+                        unset($view->viewer_id);
+                        }
+                      } 
+            ?>
        	</div><!-- Row End -->
-        <div class="row" style="margin:0 0 25px 0">
+<!--        <div class="row" style="margin:0 0 25px 0">
         <div class="btn-group pull-right">
         	<button type="button" class="btn btn-white"><i class="fa fa-chevron-left"></i></button>
             <button class="btn btn-white">1</button>
@@ -96,10 +151,33 @@
             <button class="btn btn-white">4</button>
             <button type="button" class="btn btn-white"><i class="fa fa-chevron-right"></i> </button>
         </div>
-        </div>
+        </div>-->
         
            
         </div>
+<script type="text/javascript">
+
+$(document).ready(function(){   
+
+    $("#submit_message").click(function(){
+        
+        var mid     = $('#sent_by').val();
+        var sid     = $("#sent_to").val();
+        var subject = $("#subject").val();
+        var body    = $("#body").val();
+        
+         $.ajax({
+                type: "POST",
+                url: "mailbox/composeAjaxMail/"+ mid +"/"+ sid +"/"+ subject +"/"+body +"",
+                dataType: "html",
+                success:function(data){
+                  $('#profile_message').modal('hide');
+                },
+            });    
+    });
+ });
+
+</script>
                             
                                
             

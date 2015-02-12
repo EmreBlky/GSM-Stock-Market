@@ -1,7 +1,9 @@
-<?php $this->load->model('member/member_model', 'member_model'); ?>
+<?php //$this->load->model('member/member_model', 'member_model'); ?>
 <div class="modal inmodal fade" id="profile_message" tabindex="-1" role="dialog"  aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
+            <?php //$this->load->model('member/member_model', 'member_model'); 
+echo $member_info->id;?>
             <?php
                  $attributes = array('id' => 'form');
                  echo form_open('mailbox/composeMail', $attributes); 
@@ -47,10 +49,10 @@ $(document).ready(function(){
 
     $("#submit_message").click(function(){
         
-        var mid = $('#sent_by').val();
-        var sid = $("#sent_to").val();
+        var mid     = $('#sent_by').val();
+        var sid     = $("#sent_to").val();
         var subject = $("#subject").val();
-        var body = $("#body").val();
+        var body    = $("#body").val();
         
          $.ajax({
                 type: "POST",
