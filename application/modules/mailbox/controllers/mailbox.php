@@ -1231,7 +1231,7 @@ class Mailbox extends MX_Controller
     
     function autoArchive()
     {
-        $date = strtotime("-7 day");
+        $date = strtotime("-7 day"); 
         //echo date('d-m-Y', $date);
         $this->mailbox_model->_custom_query("UPDATE mailbox SET archive = 'yes', inbox = 'no', archive_belong = (SELECT sent_member_id), sent_belong = '', important_belong = '', trash_belong = '', draft_belong = '' WHERE inbox = 'yes' AND mail_read = 'yes' AND date < '".date('d-m-Y', $date)."'");
     }
