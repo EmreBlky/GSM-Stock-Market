@@ -910,6 +910,7 @@ class Mailbox extends MX_Controller
                                     'body'              => nl2br(str_replace('%20', ' ',$body)),
                                     'inbox'             => 'yes',
                                     'sent'              => 'yes',
+                                    'sent_belong'       => $mid,
                                     'date'              => date('d-m-Y'),
                                     'time'              => date('H:i'),
                                     'sent_from'         => 'member',

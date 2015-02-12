@@ -1,9 +1,7 @@
 <?php //$this->load->model('member/member_model', 'member_model'); ?>
 <div class="modal inmodal fade" id="profile_message" tabindex="-1" role="dialog"  aria-hidden="true">
     <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <?php //$this->load->model('member/member_model', 'member_model'); 
-echo $member_info->id;?>
+        <div class="modal-content">           
             <?php
                  $attributes = array('id' => 'form');
                  echo form_open('mailbox/composeMail', $attributes); 
@@ -60,6 +58,7 @@ $(document).ready(function(){
                 dataType: "html",
                 success:function(data){
                   $('#profile_message').modal('hide');
+                  toastr.success('Your message has been sent.', 'Message Alert');
                 },
             });    
     });
