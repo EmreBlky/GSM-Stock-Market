@@ -75,15 +75,15 @@ class Addressbook extends MX_Controller
                     );
         $this->addressbook_model->_insert($data);
         
-        $this->session->set_flashdata('message', 'That user has been added to your Address Book');
+        //$this->session->set_flashdata('message', 'That user has been added to your Address Book');
         redirect('member/profile/'.$mid);
     }
     
     function remove($mid)
     {
-        $this->favourite_model->_delete_where('member_id', $this->session->userdata('members_id'), 'address_member_id', $mid);
+        $this->addressbook_model->_delete_where('member_id', $this->session->userdata('members_id'), 'address_member_id', $mid);
         
-        $this->session->set_flashdata('message', 'That user has been removed from your favourites');
+        //$this->session->set_flashdata('message', 'That user has been removed from your Address Book');
         redirect('member/profile/'.$mid);
     }
 	

@@ -33,7 +33,7 @@
                                         <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
                                         <i class="fa fa-ban"></i> You have blocked this company. They are unable to communicate or see you in anyway on this website. <a class="alert-link" href="#">Unblock</a>.
                                     </div> -->
-                                    <?php echo $this->session->flashdata('message');?>
+                                    
                                     <div class="m-b-md">                                        
                                         <h2><?php echo $member_company->company_name;?></h2>
                                     </div>
@@ -142,7 +142,7 @@
                                         } else{
                                         ?>
                                             <div class="col-md-6" style="margin-top:15px">
-                                                <button onclick="location.href='<?php echo $base;?>addressbook/remove/<?php echo $member_info->id?>/individual'" type="button" class="btn btn-success btn-sm btn-block" id="contact_added"><i class="fa fa-book"></i> Remove Contact</button>
+                                                <button onclick="location.href='<?php echo $base;?>addressbook/remove/<?php echo $member_info->id?>/individual'" type="button" class="btn btn-success btn-sm btn-block" id="contact_removed"><i class="fa fa-book"></i> Remove Contact</button>
                                             </div>
                                         <?php
                                         }
@@ -161,7 +161,7 @@
                                         } else {
                                         ?>
                                             <div class="col-md-6" style="margin-top:15px">
-                                                <button onclick="location.href='<?php echo $base;?>favourite/remove/<?php echo $member_info->id?>'" type="button" class="btn btn-warning btn-sm btn-block" id="favourite_added"><i class="fa fa-star"></i> Remove Favourite</button>
+                                                <button onclick="location.href='<?php echo $base;?>favourite/remove/<?php echo $member_info->id?>'" type="button" class="btn btn-warning btn-sm btn-block" id="favourite_removed"><i class="fa fa-star"></i> Remove Favourite</button>
                                             </div>
                                         <?php
                                         }
