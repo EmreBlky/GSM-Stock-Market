@@ -26,7 +26,7 @@
 
                 <div class="col-lg-4">
                     <div class="contact-box">
-                        <a href="member/profile/<?php echo $member->id; ?>">
+                        <a href="<?php echo $base;?>member/profile/<?php echo $member->id; ?>">
                         <div class="col-sm-4">
                             <div class="text-center">
                                 <?php if(file_exists("public/main/template/gsm/images/members/".$member->id.".jpg")){?>
