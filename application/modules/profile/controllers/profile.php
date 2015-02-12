@@ -53,6 +53,7 @@ class Profile extends MX_Controller
             
     function who_viewed()
     {
+        $data['base'] = $this->config->item('base_url');
         $data['main'] = 'profile';        
         $data['title'] = 'GSM - Whos Viewed Profile';        
         $data['page'] = 'whos-viewed';

@@ -34,7 +34,7 @@
             
             <div class="col-lg-4"><!-- Profile Widget Start -->
                 <div class="contact-box">
-                    <a href="member/profile/<?php echo $view->viewer_id?>">
+                    <a href="<?php echo $base;?>member/profile/<?php echo $view->viewer_id?>">
                     <div class="col-sm-4">
                         <div class="text-center">
 <!--                            <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/img/daniel_big.jpg">-->
@@ -79,7 +79,7 @@
                     <div class="col-sm-12 gsm-contact">
                             <div>
 <!--                            <button class="btn btn-message" type="button" data-toggle="modal" data-target="#profile_message_<?php echo $view->viewer_id;?>"><i class="fa fa-envelope"></i>&nbsp;Message</button>-->
-                            <button onclick="location.href='member/profile/<?php echo $view->viewer_id?>'" class="btn btn-profile" type="button" data-toggle="modal" ><i class="fa fa-user"></i>&nbsp;View Profile</button>
+                            <button onclick="location.href='<?php echo $base;?>member/profile/<?php echo $view->viewer_id?>'" class="btn btn-profile" type="button" data-toggle="modal" ><i class="fa fa-user"></i>&nbsp;View Profile</button>
                             </div>
                     </div>
                     <div class="clearfix"></div>
