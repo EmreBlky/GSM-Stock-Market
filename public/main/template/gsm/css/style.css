@@ -106,3 +106,17 @@ a.btn-success:active {
 ul.dropdown-menu a.message_alert {margin:0;padding:3px 0;display:block;color:inherit}
 ul.dropdown-menu a.message_alert:hover {color:#000;background:#EEE}
 img.message_alert {margin:3px 20px}
+
+/* Notification Icons - Bottom Right - http://astronautweb.co/snippet/font-awesome/ */
+#toast-container > .toast-warning:before {
+  content: "\f12a";
+}
+#toast-container > .toast-error:before {
+  content: "\f00d";
+}
+#toast-container > .toast-info:before {
+  content: "\f129";
+}
+#toast-container > .toast-success:before {
+  content: "\f00C";
+}
