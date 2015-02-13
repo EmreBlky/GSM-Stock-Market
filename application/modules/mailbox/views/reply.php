@@ -122,7 +122,7 @@
                             <?php 
                             
                                 $data = array(
-                                            'parent_id'        => $this->uri->segment(4)
+                                            'parent_id'        => $this->uri->segment(3)
                                           );
 
                                 echo form_hidden($data);
@@ -172,13 +172,15 @@
 
             ?>
             <?php 
-                $this->load->model('member/member_model', 'member_model');
-                $this->load->model('mailbox/mailbox_model', 'mailbox_model');
-                $reply_id = $this->uri->segment(3);
-                $original_id = $this->uri->segment(4);
-                if($reply_id > 0){ ?>
+//                $this->load->model('member/member_model', 'member_model');
+//                $this->load->model('mailbox/mailbox_model', 'mailbox_model');
+//                $reply_id = $this->uri->segment(3);
+//                $original_id = $this->uri->segment(4);
+//                if($reply_id > 0){ 
                     
-                    <div class="mail-box-header" style="border-bottom: 1px solid #e6e6e6">
+            ?>
+                    
+<!--                    <div class="mail-box-header" style="border-bottom: 1px solid #e6e6e6">
                         <div class="pull-right tooltip-demo">
                             <p><?php echo $inbox_original->time;?> &amp; <?php echo $inbox_original->date;?></p>
                         </div>
@@ -187,10 +189,13 @@
                     </div>
                     <div class="mail-box" style="padding:10px;">
                         <?php echo $inbox_original->body;?>
-                    </div>
+                    </div>-->
                 
                     
-                <?php } ?>
+            <?php 
+            
+                //} 
+            ?>
                 
             </div>
         </div>

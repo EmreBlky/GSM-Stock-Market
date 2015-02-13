@@ -30,6 +30,34 @@ class Mailbox extends MX_Controller
         $config['uri_segment'] = 2;
         
         if(isset($mid) && $mid != 'page'){
+            
+            $parent_id = $this->mailbox_model->get_where($mid)->parent_id;
+            
+            if($parent_id > 0){
+                
+                $count = $this->mailbox_model->_custom_query("SELECT COUNT(id) AS cid FROM mailbox WHERE (sent_member_id = '".$this->session->userdata('members_id')."' AND parent_id = '".$parent_id."') OR (member_id = '".$this->session->userdata('members_id')."' AND parent_id = '".$parent_id."')");
+
+                foreach ($count as $row)
+                {
+                    $cid = $row->cid;
+                }
+
+
+                if($cid > 0){
+                    $data['i_reply_count'] = $cid;
+                    $data['i_inbox_reply'] = $this->mailbox_model->_custom_query("SELECT * FROM mailbox WHERE (sent_member_id = '".$this->session->userdata('members_id')."' AND parent_id = '".$parent_id."') OR (member_id = '".$this->session->userdata('members_id')."' AND parent_id = '".$parent_id."') ORDER BY datetime DESC LIMIT 5");
+                    $data['original_email'] = $this->mailbox_model->get_where($parent_id);
+                }
+                else{
+                     $data['i_reply_count'] = 0;
+                }
+
+            }
+            else{
+                     $data['i_reply_count'] = 0;
+            }
+            
+            
             $belong = $this->mailbox_model->get_where($mid)->sent_member_id;
             
             if($belong != $this->session->userdata('members_id')){
@@ -175,7 +203,8 @@ class Mailbox extends MX_Controller
         }
         elseif($from == 'support'){
             
-            if(isset($mid) && $mid != 'page'){
+            if(isset($mid) && $mid != 'page'){ 
+                
                 $sent_from = $this->mailbox_model->get_where($mid)->sent_from;                
 
                 if($from != $sent_from){
@@ -318,11 +347,12 @@ class Mailbox extends MX_Controller
         
         if($cid > 0){
             $data['reply_count'] = $cid;
-            $data['inbox_reply'] = $this->mailbox_model->_custom_query("SELECT * FROM mailbox WHERE (sent_member_id = '".$this->session->userdata('members_id')."' AND parent_id = '".$oid."') OR (member_id = '".$this->session->userdata('members_id')."' AND parent_id = '".$oid."') ORDER BY datetime DESC");
+            $data['inbox_reply'] = $this->mailbox_model->_custom_query("SELECT * FROM mailbox WHERE (sent_member_id = '".$this->session->userdata('members_id')."' AND parent_id = '".$oid."') OR (member_id = '".$this->session->userdata('members_id')."' AND parent_id = '".$oid."') ORDER BY datetime DESC LIMIT 5");
         }
         else{
              $data['reply_count'] = 0;
         }
+        
         $data['inbox_original'] = $this->mailbox_model->get_where($oid);
         $this->load->module('templates');
         $this->templates->page($data);
@@ -332,6 +362,35 @@ class Mailbox extends MX_Controller
     {
         
         if(isset($mid) && $mid != 'page'){
+            
+//            $parent_id = $this->mailbox_model->get_where($mid)->parent_id;
+//            
+//            if($parent_id > 0){
+//                
+//                $count = $this->mailbox_model->_custom_query("SELECT COUNT(id) AS cid FROM mailbox WHERE (sent_member_id = '".$this->session->userdata('members_id')."' AND parent_id = '".$parent_id."') OR (member_id = '".$this->session->userdata('members_id')."' AND parent_id = '".$parent_id."')");
+//
+//                foreach ($count as $row)
+//                {
+//                    $cid = $row->cid;
+//                }
+//
+//
+//                if($cid > 0){
+//                    $data['s_reply_count'] = $cid;
+//                    $data['s_inbox_reply'] = $this->mailbox_model->_custom_query("SELECT * FROM mailbox WHERE (sent_member_id = '".$this->session->userdata('members_id')."' AND parent_id = '".$parent_id."') OR (member_id = '".$this->session->userdata('members_id')."' AND parent_id = '".$parent_id."') ORDER BY datetime DESC LIMIT 5");
+//                    $data['original_email'] = $this->mailbox_model->get_where($parent_id);
+//                }
+//                else{
+//                     $data['s_reply_count'] = 0;
+//                }
+//
+//            }
+//            else{
+//                     $data['s_reply_count'] = 0;
+//            }
+            
+            
+            
             $cid = $this->mailbox_model->get_where($mid)->member_id;                
 
             if($cid != $this->session->userdata('members_id')){
