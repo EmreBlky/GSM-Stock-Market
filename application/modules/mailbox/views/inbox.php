@@ -152,15 +152,7 @@
                                 </div>
                                 <h2><?php echo $reply->subject;?></h2>
                                 <p>
-                                    
-                                    <?php 
-                                        if($reply->member_id == $this->session->userdata('members_id')){
-                                            echo 'From: ';
-                                        }
-                                        else{
-                                             echo 'To: ';
-                                        }
-                                    ?>
+                                    From: 
                                     <?php echo $this->member_model->get_where($reply->member_id)->firstname.' '.$this->member_model->get_where($reply->member_id)->lastname?>
                                 </p>
                             </div>
