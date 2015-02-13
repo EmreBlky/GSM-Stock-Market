@@ -19,6 +19,66 @@
                 </div>
             </div>
         <div class="wrapper wrapper-content animated fadeInRight">
+        	<div class="row">
+            	<div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Search</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="#">Config option 1</a>
+                                </li>
+                                <li><a href="#">Config option 2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="ibox-content">
+                    	<div class="row">
+                        	<div class="col-lg-3">
+                            	<select class="form-control">
+                                	<option value="" selected>All Makes</option>
+                                    <option>Apple</option>
+                                    <option>BlackBerry</option>
+                                    <option>Samsung</option>
+                                </select>
+                            </div>
+                        	<div class="col-lg-3">
+                        		<input type="text" class="form-control" placeholder="Enter Model"/>
+                            </div>
+                        	<div class="col-lg-3">
+                            	<select class="form-control">
+                                	<option value="" selected>Any Condition</option>
+                                    <option>New</option>
+                                    <option>Used</option>
+                                    <option>Refurbished</option>
+                                </select>
+                            </div>
+                        	<div class="col-lg-3">
+                            	<select class="form-control">
+                                	<option value="" selected>All Countries</option>
+                                    <option>Germany</option>
+                                    <option>United Kingdom</option>
+                                    <option>United States</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div><!-- /ibox-content -->
+                    </div>
+                </div>
+            </div>
+        
+        
             <div class="row">
                 <div class="col-lg-12">
                 <div class="ibox float-e-margins">
@@ -44,7 +104,7 @@
                     </div>
                     <div class="ibox-content">
 
-                    <table class="table table-striped table-bordered table-hover dataTables-example" >
+                    <table id="marketplace" class="table table-striped table-bordered table-hover dataTables-example" >
                     <thead>
                     <tr>
                         <th>ID</th>

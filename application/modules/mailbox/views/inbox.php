@@ -131,10 +131,54 @@
                         <a href="mailbox/trash_move/<?php echo $this->uri->segment(4);?>" title="" data-placement="top" data-toggle="tooltip" data-original-title="Trash" class="btn btn-sm btn-white"><i class="fa fa-trash-o"></i> Remove</a>
                 </div>
                 <div class="clearfix"></div>
-
-
+                    
                 </div>
             </div>
+            
+            <div class="col-lg-9 animated fadeInRight">
+                        
+                            
+                    <?php
+                    $message_id = $this->uri->segment(4);
+                    if($i_reply_count > 0){
+
+                        foreach($i_inbox_reply as $reply){
+                            if($reply->id < $message_id){
+                    ?>
+
+                            <div class="mail-box-header" style="border-bottom: 1px solid #e6e6e6">
+                                <div class="pull-right tooltip-demo">
+                                    <p><?php echo $reply->time;?> &amp; <?php echo $reply->date;?></p>
+                                </div>
+                                <h2><?php echo $reply->subject;?></h2>
+                                <p><?php echo $this->member_model->get_where($reply->member_id)->firstname.' '.$this->member_model->get_where($reply->member_id)->lastname?></p>
+                            </div>
+                            <div class="mail-box" style="padding:10px;">
+                                <?php echo $reply->body;?>
+                            </div>
+
+                    <?php 
+                            }
+                        }
+                    ?>
+                        <div class="mail-box-header" style="border-bottom: 1px solid #e6e6e6">
+                            <p><strong>Original Email</strong></p>
+                                <div class="pull-right tooltip-demo">
+                                    <p><?php echo $original_email->time;?> &amp; <?php echo $reply->date;?></p>
+                                </div>
+                                <h2><?php echo $original_email->subject;?></h2>
+                                <p><?php echo $this->member_model->get_where($original_email->member_id)->firstname.' '.$this->member_model->get_where($original_email->member_id)->lastname?></p>
+                            </div>
+                            <div class="mail-box" style="padding:10px;">
+                                <?php echo $original_email->body;?>
+                            </div>
+                    <?php
+                    }
+
+                    ?>
+                            
+                        
+                    </div>
             
             <?php } else { ?>
             <div class="col-lg-9 animated fadeInRight">

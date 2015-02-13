@@ -122,7 +122,7 @@
                             <?php 
                             
                                 $data = array(
-                                            'parent_id'        => $this->uri->segment(4)
+                                            'parent_id'        => $this->uri->segment(3)
                                           );
 
                                 echo form_hidden($data);
@@ -150,9 +150,11 @@
             </div>
             <div class="col-lg-9 animated fadeInRight">            
             <?php
+                $message_id = $this->uri->segment(4);
                 if($reply_count > 0){
 
                     foreach($inbox_reply as $reply){
+                        if($reply->id < $message_id){
                 ?>
 
                         <div class="mail-box-header" style="border-bottom: 1px solid #e6e6e6">
@@ -166,19 +168,35 @@
                             <?php echo $reply->body;?>
                         </div>
 
-                <?php 
+                <?php
+                        }
                     }
+                ?>
+                    <div class="mail-box-header" style="border-bottom: 1px solid #e6e6e6">
+                    <p><strong>Original Email</strong></p>
+                        <div class="pull-right tooltip-demo">
+                            <p><?php echo $original_email->time;?> &amp; <?php echo $reply->date;?></p>
+                        </div>
+                        <h2><?php echo $original_email->subject;?></h2>
+                        <p><?php echo $this->member_model->get_where($original_email->member_id)->firstname.' '.$this->member_model->get_where($original_email->member_id)->lastname?></p>
+                    </div>
+                    <div class="mail-box" style="padding:10px;">
+                        <?php echo $original_email->body;?>
+                    </div>
+                <?php
                 }
 
             ?>
             <?php 
-                $this->load->model('member/member_model', 'member_model');
-                $this->load->model('mailbox/mailbox_model', 'mailbox_model');
-                $reply_id = $this->uri->segment(3);
-                $original_id = $this->uri->segment(4);
-                if($reply_id > 0){ ?>
+//                $this->load->model('member/member_model', 'member_model');
+//                $this->load->model('mailbox/mailbox_model', 'mailbox_model');
+//                $reply_id = $this->uri->segment(3);
+//                $original_id = $this->uri->segment(4);
+//                if($reply_id > 0){ 
                     
-                    <div class="mail-box-header" style="border-bottom: 1px solid #e6e6e6">
+            ?>
+                    
+<!--                    <div class="mail-box-header" style="border-bottom: 1px solid #e6e6e6">
                         <div class="pull-right tooltip-demo">
                             <p><?php echo $inbox_original->time;?> &amp; <?php echo $inbox_original->date;?></p>
                         </div>
@@ -187,10 +205,13 @@
                     </div>
                     <div class="mail-box" style="padding:10px;">
                         <?php echo $inbox_original->body;?>
-                    </div>
+                    </div>-->
                 
                     
-                <?php } ?>
+            <?php 
+            
+                //} 
+            ?>
                 
             </div>
         </div>

@@ -1,4 +1,4 @@
-<select class="form-control" name="phone_number">
+<select class="form-control" name="phone_number" id="phone_number">
     <?php 
         if(isset($pid) && $pid > 0){
     ?>

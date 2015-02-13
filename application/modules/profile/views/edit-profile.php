@@ -6,7 +6,366 @@
 //exit;
 
 ?>	
+<script type="text/javascript">
+	$(document).ready(function(){	
+		$('#primary-business').css("display", 'none');
+		$('#secondary-business').css("display", 'none');
+		$('#tertiary-business').css("display", 'none');
+		$('#selectMessage').css("display", 'none');
+	});
+	function updateCode(value) {
+		$("#phone_number").val(value);  
+		$("#mobile_phone").val(value);  
+	}
+	
+				
+			function getCheckedBoxesCount() {
+				var count = 1;
+				var total = 0;
+				while(count <= 14) {
+					var chk = $( '#bsectors'+count ).prop("checked");
+					if(chk == true) {
+						total = total + 1;
+					}
+					count++;
+				}
+				return total;
+			}
+			
+			function toggleChecks(counter) {
+					
+					var count = 1;
+					var ids = new Array();
+					if(counter >= 5) {
+						while(count <= 14) {
+							var chk = $( '#bsectors'+count ).prop("checked");
+							var id = $( '#bsectors'+count ).attr('id');
+							if(chk == false) {
+								$('#bsectors'+count).iCheck('uncheck');
+								$('#bsectors'+count).iCheck('disable');
+							}
+							count++;
+						}
+					} else {
+						while(count <= 14) {
+							var chk = $( '#bsectors'+count ).prop("checked");
+							var id = $( '#bsectors'+count ).attr('id');
+							if(chk == false) {
+								$('#bsectors'+count).iCheck('uncheck');
+								$('#bsectors'+count).iCheck('enable');
+							}
+							count++;
+						}
+					}
+					
+			}
+			
+			function updateChecks(div_id) {
+				
+				var primary = $('#bprimary').val();
+				var secondary = $('#bsecondary').val();
+				var tertiary = $('#btertiary').val();
+			
+				var count = 1;
+				var ids = new Array();
+				while(count <= 14) {
+					var chk = $( '#bsectors'+count ).prop("checked");
+					var id = $( '#bsectors'+count ).attr('id');
+					if(chk == true) {
+						if(id != div_id) {
+							ids[count] = id;
+						}
+					}
+					count++;
+				}
+				var str = "<option value = ''>[SELECT ONE]</option>";
+				$('#bprimary').empty().append(str);
+				$('#bsecondary').empty().append(str);
+				$('#btertiary').empty().append(str);
+				
+				ids.forEach(function(entry) {
+					var value = $('#'+entry).attr('value');
+					if(entry == primary) {
+						var str1 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
+					} else {
+						var str1 = "<option value = '" + entry + "'>" + value + "</option>";
+					}
+					if(entry != secondary && entry != tertiary) {
+						$('#bprimary').append(str1);
+					}
+					if(entry == secondary) {
+						var str2 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
+					} else {
+						var str2 = "<option value = '" + entry + "'>" + value + "</option>";
+					}
+					if(entry != primary && entry != tertiary) {
+						$('#bsecondary').append(str2);	
+					}
+					if(entry == tertiary) {
+						var str3 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
+					} else {
+						var str3 = "<option value = '" + entry + "'>" + value + "</option>";
+					}
+					if(entry != primary && entry != secondary) {
+						$('#btertiary').append(str3);
+					}
+				});
+			}
+			
+			function updateSelects1(value) {
+				
+				var no_value = value;	//	Value to be excluded from other selects
+				
+				var count = 1;
+				var ids = new Array();
+				while(count <= 14) {		// Get all checkboxes ids
+					var chk = $( '#bsectors'+count ).prop("checked");
+					var id = $( '#bsectors'+count ).attr('id');
+					if(chk == true) {
+						ids[count] = id;
+					}
+					count++;
+				}
+				
+				var secondary = $('#bsecondary').val();	// Get Value of Secondary select box
+				var tertiary = $('#btertiary').val();	// Get Value of Tertiary select box
+				
+				var str = "<option value = ''>[SELECT ONE]</option>";
+				// Append Empty options to secondary and tertiary select boxes
+				$('#bsecondary').empty().append(str);
+				$('#btertiary').empty().append(str);
+				
+				ids.forEach(function(entry) {
+					var value = $('#'+entry).attr('value');		// Get value of selected option box
+					if(entry != no_value) {	
+						if(entry == secondary) {
+							var str1 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
+						} else {
+							var str1 = "<option value = '" + entry + "'>" + value + "</option>";
+						}
+						if(entry != tertiary) {
+							$('#bsecondary').append(str1);
+						}
+						if(entry == tertiary) {
+							var str2 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
+						} else {
+							var str2 = "<option value = '" + entry + "'>" + value + "</option>";
+						}
+						if(entry != secondary) {
+							$('#btertiary').append(str2);
+						}
+					}
+				});
+			}
+			
+			function updateSelects2(value) {
+				
+				var no_value = value;	//	Value to be excluded from other selects
+				
+				var count = 1;
+				var ids = new Array();
+				while(count <= 14) {
+					var chk = $( '#bsectors'+count ).prop("checked");
+					var id = $( '#bsectors'+count ).attr('id');
+					if(chk == true) {
+						ids[count] = id;
+					}
+					count++;
+				}
+				
+				var primary = $('#bprimary').val();
+				var tertiary = $('#btertiary').val();
+				
+				var str = "<option value = ''>[SELECT ONE]</option>";
+				
+				$('#bprimary').empty().append(str);
+				$('#btertiary').empty().append(str);
+				
+				ids.forEach(function(entry) {
+					var value = $('#'+entry).attr('value');
+					if(entry != no_value) {
+						if(entry == primary) {
+							var str1 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
+						} else {
+							var str1 = "<option value = '" + entry + "'>" + value + "</option>";
+						}
+						if(entry != tertiary) {
+							$('#bprimary').append(str1);
+						}
+						if(entry == tertiary) {
+							var str2 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
+						} else {
+							var str2 = "<option value = '" + entry + "'>" + value + "</option>";
+						}
+						if(entry != primary) {
+							$('#btertiary').append(str2);
+						}
+					}
+				});
+			}
+			
+			function updateSelects3(value) {
+				
+				var no_value = value;	//	Value to be excluded from other selects
+				
+				var count = 1;
+				var ids = new Array();
+				while(count <= 14) {
+					var chk = $( '#bsectors'+count ).prop("checked");
+					var id = $( '#bsectors'+count ).attr('id');
+					if(chk == true) {
+						ids[count] = id;
+					}
+					count++;
+				}
+				
+				var primary = $('#bprimary').val();
+				var secondary = $('#bsecondary').val();
+				
+				var str = "<option value = ''>[SELECT ONE]</option>";
+				
+				$('#bprimary').empty().append(str);
+				$('#bsecondary').empty().append(str);
+				
+				ids.forEach(function(entry) {
+					var value = $('#'+entry).attr('value');
+					if(entry != no_value) {
+						if(entry == primary) {
+							var str1 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
+						} else {
+							var str1 = "<option value = '" + entry + "'>" + value + "</option>";
+						}
+						if(entry != secondary) {
+							$('#bprimary').append(str1);
+						}
+						if(entry == secondary) {
+							var str2 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
+						} else {
+							var str2 = "<option value = '" + entry + "'>" + value + "</option>";
+						}
+						if(entry != primary) {
+							$('#bsecondary').append(str2);
+						}
+					}
+				});
+			}
+			
 
+			
+			$(function() {
+				
+				$( '.business_cycle' ).on( 'ifChecked', function(event) {		// If we just checked a checkbox
+					
+					var orig_counter = getCheckedBoxesCount();	// get total checkedboxes count
+					toggleChecks(orig_counter);		// disable or enable checkboxes if greater than 5
+				});
+				
+				$( '.business_cycle' ).on( 'ifUnchecked', function(event) {		// If we just unchecked a checkbox
+					
+					var orig_counter = getCheckedBoxesCount();		// get total checkedboxes count
+					toggleChecks(orig_counter);	// disable or enable checkboxes if greater than 5
+				});
+				
+				$( '.business_cycle' ).on( 'ifClicked', function(event) {
+					
+					//var orig_counter = $('input[name="bsectors"]:checked').size();
+					
+					var orig_counter = getCheckedBoxesCount();	// get total checkedboxes count
+					
+					// get number of checked checkboxes
+					
+					var id = $(this).attr('id');	//	get ID of current checkbox
+					var value = $(this).attr('value');	// get value of current checkbox
+					var chk = $( '#'+id ).prop( "checked");	// get state of current checkbox
+					
+					updateChecks(id);		// update the selects
+					
+					if(chk == false) {
+						var counter = orig_counter + 1;	
+					} else {
+						var counter = orig_counter - 1;
+					}
+					
+					var str = "<option value = '" + id + "'>" + value + "</option>";	// Create Option
+					
+					if(counter < 1) {	// if No Checkbox is selected
+						// Hide all Select boxes
+						$('#primary-business').css("display", 'none');
+						$('#secondary-business').css("display", 'none');
+						$('#tertiary-business').css("display", 'none');
+						$('#selectMessage').css("display", 'none');
+					} else {
+						if(counter == 1){	// Only One Checkbox is selected
+							// Primary Select Box is displayed
+							$('#primary-business').css("display", 'block');
+							$('#secondary-business').css("display", 'none');
+							$('#tertiary-business').css("display", 'none');
+							$('#selectMessage').css("display", 'block');
+							
+							if(chk == false) {	// If Checkbox is checked
+								$('#bprimary').append(str);	// Append the value to Primary Select box
+							} else { 
+								$("#bprimary option[value='"+id+"']").remove();	// Remove the value from Primary Select box
+							}
+						}
+						else if(counter == 2){	// 2 Checkboxes are selected
+							// Primary and Secondary select boxes are displayed
+							$('#primary-business').css("display", 'block');
+							$('#secondary-business').css("display", 'block');
+							$('#tertiary-business').css("display", 'none');
+							$('#selectMessage').css("display", 'block');
+							
+							if(chk == false) {
+								// Append values to both Primary and Secondary select boxes
+								$('#bprimary').append(str);
+								$('#bsecondary').append(str);
+							} else {
+								// Remove values from both Primary and Secondary select boxes
+								$("#bprimary option[value='"+id+"']").remove();
+								$("#bsecondary option[value='"+id+"']").remove();
+							}
+							
+						}
+						else if(counter == 3){	// 3 Checkboxes are selected
+							// Primary, Secondary and Tertiary Select boxes are displayed
+							$('#primary-business').css("display", 'block');
+							$('#secondary-business').css("display", 'block');
+							$('#tertiary-business').css("display", 'block');
+							$('#selectMessage').css("display", 'block');
+							
+							if(chk == false) {
+								// Append values to Primary, Secondary and Tertiary select boxes
+								$('#bprimary').append(str);
+								$('#bsecondary').append(str);
+								$('#btertiary').append(str);
+							} else {
+								// Remove values from Primary, Secondary and Tertiary select boxes
+								$("#bprimary option[value='"+id+"']").remove();
+								$("#bsecondary option[value='"+id+"']").remove();
+								$("#btertiary option[value='"+id+"']").remove();
+							}
+						}
+						else {	// More than 3 Checkboxes are selected
+							if(chk == false) {
+								// Append values to Primary, Secondary and Tertiary select boxes
+								$('#bprimary').append(str);
+								$('#bsecondary').append(str);
+								$('#btertiary').append(str);
+							} else {
+								// Remove values from Primary, Secondary and Tertiary select boxes
+								$("#bprimary option[value='"+id+"']").remove();
+								$("#bsecondary option[value='"+id+"']").remove();
+								$("#btertiary option[value='"+id+"']").remove();
+							}
+						}
+					}
+
+				});
+			});
+        
+		
+	
+</script>
 <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
                     <h2>View Profile</h2>
@@ -366,47 +725,41 @@
                                 <div class="form-group">
                                 	<label class="col-md-3 control-label">Business Sectors <br/><small class="text-navy">Select up to 5</small></label>
 									<div class="col-md-4">
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="New Mobiles (Sim Free)" name="bsectors"> <i></i> New Mobiles (Sim Free) </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="New Mobiles (Network Stocks)" name="bsectors"> <i></i> New Mobiles (Network Stocks) </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="14 Day Mobiles" name="bsectors"> <i></i> 14 Day Mobiles </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Refurbished Mobiles" name="bsectors"> <i></i> Refurbished Mobiles </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Used Mobiles" name="bsectors"> <i></i> Used Mobiles </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="BER Mobiles" name="bsectors"> <i></i> BER Mobiles </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Mobile Accessories" name="bsectors"> <i></i> Mobile Accessories </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Wearable Technology" name="bsectors"> <i></i> Wearable Technology </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Bluetooth Products" name="bsectors"> <i></i> Bluetooth Products </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Mobile Spare Parts" name="bsectors"> <i></i> Mobile Spare Parts </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Mobile Service and Repair Centre" name="bsectors"> <i></i> Mobile Service and Repair Centre </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Network Operator" name="bsectors"> <i></i> Network Operator </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Freight Forwarding" name="bsectors"> <i></i> Freight Forwarding </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Insurance" name="bsectors"> <i></i> Insurance </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="New Mobiles (Sim Free)" name="bsectors" id="bsectors1" class='business_cycle'> <i></i> New Mobiles (Sim Free) </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="New Mobiles (Network Stocks)" name="bsectors" id="bsectors2" class='business_cycle'> <i></i> New Mobiles (Network Stocks) </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="14 Day Mobiles" name="bsectors" id="bsectors3" class='business_cycle'> <i></i> 14 Day Mobiles </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Refurbished Mobiles" name="bsectors" id="bsectors4" class='business_cycle'> <i></i> Refurbished Mobiles </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Used Mobiles" name="bsectors" id="bsectors5" class='business_cycle'> <i></i> Used Mobiles </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="BER Mobiles" name="bsectors" id="bsectors6" class='business_cycle'> <i></i> BER Mobiles </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Mobile Accessories" name="bsectors" id="bsectors7" class='business_cycle'> <i></i> Mobile Accessories </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Wearable Technology" name="bsectors" id="bsectors8" class='business_cycle'> <i></i> Wearable Technology </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Bluetooth Products" name="bsectors" id="bsectors9" class='business_cycle'> <i></i> Bluetooth Products </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Mobile Spare Parts" name="bsectors" id="bsectors10" class='business_cycle'> <i></i> Mobile Spare Parts </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Mobile Service and Repair Centre" name="bsectors" id="bsectors11" class='business_cycle'> <i></i> Mobile Service and Repair Centre </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Network Operator" name="bsectors" id="bsectors12" class='business_cycle'> <i></i> Network Operator </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Freight Forwarding" name="bsectors" id="bsectors13" class='business_cycle'> <i></i> Freight Forwarding </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Insurance" name="bsectors" id="bsectors14" class='business_cycle'> <i></i> Insurance </label></div>
                                 	</div>
 									<div class="col-md-4">
                                     <div id="primary-business">
                                     <label class="col-md-12">Primary Business</label>
-                                    <select class="form-control m-b" id="bprimary" style="float:left">
+                                    <select class="form-control m-b" id="bprimary" style="float:left" onchange="updateSelects1(this.value)">
                                         <option>[Select One]</option>
                                     </select>
                                     </div>
                                     <div id="secondary-business">
                                     <label class="col-md-12">Secondary Business</label>
-                                    <select class="form-control m-b" name="bsecondary" style="float:left">
-                                        <option>option 1</option>
-                                        <option>option 2</option>
-                                        <option>option 3</option>
-                                        <option>option 4</option>
+                                    <select class="form-control m-b" name="bsecondary" id="bsecondary" style="float:left" onchange="updateSelects2(this.value)">
+                                        <option>[Select One]</option>
                                     </select>
                                     </div>
                                     <div id="tertiary-business">
                                     <label class="col-md-12">Tertiary Business</label>
-                                    <select class="form-control m-b" name="btertiary" style="float:left">
-                                        <option>option 1</option>
-                                        <option>option 2</option>
-                                        <option>option 3</option>
-                                        <option>option 4</option>
+                                    <select class="form-control m-b" name="btertiary" id="btertiary" style="float:left" onchange="updateSelects3(this.value)">
+                                        <option>[Select One]</option>
                                     </select>
                                     </div>
-                                    <small class="text-navy">Please make sure you select in order of actual business relevance as this will affect search results and our dedicated account managers will actively promote your business on your behalf with other suitable companies.</small>
+                                    <small class="text-navy" id="selectMessage">Please make sure you select in order of actual business relevance as this will affect search results and our dedicated account managers will actively promote your business on your behalf with other suitable companies.</small>
                                 	</div>
                                </div>
                                 

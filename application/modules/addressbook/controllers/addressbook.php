@@ -12,17 +12,100 @@ class Addressbook extends MX_Controller
         $this->load->model('addressbook/addressbook_model', 'addressbook_model');
     }
 
-    function index()
+    function index($page = NULL, $off = NULL)
     {
+        $this->load->library('pagination');
         $data['main'] = 'addressbook';
         $data['title'] = 'GSM - Addressbook';        
         $data['page'] = 'index';
+        
+        if(isset($off) && $off > 1){
+            $new_mem = $off-1;
+            $offset = 21*$new_mem;
+        }
+        else{
+            $offset = 0;
+        }
         
         $add_count = $this->addressbook_model->count_where('member_id', $this->session->userdata('members_id'));
         
         if($add_count > 0){
             $data['addressbook_count'] = $add_count;
-            $data['address_book'] = $this->addressbook_model->get_where_multiples('member_id', $this->session->userdata('members_id'));
+            $data['address_book'] = $this->addressbook_model->get_where_multiples('member_id', $this->session->userdata('members_id'), NULL, NULL, 21, $offset);
+            
+            $config['base_url'] = $this->config->item('base_url').'addressbook/page';
+            $config['total_rows'] = $add_count;
+            $config['per_page'] = 21;
+            $config["uri_segment"] = 3;
+            $config['use_page_numbers'] = TRUE;
+
+            $config['full_tag_open'] = '<div class="row" style="margin:0 0 25px 0"><div class="btn-group pull-right">';
+            $config['full_tag_close'] = '</div></div>';
+            $config['next_tag_open'] = '<div class="btn btn-white">';
+            $config['next_tag_close'] = '</div>';
+            $config['prev_tag_open'] = ' <div class="btn btn-white">';
+            $config['prev_tag_close'] = '</div>';
+            $config['cur_tag_open'] = '<div class="btn btn-white  active">';
+            $config['cur_tag_close'] = '</div>';
+            $config['num_tag_open'] = '<div class="btn btn-white">';                
+            $config['num_tag_close'] = '</div>';
+            $config['prev_link'] = '<i class="fa fa-chevron-left"></i>';
+            $config['next_link'] = '<i class="fa fa-chevron-right"></i>';
+
+            $this->pagination->initialize($config);
+            $data['pagination'] = $this->pagination->create_links();
+        }
+        else{
+            $data['addressbook_count'] = 0;
+        }
+        
+        
+        $this->load->module('templates');
+        $this->templates->page($data);
+    }
+    
+    function page($off = NULL)
+    {
+        $this->load->library('pagination');
+        $data['main'] = 'addressbook';
+        $data['title'] = 'GSM - Addressbook';        
+        $data['page'] = 'index';
+        
+        if(isset($off) && $off > 1){
+            $new_mem = $off-1;
+            $offset = 21*$new_mem;
+        }
+        else{
+            $offset = 0;
+        }
+        
+        $add_count = $this->addressbook_model->count_where('member_id', $this->session->userdata('members_id'));
+        
+        if($add_count > 0){
+            $data['addressbook_count'] = $add_count;
+            $data['address_book'] = $this->addressbook_model->get_where_multiples('member_id', $this->session->userdata('members_id'), NULL, NULL, 21, $offset);
+            
+            $config['base_url'] = $this->config->item('base_url').'addressbook/page';
+            $config['total_rows'] = $add_count;
+            $config['per_page'] = 21;
+            $config["uri_segment"] = 3;
+            $config['use_page_numbers'] = TRUE;
+
+            $config['full_tag_open'] = '<div class="row" style="margin:0 0 25px 0"><div class="btn-group pull-right">';
+            $config['full_tag_close'] = '</div></div>';
+            $config['next_tag_open'] = '<div class="btn btn-white">';
+            $config['next_tag_close'] = '</div>';
+            $config['prev_tag_open'] = ' <div class="btn btn-white">';
+            $config['prev_tag_close'] = '</div>';
+            $config['cur_tag_open'] = '<div class="btn btn-white  active">';
+            $config['cur_tag_close'] = '</div>';
+            $config['num_tag_open'] = '<div class="btn btn-white">';                
+            $config['num_tag_close'] = '</div>';
+            $config['prev_link'] = '<i class="fa fa-chevron-left"></i>';
+            $config['next_link'] = '<i class="fa fa-chevron-right"></i>';
+
+            $this->pagination->initialize($config);
+            $data['pagination'] = $this->pagination->create_links();
         }
         else{
             $data['addressbook_count'] = 0;

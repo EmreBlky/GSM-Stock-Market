@@ -5,7 +5,72 @@
 //exit;
 
 ?>	
+<script type="text/javascript">
+    
+            function contactAdd()
+            {
+                 //alert('ADD');   
+                var cust_added     = $('#cust_added').val();
+                var cust_type     = $('#cust_type').val();
+                
+                 $.ajax({
+                        type: "POST",
+                        url: "addressbook/add/"+ cust_added +"/"+ cust_type +"",
+                        dataType: "html",
+                        success:function(data){
+                          $('#contact_added').replaceWith('<button onclick="contactRemove();" type="button" class="btn btn-success btn-sm btn-block" id="contact_removed"><i class="fa fa-book"></i> Remove Contact</button>');                             
+                          toastr.success('This user has been added to your address book.', 'Contact Added');
+                        },
+                });
+            }           
+           
+            function contactRemove()
+            {                
+                var cust_added     = $('#cust_added').val();
+                
+                $.ajax({
+                        type: "POST",
+                        url: "addressbook/remove/"+ cust_added +"",
+                        dataType: "html",
+                        success:function(data){
+                          $('#contact_removed').replaceWith('<button onclick="contactAdd();" type="button" class="btn btn-success btn-sm btn-block" id="contact_added"><i class="fa fa-book"></i> Add Contact</button>');  
+                          toastr.error('This user has been removed from your address book.', 'Contact Removed');
+                        },
+                });
+            }
+            
+            function faveAdd()
+            {
+                var cust_added     = $('#cust_added').val();
+                
+                 $.ajax({
+                        type: "POST",
+                        url: "favourite/add/"+ cust_added +"",
+                        dataType: "html",
+                        success:function(data){
+                          $('#favourite_added').replaceWith('<button  onclick="faveRemove();"  type="button" class="btn btn-warning btn-sm btn-block" id="favourite_removed"><i class="fa fa-star"></i> Remove Favourite</button>');                             
+                          toastr.success('This user has been added to your favourites.', 'Favourite Added');
+                        },
+                });
+            }
+            
+            function faveRemove()
+            {
+                var cust_added     = $('#cust_added').val();
+                
+                 $.ajax({
+                        type: "POST",
+                        url: "favourite/remove/"+ cust_added +"",
+                        dataType: "html",
+                        success:function(data){
+                          $('#favourite_removed').replaceWith('<button  onclick="faveAdd();"  type="button" class="btn btn-warning btn-sm btn-block" id="favourite_added"><i class="fa fa-star"></i> Add Favourite</button>');                             
+                          toastr.error('This user has been removed from your favourites.', 'Favourite Removed');
+                        },
+                });
+            }
 
+
+</script>
 <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
                     <h2>View Profile</h2>
@@ -128,6 +193,8 @@
                                         </div>
                                     </div>
                                     <div class="row">
+                                        <input type="hidden" id="cust_added" name="cust_added" value="<?php echo $member_info->id;?>"/>
+                                        <input type="hidden" id="cust_type" name="cust_type" value="individual"/>
                                         <?php 
                                         
                                         $this->load->model('addressbook/addressbook_model', 'addressbook_model');
@@ -136,13 +203,13 @@
                                         if($a_count < 1){
                                         ?>
                                             <div class="col-md-6" style="margin-top:15px">
-                                                <button onclick="location.href='<?php echo $base;?>addressbook/add/<?php echo $member_info->id?>/individual'" type="button" class="btn btn-success btn-sm btn-block" id="contact_added"><i class="fa fa-book"></i> Add Contact</button>
+                                                <button type="button" onclick="contactAdd();" class="btn btn-success btn-sm btn-block" id="contact_added"><i class="fa fa-book"></i> Add Contact</button>
                                             </div>
                                         <?php
                                         } else{
                                         ?>
                                             <div class="col-md-6" style="margin-top:15px">
-                                                <button onclick="location.href='<?php echo $base;?>addressbook/remove/<?php echo $member_info->id?>/individual'" type="button" class="btn btn-success btn-sm btn-block" id="contact_removed"><i class="fa fa-book"></i> Remove Contact</button>
+                                                <button type="button" onclick="contactRemove();" class="btn btn-success btn-sm btn-block" id="contact_removed"><i class="fa fa-book"></i> Remove Contact</button>
                                             </div>
                                         <?php
                                         }
@@ -155,13 +222,13 @@
                                         if($f_count < 1){
                                         ?>
                                             <div class="col-md-6" style="margin-top:15px">
-                                                <button onclick="location.href='<?php echo $base;?>favourite/add/<?php echo $member_info->id?>'" type="button" class="btn btn-warning btn-sm btn-block" id="favourite_added"><i class="fa fa-star"></i> Add Favourite</button>
+                                                <button  onclick="faveAdd();"  type="button" class="btn btn-warning btn-sm btn-block" id="favourite_added"><i class="fa fa-star"></i> Add Favourite</button>
                                             </div>
                                         <?php
                                         } else {
                                         ?>
                                             <div class="col-md-6" style="margin-top:15px">
-                                                <button onclick="location.href='<?php echo $base;?>favourite/remove/<?php echo $member_info->id?>'" type="button" class="btn btn-warning btn-sm btn-block" id="favourite_removed"><i class="fa fa-star"></i> Remove Favourite</button>
+                                                <button  onclick="faveRemove();"  type="button" class="btn btn-warning btn-sm btn-block" id="favourite_removed"><i class="fa fa-star"></i> Remove Favourite</button>
                                             </div>
                                         <?php
                                         }
@@ -415,10 +482,10 @@
             <div class="col-lg-3">
                 <div class="wrapper wrapper-content project-manager">
                     <h4>Company Bio</h4>
-                    <?php if(file_exists("public/main/images/company/".$member_company->id.".jpg")){?>
-                        <img src="public/main/images/company/<?php echo $member_company->id; ?>.jpg" class="img-responsive" style="margin:0 auto">
+                    <?php if(file_exists("public/main/template/gsm/images/company/".$member_company->id.".jpg")){?>
+                        <img src="public/main/template/gsm/images/company/<?php echo $member_company->id; ?>.jpg" class="img-responsive" style="margin:0 auto">
                     <?php } else {?>
-                        <img src="public/main/images/company/no_company.jpg" class="img-responsive" style="margin:0 auto">
+                        <img src="public/main/template/gsm/images/company/no_company.jpg" class="img-responsive" style="margin:0 auto">
                     <?php }?>
                     
 					<div class="row" style="margin-top:20px">
@@ -493,6 +560,7 @@
     <!-- Toastr script -->
     <script src="public/main/template/core/js/plugins/toastr/toastr.min.js"></script>
     <script type="text/javascript">
+        
         $(function () {
                 toastr.options = {
                     closeButton: false,
@@ -509,18 +577,10 @@
 					showMethod: 'fadeIn',
 					hideMethod: 'fadeOut',
 				};
-            $('#contact_added').click(function (){
-                toastr.success('This user has been added to your address book.', 'Contact Added');
-            });
-            $('#contact_removed').click(function (){
-                toastr.error('This user has been removed from your address book.', 'Contact Removed');
-            });
-            $('#favourite_added').click(function (){
-                toastr.success('This user has been added to your favourites.', 'Favourite Added');
-            });
-            $('#favourite_removed').click(function (){
-                toastr.error('This user has been removed from your favourites.', 'Favourite Removed');
-            });
+            
+                
+            //});
+            
             $('#blocked').click(function (){
                 toastr.error('They are unable to communicate or see you in anyway on this website.', 'User Blocked!');
             });
