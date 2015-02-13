@@ -150,9 +150,11 @@
             </div>
             <div class="col-lg-9 animated fadeInRight">            
             <?php
+                $message_id = $this->uri->segment(4);
                 if($reply_count > 0){
 
                     foreach($inbox_reply as $reply){
+                        if($reply->id < $message_id){
                 ?>
 
                         <div class="mail-box-header" style="border-bottom: 1px solid #e6e6e6">
@@ -166,8 +168,22 @@
                             <?php echo $reply->body;?>
                         </div>
 
-                <?php 
+                <?php
+                        }
                     }
+                ?>
+                    <div class="mail-box-header" style="border-bottom: 1px solid #e6e6e6">
+                    <p><strong>Original Email</strong></p>
+                        <div class="pull-right tooltip-demo">
+                            <p><?php echo $original_email->time;?> &amp; <?php echo $reply->date;?></p>
+                        </div>
+                        <h2><?php echo $original_email->subject;?></h2>
+                        <p><?php echo $this->member_model->get_where($original_email->member_id)->firstname.' '.$this->member_model->get_where($original_email->member_id)->lastname?></p>
+                    </div>
+                    <div class="mail-box" style="padding:10px;">
+                        <?php echo $original_email->body;?>
+                    </div>
+                <?php
                 }
 
             ?>

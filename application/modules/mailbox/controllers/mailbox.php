@@ -348,6 +348,7 @@ class Mailbox extends MX_Controller
         if($cid > 0){
             $data['reply_count'] = $cid;
             $data['inbox_reply'] = $this->mailbox_model->_custom_query("SELECT * FROM mailbox WHERE (sent_member_id = '".$this->session->userdata('members_id')."' AND parent_id = '".$oid."') OR (member_id = '".$this->session->userdata('members_id')."' AND parent_id = '".$oid."') ORDER BY datetime DESC LIMIT 5");
+             $data['original_email'] = $this->mailbox_model->get_where($oid); 
         }
         else{
              $data['reply_count'] = 0;
