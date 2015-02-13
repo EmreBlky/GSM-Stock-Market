@@ -54,7 +54,7 @@
                                 </select>
                             </div>
                         	<div class="col-lg-3">
-                        		<input type="text" class="form-control" placeholder="Enter Model"/>
+            					<input type="text" name="country" id="autocomplete-dynamic" class="form-control" style="width: 100%; border-width: 5px;"/>
                             </div>
                         	<div class="col-lg-3">
                             	<select class="form-control">
@@ -124,7 +124,31 @@
                         <td>00000001</td>
                         <td>17:22 11-02</td>
                         <td>Apple</td>
-                        <td>iPhone 4S 16GB Black</td>
+                        <td>iPhone 4S 16GB</td>
+                        <td>Refurbished</td>
+                        <td>GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
+                    </tr>
+                    <tr>
+                        <td>00000001</td>
+                        <td>17:22 11-02</td>
+                        <td>Apple</td>
+                        <td>iPhone 5S 32GB</td>
+                        <td>Refurbished</td>
+                        <td>GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
+                    </tr>
+                    <tr>
+                        <td>00000001</td>
+                        <td>17:22 11-02</td>
+                        <td>Apple</td>
+                        <td>iPhone 2G 4GB</td>
                         <td>Refurbished</td>
                         <td>GBP 154.02</td>
                         <td>23</td>
@@ -166,6 +190,39 @@
                                     </div>
                                 </div>
                             </div>
+                            
+                            <datalist id="models">
+                            	<option value="iPhone 2G 16GB">
+                                <option value="iPhone 2G 4GB">
+                                <option value="iPhone 2G 8GB">
+                                <option value="iPhone 3G 16GB">
+                                <option value="iPhone 3G 8GB">
+                                <option value="iPhone 3GS 16GB">
+                                <option value="iPhone 3GS 32GB">
+                                <option value="iPhone 3GS 8GB">
+                                <option value="iPhone 4 16GB">
+                                <option value="iPhone 4 32GB">
+                                <option value="iPhone 4 8GB">
+                                <option value="iPhone 4S 16GB">
+                                <option value="iPhone 4S 32GB">
+                                <option value="iPhone 4S 64GB">
+                                <option value="iPhone 4S 8GB">
+                                <option value="iPhone 5 16GB">
+                                <option value="iPhone 5 32GB">
+                                <option value="iPhone 5 64GB">
+                                <option value="iPhone 5C 16GB">
+                                <option value="iPhone 5C 32GB">
+                                <option value="iPhone 5C 8GB">
+                                <option value="iPhone 5S 16GB">
+                                <option value="iPhone 5S 32GB">
+                                <option value="iPhone 5S 64GB">
+                                <option value="iPhone 6 128GB">
+                                <option value="iPhone 6 16GB">
+                                <option value="iPhone 6 64GB">
+                                <option value="iPhone 6 Plus 128GB">
+                                <option value="iPhone 6 Plus 16GB">
+                                <option value="iPhone 6 Plus 64GB">
+                            </datalist>
             
 
     <!-- Data Tables -->
@@ -180,6 +237,13 @@
     <script src="public/main/template/core/js/plugins/dataTables/dataTables.tableTools.min.js"></script>
 
     <!-- Page-Level Scripts -->
+    <script type="text/javascript" src="public/main/template/gsm/js/marketplace/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="public/main/template/gsm/js/marketplace/jquery.mockjax.js"></script> <!-- Autocomplete typing -->
+    <script type="text/javascript" src="public/main/template/gsm/js/marketplace/jquery.autocomplete.js"></script>
+    <script type="text/javascript" src="public/main/template/gsm/js/marketplace/countries.js"></script>
+    
+    
+    
     <script>
         $(document).ready(function() {
             $('.dataTables-example').dataTable({
@@ -193,6 +257,7 @@
 
         });
     </script>
+    
 <style>
     body.DTTT_Print {
         background: #fff;
@@ -222,4 +287,12 @@
         margin-right: 5px;
 
     }
+	
+	.autocomplete-suggestions { border: 1px solid #999; background: #FFF; cursor: default; overflow: auto; -webkit-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); -moz-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); }
+.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+.autocomplete-no-suggestion { padding: 2px 5px;}
+.autocomplete-selected { background: #F0F0F0; }
+.autocomplete-suggestions strong { font-weight: bold; color: #000; }
+.autocomplete-group { padding: 2px 5px; }
+.autocomplete-group strong { font-weight: bold; font-size: 16px; color: #000; display: block; border-bottom: 1px solid #000; }
 </style>

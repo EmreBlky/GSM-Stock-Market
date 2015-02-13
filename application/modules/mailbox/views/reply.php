@@ -107,7 +107,8 @@
                             
                                 $data = array(
                                             'name'        => 'body',
-                                            'class'       => 'form-control', 
+                                            'class'       => 'form-control',
+											'autofocus'  =>	'autofocus',
                                             'style'     => 'border:none',
                                             'required'      => 'required'
                                           );
@@ -212,7 +213,7 @@
             
                 //} 
             ?>
-                
+             
             </div>
         </div>
 </div>
