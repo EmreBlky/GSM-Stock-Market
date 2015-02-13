@@ -151,7 +151,18 @@
                                     <p><?php echo $reply->time;?> &amp; <?php echo $reply->date;?></p>
                                 </div>
                                 <h2><?php echo $reply->subject;?></h2>
-                                <p><?php echo $this->member_model->get_where($reply->member_id)->firstname.' '.$this->member_model->get_where($reply->member_id)->lastname?></p>
+                                <p>
+                                    
+                                    <?php 
+                                        if($reply->member_id == $this->session->userdata('members_id')){
+                                            echo 'From: ';
+                                        }
+                                        else{
+                                             echo 'To: ';
+                                        }
+                                    ?>
+                                    <?php echo $this->member_model->get_where($reply->member_id)->firstname.' '.$this->member_model->get_where($reply->member_id)->lastname?>
+                                </p>
                             </div>
                             <div class="mail-box" style="padding:10px;">
                                 <?php echo $reply->body;?>
@@ -167,7 +178,7 @@
                                     <p><?php echo $original_email->time;?> &amp; <?php echo $reply->date;?></p>
                                 </div>
                                 <h2><?php echo $original_email->subject;?></h2>
-                                <p><?php echo $this->member_model->get_where($original_email->member_id)->firstname.' '.$this->member_model->get_where($original_email->member_id)->lastname?></p>
+                                <p>From: <?php echo $this->member_model->get_where($original_email->member_id)->firstname.' '.$this->member_model->get_where($original_email->member_id)->lastname?></p>
                             </div>
                             <div class="mail-box" style="padding:10px;">
                                 <?php echo $original_email->body;?>
