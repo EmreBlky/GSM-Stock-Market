@@ -482,10 +482,10 @@
             <div class="col-lg-3">
                 <div class="wrapper wrapper-content project-manager">
                     <h4>Company Bio</h4>
-                    <?php if(file_exists("public/main/images/company/".$member_company->id.".jpg")){?>
-                        <img src="public/main/images/company/<?php echo $member_company->id; ?>.jpg" class="img-responsive" style="margin:0 auto">
+                    <?php if(file_exists("public/main/template/gsm/images/company/".$member_company->id.".jpg")){?>
+                        <img src="public/main/template/gsm/images/company/<?php echo $member_company->id; ?>.jpg" class="img-responsive" style="margin:0 auto">
                     <?php } else {?>
-                        <img src="public/main/images/company/no_company.jpg" class="img-responsive" style="margin:0 auto">
+                        <img src="public/main/template/gsm/images/company/no_company.jpg" class="img-responsive" style="margin:0 auto">
                     <?php }?>
                     
 					<div class="row" style="margin-top:20px">
