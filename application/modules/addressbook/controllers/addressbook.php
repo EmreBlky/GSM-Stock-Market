@@ -14,6 +14,7 @@ class Addressbook extends MX_Controller
 
     function index()
     {
+        
         $data['main'] = 'addressbook';
         $data['title'] = 'GSM - Addressbook';        
         $data['page'] = 'index';

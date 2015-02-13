@@ -6,7 +6,11 @@
 
 $this->load->model('member/member_model', 'member_model');
 $this->load->model('company/company_model', 'company_model');
+$this->load->model('favourite/favourite_model', 'favourite_model');
+
+
 ?>
+
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-9">
                     <h2>Address Book</h2>
@@ -59,7 +63,44 @@ $this->load->model('company/company_model', 'company_model');
         <div class="row">
         <?php 
             if($addressbook_count > 0){
-            foreach ($address_book as $address) {?>
+            foreach ($address_book as $address) {
+            $f_count = $this->favourite_model->count_where_multiple('member_id', $this->session->userdata('members_id'), 'favourite_id' ,$address->address_member_id); 
+            
+        ?>
+            <script type="text/javascript">    
+
+                        function faveAdd()
+                        {
+                            //var cust_added     = $('#cust_added').val();
+                            var cust_added = "<?php echo $address->address_member_id;?>";
+                             $.ajax({
+                                    type: "POST",
+                                    url: "favourite/add/"+ cust_added +"",
+                                    dataType: "html",
+                                    success:function(data){
+                                      $('#favourite_added').replaceWith('<button  onclick="faveRemove();"  type="button" class="btn btn-favourite" id="favourite_removed"><i class="fa fa-star"></i> Remove Favourite</button>');                             
+                                      toastr.success('This user has been added to your favourites.', 'Favourite Added');
+                                    },
+                            });
+                        }
+
+                        function faveRemove()
+                        {
+                            //var cust_added     = $('#cust_added').val();
+                            var cust_added = "<?php echo $address->address_member_id;?>";
+                             $.ajax({
+                                    type: "POST",
+                                    url: "favourite/remove/"+ cust_added +"",
+                                    dataType: "html",
+                                    success:function(data){
+                                      $('#favourite_removed').replaceWith('<button  onclick="faveAdd();"  type="button" class="btn btn-favourite" id="favourite_added"><i class="fa fa-star"></i> Add Favourite</button>');                             
+                                      toastr.error('This user has been removed from your favourites.', 'Favourite Removed');
+                                    },
+                            });
+                        }
+
+
+            </script>
             <div class="col-lg-4"><!-- Profile Widget Start -->
                 <div class="contact-box">
                     <a href="member/profile/<?php echo $address->address_member_id?>">
@@ -103,10 +144,24 @@ $this->load->model('company/company_model', 'company_model');
                         
                     </div>
                     <div class="col-sm-12 gsm-contact">
-                    		<div>
-                            <button class="btn btn-favourite" type="button"><i class="fa fa-star"></i>&nbsp;Favourite</button>
-                            <button class="btn btn-messenger" type="button"><i class="fa fa-wechat"></i>&nbsp;Messenger</button>
+                            <input type="hidden" name="cust_added" id="cust_added" value="<?php echo $address->address_member_id;?>"/> 
+                                                            
+                            <?php if($f_count < 1){?>
+                                <div> 
+                                <button onclick="faveAdd();" class="btn btn-favourite" type="button" id="favourite_added"><i class="fa fa-star"></i>&nbsp;Add Favourite</button>
+                                </div>
+                            <?php }else{?>
+                            <div>
+                                 <button onclick="faveRemove();" class="btn btn-favourite" type="button" id="favourite_removed"><i class="fa fa-star"></i>&nbsp;Remove Favourite</button>
                             </div>
+                            <?php }?>                           
+                            
+                            <?php if($this->member_model->get_where_multiple('id', $address->address_member_id)->online_status == 'online'){?>
+                            <div>    
+                                 <button class="btn btn-messenger" type="button"><i class="fa fa-wechat"></i>&nbsp;Messenger</button>  
+                            </div>     
+                            <?php }?>                           
+                            
                             <div>
 <!--                            <button class="btn btn-message" type="button" data-toggle="modal" data-target="#profile_message"><i class="fa fa-envelope"></i>&nbsp;Message</button>-->
                             <button  onclick="location.href='member/profile/<?php echo $address->address_member_id ?>'" class="btn btn-profile" type="button"><i class="fa fa-user"></i>&nbsp;View Profile</button>
@@ -140,3 +195,25 @@ $this->load->model('company/company_model', 'company_model');
         </div>   
          
         </div>
+        <script src="public/main/template/core/js/plugins/toastr/toastr.min.js"></script>
+    <script type="text/javascript">
+        
+        $(function () {
+                toastr.options = {
+                    closeButton: false,
+                    debug:false,
+                    progressBar: false,
+                    positionClass: 'toast-bottom-right',
+                    onclick: null,
+					showDuration: 400,
+					hideDuration: 1000,
+					timeOut: 7000,
+					extendedTimeOut: 1000,
+					showEasing: 'swing',
+					hideEasing: 'linear',
+					showMethod: 'fadeIn',
+					hideMethod: 'fadeOut',
+				};
+            
+        })
+    </script>    
