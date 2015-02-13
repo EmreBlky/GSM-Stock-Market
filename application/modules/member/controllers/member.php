@@ -28,6 +28,8 @@ class Member extends MX_Controller
     {
         $this->load->model('viewed/viewed_model', 'viewed_model');
         
+        $this->viewed_model->_delete_where('viewed_id' ,$pid, 'viewer_id', $this->session->userdata('members_id'));
+        
         $data = array(
                     'viewed_id' => $pid,
                     'viewer_id' => $this->session->userdata('members_id'),

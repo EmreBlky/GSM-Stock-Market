@@ -137,9 +137,11 @@
 
             
             <?php         }
-                        unset($view->viewer_id);
+                        //unset($view->viewer_id);
                         }
-                      } 
+                        echo $pagination;
+                      }
+                     
             ?>
        	</div><!-- Row End -->
 <!--        <div class="row" style="margin:0 0 25px 0">

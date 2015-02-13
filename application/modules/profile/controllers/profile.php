@@ -51,12 +51,21 @@ class Profile extends MX_Controller
         }
     }
             
-    function who_viewed()
+    function who_viewed($page = NULL, $off = NULL)
     {
+        $this->load->library('pagination');
         $data['base'] = $this->config->item('base_url');
         $data['main'] = 'profile';        
         $data['title'] = 'GSM - Whos Viewed Profile';        
         $data['page'] = 'whos-viewed';
+        
+        if(isset($off) && $off > 1){
+            $new_mem = $off-1;
+            $offset = 21*$new_mem;
+        }
+        else{
+            $offset = 0;
+        }
         
         $datas = array(
                         'notified' => 'yes'
@@ -72,7 +81,31 @@ class Profile extends MX_Controller
         if($viewed > 0){
             
             $data['viewed_count'] = $viewed;
-            $data['viewed'] = $this->viewed_model->_custom_query("SELECT DISTINCT viewer_id FROM gsmstock_secure.viewed WHERE viewed_id = '".$this->session->userdata('members_id')."' ORDER BY datetime DESC");            
+            //echo $viewed;
+            //exit;
+            
+            $data['viewed'] = $this->viewed_model->_custom_query("SELECT DISTINCT viewer_id FROM gsmstock_secure.viewed WHERE viewed_id = '".$this->session->userdata('members_id')."' ORDER BY datetime DESC LIMIT ".$offset.", 21");
+            $config['base_url'] = $this->config->item('base_url').'profile/who_viewed/page';
+            $config['total_rows'] = $viewed;
+            $config['per_page'] = 21;
+            $config["uri_segment"] = 4;
+            $config['use_page_numbers'] = TRUE;
+
+            $config['full_tag_open'] = '<div class="row" style="margin:0 0 25px 0"><div class="btn-group pull-right">';
+            $config['full_tag_close'] = '</div></div>';
+            $config['next_tag_open'] = '<div class="btn btn-white">';
+            $config['next_tag_close'] = '</div>';
+            $config['prev_tag_open'] = ' <div class="btn btn-white">';
+            $config['prev_tag_close'] = '</div>';
+            $config['cur_tag_open'] = '<div class="btn btn-white  active">';
+            $config['cur_tag_close'] = '</div>';
+            $config['num_tag_open'] = '<div class="btn btn-white">';                
+            $config['num_tag_close'] = '</div>';
+            $config['prev_link'] = '<i class="fa fa-chevron-left"></i>';
+            $config['next_link'] = '<i class="fa fa-chevron-right"></i>';
+
+            $this->pagination->initialize($config);
+            $data['pagination'] = $this->pagination->create_links();
         }
         else{
             $data['viewed_count'] = 0;

@@ -178,21 +178,17 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
         
         <?php 
         
-        } 
+                }
+                
             }?>    
             
        	</div><!-- Row End -->
-        
-        <div class="row" style="margin:0 0 25px 0">
-        <div class="btn-group pull-right">
-            <button type="button" class="btn btn-white"><i class="fa fa-chevron-left"></i></button>
-            <button class="btn btn-white">1</button>
-            <button class="btn btn-white  active">2</button>
-            <button class="btn btn-white">3</button>
-            <button class="btn btn-white">4</button>
-            <button type="button" class="btn btn-white"><i class="fa fa-chevron-right"></i> </button>
-        </div>
-        </div>   
+        <?php 
+            if($addressbook_count > 0){
+                echo $pagination;
+            }
+        ?>
+           
          
         </div>
         <script src="public/main/template/core/js/plugins/toastr/toastr.min.js"></script>
