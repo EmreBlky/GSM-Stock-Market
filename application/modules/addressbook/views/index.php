@@ -67,40 +67,15 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
             $f_count = $this->favourite_model->count_where_multiple('member_id', $this->session->userdata('members_id'), 'favourite_id' ,$address->address_member_id); 
             
         ?>
-            <script type="text/javascript">    
-
-                        function faveAdd()
+        <?php echo '<script type="text/javascript"> 
+                    function faveAdd()
                         {
-                            //var cust_added     = $('#cust_added').val();
-                            var cust_added = "<?php echo $address->address_member_id;?>";
-                             $.ajax({
-                                    type: "POST",
-                                    url: "favourite/add/"+ cust_added +"",
-                                    dataType: "html",
-                                    success:function(data){
-                                      $('#favourite_added').replaceWith('<button  onclick="faveRemove();"  type="button" class="btn btn-favourite" id="favourite_removed"><i class="fa fa-star"></i> Remove Favourite</button>');                             
-                                      toastr.success('This user has been added to your favourites.', 'Favourite Added');
-                                    },
-                            });
-                        }
-
-                        function faveRemove()
-                        {
-                            //var cust_added     = $('#cust_added').val();
-                            var cust_added = "<?php echo $address->address_member_id;?>";
-                             $.ajax({
-                                    type: "POST",
-                                    url: "favourite/remove/"+ cust_added +"",
-                                    dataType: "html",
-                                    success:function(data){
-                                      $('#favourite_removed').replaceWith('<button  onclick="faveAdd();"  type="button" class="btn btn-favourite" id="favourite_added"><i class="fa fa-star"></i> Add Favourite</button>');                             
-                                      toastr.error('This user has been removed from your favourites.', 'Favourite Removed');
-                                    },
-                            });
-                        }
-
-
-            </script>
+                        var test = '.$address->address_member_id.';
+                        alert(test);    
+                    }
+            </script>';
+        ?>
+            
             <div class="col-lg-4"><!-- Profile Widget Start -->
                 <div class="contact-box">
                     <a href="member/profile/<?php echo $address->address_member_id?>">
@@ -144,15 +119,15 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                         
                     </div>
                     <div class="col-sm-12 gsm-contact">
-                            <input type="hidden" name="cust_added" id="cust_added" value="<?php echo $address->address_member_id;?>"/> 
+                            <input type="hidden" name="cust_added_<?php echo $address->address_member_id;?>" id="cust_added_<?php echo $address->address_member_id;?>" value="<?php echo $address->address_member_id;?>"/> 
                                                             
                             <?php if($f_count < 1){?>
                                 <div> 
-                                <button onclick="faveAdd();" class="btn btn-favourite" type="button" id="favourite_added"><i class="fa fa-star"></i>&nbsp;Add Favourite</button>
+                                <button onclick="faveAdd();" class="btn btn-favourite" type="button" id="favourite_added_<?php echo $address->address_member_id; ?>"><i class="fa fa-star"></i>&nbsp;Add Favourite</button>
                                 </div>
                             <?php }else{?>
                             <div>
-                                 <button onclick="faveRemove();" class="btn btn-favourite" type="button" id="favourite_removed"><i class="fa fa-star"></i>&nbsp;Remove Favourite</button>
+                                 <button onclick="faveRemove();" class="btn btn-favourite" type="button" id="favourite_removed_<?php echo $address->address_member_id; ?>"><i class="fa fa-star"></i>&nbsp;Remove Favourite</button>
                             </div>
                             <?php }?>                           
                             
@@ -177,7 +152,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
             ?>
         
         <?php 
-        
+                unset($address->address_member_id);
                 }
                 
             }?>    

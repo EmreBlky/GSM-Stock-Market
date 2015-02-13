@@ -1,5 +1,4 @@
 
-<ul class="dropdown-menu dropdown-messages">
     <?php if($count > 0){?>
         <?php foreach($inbox_message as $inbox){?>
 			<a href="mailbox/inbox/all/<?php echo $inbox->id; ?>" class="message_alert">
@@ -35,4 +34,3 @@
             </a>
         </div>
     </li>
-</ul>

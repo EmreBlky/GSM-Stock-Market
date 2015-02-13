@@ -32,12 +32,8 @@
                             ?>
                         </div>                            
                     </a>
-                    <?php
+                    <ul class="dropdown-menu dropdown-messages"></ul>
                     
-                        $this->load->module('mailbox');
-                        $this->mailbox->mail_dropdown(3);
-                        
-                    ?>
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">

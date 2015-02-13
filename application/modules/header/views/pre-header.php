@@ -22,8 +22,6 @@
 
         });
         
-          
-        
         function autoRefresh()
         {
             
@@ -34,6 +32,9 @@
             });  
             $.get("mailbox/new_message", function(data) {
                 $("#inbox_count").html(data);    
+            });
+            $.get("mailbox/mail_dropdown/3", function(data) {
+                $(".dropdown-messages").html(data);    
             });
             
          }
