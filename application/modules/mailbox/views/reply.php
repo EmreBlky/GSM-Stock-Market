@@ -154,7 +154,7 @@
                 if($reply_count > 0){
 
                     foreach($inbox_reply as $reply){
-                        if($reply->id < $message_id){
+                        if($reply->id <= $message_id){
                 ?>
 
                         <div class="mail-box-header" style="border-bottom: 1px solid #e6e6e6">
