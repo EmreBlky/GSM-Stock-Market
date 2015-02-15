@@ -1,3 +1,12 @@
+<?php
+
+//echo '<pre>';
+//print_r($email_info);
+//exit;
+
+?>
+
+
 <script type="text/javascript">
     $(function() {
 
@@ -76,11 +85,59 @@
              <div class="col-lg-9 animated fadeInRight">
             <div class="mail-box-header">
                 <div class="pull-right tooltip-demo">
-                    <!--                    <div class="btn-group pull-right" style="padding-left: 10px;">
-                        <button class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i></button>
-                        <button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i></button>
+                    <?php
+                        if(count($email_info) > 1){
+                        $start_email = reset($email_info);
+                        $end_email = end($email_info);
+                        
+                        function next_email($current, $a) {
 
-                    </div>-->
+                        global $end_email;
+                            while (true) {
+
+                                if($current == $end_email){
+                                                return $a[0];
+                                        }elseif ($current == $a[1]) {
+
+                                    return $a[2];
+
+                                }
+
+                                array_push($a, array_shift($a));
+                            }
+                        }
+
+                        function prev_email($current, $a) {
+
+                        global $start_email;
+
+                            while (true) {
+
+                                if($current == $start_email){
+                                                return $a[0];
+                                        }elseif ($current == $a[1]) {
+                                    return $a[0];
+
+                                }
+                                array_push($a, array_shift($a));
+                            }
+                        }
+                        $mess_id = $this->uri->segment(4);
+                        $next = next_email($mess_id, $email_info);
+                        $previous = prev_email($mess_id, $email_info);
+                        
+                        
+                    
+                    ?>
+                    <div class="btn-group pull-right" style="padding-left: 10px;">
+                        <?php if($end_email != $mess_id){ ?>
+                        <button onclick="window.location.href='mailbox/inbox/<?php echo $this->uri->segment(3);?>/<?php echo $next;?>'" class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i> Previous</button>
+                        <?php }?>
+                        <?php if($start_email != $mess_id){ ?>
+                        <button onclick="window.location.href='mailbox/inbox/<?php echo $this->uri->segment(3);?>/<?php echo $previous;?>'" class="btn btn-white btn-sm">Next <i class="fa fa-arrow-right"></i></button>
+                        <?php }?>
+                    </div>
+                    <?php }?>
                     <?php 
                         if($draft_message_count > 0){
                         $draft_message = $this->mailbox_model->get_where_multiple('parent_id', $this->uri->segment(4), 'draft', 'yes');   

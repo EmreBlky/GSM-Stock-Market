@@ -107,6 +107,12 @@ class Mailbox extends MX_Controller
                 $data['inbox_member'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'sent_member_id', $this->session->userdata('members_id'), 'sent_from', $from, 'inbox', 'yes', NULL, NULL, 20, $offset);      
                 $data['inbox_ncount'] = 0;
                 
+                $array = mysql_query("SELECT id FROM mailbox WHERE sent_member_id = '".$this->session->userdata('members_id')."' AND inbox = 'yes' AND sent_from = 'member'");
+                while ($row = mysql_fetch_array($array)) {
+                    $email_array[] = $row["id"];
+                }
+                $data['email_info'] = $email_array;
+                
                 
                 $config['total_rows'] = $mem_count;
                 $config['per_page'] = 20;
@@ -167,6 +173,13 @@ class Mailbox extends MX_Controller
                 $data['inbox_mark_count'] = $mark_count;
                 $data['inbox_mark_ncount'] = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'sent_from', $from, 'inbox', 'yes', 'mail_read', 'no');
                 $data['inbox_market'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'sent_member_id', $this->session->userdata('members_id'), 'sent_from', $from, 'inbox', 'yes', NULL, NULL, 20, $offset);        
+                
+                $array = mysql_query("SELECT id FROM mailbox WHERE sent_member_id = '".$this->session->userdata('members_id')."' AND inbox = 'yes' AND sent_from = 'market'");
+                while ($row = mysql_fetch_array($array)) {
+                    $email_array[] = $row["id"];
+                }
+                $data['email_info'] = $email_array;
+                
                 
                 $config['total_rows'] = $mark_count;
                 $config['per_page'] = 20;
@@ -229,6 +242,16 @@ class Mailbox extends MX_Controller
                 $data['inbox_s_ncount'] = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'sent_from', $from, 'inbox', 'yes', 'mail_read', 'no');
                 $data['inbox_support'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'sent_member_id', $this->session->userdata('members_id'), 'sent_from', $from, 'inbox', 'yes', NULL, NULL, 20, $offset);
                 
+                $array = mysql_query("SELECT id FROM mailbox WHERE sent_member_id = '".$this->session->userdata('members_id')."' AND inbox = 'yes' AND sent_from = 'member'");
+                while ($row = mysql_fetch_array($array)) {
+                    $email_array[] = $row["id"];
+                }
+                echo '<pre>';
+                print_r($email_array);
+                exit;
+                
+                $data['email_info'] = $email_array;
+                
                 $config['total_rows'] = $s_count;
                 $config['per_page'] = 20;
                 $config["uri_segment"] = 5;
@@ -279,16 +302,12 @@ class Mailbox extends MX_Controller
                 $data['inbox_i_count'] = $count;
                 $data['inbox_i_ncount'] = $this->mailbox_model->count_where('sent_member_id',$this->session->userdata('members_id'), 'inbox', 'yes', 'mail_read', 'no');
                 $data['inbox_all'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'sent_member_id',$this->session->userdata('members_id'), 'inbox', 'yes', NULL, NULL, NULL, NULL, 20, $offset);
-                $array = $this->mailbox_model->_custom_query("SELECT id FROM mailbox WHERE sent_member_id = '".$this->session->userdata('members_id')."'");
-                
-//                echo '<pre>';
-//                $count = 0;
-//                print_r($array);
-//                echo $array[$count+1]->id;
-//                foreach ($array as $id => $value){
-//                    echo $id->id.'<br/>';
-//                }
-//                exit;
+                //$array = $this->mailbox_model->_custom_query("SELECT id FROM mailbox WHERE sent_member_id = '".$this->session->userdata('members_id')."'");
+                $array = mysql_query("SELECT id FROM mailbox WHERE sent_member_id = '".$this->session->userdata('members_id')."' AND inbox = 'yes'");
+                while ($row = mysql_fetch_array($array)) {
+                    $email_array[] = $row["id"];
+                }
+                $data['email_info'] = $email_array;
 
                 $config['total_rows'] = $count;
                 $config['per_page'] = 20;
