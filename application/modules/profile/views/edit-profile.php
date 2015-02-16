@@ -19,6 +19,7 @@
 	}
 			
 			function validate_info() {
+				return false;
 				var total = getCheckedBoxesCount();
 				if(total <= 0) {
 					console.log(total);
