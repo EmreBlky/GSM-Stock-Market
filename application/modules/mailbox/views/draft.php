@@ -12,8 +12,6 @@
     $this->mailbox->mailboxCss();
 
 ?>
-
-
 <div class="wrapper wrapper-content">
         <div class="row">
             <?php
