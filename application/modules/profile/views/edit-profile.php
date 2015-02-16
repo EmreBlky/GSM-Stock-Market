@@ -20,7 +20,9 @@
 			
 			function validate_info() {
 				var total = getCheckedBoxesCount();
-				alert(total + 'Form is submitting now');
+				if(total <= 0) {
+					Alert('Please Select atleast one Business Sector');
+				}
 			}
 			
 			function getCheckedBoxesCount() {
