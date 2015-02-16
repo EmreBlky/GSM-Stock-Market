@@ -2,6 +2,7 @@
 
     $this->load->module('mailbox');
     $this->mailbox->mailboxJquery();
+    $this->mailbox->mailboxCss();
 
 ?>
 
