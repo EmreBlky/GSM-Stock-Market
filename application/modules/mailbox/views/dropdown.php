@@ -29,7 +29,7 @@
     <?php }?>        
     <li>
         <div class="text-center link-block">
-            <a href="mailbox/inbox">
+            <a href="mailbox/inbox/all">
                 <i class="fa fa-envelope"></i> <strong>Read All Messages</strong>
             </a>
         </div>
