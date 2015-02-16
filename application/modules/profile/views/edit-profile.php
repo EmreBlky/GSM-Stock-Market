@@ -17,8 +17,12 @@
 		$("#phone_number").val(value);  
 		$("#mobile_phone").val(value);  
 	}
-	
-				
+			
+			function validate_info() {
+				var total = getCheckedBoxesCount();
+				alert(total + 'Form is submitting now');
+			}
+			
 			function getCheckedBoxesCount() {
 				var count = 1;
 				var total = 0;
@@ -395,7 +399,7 @@
                         </div>
                         <div class="ibox-content">
                             <?php 
-					$attributes = array('class' => 'form-horizontal validation');
+					$attributes = array('class' => 'form-horizontal validation', 'onsubmit' => 'validate_info()');
 					echo form_open('profile/profileEdit', $attributes);
 							?>
                             	<div class="form-group"><label class="col-md-3 control-label">Company Name</label>
