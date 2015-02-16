@@ -90,12 +90,12 @@
                     
                     ?>
                     <div class="btn-group pull-right" style="padding-left: 10px;">
-                        <?php if($end_email != $mess_id){ ?>
-                        <button onclick="window.location.href='mailbox/archive/<?php echo $next;?>'" class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i> Previous</button>
-                        <?php }?>
                         <?php if($start_email != $mess_id){ ?>
-                        <button onclick="window.location.href='mailbox/archive/<?php echo $previous;?>'" class="btn btn-white btn-sm">Next <i class="fa fa-arrow-right"></i></button>
+                        <button onclick="window.location.href='mailbox/archive/<?php echo $previous;?>'" class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i> Previous</button>
                         <?php }?>
+                        <?php if($end_email != $mess_id){ ?>
+                        <button onclick="window.location.href='mailbox/archive/<?php echo $next;?>'" class="btn btn-white btn-sm">Next <i class="fa fa-arrow-right"></i></button>
+                        <?php }?>                        
                     </div>
                     <?php }elseif(count($email_info) == 2){
                         $mess_id = $this->uri->segment(3);
@@ -104,10 +104,10 @@
                     ?>
                     <div class="btn-group pull-right" style="padding-left: 10px;">
                         <?php if($mess_id != $start_email){?>
-                        <button onclick="window.location.href='mailbox/archive/<?php echo $start_email;?>'" class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i> Previous</button>
+                        <button onclick="window.location.href='mailbox/archive/<?php echo $start_email;?>'" class="btn btn-white btn-sm">Next <i class="fa fa-arrow-right"></i></button>
                         <?php }?>
                         <?php if($mess_id != $end_email){?>
-                        <button onclick="window.location.href='mailbox/archive/<?php echo $end_email;?>'" class="btn btn-white btn-sm">Next <i class="fa fa-arrow-right"></i></button>
+                        <button onclick="window.location.href='mailbox/archive/<?php echo $end_email;?>'" class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i> Previous</button>
                         <?php }?>
                     </div>
                     <?php }?>
