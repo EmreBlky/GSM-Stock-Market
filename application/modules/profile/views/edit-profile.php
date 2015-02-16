@@ -20,8 +20,10 @@
 			
 			function validate_info() {
 				var total = getCheckedBoxesCount();
+				alert(total);
 				if(total <= 0) {
 					Alert('Please Select atleast one Business Sector');
+					return false;
 				}
 			}
 			
