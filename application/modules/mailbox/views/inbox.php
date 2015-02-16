@@ -223,7 +223,7 @@
                                 <h2><?php echo $reply->subject;?></h2>
                                 <p>
                                     From: 
-                                    <?php echo $this->member_model->get_where($reply->member_id)->firstname.' '.$this->member_model->get_where($reply->member_id)->lastname?>
+                                    <?php echo $this->member_model->get_where($reply->member_id)->firstname.' '.$this->member_model->get_where($reply->member_id)->lastname;?> (<?php echo $this->company_model->get_where($this->member_model->get_where($reply->member_id)->company_id)->company_name;?>)
                                 </p>
                             </div>
                             <div class="mail-box" style="padding:10px;">
@@ -240,7 +240,7 @@
                                     <p><?php echo $original_email->time;?> &amp; <?php echo $reply->date;?></p>
                                 </div>
                                 <h2><?php echo $original_email->subject;?></h2>
-                                <p>From: <?php echo $this->member_model->get_where($original_email->member_id)->firstname.' '.$this->member_model->get_where($original_email->member_id)->lastname?></p>
+                                <p>From: <?php echo $this->member_model->get_where($original_email->member_id)->firstname.' '.$this->member_model->get_where($original_email->member_id)->lastname?> (<?php echo $this->company_model->get_where($this->member_model->get_where($original_email->member_id)->company_id)->company_name;?>)</p>
                             </div>
                             <div class="mail-box" style="padding:10px;">
                                 <?php echo $original_email->body;?>

@@ -57,7 +57,7 @@
                      ?> 
                 </h2>
                 <div class="mail-tools tooltip-demo m-t-md">
-                    <input type="checkbox" id="select_all"/> Selecct All
+                    <input type="checkbox" id="select_all"/> Select All
 <!--                <a href="mailbox/refresh" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh</a>
                     <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="bottom" name="button" value="read" title="Mark as Read"><i class="fa fa-eye"></i> Mark Read</button>
                     <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="bottom" name="button" value="unread" title="Mark as Unread"><i class="fa fa-eye-slash"> Mark Unread</i></button>-->
