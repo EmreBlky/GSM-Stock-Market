@@ -1,4 +1,5 @@
-        <?php
+<?php
+
     $this->load->model('member/member_model', 'member_model');
     $this->load->module('mailbox');
     $this->mailbox->mailboxJquery();

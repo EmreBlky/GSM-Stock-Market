@@ -11,8 +11,6 @@
     $this->mailbox->mailboxJquery();
 
 ?>
-
-
 <div class="wrapper wrapper-content">
         <div class="row">
             <?php
