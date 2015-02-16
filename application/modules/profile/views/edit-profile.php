@@ -407,7 +407,7 @@
                         </div>
                         <div class="ibox-content">
                             <?php 
-					$attributes = array('class' => 'form-horizontal validation', 'onsubmit' => 'validate_info()');
+					$attributes = array('class' => 'form-horizontal validation', 'onsubmit' => 'return validate_info()');
 					echo form_open('profile/profileEdit', $attributes);
 							?>
                             	<div class="form-group"><label class="col-md-3 control-label">Company Name</label>
