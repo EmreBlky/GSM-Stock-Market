@@ -1,30 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <base href="<?php echo $base;?>">  
+
+<head>
+
+    <base href="<?php echo $base;?>">
+    
+    <!-- Meta Data --> 
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="/images/favicon.ico">
+    <title><?php echo $title; ?></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="GSM Stock Market The ultimate trading platform for mobile phone trade companies globally. Members are retailers, wholesalers, distributors, manufacturers, network operators and service centres from all over the world." />
+	<meta name="keywords" content="gsm stock market, gsm trading, gsm market, gsm stock, mobile trading, phone trading, mobile phone, phone companies, mobile phone directory" />
+    <meta name="google-translate-customization" content=""/>
+    
+    <!-- Styling -->
+    <link href="public/main/template/core/css/bootstrap.min.css" rel="stylesheet">
+    <link href="public/main/template/core/font-awesome/css/font-awesome.css" rel="stylesheet">
+    
+    <!-- Morris -->
+    <link href="public/main/template/core/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+    <!-- Gritter -->
+    <link href="public/main/template/core/js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+    <!-- Toastr style -->
+    <link href="public/main/template/core/css/plugins/toastr/toastr.min.css" rel="stylesheet">
 
-    <title>Admin Control Panel</title>
+    <link href="public/main/template/core/css/animate.css" rel="stylesheet">
+    <link href="public/main/template/core/css/style.css" rel="stylesheet">
+    <link href="public/main/template/gsm/css/style.css" rel="stylesheet"> <!-- GSM Override -->
+    
+    <!-- Mainly scripts -->
+    <script src="public/main/template/core/js/jquery-2.1.1.js"></script>
+    <script src="public/main/template/core/js/bootstrap.min.js"></script>
+    <script src="public/main/template/core/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="public/main/template/core/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
-    <!-- Bootstrap core CSS -->
-    <link href="public/admin/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom and plugin javascript -->
+    <script src="public/main/template/core/js/inspinia.js"></script>
+    <script src="public/main/template/core/js/plugins/pace/pace.min.js"></script>
 
-    <!-- Custom styles for this template -->
-    <link href="public/admin/css/dashboard.css" rel="stylesheet">
+    <!-- jQuery UI -->
+    <script src="public/main/template/core/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+   
+</head>
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="public/admin/js/ie-emulation-modes-warning.js"></script>
-    <script type="text/javascript" src="public/admin/js/search_query.js"></script>
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
+<body class="skin-2">
+
+
+	
