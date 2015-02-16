@@ -19,6 +19,7 @@
 	}
 			
 			function validate_info() {
+			/*
 				var total = getCheckedBoxesCount();
 				
 				if(total <= 0) {
@@ -117,6 +118,7 @@
 					count++;
 				}
 				return total;
+				*/
 			}
 			
 			function toggleChecks(counter) {
