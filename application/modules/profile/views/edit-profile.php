@@ -302,8 +302,10 @@
 							$('#tertiary-business').css("display", 'none');
 							$('#selectMessage').css("display", 'block');
 							
+							var str_prime = "<option value = '" + id + "' selected = 'selected'>" + value + "</option>";	// Create Option for primary select box
+							
 							if(chk == false) {	// If Checkbox is checked
-								$('#bprimary').append(str);	// Append the value to Primary Select box
+								$('#bprimary').append(str_prime);	// Append the value to Primary Select box
 							} else { 
 								$("#bprimary option[value='"+id+"']").remove();	// Remove the value from Primary Select box
 							}
