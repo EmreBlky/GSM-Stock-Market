@@ -86,7 +86,7 @@
             <div class="mail-box-header">
                 <div class="pull-right tooltip-demo">
                     <?php
-                        if(count($email_info) > 1){
+                        if(count($email_info) > 2){
                         $start_email = reset($email_info);
                         $end_email = end($email_info);
                         
@@ -135,6 +135,19 @@
                         <?php }?>
                         <?php if($start_email != $mess_id){ ?>
                         <button onclick="window.location.href='mailbox/inbox/<?php echo $this->uri->segment(3);?>/<?php echo $previous;?>'" class="btn btn-white btn-sm">Next <i class="fa fa-arrow-right"></i></button>
+                        <?php }?>
+                    </div>
+                    <?php }elseif(count($email_info) == 2){
+                       $mess_id = $this->uri->segment(4); 
+                       $start_email = reset($email_info);
+                       $end_email = end($email_info); 
+                    ?>
+                    <div class="btn-group pull-right" style="padding-left: 10px;">
+                        <?php if($mess_id != $start_email){?>
+                        <button onclick="window.location.href='mailbox/inbox/<?php echo $this->uri->segment(3);?>/<?php echo $start_email;?>'" class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i> Previous</button>
+                        <?php }?>
+                        <?php if($mess_id != $end_email){?>
+                        <button onclick="window.location.href='mailbox/inbox/<?php echo $this->uri->segment(3);?>/<?php echo $end_email;?>'" class="btn btn-white btn-sm">Next <i class="fa fa-arrow-right"></i></button>
                         <?php }?>
                     </div>
                     <?php }?>

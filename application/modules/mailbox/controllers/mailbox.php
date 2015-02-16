@@ -436,6 +436,12 @@ class Mailbox extends MX_Controller
             $data['inbox_sent_count'] = $count;
             $data['inbox_sent_message'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'sent_belong', $this->session->userdata('members_id'), 'sent', 'yes', NULL, NULL, NULL, NULL, 20, $offset);
             
+            $array = mysql_query("SELECT id FROM mailbox WHERE sent_belong = '".$this->session->userdata('members_id')."' AND sent = 'yes'");
+                while ($row = mysql_fetch_array($array)) {
+                    $email_array[] = $row["id"];
+                }
+            $data['email_info'] = $email_array;
+            
             $config['base_url'] = $this->config->item('base_url').'mailbox/sent/page/';           
             $config['total_rows'] = $count;
             $config['per_page'] = 20;
@@ -532,6 +538,12 @@ class Mailbox extends MX_Controller
             $data['inbox_important_count'] = $count;
              $data['inbox_important_message'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'important_belong', $this->session->userdata('members_id'), 'important', 'yes', NULL, NULL, NULL, NULL, 20, $offset);
              
+             $array = mysql_query("SELECT id FROM mailbox WHERE important_belong = '".$this->session->userdata('members_id')."'");
+                while ($row = mysql_fetch_array($array)) {
+                    $email_array[] = $row["id"];
+                }
+            $data['email_info'] = $email_array;
+             
              $config['base_url'] = $this->config->item('base_url').'mailbox/important/page/';           
             $config['total_rows'] = $count;
             $config['per_page'] = 20;
@@ -609,6 +621,12 @@ class Mailbox extends MX_Controller
                 if($count > 0){            
                     $data['inbox_draft_count_reply'] = $count;
                     $data['inbox_draft_message_reply'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'member_id', $this->session->userdata('members_id'), 'draft', 'yes', 'parent_id', $this->mailbox_model->get_where_multiple('id', $mid)->parent_id, NULL, NULL, 20, $offset);
+                    
+                    $array = mysql_query("SELECT id FROM mailbox WHERE draft_belong = '".$this->session->userdata('members_id')."'");
+                while ($row = mysql_fetch_array($array)) {
+                    $email_array[] = $row["id"];
+                }
+            $data['email_info'] = $email_array;
                     
                     $config['base_url'] = $this->config->item('base_url').'mailbox/draft/page/';           
             $config['total_rows'] = $count;
@@ -719,6 +737,12 @@ class Mailbox extends MX_Controller
         if($count > 0){            
             $data['inbox_trash_count'] = $count;
             $data['inbox_trash_message'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'trash_belong', $this->session->userdata('members_id'), 'trash', 'yes', NULL, NULL, NULL, NULL, 20, $offset);                    
+            
+            $array = mysql_query("SELECT id FROM mailbox WHERE trash_belong = '".$this->session->userdata('members_id')."'");
+                while ($row = mysql_fetch_array($array)) {
+                    $email_array[] = $row["id"];
+                }
+            $data['email_info'] = $email_array;
             
             $config['base_url'] = $this->config->item('base_url').'mailbox/trash/page/';           
             $config['total_rows'] = $count;
@@ -1027,6 +1051,12 @@ class Mailbox extends MX_Controller
         if($count > 0){            
             $data['inbox_archive_count'] = $count;
             $data['inbox_archive_message'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'archive_belong', $this->session->userdata('members_id'), 'archive', 'yes', NULL, NULL, NULL, NULL, 20, $offset);
+            
+            $array = mysql_query("SELECT id FROM mailbox WHERE archive_belong = '".$this->session->userdata('members_id')."' AND archive = 'yes'");
+                while ($row = mysql_fetch_array($array)) {
+                    $email_array[] = $row["id"];
+                }
+            $data['email_info'] = $email_array;
             
             $config['base_url'] = $this->config->item('base_url').'mailbox/archive/page/';           
             $config['total_rows'] = $count;

@@ -35,11 +35,72 @@
         
         <div class="col-lg-9 animated fadeInRight">
             <div class="mail-box-header">
-<!--                    <div class="btn-group pull-right" style="padding-left: 10px;">
-                        <button class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i></button>
-                        <button class="btn btn-white btn-sm"><i class="fa fa-arrow-right"></i></button>
+                    <?php
+                        if(count($email_info) > 2){
+                        $start_email = reset($email_info);
+                        $end_email = end($email_info);
+                        
+                        function next_email($current, $a) {
 
-                    </div>-->
+                        global $end_email;
+                            while (true) {
+
+                                if($current == $end_email){
+                                                return $a[0];
+                                        }elseif ($current == $a[1]) {
+
+                                    return $a[2];
+
+                                }
+
+                                array_push($a, array_shift($a));
+                            }
+                        }
+
+                        function prev_email($current, $a) {
+
+                        global $start_email;
+
+                            while (true) {
+
+                                if($current == $start_email){
+                                                return $a[0];
+                                        }elseif ($current == $a[1]) {
+                                    return $a[0];
+
+                                }
+                                array_push($a, array_shift($a));
+                            }
+                        }
+                        $mess_id = $this->uri->segment(3);
+                        $next = next_email($mess_id, $email_info);
+                        $previous = prev_email($mess_id, $email_info);
+                        
+                        
+                    
+                    ?>
+                    <div class="btn-group pull-right" style="padding-left: 10px;">
+                        <?php if($end_email != $mess_id){ ?>
+                        <button onclick="window.location.href='mailbox/trash/<?php echo $next;?>'" class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i> Previous</button>
+                        <?php }?>
+                        <?php if($start_email != $mess_id){ ?>
+                        <button onclick="window.location.href='mailbox/trash/<?php echo $previous;?>'" class="btn btn-white btn-sm">Next <i class="fa fa-arrow-right"></i></button>
+                        <?php }?>
+                    </div>
+                    <?php }elseif(count($email_info) == 2){
+                        $mess_id = $this->uri->segment(3);
+                        $start_email = reset($email_info);
+                        $end_email = end($email_info); 
+                    ?>
+                    <div class="btn-group pull-right" style="padding-left: 10px;">
+                        <?php if($mess_id != $start_email){?>
+                        <button onclick="window.location.href='mailbox/trash/<?php echo $start_email;?>'" class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i> Previous</button>
+                        <?php }?>
+                        <?php if($mess_id != $end_email){?>
+                        <button onclick="window.location.href='mailbox/trash/<?php echo $end_email;?>'" class="btn btn-white btn-sm">Next <i class="fa fa-arrow-right"></i></button>
+                        <?php }?>
+                    </div>
+                    <?php }?>
                 <div class="pull-right tooltip-demo">
                     <!-- <a href="mail_compose.html" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Reply"><i class="fa fa-reply"></i> Reply</a> -->
                     <a href="mailbox/important_move/<?php echo $this->uri->segment(3);?>" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as important"><i class="fa fa-exclamation"></i> Mark Important</a>
