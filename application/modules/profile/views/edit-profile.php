@@ -20,12 +20,89 @@
 			
 			function validate_info() {
 				var total = getCheckedBoxesCount();
+				
 				if(total <= 0) {
 					console.log(total);
 					alert('Please Select atleast one Business Sector');
 					
 					return false;
 				}
+				if(total == 1) {
+					var primary = $('#bprimary').val();	// Get Value of Primary select box
+					console.log(total);
+					if(primary == '') {
+						alert('Please Select Primary Business Sector');
+						return false;
+					}	
+				}
+				if(total == 2) {
+					var primary = $('#bprimary').val();	// Get Value of Primary select box
+					var secondary = $('#bsecondary').val();	// Get Value of Secondary select box
+					
+					var error = '';
+					var flag = true;
+					if(primary == '') {
+						error = 'Please Select Primary Business Sector';
+						flag = false;
+					}
+					if(secondary == '') {
+						error .= '<br> Please Select Secondary Business Sector';
+						flag = false;
+					}
+					if(flag == false) {
+						alert(error);
+					}
+					return flag;
+				}
+				if(total == 3) {
+					var primary = $('#bprimary').val();	// Get Value of Primary select box
+					var secondary = $('#bsecondary').val();	// Get Value of Secondary select box
+					var tertiary = $('#btertiary').val();	// Get Value of Tertiary select box
+					
+					var error = '';
+					var flag = true;
+					if(primary == '') {
+						error = 'Please Select Primary Business Sector';
+						flag = false;
+					}
+					if(secondary == '') {
+						error .= '<br> Please Select Secondary Business Sector';
+						flag = false;
+					}
+					if(secondary == '') {
+						error .= '<br> Please Select Tertiary Business Sector';
+						flag = false;
+					}
+					if(flag == false) {
+						alert(error);
+					}
+					return flag;
+				}
+				if(total > 3) {
+					var primary = $('#bprimary').val();	// Get Value of Primary select box
+					var secondary = $('#bsecondary').val();	// Get Value of Secondary select box
+					var tertiary = $('#btertiary').val();	// Get Value of Tertiary select box
+					
+					var error = '';
+					var flag = true;
+					if(primary == '') {
+						error = 'Please Select Primary Business Sector';
+						flag = false;
+					}
+					if(secondary == '') {
+						error .= '<br> Please Select Secondary Business Sector';
+						flag = false;
+					}
+					if(secondary == '') {
+						error .= '<br> Please Select Tertiary Business Sector';
+						flag = false;
+					}
+					if(flag == false) {
+						alert(error);
+					}
+					return flag;
+				}
+				
 				return true;
 			}
 			
@@ -756,19 +833,19 @@
                                     <div id="primary-business">
                                     <label class="col-md-12">Primary Business</label>
                                     <select class="form-control m-b" id="bprimary" style="float:left" onchange="updateSelects1(this.value)">
-                                        <option>[Select One]</option>
+                                        <option value = "">[Select One]</option>
                                     </select>
                                     </div>
                                     <div id="secondary-business">
                                     <label class="col-md-12">Secondary Business</label>
                                     <select class="form-control m-b" name="bsecondary" id="bsecondary" style="float:left" onchange="updateSelects2(this.value)">
-                                        <option>[Select One]</option>
+                                        <option value = "">[Select One]</option>
                                     </select>
                                     </div>
                                     <div id="tertiary-business">
                                     <label class="col-md-12">Tertiary Business</label>
                                     <select class="form-control m-b" name="btertiary" id="btertiary" style="float:left" onchange="updateSelects3(this.value)">
-                                        <option>[Select One]</option>
+                                        <option value = "">[Select One]</option>
                                     </select>
                                     </div>
                                     <small class="text-navy" id="selectMessage">Please make sure you select in order of actual business relevance as this will affect search results and our dedicated account managers will actively promote your business on your behalf with other suitable companies.</small>
