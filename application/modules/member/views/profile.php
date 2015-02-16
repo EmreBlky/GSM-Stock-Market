@@ -111,7 +111,7 @@
                                         <dd>
                                             <span>
                                                 <?php if(file_exists("public/main/template/gsm/images/members/".$member_info->id.".jpg")){?>
-                                                    <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/template/gsm/images/members/<?php echo $member_info->id; ?>.jpg">
+                                                    <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/template/gsm/images/members/<?php echo $member_info->id; ?>.jpg" height="128" width="128">
                                                 <?php } else {?>
                                                     <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/template/gsm/images/members/no_profile.jpg" height="128" width="128">
                                                 <?php }?>                            
@@ -557,10 +557,13 @@
             
             
 	<!-- Page Specific Scripts -->    
-    <!-- Toastr script -->
-    <script src="public/main/template/core/js/plugins/toastr/toastr.min.js"></script>
-    <script type="text/javascript">
+    
+	<script src="public/main/template/core/js/plugins/jsKnob/jquery.knob.js"></script>
         
+    <!-- Toastr script -->
+    <script src="public/main/template/core/js/plugins/toastr/toastr.min.js"></script><!-- ALERTS -->
+    
+    <script type="text/javascript">
         $(function () {
                 toastr.options = {
                     closeButton: false,
@@ -577,10 +580,6 @@
 					showMethod: 'fadeIn',
 					hideMethod: 'fadeOut',
 				};
-            
-                
-            //});
-            
             $('#blocked').click(function (){
                 toastr.error('They are unable to communicate or see you in anyway on this website.', 'User Blocked!');
             });
@@ -590,8 +589,16 @@
             $('#conversation').click(function (){
                 toastr.warning('Both users need to add each other as a contact before they can use GSM Messenger!', 'Chat Unavailable');
             });
+        	$(".dial").knob();
         })
     </script>
+    <script type="text/javascript">
+		$(function() {
+		if (window.location.hash.indexOf("reportuser/") !== -1) {
+			$("#report_user").modal();
+		}
+		});
+	</script>
             
             
             
