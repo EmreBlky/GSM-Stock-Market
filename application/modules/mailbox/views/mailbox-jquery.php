@@ -1,3 +1,21 @@
+
+
+    <!-- Custom and plugin javascript -->
+    <script src="public/main/template/core/js/inspinia.js"></script>
+    <script src="public/main/template/core/js/plugins/pace/pace.min.js"></script>
+
+    <!-- iCheck -->
+    <script src="public/main/template/core/js/plugins/iCheck/icheck.min.js"></script>
+    <?php /*
+    <script>
+        $(document).ready(function(){
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script> */ ?>
+
 <script type="text/javascript">
 
     $(function() {
@@ -25,17 +43,30 @@
                 $("#inbox_support").html(data);    
             });
          }
-    $(document).ready(function() {
-        
-    $('#select_all').click(function(event) {  //on click
-        if(this.checked) { // check select status
-            $('.i-checks').each(function() { //loop through each checkbox
-                this.checked = true;  //select all checkboxes with class "checkbox1"              
-            });
+	
+	    $(document).ready(function() {
+       $("#select_all").change(function(){
+             if(this.checked){
+            $(".i-checks").each(function(){
+                this.checked=true;
+            })              
         }else{
-            $('.i-checks').each(function() { //loop through each checkbox
-                this.checked = false; //deselect all checkboxes with class "checkbox1"                      
-            });        
+            $(".i-checks").each(function(){
+                this.checked=false;
+            })              
+        }
+    });
+
+    $("i-checks").click(function () {
+        if (!$(this).is(":checked")){
+            $("#select_all").prop("checked", false);
+        }else{
+            var flag = 0;
+            $(".i-checks").each(function(){
+                if(!this.checked)
+                flag=1;
+            })              
+                        if(flag == 0){ $("#select_all").prop("checked", true);}
         }
     });
     

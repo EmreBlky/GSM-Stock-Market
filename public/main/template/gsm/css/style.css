@@ -120,3 +120,8 @@ img.message_alert {margin:3px 20px}
 #toast-container > .toast-success:before {
   content: "\f00C";
 }
+
+/* header inline fix */
+.page-heading {
+	padding-bottom:14px
+}

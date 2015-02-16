@@ -10,6 +10,7 @@
 
     $this->load->module('mailbox');
     $this->mailbox->mailboxJquery();
+    $this->mailbox->mailboxCss();
 
 ?>
 <div class="wrapper wrapper-content">

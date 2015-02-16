@@ -119,6 +119,20 @@
                         <th>More Info</th>
                     </tr>
                     </thead>
+                    <tfoot>
+                    <tr>
+                        <th>ID</th>
+                        <th>Date</th>
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th>Condition</th>
+                        <th>Price</th>
+                        <th>QTY</th>
+                        <th>Spec</th>
+                        <th>Country</th>
+                        <th>More Info</th>
+                    </tr>
+                    </tfoot>
                     <tbody>
                     <tr>
                         <td>00000001</td>
@@ -151,6 +165,42 @@
                         <td>iPhone 2G 4GB</td>
                         <td>Refurbished</td>
                         <td>GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
+                    </tr>
+                    <tr>
+                        <td>00000001</td>
+                        <td>17:22 11-02</td>
+                        <td>Samsung</td>
+                        <td>Galaxy S4 16GB</td>
+                        <td>New</td>
+                        <td>GBP 124.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
+                    </tr>
+                    <tr>
+                        <td>00000001</td>
+                        <td>17:22 11-02</td>
+                        <td>Samsung</td>
+                        <td>Galaxy S3 16GB</td>
+                        <td>New</td>
+                        <td>GBP 124.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" style="font-size:10px">More Info</button></th>
+                    </tr>
+                    <tr>
+                        <td>00000001</td>
+                        <td>17:22 11-02</td>
+                        <td>Samsung</td>
+                        <td>Galaxy S2 8GB</td>
+                        <td>New</td>
+                        <td>GBP 124.02</td>
                         <td>23</td>
                         <td>UK</td>
                         <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
@@ -229,6 +279,13 @@
     <link href="public/main/template/core/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
     <link href="public/main/template/core/css/plugins/dataTables/dataTables.responsive.css" rel="stylesheet">
     <link href="public/main/template/core/css/plugins/dataTables/dataTables.tableTools.min.css" rel="stylesheet">
+    
+        <!-- Mainly scripts -->
+    <script src="public/main/template/core/js/jquery-2.1.1.js"></script>
+    <script src="public/main/template/core/js/bootstrap.min.js"></script>
+    <script src="public/main/template/core/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="public/main/template/core/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="public/main/template/core/js/plugins/jeditable/jquery.jeditable.js"></script>
 
     <!-- Data Tables -->
     <script src="public/main/template/core/js/plugins/dataTables/jquery.dataTables.js"></script>
@@ -236,24 +293,20 @@
     <script src="public/main/template/core/js/plugins/dataTables/dataTables.responsive.js"></script>
     <script src="public/main/template/core/js/plugins/dataTables/dataTables.tableTools.min.js"></script>
 
+    <!-- Custom and plugin javascript -->
+    <script src="public/main/template/core/js/inspinia.js"></script>
+    <script src="public/main/template/core/js/plugins/pace/pace.min.js"></script>
+
     <!-- Page-Level Scripts -->
-    <script type="text/javascript" src="public/main/template/gsm/js/marketplace/jquery-1.8.2.min.js"></script>
-    <script type="text/javascript" src="public/main/template/gsm/js/marketplace/jquery.mockjax.js"></script> <!-- Autocomplete typing -->
-    <script type="text/javascript" src="public/main/template/gsm/js/marketplace/jquery.autocomplete.js"></script>
-    <script type="text/javascript" src="public/main/template/gsm/js/marketplace/countries.js"></script>
-    
-    
-    
     <script>
         $(document).ready(function() {
             $('.dataTables-example').dataTable({
                 responsive: true,
                 "dom": 'T<"clear">lfrtip',
                 "tableTools": {
-                    "sSwfPath": "public/main/template/core/js/plugins/dataTables/swf/copy_csv_xls_pdf.swf"
+                    "sSwfPath": "js/plugins/dataTables/swf/copy_csv_xls_pdf.swf"
                 }
             });
-
 
         });
     </script>

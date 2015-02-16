@@ -1,4 +1,1 @@
-<style type="text/css">
-    
-    
-</style>
+<link href="public/main/template/core/css/plugins/iCheck/custom.css" rel="stylesheet">
