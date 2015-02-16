@@ -405,7 +405,7 @@
                         </div>
                         <div class="ibox-content">
                             <?php 
-					$attributes = array('class' => 'form-horizontal validation');
+					$attributes = array('class' => 'form-horizontal validation', 'onsubmit' => 'validate_info()');
 					echo form_open('profile/profileEdit', $attributes);
 							?>
                             	<div class="form-group"><label class="col-md-3 control-label">Company Name</label>
@@ -1256,7 +1256,8 @@
                                 <div class="form-group">
                                     <div class="col-md-4 col-md-offset-3">
                                         <button class="btn btn-white" type="submit">Cancel</button>
-                                        <button class="btn btn-primary" name="submit_form" type="submit" id="submit_form" onclick = "validate_info()">Save changes</button>
+                                        <button class="btn btn-primary" name="submit_form" type="submit" id="submit_form" 
+										>Save changes</button>
                                     </div>
                                 </div>
                                 
