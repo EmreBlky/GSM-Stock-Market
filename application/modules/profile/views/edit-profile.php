@@ -22,8 +22,8 @@
 				var total = getCheckedBoxesCount();
 				if(total <= 0) {
 					alert('Please Select atleast one Business Sector');
-					return false;
 				}
+				return true;
 			}
 			
 			function getCheckedBoxesCount() {
