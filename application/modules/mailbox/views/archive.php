@@ -1,25 +1,16 @@
-<script type="text/javascript">
-    $(document).ready(function() {
-    $('#select_all').click(function(event) {  //on click
-        if(this.checked) { // check select status
-            $('.i-checks').each(function() { //loop through each checkbox
-                this.checked = true;  //select all checkboxes with class "checkbox1"              
-            });
-        }else{
-            $('.i-checks').each(function() { //loop through each checkbox
-                this.checked = false; //deselect all checkboxes with class "checkbox1"                      
-            });        
-        }
-    });
-   
-});        
-</script>
+<?php
+
+    $this->load->module('mailbox');
+    $this->mailbox->mailboxJquery();
+
+?>
+
 
 <div class="wrapper wrapper-content">
         <div class="row">
-           <?php
+            <?php
             
-                $this->load->module('mailbox');
+                
                 $this->mailbox->side_mail();
             
             ?>

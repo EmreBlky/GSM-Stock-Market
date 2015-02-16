@@ -1351,5 +1351,15 @@ class Mailbox extends MX_Controller
         //echo date('d-m-Y', $date);
         $this->mailbox_model->_custom_query("DELETE FROM mailbox WHERE trash = 'yes' AND date < '".date('d-m-Y', $date)."'");
     }
+    
+    function mailboxJquery()
+    {
+        $this->load->view('mailbox-jquery');
+    }
+    
+    function mailboxCss()
+    {
+        $this->load->view('mailbox-css');
+    }
 	
 }

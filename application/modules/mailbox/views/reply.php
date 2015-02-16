@@ -1,10 +1,17 @@
-        <div class="wrapper wrapper-content">
+        <?php
+    $this->load->model('member/member_model', 'member_model');
+    $this->load->module('mailbox');
+    $this->mailbox->mailboxJquery();
+
+?>
+
+
+<div class="wrapper wrapper-content">
         <div class="row">
             <?php
             
-                $this->load->module('mailbox');
+                
                 $this->mailbox->side_mail();
-                $this->load->model('member/member_model', 'member_model');
             
             ?>
             <?php 
