@@ -23,21 +23,21 @@
 				var total = getCheckedBoxesCount();
 				
 				if(total <= 0) {
-					console.log(total);
+					//console.log(total);
 					alert('Please Select atleast one Business Sector');
 					
 					return false;
 				}
 				if(total == 1) {
 					var primary = $('#bprimary').val();	// Get Value of Primary select box
-					console.log(total);
+					//console.log(total);
 					if(primary == '') {
 						alert('Please Select Primary Business Sector');
 						return false;
 					}	
 				}
 				if(total == 2) {
-					console.log(total);
+					//console.log(total);
 					var primary = $('#bprimary').val();	// Get Value of Primary select box
 					var secondary = $('#bsecondary').val();	// Get Value of Secondary select box
 					
@@ -57,7 +57,7 @@
 					return flag;
 				}
 				if(total == 3) {
-					console.log(total);
+					//console.log(total);
 					var primary = $('#bprimary').val();	// Get Value of Primary select box
 					var secondary = $('#bsecondary').val();	// Get Value of Secondary select box
 					var tertiary = $('#btertiary').val();	// Get Value of Tertiary select box
@@ -82,7 +82,7 @@
 					return flag;
 				}
 				if(total > 3) {
-					console.log(total);
+					//console.log(total);
 					var primary = $('#bprimary').val();	// Get Value of Primary select box
 					var secondary = $('#bsecondary').val();	// Get Value of Secondary select box
 					var tertiary = $('#btertiary').val();	// Get Value of Tertiary select box
@@ -90,7 +90,7 @@
 					var error = '';
 					var flag = true;
 					if(primary == '') {
-						error = 'Please Select Primary Business Sector';
+						error = 'Please Select Primary Business Sector \n';
 						flag = false;
 					}
 					if(secondary == '') {
@@ -168,7 +168,7 @@
 				} else {
 					var total_checked = total_checked - 1;
 				}
-				console.log('Total Checked:'+total_checked);
+				//console.log('Total Checked:'+total_checked);
 				
 				var count = 1;
 				var ids = new Array();
