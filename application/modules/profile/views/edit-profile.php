@@ -383,6 +383,11 @@
 					
 					var orig_counter = getCheckedBoxesCount();		// get total checkedboxes count
 					toggleChecks(orig_counter);	// disable or enable checkboxes if greater than 5
+					
+					
+					if(orig_counter <= 0) {
+						is_primary_set = false;		// If All checkboxes unchecked then primary should be reset if secondary is empty
+					}
 				});
 				
 				$( '.business_cycle' ).on( 'ifClicked', function(event) {
