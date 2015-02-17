@@ -127,7 +127,7 @@
 			}
 			
 			function toggleChecks(counter) {
-					
+					// Function to disable or enable check boxes
 					var count = 1;
 					var ids = new Array();
 					if(counter >= 5) {
@@ -159,7 +159,9 @@
 				var primary = $('#bprimary').val();
 				var secondary = $('#bsecondary').val();
 				var tertiary = $('#btertiary').val();
-			
+				
+				var total_checked = getCheckedBoxesCount();
+				
 				var count = 1;
 				var ids = new Array();
 				while(count <= 14) {
@@ -180,7 +182,11 @@
 				ids.forEach(function(entry) {
 					var value = $('#'+entry).attr('value');
 					if(entry == primary) {
-						var str1 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
+						if(total_checked == 1) {
+							var str1 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
+						} else {
+							var str1 = "<option value = '" + entry + "'>" + value + "</option>";
+						}
 					} else {
 						var str1 = "<option value = '" + entry + "'>" + value + "</option>";
 					}
