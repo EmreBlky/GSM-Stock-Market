@@ -161,6 +161,13 @@
 				var tertiary = $('#btertiary').val();
 				
 				var total_checked = getCheckedBoxesCount();
+				var chk = $( '#'+div_id ).prop( "checked");	// get state of current checkbox
+				
+				if(chk == false) {
+					var total_checked = total_checked + 1;	
+				} else {
+					var total_checked = total_checked - 1;
+				}
 				console.log('Total Checked:'+total_checked);
 				
 				var count = 1;
@@ -183,7 +190,7 @@
 				ids.forEach(function(entry) {
 					var value = $('#'+entry).attr('value');
 					if(entry == primary) {
-						if(total_checked > 1) {
+						if(total_checked == 1) {
 							var str1 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
 						} else {
 							var str1 = "<option value = '" + entry + "'>" + value + "</option>";
