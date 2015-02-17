@@ -7,6 +7,9 @@
 
 ?>	
 <script type="text/javascript">
+
+	var is_primary_set = false;
+
 	$(document).ready(function(){	
 		$('#primary-business').css("display", 'none');
 		$('#secondary-business').css("display", 'none');
@@ -19,35 +22,36 @@
 	}
 			
 			function validate_info() {
-			/*
+			
 				var total = getCheckedBoxesCount();
 				
 				if(total <= 0) {
-					console.log(total);
+					//console.log(total);
 					alert('Please Select atleast one Business Sector');
 					
 					return false;
 				}
 				if(total == 1) {
 					var primary = $('#bprimary').val();	// Get Value of Primary select box
-					console.log(total);
+					//console.log(total);
 					if(primary == '') {
 						alert('Please Select Primary Business Sector');
 						return false;
 					}	
 				}
 				if(total == 2) {
+					//console.log(total);
 					var primary = $('#bprimary').val();	// Get Value of Primary select box
 					var secondary = $('#bsecondary').val();	// Get Value of Secondary select box
 					
 					var error = '';
 					var flag = true;
 					if(primary == '') {
-						error = 'Please Select Primary Business Sector';
+						error = 'Please Select Primary Business Sector \n';
 						flag = false;
 					}
 					if(secondary == '') {
-						error .= '<br> Please Select Secondary Business Sector';
+						error = error + 'Please Select Secondary Business Sector \n';
 						flag = false;
 					}
 					if(flag == false) {
@@ -56,6 +60,7 @@
 					return flag;
 				}
 				if(total == 3) {
+					//console.log(total);
 					var primary = $('#bprimary').val();	// Get Value of Primary select box
 					var secondary = $('#bsecondary').val();	// Get Value of Secondary select box
 					var tertiary = $('#btertiary').val();	// Get Value of Tertiary select box
@@ -63,15 +68,15 @@
 					var error = '';
 					var flag = true;
 					if(primary == '') {
-						error = 'Please Select Primary Business Sector';
+						error = 'Please Select Primary Business Sector \n';
 						flag = false;
 					}
 					if(secondary == '') {
-						error .= '<br> Please Select Secondary Business Sector';
+						error = error + 'Please Select Secondary Business Sector \n';
 						flag = false;
 					}
-					if(secondary == '') {
-						error .= '<br> Please Select Tertiary Business Sector';
+					if(tertiary == '') {
+						error = error + 'Please Select Tertiary Business Sector \n';
 						flag = false;
 					}
 					if(flag == false) {
@@ -80,6 +85,7 @@
 					return flag;
 				}
 				if(total > 3) {
+					//console.log(total);
 					var primary = $('#bprimary').val();	// Get Value of Primary select box
 					var secondary = $('#bsecondary').val();	// Get Value of Secondary select box
 					var tertiary = $('#btertiary').val();	// Get Value of Tertiary select box
@@ -87,15 +93,15 @@
 					var error = '';
 					var flag = true;
 					if(primary == '') {
-						error = 'Please Select Primary Business Sector';
+						error = 'Please Select Primary Business Sector \n';
 						flag = false;
 					}
 					if(secondary == '') {
-						error .= '<br> Please Select Secondary Business Sector';
+						error = error + 'Please Select Secondary Business Sector \n';
 						flag = false;
 					}
-					if(secondary == '') {
-						error .= '<br> Please Select Tertiary Business Sector';
+					if(tertiary == '') {
+						error = error + 'Please Select Tertiary Business Sector \n';
 						flag = false;
 					}
 					if(flag == false) {
@@ -106,6 +112,8 @@
 				
 				return true;
 			}
+			
+			
 			
 			function getCheckedBoxesCount() {
 				var count = 1;
@@ -118,11 +126,11 @@
 					count++;
 				}
 				return total;
-				*/
+				
 			}
 			
 			function toggleChecks(counter) {
-					
+					// Function to disable or enable check boxes
 					var count = 1;
 					var ids = new Array();
 					if(counter >= 5) {
@@ -154,7 +162,17 @@
 				var primary = $('#bprimary').val();
 				var secondary = $('#bsecondary').val();
 				var tertiary = $('#btertiary').val();
-			
+				
+				var total_checked = getCheckedBoxesCount();
+				var chk = $( '#'+div_id ).prop( "checked");	// get state of current checkbox
+				
+				if(chk == false) {
+					var total_checked = total_checked + 1;	
+				} else {
+					var total_checked = total_checked - 1;
+				}
+				//console.log('Total Checked:'+total_checked);
+				
 				var count = 1;
 				var ids = new Array();
 				while(count <= 14) {
@@ -175,7 +193,18 @@
 				ids.forEach(function(entry) {
 					var value = $('#'+entry).attr('value');
 					if(entry == primary) {
-						var str1 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
+						if(secondary == '' && is_primary_set == false) {
+							var str1 = "<option value = '" + entry + "'>" + value + "</option>";
+						} else {
+							var str1 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
+						}
+						/*
+						if(total_checked == 1) {
+							var str1 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
+						} else {
+							var str1 = "<option value = '" + entry + "'>" + value + "</option>";
+						}
+						*/
 					} else {
 						var str1 = "<option value = '" + entry + "'>" + value + "</option>";
 					}
@@ -245,6 +274,7 @@
 						}
 					}
 				});
+				is_primary_set = true;
 			}
 			
 			function updateSelects2(value) {
@@ -353,6 +383,11 @@
 					
 					var orig_counter = getCheckedBoxesCount();		// get total checkedboxes count
 					toggleChecks(orig_counter);	// disable or enable checkboxes if greater than 5
+					
+					
+					if(orig_counter <= 0) {
+						is_primary_set = false;		// If All checkboxes unchecked then primary should be reset if secondary is empty
+					}
 				});
 				
 				$( '.business_cycle' ).on( 'ifClicked', function(event) {
