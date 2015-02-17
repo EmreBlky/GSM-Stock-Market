@@ -1,5 +1,6 @@
 	<?php
             $this->load->model('member/member_model', 'member_model');
+            $this->load->model('membership/membership_model', 'membership_model');
             $member = $this->member_model->get_where($this->session->userdata('members_id'));
             //echo $member->membership;
             //exit;
@@ -18,7 +19,7 @@
                             </span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold"><?php echo $this->session->userdata('firstname');?> <?php echo $this->session->userdata('lastname');?></strong>
-                            	<span class="text-muted text-xs block"><?php echo ucfirst($member->membership); ?> Member</span>
+                            	<span class="text-muted text-xs block"><?php echo $this->membership_model->get_where($member->membership)->membership; ?> Member</span>
                              </a>
                         </div>
                         <div class="logo-element">
