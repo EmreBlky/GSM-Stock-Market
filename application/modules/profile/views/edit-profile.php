@@ -183,10 +183,10 @@
 				ids.forEach(function(entry) {
 					var value = $('#'+entry).attr('value');
 					if(entry == primary) {
-						if(total_checked == 1) {
+						if(total_checked > 1) {
 							var str1 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
 						} else {
-							var str1 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
+							var str1 = "<option value = '" + entry + "'>" + value + "</option>";
 						}
 					} else {
 						var str1 = "<option value = '" + entry + "'>" + value + "</option>";
