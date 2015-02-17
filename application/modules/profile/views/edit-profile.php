@@ -47,7 +47,7 @@
 						flag = false;
 					}
 					if(secondary == '') {
-						error .= '<br> Please Select Secondary Business Sector';
+						error = error + '<br> Please Select Secondary Business Sector';
 						flag = false;
 					}
 					if(flag == false) {
@@ -67,11 +67,11 @@
 						flag = false;
 					}
 					if(secondary == '') {
-						error .= '<br> Please Select Secondary Business Sector';
+						error = error + '<br> Please Select Secondary Business Sector';
 						flag = false;
 					}
 					if(secondary == '') {
-						error .= '<br> Please Select Tertiary Business Sector';
+						error = error + '<br> Please Select Tertiary Business Sector';
 						flag = false;
 					}
 					if(flag == false) {
@@ -91,11 +91,11 @@
 						flag = false;
 					}
 					if(secondary == '') {
-						error .= '<br> Please Select Secondary Business Sector';
+						error = error + '<br> Please Select Secondary Business Sector';
 						flag = false;
 					}
 					if(secondary == '') {
-						error .= '<br> Please Select Tertiary Business Sector';
+						error = error + '<br> Please Select Tertiary Business Sector';
 						flag = false;
 					}
 					if(flag == false) {
