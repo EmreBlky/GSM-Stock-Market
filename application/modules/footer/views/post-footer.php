@@ -1,4 +1,4 @@
-	<script>       
+<script>       
         $(function() {
 
             autoRefresh();
@@ -21,7 +21,7 @@
             });
             
          }
-    </script>  
+    </script> 	
    
 
     <?php 
