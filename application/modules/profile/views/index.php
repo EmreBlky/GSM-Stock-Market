@@ -3,7 +3,7 @@
 //echo '<pre>';
 //print_r($company_users);
 //exit;
-
+$this->load->model('membership/membership_model', 'membership_model');
 ?>	
 
 <div class="row wrapper border-bottom white-bg page-heading">
@@ -48,7 +48,7 @@
                                 <div class="col-lg-7">
                                     <dl class="dl-horizontal">
                                         <dt>Status:</dt> <dd><span class="label label-primary">Active</span></dd>
-                                        <dt>Subscription:</dt> <dd>Gold Member</dd>
+                                        <dt>Subscription:</dt> <dd><?php echo $this->membership_model->get_where($member_info->membership)->membership; ?> Member</dd>
                                     </dl>
                                     <dl class="dl-horizontal">
                                         <dt>Company Number:</dt> <dd><?php echo $member_company->company_number;?></dd>
