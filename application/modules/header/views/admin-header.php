@@ -1,33 +1,30 @@
-<div class="container-fluid">
-      <div class="row">
-        <?php 
-        
+<div id="wrapper">
+        <!-- SIDEBAR CODE HERE -->
+    	<?php
+                
             $this->load->module('header');
             $this->header->admin_sidebar();
-        
-        ?>  
+                    
+	?>
 
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container-fluid">
-              <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="admin/">Admin Panel</a>
-              </div>
-              <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                  <li><a href="#">Dashboard</a></li>
-                  <li><a href="#">Settings</a></li>
-                  <li><a href="#">Profile</a></li>
-                  <li><a href="#">Help</a></li>
-                </ul>
-                <form class="navbar-form navbar-right">
-                  <input type="text" class="form-control" placeholder="Search...">
-                </form>
-              </div>
-            </div>
+        <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+        <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary" href="admin/#"><i class="fa fa-bars"></i> </a>
+            
+        </div>
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <span class="m-r-sm text-muted welcome-message">Welcome Admin User.</span>
+                </li>
+                
+                <li>
+                    <a href="login/logout/">
+                        <i class="fa fa-sign-out"></i> Log out
+                    </a>
+                </li>
+            </ul>
+
         </nav>
+        </div>

@@ -440,8 +440,12 @@
             
             
 	<!-- Page Specific Scripts -->    
+    
+	<script src="public/main/template/core/js/plugins/jsKnob/jquery.knob.js"></script>
+        
     <!-- Toastr script -->
-    <script src="public/main/template/core/js/plugins/toastr/toastr.min.js"></script>
+    <script src="public/main/template/core/js/plugins/toastr/toastr.min.js"></script><!-- ALERTS -->
+    
     <script type="text/javascript">
         $(function () {
                 toastr.options = {
@@ -480,15 +484,16 @@
             $('#conversation').click(function (){
                 toastr.warning('Both users need to add each other as a contact before they can use GSM Messenger!', 'Chat Unavailable');
             });
+        	$(".dial").knob();
         })
     </script>
     <script type="text/javascript">
-	$(function() {
-    if (window.location.hash.indexOf("reportuser/") !== -1) {
-        $("#report_user").modal();
-    }
-});
-</script>
+		$(function() {
+		if (window.location.hash.indexOf("reportuser/") !== -1) {
+			$("#report_user").modal();
+		}
+		});
+	</script>
             
             
             

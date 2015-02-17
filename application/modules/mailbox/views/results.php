@@ -6,29 +6,18 @@
 //exit;
 
 ?>
+<?php
 
-<script type="text/javascript">
-    $(document).ready(function() {
-    $('#select_all').click(function(event) {  //on click
-        if(this.checked) { // check select status
-            $('.i-checks').each(function() { //loop through each checkbox
-                this.checked = true;  //select all checkboxes with class "checkbox1"              
-            });
-        }else{
-            $('.i-checks').each(function() { //loop through each checkbox
-                this.checked = false; //deselect all checkboxes with class "checkbox1"                      
-            });        
-        }
-    });
-   
-});        
-</script>
+    $this->load->module('mailbox');
+    $this->mailbox->mailboxJquery();
+    $this->mailbox->mailboxCss();
 
-        <div class="wrapper wrapper-content">
+?>
+<div class="wrapper wrapper-content">
         <div class="row">
             <?php
             
-                $this->load->module('mailbox');
+                
                 $this->mailbox->side_mail();
             
             ?>            
@@ -57,7 +46,7 @@
                      ?> 
                 </h2>
                 <div class="mail-tools tooltip-demo m-t-md">
-                    <input type="checkbox" id="select_all"/> Selecct All
+                    <input type="checkbox" id="select_all"/> Select All
 <!--                <a href="mailbox/refresh" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh</a>
                     <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="bottom" name="button" value="read" title="Mark as Read"><i class="fa fa-eye"></i> Mark Read</button>
                     <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="bottom" name="button" value="unread" title="Mark as Unread"><i class="fa fa-eye-slash"> Mark Unread</i></button>-->

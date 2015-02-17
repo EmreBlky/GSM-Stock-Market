@@ -367,12 +367,12 @@ class Mailbox extends MX_Controller
         if($cid > 0){
             $data['reply_count'] = $cid;
             $data['inbox_reply'] = $this->mailbox_model->_custom_query("SELECT * FROM mailbox WHERE (sent_member_id = '".$this->session->userdata('members_id')."' AND parent_id = '".$oid."') OR (member_id = '".$this->session->userdata('members_id')."' AND parent_id = '".$oid."') ORDER BY datetime DESC LIMIT 5");
-             $data['original_email'] = $this->mailbox_model->get_where($oid); 
+              
         }
         else{
              $data['reply_count'] = 0;
         }
-        
+        $data['original_email'] = $this->mailbox_model->get_where($oid);
         $data['inbox_original'] = $this->mailbox_model->get_where($oid);
         $this->load->module('templates');
         $this->templates->page($data);
@@ -1350,6 +1350,16 @@ class Mailbox extends MX_Controller
         $date = strtotime("-7 day");
         //echo date('d-m-Y', $date);
         $this->mailbox_model->_custom_query("DELETE FROM mailbox WHERE trash = 'yes' AND date < '".date('d-m-Y', $date)."'");
+    }
+    
+    function mailboxJquery()
+    {
+        $this->load->view('mailbox-jquery');
+    }
+    
+    function mailboxCss()
+    {
+        $this->load->view('mailbox-css');
     }
 	
 }

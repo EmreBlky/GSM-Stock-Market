@@ -6,57 +6,18 @@
 
 ?>
 
+<?php
 
-<script type="text/javascript">
-    $(function() {
+    $this->load->module('mailbox');
+    $this->mailbox->mailboxJquery();
+    $this->mailbox->mailboxCss();
 
-            autoRefreshInbox();
-
-        });
-        
-        
-        function autoRefreshInbox()
-        {
-            
-            setTimeout("autoRefreshInbox()",10000);            
-            
-            $.get("mailbox/new_message_all", function(data) {
-                $("#inbox_all_message").html(data);    
-            });
-            $.get("mailbox/new_message_market", function(data) {
-                $("#inbox_market").html(data);    
-            });
-            $.get("mailbox/new_message_member", function(data) {
-                $("#inbox_member").html(data);    
-            });
-            $.get("mailbox/new_message_support", function(data) {
-                $("#inbox_support").html(data);    
-            });
-         }
-    $(document).ready(function() {
-        
-    $('#select_all').click(function(event) {  //on click
-        if(this.checked) { // check select status
-            $('.i-checks').each(function() { //loop through each checkbox
-                this.checked = true;  //select all checkboxes with class "checkbox1"              
-            });
-        }else{
-            $('.i-checks').each(function() { //loop through each checkbox
-                this.checked = false; //deselect all checkboxes with class "checkbox1"                      
-            });        
-        }
-    });
-    
-        
-   
-});        
-</script>
-
+?>
 <div class="wrapper wrapper-content">
         <div class="row">
             <?php
             
-                $this->load->module('mailbox');
+                
                 $this->mailbox->side_mail();
             
             ?>
@@ -74,11 +35,6 @@
                     $this->mailbox_model->_update($message->id, $data);
                     
                     $draft_message_count = $this->mailbox_model->count_where('parent_id', $this->uri->segment(4), 'draft', 'yes');
-
-//                   echo '<pre>';
-//                   print_r($test);
-//                   exit;
-                    //echo '</pre>';
             ?>
             
             
@@ -130,11 +86,11 @@
                     
                     ?>
                     <div class="btn-group pull-right" style="padding-left: 10px;">
-                        <?php if($end_email != $mess_id){ ?>
-                        <button onclick="window.location.href='mailbox/inbox/<?php echo $this->uri->segment(3);?>/<?php echo $next;?>'" class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i> Previous</button>
-                        <?php }?>
                         <?php if($start_email != $mess_id){ ?>
-                        <button onclick="window.location.href='mailbox/inbox/<?php echo $this->uri->segment(3);?>/<?php echo $previous;?>'" class="btn btn-white btn-sm">Next <i class="fa fa-arrow-right"></i></button>
+                        <button onclick="window.location.href='mailbox/inbox/<?php echo $this->uri->segment(3);?>/<?php echo $previous;?>'" class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i> Previous </button>
+                        <?php }?>
+                        <?php if($end_email != $mess_id){ ?>
+                        <button onclick="window.location.href='mailbox/inbox/<?php echo $this->uri->segment(3);?>/<?php echo $next;?>'" class="btn btn-white btn-sm">Next <i class="fa fa-arrow-right"></i></button>
                         <?php }?>
                     </div>
                     <?php }elseif(count($email_info) == 2){
@@ -144,10 +100,10 @@
                     ?>
                     <div class="btn-group pull-right" style="padding-left: 10px;">
                         <?php if($mess_id != $start_email){?>
-                        <button onclick="window.location.href='mailbox/inbox/<?php echo $this->uri->segment(3);?>/<?php echo $start_email;?>'" class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i> Previous</button>
+                        <button onclick="window.location.href='mailbox/inbox/<?php echo $this->uri->segment(3);?>/<?php echo $start_email;?>'" class="btn btn-white btn-sm"> Next <i class="fa fa-arrow-right"></i></button>
                         <?php }?>
                         <?php if($mess_id != $end_email){?>
-                        <button onclick="window.location.href='mailbox/inbox/<?php echo $this->uri->segment(3);?>/<?php echo $end_email;?>'" class="btn btn-white btn-sm">Next <i class="fa fa-arrow-right"></i></button>
+                        <button onclick="window.location.href='mailbox/inbox/<?php echo $this->uri->segment(3);?>/<?php echo $end_email;?>'" class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i> Previous </button>
                         <?php }?>
                     </div>
                     <?php }?>
@@ -223,7 +179,7 @@
                                 <h2><?php echo $reply->subject;?></h2>
                                 <p>
                                     From: 
-                                    <?php echo $this->member_model->get_where($reply->member_id)->firstname.' '.$this->member_model->get_where($reply->member_id)->lastname?>
+                                    <?php echo $this->member_model->get_where($reply->member_id)->firstname.' '.$this->member_model->get_where($reply->member_id)->lastname;?> (<?php echo $this->company_model->get_where($this->member_model->get_where($reply->member_id)->company_id)->company_name;?>)
                                 </p>
                             </div>
                             <div class="mail-box" style="padding:10px;">
@@ -240,7 +196,7 @@
                                     <p><?php echo $original_email->time;?> &amp; <?php echo $reply->date;?></p>
                                 </div>
                                 <h2><?php echo $original_email->subject;?></h2>
-                                <p>From: <?php echo $this->member_model->get_where($original_email->member_id)->firstname.' '.$this->member_model->get_where($original_email->member_id)->lastname?></p>
+                                <p>From: <?php echo $this->member_model->get_where($original_email->member_id)->firstname.' '.$this->member_model->get_where($original_email->member_id)->lastname?> (<?php echo $this->company_model->get_where($this->member_model->get_where($original_email->member_id)->company_id)->company_name;?>)</p>
                             </div>
                             <div class="mail-box" style="padding:10px;">
                                 <?php echo $original_email->body;?>
@@ -277,7 +233,7 @@
                     <?php }?>
                 </h2>
                 <div class="mail-tools tooltip-demo m-t-md">
-                    <input type="checkbox" id="select_all"/> Select All
+                    <input type="checkbox" id="select_all" class="icheckbox_square-green i-checks" /> Select All
                     <a href="mailbox/refresh" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh</a>
                     <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="bottom" name="button" value="read" title="Mark as Read"><i class="fa fa-eye"></i> Mark Read</button>
                     <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="bottom" name="button" value="unread" title="Mark as Unread"><i class="fa fa-eye-slash"> Mark Unread</i></button>

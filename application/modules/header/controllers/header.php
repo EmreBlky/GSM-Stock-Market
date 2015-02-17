@@ -34,10 +34,17 @@ class Header extends MX_Controller
         $this->load->view('admin-pre-header', $data);
     }
     
+    function sidebar()
+    {
+        //$data['active'] = $this->uri->segment(2);
+        $this->load->view('sidebar');
+    }
+    
     function admin_sidebar()
     {
-        $data['active'] = $this->uri->segment(2);
-        $this->load->view('admin-sidebar', $data);
+        //$data['active'] = 'add_company';
+        //$data['active'] = $this->uri->segment(2);
+        $this->load->view('admin-sidebar');
     }
 
     function admin_main_header()

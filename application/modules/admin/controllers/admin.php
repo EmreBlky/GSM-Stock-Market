@@ -8,7 +8,15 @@ class Admin extends MX_Controller
 
     function index()
     {
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel';        
         $data['page'] = 'dashboard';
+        
+//        $var = 'member';
+//        $var_model = $var.'_model';
+//        
+//        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+//        $data['test'] = $this->{$var_model}->get_all();
 
         $this->load->module('templates');
         $this->templates->admin($data);

@@ -2,10 +2,10 @@
         <!-- SIDEBAR CODE HERE -->
     	<?php
                 
-                    $this->load->module('header');
-                    $this->load->view('sidebar');
+            $this->load->module('header');
+            $this->header->sidebar();
                     
-		?>
+	?>
 
         <div id="page-wrapper" class="gray-bg">
         <div class="row border-bottom">

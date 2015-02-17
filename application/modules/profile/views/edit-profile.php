@@ -1394,7 +1394,7 @@
     <link href="public/main/template/core/css/plugins/iCheck/custom.css" rel="stylesheet">
 
     <!-- iCheck -->
-    <script src="js/plugins/iCheck/icheck.min.js"></script>
+    <script src="public/main/template/core/js/plugins/iCheck/icheck.min.js"></script>
         <script>
             $(document).ready(function () {
                 $('.i-checks').iCheck({
