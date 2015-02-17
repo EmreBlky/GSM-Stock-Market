@@ -37,6 +37,7 @@
 					}	
 				}
 				if(total == 2) {
+					console.log(total);
 					var primary = $('#bprimary').val();	// Get Value of Primary select box
 					var secondary = $('#bsecondary').val();	// Get Value of Secondary select box
 					
@@ -56,6 +57,7 @@
 					return flag;
 				}
 				if(total == 3) {
+					console.log(total);
 					var primary = $('#bprimary').val();	// Get Value of Primary select box
 					var secondary = $('#bsecondary').val();	// Get Value of Secondary select box
 					var tertiary = $('#btertiary').val();	// Get Value of Tertiary select box
@@ -80,6 +82,7 @@
 					return flag;
 				}
 				if(total > 3) {
+					console.log(total);
 					var primary = $('#bprimary').val();	// Get Value of Primary select box
 					var secondary = $('#bsecondary').val();	// Get Value of Secondary select box
 					var tertiary = $('#btertiary').val();	// Get Value of Tertiary select box
