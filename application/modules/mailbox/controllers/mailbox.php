@@ -1005,12 +1005,18 @@ class Mailbox extends MX_Controller
     }
     
     function composeAjaxMail($mid, $sid, $subject, $body)
-    {        
+    {
+        $subject = str_replace('%20', ' ', $subject);        
+        $subject = str_replace('%0D%0A', '<br/>', $subject);
+        
+        $body = str_replace('%20', ' ', $body);
+        $body = str_replace('%0D%0A', '<br/>', $body);
+         
         $data = array(
                                     'member_id'         => $mid,
                                     'sent_member_id'    => $sid,
-                                    'subject'           => str_replace('%20', ' ',$subject),
-                                    'body'              => nl2br(str_replace('%20', ' ',$body)),
+                                    'subject'           => $subject,
+                                    'body'              => nl2br($body),
                                     'inbox'             => 'yes',
                                     'sent'              => 'yes',
                                     'sent_belong'       => $mid,

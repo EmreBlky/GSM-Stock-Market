@@ -49,8 +49,8 @@ $(document).ready(function(){
         
         var mid     = $('#sent_by').val();
         var sid     = $("#sent_to").val();
-        var subject = $("#subject").val();
-        var body    = $("#body").val();
+        var subject = $("#subject").val().replace(/(\r\n|\n|\r)/gm, '%0D%0A');
+        var body    = $("#body").val().replace(/(\r\n|\n|\r)/gm, '%0D%0A');
         
          $.ajax({
                 type: "POST",

@@ -26,8 +26,8 @@
                     <li>
                         <a href="#"><i class="fa fa-wechat"></i> <span class="nav-label">Profile Updates</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="#"><i class="fa fa-cog"></i> <span class="nav-label">Company Bio</span><span class="label label-warning pull-right">7</span></a></li>
-                            <li><a href="#"><i class="fa fa-cog"></i> <span class="nav-label">Profile Feed</span><span class="label label-warning pull-right">8</span></a></li>
+                            <li><a href="#"><i class="fa fa-cog"></i> <span class="nav-label">Company Bio</span><!-- <span class="label label-warning pull-right">7</span> --></a></li>
+                            <li><a href="admin/feed"><i class="fa fa-cog"></i> <span class="nav-label">Profile Feed</span><?php $this->load->module('feed'); $this->feed->admin_feed_count();?></a></li>
                         </ul>
                     </li>
                     
