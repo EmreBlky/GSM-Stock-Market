@@ -161,6 +161,7 @@
 				var tertiary = $('#btertiary').val();
 				
 				var total_checked = getCheckedBoxesCount();
+				console.log('Total Checked:'+total_checked);
 				
 				var count = 1;
 				var ids = new Array();
@@ -185,7 +186,7 @@
 						if(total_checked == 1) {
 							var str1 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
 						} else {
-							var str1 = "<option value = '" + entry + "'>" + value + "</option>";
+							var str1 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
 						}
 					} else {
 						var str1 = "<option value = '" + entry + "'>" + value + "</option>";
