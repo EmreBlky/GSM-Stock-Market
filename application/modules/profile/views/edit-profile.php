@@ -7,6 +7,9 @@
 
 ?>	
 <script type="text/javascript">
+
+	var is_primary_set = false;
+
 	$(document).ready(function(){	
 		$('#primary-business').css("display", 'none');
 		$('#secondary-business').css("display", 'none');
@@ -190,11 +193,18 @@
 				ids.forEach(function(entry) {
 					var value = $('#'+entry).attr('value');
 					if(entry == primary) {
+						if(secondary == '' && is_primary_set == false) {
+							var str1 = "<option value = '" + entry + "'>" + value + "</option>";
+						} else {
+							var str1 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
+						}
+						/*
 						if(total_checked == 1) {
 							var str1 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
 						} else {
 							var str1 = "<option value = '" + entry + "'>" + value + "</option>";
 						}
+						*/
 					} else {
 						var str1 = "<option value = '" + entry + "'>" + value + "</option>";
 					}
@@ -264,6 +274,7 @@
 						}
 					}
 				});
+				is_primary_set = true;
 			}
 			
 			function updateSelects2(value) {
@@ -372,6 +383,11 @@
 					
 					var orig_counter = getCheckedBoxesCount();		// get total checkedboxes count
 					toggleChecks(orig_counter);	// disable or enable checkboxes if greater than 5
+					
+					
+					if(orig_counter <= 0) {
+						is_primary_set = false;		// If All checkboxes unchecked then primary should be reset if secondary is empty
+					}
 				});
 				
 				$( '.business_cycle' ).on( 'ifClicked', function(event) {
