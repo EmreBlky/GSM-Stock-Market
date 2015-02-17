@@ -125,7 +125,7 @@ class Admin extends MX_Controller
         $this->load->model(''.$var1.'/'.$var1.'_model', ''.$var1.'_model');
         
          $data = array(
-                                    'member_id'         => 0,
+                                    'member_id'         => 5,
                                     'sent_member_id'    => $mem,
                                     'subject'           => 'Feed Approved',
                                     'body'              => 'Your feed has been approved',
