@@ -72,7 +72,7 @@
 						error = error + 'Please Select Secondary Business Sector \n';
 						flag = false;
 					}
-					if(secondary == '') {
+					if(tertiary == '') {
 						error = error + 'Please Select Tertiary Business Sector \n';
 						flag = false;
 					}
@@ -97,7 +97,7 @@
 						error = error + 'Please Select Secondary Business Sector \n';
 						flag = false;
 					}
-					if(secondary == '') {
+					if(tertiary == '') {
 						error = error + 'Please Select Tertiary Business Sector \n';
 						flag = false;
 					}
