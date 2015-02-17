@@ -17,7 +17,7 @@
 		$("#phone_number").val(value);  
 		$("#mobile_phone").val(value);  
 	}
-			/*
+			
 			function validate_info() {
 			
 				var total = getCheckedBoxesCount();
@@ -106,7 +106,7 @@
 				
 				return true;
 			}
-			*/
+			
 			
 			
 			function getCheckedBoxesCount() {
