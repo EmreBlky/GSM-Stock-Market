@@ -213,7 +213,7 @@ class Login extends MX_Controller{
 
                     $this->session->set_userdata($admin_data);
                     
-                    redirect('http://localhost/gsm/gsm-secure/admin/');
+                    redirect('admin/');
             }
             else {
 

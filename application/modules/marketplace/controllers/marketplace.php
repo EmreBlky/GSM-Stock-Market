@@ -110,5 +110,15 @@ class Marketplace extends MX_Controller
         $this->load->module('templates');
         $this->templates->page($data);
     }
+    
+    function invoice_print()
+    {
+        $data['main'] = 'marketplace';        
+        $data['title'] = 'GSM - Market Place: Invoice Print';        
+        $data['page'] = 'invoice-print';
+        
+        $this->load->module('templates');
+        $this->templates->page($data);
+    }
 	
 }

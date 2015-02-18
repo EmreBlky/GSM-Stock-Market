@@ -6,6 +6,29 @@
 //exit;
 
 ?>
+<script type="text/javascript">
+
+    function sendMessage(mid, sid)
+    {
+        //alert(mid);
+        //alert(sid);
+        //var mid     = $('#sent_by').val();
+        //var sid     = $("#sent_to").val();
+        var subject = $("#subject").val();
+        var body    = $("#body_"+sid+"").val().replace(/(\r\n|\n|\r)/gm, '%0D%0A');
+        
+         $.ajax({
+                type: "POST",
+                url: "mailbox/composeAjaxMail/"+ mid +"/"+ sid +"/"+ subject +"/"+body +"",
+                dataType: "html",
+                success:function(data){
+                  $('#profile_message_'+sid+'').modal('hide');
+                },
+            });    
+    }
+
+
+</script>
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-9">
                     <h2>Who's Viewed</h2>
@@ -78,7 +101,7 @@
                     </div>
                     <div class="col-sm-12 gsm-contact">
                             <div>
-<!--                            <button class="btn btn-message" type="button" data-toggle="modal" data-target="#profile_message_<?php echo $view->viewer_id;?>"><i class="fa fa-envelope"></i>&nbsp;Message</button>-->
+                                <button class="btn btn-message" type="button" data-toggle="modal" data-target="#profile_message_<?php echo $view->viewer_id;?>" value="<?php echo $view->viewer_id;?>"><i class="fa fa-envelope"></i>&nbsp;Message</button>
                             <button onclick="location.href='<?php echo $base;?>member/profile/<?php echo $view->viewer_id?>'" class="btn btn-profile" type="button" data-toggle="modal" ><i class="fa fa-user"></i>&nbsp;View Profile</button>
                             </div>
                     </div>
@@ -90,6 +113,8 @@
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <?php
+                            //$test = $view->viewer_id;
+                            //exit;
                             $this->load->model('member/member_model', 'member_model');
                             $this->load->model('company/company_model', 'company_model');
                             $membs = $this->member_model->get_where($view->viewer_id);
@@ -113,8 +138,8 @@
                             <?php 
 
                                 $data = array(
-                                            'name'          => 'body',
-                                            'id'            => 'body',
+                                            'name'          => 'body_'.$view->viewer_id,
+                                            'id'            => 'body_'.$view->viewer_id,
                                             'class'         => 'form-control', 
                                             'style'         => 'border:none',
                                             'required'      => 'required'
@@ -127,7 +152,7 @@
                         <div class="modal-footer">
                             <input type="hidden" name="submit" value="Send Message"/>
                             <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                            <button type="button" id="submit_message" class="btn btn-primary">Send Message</button>
+                            <button onclick="sendMessage(<?php echo $this->session->userdata('members_id');?>, <?php echo $view->viewer_id;?>);" type="button" id="submit_message" class="btn btn-primary">Send Message</button>
             <!--                <input type="submit" id="submit_message" class="btn btn-primary" name="submit" value="Send Message">-->
                         </div>
                     </div>
@@ -157,29 +182,32 @@
         
            
         </div>
-<script type="text/javascript">
-
-$(document).ready(function(){   
-
-    $("#submit_message").click(function(){
+<script src="public/main/template/core/js/plugins/jsKnob/jquery.knob.js"></script>
         
-        var mid     = $('#sent_by').val();
-        var sid     = $("#sent_to").val();
-        var subject = $("#subject").val();
-        var body    = $("#body").val();
-        
-         $.ajax({
-                type: "POST",
-                url: "mailbox/composeAjaxMail/"+ mid +"/"+ sid +"/"+ subject +"/"+body +"",
-                dataType: "html",
-                success:function(data){
-                  $('#profile_message').modal('hide');
-                },
-            });    
-    });
- });
-
-</script>
+    <!-- Toastr script -->
+    <script src="public/main/template/core/js/plugins/toastr/toastr.min.js"></script><!-- ALERTS -->
+    
+    <script type="text/javascript">
+        $(function () {
+                toastr.options = {
+                    closeButton: false,
+                    debug:false,
+                    progressBar: false,
+                    positionClass: 'toast-bottom-right',
+                    onclick: null,
+					showDuration: 400,
+					hideDuration: 1000,
+					timeOut: 7000,
+					extendedTimeOut: 1000,
+					showEasing: 'swing',
+					hideEasing: 'linear',
+					showMethod: 'fadeIn',
+					hideMethod: 'fadeOut',
+				};
+                                
+            $(".dial").knob();                    
+        });
+    </script>
                             
                                
             

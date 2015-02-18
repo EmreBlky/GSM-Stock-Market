@@ -18,8 +18,8 @@
                     <li>
                         <a href="#"><i class="fa fa-user"></i> <span class="nav-label">Edit Subscriptions</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="#"><i class="fa fa-cog"></i> <span class="nav-label">User Level</span></a></li>
-                            <li><a href="#"><i class="fa fa-cog"></i> <span class="nav-label">Subscription Access</span></a></li>
+                            <li><a href="admin/user_level"><i class="fa fa-cog"></i> <span class="nav-label">User Level</span></a></li>
+                            <li><a href="admin/subscription_access"><i class="fa fa-cog"></i> <span class="nav-label">Subscription Access</span></a></li>
                         </ul>
                     </li>
                     
