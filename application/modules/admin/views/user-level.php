@@ -65,7 +65,7 @@ $this->load->model('company/company_model', 'company_model');
     <div class="col-lg-12">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>Customer Feed Approval Table</h5>
+                <h5>User Level Management</h5>
                 
             </div>
             <div class="ibox-content">
