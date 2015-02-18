@@ -11,6 +11,43 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
 
 ?>
 
+<script type="text/javascript">    
+            
+            function faveAdd(mid)
+            {
+                //var cust_added     = $('#cust_added').val();
+                //alert(mid);
+                var member      = "'"+ mid +"'";
+                 $.ajax({
+                        type: "POST",
+                        url: "favourite/add/"+ mid +"",
+                        dataType: "html",
+                        success:function(data){
+                          $('#favourite_added_'+mid+'').replaceWith('<button  onclick="faveRemove('+ member +');" type="button" class="btn btn-favourite" id="favourite_removed_'+mid+'"><i class="fa fa-star"></i> Remove Favourite</button>');                             
+                          toastr.success('This user has been added to your favourites.', 'Favourite Added');
+                        },
+                });
+            }
+            
+            function faveRemove(mid)
+            {
+                //var cust_added     = $('#cust_added').val();
+                //alert(mid);
+                 var member      = "'"+ mid +"'";
+                 $.ajax({
+                        type: "POST",
+                        url: "favourite/remove/"+ mid +"",
+                        dataType: "html",
+                        success:function(data){
+                          $('#favourite_removed_'+mid+'').replaceWith('<button  onclick="faveAdd('+ member +');"  type="button" class="btn btn-favourite" id="favourite_added_'+mid+'"><i class="fa fa-star"></i> Add Favourite</button>');                             
+                          toastr.error('This user has been removed from your favourites.', 'Favourite Removed');
+                        },
+                });
+            }
+
+
+</script>
+
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-9">
                     <h2>Address Book</h2>
@@ -66,16 +103,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
             foreach ($address_book as $address) {
             $f_count = $this->favourite_model->count_where_multiple('member_id', $this->session->userdata('members_id'), 'favourite_id' ,$address->address_member_id); 
             
-        ?>
-        <?php echo '<script type="text/javascript"> 
-                    function faveAdd()
-                        {
-                        var test = '.$address->address_member_id.';
-                        alert(test);    
-                    }
-            </script>';
-        ?>
-            
+        ?>        
             <div class="col-lg-4"><!-- Profile Widget Start -->
                 <div class="contact-box">
                     <a href="member/profile/<?php echo $address->address_member_id?>">
@@ -123,11 +151,11 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                                                             
                             <?php if($f_count < 1){?>
                                 <div> 
-                                <button onclick="faveAdd();" class="btn btn-favourite" type="button" id="favourite_added_<?php echo $address->address_member_id; ?>"><i class="fa fa-star"></i>&nbsp;Add Favourite</button>
+                                <button onclick="faveAdd(<?php echo $address->address_member_id; ?>);" class="btn btn-favourite" type="button" id="favourite_added_<?php echo $address->address_member_id; ?>"><i class="fa fa-star"></i>&nbsp;Add Favourite</button>
                                 </div>
                             <?php }else{?>
                             <div>
-                                 <button onclick="faveRemove();" class="btn btn-favourite" type="button" id="favourite_removed_<?php echo $address->address_member_id; ?>"><i class="fa fa-star"></i>&nbsp;Remove Favourite</button>
+                                 <button onclick="faveRemove(<?php echo $address->address_member_id; ?>);" class="btn btn-favourite" type="button" id="favourite_removed_<?php echo $address->address_member_id; ?>"><i class="fa fa-star"></i>&nbsp;Remove Favourite</button>
                             </div>
                             <?php }?>                           
                             
