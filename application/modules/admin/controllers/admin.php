@@ -41,12 +41,20 @@ class Admin extends MX_Controller
     
     function view_dashboard()
     {
+        if ( ! $this->session->userdata('admin_logged_in'))
+        { 
+            redirect('admin/login');
+        }
         $this->load->view('dashboard');
 	
     }
     
     function add_company()
     {
+        if ( ! $this->session->userdata('admin_logged_in'))
+        { 
+            redirect('admin/login');
+        }
         $data['page'] = 'add-company';
 
         $this->load->module('templates');
@@ -56,12 +64,20 @@ class Admin extends MX_Controller
     
     function view_add_company()
     {
+        if ( ! $this->session->userdata('admin_logged_in'))
+        { 
+            redirect('admin/login');
+        }
         $this->load->view('add-company');
 	
     }
     
     function bulk_import()
     {
+        if ( ! $this->session->userdata('admin_logged_in'))
+        { 
+            redirect('admin/login');
+        }
         $data['page'] = 'bulk-import';
 
         $this->load->module('templates');
@@ -71,12 +87,20 @@ class Admin extends MX_Controller
     
     function view_bulk_import()
     {
+        if ( ! $this->session->userdata('admin_logged_in'))
+        { 
+            redirect('admin/login');
+        }
         $this->load->view('bulk-import');
 	
     }
     
     function export()
     {
+        if ( ! $this->session->userdata('admin_logged_in'))
+        { 
+            redirect('admin/login');
+        }
         $data['page'] = 'export';
 
         $this->load->module('templates');
@@ -86,12 +110,20 @@ class Admin extends MX_Controller
     
     function view_export()
     {
+        if ( ! $this->session->userdata('admin_logged_in'))
+        { 
+            redirect('admin/login');
+        }
         $this->load->view('export');
 	
     }
     
     function feed($id = NULL)
     {
+        if ( ! $this->session->userdata('admin_logged_in'))
+        { 
+            redirect('admin/login');
+        }
         $data['main'] = 'admin';        
         $data['title'] = 'GSM - Admin Panel: Feed';        
         $data['page'] = 'feed';
@@ -121,6 +153,10 @@ class Admin extends MX_Controller
     
     function feedApprove($id)
     {
+        if ( ! $this->session->userdata('admin_logged_in'))
+        { 
+            redirect('admin/login');
+        }
         $var = 'feed';
         $var_model = $var.'_model';
         
@@ -160,6 +196,10 @@ class Admin extends MX_Controller
     
     function feedDecline($id)
     {
+        if ( ! $this->session->userdata('admin_logged_in'))
+        { 
+            redirect('admin/login');
+        }
         $var = 'feed';
         $var_model = $var.'_model';
         
