@@ -10,7 +10,29 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
 
 
 ?>
+<script type="text/javascript">
 
+    function sendMessage(mid, sid)
+    {
+        //alert(mid);
+        //alert(sid);
+        //var mid     = $('#sent_by').val();
+        //var sid     = $("#sent_to").val();
+        var subject = $("#subject").val();
+        var body    = $("#body_"+sid+"").val().replace(/(\r\n|\n|\r)/gm, '%0D%0A');
+        
+         $.ajax({
+                type: "POST",
+                url: "mailbox/composeAjaxMail/"+ mid +"/"+ sid +"/"+ subject +"/"+body +"",
+                dataType: "html",
+                success:function(data){
+                  $('#profile_message_'+sid+'').modal('hide');
+                },
+            });    
+    }
+
+
+</script>
 <script type="text/javascript">    
             
             function faveAdd(mid)
@@ -166,18 +188,63 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                             <?php }?>                           
                             
                             <div>
-<!--                            <button class="btn btn-message" type="button" data-toggle="modal" data-target="#profile_message"><i class="fa fa-envelope"></i>&nbsp;Message</button>-->
+                            <button class="btn btn-message" type="button" data-toggle="modal" data-target="#profile_message_<?php echo $address->address_member_id;?>" value="<?php echo $address->address_member_id;?>"><i class="fa fa-envelope"></i>&nbsp;Message</button>
                             <button  onclick="location.href='member/profile/<?php echo $address->address_member_id ?>'" class="btn btn-profile" type="button"><i class="fa fa-user"></i>&nbsp;View Profile</button>
                             </div>
                     </div>
                     <div class="clearfix"></div>
                 </div>
             </div><!-- Profile Widget End -->
-            <?php
-        
-            $this->load->module('profile');
-            $this->profile->send_message($address->address_member_id);
-            ?>
+            <div class="modal inmodal fade" id="profile_message_<?php echo $address->address_member_id;?>" tabindex="-1" role="dialog"  aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <?php
+                            //$test = $address->address_member_id;
+                            //exit;
+                            $this->load->model('member/member_model', 'member_model');
+                            $this->load->model('company/company_model', 'company_model');
+                            $membs = $this->member_model->get_where($address->address_member_id);
+                            $member_company = $this->company_model->get_where($address->address_member_id);
+                        ?>
+                        <?php
+                             $attributes = array('id' => 'form');
+                             echo form_open('mailbox/composeMail', $attributes); 
+                        ?>
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title" data-dismiss="modal">Send Message</h4>
+                            <small class="font-bold">Send a message to <?php echo $member_company->company_name?></small>
+                            <input type="hidden" id="sent_by" name="sent_by" value="<?php echo $this->session->userdata('members_id'); ?>"/>
+                            <input type="hidden" id="sent_to" name="sent_to" value="<?php echo $membs->id; ?>"/>                
+                            <input type="hidden" id="email_address" name="email_address" value="<?php echo $membs->email; ?>"/>
+                            <input type="hidden" id="subject" name="subject" value="Profile Message"/>
+                        </div>
+                        <div class="modal-body">
+                            <!-- <p><strong>Form here</strong> generic stuff bla bla</p> -->
+                            <?php 
+
+                                $data = array(
+                                            'name'          => 'body_'.$address->address_member_id,
+                                            'id'            => 'body_'.$address->address_member_id,
+                                            'class'         => 'form-control', 
+                                            'style'         => 'border:none',
+                                            'required'      => 'required'
+                                          );
+
+                                echo form_textarea($data);
+
+                            ?>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="hidden" name="submit" value="Send Message"/>
+                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                            <button onclick="sendMessage(<?php echo $this->session->userdata('members_id');?>, <?php echo $address->address_member_id;?>);" type="button" id="submit_message" class="btn btn-primary">Send Message</button>
+            <!--                <input type="submit" id="submit_message" class="btn btn-primary" name="submit" value="Send Message">-->
+                        </div>
+                    </div>
+                    <?php echo form_close()?>
+                </div>
+            </div>
         
         <?php 
                 unset($address->address_member_id);
