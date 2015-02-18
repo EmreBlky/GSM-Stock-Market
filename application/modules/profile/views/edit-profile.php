@@ -511,6 +511,24 @@
    
             
         <div class="wrapper wrapper-content">
+        	
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Profile Completion (43%)</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="progress progress-bar-default">
+                                <div style="width: 43%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="43" role="progressbar" class="progress-bar progress-bar-success">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        	
         	<div class="row">
                 <div class="col-lg-8">
                     <div class="ibox float-e-margins">
@@ -1144,7 +1162,7 @@
                         </div>
                    </div>
                 
-                </div></div>
+                </div></div></div>
                                 
                                 
            <div class="row">
@@ -1420,8 +1438,6 @@
         
         
         
-    <!-- PLACEHOLDER LOCATION -->
-    <link href="public/main/template/core/css/plugins/cropper/cropper.min.css" rel="stylesheet">
             
     <!-- checkbox css -->
     <link href="public/main/template/core/css/plugins/iCheck/custom.css" rel="stylesheet">
@@ -1434,65 +1450,6 @@
                     checkboxClass: 'icheckbox_square-green',
                     radioClass: 'iradio_square-green',
                 });
-            });
-    </script>
-           
-
-   	<!-- Input Mask-->
-    <script src="public/main/template/core/js/plugins/jasny/jasny-bootstrap.min.js"></script>
-
-    <!-- Image cropper -->
-    <script src="public/main/template/core/js/plugins/cropper/cropper.min.js"></script>
-
-    <script>
-        $(document).ready(function(){
-
-            var $image = $(".image-crop > img")
-            $($image).cropper({
-                aspectRatio: 2,
-  				autoCropArea: 1, // Center 100%
-				multiple: true,
-                preview: ".img-preview",
-                done: function(data) {
-                    // Output the result data for cropping image.
-                }
-            });
-
-            var $inputImage = $("#inputImage");
-            if (window.FileReader) {
-                $inputImage.change(function() {
-                    var fileReader = new FileReader(),
-                            files = this.files,
-                            file;
-
-                    if (!files.length) {
-                        return;
-                    }
-
-                    file = files[0];
-
-                    if (/^image\/\w+$/.test(file.type)) {
-                        fileReader.readAsDataURL(file);
-                        fileReader.onload = function () {
-                            $inputImage.val("");
-                            $image.cropper("reset", true).cropper("replace", this.result);
-                        };
-                    } else {
-                        showMessage("Please choose an image file.");
-                    }
-                });
-            } else {
-                $inputImage.addClass("hide");
-            }
-
-            $("#download").click(function() {
-                window.open($image.cropper("getDataURL"));
-            });
-			
-			$("#reset").click(function() {
-			  $image.cropper("reset");
-			});
-			
             });
     </script>
 
