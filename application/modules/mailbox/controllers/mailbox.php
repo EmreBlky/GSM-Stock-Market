@@ -246,9 +246,9 @@ class Mailbox extends MX_Controller
                 while ($row = mysql_fetch_array($array)) {
                     $email_array[] = $row["id"];
                 }
-                echo '<pre>';
-                print_r($email_array);
-                exit;
+//                echo '<pre>';
+//                print_r($email_array);
+//                exit;
                 
                 $data['email_info'] = $email_array;
                 
