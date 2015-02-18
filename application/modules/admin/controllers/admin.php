@@ -214,5 +214,43 @@ class Admin extends MX_Controller
         
         redirect('admin/feed/');
     }
+    
+    function user_level()
+    {
+        if ( ! $this->session->userdata('admin_logged_in'))
+        { 
+            redirect('admin/login');
+        }
+        
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel: User Level';        
+        $data['page'] = 'user-level';
+        
+        
+        
+        $var = 'membership';
+        $var_model = $var.'_model';
+        
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        
+        $data[$var] = $this->{$var_model}->get_where_multiples_order('id', 'DESC', 'id >', 0);
+           
+
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+    
+    function updateUserLevel($mid, $var, $status)
+    {
+        $mid      = str_replace("'", "", $mid);
+        $var      = str_replace("'", "", $var);
+        $status   = str_replace("'", "", $status);
+        
+        $data = array(
+                        $var     => $status
+                      );
+        $this->load->model('membership/membership_model', 'membership_model');
+        $this->membership_model->_update_where($data, 'id', $mid);
+    }
 	
 }
