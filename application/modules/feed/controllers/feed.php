@@ -5,20 +5,21 @@ class Feed extends MX_Controller
     function __construct()
     {
         parent::__construct();
-        if ( ! $this->session->userdata('logged_in'))
-        { 
-            redirect('login');
-        }
+//        if ( ! $this->session->userdata('logged_in'))
+//        { 
+//            redirect('login');
+//        }
         $this->load->model('feed/feed_model', 'feed_model');
     }
 
     function index()
     {
-        $data['main'] = 'feed';
-	$data['title'] = 'feed';
-        $data['page'] = 'index';
-        $this->load->module('templates');
-        $this->templates->page($data);
+        redirect('home');
+//        $data['main'] = 'feed';
+//	$data['title'] = 'feed';
+//        $data['page'] = 'index';
+//        $this->load->module('templates');
+//        $this->templates->page($data);
     }
     function add($content)
     {

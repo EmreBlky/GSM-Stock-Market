@@ -3,14 +3,11 @@ class Home extends MX_Controller
 {
     function __construct()
     {
-
-            parent::__construct();
-            if ( ! $this->session->userdata('logged_in'))
-            { 
-                redirect('login');
-            }
-            //$this->load->helper('security');
-
+        parent::__construct();
+        if ( ! $this->session->userdata('logged_in') )
+        { 
+            redirect('login');
+        }
     }
 
     function index()

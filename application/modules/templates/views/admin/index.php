@@ -1,6 +1,12 @@
 <?php
 
-if($main == 'admin_login'){
+
+
+if($page == 'login'){
+    
+    $this->load->module('header');
+    $this->header->login_pre_header();
+    $this->header->login_main_header();
     
 }
 else{
@@ -21,7 +27,11 @@ else{
 
 <?php
 
-if($main == 'admin_login'){
+if($page == 'login'){
+    
+    $this->load->module('footer');
+    $this->footer->login_main_footer();
+    $this->footer->login_post_footer();
     
 }
 else{

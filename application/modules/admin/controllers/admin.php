@@ -1,13 +1,20 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
 class Admin extends MX_Controller 
 {
     function __construct()
     {
-        parent::__construct();
+        parent::__construct();        
+       
     }
 
     function index()
-    {
+    { 
+        if ( ! $this->session->userdata('admin_logged_in'))
+        { 
+            redirect('admin/login');
+        }
+        
         $data['main'] = 'admin';        
         $data['title'] = 'GSM - Admin Panel';        
         $data['page'] = 'dashboard';
@@ -21,6 +28,15 @@ class Admin extends MX_Controller
         $this->load->module('templates');
         $this->templates->admin($data);
 	
+    }
+    
+    function login()
+    {
+        $data['main'] = 'admin';
+        $data['title'] = 'Admin - Please Login';        
+        $data['page'] = 'login';
+        $this->load->module('templates');
+        $this->templates->admin($data);
     }
     
     function view_dashboard()

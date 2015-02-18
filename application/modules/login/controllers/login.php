@@ -4,14 +4,23 @@ class Login extends MX_Controller{
 
     function __construct()
     {
-
-            parent::__construct();
-            $this->load->model('login/login_model', 'login_model');
-            $this->load->model('member/member_model', 'member_model');
+        parent::__construct();
+//        if ( $this->session->userdata('admin_logged_in'))
+//        { 
+//            redirect('admin');
+//        }
+        
+        $this->load->model('login/login_model', 'login_model');
+        $this->load->model('member/member_model', 'member_model');
+        $this->load->model('admin/admin_model', 'admin_model');
     }
         
     function index()
-    {                      
+    { 
+//        if ( $this->session->userdata('admin_logged_in'))
+//        { 
+//            redirect('admin');
+//        }
         $data['base'] = $this->config->item('base_url');
         $data['message'] = '';
         $data['main'] = 'login';
@@ -88,7 +97,45 @@ class Login extends MX_Controller{
                 $this->templates->page($data);
         }
     }
+    
+    function admin_login_validation()
+    {
+        $this->load->library('form_validation');        
+        
+        $this->form_validation->set_rules('username', 'Username', 'xss_clean');
+        $this->form_validation->set_rules('password', 'Password', 'xss_clean');
+        
+        if($this->admin_model->canLogIn($this->input->post('username'), $this->input->post('password')) > 0){
 
+                $aid = $this->admin_model->canLogIn();
+
+                if($this->form_validation->run()){                
+
+                        $this->validate_admin();
+
+                    }else{
+                            $data['base'] = $this->config->item('base_url');                            
+                            $data['error'] = '<h2>THERE HAS BEEN AN ERROR! Please try again.</h2>';
+                            $data['main'] = 'admin';
+                            $data['title'] = 'Admin - Please Login';        
+                            $data['page'] = 'login';
+                            $this->load->module('templates');
+                            $this->templates->admin($data);
+                    } 
+                //}
+            }
+            else{
+                    $data['base'] = $this->config->item('base_url');
+                    $data['error'] = '<h2>Admin Username and (or) Password invalid. Please try again.</h2>';
+                    $data['main'] = 'admin';
+                    $data['title'] = 'Admin - Please Login';        
+                    $data['page'] = 'login';
+                    $this->load->module('templates');
+                    $this->templates->admin($data);
+            }
+    }
+    
+    
     function validate_user(){
             
             if($this->member_model->canLogIn($this->input->post('username'), $this->input->post('password')) > 0){
@@ -143,6 +190,44 @@ class Login extends MX_Controller{
             }
 
     }
+        
+    function validate_admin(){
+        
+//        echo '<pre>';
+//        print_r($_POST);
+//        exit;
+            
+            if($this->admin_model->canLogIn($this->input->post('username'), $this->input->post('password')) > 0){
+                
+                    $aid = $this->admin_model->canLogIn();
+                
+                    $admin = $this->admin_model->get_where($aid);
+                    
+                    $admin_data = array(
+                                                    'members_id'  	=> $aid,
+                                                    //'username'  	=> $member->username,
+                                                    'firstname'         => $admin->firstname,
+                                                    'lastname'          => $admin->lastname,
+                                                    'admin_logged_in' 	=> TRUE
+                                                    );
+
+                    $this->session->set_userdata($admin_data);
+                    
+                    redirect('http://localhost/gsm/gsm-secure/admin/');
+            }
+            else {
+
+                    $data['base'] = $this->config->item('base_url');
+                    $data['error'] = '<h2>Username and (or) Password invalid. Please try again.</h2>';
+                    $data['main'] = 'admin';
+                    $data['title'] = 'Admin - Please Login';        
+                    $data['page'] = 'login';
+                    $this->load->module('templates');
+                    $this->templates->admin($data);
+
+            }
+
+    }
     
     function logout()
     {
@@ -156,11 +241,14 @@ class Login extends MX_Controller{
         $this->session->unset_userdata('members_id');
         $this->session->unset_userdata('username');
         $this->session->unset_userdata('logged_in');
+        $this->session->unset_userdata('admin_logged_in');
         $this->session->unset_userdata('online_status');
         redirect('login');
     }
-       
-	
-	
-
+    
+    function admin_logout()
+    {
+        $this->session->unset_userdata('admin_logged_in');
+        redirect('admin/login');
+    }
 }
