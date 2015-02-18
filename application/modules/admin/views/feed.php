@@ -34,8 +34,9 @@ if(is_numeric($id)){?>
                     </p>
                 </div>                    
                 <div class="mail-body text-right tooltip-demo">
+                    <a class="btn btn-sm btn-white" href="admin/edit_feed/<?php echo $feed->id;?>"><i class="fa fa-book"></i> Edit</a>
                     <a class="btn btn-sm btn-white" href="admin/feedApprove/<?php echo $feed->id;?>"><i class="fa fa-check text-navy"></i> Approve</a>
-                        <a class="btn btn-sm btn-white" href="admin/feedDecline/<?php echo $feed->id;?>"><i class="fa fa-times text-warning"></i> Decline</a>
+                    <a class="btn btn-sm btn-white" href="admin/feedDecline/<?php echo $feed->id;?>"><i class="fa fa-times text-warning"></i> Decline</a>
                 </div>
                 <div class="clearfix"></div>
                 
@@ -82,6 +83,8 @@ if(is_numeric($id)){?>
                                 <a href="admin/feed/<?php echo $feed->id; ?>">CLICK HERE</a>
                             </td>
                             <td>
+                                <a href="admin/edit_feed/<?php echo $feed->id;?>"><i class="fa fa-book"></i> Edit</a>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="admin/feedApprove/<?php echo $feed->id;?>"><i class="fa fa-check text-navy"></i> Approve</a>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="admin/feedDecline/<?php echo $feed->id;?>"><i class="fa fa-times text-warning"></i> Decline</a>

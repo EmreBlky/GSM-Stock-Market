@@ -128,8 +128,6 @@ class Admin extends MX_Controller
         $data['title'] = 'GSM - Admin Panel: Feed';        
         $data['page'] = 'feed';
         
-        
-        
         $var = 'feed';
         $var_model = $var.'_model';
         
@@ -147,6 +145,22 @@ class Admin extends MX_Controller
             }
         }
 
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+    
+    function edit_feed($id)
+    {
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel: Edit Feed';        
+        $data['page'] = 'edit-feed';
+        
+        $var = 'feed';
+        $var_model = $var.'_model';
+        
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        $data[$var] = $this->{$var_model}->get_where($id);
+        
         $this->load->module('templates');
         $this->templates->admin($data);
     }
@@ -194,6 +208,46 @@ class Admin extends MX_Controller
         redirect('admin/feed/');
     }
     
+    function feedUpdate($id)
+    {
+        $var = 'feed';
+        $var_model = $var.'_model';
+        
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        $mem = $this->{$var_model}->get_where($id)->member_id;
+        //echo $mem;
+        //exit;
+        $data = array(
+                    'approved'      => 'yes',
+                    'content'       => nl2br($this->input->post('content')),
+                    'approved_date' => date('Y-m-d H:i:s')
+                  );
+
+        $this->{$var_model}->_update($id, $data);
+        
+        $var1 = 'mailbox';
+        $var1_model = $var1.'_model';
+        
+        $this->load->model(''.$var1.'/'.$var1.'_model', ''.$var1.'_model');
+        
+         $data = array(
+                                    'member_id'         => 5,
+                                    'sent_member_id'    => $mem,
+                                    'subject'           => 'Feed Approved',
+                                    'body'              => 'Your feed has been approved',
+                                    'inbox'             => 'yes',
+                                    'sent'              => 'yes',
+                                    'date'              => date('d-m-Y'),
+                                    'time'              => date('H:i'),
+                                    'sent_from'         => 'support',
+                                    'datetime'          => date('Y-m-d H:i:s')
+                                  ); 
+
+        $this->{$var1_model}->_insert($data);
+        
+        redirect('admin/feed/');
+    }
+            
     function feedDecline($id)
     {
         if ( ! $this->session->userdata('admin_logged_in'))

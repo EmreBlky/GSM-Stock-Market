@@ -14,6 +14,7 @@
                     url: "feed/add/"+ content +"",
                     dataType: "html",
                     success:function(data){
+                      $('#feed_content').val('');  
                       //$('#contact_removed').replaceWith('<button onclick="contactAdd();" type="button" class="btn btn-success btn-sm btn-block" id="contact_added"><i class="fa fa-book"></i> Add Contact</button>');  
                       toastr.success('Your feed has been sent for approval.', 'Feed Success');
                     },

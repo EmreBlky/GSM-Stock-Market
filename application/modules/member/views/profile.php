@@ -123,7 +123,7 @@
                                         <dt>Status:  </dt> 
                                         <dd><span class="label label-primary">Active</span></dd>
                                         <dt>Subscription:</dt> 
-                                        <dd>Gold Member</dd>
+                                        <dd><?php echo $this->membership_model->get_where($member_info->membership)->membership;?></dd>
                                     </dl>
                                     <dl class="dl-horizontal">
                                         <dt>Company Number:</dt> 
@@ -138,7 +138,7 @@
                                             <?php echo $member_company->town_city;?><br />
                                             <?php echo $member_company->county;?><br />
                                             <?php echo $member_company->post_code;?><br />
-                                            <?php echo $member_company->country;?></dd>
+                                            <?php echo $this->country_model->get_where($member_company->country)->country;?></dd>
                                     </dl>
                                     
                                     <dl class="dl-horizontal">

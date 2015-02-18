@@ -54,7 +54,7 @@ class Feed extends MX_Controller
         
             if($feed_count > 0){
                 $data['feed_count'] =  $feed_count;   
-                $data['feed'] = $this->feed_model->get_where_multiples_order('datetime', 'DESC', 'member_id', $mid, 'approved', 'yes');
+                $data['feed'] = $this->feed_model->get_where_multiples_order('datetime', 'DESC', 'member_id', $mid, 'approved', 'yes', NULL, NULL, NULL, NULL, 10, NULL);
             }
             else{
                 $data['feed_count'] = 0;
@@ -68,7 +68,7 @@ class Feed extends MX_Controller
         
             if($feed_count > 0){
                 $data['feed_count'] =  $feed_count;   
-                $data['feed'] = $this->feed_model->get_where_multiples_order('datetime', 'DESC', 'member_id', $this->session->userdata('members_id'), 'approved', 'yes');
+                $data['feed'] = $this->feed_model->get_where_multiples_order('datetime', 'DESC', 'member_id', $this->session->userdata('members_id'), NULL, NULL, NULL, NULL, NULL, NULL, 10, NULL);
             }
             else{
                 $data['feed_count'] = 0;

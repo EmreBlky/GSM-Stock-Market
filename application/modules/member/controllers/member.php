@@ -12,6 +12,7 @@ class Member extends MX_Controller
         //$this->load->helper('security');
         $this->load->model('member/member_model', 'member_model');
         $this->load->model('company/company_model', 'company_model');
+        $this->load->model('country/country_model', 'country_model');
     }
 
     function index()
