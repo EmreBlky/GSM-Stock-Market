@@ -242,7 +242,7 @@ class Mailbox extends MX_Controller
                 $data['inbox_s_ncount'] = $this->mailbox_model->count_where_multiple('sent_member_id',$this->session->userdata('members_id'), 'sent_from', $from, 'inbox', 'yes', 'mail_read', 'no');
                 $data['inbox_support'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'sent_member_id', $this->session->userdata('members_id'), 'sent_from', $from, 'inbox', 'yes', NULL, NULL, 20, $offset);
                 
-                $array = mysql_query("SELECT id FROM mailbox WHERE sent_member_id = '".$this->session->userdata('members_id')."' AND inbox = 'yes' AND sent_from = 'member'");
+                $array = mysql_query("SELECT id FROM mailbox WHERE sent_member_id = '".$this->session->userdata('members_id')."' AND inbox = 'yes' AND sent_from = 'support'");
                 while ($row = mysql_fetch_array($array)) {
                     $email_array[] = $row["id"];
                 }
