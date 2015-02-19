@@ -511,6 +511,24 @@
    
             
         <div class="wrapper wrapper-content">
+        	
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Profile Completion (43%)</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="progress progress-bar-default">
+                                <div style="width: 43%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="43" role="progressbar" class="progress-bar progress-bar-success">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        	
         	<div class="row">
                 <div class="col-lg-8">
                     <div class="ibox float-e-margins">
@@ -522,7 +540,7 @@
 					$attributes = array('class' => 'form-horizontal validation', 'onsubmit' => 'return validate_info()');
 					echo form_open('profile/profileEdit', $attributes);
 							?>
-                            	<div class="form-group"><label class="col-md-3 control-label">Company Name</label>
+                            	<div class="form-group"><label class="col-md-3 control-label">Company Name <span style="color:red">*</span></label>
                                     <div class="col-md-9">
                                         <?php
 
@@ -595,8 +613,7 @@
                                                             'name'        => 'vat_tax',
                                                         	'class'          => 'form-control',
 															'data-mask'		=> 'aa 999 999 99',
-                                                            'value'     => $company->vat_tax,     
-                                                            'required'  => 'required'
+                                                            'value'     => $company->vat_tax,  
                                                           );
 
                                                 echo form_input($data);
@@ -620,7 +637,7 @@
                                 <div class="hr-line-dashed"></div>
                                 
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label">Address Line 1</label>
+                                    <label class="col-md-3 control-label">Address Line 1 <span style="color:red">*</span></label>
                                     <div class="col-md-9">
                                         <?php
 
@@ -661,8 +678,7 @@
                                                 $data = array(
                                                             'name'        => 'address_line_2',
                                                             'class'          => 'form-control',
-                                                            'value'     => $company->address_line_2,     
-                                                            'required'  => 'required'
+                                                            'value'     => $company->address_line_2, 
                                                           );
 
                                                 echo form_input($data);
@@ -673,8 +689,7 @@
                                                 $data = array(
                                                         'name'        => 'address_line_2',
                                                         'class'          => 'form-control',
-                                                        'value'     => $this->input->post('address_line_2'),     
-                                                        'required'  => 'required'
+                                                        'value'     => $this->input->post('address_line_2'), 
                                                       );
 
                                                 echo form_input($data);
@@ -684,7 +699,7 @@
                                 </div>  
                                 
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label">Town/City</label>
+                                    <label class="col-md-3 control-label">Town/City <span style="color:red">*</span></label>
                                     <div class="col-md-9">
                                         <?php
 
@@ -716,7 +731,7 @@
                                 </div>     
                                 
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label">County</label>
+                                    <label class="col-md-3 control-label">County <span style="color:red">*</span></label>
                                     <div class="col-md-9">
                                         <?php
 
@@ -748,7 +763,7 @@
                                 </div>  
                                 
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label">Postal/Zip Code</label>
+                                    <label class="col-md-3 control-label">Postal/Zip Code <span style="color:red">*</span></label>
                                     <div class="col-md-9">
                                         <?php
 
@@ -779,7 +794,7 @@
                                     </div>
                                 </div>   
                                 
-                                <div class="form-group"><label class="col-md-3 control-label">Country</label>
+                                <div class="form-group"><label class="col-md-3 control-label">Country <span style="color:red">*</span></label>
 
                                     <div class="col-md-9">                                       
                                     <?php
@@ -790,7 +805,7 @@
                                 </div>    
                                 
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label">Phone Number</label>
+                                    <label class="col-md-3 control-label">Phone Number <span style="color:red">*</span></label>
                                     <div class="col-md-3" style="padding-right:0">
                                     <?php
                                         $this->load->module('country');
@@ -849,7 +864,7 @@
                                 -->
                                 
                                 <div class="form-group">
-                                	<label class="col-md-3 control-label">Business Sectors <br/><small class="text-navy">Select up to 5</small></label>
+                                	<label class="col-md-3 control-label">Business Sectors <span style="color:red">*</span><br/><small class="text-navy">Select up to 5</small></label>
 									<div class="col-md-4">
                                         <div class="checkbox i-checks"><label> <input type="checkbox" value="New Mobiles (Sim Free)" name="bsectors" id="bsectors1" class='business_cycle'> <i></i> New Mobiles (Sim Free) </label></div>
                                         <div class="checkbox i-checks"><label> <input type="checkbox" value="New Mobiles (Network Stocks)" name="bsectors" id="bsectors2" class='business_cycle'> <i></i> New Mobiles (Network Stocks) </label></div>
@@ -868,19 +883,19 @@
                                 	</div>
 									<div class="col-md-4">
                                     <div id="primary-business">
-                                    <label class="col-md-12">Primary Business</label>
+                                    <label class="col-md-12">Primary Business <span style="color:red">*</span></label>
                                     <select class="form-control m-b" id="bprimary" style="float:left" onchange="updateSelects1(this.value)">
                                         <option value = "">[Select One]</option>
                                     </select>
                                     </div>
                                     <div id="secondary-business">
-                                    <label class="col-md-12">Secondary Business</label>
+                                    <label class="col-md-12">Secondary Business <span style="color:red">*</span></label>
                                     <select class="form-control m-b" name="bsecondary" id="bsecondary" style="float:left" onchange="updateSelects2(this.value)">
                                         <option value = "">[Select One]</option>
                                     </select>
                                     </div>
                                     <div id="tertiary-business">
-                                    <label class="col-md-12">Tertiary Business</label>
+                                    <label class="col-md-12">Tertiary Business <span style="color:red">*</span></label>
                                     <select class="form-control m-b" name="btertiary" id="btertiary" style="float:left" onchange="updateSelects3(this.value)">
                                         <option value = "">[Select One]</option>
                                     </select>
@@ -889,20 +904,12 @@
                                 	</div>
                                </div>
                                 
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label">Other Sectors<br /><small class="text-navy">List seperated by commas</small></label>
-                                    <div class="col-md-9">  
-                                        <input type="text" class="form-control" />
-                                        <span class="help-block m-b-none">e.g Mobile Phones, Broken LCDs, e.t.c</span>
-                                    </div>
-                                </div>
-                                
                                 <div class="hr-line-dashed"></div>
                                 
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">Website</label>
                                     <div class="col-md-9">
-                                        <div class="input-group m-b"> 
+                                        <div class="input-group m-b"><span class="input-group-addon"><i class="fa fa-globe"></i></span>  
                                         <?php
 
                                             if($company->website){
@@ -910,8 +917,8 @@
                                                 $data = array(
                                                             'name'        => 'website',
                                                         	'class'          => 'form-control',
-                                                            'value'     => $company->website,     
-                                                            'required'  => 'required'
+															'type'		=>	'url',
+                                                            'value'     => $company->website, 
                                                           );
 
                                                 echo form_input($data);
@@ -922,6 +929,7 @@
                                                 $data = array(
                                                         'name'        => 'website',
                                                         'class'          => 'form-control',
+														'type'		=>	'url',
                                                         'value'     => $this->input->post('website')
                                                       );
 
@@ -943,8 +951,7 @@
                                                 $data = array(
                                                             'name'        => 'skype',
                                                         	'class'          => 'form-control',
-                                                            'value'     => $member->skype,     
-                                                            'required'  => 'required'
+                                                            'value'     => $member->skype,
                                                           );
 
                                                 echo form_input($data);
@@ -976,8 +983,7 @@
                                                 $data = array(
                                                             'name'        => 'facebook',
                                                         	'class'          => 'form-control',
-                                                            'value'     => $member->facebook,     
-                                                            'required'  => 'required'
+                                                            'value'     => $member->facebook,  
                                                           );
 
                                                 echo form_input($data);
@@ -1004,13 +1010,12 @@
                                         <div class="input-group m-b"><span class="input-group-addon"><i class="fa fa-twitter"></i></span>  
                                         <?php
 
-                                            if($member->skype){
+                                            if($member->twitter){
 
                                                 $data = array(
                                                             'name'        => 'twitter',
                                                         	'class'          => 'form-control',
-                                                            'value'     => $member->twitter,     
-                                                            'required'  => 'required'
+                                                            'value'     => $member->twitter,  
                                                           );
 
                                                 echo form_input($data);
@@ -1037,13 +1042,12 @@
                                         <div class="input-group m-b"><span class="input-group-addon"><i class="fa fa-linkedin"></i></span>  
                                         <?php
 
-                                            if($member->skype){
+                                            if($member->linkedin){
 
                                                 $data = array(
                                                             'name'        => 'linkedin',
                                                         	'class'          => 'form-control',
-                                                            'value'     => $member->linkedin,     
-                                                            'required'  => 'required'
+                                                            'value'     => $member->linkedin, 
                                                           );
 
                                                 echo form_input($data);
@@ -1073,10 +1077,9 @@
                                             if($member->skype){
 
                                                 $data = array(
-                                                            'name'        => 'gplus',
-                                                        	'class'          => 'form-control',
-                                                            'value'     => $member->gplus,     
-                                                            'required'  => 'required'
+                                                            'name'      => 'gplus',
+                                                        	'class'     => 'form-control',
+                                                            'value'     => $member->gplus,
                                                           );
 
                                                 echo form_input($data);
@@ -1119,32 +1122,25 @@
                 <div class="col-lg-4">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>Personal Photo</h5>
+                            <h5>Company Photo</h5>
                         </div>
-                        <div class="ibox-content form-horizontal">
-                                <div class="form-group">
-                        <div class="col-md-6 col-md-offset-3" style="text-align:center">
-                                <h4>Preview image</h4>
-                                <div class="img-preview img-preview-sm"></div>
-                        </div>
-                        <div class="col-md-12">
-                                <div class="image-crop">                                
-                                    <img src="public/main/template/core/img/p3.jpg">
-                                </div>
-                        </div>
-                        <div class="col-md-12" style="text-align:center;margin-top:20px">
+                        <div class="ibox-content">
+                        <div class="row">
+                        	<div class="col-md-12" style="text-align:center">                                
+                                    <img src="public/main/template/gsm/images/company/no_company.jpg" width="300" height="150">
+                        	</div>
+                        	<div class="col-md-12" style="text-align:center;margin-top:20px">
                         	<div class="btn-group">
                            		<label title="Upload image file" for="inputImage" class="btn btn-primary">
-                                	<input type="file" accept="image/*" name="file" id="inputImage" class="hide">Upload new image</label>
-                                    <label title="Download image" id="download" class="btn btn-primary">Download</label>
-                                    <label title="Revert" id="reset" class="btn btn-danger">Revert Changes</label>
+                                	<input type="file" accept="image/*" name="file" class="hide">Upload new image</label>
+                                    <label class="btn btn-danger">Delete</label>
                            	</div>
+                        	</div>
+                            <p class="small" style="text-align:center">Company profile image should be no smaller than 300px width x 150px height.<br />Company Images are scaled twice the width of the height.</p>
                         </div>
-                        
                         </div>
-                   </div>
                 
-                </div></div>
+                </div></div></div>
                                 
                                 
            <div class="row">
@@ -1154,7 +1150,7 @@
                             <h5>Personal Details</h5>
                         </div>
                         <div class="ibox-content form-horizontal">
-                                <div class="form-group"><label class="col-md-3 control-label">Title</label>
+                                <div class="form-group"><label class="col-md-3 control-label">Title <span style="color:red">*</span></label>
                                     <div class="col-md-2">
                                         <?php /*
 
@@ -1192,7 +1188,7 @@
                                 </div>  
                                 
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label">First Name</label>
+                                    <label class="col-md-3 control-label">First Name <span style="color:red">*</span></label>
                                     <div class="col-md-9">
                                         <?php
 
@@ -1224,7 +1220,7 @@
                                 </div>    
                                 
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label">Last Name</label>
+                                    <label class="col-md-3 control-label">Last Name <span style="color:red">*</span></label>
                                     <div class="col-md-9">
                                         <?php
 
@@ -1256,7 +1252,7 @@
                                 </div>   
                                 
                                 <div class="form-group">
-                                    <label class="col-md-3 col-md-4 control-label">Company Role</label>
+                                    <label class="col-md-3 col-md-4 control-label">Company Role <span style="color:red">*</span></label>
                                     <div class="col-md-9">
                                         <?php
 
@@ -1288,7 +1284,7 @@
                                 </div>  
                                 
                                 <div class="form-group">
-                                    <label class="col-md-3 col-md-4 control-label">Email Address</label>
+                                    <label class="col-md-3 col-md-4 control-label">Email Address <span style="color:red">*</span></label>
                                     <div class="col-md-9">
                                         <?php
 
@@ -1335,8 +1331,7 @@
                                                 $data = array(
                                                             'name'        => 'mobile_number',
                                                         	'class'          => 'form-control',
-                                                            'value'     => $member->mobile_number,     
-                                                            'required'  => 'required'
+                                                            'value'     => $member->mobile_number,
                                                           );
 
                                                 echo form_input($data);
@@ -1357,7 +1352,7 @@
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label class="col-md-3 col-md-4 control-label">Language</label>
+                                    <label class="col-md-3 col-md-4 control-label">Language <span style="color:red">*</span></label>
                                     <div class="col-md-4">                                     
                                     <?php
                                         $this->load->module('language');
@@ -1388,24 +1383,20 @@
                         <div class="ibox-title">
                             <h5>Personal Photo</h5>
                         </div>
-                        <div class="ibox-content form-horizontal">
-                                <div class="form-group">
-                        <div class="col-md-6 col-md-offset-3" style="text-align:center">
-                                <h4>Preview image</h4>
-                                <div class="img-preview img-preview-sm"></div>
-                        </div>
-                        <div class="col-md-12">
-                                <div class="image-crop">                                
-                                    <img src="public/main/template/core/img/p3.jpg">
-                                </div>
-                        </div>
-                        <div class="col-md-12" style="text-align:center;margin-top:20px">
+                        <div class="ibox-content">
+                        <div class="row">
+                        	<div class="col-md-12" style="text-align:center">                                
+                                    <img src="public/main/template/gsm/images/members/no_profile.jpg" height="150" width="150">
+                        	</div>
+                        	<div class="col-md-12" style="text-align:center;margin-top:20px">
                         	<div class="btn-group">
                            		<label title="Upload image file" for="inputImage" class="btn btn-primary">
-                                	<input type="file" accept="image/*" name="file" id="inputImage" class="hide">Upload new image</label>
-                                    <label title="Download image" id="download" class="btn btn-primary">Download</label>
-                                    <label title="Revert" id="reset" class="btn btn-danger">Revert Changes</label>
+                                	<input type="file" accept="image/*" name="file" class="hide">Upload new image</label>
+                                    <label class="btn btn-danger">Delete</label>
                            	</div>
+                        	</div>
+                            <p class="small" style="text-align:center">Personal profile image should be no smaller than 150px width x 150px height.<br />Personal images are scaled 1:1 ratio.</p>
+                        </div>
                         </div>
                         
                         </div>
@@ -1420,8 +1411,6 @@
         
         
         
-    <!-- PLACEHOLDER LOCATION -->
-    <link href="public/main/template/core/css/plugins/cropper/cropper.min.css" rel="stylesheet">
             
     <!-- checkbox css -->
     <link href="public/main/template/core/css/plugins/iCheck/custom.css" rel="stylesheet">
@@ -1434,65 +1423,6 @@
                     checkboxClass: 'icheckbox_square-green',
                     radioClass: 'iradio_square-green',
                 });
-            });
-    </script>
-           
-
-   	<!-- Input Mask-->
-    <script src="public/main/template/core/js/plugins/jasny/jasny-bootstrap.min.js"></script>
-
-    <!-- Image cropper -->
-    <script src="public/main/template/core/js/plugins/cropper/cropper.min.js"></script>
-
-    <script>
-        $(document).ready(function(){
-
-            var $image = $(".image-crop > img")
-            $($image).cropper({
-                aspectRatio: 2,
-  				autoCropArea: 1, // Center 100%
-				multiple: true,
-                preview: ".img-preview",
-                done: function(data) {
-                    // Output the result data for cropping image.
-                }
-            });
-
-            var $inputImage = $("#inputImage");
-            if (window.FileReader) {
-                $inputImage.change(function() {
-                    var fileReader = new FileReader(),
-                            files = this.files,
-                            file;
-
-                    if (!files.length) {
-                        return;
-                    }
-
-                    file = files[0];
-
-                    if (/^image\/\w+$/.test(file.type)) {
-                        fileReader.readAsDataURL(file);
-                        fileReader.onload = function () {
-                            $inputImage.val("");
-                            $image.cropper("reset", true).cropper("replace", this.result);
-                        };
-                    } else {
-                        showMessage("Please choose an image file.");
-                    }
-                });
-            } else {
-                $inputImage.addClass("hide");
-            }
-
-            $("#download").click(function() {
-                window.open($image.cropper("getDataURL"));
-            });
-			
-			$("#reset").click(function() {
-			  $image.cropper("reset");
-			});
-			
             });
     </script>
 
