@@ -241,7 +241,6 @@ class Login extends MX_Controller{
         $this->session->unset_userdata('members_id');
         $this->session->unset_userdata('username');
         $this->session->unset_userdata('logged_in');
-        $this->session->unset_userdata('admin_logged_in');
         $this->session->unset_userdata('online_status');
         redirect('login');
     }

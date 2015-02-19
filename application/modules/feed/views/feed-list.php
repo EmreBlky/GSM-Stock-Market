@@ -52,7 +52,7 @@ $this->load->model('company/company_model', 'company_model');
                             }
                             if($m < 0 && $m <= -2){
                                 
-                                if(days($m) > 15){
+                                if(days($subTime) > 15*60){
                                     
                                     echo '<font style="color:#464646 !important;">'.days($m).' Minutes ago </font>';
                                 }
