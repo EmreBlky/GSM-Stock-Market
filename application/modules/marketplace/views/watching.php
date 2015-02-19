@@ -1,6 +1,7 @@
+
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
-                    <h2>Watching</h2>
+                    <h2>Watch List</h2>
                     <ol class="breadcrumb">
                         <li>
                             <a href="/">Home</a>
@@ -18,1021 +19,601 @@
                 </div>
             </div>
         <div class="wrapper wrapper-content animated fadeInRight">
+        	
             <div class="row">
                 <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Basic Data Tables example with responsive plugin</h5>
-                        <div class="ibox-tools">
-                            <a class="collapse-link">
-                                <i class="fa fa-chevron-up"></i>
-                            </a>
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                <i class="fa fa-wrench"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-user">
-                                <li><a href="#">Config option 1</a>
-                                </li>
-                                <li><a href="#">Config option 2</a>
-                                </li>
-                            </ul>
-                            <a class="close-link">
-                                <i class="fa fa-times"></i>
-                            </a>
-                        </div>
+                        <h5>Watching - Selling Offers</h5>
                     </div>
                     <div class="ibox-content">
 
-                    <table class="table table-striped table-bordered table-hover dataTables-example" >
+                    <table id="marketplace" class="table table-striped table-bordered table-hover dataTables-example" >
                     <thead>
                     <tr>
-                        <th>Rendering engine</th>
-                        <th>Browser</th>
-                        <th>Platform(s)</th>
-                        <th>Engine version</th>
-                        <th>CSS grade</th>
+                        <th>Listing End</th>
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th>Product Type</th>
+                        <th>Condition</th>
+                        <th>Price</th>
+                        <th>QTY</th>
+                        <th>Spec</th>
+                        <th>Country</th>
+                        <th>Options</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr class="gradeX">
-                        <td>Trident</td>
-                        <td>Internet
-                            Explorer 4.0
-                        </td>
-                        <td>Win 95+</td>
-                        <td class="center">4</td>
-                        <td class="center">X</td>
+                    <tr data-toggle="modal" data-target="#myModal5">
+                        <td>17:22 11-02</td>
+                        <td>Apple</td>
+                        <td>Apple iPhone 4S 16GB</td>
+                        <td>Data Cable</td>
+                        <td>Refurbished</td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
+                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeC">
-                        <td>Trident</td>
-                        <td>Internet
-                            Explorer 5.0
-                        </td>
-                        <td>Win 95+</td>
-                        <td class="center">5</td>
-                        <td class="center">C</td>
+                    <tr data-toggle="modal" data-target="#myModal5">
+                        <td>17:22 11-02</td>
+                        <td>Apple</td>
+                        <td>Apple iPhone 5S 32GB</td>
+                        <td>Data Cable</td>
+                        <td>Refurbished</td>
+                        <td>GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
+                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Trident</td>
-                        <td>Internet
-                            Explorer 5.5
-                        </td>
-                        <td>Win 95+</td>
-                        <td class="center">5.5</td>
-                        <td class="center">A</td>
+                    <tr data-toggle="modal" data-target="#myModal5">
+                        <td>17:22 11-02</td>
+                        <td>Apple</td>
+                        <td>Apple iPhone 2G 4GB</td>
+                        <td>Data Cable</td>
+                        <td>Refurbished</td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
+                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Trident</td>
-                        <td>Internet
-                            Explorer 6
-                        </td>
-                        <td>Win 98+</td>
-                        <td class="center">6</td>
-                        <td class="center">A</td>
+                    <tr data-toggle="modal" data-target="#myModal5">
+                        <td>17:22 11-02</td>
+                        <td>Samsung</td>
+                        <td>Galaxy S4 16GB</td>
+                        <td>Data Cable</td>
+                        <td>New</td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
+                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Trident</td>
-                        <td>Internet Explorer 7</td>
-                        <td>Win XP SP2+</td>
-                        <td class="center">7</td>
-                        <td class="center">A</td>
+                    <tr data-toggle="modal" data-target="#myModal5">
+                        <td>17:22 11-02</td>
+                        <td>Samsung</td>
+                        <td>Galaxy S3 16GB</td>
+                        <td>Data Cable</td>
+                        <td>New</td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
+                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Trident</td>
-                        <td>AOL browser (AOL desktop)</td>
-                        <td>Win XP</td>
-                        <td class="center">6</td>
-                        <td class="center">A</td>
+                    <tr data-toggle="modal" data-target="#myModal5">
+                        <td>17:22 11-02</td>
+                        <td>Samsung</td>
+                        <td>Galaxy S2 8GB</td>
+                        <td>Data Cable</td>
+                        <td>New</td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
+                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Firefox 1.0</td>
-                        <td>Win 98+ / OSX.2+</td>
-                        <td class="center">1.7</td>
-                        <td class="center">A</td>
+                    <tr data-toggle="modal" data-target="#myModal5">
+                        <td>17:22 11-02</td>
+                        <td>Samsung</td>
+                        <td>Galaxy S2 8GB</td>
+                        <td>Data Cable</td>
+                        <td>New</td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
+                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Firefox 1.5</td>
-                        <td>Win 98+ / OSX.2+</td>
-                        <td class="center">1.8</td>
-                        <td class="center">A</td>
+                    <tr data-toggle="modal" data-target="#myModal5">
+                        <td>17:22 11-02</td>
+                        <td>Samsung</td>
+                        <td>Galaxy S2 8GB</td>
+                        <td>Data Cable</td>
+                        <td>New</td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
+                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Firefox 2.0</td>
-                        <td>Win 98+ / OSX.2+</td>
-                        <td class="center">1.8</td>
-                        <td class="center">A</td>
+                    <tr data-toggle="modal" data-target="#myModal5">
+                        <td>17:22 11-02</td>
+                        <td>Samsung</td>
+                        <td>Galaxy S2 8GB</td>
+                        <td>Data Cable</td>
+                        <td>New</td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
+                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Firefox 3.0</td>
-                        <td>Win 2k+ / OSX.3+</td>
-                        <td class="center">1.9</td>
-                        <td class="center">A</td>
+                    <tr data-toggle="modal" data-target="#myModal5">
+                        <td>17:22 11-02</td>
+                        <td>Samsung</td>
+                        <td>Galaxy S2 8GB</td>
+                        <td>Data Cable</td>
+                        <td>New</td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
+                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Camino 1.0</td>
-                        <td>OSX.2+</td>
-                        <td class="center">1.8</td>
-                        <td class="center">A</td>
+                    <tr data-toggle="modal" data-target="#myModal5">
+                        <td>17:22 11-02</td>
+                        <td>Samsung</td>
+                        <td>Galaxy S2 8GB</td>
+                        <td>Data Cable</td>
+                        <td>New</td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
+                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Camino 1.5</td>
-                        <td>OSX.3+</td>
-                        <td class="center">1.8</td>
-                        <td class="center">A</td>
+                    <tr data-toggle="modal" data-target="#myModal5">
+                        <td>17:22 11-02</td>
+                        <td>Samsung</td>
+                        <td>Galaxy S2 8GB</td>
+                        <td>Data Cable</td>
+                        <td>New</td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
+                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Netscape 7.2</td>
-                        <td>Win 95+ / Mac OS 8.6-9.2</td>
-                        <td class="center">1.7</td>
-                        <td class="center">A</td>
+                    <tr data-toggle="modal" data-target="#myModal5">
+                        <td>17:22 11-02</td>
+                        <td>Samsung</td>
+                        <td>Galaxy S2 8GB</td>
+                        <td>Data Cable</td>
+                        <td>New</td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
+                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Netscape Browser 8</td>
-                        <td>Win 98SE+</td>
-                        <td class="center">1.7</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Netscape Navigator 9</td>
-                        <td>Win 98+ / OSX.2+</td>
-                        <td class="center">1.8</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Mozilla 1.0</td>
-                        <td>Win 95+ / OSX.1+</td>
-                        <td class="center">1</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Mozilla 1.1</td>
-                        <td>Win 95+ / OSX.1+</td>
-                        <td class="center">1.1</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Mozilla 1.2</td>
-                        <td>Win 95+ / OSX.1+</td>
-                        <td class="center">1.2</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Mozilla 1.3</td>
-                        <td>Win 95+ / OSX.1+</td>
-                        <td class="center">1.3</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Mozilla 1.4</td>
-                        <td>Win 95+ / OSX.1+</td>
-                        <td class="center">1.4</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Mozilla 1.5</td>
-                        <td>Win 95+ / OSX.1+</td>
-                        <td class="center">1.5</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Mozilla 1.6</td>
-                        <td>Win 95+ / OSX.1+</td>
-                        <td class="center">1.6</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Mozilla 1.7</td>
-                        <td>Win 98+ / OSX.1+</td>
-                        <td class="center">1.7</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Win 98+ / OSX.2+</td>
-                        <td class="center">1.8</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Gecko</td>
-                        <td>Epiphany 2.20</td>
-                        <td>Gnome</td>
-                        <td class="center">1.8</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Webkit</td>
-                        <td>Safari 1.2</td>
-                        <td>OSX.3</td>
-                        <td class="center">125.5</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Webkit</td>
-                        <td>Safari 1.3</td>
-                        <td>OSX.3</td>
-                        <td class="center">312.8</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Webkit</td>
-                        <td>Safari 2.0</td>
-                        <td>OSX.4+</td>
-                        <td class="center">419.3</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Webkit</td>
-                        <td>Safari 3.0</td>
-                        <td>OSX.4+</td>
-                        <td class="center">522.1</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Webkit</td>
-                        <td>OmniWeb 5.5</td>
-                        <td>OSX.4+</td>
-                        <td class="center">420</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Webkit</td>
-                        <td>iPod Touch / iPhone</td>
-                        <td>iPod</td>
-                        <td class="center">420.1</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Webkit</td>
-                        <td>S60</td>
-                        <td>S60</td>
-                        <td class="center">413</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Presto</td>
-                        <td>Opera 7.0</td>
-                        <td>Win 95+ / OSX.1+</td>
-                        <td class="center">-</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Presto</td>
-                        <td>Opera 7.5</td>
-                        <td>Win 95+ / OSX.2+</td>
-                        <td class="center">-</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Presto</td>
-                        <td>Opera 8.0</td>
-                        <td>Win 95+ / OSX.2+</td>
-                        <td class="center">-</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Presto</td>
-                        <td>Opera 8.5</td>
-                        <td>Win 95+ / OSX.2+</td>
-                        <td class="center">-</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Presto</td>
-                        <td>Opera 9.0</td>
-                        <td>Win 95+ / OSX.3+</td>
-                        <td class="center">-</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Presto</td>
-                        <td>Opera 9.2</td>
-                        <td>Win 88+ / OSX.3+</td>
-                        <td class="center">-</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Presto</td>
-                        <td>Opera 9.5</td>
-                        <td>Win 88+ / OSX.3+</td>
-                        <td class="center">-</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Presto</td>
-                        <td>Opera for Wii</td>
-                        <td>Wii</td>
-                        <td class="center">-</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Presto</td>
-                        <td>Nokia N800</td>
-                        <td>N800</td>
-                        <td class="center">-</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Presto</td>
-                        <td>Nintendo DS browser</td>
-                        <td>Nintendo DS</td>
-                        <td class="center">8.5</td>
-                        <td class="center">C/A<sup>1</sup></td>
-                    </tr>
-                    <tr class="gradeC">
-                        <td>KHTML</td>
-                        <td>Konqureror 3.1</td>
-                        <td>KDE 3.1</td>
-                        <td class="center">3.1</td>
-                        <td class="center">C</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>KHTML</td>
-                        <td>Konqureror 3.3</td>
-                        <td>KDE 3.3</td>
-                        <td class="center">3.3</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>KHTML</td>
-                        <td>Konqureror 3.5</td>
-                        <td>KDE 3.5</td>
-                        <td class="center">3.5</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeX">
-                        <td>Tasman</td>
-                        <td>Internet Explorer 4.5</td>
-                        <td>Mac OS 8-9</td>
-                        <td class="center">-</td>
-                        <td class="center">X</td>
-                    </tr>
-                    <tr class="gradeC">
-                        <td>Tasman</td>
-                        <td>Internet Explorer 5.1</td>
-                        <td>Mac OS 7.6-9</td>
-                        <td class="center">1</td>
-                        <td class="center">C</td>
-                    </tr>
-                    <tr class="gradeC">
-                        <td>Tasman</td>
-                        <td>Internet Explorer 5.2</td>
-                        <td>Mac OS 8-X</td>
-                        <td class="center">1</td>
-                        <td class="center">C</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Misc</td>
-                        <td>NetFront 3.1</td>
-                        <td>Embedded devices</td>
-                        <td class="center">-</td>
-                        <td class="center">C</td>
-                    </tr>
-                    <tr class="gradeA">
-                        <td>Misc</td>
-                        <td>NetFront 3.4</td>
-                        <td>Embedded devices</td>
-                        <td class="center">-</td>
-                        <td class="center">A</td>
-                    </tr>
-                    <tr class="gradeX">
-                        <td>Misc</td>
-                        <td>Dillo 0.8</td>
-                        <td>Embedded devices</td>
-                        <td class="center">-</td>
-                        <td class="center">X</td>
-                    </tr>
-                    <tr class="gradeX">
-                        <td>Misc</td>
-                        <td>Links</td>
-                        <td>Text only</td>
-                        <td class="center">-</td>
-                        <td class="center">X</td>
-                    </tr>
-                    <tr class="gradeX">
-                        <td>Misc</td>
-                        <td>Lynx</td>
-                        <td>Text only</td>
-                        <td class="center">-</td>
-                        <td class="center">X</td>
-                    </tr>
-                    <tr class="gradeC">
-                        <td>Misc</td>
-                        <td>IE Mobile</td>
-                        <td>Windows Mobile 6</td>
-                        <td class="center">-</td>
-                        <td class="center">C</td>
-                    </tr>
-                    <tr class="gradeC">
-                        <td>Misc</td>
-                        <td>PSP browser</td>
-                        <td>PSP</td>
-                        <td class="center">-</td>
-                        <td class="center">C</td>
-                    </tr>
-                    <tr class="gradeU">
-                        <td>Other browsers</td>
-                        <td>All others</td>
-                        <td>-</td>
-                        <td class="center">-</td>
-                        <td class="center">U</td>
+                    <tr data-toggle="modal" data-target="#myModal5">
+                        <td>17:22 11-02</td>
+                        <td>Samsung</td>
+                        <td>Galaxy S2 8GB</td>
+                        <td>Data Cable</td>
+                        <td>New</td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
+                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
                     </tbody>
-                    <tfoot>
-                    <tr>
-                        <th>Rendering engine</th>
-                        <th>Browser</th>
-                        <th>Platform(s)</th>
-                        <th>Engine version</th>
-                        <th>CSS grade</th>
-                    </tr>
-                    </tfoot>
                     </table>
 
                     </div>
                 </div>
             </div>
-            </div>
-            <div class="row">
-            <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-            <div class="ibox-title">
-                <h5>Editable Table in- combination with jEditable</h5>
-                <div class="ibox-tools">
-                    <a class="collapse-link">
-                        <i class="fa fa-chevron-up"></i>
-                    </a>
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-wrench"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#">Config option 1</a>
-                        </li>
-                        <li><a href="#">Config option 2</a>
-                        </li>
-                    </ul>
-                    <a class="close-link">
-                        <i class="fa fa-times"></i>
-                    </a>
+            </div> <div class="row">
+                <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Watching - Buying Requests</h5>
+                    </div>
+                    <div class="ibox-content">
+
+                    <table id="marketplace" class="table table-striped table-bordered table-hover dataTables-example" >
+                    <thead>
+                    <tr>
+                        <th>Listing End</th>
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th>Product Type</th>
+                        <th>Condition</th>
+                        <th>Price</th>
+                        <th>QTY</th>
+                        <th>Spec</th>
+                        <th>Country</th>
+                        <th>Options</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr data-toggle="modal" data-target="#myModal5">
+                        <td>17:22 11-02</td>
+                        <td>Apple</td>
+                        <td>Apple iPhone 4S 16GB</td>
+                        <td>Data Cable</td>
+                        <td>Refurbished</td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
+                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+                    </tr>
+                    <tr data-toggle="modal" data-target="#myModal5">
+                        <td>17:22 11-02</td>
+                        <td>Apple</td>
+                        <td>Apple iPhone 5S 32GB</td>
+                        <td>Data Cable</td>
+                        <td>Refurbished</td>
+                        <td>GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
+                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+                    </tr>
+                    <tr data-toggle="modal" data-target="#myModal5">
+                        <td>17:22 11-02</td>
+                        <td>Apple</td>
+                        <td>Apple iPhone 2G 4GB</td>
+                        <td>Data Cable</td>
+                        <td>Refurbished</td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
+                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+                    </tr>
+                    <tr data-toggle="modal" data-target="#myModal5">
+                        <td>17:22 11-02</td>
+                        <td>Samsung</td>
+                        <td>Galaxy S4 16GB</td>
+                        <td>Data Cable</td>
+                        <td>New</td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
+                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+                    </tr>
+                    <tr data-toggle="modal" data-target="#myModal5">
+                        <td>17:22 11-02</td>
+                        <td>Samsung</td>
+                        <td>Galaxy S3 16GB</td>
+                        <td>Data Cable</td>
+                        <td>New</td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
+                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+                    </tr>
+                    <tr data-toggle="modal" data-target="#myModal5">
+                        <td>17:22 11-02</td>
+                        <td>Samsung</td>
+                        <td>Galaxy S2 8GB</td>
+                        <td>Data Cable</td>
+                        <td>New</td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
+                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+                    </tr>
+                    <tr data-toggle="modal" data-target="#myModal5">
+                        <td>17:22 11-02</td>
+                        <td>Samsung</td>
+                        <td>Galaxy S2 8GB</td>
+                        <td>Data Cable</td>
+                        <td>New</td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
+                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+                    </tr>
+                    <tr data-toggle="modal" data-target="#myModal5">
+                        <td>17:22 11-02</td>
+                        <td>Samsung</td>
+                        <td>Galaxy S2 8GB</td>
+                        <td>Data Cable</td>
+                        <td>New</td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
+                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+                    </tr>
+                    <tr data-toggle="modal" data-target="#myModal5">
+                        <td>17:22 11-02</td>
+                        <td>Samsung</td>
+                        <td>Galaxy S2 8GB</td>
+                        <td>Data Cable</td>
+                        <td>New</td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
+                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+                    </tr>
+                    <tr data-toggle="modal" data-target="#myModal5">
+                        <td>17:22 11-02</td>
+                        <td>Samsung</td>
+                        <td>Galaxy S2 8GB</td>
+                        <td>Data Cable</td>
+                        <td>New</td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
+                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+                    </tr>
+                    <tr data-toggle="modal" data-target="#myModal5">
+                        <td>17:22 11-02</td>
+                        <td>Samsung</td>
+                        <td>Galaxy S2 8GB</td>
+                        <td>Data Cable</td>
+                        <td>New</td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
+                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+                    </tr>
+                    <tr data-toggle="modal" data-target="#myModal5">
+                        <td>17:22 11-02</td>
+                        <td>Samsung</td>
+                        <td>Galaxy S2 8GB</td>
+                        <td>Data Cable</td>
+                        <td>New</td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
+                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+                    </tr>
+                    <tr data-toggle="modal" data-target="#myModal5">
+                        <td>17:22 11-02</td>
+                        <td>Samsung</td>
+                        <td>Galaxy S2 8GB</td>
+                        <td>Data Cable</td>
+                        <td>New</td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
+                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+                    </tr>
+                    <tr data-toggle="modal" data-target="#myModal5">
+                        <td>17:22 11-02</td>
+                        <td>Samsung</td>
+                        <td>Galaxy S2 8GB</td>
+                        <td>Data Cable</td>
+                        <td>New</td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
+                        <td>23</td>
+                        <td>UK</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <th>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
+                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+                    </tr>
+                    </tbody>
+                    </table>
+
+                    </div>
                 </div>
             </div>
-            <div class="ibox-content">
-            <div class="">
-            <a onclick="fnClickAddRow();" href="javascript:void(0);" class="btn btn-primary ">Add a new row</a>
+            
             </div>
-            <table class="table table-striped table-bordered table-hover " id="editable" >
-            <thead>
-            <tr>
-                <th>Rendering engine</th>
-                <th>Browser</th>
-                <th>Platform(s)</th>
-                <th>Engine version</th>
-                <th>CSS grade</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr class="gradeX">
-                <td>Trident</td>
-                <td>Internet
-                    Explorer 4.0
-                </td>
-                <td>Win 95+</td>
-                <td class="center">4</td>
-                <td class="center">X</td>
-            </tr>
-            <tr class="gradeC">
-                <td>Trident</td>
-                <td>Internet
-                    Explorer 5.0
-                </td>
-                <td>Win 95+</td>
-                <td class="center">5</td>
-                <td class="center">C</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Trident</td>
-                <td>Internet
-                    Explorer 5.5
-                </td>
-                <td>Win 95+</td>
-                <td class="center">5.5</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Trident</td>
-                <td>Internet
-                    Explorer 6
-                </td>
-                <td>Win 98+</td>
-                <td class="center">6</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Trident</td>
-                <td>Internet Explorer 7</td>
-                <td>Win XP SP2+</td>
-                <td class="center">7</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Trident</td>
-                <td>AOL browser (AOL desktop)</td>
-                <td>Win XP</td>
-                <td class="center">6</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Firefox 1.0</td>
-                <td>Win 98+ / OSX.2+</td>
-                <td class="center">1.7</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Firefox 1.5</td>
-                <td>Win 98+ / OSX.2+</td>
-                <td class="center">1.8</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Firefox 2.0</td>
-                <td>Win 98+ / OSX.2+</td>
-                <td class="center">1.8</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Firefox 3.0</td>
-                <td>Win 2k+ / OSX.3+</td>
-                <td class="center">1.9</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Camino 1.0</td>
-                <td>OSX.2+</td>
-                <td class="center">1.8</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Camino 1.5</td>
-                <td>OSX.3+</td>
-                <td class="center">1.8</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Netscape 7.2</td>
-                <td>Win 95+ / Mac OS 8.6-9.2</td>
-                <td class="center">1.7</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Netscape Browser 8</td>
-                <td>Win 98SE+</td>
-                <td class="center">1.7</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Netscape Navigator 9</td>
-                <td>Win 98+ / OSX.2+</td>
-                <td class="center">1.8</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Mozilla 1.0</td>
-                <td>Win 95+ / OSX.1+</td>
-                <td class="center">1</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Mozilla 1.1</td>
-                <td>Win 95+ / OSX.1+</td>
-                <td class="center">1.1</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Mozilla 1.2</td>
-                <td>Win 95+ / OSX.1+</td>
-                <td class="center">1.2</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Mozilla 1.3</td>
-                <td>Win 95+ / OSX.1+</td>
-                <td class="center">1.3</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Mozilla 1.4</td>
-                <td>Win 95+ / OSX.1+</td>
-                <td class="center">1.4</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Mozilla 1.5</td>
-                <td>Win 95+ / OSX.1+</td>
-                <td class="center">1.5</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Mozilla 1.6</td>
-                <td>Win 95+ / OSX.1+</td>
-                <td class="center">1.6</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Mozilla 1.7</td>
-                <td>Win 98+ / OSX.1+</td>
-                <td class="center">1.7</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Mozilla 1.8</td>
-                <td>Win 98+ / OSX.1+</td>
-                <td class="center">1.8</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Seamonkey 1.1</td>
-                <td>Win 98+ / OSX.2+</td>
-                <td class="center">1.8</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Gecko</td>
-                <td>Epiphany 2.20</td>
-                <td>Gnome</td>
-                <td class="center">1.8</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Webkit</td>
-                <td>Safari 1.2</td>
-                <td>OSX.3</td>
-                <td class="center">125.5</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Webkit</td>
-                <td>Safari 1.3</td>
-                <td>OSX.3</td>
-                <td class="center">312.8</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Webkit</td>
-                <td>Safari 2.0</td>
-                <td>OSX.4+</td>
-                <td class="center">419.3</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Webkit</td>
-                <td>Safari 3.0</td>
-                <td>OSX.4+</td>
-                <td class="center">522.1</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Webkit</td>
-                <td>OmniWeb 5.5</td>
-                <td>OSX.4+</td>
-                <td class="center">420</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Webkit</td>
-                <td>iPod Touch / iPhone</td>
-                <td>iPod</td>
-                <td class="center">420.1</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Webkit</td>
-                <td>S60</td>
-                <td>S60</td>
-                <td class="center">413</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Presto</td>
-                <td>Opera 7.0</td>
-                <td>Win 95+ / OSX.1+</td>
-                <td class="center">-</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Presto</td>
-                <td>Opera 7.5</td>
-                <td>Win 95+ / OSX.2+</td>
-                <td class="center">-</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Presto</td>
-                <td>Opera 8.0</td>
-                <td>Win 95+ / OSX.2+</td>
-                <td class="center">-</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Presto</td>
-                <td>Opera 8.5</td>
-                <td>Win 95+ / OSX.2+</td>
-                <td class="center">-</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Presto</td>
-                <td>Opera 9.0</td>
-                <td>Win 95+ / OSX.3+</td>
-                <td class="center">-</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Presto</td>
-                <td>Opera 9.2</td>
-                <td>Win 88+ / OSX.3+</td>
-                <td class="center">-</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Presto</td>
-                <td>Opera 9.5</td>
-                <td>Win 88+ / OSX.3+</td>
-                <td class="center">-</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Presto</td>
-                <td>Opera for Wii</td>
-                <td>Wii</td>
-                <td class="center">-</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Presto</td>
-                <td>Nokia N800</td>
-                <td>N800</td>
-                <td class="center">-</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Presto</td>
-                <td>Nintendo DS browser</td>
-                <td>Nintendo DS</td>
-                <td class="center">8.5</td>
-                <td class="center">C/A<sup>1</sup></td>
-            </tr>
-            <tr class="gradeC">
-                <td>KHTML</td>
-                <td>Konqureror 3.1</td>
-                <td>KDE 3.1</td>
-                <td class="center">3.1</td>
-                <td class="center">C</td>
-            </tr>
-            <tr class="gradeA">
-                <td>KHTML</td>
-                <td>Konqureror 3.3</td>
-                <td>KDE 3.3</td>
-                <td class="center">3.3</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeA">
-                <td>KHTML</td>
-                <td>Konqureror 3.5</td>
-                <td>KDE 3.5</td>
-                <td class="center">3.5</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeX">
-                <td>Tasman</td>
-                <td>Internet Explorer 4.5</td>
-                <td>Mac OS 8-9</td>
-                <td class="center">-</td>
-                <td class="center">X</td>
-            </tr>
-            <tr class="gradeC">
-                <td>Tasman</td>
-                <td>Internet Explorer 5.1</td>
-                <td>Mac OS 7.6-9</td>
-                <td class="center">1</td>
-                <td class="center">C</td>
-            </tr>
-            <tr class="gradeC">
-                <td>Tasman</td>
-                <td>Internet Explorer 5.2</td>
-                <td>Mac OS 8-X</td>
-                <td class="center">1</td>
-                <td class="center">C</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Misc</td>
-                <td>NetFront 3.1</td>
-                <td>Embedded devices</td>
-                <td class="center">-</td>
-                <td class="center">C</td>
-            </tr>
-            <tr class="gradeA">
-                <td>Misc</td>
-                <td>NetFront 3.4</td>
-                <td>Embedded devices</td>
-                <td class="center">-</td>
-                <td class="center">A</td>
-            </tr>
-            <tr class="gradeX">
-                <td>Misc</td>
-                <td>Dillo 0.8</td>
-                <td>Embedded devices</td>
-                <td class="center">-</td>
-                <td class="center">X</td>
-            </tr>
-            <tr class="gradeX">
-                <td>Misc</td>
-                <td>Links</td>
-                <td>Text only</td>
-                <td class="center">-</td>
-                <td class="center">X</td>
-            </tr>
-            <tr class="gradeX">
-                <td>Misc</td>
-                <td>Lynx</td>
-                <td>Text only</td>
-                <td class="center">-</td>
-                <td class="center">X</td>
-            </tr>
-            <tr class="gradeC">
-                <td>Misc</td>
-                <td>IE Mobile</td>
-                <td>Windows Mobile 6</td>
-                <td class="center">-</td>
-                <td class="center">C</td>
-            </tr>
-            <tr class="gradeC">
-                <td>Misc</td>
-                <td>PSP browser</td>
-                <td>PSP</td>
-                <td class="center">-</td>
-                <td class="center">C</td>
-            </tr>
-            <tr class="gradeU">
-                <td>Other browsers</td>
-                <td>All others</td>
-                <td>-</td>
-                <td class="center">-</td>
-                <td class="center">U</td>
-            </tr>
-            </tbody>
-            <tfoot>
-            <tr>
-                <th>Rendering engine</th>
-                <th>Browser</th>
-                <th>Platform(s)</th>
-                <th>Engine version</th>
-                <th>CSS grade</th>
-            </tr>
-            </tfoot>
-            </table>
+            
+            
+                            <div class="modal inmodal fade" id="myModal5" tabindex="-1" role="dialog"  aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">23 x Refurbished Apple iPhone 4S 16GB</h4>
+                                            <small class="font-bold"><strong style="color:green">Selling Offer</strong> from GSMStockMarket.com Limited</small>
+                                        </div>
+                                        <div class="modal-body">
+                                        	<div class="row">
+                                                <div class="col-lg-6">
+                                                    <dl class="dl-horizontal">
+                                                    	<h4 style="text-align:center">Product Details</h4>
+                                                        <dt>Make:</dt> <dd>  Apple</dd>
+                                                        <dt>Model:</dt> <dd>  iPhone 4S</dd>
+                                                        <dt>Memory:</dt> <dd>  16GB</dd>
+                                                        <dt>Colour:</dt> <dd>  Black</dd>
+                                                        <dt>Product Type:</dt> <dd>  Data Cable</dd>
+                                                        <dt>Condition:</dt> <dd>  Refurbished</dd>
+                                                        <dt>Spec</dt> <dd>  UK</dd>
+                                                    </dl>
+                                                    <dl class="dl-horizontal">
+                                                    	<h4 style="text-align:center">Price</h4>
+                                                        <dt>Buy Price:</dt> <dd>  &pound;96.00</dd>
+                                                        <dt>Product Type:</dt> <dd>  Data Cable</dd>
+                                                        <dt>Condition:</dt> <dd>  Refurbished</dd>
+                                                        <dt>Spec</dt> <dd>  UK</dd>
+                                                    </dl>
+                                
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Make Offer</label>
+                                    <div class="col-md-9">
+                                        <div class="input-group m-b"><span class="input-group-addon"><i class="fa fa-gbp"></i></span>  
+                                        <input type="text" class="form-control" />
+                                        </div>
+                        				<button type="button" class="btn btn-primary" style="font-size:10px">Send Offer</button>
+                                        
+                                    </div>
+                                </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                	<p style="text-align:center"><img style="text-align:center" src="public/main/template/gsm/images/marketplace/marketplace_photo.png" /></p>
+                                                    <h4>Product Description</h4>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent diam odio, ultrices vitae erat quis, tristique posuere leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique massa et justo laoreet, et finibus lacus scelerisque. Suspendisse id orci vel sapien mollis dictum. Aenean id nisl pulvinar, euismod risus id, pharetra velit. In finibus libero sed elit viverra, hendrerit tincidunt lectus maximus. Nulla facilisi. Nulla tellus justo, lacinia eget mauris nec, imperdiet tincidunt elit. Donec elementum enim id felis commodo, non porta tortor sagittis.</p>
+                                                </div>
+                                            </div>
+                                        </div>
 
-            </div>
-            </div>
-            </div>
-            </div>
-        </div>
-        <div class="footer">
-            <div class="pull-right">
-                10GB of <strong>250GB</strong> Free.
-            </div>
-            <div>
-                <strong>Copyright</strong> Example Company &copy; 2014-2015
-            </div>
-        </div>
-
-        </div>
-        </div>
-
-
-
-    <!-- Mainly scripts -->
-    <script src="js/jquery-2.1.1.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="js/plugins/jeditable/jquery.jeditable.js"></script>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+            
 
     <!-- Data Tables -->
-    <script src="js/plugins/dataTables/jquery.dataTables.js"></script>
-    <script src="js/plugins/dataTables/dataTables.bootstrap.js"></script>
-    <script src="js/plugins/dataTables/dataTables.responsive.js"></script>
-    <script src="js/plugins/dataTables/dataTables.tableTools.min.js"></script>
+    <link href="public/main/template/core/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="public/main/template/core/css/plugins/dataTables/dataTables.responsive.css" rel="stylesheet">
+    <link href="public/main/template/core/css/plugins/dataTables/dataTables.tableTools.min.css" rel="stylesheet">
+    
+    <!-- Multi Select -->
+    <link href="public/main/template/core/css/plugins/chosen/chosen.css" rel="stylesheet">
 
-    <!-- Custom and plugin javascript -->
-    <script src="js/inspinia.js"></script>
-    <script src="js/plugins/pace/pace.min.js"></script>
+    <!-- Data Tables -->
+    <script type="text/javascript" src="public/main/template/core/js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="public/main/template/core/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <script type="text/javascript" src="public/main/template/core/js/plugins/dataTables/dataTables.responsive.js"></script>
+    <script type="text/javascript" src="public/main/template/core/js/plugins/dataTables/dataTables.tableTools.min.js"></script>
 
+    <!-- Chosen -->
+    <script src="public/main/template/core/js/plugins/chosen/chosen.jquery.js"></script>
+    
+    
     <!-- Page-Level Scripts -->
-    <script>
+    <script type="text/javascript">
         $(document).ready(function() {
             $('.dataTables-example').dataTable({
                 responsive: true,
                 "dom": 'T<"clear">lfrtip',
                 "tableTools": {
-                    "sSwfPath": "js/plugins/dataTables/swf/copy_csv_xls_pdf.swf"
+                    "sSwfPath": "public/main/template/core/js/plugins/dataTables/swf/copy_csv_xls_pdf.swf"
                 }
             });
-
-            /* Init DataTables */
-            var oTable = $('#editable').dataTable();
-
-            /* Apply the jEditable handlers to the table */
-            oTable.$('td').editable( '../example_ajax.php', {
-                "callback": function( sValue, y ) {
-                    var aPos = oTable.fnGetPosition( this );
-                    oTable.fnUpdate( sValue, aPos[0], aPos[1] );
-                },
-                "submitdata": function ( value, settings ) {
-                    return {
-                        "row_id": this.parentNode.getAttribute('id'),
-                        "column": oTable.fnGetPosition( this )[2]
-                    };
-                },
-
-                "width": "90%",
-                "height": "100%"
-            } );
-
+			/* multi select */
+       	var config = {
+                '.chosen-select'           : {search_contains:true},
+                '.chosen-select-deselect'  : {allow_single_deselect:true},
+                '.chosen-select-no-single' : {disable_search_threshold:10},
+                '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+                '.chosen-select-width'     : {width:"95%"}
+            }
+            for (var selector in config) {
+                $(selector).chosen(config[selector]);
+            }			
 
         });
-
-        function fnClickAddRow() {
-            $('#editable').dataTable().fnAddData( [
-                "Custom row",
-                "New row",
-                "New row",
-                "New row",
-                "New row" ] );
-
-        }
     </script>
+    
 <style>
-    body.DTTT_Print {
-        background: #fff;
+body.DTTT_Print { background: #fff;}
+.DTTT_Print #page-wrapper {margin: 0;background:#fff;}
+button.DTTT_button, div.DTTT_button, a.DTTT_button {border: 1px solid #e7eaec;background: #fff;color: #676a6c;box-shadow: none;padding: 6px 8px;}
+button.DTTT_button:hover, div.DTTT_button:hover, a.DTTT_button:hover {border: 1px solid #d2d2d2;background: #fff;color: #676a6c;box-shadow: none;padding: 6px 8px;}
+.dataTables_filter label {margin-right: 5px;}
 
-    }
-    .DTTT_Print #page-wrapper {
-        margin: 0;
-        background:#fff;
-    }
 
-    button.DTTT_button, div.DTTT_button, a.DTTT_button {
-        border: 1px solid #e7eaec;
-        background: #fff;
-        color: #676a6c;
-        box-shadow: none;
-        padding: 6px 8px;
-    }
-    button.DTTT_button:hover, div.DTTT_button:hover, a.DTTT_button:hover {
-        border: 1px solid #d2d2d2;
-        background: #fff;
-        color: #676a6c;
-        box-shadow: none;
-        padding: 6px 8px;
-    }
-
-    .dataTables_filter label {
-        margin-right: 5px;
-
-    }
+/* chosen css override */
+.chosen-container-multi .chosen-choices li.search-field input[type="text"] {font-family:inherit;font-size:14px}
+.chosen-container-multi .chosen-choices {border-radius:5px;border:1px solid #e5e6e7}
+.chosen-container-multi .chosen-choices li.search-choice {color:#FFF;background:#1ab394}
 </style>
