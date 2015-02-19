@@ -2133,7 +2133,7 @@
                         <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
                         <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr>
+                    <tr data-toggle="modal" data-target="#myModal5">
                         <td>17:22 11-02</td>
                         <td>Apple</td>
                         <td>Apple iPhone 5S 32GB</td>
@@ -2147,7 +2147,7 @@
                         <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
                         <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr>
+                    <tr data-toggle="modal" data-target="#myModal5">
                         <td>17:22 11-02</td>
                         <td>Apple</td>
                         <td>Apple iPhone 2G 4GB</td>
@@ -2161,7 +2161,7 @@
                         <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
                         <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr>
+                    <tr data-toggle="modal" data-target="#myModal5">
                         <td>17:22 11-02</td>
                         <td>Samsung</td>
                         <td>Galaxy S4 16GB</td>
@@ -2175,7 +2175,7 @@
                         <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
                         <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr>
+                    <tr data-toggle="modal" data-target="#myModal5">
                         <td>17:22 11-02</td>
                         <td>Samsung</td>
                         <td>Galaxy S3 16GB</td>
@@ -2189,7 +2189,7 @@
                         <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
                         <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr>
+                    <tr data-toggle="modal" data-target="#myModal5">
                         <td>17:22 11-02</td>
                         <td>Samsung</td>
                         <td>Galaxy S2 8GB</td>
@@ -2203,7 +2203,7 @@
                         <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
                         <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr>
+                    <tr data-toggle="modal" data-target="#myModal5">
                         <td>17:22 11-02</td>
                         <td>Samsung</td>
                         <td>Galaxy S2 8GB</td>
@@ -2217,7 +2217,7 @@
                         <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
                         <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr>
+                    <tr data-toggle="modal" data-target="#myModal5">
                         <td>17:22 11-02</td>
                         <td>Samsung</td>
                         <td>Galaxy S2 8GB</td>
@@ -2231,7 +2231,7 @@
                         <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
                         <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr>
+                    <tr data-toggle="modal" data-target="#myModal5">
                         <td>17:22 11-02</td>
                         <td>Samsung</td>
                         <td>Galaxy S2 8GB</td>
@@ -2245,7 +2245,7 @@
                         <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
                         <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr>
+                    <tr data-toggle="modal" data-target="#myModal5">
                         <td>17:22 11-02</td>
                         <td>Samsung</td>
                         <td>Galaxy S2 8GB</td>
@@ -2259,7 +2259,7 @@
                         <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
                         <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr>
+                    <tr data-toggle="modal" data-target="#myModal5">
                         <td>17:22 11-02</td>
                         <td>Samsung</td>
                         <td>Galaxy S2 8GB</td>
@@ -2273,7 +2273,7 @@
                         <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
                         <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr>
+                    <tr data-toggle="modal" data-target="#myModal5">
                         <td>17:22 11-02</td>
                         <td>Samsung</td>
                         <td>Galaxy S2 8GB</td>
@@ -2287,7 +2287,7 @@
                         <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
                         <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr>
+                    <tr data-toggle="modal" data-target="#myModal5">
                         <td>17:22 11-02</td>
                         <td>Samsung</td>
                         <td>Galaxy S2 8GB</td>
@@ -2301,7 +2301,7 @@
                         <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
                         <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
-                    <tr>
+                    <tr data-toggle="modal" data-target="#myModal5">
                         <td>17:22 11-02</td>
                         <td>Samsung</td>
                         <td>Galaxy S2 8GB</td>
@@ -2337,8 +2337,39 @@
                                         <div class="modal-body">
                                         	<div class="row">
                                                 <div class="col-lg-6">
+                                                    <dl class="dl-horizontal">
+                                                    	<h4 style="text-align:center">Product Details</h4>
+                                                        <dt>Make:</dt> <dd>  Apple</dd>
+                                                        <dt>Model:</dt> <dd>  iPhone 4S</dd>
+                                                        <dt>Memory:</dt> <dd>  16GB</dd>
+                                                        <dt>Colour:</dt> <dd>  Black</dd>
+                                                        <dt>Product Type:</dt> <dd>  Data Cable</dd>
+                                                        <dt>Condition:</dt> <dd>  Refurbished</dd>
+                                                        <dt>Spec</dt> <dd>  UK</dd>
+                                                    </dl>
+                                                    <dl class="dl-horizontal">
+                                                    	<h4 style="text-align:center">Price</h4>
+                                                        <dt>Buy Price:</dt> <dd>  &pound;96.00</dd>
+                                                        <dt>Product Type:</dt> <dd>  Data Cable</dd>
+                                                        <dt>Condition:</dt> <dd>  Refurbished</dd>
+                                                        <dt>Spec</dt> <dd>  UK</dd>
+                                                    </dl>
+                                
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Make Offer</label>
+                                    <div class="col-md-9">
+                                        <div class="input-group m-b"><span class="input-group-addon"><i class="fa fa-gbp"></i></span>  
+                                        <input type="text" class="form-control" />
+                                        </div>
+                        				<button type="button" class="btn btn-primary" style="font-size:10px">Send Offer</button>
+                                        
+                                    </div>
+                                </div>
                                                 </div>
                                                 <div class="col-lg-6">
+                                                	<p style="text-align:center"><img style="text-align:center" src="public/main/template/gsm/images/marketplace/marketplace_photo.png" /></p>
+                                                    <h4>Product Description</h4>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent diam odio, ultrices vitae erat quis, tristique posuere leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique massa et justo laoreet, et finibus lacus scelerisque. Suspendisse id orci vel sapien mollis dictum. Aenean id nisl pulvinar, euismod risus id, pharetra velit. In finibus libero sed elit viverra, hendrerit tincidunt lectus maximus. Nulla facilisi. Nulla tellus justo, lacinia eget mauris nec, imperdiet tincidunt elit. Donec elementum enim id felis commodo, non porta tortor sagittis.</p>
                                                 </div>
                                             </div>
                                         </div>
