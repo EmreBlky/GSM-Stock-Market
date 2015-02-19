@@ -45,7 +45,19 @@
                     
                     <div class="ibox-content">
                     	<div class="row">
-                        	<div class="col-lg-4">
+                        	<div class="col-lg-3" style="padding-right:0">
+                            	<select class="form-control" tabindex="1">
+                                	<option value="" selected="">All Categories</option>
+                                    <option>Accessories</option>
+                                    <option>- Batteries</option>
+                                    <option>- Cases</option>
+                                    <option>- Data Cables</option>
+                                    <option>- Phone Kits</option>
+                                    <option>Mobile Phones</option>
+                                    <option>Spare Parts</option>
+                                </select>
+                            </div>
+                        	<div class="col-lg-9">
                                 <select data-placeholder="All Makes & Models" id="models" class="chosen-select form-control" multiple tabindex="1">
                                 <option>Alcatel OT 756</option>
                                 <option>Alcatel OT 835</option>
@@ -97,16 +109,21 @@
                                 <option>Alcatel One Touch T'Pop</option>
                                 <option>Alcatel OT 6012X Idol Mini</option>
                                 <option>Alcatel OT 903</option>
+                                <option>Apple iPhone 2G (All)</option>
                                 <option>Apple iPhone 2G 8GB</option>
                                 <option>Apple iPhone 2G 16GB</option>
                                 <option>Apple iPhone 2G 4GB</option>
+                                <option>Apple iPhone 3G (All)</option>
                                 <option>Apple iPhone 3G 8GB</option>
                                 <option>Apple iPhone 3G 16GB</option>
+                                <option>Apple iPhone 3GS (All)</option>
+                                <option>Apple iPhone 3GS 8GB</option>
                                 <option>Apple iPhone 3GS 16GB</option>
                                 <option>Apple iPhone 3GS 32GB</option>
+                                <option>Apple iPhone 2G (All)</option>
+                                <option>Apple iPhone 4 (All)</option>
                                 <option>Apple iPhone 4 16GB</option>
                                 <option>Apple iPhone 4 32GB</option>
-                                <option>Apple iPhone 3GS 8GB</option>
                                 <option>Apple iPad 1 16GB WiFi</option>
                                 <option>Apple iPad 1 32GB WiFi</option>
                                 <option>Apple iPad 1 64GB WiFi</option>
@@ -119,6 +136,7 @@
                                 <option>Apple iPad 2 32GB WiFi+3G</option>
                                 <option>Apple iPad 2 64GB WiFi</option>
                                 <option>Apple iPad 2 64GB WiFi+3G</option>
+                                <option>Apple iPhone 4S (All)</option>
                                 <option>Apple iPhone 4S 16GB</option>
                                 <option>Apple iPhone 4S 32GB</option>
                                 <option>Apple iPhone 4S 64GB</option>
@@ -129,6 +147,7 @@
                                 <option>Apple iPad 3 16GB WiFi+4G</option>
                                 <option>Apple iPad 3 32GB WiFi+4G</option>
                                 <option>Apple iPad 3 64GB WiFi+4G</option>
+                                <option>Apple iPhone 5 (All)</option>
                                 <option>Apple iPhone 5 16GB</option>
                                 <option>Apple iPhone 5 32GB</option>
                                 <option>Apple iPhone 5 64GB</option>
@@ -146,6 +165,7 @@
                                 <option>Apple iPad 4 64GB WiFi+4G</option>
                                 <option>Apple iPad 4 128GB WiFi+4G</option>
                                 <option>Apple iPad 4 128GB WiFi</option>
+                                <option>Apple iPhone 5C (All)</option>
                                 <option>Apple iPhone 5C 16GB</option>
                                 <option>Apple iPhone 5C 32GB</option>
                                 <option>Apple iPhone 5S 16GB</option>
@@ -169,9 +189,11 @@
                                 <option>Apple iPad mini 2 128GB WiFi+4G</option>
                                 <option>Apple iPad mini 2 128GB WiFi</option>
                                 <option>Apple iPhone 5C 8GB</option>
+                                <option>Apple iPhone 6 (All)</option>
                                 <option>Apple iPhone 6 16GB</option>
                                 <option>Apple iPhone 6 64GB</option>
                                 <option>Apple iPhone 6 128GB</option>
+                                <option>Apple iPhone 6 Plus (All)</option>
                                 <option>Apple iPhone 6 Plus 16GB</option>
                                 <option>Apple iPhone 6 Plus 64GB</option>
                                 <option>Apple iPhone 6 Plus 128GB</option>
@@ -1781,7 +1803,7 @@
                                 <option>ZTE N295</option>
                                 <option>ZTE Tania</option>
                                 </select>
-                            </div>
+                            </div><!--
                         	<div class="col-lg-3">
                             	<select class="form-control" tabindex="1">
                                 	<option value="" selected="">Any Condition</option>
@@ -2018,7 +2040,7 @@
                                     <option>Zimbabwe</option>
                                 </select>
                             </div>
-                        </div><!-- /row -->
+                        </div>
                     	<div class="row" style="margin-top:15px">
                         	<div class="col-lg-3">
                                 <select data-placeholder="All Continents" class="form-control"tabindex="2">
@@ -2082,7 +2104,7 @@
                                     <option>UK</option>
                                     <option>US</option>
                                 </select>
-                            </div>
+                            </div>-->
                         </div>
                     </div><!-- /ibox-content -->
                     </div>
