@@ -1,24 +1,22 @@
             <div class="row wrapper border-bottom white-bg page-heading">
-                <div class="col-lg-8">
+                <div class="col-lg-10">
                     <h2>Invoice</h2>
                     <ol class="breadcrumb">
                         <li>
                             <a href="index.html">Home</a>
                         </li>
                         <li>
-                            Other Pages
+                            Marketplace
+                        </li>
+                        <li>
+                            <a href="marketplace/history">Order History</a>
                         </li>
                         <li class="active">
                             <strong>Invoice</strong>
                         </li>
                     </ol>
                 </div>
-                <div class="col-lg-4">
-                    <div class="title-action">
-                        <a href="#" class="btn btn-white"><i class="fa fa-pencil"></i> Edit </a>
-                        <a href="#" class="btn btn-white"><i class="fa fa-check "></i> Save </a>
-                        <a href="invoice_print.html" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i> Print Invoice </a>
-                    </div>
+                <div class="col-lg-2">
                 </div>
             </div>
         <div class="row">
@@ -113,27 +111,11 @@
                                 </tbody>
                             </table>
                             <div class="text-right">
-                                <button class="btn btn-primary"><i class="fa fa-dollar"></i> Make A Payment</button>
-                            </div>
-
-                            <div class="well m-t"><strong>Comments</strong>
-                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less
+                        		<a href="marketplace/invoice_print" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i> Print Invoice </a>
                             </div>
                         </div>
                 </div>
             </div>
-        </div>
-        <div class="footer">
-            <div class="pull-right">
-                10GB of <strong>250GB</strong> Free.
-            </div>
-            <div>
-                <strong>Copyright</strong> Example Company &copy; 2014-2015
-            </div>
-        </div>
-
-        </div>
-        </div>
 
     <!-- Mainly scripts -->
     <script src="js/jquery-2.1.1.js"></script>
