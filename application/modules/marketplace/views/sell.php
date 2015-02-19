@@ -2131,6 +2131,7 @@
                         <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
                         <th>
                         <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
+                        <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
                         <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
@@ -2145,6 +2146,7 @@
                         <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
                         <th>
                         <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
+                        <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
                         <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
@@ -2159,6 +2161,7 @@
                         <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
                         <th>
                         <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
+                        <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
                         <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
@@ -2173,6 +2176,7 @@
                         <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
                         <th>
                         <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
+                        <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
                         <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
@@ -2187,6 +2191,7 @@
                         <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
                         <th>
                         <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
+                        <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
                         <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
@@ -2201,6 +2206,7 @@
                         <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
                         <th>
                         <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
+                        <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
                         <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
@@ -2215,6 +2221,7 @@
                         <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
                         <th>
                         <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
+                        <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
                         <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
@@ -2229,6 +2236,7 @@
                         <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
                         <th>
                         <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
+                        <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
                         <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
@@ -2243,6 +2251,7 @@
                         <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
                         <th>
                         <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
+                        <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
                         <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
@@ -2257,6 +2266,7 @@
                         <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
                         <th>
                         <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
+                        <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
                         <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
@@ -2271,6 +2281,7 @@
                         <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
                         <th>
                         <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
+                        <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
                         <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
@@ -2285,6 +2296,7 @@
                         <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
                         <th>
                         <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
+                        <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
                         <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
@@ -2299,6 +2311,7 @@
                         <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
                         <th>
                         <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
+                        <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
                         <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
@@ -2313,6 +2326,7 @@
                         <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
                         <th>
                         <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
+                        <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
                         <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
                     </tr>
                     </tbody>
