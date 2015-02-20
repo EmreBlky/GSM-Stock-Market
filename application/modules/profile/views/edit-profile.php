@@ -383,7 +383,7 @@
 					var value1 = $('#'+primary).attr('value');
 					var value2 = $('#'+secondary).attr('value');
 					var value3 = $('#'+tertiary).attr('value');
-					
+					alert(value1 + value2 + value3);
 							$('#primary_sector').val(value1);
 							$('#secondary_sector').val(value2);
 							$('#tertiary_sector').val(value3);
