@@ -410,7 +410,7 @@
 						var counter = orig_counter - 1;
 					}
 					
-					var str = "<option value = '" + id + "'>" + value + "</option>";	// Create Option
+					var str = "<option value = '" + value + "'>" + value + "</option>";	// Create Option
 					
 					if(counter < 1) {	// if No Checkbox is selected
 						// Hide all Select boxes
@@ -426,12 +426,12 @@
 							$('#tertiary-business').css("display", 'none');
 							$('#selectMessage').css("display", 'block');
 							
-							var str_prime = "<option value = '" + id + "' selected = 'selected'>" + value + "</option>";	// Create Option for primary select box
+							var str_prime = "<option value = '" + value + "' selected = 'selected'>" + value + "</option>";	// Create Option for primary select box
 							
 							if(chk == false) {	// If Checkbox is checked
 								$('#bprimary').append(str_prime);	// Append the value to Primary Select box
 							} else { 
-								$("#bprimary option[value='"+id+"']").remove();	// Remove the value from Primary Select box
+								$("#bprimary option[value='"+value+"']").remove();	// Remove the value from Primary Select box
 							}
 						}
 						else if(counter == 2){	// 2 Checkboxes are selected
@@ -447,8 +447,8 @@
 								$('#bsecondary').append(str);
 							} else {
 								// Remove values from both Primary and Secondary select boxes
-								$("#bprimary option[value='"+id+"']").remove();
-								$("#bsecondary option[value='"+id+"']").remove();
+								$("#bprimary option[value='"+value+"']").remove();
+								$("#bsecondary option[value='"+value+"']").remove();
 							}
 							
 						}
@@ -466,9 +466,9 @@
 								$('#btertiary').append(str);
 							} else {
 								// Remove values from Primary, Secondary and Tertiary select boxes
-								$("#bprimary option[value='"+id+"']").remove();
-								$("#bsecondary option[value='"+id+"']").remove();
-								$("#btertiary option[value='"+id+"']").remove();
+								$("#bprimary option[value='"+value+"']").remove();
+								$("#bsecondary option[value='"+value+"']").remove();
+								$("#btertiary option[value='"+value+"']").remove();
 							}
 						}
 						else {	// More than 3 Checkboxes are selected
@@ -479,9 +479,9 @@
 								$('#btertiary').append(str);
 							} else {
 								// Remove values from Primary, Secondary and Tertiary select boxes
-								$("#bprimary option[value='"+id+"']").remove();
-								$("#bsecondary option[value='"+id+"']").remove();
-								$("#btertiary option[value='"+id+"']").remove();
+								$("#bprimary option[value='"+value+"']").remove();
+								$("#bsecondary option[value='"+value+"']").remove();
+								$("#btertiary option[value='"+value+"']").remove();
 							}
 						}
 					}
