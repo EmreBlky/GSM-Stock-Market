@@ -194,9 +194,9 @@
 					var value = $('#'+entry).attr('value');
 					if(entry == primary) {
 						if(secondary == '' && is_primary_set == false) {
-							var str1 = "<option value = '" + entry + "'>" + value + "</option>";
+							var str1 = "<option value = '" + value + "'>" + value + "</option>";
 						} else {
-							var str1 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
+							var str1 = "<option value = '" + value + "' selected='selected'>" + value + "</option>";
 						}
 						/*
 						if(total_checked == 1) {
@@ -206,23 +206,23 @@
 						}
 						*/
 					} else {
-						var str1 = "<option value = '" + entry + "'>" + value + "</option>";
+						var str1 = "<option value = '" + value + "'>" + value + "</option>";
 					}
 					if(entry != secondary && entry != tertiary) {
 						$('#bprimary').append(str1);
 					}
 					if(entry == secondary) {
-						var str2 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
+						var str2 = "<option value = '" + value + "' selected='selected'>" + value + "</option>";
 					} else {
-						var str2 = "<option value = '" + entry + "'>" + value + "</option>";
+						var str2 = "<option value = '" + value + "'>" + value + "</option>";
 					}
 					if(entry != primary && entry != tertiary) {
 						$('#bsecondary').append(str2);	
 					}
 					if(entry == tertiary) {
-						var str3 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
+						var str3 = "<option value = '" + value + "' selected='selected'>" + value + "</option>";
 					} else {
-						var str3 = "<option value = '" + entry + "'>" + value + "</option>";
+						var str3 = "<option value = '" + value + "'>" + value + "</option>";
 					}
 					if(entry != primary && entry != secondary) {
 						$('#btertiary').append(str3);
@@ -257,17 +257,17 @@
 					var value = $('#'+entry).attr('value');		// Get value of selected option box
 					if(entry != no_value) {	
 						if(entry == secondary) {
-							var str1 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
+							var str1 = "<option value = '" + value + "' selected = 'selected'>" + value + "</option>";
 						} else {
-							var str1 = "<option value = '" + entry + "'>" + value + "</option>";
+							var str1 = "<option value = '" + value + "'>" + value + "</option>";
 						}
 						if(entry != tertiary) {
 							$('#bsecondary').append(str1);
 						}
 						if(entry == tertiary) {
-							var str2 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
+							var str2 = "<option value = '" + value + "' selected = 'selected'>" + value + "</option>";
 						} else {
-							var str2 = "<option value = '" + entry + "'>" + value + "</option>";
+							var str2 = "<option value = '" + value + "'>" + value + "</option>";
 						}
 						if(entry != secondary) {
 							$('#btertiary').append(str2);
@@ -304,17 +304,17 @@
 					var value = $('#'+entry).attr('value');
 					if(entry != no_value) {
 						if(entry == primary) {
-							var str1 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
+							var str1 = "<option value = '" + value + "' selected = 'selected'>" + value + "</option>";
 						} else {
-							var str1 = "<option value = '" + entry + "'>" + value + "</option>";
+							var str1 = "<option value = '" + value + "'>" + value + "</option>";
 						}
 						if(entry != tertiary) {
 							$('#bprimary').append(str1);
 						}
 						if(entry == tertiary) {
-							var str2 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
+							var str2 = "<option value = '" + value + "' selected = 'selected'>" + value + "</option>";
 						} else {
-							var str2 = "<option value = '" + entry + "'>" + value + "</option>";
+							var str2 = "<option value = '" + value + "'>" + value + "</option>";
 						}
 						if(entry != primary) {
 							$('#btertiary').append(str2);
@@ -350,17 +350,17 @@
 					var value = $('#'+entry).attr('value');
 					if(entry != no_value) {
 						if(entry == primary) {
-							var str1 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
+							var str1 = "<option value = '" + value + "' selected = 'selected'>" + value + "</option>";
 						} else {
-							var str1 = "<option value = '" + entry + "'>" + value + "</option>";
+							var str1 = "<option value = '" + value + "'>" + value + "</option>";
 						}
 						if(entry != secondary) {
 							$('#bprimary').append(str1);
 						}
 						if(entry == secondary) {
-							var str2 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
+							var str2 = "<option value = '" + value + "' selected = 'selected'>" + value + "</option>";
 						} else {
-							var str2 = "<option value = '" + entry + "'>" + value + "</option>";
+							var str2 = "<option value = '" + value + "'>" + value + "</option>";
 						}
 						if(entry != primary) {
 							$('#bsecondary').append(str2);
@@ -410,7 +410,7 @@
 						var counter = orig_counter - 1;
 					}
 					
-					var str = "<option value = '" + id + "'>" + value + "</option>";	// Create Option
+					var str = "<option value = '" + value + "'>" + value + "</option>";	// Create Option
 					
 					if(counter < 1) {	// if No Checkbox is selected
 						// Hide all Select boxes
@@ -426,12 +426,12 @@
 							$('#tertiary-business').css("display", 'none');
 							$('#selectMessage').css("display", 'block');
 							
-							var str_prime = "<option value = '" + id + "' selected = 'selected'>" + value + "</option>";	// Create Option for primary select box
+							var str_prime = "<option value = '" + value + "' selected = 'selected'>" + value + "</option>";	// Create Option for primary select box
 							
 							if(chk == false) {	// If Checkbox is checked
 								$('#bprimary').append(str_prime);	// Append the value to Primary Select box
 							} else { 
-								$("#bprimary option[value='"+id+"']").remove();	// Remove the value from Primary Select box
+								$("#bprimary option[value='"+value+"']").remove();	// Remove the value from Primary Select box
 							}
 						}
 						else if(counter == 2){	// 2 Checkboxes are selected
@@ -447,8 +447,8 @@
 								$('#bsecondary').append(str);
 							} else {
 								// Remove values from both Primary and Secondary select boxes
-								$("#bprimary option[value='"+id+"']").remove();
-								$("#bsecondary option[value='"+id+"']").remove();
+								$("#bprimary option[value='"+value+"']").remove();
+								$("#bsecondary option[value='"+value+"']").remove();
 							}
 							
 						}
@@ -466,9 +466,9 @@
 								$('#btertiary').append(str);
 							} else {
 								// Remove values from Primary, Secondary and Tertiary select boxes
-								$("#bprimary option[value='"+id+"']").remove();
-								$("#bsecondary option[value='"+id+"']").remove();
-								$("#btertiary option[value='"+id+"']").remove();
+								$("#bprimary option[value='"+value+"']").remove();
+								$("#bsecondary option[value='"+value+"']").remove();
+								$("#btertiary option[value='"+value+"']").remove();
 							}
 						}
 						else {	// More than 3 Checkboxes are selected
@@ -479,9 +479,9 @@
 								$('#btertiary').append(str);
 							} else {
 								// Remove values from Primary, Secondary and Tertiary select boxes
-								$("#bprimary option[value='"+id+"']").remove();
-								$("#bsecondary option[value='"+id+"']").remove();
-								$("#btertiary option[value='"+id+"']").remove();
+								$("#bprimary option[value='"+value+"']").remove();
+								$("#bsecondary option[value='"+value+"']").remove();
+								$("#btertiary option[value='"+value+"']").remove();
 							}
 						}
 					}
