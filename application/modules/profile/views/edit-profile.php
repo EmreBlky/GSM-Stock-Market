@@ -884,7 +884,7 @@
 									<div class="col-md-4">
                                     <div id="primary-business">
                                     <label class="col-md-12">Primary Business <span style="color:red">*</span></label>
-                                    <select class="form-control m-b" id="bprimary" style="float:left" onchange="updateSelects1(this.value)">
+                                    <select class="form-control m-b" id="bprimary" name="bprimary" style="float:left" onchange="updateSelects1(this.value)">
                                         <option value = "">[Select One]</option>
                                     </select>
                                     </div>
