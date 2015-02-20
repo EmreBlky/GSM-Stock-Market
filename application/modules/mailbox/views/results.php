@@ -69,7 +69,7 @@
                                 if($results['search_emails'] != 'NO RESULTS WERE FOUND!'){
                                     
                                     //if($results['category'] == 'all' || $results['category'] == 'member' || $results['category'] == 'market' || $results['category'] == 'support'){                                    
-                                    if($results['category'] != 'sent'){
+                                    if($results['category'] != 'sent' && $results['category'] != 'draft'){
                                     
                                         foreach($results['search_emails'] as $inbox){
 
