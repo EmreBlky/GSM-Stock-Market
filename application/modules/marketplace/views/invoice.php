@@ -1,6 +1,6 @@
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-8">
-                    <h2>Invoice</h2>
+                    <h2>Transaction</h2>
                     <ol class="breadcrumb">
                         <li>
                             <a href="index.html">Home</a>
@@ -12,7 +12,7 @@
                             <a href="marketplace/history">Order History</a>
                         </li>
                         <li class="active">
-                            <strong>Invoice</strong>
+                            <strong>Transaction</strong>
                         </li>
                     </ol>
                 </div>
@@ -40,7 +40,7 @@
                                 </div>
 
                                 <div class="col-sm-6 text-right">
-                                    <h4>Invoice No.</h4>
+                                    <h4>Transaction No.</h4>
                                     <h4 class="text-navy">1-1</h4>
                                     <span>To:</span>
                                     <address>
@@ -52,7 +52,7 @@
                                         United Kingdom
                                     </address>
                                     <p>
-                                        <span><strong>Invoice Date:</strong> February 18, 2015</span><br/>
+                                        <span><strong>Transaction Date:</strong> February 18, 2015</span><br/>
                                         <span><strong>Paid Date:</strong> February 18, 2015</span>
                                     </p>
                                 </div>
@@ -106,8 +106,9 @@
                                 </tr>
                                 </tbody>
                             </table>
+                            <p class="small">This is just a transaction receipt and not a tax/vat invoice</p>
                             <div class="text-right">
-                        		<a href="marketplace/invoice_print" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i> Print Invoice </a>
+                        		<a href="marketplace/invoice_print" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i> Print Transaction </a>
                             </div>
                         </div>
                 </div>

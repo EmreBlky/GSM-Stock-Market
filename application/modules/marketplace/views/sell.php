@@ -2107,6 +2107,8 @@
                     <thead>
                     <tr>
                         <th>Listing End</th>
+                        <th>Rating</th>
+                        <th>MPN/ISBN</th>
                         <th>Make</th>
                         <th>Model</th>
                         <th>Product Type</th>
@@ -2121,6 +2123,8 @@
                     <tbody>
                     <tr data-toggle="modal" data-target="#myModal5">
                         <td>17:22 11-02</td>
+                        <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
+                        <td>GH98-929782</td>
                         <td>Apple</td>
                         <td>Apple iPhone 4S 16GB</td>
                         <td>Data Cable</td>
@@ -2136,6 +2140,8 @@
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
                         <td>17:22 11-02</td>
+                        <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
+                        <td>GH98-929782</td>
                         <td>Apple</td>
                         <td>Apple iPhone 5S 32GB</td>
                         <td>Data Cable</td>
@@ -2151,6 +2157,8 @@
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
                         <td>17:22 11-02</td>
+                        <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
+                        <td>GH98-929782</td>
                         <td>Apple</td>
                         <td>Apple iPhone 2G 4GB</td>
                         <td>Data Cable</td>
@@ -2166,6 +2174,8 @@
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
                         <td>17:22 11-02</td>
+                        <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
+                        <td>GH98-929782</td>
                         <td>Samsung</td>
                         <td>Galaxy S4 16GB</td>
                         <td>Data Cable</td>
@@ -2181,6 +2191,8 @@
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
                         <td>17:22 11-02</td>
+                        <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
+                        <td>GH98-929782</td>
                         <td>Samsung</td>
                         <td>Galaxy S3 16GB</td>
                         <td>Data Cable</td>
@@ -2196,6 +2208,8 @@
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
                         <td>17:22 11-02</td>
+                        <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
+                        <td>GH98-929782</td>
                         <td>Samsung</td>
                         <td>Galaxy S2 8GB</td>
                         <td>Data Cable</td>
@@ -2211,6 +2225,8 @@
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
                         <td>17:22 11-02</td>
+                        <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
+                        <td>GH98-929782</td>
                         <td>Samsung</td>
                         <td>Galaxy S2 8GB</td>
                         <td>Data Cable</td>
@@ -2226,6 +2242,8 @@
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
                         <td>17:22 11-02</td>
+                        <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
+                        <td>GH98-929782</td>
                         <td>Samsung</td>
                         <td>Galaxy S2 8GB</td>
                         <td>Data Cable</td>
@@ -2241,6 +2259,8 @@
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
                         <td>17:22 11-02</td>
+                        <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
+                        <td>GH98-929782</td>
                         <td>Samsung</td>
                         <td>Galaxy S2 8GB</td>
                         <td>Data Cable</td>
@@ -2256,6 +2276,8 @@
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
                         <td>17:22 11-02</td>
+                        <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
+                        <td>GH98-929782</td>
                         <td>Samsung</td>
                         <td>Galaxy S2 8GB</td>
                         <td>Data Cable</td>
@@ -2271,6 +2293,8 @@
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
                         <td>17:22 11-02</td>
+                        <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
+                        <td>GH98-929782</td>
                         <td>Samsung</td>
                         <td>Galaxy S2 8GB</td>
                         <td>Data Cable</td>
@@ -2286,6 +2310,8 @@
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
                         <td>17:22 11-02</td>
+                        <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
+                        <td>GH98-929782</td>
                         <td>Samsung</td>
                         <td>Galaxy S2 8GB</td>
                         <td>Data Cable</td>
@@ -2301,6 +2327,8 @@
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
                         <td>17:22 11-02</td>
+                        <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
+                        <td>GH98-929782</td>
                         <td>Samsung</td>
                         <td>Galaxy S2 8GB</td>
                         <td>Data Cable</td>
@@ -2316,6 +2344,8 @@
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
                         <td>17:22 11-02</td>
+                        <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
+                        <td>GH98-929782</td>
                         <td>Samsung</td>
                         <td>Galaxy S2 8GB</td>
                         <td>Data Cable</td>
@@ -2345,14 +2375,14 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                            <h4 class="modal-title">23 x Refurbished Apple iPhone 4S 16GB</h4>
-                                            <small class="font-bold"><strong style="color:green">Buying Request</strong> from GSMStockMarket.com Limited</small>
+                                            <h4 class="modal-title"><strong>Selling Offer</strong> by GSMStockMarket.com Limited</h4>
+                                            <small class="font-bold">Transaction ID: 0123456789-01</small>
                                         </div>
                                         <div class="modal-body">
                                         	<div class="row">
                                                 <div class="col-lg-6">
                                                     <dl class="dl-horizontal">
-                                                    	<h4 style="text-align:center">Product Details</h4>
+                                                    	<h4>Product Details</h4>
                                                         <dt>Make:</dt> <dd>  Apple</dd>
                                                         <dt>Model:</dt> <dd>  iPhone 4S</dd>
                                                         <dt>Memory:</dt> <dd>  16GB</dd>
@@ -2360,32 +2390,86 @@
                                                         <dt>Product Type:</dt> <dd>  Data Cable</dd>
                                                         <dt>Condition:</dt> <dd>  Refurbished</dd>
                                                         <dt>Spec</dt> <dd>  UK</dd>
+                                                        <dt>MPN/ISBN</dt> <dd>  GH98-23907342</dd>
+                                                        <dt>Network</dt> <dd>  Network Locked</dd>
+                                                        <dt>Quantity</dt> <dd>  29</dd>
                                                     </dl>
                                                     <dl class="dl-horizontal">
-                                                    	<h4 style="text-align:center">Price</h4>
-                                                        <dt>Buy Price:</dt> <dd>  &pound;96.00</dd>
-                                                        <dt>Product Type:</dt> <dd>  Data Cable</dd>
-                                                        <dt>Condition:</dt> <dd>  Refurbished</dd>
-                                                        <dt>Spec</dt> <dd>  UK</dd>
+                                                    	<h4>Price</h4>
+                                                        <dt>Buying Currency:</dt> <dd> GBP &pound;</dd>
+                                                        <dt>GBP Price:</dt> <dd><strong>  &pound;96.00</strong></dd>
+                                                        <dt>EUR Price:</dt> <dd>  &euro;130.55</dd>
+                                                        <dt>USD Price:</dt> <dd>  $147.59</dd>
                                                     </dl>
-                                
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label">Make Offer</label>
-                                    <div class="col-md-9">
-                                        <div class="input-group m-b"><span class="input-group-addon"><i class="fa fa-gbp"></i></span>  
-                                        <input type="text" class="form-control" />
-                                        </div>
-                        				<button type="button" class="btn btn-primary" style="font-size:10px">Send Offer</button>
-                                        
-                                    </div>
-                                </div>
                                                 </div>
                                                 <div class="col-lg-6">
-                                                	<p style="text-align:center"><img style="text-align:center" src="public/main/template/gsm/images/marketplace/marketplace_photo.png" /></p>
+                                                	<p style="text-align:center">
+                                                    	<img style="text-align:center" src="public/main/template/gsm/images/marketplace/marketplace_photo.png" /><br /><br />
+                                                        <span style="color:red">Listing Ends: 4d 23h 22m 13s</span><br /><br />
+                                                        <button type="button" class="btn btn-danger" style="font-size:10px">Pay asking price</button>
+                                                    </p>
+                                                        
+                                                    <dl class="dl-horizontal" style="margin-top:20px">
+                                                    	<h4>or Make an Offer</h4>
+                                                        <dt><div class="input-group m-b"><span class="input-group-addon">QTY</span>  
+                                                            <input type="text" class="form-control" /><span class="input-group-addon">@</span></dt> 
+                                                            <dd><div class="input-group m-b"><span class="input-group-addon">GBP <i class="fa fa-gbp"></i></span>  
+                                                            <input type="text" class="form-control" /></dd>
+                                                        <p style="text-align:center"><button type="button" class="btn btn-warning" style="font-size:10px">Send Offer</button></p>
+                                                        <p class="small" style="text-align:center">Offers sent will expire after 24 hours</p>
+                                                        
+                                                </div>
+                                                </div>
+                                                <div class="row">
+                                                	<div class="col-lg-12">
                                                     <h4>Product Description</h4>
                                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent diam odio, ultrices vitae erat quis, tristique posuere leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique massa et justo laoreet, et finibus lacus scelerisque. Suspendisse id orci vel sapien mollis dictum. Aenean id nisl pulvinar, euismod risus id, pharetra velit. In finibus libero sed elit viverra, hendrerit tincidunt lectus maximus. Nulla facilisi. Nulla tellus justo, lacinia eget mauris nec, imperdiet tincidunt elit. Donec elementum enim id felis commodo, non porta tortor sagittis.</p>
-                                                </div>
+                                                    </div>
+                                              
                                             </div>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-warning">Watch</button>
+                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#price_graph">Product Price Data</button>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#profile_user">Seller Profile</button>
+                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#profile_message">Ask a question</button>
+                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="modal inmodal fade" id="profile_message" tabindex="-1" role="dialog"  aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">Send Message</h4>
+                                            <small class="font-bold">Send a message to GSMStockMarket.com</small>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p><strong>Form here</strong> generic stuff bla bla</p>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Send Message</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
+                            
+                            <div class="modal inmodal fade" id="profile_user" tabindex="-1" role="dialog"  aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title"View Profile</h4>
+                                            <small class="font-bold">Project Melon Limited</small>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img src="public/main/template/gsm/images/marketplace/profile_summary.jpg" />
                                         </div>
 
                                         <div class="modal-footer">
@@ -2393,7 +2477,26 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>  
+                            
+                            <div class="modal inmodal fade" id="price_graph" tabindex="-1" role="dialog"  aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">iPhone 4S Buy &amp; Sell Data</h4>
+                                        	<span>Buying Price</span> / <span style="color:#8fd9ca">Selling Price</span>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img src="public/main/template/gsm/images/marketplace/product_data.jpg" />
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
 
     <!-- Data Tables -->
     <link href="public/main/template/core/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">

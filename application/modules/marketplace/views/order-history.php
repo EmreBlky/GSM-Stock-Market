@@ -22,7 +22,7 @@
                 <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>View Invoices</h5>
+                        <h5>View Transactions</h5>
                     </div>
                     <div class="ibox-content">
 
@@ -36,7 +36,7 @@
                         <th>Tax/VAT</th>
                         <th>Total</th>
                         <th>Currency</th>
-                        <th>View Invoice</th>
+                        <th>View Transaction</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -48,7 +48,7 @@
                         <td style="text-align:right">60.00</td>
                         <td style="text-align:right">360.00</td>
                         <td>GBP <i class="fa fa-gbp"></i></td>
-                        <th style="text-align:center"><a href="marketplace/invoice/"><button type="button" class="btn btn-primary" style="font-size:10px">View Invoice</button></a></th>
+                        <th style="text-align:center"><a href="marketplace/invoice/"><button type="button" class="btn btn-primary" style="font-size:10px">View Transaction</button></a></th>
                     </tr>
                     <tr>
                         <td>1-2</td>
@@ -58,7 +58,7 @@
                         <td style="text-align:right">40.00</td>
                         <td style="text-align:right">240.00</td>
                         <td>GBP <i class="fa fa-gbp"></i></td>
-                        <th style="text-align:center"><a href="marketplace/invoice/"><button type="button" class="btn btn-primary" style="font-size:10px">View Invoice</button></a></th>
+                        <th style="text-align:center"><a href="marketplace/invoice/"><button type="button" class="btn btn-primary" style="font-size:10px">View Transaction</button></a></th>
                     </tr>
                     <tr>
                         <td>1-3</td>
@@ -68,7 +68,7 @@
                         <td style="text-align:right">30.00</td>
                         <td style="text-align:right">180.00</td>
                         <td>GBP <i class="fa fa-gbp"></i></td>
-                        <th style="text-align:center"><a href="marketplace/invoice/"><button type="button" class="btn btn-primary" style="font-size:10px">View Invoice</button></a></th>
+                        <th style="text-align:center"><a href="marketplace/invoice/"><button type="button" class="btn btn-primary" style="font-size:10px">View Transaction</button></a></th>
                     </tr>
                     <tr>
                         <td>1-4</td>
@@ -78,7 +78,7 @@
                         <td style="text-align:right">48.00</td>
                         <td style="text-align:right">288.00</td>
                         <td>USD <i class="fa fa-usd"></i></td>
-                        <th style="text-align:center"><a href="marketplace/invoice/"><button type="button" class="btn btn-primary" style="font-size:10px">View Invoice</button></a></th>
+                        <th style="text-align:center"><a href="marketplace/invoice/"><button type="button" class="btn btn-primary" style="font-size:10px">View Transaction</button></a></th>
                     </tr>
                     <tr>
                         <td>1-5</td>
@@ -88,7 +88,7 @@
                         <td style="text-align:right">NIL</td>
                         <td style="text-align:right">9800.00</td>
                         <td>EUR <i class="fa fa-euro"></i></td>
-                        <th style="text-align:center"><a href="marketplace/invoice/"><button type="button" class="btn btn-primary" style="font-size:10px">View Invoice</button></a></th>
+                        <th style="text-align:center"><a href="marketplace/invoice/"><button type="button" class="btn btn-primary" style="font-size:10px">View Transaction</button></a></th>
                     </tr>
                     <tr>
                         <td>1-6</td>
@@ -98,7 +98,7 @@
                         <td style="text-align:right">NIL</td>
                         <td style="text-align:right">9800.00</td>
                         <td>EUR <i class="fa fa-euro"></i></td>
-                        <th style="text-align:center"><a href="marketplace/invoice/"><button type="button" class="btn btn-primary" style="font-size:10px">View Invoice</button></a></th>
+                        <th style="text-align:center"><a href="marketplace/invoice/"><button type="button" class="btn btn-primary" style="font-size:10px">View Transaction</button></a></th>
                     </tr>
                     <tr>
                         <td>1-7</td>
@@ -108,7 +108,7 @@
                         <td style="text-align:right">NIL</td>
                         <td style="text-align:right">9800.00</td>
                         <td>EUR <i class="fa fa-euro"></i></td>
-                        <th style="text-align:center"><a href="marketplace/invoice/"><button type="button" class="btn btn-primary" style="font-size:10px">View Invoice</button></a></th>
+                        <th style="text-align:center"><a href="marketplace/invoice/"><button type="button" class="btn btn-primary" style="font-size:10px">View Transaction</button></a></th>
                     </tr>
                     <tr>
                         <td>1-8</td>
@@ -118,7 +118,7 @@
                         <td style="text-align:right">NIL</td>
                         <td style="text-align:right">9800.00</td>
                         <td>EUR <i class="fa fa-euro"></i></td>
-                        <th style="text-align:center"><a href="marketplace/invoice/"><button type="button" class="btn btn-primary" style="font-size:10px">View Invoice</button></a></th>
+                        <th style="text-align:center"><a href="marketplace/invoice/"><button type="button" class="btn btn-primary" style="font-size:10px">View Transaction</button></a></th>
                     </tr>
                     <tr>
                         <td>1-9</td>
@@ -128,7 +128,7 @@
                         <td style="text-align:right">NIL</td>
                         <td style="text-align:right">9800.00</td>
                         <td>EUR <i class="fa fa-euro"></i></td>
-                        <th style="text-align:center"><a href="marketplace/invoice/"><button type="button" class="btn btn-primary" style="font-size:10px">View Invoice</button></a></th>
+                        <th style="text-align:center"><a href="marketplace/invoice/"><button type="button" class="btn btn-primary" style="font-size:10px">View Transaction</button></a></th>
                     </tr>
                     <tr>
                         <td>1-10</td>
@@ -138,7 +138,7 @@
                         <td style="text-align:right">NIL</td>
                         <td style="text-align:right">9800.00</td>
                         <td>EUR <i class="fa fa-euro"></i></td>
-                        <th style="text-align:center"><a href="marketplace/invoice/"><button type="button" class="btn btn-primary" style="font-size:10px">View Invoice</button></a></th>
+                        <th style="text-align:center"><a href="marketplace/invoice/"><button type="button" class="btn btn-primary" style="font-size:10px">View Transaction</button></a></th>
                     </tr>
                     <tr>
                         <td>1-11</td>
@@ -148,7 +148,7 @@
                         <td style="text-align:right">NIL</td>
                         <td style="text-align:right">9800.00</td>
                         <td>EUR <i class="fa fa-euro"></i></td>
-                        <th style="text-align:center"><a href="marketplace/invoice/"><button type="button" class="btn btn-primary" style="font-size:10px">View Invoice</button></a></th>
+                        <th style="text-align:center"><a href="marketplace/invoice/"><button type="button" class="btn btn-primary" style="font-size:10px">View Transaction</button></a></th>
                     </tr>
                     <tr>
                         <td>1-12</td>
@@ -158,7 +158,7 @@
                         <td style="text-align:right">NIL</td>
                         <td style="text-align:right">9800.00</td>
                         <td>EUR <i class="fa fa-euro"></i></td>
-                        <th style="text-align:center"><a href="marketplace/invoice/"><button type="button" class="btn btn-primary" style="font-size:10px">View Invoice</button></a></th>
+                        <th style="text-align:center"><a href="marketplace/invoice/"><button type="button" class="btn btn-primary" style="font-size:10px">View Transaction</button></a></th>
                     </tr>
                     </tbody>
                     </table>
