@@ -146,7 +146,11 @@ class Profile extends MX_Controller
         $this->templates->page($data);
     }
     
-    function profileEdit(){
+    function profileEdit()
+    {
+        echo '<pre>';
+        print_r($_POST);
+        exit;
 		
         $this->load->library('form_validation');		            
             
