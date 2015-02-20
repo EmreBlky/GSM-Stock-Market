@@ -24,235 +24,187 @@
                 <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Open Orders</h5>
+                        <h5>Open Orders - Item you are buying</h5>
                     </div>
                     <div class="ibox-content">
 
                     <table id="marketplace" class="table table-striped table-bordered table-hover dataTables-example" >
                     <thead>
                     <tr>
-                        <th>Listing End</th>
-                        <th>Make</th>
-                        <th>Model</th>
+                        <th>Status</th>
+                        <th>Seller</th>
+                        <th>Product</th>
                         <th>Product Type</th>
                         <th>Condition</th>
                         <th>Price</th>
-                        <th>QTY</th>
-                        <th>Spec</th>
-                        <th>Country</th>
+                        <th>Progress</th>
                         <th>Options</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Apple</td>
+                        <td><span class="label label-warning">Send Payment</span></td>
+                        <td>ClickMobileShop.com Limited</td>
                         <td>Apple iPhone 4S 16GB</td>
                         <td>Data Cable</td>
                         <td>Refurbished</td>
                         <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
-                        <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+                        <td class="project-completion">
+                        <small>25% Complete</small>
+                        <div class="progress progress-mini">
+                        <div style="width: 25%;" class="progress-bar"></div>
+                        </div>
+                        </td>
+                        <td>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Make Payment</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button></td>
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Apple</td>
-                        <td>Apple iPhone 5S 32GB</td>
-                        <td>Data Cable</td>
-                        <td>Refurbished</td>
-                        <td>GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
-                        <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Apple</td>
-                        <td>Apple iPhone 2G 4GB</td>
+                        <td><span class="label label-primary">Payment Sent</span></td>
+                        <td>ClickMobileShop.com Limited</td>
+                        <td>Apple iPhone 4S 16GB</td>
                         <td>Data Cable</td>
                         <td>Refurbished</td>
                         <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
-                        <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+                        <td class="project-completion">
+                        <small>50% Complete</small>
+                        <div class="progress progress-mini">
+                        <div style="width: 50%;" class="progress-bar"></div>
+                        </div>
+                        </td>
+                        <td>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button></td>
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S4 16GB</td>
+                        <td><span class="label label-warning">Awaiting Shipment</span></td>
+                        <td>ClickMobileShop.com Limited</td>
+                        <td>Apple iPhone 4S 16GB</td>
                         <td>Data Cable</td>
-                        <td>New</td>
+                        <td>Refurbished</td>
                         <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
-                        <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+                        <td class="project-completion">
+                        <small>75% Complete</small>
+                        <div class="progress progress-mini">
+                        <div style="width: 75%;" class="progress-bar"></div>
+                        </div>
+                        </td>
+                        <td>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Complete Deal</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button></td>
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S3 16GB</td>
+                        <td><span class="label label-primary">Shipment Arrived</span></td>
+                        <td>ClickMobileShop.com Limited</td>
+                        <td>Apple iPhone 4S 16GB</td>
                         <td>Data Cable</td>
-                        <td>New</td>
+                        <td>Refurbished</td>
                         <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
-                        <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+                        <td class="project-completion">
+                        <small>100% Complete</small>
+                        <div class="progress progress-mini">
+                        <div style="width: 100%;" class="progress-bar"></div>
+                        </div>
+                        </td>
+                        <td>
+                        <button type="button" class="btn btn-info" style="font-size:10px">Leave Feedback</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button></td>
+                    </tr>
+                    </tbody>
+                    </table>
+
+                    </div>
+                </div>
+            </div>
+            </div>
+        
+            <div class="row">
+                <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Open Orders - Items you are selling</h5>
+                    </div>
+                    <div class="ibox-content">
+
+                    <table id="marketplace" class="table table-striped table-bordered table-hover dataTables-example" >
+                    <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Buyer</th>
+                        <th>Product</th>
+                        <th>Product Type</th>
+                        <th>Condition</th>
+                        <th>Price</th>
+                        <th>Progress</th>
+                        <th>Options</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr data-toggle="modal" data-target="#myModal5">
+                        <td><span class="label label-warning">Awaiting Payment</span></td>
+                        <td>ClickMobileShop.com Limited</td>
+                        <td>Apple iPhone 4S 16GB</td>
+                        <td>Data Cable</td>
+                        <td>Refurbished</td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
+                        <td class="project-completion">
+                        <small>25% Complete</small>
+                        <div class="progress progress-mini">
+                        <div style="width: 25%;" class="progress-bar"></div>
+                        </div>
+                        </td>
+                        <td>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Confirm Payment</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button></td>
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S2 8GB</td>
+                        <td><span class="label label-primary">Payment Received</span></td>
+                        <td>ClickMobileShop.com Limited</td>
+                        <td>Apple iPhone 4S 16GB</td>
                         <td>Data Cable</td>
-                        <td>New</td>
+                        <td>Refurbished</td>
                         <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
-                        <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+                        <td class="project-completion">
+                        <small>50% Complete</small>
+                        <div class="progress progress-mini">
+                        <div style="width: 50%;" class="progress-bar"></div>
+                        </div>
+                        </td>
+                        <td>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Add Tracking</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button></td>
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S2 8GB</td>
+                        <td><span class="label label-warning">Awaiting Completion</span></td>
+                        <td>ClickMobileShop.com Limited</td>
+                        <td>Apple iPhone 4S 16GB</td>
                         <td>Data Cable</td>
-                        <td>New</td>
+                        <td>Refurbished</td>
                         <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
-                        <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+                        <td class="project-completion">
+                        <small>75% Complete</small>
+                        <div class="progress progress-mini">
+                        <div style="width: 50%;" class="progress-bar"></div>
+                        </div>
+                        </td>
+                        <td>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button></td>
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S2 8GB</td>
+                        <td><span class="label label-primary">Shipment Arrived</span></td>
+                        <td>ClickMobileShop.com Limited</td>
+                        <td>Apple iPhone 4S 16GB</td>
                         <td>Data Cable</td>
-                        <td>New</td>
+                        <td>Refurbished</td>
                         <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
-                        <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S2 8GB</td>
-                        <td>Data Cable</td>
-                        <td>New</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
-                        <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S2 8GB</td>
-                        <td>Data Cable</td>
-                        <td>New</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
-                        <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S2 8GB</td>
-                        <td>Data Cable</td>
-                        <td>New</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
-                        <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S2 8GB</td>
-                        <td>Data Cable</td>
-                        <td>New</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
-                        <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S2 8GB</td>
-                        <td>Data Cable</td>
-                        <td>New</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
-                        <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S2 8GB</td>
-                        <td>Data Cable</td>
-                        <td>New</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
-                        <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+                        <td class="project-completion">
+                        <small>100% Complete</small>
+                        <div class="progress progress-mini">
+                        <div style="width: 100%;" class="progress-bar"></div>
+                        </div>
+                        </td>
+                        <td>
+                        <button type="button" class="btn btn-info" style="font-size:10px">Leave Feedback</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button></td>
                     </tr>
                     </tbody>
                     </table>
