@@ -153,6 +153,8 @@ class Profile extends MX_Controller
 //        print_r($_POST);
 //        print_r($_FILES);
 //        exit;
+        $bsectors4 = '';
+        $bsectors5 = '';
         
         if(isset($_POST['bsectors'][3])){
             $bsectors4 = $_POST['bsectors'][3];
@@ -244,6 +246,11 @@ class Profile extends MX_Controller
                             $config['max_height']  = '800';
 
                             $this->upload->initialize($config);
+                            
+                             if ( ! $this->upload->do_upload())
+                             {
+                                 $data = array('upload_data' => $this->upload->data());
+                             }
 
 //                            if ( ! $this->upload->do_upload())
 //                            {
@@ -254,13 +261,13 @@ class Profile extends MX_Controller
 //                            }
 //                            else
 //                            {
-                                    $data = array('upload_data' => $this->upload->data());
-                                  
-                            //}
+//                                    $data = array('upload_data' => $this->upload->data());
+//                                  
+//                            }
                         }
                         
                     }
-                    
+                    //exit;
                     redirect('profile/', 'refresh');
     }
 	
