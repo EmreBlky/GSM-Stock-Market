@@ -71,7 +71,7 @@
                         </th>
                     </tr>
                     <tr>
-                        <td style="text-align:center"><span class="label label-info">Offers Waiting</span></td>
+                        <td style="text-align:center"><span class="label label-info">Offers Waiting (3)</span></td>
                         <td>17:22 11-02</td>
                         <td>Apple iPhone 4S 16GB</td>
                         <td>Refurbished</td>
@@ -85,7 +85,7 @@
                         </th>
                     </tr>
                     <tr>
-                        <td style="text-align:center"><span class="label label-info">Offers Waiting</span></td>
+                        <td style="text-align:center"><span class="label label-info">Offers Waiting (2)</span></td>
                         <td>17:22 11-02</td>
                         <td>Apple iPhone 4S 16GB</td>
                         <td>Refurbished</td>
@@ -99,7 +99,7 @@
                         </th>
                     </tr>
                     <tr>
-                        <td style="text-align:center"><span class="label label-info">Offers Waiting</span></td>
+                        <td style="text-align:center"><span class="label label-info">Offers Waiting (1)</span></td>
                         <td>17:22 11-02</td>
                         <td>Apple iPhone 4S 16GB</td>
                         <td>Refurbished</td>
@@ -113,7 +113,7 @@
                         </th>
                     </tr>
                     <tr>
-                        <td style="text-align:center"><span class="label label-info">Offers Waiting</span></td>
+                        <td style="text-align:center"><span class="label label-info">Offers Waiting (1)</span></td>
                         <td>17:22 11-02</td>
                         <td>Apple iPhone 4S 16GB</td>
                         <td>Refurbished</td>
@@ -127,7 +127,7 @@
                         </th>
                     </tr>
                     <tr>
-                        <td style="text-align:center"><span class="label label-info">Offers Waiting</span></td>
+                        <td style="text-align:center"><span class="label label-info">Offers Waiting (3)</span></td>
                         <td>17:22 11-02</td>
                         <td>Apple iPhone 4S 16GB</td>
                         <td>Refurbished</td>
@@ -141,7 +141,7 @@
                         </th>
                     </tr>
                     <tr>
-                        <td style="text-align:center"><span class="label label-info">Offers Waiting</span></td>
+                        <td style="text-align:center"><span class="label label-info">Offers Waiting (5)</span></td>
                         <td>17:22 11-02</td>
                         <td>Apple iPhone 4S 16GB</td>
                         <td>Refurbished</td>
@@ -155,7 +155,7 @@
                         </th>
                     </tr>
                     <tr>
-                        <td style="text-align:center"><span class="label label-info">Offers Waiting</span></td>
+                        <td style="text-align:center"><span class="label label-info">Offers Waiting (9)</span></td>
                         <td>17:22 11-02</td>
                         <td>Apple iPhone 4S 16GB</td>
                         <td>Refurbished</td>
@@ -169,7 +169,7 @@
                         </th>
                     </tr>
                     <tr>
-                        <td style="text-align:center"><span class="label label-info">Offers Waiting</span></td>
+                        <td style="text-align:center"><span class="label label-info">Offers Waiting (3)</span></td>
                         <td>17:22 11-02</td>
                         <td>Apple iPhone 4S 16GB</td>
                         <td>Refurbished</td>
@@ -183,7 +183,7 @@
                         </th>
                     </tr>
                     <tr>
-                        <td style="text-align:center"><span class="label label-info">Offers Waiting</span></td>
+                        <td style="text-align:center"><span class="label label-info">Offers Waiting (1)</span></td>
                         <td>17:22 11-02</td>
                         <td>Apple iPhone 4S 16GB</td>
                         <td>Refurbished</td>
@@ -197,7 +197,7 @@
                         </th>
                     </tr>
                     <tr>
-                        <td style="text-align:center"><span class="label label-info">Offers Waiting</span></td>
+                        <td style="text-align:center"><span class="label label-info">Offers Waiting (1)</span></td>
                         <td>17:22 11-02</td>
                         <td>Apple iPhone 4S 16GB</td>
                         <td>Refurbished</td>
@@ -211,7 +211,7 @@
                         </th>
                     </tr>
                     <tr>
-                        <td style="text-align:center"><span class="label label-info">Offers Waiting</span></td>
+                        <td style="text-align:center"><span class="label label-info">Offers Waiting (2)</span></td>
                         <td>17:22 11-02</td>
                         <td>Apple iPhone 4S 16GB</td>
                         <td>Refurbished</td>
