@@ -257,6 +257,7 @@
 					var value = $('#'+entry).attr('value');		// Get value of selected option box
 					if(entry != no_value) {	
 						if(entry == secondary) {
+							$('#secondary_sector').val(value);
 							var str1 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
 						} else {
 							var str1 = "<option value = '" + entry + "'>" + value + "</option>";
@@ -265,6 +266,7 @@
 							$('#bsecondary').append(str1);
 						}
 						if(entry == tertiary) {
+							$('#tertiary_sector').val(value);
 							var str2 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
 						} else {
 							var str2 = "<option value = '" + entry + "'>" + value + "</option>";
@@ -276,8 +278,7 @@
 				});
 				is_primary_set = true;
 				
-				$('#secondary_sector').val(secondary);
-				$('#tertiary_sector').val(tertiary);
+				
 			}
 			
 			function updateSelects2(value) {
@@ -307,6 +308,7 @@
 					var value = $('#'+entry).attr('value');
 					if(entry != no_value) {
 						if(entry == primary) {
+							$('#primary_sector').val(value);
 							var str1 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
 						} else {
 							var str1 = "<option value = '" + entry + "'>" + value + "</option>";
@@ -315,6 +317,7 @@
 							$('#bprimary').append(str1);
 						}
 						if(entry == tertiary) {
+							$('#tertiary_sector').val(value);
 							var str2 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
 						} else {
 							var str2 = "<option value = '" + entry + "'>" + value + "</option>";
@@ -325,8 +328,6 @@
 					}
 				});
 				
-				$('#primary_sector').val(primary);
-				$('#tertiary_sector').val(tertiary);
 			}
 			
 			function updateSelects3(value) {
@@ -356,6 +357,7 @@
 					var value = $('#'+entry).attr('value');
 					if(entry != no_value) {
 						if(entry == primary) {
+							$('#primary_sector').val(value);
 							var str1 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
 						} else {
 							var str1 = "<option value = '" + entry + "'>" + value + "</option>";
@@ -364,6 +366,7 @@
 							$('#bprimary').append(str1);
 						}
 						if(entry == secondary) {
+							$('#secondary_sector').val(value);
 							var str2 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
 						} else {
 							var str2 = "<option value = '" + entry + "'>" + value + "</option>";
@@ -374,8 +377,6 @@
 					}
 				});
 				
-				$('#primary_sector').val(primary);
-				$('#secondary_sector').val(secondary);
 			}
 			
 
