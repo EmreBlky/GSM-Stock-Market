@@ -1,5 +1,5 @@
             <div class="row wrapper border-bottom white-bg page-heading">
-                <div class="col-lg-10">
+                <div class="col-lg-8">
                     <h2>Invoice</h2>
                     <ol class="breadcrumb">
                         <li>
@@ -16,7 +16,10 @@
                         </li>
                     </ol>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-lg-4">
+                    <div class="title-action">
+                        <a target="_blank" class="btn btn-primary" onClick="history.go(-1);return true;"><i class="fa fa-arrow-left"></i> Go Back </a>
+                    </div>
                 </div>
             </div>
         <div class="row">
@@ -27,26 +30,30 @@
                                 <div class="col-sm-6">
                                     <h5>From:</h5>
                                     <address>
-                                        <strong>Inspinia, Inc.</strong><br>
-                                        106 Jorg Avenu, 600/10<br>
-                                        Chicago, VT 32456<br>
-                                        <abbr title="Phone">P:</abbr> (123) 601-4590
+                                        <strong>ClickMobileShop.com Limited</strong><br>
+                                        Units 1 &amp; 2 The Old Dairy<br>
+                                        Hazlemere<br>
+                                       	High Wycombe<br>
+                                        Buckinghamshire. HP15 7LG<br>
+                                        United Kingdom
                                     </address>
                                 </div>
 
                                 <div class="col-sm-6 text-right">
                                     <h4>Invoice No.</h4>
-                                    <h4 class="text-navy">INV-000567F7-00</h4>
+                                    <h4 class="text-navy">1-1</h4>
                                     <span>To:</span>
                                     <address>
-                                        <strong>Corporate, Inc.</strong><br>
-                                        112 Street Avenu, 1080<br>
-                                        Miami, CT 445611<br>
-                                        <abbr title="Phone">P:</abbr> (120) 9000-4321
+                                        <strong>GSMStockMarket.com Limited</strong><br>
+                                        Units 3 The Old Dairy<br>
+                                        Hazlemere<br>
+                                       	High Wycombe<br>
+                                        Buckinghamshire. HP15 7LG<br>
+                                        United Kingdom
                                     </address>
                                     <p>
-                                        <span><strong>Invoice Date:</strong> Marh 18, 2014</span><br/>
-                                        <span><strong>Due Date:</strong> March 24, 2014</span>
+                                        <span><strong>Invoice Date:</strong> February 18, 2015</span><br/>
+                                        <span><strong>Paid Date:</strong> February 18, 2015</span>
                                     </p>
                                 </div>
                             </div>
@@ -58,38 +65,27 @@
                                         <th>Item List</th>
                                         <th>Quantity</th>
                                         <th>Unit Price</th>
-                                        <th>Tax</th>
+                                        <th>Tax/VAT</th>
                                         <th>Total Price</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td><div><strong>Admin Theme with psd project layouts</strong></div>
-                                            <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small></td>
+                                        <td><div><strong>Apple iPhone 5 Black 16GB - LCD and Digitiser</strong></div>
+                                            <small>Replacement LCD and Digitiser, some filler text....</small></td>
+                                        <td>29</td>
+                                        <td>&pound;925.00</td>
+                                        <td>&pound;185.00</td>
+                                        <td>&pound;1,110.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td><div><strong>Shipping &amp; Handling</strong></div>
+                                            <small>DHL Tracking Number: DHL2098208</small></td>
                                         <td>1</td>
-                                        <td>$26.00</td>
-                                        <td>$5.98</td>
-                                        <td>$31,98</td>
+                                        <td>&pound;25.00</td>
+                                        <td>&pound;5.00</td>
+                                        <td>&pound;30.00</td>
                                     </tr>
-                                    <tr>
-                                        <td><div><strong>Wodpress Them customization</strong></div>
-                                            <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                Eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                            </small></td>
-                                        <td>2</td>
-                                        <td>$80.00</td>
-                                        <td>$36.80</td>
-                                        <td>$196.80</td>
-                                    </tr>
-                                    <tr>
-                                        <td><div><strong>Angular JS & Node JS Application</strong></div>
-                                            <small>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</small></td>
-                                        <td>3</td>
-                                        <td>$420.00</td>
-                                        <td>$193.20</td>
-                                        <td>$1033.20</td>
-                                    </tr>
-
                                     </tbody>
                                 </table>
                             </div><!-- /table-responsive -->
@@ -98,15 +94,15 @@
                                 <tbody>
                                 <tr>
                                     <td><strong>Sub Total :</strong></td>
-                                    <td>$1026.00</td>
+                                    <td>&pound;950.00</td>
                                 </tr>
                                 <tr>
-                                    <td><strong>TAX :</strong></td>
-                                    <td>$235.98</td>
+                                    <td><strong>TAX/VAT :</strong></td>
+                                    <td>&pound;190.00</td>
                                 </tr>
                                 <tr>
                                     <td><strong>TOTAL :</strong></td>
-                                    <td>$1261.98</td>
+                                    <td>&pound;1140.00</td>
                                 </tr>
                                 </tbody>
                             </table>
