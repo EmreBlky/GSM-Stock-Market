@@ -492,6 +492,10 @@
 		
 	
 </script>
+<?php 
+    $attributes = array('class' => 'form-horizontal validation', 'onsubmit' => 'return validate_info()');
+    echo form_open_multipart('profile/profileEdit', $attributes);
+?>
 <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
                     <h2>View Profile</h2>
@@ -536,10 +540,7 @@
                             <h5>Company Details</h5>
                         </div>
                         <div class="ibox-content">
-                            <?php 
-					$attributes = array('class' => 'form-horizontal validation', 'onsubmit' => 'return validate_info()');
-					echo form_open('profile/profileEdit', $attributes);
-							?>
+                            
                             	<div class="form-group"><label class="col-md-3 control-label">Company Name <span style="color:red">*</span></label>
                                     <div class="col-md-9">
                                         <?php
@@ -1132,7 +1133,8 @@
                         	<div class="col-md-12" style="text-align:center;margin-top:20px">
                         	<div class="btn-group">
                            		<label title="Upload image file" for="inputImage" class="btn btn-primary">
-                                	<input type="file" accept="image/*" name="file" class="hide">Upload new image</label>
+                                            
+                                	<input type="file" name="file" class="hide">Upload new image</label>
                                     <label class="btn btn-danger">Delete</label>
                            	</div>
                         	</div>
@@ -1390,8 +1392,8 @@
                         	</div>
                         	<div class="col-md-12" style="text-align:center;margin-top:20px">
                         	<div class="btn-group">
-                           		<label title="Upload image file" for="inputImage" class="btn btn-primary">
-                                	<input type="file" accept="image/*" name="file" class="hide">Upload new image</label>
+                           		<label title="Upload image file" for="inputImage" class="btn btn-primary">                                        
+                                            <input type="file" accept="image" name="userfile" />Upload new image</label>
                                     <label class="btn btn-danger">Delete</label>
                            	</div>
                         	</div>
@@ -1402,11 +1404,9 @@
                         </div>
                    </div>
                 </div>
-                        
-                        
-                        
-                        </div><!-- /row -->
-                            <?php echo form_close()?>
+        </div><!-- /row -->
+<?php echo form_close()?>
+                            
         
         
         

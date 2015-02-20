@@ -147,6 +147,10 @@ class Profile extends MX_Controller
     }
     
     function profileEdit(){
+//        
+//        echo '<pre>';
+//        print_r($_POST);
+//        exit;
         
         $this->load->library('form_validation');		            
             
@@ -164,8 +168,8 @@ class Profile extends MX_Controller
                 $this->form_validation->set_rules('country', 'Country', 'xss_clean');
                 $this->form_validation->set_rules('post_code', 'Postcode', 'xss_clean');
                 $this->form_validation->set_rules('website', 'Website', 'xss_clean');
-                $this->form_validation->set_rules('business_sector_1', 'Business Sector 1', 'xss_clean');
-                $this->form_validation->set_rules('business_sector_2', 'Business Sector 2', 'xss_clean');
+                //$this->form_validation->set_rules('business_sector_1', 'Business Sector 1', 'xss_clean');
+                //$this->form_validation->set_rules('business_sector_2', 'Business Sector 2', 'xss_clean');
                 $this->form_validation->set_rules('vat_tax', 'VAT Number', 'xss_clean');
                 $this->form_validation->set_rules('company_number', 'Company Number', 'xss_clean');
                 $this->form_validation->set_rules('language', 'Language', 'xss_clean');
@@ -212,9 +216,36 @@ class Profile extends MX_Controller
                                         'company_number' => $this->input->post('company_number'),
                                      );
                          $this->company_model->_update($this->member_model->get_where($this->session->userdata('members_id'))->company_id, $data);
+                         
+                         $this->load->library('upload');
+                         
+                            $base = $this->config->item('base_url');
+                            $config['upload_path'] = dirname($_SERVER["SCRIPT_FILENAME"]).'/public/main/template/gsm/images/members/';
+                            $config['upload_url'] = $base.'public/main/template/gsm/images/members/';
+                            $config['allowed_types'] = 'gif|jpg|png';
+                            $config['file_name'] = $this->session->userdata('members_id');
+                            $config['max_size']	= '2000';
+                            $config['overwrite'] = TRUE;
+                            $config['max_width']  = '1024';
+                            $config['max_height']  = '768';
+
+                            $this->upload->initialize($config);
+
+                            if ( ! $this->upload->do_upload())
+                            {
+                                    $error = array('error' => $this->upload->display_errors());
+//                                    echo '<pre>';
+//                                    print_r($error);
+//                                    exit;
+                            }
+                            else
+                            {
+                                    $data = array('upload_data' => $this->upload->data());
+                                  
+                            }
                     }
                     
-                    redirect('profile/');
+                    redirect('profile/', 'refresh');
     }
 	
 }
