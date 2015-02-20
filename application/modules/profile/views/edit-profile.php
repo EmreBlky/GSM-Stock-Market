@@ -275,6 +275,9 @@
 					}
 				});
 				is_primary_set = true;
+				
+				$('#secondary_sector').val(secondary);
+				$('#tertiary_sector').val(tertiary);
 			}
 			
 			function updateSelects2(value) {
@@ -321,6 +324,9 @@
 						}
 					}
 				});
+				
+				$('#primary_sector').val(primary);
+				$('#tertiary_sector').val(tertiary);
 			}
 			
 			function updateSelects3(value) {
@@ -367,6 +373,9 @@
 						}
 					}
 				});
+				
+				$('#primary_sector').val(primary);
+				$('#secondary_sector').val(secondary);
 			}
 			
 
@@ -512,6 +521,10 @@
             
         <div class="wrapper wrapper-content">
         	
+			<input type = "hidden" name = "primary_sector" id = "primary_sector" value = "" />
+			<input type = "hidden" name = "secondary_sector" id = "secondary_sector" value = "" />
+			<input type = "hidden" name = "tertiary_sector" id = "tertiary_sector" value = "" />
+			
             <div class="row">
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
