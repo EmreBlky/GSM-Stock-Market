@@ -109,7 +109,7 @@
 					}
 					return flag;
 				}
-				
+				updateHiddens();
 				return true;
 			}
 			
