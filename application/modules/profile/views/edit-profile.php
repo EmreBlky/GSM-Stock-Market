@@ -279,7 +279,7 @@
 				is_primary_set = true;
 				
 				var value = $('#tertiary_sector').val();
-				console.log(value);
+				alert(value);
 			}
 			
 			function updateSelects2(value) {
@@ -330,7 +330,7 @@
 				});
 				
 				var value = $('#tertiary_sector').val();
-				console.log(value);
+				alert(value);
 			}
 			
 			function updateSelects3(value) {
