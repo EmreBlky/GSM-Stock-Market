@@ -266,7 +266,6 @@
 							$('#bsecondary').append(str1);
 						}
 						if(entry == tertiary) {
-							document.getelementbyid('tertiary_sector').value = value;
 							$('#tertiary_sector').val(value);
 							var str2 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
 						} else {
@@ -279,7 +278,8 @@
 				});
 				is_primary_set = true;
 				
-				
+				var value = $('#tertiary_sector').val();
+				console.log(value);
 			}
 			
 			function updateSelects2(value) {
@@ -319,7 +319,6 @@
 						}
 						if(entry == tertiary) {
 							$('#tertiary_sector').val(value);
-							document.getelementbyid('tertiary_sector').value = value;
 							var str2 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
 						} else {
 							var str2 = "<option value = '" + entry + "'>" + value + "</option>";
@@ -330,6 +329,8 @@
 					}
 				});
 				
+				var value = $('#tertiary_sector').val();
+				console.log(value);
 			}
 			
 			function updateSelects3(value) {
