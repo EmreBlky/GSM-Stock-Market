@@ -521,9 +521,6 @@
             
         <div class="wrapper wrapper-content">
         	
-			<input type = "hidden" name = "primary_sector" id = "primary_sector" value = "" />
-			<input type = "hidden" name = "secondary_sector" id = "secondary_sector" value = "" />
-			<input type = "hidden" name = "tertiary_sector" id = "tertiary_sector" value = "" />
 			
             <div class="row">
                 <div class="col-lg-12">
@@ -553,6 +550,9 @@
 					$attributes = array('class' => 'form-horizontal validation', 'onsubmit' => 'return validate_info()');
 					echo form_open('profile/profileEdit', $attributes);
 							?>
+			<input type = "hidden" name = "primary_sector" id = "primary_sector" value = "" />
+			<input type = "hidden" name = "secondary_sector" id = "secondary_sector" value = "" />
+			<input type = "hidden" name = "tertiary_sector" id = "tertiary_sector" value = "" />
                             	<div class="form-group"><label class="col-md-3 control-label">Company Name <span style="color:red">*</span></label>
                                     <div class="col-md-9">
                                         <?php
