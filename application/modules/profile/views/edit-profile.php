@@ -380,9 +380,9 @@
 				var secondary = $('#bsecondary').val();
 				var tertiary = $('#btertiary').val();
 				
-					var value1 = $('#primary').attr('value');
-					var value2 = $('#secondary').attr('value');
-					var value3 = $('#tertiary').attr('value');
+					var value1 = $('#'+primary).attr('value');
+					var value2 = $('#'+secondary).attr('value');
+					var value3 = $('#'+tertiary).attr('value');
 					
 							$('#primary_sector').val(value1);
 							$('#secondary_sector').val(value2);
