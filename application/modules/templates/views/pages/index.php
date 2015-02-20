@@ -1,6 +1,6 @@
 <?php
 
-if($main == 'login' || $main == 'register'){
+if($main == 'login' || $main == 'register' || $page == 'invoice-print'){
     
     $this->load->module('header');
     $this->header->login_pre_header();
@@ -23,7 +23,7 @@ if($main == 'login' || $main == 'register'){
 
 <?php
 
-if($main == 'login' || $main == 'register'){
+if($main == 'login' || $main == 'register' || $page == 'invoice-print'){
     
     $this->load->module('footer');
     $this->footer->login_main_footer();
