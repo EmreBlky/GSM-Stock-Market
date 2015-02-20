@@ -29,46 +29,48 @@ $this->load->model('company/company_model', 'company_model');
             <div class="media-body ">
                 <small class="pull-right text-navy">
                     <?php 
-                        if($feed->approved == 'yes'){
-                            $date1 = strtotime($feed->approved_date);
-                            $date2 = time();
-                            $subTime = $date1 - $date2;
-                            $y = ($subTime/(60*60*24*365));
-                            $d = ($subTime/(60*60*24))%365;
-                            $h = ($subTime/(60*60))%24;
-                            $m = ($subTime/60)%60;
+                        if($feed->member_id == $this->session->userdata('members_id')){
+                            if($feed->approved == 'yes'){
+                                $date1 = strtotime($feed->approved_date);
+                                $date2 = time();
+                                $subTime = $date1 - $date2;
+                                $y = ($subTime/(60*60*24*365));
+                                $d = ($subTime/(60*60*24))%365;
+                                $h = ($subTime/(60*60))%24;
+                                $m = ($subTime/60)%60;
 
-                            if($d < 0 && $d <= -2){
-                                echo '<font style="color:#464646 !important;">'.days($d).' Days and </font>';
-                            }
-                            elseif($d < 0 && $d > -2){
-                                echo '<font style="color:#464646 !important;">'.days($d).' Day and </font';
-                            }
-                            if($h < 0 && $h <= -2){
-                                echo '<font style="color:#464646 !important;">'.days($h).' Hours and </font>';
-                            }
-                            elseif($h < 0 && $h > -2){
-                                echo '<font style="color:#464646 !important;">'.days($h).' Hour and </font> ';
-                            }
-                            if($m < 0 && $m <= -2){
-                                
-                                if(days($subTime) > 15*60){
-                                    
-                                    echo '<font style="color:#464646 !important;">'.days($m).' Minutes ago </font>';
+                                if($d < 0 && $d <= -2){
+                                    echo '<font style="color:#464646 !important;">'.days($d).' Days and </font>';
+                                }
+                                elseif($d < 0 && $d > -2){
+                                    echo '<font style="color:#464646 !important;">'.days($d).' Day and </font';
+                                }
+                                if($h < 0 && $h <= -2){
+                                    echo '<font style="color:#464646 !important;">'.days($h).' Hours and </font>';
+                                }
+                                elseif($h < 0 && $h > -2){
+                                    echo '<font style="color:#464646 !important;">'.days($h).' Hour and </font> ';
+                                }
+                                if($m < 0 && $m <= -2){
+
+                                    if(days($subTime) > 15*60){
+
+                                        echo '<font style="color:#464646 !important;">'.days($m).' Minutes ago </font>';
+                                    }
+                                    else{
+                                        echo days($m).' Minutes ago';
+                                    }
+                                }
+                                elseif($m < 0 && $m > -2){
+                                    echo days($m).' Minute ago';
                                 }
                                 else{
-                                    echo days($m).' Minutes ago';
+                                    echo 'Less than 1 minute ago';
                                 }
                             }
-                            elseif($m < 0 && $m > -2){
-                                echo days($m).' Minute ago';
+                            elseif($feed->approved == 'awaiting_approval'){
+                                echo '<div style="color:#000000 !important;">Pending Approval </div>';
                             }
-                            else{
-                                echo 'Less than 1 minute ago';
-                            }
-                        }
-                        else{
-                            echo '<div style="color:#000000 !important;">Pending Approval </div>';
                         }
                     ?>
                 </small>
