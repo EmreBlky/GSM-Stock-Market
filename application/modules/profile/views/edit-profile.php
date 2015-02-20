@@ -109,7 +109,7 @@
 					}
 					return flag;
 				}
-				
+				updateHiddens();
 				return true;
 			}
 			
@@ -275,6 +275,8 @@
 					}
 				});
 				is_primary_set = true;
+				
+				updateHiddens();
 			}
 			
 			function updateSelects2(value) {
@@ -321,6 +323,8 @@
 						}
 					}
 				});
+				
+				updateHiddens();
 			}
 			
 			function updateSelects3(value) {
@@ -367,9 +371,24 @@
 						}
 					}
 				});
+				updateHiddens();
 			}
 			
-
+			function updateHiddens() {
+				
+				var primary = $('#bprimary').val();
+				var secondary = $('#bsecondary').val();
+				var tertiary = $('#btertiary').val();
+				
+					var value1 = $('#'+primary).attr('value');
+					var value2 = $('#'+secondary).attr('value');
+					var value3 = $('#'+tertiary).attr('value');
+					//alert(value1 + value2 + value3);
+							$('#primary_sector').val(value1);
+							$('#secondary_sector').val(value2);
+							$('#tertiary_sector').val(value3);
+							
+			}
 			
 			$(function() {
 				
@@ -516,6 +535,7 @@
             
         <div class="wrapper wrapper-content">
         	
+			
             <div class="row">
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
@@ -540,8 +560,12 @@
                             <h5>Company Details</h5>
                         </div>
                         <div class="ibox-content">
-                            
-                            	<div class="form-group"><label class="col-md-3 control-label">Company Name <span style="color:red">*</span></label>
+                            <?php 
+					$attributes = array('class' => 'form-horizontal validation', 'onsubmit' => 'return validate_info()');
+					echo form_open('profile/profileEdit', $attributes);
+							?>
+								
+								<div class="form-group"><label class="col-md-3 control-label">Company Name <span style="color:red">*</span></label>
                                     <div class="col-md-9">
                                         <?php
 
@@ -863,29 +887,29 @@
 								});
 								</script>
                                 -->
-                                
+                            	
                                 <div class="form-group">
                                 	<label class="col-md-3 control-label">Business Sectors <span style="color:red">*</span><br/><small class="text-navy">Select up to 5</small></label>
 									<div class="col-md-4">
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="New Mobiles (Sim Free)" name="bsectors" id="bsectors1" class='business_cycle'> <i></i> New Mobiles (Sim Free) </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="New Mobiles (Network Stocks)" name="bsectors" id="bsectors2" class='business_cycle'> <i></i> New Mobiles (Network Stocks) </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="14 Day Mobiles" name="bsectors" id="bsectors3" class='business_cycle'> <i></i> 14 Day Mobiles </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Refurbished Mobiles" name="bsectors" id="bsectors4" class='business_cycle'> <i></i> Refurbished Mobiles </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Used Mobiles" name="bsectors" id="bsectors5" class='business_cycle'> <i></i> Used Mobiles </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="BER Mobiles" name="bsectors" id="bsectors6" class='business_cycle'> <i></i> BER Mobiles </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Mobile Accessories" name="bsectors" id="bsectors7" class='business_cycle'> <i></i> Mobile Accessories </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Wearable Technology" name="bsectors" id="bsectors8" class='business_cycle'> <i></i> Wearable Technology </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Bluetooth Products" name="bsectors" id="bsectors9" class='business_cycle'> <i></i> Bluetooth Products </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Mobile Spare Parts" name="bsectors" id="bsectors10" class='business_cycle'> <i></i> Mobile Spare Parts </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Mobile Service and Repair Centre" name="bsectors" id="bsectors11" class='business_cycle'> <i></i> Mobile Service and Repair Centre </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Network Operator" name="bsectors" id="bsectors12" class='business_cycle'> <i></i> Network Operator </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Freight Forwarding" name="bsectors" id="bsectors13" class='business_cycle'> <i></i> Freight Forwarding </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Insurance" name="bsectors" id="bsectors14" class='business_cycle'> <i></i> Insurance </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="New Mobiles (Sim Free)" name="bsectors[]" id="bsectors1" class='business_cycle'> <i></i> New Mobiles (Sim Free) </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="New Mobiles (Network Stocks)" name="bsectors[]" id="bsectors2" class='business_cycle'> <i></i> New Mobiles (Network Stocks) </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="14 Day Mobiles" name="bsectors[]" id="bsectors3" class='business_cycle'> <i></i> 14 Day Mobiles </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Refurbished Mobiles" name="bsectors[]" id="bsectors4" class='business_cycle'> <i></i> Refurbished Mobiles </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Used Mobiles" name="bsectors[]" id="bsectors5" class='business_cycle'> <i></i> Used Mobiles </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="BER Mobiles" name="bsectors[]" id="bsectors6" class='business_cycle'> <i></i> BER Mobiles </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Mobile Accessories" name="bsectors[]" id="bsectors7" class='business_cycle'> <i></i> Mobile Accessories </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Wearable Technology" name="bsectors[]" id="bsectors8" class='business_cycle'> <i></i> Wearable Technology </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Bluetooth Products" name="bsectors[]" id="bsectors9" class='business_cycle'> <i></i> Bluetooth Products </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Mobile Spare Parts" name="bsectors[]" id="bsectors10" class='business_cycle'> <i></i> Mobile Spare Parts </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Mobile Service and Repair Centre" name="bsectors[]" id="bsectors11" class='business_cycle'> <i></i> Mobile Service and Repair Centre </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Network Operator" name="bsectors[]" id="bsectors12" class='business_cycle'> <i></i> Network Operator </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Freight Forwarding" name="bsectors[]" id="bsectors13" class='business_cycle'> <i></i> Freight Forwarding </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Insurance" name="bsectors[]" id="bsectors14" class='business_cycle'> <i></i> Insurance </label></div>
                                 	</div>
 									<div class="col-md-4">
                                     <div id="primary-business">
                                     <label class="col-md-12">Primary Business <span style="color:red">*</span></label>
-                                    <select class="form-control m-b" id="bprimary" style="float:left" onchange="updateSelects1(this.value)">
+                                    <select class="form-control m-b" id="bprimary" name="bprimary" style="float:left" onchange="updateSelects1(this.value)">
                                         <option value = "">[Select One]</option>
                                     </select>
                                     </div>
@@ -905,6 +929,11 @@
                                 	</div>
                                </div>
                                 
+                                
+								<input type = "hidden" name = "primary_sector" id = "primary_sector" value = "" />
+								<input type = "hidden" name = "secondary_sector" id = "secondary_sector" value = "" />
+								<input type = "hidden" name = "tertiary_sector" id = "tertiary_sector" value = "" />
+								
                                 <div class="hr-line-dashed"></div>
                                 
                                 <div class="form-group">
