@@ -257,7 +257,6 @@
 					var value = $('#'+entry).attr('value');		// Get value of selected option box
 					if(entry != no_value) {	
 						if(entry == secondary) {
-							$('#secondary_sector').val(value);
 							var str1 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
 						} else {
 							var str1 = "<option value = '" + entry + "'>" + value + "</option>";
@@ -266,7 +265,6 @@
 							$('#bsecondary').append(str1);
 						}
 						if(entry == tertiary) {
-							$('#tertiary_sector').val(value);
 							var str2 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
 						} else {
 							var str2 = "<option value = '" + entry + "'>" + value + "</option>";
@@ -278,8 +276,7 @@
 				});
 				is_primary_set = true;
 				
-				var value = $('#tertiary_sector').val();
-				alert(value);
+				updateHiddens();
 			}
 			
 			function updateSelects2(value) {
@@ -309,7 +306,6 @@
 					var value = $('#'+entry).attr('value');
 					if(entry != no_value) {
 						if(entry == primary) {
-							$('#primary_sector').val(value);
 							var str1 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
 						} else {
 							var str1 = "<option value = '" + entry + "'>" + value + "</option>";
@@ -318,7 +314,6 @@
 							$('#bprimary').append(str1);
 						}
 						if(entry == tertiary) {
-							$('#tertiary_sector').val(value);
 							var str2 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
 						} else {
 							var str2 = "<option value = '" + entry + "'>" + value + "</option>";
@@ -329,8 +324,7 @@
 					}
 				});
 				
-				var value = $('#tertiary_sector').val();
-				alert(value);
+				updateHiddens();
 			}
 			
 			function updateSelects3(value) {
@@ -360,7 +354,6 @@
 					var value = $('#'+entry).attr('value');
 					if(entry != no_value) {
 						if(entry == primary) {
-							$('#primary_sector').val(value);
 							var str1 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
 						} else {
 							var str1 = "<option value = '" + entry + "'>" + value + "</option>";
@@ -369,7 +362,6 @@
 							$('#bprimary').append(str1);
 						}
 						if(entry == secondary) {
-							$('#secondary_sector').val(value);
 							var str2 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
 						} else {
 							var str2 = "<option value = '" + entry + "'>" + value + "</option>";
@@ -379,10 +371,24 @@
 						}
 					}
 				});
-				
+				updateHiddens();
 			}
 			
-
+			function updateHiddens() {
+				
+				var primary = $('#bprimary').val();
+				var secondary = $('#bsecondary').val();
+				var tertiary = $('#btertiary').val();
+				
+					var value1 = $('#primary').attr('value');
+					var value2 = $('#secondary').attr('value');
+					var value3 = $('#tertiary').attr('value');
+					
+							$('#primary_sector').val(value1);
+							$('#secondary_sector').val(value2);
+							$('#tertiary_sector').val(value3);
+							
+			}
 			
 			$(function() {
 				
