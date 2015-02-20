@@ -148,6 +148,8 @@ class Profile extends MX_Controller
     
     function profileEdit(){
         
+		echo '<pre>';print_r($this->input->post);exit;
+		
         $this->load->library('form_validation');		            
             
                 $this->form_validation->set_rules('email', 'Email', 'xss_clean');
