@@ -149,7 +149,7 @@
                                         <dt>Tertiary Business:</dt>
                                         <dd><?php echo $member_company->business_sector_3;?></dd>
                                         <dt>Other Activities:</dt>
-                                        <dd><?php echo $member_company->other_activity;?></dd>
+                                        <dd><?php echo $member_company->other_business;?></dd>
                                     </dl>
                                     
                                 </div>

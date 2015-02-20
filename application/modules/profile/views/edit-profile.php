@@ -910,7 +910,11 @@
                                     <div id="primary-business">
                                     <label class="col-md-12">Primary Business <span style="color:red">*</span></label>
                                     <select class="form-control m-b" id="bprimary" name="bprimary" style="float:left" onchange="updateSelects1(this.value)">
-                                        <option value = "">[Select One]</option>
+                                        <?php if(isset($company->business_sector_1)) {?>
+                                            <option selected="selected" value="bsectors1"><?php echo $company->business_sector_1;?></option>
+                                        <?php } else { ?>
+                                            <option value = "">[Select One]</option>
+                                        <?php }?>    
                                     </select>
                                     </div>
                                     <div id="secondary-business">

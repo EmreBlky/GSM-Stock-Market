@@ -148,9 +148,18 @@ class Profile extends MX_Controller
     
     function profileEdit()
     {
-        //echo '<pre>';
-        //print_r($_POST);
-        //exit;
+        
+//        echo '<pre>';
+//        print_r($_POST);
+//        print_r($_FILES);
+//        exit;
+        
+        if(isset($_POST['bsectors'][3])){
+            $bsectors4 = $_POST['bsectors'][3];
+        }
+        if(isset($_POST['bsectors'][4])){
+             $bsectors5 = ', '.$_POST['bsectors'][4];
+        }
 		
         $this->load->library('form_validation');		            
             
@@ -168,8 +177,9 @@ class Profile extends MX_Controller
                 $this->form_validation->set_rules('country', 'Country', 'xss_clean');
                 $this->form_validation->set_rules('post_code', 'Postcode', 'xss_clean');
                 $this->form_validation->set_rules('website', 'Website', 'xss_clean');
-                //$this->form_validation->set_rules('business_sector_1', 'Business Sector 1', 'xss_clean');
-                //$this->form_validation->set_rules('business_sector_2', 'Business Sector 2', 'xss_clean');
+                $this->form_validation->set_rules('primary_sector', 'Business Sector 1', 'xss_clean');
+                $this->form_validation->set_rules('secondary_sector', 'Business Sector 2', 'xss_clean');
+                $this->form_validation->set_rules('tertiary_sector', 'Business Sector 2', 'xss_clean');
                 $this->form_validation->set_rules('vat_tax', 'VAT Number', 'xss_clean');
                 $this->form_validation->set_rules('company_number', 'Company Number', 'xss_clean');
                 $this->form_validation->set_rules('language', 'Language', 'xss_clean');
@@ -210,14 +220,18 @@ class Profile extends MX_Controller
                                         'country' => $this->input->post('country'),
                                         'post_code' => $this->input->post('post_code'),
                                         'website' => $this->input->post('website'),
-                                        'business_sector_1' => $this->input->post('business_sector_1'),
-                                        'business_sector_2' => $this->input->post('business_sector_2'),
+                                        'business_sector_1' => $this->input->post('primary_sector'),
+                                        'business_sector_2' => $this->input->post('secondary_sector'),
+                                        'business_sector_3' => $this->input->post('tertiary_sector'),
+                                        'other_business' => $bsectors4.$bsectors5,
                                         'vat_tax' => $this->input->post('vat_tax'),
                                         'company_number' => $this->input->post('company_number'),
                                      );
                          $this->company_model->_update($this->member_model->get_where($this->session->userdata('members_id'))->company_id, $data);
                          
-                         $this->load->library('upload');
+                        if($_FILES['userfile']['size'] > 0){
+                            
+                            $this->load->library('upload');
                          
                             $base = $this->config->item('base_url');
                             $config['upload_path'] = dirname($_SERVER["SCRIPT_FILENAME"]).'/public/main/template/gsm/images/members/';
@@ -226,23 +240,25 @@ class Profile extends MX_Controller
                             $config['file_name'] = $this->session->userdata('members_id');
                             $config['max_size']	= '2000';
                             $config['overwrite'] = TRUE;
-                            $config['max_width']  = '1024';
-                            $config['max_height']  = '768';
+                            $config['max_width']  = '800';
+                            $config['max_height']  = '800';
 
                             $this->upload->initialize($config);
 
-                            if ( ! $this->upload->do_upload())
-                            {
-                                    $error = array('error' => $this->upload->display_errors());
-//                                    echo '<pre>';
-//                                    print_r($error);
-//                                    exit;
-                            }
-                            else
-                            {
+//                            if ( ! $this->upload->do_upload())
+//                            {
+//                                    $error = array('error' => $this->upload->display_errors());
+////                                    echo '<pre>';
+////                                    print_r($error);
+////                                    exit;
+//                            }
+//                            else
+//                            {
                                     $data = array('upload_data' => $this->upload->data());
                                   
-                            }
+                            //}
+                        }
+                        
                     }
                     
                     redirect('profile/', 'refresh');
