@@ -266,7 +266,7 @@
 							$('#bsecondary').append(str1);
 						}
 						if(entry == tertiary) {
-							$('#tertiary_sector').val(value);
+							$('#tertiary_sector_hidden').val(value);
 							var str2 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
 						} else {
 							var str2 = "<option value = '" + entry + "'>" + value + "</option>";
@@ -317,7 +317,7 @@
 							$('#bprimary').append(str1);
 						}
 						if(entry == tertiary) {
-							$('#tertiary_sector').val(value);
+							$('#tertiary_sector_hidden').val(value);
 							var str2 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
 						} else {
 							var str2 = "<option value = '" + entry + "'>" + value + "</option>";
@@ -877,7 +877,7 @@
                                 
 								<input type = "hidden" name = "primary_sector" id = "primary_sector" value = "" />
 								<input type = "hidden" name = "secondary_sector" id = "secondary_sector" value = "" />
-								<input type = "hidden" name = "tertiary_sector" id = "tertiary_sector" value = "" />
+								<input type = "hidden" name = "tertiary_sector" id = "tertiary_sector_hidden" value = "" />
                             	
                                 <div class="form-group">
                                 	<label class="col-md-3 control-label">Business Sectors <span style="color:red">*</span><br/><small class="text-navy">Select up to 5</small></label>
