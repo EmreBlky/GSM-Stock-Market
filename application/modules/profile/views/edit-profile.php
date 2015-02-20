@@ -866,20 +866,20 @@
                                 <div class="form-group">
                                 	<label class="col-md-3 control-label">Business Sectors <span style="color:red">*</span><br/><small class="text-navy">Select up to 5</small></label>
 									<div class="col-md-4">
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="New Mobiles (Sim Free)" name="bsectors" id="bsectors1" class='business_cycle'> <i></i> New Mobiles (Sim Free) </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="New Mobiles (Network Stocks)" name="bsectors" id="bsectors2" class='business_cycle'> <i></i> New Mobiles (Network Stocks) </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="14 Day Mobiles" name="bsectors" id="bsectors3" class='business_cycle'> <i></i> 14 Day Mobiles </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Refurbished Mobiles" name="bsectors" id="bsectors4" class='business_cycle'> <i></i> Refurbished Mobiles </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Used Mobiles" name="bsectors" id="bsectors5" class='business_cycle'> <i></i> Used Mobiles </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="BER Mobiles" name="bsectors" id="bsectors6" class='business_cycle'> <i></i> BER Mobiles </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Mobile Accessories" name="bsectors" id="bsectors7" class='business_cycle'> <i></i> Mobile Accessories </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Wearable Technology" name="bsectors" id="bsectors8" class='business_cycle'> <i></i> Wearable Technology </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Bluetooth Products" name="bsectors" id="bsectors9" class='business_cycle'> <i></i> Bluetooth Products </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Mobile Spare Parts" name="bsectors" id="bsectors10" class='business_cycle'> <i></i> Mobile Spare Parts </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Mobile Service and Repair Centre" name="bsectors" id="bsectors11" class='business_cycle'> <i></i> Mobile Service and Repair Centre </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Network Operator" name="bsectors" id="bsectors12" class='business_cycle'> <i></i> Network Operator </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Freight Forwarding" name="bsectors" id="bsectors13" class='business_cycle'> <i></i> Freight Forwarding </label></div>
-                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Insurance" name="bsectors" id="bsectors14" class='business_cycle'> <i></i> Insurance </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="New Mobiles (Sim Free)" name="bsectors[]" id="bsectors1" class='business_cycle'> <i></i> New Mobiles (Sim Free) </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="New Mobiles (Network Stocks)" name="bsectors[]" id="bsectors2" class='business_cycle'> <i></i> New Mobiles (Network Stocks) </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="14 Day Mobiles" name="bsectors[]" id="bsectors3" class='business_cycle'> <i></i> 14 Day Mobiles </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Refurbished Mobiles" name="bsectors[]" id="bsectors4" class='business_cycle'> <i></i> Refurbished Mobiles </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Used Mobiles" name="bsectors[]" id="bsectors5" class='business_cycle'> <i></i> Used Mobiles </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="BER Mobiles" name="bsectors[]" id="bsectors6" class='business_cycle'> <i></i> BER Mobiles </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Mobile Accessories" name="bsectors[]" id="bsectors7" class='business_cycle'> <i></i> Mobile Accessories </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Wearable Technology" name="bsectors[]" id="bsectors8" class='business_cycle'> <i></i> Wearable Technology </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Bluetooth Products" name="bsectors[]" id="bsectors9" class='business_cycle'> <i></i> Bluetooth Products </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Mobile Spare Parts" name="bsectors[]" id="bsectors10" class='business_cycle'> <i></i> Mobile Spare Parts </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Mobile Service and Repair Centre" name="bsectors[]" id="bsectors11" class='business_cycle'> <i></i> Mobile Service and Repair Centre </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Network Operator" name="bsectors[]" id="bsectors12" class='business_cycle'> <i></i> Network Operator </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Freight Forwarding" name="bsectors[]" id="bsectors13" class='business_cycle'> <i></i> Freight Forwarding </label></div>
+                                        <div class="checkbox i-checks"><label> <input type="checkbox" value="Insurance" name="bsectors[]" id="bsectors14" class='business_cycle'> <i></i> Insurance </label></div>
                                 	</div>
 									<div class="col-md-4">
                                     <div id="primary-business">
