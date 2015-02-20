@@ -26,13 +26,76 @@
                         </div>
                         <div class="ibox-content">
                         	<form class="validation form-horizontal">
-                            	<div class="form-group"><label class="col-md-3 control-label">Company Name <span style="color:red">*</span></label>
+                            	<div class="form-group"><label class="col-md-3 control-label">Make</label>
+                                    <div class="col-md-9">
+                                    	<input type="type" class="form-control" />
+                                    </div>
+                                </div>
+                            	<div class="form-group"><label class="col-md-3 control-label">Model</label>
+                                    <div class="col-md-9">
+                                    	<input type="type" class="form-control" />
+                                    </div>
+                                </div>
+                            	<div class="form-group"><label class="col-md-3 control-label">Product Type</label>
+                                    <div class="col-md-9">
+                                    	<input type="type" class="form-control" />
+                                    </div>
+                                </div>
+                            	<div class="form-group"><label class="col-md-3 control-label">Condition</label>
+                                    <div class="col-md-9">
+                                    	<input type="type" class="form-control" />
+                                    </div>
+                                </div>
+                            	<div class="form-group"><label class="col-md-3 control-label">Spec</label>
+                                    <div class="col-md-9">
+                                    	<input type="type" class="form-control" />
+                                    </div>
+                                </div>
+                            	<div class="form-group"><label class="col-md-3 control-label">Quantity</label>
                                     <div class="col-md-9">
                                     	<input type="type" class="form-control" />
                                     </div>
                                 </div>
                                 
                                 <div class="hr-line-dashed"></div>
+                                
+                            	<div class="form-group"><label class="col-md-3 control-label">Currency</label>
+                                    <div class="col-md-9">
+                                    	<input type="type" class="form-control" />
+                                    	<p class="small">Select the currency you wish this listing to be sold in.</p>
+                                    </div>
+                                </div>
+                                
+                            	<div class="form-group"><label class="col-md-3 control-label">Price</label>
+                                    <div class="col-md-9">
+                                    	<input type="type" class="form-control" />
+                                    </div>
+                                </div>
+                                
+                            	<div class="form-group"><label class="col-md-3 control-label">Minimum Price</label>
+                                    <div class="col-md-9">
+                                    	<input type="type" class="form-control" />
+                                    	<p class="small">Any offers below this price will be auto rejected. (Leave blank for any offer)</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="hr-line-dashed"></div>
+                                
+                                
+                            	<div class="form-group"><label class="col-md-3 control-label">Product Description</label>
+                                    <div class="col-md-9">
+                                    	<textarea type="type" class="form-control" rows="5" /></textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <div class="col-md-9 col-md-offset-3">
+                                        <button class="btn btn-white" type="submit">Cancel</button>
+                                        <button class="btn btn-warning" type="submit">Save for later</button>
+                                        <button class="btn btn-primary" type="submit">List Now</button>
+                                    </div>
+                                </div>
+                                
                          
                         </div>
                         
@@ -48,12 +111,12 @@
                 <div class="col-lg-4">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>Company Photo</h5>
+                            <h5>Listing Pictures</h5>
                         </div>
                         <div class="ibox-content">
                         <div class="row">
                         	<div class="col-md-12" style="text-align:center">                                
-                                    <img src="public/main/template/gsm/images/company/no_company.jpg" width="300" height="150">
+                                    <img src="public/main/template/gsm/images/members/no_profile.jpg" width="150" height="150">
                         	</div>
                         	<div class="col-md-12" style="text-align:center;margin-top:20px">
                         	<div class="btn-group">
@@ -62,7 +125,7 @@
                                     <label class="btn btn-danger">Delete</label>
                            	</div>
                         	</div>
-                            <p class="small" style="text-align:center">Company profile image should be no smaller than 300px width x 150px height.<br />Company Images are scaled twice the width of the height.</p>
+                            <p class="small" style="text-align:center">You may have up to five (5) product images per listing.</p>
                         </div>
                         </div>
                 
