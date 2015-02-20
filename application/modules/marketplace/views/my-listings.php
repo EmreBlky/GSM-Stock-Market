@@ -1,5 +1,5 @@
     <div class="row wrapper border-bottom white-bg page-heading">
-        <div class="col-lg-10">
+        <div class="col-lg-8">
             <h2>My Listings</h2>
             <ol class="breadcrumb">
                 <li>
@@ -12,9 +12,12 @@
                     <strong>My Listings</strong>
                 </li>
             </ol>
-        </div><!-- /col-lg-10 -->
-        <div class="col-lg-2">
-        </div><!-- /col-lg-2 spacer -->
+        </div>
+                <div class="col-lg-4">
+                    <div class="title-action">
+                        <a href="marketplace/create_listing" class="btn btn-primary" ><i class="fa fa-plus"></i> Create New Listing</a>
+                    </div>
+                </div>
     </div>
     
         <div class="wrapper wrapper-content animated fadeInRight">
