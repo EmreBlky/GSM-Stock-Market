@@ -874,10 +874,6 @@
 								});
 								</script>
                                 -->
-                                
-								<input type = "hidden" name = "primary_sector" id = "primary_sector" value = "" />
-								<input type = "hidden" name = "secondary_sector" id = "secondary_sector" value = "" />
-								<input type = "hidden" name = "tertiary_sector_hidden" id = "tertiary_sector" value = "" />
                             	
                                 <div class="form-group">
                                 	<label class="col-md-3 control-label">Business Sectors <span style="color:red">*</span><br/><small class="text-navy">Select up to 5</small></label>
@@ -920,6 +916,11 @@
                                 	</div>
                                </div>
                                 
+                                
+								<input type = "hidden" name = "primary_sector" id = "primary_sector" value = "" />
+								<input type = "hidden" name = "secondary_sector" id = "secondary_sector" value = "" />
+								<input type = "hidden" name = "tertiary_sector" id = "tertiary_sector" value = "" />
+								
                                 <div class="hr-line-dashed"></div>
                                 
                                 <div class="form-group">
