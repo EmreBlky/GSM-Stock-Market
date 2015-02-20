@@ -266,6 +266,7 @@
 							$('#bsecondary').append(str1);
 						}
 						if(entry == tertiary) {
+							document.getelementbyid('tertiary_sector').value = value;
 							$('#tertiary_sector').val(value);
 							var str2 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
 						} else {
@@ -318,6 +319,7 @@
 						}
 						if(entry == tertiary) {
 							$('#tertiary_sector').val(value);
+							document.getelementbyid('tertiary_sector').value = value;
 							var str2 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
 						} else {
 							var str2 = "<option value = '" + entry + "'>" + value + "</option>";
