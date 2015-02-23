@@ -528,9 +528,9 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
 
         });
         $('.confirm-div').hide();
-                <?php if($this->session->flashdata('msg')){ ?>
-                $('.confirm-div').html('<?php echo $this->session->flashdata('msg'); ?>').show();       
-                <?php } ?>;
+<?php if ($this->session->flashdata('msg')) { ?>
+            $('.confirm-div').html('<?php echo $this->session->flashdata('msg'); ?>').show();
+<?php } ?>;
     });
 
 
@@ -909,7 +909,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                             <?php
                             echo "<pre>";
                             print_r($company);
-                            exit;
+                            echo "</pre>";
                             ?>
 
 
@@ -1418,12 +1418,12 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                     <div class="row">
                         <div class="confirm-div"></div>
                         <div class="col-md-12" style="text-align:center">
-                            <?php if(file_exists("public/main/template/gsm/images/members/".$member->id.".jpg")){?>                                
+                            <?php if (file_exists("public/main/template/gsm/images/members/" . $member->id . ".jpg")) { ?>                                
                                 <img src="public/main/template/gsm/images/members/<?php echo $member->id; ?>.jpg">
-                            <?php } else {?>                                
+                            <?php } else { ?>                                
                                 <img src="public/main/template/gsm/images/members/no_profile.jpg"/>
-                            <?php }?>
-                            
+                            <?php } ?>
+
                         </div>
                         <div class="col-md-12" style="text-align:center;margin-top:20px">
                             <div class="btn-group">
