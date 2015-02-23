@@ -878,22 +878,10 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                             <div class="checkbox i-checks"><label> <input type="checkbox" value="Insurance" name="bsectors[]" id="bsectors14" class='business_cycle'> <i></i> Insurance </label></div>
                         </div>
                         <div class="col-md-4">
+
                             <div id="primary-business">
-                                <?php
-                                if (isset($_REQUEST['test']) && !empty($_REQUEST['test'])) {
-
-                                    echo $company->business_sector_1;
-                                    echo $company->business_sector_2;
-                                    echo $company->business_sector_3;
-                                }
-                                ?>
-
-
-
-
 
                                 <label class="col-md-12">Primary Business <span style="color:red">*</span></label>
-
                                 <select class="form-control m-b" id="bprimary" name="bprimary" style="float:left" onchange="updateSelects1(this.value)">
                                     <?php if (isset($company->business_sector_1)) { ?>
                                         <option selected="selected" value="bsectors1"><?php echo $company->business_sector_1; ?></option>
@@ -901,19 +889,39 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                                         <option value = "">[Select One]</option>
                                     <?php } ?>    
                                 </select>
+
+
                             </div>
+
                             <div id="secondary-business">
-                                <label class="col-md-12">Secondary Business <span style="color:red">*</span></label>
-                                <select class="form-control m-b" name="bsecondary" id="bsecondary" style="float:left" onchange="updateSelects2(this.value)">
-                                    <option value = "">[Select One]</option>
-                                </select>
+                                <?php
+                                if (isset($company->business_sector_2) && !empty($company->business_sector_2)) {
+                                    ?>
+                                    <label class="col-md-12">Secondary Business <span style="color:red">*</span></label>
+                                    <select class="form-control m-b" name="bsecondary" id="bsecondary" style="float:left" onchange="updateSelects2(this.value)">
+                                        <option value = "">[Select One]</option>
+                                    </select>
+
+                                    <?php
+                                }
+                                ?>
                             </div>
+
                             <div id="tertiary-business">
-                                <label class="col-md-12">Tertiary Business <span style="color:red">*</span></label>
-                                <select class="form-control m-b" name="btertiary" id="btertiary" style="float:left" onchange="updateSelects3(this.value)">
-                                    <option value = "">[Select One]</option>
-                                </select>
-                            </div>
+                                <?php
+                                if (isset($company->business_sector_3) && !empty($company->business_sector_3)) {
+                                    ?>
+
+                                    <label class="col-md-12">Tertiary Business <span style="color:red">*</span></label>
+                                    <select class="form-control m-b" name="btertiary" id="btertiary" style="float:left" onchange="updateSelects3(this.value)">
+                                        <option value = "">[Select One]</option>
+                                    </select>
+                                    <?php
+                                }
+                                ?>
+                            </div>   
+
+
                             <small class="text-navy" id="selectMessage">Please make sure you select in order of actual business relevance as this will affect search results and our dedicated account managers will actively promote your business on your behalf with other suitable companies.</small>
                         </div>
                     </div>
