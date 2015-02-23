@@ -91,18 +91,6 @@
                         <?php }?>                        
                     </div>
                     <?php }elseif(count($email_info) == 2){
-                       $start_email = reset($email_info);
-                        $end_email = end($email_info); 
-                    ?>
-                    <div class="btn-group pull-right" style="padding-left: 10px;">
-                        <?php if($end_email != $mess_id){ ?>
-                        <button onclick="window.location.href='mailbox/sent/<?php echo $start_email;?>'" class="btn btn-white btn-sm">Next <i class="fa fa-arrow-right"></i></button>
-                        <?php }?>
-                        <?php if($start_email != $mess_id){ ?>
-                        <button onclick="window.location.href='mailbox/sent/<?php echo $end_email;?>'" class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i> Previous</button>
-                        <?php }?>
-                    </div>
-                    <?php }elseif(count($email_info) == 2){
                         $mess_id = $this->uri->segment(3);
                         $start_email = reset($email_info);
                         $end_email = end($email_info); 

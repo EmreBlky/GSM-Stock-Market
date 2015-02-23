@@ -1,7 +1,7 @@
 <?php
 
 //echo '<pre>';
-//print_r($inbox_draft_message);
+//print_r($email_info);
 //exit;
 
 ?>
