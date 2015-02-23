@@ -242,8 +242,8 @@ class Profile extends MX_Controller
                             $config['file_name'] = $this->session->userdata('members_id');
                             $config['max_size']	= '2000';
                             $config['overwrite'] = TRUE;
-                            $config['max_width']  = '150';
-                            $config['max_height']  = '300';
+                            $config['max_width']  = '300';
+                            $config['max_height']  = '150';
 
                             $this->upload->initialize($config);
                             
