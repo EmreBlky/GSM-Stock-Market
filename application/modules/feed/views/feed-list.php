@@ -78,7 +78,32 @@ $this->load->model('company/company_model', 'company_model');
                 <p class="m-b-xs">
                     <?php echo $feed->content; ?>
                 </p>
-                <small class="text-muted"><?php echo $feed->time; ?> - <?php echo $feed->date; ?></small>
+                <small class="text-muted">
+                    <?php 
+                    
+                        
+                                $date_1 = strtotime($feed->datetime);
+                                $date_2 = time();
+                                $sub_time = $date_1 - $date_2;
+                                //$year = ($sub_time/(60*60*24*365));
+                                $day = ($sub_time/(60*60*24))%365;
+                                $hour = ($sub_time/(60*60))%24;
+                                $minute = ($sub_time/60)%60;
+
+
+                            $date = new DateTime($feed->time);
+                            //echo $date->format('h:i:s a') ;
+
+                                if(days($day) > 1){
+                                    echo days($day).' days ago at '.ltrim($date->format('h:i a'), 0).' - '.$feed->date;
+                                }elseif(days($day) == 1){
+                                    echo 'Yesterday at '.ltrim($date->format('h:i a'), 0).' - '.$feed->date;
+                                }else{
+                                    echo ltrim($date->format('h:i a'), 0).' - '.$feed->date;
+                                }
+                                
+                    ?>
+                </small>
             </div>
         </div>
         <?php 
