@@ -12,12 +12,26 @@
 
 <?php
 $primarybusiness = 'none';
+$secondarybusiness = 'none';
+$tertiarybusiness = 'none';
+
 if (isset($company->business_sector_1) && !empty($company->business_sector_1))
     $primarybusiness = 'block';
 ?>
         $('#primary-business').css("display", '<?php echo $primarybusiness; ?>');
-        $('#secondary-business').css("display", 'none');
-        $('#tertiary-business').css("display", 'none');
+
+<?php
+if (isset($company->business_sector_2) && !empty($company->business_sector_2))
+    $secondarybusiness = 'block';
+?>
+        $('#secondary-business').css("display", '<?php echo $secondarybusiness ?>');
+
+<?php
+if (isset($company->business_sector_3) && !empty($company->business_sector_3))
+    $tertiarybusiness = 'block';
+?>
+        $('#tertiary-business').css("display", '<?php echo $tertiarybusiness ?>');
+
         $('#selectMessage').css("display", 'none');
     });
     function updateCode(value) {
