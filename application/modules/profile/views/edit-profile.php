@@ -879,7 +879,19 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                         </div>
                         <div class="col-md-4">
                             <div id="primary-business">
-                                <?php echo isset($_REQUEST['test']) ? $_REQUEST['test'] : ''; ?>
+                                <?php
+                                if (isset($_REQUEST['test']) && !empty($_REQUEST['test'])) {
+
+                                    echo "<pre>";
+                                    print_r($company);
+                                    exit;
+                                }
+                                ?>
+
+
+
+
+
                                 <label class="col-md-12">Primary Business <span style="color:red">*</span></label>
 
                                 <select class="form-control m-b" id="bprimary" name="bprimary" style="float:left" onchange="updateSelects1(this.value)">
