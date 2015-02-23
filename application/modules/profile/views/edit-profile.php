@@ -902,6 +902,11 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                         </div>
                         <div class="col-md-4">
 
+                            <?php
+                            echo "<pre>";
+                            print_r($company);
+                            exit;
+                            ?>
 
 
                             <div id="primary-business">
