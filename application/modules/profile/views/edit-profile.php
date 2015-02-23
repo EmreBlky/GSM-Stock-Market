@@ -879,22 +879,24 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                         </div>
                         <div class="col-md-4">
 
-                            <div id="primary-business">
-                                <?php
-                                if (isset($company->business_sector_1) && !empty($company->business_sector_1)) {
-                                    ?>
-                                    <label class="col-md-12">Primary Business <span style="color:red">*</span></label>
+                            <?php
+                            if (isset($company->business_sector_1) && !empty($company->business_sector_1)) {
+                                
+                            }
+                            ?>
 
-                                    <select class="form-control m-b" id="bprimary" name="bprimary" style="float:left" onchange="updateSelects1(this.value)">
-                                        <?php if (isset($company->business_sector_1)) { ?>
-                                            <option selected="selected" value="bsectors1"><?php echo $company->business_sector_1; ?></option>
-                                        <?php } else { ?>
-                                            <option value = "">[Select One]</option>
-                                        <?php } ?>    
-                                    </select>
-                                    <?php
-                                }
-                                ?>
+                            <div id="primary-business" style="display: block !important;">
+
+                                <label class="col-md-12">Primary Business <span style="color:red">*</span></label>
+
+                                <select class="form-control m-b" id="bprimary" name="bprimary" style="float:left" onchange="updateSelects1(this.value)">
+                                    <?php if (isset($company->business_sector_1)) { ?>
+                                        <option selected="selected" value="bsectors1"><?php echo $company->business_sector_1; ?></option>
+                                    <?php } else { ?>
+                                        <option value = "">[Select One]</option>
+                                    <?php } ?>    
+                                </select>
+
 
                             </div>
 
