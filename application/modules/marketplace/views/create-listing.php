@@ -82,6 +82,17 @@
                                         </select>
                                     </div>
                                 </div>
+                            	<div class="form-group"><label class="col-md-3 control-label">Colour</label>
+                                    <div class="col-md-9">
+                                    	<select class="form-control" />
+                                        	<option disabled selected>None</option>
+                                        	<option>White</option>
+                                        	<option>Black</option>
+                                        	<option>Blue</option>
+                                        	<option>Red</option>
+                                        </select>
+                                    </div>
+                                </div>
                                 
                                 <div class="hr-line-dashed"></div>
                                 
@@ -199,6 +210,86 @@
                             	<div class="form-group"><label class="col-md-3 control-label">Product Description</label>
                                     <div class="col-md-9">
                                     	<textarea type="type" class="form-control" rows="5" id="product_desc" /></textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="hr-line-dashed"></div>
+                                
+                            	<div class="form-group"><label class="col-md-3 control-label">List Duration</label>
+                                    <div class="col-md-9">
+                                    	<select class="form-control" />
+                                        	<option>1 Day</option>
+                                        	<option>3 Days</option>
+                                        	<option>5 Days</option>
+                                        	<option selected>7 Days</option>
+                                        	<option>10 Days</option>
+                                        	<option>14 Days</option>
+                                        </select>
+                                    </div> 
+                                
+                            	<div class="form-group"><label class="col-md-3 control-label">Schedule Listing</label>
+                                    <div class="col-md-3">
+                                        <div class="input-group date">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="03/04/2014">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                    	<select class="form-control" />
+                                        	<option disabled selected>Hour</option>
+                                        	<option>1</option>
+                                        	<option>2</option>
+                                        	<option>3</option>
+                                        	<option>4</option>
+                                        	<option>5</option>
+                                        	<option>6</option>
+                                        	<option>7</option>
+                                        	<option>8</option>
+                                        	<option>9</option>
+                                        	<option>10</option>
+                                        	<option>11</option>
+                                        	<option>12</option>
+                                        	<option>13</option>
+                                        	<option>14</option>
+                                        	<option>15</option>
+                                        	<option>16</option>
+                                        	<option>17</option>
+                                        	<option>18</option>
+                                        	<option>19</option>
+                                        	<option>20</option>
+                                        	<option>21</option>
+                                        	<option>22</option>
+                                        	<option>23</option>
+                                        	<option>24</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                    	<select class="form-control" />
+                                        	<option disabled selected>Minute</option>
+                                        	<option>1</option>
+                                        	<option>2</option>
+                                        	<option>3</option>
+                                        	<option>4</option>
+                                        	<option>5</option>
+                                        	<option>6</option>
+                                        	<option>7</option>
+                                        	<option>8</option>
+                                        	<option>9</option>
+                                        	<option>10</option>
+                                        	<option>11</option>
+                                        	<option>12</option>
+                                        	<option>13</option>
+                                        	<option>14</option>
+                                        	<option>15</option>
+                                        	<option>16</option>
+                                        	<option>17</option>
+                                        	<option>18</option>
+                                        	<option>19</option>
+                                        	<option>20</option>
+                                        	<option>21</option>
+                                        	<option>22</option>
+                                        	<option>23</option>
+                                        	<option>24</option>
+                                        </select>
                                     </div>
                                 </div>
                                 
@@ -421,6 +512,9 @@ $(document).ready(function () {
     <!-- Jquery Validate -->
     <script src="public/main/template/core/js/plugins/validate/jquery.validate.min.js"></script>
 
+   <!-- Data picker -->
+   <script src="public/main/template/core/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+
     <script>
          $(document).ready(function(){
 
@@ -449,4 +543,44 @@ $(document).ready(function () {
                  }
              });
         });
+		
+		
+
+            $('#data_1 .input-group.date').datepicker({
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                calendarWeeks: true,
+                autoclose: true
+            });
+
+            $('#data_2 .input-group.date').datepicker({
+                startView: 1,
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+
+            $('#data_3 .input-group.date').datepicker({
+                startView: 2,
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+
+            $('#data_4 .input-group.date').datepicker({
+                minViewMode: 1,
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true,
+                todayHighlight: true
+            });
+
+            $('#data_5 .input-daterange').datepicker({
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
     </script>
