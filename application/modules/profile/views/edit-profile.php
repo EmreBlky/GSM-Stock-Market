@@ -882,9 +882,9 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                                 <?php
                                 if (isset($_REQUEST['test']) && !empty($_REQUEST['test'])) {
 
-                                    echo "<pre>";
-                                    print_r($company);
-                                    exit;
+                                    echo $company->business_sector_1;
+                                    echo $company->business_sector_2;
+                                    echo $company->business_sector_3;
                                 }
                                 ?>
 
