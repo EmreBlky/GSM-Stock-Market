@@ -26,6 +26,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                 url: "mailbox/composeAjaxMail/"+ mid +"/"+ sid +"/"+ subject +"/"+body +"",
                 dataType: "html",
                 success:function(data){
+                  $("#body_"+sid+"").val('');   
                   $('#profile_message_'+sid+'').modal('hide');
                 },
             });    

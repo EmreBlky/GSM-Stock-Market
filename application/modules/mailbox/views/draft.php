@@ -1,7 +1,7 @@
 <?php
 
 //echo '<pre>';
-//print_r($inbox_draft_message);
+//print_r($email_info);
 //exit;
 
 ?>
@@ -33,6 +33,7 @@
         <div class="col-lg-9 animated fadeInRight">
             <div class="mail-box-header">
                     <?php
+                        if($email_info)
                         if(count($email_info) > 2){
                         $start_email = reset($email_info);
                         $end_email = end($email_info);
@@ -146,14 +147,14 @@
                     
                     foreach($inbox_draft_message_reply as $idmr){
                         $last = $this->uri->segment(3);
-                        if($idmr->id != $last){
+                        if($idmr->id <= $last){
             ?>
                     <div class="mail-box-header" style="border-bottom: 1px solid #e6e6e6">
                         <div class="pull-right tooltip-demo">
                             <p><?php echo $idmr->time;?> &amp; <?php echo $idmr->date;?></p>
                         </div>
                         <h2><?php echo $idmr->subject;?></h2>
-                        <p><?php echo $this->member_model->get_where($idmr->member_id)->firstname.' '.$this->member_model->get_where($idmr->member_id)->lastname?></p>
+                        <p>From: <?php echo $this->member_model->get_where($idmr->member_id)->firstname.' '.$this->member_model->get_where($idmr->member_id)->lastname?></p>
                     </div>
                     <div class="mail-box" style="padding:10px;">
                         <?php echo $idmr->body;?>
@@ -163,14 +164,16 @@
                         //echo $idmr->id.'<br/>';
                 
                     }
+                    //echo $idmr->parent_id;
                     $parent_mail = $this->mailbox_model->get_where($idmr->parent_id);
+                    if(count($parent_mail)> 0){
             ?>
                     <div class="mail-box-header" style="border-bottom: 1px solid #e6e6e6">
                             <div class="pull-right tooltip-demo">
                                 <p><?php echo $parent_mail->time;?> &amp; <?php echo $parent_mail->date;?></p>
                             </div>
                             <h2><?php echo $parent_mail->subject;?></h2>
-                            <p><?php echo $this->member_model->get_where($parent_mail->member_id)->firstname.' '.$this->member_model->get_where($parent_mail->member_id)->lastname?></p>
+                            <p>From: <?php echo $this->member_model->get_where($parent_mail->member_id)->firstname.' '.$this->member_model->get_where($parent_mail->member_id)->lastname?></p>
                         </div>
                         <div class="mail-box" style="padding:10px;">
                             <?php echo $parent_mail->body;?>
@@ -178,7 +181,8 @@
             <?php
             ?>
                     <div>
-            <?php            
+            <?php   
+                    }
                     //echo $idmr->parent_id.'<br/>';
                 }
             ?>
@@ -268,7 +272,7 @@
 
                     </tbody>
                 </table>
-                    <input type="hidden" name="parent_id" value=""/> 
+<!--                    <input type="hidden" name="parent_id" value=""/> -->
                     <input type="hidden" name="page_from" value="<?php echo $this->uri->segment(2);?>"/>
                 </div>
         <?php echo form_close(); ?>
