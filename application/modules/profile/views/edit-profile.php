@@ -926,32 +926,29 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                             </div>
 
                             <div id="secondary-business">
-                                <?php
-                                if (isset($company->business_sector_2) && !empty($company->business_sector_2)) {
-                                    ?>
 
-                                    <label class="col-md-12">Secondary Business <span style="color:red">*</span></label>
-                                    <select class="form-control m-b" name="bsecondary" id="bsecondary" style="float:left" onchange="updateSelects2(this.value)">
+
+                                <label class="col-md-12">Secondary Business <span style="color:red">*</span></label>
+                                <select class="form-control m-b" name="bsecondary" id="bsecondary" style="float:left" onchange="updateSelects2(this.value)">
+                                    <?php if (isset($company->business_sector_2)) { ?>
+                                        <option selected="selected" value="bsectors1"><?php echo $company->business_sector_2; ?></option>
+                                    <?php } else { ?>
                                         <option value = "">[Select One]</option>
-                                    </select>
+                                    <?php } ?>    
+                                </select>
 
-                                    <?php
-                                }
-                                ?>
+
                             </div>
 
                             <div id="tertiary-business">
-                                <?php
-                                if (isset($company->business_sector_3) && !empty($company->business_sector_3)) {
-                                    ?>
-
-                                    <label class="col-md-12">Tertiary Business <span style="color:red">*</span></label>
-                                    <select class="form-control m-b" name="btertiary" id="btertiary" style="float:left" onchange="updateSelects3(this.value)">
+                                <label class="col-md-12">Tertiary Business <span style="color:red">*</span></label>
+                                <select class="form-control m-b" name="btertiary" id="btertiary" style="float:left" onchange="updateSelects3(this.value)">
+                                    <?php if (isset($company->business_sector_3)) { ?>
+                                        <option selected="selected" value="bsectors1"><?php echo $company->business_sector_3; ?></option>
+                                    <?php } else { ?>
                                         <option value = "">[Select One]</option>
-                                    </select>
-                                    <?php
-                                }
-                                ?>
+                                    <?php } ?>    
+                                </select>
                             </div>   
 
 
