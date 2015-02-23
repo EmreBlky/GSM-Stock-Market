@@ -927,7 +927,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                                     if (isset($company->business_sector_1)) {
                                         foreach ($SelectedBiz As $SelectedBizOne) {
                                             ?>
-                                            <option selected="selected" value="<?php echo $SelectedBizOne; ?>" <?php echo isset($SelectedBizOne) && ($SelectedBizOne == $company->business_sector_1) ? ' selected="selected"' : ''; ?> ><?php echo $SelectedBizOne; ?></option>
+                                            <option selected="selected" value="<?php echo $SelectedBizOne; ?>" <?php echo (isset($SelectedBizOne) && ($SelectedBizOne == $company->business_sector_1)) ? ' selected="selected"' : ''; ?> ><?php echo $SelectedBizOne; ?></option>
                                             <?php
                                         }
                                         ?>
