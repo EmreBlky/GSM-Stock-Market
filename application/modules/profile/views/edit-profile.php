@@ -1412,8 +1412,13 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                 <div class="ibox-content">
                     <div class="row">
                         <div class="confirm-div"></div>
-                        <div class="col-md-12" style="text-align:center">                                
-                            <img src="public/main/template/gsm/images/members/no_profile.jpg" height="150" width="150">
+                        <div class="col-md-12" style="text-align:center">
+                            <?php if(file_exists("public/main/template/gsm/images/members/".$member->id.".jpg")){?>                                
+                                <img src="public/main/template/gsm/images/members/<?php echo $member->id; ?>.jpg">
+                            <?php } else {?>                                
+                                <img src="public/main/template/gsm/images/members/no_profile.jpg"/>
+                            <?php }?>
+                            
                         </div>
                         <div class="col-md-12" style="text-align:center;margin-top:20px">
                             <div class="btn-group">
