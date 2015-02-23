@@ -926,9 +926,8 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                                     <?php
                                     if (isset($company->business_sector_1)) {
                                         foreach ($SelectedBiz As $SelectedBizOne) {
-                                            echo $SelectedBizOne . "Faisal";
                                             ?>
-                                            <option selected="selected" value="bsectors1"><?php echo $company->business_sector_1; ?></option>
+                                            <option selected="selected" value="bsectors1"><?php echo $SelectedBizOne; ?></option>
                                             <?php
                                         }
                                         ?>
@@ -947,9 +946,15 @@ echo form_open_multipart('profile/profileEdit', $attributes);
 
                                 <label class="col-md-12">Secondary Business <span style="color:red">*</span></label>
                                 <select class="form-control m-b" name="bsecondary" id="bsecondary" style="float:left" onchange="updateSelects2(this.value)">
-                                    <?php if (isset($company->business_sector_2)) { ?>
-                                        <option selected="selected" value="bsectors1"><?php echo $company->business_sector_2; ?></option>
-                                    <?php } else { ?>
+                                    <?php
+                                    if (isset($company->business_sector_2)) {
+                                        foreach ($SelectedBiz As $SelectedBizOne) {
+                                            ?>
+                                            <option selected="selected" value="bsectors1"><?php echo $SelectedBizOne; ?></option>
+                                            <?php
+                                        }
+                                    } else {
+                                        ?>
                                         <option value = "">[Select One]</option>
                                     <?php } ?>    
                                 </select>
@@ -960,9 +965,15 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                             <div id="tertiary-business">
                                 <label class="col-md-12">Tertiary Business <span style="color:red">*</span></label>
                                 <select class="form-control m-b" name="btertiary" id="btertiary" style="float:left" onchange="updateSelects3(this.value)">
-                                    <?php if (isset($company->business_sector_3)) { ?>
-                                        <option selected="selected" value="bsectors1"><?php echo $company->business_sector_3; ?></option>
-                                    <?php } else { ?>
+                                    <?php
+                                    if (isset($company->business_sector_3)) {
+                                        foreach ($SelectedBiz As $SelectedBizOne) {
+                                            ?>
+                                            <option selected="selected" value="bsectors1"><?php echo $SelectedBizOne; ?></option>
+                                            <?php
+                                        }
+                                    } else {
+                                        ?>
                                         <option value = "">[Select One]</option>
                                     <?php } ?>    
                                 </select>
