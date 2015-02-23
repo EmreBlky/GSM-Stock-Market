@@ -528,9 +528,9 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
 
         });
         $('.confirm-div').hide();
-                <?php if($this->session->flashdata('msg')){ ?>
-                $('.confirm-div').html('<?php echo $this->session->flashdata('msg'); ?>').show();       
-                <?php } ?>;
+<?php if ($this->session->flashdata('msg')) { ?>
+            $('.confirm-div').html('<?php echo $this->session->flashdata('msg'); ?>').show();
+<?php } ?>;
     });
 
 
@@ -886,35 +886,53 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                                                     </script>
                     -->
 
+                    <?php
+                    $other_business = explode(',', $company->other_business);
+                    $other_business1 = isset($other_business[0]) ? trim($other_business[0]) : '';
+                    $other_business2 = isset($other_business[1]) ? trim($other_business[1]) : '';
+                    ?>
                     <div class="form-group">
                         <label class="col-md-3 control-label">Business Sectors <span style="color:red">*</span><br/><small class="text-navy">Select up to 5</small></label>
                         <div class="col-md-4">
-                            <div class="checkbox i-checks"><label> <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'New Mobiles (Sim Free)' || $company->business_sector_2 == 'New Mobiles (Sim Free)' || $company->business_sector_3 == 'New Mobiles (Sim Free)' || $company->other_business == 'New Mobiles (Sim Free)')) ? 'checked="checked"' : '' ?> type="checkbox" value="New Mobiles (Sim Free)" name="bsectors[]" id="bsectors1" class='business_cycle'> <i></i> New Mobiles (Sim Free) </label></div>
-                            <div class="checkbox i-checks"><label> <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'New Mobiles (Network Stocks)' || $company->business_sector_2 == 'New Mobiles (Network Stocks)' || $company->business_sector_3 == 'New Mobiles (Network Stocks)' || $company->other_business == 'New Mobiles (Network Stocks)')) ? 'checked="checked"' : '' ?> type="checkbox" value="New Mobiles (Network Stocks)" name="bsectors[]" id="bsectors2" class='business_cycle'> <i></i> New Mobiles (Network Stocks) </label></div>
-                            <div class="checkbox i-checks"><label> <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == '14 Day Mobiles' || $company->business_sector_2 == '14 Day Mobiles' || $company->business_sector_3 == '14 Day Mobiles' || $company->other_business == '14 Day Mobiles')) ? 'checked="checked"' : '' ?> type="checkbox" value="14 Day Mobiles" name="bsectors[]" id="bsectors3" class='business_cycle'> <i></i> 14 Day Mobiles </label></div>
-                            <div class="checkbox i-checks"><label> <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'Refurbished Mobiles' || $company->business_sector_2 == 'Refurbished Mobiles' || $company->business_sector_3 == 'Refurbished Mobiles' || $company->other_business == 'Refurbished Mobiles')) ? 'checked="checked"' : '' ?> type="checkbox" value="Refurbished Mobiles" name="bsectors[]" id="bsectors4" class='business_cycle'> <i></i> Refurbished Mobiles </label></div>
-                            <div class="checkbox i-checks"><label> <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'Used Mobiles' || $company->business_sector_2 == 'Used Mobiles' || $company->business_sector_3 == 'Used Mobiles' || $company->other_business == 'Used Mobiles')) ? 'checked="checked"' : '' ?> type="checkbox" value="Used Mobiles" name="bsectors[]" id="bsectors5" class='business_cycle'> <i></i> Used Mobiles </label></div>
-                            <div class="checkbox i-checks"><label> <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'BER Mobiles' || $company->business_sector_2 == 'BER Mobiles' || $company->business_sector_3 == 'BER Mobiles' || $company->other_business == 'BER Mobiles')) ? 'checked="checked"' : '' ?> type="checkbox" value="BER Mobiles" name="bsectors[]" id="bsectors6" class='business_cycle'> <i></i> BER Mobiles </label></div>
-                            <div class="checkbox i-checks"><label> <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'Mobile Accessories' || $company->business_sector_2 == 'Mobile Accessories' || $company->business_sector_3 == 'Mobile Accessories' || $company->other_business == 'Mobile Accessories')) ? 'checked="checked"' : '' ?> type="checkbox" value="Mobile Accessories" name="bsectors[]" id="bsectors7" class='business_cycle'> <i></i> Mobile Accessories </label></div>
-                            <div class="checkbox i-checks"><label> <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'Wearable Technology' || $company->business_sector_2 == 'Wearable Technology' || $company->business_sector_3 == 'Wearable Technology' || $company->other_business == 'Wearable Technology')) ? 'checked="checked"' : '' ?> type="checkbox" value="Wearable Technology" name="bsectors[]" id="bsectors8" class='business_cycle'> <i></i> Wearable Technology </label></div>
-                            <div class="checkbox i-checks"><label> <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'Bluetooth Products' || $company->business_sector_2 == 'Bluetooth Products' || $company->business_sector_3 == 'Bluetooth Products' || $company->other_business == 'Bluetooth Products')) ? 'checked="checked"' : '' ?> type="checkbox" value="Bluetooth Products" name="bsectors[]" id="bsectors9" class='business_cycle'> <i></i> Bluetooth Products </label></div>
-                            <div class="checkbox i-checks"><label> <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'Mobile Spare Parts' || $company->business_sector_2 == 'Mobile Spare Parts' || $company->business_sector_3 == 'Mobile Spare Parts' || $company->other_business == 'Mobile Spare Parts')) ? 'checked="checked"' : '' ?> type="checkbox" value="Mobile Spare Parts" name="bsectors[]" id="bsectors10" class='business_cycle'> <i></i> Mobile Spare Parts </label></div>
-                            <div class="checkbox i-checks"><label> <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'Mobile Service and Repair Centre' || $company->business_sector_2 == 'Mobile Service and Repair Centre' || $company->business_sector_3 == 'Mobile Service and Repair Centre' || $company->other_business == 'Mobile Service and Repair Centre')) ? 'checked="checked"' : '' ?> type="checkbox" value="Mobile Service and Repair Centre" name="bsectors[]" id="bsectors11" class='business_cycle'> <i></i> Mobile Service and Repair Centre </label></div>
-                            <div class="checkbox i-checks"><label> <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'Network Operator' || $company->business_sector_2 == 'Network Operator' || $company->business_sector_3 == 'Network Operator' || $company->other_business == 'Network Operator')) ? 'checked="checked"' : '' ?> type="checkbox" value="Network Operator" name="bsectors[]" id="bsectors12" class='business_cycle'> <i></i> Network Operator </label></div>
-                            <div class="checkbox i-checks"><label> <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'Freight Forwarding' || $company->business_sector_2 == 'Freight Forwarding' || $company->business_sector_3 == 'Freight Forwarding' || $company->other_business == 'Freight Forwarding')) ? 'checked="checked"' : '' ?> type="checkbox" value="Freight Forwarding" name="bsectors[]" id="bsectors13" class='business_cycle'> <i></i> Freight Forwarding </label></div>
-                            <div class="checkbox i-checks"><label> <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'Insurance' || $company->business_sector_2 == 'Insurance' || $company->business_sector_3 == 'Insurance' || $company->other_business == 'Insurance')) ? 'checked="checked"' : '' ?> type="checkbox" value="Insurance" name="bsectors[]" id="bsectors14" class='business_cycle'> <i></i> Insurance </label></div>
+                            <div class="checkbox i-checks"><label> <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'New Mobiles (Sim Free)' || $company->business_sector_2 == 'New Mobiles (Sim Free)' || $company->business_sector_3 == 'New Mobiles (Sim Free)' || $other_business1 == 'New Mobiles (Sim Free)' || $other_business2 == 'New Mobiles (Sim Free)')) ? 'checked="checked"' : '' ?> type="checkbox" value="New Mobiles (Sim Free)" name="bsectors[]" id="bsectors1" class='business_cycle'> <i></i> New Mobiles (Sim Free) </label></div>
+                            <div class="checkbox i-checks"><label> <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'New Mobiles (Network Stocks)' || $company->business_sector_2 == 'New Mobiles (Network Stocks)' || $company->business_sector_3 == 'New Mobiles (Network Stocks)' || $other_business1 == 'New Mobiles (Network Stocks)' || $other_business2 == 'New Mobiles (Network Stocks)')) ? 'checked="checked"' : '' ?> type="checkbox" value="New Mobiles (Network Stocks)" name="bsectors[]" id="bsectors2" class='business_cycle'> <i></i> New Mobiles (Network Stocks) </label></div>
+                            <div class="checkbox i-checks"><label> <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == '14 Day Mobiles' || $company->business_sector_2 == '14 Day Mobiles' || $company->business_sector_3 == '14 Day Mobiles' || $other_business1 == '14 Day Mobiles' || $other_business2 == '14 Day Mobiles')) ? 'checked="checked"' : '' ?> type="checkbox" value="14 Day Mobiles" name="bsectors[]" id="bsectors3" class='business_cycle'> <i></i> 14 Day Mobiles </label></div>
+                            <div class="checkbox i-checks"><label> <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'Refurbished Mobiles' || $company->business_sector_2 == 'Refurbished Mobiles' || $company->business_sector_3 == 'Refurbished Mobiles' || $other_business1 == 'Refurbished Mobiles' || $other_business2 == 'Refurbished Mobiles')) ? 'checked="checked"' : '' ?> type="checkbox" value="Refurbished Mobiles" name="bsectors[]" id="bsectors4" class='business_cycle'> <i></i> Refurbished Mobiles </label></div>
+                            <div class="checkbox i-checks"><label> <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'Used Mobiles' || $company->business_sector_2 == 'Used Mobiles' || $company->business_sector_3 == 'Used Mobiles' || $other_business1 == 'Used Mobiles' || $other_business2 == 'Used Mobiles')) ? 'checked="checked"' : '' ?> type="checkbox" value="Used Mobiles" name="bsectors[]" id="bsectors5" class='business_cycle'> <i></i> Used Mobiles </label></div>
+                            <div class="checkbox i-checks"><label> <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'BER Mobiles' || $company->business_sector_2 == 'BER Mobiles' || $company->business_sector_3 == 'BER Mobiles' || $other_business1 == 'BER Mobiles' || $other_business2 == 'BER Mobiles')) ? 'checked="checked"' : '' ?> type="checkbox" value="BER Mobiles" name="bsectors[]" id="bsectors6" class='business_cycle'> <i></i> BER Mobiles </label></div>
+                            <div class="checkbox i-checks"><label> <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'Mobile Accessories' || $company->business_sector_2 == 'Mobile Accessories' || $company->business_sector_3 == 'Mobile Accessories' || $other_business1 == 'Mobile Accessories' || $other_business2 == 'Mobile Accessories')) ? 'checked="checked"' : '' ?> type="checkbox" value="Mobile Accessories" name="bsectors[]" id="bsectors7" class='business_cycle'> <i></i> Mobile Accessories </label></div>
+                            <div class="checkbox i-checks"><label> <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'Wearable Technology' || $company->business_sector_2 == 'Wearable Technology' || $company->business_sector_3 == 'Wearable Technology' || $other_business1 == 'Wearable Technology' || $other_business2 == 'Wearable Technology')) ? 'checked="checked"' : '' ?> type="checkbox" value="Wearable Technology" name="bsectors[]" id="bsectors8" class='business_cycle'> <i></i> Wearable Technology </label></div>
+                            <div class="checkbox i-checks"><label> <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'Bluetooth Products' || $company->business_sector_2 == 'Bluetooth Products' || $company->business_sector_3 == 'Bluetooth Products' || $other_business1 == 'Bluetooth Products' || $other_business2 == 'Bluetooth Products')) ? 'checked="checked"' : '' ?> type="checkbox" value="Bluetooth Products" name="bsectors[]" id="bsectors9" class='business_cycle'> <i></i> Bluetooth Products </label></div>
+                            <div class="checkbox i-checks"><label> <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'Mobile Spare Parts' || $company->business_sector_2 == 'Mobile Spare Parts' || $company->business_sector_3 == 'Mobile Spare Parts' || $other_business1 == 'Mobile Spare Parts' || $other_business2 == 'Mobile Spare Parts')) ? 'checked="checked"' : '' ?> type="checkbox" value="Mobile Spare Parts" name="bsectors[]" id="bsectors10" class='business_cycle'> <i></i> Mobile Spare Parts </label></div>
+                            <div class="checkbox i-checks"><label> <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'Mobile Service and Repair Centre' || $company->business_sector_2 == 'Mobile Service and Repair Centre' || $company->business_sector_3 == 'Mobile Service and Repair Centre' || $other_business1 == 'Mobile Service and Repair Centre' || $other_business2 == 'Mobile Service and Repair Centre')) ? 'checked="checked"' : '' ?> type="checkbox" value="Mobile Service and Repair Centre" name="bsectors[]" id="bsectors11" class='business_cycle'> <i></i> Mobile Service and Repair Centre </label></div>
+                            <div class="checkbox i-checks"><label> <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'Network Operator' || $company->business_sector_2 == 'Network Operator' || $company->business_sector_3 == 'Network Operator' || $other_business1 == 'Network Operator' || $other_business2 == 'Network Operator')) ? 'checked="checked"' : '' ?> type="checkbox" value="Network Operator" name="bsectors[]" id="bsectors12" class='business_cycle'> <i></i> Network Operator </label></div>
+                            <div class="checkbox i-checks"><label> <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'Freight Forwarding' || $company->business_sector_2 == 'Freight Forwarding' || $company->business_sector_3 == 'Freight Forwarding' || $other_business1 == 'Freight Forwarding' || $other_business2 == 'Freight Forwarding')) ? 'checked="checked"' : '' ?> type="checkbox" value="Freight Forwarding" name="bsectors[]" id="bsectors13" class='business_cycle'> <i></i> Freight Forwarding </label></div>
+                            <div class="checkbox i-checks"><label> <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'Insurance' || $company->business_sector_2 == 'Insurance' || $company->business_sector_3 == 'Insurance' || $other_business1 == 'Insurance' || $other_business2 == 'Insurance')) ? 'checked="checked"' : '' ?> type="checkbox" value="Insurance" name="bsectors[]" id="bsectors14" class='business_cycle'> <i></i> Insurance </label></div>
                         </div>
                         <div class="col-md-4">
-
-
-
                             <div id="primary-business">
 
+                                <?php
+                                $SelectedBiz = array();
+                                $SelectedBiz[] = $company->business_sector_1;
+                                $SelectedBiz[] = $company->business_sector_2;
+                                $SelectedBiz[] = $company->business_sector_3;
+                                $SelectedBiz[] = $other_business1;
+                                $SelectedBiz[] = $other_business2;
+                                ?>
                                 <label class="col-md-12">Primary Business <span style="color:red">*</span></label>
 
                                 <select class="form-control m-b" id="bprimary" name="bprimary" style="float:left" onchange="updateSelects1(this.value)">
-                                    <?php if (isset($company->business_sector_1)) { ?>
-                                        <option selected="selected" value="bsectors1"><?php echo $company->business_sector_1; ?></option>
+                                    <?php
+                                    if (isset($company->business_sector_1)) {
+                                        foreach ($SelectedBiz As $SelectedBizOne) {
+                                            ?>
+                                            <option selected="selected" value="bsectors1"><?php echo $SelectedBizOne; ?></option>
+                                            <?php
+                                        }
+                                        ?>
+
+
                                     <?php } else { ?>
                                         <option value = "">[Select One]</option>
                                     <?php } ?>    
@@ -924,32 +942,41 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                             </div>
 
                             <div id="secondary-business">
-                                <?php
-                                if (isset($company->business_sector_2) && !empty($company->business_sector_2)) {
-                                    ?>
 
-                                    <label class="col-md-12">Secondary Business <span style="color:red">*</span></label>
-                                    <select class="form-control m-b" name="bsecondary" id="bsecondary" style="float:left" onchange="updateSelects2(this.value)">
-                                        <option value = "">[Select One]</option>
-                                    </select>
 
+                                <label class="col-md-12">Secondary Business <span style="color:red">*</span></label>
+                                <select class="form-control m-b" name="bsecondary" id="bsecondary" style="float:left" onchange="updateSelects2(this.value)">
                                     <?php
-                                }
-                                ?>
+                                    if (isset($company->business_sector_2)) {
+                                        foreach ($SelectedBiz As $SelectedBizOne) {
+                                            ?>
+                                            <option selected="selected" value="bsectors1"><?php echo $SelectedBizOne; ?></option>
+                                            <?php
+                                        }
+                                    } else {
+                                        ?>
+                                        <option value = "">[Select One]</option>
+                                    <?php } ?>    
+                                </select>
+
+
                             </div>
 
                             <div id="tertiary-business">
-                                <?php
-                                if (isset($company->business_sector_3) && !empty($company->business_sector_3)) {
-                                    ?>
-
-                                    <label class="col-md-12">Tertiary Business <span style="color:red">*</span></label>
-                                    <select class="form-control m-b" name="btertiary" id="btertiary" style="float:left" onchange="updateSelects3(this.value)">
-                                        <option value = "">[Select One]</option>
-                                    </select>
+                                <label class="col-md-12">Tertiary Business <span style="color:red">*</span></label>
+                                <select class="form-control m-b" name="btertiary" id="btertiary" style="float:left" onchange="updateSelects3(this.value)">
                                     <?php
-                                }
-                                ?>
+                                    if (isset($company->business_sector_3)) {
+                                        foreach ($SelectedBiz As $SelectedBizOne) {
+                                            ?>
+                                            <option selected="selected" value="bsectors1"><?php echo $SelectedBizOne; ?></option>
+                                            <?php
+                                        }
+                                    } else {
+                                        ?>
+                                        <option value = "">[Select One]</option>
+                                    <?php } ?>    
+                                </select>
                             </div>   
 
 
@@ -1413,12 +1440,12 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                     <div class="row">
                         <div class="confirm-div"></div>
                         <div class="col-md-12" style="text-align:center">
-                            <?php if(file_exists("public/main/template/gsm/images/members/".$member->id.".jpg")){?>                                
+                            <?php if (file_exists("public/main/template/gsm/images/members/" . $member->id . ".jpg")) { ?>                                
                                 <img src="public/main/template/gsm/images/members/<?php echo $member->id; ?>.jpg">
-                            <?php } else {?>                                
+                            <?php } else { ?>                                
                                 <img src="public/main/template/gsm/images/members/no_profile.jpg"/>
-                            <?php }?>
-                            
+                            <?php } ?>
+
                         </div>
                         <div class="col-md-12" style="text-align:center;margin-top:20px">
                             <div class="btn-group">
