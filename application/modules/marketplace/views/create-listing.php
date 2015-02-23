@@ -226,6 +226,7 @@
                                         	<option>14 Days</option>
                                         </select>
                                     </div> 
+                                </div>
                                 
                             	<div class="form-group"><label class="col-md-3 control-label">Schedule Listing</label>
                                     <div class="col-md-3">
