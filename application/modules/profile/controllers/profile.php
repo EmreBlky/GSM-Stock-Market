@@ -242,28 +242,28 @@ class Profile extends MX_Controller
                             $config['file_name'] = $this->session->userdata('members_id');
                             $config['max_size']	= '2000';
                             $config['overwrite'] = TRUE;
-                            $config['max_width']  = '800';
-                            $config['max_height']  = '800';
+                            $config['max_width']  = '150';
+                            $config['max_height']  = '300';
 
                             $this->upload->initialize($config);
                             
-                             if ( ! $this->upload->do_upload())
-                             {
-                                 $data = array('upload_data' => $this->upload->data());
-                             }
+//                             if ( ! $this->upload->do_upload())
+//                             {
+//                                 $data = array('upload_data' => $this->upload->data());
+//                             }
 
-//                            if ( ! $this->upload->do_upload())
-//                            {
-//                                    $error = array('error' => $this->upload->display_errors());
-////                                    echo '<pre>';
-////                                    print_r($error);
-////                                    exit;
-//                            }
-//                            else
-//                            {
-//                                    $data = array('upload_data' => $this->upload->data());
-//                                  
-//                            }
+                            if ( ! $this->upload->do_upload())
+                            {
+                                    $error = array('error' => $this->upload->display_errors());
+                                    
+                                    $this->session->set_flashdata('msg', $error['error']);
+                                    redirect('profile/edit_profile');
+                            }
+                            else
+                            {
+                                    $data = array('upload_data' => $this->upload->data());
+                                  
+                            }
                         }
                         
                     }

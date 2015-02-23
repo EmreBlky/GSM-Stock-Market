@@ -7,7 +7,7 @@
 
 ?>	
 <script type="text/javascript">
-
+    
 	var is_primary_set = false;
 
 	$(document).ready(function(){	
@@ -15,6 +15,11 @@
 		$('#secondary-business').css("display", 'none');
 		$('#tertiary-business').css("display", 'none');
 		$('#selectMessage').css("display", 'none');
+                
+                $('.confirm-div').hide();
+                <?php if($this->session->flashdata('msg')){ ?>
+                $('.confirm-div').html('<?php echo $this->session->flashdata('msg'); ?>').show();       
+                <?php } ?>;
 	});
 	function updateCode(value) {
 		$("#phone_number").val(value);  
@@ -1420,6 +1425,7 @@
                         </div>
                         <div class="ibox-content">
                         <div class="row">
+                                 <div class="confirm-div"></div>
                         	<div class="col-md-12" style="text-align:center">                                
                                     <img src="public/main/template/gsm/images/members/no_profile.jpg" height="150" width="150">
                         	</div>
@@ -1439,6 +1445,7 @@
                 </div>
         </div><!-- /row -->
 <?php echo form_close()?>
+       
                             
         
         
