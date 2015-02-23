@@ -15,6 +15,11 @@ $primarybusiness = 'none';
 $secondarybusiness = 'none';
 $tertiarybusiness = 'none';
 
+
+echo  "<pre>";
+print_r($company);
+exit;
+
 if (isset($company->business_sector_1) && !empty($company->business_sector_1))
     $primarybusiness = 'block';
 ?>
