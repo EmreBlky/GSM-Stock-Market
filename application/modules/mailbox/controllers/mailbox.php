@@ -603,7 +603,7 @@ class Mailbox extends MX_Controller
     {
         if(isset($mid) && $mid != 'page'){
             
-            $pid = $this->mailbox_model->get_where_multiple('id', $mid)->parent_id;
+            //$pid = $this->mailbox_model->get_where_multiple('id', $mid)->parent_id;
             $cid = $this->mailbox_model->get_where($mid)->member_id;
             
             
@@ -615,13 +615,13 @@ class Mailbox extends MX_Controller
                 $offset = 0;
             }
         
-            if($pid > 0){
+            //if($pid > 0){
                 
-                $count = $this->mailbox_model->count_where_multiple('member_id',$this->session->userdata('members_id'), 'draft', 'yes', 'parent_id', $this->mailbox_model->get_where_multiple('id', $mid)->parent_id);
+                $count = $this->mailbox_model->count_where_multiple('member_id',$this->session->userdata('members_id'), 'draft', 'yes',  'draft_belong', $this->session->userdata('members_id'));
             
                 if($count > 0){            
                     $data['inbox_draft_count_reply'] = $count;
-                    $data['inbox_draft_message_reply'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'member_id', $this->session->userdata('members_id'), 'draft', 'yes', 'parent_id', $this->mailbox_model->get_where_multiple('id', $mid)->parent_id, NULL, NULL, 20, $offset);
+                    $data['inbox_draft_message_reply'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'member_id', $this->session->userdata('members_id'), 'draft', 'yes', 'draft_belong', $this->session->userdata('members_id'), NULL, NULL, 20, $offset);
                     
                     $email_array = '';
                     $array = mysql_query("SELECT id FROM mailbox WHERE draft_belong = '".$this->session->userdata('members_id')."'");
@@ -655,13 +655,13 @@ class Mailbox extends MX_Controller
             }
             else{
                 $data['pagination'] = '';
+                
             }
                 }
-            }
+            //}
             else{
                         
-                $data['inbox_draft_count_reply'] = 0;
-            
+                $data['inbox_draft_count_reply'] = 0;                
             }
         
 
@@ -1168,8 +1168,11 @@ class Mailbox extends MX_Controller
                 
                 $data = array(
                         'important'         => 'yes',
+                        'inbox'             => 'no', 
+                        'draft'             => 'no',
+                        'sent'              => 'no',
+                        'archive'           => 'no',
                         'mail_read'         => 'yes',
-                        'inbox'             => 'no',
                         'sent_from'         => 'moved_important',
                         'important_belong'  => $this->session->userdata('members_id'),
                         'archive_belong'    => '',
@@ -1188,8 +1191,11 @@ class Mailbox extends MX_Controller
                 
                 $data = array(
                         'archive'           => 'yes',
+                        'inbox'             => 'no', 
+                        'draft'             => 'no',
+                        'sent'              => 'no',
+                        'important'         => 'no',
                         'mail_read'         => 'yes',
-                        'inbox'             => 'no',
                         'sent_from'         => 'moved_archive',
                         'archive_belong'    => $this->session->userdata('members_id'),
                         'draft_belong'      => '',
@@ -1206,10 +1212,14 @@ class Mailbox extends MX_Controller
             
             foreach($_POST as $post_vale => $post_key){
                 
+                if(is_numeric($post_vale)){                
                 $data = array(
                         'trash'             => 'yes',
-                        'trash_belong'      => $this->session->userdata('members_id'),
-                        'inbox'             => 'no',                   
+                        'inbox'             => 'no', 
+                        'draft'             => 'no',
+                        'sent'              => 'no',
+                        'important'         => 'no',
+                        'archive'           => 'no',
                         'mail_read'         => 'yes',
                         'sent_from'         => 'moved_trash',
                         'trash_belong'      => $this->session->userdata('members_id'),
@@ -1220,6 +1230,7 @@ class Mailbox extends MX_Controller
                       );
         
                 $this->mailbox_model->_update($post_vale, $data);
+                }
             }
         }
         
