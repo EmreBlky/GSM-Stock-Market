@@ -527,6 +527,10 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
             }
 
         });
+        $('.confirm-div').hide();
+                <?php if($this->session->flashdata('msg')){ ?>
+                $('.confirm-div').html('<?php echo $this->session->flashdata('msg'); ?>').show();       
+                <?php } ?>;
     });
 
 
@@ -1407,6 +1411,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                 </div>
                 <div class="ibox-content">
                     <div class="row">
+                        <div class="confirm-div"></div>
                         <div class="col-md-12" style="text-align:center">                                
                             <img src="public/main/template/gsm/images/members/no_profile.jpg" height="150" width="150">
                         </div>
