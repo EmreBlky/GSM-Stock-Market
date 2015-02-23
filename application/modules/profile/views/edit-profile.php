@@ -910,9 +910,6 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                             <div class="checkbox i-checks"><label> <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'Insurance' || $company->business_sector_2 == 'Insurance' || $company->business_sector_3 == 'Insurance' || $other_business1 == 'Insurance' || $other_business2 == 'Insurance')) ? 'checked="checked"' : '' ?> type="checkbox" value="Insurance" name="bsectors[]" id="bsectors14" class='business_cycle'> <i></i> Insurance </label></div>
                         </div>
                         <div class="col-md-4">
-                            ?>
-
-
                             <div id="primary-business">
 
                                 <label class="col-md-12">Primary Business <span style="color:red">*</span></label>
