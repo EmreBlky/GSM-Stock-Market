@@ -40,10 +40,10 @@ $this->load->model('company/company_model', 'company_model');
                                 $m = ($subTime/60)%60;
 
                                 if($d < 0 && $d <= -2){
-                                    echo '<font style="color:#464646 !important;">'.days($d).' Days and </font>';
+                                    echo '<font style="color:#464646 !important;">'.days($d).' Days, </font>';
                                 }
                                 elseif($d < 0 && $d > -2){
-                                    echo '<font style="color:#464646 !important;">'.days($d).' Day and </font';
+                                    echo '<font style="color:#464646 !important;">'.days($d).' Day, </font';
                                 }
                                 if($h < 0 && $h <= -2){
                                     echo '<font style="color:#464646 !important;">'.days($h).' Hours and </font>';
