@@ -9,7 +9,13 @@
     var is_primary_set = false;
 
     $(document).ready(function() {
-        $('#primary-business').css("display", 'none');
+
+<?php
+$primarybusiness = 'none';
+if (isset($company->business_sector_1) && !empty($company->business_sector_1))
+    $primarybusiness = 'block';
+?>
+        $('#primary-business').css("display", '<?php echo $primarybusiness; ?>');
         $('#secondary-business').css("display", 'none');
         $('#tertiary-business').css("display", 'none');
         $('#selectMessage').css("display", 'none');
@@ -879,13 +885,9 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                         </div>
                         <div class="col-md-4">
 
-                            <?php
-                            if (isset($company->business_sector_1) && !empty($company->business_sector_1)) {
-                                
-                            }
-                            ?>
 
-                            <div id="primary-business" style="display: block !important;">
+
+                            <div id="primary-business">
 
                                 <label class="col-md-12">Primary Business <span style="color:red">*</span></label>
 
