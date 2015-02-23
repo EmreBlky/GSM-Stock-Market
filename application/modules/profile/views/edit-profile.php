@@ -907,9 +907,9 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                         <div class="col-md-4">
 
                             <?php
-//                            echo "<pre>";
-//                            print_r($company);
-//                            exit;
+                            echo "<pre>";
+                            print_r($company);
+                            exit;
                             ?>
 
 
