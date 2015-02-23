@@ -886,6 +886,13 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                                                     </script>
                     -->
 
+                    <?php
+                    $other_business = explode(',', $company->other_business);
+                    $other_business1 = isset($other_business[0]) ? $other_business[0] : '';
+                    $other_business2 = isset($other_business[1]) ? $other_business[1] : '';
+
+                    echo $other_business1 . " " . $other_business2;
+                    ?>
                     <div class="form-group">
                         <label class="col-md-3 control-label">Business Sectors <span style="color:red">*</span><br/><small class="text-navy">Select up to 5</small></label>
                         <div class="col-md-4">
