@@ -601,9 +601,11 @@ class Mailbox extends MX_Controller
     
     function draft($mid = NULL, $off = NULL)
     {
+//        echo $count = $this->mailbox_model->count_where_multiple('draft', 'yes',  'draft_belong', $this->session->userdata('members_id'));
+//                exit;
         if(isset($mid) && $mid != 'page'){
             
-            //$pid = $this->mailbox_model->get_where_multiple('id', $mid)->parent_id;
+            $pid = $this->mailbox_model->get_where_multiple('id', $mid)->parent_id;
             $cid = $this->mailbox_model->get_where($mid)->member_id;
             
             
@@ -615,12 +617,17 @@ class Mailbox extends MX_Controller
                 $offset = 0;
             }
         
-            //if($pid > 0){
+            if($pid > 0){
+                $pcount = $this->mailbox_model->count_where_multiple('draft', 'yes', 'parent_id', $pid, 'draft_belong', $this->session->userdata('members_id'));
+            }
+            else{
+                $pcount = '';
+            }
                 
-                $count = $this->mailbox_model->count_where_multiple('member_id',$this->session->userdata('members_id'), 'draft', 'yes',  'draft_belong', $this->session->userdata('members_id'));
-            
+                $count = $this->mailbox_model->count_where_multiple('draft', 'yes', 'draft_belong', $this->session->userdata('members_id'));
+                
                 if($count > 0){            
-                    $data['inbox_draft_count_reply'] = $count;
+                    $data['inbox_draft_count_reply'] = $pcount;
                     $data['inbox_draft_message_reply'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'member_id', $this->session->userdata('members_id'), 'draft', 'yes', 'draft_belong', $this->session->userdata('members_id'), NULL, NULL, 20, $offset);
                     
                     $email_array = '';
@@ -696,11 +703,12 @@ class Mailbox extends MX_Controller
     function draft_move($mid)
     {
         $data = array(
-                        'trash'     => 'no',
-                        'sent'      => 'no',
-                        'important' => 'no',
-                        'inbox'     => 'yes',
-                        'draft'     => 'yes'
+                        'trash'         => 'no',
+                        'sent'          => 'no',
+                        'important'     => 'no',
+                        'inbox'         => 'yes',
+                        'draft'         => 'yes',
+                        'draft_belong'  => $this->session->userdata('members_id')
                       );
         
         $this->mailbox_model->_update($mid, $data);
@@ -956,6 +964,13 @@ class Mailbox extends MX_Controller
                 
                 
                 $sid = $this->member_model->get_where_multiple('email', $this->input->post('email_address'))->id;
+                $paid = $this->input->post('parent_id');
+                if($paid > 0){
+                    $parent_id = $paid;
+                    
+                }else{
+                    $parent_id = '';
+                }
                 $mail_id = $this->input->post('mail_id');
                 
                 if($mail_id != ''){
@@ -983,10 +998,11 @@ class Mailbox extends MX_Controller
                                     'body'              => nl2br($this->input->post('body')),
                                     'inbox'             => 'yes',
                                     'draft'             => 'yes',
+                                    'draft_belong'      => $this->session->userdata('members_id'),
                                     'date'              => date('d-m-Y'),
                                     'time'              => date('H:i'),
                                     'sent_from'         => 'member',
-                                    'parent_id'         => $this->input->post('parent_id'),
+                                    'parent_id'         => $parent_id,
                                     'datetime'          => date('Y-m-d H:i:s')
                                   );
                     
