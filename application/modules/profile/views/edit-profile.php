@@ -862,7 +862,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                     <div class="form-group">
                         <label class="col-md-3 control-label">Business Sectors <span style="color:red">*</span><br/><small class="text-navy">Select up to 5</small></label>
                         <div class="col-md-4">
-                            <div class="checkbox i-checks"><label> <input type="checkbox" value="New Mobiles (Sim Free)" name="bsectors[]" id="bsectors1" class='business_cycle'> <i></i> New Mobiles (Sim Free) </label></div>
+                            <div class="checkbox i-checks"><label> <input checked="checked" type="checkbox" value="New Mobiles (Sim Free)" name="bsectors[]" id="bsectors1" class='business_cycle'> <i></i> New Mobiles (Sim Free) </label></div>
                             <div class="checkbox i-checks"><label> <input type="checkbox" value="New Mobiles (Network Stocks)" name="bsectors[]" id="bsectors2" class='business_cycle'> <i></i> New Mobiles (Network Stocks) </label></div>
                             <div class="checkbox i-checks"><label> <input type="checkbox" value="14 Day Mobiles" name="bsectors[]" id="bsectors3" class='business_cycle'> <i></i> 14 Day Mobiles </label></div>
                             <div class="checkbox i-checks"><label> <input type="checkbox" value="Refurbished Mobiles" name="bsectors[]" id="bsectors4" class='business_cycle'> <i></i> Refurbished Mobiles </label></div>
@@ -880,16 +880,21 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                         <div class="col-md-4">
 
                             <div id="primary-business">
+                                <?php
+                                if (isset($company->business_sector_1) && !empty($company->business_sector_1)) {
+                                    ?>
+                                    <label class="col-md-12">Primary Business <span style="color:red">*</span></label>
 
-                                <label class="col-md-12">Primary Business <span style="color:red">*</span></label>
-                                <select class="form-control m-b" id="bprimary" name="bprimary" style="float:left" onchange="updateSelects1(this.value)">
-                                    <?php if (isset($company->business_sector_1)) { ?>
-                                        <option selected="selected" value="bsectors1"><?php echo $company->business_sector_1; ?></option>
-                                    <?php } else { ?>
-                                        <option value = "">[Select One]</option>
-                                    <?php } ?>    
-                                </select>
-
+                                    <select class="form-control m-b" id="bprimary" name="bprimary" style="float:left" onchange="updateSelects1(this.value)">
+                                        <?php if (isset($company->business_sector_1)) { ?>
+                                            <option selected="selected" value="bsectors1"><?php echo $company->business_sector_1; ?></option>
+                                        <?php } else { ?>
+                                            <option value = "">[Select One]</option>
+                                        <?php } ?>    
+                                    </select>
+                                    <?php
+                                }
+                                ?>
 
                             </div>
 
@@ -897,6 +902,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                                 <?php
                                 if (isset($company->business_sector_2) && !empty($company->business_sector_2)) {
                                     ?>
+
                                     <label class="col-md-12">Secondary Business <span style="color:red">*</span></label>
                                     <select class="form-control m-b" name="bsecondary" id="bsecondary" style="float:left" onchange="updateSelects2(this.value)">
                                         <option value = "">[Select One]</option>
