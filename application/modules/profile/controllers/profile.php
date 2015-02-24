@@ -232,6 +232,10 @@ class Profile extends MX_Controller
                                      );
                          $this->company_model->_update($this->member_model->get_where($this->session->userdata('members_id'))->company_id, $data);
                          
+                         //echo '<pre>';
+                         //print_r($_FILES);
+                         //exit;
+                         
                         if($_FILES['userfile']['size'] > 0){
                             
                             $this->load->library('upload');
@@ -247,6 +251,11 @@ class Profile extends MX_Controller
                             $config['max_height']  = '150';
 
                             $this->upload->initialize($config);
+                            
+//                             if ( ! $this->upload->do_upload())
+//                             {
+//                                 $data = array('upload_data' => $this->upload->data());
+//                             }
 
                             if ( ! $this->upload->do_upload())
                             {
@@ -260,25 +269,10 @@ class Profile extends MX_Controller
                                     $data = array('upload_data' => $this->upload->data());
                                   
                             }
-//                            $base = $this->config->item('base_url');
-//                            $this->load->library('image_lib');
-//                            $config['image_library'] = 'gd2';
-//                            $config['source_image'] = '/'.$this->session->userdata('members_id').'.jpg';
-//                            $config['create_thumb'] = TRUE;
-//                            $config['maintain_ratio'] = TRUE;
-//                            $config['width'] = 75;
-//                            $config['height'] = 50;
-//
-//                            $this->load->library('image_lib', $config);
-//
-//                            if ( ! $this->image_lib->resize())
-//                            {
-//                                echo $this->image_lib->display_errors();
-//                                exit;
-//                            }
                         }
                         
-                    }                    
+                    }
+                    //exit;
                     redirect('profile/', 'refresh');
     }
 	
