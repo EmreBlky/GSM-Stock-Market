@@ -65,7 +65,7 @@
                         <td>23</td>
                         <td>UK</td>
                         <th style="text-align:right">
-                        <button class="btn btn-info" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Offers </button>
+                        <button class="btn btn-info" type="button" style="font-size:10px" data-toggle="modal" data-target="#offers"><i class="fa fa-paste"></i> Offers </button>
                         <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
                         <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
                         </th>
@@ -79,7 +79,7 @@
                         <td>23</td>
                         <td>UK</td>
                         <th style="text-align:right">
-                        <button class="btn btn-info" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Offers </button>
+                        <button class="btn btn-info" type="button" style="font-size:10px" data-toggle="modal" data-target="#offers"><i class="fa fa-paste"></i> Offers </button>
                         <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
                         <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
                         </th>
@@ -93,7 +93,7 @@
                         <td>23</td>
                         <td>UK</td>
                         <th style="text-align:right">
-                        <button class="btn btn-info" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Offers </button>
+                        <button class="btn btn-info" type="button" style="font-size:10px" data-toggle="modal" data-target="#offers"><i class="fa fa-paste"></i> Offers </button>
                         <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
                         <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
                         </th>
@@ -107,7 +107,7 @@
                         <td>23</td>
                         <td>UK</td>
                         <th style="text-align:right">
-                        <button class="btn btn-info" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Offers </button>
+                        <button class="btn btn-info" type="button" style="font-size:10px" data-toggle="modal" data-target="#offers"><i class="fa fa-paste"></i> Offers </button>
                         <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
                         <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
                         </th>
@@ -121,7 +121,7 @@
                         <td>23</td>
                         <td>UK</td>
                         <th style="text-align:right">
-                        <button class="btn btn-info" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Offers </button>
+                        <button class="btn btn-info" type="button" style="font-size:10px" data-toggle="modal" data-target="#offers"><i class="fa fa-paste"></i> Offers </button>
                         <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
                         <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
                         </th>
@@ -135,7 +135,7 @@
                         <td>23</td>
                         <td>UK</td>
                         <th style="text-align:right">
-                        <button class="btn btn-info" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Offers </button>
+                        <button class="btn btn-info" type="button" style="font-size:10px" data-toggle="modal" data-target="#offers"><i class="fa fa-paste"></i> Offers </button>
                         <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
                         <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
                         </th>
@@ -149,7 +149,7 @@
                         <td>23</td>
                         <td>UK</td>
                         <th style="text-align:right">
-                        <button class="btn btn-info" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Offers </button>
+                        <button class="btn btn-info" type="button" style="font-size:10px" data-toggle="modal" data-target="#offers"><i class="fa fa-paste"></i> Offers </button>
                         <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
                         <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
                         </th>
@@ -163,7 +163,7 @@
                         <td>23</td>
                         <td>UK</td>
                         <th style="text-align:right">
-                        <button class="btn btn-info" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Offers </button>
+                        <button class="btn btn-info" type="button" style="font-size:10px" data-toggle="modal" data-target="#offers"><i class="fa fa-paste"></i> Offers </button>
                         <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
                         <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
                         </th>
@@ -177,7 +177,7 @@
                         <td>23</td>
                         <td>UK</td>
                         <th style="text-align:right">
-                        <button class="btn btn-info" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Offers </button>
+                        <button class="btn btn-info" type="button" style="font-size:10px" data-toggle="modal" data-target="#offers"><i class="fa fa-paste"></i> Offers </button>
                         <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
                         <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
                         </th>
@@ -191,7 +191,7 @@
                         <td>23</td>
                         <td>UK</td>
                         <th style="text-align:right">
-                        <button class="btn btn-info" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Offers </button>
+                        <button class="btn btn-info" type="button" style="font-size:10px" data-toggle="modal" data-target="#offers"><i class="fa fa-paste"></i> Offers </button>
                         <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
                         <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
                         </th>
@@ -205,7 +205,7 @@
                         <td>23</td>
                         <td>UK</td>
                         <th style="text-align:right">
-                        <button class="btn btn-info" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Offers </button>
+                        <button class="btn btn-info" type="button" style="font-size:10px" data-toggle="modal" data-target="#offers"><i class="fa fa-paste"></i> Offers </button>
                         <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
                         <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
                         </th>
@@ -219,7 +219,7 @@
                         <td>23</td>
                         <td>UK</td>
                         <th style="text-align:right">
-                        <button class="btn btn-info" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Offers </button>
+                        <button class="btn btn-info" type="button" style="font-size:10px" data-toggle="modal" data-target="#offers"><i class="fa fa-paste"></i> Offers </button>
                         <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
                         <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
                         </th>
@@ -355,7 +355,7 @@
                         <td>23</td>
                         <td>UK</td>
                         <th style="text-align:right">
-                        <button class="btn btn-info" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Offers </button>
+                        <button class="btn btn-info" type="button" style="font-size:10px" data-toggle="modal" data-target="#offers"><i class="fa fa-paste"></i> Offers </button>
                         <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
                         <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
                         </th>
@@ -369,7 +369,7 @@
                         <td>23</td>
                         <td>UK</td>
                         <th style="text-align:right">
-                        <button class="btn btn-info" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Offers </button>
+                        <button class="btn btn-info" type="button" style="font-size:10px" data-toggle="modal" data-target="#offers"><i class="fa fa-paste"></i> Offers </button>
                         <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
                         <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
                         </th>
@@ -383,7 +383,7 @@
                         <td>23</td>
                         <td>UK</td>
                         <th style="text-align:right">
-                        <button class="btn btn-info" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Offers </button>
+                        <button class="btn btn-info" type="button" style="font-size:10px" data-toggle="modal" data-target="#offers"><i class="fa fa-paste"></i> Offers </button>
                         <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
                         <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
                         </th>
@@ -397,7 +397,7 @@
                         <td>23</td>
                         <td>UK</td>
                         <th style="text-align:right">
-                        <button class="btn btn-info" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Offers </button>
+                        <button class="btn btn-info" type="button" style="font-size:10px" data-toggle="modal" data-target="#offers"><i class="fa fa-paste"></i> Offers </button>
                         <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
                         <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
                         </th>
@@ -411,7 +411,7 @@
                         <td>23</td>
                         <td>UK</td>
                         <th style="text-align:right">
-                        <button class="btn btn-info" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Offers </button>
+                        <button class="btn btn-info" type="button" style="font-size:10px" data-toggle="modal" data-target="#offers"><i class="fa fa-paste"></i> Offers </button>
                         <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
                         <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
                         </th>
@@ -425,7 +425,7 @@
                         <td>23</td>
                         <td>UK</td>
                         <th style="text-align:right">
-                        <button class="btn btn-info" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Offers </button>
+                        <button class="btn btn-info" type="button" style="font-size:10px" data-toggle="modal" data-target="#offers"><i class="fa fa-paste"></i> Offers </button>
                         <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
                         <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
                         </th>
@@ -439,7 +439,7 @@
                         <td>23</td>
                         <td>UK</td>
                         <th style="text-align:right">
-                        <button class="btn btn-info" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Offers </button>
+                        <button class="btn btn-info" type="button" style="font-size:10px" data-toggle="modal" data-target="#offers"><i class="fa fa-paste"></i> Offers </button>
                         <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
                         <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
                         </th>
@@ -453,7 +453,7 @@
                         <td>23</td>
                         <td>UK</td>
                         <th style="text-align:right">
-                        <button class="btn btn-info" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Offers </button>
+                        <button class="btn btn-info" type="button" style="font-size:10px" data-toggle="modal" data-target="#offers"><i class="fa fa-paste"></i> Offers </button>
                         <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
                         <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
                         </th>
@@ -467,7 +467,7 @@
                         <td>23</td>
                         <td>UK</td>
                         <th style="text-align:right">
-                        <button class="btn btn-info" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Offers </button>
+                        <button class="btn btn-info" type="button" style="font-size:10px" data-toggle="modal" data-target="#offers"><i class="fa fa-paste"></i> Offers </button>
                         <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
                         <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
                         </th>
@@ -481,7 +481,7 @@
                         <td>23</td>
                         <td>UK</td>
                         <th style="text-align:right">
-                        <button class="btn btn-info" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Offers </button>
+                        <button class="btn btn-info" type="button" style="font-size:10px" data-toggle="modal" data-target="#offers"><i class="fa fa-paste"></i> Offers </button>
                         <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
                         <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
                         </th>
@@ -492,6 +492,98 @@
                     </div>
                 </div>
             </div>
+                            
+                            <div class="modal inmodal fade" id="offers" tabindex="-1" role="dialog"  aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">Your Offers</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                        <table class="table table-bordered" >
+                    <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Rating</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Country</th>
+                        <th>Options</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>GSMStockMarket.com</td>
+                        <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
+                        <td>22</td>
+                        <td>GBP 154.02</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <td style="text-align:right">
+                        <button type="button" class="btn btn-outline btn-warning"><i class="fa fa-hand-o-down"></i> Counter Offer</button>
+                        <button type="button" class="btn btn-outline btn-primary"><i class="fa fa-check"></i> Accept</button>
+                        <button type="button" class="btn btn-outline btn-danger"><i class="fa fa-times"></i> Decline</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>GSMStockMarket.com</td>
+                        <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
+                        <td>22</td>
+                        <td>GBP 154.02</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <td style="text-align:right">
+                        <button type="button" class="btn btn-outline btn-warning"><i class="fa fa-hand-o-down"></i> Counter Offer</button>
+                        <button type="button" class="btn btn-outline btn-primary"><i class="fa fa-check"></i> Accept</button>
+                        <button type="button" class="btn btn-outline btn-danger"><i class="fa fa-times"></i> Decline</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>GSMStockMarket.com</td>
+                        <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
+                        <td>22</td>
+                        <td>GBP 154.02</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <td style="text-align:right">
+                        <button type="button" class="btn btn-outline btn-warning"><i class="fa fa-hand-o-down"></i> Counter Offer</button>
+                        <button type="button" class="btn btn-outline btn-primary"><i class="fa fa-check"></i> Accept</button>
+                        <button type="button" class="btn btn-outline btn-danger"><i class="fa fa-times"></i> Decline</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>GSMStockMarket.com</td>
+                        <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
+                        <td>22</td>
+                        <td>GBP 154.02</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <td style="text-align:right">
+                        <button type="button" class="btn btn-outline btn-warning"><i class="fa fa-hand-o-down"></i> Counter Offer</button>
+                        <button type="button" class="btn btn-outline btn-primary"><i class="fa fa-check"></i> Accept</button>
+                        <button type="button" class="btn btn-outline btn-danger"><i class="fa fa-times"></i> Decline</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>GSMStockMarket.com</td>
+                        <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
+                        <td>22</td>
+                        <td>GBP 154.02</td>
+                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <td style="text-align:right">
+                        <button type="button" class="btn btn-outline btn-warning"><i class="fa fa-hand-o-down"></i> Counter Offer</button>
+                        <button type="button" class="btn btn-outline btn-primary"><i class="fa fa-check"></i> Accept</button>
+                        <button type="button" class="btn btn-outline btn-danger"><i class="fa fa-times"></i> Decline</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                    </table>
+                                        
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
             
             </div>
             

@@ -76,7 +76,7 @@ if(is_numeric($id)){?>
                                 <?php echo substr($feed->content,0,20).'...'; ?>
                             </td>
                             <td>
-                                <span class="pie"><?php echo $feed->member_id; ?></span>
+                                <span class="pie"><?php echo $this->member_model->get_where($feed->member_id)->firstname.' '.$this->member_model->get_where($feed->member_id)->lastname.' ('.$this->company_model->get_where($this->member_model->get_where($feed->member_id)->company_id)->company_name.')'; ?></span>
                             </td>
                             <td><?php echo $feed->date; ?></td>
                             <td>

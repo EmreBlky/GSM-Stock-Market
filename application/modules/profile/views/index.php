@@ -61,7 +61,7 @@ $this->load->model('membership/membership_model', 'membership_model');
                                             <?php echo $member_company->town_city;?><br />
                                             <?php echo $member_company->county;?><br />
                                             <?php echo $member_company->post_code;?><br />
-                                            <?php echo $member_company->country;?></dd>
+                                            <?php echo $this->country_model->get_where($member_company->country)->country;?></dd>
                                     </dl>
                                     
                                     <dl class="dl-horizontal">
