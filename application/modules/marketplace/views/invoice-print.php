@@ -1,5 +1,5 @@
 
-<body class="white-bg">
+
                 <div class="wrapper wrapper-content p-xl">
                     <div class="ibox-content p-xl">
                             <div class="row">
