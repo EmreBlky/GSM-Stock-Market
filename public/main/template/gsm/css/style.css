@@ -128,3 +128,17 @@ img.message_alert {margin:3px 20px}
 
 /* Marketplace */
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {vertical-align:middle}
+
+/*PAGINATION BUTTONS*/
+
+.gsm_pag{
+padding: 0px !important;
+}
+.gsm_pag a
+{
+   padding: 6px 12px;
+}
+.gsm_pag_active
+{
+   padding: 0px 6px;
+}
