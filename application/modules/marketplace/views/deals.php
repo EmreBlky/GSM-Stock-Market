@@ -56,8 +56,8 @@
                         </div>
                         </td>
                         <td>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Make Payment</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button></td>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Make Payment</button></td>
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
                         <td><span class="label label-primary">Payment Sent</span></td>
@@ -89,8 +89,8 @@
                         </div>
                         </td>
                         <td>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Complete Deal</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button></td>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Complete Deal</button></td>
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
                         <td><span class="label label-primary">Shipment Arrived</span></td>
@@ -106,8 +106,8 @@
                         </div>
                         </td>
                         <td>
-                        <button type="button" class="btn btn-info" style="font-size:10px">Leave Feedback</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button></td>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button>
+                        <button type="button" class="btn btn-info" style="font-size:10px">Leave Feedback</button></td>
                     </tr>
                     </tbody>
                     </table>
@@ -153,8 +153,8 @@
                         </div>
                         </td>
                         <td>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Confirm Payment</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button></td>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Confirm Payment</button></td>
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
                         <td><span class="label label-primary">Payment Received</span></td>
@@ -170,8 +170,8 @@
                         </div>
                         </td>
                         <td>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Add Tracking</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button></td>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Add Tracking</button></td>
                     </tr>
                     <tr data-toggle="modal" data-target="#myModal5">
                         <td><span class="label label-warning">Awaiting Completion</span></td>
@@ -203,8 +203,8 @@
                         </div>
                         </td>
                         <td>
-                        <button type="button" class="btn btn-info" style="font-size:10px">Leave Feedback</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button></td>
+                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button>
+                        <button type="button" class="btn btn-info" style="font-size:10px">Leave Feedback</button></td>
                     </tr>
                     </tbody>
                     </table>
