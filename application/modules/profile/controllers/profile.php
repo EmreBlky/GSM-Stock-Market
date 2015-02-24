@@ -92,16 +92,16 @@ class Profile extends MX_Controller
             $config["uri_segment"] = 4;
             $config['use_page_numbers'] = TRUE;
 
-            $config['full_tag_open'] = '<div class="row" style="margin:0 0 25px 0"><div class="btn-group pull-right">';
-            $config['full_tag_close'] = '</div></div>';
-            $config['next_tag_open'] = '<div class="btn btn-white">';
-            $config['next_tag_close'] = '</div>';
-            $config['prev_tag_open'] = ' <div class="btn btn-white">';
-            $config['prev_tag_close'] = '</div>';
-            $config['cur_tag_open'] = '<div class="btn btn-white  active">';
-            $config['cur_tag_close'] = '</div>';
-            $config['num_tag_open'] = '<div class="btn btn-white">';                
-            $config['num_tag_close'] = '</div>';
+            $config['full_tag_open'] = '<div class="btn-group pull-right">';
+            $config['full_tag_close'] = '</div>';
+            $config['next_tag_open'] = '<span class="btn gsm_pag btn-white">';
+            $config['next_tag_close'] = '</span>';
+            $config['prev_tag_open'] = ' <span class="btn gsm_pag btn-white">';
+            $config['prev_tag_close'] = '</span>';
+            $config['cur_tag_open'] = '<span class="btn gsm_pag_active btn-white active">';
+            $config['cur_tag_close'] = '</span>';
+            $config['num_tag_open'] = '<span class="btn gsm_pag btn-white">';                
+            $config['num_tag_close'] = '</span>';
             $config['prev_link'] = '<i class="fa fa-chevron-left"></i>';
             $config['next_link'] = '<i class="fa fa-chevron-right"></i>';
 

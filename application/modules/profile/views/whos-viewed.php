@@ -143,7 +143,8 @@
                                 $data = array(
                                             'name'          => 'body_'.$view->viewer_id,
                                             'id'            => 'body_'.$view->viewer_id,
-                                            'class'         => 'form-control', 
+                                            'class'         => 'form-control',
+                                            'autofocus'     =>	'autofocus',
                                             'style'         => 'border:none',
                                             'required'      => 'required'
                                           );
