@@ -294,6 +294,11 @@
                                     </div>
                                 </div>
                                 
+                            	<div class="form-group"><label class="col-md-3 control-label">Terms &amp; Conditions</label>
+                                    <div class="col-md-9"><input type="checkbox" /> I agree to the GSMStockMarket.com Limited Terms and Conditions
+                                    </div>
+                                </div>
+                                
                                 <div class="form-group">
                                     <div class="col-md-9 col-md-offset-3">
                                         <button class="btn btn-white" type="submit">Cancel</button>
