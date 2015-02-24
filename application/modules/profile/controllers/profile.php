@@ -278,8 +278,7 @@ class Profile extends MX_Controller
 //                            }
                         }
                         
-                    }
-                    exit;
+                    }                    
                     redirect('profile/', 'refresh');
     }
 	
