@@ -146,19 +146,55 @@ class Profile extends MX_Controller {
 
     function profileEdit() {
 
-        echo '<pre>';
-        print_r($_POST);
-        print_r($_FILES);
-        exit;
+//        echo '<pre>';
+//        print_r($_POST);
+//        print_r($_FILES);
+//        exit;
+
         $bsectors4 = '';
         $bsectors5 = '';
 
-        if (isset($_POST['bsectors'][3])) {
-            $bsectors4 = $_POST['bsectors'][3];
+        /* Faisal Code Start Here 2-25-2015
+         * 
+         */
+
+        $valueOne = isset($_POST['primary_sector']) && !empty($_POST['primary_sector']) ? $_POST['primary_sector'] : '';
+        $valueTwo = isset($_POST['secondary_sector']) && !empty($_POST['secondary_sector']) ? $_POST['secondary_sector'] : '';
+        $valueThree = isset($_POST['tertiary_sector']) && !empty($_POST['tertiary_sector']) ? $_POST['tertiary_sector'] : '';
+        $bsectorsArray = isset($_POST['bsectors']) && !empty($_POST['bsectors']) ? $_POST['bsectors'] : '';
+
+
+        $key = array_search('BER Mobiles', $bsectorsArray);
+        unset($bsectorsArray[$key]);
+        $key = array_search('Mobile Accessories', $bsectorsArray);
+        unset($bsectorsArray[$key]);
+        $key = array_search('14 Day Mobiles', $bsectorsArray);
+        unset($bsectorsArray[$key]);
+
+        $bsectorsArray = array_values($bsectorsArray);
+
+
+
+        if (isset($bsectorsArray[0])) {
+            $bsectors4 = $bsectorsArray[0];
         }
-        if (isset($_POST['bsectors'][4])) {
-            $bsectors5 = ', ' . $_POST['bsectors'][4];
+
+        if (isset($bsectorsArray[1])) {
+            $bsectors5 = ', ' . $bsectorsArray[1];
         }
+
+//        if (isset($_POST['bsectors'][3])) {
+//            $bsectors4 = $_POST['bsectors'][3];
+//        }
+//        if (isset($_POST['bsectors'][4])) {
+//            $bsectors5 = ', ' . $_POST['bsectors'][4];
+//        }
+
+
+
+
+
+
 
         $this->load->library('form_validation');
 
