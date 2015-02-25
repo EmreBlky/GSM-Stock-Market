@@ -20,7 +20,10 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
         //var sid     = $("#sent_to").val();
         $("#submit_message_"+sid+"").hide();
         var subject = $("#subject").val();
-        var body    = $("#body_"+sid+"").val().replace(/(\r\n|\n|\r)/gm, '%0D%0A');
+        var body    = $("#body_"+sid+"").val().replace(/(\r\n|\n|\r)/gm, 'BREAK1');
+        var body    = body.replace(/\//g, 'SLASH1');
+        var body    = body.replace(/\?/g, 'QUEST1');
+        var body    = body.replace(/\%/g, 'PERCENT1');
         
          $.ajax({
                 type: "POST",

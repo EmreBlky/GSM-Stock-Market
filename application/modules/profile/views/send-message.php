@@ -51,7 +51,10 @@ $(document).ready(function(){
         var mid     = $('#sent_by').val();
         var sid     = $("#sent_to").val();
         var subject = $("#subject").val().replace(/(\r\n|\n|\r)/gm, '%0D%0A');
-        var body    = $("#body").val().replace(/(\r\n|\n|\r)/gm, '%0D%0A');
+        var body    = $("#body").val().replace(/(\r\n|\n|\r)/gm, 'BREAK1');
+        var body    = body.replace(/\//g, 'SLASH1');
+        var body    = body.replace(/\?/g, 'QUEST1');
+        var body    = body.replace(/\%/g, 'PERCENT1');
         
          $.ajax({
                 type: "POST",
