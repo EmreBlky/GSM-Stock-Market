@@ -10,6 +10,8 @@
 
     $(document).ready(function() {
 
+        var counter = getCheckedBoxesCount();
+        toggleChecks(counter)
 <?php
 $primarybusiness = 'none';
 $secondarybusiness = 'none';
@@ -149,6 +151,7 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
         return total;
 
     }
+
 
     function toggleChecks(counter) {
         // Function to disable or enable check boxes
