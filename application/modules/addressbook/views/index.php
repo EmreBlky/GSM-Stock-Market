@@ -18,7 +18,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
         //alert(sid);
         //var mid     = $('#sent_by').val();
         //var sid     = $("#sent_to").val();
-        $("#submit_message").hide();
+        $("#submit_message_"+sid+"").hide();
         var subject = $("#subject").val();
         var body    = $("#body_"+sid+"").val().replace(/(\r\n|\n|\r)/gm, '%0D%0A');
         
@@ -31,7 +31,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                   $("#body_"+sid+"").val('');   
                   $('#profile_message_'+sid+'').modal('hide');
                   toastr.success('Your message has been sent.', 'Message Alert');
-                  $("#submit_message").show('slow');
+                  $("#submit_message_"+sid+"").show('slow');
                 },
             });    
     }
@@ -242,7 +242,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                         <div class="modal-footer">
                             <input type="hidden" name="submit" value="Send Message"/>
                             <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                            <button onclick="sendMessage(<?php echo $this->session->userdata('members_id');?>, <?php echo $address->address_member_id;?>);" type="button" id="submit_message" class="btn btn-primary">Send Message</button>
+                            <button onclick="sendMessage(<?php echo $this->session->userdata('members_id');?>, <?php echo $address->address_member_id;?>);" type="button" id="submit_message_<?php echo $address->address_member_id;?>" class="btn btn-primary">Send Message</button>
             <!--                <input type="submit" id="submit_message" class="btn btn-primary" name="submit" value="Send Message">-->
                         </div>
                     </div>
