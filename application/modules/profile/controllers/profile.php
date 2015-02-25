@@ -160,15 +160,17 @@ class Profile extends MX_Controller {
         $bsectorsArray = isset($_POST['bsectors']) && !empty($_POST['bsectors']) ? $_POST['bsectors'] : '';
 
 
-        $key = array_search('BER Mobiles', $bsectorsArray);
+        $key = array_search($valueOne, $bsectorsArray);
         unset($bsectorsArray[$key]);
-        $key = array_search('Mobile Accessories', $bsectorsArray);
+        $key = array_search($valueTwo, $bsectorsArray);
         unset($bsectorsArray[$key]);
-        $key = array_search('14 Day Mobiles', $bsectorsArray);
+        $key = array_search($valueThree, $bsectorsArray);
         unset($bsectorsArray[$key]);
 
         $bsectorsArray = array_values($bsectorsArray);
 
+        
+        
         if (isset($bsectorsArray[0])) {
             $bsectors4 = $bsectorsArray[0];
         }
