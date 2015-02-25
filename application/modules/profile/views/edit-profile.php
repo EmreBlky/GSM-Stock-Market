@@ -10,6 +10,8 @@
 
     $(document).ready(function() {
 
+        var counter = getCheckedBoxesCount();
+        toggleChecks(counter)
 <?php
 $primarybusiness = 'none';
 $secondarybusiness = 'none';
@@ -149,6 +151,7 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
         return total;
 
     }
+
 
     function toggleChecks(counter) {
         // Function to disable or enable check boxes
@@ -840,7 +843,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                         </div>
                         <div class="col-md-6">
                             <?php
-                            if ($member->phone_number) {
+                            if ($company->phone_number) {
 
                                 $data = array(
                                     'name' => 'phone_number',

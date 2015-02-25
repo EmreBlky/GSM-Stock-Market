@@ -78,8 +78,8 @@ class Profile extends MX_Controller {
         if ($viewed > 0) {
 
             $data['viewed_count'] = $viewed;
-            //echo $viewed;
-            //exit;
+//echo $viewed;
+//exit;
 
             $data['viewed'] = $this->viewed_model->_custom_query("SELECT DISTINCT viewer_id FROM gsmstock_secure.viewed WHERE viewed_id = '" . $this->session->userdata('members_id') . "' ORDER BY datetime DESC LIMIT " . $offset . ", 21");
             $config['base_url'] = $this->config->item('base_url') . 'profile/who_viewed/page';
@@ -107,7 +107,7 @@ class Profile extends MX_Controller {
             $data['viewed_count'] = 0;
         }
 //        
-        //$data['viewed'] = $this->viewed_model->get_where_multiples('viewed_id', $this->session->userdata('members_id'));
+//$data['viewed'] = $this->viewed_model->get_where_multiples('viewed_id', $this->session->userdata('members_id'));
 
         $this->load->module('templates');
         $this->templates->page($data);
@@ -131,8 +131,9 @@ class Profile extends MX_Controller {
 
 //        echo "<pre>";
 //        print_r($data['company']);
-//        exit;
-//$data['country'] = $this->country_model->get_all();
+//        echo "</pre>";
+
+        //$data['country'] = $this->country_model->get_all();
         $data['country'] = $this->country_model->_custom_query("SELECT * FROM country ORDER BY country ASC");
 
 
@@ -143,23 +144,51 @@ class Profile extends MX_Controller {
         $this->load->module('templates');
         $this->templates->page($data);
     }
-    
-    function profileEdit()
-    {
-        
-        echo '<pre>';
-        print_r($_POST);
-        print_r($_FILES);
-        exit;
+
+    function profileEdit() {
+
         $bsectors4 = '';
         $bsectors5 = '';
 
-        if (isset($_POST['bsectors'][3])) {
-            $bsectors4 = $_POST['bsectors'][3];
+        /* Faisal Code Start Here 2-25-2015
+         * 
+         */
+
+        $valueOne = isset($_POST['primary_sector']) && !empty($_POST['primary_sector']) ? $_POST['primary_sector'] : '';
+        $valueTwo = isset($_POST['secondary_sector']) && !empty($_POST['secondary_sector']) ? $_POST['secondary_sector'] : '';
+        $valueThree = isset($_POST['tertiary_sector']) && !empty($_POST['tertiary_sector']) ? $_POST['tertiary_sector'] : '';
+        $bsectorsArray = isset($_POST['bsectors']) && !empty($_POST['bsectors']) ? $_POST['bsectors'] : '';
+
+
+        $key = array_search($valueOne, $bsectorsArray);
+        unset($bsectorsArray[$key]);
+        $key = array_search($valueTwo, $bsectorsArray);
+        unset($bsectorsArray[$key]);
+        $key = array_search($valueThree, $bsectorsArray);
+        unset($bsectorsArray[$key]);
+
+        $bsectorsArray = array_values($bsectorsArray);
+
+        
+        
+        if (isset($bsectorsArray[0])) {
+            $bsectors4 = $bsectorsArray[0];
         }
-        if (isset($_POST['bsectors'][4])) {
-            $bsectors5 = ', ' . $_POST['bsectors'][4];
+
+        if (isset($bsectorsArray[1])) {
+            $bsectors5 = ', ' . $bsectorsArray[1];
         }
+        /* Faisal Code End Here 2-25-2015
+         * 
+         */
+
+//        if (isset($_POST['bsectors'][3])) {
+//            $bsectors4 = $_POST['bsectors'][3];
+//        }
+//        if (isset($_POST['bsectors'][4])) {
+//            $bsectors5 = ', ' . $_POST['bsectors'][4];
+//        }
+
 
         $this->load->library('form_validation');
 
@@ -227,6 +256,7 @@ class Profile extends MX_Controller {
                 'vat_tax' => $this->input->post('vat_tax'),
                 'company_number' => $this->input->post('company_number'),
             );
+
             $this->company_model->_update($this->member_model->get_where($this->session->userdata('members_id'))->company_id, $data);
 
             //echo '<pre>';
@@ -269,3 +299,4 @@ class Profile extends MX_Controller {
     }
 
 }
+
