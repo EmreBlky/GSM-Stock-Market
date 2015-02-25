@@ -51,6 +51,7 @@ if (!defined('BASEPATH'))
 $active_group = 'default';
 $active_record = TRUE;
 
+/*
   //DEVELOPMENT DATABASE:
   $db['default']['hostname'] = 'localhost';
   $db['default']['username'] = 'root';
@@ -67,9 +68,8 @@ $active_record = TRUE;
   $db['default']['swap_pre'] = '';
   $db['default']['autoinit'] = TRUE;
   $db['default']['stricton'] = FALSE;
+*/
 
-
-/*
 //LIVE DATABASE:
 $db['default']['hostname'] = '109.203.125.38';
 $db['default']['username'] = 'gsmstock_admin';
@@ -86,4 +86,3 @@ $db['default']['dbcollat'] = 'utf8_general_ci';
 $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
-*/
