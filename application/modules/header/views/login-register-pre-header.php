@@ -16,4 +16,8 @@
 
 </head>
 
+<?php if($page != 'invoice-print') {?>
 <body class="gray-bg">
+<?php } else {?>
+<body class="white-bg">
+<?php } ?>

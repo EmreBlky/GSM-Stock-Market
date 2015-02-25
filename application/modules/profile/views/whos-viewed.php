@@ -14,17 +14,20 @@
         //alert(sid);
         //var mid     = $('#sent_by').val();
         //var sid     = $("#sent_to").val();
-        var subject = $("#subject").val();
+        var subject = $("#subject_"+sid+"").val();
         var body    = $("#body_"+sid+"").val().replace(/(\r\n|\n|\r)/gm, '%0D%0A');
         
          $.ajax({
                 type: "POST",
                 url: "mailbox/composeAjaxMail/"+ mid +"/"+ sid +"/"+ subject +"/"+body +"",
                 dataType: "html",
+                cache: true,
                 success:function(data){
+                    $("#body_"+sid+"").val('');
                   $('#profile_message_'+sid+'').modal('hide');
                 },
-            });    
+            });
+            
     }
 
 
@@ -131,7 +134,7 @@
                             <input type="hidden" id="sent_by" name="sent_by" value="<?php echo $this->session->userdata('members_id'); ?>"/>
                             <input type="hidden" id="sent_to" name="sent_to" value="<?php echo $membs->id; ?>"/>                
                             <input type="hidden" id="email_address" name="email_address" value="<?php echo $membs->email; ?>"/>
-                            <input type="hidden" id="subject" name="subject" value="Profile Message"/>
+                            <input type="hidden" id="subject_<?php echo $membs->id; ?>" name="subject_<?php echo $membs->id; ?>" value="Profile Message"/>
                         </div>
                         <div class="modal-body">
                             <!-- <p><strong>Form here</strong> generic stuff bla bla</p> -->
@@ -140,7 +143,8 @@
                                 $data = array(
                                             'name'          => 'body_'.$view->viewer_id,
                                             'id'            => 'body_'.$view->viewer_id,
-                                            'class'         => 'form-control', 
+                                            'class'         => 'form-control',
+                                            'autofocus'     =>	'autofocus',
                                             'style'         => 'border:none',
                                             'required'      => 'required'
                                           );

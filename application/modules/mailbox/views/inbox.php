@@ -42,6 +42,7 @@
             <div class="mail-box-header">
                 <div class="pull-right tooltip-demo">
                     <?php
+                        if($email_info)
                         if(count($email_info) > 2){
                         $start_email = reset($email_info);
                         $end_email = end($email_info);

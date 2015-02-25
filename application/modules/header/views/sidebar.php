@@ -83,7 +83,7 @@
                             <li><a href="marketplace/sell"><i class="fa fa-tag"></i> Sell</a></li>
                             <li><a href="marketplace/watching"><i class="fa fa-eye"></i> Watching</a></li>
                             <li><a href="marketplace/deals"><i class="fa fa-book"></i> Open Orders <span class="label label-warning pull-right">4</span></a></li>
-                            <li><a href="marketplace/listing"><i class="fa fa-list"></i> My Listings <span class="label label-info pull-right">12</span></a></li>
+                            <li><a href="marketplace/listing"><i class="fa fa-list"></i> Offers &amp; Listings<span class="label label-info pull-right">12</span></a></li>
                             <li><a href="marketplace/history"><i class="fa fa-file-text"></i> Order History</a></li>
                             <li><a href="marketplace/create_listing"><i class="fa fa-plus"></i> Create Listing</a></li>
                             <li><a href="marketplace/create_listing"><i class="fa fa-save"></i> Saved Listings <span class="label label-success pull-right">2</span></a></li>

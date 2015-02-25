@@ -26,34 +26,95 @@
                         </div>
                         <div class="ibox-content">
                         	<form class="validation form-horizontal">
+                            	<div class="form-group"><label class="col-md-3 control-label">Listing Type</label>
+                                    <div class="col-md-9">
+                                    	<select class="form-control" />
+                                        	<option disabled selected>Buying or Selling?</option>
+                                        	<option>Buying Request</option>
+                                        	<option>Selling Offer</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="hr-line-dashed"></div>
+                                
+                            	<div class="form-group"><label class="col-md-3 control-label">MPN/ISBN</label>
+                                    <div class="col-md-9">
+                                    	<input type="type" list="mpn" class="form-control" placeholder="Auto fill the rest of the data if MPN/ISBN is found in the database" />
+                                        <datalist id="mpn">
+                                        	<option>GH98-3993027</option>
+                                        	<option>GH98-3993028</option>
+                                        	<option>GH98-3993029</option>
+                                        	<option>GH98-3993030</option>
+                                        	<option>GH98-3993031</option>
+                                        </datalist>
+                                    </div>
+                                </div>
+                                
                             	<div class="form-group"><label class="col-md-3 control-label">Make</label>
                                     <div class="col-md-9">
-                                    	<input type="type" class="form-control" />
+                                    	<select class="form-control" />
+                                        	<option disabled selected>Select Make</option>
+                                        	<option>Apple</option>
+                                            <option>BlackBerry</option>
+                                            <option>Nokia</option>
+                                            <option>Samsung</option>
+                                        </select>
                                     </div>
                                 </div>
+                                
                             	<div class="form-group"><label class="col-md-3 control-label">Model</label>
                                     <div class="col-md-9">
-                                    	<input type="type" class="form-control" />
+                                    	<input type="type" class="form-control" placeholder="When make is selected list models associated with make" />
                                     </div>
                                 </div>
+                                
                             	<div class="form-group"><label class="col-md-3 control-label">Product Type</label>
                                     <div class="col-md-9">
-                                    	<input type="type" class="form-control" />
+                                    	<select class="form-control" />
+                                        	<option disabled selected>Select Product Type/Category</option>
+                                        	<option>Select Category</option>
+                                        	<option>Accessories - Battery</option>
+                                        	<option>Accessories - Case</option>
+                                        	<option>Accessories - Charger</option>
+                                        	<option>Mobile Phone - Complete Handset</option>
+                                        	<option>Mobile Phone - LCD Screen</option>
+                                        </select>
                                     </div>
                                 </div>
+                            	<div class="form-group"><label class="col-md-3 control-label">Colour</label>
+                                    <div class="col-md-9">
+                                    	<select class="form-control" />
+                                        	<option disabled selected>None</option>
+                                        	<option>White</option>
+                                        	<option>Black</option>
+                                        	<option>Blue</option>
+                                        	<option>Red</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="hr-line-dashed"></div>
+                                
                             	<div class="form-group"><label class="col-md-3 control-label">Condition</label>
                                     <div class="col-md-9">
-                                    	<input type="type" class="form-control" />
+                                    	<select class="form-control" />
+                                        	<option disabled selected>Condition</option>
+                                        	<option>New</option>
+                                        	<option>Used</option>
+                                        	<option>Refurbished</option>
+                                        </select>
                                     </div>
                                 </div>
                             	<div class="form-group"><label class="col-md-3 control-label">Spec</label>
                                     <div class="col-md-9">
-                                    	<input type="type" class="form-control" />
-                                    </div>
-                                </div>
-                            	<div class="form-group"><label class="col-md-3 control-label">Quantity</label>
-                                    <div class="col-md-9">
-                                    	<input type="type" class="form-control" />
+                                    	<select class="form-control" />
+                                        	<option disabled selected>Spec</option>
+                                        	<option>EU</option>
+                                        	<option>UK</option>
+                                        	<option>US</option>
+                                        	<option>ASIA</option>
+                                        </select>
                                     </div>
                                 </div>
                                 
@@ -61,12 +122,17 @@
                                 
                             	<div class="form-group"><label class="col-md-3 control-label">Currency</label>
                                     <div class="col-md-9">
-                                    	<input type="type" class="form-control" />
+                                    	<select class="form-control" />
+                                        	<option disabled selected>Default (account preference defalut)</option>
+                                        	<option>&pound; GBP</option>
+                                        	<option>&euro; EUR</option>
+                                        	<option>$ USD</option>
+                                        </select>
                                     	<p class="small">Select the currency you wish this listing to be sold in.</p>
                                     </div>
                                 </div>
                                 
-                            	<div class="form-group"><label class="col-md-3 control-label">Price</label>
+                            	<div class="form-group"><label class="col-md-3 control-label">Unit Price</label>
                                     <div class="col-md-9">
                                     	<input type="type" class="form-control" />
                                     </div>
@@ -74,17 +140,162 @@
                                 
                             	<div class="form-group"><label class="col-md-3 control-label">Minimum Price</label>
                                     <div class="col-md-9">
+                                    	<div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" /> </span> <input type="text" class="form-control" placeholder="only make typable when clicked"></div>
+                                    	<p class="small">tick to enable. Any offers below this will be auto rejected, leave blank to allow any offers if ticked.</p>
+                                    </div>
+                                </div>
+                                
+                            	<div class="form-group"><label class="col-md-3 control-label">Allow Offers</label>
+                                    <div class="col-md-9">
+                                    	<div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" /> </span>
+                                    	<select class="form-control" />
+                                        	<option selected>default</option>
+                                        	<option>4</option>
+                                        	<option>5</option>
+                                        	<option>6</option>
+                                        	<option>7</option>
+                                        	<option>8</option>
+                                        	<option>9</option>
+                                        	<option>10</option>
+                                        </select></div>
+                                    	<p class="small">Allow people to make offers and how many per 24 hour period. (default is 3)</p>
+                                    </div>
+                                </div>
+                                
+                            	<div class="form-group"><label class="col-md-3 control-label">Quantity Available</label>
+                                    <div class="col-md-9">
                                     	<input type="type" class="form-control" />
-                                    	<p class="small">Any offers below this price will be auto rejected. (Leave blank for any offer)</p>
+                                    </div>
+                                </div>
+                                
+                            	<div class="form-group"><label class="col-md-3 control-label">Min Order Quantity</label>
+                                    <div class="col-md-9">
+                                    	<div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" /> </span> <input type="text" class="form-control" placeholder="only make typable when clicked"></div>
+                                    	<p class="small">Allow minimum order quantity else full quantity sale available only</p>
                                     </div>
                                 </div>
                                 
                                 <div class="hr-line-dashed"></div>
                                 
+                            	<div class="form-group"><label class="col-md-3 control-label">Courier</label>
+                                    <div class="col-md-9">
+                                    	<select class="form-control" />
+                                        	<option disabled selected>Select Courier</option>
+                                        	<option>DHL</option>
+                                        	<option>Fedex</option>
+                                        	<option>UPS</option>
+                                        	<option>Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                            	<div class="form-group"><label class="col-md-3 control-label">Shipping Terms</label>
+                                    <div class="col-md-9">
+                                    	<select class="form-control" />
+                                        	<option disabled selected>Select Terms</option>
+                                        	<option>CIF</option>
+                                        	<option>CIP</option>
+                                        	<option>CPT</option>
+                                        	<option>DAP</option>
+                                        	<option>DAT</option>
+                                        	<option>EXW</option>
+                                        	<option>FCA</option>
+                                        	<option>NDS</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="hr-line-dashed"></div>                                
                                 
                             	<div class="form-group"><label class="col-md-3 control-label">Product Description</label>
                                     <div class="col-md-9">
-                                    	<textarea type="type" class="form-control" rows="5" /></textarea>
+                                    	<textarea type="type" class="form-control" rows="5" id="product_desc" /></textarea>
+                                    </div>
+                                </div>
+                                
+                                <div class="hr-line-dashed"></div>
+                                
+                            	<div class="form-group"><label class="col-md-3 control-label">List Duration</label>
+                                    <div class="col-md-9">
+                                    	<select class="form-control" />
+                                        	<option>1 Day</option>
+                                        	<option>3 Days</option>
+                                        	<option>5 Days</option>
+                                        	<option selected>7 Days</option>
+                                        	<option>10 Days</option>
+                                        	<option>14 Days</option>
+                                        </select>
+                                    </div> 
+                                </div>
+                                
+                            	<div class="form-group"><label class="col-md-3 control-label">Schedule Listing</label>
+                                    <div class="col-md-3">
+                                        <div class="input-group date">
+                                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="03/04/2014">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                    	<select class="form-control" />
+                                        	<option disabled selected>Hour</option>
+                                        	<option>1</option>
+                                        	<option>2</option>
+                                        	<option>3</option>
+                                        	<option>4</option>
+                                        	<option>5</option>
+                                        	<option>6</option>
+                                        	<option>7</option>
+                                        	<option>8</option>
+                                        	<option>9</option>
+                                        	<option>10</option>
+                                        	<option>11</option>
+                                        	<option>12</option>
+                                        	<option>13</option>
+                                        	<option>14</option>
+                                        	<option>15</option>
+                                        	<option>16</option>
+                                        	<option>17</option>
+                                        	<option>18</option>
+                                        	<option>19</option>
+                                        	<option>20</option>
+                                        	<option>21</option>
+                                        	<option>22</option>
+                                        	<option>23</option>
+                                        	<option>24</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                    	<select class="form-control" />
+                                        	<option disabled selected>Minute</option>
+                                        	<option>1</option>
+                                        	<option>2</option>
+                                        	<option>3</option>
+                                        	<option>4</option>
+                                        	<option>5</option>
+                                        	<option>6</option>
+                                        	<option>7</option>
+                                        	<option>8</option>
+                                        	<option>9</option>
+                                        	<option>10</option>
+                                        	<option>11</option>
+                                        	<option>12</option>
+                                        	<option>13</option>
+                                        	<option>14</option>
+                                        	<option>15</option>
+                                        	<option>16</option>
+                                        	<option>17</option>
+                                        	<option>18</option>
+                                        	<option>19</option>
+                                        	<option>20</option>
+                                        	<option>21</option>
+                                        	<option>22</option>
+                                        	<option>23</option>
+                                        	<option>24</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                            	<div class="form-group"><label class="col-md-3 control-label">Terms &amp; Conditions</label>
+                                    <div class="col-md-9"><input type="checkbox" /> I agree to the GSMStockMarket.com Limited Terms and Conditions
                                     </div>
                                 </div>
                                 
@@ -293,7 +504,7 @@
 })(jQuery);
 
 $(document).ready(function () {
-    $('#companybio').characterCounter({
+    $('#product_desc').characterCounter({
         maximumCharacters: 500,
         characterCounterNeeded: false,
         chopText: true
@@ -306,6 +517,9 @@ $(document).ready(function () {
 
     <!-- Jquery Validate -->
     <script src="public/main/template/core/js/plugins/validate/jquery.validate.min.js"></script>
+
+   <!-- Data picker -->
+   <script src="public/main/template/core/js/plugins/datapicker/bootstrap-datepicker.js"></script>
 
     <script>
          $(document).ready(function(){
@@ -335,4 +549,44 @@ $(document).ready(function () {
                  }
              });
         });
+		
+		
+
+            $('#data_1 .input-group.date').datepicker({
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                calendarWeeks: true,
+                autoclose: true
+            });
+
+            $('#data_2 .input-group.date').datepicker({
+                startView: 1,
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+
+            $('#data_3 .input-group.date').datepicker({
+                startView: 2,
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+
+            $('#data_4 .input-group.date').datepicker({
+                minViewMode: 1,
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true,
+                todayHighlight: true
+            });
+
+            $('#data_5 .input-daterange').datepicker({
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
     </script>

@@ -12,6 +12,7 @@ class Profile extends MX_Controller
         $this->load->model('member/member_model', 'member_model');
         $this->load->model('company/company_model', 'company_model');
         $this->load->model('viewed/viewed_model', 'viewed_model');
+        $this->load->model('country/country_model', 'country_model');
     }
 
     function index()
@@ -91,16 +92,16 @@ class Profile extends MX_Controller
             $config["uri_segment"] = 4;
             $config['use_page_numbers'] = TRUE;
 
-            $config['full_tag_open'] = '<div class="row" style="margin:0 0 25px 0"><div class="btn-group pull-right">';
-            $config['full_tag_close'] = '</div></div>';
-            $config['next_tag_open'] = '<div class="btn btn-white">';
-            $config['next_tag_close'] = '</div>';
-            $config['prev_tag_open'] = ' <div class="btn btn-white">';
-            $config['prev_tag_close'] = '</div>';
-            $config['cur_tag_open'] = '<div class="btn btn-white  active">';
-            $config['cur_tag_close'] = '</div>';
-            $config['num_tag_open'] = '<div class="btn btn-white">';                
-            $config['num_tag_close'] = '</div>';
+            $config['full_tag_open'] = '<div class="btn-group pull-right">';
+            $config['full_tag_close'] = '</div>';
+            $config['next_tag_open'] = '<span class="btn gsm_pag btn-white">';
+            $config['next_tag_close'] = '</span>';
+            $config['prev_tag_open'] = ' <span class="btn gsm_pag btn-white">';
+            $config['prev_tag_close'] = '</span>';
+            $config['cur_tag_open'] = '<span class="btn gsm_pag_active btn-white active">';
+            $config['cur_tag_close'] = '</span>';
+            $config['num_tag_open'] = '<span class="btn gsm_pag btn-white">';                
+            $config['num_tag_close'] = '</span>';
             $config['prev_link'] = '<i class="fa fa-chevron-left"></i>';
             $config['next_link'] = '<i class="fa fa-chevron-right"></i>';
 
@@ -130,7 +131,7 @@ class Profile extends MX_Controller
     function edit_profile()
     {
         $this->load->model('member/member_model', 'member_model');
-        $this->load->model('country/country_model', 'country_model');
+        
         
         $data['member'] = $this->member_model->get_where($this->session->userdata('members_id'));
         $data['company'] = $this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id);
@@ -231,6 +232,10 @@ class Profile extends MX_Controller
                                      );
                          $this->company_model->_update($this->member_model->get_where($this->session->userdata('members_id'))->company_id, $data);
                          
+                         //echo '<pre>';
+                         //print_r($_FILES);
+                         //exit;
+                         
                         if($_FILES['userfile']['size'] > 0){
                             
                             $this->load->library('upload');
@@ -242,28 +247,28 @@ class Profile extends MX_Controller
                             $config['file_name'] = $this->session->userdata('members_id');
                             $config['max_size']	= '2000';
                             $config['overwrite'] = TRUE;
-                            $config['max_width']  = '800';
-                            $config['max_height']  = '800';
+                            $config['max_width']  = '300';
+                            $config['max_height']  = '150';
 
                             $this->upload->initialize($config);
                             
-                             if ( ! $this->upload->do_upload())
-                             {
-                                 $data = array('upload_data' => $this->upload->data());
-                             }
+//                             if ( ! $this->upload->do_upload())
+//                             {
+//                                 $data = array('upload_data' => $this->upload->data());
+//                             }
 
-//                            if ( ! $this->upload->do_upload())
-//                            {
-//                                    $error = array('error' => $this->upload->display_errors());
-////                                    echo '<pre>';
-////                                    print_r($error);
-////                                    exit;
-//                            }
-//                            else
-//                            {
-//                                    $data = array('upload_data' => $this->upload->data());
-//                                  
-//                            }
+                            if ( ! $this->upload->do_upload())
+                            {
+                                    $error = array('error' => $this->upload->display_errors());
+                                    
+                                    $this->session->set_flashdata('msg', $error['error']);
+                                    redirect('profile/edit_profile');
+                            }
+                            else
+                            {
+                                    $data = array('upload_data' => $this->upload->data());
+                                  
+                            }
                         }
                         
                     }

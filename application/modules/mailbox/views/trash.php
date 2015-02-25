@@ -5,6 +5,7 @@
     $this->mailbox->mailboxCss();
 
 ?>
+
 <div class="wrapper wrapper-content">
         <div class="row">
             <?php
@@ -26,6 +27,7 @@
         <div class="col-lg-9 animated fadeInRight">
             <div class="mail-box-header">
                     <?php
+                        if($email_info)
                         if(count($email_info) > 2){
                         $start_email = reset($email_info);
                         $end_email = end($email_info);

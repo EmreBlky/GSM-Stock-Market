@@ -54,9 +54,10 @@ $(document).ready(function(){
         
          $.ajax({
                 type: "POST",
-                url: "mailbox/composeAjaxMail/"+ mid +"/"+ sid +"/"+ subject +"/"+body +"",
+                url: "mailbox/composeAjaxMail/"+ mid +"/"+ sid +"/"+ subject +"/"+ body +"",
                 dataType: "html",
                 success:function(data){
+                  $('#body').val('');  
                   $('#profile_message').modal('hide');
                   toastr.success('Your message has been sent.', 'Message Alert');
                 },

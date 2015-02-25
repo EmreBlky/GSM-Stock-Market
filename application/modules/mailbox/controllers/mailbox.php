@@ -118,18 +118,17 @@ class Mailbox extends MX_Controller
                 $config['total_rows'] = $mem_count;
                 $config['per_page'] = 20;
                 $config["uri_segment"] = 5;
-                $config['use_page_numbers'] = TRUE;
-                
+                $config['use_page_numbers'] = TRUE;                
                 $config['full_tag_open'] = '<div class="btn-group pull-right">';
                 $config['full_tag_close'] = '</div>';
-                $config['next_tag_open'] = '<div class="btn btn-white">';
-                $config['next_tag_close'] = '</div>';
-                $config['prev_tag_open'] = ' <div class="btn btn-white">';
-                $config['prev_tag_close'] = '</div>';
-                $config['cur_tag_open'] = '<div class="btn btn-white  active">';
-                $config['cur_tag_close'] = '</div>';
-                $config['num_tag_open'] = '<div class="btn btn-white">';                
-                $config['num_tag_close'] = '</div>';
+                $config['next_tag_open'] = '<span class="btn gsm_pag btn-white">';
+                $config['next_tag_close'] = '</span>';
+                $config['prev_tag_open'] = ' <span class="btn gsm_pag btn-white">';
+                $config['prev_tag_close'] = '</span>';
+                $config['cur_tag_open'] = '<span class="btn gsm_pag_active btn-white active">';
+                $config['cur_tag_close'] = '</span>';
+                $config['num_tag_open'] = '<span class="btn gsm_pag btn-white">';                
+                $config['num_tag_close'] = '</span>';
                 $config['prev_link'] = '<i class="fa fa-chevron-left"></i>';
                 $config['next_link'] = '<i class="fa fa-chevron-right"></i>';
                 
@@ -185,18 +184,17 @@ class Mailbox extends MX_Controller
                 $config['total_rows'] = $mark_count;
                 $config['per_page'] = 20;
                 $config["uri_segment"] = 5;
-                $config['use_page_numbers'] = TRUE;
-                
+                $config['use_page_numbers'] = TRUE;                
                 $config['full_tag_open'] = '<div class="btn-group pull-right">';
                 $config['full_tag_close'] = '</div>';
-                $config['next_tag_open'] = '<div class="btn btn-white">';
-                $config['next_tag_close'] = '</div>';
-                $config['prev_tag_open'] = ' <div class="btn btn-white">';
-                $config['prev_tag_close'] = '</div>';
-                $config['cur_tag_open'] = '<div class="btn btn-white  active">';
-                $config['cur_tag_close'] = '</div>';
-                $config['num_tag_open'] = '<div class="btn btn-white">';                
-                $config['num_tag_close'] = '</div>';
+                $config['next_tag_open'] = '<span class="btn gsm_pag btn-white">';
+                $config['next_tag_close'] = '</span>';
+                $config['prev_tag_open'] = ' <span class="btn gsm_pag btn-white">';
+                $config['prev_tag_close'] = '</span>';
+                $config['cur_tag_open'] = '<span class="btn gsm_pag_active btn-white active">';
+                $config['cur_tag_close'] = '</span>';
+                $config['num_tag_open'] = '<span class="btn gsm_pag btn-white">';                
+                $config['num_tag_close'] = '</span>';
                 $config['prev_link'] = '<i class="fa fa-chevron-left"></i>';
                 $config['next_link'] = '<i class="fa fa-chevron-right"></i>';
 
@@ -256,18 +254,17 @@ class Mailbox extends MX_Controller
                 $config['total_rows'] = $s_count;
                 $config['per_page'] = 20;
                 $config["uri_segment"] = 5;
-                $config['use_page_numbers'] = TRUE;
-                
+                $config['use_page_numbers'] = TRUE;                
                 $config['full_tag_open'] = '<div class="btn-group pull-right">';
                 $config['full_tag_close'] = '</div>';
-                $config['next_tag_open'] = '<div class="btn btn-white">';
-                $config['next_tag_close'] = '</div>';
-                $config['prev_tag_open'] = ' <div class="btn btn-white">';
-                $config['prev_tag_close'] = '</div>';
-                $config['cur_tag_open'] = '<div class="btn btn-white  active">';
-                $config['cur_tag_close'] = '</div>';
-                $config['num_tag_open'] = '<div class="btn btn-white">';                
-                $config['num_tag_close'] = '</div>';
+                $config['next_tag_open'] = '<span class="btn gsm_pag btn-white">';
+                $config['next_tag_close'] = '</span>';
+                $config['prev_tag_open'] = ' <span class="btn gsm_pag btn-white">';
+                $config['prev_tag_close'] = '</span>';
+                $config['cur_tag_open'] = '<span class="btn gsm_pag_active btn-white active">';
+                $config['cur_tag_close'] = '</span>';
+                $config['num_tag_open'] = '<span class="btn gsm_pag btn-white">';                
+                $config['num_tag_close'] = '</span>';
                 $config['prev_link'] = '<i class="fa fa-chevron-left"></i>';
                 $config['next_link'] = '<i class="fa fa-chevron-right"></i>';
 
@@ -313,18 +310,17 @@ class Mailbox extends MX_Controller
                 $config['total_rows'] = $count;
                 $config['per_page'] = 20;
                 $config["uri_segment"] = 5;
-                $config['use_page_numbers'] = TRUE;
-                
+                $config['use_page_numbers'] = TRUE;                
                 $config['full_tag_open'] = '<div class="btn-group pull-right">';
                 $config['full_tag_close'] = '</div>';
-                $config['next_tag_open'] = '<div class="btn btn-white">';
-                $config['next_tag_close'] = '</div>';
-                $config['prev_tag_open'] = ' <div class="btn btn-white">';
-                $config['prev_tag_close'] = '</div>';
-                $config['cur_tag_open'] = '<div class="btn btn-white  active">';
-                $config['cur_tag_close'] = '</div>';
-                $config['num_tag_open'] = '<div class="btn btn-white">';                
-                $config['num_tag_close'] = '</div>';
+                $config['next_tag_open'] = '<span class="btn gsm_pag btn-white">';
+                $config['next_tag_close'] = '</span>';
+                $config['prev_tag_open'] = ' <span class="btn gsm_pag btn-white">';
+                $config['prev_tag_close'] = '</span>';
+                $config['cur_tag_open'] = '<span class="btn gsm_pag_active btn-white active">';
+                $config['cur_tag_close'] = '</span>';
+                $config['num_tag_open'] = '<span class="btn gsm_pag btn-white">';                
+                $config['num_tag_close'] = '</span>';
                 $config['prev_link'] = '<i class="fa fa-chevron-left"></i>';
                 $config['next_link'] = '<i class="fa fa-chevron-right"></i>';
 
@@ -450,14 +446,14 @@ class Mailbox extends MX_Controller
             $config['use_page_numbers'] = TRUE;            
             $config['full_tag_open'] = '<div class="btn-group pull-right">';
             $config['full_tag_close'] = '</div>';
-            $config['next_tag_open'] = '<div class="btn btn-white">';
-            $config['next_tag_close'] = '</div>';
-            $config['prev_tag_open'] = ' <div class="btn btn-white">';
-            $config['prev_tag_close'] = '</div>';
-            $config['cur_tag_open'] = '<div class="btn btn-white  active">';
-            $config['cur_tag_close'] = '</div>';
-            $config['num_tag_open'] = '<div class="btn btn-white">';                
-            $config['num_tag_close'] = '</div>';
+            $config['next_tag_open'] = '<span class="btn gsm_pag btn-white">';
+            $config['next_tag_close'] = '</span>';
+            $config['prev_tag_open'] = ' <span class="btn gsm_pag btn-white">';
+            $config['prev_tag_close'] = '</span>';
+            $config['cur_tag_open'] = '<span class="btn gsm_pag_active btn-white active">';
+            $config['cur_tag_close'] = '</span>';
+            $config['num_tag_open'] = '<span class="btn gsm_pag btn-white">';                
+            $config['num_tag_close'] = '</span>';
             $config['prev_link'] = '<i class="fa fa-chevron-left"></i>';
             $config['next_link'] = '<i class="fa fa-chevron-right"></i>';
 
@@ -552,14 +548,14 @@ class Mailbox extends MX_Controller
             $config['use_page_numbers'] = TRUE;            
             $config['full_tag_open'] = '<div class="btn-group pull-right">';
             $config['full_tag_close'] = '</div>';
-            $config['next_tag_open'] = '<div class="btn btn-white">';
-            $config['next_tag_close'] = '</div>';
-            $config['prev_tag_open'] = ' <div class="btn btn-white">';
-            $config['prev_tag_close'] = '</div>';
-            $config['cur_tag_open'] = '<div class="btn btn-white  active">';
-            $config['cur_tag_close'] = '</div>';
-            $config['num_tag_open'] = '<div class="btn btn-white">';                
-            $config['num_tag_close'] = '</div>';
+            $config['next_tag_open'] = '<span class="btn gsm_pag btn-white">';
+            $config['next_tag_close'] = '</span>';
+            $config['prev_tag_open'] = ' <span class="btn gsm_pag btn-white">';
+            $config['prev_tag_close'] = '</span>';
+            $config['cur_tag_open'] = '<span class="btn gsm_pag_active btn-white active">';
+            $config['cur_tag_close'] = '</span>';
+            $config['num_tag_open'] = '<span class="btn gsm_pag btn-white">';                
+            $config['num_tag_close'] = '</span>';
             $config['prev_link'] = '<i class="fa fa-chevron-left"></i>';
             $config['next_link'] = '<i class="fa fa-chevron-right"></i>';
 
@@ -601,6 +597,8 @@ class Mailbox extends MX_Controller
     
     function draft($mid = NULL, $off = NULL)
     {
+//        echo $count = $this->mailbox_model->count_where_multiple('draft', 'yes',  'draft_belong', $this->session->userdata('members_id'));
+//                exit;
         if(isset($mid) && $mid != 'page'){
             
             $pid = $this->mailbox_model->get_where_multiple('id', $mid)->parent_id;
@@ -616,12 +614,17 @@ class Mailbox extends MX_Controller
             }
         
             if($pid > 0){
+                $pcount = $this->mailbox_model->count_where_multiple('draft', 'yes', 'parent_id', $pid, 'draft_belong', $this->session->userdata('members_id'));
+            }
+            else{
+                $pcount = '';
+            }
                 
-                $count = $this->mailbox_model->count_where_multiple('member_id',$this->session->userdata('members_id'), 'draft', 'yes', 'parent_id', $this->mailbox_model->get_where_multiple('id', $mid)->parent_id);
-            
+                $count = $this->mailbox_model->count_where_multiple('draft', 'yes', 'draft_belong', $this->session->userdata('members_id'));
+                
                 if($count > 0){            
-                    $data['inbox_draft_count_reply'] = $count;
-                    $data['inbox_draft_message_reply'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'member_id', $this->session->userdata('members_id'), 'draft', 'yes', 'parent_id', $this->mailbox_model->get_where_multiple('id', $mid)->parent_id, NULL, NULL, 20, $offset);
+                    $data['inbox_draft_count_reply'] = $pcount;
+                    $data['inbox_draft_message_reply'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'member_id', $this->session->userdata('members_id'), 'draft', 'yes', 'draft_belong', $this->session->userdata('members_id'), NULL, NULL, 20, $offset);
                     
                     $email_array = '';
                     $array = mysql_query("SELECT id FROM mailbox WHERE draft_belong = '".$this->session->userdata('members_id')."'");
@@ -637,14 +640,14 @@ class Mailbox extends MX_Controller
             $config['use_page_numbers'] = TRUE;            
             $config['full_tag_open'] = '<div class="btn-group pull-right">';
             $config['full_tag_close'] = '</div>';
-            $config['next_tag_open'] = '<div class="btn btn-white">';
-            $config['next_tag_close'] = '</div>';
-            $config['prev_tag_open'] = ' <div class="btn btn-white">';
-            $config['prev_tag_close'] = '</div>';
-            $config['cur_tag_open'] = '<div class="btn btn-white  active">';
-            $config['cur_tag_close'] = '</div>';
-            $config['num_tag_open'] = '<div class="btn btn-white">';                
-            $config['num_tag_close'] = '</div>';
+            $config['next_tag_open'] = '<span class="btn gsm_pag btn-white">';
+            $config['next_tag_close'] = '</span>';
+            $config['prev_tag_open'] = ' <span class="btn gsm_pag btn-white">';
+            $config['prev_tag_close'] = '</span>';
+            $config['cur_tag_open'] = '<span class="btn gsm_pag_active btn-white active">';
+            $config['cur_tag_close'] = '</span>';
+            $config['num_tag_open'] = '<span class="btn gsm_pag btn-white">';                
+            $config['num_tag_close'] = '</span>';
             $config['prev_link'] = '<i class="fa fa-chevron-left"></i>';
             $config['next_link'] = '<i class="fa fa-chevron-right"></i>';
 
@@ -655,13 +658,13 @@ class Mailbox extends MX_Controller
             }
             else{
                 $data['pagination'] = '';
+                
             }
                 }
-            }
+            //}
             else{
                         
-                $data['inbox_draft_count_reply'] = 0;
-            
+                $data['inbox_draft_count_reply'] = 0;                
             }
         
 
@@ -696,11 +699,12 @@ class Mailbox extends MX_Controller
     function draft_move($mid)
     {
         $data = array(
-                        'trash'     => 'no',
-                        'sent'      => 'no',
-                        'important' => 'no',
-                        'inbox'     => 'yes',
-                        'draft'     => 'yes'
+                        'trash'         => 'no',
+                        'sent'          => 'no',
+                        'important'     => 'no',
+                        'inbox'         => 'yes',
+                        'draft'         => 'yes',
+                        'draft_belong'  => $this->session->userdata('members_id')
                       );
         
         $this->mailbox_model->_update($mid, $data);
@@ -753,14 +757,14 @@ class Mailbox extends MX_Controller
             $config['use_page_numbers'] = TRUE;            
             $config['full_tag_open'] = '<div class="btn-group pull-right">';
             $config['full_tag_close'] = '</div>';
-            $config['next_tag_open'] = '<div class="btn btn-white">';
-            $config['next_tag_close'] = '</div>';
-            $config['prev_tag_open'] = ' <div class="btn btn-white">';
-            $config['prev_tag_close'] = '</div>';
-            $config['cur_tag_open'] = '<div class="btn btn-white  active">';
-            $config['cur_tag_close'] = '</div>';
-            $config['num_tag_open'] = '<div class="btn btn-white">';                
-            $config['num_tag_close'] = '</div>';
+            $config['next_tag_open'] = '<span class="btn gsm_pag btn-white">';
+            $config['next_tag_close'] = '</span>';
+            $config['prev_tag_open'] = ' <span class="btn gsm_pag btn-white">';
+            $config['prev_tag_close'] = '</span>';
+            $config['cur_tag_open'] = '<span class="btn gsm_pag_active btn-white active">';
+            $config['cur_tag_close'] = '</span>';
+            $config['num_tag_open'] = '<span class="btn gsm_pag btn-white">';                
+            $config['num_tag_close'] = '</span>';
             $config['prev_link'] = '<i class="fa fa-chevron-left"></i>';
             $config['next_link'] = '<i class="fa fa-chevron-right"></i>';
 
@@ -956,6 +960,13 @@ class Mailbox extends MX_Controller
                 
                 
                 $sid = $this->member_model->get_where_multiple('email', $this->input->post('email_address'))->id;
+                $paid = $this->input->post('parent_id');
+                if($paid > 0){
+                    $parent_id = $paid;
+                    
+                }else{
+                    $parent_id = '';
+                }
                 $mail_id = $this->input->post('mail_id');
                 
                 if($mail_id != ''){
@@ -983,10 +994,11 @@ class Mailbox extends MX_Controller
                                     'body'              => nl2br($this->input->post('body')),
                                     'inbox'             => 'yes',
                                     'draft'             => 'yes',
+                                    'draft_belong'      => $this->session->userdata('members_id'),
                                     'date'              => date('d-m-Y'),
                                     'time'              => date('H:i'),
                                     'sent_from'         => 'member',
-                                    'parent_id'         => $this->input->post('parent_id'),
+                                    'parent_id'         => $parent_id,
                                     'datetime'          => date('Y-m-d H:i:s')
                                   );
                     
@@ -1168,8 +1180,11 @@ class Mailbox extends MX_Controller
                 
                 $data = array(
                         'important'         => 'yes',
+                        'inbox'             => 'no', 
+                        'draft'             => 'no',
+                        'sent'              => 'no',
+                        'archive'           => 'no',
                         'mail_read'         => 'yes',
-                        'inbox'             => 'no',
                         'sent_from'         => 'moved_important',
                         'important_belong'  => $this->session->userdata('members_id'),
                         'archive_belong'    => '',
@@ -1188,8 +1203,11 @@ class Mailbox extends MX_Controller
                 
                 $data = array(
                         'archive'           => 'yes',
+                        'inbox'             => 'no', 
+                        'draft'             => 'no',
+                        'sent'              => 'no',
+                        'important'         => 'no',
                         'mail_read'         => 'yes',
-                        'inbox'             => 'no',
                         'sent_from'         => 'moved_archive',
                         'archive_belong'    => $this->session->userdata('members_id'),
                         'draft_belong'      => '',
@@ -1206,10 +1224,14 @@ class Mailbox extends MX_Controller
             
             foreach($_POST as $post_vale => $post_key){
                 
+                if(is_numeric($post_vale)){                
                 $data = array(
                         'trash'             => 'yes',
-                        'trash_belong'      => $this->session->userdata('members_id'),
-                        'inbox'             => 'no',                   
+                        'inbox'             => 'no', 
+                        'draft'             => 'no',
+                        'sent'              => 'no',
+                        'important'         => 'no',
+                        'archive'           => 'no',
                         'mail_read'         => 'yes',
                         'sent_from'         => 'moved_trash',
                         'trash_belong'      => $this->session->userdata('members_id'),
@@ -1220,6 +1242,7 @@ class Mailbox extends MX_Controller
                       );
         
                 $this->mailbox_model->_update($post_vale, $data);
+                }
             }
         }
         

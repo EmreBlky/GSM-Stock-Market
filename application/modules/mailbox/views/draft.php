@@ -1,7 +1,7 @@
 <?php
 
 //echo '<pre>';
-//print_r($inbox_draft_message);
+//print_r($email_info);
 //exit;
 
 ?>
@@ -33,6 +33,7 @@
         <div class="col-lg-9 animated fadeInRight">
             <div class="mail-box-header">
                     <?php
+                        if($email_info)
                         if(count($email_info) > 2){
                         $start_email = reset($email_info);
                         $end_email = end($email_info);
@@ -271,7 +272,7 @@
 
                     </tbody>
                 </table>
-                    <input type="hidden" name="parent_id" value=""/> 
+<!--                    <input type="hidden" name="parent_id" value=""/> -->
                     <input type="hidden" name="page_from" value="<?php echo $this->uri->segment(2);?>"/>
                 </div>
         <?php echo form_close(); ?>
