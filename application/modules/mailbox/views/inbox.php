@@ -173,7 +173,7 @@
 
                             <div class="mail-box-header" style="border-bottom: 1px solid #e6e6e6;">
                                 <div class="pull-right tooltip-demo">
-                                    <p><?php echo $reply->time;?> &amp; <?php echo $reply->date;?></p>
+                                    <p><?php echo $reply->time;?> at <?php echo $reply->date;?></p>
                                 </div>
                                 <h2><?php echo $reply->subject;?></h2>
                                 <p>
@@ -192,7 +192,7 @@
                         <div class="mail-box-header" style="border-bottom: 1px solid #e6e6e6">
                             <p><strong>Original Email</strong></p>
                                 <div class="pull-right tooltip-demo">
-                                    <p><?php echo $original_email->time;?> &amp; <?php echo $reply->date;?></p>
+                                    <p><?php echo $original_email->time;?> at <?php echo $reply->date;?></p>
                                 </div>
                                 <h2><?php echo $original_email->subject;?></h2>
                                 <p>From: <?php echo $this->member_model->get_where($original_email->member_id)->firstname.' '.$this->member_model->get_where($original_email->member_id)->lastname?> (<?php echo $this->company_model->get_where($this->member_model->get_where($original_email->member_id)->company_id)->company_name;?>)</p>
