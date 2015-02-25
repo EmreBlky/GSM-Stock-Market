@@ -840,7 +840,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                         </div>
                         <div class="col-md-6">
                             <?php
-                            if ($member->phone_number) {
+                            if ($company->phone_number) {
 
                                 $data = array(
                                     'name' => 'phone_number',
