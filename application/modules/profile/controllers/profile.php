@@ -255,6 +255,12 @@ class Profile extends MX_Controller {
                 'vat_tax' => $this->input->post('vat_tax'),
                 'company_number' => $this->input->post('company_number'),
             );
+            
+            echo '<pre>';
+            print_r($data);
+            exit;
+
+            
             $this->company_model->_update($this->member_model->get_where($this->session->userdata('members_id'))->company_id, $data);
 
             //echo '<pre>';
