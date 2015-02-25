@@ -81,11 +81,11 @@ class Marketplace extends MX_Controller
         $this->templates->page($data);
     }
     
-    function deals()
+    function open_orders()
     {
         $data['main'] = 'marketplace';        
-        $data['title'] = 'GSM - Market Place: Deals';        
-        $data['page'] = 'deals';
+        $data['title'] = 'GSM - Market Place: Open Orders';        
+        $data['page'] = 'open-orders';
         
         $this->load->module('templates');
         $this->templates->page($data);
@@ -96,6 +96,36 @@ class Marketplace extends MX_Controller
         $data['main'] = 'marketplace';        
         $data['title'] = 'GSM - Market Place: Listening';        
         $data['page'] = 'my-listings';
+        
+        $this->load->module('templates');
+        $this->templates->page($data);
+    }
+    
+    function sell_listing()
+    {
+        $data['main'] = 'marketplace';        
+        $data['title'] = 'GSM - Market Place: Sell Listening';        
+        $data['page'] = 'sell-listing';
+        
+        $this->load->module('templates');
+        $this->templates->page($data);
+    }
+    
+    function saved_listing()
+    {
+        $data['main'] = 'marketplace';        
+        $data['title'] = 'GSM - Market Place: Saved Listening';        
+        $data['page'] = 'saved-listing';
+        
+        $this->load->module('templates');
+        $this->templates->page($data);
+    }
+    
+    function buy_listing()
+    {
+        $data['main'] = 'marketplace';        
+        $data['title'] = 'GSM - Market Place: Buy Listening';        
+        $data['page'] = 'buy-listing';
         
         $this->load->module('templates');
         $this->templates->page($data);
