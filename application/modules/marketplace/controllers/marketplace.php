@@ -94,7 +94,7 @@ class Marketplace extends MX_Controller
     function listing()
     {
         $data['main'] = 'marketplace';        
-        $data['title'] = 'GSM - Market Place: Listening';        
+        $data['title'] = 'GSM - Market Place: Listing';        
         $data['page'] = 'my-listings';
         
         $this->load->module('templates');
@@ -104,7 +104,7 @@ class Marketplace extends MX_Controller
     function sell_listing()
     {
         $data['main'] = 'marketplace';        
-        $data['title'] = 'GSM - Market Place: Sell Listening';        
+        $data['title'] = 'GSM - Market Place: Sell Listing';        
         $data['page'] = 'sell-listing';
         
         $this->load->module('templates');
@@ -114,7 +114,7 @@ class Marketplace extends MX_Controller
     function saved_listing()
     {
         $data['main'] = 'marketplace';        
-        $data['title'] = 'GSM - Market Place: Saved Listening';        
+        $data['title'] = 'GSM - Market Place: Saved Listing';        
         $data['page'] = 'saved-listing';
         
         $this->load->module('templates');
@@ -124,7 +124,7 @@ class Marketplace extends MX_Controller
     function buy_listing()
     {
         $data['main'] = 'marketplace';        
-        $data['title'] = 'GSM - Market Place: Buy Listening';        
+        $data['title'] = 'GSM - Market Place: Buy Listing';        
         $data['page'] = 'buy-listing';
         
         $this->load->module('templates');
