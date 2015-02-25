@@ -166,7 +166,7 @@
                 </div>
             </div>
             
-            <div class="col-lg-9 animated fadeInRight">
+<!--            <div class="col-lg-9 animated fadeInRight">-->
                         
                             
                     <?php
@@ -212,7 +212,7 @@
                     ?>
                             
                         
-                    </div>
+<!--                    </div>-->
             
             <?php } else { ?>
             <div class="col-lg-9 animated fadeInRight">
