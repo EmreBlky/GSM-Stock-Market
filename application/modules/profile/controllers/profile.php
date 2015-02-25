@@ -150,10 +150,10 @@ class Profile extends MX_Controller
     function profileEdit()
     {
         
-        echo '<pre>';
-        print_r($_POST);
-        print_r($_FILES);
-        exit;
+//        echo '<pre>';
+//        print_r($_POST);
+//        print_r($_FILES);
+//        exit;
         $bsectors4 = '';
         $bsectors5 = '';
         
