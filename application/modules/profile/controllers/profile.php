@@ -78,8 +78,8 @@ class Profile extends MX_Controller {
         if ($viewed > 0) {
 
             $data['viewed_count'] = $viewed;
-            //echo $viewed;
-            //exit;
+//echo $viewed;
+//exit;
 
             $data['viewed'] = $this->viewed_model->_custom_query("SELECT DISTINCT viewer_id FROM gsmstock_secure.viewed WHERE viewed_id = '" . $this->session->userdata('members_id') . "' ORDER BY datetime DESC LIMIT " . $offset . ", 21");
             $config['base_url'] = $this->config->item('base_url') . 'profile/who_viewed/page';
@@ -107,7 +107,7 @@ class Profile extends MX_Controller {
             $data['viewed_count'] = 0;
         }
 //        
-        //$data['viewed'] = $this->viewed_model->get_where_multiples('viewed_id', $this->session->userdata('members_id'));
+//$data['viewed'] = $this->viewed_model->get_where_multiples('viewed_id', $this->session->userdata('members_id'));
 
         $this->load->module('templates');
         $this->templates->page($data);
@@ -129,10 +129,7 @@ class Profile extends MX_Controller {
         $data['member'] = $this->member_model->get_where($this->session->userdata('members_id'));
         $data['company'] = $this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id);
 
-//        echo "<pre>";
-//        print_r($data['company']);
-//        exit;
-//$data['country'] = $this->country_model->get_all();
+        //$data['country'] = $this->country_model->get_all();
         $data['country'] = $this->country_model->_custom_query("SELECT * FROM country ORDER BY country ASC");
 
 
@@ -145,11 +142,6 @@ class Profile extends MX_Controller {
     }
 
     function profileEdit() {
-
-//        echo '<pre>';
-//        print_r($_POST);
-//        print_r($_FILES);
-//        exit;
 
         $bsectors4 = '';
         $bsectors5 = '';
@@ -173,8 +165,6 @@ class Profile extends MX_Controller {
 
         $bsectorsArray = array_values($bsectorsArray);
 
-
-
         if (isset($bsectorsArray[0])) {
             $bsectors4 = $bsectorsArray[0];
         }
@@ -182,6 +172,9 @@ class Profile extends MX_Controller {
         if (isset($bsectorsArray[1])) {
             $bsectors5 = ', ' . $bsectorsArray[1];
         }
+        /* Faisal Code End Here 2-25-2015
+         * 
+         */
 
 //        if (isset($_POST['bsectors'][3])) {
 //            $bsectors4 = $_POST['bsectors'][3];
@@ -304,3 +297,4 @@ class Profile extends MX_Controller {
     }
 
 }
+
