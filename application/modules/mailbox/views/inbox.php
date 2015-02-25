@@ -162,14 +162,8 @@
                         <a href="mailbox/trash_move/<?php echo $this->uri->segment(4);?>" title="" data-placement="top" data-toggle="tooltip" data-original-title="Trash" class="btn btn-sm btn-white"><i class="fa fa-trash-o"></i> Remove</a>
                 </div>
                 <div class="clearfix"></div>
-                    
-                </div>
-            </div>
-            
-            <div class="col-lg-9 animated fadeInRight">
-                        
-                            
-                    <?php
+                
+                <?php
                     $message_id = $this->uri->segment(4);
                     if($i_reply_count > 0){
 
@@ -177,7 +171,7 @@
                             if($reply->id < $message_id){
                     ?>
 
-                            <div class="mail-box-header" style="border-bottom: 1px solid #e6e6e6">
+                            <div class="mail-box-header" style="border-bottom: 1px solid #e6e6e6;">
                                 <div class="pull-right tooltip-demo">
                                     <p><?php echo $reply->time;?> &amp; <?php echo $reply->date;?></p>
                                 </div>
@@ -190,7 +184,7 @@
                             <div class="mail-box" style="padding:10px;">
                                 <?php echo $reply->body;?>
                             </div>
-
+                            
                     <?php 
                             }
                         }
@@ -206,13 +200,17 @@
                             <div class="mail-box" style="padding:10px;">
                                 <?php echo $original_email->body;?>
                             </div>
+                            
                     <?php
                     }
 
                     ?>
-                            
-                        
-                    </div>
+                  
+                    
+                </div>
+            </div>
+            
+            
             
             <?php } else { ?>
             <div class="col-lg-9 animated fadeInRight">
