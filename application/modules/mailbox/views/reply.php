@@ -148,18 +148,12 @@
                     <div class="clearfix"></div>
                     
                 </div>
-            </div>
-            <?php echo form_close()?>
-        </div>
-             
-        </div>
-<div class="wrapper wrapper-content">
-        <div class="row">
-            <div class="col-lg-3">
+<!--                <div class="col-lg-3">
                 
-            </div>
-            <div class="col-lg-9 animated fadeInRight">            
-            <?php
+                </div>-->
+                
+                
+                <?php
                 $message_id = $this->uri->segment(4);
                 if($reply_count > 0){
 
@@ -196,34 +190,13 @@
                     <div class="mail-box" style="padding:10px;">
                         <?php echo $original_email->body;?>
                     </div>
-               
-            <?php 
-//                $this->load->model('member/member_model', 'member_model');
-//                $this->load->model('mailbox/mailbox_model', 'mailbox_model');
-//                $reply_id = $this->uri->segment(3);
-//                $original_id = $this->uri->segment(4);
-//                if($reply_id > 0){ 
-                    
-            ?>
-                    
-<!--                    <div class="mail-box-header" style="border-bottom: 1px solid #e6e6e6">
-                        <div class="pull-right tooltip-demo">
-                            <p><?php echo $inbox_original->time;?> &amp; <?php echo $inbox_original->date;?></p>
-                        </div>
-                        <h2><?php echo $inbox_original->subject;?></h2>
-                        <p><?php echo $this->member_model->get_where($inbox_original->member_id)->firstname.' '.$this->member_model->get_where($inbox_original->member_id)->lastname?></p>
-                    </div>
-                    <div class="mail-box" style="padding:10px;">
-                        <?php echo $inbox_original->body;?>
-                    </div>-->
                 
-                    
-            <?php 
-            
-                //} 
-            ?>
-             
+                
+                
             </div>
+            <?php echo form_close()?>
         </div>
-</div>
+             
+        </div>
+
        
