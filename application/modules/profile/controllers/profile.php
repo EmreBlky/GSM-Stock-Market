@@ -129,9 +129,9 @@ class Profile extends MX_Controller {
         $data['member'] = $this->member_model->get_where($this->session->userdata('members_id'));
         $data['company'] = $this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id);
 
-        echo "<pre>";
-        print_r($data['company']);
-        echo "</pre>";
+//        echo "<pre>";
+//        print_r($data['company']);
+//        echo "</pre>";
 
         //$data['country'] = $this->country_model->get_all();
         $data['country'] = $this->country_model->_custom_query("SELECT * FROM country ORDER BY country ASC");
