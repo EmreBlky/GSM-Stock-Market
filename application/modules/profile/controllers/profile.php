@@ -129,6 +129,10 @@ class Profile extends MX_Controller {
         $data['member'] = $this->member_model->get_where($this->session->userdata('members_id'));
         $data['company'] = $this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id);
 
+        echo "<pre>";
+        print_r($data['company']);
+        exit;
+        
         //$data['country'] = $this->country_model->get_all();
         $data['country'] = $this->country_model->_custom_query("SELECT * FROM country ORDER BY country ASC");
 
@@ -182,11 +186,6 @@ class Profile extends MX_Controller {
 //        if (isset($_POST['bsectors'][4])) {
 //            $bsectors5 = ', ' . $_POST['bsectors'][4];
 //        }
-
-
-
-
-
 
 
         $this->load->library('form_validation');
@@ -255,11 +254,6 @@ class Profile extends MX_Controller {
                 'vat_tax' => $this->input->post('vat_tax'),
                 'company_number' => $this->input->post('company_number'),
             );
-            
-            echo '<pre>';
-            print_r($data);
-            exit;
-
             
             $this->company_model->_update($this->member_model->get_where($this->session->userdata('members_id'))->company_id, $data);
 
