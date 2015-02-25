@@ -162,7 +162,7 @@
                         <a href="mailbox/trash_move/<?php echo $this->uri->segment(4);?>" title="" data-placement="top" data-toggle="tooltip" data-original-title="Trash" class="btn btn-sm btn-white"><i class="fa fa-trash-o"></i> Remove</a>
                 </div>
                 <div class="clearfix"></div>
-                
+                </div>
                 <?php
                     $message_id = $this->uri->segment(4);
                     if($i_reply_count > 0){
