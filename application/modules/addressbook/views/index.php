@@ -18,6 +18,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
         //alert(sid);
         //var mid     = $('#sent_by').val();
         //var sid     = $("#sent_to").val();
+        $("#submit_message").hide();
         var subject = $("#subject").val();
         var body    = $("#body_"+sid+"").val().replace(/(\r\n|\n|\r)/gm, '%0D%0A');
         
@@ -26,13 +27,15 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                 url: "mailbox/composeAjaxMail/"+ mid +"/"+ sid +"/"+ subject +"/"+body +"",
                 dataType: "html",
                 success:function(data){
+                    
                   $("#body_"+sid+"").val('');   
                   $('#profile_message_'+sid+'').modal('hide');
+                  toastr.success('Your message has been sent.', 'Message Alert');
+                  $("#submit_message").show('slow');
                 },
             });    
     }
-
-
+    
 </script>
 <script type="text/javascript">    
             

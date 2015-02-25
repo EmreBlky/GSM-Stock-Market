@@ -47,6 +47,7 @@ $(document).ready(function(){
 
     $("#submit_message").click(function(){
         
+        $("#submit_message").hide();
         var mid     = $('#sent_by').val();
         var sid     = $("#sent_to").val();
         var subject = $("#subject").val().replace(/(\r\n|\n|\r)/gm, '%0D%0A');
@@ -58,8 +59,9 @@ $(document).ready(function(){
                 dataType: "html",
                 success:function(data){
                   $('#body').val('');  
-                  $('#profile_message').modal('hide');
+                  $('#profile_message').modal('hide');                  
                   toastr.success('Your message has been sent.', 'Message Alert');
+                  $("#submit_message").show('slow');
                 },
             });    
     });

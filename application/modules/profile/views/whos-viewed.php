@@ -14,6 +14,7 @@
         //alert(sid);
         //var mid     = $('#sent_by').val();
         //var sid     = $("#sent_to").val();
+        $("#submit_message").hide();
         var subject = $("#subject_"+sid+"").val();
         var body    = $("#body_"+sid+"").val().replace(/(\r\n|\n|\r)/gm, '%0D%0A');
         
@@ -25,6 +26,8 @@
                 success:function(data){
                     $("#body_"+sid+"").val('');
                   $('#profile_message_'+sid+'').modal('hide');
+                  toastr.success('Your message has been sent.', 'Message Alert');
+                  $("#submit_message").show('slow');
                 },
             });
             
