@@ -131,8 +131,8 @@ class Profile extends MX_Controller {
 
         echo "<pre>";
         print_r($data['company']);
-        exit;
-        
+        echo "</pre>";
+
         //$data['country'] = $this->country_model->get_all();
         $data['country'] = $this->country_model->_custom_query("SELECT * FROM country ORDER BY country ASC");
 
@@ -254,7 +254,7 @@ class Profile extends MX_Controller {
                 'vat_tax' => $this->input->post('vat_tax'),
                 'company_number' => $this->input->post('company_number'),
             );
-            
+
             $this->company_model->_update($this->member_model->get_where($this->session->userdata('members_id'))->company_id, $data);
 
             //echo '<pre>';
