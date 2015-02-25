@@ -15,10 +15,10 @@
 |
 */
 //DEVLOPMENT SITE:
-//$config['base_url']	= 'http://localhost/projects/codeigniter/gsm/gsm-secure/';
+//$config['base_url']	= 'http://localhost/gsm/gsm-secure/';
 
 //SERVER SITE:
-//$config['base_url']	= 'http://secure-dev.gsmstockmarket.com/';
+$config['base_url']	= 'http://secure-dev.gsmstockmarket.com/';
 
 //LIVE SITE:
 //$config['base_url']	= '';
