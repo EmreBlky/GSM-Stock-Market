@@ -72,7 +72,7 @@ class Mailbox extends MX_Controller
 //            else{
 //                $offset = 0;
 //            }
-//        
+        $data['base'] = $this->config->item('base_url');  
         $data['main'] = 'mailbox';
         $data['title'] = 'GSM - Inbox';        
         $data['page'] = 'inbox';        
