@@ -86,7 +86,10 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 00807289bee9b709f4acac4ffed5b0425b3d6b68
 /* End of file database.php */
 /* Location: ./application/config/database.php */
