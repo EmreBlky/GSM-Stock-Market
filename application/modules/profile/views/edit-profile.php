@@ -219,16 +219,24 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
         if (selectedValue == primary)
         {
             $('#bprimary').empty().append(str);
+            $('#bsecondary option[value="' + selectedValue + '"]').remove();
+            $('#btertiary option[value="' + selectedValue + '"]').remove();
+
         }
 
         if (selectedValue == secondary)
         {
             $('#bsecondary').empty().append(str);
+            $('#bprimary option[value="' + selectedValue + '"]').remove();
+            $('#btertiary option[value="' + selectedValue + '"]').remove();
+
         }
 
         if (selectedValue == tertiary)
         {
             $('#btertiary').empty().append(str);
+            $('#bprimary option[value="' + selectedValue + '"]').remove();
+            $('#bsecondary option[value="' + selectedValue + '"]').remove();
         }
 
 //        var str = "<option value = ''>[SELECT ONE]</option>";
