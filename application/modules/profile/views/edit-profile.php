@@ -311,6 +311,8 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
 
     function updateSelects2(value) {
 
+        return false;
+
         var no_value = value;	//	Value to be excluded from other selects
 
         var count = 1;
