@@ -249,6 +249,9 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
         ids.forEach(function(entry) {
             var value = $('#' + entry).attr('value');
 
+
+            var entry = $('#' + entry).attr('value');
+
             alert(value + '==' + entry);
 
             if (entry == primary) {
