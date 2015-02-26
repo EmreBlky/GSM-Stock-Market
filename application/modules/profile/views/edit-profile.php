@@ -248,8 +248,6 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
 
         ids.forEach(function(entry) {
             var value = $('#' + entry).attr('value');
-
-
             var entry = $('#' + entry).attr('value');
 
             alert(value + '==' + entry);
@@ -261,13 +259,7 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
                 } else {
                     var str1 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
                 }
-                /*
-                 if(total_checked == 1) {
-                 var str1 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
-                 } else {
-                 var str1 = "<option value = '" + entry + "'>" + value + "</option>";
-                 }
-                 */
+
             } else {
                 var str1 = "<option value = '" + entry + "'>" + value + "</option>";
             }
@@ -277,24 +269,11 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
                 $('#bprimary').append(str1);
             }
 
-            if (entry == secondary) {
-                var str2 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
-            } else {
-                var str2 = "<option value = '" + entry + "'>" + value + "</option>";
-            }
 
-            if (entry != primary && entry != tertiary) {
-                $('#bsecondary').append(str2);
-            }
 
-            if (entry == tertiary) {
-                var str3 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
-            } else {
-                var str3 = "<option value = '" + entry + "'>" + value + "</option>";
-            }
-            if (entry != primary && entry != secondary) {
-                $('#btertiary').append(str3);
-            }
+
+
+
         });
     }
 
