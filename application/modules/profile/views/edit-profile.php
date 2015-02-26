@@ -185,9 +185,6 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
 
     function updateChecks(div_id) {
 
-
-        alert(div_id);
-
         var primary = $('#bprimary').val();
         var secondary = $('#bsecondary').val();
         var tertiary = $('#btertiary').val();
@@ -214,10 +211,16 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
             }
             count++;
         }
-        var str = "<option value = ''>[SELECT ONE]</option>";
-        $('#bprimary').empty().append(str);
-        $('#bsecondary').empty().append(str);
-        $('#btertiary').empty().append(str);
+
+
+
+        alert($('#' + div_id).val());
+//        var str = "<option value = ''>[SELECT ONE]</option>";
+//        $('#bprimary').empty().append(str);
+//        $('#bsecondary').empty().append(str);
+//        $('#btertiary').empty().append(str);
+
+
 
         ids.forEach(function(entry) {
             var value = $('#' + entry).attr('value');
