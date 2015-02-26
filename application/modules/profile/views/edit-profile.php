@@ -242,19 +242,19 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
         ids.forEach(function(entry) {
             var value = $('#' + entry).attr('value');
             var entry = $('#' + entry).attr('value');
+
+            console.log(ids);
+
             if (entry == primary) {
                 var str1 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
             } else {
                 var str1 = "<option value = '" + entry + "'>" + value + "</option>";
             }
+
+
             if (entry != secondary && entry != tertiary) {
                 $('#bprimary').append(str1);
             }
-
-
-
-
-
 
         });
     }
