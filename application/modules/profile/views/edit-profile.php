@@ -3,9 +3,9 @@
 //echo '<pre>';
 //print_r($country);
 //exit;
-echo "<pre>";
-print_r($company);
-echo "</pre>";
+//echo "<pre>";
+//print_r($company);
+//echo "</pre>";
 ?>	
 
 
