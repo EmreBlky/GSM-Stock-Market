@@ -278,6 +278,9 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
         $('#btertiary').empty().append(str);
 
         ids.forEach(function(entry) {
+
+            alert(entry);
+
             var value = $('#' + entry).attr('value');		// Get value of selected option box
             if (entry != no_value) {
                 if (entry == secondary) {
