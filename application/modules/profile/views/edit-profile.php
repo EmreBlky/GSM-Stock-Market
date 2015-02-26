@@ -155,9 +155,8 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
 
     function toggleChecks(counter) {
         // Function to disable or enable check boxes
-        
-        alert("I m in toglle check");
-        
+
+
         var count = 1;
         var ids = new Array();
         if (counter >= 5) {
@@ -185,6 +184,9 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
     }
 
     function updateChecks(div_id) {
+
+
+        alert("I m in update check");
 
         var primary = $('#bprimary').val();
         var secondary = $('#bsecondary').val();
@@ -428,7 +430,7 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
 
         $('.business_cycle').on('ifUnchecked', function(event) {		// If we just unchecked a checkbox
 
-         
+
             var orig_counter = getCheckedBoxesCount();		// get total checkedboxes count
             toggleChecks(orig_counter);	// disable or enable checkboxes if greater than 5
 
