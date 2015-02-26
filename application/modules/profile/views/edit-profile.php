@@ -228,6 +228,14 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
             $('#bsecondary option[value="' + selectedValue + '"]').remove();
         }
 
+
+        $('#bprimary option[value="' + selectedValue + '"]').remove();
+        $('#bsecondary option[value="' + selectedValue + '"]').remove();
+        $('#btertiary option[value="' + selectedValue + '"]').remove();
+
+
+
+
         ids.forEach(function(entry) {
             var value = $('#' + entry).attr('value');
             var entry = $('#' + entry).attr('value');
