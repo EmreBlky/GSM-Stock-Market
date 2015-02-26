@@ -12,12 +12,102 @@
         <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
             <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-            <form role="search" class="navbar-form-custom" method="post" action="search_results.html">
-                <div class="form-group">
-                    <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
-                </div>
-            </form>
         </div>
+            <style>
+			div#world-clock {float:left;margin-top:20px}
+			
+#world-clock DL {
+	padding: 0px;
+	margin: 0px;
+	list-style: none;
+	float: left;
+	clear: none;
+	font-size:0.9em
+}
+
+#world-clock DT {
+	margin-left:1em;
+	border-left:#CCC 1px solid;
+	padding:0 0.5em 0 1em;
+	display:inline;
+}
+
+#world-clock DT:first-child {
+	border:none
+}
+
+#world-clock DD {
+	display:inline
+}
+
+@media (max-width: 1675px) {
+	div#world-clock dt.clock-fr, div#world-clock dd#timeParis
+		 {display:none}
+}
+@media (max-width: 1550px) {
+	div#world-clock dt.clock-nd, div#world-clock dd#timeDelhi
+		 {display:none}
+}
+
+@media (max-width: 1425px) {
+	div#world-clock dt.clock-syd, div#world-clock dd#timeSydney
+	 {display:none}
+}
+
+
+@media (max-width: 1325px) {
+	div#world-clock dt.clock-la, div#world-clock dd#timeLA {display:none}
+	div#world-clock dt.clock-ny {
+	border:none
+}
+}
+
+@media (max-width: 1175px) {
+	div#world-clock dt.clock-dub, div#world-clock dd#timeDubai
+	 {display:none}
+	div#world-clock dt.clock-ny {
+	border:none
+}
+}
+
+@media (max-width: 1075px) {
+	div#world-clock {display:none}
+}
+			</style>
+            
+            
+  	<div id="world-clock">
+			<dl>
+			<dt class="clock-la">Los Angeles</dt>
+			<dd id="timeLA"></dd>
+			<dt class="clock-ny">New York</dt>
+			<dd id="timeNY"></dd>
+			<dt class="clock-lon">London</dt>
+			<dd id="timeLondon"></dd>
+			<dt class="clock-fr">Paris</dt>
+			<dd id="timeParis"></dd>
+			<dt class="clock-dub">Dubai</dt>
+			<dd id="timeDubai"></dd>
+			<dt class="clock-nd">New Dehli</dt>
+			<dd id="timeDelhi"></dd>
+			<dt class="clock-hk">Hong-Kong</dt>
+			<dd id="timeHongKong"></dd>
+			<dt class="clock-syd">Sydney</dt>
+			<dd id="timeSydney"></dd>
+			</dl>
+		</div><!-- /world-clock -->
+		<script type="text/javascript">
+			new showLocalTime("timeLA", "server-php", -420, "short")
+			new showLocalTime("timeNY", "server-php", -240, "short")
+			new showLocalTime("timeLondon", "server-php", 0, "short")
+			new showLocalTime("timeParis", "server-php", 60, "short")
+			new showLocalTime("timeDubai", "server-php", 240, "short")
+			new showLocalTime("timeDelhi", "server-php", 60, "short")
+			new showLocalTime("timeHongKong", "server-php", 480, "short")
+			new showLocalTime("timeSydney", "server-php", 600, "short")
+		</script>
+        
+        
             <ul class="nav navbar-top-links navbar-right">
                 <li>
                     <span class="m-r-sm text-muted welcome-message">Welcome, <?php echo $this->session->userdata('firstname');?>.</span>
