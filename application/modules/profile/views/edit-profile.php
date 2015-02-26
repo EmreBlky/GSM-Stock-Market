@@ -286,7 +286,6 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
     }
 
     function updateSelects1(value) {
-        alert("herer");
 
         var no_value = value; //	Value to be excluded from other selects
 
@@ -311,6 +310,7 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
         ids.forEach(function(entry) {
 
             var value = $('#' + entry).attr('value'); // Get value of selected option box
+            var entry = $('#' + entry).attr('value');
             if (entry != no_value) {
                 if (entry == secondary) {
                     var str1 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
