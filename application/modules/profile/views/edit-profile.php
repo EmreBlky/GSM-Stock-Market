@@ -245,10 +245,7 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
             } else {
 
                 var str1 = "<option value = '" + entry + "'>" + value + "</option>";
-                if (primary != '')
-                {
 
-                }
 
             }
             if (entry != secondary && entry != tertiary) {
@@ -262,10 +259,7 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
                 var str2 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
             } else {
 
-                if (secondary != '')
-                {
-                    var str2 = "<option value = '" + entry + "'>" + value + "</option>";
-                }
+                var str2 = "<option value = '" + entry + "'>" + value + "</option>";
             }
             if (entry != primary && entry != tertiary) {
 
@@ -279,11 +273,9 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
                 var str3 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
             } else {
 
-                if (tertiary != '')
-                {
-                    var str3 = "<option value = '" + entry + "'>" + value + "</option>";
-                }
+                var str3 = "<option value = '" + entry + "'>" + value + "</option>";
             }
+            
             if (entry != primary && entry != secondary) {
 
                 $('#btertiary option[value="' + entry + '"]').remove();
