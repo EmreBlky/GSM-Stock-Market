@@ -264,6 +264,20 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
 
 
 
+            if (entry == tertiary) {
+                var str3 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
+            } else {
+
+                if (tertiary != '')
+                {
+                    var str3 = "<option value = '" + entry + "'>" + value + "</option>";
+                }
+            }
+            if (entry != primary && entry != secondary) {
+
+                $('#btertiary option[value="' + entry + '"]').remove();
+                $('#btertiary').append(str3);
+            }
 
         });
     }
