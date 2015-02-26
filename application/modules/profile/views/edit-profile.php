@@ -186,7 +186,7 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
     function updateChecks(div_id) {
 
 
-        alert("I m in update check");
+        alert(div_id);
 
         var primary = $('#bprimary').val();
         var secondary = $('#bsecondary').val();
