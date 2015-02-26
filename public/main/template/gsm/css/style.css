@@ -151,7 +151,8 @@ div#world-clock {float:left;margin-top:20px}
 	list-style: none;
 	float: left;
 	clear: none;
-	font-size:0.9em
+	font-size:0.9em;
+	color:#888
 }
 
 #world-clock DT {
