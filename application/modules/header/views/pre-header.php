@@ -33,7 +33,7 @@
         if (!document.getElementById || !document.getElementById(container)) return
         this.container=document.getElementById(container)
         this.displayversion=displayversion
-        var servertimestring=(servermode=="server-php")? '<? print date("F d, Y H:i", time())?>' : (servermode=="server-ssi")? '<!--#config timefmt="%B %d, %Y %H:%M:%S"-->				<!--#echo var="DATE_LOCAL" -->' : '<%= Now() %>'
+        var servertimestring=(servermode=="server-php")? '<? print date("F d, Y H:i:s", time())?>' : (servermode=="server-ssi")? '<!--#config timefmt="%B %d, %Y %H:%M:%S"-->				<!--#echo var="DATE_LOCAL" -->' : '<%= Now() %>'
         this.localtime=this.serverdate=new Date(servertimestring)
         this.localtime.setTime(this.serverdate.getTime()+offsetMinutes*300*1000) //add user offset to server time
         this.updateTime()
