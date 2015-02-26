@@ -279,8 +279,6 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
 
         ids.forEach(function(entry) {
 
-            alert(entry);
-
             var value = $('#' + entry).attr('value');		// Get value of selected option box
             if (entry != no_value) {
                 if (entry == secondary) {
@@ -427,6 +425,7 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
 
         $('.business_cycle').on('ifUnchecked', function(event) {		// If we just unchecked a checkbox
 
+            alert("Call Unchecked")
             var orig_counter = getCheckedBoxesCount();		// get total checkedboxes count
             toggleChecks(orig_counter);	// disable or enable checkboxes if greater than 5
 
