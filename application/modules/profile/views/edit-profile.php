@@ -17,7 +17,9 @@ $secondarybusiness = 'none';
 $tertiarybusiness = 'none';
 
 
-
+echo "<pre>";
+print_r($company);
+echo "</pre>";
 
 if (isset($company->business_sector_1) && !empty($company->business_sector_1))
     $primarybusiness = 'block';
@@ -380,7 +382,7 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
     }
 
     function updateSelects3(value) {
-     
+
         var no_value = value; //	Value to be excluded from other selects
 
         var count = 1;
