@@ -154,6 +154,10 @@ class Profile extends MX_Controller {
          * 
          */
 
+        echo "<pre>";
+        print_r($_POST);
+        exit;
+        
         $valueOne = isset($_POST['primary_sector']) && !empty($_POST['primary_sector']) ? $_POST['primary_sector'] : '';
         $valueTwo = isset($_POST['secondary_sector']) && !empty($_POST['secondary_sector']) ? $_POST['secondary_sector'] : '';
         $valueThree = isset($_POST['tertiary_sector']) && !empty($_POST['tertiary_sector']) ? $_POST['tertiary_sector'] : '';
