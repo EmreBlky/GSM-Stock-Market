@@ -244,10 +244,12 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
                 var str1 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
             } else {
 
+                var str1 = "<option value = '" + entry + "'>" + value + "</option>";
                 if (primary != '')
                 {
-                    var str1 = "<option value = '" + entry + "'>" + value + "</option>";
+
                 }
+
             }
             if (entry != secondary && entry != tertiary) {
                 $('#bprimary option[value="' + entry + '"]').remove();
