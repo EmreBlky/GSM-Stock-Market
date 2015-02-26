@@ -99,7 +99,7 @@
 		<script type="text/javascript">
 			new showLocalTime("timeLA", "server-php", -420, "short")
 			new showLocalTime("timeNY", "server-php", -240, "short")
-			new showLocalTime("timeLondon", "server-php", 60, "short")
+			new showLocalTime("timeLondon", "server-php", 0, "short")
 			new showLocalTime("timeParis", "server-php", 60, "short")
 			new showLocalTime("timeDubai", "server-php", 240, "short")
 			new showLocalTime("timeDelhi", "server-php", 60, "short")
