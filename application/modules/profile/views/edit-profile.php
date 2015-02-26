@@ -236,11 +236,7 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
                 var str1 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
             } else {
 
-                if (primary == '')
-                {
-                    alert("Primaray is empty");
-                }
-                else
+                if (primary != '')
                 {
                     var str1 = "<option value = '" + entry + "'>" + value + "</option>";
                 }
