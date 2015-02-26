@@ -213,8 +213,24 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
         }
 
 
+        var selectedValue = $('#' + div_id).val();
+        var str = "<option value = ''>[SELECT ONE]</option>";
 
-        alert($('#' + div_id).val());
+        if (selectedValue == primary)
+        {
+            $('#bprimary').empty().append(str);
+        }
+
+        if (selectedValue == secondary)
+        {
+            $('#bsecondary').empty().append(str);
+        }
+
+        if (selectedValue == tertiary)
+        {
+            $('#btertiary').empty().append(str);
+        }
+
 //        var str = "<option value = ''>[SELECT ONE]</option>";
 //        $('#bprimary').empty().append(str);
 //        $('#bsecondary').empty().append(str);
