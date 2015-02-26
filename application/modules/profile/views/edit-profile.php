@@ -241,15 +241,29 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
                     var str1 = "<option value = '" + entry + "'>" + value + "</option>";
                 }
             }
-
-
-
             if (entry != secondary && entry != tertiary) {
                 $('#bprimary').append(str1);
             }
 
-        }
-        );
+
+
+            if (entry == secondary) {
+                var str2 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
+            } else {
+
+                if (secondary != '')
+                {
+                    var str2 = "<option value = '" + entry + "'>" + value + "</option>";
+                }
+            }
+            if (entry != primary && entry != tertiary) {
+                $('#bsecondary').append(str2);
+            }
+
+
+
+
+        });
     }
 
     function updateSelects1(value) {
