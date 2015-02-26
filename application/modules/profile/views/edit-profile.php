@@ -213,39 +213,32 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
         }
 
 
-//        var selectedValue = $('#' + div_id).val();
-//        var str = "<option value = ''>[SELECT ONE]</option>";
-//
-//        if (selectedValue == primary)
-//        {
-//            $('#bprimary').empty().append(str);
-//            $('#bsecondary option[value="' + selectedValue + '"]').remove();
-//            $('#btertiary option[value="' + selectedValue + '"]').remove();
-//
-//        }
-//
-//        if (selectedValue == secondary)
-//        {
-//            $('#bsecondary').empty().append(str);
-//            $('#bprimary option[value="' + selectedValue + '"]').remove();
-//            $('#btertiary option[value="' + selectedValue + '"]').remove();
-//
-//        }
-//
-//        if (selectedValue == tertiary)
-//        {
-//            $('#btertiary').empty().append(str);
-//            $('#bprimary option[value="' + selectedValue + '"]').remove();
-//            $('#bsecondary option[value="' + selectedValue + '"]').remove();
-//        }
+        var selectedValue = $('#' + div_id).val();
+        var str = "<option value = ''>[SELECT ONE]</option>";
 
-//        var str = "<option value = ''>[SELECT ONE]</option>";
-//        $('#bprimary').empty().append(str);
-//        $('#bsecondary').empty().append(str);
-//        $('#btertiary').empty().append(str);
+        if (selectedValue == primary)
+        {
+            $('#bprimary').empty().append(str);
+            $('#bsecondary option[value="' + selectedValue + '"]').remove();
+            $('#btertiary option[value="' + selectedValue + '"]').remove();
 
+        }
 
-        console.log(ids);
+        if (selectedValue == secondary)
+        {
+            $('#bsecondary').empty().append(str);
+            $('#bprimary option[value="' + selectedValue + '"]').remove();
+            $('#btertiary option[value="' + selectedValue + '"]').remove();
+
+        }
+
+        if (selectedValue == tertiary)
+        {
+            $('#btertiary').empty().append(str);
+            $('#bprimary option[value="' + selectedValue + '"]').remove();
+            $('#bsecondary option[value="' + selectedValue + '"]').remove();
+        }
+
         ids.forEach(function(entry) {
             var value = $('#' + entry).attr('value');
             var entry = $('#' + entry).attr('value');
