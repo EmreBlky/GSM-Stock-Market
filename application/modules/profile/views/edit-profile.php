@@ -242,6 +242,7 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
                 }
             }
             if (entry != secondary && entry != tertiary) {
+                $('#bprimary option[value="' + entry + '"]').remove();
                 $('#bprimary').append(str1);
             }
 
