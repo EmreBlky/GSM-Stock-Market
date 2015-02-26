@@ -88,10 +88,10 @@
                     ?>
                     <div class="btn-group pull-right" style="padding-left: 10px;">
                         <?php if($start_email != $mess_id){ ?>
-                        <button onclick="window.location.href='mailbox/inbox/<?php echo $this->uri->segment(3);?>/<?php echo $previous;?>'" class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i> Previous </button>
+                        <button onclick="window.location.href='<?php echo $base;?>mailbox/inbox/<?php echo $this->uri->segment(3);?>/<?php echo $previous;?>'" class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i> Previous </button>
                         <?php }?>
                         <?php if($end_email != $mess_id){ ?>
-                        <button onclick="window.location.href='mailbox/inbox/<?php echo $this->uri->segment(3);?>/<?php echo $next;?>'" class="btn btn-white btn-sm">Next <i class="fa fa-arrow-right"></i></button>
+                        <button onclick="window.location.href='<?php echo $base;?>mailbox/inbox/<?php echo $this->uri->segment(3);?>/<?php echo $next;?>'" class="btn btn-white btn-sm">Next <i class="fa fa-arrow-right"></i></button>
                         <?php }?>
                     </div>
                     <?php }elseif(count($email_info) == 2){
@@ -101,10 +101,10 @@
                     ?>
                     <div class="btn-group pull-right" style="padding-left: 10px;">
                         <?php if($mess_id != $start_email){?>
-                        <button onclick="window.location.href='mailbox/inbox/<?php echo $this->uri->segment(3);?>/<?php echo $start_email;?>'" class="btn btn-white btn-sm"> Next <i class="fa fa-arrow-right"></i></button>
+                        <button onclick="window.location.href='<?php echo $base;?>mailbox/inbox/<?php echo $this->uri->segment(3);?>/<?php echo $start_email;?>'" class="btn btn-white btn-sm"> Next <i class="fa fa-arrow-right"></i></button>
                         <?php }?>
                         <?php if($mess_id != $end_email){?>
-                        <button onclick="window.location.href='mailbox/inbox/<?php echo $this->uri->segment(3);?>/<?php echo $end_email;?>'" class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i> Previous </button>
+                        <button onclick="window.location.href='<?php echo $base;?>mailbox/inbox/<?php echo $this->uri->segment(3);?>/<?php echo $end_email;?>'" class="btn btn-white btn-sm"><i class="fa fa-arrow-left"></i> Previous </button>
                         <?php }?>
                     </div>
                     <?php }?>
@@ -162,14 +162,8 @@
                         <a href="mailbox/trash_move/<?php echo $this->uri->segment(4);?>" title="" data-placement="top" data-toggle="tooltip" data-original-title="Trash" class="btn btn-sm btn-white"><i class="fa fa-trash-o"></i> Remove</a>
                 </div>
                 <div class="clearfix"></div>
-                    
                 </div>
-            </div>
-            
-            <div class="col-lg-9 animated fadeInRight">
-                        
-                            
-                    <?php
+                <?php
                     $message_id = $this->uri->segment(4);
                     if($i_reply_count > 0){
 
@@ -177,9 +171,9 @@
                             if($reply->id < $message_id){
                     ?>
 
-                            <div class="mail-box-header" style="border-bottom: 1px solid #e6e6e6">
+                            <div class="mail-box-header" style="border-bottom: 1px solid #e6e6e6;">
                                 <div class="pull-right tooltip-demo">
-                                    <p><?php echo $reply->time;?> &amp; <?php echo $reply->date;?></p>
+                                    <p><?php echo $reply->time;?> at <?php echo $reply->date;?></p>
                                 </div>
                                 <h2><?php echo $reply->subject;?></h2>
                                 <p>
@@ -190,7 +184,7 @@
                             <div class="mail-box" style="padding:10px;">
                                 <?php echo $reply->body;?>
                             </div>
-
+                            
                     <?php 
                             }
                         }
@@ -198,7 +192,7 @@
                         <div class="mail-box-header" style="border-bottom: 1px solid #e6e6e6">
                             <p><strong>Original Email</strong></p>
                                 <div class="pull-right tooltip-demo">
-                                    <p><?php echo $original_email->time;?> &amp; <?php echo $reply->date;?></p>
+                                    <p><?php echo $original_email->time;?> at <?php echo $reply->date;?></p>
                                 </div>
                                 <h2><?php echo $original_email->subject;?></h2>
                                 <p>From: <?php echo $this->member_model->get_where($original_email->member_id)->firstname.' '.$this->member_model->get_where($original_email->member_id)->lastname?> (<?php echo $this->company_model->get_where($this->member_model->get_where($original_email->member_id)->company_id)->company_name;?>)</p>
@@ -206,6 +200,7 @@
                             <div class="mail-box" style="padding:10px;">
                                 <?php echo $original_email->body;?>
                             </div>
+                            
                     <?php
                     }
 

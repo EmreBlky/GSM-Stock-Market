@@ -72,7 +72,7 @@ class Mailbox extends MX_Controller
 //            else{
 //                $offset = 0;
 //            }
-//        
+        $data['base'] = $this->config->item('base_url');  
         $data['main'] = 'mailbox';
         $data['title'] = 'GSM - Inbox';        
         $data['page'] = 'inbox';        
@@ -1024,21 +1024,45 @@ class Mailbox extends MX_Controller
         
     }
     
+    function postReplace($var)
+    {
+        $var = str_replace('?', 'QUEST1', $var);
+        
+        return $var;
+    }
+    
+    function characterReplace($var)
+    {
+        $var = str_replace('%20', ' ', $var);        
+        $var = str_replace('BREAK1', '<br/>', $var);
+        $var = str_replace('%22', '"', $var);
+        $var = str_replace('%3C', '<', $var);
+        $var = str_replace('%3E', '>', $var);
+        $var = str_replace('%C2%B1', '±', $var);
+        $var = str_replace('%7C', '|', $var);
+        $var = str_replace('%7B', '{', $var);
+        $var = str_replace('%7D', '}', $var);
+        $var = str_replace('%5E', '^', $var);
+        $var = str_replace('%C2%A3', '£', $var);
+        $var = str_replace('%60', '`', $var);
+        $var = str_replace('%C2%A7', '§', $var);
+        $var = str_replace('QUEST1', '?', $var);
+        $var = str_replace('SLASH1', '/', $var);
+        $var = str_replace('PERCENT1', '%', $var);
+        
+        return $var;
+    }
+    
     function composeAjaxMail($mid, $sid, $subject, $body)
     {
-        $subject = str_replace('%20', ' ', $subject);        
-        $subject = str_replace('%0D%0A', '<br/>', $subject);
         
-        $body = str_replace('%20', ' ', $body);
-        $body = str_replace('%0D%0A', '<br/>', $body);
-         
         $data = array(
                                     'member_id'         => $mid,
                                     'member_name'       => $this->member_model->get_where($mid)->firstname.' '.$this->member_model->get_where($mid)->lastname,
                                     'sent_member_id'    => $sid,
                                     'sent_member_name'  => $this->member_model->get_where($sid)->firstname.' '.$this->member_model->get_where($sid)->lastname,
-                                    'subject'           => $subject,
-                                    'body'              => nl2br($body),
+                                    'subject'           => $this->characterReplace($subject),
+                                    'body'              => nl2br($this->characterReplace($body)),
                                     'inbox'             => 'yes',
                                     'sent'              => 'yes',
                                     'sent_belong'       => $mid,

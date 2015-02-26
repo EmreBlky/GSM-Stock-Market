@@ -14,8 +14,12 @@
         //alert(sid);
         //var mid     = $('#sent_by').val();
         //var sid     = $("#sent_to").val();
+        $("#submit_message_"+sid+"").hide();
         var subject = $("#subject_"+sid+"").val();
-        var body    = $("#body_"+sid+"").val().replace(/(\r\n|\n|\r)/gm, '%0D%0A');
+        var body    = $("#body_"+sid+"").val().replace(/(\r\n|\n|\r)/gm, 'BREAK1');
+        var body    = body.replace(/\//g, 'SLASH1');
+        var body    = body.replace(/\?/g, 'QUEST1');
+        var body    = body.replace(/\%/g, 'PERCENT1');
         
          $.ajax({
                 type: "POST",
@@ -25,6 +29,8 @@
                 success:function(data){
                     $("#body_"+sid+"").val('');
                   $('#profile_message_'+sid+'').modal('hide');
+                  toastr.success('Your message has been sent.', 'Message Alert');
+                  $("#submit_message_"+sid+"").show('slow');
                 },
             });
             
@@ -156,7 +162,7 @@
                         <div class="modal-footer">
                             <input type="hidden" name="submit" value="Send Message"/>
                             <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                            <button onclick="sendMessage(<?php echo $this->session->userdata('members_id');?>, <?php echo $view->viewer_id;?>);" type="button" id="submit_message" class="btn btn-primary">Send Message</button>
+                            <button onclick="sendMessage(<?php echo $this->session->userdata('members_id');?>, <?php echo $view->viewer_id;?>);" type="button" id="submit_message_<?php echo $view->viewer_id;?>" class="btn btn-primary">Send Message</button>
             <!--                <input type="submit" id="submit_message" class="btn btn-primary" name="submit" value="Send Message">-->
                         </div>
                     </div>

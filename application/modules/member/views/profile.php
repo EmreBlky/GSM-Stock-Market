@@ -9,7 +9,8 @@
     
             function contactAdd()
             {
-                 //alert('ADD');   
+                 //alert('ADD');
+                 
                 var cust_added     = $('#cust_added').val();
                 var cust_type     = $('#cust_type').val();
                 

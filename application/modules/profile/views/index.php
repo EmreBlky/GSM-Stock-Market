@@ -5,8 +5,8 @@
 //exit;
 $this->load->model('membership/membership_model', 'membership_model');
 ?>	
-
-<div class="row wrapper border-bottom white-bg page-heading">
+            
+            <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
                     <h2>View Profile</h2>
                     <ol class="breadcrumb">
@@ -20,16 +20,15 @@ $this->load->model('membership/membership_model', 'membership_model');
                             <strong>View Profile</strong>
                         </li>
                     </ol>
-                </div>
-                <div class="col-lg-2">
-
-                </div>
+                </div><!-- /col-lg-10 -->
+                <div class="col-lg-2"></div>
             </div>
+            
             <div class="row">
-            <div class="col-lg-9">
                 <div class="wrapper wrapper-content animated fadeInUp">
                     <div class="ibox">
                         <div class="ibox-content">
+                        
                             <div class="row">
                                 <div class="col-lg-12">
                                     <!--<div class="alert alert-danger alert-dismissable">
@@ -44,8 +43,9 @@ $this->load->model('membership/membership_model', 'membership_model');
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="row">
-                                <div class="col-lg-7">
+                                <div class="col-lg-5 col-lg-offset-1">
                                     <dl class="dl-horizontal">
                                         <dt>Status:</dt> <dd><span class="label label-primary">Active</span></dd>
                                         <dt>Subscription:</dt> <dd><?php echo $this->membership_model->get_where($member_info->membership)->membership; ?> Member</dd>
@@ -85,7 +85,14 @@ $this->load->model('membership/membership_model', 'membership_model');
                                     </dl>
                                     
                                 </div>
-                                <div class="col-lg-5" id="cluster_info">
+                                <div class="col-lg-5 col-lg-offset-1">
+									<?php if(file_exists("public/main/template/gsm/images/company/".$member_company->id.".jpg")){?>
+                                        <img src="public/main/template/gsm/images/company/<?php echo $member_company->id; ?>.jpg" class="img-responsive" style="margin:0 auto">
+                                    <?php } else {?>
+                                        <img src="public/main/template/gsm/images/company/no_company.jpg" class="img-responsive" style="margin:0 auto">
+                                    <?php }?>
+                                
+                                
                               		<div class="m-r-md" style="text-align:center">
                             			<input type="text" value="94" class="dial m-r" data-fgColor="#1AB394" data-width="85" data-height="85" data-angleOffset=-125 data-angleArc=250 readonly/>
                                         <div style="display:inline;height:65px;width:65px;padding:10px;margin-left:20px;"><i class="fa fa-star" style="font-size:75px;color:#FC6;vertical-align:top"></i></div>
@@ -102,7 +109,7 @@ $this->load->model('membership/membership_model', 'membership_model');
                                                     
                                             ?>
                                             
-                                                <a href="#"><img alt="image" class="img-circle" src="public/main/template/gsm/images/members/<?php echo $user->id;?>.jpg"></a>
+                                                <a data-toggle="modal" data-target="#profile-<?php echo $user->id;?>"><img alt="image" class="img-circle" src="public/main/template/gsm/images/members/<?php echo $user->id;?>.jpg"></a>
                                             
                                             <?php
 
@@ -114,8 +121,15 @@ $this->load->model('membership/membership_model', 'membership_model');
                                     </dl>
                                     
                                 </div>
-                            </div>
+                                
+                                <div class="row">
+                                	<div class="col-lg-10 col-lg-offset-1">
                             <?php echo $member_company->company_profile;?>
+                                    </div>
+                                </div>
+                                
+                                
+                            </div>
                             <div class="row m-t-sm">
                                 <div class="col-lg-12">
                                 <div class="panel blank-panel">
@@ -124,8 +138,6 @@ $this->load->model('membership/membership_model', 'membership_model');
                                         <ul class="nav nav-tabs">
                                             <li class="active"><a href="#feedposts" data-toggle="tab">Feed Posts</a></li>
                                             <li class=""><a href="#feedback" data-toggle="tab">Feedback</a></li>
-                                            <li class=""><a href="#selling-offers" data-toggle="tab">Selling Offers</a></li>
-                                            <li class=""><a href="#buying-requests" data-toggle="tab">Buying Requests</a></li>
                                             <li class=""><a href="#credit-information" data-toggle="tab">Credit Info</a></li>
                                         </ul>
                                     </div>
@@ -179,120 +191,6 @@ $this->load->model('membership/membership_model', 'membership_model');
                                     </div>
 
                                 </div>
-                                <div class="tab-pane" id="selling-offers">
-                                	<table class="table table-hover no-margins">
-                                        <thead>
-                                            <tr>
-                                            	<th class="mobihide">Make</th>
-                                                <th>Model</th>
-                                                <th>Price</th>
-                                                <th class="mobihide">Qty</th>
-                                                <th>Status</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-primary">Active</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-primary">Active</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-success">Completed</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-success">Completed</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-warning">Pending</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-danger">Cancelled</span></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="tab-pane" id="buying-requests">
-                                	<table class="table table-hover no-margins">
-                                        <thead>
-                                            <tr>
-                                            	<th class="mobihide">Make</th>
-                                                <th>Model</th>
-                                                <th>Price</th>
-                                                <th class="mobihide">Qty</th>
-                                                <th>Status</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-primary">Active</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-primary">Active</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-success">Completed</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-success">Completed</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-warning">Pending</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-danger">Cancelled</span></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
                                 
                                 <div class="tab-pane" id="credit-information">
 									<div class="row">
@@ -319,33 +217,40 @@ $this->load->model('membership/membership_model', 'membership_model');
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="wrapper wrapper-content project-manager">
-                    <h4>Company Bio</h4>
-                    <?php if(file_exists("public/main/template/gsm/images/company/".$member_company->id.".jpg")){?>
-                        <img src="public/main/template/gsm/images/company/<?php echo $member_company->id; ?>.jpg" class="img-responsive" style="margin:0 auto">
-                    <?php } else {?>
-                        <img src="public/main/template/gsm/images/company/no_company.jpg" class="img-responsive" style="margin:0 auto">
-                    <?php }?>
-                    
-					<div class="row" style="margin-top:20px">
-                    	<div class="col-lg-12">
-                        	<button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#buycreditcheck"><i class="fa fa-check-square-o"></i> Credit Check</button>
-                        </div>
-                   </div>
-					<div class="row">
-                        <div class="col-lg-6" style="margin-top:15px">
-                         	<button type="button" class="btn btn-warning btn-sm btn-block" data-toggle="modal" data-target="#report_user"><i class="fa fa-exclamation"></i> Report</button>
-                        </div>
-                        <div class="col-lg-6" style="margin-top:15px">
-                         	<button type="button" class="btn btn-danger btn-sm btn-block" id="blocked"><i class="fa fa-ban"></i> Block</button>
-                        </div>
-                   </div>
-                </div>
-            </div>
         </div>
-        
+                                            <?php if($company_users){
+                                                
+                                                foreach($company_users as $user){
+                                                    
+                                            ?>
+        					<div class="modal inmodal fade" id="profile-<?php echo $user->id;?>" tabindex="-1" role="dialog"  aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">User Name</h4>
+                                            <small class="font-bold">Role</small>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p><strong>Payment will be taken from your GSM Wallet</strong> and the credit data for this company will be viewable from your account while your subscription lasts.</p>
+                                            <p><strong>£5.00 Credit available</strong></p>
+                                            <p><strong>£5.00 Credit required</strong></p>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                                            
+                                                <a href="#"><img alt="image" class="img-circle" src="public/main/template/gsm/images/members/<?php echo $user->id;?>.jpg"></a>
+                                            
+                                            <?php
+
+                                                    }
+                                                }
+                                            ?>    
         
                             <div class="modal inmodal fade" id="buycreditcheck" tabindex="-1" role="dialog"  aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
