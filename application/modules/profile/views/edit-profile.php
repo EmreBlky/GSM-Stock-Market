@@ -357,6 +357,7 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
         $('#btertiary').empty().append(str);
         ids.forEach(function(entry) {
             var value = $('#' + entry).attr('value');
+            var entry = $('#' + entry).attr('value');
             if (entry != no_value) {
                 if (entry == primary) {
                     var str1 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
@@ -401,6 +402,7 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
         $('#bsecondary').empty().append(str);
         ids.forEach(function(entry) {
             var value = $('#' + entry).attr('value');
+            var entry = $('#' + entry).attr('value');
             if (entry != no_value) {
                 if (entry == primary) {
                     var str1 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
