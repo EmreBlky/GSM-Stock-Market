@@ -132,7 +132,6 @@ class Profile extends MX_Controller {
 //        echo "<pre>";
 //        print_r($data['company']);
 //        echo "</pre>";
-
         //$data['country'] = $this->country_model->get_all();
         $data['country'] = $this->country_model->_custom_query("SELECT * FROM country ORDER BY country ASC");
 
@@ -154,13 +153,12 @@ class Profile extends MX_Controller {
          * 
          */
 
-        echo "<pre>";
-        print_r($_POST);
-        exit;
-        
-        $valueOne = isset($_POST['primary_sector']) && !empty($_POST['primary_sector']) ? $_POST['primary_sector'] : '';
-        $valueTwo = isset($_POST['secondary_sector']) && !empty($_POST['secondary_sector']) ? $_POST['secondary_sector'] : '';
-        $valueThree = isset($_POST['tertiary_sector']) && !empty($_POST['tertiary_sector']) ? $_POST['tertiary_sector'] : '';
+
+
+
+        $valueOne = isset($_POST['bprimary']) && !empty($_POST['bprimary']) ? $_POST['bprimary'] : '';
+        $valueTwo = isset($_POST['bsecondary']) && !empty($_POST['bsecondary']) ? $_POST['bsecondary'] : '';
+        $valueThree = isset($_POST['btertiary']) && !empty($_POST['btertiary']) ? $_POST['btertiary'] : '';
         $bsectorsArray = isset($_POST['bsectors']) && !empty($_POST['bsectors']) ? $_POST['bsectors'] : '';
 
 
@@ -173,8 +171,8 @@ class Profile extends MX_Controller {
 
         $bsectorsArray = array_values($bsectorsArray);
 
-        
-        
+
+
         if (isset($bsectorsArray[0])) {
             $bsectors4 = $bsectorsArray[0];
         }
@@ -253,13 +251,18 @@ class Profile extends MX_Controller {
                 'country' => $this->input->post('country'),
                 'post_code' => $this->input->post('post_code'),
                 'website' => $this->input->post('website'),
-                'business_sector_1' => $this->input->post('primary_sector'),
-                'business_sector_2' => $this->input->post('secondary_sector'),
-                'business_sector_3' => $this->input->post('tertiary_sector'),
+                'business_sector_1' => $this->input->post('bprimary'),
+                'business_sector_2' => $this->input->post('bsecondary'),
+                'business_sector_3' => $this->input->post('btertiary'),
                 'other_business' => $bsectors4 . $bsectors5,
                 'vat_tax' => $this->input->post('vat_tax'),
                 'company_number' => $this->input->post('company_number'),
             );
+
+
+//           [bprimary] => New Mobiles (Sim Free)
+//    [bsecondary] => Refurbished Mobiles
+//    [btertiary] => 14 Day Mobiles
 
             $this->company_model->_update($this->member_model->get_where($this->session->userdata('members_id'))->company_id, $data);
 
