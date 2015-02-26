@@ -3,7 +3,12 @@
 //echo '<pre>';
 //print_r($country);
 //exit;
+echo "<pre>";
+print_r($company);
+echo "</pre>";
 ?>	
+
+
 <script type="text/javascript">
 
     var is_primary_set = false;
@@ -17,9 +22,7 @@ $secondarybusiness = 'none';
 $tertiarybusiness = 'none';
 
 
-echo "<pre>";
-print_r($company);
-echo "</pre>";
+
 
 if (isset($company->business_sector_1) && !empty($company->business_sector_1))
     $primarybusiness = 'block';
