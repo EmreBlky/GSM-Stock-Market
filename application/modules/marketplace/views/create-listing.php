@@ -177,18 +177,6 @@
                                 
                                 <div class="hr-line-dashed"></div>
                                 
-                            	<div class="form-group"><label class="col-md-3 control-label">Courier</label>
-                                    <div class="col-md-9">
-                                    	<select class="form-control" />
-                                        	<option disabled selected>Select Courier</option>
-                                        	<option>DHL</option>
-                                        	<option>Fedex</option>
-                                        	<option>UPS</option>
-                                        	<option>Other</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                
                             	<div class="form-group"><label class="col-md-3 control-label">Shipping Terms</label>
                                     <div class="col-md-9">
                                     	<select class="form-control" />
@@ -202,6 +190,16 @@
                                         	<option>FCA</option>
                                         	<option>NDS</option>
                                         </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group"><label class="col-md-3 control-label">Courier</label>
+
+                                    <div class="col-md-9">
+                                    	<label class="checkbox-inline i-checks"><input type="checkbox" value="option1" id="inlineCheckbox1"> DHL </label>
+                                        <label class="checkbox-inline i-checks"><input type="checkbox" value="option2" id="inlineCheckbox2"> FEDEX </label>
+                                        <label class="checkbox-inline i-checks"><input type="checkbox" value="option3" id="inlineCheckbox3"> UPS </label>
+                                        <label class="checkbox-inline i-checks"><input type="checkbox" value="option3" id="inlineCheckbox3"> OTHER </label>
                                     </div>
                                 </div>
                                 
@@ -295,7 +293,7 @@
                                 </div>
                                 
                             	<div class="form-group"><label class="col-md-3 control-label">Terms &amp; Conditions</label>
-                                    <div class="col-md-9"><input type="checkbox" /> I agree to the GSMStockMarket.com Limited Terms and Conditions
+                                    <div class="col-md-9"><input type="checkbox" class="checkbox-inline i-checks" /> I agree to the GSMStockMarket.com Limited Terms and Conditions
                                     </div>
                                 </div>
                                 
