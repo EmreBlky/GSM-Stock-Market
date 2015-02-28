@@ -36,6 +36,15 @@ define('FOPEN_READ_WRITE_CREATE',				'a+b');
 define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
+if($_SERVER['HTTP_HOST']=='localhost')
+{
+	define('THEME_URL',		'http://localhost/gsm1/gsm-secure/');
 
+}
+else
+{
+	define('BACKEND_THEME_URL',		'');
+	define('FRONTEND_THEME_URL',	'');
+}
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

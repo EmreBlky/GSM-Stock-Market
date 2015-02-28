@@ -17,8 +17,16 @@
 //DEVLOPMENT SITE:
 //$config['base_url']	= 'http://localhost/gsm/gsm-secure/';
 
+if($_SERVER['HTTP_HOST']=='localhost')
+{
+	$config['base_url']	='http://localhost/gsm1/gsm-secure/';
+}
+else{
+	$config['base_url']	= 'http://secure-dev.gsmstockmarket.com/';
+}
+
 //SERVER SITE:
-$config['base_url']	= 'http://secure-dev.gsmstockmarket.com/';
+$config['base_url']	= '';
 
 //LIVE SITE:
 //$config['base_url']	= '';
@@ -231,7 +239,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = 'dasfhdfd^4,dsfddh';
+$config['encryption_key'] = '!@#$%^&*()_++_)(*&^%$#@';
 
 /*
 |--------------------------------------------------------------------------

@@ -20,7 +20,10 @@
     <link href="public/main/template/core/css/plugins/toastr/toastr.min.css" rel="stylesheet"><!-- Alert Styles -->
     <link href="public/main/template/core/css/style.css" rel="stylesheet">
     <link href="public/main/template/gsm/css/style.css" rel="stylesheet"> <!-- GSM Override -->
-    
+
+    <!-- datepicker chapter247 -->
+    <link href="public/admin/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
     <!-- Main jQuery -->
     <script src="public/main/template/core/js/jquery-2.1.1.js"></script>
     <script src="public/main/template/core/js/bootstrap.min.js"></script>
@@ -67,6 +70,7 @@
         }
     </script>
    
+
 </head>
 
 <body class="skin-1">

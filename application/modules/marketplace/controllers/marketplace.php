@@ -9,6 +9,7 @@ class Marketplace extends MX_Controller
         { 
             redirect('login');
         }
+         $this->load->model('marketplace_model'); 
     }
 
     function index()
@@ -76,7 +77,8 @@ class Marketplace extends MX_Controller
         $data['main'] = 'marketplace';        
         $data['title'] = 'GSM - Market Place: Create Listing';        
         $data['page'] = 'create-listing';
-        
+        $data['listing_attributes'] =  $this->marketplace_model->get_result('listing_attributes');
+
         $this->load->module('templates');
         $this->templates->page($data);
     }
@@ -149,6 +151,21 @@ class Marketplace extends MX_Controller
         
         $this->load->module('templates');
         $this->templates->page($data);
+    }
+
+  function get_attributes_info(){
+
+    $check_status='false';
+     $list=array('STATUS'=>$check_status);
+     if($_POST){
+        $attr_id=trim($_POST['product_mpn_isbn']);
+        $information = $this->marketplace_model->get_row('listing_attributes',array('product_mpn_isbn'=>$attr_id));
+        $check_status='true';
+        $list=array('STATUS'=>$check_status,'product_make'=>$information->product_make,'product_model'=>$information->product_model,'product_type'=>$information->product_type,'product_color'=>$information->product_color);
+      }   
+    header('Content-Type: application/json');
+    echo json_encode($list);
+        
     }
 	
 }
