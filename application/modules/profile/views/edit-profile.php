@@ -3,11 +3,15 @@
 //echo '<pre>';
 //print_r($country);
 //exit;
+//echo "<pre>";
+//print_r($company);
+//echo "</pre>";
 ?>	
+
+
 <script type="text/javascript">
 
     var is_primary_set = false;
-
     $(document).ready(function() {
 
         var counter = getCheckedBoxesCount();
@@ -24,19 +28,16 @@ if (isset($company->business_sector_1) && !empty($company->business_sector_1))
     $primarybusiness = 'block';
 ?>
         $('#primary-business').css("display", '<?php echo $primarybusiness; ?>');
-
 <?php
 if (isset($company->business_sector_2) && !empty($company->business_sector_2))
     $secondarybusiness = 'block';
 ?>
         $('#secondary-business').css("display", '<?php echo $secondarybusiness ?>');
-
 <?php
 if (isset($company->business_sector_3) && !empty($company->business_sector_3))
     $tertiarybusiness = 'block';
 ?>
         $('#tertiary-business').css("display", '<?php echo $tertiarybusiness ?>');
-
         $('#selectMessage').css("display", 'none');
     });
     function updateCode(value) {
@@ -47,15 +48,13 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
     function validate_info() {
 
         var total = getCheckedBoxesCount();
-
         if (total <= 0) {
             //console.log(total);
             alert('Please Select atleast one Business Sector');
-
             return false;
         }
         if (total == 1) {
-            var primary = $('#bprimary').val();	// Get Value of Primary select box
+            var primary = $('#bprimary').val(); // Get Value of Primary select box
             //console.log(total);
             if (primary == '') {
                 alert('Please Select Primary Business Sector');
@@ -64,8 +63,8 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
         }
         if (total == 2) {
             //console.log(total);
-            var primary = $('#bprimary').val();	// Get Value of Primary select box
-            var secondary = $('#bsecondary').val();	// Get Value of Secondary select box
+            var primary = $('#bprimary').val(); // Get Value of Primary select box
+            var secondary = $('#bsecondary').val(); // Get Value of Secondary select box
 
             var error = '';
             var flag = true;
@@ -84,9 +83,9 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
         }
         if (total == 3) {
             //console.log(total);
-            var primary = $('#bprimary').val();	// Get Value of Primary select box
-            var secondary = $('#bsecondary').val();	// Get Value of Secondary select box
-            var tertiary = $('#btertiary').val();	// Get Value of Tertiary select box
+            var primary = $('#bprimary').val(); // Get Value of Primary select box
+            var secondary = $('#bsecondary').val(); // Get Value of Secondary select box
+            var tertiary = $('#btertiary').val(); // Get Value of Tertiary select box
 
             var error = '';
             var flag = true;
@@ -109,9 +108,9 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
         }
         if (total > 3) {
             //console.log(total);
-            var primary = $('#bprimary').val();	// Get Value of Primary select box
-            var secondary = $('#bsecondary').val();	// Get Value of Secondary select box
-            var tertiary = $('#btertiary').val();	// Get Value of Tertiary select box
+            var primary = $('#bprimary').val(); // Get Value of Primary select box
+            var secondary = $('#bsecondary').val(); // Get Value of Secondary select box
+            var tertiary = $('#btertiary').val(); // Get Value of Tertiary select box
 
             var error = '';
             var flag = true;
@@ -149,12 +148,13 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
             count++;
         }
         return total;
-
     }
 
 
     function toggleChecks(counter) {
         // Function to disable or enable check boxes
+
+
         var count = 1;
         var ids = new Array();
         if (counter >= 5) {
@@ -186,9 +186,8 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
         var primary = $('#bprimary').val();
         var secondary = $('#bsecondary').val();
         var tertiary = $('#btertiary').val();
-
         var total_checked = getCheckedBoxesCount();
-        var chk = $('#' + div_id).prop("checked");	// get state of current checkbox
+        var chk = $('#' + div_id).prop("checked"); // get state of current checkbox
 
         if (chk == false) {
             var total_checked = total_checked + 1;
@@ -209,54 +208,91 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
             }
             count++;
         }
+
+
+        var selectedValue = $('#' + div_id).val();
         var str = "<option value = ''>[SELECT ONE]</option>";
-        $('#bprimary').empty().append(str);
-        $('#bsecondary').empty().append(str);
-        $('#btertiary').empty().append(str);
+        if (selectedValue == primary)
+        {
+            $('#bprimary').empty().append(str);
+            $('#bsecondary option[value="' + selectedValue + '"]').remove();
+            $('#btertiary option[value="' + selectedValue + '"]').remove();
+        }
+
+        if (selectedValue == secondary)
+        {
+            $('#bsecondary').empty().append(str);
+            $('#bprimary option[value="' + selectedValue + '"]').remove();
+            $('#btertiary option[value="' + selectedValue + '"]').remove();
+        }
+
+        if (selectedValue == tertiary)
+        {
+            $('#btertiary').empty().append(str);
+            $('#bprimary option[value="' + selectedValue + '"]').remove();
+            $('#bsecondary option[value="' + selectedValue + '"]').remove();
+        }
+
+
+        $('#bprimary option[value="' + selectedValue + '"]').remove();
+        $('#bsecondary option[value="' + selectedValue + '"]').remove();
+        $('#btertiary option[value="' + selectedValue + '"]').remove();
+
+
+
 
         ids.forEach(function(entry) {
             var value = $('#' + entry).attr('value');
+            var entry = $('#' + entry).attr('value');
+            console.log(ids);
             if (entry == primary) {
-                if (secondary == '' && is_primary_set == false) {
-                    var str1 = "<option value = '" + entry + "'>" + value + "</option>";
-                } else {
-                    var str1 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
-                }
-                /*
-                 if(total_checked == 1) {
-                 var str1 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
-                 } else {
-                 var str1 = "<option value = '" + entry + "'>" + value + "</option>";
-                 }
-                 */
+                var str1 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
             } else {
+
                 var str1 = "<option value = '" + entry + "'>" + value + "</option>";
+
+
             }
             if (entry != secondary && entry != tertiary) {
+                $('#bprimary option[value="' + entry + '"]').remove();
                 $('#bprimary').append(str1);
             }
+
+
+
             if (entry == secondary) {
                 var str2 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
             } else {
+
                 var str2 = "<option value = '" + entry + "'>" + value + "</option>";
             }
             if (entry != primary && entry != tertiary) {
+
+                $('#bsecondary option[value="' + entry + '"]').remove();
                 $('#bsecondary').append(str2);
             }
+
+
+
             if (entry == tertiary) {
                 var str3 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
             } else {
+
                 var str3 = "<option value = '" + entry + "'>" + value + "</option>";
             }
+
             if (entry != primary && entry != secondary) {
+
+                $('#btertiary option[value="' + entry + '"]').remove();
                 $('#btertiary').append(str3);
             }
+
         });
     }
 
     function updateSelects1(value) {
 
-        var no_value = value;	//	Value to be excluded from other selects
+        var no_value = value; //	Value to be excluded from other selects
 
         var count = 1;
         var ids = new Array();
@@ -269,16 +305,17 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
             count++;
         }
 
-        var secondary = $('#bsecondary').val();	// Get Value of Secondary select box
-        var tertiary = $('#btertiary').val();	// Get Value of Tertiary select box
+        var secondary = $('#bsecondary').val(); // Get Value of Secondary select box
+        var tertiary = $('#btertiary').val(); // Get Value of Tertiary select box
 
         var str = "<option value = ''>[SELECT ONE]</option>";
         // Append Empty options to secondary and tertiary select boxes
         $('#bsecondary').empty().append(str);
         $('#btertiary').empty().append(str);
-
         ids.forEach(function(entry) {
-            var value = $('#' + entry).attr('value');		// Get value of selected option box
+
+            var value = $('#' + entry).attr('value'); // Get value of selected option box
+            var entry = $('#' + entry).attr('value');
             if (entry != no_value) {
                 if (entry == secondary) {
                     var str1 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
@@ -299,13 +336,12 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
             }
         });
         is_primary_set = true;
-
         updateHiddens();
     }
 
     function updateSelects2(value) {
 
-        var no_value = value;	//	Value to be excluded from other selects
+        var no_value = value; //	Value to be excluded from other selects
 
         var count = 1;
         var ids = new Array();
@@ -320,14 +356,12 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
 
         var primary = $('#bprimary').val();
         var tertiary = $('#btertiary').val();
-
         var str = "<option value = ''>[SELECT ONE]</option>";
-
         $('#bprimary').empty().append(str);
         $('#btertiary').empty().append(str);
-
         ids.forEach(function(entry) {
             var value = $('#' + entry).attr('value');
+            var entry = $('#' + entry).attr('value');
             if (entry != no_value) {
                 if (entry == primary) {
                     var str1 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
@@ -347,13 +381,12 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
                 }
             }
         });
-
         updateHiddens();
     }
 
     function updateSelects3(value) {
 
-        var no_value = value;	//	Value to be excluded from other selects
+        var no_value = value; //	Value to be excluded from other selects
 
         var count = 1;
         var ids = new Array();
@@ -368,14 +401,12 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
 
         var primary = $('#bprimary').val();
         var secondary = $('#bsecondary').val();
-
         var str = "<option value = ''>[SELECT ONE]</option>";
-
         $('#bprimary').empty().append(str);
         $('#bsecondary').empty().append(str);
-
         ids.forEach(function(entry) {
             var value = $('#' + entry).attr('value');
+            var entry = $('#' + entry).attr('value');
             if (entry != no_value) {
                 if (entry == primary) {
                     var str1 = "<option value = '" + entry + "' selected = 'selected'>" + value + "</option>";
@@ -403,7 +434,6 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
         var primary = $('#bprimary').val();
         var secondary = $('#bsecondary').val();
         var tertiary = $('#btertiary').val();
-
         var value1 = $('#' + primary).attr('value');
         var value2 = $('#' + secondary).attr('value');
         var value3 = $('#' + tertiary).attr('value');
@@ -411,41 +441,39 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
         $('#primary_sector').val(value1);
         $('#secondary_sector').val(value2);
         $('#tertiary_sector').val(value3);
-
     }
 
     $(function() {
 
         $('.business_cycle').on('ifChecked', function(event) {		// If we just checked a checkbox
 
-            var orig_counter = getCheckedBoxesCount();	// get total checkedboxes count
-            toggleChecks(orig_counter);		// disable or enable checkboxes if greater than 5
+            var orig_counter = getCheckedBoxesCount(); // get total checkedboxes count
+            toggleChecks(orig_counter); // disable or enable checkboxes if greater than 5
         });
-
         $('.business_cycle').on('ifUnchecked', function(event) {		// If we just unchecked a checkbox
 
-            var orig_counter = getCheckedBoxesCount();		// get total checkedboxes count
-            toggleChecks(orig_counter);	// disable or enable checkboxes if greater than 5
+
+            var orig_counter = getCheckedBoxesCount(); // get total checkedboxes count
+            toggleChecks(orig_counter); // disable or enable checkboxes if greater than 5
 
 
             if (orig_counter <= 0) {
-                is_primary_set = false;		// If All checkboxes unchecked then primary should be reset if secondary is empty
+                is_primary_set = false; // If All checkboxes unchecked then primary should be reset if secondary is empty
             }
         });
-
         $('.business_cycle').on('ifClicked', function(event) {
 
             //var orig_counter = $('input[name="bsectors"]:checked').size();
 
-            var orig_counter = getCheckedBoxesCount();	// get total checkedboxes count
+            var orig_counter = getCheckedBoxesCount(); // get total checkedboxes count
 
             // get number of checked checkboxes
 
-            var id = $(this).attr('id');	//	get ID of current checkbox
-            var value = $(this).attr('value');	// get value of current checkbox
-            var chk = $('#' + id).prop("checked");	// get state of current checkbox
+            var id = $(this).attr('id'); //	get ID of current checkbox
+            var value = $(this).attr('value'); // get value of current checkbox
+            var chk = $('#' + id).prop("checked"); // get state of current checkbox
 
-            updateChecks(id);		// update the selects
+            updateChecks(id); // update the selects
 
             if (chk == false) {
                 var counter = orig_counter + 1;
@@ -453,7 +481,7 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
                 var counter = orig_counter - 1;
             }
 
-            var str = "<option value = '" + id + "'>" + value + "</option>";	// Create Option
+            var str = "<option value = '" + id + "'>" + value + "</option>"; // Create Option
 
             if (counter < 1) {	// if No Checkbox is selected
                 // Hide all Select boxes
@@ -468,13 +496,12 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
                     $('#secondary-business').css("display", 'none');
                     $('#tertiary-business').css("display", 'none');
                     $('#selectMessage').css("display", 'block');
-
-                    var str_prime = "<option value = '" + id + "' selected = 'selected'>" + value + "</option>";	// Create Option for primary select box
+                    var str_prime = "<option value = '" + id + "' selected = 'selected'>" + value + "</option>"; // Create Option for primary select box
 
                     if (chk == false) {	// If Checkbox is checked
-                        $('#bprimary').append(str_prime);	// Append the value to Primary Select box
+                        $('#bprimary').append(str_prime); // Append the value to Primary Select box
                     } else {
-                        $("#bprimary option[value='" + id + "']").remove();	// Remove the value from Primary Select box
+                        $("#bprimary option[value='" + id + "']").remove(); // Remove the value from Primary Select box
                     }
                 }
                 else if (counter == 2) {	// 2 Checkboxes are selected
@@ -483,7 +510,6 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
                     $('#secondary-business').css("display", 'block');
                     $('#tertiary-business').css("display", 'none');
                     $('#selectMessage').css("display", 'block');
-
                     if (chk == false) {
                         // Append values to both Primary and Secondary select boxes
                         $('#bprimary').append(str);
@@ -501,7 +527,6 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
                     $('#secondary-business').css("display", 'block');
                     $('#tertiary-business').css("display", 'block');
                     $('#selectMessage').css("display", 'block');
-
                     if (chk == false) {
                         // Append values to Primary, Secondary and Tertiary select boxes
                         $('#bprimary').append(str);
@@ -534,11 +559,7 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
 <?php if ($this->session->flashdata('msg')) { ?>
             $('.confirm-div').html('<?php echo $this->session->flashdata('msg'); ?>').show();
 <?php } ?>;
-    });
-
-
-
-</script>
+    });</script>
 <?php
 $attributes = array('class' => 'form-horizontal validation', 'onsubmit' => 'return validate_info()');
 echo form_open_multipart('profile/profileEdit', $attributes);
@@ -1488,8 +1509,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
             checkboxClass: 'icheckbox_square-green',
             radioClass: 'iradio_square-green',
         });
-    });
-</script>
+    });</script>
 
 <script>/**
  * Character counter and limiter plugin for textfield and textarea form elements
@@ -1519,14 +1539,12 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                 // separator for the short format
                 shortFormatSeparator: "/"
             }, params);
-
             // traverse all nodes
             this.each(function() {
                 var $this = $(this),
                         $pluginElementsWrapper,
                         $characterCounterSpan,
                         $charactersRemainingSpan;
-
                 // return if the given element is not a textfield or textarea
                 if (!$this.is("input[type=text]") && !$this.is("textarea")) {
                     return this;
@@ -1538,7 +1556,6 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                     $pluginElementsWrapper = $('<div>', {
                         'class': 'character-counter-main-wrapper'
                     });
-
                     if (params.positionBefore) {
                         $pluginElementsWrapper.insertBefore($this);
                     } else {
@@ -1551,21 +1568,17 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                         'class': 'counter character-counter',
                         'text': 0
                     });
-
                     if (params.shortFormat) {
                         $characterCounterSpan.appendTo($pluginElementsWrapper);
-
                         var $shortFormatSeparatorSpan = $('<span>', {
                             'html': params.shortFormatSeparator
                         }).appendTo($pluginElementsWrapper);
-
                     } else {
                         // create the character counter element wrapper
                         var $characterCounterWrapper = $('<div>', {
                             'class': 'character-counter-wrapper',
                             'html': params.charactersTypedSuffix
                         });
-
                         $characterCounterWrapper.prepend($characterCounterSpan);
                         $characterCounterWrapper.appendTo($pluginElementsWrapper);
                     }
@@ -1577,7 +1590,6 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                         'class': 'counter characters-remaining',
                         'text': params.maximumCharacters
                     });
-
                     if (params.shortFormat) {
                         $charactersRemainingSpan.appendTo($pluginElementsWrapper);
                     } else {
@@ -1596,7 +1608,6 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                     var typedText = $this.val();
                     var textLength = typedText.length;
                     var charactersRemaining = params.maximumCharacters - textLength;
-
                     // chop the text to the desired length
                     if (charactersRemaining < 0 && params.chopText) {
                         $this.val(typedText.substr(0, params.maximumCharacters));
@@ -1610,7 +1621,6 @@ echo form_open_multipart('profile/profileEdit', $attributes);
 
                     if (params.charactersRemainingNeeded) {
                         $charactersRemainingSpan.text(charactersRemaining);
-
                         if (charactersRemaining <= 0) {
                             if (!$charactersRemainingSpan.hasClass(params.limitExceededClass)) {
                                 $charactersRemainingSpan.addClass(params.limitExceededClass);
@@ -1620,24 +1630,18 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                         }
                     }
                 });
-
             });
-
             // allow jQuery chaining
             return this;
-
         };
     })(jQuery);
-
     $(document).ready(function() {
         $('#companybio').characterCounter({
             maximumCharacters: 500,
             characterCounterNeeded: false,
             chopText: true
         });
-
-    });
-</script>
+    });</script>
 
 
 
