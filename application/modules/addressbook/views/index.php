@@ -98,7 +98,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                     <div class="ibox-content">
             			<div class="row">
                         <div class="col-lg-2">
-                            <label class="checkbox-inline i-checks"> <input type="checkbox"> Favourites </label> 
+                            <label class="checkbox-inline i-checks" style="margin:10px"> <input type="checkbox"> Favourites </label> 
                         </div>
                         <div class="col-lg-2">
                             <select class="form-control m-b" name="business_activity">
@@ -286,6 +286,20 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
            
          
         </div>
+        </div>
+
+        <!-- iCheck -->
+    	<link href="public/main/template/core/css/plugins/iCheck/custom.css" rel="stylesheet">
+        <script src="public/main/template/core/js/plugins/iCheck/icheck.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.i-checks').iCheck({
+                    checkboxClass: 'icheckbox_square-green',
+                    radioClass: 'iradio_square-green',
+                });
+            });
+        </script>
+        
         <script src="public/main/template/core/js/plugins/toastr/toastr.min.js"></script>
     <script type="text/javascript">
         
