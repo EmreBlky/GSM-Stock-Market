@@ -9,6 +9,14 @@ class Preferences extends MX_Controller
         { 
             redirect('login');
         }
+        
+        $this->load->model('activity/activity_model', 'activity_model');
+        
+        $data_activity = array(
+                                'activity' => 'Preferences',
+                                'time' => date('H:i:s')
+                                );
+        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
     }
 
     function index()

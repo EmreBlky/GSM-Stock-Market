@@ -170,10 +170,10 @@ class MY_Model extends CI_Model {
 	function _insert($data)
 	{
 		
-		$table = $this->table;
-		$this->db->insert($table, $data);
-                
-        return $this->db->insert_id();
+            $table = $this->table;
+            $this->db->insert($table, $data);
+
+            return $this->db->insert_id();
 	
 	}
 		

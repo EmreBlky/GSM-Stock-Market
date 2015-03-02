@@ -156,7 +156,7 @@ class Login extends MX_Controller{
                                                     'lastname'          => $member->lastname,
                                                     'logged_in' 	=> TRUE
                                                     );
-
+                    
                     $this->session->set_userdata($user_data);
                     
                     $this->login_model->_delete_where('member_id', $mid, 'logged', 'yes');
@@ -245,9 +245,27 @@ class Login extends MX_Controller{
         redirect('login');
     }
     
+    function auto_logout()
+    {
+        $this->load->model('activity/activity_model', 'activity_model');
+        
+        $log_out = $this->activity_model->_custom_query("SELECT member_id FROM activity WHERE time < '".date('H:i:s', strtotime('-4 hour'))."'");        
+        
+        foreach ($log_out as $log){
+            
+            $data = array(
+                        'online_status' => 'offline'
+                      );
+            $this->member_model->_update($log->member_id, $data);
+        }        
+        
+    }
+    
     function admin_logout()
     {
         $this->session->unset_userdata('admin_logged_in');
         redirect('admin/login');
     }
+    
+    
 }

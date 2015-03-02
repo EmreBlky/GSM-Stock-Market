@@ -10,6 +10,13 @@ class Addressbook extends MX_Controller
             redirect('login');
         }
         $this->load->model('addressbook/addressbook_model', 'addressbook_model');
+        $this->load->model('activity/activity_model', 'activity_model');
+        
+        $data_activity = array(
+                                'activity' => 'Address Book',
+                                'time' => date('H:i:s')
+                                );
+        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
     }
 
     function index($page = NULL, $off = NULL)

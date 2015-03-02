@@ -7,7 +7,11 @@ class Register extends MX_Controller{
 		
 		parent::__construct();
                 $this->load->library('session');
-		
+		$this->load->model('activity/activity_model', 'activity_model');
+                
+                $data = array(
+                                'member_id' => ''
+                            );
 		
 	}
         
@@ -95,7 +99,13 @@ class Register extends MX_Controller{
                                       );
 
                         $this->load->model('member/member_model', 'member_model');
-                        $this->member_model->_insert($data);
+                        $mid = $this->member_model->_insert($data);
+                        
+                        $this->activity_model->_insert($data);
+                        $data_activity = array(
+                                    'member_id' => $mid
+                                    );
+                        $this->activity_model->_insert($data_activity);
                         
                         $config = array (
                             'mailtype' => 'html',

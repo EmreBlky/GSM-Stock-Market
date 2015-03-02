@@ -12,6 +12,14 @@ class Mailbox extends MX_Controller
         $this->load->model('mailbox/mailbox_model', 'mailbox_model');
         $this->load->model('member/member_model', 'member_model');
         $this->load->library('pagination');
+        
+        $this->load->model('activity/activity_model', 'activity_model');
+        
+        $data_activity = array(
+                                'activity' => 'Mailbox',
+                                'time' => date('H:i:s')
+                                );
+        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
     }
 
     function index()

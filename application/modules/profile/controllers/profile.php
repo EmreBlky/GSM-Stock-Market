@@ -14,6 +14,14 @@ class Profile extends MX_Controller {
         $this->load->model('company/company_model', 'company_model');
         $this->load->model('viewed/viewed_model', 'viewed_model');
         $this->load->model('country/country_model', 'country_model');
+        
+        $this->load->model('activity/activity_model', 'activity_model');
+        
+        $data_activity = array(
+                                'activity' => 'Profile',
+                                'time' => date('H:i:s')
+                                );
+        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
     }
 
     function index() {
