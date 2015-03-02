@@ -39,7 +39,7 @@ elseif($base_url == 'http://localhost/secure.gsmstockmarket.com/'){
         $config['base_url'] = 'http://localhost/secure.gsmstockmarket.com/';    
 }
 elseif($base_url == 'http://secure-dev.gsmstockmarket.com/'){
-	$config['base_url'] = 'http://secure-dev.gsmstockmarket.com/';
+	$config['base_url']	= 'http://secure-dev.gsmstockmarket.com/';
 }
 
 /*

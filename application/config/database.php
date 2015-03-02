@@ -1,4 +1,5 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+$CI =& get_instance();
 /*
   | -------------------------------------------------------------------
   | DATABASE CONNECTIVITY SETTINGS
@@ -43,13 +44,9 @@
   |
   | The $active_record variables lets you determine whether or not to load
   | the active record class
+ * 
  */
-$base_url       = $_SERVER['HTTP_HOST'].$_SERVER["REQUEST_URI"];
-$base_name  = $_SERVER["REQUEST_URI"];
-
-
-$base_url = rtrim($base_url, basename($base_url));
-
+$base_url = ltrim($CI->config->item('base_url'), 'http://');
 
 $active_group = 'default';
 $active_record = TRUE;
