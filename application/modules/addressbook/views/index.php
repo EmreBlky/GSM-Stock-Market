@@ -97,11 +97,11 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
             	<div class="ibox float-e-margins">
                     <div class="ibox-content">
             			<div class="row">
-                        <div class="col-lg-3">
-                            <label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1"> Favourites </label> 
-                            <!-- <label class="checkbox-inline"> <input type="checkbox" value="option2" id="inlineCheckbox2" checked="checked"> Individuals </label>
-                            <label class="checkbox-inline"> <input type="checkbox" value="option3" id="inlineCheckbox3" checked="checked"> Companies </label> -->
-                            <select class="form-control m-b" name="business_activity" style="width: 280px; clear: left; float: right;">
+                        <div class="col-lg-2">
+                            <label class="checkbox-inline i-checks"> <input type="checkbox"> Favourites </label> 
+                        </div>
+                        <div class="col-lg-2">
+                            <select class="form-control m-b" name="business_activity">
                                 <option value="a-z_company" selected="selected">A - Z Company</option>
                                 <option value="z-a_company">Z - A Company</option>
                                 <option value="a-z_indiviual">A - Z Individual</option>
@@ -128,7 +128,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                                 <option value="Insurance">Insurance</option>
                             </select>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-2">
                             <select class="form-control m-b" name="country">
                                 <option selected="selected">All Countries</option>
                                 <?php foreach($country as $country){?>
