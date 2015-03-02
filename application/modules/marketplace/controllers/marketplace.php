@@ -73,8 +73,10 @@ class Marketplace extends MX_Controller
     }
     
     function create_listing()
-    {
+    {   
+        $member_id=$this->session->userdata('members_id');
 
+        $this->output->enable_profiler(TRUE);
         $this->form_validation->set_rules('schedule_date_time', 'schedule date time', 'required');
         $this->form_validation->set_rules('listing_type', 'listing type', 'required');
         $this->form_validation->set_rules('product_mpn_isbn', 'product_mpn_isbn', 'required');
@@ -118,8 +120,9 @@ class Marketplace extends MX_Controller
             'courier' =>  json_encode($this->input->post('courier')),
             'product_desc' =>  $this->input->post('product_desc'),
             'duration' =>  $this->input->post('duration'),            
+            'member_id'   => $member_id, 
             'created' => date('Y-m-d h:i:s A'),
-            'status'  => $this->input->post('status'),  
+            'status'  => $this->input->post('status'), 
             );
 
            $this->marketplace_model->insert('listing',$data_insert);
