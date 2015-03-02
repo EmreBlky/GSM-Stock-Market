@@ -47,16 +47,9 @@
 $base_url       = $_SERVER['HTTP_HOST'].$_SERVER["REQUEST_URI"];
 $base_name  = $_SERVER["REQUEST_URI"];
 
-//echo $base_url;
-//echo '<br/>';
-//echo $base_name;
-//$base_url = substr($base_url, 0, strpos($base_url, "/"));
-//echo basename($base_url);
 
 $base_url = rtrim($base_url, basename($base_url));
 
-echo $base_url;
-echo '<br/>';
 
 $active_group = 'default';
 $active_record = TRUE;
