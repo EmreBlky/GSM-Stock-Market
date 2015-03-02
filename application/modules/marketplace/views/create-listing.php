@@ -43,8 +43,8 @@
         <div class="col-md-9">
         	<select class="form-control" name="listing_type">
             	<option selected value="0" >Buying or Selling?</option>
-            	<option value="1" <?php if(!empty($_POST) && 1==$_POST['shipping_term']){ echo'selected';}?>>Buying Request</option>
-            	<option <?php if(!empty($_POST) && 2==$_POST['shipping_term']){ echo'selected';}?> value="2">Selling Offer</option>
+            	<option value="1" <?php if(!empty($_POST) && 1==$_POST['listing_type']){ echo'selected';}?>>Buying Request</option>
+            	<option <?php if(!empty($_POST) && 2==$_POST['listing_type']){ echo'selected';}?> value="2">Selling Offer</option>
             </select>
             <?php echo form_error('listing_type'); ?>
             
