@@ -6,7 +6,7 @@
             <a href="/">Home</a>
         </li>
         <li class="active">
-            <strong>Edit Profile</strong>
+            <strong>Create listing</strong>
         </li>
     </ol>
 </div>
@@ -15,63 +15,74 @@
 </div>
 </div>
 
-
 <div class="wrapper wrapper-content">
 
 <div class="row">
 <div class="col-lg-8">
     <div class="ibox float-e-margins">
 <div class="ibox-title">
+<?php msg_alert(); ?>
 <h5>Listing Details</h5>
+
 </div>
 <div class="ibox-content">
-<form class="validation form-horizontal">
+<form method="post" action="<?php echo current_url()?>"  class="validation form-horizontal" />  
      <div class="form-group"><label class="col-md-3 control-label">Schedule Listing</label>
-          <div class="input-group date form_datetime col-md-9" data-date="<?php echo date('Y').'-'.date('m').'-'.date('d')?>" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
-            <input class="form-control" size="16" type="text" value="" readonly>
+     <div class="col-md-9">
+          <div class="input-group date form_datetime " data-date="<?php echo date('Y').'-'.date('m').'-'.date('d')?>" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+            <input class="form-control" size="16" type="text" value="<?php echo set_value('schedule_date_time');?>" readonly >
             <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span><br>
         </div>
-        <input type="hidden" id="dtp_input1" value="" /><br/>
+        <?php echo form_error('schedule_date_time'); ?>
+        </div>
+        <input type="hidden" id="dtp_input1" value="<?php echo set_value('schedule_date_time');?>" name="schedule_date_time"/><br/>
     </div>
 
-	<div class="form-group"><label class="col-md-3 control-label">Listing Type</label>
+    <div class="form-group"><label class="col-md-3 control-label">Listing Type</label>
         <div class="col-md-9">
-        	<select class="form-control" >
-            	<option disabled selected>Buying or Selling?</option>
-            	<option>Buying Request</option>
-            	<option>Selling Offer</option>
+        	<select class="form-control" name="listing_type">
+            	<option selected value="0" >Buying or Selling?</option>
+            	<option value="1" <?php if(!empty($_POST) && 1==$_POST['listing_type']){ echo'selected';}?>>Buying Request</option>
+            	<option <?php if(!empty($_POST) && 2==$_POST['listing_type']){ echo'selected';}?> value="2">Selling Offer</option>
             </select>
-
-
+            <?php echo form_error('listing_type'); ?>
+            
         </div>
     </div>
     
     <div class="hr-line-dashed"></div>
     
 	<div class="form-group"><label class="col-md-3 control-label">MPN/ISBN</label>
-        <div class="col-md-8">
-        	<input type="type" id="mpn1" list="mpn" class="form-control" placeholder="Auto fill the rest of the data if MPN/ISBN is found in the database" />
+        <div class="col-md-9">
+        	<input type="type" id="mpn1" list="mpn" class="form-control check_record" placeholder="Auto fill the rest of the data if MPN/ISBN is found in the database"  name="product_mpn_isbn" value="<?php echo set_value('product_mpn_isbn');?>"/>
             <datalist id="mpn">
             <?php if(!empty($listing_attributes)){ 
                  foreach ($listing_attributes as $row) { ?>
                 <option value="<?php echo $row->product_mpn_isbn; ?>"><?php echo $row->product_mpn_isbn; ?></option>
             	 <?php }} ?>
-
             </datalist>
+             <?php echo form_error('product_mpn_isbn'); ?>
         </div>
-        <div  class="col-md-1 btn btn-warning" >Check</div>
     </div>
     
 	<div class="form-group"><label class="col-md-3 control-label">Make</label>
         <div class="col-md-9">
-        <input type="type" class="form-control" placeholder="Select Make" name="product_make"/>
+        <select class="form-control check_record" name="product_make" id="product_make">
+            <option selected>Select Make</option>
+            <?php if(!empty($product_makes)){ 
+                 foreach ($product_makes as $row) { ?>
+                <option value="<?php echo $row->product_make; ?>" <?php if(!empty($_POST) && $row->product_make==$_POST['product_make']){ echo'selected';}?>><?php echo $row->product_make; ?></option>
+                 <?php }} ?>
+        </select>
+        <?php echo form_error('product_make'); ?>
         </div>
     </div>
     
 	<div class="form-group"><label class="col-md-3 control-label">Model</label>
         <div class="col-md-9">
-        	<input type="type" class="form-control" placeholder="When make is selected list models associated with make" name="product_model" />
+        	<input type="type" class="form-control check_record" placeholder="When make is selected list models associated with make" name="product_model" value="<?php echo set_value('product_model');?>"/>
+            <?php echo form_error('product_model'); ?>
         </div>
     </div>
     
@@ -79,13 +90,27 @@
 
 	<div class="form-group"><label class="col-md-3 control-label">Product Type</label>
         <div class="col-md-9">
-            <input type="type" class="form-control" placeholder="Product Type" name="product_type"/>
+        <select class="form-control check_record" name="product_type" id="product_type">
+            <option selected>Select Make</option>
+            <?php if(!empty($product_types)){ 
+                 foreach ($product_types as $row) { ?>
+                <option value="<?php echo $row->product_type; ?>" <?php if(!empty($_POST) && $row->product_type==$_POST['product_type']){ echo'selected';}?>><?php echo $row->product_type; ?></option>
+                 <?php }} ?>
+        </select>
+        <?php echo form_error('product_type'); ?>
         </div>
     </div>
 
 	<div class="form-group"><label class="col-md-3 control-label">Colour</label>
         <div class="col-md-9">
-        	<input type="type" class="form-control" placeholder="Colour" name="product_color" />
+            <select class="form-control check_record" name="product_color" id="product_color">
+            <option selected>Select Color</option>
+            <?php if(!empty($product_colors)){ 
+                 foreach ($product_colors as $row) { ?>
+                <option value="<?php echo $row->product_color; ?>" <?php if(!empty($_POST) && $row->product_color==$_POST['product_color']){ echo'selected';}?>><?php echo $row->product_color; ?></option>
+                 <?php }} ?>
+        </select>        	
+            <?php echo form_error('product_color'); ?>
         </div>
     </div>
     
@@ -93,57 +118,62 @@
     <div class="hr-line-dashed"></div>
 	<div class="form-group"><label class="col-md-3 control-label">Condition</label>
         <div class="col-md-9">
-        	<select class="form-control" >
+        	<select class="form-control" name="condition">
             	<option disabled selected>Condition</option>
             	<option>New</option>
             	<option>Used</option>
             	<option>Refurbished</option>
             </select>
+            <?php echo form_error('condition'); ?>
         </div>
     </div>
     <div class="form-group"><label class="col-md-3 control-label">Spec</label>
     <div class="col-md-9">
-    	<select class="form-control" >
+    	<select class="form-control" name="spec">
         	<option disabled selected>Spec</option>
         	<option>EU</option>
         	<option>UK</option>
         	<option>US</option>
         	<option>ASIA</option>
         </select>
+        <?php echo form_error('spec'); ?>
     </div>
 </div>    
     <div class="hr-line-dashed"></div>
     
 	<div class="form-group"><label class="col-md-3 control-label">Currency</label>
         <div class="col-md-9">
-        	<select class="form-control" >
+        	<select class="form-control" name="currency">
             	<option disabled selected>Default (account preference defalut)</option>
-            	<option>&pound; GBP</option>
-            	<option>&euro; EUR</option>
-            	<option>$ USD</option>
+            	<option value="1">&pound; GBP</option>
+            	<option  value="2">&euro; EUR</option>
+            	<option  value="3">$ USD</option>
             </select>
-        	<p class="small">Select the currency you wish this listing to be sold in.</p>
+            <p class="small">Select the currency you wish this listing to be sold in.</p>
+            <?php echo form_error('currency'); ?>
         </div>
     </div>
     
 
 	<div class="form-group"><label class="col-md-3 control-label">Unit Price</label>
         <div class="col-md-9">
-        	<input type="type" class="form-control" />
+        	<input type="type" class="form-control" name="unit_price" value="<?php echo set_value('unit_price');?>"/>
+            <?php echo form_error('unit_price'); ?>
         </div>
     </div>
     
 	<div class="form-group"><label class="col-md-3 control-label">Minimum Price</label>
         <div class="col-md-9">
-        	<div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" /> </span> <input type="text" class="form-control" placeholder="only make typable when clicked"></div>
-        	<p class="small">tick to enable. Any offers below this will be auto rejected, leave blank to allow any offers if ticked.</p>
+        	<div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" /> </span> <input type="text" class="form-control" placeholder="only make typable when clicked" name="min_price" value="<?php echo set_value('min_price');?>"></div>
+            <p class="small">tick to enable. Any offers below this will be auto rejected, leave blank to allow any offers if ticked.</p>
+            <?php echo form_error('min_price'); ?>
         </div>
     </div>
     
 	<div class="form-group"><label class="col-md-3 control-label">Allow Offers</label>
         <div class="col-md-9">
         	<div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" /> </span>
-        	<select class="form-control" >
+        	<select class="form-control" name="allow_offer">
             	<option selected>default</option>
             	<option>4</option>
             	<option>5</option>
@@ -152,21 +182,25 @@
             	<option>8</option>
             	<option>9</option>
             	<option>10</option>
-            </select></div>
+            </select>
+            </div>
+            <?php echo form_error('allow_offer'); ?>
         	<p class="small">Allow people to make offers and how many per 24 hour period. (default is 3)</p>
         </div>
     </div>
     
 	<div class="form-group"><label class="col-md-3 control-label">Quantity Available</label>
         <div class="col-md-9">
-        	<input type="type" class="form-control" />
+        	<input type="type" class="form-control" name="total_qty" value="<?php echo set_value('total_qty');?>"/>
+            <?php echo form_error('total_qty'); ?>
         </div>
     </div>
     
 	<div class="form-group"><label class="col-md-3 control-label">Min Order Quantity</label>
         <div class="col-md-9">
-        	<div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" /> </span> <input type="text" class="form-control" placeholder="only make typable when clicked"></div>
-        	<p class="small">Allow minimum order quantity else full quantity sale available only</p>
+        	<div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" /> </span> <input type="text" class="form-control" placeholder="only make typable when clicked" name="min_qty_order" value="<?php echo set_value('min_qty_order');?>"></div>
+            <p class="small">Allow minimum order quantity else full quantity sale available only</p>
+            <?php echo form_error('min_qty_order'); ?>
         </div>
     </div>
     
@@ -174,27 +208,27 @@
     
     <div class="form-group"><label class="col-md-3 control-label">Shipping Terms</label>
     <div class="col-md-9">
-    	<select class="form-control" >
+    	<select class="form-control" name="shipping_term">
         	<option disabled selected>Select Terms</option>
-        	<option>CIF</option>
-        	<option>CIP</option>
-        	<option>CPT</option>
-        	<option>DAP</option>
-        	<option>DAT</option>
-        	<option>EXW</option>
-        	<option>FCA</option>
-        	<option>NDS</option>
+        	<?php $shipping = shipping_term(); 
+            if($shipping){
+                foreach ($shipping as $key => $value){ ?>
+                  <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['shipping_term']){ echo'selected';}?>><?php echo $value; ?></option>
+                  <?php } 
+            } ?>
         </select>
+        <?php echo form_error('shipping_term'); ?>
     </div>
 </div>
     
     <div class="form-group"><label class="col-md-3 control-label">Courier</label>
 
         <div class="col-md-9">
-        	<label class="checkbox-inline i-checks"><input type="checkbox" value="option1" id="inlineCheckbox1"> DHL </label>
-            <label class="checkbox-inline i-checks"><input type="checkbox" value="option2" id="inlineCheckbox2"> FEDEX </label>
-            <label class="checkbox-inline i-checks"><input type="checkbox" value="option3" id="inlineCheckbox3"> UPS </label>
-            <label class="checkbox-inline i-checks"><input type="checkbox" value="option3" id="inlineCheckbox3"> OTHER </label>
+        	<label class="checkbox-inline i-checks"><input type="checkbox" value="option1" id="inlineCheckbox1" name="courier[]" value="<?php echo set_value('courier[]');?>"> DHL </label>
+            <label class="checkbox-inline i-checks"><input type="checkbox" value="option2" id="inlineCheckbox2" name="courier[]" value="<?php echo set_value('courier[]');?>"> FEDEX </label>
+            <label class="checkbox-inline i-checks"><input type="checkbox" value="option3" id="inlineCheckbox3" name="courier[]" value="<?php echo set_value('courier[]');?>"> UPS </label>
+            <label class="checkbox-inline i-checks"><input type="checkbox" value="option4" id="inlineCheckbox4" name="courier[]" value="<?php echo set_value('courier[]');?>"> OTHER </label>
+        <?php echo form_error('courier'); ?>
         </div>
     </div>
     
@@ -202,7 +236,8 @@
     
 	<div class="form-group"><label class="col-md-3 control-label">Product Description</label>
         <div class="col-md-9">
-        	<textarea type="type" class="form-control" rows="5" id="product_desc" /></textarea>
+        	<textarea type="type" class="form-control" rows="5" id="product_desc" name="product_desc"><?php echo set_value('product_desc');?></textarea>
+            <?php echo form_error('product_desc'); ?>
         </div>
     </div>
     
@@ -210,27 +245,29 @@
     
 	<div class="form-group"><label class="col-md-3 control-label">List Duration</label>
         <div class="col-md-9">
-        	<select class="form-control" >
-            	<option>1 Day</option>
-            	<option>3 Days</option>
-            	<option>5 Days</option>
-            	<option selected>7 Days</option>
-            	<option>10 Days</option>
-            	<option>14 Days</option>
+        	<select class="form-control" name="duration">
+            <?php $duration = list_duration(); 
+            if($duration){
+                foreach ($duration as $key => $value){ ?>
+                  <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['duration']){ echo'selected';}?>><?php echo $value; ?> day</option>
+                  <?php } 
+            } ?>
             </select>
+            <?php echo form_error('duration'); ?>
         </div> 
     </div>	
     
 	<div class="form-group"><label class="col-md-3 control-label">Terms &amp; Conditions</label>
-        <div class="col-md-9"><input type="checkbox" class="checkbox-inline i-checks" /> I agree to the GSMStockMarket.com Limited Terms and Conditions
+        <div class="col-md-9"><input type="checkbox" class="checkbox-inline i-checks" name="termsandcondition" value="<?php echo set_value('termsandcondition');?>"/> I agree to the GSMStockMarket.com Limited Terms and Conditions
+         <?php echo form_error('termsandcondition'); ?>
         </div>
     </div>
     
     <div class="form-group">
         <div class="col-md-9 col-md-offset-3">
-            <button class="btn btn-white" type="submit">Cancel</button>
-            <button class="btn btn-warning" type="submit">Save for later</button>
-            <button class="btn btn-primary" type="submit">List Now</button>
+            <a href="">Cancel</a>
+            <button class="btn btn-warning" type="submit" name="status" value="1">Save for later</button>
+            <button class="btn btn-primary" type="submit" name="status" value="2">List Now</button>
         </div>
     </div>
                 
@@ -464,18 +501,81 @@ $(document).ready(function () {
    $(document).ready(function(){
      $("#mpn1").change(function(){
      var product_mpn_isbn = $(this).val(); 
-        
+     if(product_mpn_isbn){
+        $('.check_record').attr("disabled", "disabled");
         jQuery.post('<?php echo base_url()?>marketplace/get_attributes_info/',{product_mpn_isbn:product_mpn_isbn},
-        function(data){   
-                     
+        function(data){ 
+         var prod_make= <?php echo json_encode($product_makes); ?>;
+         var producttypes= <?php echo json_encode($product_types); ?>;
+         var productcolors= <?php echo json_encode($product_colors); ?>;
         if(data.STATUS=='true'){
+          if(prod_make){
+          var productmakehtml='<option "selected">Product Make</option>';
+            $.each(prod_make, function(index, val) {
+                productmakehtml +='<option value="'+val.product_make+'"';
+                if(val.product_make==data.product_make)
+                productmakehtml +=' Selected';
+                productmakehtml +=' >'+val.product_make+'</option>';
+             });
+             $('#product_make').html(productmakehtml);
+            }
+            
+            if(producttypes){
+            var producttypehtml='<option "selected">Product Type</option>';
+            $.each(producttypes, function(index, val) {
+                producttypehtml +='<option value="'+val.product_type+'"';
+                if(val.product_make==data.product_type)
+                producttypehtml +=' Selected';
+                producttypehtml +=' >'+val.product_type+'</option>';
+             });
+             $('#product_type').html(producttypehtml);
+            }
 
-            $('input[name="product_make"]').val(data.product_make);
+             if(productcolors){
+            var productcolorhtml='<option "selected">Product Color</option>';
+            $.each(productcolors, function(index, val) {
+                productcolorhtml +='<option value="'+val.product_color+'"';
+                if(val.product_color==data.product_color)
+                productcolorhtml +=' Selected';
+                productcolorhtml +=' >'+val.product_color+'</option>';
+             });
+             $('#product_color').html(productcolorhtml);
+            }
+
             $('input[name="product_model"]').val(data.product_model);
-            $('input[name="product_color"]').val(data.product_color);
-            $('input[name="product_type"]').val(data.product_type);
-           }       
+           
+           } 
+            /* else{
+
+            if(prod_make){
+            var productmakehtml='<option "selected">Product Make</option>';
+            $.each(prod_make, function(index, val) {
+                productmakehtml +='<option value="'+val.product_make+'">'+val.product_make+'</option>';
+             });
+             $('#product_make').html(productmakehtml);
+            }
+            
+            if(producttypes){
+            var producttypehtml='<option "selected">Product Type</option>';
+            $.each(producttypes, function(index, val) {
+                producttypehtml +='<option value="'+val.product_type+'">'+val.product_type+'</option>';
+             });
+             $('#product_type').html(producttypehtml);
+            }
+
+            if(productcolors){
+            var productcolorhtml='<option "selected">Product Color</option>';
+            $.each(productcolors, function(index, val) {
+                productcolorhtml +='<option value="'+val.product_color+'">'+val.product_color+'</option>';
+             });
+             $('#product_color').html(productcolorhtml);
+            }
+
+            $('input[name="product_model"]').val(data.product_model);
+           } */
           });
+           $('.check_record').removeAttr("disabled");   
+         }
         });
      });
  </script>
@@ -495,3 +595,14 @@ $(document).ready(function () {
         showMeridian: 1
     });
     </script>
+
+    <style>
+.error{
+  color:rgba(255, 0, 0, 0.7);
+  padding-left: 5px;
+}
+.error:before{
+    content: "*";
+    padding: 3px;
+}
+</style>
