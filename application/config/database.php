@@ -1,7 +1,5 @@
-<?php
-
-if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+$CI =& get_instance();
 /*
   | -------------------------------------------------------------------
   | DATABASE CONNECTIVITY SETTINGS
@@ -46,11 +44,16 @@ if (!defined('BASEPATH'))
   |
   | The $active_record variables lets you determine whether or not to load
   | the active record class
+ * 
  */
+$base_url = ltrim($CI->config->item('base_url'), 'http://');
 
 $active_group = 'default';
 $active_record = TRUE;
 
+
+ if($base_url == 'localhost/gsm/gsm-secure/'){
+    
   //DEVELOPMENT DATABASE:
   $db['default']['hostname'] = 'localhost';
   $db['default']['username'] = 'root';
@@ -67,31 +70,65 @@ $active_record = TRUE;
   $db['default']['swap_pre'] = '';
   $db['default']['autoinit'] = TRUE;
   $db['default']['stricton'] = FALSE;
+ } 
+ elseif($base_url == 'localhost/projects/codeigniter/gsm/gsm-secure/'){
+     
+    $db['default']['hostname'] = 'localhost';
+    $db['default']['username'] = 'root';
+    $db['default']['password'] = 'People1205';
+    $db['default']['database'] = 'gsmstock_secure';
+    $db['default']['dbdriver'] = 'mysql';
+    $db['default']['dbprefix'] = '';
+    $db['default']['pconnect'] = TRUE;
+    $db['default']['db_debug'] = TRUE;
+    $db['default']['cache_on'] = FALSE;
+    $db['default']['cachedir'] = '';
+    $db['default']['char_set'] = 'utf8';
+    $db['default']['dbcollat'] = 'utf8_general_ci';
+    $db['default']['swap_pre'] = '';
+    $db['default']['autoinit'] = TRUE;
+    $db['default']['stricton'] = FALSE;
+     
+ } 
+ elseif($base_url == 'localhost/secure.gsmstockmarket.com/'){
+    
+    $db['default']['hostname'] = 'localhost';
+    $db['default']['username'] = 'root';
+    $db['default']['password'] = 'root';
+    $db['default']['database'] = 'gsmstock_secure';
+    $db['default']['dbdriver'] = 'mysql';
+    $db['default']['dbprefix'] = '';
+    $db['default']['pconnect'] = TRUE;
+    $db['default']['db_debug'] = TRUE;
+    $db['default']['cache_on'] = FALSE;
+    $db['default']['cachedir'] = '';
+    $db['default']['char_set'] = 'utf8';
+    $db['default']['dbcollat'] = 'utf8_general_ci';
+    $db['default']['swap_pre'] = '';
+    $db['default']['autoinit'] = TRUE;
+    $db['default']['stricton'] = FALSE;
 
-
-
-  if($_SERVER['HTTP_HOST']=='localhost'){
-      $db['default']['hostname'] = 'localhost';
-      $db['default']['username'] = 'root';
-      $db['default']['password'] = 'Rwt189K72';
-      $db['default']['database'] = 'gsmstock_secure';
+  }
+  elseif($base_url == 'secure-dev.gsmstockmarket.com/'){
+     
+    //LIVE DATABASE:
+    $db['default']['hostname'] = '109.203.125.38';
+    $db['default']['username'] = 'gsmstock_admin';
+    $db['default']['password'] = 'zv.4qAb17ph$;?$PF!';
+    $db['default']['database'] = 'gsmstock_secure';
+    $db['default']['dbdriver'] = 'mysql';
+    $db['default']['dbprefix'] = '';
+    $db['default']['pconnect'] = FALSE;
+    $db['default']['db_debug'] = TRUE;
+    $db['default']['cache_on'] = FALSE;
+    $db['default']['cachedir'] = '';
+    $db['default']['char_set'] = 'utf8';
+    $db['default']['dbcollat'] = 'utf8_general_ci';
+    $db['default']['swap_pre'] = '';
+    $db['default']['autoinit'] = TRUE;
+    $db['default']['stricton'] = FALSE;
   }
   else{
-    //LIVE DATABASE:
-   $db['default']['hostname'] = '109.203.125.38';
-$db['default']['username'] = 'gsmstock_admin';
-$db['default']['password'] = 'zv.4qAb17ph$;?$PF!';
-$db['default']['database'] = 'gsmstock_secure';
+      //echo 5;
+      //exit;
   }
-
-$db['default']['dbdriver'] = 'mysql';
-$db['default']['dbprefix'] = '';
-$db['default']['pconnect'] = FALSE;
-$db['default']['db_debug'] = TRUE;
-$db['default']['cache_on'] = FALSE;
-$db['default']['cachedir'] = '';
-$db['default']['char_set'] = 'utf8';
-$db['default']['dbcollat'] = 'utf8_general_ci';
-$db['default']['swap_pre'] = '';
-$db['default']['autoinit'] = TRUE;
-$db['default']['stricton'] = FALSE;

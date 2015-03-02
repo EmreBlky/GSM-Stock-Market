@@ -555,10 +555,14 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
             }
 
         });
-        $('.confirm-div').hide();
-<?php if ($this->session->flashdata('msg')) { ?>
-            $('.confirm-div').html('<?php echo $this->session->flashdata('msg'); ?>').show();
+        $('.confirm-div-company').hide();
+        $('.confirm-div-personal').hide();
+<?php if ($this->session->flashdata('msg_company')) { ?>
+            $('.confirm-div-company').html('<?php echo $this->session->flashdata('msg_company'); ?>').show();
 <?php } ?>;
+<?php if ($this->session->flashdata('msg_personal')) { ?>
+            $('.confirm-div-personal').html('<?php echo $this->session->flashdata('msg_personal'); ?>').show();
+<?php } ?>;    
     });</script>
 <?php
 $attributes = array('class' => 'form-horizontal validation', 'onsubmit' => 'return validate_info()');
@@ -1222,14 +1226,15 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                 </div>
                 <div class="ibox-content">
                     <div class="row">
+                        <div class="confirm-div-company"></div>
                         <div class="col-md-12" style="text-align:center">                                
                             <img src="public/main/template/gsm/images/company/no_company.jpg" width="300" height="150">
                         </div>
                         <div class="col-md-12" style="text-align:center;margin-top:20px">
                             <div class="btn-group">
                                 <label title="Upload image file" for="inputImage" class="btn btn-primary">
-
-                                    <input type="file" name="file" class="hide">Upload new image</label>
+                                    <input type="file" accept="image" multiple name="userfile[]" />Upload new image</label>
+                                    <!-- <input type="file" name="userfile[]" class="hide">Upload new image</label> -->
                                 <label class="btn btn-danger">Delete</label>
                             </div>
                         </div>
@@ -1467,7 +1472,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                 </div>
                 <div class="ibox-content">
                     <div class="row">
-                        <div class="confirm-div"></div>
+                        <div class="confirm-div-personal"></div>
                         <div class="col-md-12" style="text-align:center">
                             <?php if (file_exists("public/main/template/gsm/images/members/" . $member->id . ".jpg")) { ?>                                
                                 <img src="public/main/template/gsm/images/members/<?php echo $member->id; ?>.jpg">
@@ -1479,7 +1484,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                         <div class="col-md-12" style="text-align:center;margin-top:20px">
                             <div class="btn-group">
                                 <label title="Upload image file" for="inputImage" class="btn btn-primary">                                        
-                                    <input type="file" accept="image" name="userfile" />Upload new image</label>
+                                    <input type="file" accept="image" multiple name="userfile[]" />Upload new image</label>
                                 <label class="btn btn-danger">Delete</label>
                             </div>
                         </div>

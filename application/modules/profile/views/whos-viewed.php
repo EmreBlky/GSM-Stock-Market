@@ -80,7 +80,7 @@
                             <?php if($this->member_model->get_where_multiple('id', $view->viewer_id)->online_status == 'online'){?>
                                 <span class="label label-primary">Online</span>
                             <?php } else {?>
-                                <span class="label label-secondary">Offline</span>
+                                <span class="label label-danger">Offline</span>
                             <?php }?>
                             
                         </div>
