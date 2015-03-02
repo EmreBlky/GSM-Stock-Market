@@ -73,7 +73,7 @@ $active_record = TRUE;
   if($_SERVER['HTTP_HOST']=='localhost'){
       $db['default']['hostname'] = 'localhost';
       $db['default']['username'] = 'root';
-      $db['default']['password'] = '';
+      $db['default']['password'] = 'Rwt189K72';
       $db['default']['database'] = 'gsmstock_secure';
   }
   else{

@@ -98,24 +98,42 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                     <div class="ibox-content">
             			<div class="row">
                         <div class="col-lg-3">
-                            <label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1" checked="checked"> Favourites </label> 
-                            <label class="checkbox-inline"> <input type="checkbox" value="option2" id="inlineCheckbox2" checked="checked"> Individuals </label>
-                            <label class="checkbox-inline"> <input type="checkbox" value="option3" id="inlineCheckbox3" checked="checked"> Companies </label>
+                            <label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1"> Favourites </label> 
+                            <!-- <label class="checkbox-inline"> <input type="checkbox" value="option2" id="inlineCheckbox2" checked="checked"> Individuals </label>
+                            <label class="checkbox-inline"> <input type="checkbox" value="option3" id="inlineCheckbox3" checked="checked"> Companies </label> -->
+                            <select class="form-control m-b" name="business_activity" style="width: 280px; clear: left; float: right;">
+                                <option value="a-z_company" selected="selected">A - Z Company</option>
+                                <option value="z-a_company">Z - A Company</option>
+                                <option value="a-z_indiviual">A - Z Individual</option>
+                                <option value="z-a_indiviual">Z - A Individual</option>
+                                <option value="date_added">Date Added</option>
+                            </select>    
                         </div>
                         <div class="col-lg-3">
                             <select class="form-control m-b" name="business_activity">
                                 <option selected="selected">All Business Activities</option>
-                                <option>Insurance</option>
-                                <option>Mobile Repair</option>
-                                <option>Network Operator</option>
+                                <option value="New Mobiles (Sim Free)">New Mobiles (Sim Free)</option>
+                                <option value="New Mobiles (Network Stocks)">New Mobiles (Network Stocks)</option>
+                                <option value="14 Day Mobiles">14 Day Mobiles</option>
+                                <option value="Refurbished Mobiles">Refurbished Mobiles</option>
+                                <option value="Used Mobiles">Used Mobiles</option>
+                                <option value="BER Mobiles">BER Mobiles</option>
+                                <option value="Mobile Accessories">Mobile Accessories</option>
+                                <option value="Wearable Technology">Wearable Technology</option>
+                                <option value="Bluetooth Products">Bluetooth Products</option>
+                                <option value="Mobile Spare Parts">Mobile Spare Parts</option>
+                                <option value="Mobile Service and Repair Centre">Mobile Service and Repair Centre</option>
+                                <option value="Network Operator">Network Operator</option>
+                                <option value="Freight Forwarding">Freight Forwarding</option>
+                                <option value="Insurance">Insurance</option>
                             </select>
                         </div>
                         <div class="col-lg-3">
                             <select class="form-control m-b" name="country">
                                 <option selected="selected">All Countries</option>
-                                <option>France</option>
-                                <option>United Kingdom</option>
-                                <option>United States</option>
+                                <?php foreach($country as $country){?>
+                                <option value="<?php echo $country->id?>"><?php echo $country->country?></option>
+                                <?php }?>                                
                             </select>
                         </div>
                         <div class="col-lg-3">

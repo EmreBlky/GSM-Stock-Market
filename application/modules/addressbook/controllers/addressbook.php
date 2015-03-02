@@ -14,6 +14,8 @@ class Addressbook extends MX_Controller
 
     function index($page = NULL, $off = NULL)
     {
+        $this->load->model('country/country_model', 'country_model');
+        
         $this->load->library('pagination');
         $data['main'] = 'addressbook';
         $data['title'] = 'GSM - Addressbook';        
@@ -59,7 +61,7 @@ class Addressbook extends MX_Controller
             $data['addressbook_count'] = 0;
         }
         
-        
+        $data['country'] = $this->country_model->_custom_query("SELECT * FROM country ORDER BY country ASC");
         $this->load->module('templates');
         $this->templates->page($data);
     }
