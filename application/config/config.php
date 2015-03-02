@@ -14,22 +14,33 @@
 | path to your installation.
 |
 */
-//DEVLOPMENT SITE:
-$config['base_url']	= 'http://localhost/gsm/gsm-secure/';
-
-if($_SERVER['HTTP_HOST']=='localhost')
-{
-	$config['base_url']	='http://localhost/gsm1/gsm-secure/';
-}
-else{
-	$config['base_url']	= 'http://secure-dev.gsmstockmarket.com/';
-}
 
 //SERVER SITE:
 $config['base_url']	= '';
 
 //LIVE SITE:
 //$config['base_url']	= '';
+
+//DEVLOPMENT SITE:
+//$config['base_url']	= 'http://localhost/gsm/gsm-secure/';
+
+$base_url = $_SERVER['HTTP_HOST'].$_SERVER["REQUEST_URI"];
+
+if($base_url == 'http://localhost/gsm/gsm-secure/')
+{
+	$config['base_url'] = 'http://localhost/gsm/gsm-secure/';
+}
+elseif($base_url == 'http://localhost/projects/codeigniter/gsm/gsm-secure/'){
+    
+        $config['base_url'] = 'http://localhost/projects/codeigniter/gsm/gsm-secure/';
+}
+elseif($base_url == 'http://localhost/secure.gsmstockmarket.com/'){
+    
+        $config['base_url'] = 'http://localhost/secure.gsmstockmarket.com/';    
+}
+elseif($base_url == 'http://secure-dev.gsmstockmarket.com/'){
+	$config['base_url'] = 'http://secure-dev.gsmstockmarket.com/';
+}
 
 /*
 |--------------------------------------------------------------------------
