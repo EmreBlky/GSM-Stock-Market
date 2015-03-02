@@ -3,7 +3,7 @@
 class Marketplace_model extends MY_Model {
 
     function __construct()
-    {		
+    {    	
         parent::__construct();
         $this->table = 'marketplace';
     }
@@ -38,6 +38,18 @@ class Marketplace_model extends MY_Model {
 		else
 			return FALSE;
 	}
+
+	public function get_result_by_group( $columns=''){
+		$this->db->group_by($columns); 
+		$this->db->order_by($columns, "asc"); 
+
+		$query=$this->db->get('listing_attributes');
+		if($query->num_rows()>0)
+			return $query->result();
+		else
+			return FALSE;
+	}
+
 
 	public function get_row($table_name='', $id_array='',$columns=array(),$order_by=array()){
 		
