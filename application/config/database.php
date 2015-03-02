@@ -72,7 +72,7 @@ $active_record = TRUE;
   $db['default']['autoinit'] = TRUE;
   $db['default']['stricton'] = FALSE;
  } 
- else if($base_url == 'http://localhost/projects/codeigniter/gsm/gsm-secure/'){
+ elseif($base_url == 'http://localhost/projects/codeigniter/gsm/gsm-secure/'){
      
     $db['default']['hostname'] = 'localhost';
     $db['default']['username'] = 'root';
@@ -91,7 +91,7 @@ $active_record = TRUE;
     $db['default']['stricton'] = FALSE;
      
  } 
- else if($base_url == 'http://localhost/secure.gsmstockmarket.com/'){
+ elseif($base_url == 'http://localhost/secure.gsmstockmarket.com/'){
      
     $db['default']['hostname'] = 'localhost';
     $db['default']['username'] = 'root';
@@ -110,7 +110,7 @@ $active_record = TRUE;
     $db['default']['stricton'] = FALSE;
 
   }
-  else{
+  elseif($base_url == 'http://secure-dev.gsmstockmarket.com/'){
     //LIVE DATABASE:
     $db['default']['hostname'] = '109.203.125.38';
     $db['default']['username'] = 'gsmstock_admin';
