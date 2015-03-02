@@ -1,7 +1,4 @@
-<?php
-
-if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 /*
   | -------------------------------------------------------------------
   | DATABASE CONNECTIVITY SETTINGS
@@ -47,14 +44,26 @@ if (!defined('BASEPATH'))
   | The $active_record variables lets you determine whether or not to load
   | the active record class
  */
+$base_url       = $_SERVER['HTTP_HOST'].$_SERVER["REQUEST_URI"];
+$base_name  = $_SERVER["REQUEST_URI"];
 
-$base_url = $_SERVER['HTTP_HOST'].$_SERVER["REQUEST_URI"];
+//echo $base_url;
+//echo '<br/>';
+//echo $base_name;
+//$base_url = substr($base_url, 0, strpos($base_url, "/"));
+//echo basename($base_url);
+
+$base_url = rtrim($base_url, basename($base_url));
+
+echo $base_url;
+echo '<br/>';
 
 $active_group = 'default';
 $active_record = TRUE;
 
- if($base_url == 'http://localhost/gsm/gsm-secure/'){
 
+ if($base_url == 'localhost/gsm/gsm-secure/'){
+    
   //DEVELOPMENT DATABASE:
   $db['default']['hostname'] = 'localhost';
   $db['default']['username'] = 'root';
@@ -72,7 +81,7 @@ $active_record = TRUE;
   $db['default']['autoinit'] = TRUE;
   $db['default']['stricton'] = FALSE;
  } 
- elseif($base_url == 'http://localhost/projects/codeigniter/gsm/gsm-secure/'){
+ elseif($base_url == 'localhost/projects/codeigniter/gsm/gsm-secure/'){
      
     $db['default']['hostname'] = 'localhost';
     $db['default']['username'] = 'root';
@@ -91,8 +100,8 @@ $active_record = TRUE;
     $db['default']['stricton'] = FALSE;
      
  } 
- elseif($base_url == 'http://localhost/secure.gsmstockmarket.com/'){
-     
+ elseif($base_url == 'localhost/secure.gsmstockmarket.com/'){
+    
     $db['default']['hostname'] = 'localhost';
     $db['default']['username'] = 'root';
     $db['default']['password'] = 'root';
@@ -110,7 +119,8 @@ $active_record = TRUE;
     $db['default']['stricton'] = FALSE;
 
   }
-  elseif($base_url == 'http://secure-dev.gsmstockmarket.com/'){
+  elseif($base_url == 'secure-dev.gsmstockmarket.com/'){
+     
     //LIVE DATABASE:
     $db['default']['hostname'] = '109.203.125.38';
     $db['default']['username'] = 'gsmstock_admin';
@@ -127,4 +137,8 @@ $active_record = TRUE;
     $db['default']['swap_pre'] = '';
     $db['default']['autoinit'] = TRUE;
     $db['default']['stricton'] = FALSE;
+  }
+  else{
+      //echo 5;
+      //exit;
   }
