@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
-*	clear cache
+*    clear cache
 */
 if ( ! function_exists('clear_cache')) {
 	function clear_cache(){
@@ -204,5 +204,90 @@ if ( ! function_exists('file_download')) {
 			return FALSE;
 		}
 		endif;	
+	}
+}
+
+
+if ( ! function_exists('shipping_term')) {	
+	function shipping_term($status='') {
+		$status_array = array(
+                            '1' => 'CIF',
+                            '2' => 'CIP',
+                            '3' => 'CPT',
+                            '4' => 'DAP',
+                            '5' => 'DAT',
+                            '6' => 'EXW',
+                            '7' => 'FCA',
+                            '8' => 'NDS',
+                             ); 
+		return $status_array;
+	}
+}
+
+if ( ! function_exists('shipping_term_class')) {	
+	function shipping_term_class($status='') {
+		$status_array = array(
+                            '1' => 'CIF',
+                            '2' => 'CIP',
+                            '3' => 'CPT',
+                            '4' => 'DAP',
+                            '5' => 'DAT',
+                            '6' => 'EXW',
+                            '7' => 'FCA',
+                            '8' => 'NDS',
+                             ); 
+		return element($status, $status_array);
+	}
+}
+
+if ( ! function_exists('courier')) {	
+	function courier($status='') {
+		$status_array = array(
+                            '1' => 'DHL',
+                            '2' => 'FEDEX',
+                            '3' => 'UPS',
+                            '4' => 'OTHER',
+                             ); 
+		return $status_array;
+	}
+}
+
+if ( ! function_exists('courier_class')) {	
+	function courier_class($status='') {
+		$status_array = array(
+                            '1' => 'DHL',
+                            '2' => 'FEDEX',
+                            '3' => 'UPS',
+                            '4' => 'OTHER',
+                             ); 
+		return element($status, $status_array);
+	}
+}
+
+if ( ! function_exists('list_duration')) {	
+	function list_duration($status='') {
+		$status_array = array(
+                            '1' => '1',
+                            '2' => '3',
+                            '3' => '5',
+                            '4' => '7',
+                            '5' => '10',
+                            '6' => '14',
+                             ); 
+		return $status_array;
+	}
+}
+
+if ( ! function_exists('list_duration_class')) {	
+	function list_duration_class($status='') {
+		$status_array = array(
+                                '1' => '1',
+	                            '2' => '3',
+	                            '3' => '5',
+	                            '4' => '7',
+	                            '5' => '10',
+	                            '6' => '14',
+                             ); 
+		return element($status, $status_array);
 	}
 }
