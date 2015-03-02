@@ -15,6 +15,7 @@ class Addressbook extends MX_Controller
     function index($page = NULL, $off = NULL)
     {
         $this->load->model('country/country_model', 'country_model');
+        $this->load->model('login/login_model', 'login_model');
         
         $this->load->library('pagination');
         $data['main'] = 'addressbook';

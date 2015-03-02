@@ -167,6 +167,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                                 <span class="label label-primary">Online</span>
                             <?php } else {?>
                                 <span class="label label-danger">Offline</span>
+                                
                             <?php }?>
                         </div>
                     </div>
@@ -189,6 +190,17 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                             <li><?php echo $this->company_model->get_where_multiple('id', $this->member_model->get_where_multiple('id', $address->address_member_id)->company_id)->business_sector_1; ?></li>
                             <li><?php echo $this->company_model->get_where_multiple('id', $this->member_model->get_where_multiple('id', $address->address_member_id)->company_id)->business_sector_2; ?></li>
                             <li><?php echo $this->company_model->get_where_multiple('id', $this->member_model->get_where_multiple('id', $address->address_member_id)->company_id)->business_sector_3; ?></li>
+                            <?php 
+                                if($this->member_model->get_where_multiple('id', $address->address_member_id)->online_status != 'online'){
+                                    $logged = $this->login_model->get_where_multiple('member_id', $address->address_member_id, 'logged', 'no');
+                                    //echo '<pre>';
+                                    //print_r($logged);
+                                    //exit;
+                            ?>
+                            <li>&nbsp;</li>
+                            <li>&nbsp;</li>
+                            <li><b>Last Logged in: </b><?php echo $logged->time; ?> on <?php echo $logged->date; ?></li>
+                            <?php }?>
                         </ul>
                         </div>
                         
