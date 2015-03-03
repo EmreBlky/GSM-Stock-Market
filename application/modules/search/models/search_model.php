@@ -205,15 +205,13 @@ class Search_model extends MY_Model {
        
        $country = $this->country_model->get_where_multiple('country', $q)->id;
        
-       if(is_numeric($country)){
-           $co = $country;
-       }
-       else{
-           $co = '';
-       }
-       
-       $sql = "SELECT * FROM addressbook WHERE (individual LIKE '%$q%' AND member_id = '".$this->session->userdata('members_id')."') OR (company LIKE '%$q%') OR (business_activities LIKE '%$q%' AND member_id = '".$this->session->userdata('members_id')."') OR (country = '".$co."' AND member_id = '".$this->session->userdata('members_id')."') ORDER BY date DESC";
+       $sql = "SELECT * FROM addressbook WHERE (individual LIKE '%$q%' AND member_id = '".$this->session->userdata('members_id')."') OR (company LIKE '%$q%') OR (business_activities LIKE '%$q%' AND member_id = '".$this->session->userdata('members_id')."') OR (country = '".$country."' AND member_id = '".$this->session->userdata('members_id')."') ORDER BY date DESC";
         $query = $this->db->query($sql);
+        
+        //echo '<pre>';
+        //print_r($query);
+        //echo $query->num_rows();
+        //exit;
 
         if($query->num_rows() > 0){
 
