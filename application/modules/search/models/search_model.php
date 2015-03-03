@@ -196,5 +196,32 @@ class Search_model extends MY_Model {
            $query = $this->db->query($sql, array($terms));
            return $query->row()->count;
    }
+   
+   function search_addressbook()
+   {
+       $q = $this->input->post('search');
+       
+       $this->load->model('country/country_model', 'country_model');
+       if(is_numeric($q)){
+            $q = $this->country_model->get_where($q)->country;
+       }
+       $sql = "SELECT * FROM addressbook WHERE (individual LIKE '%$q%' AND member_id = '".$this->session->userdata('members_id')."') OR (company LIKE '%$q%') OR (business_activities LIKE '%$q%' AND member_id = '".$this->session->userdata('members_id')."') OR (country LIKE '%$q%' AND member_id = '".$this->session->userdata('members_id')."') ORDER BY date DESC";
+        $query = $this->db->query($sql);
+
+        if($query->num_rows() > 0){
+
+          foreach ($query->result() as $row)
+           {
+                   $data[] = $row;
+           }
+
+        }
+        else{
+            $data = 'NO RESULTS WERE FOUND!';
+        }
+        //echo json_encode($data);
+        return $data;
+       
+   }
 }
 

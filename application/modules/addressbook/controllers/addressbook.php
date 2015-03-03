@@ -11,6 +11,9 @@ class Addressbook extends MX_Controller
         }
         $this->load->model('addressbook/addressbook_model', 'addressbook_model');
         $this->load->model('activity/activity_model', 'activity_model');
+        $this->load->model('country/country_model', 'country_model');
+        $this->load->model('login/login_model', 'login_model');
+        $this->load->model('favourite/favourite_model', 'favourite_model');
         
         $data_activity = array(
                                 'activity' => 'Address Book',
@@ -21,8 +24,7 @@ class Addressbook extends MX_Controller
 
     function index($page = NULL, $off = NULL)
     {
-        $this->load->model('country/country_model', 'country_model');
-        $this->load->model('login/login_model', 'login_model');
+        
         
         $this->load->library('pagination');
         $data['main'] = 'addressbook';
@@ -156,15 +158,41 @@ class Addressbook extends MX_Controller
         $this->templates->page($data);
     }
     
-    function add($mid, $type)
+    function characterReplace($var)
+    {
+        $var = str_replace('%20', ' ', $var);        
+        $var = str_replace('BREAK1', '<br/>', $var);
+        $var = str_replace('%22', '"', $var);
+        $var = str_replace('%3C', '<', $var);
+        $var = str_replace('%3E', '>', $var);
+        $var = str_replace('%C2%B1', '±', $var);
+        $var = str_replace('%7C', '|', $var);
+        $var = str_replace('%7B', '{', $var);
+        $var = str_replace('%7D', '}', $var);
+        $var = str_replace('%5E', '^', $var);
+        $var = str_replace('%C2%A3', '£', $var);
+        $var = str_replace('%60', '`', $var);
+        $var = str_replace('%C2%A7', '§', $var);
+        $var = str_replace('QUEST1', '?', $var);
+        $var = str_replace('SLASH1', '/', $var);
+        $var = str_replace('PERCENT1', '%', $var);
+        $var = str_replace('&#40;', '(', $var);
+        $var = str_replace('&#41;', ')', $var);
+        
+        return $var;
+    }
+    
+    function add($mid, $individual, $company, $business, $country)
     {
         $data = array(
                         'member_id'             => $this->session->userdata('members_id'),
                         'address_member_id'     => $mid,
-                        'type'                  => $type,
-                        'favourite'             => '',
-                        'business_activities'   => '',
-                        'country'               => ''
+                        'individual'            => $this->characterReplace($individual),
+                        'company'               => $this->characterReplace($company),
+                        'favourite'             => 'no',
+                        'business_activities'   => $this->characterReplace($business),
+                        'country'               => $country,
+                        'date'                  => date('Y-m-d H:i:s')
                     );
         $this->addressbook_model->_insert($data);
         
@@ -178,6 +206,164 @@ class Addressbook extends MX_Controller
         
         //$this->session->set_flashdata('message', 'That user has been removed from your Address Book');
         redirect('member/profile/'.$mid);
+    }
+    
+    function searchQuery($one, $two, $three, $page = NULL, $off = NULL)
+    {
+        $this->load->library('pagination');
+        
+        
+        if(isset($off) && $off > 1){
+            $new_mem = $off-1;
+            $offset = 21*$new_mem;
+        }
+        else{
+            $offset = 0;
+        }
+        
+        $add_count = $this->addressbook_model->count_where('member_id', $this->session->userdata('members_id'));
+        $data['addressbook_count'] = $add_count;
+        //$data['address_book'] = $this->addressbook_model->get_where_multiples('member_id', $this->session->userdata('members_id'), NULL, NULL, 21, $offset);
+        if($two == 'ALL' && $three == 'ALL'){
+            
+            //$add_count = $this->addressbook_model->count_where('member_id', $this->session->userdata('members_id'));
+            //$data['addressbook_count'] = $add_count;
+            $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook ".$this->characterReplace($one)."");
+            
+        }
+        elseif($two != 'ALL' && $three == 'ALL'){
+            
+            $add_count = $this->addressbook_model->_custom_query("SELECT COUNT(*) AS addressCount FROM addressbook WHERE business_activities = '".$this->characterReplace($two)."'");
+            
+            if($add_count[0]->addressCount > 0){
+                $data['addressbook_count'] = $add_count[0]->addressCount;
+                $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE business_activities = '".$this->characterReplace($two)."' ".$this->characterReplace($one)."");
+                
+                $config['base_url'] = $this->config->item('base_url').'addressbook/business/page';
+                $config['total_rows'] = $add_count[0]->addressCount;
+                $config['per_page'] = 21;
+                $config["uri_segment"] = 4;
+                $config['use_page_numbers'] = TRUE;
+
+                $config['full_tag_open'] = '<div class="btn-group pull-right">';
+                $config['full_tag_close'] = '</div>';
+                $config['next_tag_open'] = '<span class="btn gsm_pag btn-white">';
+                $config['next_tag_close'] = '</span>';
+                $config['prev_tag_open'] = ' <span class="btn gsm_pag btn-white">';
+                $config['prev_tag_close'] = '</span>';
+                $config['cur_tag_open'] = '<span class="btn gsm_pag_active btn-white active">';
+                $config['cur_tag_close'] = '</span>';
+                $config['num_tag_open'] = '<span class="btn gsm_pag btn-white">';                
+                $config['num_tag_close'] = '</span>';
+                $config['prev_link'] = '<i class="fa fa-chevron-left"></i>';
+                $config['next_link'] = '<i class="fa fa-chevron-right"></i>';
+
+                $this->pagination->initialize($config);
+                $data['pagination'] = $this->pagination->create_links();
+            }
+            else{
+                $data['addressbook_count'] = 0;
+            }
+            
+            
+        }
+        elseif($two == 'ALL' && $three != 'ALL'){
+            
+            $add_count = $this->addressbook_model->_custom_query("SELECT COUNT(*) AS addressCount FROM addressbook WHERE country = '".$three."'");
+            
+            if($add_count[0]->addressCount > 0){
+                $data['addressbook_count'] = $add_count[0]->addressCount;
+                $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE country = '".$three."' ".$this->characterReplace($one).""); 
+                
+                $config['base_url'] = $this->config->item('base_url').'addressbook/country/page';
+                $config['total_rows'] = $add_count[0]->addressCount;
+                $config['per_page'] = 21;
+                $config["uri_segment"] = 4;
+                $config['use_page_numbers'] = TRUE;
+
+                $config['full_tag_open'] = '<div class="btn-group pull-right">';
+                $config['full_tag_close'] = '</div>';
+                $config['next_tag_open'] = '<span class="btn gsm_pag btn-white">';
+                $config['next_tag_close'] = '</span>';
+                $config['prev_tag_open'] = ' <span class="btn gsm_pag btn-white">';
+                $config['prev_tag_close'] = '</span>';
+                $config['cur_tag_open'] = '<span class="btn gsm_pag_active btn-white active">';
+                $config['cur_tag_close'] = '</span>';
+                $config['num_tag_open'] = '<span class="btn gsm_pag btn-white">';                
+                $config['num_tag_close'] = '</span>';
+                $config['prev_link'] = '<i class="fa fa-chevron-left"></i>';
+                $config['next_link'] = '<i class="fa fa-chevron-right"></i>';
+
+                $this->pagination->initialize($config);
+                $data['pagination'] = $this->pagination->create_links();
+            }
+            else{
+                $data['addressbook_count'] = 0;
+            }
+        }
+        elseif($two != 'ALL' && $three != 'ALL'){
+            
+            $add_count = $this->addressbook_model->_custom_query("SELECT COUNT(*) AS addressCount FROM addressbook WHERE business_activities = '".$this->characterReplace($two)."' AND country = '".$three."'");
+            
+            if($add_count[0]->addressCount > 0){
+                $data['addressbook_count'] = $add_count[0]->addressCount;
+                $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE business_activities = '".$this->characterReplace($two)."' AND country = '".$three."' ".$this->characterReplace($one)."");
+            }
+            else{
+                $data['addressbook_count'] = 0;
+            }
+        }
+        
+//      }      
+//        if($add_count > 0){
+//            $data['addressbook_count'] = $add_count;
+//            $data['address_book'] = $this->addressbook_model->get_where_multiples('member_id', $this->session->userdata('members_id'), NULL, NULL, 21, $offset);
+//            
+//            $config['base_url'] = $this->config->item('base_url').'addressbook/page';
+//            $config['total_rows'] = $add_count;
+//            $config['per_page'] = 21;
+//            $config["uri_segment"] = 3;
+//            $config['use_page_numbers'] = TRUE;
+//
+//            $config['full_tag_open'] = '<div class="btn-group pull-right">';
+//            $config['full_tag_close'] = '</div>';
+//            $config['next_tag_open'] = '<span class="btn gsm_pag btn-white">';
+//            $config['next_tag_close'] = '</span>';
+//            $config['prev_tag_open'] = ' <span class="btn gsm_pag btn-white">';
+//            $config['prev_tag_close'] = '</span>';
+//            $config['cur_tag_open'] = '<span class="btn gsm_pag_active btn-white active">';
+//            $config['cur_tag_close'] = '</span>';
+//            $config['num_tag_open'] = '<span class="btn gsm_pag btn-white">';                
+//            $config['num_tag_close'] = '</span>';
+//            $config['prev_link'] = '<i class="fa fa-chevron-left"></i>';
+//            $config['next_link'] = '<i class="fa fa-chevron-right"></i>';
+//
+//            $this->pagination->initialize($config);
+//            $data['pagination'] = $this->pagination->create_links();
+//        }
+//        else{
+//            $data['addressbook_count'] = 0;
+//        }
+        
+        //$data['country'] = $this->country_model->_custom_query("SELECT * FROM country ORDER BY country ASC");
+        
+        $this->load->view('ajax-result', $data);
+    }
+    
+    function results($result)
+    {
+//        foreach($result as $result){
+//            echo $result[0]->id;
+//        }
+//        exit;
+        $data['base'] = $this->config->item('base_url');
+        $data['results'] = $result;
+        $data['main'] = 'addressbook';        
+        $data['title'] = 'GSM - Addressbook Search Results';        
+        $data['page'] = 'results';
+        
+        $this->load->module('templates');
+        $this->templates->page($data);
     }
 	
 }

@@ -26,8 +26,8 @@ class Search extends MX_Controller
     {
         $data['category'] = $var;
         $this->load->view('email-search', $data);
-    }
-    
+    }    
+            
     function emailSearch($category)
     {
         $data['search_emails'] = $this->search_model->search_email($category);
@@ -35,6 +35,19 @@ class Search extends MX_Controller
         $data['category'] = $category;
         $this->load->module('mailbox');
         $this->mailbox->results($data);
+    }    
+    function addressbook()
+    {
+        $this->load->view('addressbook-search');
+    }
+    
+    function addressbookSearch()
+    {
+        $data['search_addressbook'] = $this->search_model->search_addressbook();
+        //$data['query'] = $this->input->post('search');
+        $this->load->module('addressbook');
+        $this->addressbook->results($data);
+        
     }
             
     function user()

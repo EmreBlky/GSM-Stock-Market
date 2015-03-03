@@ -10,6 +10,7 @@ class Favourite extends MX_Controller
             redirect('login');
         }
         $this->load->model('favourite/favourite_model', 'favourite_model');
+        $this->load->model('addressbook/addressbook_model', 'addressbook_model');
     }
 
     function index()
@@ -28,6 +29,17 @@ class Favourite extends MX_Controller
                     );
         $this->favourite_model->_insert($data);
         
+        $fid = $this->addressbook_model->get_where_multiple('address_member_id', $mid)->id;
+        
+        if(is_numeric($fid)){
+            
+            $data_fav = array(                        
+                        'favourite'  => 'yes'
+                    );
+            $this->addressbook_model->_update_where($data_fav, 'id', $fid);
+            
+        }
+        
         $this->session->set_flashdata('message', 'That user has been added to your favourites');
         redirect('member/profile/'.$mid);
     }
@@ -35,6 +47,17 @@ class Favourite extends MX_Controller
     function remove($mid)
     {
         $this->favourite_model->_delete_where('member_id', $this->session->userdata('members_id'), 'favourite_id', $mid);
+        
+        $fid = $this->addressbook_model->get_where_multiple('address_member_id', $mid)->id;
+        
+        if(is_numeric($fid)){
+            
+            $data_fav = array(                        
+                        'favourite'  => 'no'
+                    );
+            $this->addressbook_model->_update_where($data_fav, 'id', $fid);
+            
+        }
         
         $this->session->set_flashdata('message', 'That user has been removed from your favourites');
         redirect('member/profile/'.$mid);

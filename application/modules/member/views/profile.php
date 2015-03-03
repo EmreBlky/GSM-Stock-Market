@@ -11,12 +11,15 @@
             {
                  //alert('ADD');
                  
-                var cust_added     = $('#cust_added').val();
-                var cust_type     = $('#cust_type').val();
+                var cust_added          = $('#cust_added').val();                
+                var cust_individual     = $('#cust_individual').val();
+                var cust_company        = $('#cust_company').val();
+                var cust_business       = $('#cust_business').val();
+                var cust_country        = $('#cust_country').val();
                 
                  $.ajax({
                         type: "POST",
-                        url: "addressbook/add/"+ cust_added +"/"+ cust_type +"",
+                        url: "addressbook/add/"+ cust_added +"/"+ cust_individual +"/"+ cust_company +"/"+ cust_business +"/"+ cust_country +"",
                         dataType: "html",
                         success:function(data){
                           $('#contact_added').replaceWith('<button onclick="contactRemove();" type="button" class="btn btn-success btn-sm btn-block" id="contact_removed"><i class="fa fa-book"></i> Remove Contact</button>');                             
@@ -195,7 +198,10 @@
                                     </div>
                                     <div class="row">
                                         <input type="hidden" id="cust_added" name="cust_added" value="<?php echo $member_info->id;?>"/>
-                                        <input type="hidden" id="cust_type" name="cust_type" value="individual"/>
+                                        <input type="hidden" id="cust_individual" name="cust_individual" value="<?php echo $member_info->firstname.' '.$member_info->lastname;?>"/>
+                                        <input type="hidden" id="cust_company" name="cust_company" value="<?php echo $member_company->company_name;?>"/>
+                                        <input type="hidden" id="cust_business" name="cust_business" value="<?php echo $member_company->business_sector_1;?>"/>
+                                        <input type="hidden" id="cust_country" name="cust_country" value="<?php echo $member_company->country?>"/>
                                         <?php 
                                         
                                         $this->load->model('addressbook/addressbook_model', 'addressbook_model');
