@@ -247,7 +247,7 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
 
 
             console.log('entry');
-            console.log(entry);
+            alert(entry);
 
             var value = $('#' + entry).attr('value');
             var entry = $('#' + entry).attr('value');
