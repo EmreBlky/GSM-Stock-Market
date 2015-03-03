@@ -153,35 +153,35 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
 
     function toggleChecks(counter) {
         // Function to disable or enable check boxes
-//
-//
-//        var count = 1;
-//        var ids = new Array();
-//        if (counter >= 5) {
-//            while (count <= 14) {
-//                var chk = $('#bsectors' + count).prop("checked");
-//                var id = $('#bsectors' + count).attr('id');
-//                if (chk == false) {
-//                    $('#bsectors' + count).iCheck('uncheck');
-//                    $('#bsectors' + count).iCheck('disable');
-//                }
-//                count++;
-//            }
-//        } else {
-//            while (count <= 14) {
-//                var chk = $('#bsectors' + count).prop("checked");
-//                var id = $('#bsectors' + count).attr('id');
-//                if (chk == false) {
-//                    $('#bsectors' + count).iCheck('uncheck');
-//                    $('#bsectors' + count).iCheck('enable');
-//                }
-//                count++;
-//            }
-//        }
-//
-//    }
-//
-//    function updateChecks(div_id) {
+
+
+        var count = 1;
+        var ids = new Array();
+        if (counter >= 5) {
+            while (count <= 14) {
+                var chk = $('#bsectors' + count).prop("checked");
+                var id = $('#bsectors' + count).attr('id');
+                if (chk == false) {
+                    $('#bsectors' + count).iCheck('uncheck');
+                    $('#bsectors' + count).iCheck('disable');
+                }
+                count++;
+            }
+        } else {
+            while (count <= 14) {
+                var chk = $('#bsectors' + count).prop("checked");
+                var id = $('#bsectors' + count).attr('id');
+                if (chk == false) {
+                    $('#bsectors' + count).iCheck('uncheck');
+                    $('#bsectors' + count).iCheck('enable');
+                }
+                count++;
+            }
+        }
+
+    }
+
+    function updateChecks(div_id) {
 //
 //        var primary = $('#bprimary').val();
 //        var secondary = $('#bsecondary').val();
