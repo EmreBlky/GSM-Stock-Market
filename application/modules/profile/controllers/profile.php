@@ -272,12 +272,12 @@ class Profile extends MX_Controller {
 //            echo '<pre>';
 //            print_r($_FILES);
 //            exit;            
-            
+//            
             $this->load->library('upload');
             
             $files = $_FILES;
 //          
-                if(isset($_FILES['userfile']['name'][0])){
+                if($_FILES['userfile']['size'][0] > 0){
                     
                     $base = $this->config->item('base_url');
                     $config['upload_path'] = dirname($_SERVER["SCRIPT_FILENAME"]) . '/public/main/template/gsm/images/company/';
@@ -304,7 +304,7 @@ class Profile extends MX_Controller {
                     } else {
                         $data = array('upload_data' => $this->upload->data());                    }
                 }
-                if(isset($_FILES['userfile']['name'][1])){
+                if($_FILES['userfile']['size'][1] > 0){
                     $base = $this->config->item('base_url');
                     $config['upload_path'] = dirname($_SERVER["SCRIPT_FILENAME"]) . '/public/main/template/gsm/images/members/';
                     $config['upload_url'] = $base . 'public/main/template/gsm/images/members/';
@@ -312,7 +312,7 @@ class Profile extends MX_Controller {
                     $config['file_name'] = $this->session->userdata('members_id');
                     $config['max_size'] = '2000';
                     $config['overwrite'] = TRUE;
-                    $config['max_width'] = '300';
+                    $config['max_width'] = '115';
                     $config['max_height'] = '150';
                     
                     $_FILES['userfile']['name']= $files['userfile']['name'][1];

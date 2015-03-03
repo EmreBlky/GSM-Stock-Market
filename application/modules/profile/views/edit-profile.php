@@ -1214,7 +1214,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                     <div class="form-group">
                         <label class="col-md-3 col-md-4 control-label">Company Bio</label>
                         <div class="col-md-9">
-                            <textarea class="form-control" rows="5" id="companybio"></textarea>
+                            <textarea class="form-control" rows="5" id="companybio"><?php echo $company->company_profile; ?></textarea>
                             <div id="charNum"></div>
                         </div>  
                     </div>
@@ -1235,8 +1235,12 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                 <div class="ibox-content">
                     <div class="row">
                         <div class="confirm-div-company"></div>
-                        <div class="col-md-12" style="text-align:center">                                
-                            <img src="public/main/template/gsm/images/company/no_company.jpg" width="300" height="150">
+                        <div class="col-md-12" style="text-align:center">
+                            <?php if (file_exists("public/main/template/gsm/images/company/" . $member->company_id . ".jpg")) { ?>
+                                <img src="public/main/template/gsm/images/company/<?php echo $member->company_id; ?>.jpg" width="300" height="150">
+                            <?php } else {?>
+                                <img src="public/main/template/gsm/images/company/no_company.jpg" width="300" height="150">
+                            <?php }?>                            
                         </div>
                         <div class="col-md-12" style="text-align:center;margin-top:20px">
                             <div class="btn-group">
