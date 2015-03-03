@@ -494,6 +494,8 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
 
             var str = "<option value = '" + id + "'>" + value + "</option>"; // Create Option
 
+            alert(str);
+
             if (counter < 1) {	// if No Checkbox is selected
                 // Hide all Select boxes
                 $('#primary-business').css("display", 'none');
