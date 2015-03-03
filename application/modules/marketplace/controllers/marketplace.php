@@ -112,7 +112,7 @@ class Marketplace extends MX_Controller
     {   
 
         $member_id=$this->session->userdata('members_id');
-        //$this->output->enable_profiler(TRUE);
+        $this->output->enable_profiler(TRUE);
         $this->form_validation->set_rules('schedule_date_time', 'schedule date time', 'required');
         $this->form_validation->set_rules('listing_type', 'listing type', 'required');
         $this->form_validation->set_rules('product_mpn_isbn', 'product_mpn_isbn', 'required');
@@ -133,9 +133,26 @@ class Marketplace extends MX_Controller
         $this->form_validation->set_rules('product_desc', 'product description', 'required');
         $this->form_validation->set_rules('duration', 'duration', 'required');
         $this->form_validation->set_rules('termsandcondition', 'Terms and condition', 'required');
+        $this->form_validation->set_rules('image1','','callback_image1_check');
 
+        if(!empty($_FILES['image2']['name'])){
+            $this->form_validation->set_rules('image2', '', 'callback_image2_check2');
+            }
+
+        if(!empty($_FILES['image3']['name'])){
+            $this->form_validation->set_rules('image3', '', 'callback_image3_check3');
+            }
+
+         if(!empty($_FILES['image4']['name'])){
+            $this->form_validation->set_rules('image4', '', 'callback_image4_check4');
+            }
+
+        if(!empty($_FILES['image5']['name'])){
+        $this->form_validation->set_rules('image5', '', 'callback_image5_check5');
+        }
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
-        if ($this->form_validation->run() == TRUE){
+        if ($this->form_validation->run($this) == TRUE){
+           
             $courier='';
             if($courier_array=$this->input->post('courier')){
                 foreach ($courier_array as $value) {
@@ -143,6 +160,7 @@ class Marketplace extends MX_Controller
                     $courier=$courierinfo.','.$courier;
                 }
             }
+
 
             $data_insert=array(
             'schedule_date_time' =>  $this->input->post('schedule_date_time'),
@@ -170,6 +188,37 @@ class Marketplace extends MX_Controller
             'status'  => $this->input->post('status'), 
             'created' => date('Y-m-d h:i:s A'),
             );
+            
+            if($this->session->userdata('image1_check')!=''):
+                $image1_check=$this->session->userdata('image1_check');
+                $data_insert['image1'] = 'assets/uploads/products/'.$image1_check['image1'];
+               $this->session->unset_userdata('image1_check');
+            endif;
+
+            if($this->session->userdata('image2_check2')!=''):
+                $image2_check2=$this->session->userdata('image2_check2');
+                $data_insert['image2'] = 'assets/uploads/products/'.$image2_check2['image2'];
+                $this->session->unset_userdata('image2_check2');
+            endif;
+
+            if($this->session->userdata('check3_image3')!=''):
+                $check3_image3=$this->session->userdata('check3_image3');
+                $data_insert['image3'] = 'assets/uploads/products/'.$check3_image3['image3'];
+                $this->session->unset_userdata('check3_image3');
+            endif;
+
+            if($this->session->userdata('check4_image4')!=''):
+                $check4_image4=$this->session->userdata('check4_image4');
+                $data_insert['image4'] = 'assets/uploads/products/'.$check4_image4['image4'];
+                $this->session->unset_userdata('check4_image4');
+            endif;
+
+            if($this->session->userdata('check5_image5')!=''):
+                $check5_image5=$this->session->userdata('check5_image5');
+                $data_insert['image5'] = 'assets/uploads/products/'.$check5_image5['image5'];
+                $this->session->unset_userdata('check5_image5');
+            endif;
+
 
            $this->marketplace_model->insert('listing',$data_insert);
            $this->session->set_flashdata('msg_success','Listing added successfully.');
@@ -273,5 +322,151 @@ class Marketplace extends MX_Controller
     echo json_encode($list);
         
     }
+
+
+    function image1_check($str){
+    if(empty($_FILES['image1']['name'])){
+            $this->form_validation->set_message('image1_check','Choose Color Image');
+           return FALSE;
+        }  
+    if(!empty($_FILES['image1']['name'])):
+        $config1['upload_path'] = './public/upload/listing/';
+        $config1['allowed_types'] = 'gif|jpg|png';
+        $config1['max_size']  = '5024';
+        $config1['max_width']  = '5024';
+        $config1['max_height']  = '5024';
+        $this->load->library('upload');
+        $this->upload->initialize($config1);
+        
+        if ( ! $this->upload->do_upload('image1')){
+            $this->form_validation->set_message('image1_check', $this->upload->display_errors());
+            return FALSE;
+        }else{
+            $data = $this->upload->data(); // upload image 
+            $this->session->unset_userdata('image1_check');
+            $this->session->set_userdata('image1_check',array('image_url'=>$config1['upload_path'].$data['file_name'],'image1'=>$data['file_name']));
+            return TRUE;
+        }
+    else:
+        $this->form_validation->set_message('image1_check', 'The %s field required.');
+        return FALSE;
+    endif;
+    }
+
+    function image2_check2($str){
+       
+    if(empty($_FILES['image2']['name'])){
+            $this->form_validation->set_message('image2_check2','Choose Color Image');
+           return FALSE;
+        }  
+    if(!empty($_FILES['image2']['name'])):
+        $config2['upload_path'] = './public/upload/listing/';
+        $config2['allowed_types'] = 'gif|jpg|png';
+        $config2['max_size']  = '5024';
+        $config2['max_width']  = '5024';
+        $config2['max_height']  = '5024';
+        $this->load->library('upload');
+        $this->upload->initialize($config2);
+        
+        if ( ! $this->upload->do_upload('image2')){
+            $this->form_validation->set_message('image2_check2', $this->upload->display_errors());
+            return FALSE;
+        }else{
+            $data = $this->upload->data(); // upload image 
+            $this->session->unset_userdata('image2_check2');
+            $this->session->set_userdata('image2_check2',array('image_url'=>$config2['upload_path'].$data['file_name'],'image2'=>$data['file_name']));
+            return TRUE;
+        }
+    else:
+        $this->form_validation->set_message('image1_check2', 'The %s field required.');
+        return FALSE;
+    endif;
+    }
+
+    function image3_check3($str){
+    if(empty($_FILES['image3']['name'])){
+            $this->form_validation->set_message('image3_check3','Choose Color Image');
+           return FALSE;
+        }  
+    if(!empty($_FILES['image3']['name'])):
+        $config3['upload_path'] = './public/upload/listing/';
+        $config3['allowed_types'] = 'gif|jpg|png';
+        $config3['max_size']  = '5024';
+        $config3['max_width']  = '5024';
+        $config3['max_height']  = '5024';
+        $this->load->library('upload');
+        $this->upload->initialize($config3);
+        
+        if ( ! $this->upload->do_upload('image3')){
+            $this->form_validation->set_message('image3_check3', $this->upload->display_errors());
+            return FALSE;
+        }else{
+            $data = $this->upload->data(); // upload image 
+            $this->session->unset_userdata('image3_check3');
+            $this->session->set_userdata('image3_check3',array('image_url'=>$config3['upload_path'].$data['file_name'],'image3'=>$data['file_name']));
+            return TRUE;
+        }
+    else:
+        $this->form_validation->set_message('image3_check3', 'The %s field required.');
+        return FALSE;
+    endif;
+    }
+
+    function image4_check4($str){
+    if(empty($_FILES['image4']['name'])){
+            $this->form_validation->set_message('image4_check4','Choose Color Image');
+           return FALSE;
+        }  
+    if(!empty($_FILES['image4']['name'])):
+        $config4['upload_path'] = './public/upload/listing/';
+        $config4['allowed_types'] = 'gif|jpg|png';
+        $config4['max_size']  = '5024';
+        $config4['max_width']  = '5024';
+        $config4['max_height']  = '5024';
+        $this->load->library('upload');
+        $this->upload->initialize($config4);
+        
+        if ( ! $this->upload->do_upload('image4')){
+            $this->form_validation->set_message('image4_check4', $this->upload->display_errors());
+            return FALSE;
+        }else{
+            $data = $this->upload->data(); // upload image 
+            $this->session->unset_userdata('image4_check4');
+            $this->session->set_userdata('image4_check4',array('image_url'=>$config4['upload_path'].$data['file_name'],'image4'=>$data['file_name']));
+            return TRUE;
+        }
+    else:
+        $this->form_validation->set_message('image4_check4', 'The %s field required.');
+        return FALSE;
+    endif;
+    }
     
+  function image5_check5($str){
+    if(empty($_FILES['image5']['name'])){
+            $this->form_validation->set_message('image5_check5','Choose Color Image');
+           return FALSE;
+        }  
+    if(!empty($_FILES['image5']['name'])):
+        $config5['upload_path'] = './public/upload/listing/';
+        $config5['allowed_types'] = 'gif|jpg|png';
+        $config5['max_size']  = '5024';
+        $config5['max_width']  = '5024';
+        $config5['max_height']  = '5024';
+        $this->load->library('upload');
+        $this->upload->initialize($config5);
+        
+        if ( ! $this->upload->do_upload('image5')){
+            $this->form_validation->set_message('image5_check5', $this->upload->display_errors());
+            return FALSE;
+        }else{
+            $data = $this->upload->data(); // upload image 
+            $this->session->unset_userdata('image5_check5');
+            $this->session->set_userdata('image5_check5',array('image_url'=>$config5['upload_path'].$data['file_name'],'image5'=>$data['file_name']));
+            return TRUE;
+        }
+    else:
+        $this->form_validation->set_message('image5_check5', 'The %s field required.');
+        return FALSE;
+    endif;
+    }
 }
