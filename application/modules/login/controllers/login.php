@@ -249,7 +249,7 @@ class Login extends MX_Controller{
     {
         $this->load->model('activity/activity_model', 'activity_model');
         
-        $log_out = $this->activity_model->_custom_query("SELECT member_id FROM activity WHERE time < '".date('H:i:s', strtotime('-4 hour'))."'");        
+        $log_out = $this->activity_model->_custom_query("SELECT member_id FROM activity WHERE time < '".date('H:i:s', strtotime('-1 hour'))."'");        
         
         foreach ($log_out as $log){
             
