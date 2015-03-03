@@ -16,7 +16,7 @@
 </div>
 
 <div class="wrapper wrapper-content">
-
+<form method="post" action="<?php echo current_url()?>"  class="validation form-horizontal"  enctype="multipart/form-data"/>  
 <div class="row">
 <div class="col-lg-8">
 <?php msg_alert(); ?>
@@ -27,7 +27,7 @@
 
 </div>
 <div class="ibox-content">
-<form method="post" action="<?php echo current_url()?>"  class="validation form-horizontal" />  
+
      <div class="form-group"><label class="col-md-3 control-label">Schedule Listing</label>
      <div class="col-md-9">
           <div class="input-group date form_datetime " data-date="<?php echo date('Y').'-'.date('m').'-'.date('d')?>" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
@@ -279,7 +279,7 @@
         </div>
     </div>
                 
-  </form>
+
   </div>
  </div> 
 </div>       
@@ -290,23 +290,37 @@
         </div>
         <div class="ibox-content">
         <div class="row">
-            <div class="col-md-12" style="text-align:center">                                
-                    <img src="public/main/template/gsm/images/members/no_profile.jpg" width="150" height="150">
-            </div>
-            <div class="col-md-12" style="text-align:center;margin-top:20px">
-            <div class="btn-group">
-                <label title="Upload image file" for="inputImage" class="btn btn-primary">
-                    <input type="file" accept="image/*" name="file" class="hide">Upload new image</label>
-                    <label class="btn btn-danger">Delete</label>
-            </div>
-            </div>
-            <p class="small" style="text-align:center">You may have up to five (5) product images per listing.</p>
-        </div>
-        </div>
+            <div class="col-md-12" style="text-align:center">
+           
+            <label  class="col-md-4" >Image 1</label>
+            <div  class="col-md-8">
+             <input type="file" name="image1" class="btn default btn-file">
+             </div>
+             <?php echo form_error('image1'); ?>
+             <label  class="col-md-4" >Image 2</label>
+            <div  class="col-md-8">
+             <input type="file" name="image2" class="btn default btn-file">
+             </div>
+             <?php echo form_error('image2'); ?>
+             <label  class="col-md-4" >Image 3</label>
+            <div  class="col-md-8">
+             <input type="file" name="image3" class="btn default btn-file">
+             </div>
+             <?php echo form_error('image3'); ?>
+             <label  class="col-md-4" >Image 4</label>
+            <div  class="col-md-8">
+             <input type="file" name="image4" class="btn default btn-file">
+             </div>
+             <?php echo form_error('image4'); ?>
+             
 
+            </div>
+            <p class="small" style="text-align:center">You may have up to five (4) product images per listing.</p>
+        </div>
+        </div>
 </div></div>        
-       
 </div>
+</form>
 </div>
             
     <!-- checkbox css -->
