@@ -243,10 +243,10 @@ if ( ! function_exists('shipping_term_class')) {
 if ( ! function_exists('courier')) {	
 	function courier($status='') {
 		$status_array = array(
-                            '1' => 'DHL',
-                            '2' => 'FEDEX',
-                            '3' => 'UPS',
-                            '4' => 'OTHER',
+                            'option1' => 'DHL',
+                            'option2' => 'FEDEX',
+                            'option3' => 'UPS',
+                            'option4' => 'OTHER',
                              ); 
 		return $status_array;
 	}
@@ -255,10 +255,10 @@ if ( ! function_exists('courier')) {
 if ( ! function_exists('courier_class')) {	
 	function courier_class($status='') {
 		$status_array = array(
-                            '1' => 'DHL',
-                            '2' => 'FEDEX',
-                            '3' => 'UPS',
-                            '4' => 'OTHER',
+                            'option1' => 'DHL',
+                            'option2' => 'FEDEX',
+                            'option3' => 'UPS',
+                            'option4' => 'OTHER',
                              ); 
 		return element($status, $status_array);
 	}
@@ -288,6 +288,74 @@ if ( ! function_exists('list_duration_class')) {
 	                            '5' => '10',
 	                            '6' => '14',
                              ); 
+		return element($status, $status_array);
+	}
+}
+
+if ( ! function_exists('condition')) {	
+	function condition($status='') {
+		$status_array = array(
+                            '1' => 'New',
+                            '2' => 'Used',
+                            '3' => 'Refurbished',
+                            ); 
+		return $status_array;
+	}
+}
+
+if ( ! function_exists('condition_class')) {	
+	function condition_class($status='') {
+		$status_array = array(
+                                '1' => 'New',
+	                            '2' => 'Used',
+	                            '3' => 'Refurbished',
+	                            ); 
+		return element($status, $status_array);
+	}
+}
+
+if ( ! function_exists('spec')) {	
+	function spec($status='') {
+		$status_array = array(
+                            '1' => 'EU',
+                            '2' => 'UK',
+                            '3' => 'US',
+                            '4'	=> 'ASIA'
+                            ); 
+		return $status_array;
+	}
+}
+
+if ( ! function_exists('spec_class')) {	
+	function spec_class($status='') {
+		$status_array = array(
+                                '1' => 'EU',
+	                            '2' => 'UK',
+	                            '3' => 'US',
+	                            '4'	=> 'ASIA'
+	                            ); 
+		return element($status, $status_array);
+	}
+}
+
+if ( ! function_exists('currency')) {	
+	function currency($status='') {
+		$status_array = array(
+                            '1' => '&pound; GBP',
+                            '2' => '&euro; EUR',
+                            '3' => '$ USD',
+                            ); 
+		return $status_array;
+	}
+}
+
+if ( ! function_exists('currency_class')) {	
+	function currency_class($status='') {
+		$status_array = array(
+                            '1' => '&pound; GBP',
+                            '2' => '&euro; EUR',
+                            '3' => '$ USD',
+                            ); 
 		return element($status, $status_array);
 	}
 }
