@@ -203,12 +203,17 @@ class Search_model extends MY_Model {
        
        $this->load->model('country/country_model', 'country_model');
        
-       $country = $this->country_model->get_where_multiple('country', $q)->id;
+       $country = $this->country_model->get_where_multiple('country', $q);
+       
+       $cid = '';
+       if($country){
+          $cid = $country->id; 
+       }
        
        $sql = "SELECT * FROM addressbook WHERE (individual LIKE '%$q%' AND member_id = '".$this->session->userdata('members_id')."') OR (company LIKE '%$q%') OR (business_activities LIKE '%$q%' AND member_id = '".$this->session->userdata('members_id')."')";
        
-       if(is_numeric($country)){
-        $sql .= "OR (country = '".$country."' AND member_id = '".$this->session->userdata('members_id')."')";
+       if(is_numeric($cid)){
+        $sql .= "OR (country = '".$cid."' AND member_id = '".$this->session->userdata('members_id')."')";
        }
                
        $sql .= "ORDER BY date DESC";
