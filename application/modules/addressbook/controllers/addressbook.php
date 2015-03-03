@@ -228,16 +228,16 @@ class Addressbook extends MX_Controller
             
             //$add_count = $this->addressbook_model->count_where('member_id', $this->session->userdata('members_id'));
             //$data['addressbook_count'] = $add_count;
-            $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook ".$this->characterReplace($one)."");
+            $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE member_id = '".$this->session->userdata('members_id')."' ".$this->characterReplace($one)."");
             
         }
         elseif($two != 'ALL' && $three == 'ALL'){
             
-            $add_count = $this->addressbook_model->_custom_query("SELECT COUNT(*) AS addressCount FROM addressbook WHERE business_activities = '".$this->characterReplace($two)."'");
+            $add_count = $this->addressbook_model->_custom_query("SELECT COUNT(*) AS addressCount FROM addressbook WHERE business_activities = '".$this->characterReplace($two)."' AND member_id = '".$this->session->userdata('members_id')."'");
             
             if($add_count[0]->addressCount > 0){
                 $data['addressbook_count'] = $add_count[0]->addressCount;
-                $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE business_activities = '".$this->characterReplace($two)."' ".$this->characterReplace($one)."");
+                $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE business_activities = '".$this->characterReplace($two)."' AND member_id = '".$this->session->userdata('members_id')."' ".$this->characterReplace($one)."");
                 
                 $config['base_url'] = $this->config->item('base_url').'addressbook/business/page';
                 $config['total_rows'] = $add_count[0]->addressCount;
@@ -269,11 +269,11 @@ class Addressbook extends MX_Controller
         }
         elseif($two == 'ALL' && $three != 'ALL'){
             
-            $add_count = $this->addressbook_model->_custom_query("SELECT COUNT(*) AS addressCount FROM addressbook WHERE country = '".$three."'");
+            $add_count = $this->addressbook_model->_custom_query("SELECT COUNT(*) AS addressCount FROM addressbook WHERE country = '".$three."' AND member_id = '".$this->session->userdata('members_id')."'");
             
             if($add_count[0]->addressCount > 0){
                 $data['addressbook_count'] = $add_count[0]->addressCount;
-                $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE country = '".$three."' ".$this->characterReplace($one).""); 
+                $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE country = '".$three."' AND member_id = '".$this->session->userdata('members_id')."' ".$this->characterReplace($one).""); 
                 
                 $config['base_url'] = $this->config->item('base_url').'addressbook/country/page';
                 $config['total_rows'] = $add_count[0]->addressCount;
@@ -303,11 +303,11 @@ class Addressbook extends MX_Controller
         }
         elseif($two != 'ALL' && $three != 'ALL'){
             
-            $add_count = $this->addressbook_model->_custom_query("SELECT COUNT(*) AS addressCount FROM addressbook WHERE business_activities = '".$this->characterReplace($two)."' AND country = '".$three."'");
+            $add_count = $this->addressbook_model->_custom_query("SELECT COUNT(*) AS addressCount FROM addressbook WHERE business_activities = '".$this->characterReplace($two)."' AND country = '".$three."' AND member_id = '".$this->session->userdata('members_id')."'");
             
             if($add_count[0]->addressCount > 0){
                 $data['addressbook_count'] = $add_count[0]->addressCount;
-                $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE business_activities = '".$this->characterReplace($two)."' AND country = '".$three."' ".$this->characterReplace($one)."");
+                $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE business_activities = '".$this->characterReplace($two)."' AND country = '".$three."' AND member_id = '".$this->session->userdata('members_id')."' ".$this->characterReplace($one)."");
             }
             else{
                 $data['addressbook_count'] = 0;
