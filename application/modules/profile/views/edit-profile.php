@@ -246,6 +246,10 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
             var value = $('#' + entry).attr('value');
             var entry = $('#' + entry).attr('value');
             console.log(ids);
+            console.log(primary);
+            console.log(entry);
+            
+            
             if (entry == primary) {
                 var str1 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
             } else {
