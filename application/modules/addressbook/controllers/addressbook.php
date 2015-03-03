@@ -361,7 +361,7 @@ class Addressbook extends MX_Controller
         $data['main'] = 'addressbook';        
         $data['title'] = 'GSM - Addressbook Search Results';        
         $data['page'] = 'results';
-        
+        $data['country'] = $this->country_model->_custom_query("SELECT * FROM country ORDER BY country ASC");
         $this->load->module('templates');
         $this->templates->page($data);
     }
