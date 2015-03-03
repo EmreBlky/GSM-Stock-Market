@@ -14,6 +14,8 @@ class Addressbook extends MX_Controller
         $this->load->model('country/country_model', 'country_model');
         $this->load->model('login/login_model', 'login_model');
         $this->load->model('favourite/favourite_model', 'favourite_model');
+        $this->load->model('member/member_model', 'member_model');
+        $this->load->model('company/company_model', 'company_model');
         
         $data_activity = array(
                                 'activity' => 'Address Book',
@@ -212,7 +214,7 @@ class Addressbook extends MX_Controller
     {
         $this->load->library('pagination');
         
-        
+        $data['base'] = $this->config->item('base_url');
         if(isset($off) && $off > 1){
             $new_mem = $off-1;
             $offset = 21*$new_mem;

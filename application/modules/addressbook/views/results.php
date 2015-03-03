@@ -294,7 +294,14 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                 
             }
             else{
-                echo $results['search_addressbook'];
+                
+                echo '
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-content">'.$results['search_addressbook'].'</div>   
+                        </div>
+                    </div>
+                     ';
             }
             ?>    
             
