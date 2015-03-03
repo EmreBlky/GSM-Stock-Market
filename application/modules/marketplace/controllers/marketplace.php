@@ -10,14 +10,6 @@ class Marketplace extends MX_Controller
             redirect('login');
         }
          $this->load->model('marketplace_model'); 
-         
-         $this->load->model('activity/activity_model', 'activity_model');
-        
-        $data_activity = array(
-                                'activity' => 'Market Place',
-                                'time' => date('H:i:s')
-                                );
-        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
     }
 
     function index()
@@ -30,8 +22,26 @@ class Marketplace extends MX_Controller
         $this->templates->page($data);
     }
     
-    function buy()
+    function buy($offset=0)
     {
+        $per_page=10;
+        $data['listing_buy'] = $this->marketplace_model->listing_buy($offset,$per_page);
+        $config=backend_pagination();
+        $config['base_url'] = base_url().'marketplace/buy';
+        $config['total_rows'] = $this->marketplace_model->listing_buy(0,0);
+        $config['per_page'] = $per_page;
+        $config['uri_segment'] = 4;
+        if(!empty($_SERVER['QUERY_STRING'])){
+        $config['suffix'] = "?".$_SERVER['QUERY_STRING'];
+        }
+        else{
+        $config['suffix'] ='';
+        }
+        $config['first_url'] = $config['base_url'].$config['suffix'];
+        $this->pagination->initialize($config);
+        $data['pagination']=$this->pagination->create_links();
+        $data['offset'] = $offset;
+        
         $data['main'] = 'marketplace';        
         $data['title'] = 'GSM - Market Place: Purchase';        
         $data['page'] = 'buy';
@@ -40,8 +50,26 @@ class Marketplace extends MX_Controller
         $this->templates->page($data);
     }
     
-    function sell()
+    function sell($offset=0)
     {
+        $per_page=10;
+        $data['listing_sell'] = $this->marketplace_model->listing_sell($offset,$per_page);
+        $config=backend_pagination();
+        $config['base_url'] = base_url().'marketplace/buy';
+        $config['total_rows'] = $this->marketplace_model->listing_sell(0,0);
+        $config['per_page'] = $per_page;
+        $config['uri_segment'] = 4;
+        if(!empty($_SERVER['QUERY_STRING'])){
+        $config['suffix'] = "?".$_SERVER['QUERY_STRING'];
+        }
+        else{
+        $config['suffix'] ='';
+        }
+        $config['first_url'] = $config['base_url'].$config['suffix'];
+        $this->pagination->initialize($config);
+        $data['pagination']=$this->pagination->create_links();
+        $data['offset'] = $offset;
+
         $data['main'] = 'marketplace';        
         $data['title'] = 'GSM - Market Place: Sell';        
         $data['page'] = 'sell';
@@ -82,9 +110,9 @@ class Marketplace extends MX_Controller
     
     function create_listing()
     {   
-        $member_id=$this->session->userdata('members_id');
 
-        $this->output->enable_profiler(TRUE);
+        $member_id=$this->session->userdata('members_id');
+        //$this->output->enable_profiler(TRUE);
         $this->form_validation->set_rules('schedule_date_time', 'schedule date time', 'required');
         $this->form_validation->set_rules('listing_type', 'listing type', 'required');
         $this->form_validation->set_rules('product_mpn_isbn', 'product_mpn_isbn', 'required');
@@ -104,10 +132,18 @@ class Marketplace extends MX_Controller
         $this->form_validation->set_rules('courier[]', 'courier', 'required');
         $this->form_validation->set_rules('product_desc', 'product description', 'required');
         $this->form_validation->set_rules('duration', 'duration', 'required');
-        /*$this->form_validation->set_rules('termsandcondition', 'Terms and condition', 'required');*/
+        $this->form_validation->set_rules('termsandcondition', 'Terms and condition', 'required');
 
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
         if ($this->form_validation->run() == TRUE){
+            $courier='';
+            if($courier_array=$this->input->post('courier')){
+                foreach ($courier_array as $value) {
+                    $courierinfo=courier_class($value);
+                    $courier=$courierinfo.','.$courier;
+                }
+            }
+
             $data_insert=array(
             'schedule_date_time' =>  $this->input->post('schedule_date_time'),
             'listing_type' =>$this->input->post('listing_type'),
@@ -123,14 +159,16 @@ class Marketplace extends MX_Controller
             'min_price' =>  $this->input->post('min_price'),
             'allow_offer' =>  $this->input->post('allow_offer'),
             'total_qty' =>  $this->input->post('total_qty'),
+            'qty_available'=> $this->input->post('total_qty'),
             'min_qty_order' =>  $this->input->post('min_qty_order'),
             'shipping_term' =>  $this->input->post('shipping_term'),
-            'courier' =>  json_encode($this->input->post('courier')),
+            'courier' =>  $courier,
             'product_desc' =>  $this->input->post('product_desc'),
-            'duration' =>  $this->input->post('duration'),            
+            'duration' =>  $this->input->post('duration'),
+            'listing_end_datetime'  => date('Y-m-d H:i:s', strtotime("+".$this->input->post('duration')." days")),            
             'member_id'   => $member_id, 
-            'created' => date('Y-m-d h:i:s A'),
             'status'  => $this->input->post('status'), 
+            'created' => date('Y-m-d h:i:s A'),
             );
 
            $this->marketplace_model->insert('listing',$data_insert);
