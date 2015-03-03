@@ -242,63 +242,63 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
 
 
 
-        ids.forEach(function(entry) {
-
-
-
-            console.log('entry');
-            alert(entry);
-
-            var value = $('#' + entry).attr('value');
-            var entry = $('#' + entry).attr('value');
-            console.log(ids);
-            console.log(primary);
-            console.log(entry);
-
-
-            if (entry == primary) {
-                var str1 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
-            } else {
-
-                var str1 = "<option value = '" + entry + "'>" + value + "</option>";
-
-
-            }
-            if (entry != secondary && entry != tertiary) {
-                $('#bprimary option[value="' + entry + '"]').remove();
-                $('#bprimary').append(str1);
-            }
-
-
-
-            if (entry == secondary) {
-                var str2 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
-            } else {
-
-                var str2 = "<option value = '" + entry + "'>" + value + "</option>";
-            }
-            if (entry != primary && entry != tertiary) {
-
-                $('#bsecondary option[value="' + entry + '"]').remove();
-                $('#bsecondary').append(str2);
-            }
-
-
-
-            if (entry == tertiary) {
-                var str3 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
-            } else {
-
-                var str3 = "<option value = '" + entry + "'>" + value + "</option>";
-            }
-
-            if (entry != primary && entry != secondary) {
-
-                $('#btertiary option[value="' + entry + '"]').remove();
-                $('#btertiary').append(str3);
-            }
-
-        });
+//        ids.forEach(function(entry) {
+//
+//
+//
+//            console.log('entry');
+//            alert(entry);
+//
+//            var value = $('#' + entry).attr('value');
+//            var entry = $('#' + entry).attr('value');
+//            console.log(ids);
+//            console.log(primary);
+//            console.log(entry);
+//
+//
+//            if (entry == primary) {
+//                var str1 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
+//            } else {
+//
+//                var str1 = "<option value = '" + entry + "'>" + value + "</option>";
+//
+//
+//            }
+//            if (entry != secondary && entry != tertiary) {
+//                $('#bprimary option[value="' + entry + '"]').remove();
+//                $('#bprimary').append(str1);
+//            }
+//
+//
+//
+//            if (entry == secondary) {
+//                var str2 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
+//            } else {
+//
+//                var str2 = "<option value = '" + entry + "'>" + value + "</option>";
+//            }
+//            if (entry != primary && entry != tertiary) {
+//
+//                $('#bsecondary option[value="' + entry + '"]').remove();
+//                $('#bsecondary').append(str2);
+//            }
+//
+//
+//
+//            if (entry == tertiary) {
+//                var str3 = "<option value = '" + entry + "' selected='selected'>" + value + "</option>";
+//            } else {
+//
+//                var str3 = "<option value = '" + entry + "'>" + value + "</option>";
+//            }
+//
+//            if (entry != primary && entry != secondary) {
+//
+//                $('#btertiary option[value="' + entry + '"]').remove();
+//                $('#btertiary').append(str3);
+//            }
+//
+//        });
     }
 
     function updateSelects1(value) {
