@@ -233,10 +233,11 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
             $('#bsecondary option[value="' + selectedValue + '"]').remove();
         }
 
-
+        alert(selectedValue);
         $('#bprimary option[value="' + selectedValue + '"]').remove();
         $('#bsecondary option[value="' + selectedValue + '"]').remove();
         $('#btertiary option[value="' + selectedValue + '"]').remove();
+
 
 
 
@@ -562,7 +563,7 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
 <?php } ?>;
 <?php if ($this->session->flashdata('msg_personal')) { ?>
             $('.confirm-div-personal').html('<?php echo $this->session->flashdata('msg_personal'); ?>').show();
-<?php } ?>;    
+<?php } ?>;
     });</script>
 <?php
 $attributes = array('class' => 'form-horizontal validation', 'onsubmit' => 'return validate_info()');
