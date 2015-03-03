@@ -153,91 +153,91 @@ if (isset($company->business_sector_3) && !empty($company->business_sector_3))
 
     function toggleChecks(counter) {
         // Function to disable or enable check boxes
-
-
-        var count = 1;
-        var ids = new Array();
-        if (counter >= 5) {
-            while (count <= 14) {
-                var chk = $('#bsectors' + count).prop("checked");
-                var id = $('#bsectors' + count).attr('id');
-                if (chk == false) {
-                    $('#bsectors' + count).iCheck('uncheck');
-                    $('#bsectors' + count).iCheck('disable');
-                }
-                count++;
-            }
-        } else {
-            while (count <= 14) {
-                var chk = $('#bsectors' + count).prop("checked");
-                var id = $('#bsectors' + count).attr('id');
-                if (chk == false) {
-                    $('#bsectors' + count).iCheck('uncheck');
-                    $('#bsectors' + count).iCheck('enable');
-                }
-                count++;
-            }
-        }
-
-    }
-
-    function updateChecks(div_id) {
-
-        var primary = $('#bprimary').val();
-        var secondary = $('#bsecondary').val();
-        var tertiary = $('#btertiary').val();
-        var total_checked = getCheckedBoxesCount();
-        var chk = $('#' + div_id).prop("checked"); // get state of current checkbox
-
-        if (chk == false) {
-            var total_checked = total_checked + 1;
-        } else {
-            var total_checked = total_checked - 1;
-        }
-        //console.log('Total Checked:'+total_checked);
-
-        var count = 1;
-        var ids = new Array();
-        while (count <= 14) {
-            var chk = $('#bsectors' + count).prop("checked");
-            var id = $('#bsectors' + count).attr('id');
-            if (chk == true) {
-                if (id != div_id) {
-                    ids[count] = id;
-                }
-            }
-            count++;
-        }
-
-
-        var selectedValue = $('#' + div_id).val();
-        var str = "<option value = ''>[SELECT ONE]</option>";
-        if (selectedValue == primary)
-        {
-            $('#bprimary').empty().append(str);
-            $('#bsecondary option[value="' + selectedValue + '"]').remove();
-            $('#btertiary option[value="' + selectedValue + '"]').remove();
-        }
-
-        if (selectedValue == secondary)
-        {
-            $('#bsecondary').empty().append(str);
-            $('#bprimary option[value="' + selectedValue + '"]').remove();
-            $('#btertiary option[value="' + selectedValue + '"]').remove();
-        }
-
-        if (selectedValue == tertiary)
-        {
-            $('#btertiary').empty().append(str);
-            $('#bprimary option[value="' + selectedValue + '"]').remove();
-            $('#bsecondary option[value="' + selectedValue + '"]').remove();
-        }
-
-        alert(selectedValue);
-        $('#bprimary option[value="' + selectedValue + '"]').remove();
-        $('#bsecondary option[value="' + selectedValue + '"]').remove();
-        $('#btertiary option[value="' + selectedValue + '"]').remove();
-
+//
+//
+//        var count = 1;
+//        var ids = new Array();
+//        if (counter >= 5) {
+//            while (count <= 14) {
+//                var chk = $('#bsectors' + count).prop("checked");
+//                var id = $('#bsectors' + count).attr('id');
+//                if (chk == false) {
+//                    $('#bsectors' + count).iCheck('uncheck');
+//                    $('#bsectors' + count).iCheck('disable');
+//                }
+//                count++;
+//            }
+//        } else {
+//            while (count <= 14) {
+//                var chk = $('#bsectors' + count).prop("checked");
+//                var id = $('#bsectors' + count).attr('id');
+//                if (chk == false) {
+//                    $('#bsectors' + count).iCheck('uncheck');
+//                    $('#bsectors' + count).iCheck('enable');
+//                }
+//                count++;
+//            }
+//        }
+//
+//    }
+//
+//    function updateChecks(div_id) {
+//
+//        var primary = $('#bprimary').val();
+//        var secondary = $('#bsecondary').val();
+//        var tertiary = $('#btertiary').val();
+//        var total_checked = getCheckedBoxesCount();
+//        var chk = $('#' + div_id).prop("checked"); // get state of current checkbox
+//
+//        if (chk == false) {
+//            var total_checked = total_checked + 1;
+//        } else {
+//            var total_checked = total_checked - 1;
+//        }
+//        //console.log('Total Checked:'+total_checked);
+//
+//        var count = 1;
+//        var ids = new Array();
+//        while (count <= 14) {
+//            var chk = $('#bsectors' + count).prop("checked");
+//            var id = $('#bsectors' + count).attr('id');
+//            if (chk == true) {
+//                if (id != div_id) {
+//                    ids[count] = id;
+//                }
+//            }
+//            count++;
+//        }
+//
+//
+//        var selectedValue = $('#' + div_id).val();
+//        var str = "<option value = ''>[SELECT ONE]</option>";
+//        if (selectedValue == primary)
+//        {
+//            $('#bprimary').empty().append(str);
+//            $('#bsecondary option[value="' + selectedValue + '"]').remove();
+//            $('#btertiary option[value="' + selectedValue + '"]').remove();
+//        }
+//
+//        if (selectedValue == secondary)
+//        {
+//            $('#bsecondary').empty().append(str);
+//            $('#bprimary option[value="' + selectedValue + '"]').remove();
+//            $('#btertiary option[value="' + selectedValue + '"]').remove();
+//        }
+//
+//        if (selectedValue == tertiary)
+//        {
+//            $('#btertiary').empty().append(str);
+//            $('#bprimary option[value="' + selectedValue + '"]').remove();
+//            $('#bsecondary option[value="' + selectedValue + '"]').remove();
+//        }
+//
+//        alert(selectedValue);
+//        $('#bprimary option[value="' + selectedValue + '"]').remove();
+//        $('#bsecondary option[value="' + selectedValue + '"]').remove();
+//        $('#btertiary option[value="' + selectedValue + '"]').remove();
+//
 
 
 
