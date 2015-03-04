@@ -165,3 +165,8 @@
             ?>    
             
 </div><!-- Row End -->
+<?php 
+    if($addressbook_count > 0){
+        echo $pagination;
+    }
+?>

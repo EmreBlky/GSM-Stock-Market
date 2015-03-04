@@ -307,9 +307,9 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
             
        	</div><!-- Row End -->
         <?php 
-            //if($addressbook_count > 0){
-                //echo $pagination;
-            //}
+            if($addressbook_count > 0){
+                echo $pagination;
+            }
         ?>
            
          
