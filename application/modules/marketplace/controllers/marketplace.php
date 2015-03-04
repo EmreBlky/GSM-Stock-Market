@@ -158,7 +158,7 @@ class Marketplace extends MX_Controller
         }
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
         if ($this->form_validation->run($this) == TRUE){
-           die('testing');
+         //  die('testing');
            $min_price='';
            $allow_offer='';
            $min_qty_order='';
