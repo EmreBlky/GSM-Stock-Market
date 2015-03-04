@@ -242,6 +242,118 @@ class Addressbook extends MX_Controller
         $this->templates->page($data);
     }
     
+    function all_info($one, $two, $three,$page, $off = NULL)
+    {
+        $this->load->library('pagination');
+        $data['main'] = 'addressbook';
+        $data['title'] = 'GSM - Addressbook';        
+        $data['page'] = 'index';
+        
+        if(isset($off) && $off > 1){
+            $new_mem = $off-1;
+            $offset = 21*$new_mem;
+        }
+        else{
+            $offset = 0;
+        }
+        
+        $add_count = $this->addressbook_model->count_where('member_id', $this->session->userdata('members_id'));
+        
+        if($add_count > 0){
+            $data['addressbook_count'] = $add_count;
+            //$data['address_book'] = $this->addressbook_model->get_where_multiples('member_id', $this->session->userdata('members_id'), NULL, NULL, 21, $offset);
+            
+            $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE business_activities = '".$this->characterReplace($one)."' AND country = '".$this->characterReplace($two)."' AND member_id = '".$this->session->userdata('members_id')."' ".$this->characterReplace($three)." LIMIT ".$offset.", 21");
+            
+            
+            
+            $config['base_url'] = $this->config->item('base_url').'addressbook/all_info/'.$this->characterReplace($one).'/'.$this->characterReplace($two).'/'.$this->characterReplace($three).'/page';
+            $config['total_rows'] = $add_count;
+            $config['per_page'] = 21;
+            $config["uri_segment"] = 7;
+            $config['use_page_numbers'] = TRUE;
+
+            $config['full_tag_open'] = '<div class="btn-group pull-right original">';
+            $config['full_tag_close'] = '</div>';
+            $config['next_tag_open'] = '<span class="btn gsm_pag btn-white">';
+            $config['next_tag_close'] = '</span>';
+            $config['prev_tag_open'] = ' <span class="btn gsm_pag btn-white">';
+            $config['prev_tag_close'] = '</span>';
+            $config['cur_tag_open'] = '<span class="btn gsm_pag_active btn-white active">';
+            $config['cur_tag_close'] = '</span>';
+            $config['num_tag_open'] = '<span class="btn gsm_pag btn-white">';                
+            $config['num_tag_close'] = '</span>';
+            $config['prev_link'] = '<i class="fa fa-chevron-left"></i>';
+            $config['next_link'] = '<i class="fa fa-chevron-right"></i>';
+
+            $this->pagination->initialize($config);
+            $data['pagination'] = $this->pagination->create_links();
+        }
+        else{
+            $data['addressbook_count'] = 0;
+        }
+        
+        $data['country'] = $this->country_model->_custom_query("SELECT * FROM country ORDER BY country ASC");
+        $this->load->module('templates');
+        $this->templates->page($data);
+    }
+    
+    function order($one, $page, $off = NULL)
+    {
+        $this->load->library('pagination');
+        $data['main'] = 'addressbook';
+        $data['title'] = 'GSM - Addressbook';        
+        $data['page'] = 'index';
+        
+        if(isset($off) && $off > 1){
+            $new_mem = $off-1;
+            $offset = 21*$new_mem;
+        }
+        else{
+            $offset = 0;
+        }
+        
+        $add_count = $this->addressbook_model->count_where('member_id', $this->session->userdata('members_id'));
+        
+        if($add_count > 0){
+            $data['addressbook_count'] = $add_count;
+            //$data['address_book'] = $this->addressbook_model->get_where_multiples('member_id', $this->session->userdata('members_id'), NULL, NULL, 21, $offset);
+            
+            $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE member_id = '".$this->session->userdata('members_id')."' ".$this->characterReplace($one)." LIMIT ".$offset.", 21");
+            
+            
+            
+            $config['base_url'] = $this->config->item('base_url').'addressbook/order/'.$this->characterReplace($one).'/page';
+            $config['total_rows'] = $add_count;
+            $config['per_page'] = 21;
+            $config["uri_segment"] = 5;
+            $config['use_page_numbers'] = TRUE;
+
+            $config['full_tag_open'] = '<div class="btn-group pull-right original">';
+            $config['full_tag_close'] = '</div>';
+            $config['next_tag_open'] = '<span class="btn gsm_pag btn-white">';
+            $config['next_tag_close'] = '</span>';
+            $config['prev_tag_open'] = ' <span class="btn gsm_pag btn-white">';
+            $config['prev_tag_close'] = '</span>';
+            $config['cur_tag_open'] = '<span class="btn gsm_pag_active btn-white active">';
+            $config['cur_tag_close'] = '</span>';
+            $config['num_tag_open'] = '<span class="btn gsm_pag btn-white">';                
+            $config['num_tag_close'] = '</span>';
+            $config['prev_link'] = '<i class="fa fa-chevron-left"></i>';
+            $config['next_link'] = '<i class="fa fa-chevron-right"></i>';
+
+            $this->pagination->initialize($config);
+            $data['pagination'] = $this->pagination->create_links();
+        }
+        else{
+            $data['addressbook_count'] = 0;
+        }
+        
+        $data['country'] = $this->country_model->_custom_query("SELECT * FROM country ORDER BY country ASC");
+        $this->load->module('templates');
+        $this->templates->page($data);
+    }
+    
     function individual()
     {
         $data['main'] = 'addressbook';
@@ -336,6 +448,8 @@ class Addressbook extends MX_Controller
         }
         
         $add_count = $this->addressbook_model->count_where('member_id', $this->session->userdata('members_id'));
+        //exit;
+        
         $data['addressbook_count'] = $add_count;
         //$data['address_book'] = $this->addressbook_model->get_where_multiples('member_id', $this->session->userdata('members_id'), NULL, NULL, 21, $offset);
         if($two == 'ALL' && $three == 'ALL'){
@@ -343,6 +457,28 @@ class Addressbook extends MX_Controller
             //$add_count = $this->addressbook_model->count_where('member_id', $this->session->userdata('members_id'));
             //$data['addressbook_count'] = $add_count;
             $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE member_id = '".$this->session->userdata('members_id')."' ".$this->characterReplace($one)."");
+            
+            $config['base_url'] = $this->config->item('base_url').'addressbook/order/'.$this->characterReplace($one).'/page';
+            $config['total_rows'] = $add_count;
+            $config['per_page'] = 21;
+            $config["uri_segment"] = 3;
+            $config['use_page_numbers'] = TRUE;
+
+            $config['full_tag_open'] = '<div class="btn-group pull-right original">';
+            $config['full_tag_close'] = '</div>';
+            $config['next_tag_open'] = '<span class="btn gsm_pag btn-white">';
+            $config['next_tag_close'] = '</span>';
+            $config['prev_tag_open'] = ' <span class="btn gsm_pag btn-white">';
+            $config['prev_tag_close'] = '</span>';
+            $config['cur_tag_open'] = '<span class="btn gsm_pag_active btn-white active">';
+            $config['cur_tag_close'] = '</span>';
+            $config['num_tag_open'] = '<span class="btn gsm_pag btn-white">';                
+            $config['num_tag_close'] = '</span>';
+            $config['prev_link'] = '<i class="fa fa-chevron-left"></i>';
+            $config['next_link'] = '<i class="fa fa-chevron-right"></i>';
+
+            $this->pagination->initialize($config);
+            $data['pagination'] = $this->pagination->create_links();
             
         }
         elseif($two != 'ALL' && $three == 'ALL'){
@@ -422,44 +558,33 @@ class Addressbook extends MX_Controller
             if($add_count[0]->addressCount > 0){
                 $data['addressbook_count'] = $add_count[0]->addressCount;
                 $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE business_activities = '".$this->characterReplace($two)."' AND country = '".$three."' AND member_id = '".$this->session->userdata('members_id')."' ".$this->characterReplace($one)."");
+                
+                $config['base_url'] = $this->config->item('base_url').'addressbook/all_info/'.$this->characterReplace($two).'/'.$this->characterReplace($three).'/'.$this->characterReplace($one).'/page';
+                $config['total_rows'] = $add_count[0]->addressCount;
+                $config['per_page'] = 21;
+                $config["uri_segment"] = 7;
+                $config['use_page_numbers'] = TRUE;
+
+                $config['full_tag_open'] = '<div class="btn-group pull-right original">';
+                $config['full_tag_close'] = '</div>';
+                $config['next_tag_open'] = '<span class="btn gsm_pag btn-white">';
+                $config['next_tag_close'] = '</span>';
+                $config['prev_tag_open'] = ' <span class="btn gsm_pag btn-white">';
+                $config['prev_tag_close'] = '</span>';
+                $config['cur_tag_open'] = '<span class="btn gsm_pag_active btn-white active">';
+                $config['cur_tag_close'] = '</span>';
+                $config['num_tag_open'] = '<span class="btn gsm_pag btn-white">';                
+                $config['num_tag_close'] = '</span>';
+                $config['prev_link'] = '<i class="fa fa-chevron-left"></i>';
+                $config['next_link'] = '<i class="fa fa-chevron-right"></i>';
+
+                $this->pagination->initialize($config);
+                $data['pagination'] = $this->pagination->create_links();
             }
             else{
                 $data['addressbook_count'] = 0;
             }
         }
-        
-//      }      
-//        if($add_count > 0){
-//            $data['addressbook_count'] = $add_count;
-//            $data['address_book'] = $this->addressbook_model->get_where_multiples('member_id', $this->session->userdata('members_id'), NULL, NULL, 21, $offset);
-//            
-//            $config['base_url'] = $this->config->item('base_url').'addressbook/page';
-//            $config['total_rows'] = $add_count;
-//            $config['per_page'] = 21;
-//            $config["uri_segment"] = 3;
-//            $config['use_page_numbers'] = TRUE;
-//
-//            $config['full_tag_open'] = '<div class="btn-group pull-right">';
-//            $config['full_tag_close'] = '</div>';
-//            $config['next_tag_open'] = '<span class="btn gsm_pag btn-white">';
-//            $config['next_tag_close'] = '</span>';
-//            $config['prev_tag_open'] = ' <span class="btn gsm_pag btn-white">';
-//            $config['prev_tag_close'] = '</span>';
-//            $config['cur_tag_open'] = '<span class="btn gsm_pag_active btn-white active">';
-//            $config['cur_tag_close'] = '</span>';
-//            $config['num_tag_open'] = '<span class="btn gsm_pag btn-white">';                
-//            $config['num_tag_close'] = '</span>';
-//            $config['prev_link'] = '<i class="fa fa-chevron-left"></i>';
-//            $config['next_link'] = '<i class="fa fa-chevron-right"></i>';
-//
-//            $this->pagination->initialize($config);
-//            $data['pagination'] = $this->pagination->create_links();
-//        }
-//        else{
-//            $data['addressbook_count'] = 0;
-//        }
-        
-        //$data['country'] = $this->country_model->_custom_query("SELECT * FROM country ORDER BY country ASC");
         
         $this->load->view('ajax-result', $data);
     }
