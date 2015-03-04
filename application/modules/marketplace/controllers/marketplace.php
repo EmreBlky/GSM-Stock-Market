@@ -123,11 +123,17 @@ class Marketplace extends MX_Controller
         $this->form_validation->set_rules('condition', 'condition', 'required');
         $this->form_validation->set_rules('spec', 'spec', 'required');
         $this->form_validation->set_rules('currency', 'currency', 'required');
-        $this->form_validation->set_rules('unit_price', 'unit price', 'required');
-        $this->form_validation->set_rules('min_price', 'min price', 'required');
-        $this->form_validation->set_rules('allow_offer', 'allow offer', 'required');
-        $this->form_validation->set_rules('total_qty', 'total quantity', 'required');
-        $this->form_validation->set_rules('min_qty_order', 'min quantity order', 'required');
+        $this->form_validation->set_rules('unit_price', 'unit price', 'required|numeric');
+        if(isset($_POST['minimum_checkbox'])){
+          $this->form_validation->set_rules('min_price', 'min price', 'required|numeric');
+        }
+        if(isset($_POST['allowoffer_checkbox'])){
+           $this->form_validation->set_rules('allow_offer', 'allow offer', 'required');
+        }
+        $this->form_validation->set_rules('total_qty', 'total quantity', 'required|numeric');
+        if(isset($_POST['orderqunatity_checkbox'])){
+           $this->form_validation->set_rules('min_qty_order', 'min quantity order', 'required|numeric');
+        }
         $this->form_validation->set_rules('shipping_term', 'shipping term', 'required');
         $this->form_validation->set_rules('courier[]', 'courier', 'required');
         $this->form_validation->set_rules('product_desc', 'product description', 'required');
@@ -152,7 +158,22 @@ class Marketplace extends MX_Controller
         }
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
         if ($this->form_validation->run($this) == TRUE){
-           
+           die('testing');
+           $min_price='';
+           $allow_offer='';
+           $min_qty_order='';
+
+           if(isset($_POST['minimum_checkbox'])){
+              $min_price=$this->input->post('min_price');
+            }
+            if(isset($_POST['allowoffer_checkbox'])){
+               $allow_offer=$this->input->post('allow_offer');
+            }
+            
+            if(isset($_POST['orderqunatity_checkbox'])){
+               $min_qty_order=$this->input->post('min_qty_order');
+            }
+
             $courier='';
             if($courier_array=$this->input->post('courier')){
                 foreach ($courier_array as $value) {
@@ -160,7 +181,6 @@ class Marketplace extends MX_Controller
                     $courier=$courierinfo.','.$courier;
                 }
             }
-
 
             $data_insert=array(
             'schedule_date_time' =>  $this->input->post('schedule_date_time'),
@@ -174,11 +194,11 @@ class Marketplace extends MX_Controller
             'spec' =>  $this->input->post('spec'),
             'currency' =>  $this->input->post('currency'),
             'unit_price' =>  $this->input->post('unit_price'),
-            'min_price' =>  $this->input->post('min_price'),
-            'allow_offer' =>  $this->input->post('allow_offer'),
+            'min_price' =>  $min_price,
+            'allow_offer' =>  $allow_offer,
             'total_qty' =>  $this->input->post('total_qty'),
             'qty_available'=> $this->input->post('total_qty'),
-            'min_qty_order' =>  $this->input->post('min_qty_order'),
+            'min_qty_order' =>  $min_qty_order,
             'shipping_term' =>  $this->input->post('shipping_term'),
             'courier' =>  $courier,
             'product_desc' =>  $this->input->post('product_desc'),
@@ -191,34 +211,33 @@ class Marketplace extends MX_Controller
             
             if($this->session->userdata('image1_check')!=''):
                 $image1_check=$this->session->userdata('image1_check');
-                $data_insert['image1'] = 'assets/uploads/products/'.$image1_check['image1'];
+                $data_insert['image1'] = 'public/upload/listing/'.$image1_check['image1'];
                $this->session->unset_userdata('image1_check');
             endif;
 
             if($this->session->userdata('image2_check2')!=''):
                 $image2_check2=$this->session->userdata('image2_check2');
-                $data_insert['image2'] = 'assets/uploads/products/'.$image2_check2['image2'];
+                $data_insert['image2'] = 'public/upload/listing/'.$image2_check2['image2'];
                 $this->session->unset_userdata('image2_check2');
             endif;
 
             if($this->session->userdata('check3_image3')!=''):
                 $check3_image3=$this->session->userdata('check3_image3');
-                $data_insert['image3'] = 'assets/uploads/products/'.$check3_image3['image3'];
+                $data_insert['image3'] = 'public/upload/listing/'.$check3_image3['image3'];
                 $this->session->unset_userdata('check3_image3');
             endif;
 
             if($this->session->userdata('check4_image4')!=''):
                 $check4_image4=$this->session->userdata('check4_image4');
-                $data_insert['image4'] = 'assets/uploads/products/'.$check4_image4['image4'];
+                $data_insert['image4'] = 'public/upload/listing/'.$check4_image4['image4'];
                 $this->session->unset_userdata('check4_image4');
             endif;
 
-            if($this->session->userdata('check5_image5')!=''):
+            /*if($this->session->userdata('check5_image5')!=''):
                 $check5_image5=$this->session->userdata('check5_image5');
-                $data_insert['image5'] = 'assets/uploads/products/'.$check5_image5['image5'];
+                $data_insert['image5'] = 'public/upload/listing/'.$check5_image5['image5'];
                 $this->session->unset_userdata('check5_image5');
-            endif;
-
+            endif;*/
 
            $this->marketplace_model->insert('listing',$data_insert);
            $this->session->set_flashdata('msg_success','Listing added successfully.');
@@ -468,5 +487,17 @@ class Marketplace extends MX_Controller
         $this->form_validation->set_message('image5_check5', 'The %s field required.');
         return FALSE;
     endif;
+    }
+
+    function listing_detail($id)
+    {   
+        if(empty($id)) { redirect('marketplace/index'); }
+        $member_id=$this->session->userdata('members_id');
+        $data['main'] = 'marketplace';        
+        $data['title'] = 'GSM - Market Place';        
+        $data['page'] = 'listing_detail';
+        $data['listing_detail'] =  $this->marketplace_model->get_row('listing',array('id'=>$id,'member_id'=>$member_id));
+        $this->load->module('templates');
+        $this->templates->page($data);
     }
 }
