@@ -153,6 +153,8 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
         <?php 
             if($results['search_addressbook'] != 'NO RESULTS WERE FOUND!'){
             foreach ($results['search_addressbook'] as $address) {
+            
+                if($address->address_member_id != $this->session->userdata('members_id')){
             $f_count = $this->favourite_model->count_where_multiple('member_id', $this->session->userdata('members_id'), 'favourite_id' ,$address->address_member_id); 
             
         ?>        
@@ -290,8 +292,8 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
         
         <?php 
                 //unset($address->address_member_id);
-                }
-                
+                    }
+                }  
             }
             else{
                 
