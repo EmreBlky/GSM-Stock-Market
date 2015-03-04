@@ -153,9 +153,10 @@
                 <option selected value="">Default (account preference defalut)</option>
                 <?php $currency = currency(); 
                 if($currency){
+                    $i=1;
                 foreach ($currency as $key => $value){ ?>
-                  <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['currency']){ echo'selected';}?>><?php echo $value; ?></option>
-                  <?php } 
+                  <option <?php if(!empty($_POST) && $i==$_POST['currency']){ echo'selected';}?> value="<?php echo $i;?>"><?php echo $value; ?></option>
+                  <?php $i++;} 
                 } ?>
             </select>
             <p class="small">Select the currency you wish this listing to be sold in.</p>
@@ -173,7 +174,7 @@
     
     <div class="form-group"><label class="col-md-3 control-label">Minimum Price</label>
         <div class="col-md-9">
-            <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" /> </span> <input type="text" class="form-control" placeholder="only make typable when clicked" name="min_price" value="<?php echo set_value('min_price');?>"></div>
+            <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="minimum_checkbox" id="minimum_checkbox" <?php if(!empty($_POST['minimum_checkbox']) ){ echo'checked';}?>/> </span> <input type="text" class="form-control" placeholder="only make typable when clicked" name="min_price" value="<?php echo set_value('min_price');?>" <?php if(empty($_POST['minimum_checkbox']) ){ echo'disabled';}?>></div>
             <p class="small">tick to enable. Any offers below this will be auto rejected, leave blank to allow any offers if ticked.</p>
             <?php echo form_error('min_price'); ?>
         </div>
@@ -181,11 +182,11 @@
     
     <div class="form-group"><label class="col-md-3 control-label">Allow Offers</label>
         <div class="col-md-9">
-            <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" /> </span>
-            <select class="form-control" name="allow_offer">
+            <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="allowoffer_checkbox" id="allowoffer_checkbox" <?php if(!empty($_POST['allowoffer_checkbox']) ){ echo'checked';}?>/> </span>
+            <select class="form-control" name="allow_offer" <?php if(empty($_POST['allowoffer_checkbox']) ){ echo'disabled';}?> >
                 <option selected value="">default</option>
                 <?php for($i=4; $i<=10; $i++){
-                    ?><option <?php if(!empty($_POST) && $i==$_POST['allow_offer']){ echo'selected';}?>><?php echo $i;?></option>
+                    ?><option <?php if(isset($_POST['allow_offer']) && $i==$_POST['allow_offer']){ echo'selected';}?>><?php echo $i;?></option>
                     <?php }?>
             </select>
             </div>
@@ -203,7 +204,7 @@
     
     <div class="form-group"><label class="col-md-3 control-label">Min Order Quantity</label>
         <div class="col-md-9">
-            <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" /> </span> <input type="text" class="form-control" placeholder="only make typable when clicked" name="min_qty_order" value="<?php echo set_value('min_qty_order');?>"></div>
+            <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="orderqunatity_checkbox" id="orderqunatity_checkbox" <?php if(!empty($_POST['orderqunatity_checkbox']) ){ echo'checked';}?>/> </span> <input type="text" class="form-control" placeholder="only make typable when clicked" name="min_qty_order" value="<?php echo set_value('min_qty_order');?>" <?php if(empty($_POST['orderqunatity_checkbox']) ){ echo'disabled';}?>></div>
             <p class="small">Allow minimum order quantity else full quantity sale available only</p>
             <?php echo form_error('min_qty_order'); ?>
         </div>
@@ -600,6 +601,35 @@ $(document).ready(function () {
          }
         });
      });
+
+    $(document).ready(function() {
+        $('#minimum_checkbox').change(function(event) {
+            if ($(this).is(':checked')) {
+                $('input[name="min_price"]').prop('disabled', false);
+            }
+            else{
+               $('input[name="min_price"]').prop('disabled', true); 
+            }
+        });
+
+        $('#allowoffer_checkbox').change(function(event) {
+            if ($(this).is(':checked')) {
+                $('select[name="allow_offer"]').prop('disabled', false);
+            }
+            else{
+               $('select[name="allow_offer"]').prop('disabled', true); 
+            }
+        });
+
+        $('#orderqunatity_checkbox').change(function(event) {
+            if ($(this).is(':checked')) {
+                $('input[name="min_qty_order"]').prop('disabled', false);
+            }
+            else{
+               $('input[name="min_qty_order"]').prop('disabled', true); 
+            }
+        });
+    });
  </script>
 <script type="text/javascript" src="public/admin/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
 
@@ -621,7 +651,8 @@ $(document).ready(function () {
     <style>
 .error{
   color:rgba(255, 0, 0, 0.7);
-  padding-left: 5px;
+  color: rgba(255, 0, 0, 0.81);
+  padding: 7px 0px 0px 0px;
 }
 .error:before{
     content: "*";
