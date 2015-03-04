@@ -210,13 +210,13 @@ class Search_model extends MY_Model {
           $cid = $country->id; 
        }
        
-       $sql = "SELECT * FROM addressbook WHERE (individual LIKE '%$q%' AND member_id = '".$this->session->userdata('members_id')."') OR (company LIKE '%$q%') OR (business_activities LIKE '%$q%' AND member_id = '".$this->session->userdata('members_id')."')";
+       $sql = "SELECT DISTINCT address_member_id FROM addressbook WHERE (individual LIKE '%$q%' AND member_id = '".$this->session->userdata('members_id')."') OR (company LIKE '%$q%') OR (business_activities LIKE '%$q%' AND member_id = '".$this->session->userdata('members_id')."')";
        
        if(is_numeric($cid)){
         $sql .= "OR (country = '".$cid."' AND member_id = '".$this->session->userdata('members_id')."')";
        }
                
-       $sql .= "ORDER BY date DESC";
+       $sql .= " ORDER BY date DESC";
        
        $query = $this->db->query($sql);
         
