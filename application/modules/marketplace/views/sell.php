@@ -91,22 +91,20 @@
     <th>
     <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
     <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
-    <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+    <a href="<?php echo base_url().'marketplace/listing_detail/'.$value->id ?>"><button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></a></th>
     </tr>
     <?php }}else{
         ?>
-        <th colspan="11">No Such Listing Found </th><?php
+        <th colspan="12">No Such Listing Found </th><?php
         }?>
 </table>
 </div>
 </div>
 </div>
 </div>
-
-</div>
+</div>            
             
-            
-    <div class="modal inmodal fade" id="myModal5" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal inmodal fade" id="myMo dal5" tabindex="-1" role="dialog"  aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
