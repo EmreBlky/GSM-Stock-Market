@@ -268,72 +268,127 @@ class Profile extends MX_Controller {
             );
 
             $this->company_model->_update($this->member_model->get_where($this->session->userdata('members_id'))->company_id, $data);
-
+//
 //            echo '<pre>';
 //            print_r($_FILES);
 //            exit;            
 //            
-            $this->load->library('upload');
+            
             
             $files = $_FILES;
-//          
-                if($_FILES['userfile']['size'][0] > 0){
+            
+            $count = 0;
+            foreach ($files['userfile']['size'] as $file){
+                
+                if($file > 0){
+                  
                     
-                    $base = $this->config->item('base_url');
-                    $config['upload_path'] = dirname($_SERVER["SCRIPT_FILENAME"]) . '/public/main/template/gsm/images/company/';
-                    $config['upload_url'] = $base . 'public/main/template/gsm/images/company/';
-                    $config['allowed_types'] = 'gif|jpg|png';
-                    $config['file_name'] = $this->session->userdata('members_id');
-                    $config['max_size'] = '2000';
-                    $config['overwrite'] = TRUE;
-                    $config['max_width'] = '300';
-                    $config['max_height'] = '150';
-                    
-                    $_FILES['userfile']['name']= $files['userfile']['name'][0];
-                    $_FILES['userfile']['type']= $files['userfile']['type'][0];
-                    $_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][0];
-                    $_FILES['userfile']['error']= $files['userfile']['error'][0];
-                    $_FILES['userfile']['size']= $files['userfile']['size'][0]; 
-                    
-                     $this->upload->initialize($config);
+                    if($files['userfile']['name'][0] != ''){
+                        $this->load->library('upload');
+                        $base = $this->config->item('base_url');
+                        
+                        $config['upload_path'] = dirname($_SERVER["SCRIPT_FILENAME"]) . '/public/main/template/gsm/images/company/';
+                        $config['upload_url'] = $base . 'public/main/template/gsm/images/company/';
+                        $config['allowed_types'] = 'gif|jpg|png';
+                        $config['file_name'] = $this->session->userdata('members_id').'_main';
+                        $config['max_size'] = '2000';
+                        $config['overwrite'] = TRUE;
+                        $config['max_width'] = '300';
+                        $config['max_height'] = '150';
 
-                    if (!$this->upload->do_upload()) {
-                        $error = array('error' => $this->upload->display_errors()); 
-                        $this->session->set_flashdata('msg_company', $error['error']);
-                        redirect('profile/edit_profile');
-                    } else {
-                        $data = array('upload_data' => $this->upload->data());                    }
-                }
-                if($_FILES['userfile']['size'][1] > 0){
-                    $base = $this->config->item('base_url');
-                    $config['upload_path'] = dirname($_SERVER["SCRIPT_FILENAME"]) . '/public/main/template/gsm/images/members/';
-                    $config['upload_url'] = $base . 'public/main/template/gsm/images/members/';
-                    $config['allowed_types'] = 'gif|jpg|png';
-                    $config['file_name'] = $this->session->userdata('members_id');
-                    $config['max_size'] = '2000';
-                    $config['overwrite'] = TRUE;
-                    $config['max_width'] = '115';
-                    $config['max_height'] = '150';
-                    
-                    $_FILES['userfile']['name']= $files['userfile']['name'][1];
-                    $_FILES['userfile']['type']= $files['userfile']['type'][1];
-                    $_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][1];
-                    $_FILES['userfile']['error']= $files['userfile']['error'][1];
-                    $_FILES['userfile']['size']= $files['userfile']['size'][1]; 
-                    
-                     $this->upload->initialize($config);                     
+                        $_FILES['userfile']['name']= $files['userfile']['name'][0];
+                        $_FILES['userfile']['type']= $files['userfile']['type'][0];
+                        $_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][0];
+                        $_FILES['userfile']['error']= $files['userfile']['error'][0];
+                        $_FILES['userfile']['size']= $files['userfile']['size'][0]; 
 
-                    if (!$this->upload->do_upload()) {
-                        $error = array('error' => $this->upload->display_errors());
-                        $this->session->set_flashdata('msg_personal', $error['error']);
-                        redirect('profile/edit_profile');
-                    } else {
-                        $data = array('upload_data' => $this->upload->data());
+                         $this->upload->initialize($config);
+                         $this->upload->do_upload();
+                         
+                        $config['image_library']    = 'gd2';
+                        $config['source_image']	= 'public/main/template/gsm/images/company/'.$this->session->userdata('members_id').'_main.jpg';
+                        $config['new_image']	= 'public/main/template/gsm/images/company/'.$this->session->userdata('members_id').'.jpg';
+                        $config['create_thumb']     = TRUE;
+                        $config['maintain_ratio']   = TRUE;
+                        $config['width']            = 300;
+                        $config['height']           = 150;
+
+                        $this->load->library('image_lib');
+                        $this->image_lib->initialize($config);
+                        //$this->image_lib->resize();
+
+    //                    $this->upload->initialize($config);
+    //
+                        if (!$this->image_lib->resize()) {
+                                $error = array('error' => $this->image_lib->display_errors());
+                                $this->session->set_flashdata('msg_personal', $error['error']);
+                                redirect('profile/edit_profile');
+                        }
+
+                        $this->image_lib->clear();
+                        
+                        rename('public/main/template/gsm/images/company/'.$this->session->userdata('members_id').'_thumb.jpg', 'public/main/template/gsm/images/company/'.$this->session->userdata('members_id').'.jpg');
+                        unlink('public/main/template/gsm/images/company/'.$this->session->userdata('members_id').'_main.jpg');
+                        
+                        
                     }
-                } 
+                    if($files['userfile']['name'][1] != ''){
+                        $this->load->library('upload');
+                        $base = $this->config->item('base_url');
+                        
+                        $config['upload_path'] = dirname($_SERVER["SCRIPT_FILENAME"]) . '/public/main/template/gsm/images/members/';
+                        $config['upload_url'] = $base . 'public/main/template/gsm/images/members/';
+                        $config['allowed_types'] = 'gif|jpg|png';
+                        $config['file_name'] = $this->session->userdata('members_id').'_main';
+                        $config['max_size'] = '2000';
+                        $config['overwrite'] = TRUE;
+                        $config['max_width'] = '300';
+                        $config['max_height'] = '150';
+
+                        $_FILES['userfile']['name']= $files['userfile']['name'][1];
+                        $_FILES['userfile']['type']= $files['userfile']['type'][1];
+                        $_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][1];
+                        $_FILES['userfile']['error']= $files['userfile']['error'][1];
+                        $_FILES['userfile']['size']= $files['userfile']['size'][1]; 
+
+                        $this->upload->initialize($config);
+                        $this->upload->do_upload();
+
+                        $config['image_library']    = 'gd2';
+                        $config['source_image']	= 'public/main/template/gsm/images/members/'.$this->session->userdata('members_id').'_main.jpg';
+                        $config['new_image']	= 'public/main/template/gsm/images/members/'.$this->session->userdata('members_id').'.jpg';
+                        $config['create_thumb']     = TRUE;
+                        $config['maintain_ratio']   = TRUE;
+                        $config['width']            = 115;
+                        $config['height']           = 150;
+
+                        $this->load->library('image_lib');
+                        $this->image_lib->initialize($config);
+                        //$this->image_lib->resize();
+
+    //                    $this->upload->initialize($config);
+    //
+                        if (!$this->image_lib->resize()) {
+                                $error = array('error' => $this->image_lib->display_errors());
+                                $this->session->set_flashdata('msg_personal', $error['error']);
+                                redirect('profile/edit_profile');
+                        }
+                        
+                        $this->image_lib->clear();
+                        
+                        rename('public/main/template/gsm/images/members/'.$this->session->userdata('members_id').'_thumb.jpg', 'public/main/template/gsm/images/members/'.$this->session->userdata('members_id').'.jpg');
+                        unlink('public/main/template/gsm/images/members/'.$this->session->userdata('members_id').'_main.jpg');
+                        
+                    }
+                    
+                }
+                //echo $file[$count].'<br/>';
+                $count++;
+            }
+            
 
         }
-        //exit;
+       
         redirect('profile/', 'refresh');
     }
 
