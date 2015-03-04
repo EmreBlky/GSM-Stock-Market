@@ -87,9 +87,11 @@ class Marketplace_model extends MY_Model {
 
 	public function listing_buy($offset='', $per_page=''){
 		$member_id=$this->session->userdata('members_id');
+		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
 		$this->db->from('listing');
+		$this->db->where('status', 1);
 		$this->db->where('listing_type', 1);
-		$this->db->where('member_id', $member_id);
+		$this->db->where('member_id != '.$member_id);
 		if($offset>=0 && $per_page>0){
 			$this->db->limit($per_page,$offset);
 			$query = $this->db->get();
@@ -104,9 +106,11 @@ class Marketplace_model extends MY_Model {
 
 	public function listing_sell($offset='', $per_page=''){
 		$member_id=$this->session->userdata('members_id');
+		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
 		$this->db->from('listing');
+		$this->db->where('status', 1);
 		$this->db->where('listing_type', 2);
-		$this->db->where('member_id', $member_id);
+		$this->db->where('member_id != '.$member_id);
 		if($offset>=0 && $per_page>0){
 			$this->db->limit($per_page,$offset);
 			$query = $this->db->get();
