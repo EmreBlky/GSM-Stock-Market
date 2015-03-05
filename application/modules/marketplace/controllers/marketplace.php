@@ -361,13 +361,10 @@ class Marketplace extends MX_Controller
         $this->upload->initialize($config1);
         
         if ( ! $this->upload->do_upload('image1')){
-            die('image is not uploded');
             $this->form_validation->set_message('image1_check', $this->upload->display_errors());
             return FALSE;
         }else{
             $data = $this->upload->data(); // upload image 
-            print_r($data);
-            die('image is uploded');
             $this->session->unset_userdata('image1_check');
             $this->session->set_userdata('image1_check',array('image_url'=>$config1['upload_path'].$data['file_name'],'image1'=>$data['file_name']));
             return TRUE;
