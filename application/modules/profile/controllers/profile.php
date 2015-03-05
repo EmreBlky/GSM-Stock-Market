@@ -293,10 +293,10 @@ class Profile extends MX_Controller {
                         $config['upload_url'] = $base . 'public/main/template/gsm/images/company/';
                         $config['allowed_types'] = 'gif|jpg|png';
                         $config['file_name'] = $this->session->userdata('members_id').'_main';
-                        $config['max_size'] = '2000';
+                        $config['max_size'] = 4000;
                         $config['overwrite'] = TRUE;
-                        $config['max_width'] = '300';
-                        $config['max_height'] = '150';
+                        $config['max_width'] = 1500;
+                        $config['max_height'] = 1500;
 
                         $_FILES['userfile']['name']= $files['userfile']['name'][0];
                         $_FILES['userfile']['type']= $files['userfile']['type'][0];
@@ -312,8 +312,8 @@ class Profile extends MX_Controller {
                         $config['new_image']	= 'public/main/template/gsm/images/company/'.$this->session->userdata('members_id').'.jpg';
                         $config['create_thumb']     = TRUE;
                         $config['maintain_ratio']   = TRUE;
-                        $config['width']            = 300;
-                        $config['height']           = 150;
+                        $config['width']            = 400;
+                        $config['height']           = 200;
 
                         $this->load->library('image_lib');
                         $this->image_lib->initialize($config);
@@ -342,10 +342,10 @@ class Profile extends MX_Controller {
                         $config['upload_url'] = $base . 'public/main/template/gsm/images/members/';
                         $config['allowed_types'] = 'gif|jpg|png';
                         $config['file_name'] = $this->session->userdata('members_id').'_main';
-                        $config['max_size'] = '2000';
+                        $config['max_size'] = 4000;
                         $config['overwrite'] = TRUE;
-                        $config['max_width'] = '300';
-                        $config['max_height'] = '150';
+                        $config['max_width'] = 1500;
+                        $config['max_height'] = 1500;
 
                         $_FILES['userfile']['name']= $files['userfile']['name'][1];
                         $_FILES['userfile']['type']= $files['userfile']['type'][1];
@@ -361,8 +361,8 @@ class Profile extends MX_Controller {
                         $config['new_image']	= 'public/main/template/gsm/images/members/'.$this->session->userdata('members_id').'.jpg';
                         $config['create_thumb']     = TRUE;
                         $config['maintain_ratio']   = TRUE;
-                        $config['width']            = 115;
-                        $config['height']           = 150;
+                        $config['width']            = 200;
+                        $config['height']           = 200;
 
                         $this->load->library('image_lib');
                         $this->image_lib->initialize($config);
