@@ -220,6 +220,7 @@ class Profile extends MX_Controller {
         $this->form_validation->set_rules('secondary_sector', 'Business Sector 2', 'xss_clean');
         $this->form_validation->set_rules('tertiary_sector', 'Business Sector 2', 'xss_clean');
         $this->form_validation->set_rules('vat_tax', 'VAT Number', 'xss_clean');
+        $this->form_validation->set_rules('company_profile', 'Company Profile', 'xss_clean');
         $this->form_validation->set_rules('company_number', 'Company Number', 'xss_clean');
         $this->form_validation->set_rules('language', 'Language', 'xss_clean');
         $this->form_validation->set_rules('facebook', 'Facebook', 'xss_clean');
@@ -263,6 +264,7 @@ class Profile extends MX_Controller {
                 'business_sector_2' => $this->input->post('bsecondary'),
                 'business_sector_3' => $this->input->post('btertiary'),
                 'other_business' => $bsectors4 . $bsectors5,
+                'company_profile' => $this->input->post('company_profile'),
                 'vat_tax' => $this->input->post('vat_tax'),
                 'company_number' => $this->input->post('company_number'),
             );

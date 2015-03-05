@@ -1214,7 +1214,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                     <div class="form-group">
                         <label class="col-md-3 col-md-4 control-label">Company Bio</label>
                         <div class="col-md-9">
-                            <textarea class="form-control" rows="5" id="companybio"><?php echo $company->company_profile; ?></textarea>
+                            <textarea class="form-control" rows="5" id="companybio" name="company_profile"><?php echo $company->company_profile; ?></textarea>
                             <div id="charNum"></div>
                         </div>  
                     </div>
