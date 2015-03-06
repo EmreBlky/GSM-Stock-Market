@@ -34,12 +34,12 @@
                                 
                         		<div class="form-group"><label class="col-md-3 control-label">New Password</label>
                                     <div class="col-md-9">
-                                        <input id="password" name="password" type="text" class="form-control required">
+                                        <input type="password" id="new_password" name="password" type="text" class="form-control required">
                                     </div>
                                 </div>  
                         		<div class="form-group"><label class="col-md-3 control-label">Repeat New Password</label>
                                     <div class="col-md-9">
-                                        <input id="confirm" name="confirm" type="text" class="form-control required">
+                                        <input type="password" id="confirm" name="confirm" type="text" class="form-control required">
                                     </div>
                                 </div> 
                                 
@@ -75,7 +75,7 @@
                         },
                         rules: {
                             confirm: {
-                                equalTo: "#password"
+                                equalTo: "#new_password"
                             }
                         }
                     });
