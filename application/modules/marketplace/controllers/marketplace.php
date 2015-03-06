@@ -113,7 +113,7 @@ class Marketplace extends MX_Controller
 
         $member_id=$this->session->userdata('members_id');
         //$this->output->enable_profiler(TRUE);
-        $this->form_validation->set_rules('schedule_date_time', 'schedule date time', 'required');
+        $this->form_validation->set_rules('schedule_date_time', '', '');
         $this->form_validation->set_rules('listing_type', 'listing type', 'required');
         $this->form_validation->set_rules('product_mpn_isbn', 'product_mpn_isbn', 'required');
         $this->form_validation->set_rules('product_make', 'product make', 'required');
@@ -158,7 +158,7 @@ class Marketplace extends MX_Controller
         }
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
         if ($this->form_validation->run($this) == TRUE){
-         //  die('testing');
+           
            $min_price='';
            $allow_offer='';
            $min_qty_order='';
@@ -181,9 +181,12 @@ class Marketplace extends MX_Controller
                     $courier=$courierinfo.','.$courier;
                 }
             }
-
+            $schedule_date_time=date('Y-m-d h:i:s');
+            if($this->input->post('schedule_date_time')){
+                $schedule_date_time=$this->input->post('schedule_date_time');
+            }
             $data_insert=array(
-            'schedule_date_time' =>  $this->input->post('schedule_date_time'),
+            'schedule_date_time' =>  $schedule_date_time,
             'listing_type' =>$this->input->post('listing_type'),
             'product_mpn_isbn' =>$this->input->post('product_mpn_isbn'),
             'product_make' =>  $this->input->post('product_make'),
