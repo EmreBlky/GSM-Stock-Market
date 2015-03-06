@@ -153,6 +153,10 @@ class Profile extends MX_Controller {
     }
 
     function profileEdit() {
+        
+//        echo '<pre>';
+//        print_r($_POST);
+//        exit;
 
         $bsectors4 = '';
         $bsectors5 = '';
@@ -235,6 +239,8 @@ class Profile extends MX_Controller {
             $data = array(
                 'email' => $this->input->post('email'),
                 'title' => $this->input->post('title'),
+                'phone_number' => $this->input->post('phone_number'),
+                'mobile_number' => $this->input->post('mobile_number'),
                 'firstname' => $this->input->post('firstname'),
                 'lastname' => $this->input->post('lastname'),
                 'language' => $this->input->post('language'),

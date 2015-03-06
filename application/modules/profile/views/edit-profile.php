@@ -1237,7 +1237,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                         <div class="confirm-div-company"></div>
                         <div class="col-md-12" style="text-align:center">
                             <?php if (file_exists("public/main/template/gsm/images/company/" . $member->company_id . ".jpg")) { ?>
-                                <img src="public/main/template/gsm/images/company/<?php echo $member->company_id; ?>.jpg" width="300" height="150">
+                                <img src="public/main/template/gsm/images/company/<?php echo $member->company_id; ?>.jpg">
                             <?php } else {?>
                                 <img src="public/main/template/gsm/images/company/no_company.jpg" width="300" height="150">
                             <?php }?>                            
