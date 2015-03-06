@@ -115,9 +115,9 @@
                                         <dd>
                                             <span>
                                                 <?php if(file_exists("public/main/template/gsm/images/members/".$member_info->id.".jpg")){?>
-                                                    <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/template/gsm/images/members/<?php echo $member_info->id; ?>.jpg" height="128" width="128">
+                                                    <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/template/gsm/images/members/<?php echo $member_info->id; ?>.jpg">
                                                 <?php } else {?>
-                                                    <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/template/gsm/images/members/no_profile.jpg" height="128" width="128">
+                                                    <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/template/gsm/images/members/no_profile.jpg">
                                                 <?php }?>                            
                                             </span>
                                         </dd>
