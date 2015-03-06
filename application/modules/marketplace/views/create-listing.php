@@ -274,7 +274,7 @@
     
     <div class="form-group">
         <div class="col-md-9 col-md-offset-3">
-            <a href="">Cancel</a>
+            <a class="btn btn-danger" href="">Cancel</a>
             <button class="btn btn-warning" type="submit" name="status" value="2">Save for later</button>
             <button class="btn btn-primary" type="submit" name="status" value="1">List Now</button>
         </div>
