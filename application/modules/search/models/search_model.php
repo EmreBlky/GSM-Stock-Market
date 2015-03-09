@@ -234,7 +234,7 @@ class Search_model extends MY_Model {
 
         }
         else{
-            $data = 'NO RESULTS WERE FOUND!';
+            $data = 'No results found';
         }
         //echo json_encode($data);
         return $data;
