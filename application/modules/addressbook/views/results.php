@@ -98,7 +98,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                     <div class="ibox-content">
             			<div class="row">
                         <div class="col-lg-2">
-                            <label class="checkbox-inline i-checks" style="margin:10px"> <input type="checkbox"> Favourites </label> 
+                            <!--<label class="checkbox-inline i-checks" style="margin:10px"> <input type="checkbox"> Favourites </label> -->
                         </div>
                         <div class="col-lg-2">
                             <select class="form-control m-b dropdown_one" name="dropdown_one">

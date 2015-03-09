@@ -434,7 +434,7 @@ class Addressbook extends MX_Controller
         redirect('member/profile/'.$mid);
     }
     
-    function searchQuery($one, $two, $three, $page = NULL, $off = NULL)
+    function searchQuery($one, $two, $three, $fave = NULL)
     {
         $this->load->library('pagination');
         
@@ -454,9 +454,22 @@ class Addressbook extends MX_Controller
         //$data['address_book'] = $this->addressbook_model->get_where_multiples('member_id', $this->session->userdata('members_id'), NULL, NULL, 21, $offset);
         if($two == 'ALL' && $three == 'ALL'){
             
+            if($fave == 'yes'){
+                $add_count = $this->addressbook_model->count_where('member_id', $this->session->userdata('members_id'), 'favourite', 'yes');
+                
+                if($add_count > 0){
+                    $data['addressbook_count'] = $add_count;
+                    $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE favourite = 'yes' AND member_id = '".$this->session->userdata('members_id')."' ".$this->characterReplace($one)."");            
+                }
+                else{
+                     $data['addressbook_count'] = 0;
+                }
+            }
+            else{
+                $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE member_id = '".$this->session->userdata('members_id')."' ".$this->characterReplace($one)."");
+            }
             //$add_count = $this->addressbook_model->count_where('member_id', $this->session->userdata('members_id'));
             //$data['addressbook_count'] = $add_count;
-            $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE member_id = '".$this->session->userdata('members_id')."' ".$this->characterReplace($one)."");
             
             $config['base_url'] = $this->config->item('base_url').'addressbook/order/'.$this->characterReplace($one).'/page';
             $config['total_rows'] = $add_count;
@@ -487,7 +500,21 @@ class Addressbook extends MX_Controller
             
             if($add_count[0]->addressCount > 0){
                 $data['addressbook_count'] = $add_count[0]->addressCount;
-                $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE business_activities = '".$this->characterReplace($two)."' AND member_id = '".$this->session->userdata('members_id')."' ".$this->characterReplace($one)."");
+                
+                if($fave == 'yes'){
+                    
+                        $add_count = $this->addressbook_model->_custom_query("SELECT COUNT(*) AS addressCount FROM addressbook WHERE favourite = 'yes' AND business_activities = '".$this->characterReplace($two)."' AND member_id = '".$this->session->userdata('members_id')."'");
+                        if($add_count[0]->addressCount > 0){
+                            $data['addressbook_count'] =
+                            $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE favourite = 'yes' AND business_activities = '".$this->characterReplace($two)."' AND member_id = '".$this->session->userdata('members_id')."' ".$this->characterReplace($one)."");                
+                        }
+                        else{
+                             $data['addressbook_count'] = 0;
+                        }
+                }
+                else{
+                        $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE business_activities = '".$this->characterReplace($two)."' AND member_id = '".$this->session->userdata('members_id')."' ".$this->characterReplace($one)."");
+                }
                 
                 $config['base_url'] = $this->config->item('base_url').'addressbook/business/'.$this->characterReplace($two).'/'.$this->characterReplace($one).'/page';
                 $config['total_rows'] = $add_count[0]->addressCount;
@@ -523,8 +550,22 @@ class Addressbook extends MX_Controller
             
             if($add_count[0]->addressCount > 0){
                 $data['addressbook_count'] = $add_count[0]->addressCount;
-                $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE country = '".$three."' AND member_id = '".$this->session->userdata('members_id')."' ".$this->characterReplace($one).""); 
                 
+                if($fave == 'yes'){
+                    
+                    $add_count = $this->addressbook_model->_custom_query("SELECT COUNT(*) AS addressCount FROM addressbook WHERE favourite = 'yes' AND country = '".$three."' AND member_id = '".$this->session->userdata('members_id')."'");
+            
+                    if($add_count[0]->addressCount > 0){
+                        $data['addressbook_count'] = $add_count[0]->addressCount;
+                        $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE favourite = 'yes' AND country = '".$three."' AND member_id = '".$this->session->userdata('members_id')."' ".$this->characterReplace($one)."");                 
+                    }
+                    else{
+                        $data['addressbook_count'] = 0;
+                    }
+                }
+                else{
+                        $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE country = '".$three."' AND member_id = '".$this->session->userdata('members_id')."' ".$this->characterReplace($one).""); 
+                }
                 $config['base_url'] = $this->config->item('base_url').'addressbook/country/'.$this->characterReplace($three).'/'.$this->characterReplace($one).'/page';
                 $config['total_rows'] = $add_count[0]->addressCount;
                 $config['per_page'] = 21;
@@ -557,8 +598,22 @@ class Addressbook extends MX_Controller
             
             if($add_count[0]->addressCount > 0){
                 $data['addressbook_count'] = $add_count[0]->addressCount;
-                $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE business_activities = '".$this->characterReplace($two)."' AND country = '".$three."' AND member_id = '".$this->session->userdata('members_id')."' ".$this->characterReplace($one)."");
                 
+                if($fave == 'yes'){
+                    
+                    $add_count = $this->addressbook_model->_custom_query("SELECT COUNT(*) AS addressCount FROM addressbook WHERE favourite = 'yes' AND business_activities = '".$this->characterReplace($two)."' AND country = '".$three."' AND member_id = '".$this->session->userdata('members_id')."'");
+                    
+                    if($add_count[0]->addressCount > 0){
+                        $data['addressbook_count'] = $add_count[0]->addressCount;
+                        $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE favourite = 'yes' AND business_activities = '".$this->characterReplace($two)."' AND country = '".$three."' AND member_id = '".$this->session->userdata('members_id')."' ".$this->characterReplace($one)."");                
+                    }
+                    else{
+                        $data['addressbook_count'] = 0;
+                    }
+                }
+                else{
+                        $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE business_activities = '".$this->characterReplace($two)."' AND country = '".$three."' AND member_id = '".$this->session->userdata('members_id')."' ".$this->characterReplace($one)."");
+                }
                 $config['base_url'] = $this->config->item('base_url').'addressbook/all_info/'.$this->characterReplace($two).'/'.$this->characterReplace($three).'/'.$this->characterReplace($one).'/page';
                 $config['total_rows'] = $add_count[0]->addressCount;
                 $config['per_page'] = 21;
