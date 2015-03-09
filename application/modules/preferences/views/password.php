@@ -20,7 +20,7 @@
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>Edit Password (INCOMPLETE)</h5>
+                            <h5>Edit Password</h5>
                         </div>
                         <div class="ibox-content">
                             <form role="form" id="form" class="form-horizontal">
@@ -29,14 +29,17 @@
                                         <input type="password" placeholder="Current Password" id="password" class="form-control" name="old_password">
                                     </div>
                                 </div>  
+                                
+                                <div class="hr-line-dashed"></div>
+                                
                         		<div class="form-group"><label class="col-md-3 control-label">New Password</label>
                                     <div class="col-md-9">
-                                        <input type="password" placeholder="New Password" id="password" class="form-control" name="new_password">
+                                        <input type="password" id="new_password" name="password" type="text" class="form-control required">
                                     </div>
                                 </div>  
                         		<div class="form-group"><label class="col-md-3 control-label">Repeat New Password</label>
                                     <div class="col-md-9">
-                                        <input type="password" placeholder="Repeat New Password" id="password" class="form-control" name="new_password_repeat">
+                                        <input type="password" id="confirm" name="confirm" type="text" class="form-control required">
                                     </div>
                                 </div> 
                                 
@@ -66,11 +69,14 @@
 	  success: "valid"
 	});
 	$( "#form" ).validate({
-	  rules: {
-		new_password: "required",
-		New_password_again: {
-		  equalTo: "#password"
-		}
-	  }
-	});
+                        errorPlacement: function (error, element)
+                        {
+                            element.before(error);
+                        },
+                        rules: {
+                            confirm: {
+                                equalTo: "#new_password"
+                            }
+                        }
+                    });
 	</script>
