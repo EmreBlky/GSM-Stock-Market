@@ -232,7 +232,7 @@ $this->load->model('membership/membership_model', 'membership_model');
                                             <small class="font-bold">Role</small>
                                         </div>
                                         <div class="modal-body">
-                                            <p><strong>Payment will be taken from your GSM Wallet</strong> and the credit data for this company will be viewable from your account while your subscription lasts.</p>
+                                            <p><img alt="image" class="img-circle" src="public/main/template/gsm/images/members/<?php echo $user->id;?>.jpg"></p>
                                             <p><strong>£5.00 Credit available</strong></p>
                                             <p><strong>£5.00 Credit required</strong></p>
                                         </div>
@@ -243,8 +243,6 @@ $this->load->model('membership/membership_model', 'membership_model');
                                     </div>
                                 </div>
                             </div> 
-                                            
-                                                <a href="#"><img alt="image" class="img-circle" src="public/main/template/gsm/images/members/<?php echo $user->id;?>.jpg"></a>
                                             
                                             <?php
 
