@@ -29,7 +29,8 @@ class Favourite extends MX_Controller
                     );
         $this->favourite_model->_insert($data);
         
-        $fid = $this->addressbook_model->get_where_multiple('address_member_id', $mid)->id;
+        $fid = $this->addressbook_model->get_where_multiple('address_member_id', $mid, 'member_id', $this->session->userdata('members_id'))->id;
+        
         
         if(is_numeric($fid)){
             
@@ -48,7 +49,7 @@ class Favourite extends MX_Controller
     {
         $this->favourite_model->_delete_where('member_id', $this->session->userdata('members_id'), 'favourite_id', $mid);
         
-        $fid = $this->addressbook_model->get_where_multiple('address_member_id', $mid)->id;
+        $fid = $this->addressbook_model->get_where_multiple('address_member_id', $mid, 'member_id', $this->session->userdata('members_id'))->id;
         
         if(is_numeric($fid)){
             
