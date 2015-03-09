@@ -553,7 +553,7 @@ class Addressbook extends MX_Controller
                 
                 if($fave == 'yes'){
                     
-                    $add_count = $this->addressbook_model->_custom_query("SELECT COUNT(*) AS addressCount FROM addressbook WHERE favourite = 'yes' country = '".$three."' AND member_id = '".$this->session->userdata('members_id')."'");
+                    $add_count = $this->addressbook_model->_custom_query("SELECT COUNT(*) AS addressCount FROM addressbook WHERE favourite = 'yes' AND country = '".$three."' AND member_id = '".$this->session->userdata('members_id')."'");
             
                     if($add_count[0]->addressCount > 0){
                         $data['addressbook_count'] = $add_count[0]->addressCount;

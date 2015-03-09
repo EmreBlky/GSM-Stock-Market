@@ -97,10 +97,10 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
             	<div class="ibox float-e-margins">
                     <div class="ibox-content">
             			<div class="row">
-                        <div class="col-lg-2">
-                            
-                            <input id="fav_check" type="checkbox" value="yes"> Favourites 
-                             
+                        <div class="col-lg-2">                            
+<!--                                <label class="checkbox-inline i-checks" style="margin:10px"> -->
+                                    <input id="fav_check" type="checkbox" value="yes"> Favourites
+<!--                                </label>-->
                         </div>
                         <div class="col-lg-2">
                             <select class="form-control m-b dropdown_one" name="dropdown_one">
@@ -409,7 +409,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
         //var firstDropVal = $('#pick').val();
         //alert(one);
         //alert(two);
-        //alert(three);
+        //alert(check);
         
         $.ajax
             ({
@@ -428,13 +428,18 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
         var one = $('.dropdown_one').val();
         var two = $('.dropdown_two').val();
         var three = $('.dropdown_three').val();
-        var check = this.value;
+        if( $('#fav_check').is(":checked") ) {
+           var check = 'yes';
+        }
+         else{
+             var check = 'no';
+        }
         if($(this).is(":checked")) {
             //alert(check);
             $.ajax
                 ({
                 type: "POST",
-                url: "addressbook/searchQuery/" + one + "/" + two + "/" + three + "/yes",
+                url: "addressbook/searchQuery/" + one + "/" + two + "/" + three + "/"+ check +"",
                 dataType: "html",		 
                 success: function(html)
                 {
@@ -448,7 +453,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
            $.ajax
             ({
             type: "POST",
-            url: "addressbook/searchQuery/" + one + "/" + two + "/" + three + "/no",
+            url: "addressbook/searchQuery/" + one + "/" + two + "/" + three + "/"+ check +"",
             dataType: "html",		 
             success: function(html)
             {
