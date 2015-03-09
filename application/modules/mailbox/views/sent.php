@@ -185,7 +185,7 @@
                                                 </td>
                                                 <td class="mail-subject"><a href="mailbox/sent/'.$inbox->id.'">'.$inbox->subject.'</a></td>
                                                 <td class="">&nbsp;<!-- <i class="fa fa-paperclip"> --></i></td>';
-                                                    if($inbox->date < date('d-m-Y')){
+                                                    if($inbox->date > date('d-m-Y')){
                                                        echo '<td class="text-right mail-date">'.$inbox->time.' '.date_format(date_create($inbox->date), 'jS F').'</td>'; 
                                                     }
                                                     else{
