@@ -21,14 +21,35 @@ class Feed extends MX_Controller
 //        $this->load->module('templates');
 //        $this->templates->page($data);
     }
+    
+    function characterReplace($var)
+    {
+        $var = str_replace('%20', ' ', $var);        
+        $var = str_replace('BREAK1', '<br/>', $var);
+        $var = str_replace('%22', '"', $var);
+        $var = str_replace('%3C', '<', $var);
+        $var = str_replace('%3E', '>', $var);
+        $var = str_replace('%C2%B1', '±', $var);
+        $var = str_replace('%7C', '|', $var);
+        $var = str_replace('%7B', '{', $var);
+        $var = str_replace('%7D', '}', $var);
+        $var = str_replace('%5E', '^', $var);
+        $var = str_replace('%C2%A3', '£', $var);
+        $var = str_replace('%60', '`', $var);
+        $var = str_replace('%C2%A7', '§', $var);
+        $var = str_replace('QUEST1', '?', $var);
+        $var = str_replace('SLASH1', '/', $var);
+        $var = str_replace('PERCENT1', '%', $var);
+        
+        return $var;
+    }
+    
     function add($content)
     {
-         $content = str_replace('%20', ' ', $content);
-         $content = str_replace('%0D%0A', '<br/>', $content);
          
-         $data = array(
+        $data = array(
                         'member_id'     => $this->session->userdata('members_id'),
-                        'content'       => $content,
+                        'content'       => $this->characterReplace($content),
                         'date'          => date('d-m-Y'),
                         'time'          => date('H:i:s'),
                         'datetime'      => date('Y-m-d H:i:s')

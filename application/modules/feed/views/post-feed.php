@@ -3,7 +3,11 @@
 
     function postFeed()
     {
-        var content = $('#feed_content').val().replace(/(\r\n|\n|\r)/gm, '%0D%0A');
+        //var content = $('#feed_content').val().replace(/(\r\n|\n|\r)/gm, '%0D%0A');
+        var content    = $('#feed_content').val().replace(/(\r\n|\n|\r)/gm, 'BREAK1');
+        var content    = content.replace(/\//g, 'SLASH1');
+        var content    = content.replace(/\?/g, 'QUEST1');
+        var content    = content.replace(/\%/g, 'PERCENT1');
         
         if(content == 'Message' || content == ''){
             toastr.error('Please complete the field.', 'Missing Information');
