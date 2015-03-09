@@ -62,9 +62,7 @@
                                     //echo '<pre>';
                                     //print_r($logged);
                                     //exit;
-                            ?>
-                            <li>&nbsp;</li>
-                            <li>&nbsp;</li>
+                            ?>                            
                             <li><b>Last Logged in: </b><?php echo $logged->time; ?> on <?php echo $logged->date; ?></li>
                             <?php }?>
                         </ul>

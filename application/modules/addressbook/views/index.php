@@ -98,7 +98,9 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                     <div class="ibox-content">
             			<div class="row">
                         <div class="col-lg-2">
-                            <label class="checkbox-inline i-checks" style="margin:10px"> <input type="checkbox"> Favourites </label> 
+                            
+                                <input id="fav_check" type="checkbox"> Favourites 
+                             
                         </div>
                         <div class="col-lg-2">
                             <select class="form-control m-b dropdown_one" name="dropdown_one">
@@ -200,8 +202,6 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                                 if($this->member_model->get_where_multiple('id', $address->address_member_id)->online_status != 'online'){
                                     $logged = $this->login_model->get_where_multiple('member_id', $address->address_member_id, 'logged', 'no');
                             ?>
-                            <li>&nbsp;</li>
-                            <li>&nbsp;</li>
                             <li><b>Last Logged in: </b><?php echo $logged->time; ?> on <?php echo $logged->date; ?></li>
                             <?php }?>
                         </ul>
@@ -403,6 +403,39 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                $("#results").html(html);
             } 
             });
+    });
+    
+    $('#fav_check').change(function () { 
+        var one = $('.dropdown_one').val();
+        var two = $('.dropdown_two').val();
+        var three = $('.dropdown_three').val();
+        if($(this).is(":checked")) {
+            $.ajax
+                ({
+                type: "POST",
+                url: "addressbook/searchQuery/" + one + "/" + two + "/" + three + "/yes",
+                dataType: "html",		 
+                success: function(html)
+                {
+                   $('.original').hide();    
+                   $("#results").html(html);
+                } 
+                });
+        }
+        if(!$(this).is(":checked")) {
+           alert('UNCHECK!');
+           $.ajax
+            ({
+            type: "POST",
+            url: "addressbook/searchQuery/" + one + "/" + two + "/" + three + "/no",
+            dataType: "html",		 
+            success: function(html)
+            {
+               $('.original').hide();    
+               $("#results").html(html);
+            } 
+            });
+        }
     });
 
     </script>
