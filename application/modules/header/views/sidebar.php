@@ -69,7 +69,9 @@
                     </li>
                     
                     <li>
-                        <a href="messenger"><i class="fa fa-wechat"></i> <span class="nav-label">Messenger</span><span class="label label-warning pull-right">0/1</span></a>
+                        <a href="messenger"><i class="fa fa-wechat"></i> <span class="nav-label">Messenger</span>
+<!--                            <span class="label label-warning pull-right">0/1</span>-->
+                        </a>
                     </li>
                     
                     <li>
