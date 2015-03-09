@@ -137,7 +137,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                             </select>
                         </div>
                         <div class="col-lg-3">
-                            <a href="addressbook/" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh</a>
+                            <a href="addressbook/" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i></a>
                             <?php
 
                                 $this->load->module('search');
