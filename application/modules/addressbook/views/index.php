@@ -99,7 +99,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
             			<div class="row">
                         <div class="col-lg-2">
                             
-                                <input id="fav_check" type="checkbox"> Favourites 
+                            <input id="fav_check" type="checkbox" value="yes"> Favourites 
                              
                         </div>
                         <div class="col-lg-2">
@@ -343,15 +343,22 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
         var one = this.value;
         var two = $('.dropdown_two').val();
         var three = $('.dropdown_three').val();
+        if( $('#fav_check').is(":checked") ) {
+           var check = 'yes';
+        }
+         else{
+             var check = 'no';
+        }
+        
         //var firstDropVal = $('#pick').val();
         //alert(one);
         //alert(two);
-        //alert(three);
+        //alert(check);
         
         $.ajax
             ({
             type: "POST",
-            url: "addressbook/searchQuery/" + one + "/" + two + "/" + three + "",
+            url: "addressbook/searchQuery/" + one + "/" + two + "/" + three + "/"+ check +"",
             dataType: "html",		 
             success: function(html)
             {
@@ -365,6 +372,12 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
         var one = $('.dropdown_one').val();
         var two = this.value;
         var three = $('.dropdown_three').val();
+        if( $('#fav_check').is(":checked") ) {
+           var check = 'yes';
+        }
+         else{
+             var check = 'no';
+        }
         //var firstDropVal = $('#pick').val();
         //alert(one);
         //alert(two);
@@ -373,7 +386,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
         $.ajax
             ({
             type: "POST",
-            url: "addressbook/searchQuery/" + one + "/" + two + "/" + three + "",
+            url: "addressbook/searchQuery/" + one + "/" + two + "/" + three + "/"+ check +"",
             dataType: "html",		 
             success: function(html)
             {
@@ -387,6 +400,12 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
         var one = $('.dropdown_one').val();
         var two = $('.dropdown_two').val();
         var three = this.value;
+        if( $('#fav_check').is(":checked") ) {
+           var check = 'yes';
+        }
+         else{
+             var check = 'no';
+        }
         //var firstDropVal = $('#pick').val();
         //alert(one);
         //alert(two);
@@ -395,7 +414,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
         $.ajax
             ({
             type: "POST",
-            url: "addressbook/searchQuery/" + one + "/" + two + "/" + three + "",
+           url: "addressbook/searchQuery/" + one + "/" + two + "/" + three + "/"+ check +"",
             dataType: "html",		 
             success: function(html)
             {
@@ -409,7 +428,9 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
         var one = $('.dropdown_one').val();
         var two = $('.dropdown_two').val();
         var three = $('.dropdown_three').val();
+        var check = this.value;
         if($(this).is(":checked")) {
+            //alert(check);
             $.ajax
                 ({
                 type: "POST",
@@ -423,7 +444,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                 });
         }
         if(!$(this).is(":checked")) {
-           alert('UNCHECK!');
+           //alert(check);
            $.ajax
             ({
             type: "POST",
