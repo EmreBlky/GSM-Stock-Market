@@ -39,34 +39,34 @@ $this->load->model('company/company_model', 'company_model');
                                 $h = ($subTime/(60*60))%24;
                                 $m = ($subTime/60)%60;
 
-                                if($d < 0 && $d <= -2){
-                                    echo '<font style="color:#464646 !important;">'.days($d).' Days, </font>';
-                                }
-                                elseif($d < 0 && $d > -2){
-                                    echo '<font style="color:#464646 !important;">'.days($d).' Day, </font';
-                                }
-                                if($h < 0 && $h <= -2){
-                                    echo '<font style="color:#464646 !important;">'.days($h).' Hours and </font>';
-                                }
-                                elseif($h < 0 && $h > -2){
-                                    echo '<font style="color:#464646 !important;">'.days($h).' Hour and </font> ';
-                                }
-                                if($m < 0 && $m <= -2){
-
-                                    if(days($subTime) > 15*60){
-
-                                        echo '<font style="color:#464646 !important;">'.days($m).' Minutes ago </font>';
-                                    }
-                                    else{
-                                        echo days($m).' Minutes ago';
-                                    }
-                                }
-                                elseif($m < 0 && $m > -2){
-                                    echo days($m).' Minute ago';
-                                }
-                                else{
-                                    echo 'Less than 1 minute ago';
-                                }
+//                                if($d < 0 && $d <= -2){
+//                                    echo '<font style="color:#464646 !important;">'.days($d).' Days, </font>';
+//                                }
+//                                elseif($d < 0 && $d > -2){
+//                                    echo '<font style="color:#464646 !important;">'.days($d).' Day, </font';
+//                                }
+//                                if($h < 0 && $h <= -2){
+//                                    echo '<font style="color:#464646 !important;">'.days($h).' Hours and </font>';
+//                                }
+//                                elseif($h < 0 && $h > -2){
+//                                    echo '<font style="color:#464646 !important;">'.days($h).' Hour and </font> ';
+//                                }
+//                                if($m < 0 && $m <= -2){
+//
+//                                    if(days($subTime) > 15*60){
+//
+//                                        echo '<font style="color:#464646 !important;">'.days($m).' Minutes ago </font>';
+//                                    }
+//                                    else{
+//                                        echo days($m).' Minutes ago';
+//                                    }
+//                                }
+//                                elseif($m < 0 && $m > -2){
+//                                    echo days($m).' Minute ago';
+//                                }
+//                                else{
+//                                    echo 'Less than 1 minute ago';
+//                                }
                             }
                             elseif($feed->approved == 'awaiting_approval'){
                                 echo '<div style="color:#000000 !important;">Pending Approval </div>';

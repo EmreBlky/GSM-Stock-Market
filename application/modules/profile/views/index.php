@@ -100,7 +100,7 @@ $this->load->model('membership/membership_model', 'membership_model');
                                     <dl class="dl-horizontal" >
 
                                         <dt>Date Created:</dt> <dd> <?php echo $member_info->date?></dd>
-                                        <dt>Last Online:</dt> <dd> 	10.07.2014 23:36:57 </dd>
+                                        <dt>Last Online:</dt> <dd><?php echo $last_logged->date.' '.$last_logged->time?></dd>
                                         <dt>Company Users:</dt>
                                         <dd class="project-people">
                                             <?php if($company_users){

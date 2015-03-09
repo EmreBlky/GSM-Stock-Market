@@ -14,7 +14,7 @@ class Profile extends MX_Controller {
         $this->load->model('company/company_model', 'company_model');
         $this->load->model('viewed/viewed_model', 'viewed_model');
         $this->load->model('country/country_model', 'country_model');
-        
+        $this->load->model('login/login_model', 'login_model');
         $this->load->model('activity/activity_model', 'activity_model');
         
         $data_activity = array(
@@ -33,6 +33,7 @@ class Profile extends MX_Controller {
         $data['member_info'] = $this->member_model->get_where_multiple('id', $this->session->userdata('members_id'));
         $data['company_users'] = $this->member_model->get_where_multiples('company_id', $cid);
         $data['member_company'] = $this->company_model->get_where_multiple('id', $cid);
+        $data['last_logged'] = $this->login_model->get_where_multiple('member_id', $this->session->userdata('members_id'), 'logged', 'yes');
 
         $this->load->module('templates');
         $this->templates->page($data);
