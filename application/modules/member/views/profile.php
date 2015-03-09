@@ -480,7 +480,7 @@
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                                             <h4 class="modal-title">Buy Credit Check</h4>
-                                            <small class="font-bold">This transaction will buy you the credit data for GSMStockMarket.com Limited.</small>
+                                            <small class="font-bold">This transaction will buy you the credit data for <?php echo $member_company->company_name; ?>.</small>
                                         </div>
                                         <div class="modal-body">
                                             <p><strong>Payment will be taken from your GSM Wallet</strong> and the credit data for this company will be viewable from your account while your subscription lasts.</p>

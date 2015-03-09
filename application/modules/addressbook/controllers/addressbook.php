@@ -45,7 +45,7 @@ class Addressbook extends MX_Controller
         
         if($add_count > 0){
             $data['addressbook_count'] = $add_count;
-            $data['address_book'] = $this->addressbook_model->get_where_multiples('member_id', $this->session->userdata('members_id'), NULL, NULL, 21, $offset);
+            $data['address_book'] = $this->addressbook_model->get_where_multiples_order('company', 'ASC', 'member_id', $this->session->userdata('members_id'), NULL, NULL,  NULL, NULL,  NULL, NULL, 21, $offset);
             
             $config['base_url'] = $this->config->item('base_url').'addressbook/page';
             $config['total_rows'] = $add_count;

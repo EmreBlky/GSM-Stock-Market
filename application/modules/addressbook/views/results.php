@@ -1,6 +1,6 @@
 <?php
 
-//echo '<pre>';
+$q = $this->input->post('search');
 //print_r($results);
 //exit;
 
@@ -98,7 +98,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                     <div class="ibox-content">
             			<div class="row">
                         <div class="col-lg-2">
-                            <!--<label class="checkbox-inline i-checks" style="margin:10px"> <input type="checkbox"> Favourites </label> -->
+                            <label class="checkbox-inline i-checks" style="margin:10px"> <input type="checkbox"> Favourites </label>
                         </div>
                         <div class="col-lg-2">
                             <select class="form-control m-b dropdown_one" name="dropdown_one">
@@ -137,7 +137,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                             </select>
                         </div>
                         <div class="col-lg-3">
-                            <a href="addressbook/" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh</a>
+                            <a href="addressbook/" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i></a>
                             <?php
 
                                 $this->load->module('search');
@@ -152,7 +152,15 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
         <div id="results"></div>
         <div class="row original">
         <?php 
-            if($results['search_addressbook'] != 'NO RESULTS WERE FOUND!'){
+            if($results['search_addressbook'] != 'No results found'){
+        ?>
+            <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-content">Results for <strong><?php echo $q;?></strong></div>   
+                        </div>
+                    </div>
+        <?php    
+                
             foreach ($results['search_addressbook'] as $address) {
             
                 if($address->address_member_id != $this->session->userdata('members_id')){
@@ -302,7 +310,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                 echo '
                     <div class="col-lg-12">
                         <div class="ibox float-e-margins">
-                            <div class="ibox-content">'.$results['search_addressbook'].'</div>   
+                            <div class="ibox-content">'.$results['search_addressbook'].' for <strong>'.$q.'</strong>!</div>   
                         </div>
                     </div>
                      ';
