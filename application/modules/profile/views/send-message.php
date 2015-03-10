@@ -1,4 +1,9 @@
-<?php //$this->load->model('member/member_model', 'member_model'); ?>
+<?php 
+
+//echo '<pre>';
+//print_r($member_company);
+//exit;
+?>
 <div class="modal inmodal fade" id="profile_message" tabindex="-1" role="dialog"  aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">           

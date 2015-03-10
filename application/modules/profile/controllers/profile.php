@@ -40,8 +40,10 @@ class Profile extends MX_Controller {
     }
 
     function send_message($mid) {
-        $data['member_info'] = $this->member_model->get_where_multiple('id', $mid);
-        $data['member_company'] = $this->company_model->get_where_multiple('id', $this->member_model->get_where_multiple('id', $mid)->company_id);
+        //echo $mid = $this->member_model->get_where_multiples('id', $mid)->company_id;
+        //exit;
+        $data['member_info'] = $this->member_model->get_where_multiple('company_id', $mid);
+        $data['member_company'] = $this->company_model->get_where_multiple('id', $mid);
 
         $this->load->view('send-message', $data);
     }
