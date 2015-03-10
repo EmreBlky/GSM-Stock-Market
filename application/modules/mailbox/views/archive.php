@@ -189,7 +189,7 @@
                                                 <td class="mail-ontact"><a href="mailbox/archive/'.$inbox->id.'">'.$this->member_model->get_where($inbox->member_id)->firstname.' '.$this->member_model->get_where($inbox->member_id)->lastname.'</a></td>
                                                 <td class="mail-subject"><a href="mailbox/archive/'.$inbox->id.'">'.$inbox->subject.'</a></td>
                                                 <td class="">&nbsp;<!-- <i class="fa fa-paperclip"> --></i></td>';
-                                                    if($inbox->date > date('d-m-Y')){
+                                                    if($inbox->date != date('d-m-Y')){
                                                        echo '<td class="text-right mail-date">'.$inbox->time.' '.date_format(date_create($inbox->date), 'jS F').'</td>'; 
                                                     }
                                                     else{
@@ -213,7 +213,7 @@
                                                     <a href="mailbox/archive/'.$inbox->id.'">'.$inbox->subject.'</a>
                                                 </td>                                                
                                                 <td class="">&nbsp;<!-- <i class="fa fa-paperclip"> --></i></td>';
-                                                    if($inbox->date > date('d-m-Y')){
+                                                    if($inbox->date != date('d-m-Y')){
                                                        echo '<td class="text-right mail-date">'.$inbox->time.' '.date_format(date_create($inbox->date), 'jS F').'</td>'; 
                                                     }
                                                     else{
