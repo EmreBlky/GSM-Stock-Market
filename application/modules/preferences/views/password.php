@@ -22,9 +22,12 @@
                         <div class="ibox-title">
                             <h5>Edit Password</h5>
                         </div>
-                        <div class="ibox-content">
-                            <form role="form" id="form" class="form-horizontal">
-                        		<div class="form-group"><label class="col-md-3 control-label">Current Password</label>
+                        <div class="ibox-content">                            
+                            <?php 
+                                $attributes = array('class' => 'form-horizontal');
+                                echo form_open('preferences/passwordUpdate', $attributes); 
+                            ?>    
+                        	<div class="form-group"><label class="col-md-3 control-label">Current Password</label>
                                     <div class="col-md-9">
                                         <input type="password" placeholder="Current Password" id="password" class="form-control" name="old_password">
                                     </div>
@@ -50,7 +53,7 @@
                                         <button class="btn btn-primary" name="submit_form" type="submit" id="submit_form">Update Password</button>
                                     </div>
                                 </div> 
-                                </form>
+                            <?php echo form_close()?>
                         </div>
                     </div>
 

@@ -39,6 +39,12 @@ class Preferences extends MX_Controller
         $this->templates->page($data);
     }
     
+    function passwordUpdate()
+    {
+        echo '<pre>';
+        print_r($_POST);
+    }
+    
     function newsletter()
     {
         $data['main'] = 'preferences';        
