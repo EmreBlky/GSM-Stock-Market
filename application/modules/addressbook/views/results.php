@@ -202,7 +202,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                         <?php echo $this->member_model->get_where_multiple('id', $address->address_member_id)->role ?>
                         </div>
                         <div class="col-sm-1" style="padding:5px 0">
-                            <img alt="image" src="public/main/template/gsm/img/flags/<?php echo country($this->country_model->get_where($this->company_model->get_where_multiple('id', $this->member_model->get_where_multiple('id', $address->address_member_id)->company_id)->country)->country);?>.png" title="United Kingdom">
+                            <img alt="image" src="public/main/template/gsm/img/flags/<?php echo country($this->country_model->get_where($this->company_model->get_where_multiple('id', $this->member_model->get_where_multiple('id', $address->address_member_id)->company_id)->country)->country);?>.png" title="<?php echo $this->country_model->get_where($this->company_model->get_where_multiple('id', $this->member_model->get_where_multiple('id', $address->address_member_id)->company_id)->country)->country?>">
                         </div>
                         </div>
                         
