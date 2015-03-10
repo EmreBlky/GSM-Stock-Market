@@ -129,8 +129,10 @@
                                             <dd><span class="label label-primary">Online</span></dd>
                                         <?php } else { ?>
                                             <dd><span class="label label-danger">Offline</span></dd>
+                                            <?php if($this->login_model->get_where_multiple('member_id', $member_info->id, 'logged', 'yes')) {?>
                                             <dt>Last Logged:  </dt>
                                             <dd><?php echo $this->login_model->get_where_multiple('member_id', $member_info->id, 'logged', 'yes')->date?></dd>
+                                            <?php }?>
                                         <?php } ?>
                                         
                                         <dt>Subscription:</dt> 
