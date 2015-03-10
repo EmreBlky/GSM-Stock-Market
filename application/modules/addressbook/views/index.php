@@ -211,7 +211,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                                     $logged = $this->login_model->get_where_multiple('member_id', $address->address_member_id, 'logged', 'no');
                             ?>
                             <?php if($logged) {?>
-                            <li><b>Last Logged in: </b><?php echo $logged->time; ?> on <?php echo $logged->date; ?></li>
+                                <li><b>Last Logged in: </b><?php echo $logged->time; ?> on <?php echo $logged->date; ?></li>
                             <?php }?>
                             <?php }?>
                         </ul>
