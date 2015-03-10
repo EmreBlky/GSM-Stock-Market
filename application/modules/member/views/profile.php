@@ -124,8 +124,15 @@
                                         </dt>
                                     </dl>
                                     <dl class="dl-horizontal">
-                                        <dt>Status:  </dt> 
-                                        <dd><span class="label label-primary">Active</span></dd>
+                                        <dt>Status:  </dt>
+                                        <?php if($member_info->online_status == 'online') {?>
+                                            <dd><span class="label label-primary">Online</span></dd>
+                                        <?php } else { ?>
+                                            <dd><span class="label label-danger">Offline</span></dd>
+                                            <dt>Last Logged:  </dt>
+                                            <dd><?php echo $this->login_model->get_where_multiple('member_id', $member_info->id, 'logged', 'yes')->date?></dd>
+                                        <?php } ?>
+                                        
                                         <dt>Subscription:</dt> 
                                         <dd><?php echo $this->membership_model->get_where($member_info->membership)->membership;?></dd>
                                     </dl>

@@ -40,8 +40,20 @@
                         </div>
                         <div class="col-sm-8">
                             <h3><strong><?php echo $member->firstname.' '.$member->lastname;?></strong></h3>
-                            <p><i class="fa fa-map-marker"></i> United Kingdom</p>
-                            <p><i class="small">1/1/2015 @ 14:22pm</i></p>
+                            <p><i class="fa fa-map-marker"></i> <?php echo $this->country_model->get_where($this->company_model->get_where($this->member_model->get_where($member->id)->company_id)->country)->country;?></p>
+                            <p>
+                                <i class="small">
+                                    <?php 
+                                    
+                                        if($this->login_model->get_where_multiple('member_id', $member->id, 'logged', 'yes')){
+                                            echo 'Last Logged In: '.$this->login_model->get_where_multiple('member_id', $member->id, 'logged', 'yes')->date.' @ '.$this->login_model->get_where_multiple('member_id', $member->id, 'logged', 'yes')->time;
+                                        }
+                                        else{
+                                            echo '&nbsp;';
+                                        }
+                                    ?>
+                                </i>
+                            </p>
                             <address>
                                 <strong>Contact Details</strong><br>
                                 <abbr title="Phone">M:</abbr> <?php echo $member->phone_number;?><br/>
