@@ -18,7 +18,7 @@
 <div class="wrapper wrapper-content">
 <form method="post" action="<?php echo current_url()?>"  class="validation form-horizontal"  enctype="multipart/form-data"/>  
 <div class="row">
-<div class="col-lg-8">
+<div class="col-lg-7">
 <?php msg_alert(); ?>
     <div class="ibox float-e-margins">
 <div class="ibox-title">
@@ -214,13 +214,13 @@
     
     <div class="form-group"><label class="col-md-3 control-label">Shipping Terms</label>
     <div class="col-md-9">
-        <select class="form-control" name="shipping_term">
+
+        <select class="form-control" name="shipping_term" onchange="shippings_to_couriers(this.value);">
             <option selected value="">Select Terms</option>
-            <?php $shipping = shipping_term(); 
-            if($shipping){
-                foreach ($shipping as $key => $value){ ?>
-                  <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['shipping_term']){ echo'selected';}?>><?php echo $value; ?></option>
-                  <?php } 
+            <?php if($shippings){
+                foreach ($shippings as $row){ ?>
+                  <option value="<?php echo $row->id; ?>@@<?php echo $row->shipping_name; ?>" <?php if(!empty($_POST) && $value==$_POST['shipping_term']){ echo'selected';}?>><?php echo $row->shipping_name; ?> <?php echo $row->description; ?></option>
+                  <?php }
             } ?>
         </select>
         <?php echo form_error('shipping_term'); ?>
@@ -230,12 +230,21 @@
     <div class="form-group"><label class="col-md-3 control-label">Courier</label>
 
         <div class="col-md-9">
-            <?php $courier = courier(); 
-            if($courier){
-            $i=1;
-            foreach ($courier as $key => $value){ ?>
-            <label class="checkbox-inline i-checks"><input type="checkbox" value="option<?php echo $i; ?>" id="inlineCheckbox<?php echo $i; ?>" name="courier[]" <?php if(!empty($_POST['courier']) && in_array('option'.$i, $_POST['courier'])){ echo'checked';}?>/> <?php echo $value;?> </label>
-            <?php $i++;}} ?>
+        <div id="couriers_data"></div>
+            <?php
+            // $courier = courier();
+            // if($courier){
+            // $i=1;
+            // foreach ($courier as $key => $value){ ?>
+           <!--  <label class="checkbox-inline i-checks"><input type="checkbox" value="option<?php //echo $i; ?>" id="inlineCheckbox<?php //echo $i; ?>" name="courier[]" <?php //if(!empty($_POST['courier']) && in_array('option'.$i, $_POST['courier'])){ echo'checked';}?>/> <?php //echo $value;?> </label> -->
+            <?php  //$i++;}} ?>
+            <?php if (!empty($couriers)): ?>
+            <?php foreach ($couriers as $rowc): ?>
+            <span id="courier<?php echo $rowc->id ?>" style="display:none;">
+            <label class="checkbox-inline i-checks"><input type="checkbox" value="option<?php echo $i; ?>" id="inlineCheckbox<?php echo $i; ?>" name="courier[]" <?php if(!empty($_POST['courier']) && in_array('option'.$i, $_POST['courier'])){ echo'checked';}?>/> <?php echo $rowc->courier_name;?> </label>
+            </span>
+            <?php endforeach ?>
+            <?php endif ?>
         <?php echo form_error('courier[]'); ?>
         </div>
     </div>
@@ -282,9 +291,9 @@
                 
 
   </div>
- </div> 
-</div>       
-<div class="col-lg-4">
+ </div>
+</div>
+<div class="col-lg-5">
     <div class="ibox float-e-margins">
         <div class="ibox-title">
             <h5>Listing Pictures</h5>
@@ -313,10 +322,15 @@
              <input type="file" name="image4" class="btn default btn-file">
              </div>
              <?php echo form_error('image4'); ?>
-             
+
+              <label  class="col-md-4" >Image 5</label>
+            <div  class="col-md-8">
+             <input type="file" name="image5" class="btn default btn-file">
+             </div>
+             <?php echo form_error('image5'); ?>
 
             </div>
-            <p class="small" style="text-align:center">You may have up to five (4) product images per listing.</p>
+            <p class="small" style="text-align:center">You may have up to five (5) product images per listing.</p>
         </div>
         </div>
 </div></div>        
@@ -337,6 +351,18 @@
                 });
             });
     </script>
+
+    <script>
+    function shippings_to_couriers (ship_id) {
+        $.get('<?php echo base_url() ?>marketplace/shippings_to_couriers_data/'+ship_id, function(data) {
+            $('#couriers_data').html(data);
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    }
+</script>
 
    <script>/**
  * Character counter and limiter plugin for textfield and textarea form elements
