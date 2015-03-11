@@ -40,7 +40,8 @@
                         <dt>Product Type:</dt> <dd>  <?php if(!empty($listing_detail->product_type)) { echo $listing_detail->product_type; } ?></dd>
                         <dt>Condition:</dt> <dd>  <?php if(!empty($listing_detail->condition)) { echo $listing_detail->condition; } ?></dd> 
                         <dt>Spec</dt> <dd>  <?php if(!empty($listing_detail->spec)) { echo $listing_detail->spec; } ?></dd>
-                        <dt>MPN/ISBN</dt> <dd>  <?php if(!empty($listing_detail->product_mpn_isbn)) { echo $listing_detail->product_mpn_isbn; } ?></dd>
+                        <dt>MPN</dt> <dd>  <?php if(!empty($listing_detail->product_mpn)) { echo $listing_detail->product_mpn; } ?></dd>
+                        <dt>ISBN</dt> <dd>  <?php if(!empty($listing_detail->product_isbn)) { echo $listing_detail->product_isbn; } ?></dd>
                        <!--  <dt>Network</dt> <dd>  <?php //if(!empty($listing_detail->product_make)) { echo $listing_detail->product_make; } ?></dd> -->
                         <dt>Quantity</dt> <dd> <?php if(!empty($listing_detail->qty_available)) { echo $listing_detail->qty_available; } ?></dd>
                     </dl>
