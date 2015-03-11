@@ -27,7 +27,13 @@
             <tr data-toggle="modal" data-target="#myModal5">
                 <td><?php if(!empty($row->id)){ echo '#'.$row->id; } ?></td>
                 <td><?php if($row->user_type==1){ echo 'Admin'; }else{ echo'User';} ?></td>
-                <td><?php if(!empty($row->product_mpn_isbn)){ echo $row->product_mpn_isbn; } ?></td>
+                <td>
+
+                <?php if(!empty($row->product_mpn)){ echo "MPN: ".$row->product_mpn; } ?>
+                    <br>
+                <?php if(!empty($row->product_isbn)){ echo "ISBN: ".$row->product_isbn; } ?>
+
+                </td>
                 <td><?php if(!empty($row->product_make)){ echo $row->product_make; } ?></td>
                 <td><?php if(!empty($row->product_model)){ echo $row->product_model; } ?></td>
                 <td><?php if(!empty($row->product_type)){ echo $row->product_type; } ?></td>
