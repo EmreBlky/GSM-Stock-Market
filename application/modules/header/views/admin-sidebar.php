@@ -44,6 +44,8 @@
                         <ul class="nav nav-second-level">
                             <li><a href="<?php echo base_url().'admin/add_listing_attribute';?>"><span class="nav-label">Add Listing Attributes</span></a></li>
                             <li><a href="<?php echo base_url().'admin/listing_attributes';?>"><span class="nav-label">View Listing Attributes</span></a></li>
+                            <li><a href="<?php echo base_url().'admin/couriers';?>"><span class="nav-label">Couriers</span></a></li>
+                    <li><a href="<?php echo base_url().'admin/shippings';?>"><span class="nav-label">Shipping terms</span></a></li>
                         </ul>
                     </li>
                     
