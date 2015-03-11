@@ -385,4 +385,150 @@ class Admin extends MX_Controller
        
       
     }
+
+    public function couriers(){
+        $this->check_authentication();//check login authentication
+
+        $data['couriers'] =  $this->admin_model->get_result('couriers');
+        $data['main'] = 'admin';
+        $data['title'] = 'GSM - Admin Panel: couriers';
+        $data['page'] = 'couriers';
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+
+    public function courier_add(){
+        $this->check_authentication();//check login authentication
+
+       $this->form_validation->set_rules('courier_name', 'courier name', 'required');
+        if ($this->form_validation->run() == TRUE) {
+            $post_data=array(
+                'courier_name'=>$this->input->post('courier_name'),
+                //'description'=>$this->input->post('description'),
+                );
+           if($this->admin_model->insert('couriers',$post_data)){
+            $this->session->set_flashdata('msg_success','courier added successfully.');
+            redirect('admin/couriers');
+           }
+        }
+
+        $data['main'] = 'admin';
+        $data['title'] = 'GSM - Admin Panel: courier Add New';
+        $data['page'] = 'courier_add';
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+
+    public function courier_edit($id=0){
+         if(empty($id)){ redirect('admin/couriers'); }
+
+        $data['couriers']= $this->admin_model->get_row('couriers',array('id'=>$id));
+        if( $data['couriers']==FALSE)  redirect('admin/couriers');
+
+        $this->form_validation->set_rules('courier_name', 'courier name', 'required');
+        if ($this->form_validation->run() == TRUE) {
+            $post_data=array(
+                'courier_name'=>$this->input->post('courier_name'),
+                //'description'=>$this->input->post('description'),
+                );
+           if($this->admin_model->update('couriers',$post_data,array('id'=>$id))){
+            $this->session->set_flashdata('msg_success','courier updated successfully.');
+            redirect('admin/couriers');
+           }
+        }
+
+        $data['main'] = 'admin';
+        $data['title'] = 'GSM - Admin Panel: courier Edit';
+        $data['page'] = 'courier_edit';
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+
+    public function courier_delete($id=0){
+          $this->check_authentication();//check login authentication
+        if(empty($id)){ redirect('admin/couriers'); }
+
+        if($this->admin_model->delete('couriers',array('id'=>$id))){
+            $this->session->set_flashdata('msg_success','courier deleted successfully.');
+           redirect('admin/couriers');
+        }
+    }
+
+    // shipping
+    public function shippings(){
+        $this->check_authentication();//check login authentication
+
+        $data['shippings'] =  $this->admin_model->get_result('shippings');
+        $data['main'] = 'admin';
+        $data['title'] = 'GSM - Admin Panel: shippings';
+        $data['page'] = 'shippings';
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+
+    public function shipping_add(){
+        $this->check_authentication();//check login authentication
+
+       $this->form_validation->set_rules('shipping_name', 'shipping name', 'required');
+       $this->form_validation->set_rules('couriers[]', 'Couriers', 'required');
+
+        if ($this->form_validation->run() == TRUE) {
+            $post_data=array(
+                'shipping_name' =>$this->input->post('shipping_name'),
+                'description'   =>$this->input->post('description'),
+                'couriers'      =>json_encode($this->input->post('couriers')),
+                );
+           if($this->admin_model->insert('shippings',$post_data)){
+            $this->session->set_flashdata('msg_success','shipping added successfully.');
+            redirect('admin/shippings');
+           }
+        }
+
+        $data['couriers'] = $this->admin_model->get_result('couriers');
+
+        $data['main'] = 'admin';
+        $data['title'] = 'GSM - Admin Panel: shipping Add New';
+        $data['page'] = 'shipping_add';
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+
+    public function shipping_edit($id=0){
+         if(empty($id)){ redirect('admin/shippings'); }
+
+        $data['shippings']= $this->admin_model->get_row('shippings',array('id'=>$id));
+        if( $data['shippings']==FALSE)  redirect('admin/shippings');
+
+        $this->form_validation->set_rules('shipping_name', 'shipping name', 'required');
+        $this->form_validation->set_rules('couriers[]', 'Couriers', 'required');
+        if ($this->form_validation->run() == TRUE) {
+            $post_data=array(
+                'shipping_name'=>$this->input->post('shipping_name'),
+                'description'=>$this->input->post('description'),
+                'couriers'      =>json_encode($this->input->post('couriers')),
+                );
+           if($this->admin_model->update('shippings',$post_data,array('id'=>$id))){
+            $this->session->set_flashdata('msg_success','shipping updated successfully.');
+            redirect('admin/shippings');
+           }
+        }
+
+        $data['couriers'] = $this->admin_model->get_result('couriers');
+
+        $data['main'] = 'admin';
+        $data['title'] = 'GSM - Admin Panel: shipping Edit';
+        $data['page'] = 'shipping_edit';
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+
+    public function shipping_delete($id=0){
+          $this->check_authentication();//check login authentication
+        if(empty($id)){ redirect('admin/shippings'); }
+
+        if($this->admin_model->delete('shippings',array('id'=>$id))){
+            $this->session->set_flashdata('msg_success','shipping deleted successfully.');
+           redirect('admin/shippings');
+        }
+    }
 }
