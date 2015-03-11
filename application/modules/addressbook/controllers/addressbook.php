@@ -496,24 +496,24 @@ class Addressbook extends MX_Controller
         }
         elseif($two != 'ALL' && $three == 'ALL'){
             
-            $add_count = $this->addressbook_model->_custom_query("SELECT COUNT(*) AS addressCount FROM addressbook WHERE business_activities = '".$this->characterReplace($two)."' AND member_id = '".$this->session->userdata('members_id')."'");
+            $add_count = $this->addressbook_model->_custom_query("SELECT COUNT(*) AS addressCount FROM addressbook WHERE (business_activities = '".$this->characterReplace($two)."' AND member_id = '".$this->session->userdata('members_id')."') OR (second_business_activities = '".$this->characterReplace($two)."' AND member_id = '".$this->session->userdata('members_id')."') OR (third_business_activities = '".$this->characterReplace($two)."' AND member_id = '".$this->session->userdata('members_id')."')");
             
             if($add_count[0]->addressCount > 0){
                 $data['addressbook_count'] = $add_count[0]->addressCount;
                 
                 if($fave == 'yes'){
                     
-                        $add_count = $this->addressbook_model->_custom_query("SELECT COUNT(*) AS addressCount FROM addressbook WHERE favourite = 'yes' AND business_activities = '".$this->characterReplace($two)."' AND member_id = '".$this->session->userdata('members_id')."'");
+                        $add_count = $this->addressbook_model->_custom_query("SELECT COUNT(*) AS addressCount FROM addressbook WHERE (favourite = 'yes' AND business_activities = '".$this->characterReplace($two)."' AND member_id = '".$this->session->userdata('members_id')."') OR (favourite = 'yes' AND second_business_activities = '".$this->characterReplace($two)."' AND member_id = '".$this->session->userdata('members_id')."') OR (favourite = 'yes' AND third_business_activities = '".$this->characterReplace($two)."' AND member_id = '".$this->session->userdata('members_id')."')");
                         if($add_count[0]->addressCount > 0){
                             $data['addressbook_count'] =
-                            $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE favourite = 'yes' AND business_activities = '".$this->characterReplace($two)."' AND member_id = '".$this->session->userdata('members_id')."' ".$this->characterReplace($one)."");                
+                            $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE ( favourite = 'yes' AND business_activities = '".$this->characterReplace($two)."' AND member_id = '".$this->session->userdata('members_id')."') OR (favourite = 'yes' AND second_business_activities = '".$this->characterReplace($two)."' AND member_id = '".$this->session->userdata('members_id')."') OR (favourite = 'yes' AND third_business_activities = '".$this->characterReplace($two)."' AND member_id = '".$this->session->userdata('members_id')."')  ".$this->characterReplace($one)."");                
                         }
                         else{
                              $data['addressbook_count'] = 0;
                         }
                 }
                 else{
-                        $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE business_activities = '".$this->characterReplace($two)."' AND member_id = '".$this->session->userdata('members_id')."' ".$this->characterReplace($one)."");
+                        $data['address_book'] = $this->addressbook_model->_custom_query("SELECT * FROM addressbook WHERE (business_activities = '".$this->characterReplace($two)."' AND member_id = '".$this->session->userdata('members_id')."') OR (second_business_activities = '".$this->characterReplace($two)."' AND member_id = '".$this->session->userdata('members_id')."') OR (third_business_activities = '".$this->characterReplace($two)."' AND member_id = '".$this->session->userdata('members_id')."') ".$this->characterReplace($one)."");
                 }
                 
                 $config['base_url'] = $this->config->item('base_url').'addressbook/business/'.$this->characterReplace($two).'/'.$this->characterReplace($one).'/page';

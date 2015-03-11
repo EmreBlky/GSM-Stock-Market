@@ -111,7 +111,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
 <!--                                </label>-->
                         </div>
                         <div class="col-lg-2">
-                            <select class="form-control m-b dropdown_one" name="dropdown_one">
+                            <select class="form-control m-b dropdown_one" name="dropdown_one">                               
                                 <option value="ORDER BY company ASC" selected="selected">A - Z Company</option>
                                 <option value="ORDER BY company DESC">Z - A Company</option>
                                 <option value="ORDER BY individual ASC">A - Z Individual</option>
