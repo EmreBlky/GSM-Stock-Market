@@ -30,19 +30,20 @@
 
     <form method="post" action="<?php echo current_url()?>"  class="validation form-horizontal" />    	
 
-        <div class="form-group"><label class="col-md-3 control-label">Product  MPN/ISBN</label>
+      <div class="form-group"><label class="col-md-3 control-label">Product  MPN</label>
             <div class="col-md-9">
-                <input type="type" class="form-control" placeholder="MPN/ISBN Number" name="product_mpn_isbn"/>
-                <?php echo form_error('product_mpn_isbn'); ?>
+                <input type="type" class="form-control" placeholder="MPN Number" name="product_mpn" value="<?php echo set_value('product_mpn');  ?>"/>
+                <?php echo form_error('product_mpn'); ?>
             </div>
           </div>
 
-          <div class="form-group"><label class="col-md-3 control-label">Product Make</label>
+          <div class="form-group"><label class="col-md-3 control-label">Product  ISBN</label>
             <div class="col-md-9">
-                <input type="type" class="form-control" placeholder="Mention Make" name="product_make" />
-                <?php echo form_error('product_make'); ?>
+                <input type="type" class="form-control" placeholder="ISBN Number" name="product_isbn" value="<?php echo set_value('product_isbn');  ?>" />
+                <?php echo form_error('product_isbn'); ?>
             </div>
           </div>
+
 
           <div class="form-group"><label class="col-md-3 control-label">Product Model</label>
             <div class="col-md-9">
