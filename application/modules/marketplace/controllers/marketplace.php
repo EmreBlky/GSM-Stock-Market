@@ -174,12 +174,20 @@ class Marketplace extends MX_Controller
                $min_qty_order=$this->input->post('min_qty_order');
             }
 
+             $shipping_term=$this->input->post('shipping_term');
+            if(!empty($shipping_term)){
+                $st=explode('@@',$shipping_term );
+                $shipping_terms=$st[1];
+            }else{
+                $shipping_terms='';
+            }
             $courier='';
             if($courier_array=$this->input->post('courier')){
-                foreach ($courier_array as $value) {
-                    $courierinfo=courier_class($value);
-                    $courier=$courierinfo.','.$courier;
-                }
+               $courier = implode(',', $courier_array);
+                /*foreach ($courier_array as $value) {
+                    //$courierinfo=courier_class($value);
+                    $courier=$courierinfo.','.$value;
+                }*/
             }
             $schedule_date_time=date('Y-m-d h:i:s');
             if($this->input->post('schedule_date_time')){
@@ -202,7 +210,7 @@ class Marketplace extends MX_Controller
             'total_qty' =>  $this->input->post('total_qty'),
             'qty_available'=> $this->input->post('total_qty'),
             'min_qty_order' =>  $min_qty_order,
-            'shipping_term' =>  $this->input->post('shipping_term'),
+            'shipping_term' =>  $shipping_terms,
             'courier' =>  $courier,
             'product_desc' =>  $this->input->post('product_desc'),
             'duration' =>  $this->input->post('duration'),
@@ -236,11 +244,11 @@ class Marketplace extends MX_Controller
                 $this->session->unset_userdata('check4_image4');
             endif;
 
-            /*if($this->session->userdata('check5_image5')!=''):
+            if($this->session->userdata('check5_image5')!=''):
                 $check5_image5=$this->session->userdata('check5_image5');
                 $data_insert['image5'] = 'public/upload/listing/'.$check5_image5['image5'];
                 $this->session->unset_userdata('check5_image5');
-            endif;*/
+            endif;
 
            $this->marketplace_model->insert('listing',$data_insert);
            $this->session->set_flashdata('msg_success','Listing added successfully.');
@@ -250,6 +258,8 @@ class Marketplace extends MX_Controller
         $data['title'] = 'GSM - Market Place: Create Listing';        
         $data['page'] = 'create-listing';
         $data['listing_attributes'] =  $this->marketplace_model->get_result('listing_attributes');
+        $data['shippings'] =  $this->marketplace_model->get_result('shippings','','',array('shipping_name','ASC'));
+       // $data['couriers'] =  $this->marketplace_model->get_result('couriers','','',array('courier_name','ASC'));
 
         $data['product_colors'] =  $this->marketplace_model->get_result_by_group('product_color');
         $data['product_makes'] =  $this->marketplace_model->get_result_by_group('product_make');
@@ -502,5 +512,24 @@ class Marketplace extends MX_Controller
         $data['listing_detail'] =  $this->marketplace_model->get_row('listing',array('id'=>$id,'member_id'=>$member_id));
         $this->load->module('templates');
         $this->templates->page($data);
+    }
+
+    public function shippings_to_couriers_data($ship_id=0){
+        $ship_id = intval($ship_id);
+        $shippings =  $this->marketplace_model->get_row('shippings',array('id'=>$ship_id),array('couriers'));
+
+        if( $shippings):
+
+          $gstcd = $this->marketplace_model->get_shippings_to_couriers_data($shippings->couriers);
+
+            if($gstcd):
+              foreach ($gstcd as $row):?>
+             <label class="checkbox-inline i-checks iCheck-helper"><input type="checkbox" value="<?php echo $row->courier_name; ?>" name="courier[]" <?php if(!empty($_POST['courier']) && in_array($row->courier_name, $_POST['courier'])){ echo'checked';}?>/> <?php echo $row->courier_name;?> </label>
+            <?php
+            endforeach;
+            endif;
+        endif;
+       // $data['couriers'] =  $this->marketplace_model->get_result('couriers','','',array('courier_name','ASC'));
+
     }
 }

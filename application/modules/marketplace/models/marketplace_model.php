@@ -122,5 +122,16 @@ class Marketplace_model extends MY_Model {
 			return $this->db->count_all_results();
 		}
 	}
+
+	public function get_shippings_to_couriers_data($couriers=array()){
+		$this->db->from('couriers');
+		if(empty($couriers)) return FALSE;
+		$this->db->where_in('id', json_decode($couriers));
+		$query = $this->db->get();
+		if($query->num_rows()>0)
+			return $query->result();
+		else
+			return FALSE;
+	}
 }
 
