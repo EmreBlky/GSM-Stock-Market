@@ -527,6 +527,8 @@ class Marketplace extends MX_Controller
              <label class="checkbox-inline i-checks iCheck-helper"><input type="checkbox" value="<?php echo $row->courier_name; ?>" name="courier[]" <?php if(!empty($_POST['courier']) && in_array($row->courier_name, $_POST['courier'])){ echo'checked';}?>/> <?php echo $row->courier_name;?> </label>
             <?php
             endforeach;
+            else:
+                echo "NO courier found.";
             endif;
         endif;
        // $data['couriers'] =  $this->marketplace_model->get_result('couriers','','',array('courier_name','ASC'));

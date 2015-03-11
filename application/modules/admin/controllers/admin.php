@@ -299,17 +299,19 @@ class Admin extends MX_Controller
     function add_listing_attribute()
     {
         $this->check_authentication();//check login authentication
-       
-        $this->form_validation->set_rules('product_mpn_isbn', 'product_mpn_isbn', 'required');
-        $this->form_validation->set_rules('product_make', 'product_make', 'required');
-        $this->form_validation->set_rules('product_model', 'product_model', 'required');
-        $this->form_validation->set_rules('product_type', 'product_type', 'required');
-        $this->form_validation->set_rules('product_color', 'product_color', 'required');
-       
+
+        $this->form_validation->set_rules('product_mpn', 'product mpn', '');
+        $this->form_validation->set_rules('product_isbn', 'product isbn', '');
+        $this->form_validation->set_rules('product_make', 'product make', 'required');
+        $this->form_validation->set_rules('product_model', 'product model', 'required');
+        $this->form_validation->set_rules('product_type', 'product type', 'required');
+        $this->form_validation->set_rules('product_color', 'product color', 'required');
+
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
         if ($this->form_validation->run() == TRUE){
             $data_insert=array(
-            'product_mpn_isbn' =>  $this->input->post('product_mpn_isbn'),
+            'product_mpn' =>  $this->input->post('product_mpn'),
+            'product_isbn' =>  $this->input->post('product_isbn'),
             'product_make' =>  $this->input->post('product_make'),
             'product_model' =>  $this->input->post('product_model'),
             'product_type' =>  $this->input->post('product_type'),
@@ -344,7 +346,8 @@ class Admin extends MX_Controller
         $this->check_authentication();//check login authentication
         
 
-        $this->form_validation->set_rules('product_mpn_isbn', 'product_mpn_isbn', 'required');
+        $this->form_validation->set_rules('product_mpn', 'product mpn', '');
+        $this->form_validation->set_rules('product_isbn', 'product isbn', '');
         $this->form_validation->set_rules('product_make', 'product_make', 'required');
         $this->form_validation->set_rules('product_model', 'product_model', 'required');
         $this->form_validation->set_rules('product_type', 'product_type', 'required');
@@ -353,7 +356,8 @@ class Admin extends MX_Controller
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
         if ($this->form_validation->run() == TRUE){
             $data_update=array(
-            'product_mpn_isbn' =>  $this->input->post('product_mpn_isbn'),
+            'product_mpn' =>  $this->input->post('product_mpn'),
+            'product_isbn' =>  $this->input->post('product_isbn'),
             'product_make' =>  $this->input->post('product_make'),
             'product_model' =>  $this->input->post('product_model'),
             'product_type' =>  $this->input->post('product_type'),
