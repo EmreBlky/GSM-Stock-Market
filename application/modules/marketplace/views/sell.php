@@ -79,7 +79,9 @@
     <tr data-toggle="modal" data-target="#myModal5">
     <td><?php echo $value->listing_end_datetime; ?></td>
     <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
-    <td><?php echo $value->product_mpn_isbn; ?></td>
+     <td> <?php if(!empty($value->product_mpn)){ echo "MPN: ".$value->product_mpn; } ?>
+                    <br>
+                <?php if(!empty($value->product_isbn)){ echo "ISBN: ".$value->product_isbn; } ?></td>
     <td><?php echo $value->product_make; ?></td>
     <td><?php echo $value->product_model; ?></td>
     <td><?php echo $value->product_type; ?></td>
