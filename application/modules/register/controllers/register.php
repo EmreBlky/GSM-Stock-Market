@@ -8,10 +8,14 @@ class Register extends MX_Controller{
 		parent::__construct();
                 $this->load->library('session');
 		$this->load->model('activity/activity_model', 'activity_model');
+                $this->load->model('member/member_model', 'member_model');
+                $this->load->model('company/company_model', 'company_model');
+                $this->load->model('country/country_model', 'country_model');
                 
                 $data = array(
                                 'member_id' => ''
                             );
+                
 		
 	}
         
@@ -35,7 +39,7 @@ class Register extends MX_Controller{
             $password = $this->input->post('password');
             $cpassword = $this->input->post('c_password');            
             
-            $this->load->model('member/member_model', 'member_model');
+            
             $result = $this->member_model->get_where_multiple('email', $email_add);
             
             if($result){
@@ -98,7 +102,7 @@ class Register extends MX_Controller{
                                         'password' => md5($this->input->post('password'))
                                       );
 
-                        $this->load->model('member/member_model', 'member_model');
+                        
                         $mid = $this->member_model->_insert($data);
                         
                         $this->activity_model->_insert($data);
@@ -162,10 +166,16 @@ class Register extends MX_Controller{
             
         }
         
+        function country($name)
+        {
+            $name = str_replace('United States of America', 'United States', $name);
+            
+            return $name;
+        }
+                
         function confirm($vcode)
         {
-            $this->load->model('member/member_model', 'member_model');
-            
+                        
             $mid = $this->member_model->get_where_multiple('validation_code', $vcode);
             
             $data = array(
@@ -191,6 +201,135 @@ class Register extends MX_Controller{
             redirect('home/');
             
         }
+        
+    function csv_import()
+    {
+        $handle = fopen('public/main/template/gsm/files/gsm_customers.csv', "r");
+
+        while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {  
+            
+            $phone_number      = $data[19];
+            $mobile_number     = $data[18];
+            $language          = $data[16];
+            $facebook          = $data[12];
+            $twitter           = $data[26];
+            $gplus             = $data[13];
+            $linkedin          = $data[17];
+            $skype             = $data[24];
+            $role              = $data[22];
+            $email             = $data[1];
+            $address_line_1    = $data[3];
+            $address_line_2    = $data[4];
+            $town_city         = $data[25];
+            $county            = $data[11];
+            $post_code         = $data[21];
+            $country           = $this->country($data[10]);
+            $company_name      = $data[8];
+            $phone_number      = $data[19];
+            $mobile_number     = $data[18];
+            $other_business    = $data[20];
+            $vat_tax           = $data[27];
+            $company_number    = $data[9];
+            $website           = $data[28];
+            
+            if($country != ''){
+                $country = $this->country_model->get_where_multiple('country', $country)->id;
+            }
+            else{
+                $country = 225;
+            }
+           
+            $duplicate = $this->member_model->get_where_multiple('email', $data[1])->id;
+            
+            if($data[0] != '' && $duplicate < 1){
+                
+                $name = explode(' ', $data[0]);
+                
+                $validation_code = random_string('alnum', 4).'-'. random_string('alnum', 4).'-'. random_string('alnum', 4).'-'. random_string('alnum', 4);
+                $password = random_string('alnum', 8);
+                        $data = array(
+                                        'firstname'         => $name[0],
+                                        'lastname'          => $name[1].' '.$name[2].' '.$name[3],
+                                        'username'          => '',
+                                        'email'             => $email,
+                                        'date'              => date('d-m-y'),
+                                        'password'          => md5($password),
+                                        'unhash_password'   => $password,
+                                        'validation_code'   => $validation_code,
+                                        'title'             => '',
+                                        'phone_number'      => $phone_number,
+                                        'mobile_number'     => $mobile_number,
+                                        'language'          => $language,
+                                        'facebook'          => $facebook,
+                                        'twitter'           => $twitter,
+                                        'gplus'             => $gplus,
+                                        'linkedin'          => $linkedin,
+                                        'skype'             => $skype,
+                                        'role'              => $role,
+                                        'membership'        => 1
+                                      );
+                        
+                        $mid = $this->member_model->_insert($data);
+                        
+                        $business = explode('||', $data[5]);
+                        
+                        $data = array(
+                                        'admin_member_id'       => $mid,
+                                        'address_line_1'        => $address_line_1,
+                                        'address_line_2'        => $address_line_2,
+                                        'town_city'             => $town_city,
+                                        'county'                => $county,
+                                        'post_code'             => $post_code,
+                                        'country'               => $country,
+                                        'company_name'          => $company_name,
+                                        'phone_number'          => $phone_number,
+                                        'mobile_number'         => $mobile_number,
+                                        'business_sector_1'     => $business[0],
+                                        'business_sector_2'     => $business[1],
+                                        'business_sector_3'     => $business[2],
+                                        'other_business'        => $other_business,
+                                        'vat_tax'               => $vat_tax,
+                                        'company_number'        => $company_number,
+                                        'website'               => $website,
+                                        'company_profile'       => ''
+                                      );
+                        
+                        $cid = $this->company_model->_insert($data);
+
+                        $data = array(
+                                        'company_id' => $cid
+                                    );
+                        $this->member_model->_update($mid, $data);
+                
+               
+            }
+            unset($phone_number);
+            unset($mobile_number);
+            unset($language);
+            unset($facebook);
+            unset($twitter);
+            unset($gplus);
+            unset($linkedin);
+            unset($skype);
+            unset($role);
+            unset($email);
+            unset($address_line_1);
+            unset($address_line_2);
+            unset($town_city);
+            unset($county);
+            unset($post_code);
+            unset($country);
+            unset($company_name);
+            unset($phone_number);
+            unset($mobile_number);
+            unset($other_business);
+            unset($vat_tax);
+            unset($company_number);
+            unset($website);
+        }
+        
+        fclose($handle);
+    }
 	
 	
 	

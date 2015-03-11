@@ -124,8 +124,17 @@
                                         </dt>
                                     </dl>
                                     <dl class="dl-horizontal">
-                                        <dt>Status:  </dt> 
-                                        <dd><span class="label label-primary">Active</span></dd>
+                                        <dt>Status:  </dt>
+                                        <?php if($member_info->online_status == 'online') {?>
+                                            <dd><span class="label label-primary">Online</span></dd>
+                                        <?php } else { ?>
+                                            <dd><span class="label label-danger">Offline</span></dd>
+                                            <?php if($this->login_model->get_where_multiple('member_id', $member_info->id, 'logged', 'yes')) {?>
+                                            <dt>Last Logged:  </dt>
+                                            <dd><?php echo $this->login_model->get_where_multiple('member_id', $member_info->id, 'logged', 'yes')->date?></dd>
+                                            <?php }?>
+                                        <?php } ?>
+                                        
                                         <dt>Subscription:</dt> 
                                         <dd><?php echo $this->membership_model->get_where($member_info->membership)->membership;?></dd>
                                     </dl>
@@ -200,7 +209,7 @@
                                         <input type="hidden" id="cust_added" name="cust_added" value="<?php echo $member_info->id;?>"/>
                                         <input type="hidden" id="cust_individual" name="cust_individual" value="<?php echo $member_info->firstname.' '.$member_info->lastname;?>"/>
                                         <input type="hidden" id="cust_company" name="cust_company" value="<?php echo $member_company->company_name;?>"/>
-                                        <input type="hidden" id="cust_business" name="cust_business" value="<?php echo $member_company->business_sector_1;?>"/>
+                                        <input type="hidden" id="cust_business" name="cust_business" value="<?php if($member_company->business_sector_1 != ''){echo $member_company->business_sector_1;} else{ if($member_company->other_business != ''){echo $member_company->other_business;}else{ echo 'NULL';}}?>"/>
                                         <input type="hidden" id="cust_country" name="cust_country" value="<?php echo $member_company->country?>"/>
                                         <?php 
                                         

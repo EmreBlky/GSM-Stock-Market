@@ -59,5 +59,5 @@ class Member extends MX_Controller
         $this->load->module('templates');
         $this->templates->page($data); 
     }
-	
+    
 }
