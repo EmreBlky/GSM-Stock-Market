@@ -43,7 +43,6 @@
                 <?php echo form_error('product_isbn'); ?>
             </div>
           </div>
-        
 
           <div class="form-group"><label class="col-md-3 control-label">Product Make</label>
             <div class="col-md-9">

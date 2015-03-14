@@ -16,7 +16,7 @@
 </div>
 
 <div class="wrapper wrapper-content">
-<form method="post" action="<?php echo current_url()?>"  class="validation form-horizontal"  enctype="multipart/form-data"/>
+<form method="post" action="<?php echo current_url()?>"  class="validation form-horizontal"  enctype="multipart/form-data"/>  
 <div class="row">
 <div class="col-lg-7">
 <?php msg_alert(); ?>
@@ -48,44 +48,30 @@
                 <option <?php if(!empty($_POST) && 2==$_POST['listing_type']){ echo'selected';}?> value="2">Selling Offer</option>
             </select>
             <?php echo form_error('listing_type'); ?>
-
+            
         </div>
     </div>
-
+    
     <div class="hr-line-dashed"></div>
-
-    <div class="form-group"><label class="col-md-3 control-label">MPN</label>
+    
+    <div class="form-group"><label class="col-md-3 control-label">MPN/ISBN</label>
         <div class="col-md-9">
-            <input type="type" id="mpn1" list="mpn" class="form-control check_record" placeholder="Auto fill the rest of the data if MPN is found in the database"  name="product_mpn" value="<?php echo set_value('product_mpn');?>"/>
+            <input type="type" id="mpn1" list="mpn" class="form-control check_record" placeholder="Auto fill the rest of the data if MPN/ISBN is found in the database"  name="product_mpn_isbn" value="<?php echo set_value('product_mpn_isbn');?>"/>
             <datalist id="mpn">
-            <?php if(!empty($listing_attributes)){
+            <?php if(!empty($listing_attributes)){ 
                  foreach ($listing_attributes as $row) { ?>
-                <option value="<?php echo $row->product_mpn; ?>"><?php echo $row->product_mpn; ?></option>
+                <option value="<?php echo $row->product_mpn_isbn; ?>"><?php echo $row->product_mpn_isbn; ?></option>
                  <?php }} ?>
             </datalist>
-             <?php echo form_error('product_mpn'); ?>
+             <?php echo form_error('product_mpn_isbn'); ?>
         </div>
     </div>
-
-
-     <div class="form-group"><label class="col-md-3 control-label">ISBN</label>
-        <div class="col-md-9">
-            <input type="type" id="mpn2" list="mpn" class="form-control check_record" placeholder="Auto fill the rest of the data if ISBN is found in the database"  name="product_isbn" value="<?php echo set_value('product_isbn');?>"/>
-            <datalist id="mpn">
-            <?php if(!empty($listing_attributes)){
-                 foreach ($listing_attributes as $row) { ?>
-                <option value="<?php echo $row->product_isbn; ?>"><?php echo $row->product_isbn; ?></option>
-                 <?php }} ?>
-            </datalist>
-             <?php echo form_error('product_isbn'); ?>
-        </div>
-    </div>
-
+    
     <div class="form-group"><label class="col-md-3 control-label">Make</label>
         <div class="col-md-9">
         <select class="form-control check_record" name="product_make" id="product_make">
             <option  selected value="">Select Make</option>
-            <?php if(!empty($product_makes)){
+            <?php if(!empty($product_makes)){ 
                  foreach ($product_makes as $row) { ?>
                 <option value="<?php echo $row->product_make; ?>" <?php if(!empty($_POST) && $row->product_make==$_POST['product_make']){ echo'selected';}?>><?php echo $row->product_make; ?></option>
                  <?php }} ?>
@@ -93,21 +79,21 @@
         <?php echo form_error('product_make'); ?>
         </div>
     </div>
-
+    
     <div class="form-group"><label class="col-md-3 control-label">Model</label>
         <div class="col-md-9">
             <input type="type" class="form-control check_record" placeholder="When make is selected list models associated with make" name="product_model" value="<?php echo set_value('product_model');?>"/>
             <?php echo form_error('product_model'); ?>
         </div>
     </div>
-
+    
 
 
     <div class="form-group"><label class="col-md-3 control-label">Product Type</label>
         <div class="col-md-9">
         <select class="form-control check_record" name="product_type" id="product_type">
             <option  selected  value="">Select Make</option>
-            <?php if(!empty($product_types)){
+            <?php if(!empty($product_types)){ 
                  foreach ($product_types as $row) { ?>
                 <option value="<?php echo $row->product_type; ?>" <?php if(!empty($_POST) && $row->product_type==$_POST['product_type']){ echo'selected';}?>><?php echo $row->product_type; ?></option>
                  <?php }} ?>
@@ -120,26 +106,26 @@
         <div class="col-md-9">
             <select class="form-control check_record" name="product_color" id="product_color">
             <option selected value="">Select Color</option>
-            <?php if(!empty($product_colors)){
+            <?php if(!empty($product_colors)){ 
                  foreach ($product_colors as $row) { ?>
                 <option value="<?php echo $row->product_color; ?>" <?php if(!empty($_POST) && $row->product_color==$_POST['product_color']){ echo'selected';}?>><?php echo $row->product_color; ?></option>
                  <?php }} ?>
-        </select>
+        </select>           
             <?php echo form_error('product_color'); ?>
         </div>
     </div>
-
-
+    
+    
     <div class="hr-line-dashed"></div>
     <div class="form-group"><label class="col-md-3 control-label">Condition</label>
         <div class="col-md-9">
             <select class="form-control" name="condition">
             <option selected value="">Condition</option>
-            <?php $condition = condition();
+            <?php $condition = condition(); 
             if($condition){
                 foreach ($condition as $key => $value){ ?>
                   <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['condition']){ echo'selected';}?>><?php echo $value; ?></option>
-                  <?php }
+                  <?php } 
             } ?>
             </select>
             <?php echo form_error('condition'); ?>
@@ -149,35 +135,35 @@
     <div class="col-md-9">
         <select class="form-control" name="spec">
             <option selected value="">Spec</option>
-            <?php $spec = spec();
+            <?php $spec = spec(); 
             if($spec){
                 foreach ($spec as $key => $value){ ?>
                   <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['spec']){ echo'selected';}?>><?php echo $value; ?></option>
-                  <?php }
+                  <?php } 
             } ?>
         </select>
         <?php echo form_error('spec'); ?>
     </div>
-</div>
+</div>    
     <div class="hr-line-dashed"></div>
-
+    
     <div class="form-group"><label class="col-md-3 control-label">Currency</label>
         <div class="col-md-9">
             <select class="form-control" name="currency">
                 <option selected value="">Default (account preference defalut)</option>
-                <?php $currency = currency();
+                <?php $currency = currency(); 
                 if($currency){
                     $i=1;
                 foreach ($currency as $key => $value){ ?>
                   <option <?php if(!empty($_POST) && $i==$_POST['currency']){ echo'selected';}?> value="<?php echo $i;?>"><?php echo $value; ?></option>
-                  <?php $i++;}
+                  <?php $i++;} 
                 } ?>
             </select>
             <p class="small">Select the currency you wish this listing to be sold in.</p>
             <?php echo form_error('currency'); ?>
         </div>
     </div>
-
+    
 
     <div class="form-group"><label class="col-md-3 control-label">Unit Price</label>
         <div class="col-md-9">
@@ -185,7 +171,7 @@
             <?php echo form_error('unit_price'); ?>
         </div>
     </div>
-
+    
     <div class="form-group"><label class="col-md-3 control-label">Minimum Price</label>
         <div class="col-md-9">
             <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="minimum_checkbox" id="minimum_checkbox" <?php if(!empty($_POST['minimum_checkbox']) ){ echo'checked';}?>/> </span> <input type="text" class="form-control" placeholder="only make typable when clicked" name="min_price" value="<?php echo set_value('min_price');?>" <?php if(empty($_POST['minimum_checkbox']) ){ echo'disabled';}?>></div>
@@ -193,7 +179,7 @@
             <?php echo form_error('min_price'); ?>
         </div>
     </div>
-
+    
     <div class="form-group"><label class="col-md-3 control-label">Allow Offers</label>
         <div class="col-md-9">
             <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="allowoffer_checkbox" id="allowoffer_checkbox" <?php if(!empty($_POST['allowoffer_checkbox']) ){ echo'checked';}?>/> </span>
@@ -208,14 +194,14 @@
             <p class="small">Allow people to make offers and how many per 24 hour period. (default is 3)</p>
         </div>
     </div>
-
+    
     <div class="form-group"><label class="col-md-3 control-label">Quantity Available</label>
         <div class="col-md-9">
             <input type="type" class="form-control" name="total_qty" value="<?php echo set_value('total_qty');?>"/>
             <?php echo form_error('total_qty'); ?>
         </div>
     </div>
-
+    
     <div class="form-group"><label class="col-md-3 control-label">Min Order Quantity</label>
         <div class="col-md-9">
             <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="orderqunatity_checkbox" id="orderqunatity_checkbox" <?php if(!empty($_POST['orderqunatity_checkbox']) ){ echo'checked';}?>/> </span> <input type="text" class="form-control" placeholder="only make typable when clicked" name="min_qty_order" value="<?php echo set_value('min_qty_order');?>" <?php if(empty($_POST['orderqunatity_checkbox']) ){ echo'disabled';}?>></div>
@@ -223,9 +209,9 @@
             <?php echo form_error('min_qty_order'); ?>
         </div>
     </div>
-
+    
     <div class="hr-line-dashed"></div>
-
+    
     <div class="form-group"><label class="col-md-3 control-label">Shipping Terms</label>
     <div class="col-md-9">
 
@@ -240,7 +226,7 @@
         <?php echo form_error('shipping_term'); ?>
     </div>
 </div>
-
+    
     <div class="form-group"><label class="col-md-3 control-label">Courier</label>
 
         <div class="col-md-9">
@@ -262,39 +248,39 @@
         <?php echo form_error('courier[]'); ?>
         </div>
     </div>
-
-    <div class="hr-line-dashed"></div>
-
+    
+    <div class="hr-line-dashed"></div>                                
+    
     <div class="form-group"><label class="col-md-3 control-label">Product Description</label>
         <div class="col-md-9">
             <textarea type="type" class="form-control" rows="5" id="product_desc" name="product_desc"><?php echo set_value('product_desc');?></textarea>
             <?php echo form_error('product_desc'); ?>
         </div>
     </div>
-
+    
     <div class="hr-line-dashed"></div>
-
+    
     <div class="form-group"><label class="col-md-3 control-label">List Duration</label>
         <div class="col-md-9">
             <select class="form-control" name="duration">
-            <?php $duration = list_duration();
+            <?php $duration = list_duration(); 
             if($duration){
                 foreach ($duration as $key => $value){ ?>
                   <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['duration']){ echo'selected';}?>><?php echo $value; ?> day</option>
-                  <?php }
+                  <?php } 
             } ?>
             </select>
             <?php echo form_error('duration'); ?>
-        </div>
-    </div>
-
+        </div> 
+    </div>  
+    
     <div class="form-group"><label class="col-md-3 control-label">Terms &amp; Conditions</label>
         <div class="col-md-9">
         <input type="checkbox" class="checkbox-inline i-checks" name="termsandcondition" <?php if(!empty($_POST['termsandcondition']) ){ echo'checked';}?>/> I agree to the GSMStockMarket.com Limited Terms and Conditions
          <?php echo form_error('termsandcondition'); ?>
         </div>
     </div>
-
+    
     <div class="form-group">
         <div class="col-md-9 col-md-offset-3">
             <a class="btn btn-danger" href="">Cancel</a>
@@ -302,7 +288,7 @@
             <button class="btn btn-primary" type="submit" name="status" value="1">List Now</button>
         </div>
     </div>
-
+                
 
   </div>
  </div>
@@ -315,7 +301,7 @@
         <div class="ibox-content">
         <div class="row">
             <div class="col-md-12" style="text-align:center">
-
+           
             <label  class="col-md-4" >Image 1</label>
             <div  class="col-md-8">
              <input type="file" name="image1" class="btn default btn-file">
@@ -343,17 +329,15 @@
              </div>
              <?php echo form_error('image5'); ?>
 
-
-
             </div>
             <p class="small" style="text-align:center">You may have up to five (5) product images per listing.</p>
         </div>
         </div>
-</div></div>
+</div></div>        
 </div>
 </form>
 </div>
-
+            
     <!-- checkbox css -->
     <link href="public/main/template/core/css/plugins/iCheck/custom.css" rel="stylesheet">
 
@@ -527,8 +511,8 @@ $(document).ready(function () {
 
 });
     </script>
-
-
+    
+    
 
     <!-- Jquery Validate -->
     <script src="public/main/template/core/js/plugins/validate/jquery.validate.min.js"></script>
@@ -564,13 +548,12 @@ $(document).ready(function () {
 </script>
 <script>
    $(document).ready(function(){
-
      $("#mpn1").change(function(){
-     var product_mpn_isbn = $(this).val();
+     var product_mpn_isbn = $(this).val(); 
      if(product_mpn_isbn){
         $('.check_record').attr("disabled", "disabled");
-        jQuery.post('<?php echo base_url()?>marketplace/get_attributes_info/MPN',{product_mpn_isbn:product_mpn_isbn},
-        function(data){
+        jQuery.post('<?php echo base_url()?>marketplace/get_attributes_info/',{product_mpn_isbn:product_mpn_isbn},
+        function(data){ 
          var prod_make= <?php echo json_encode($product_makes); ?>;
          var producttypes= <?php echo json_encode($product_types); ?>;
          var productcolors= <?php echo json_encode($product_colors); ?>;
@@ -585,7 +568,7 @@ $(document).ready(function () {
              });
              $('#product_make').html(productmakehtml);
             }
-
+            
             if(producttypes){
             var producttypehtml='<option  selected value="">Product Type</option>';
             $.each(producttypes, function(index, val) {
@@ -609,8 +592,8 @@ $(document).ready(function () {
             }
 
             $('input[name="product_model"]').val(data.product_model);
-
-           }
+           
+           } 
             /* else{
 
             if(prod_make){
@@ -620,7 +603,7 @@ $(document).ready(function () {
              });
              $('#product_make').html(productmakehtml);
             }
-
+            
             if(producttypes){
             var producttypehtml='<option "selected">Product Type</option>';
             $.each(producttypes, function(index, val) {
@@ -640,63 +623,9 @@ $(document).ready(function () {
             $('input[name="product_model"]').val(data.product_model);
            } */
           });
-           $('.check_record').removeAttr("disabled");
+           $('.check_record').removeAttr("disabled");   
          }
         });
-
-     $("#mpn2").change(function(){
-     var product_mpn_isbn = $(this).val();
-     if(product_mpn_isbn){
-        $('.check_record').attr("disabled", "disabled");
-        jQuery.post('<?php echo base_url()?>marketplace/get_attributes_info/ISBN',{product_mpn_isbn:product_mpn_isbn},
-        function(data){
-         var prod_make= <?php echo json_encode($product_makes); ?>;
-         var producttypes= <?php echo json_encode($product_types); ?>;
-         var productcolors= <?php echo json_encode($product_colors); ?>;
-        if(data.STATUS=='true'){
-          if(prod_make){
-          var productmakehtml='<option  selected value="">Product Make</option>';
-            $.each(prod_make, function(index, val) {
-                productmakehtml +='<option value="'+val.product_make+'"';
-                if(val.product_make==data.product_make)
-                productmakehtml +=' Selected';
-                productmakehtml +=' >'+val.product_make+'</option>';
-             });
-             $('#product_make').html(productmakehtml);
-            }
-
-            if(producttypes){
-            var producttypehtml='<option  selected value="">Product Type</option>';
-            $.each(producttypes, function(index, val) {
-                producttypehtml +='<option';
-                if(val.product_type==data.product_type)
-                producttypehtml +=' Selected';
-                producttypehtml +=' >'+val.product_type+'</option>';
-             });
-             $('#product_type').html(producttypehtml);
-            }
-
-             if(productcolors){
-            var productcolorhtml='<option  selected value="">Product Color</option>';
-            $.each(productcolors, function(index, val) {
-                productcolorhtml +='<option value="'+val.product_color+'"';
-                if(val.product_color==data.product_color)
-                productcolorhtml +=' Selected';
-                productcolorhtml +=' >'+val.product_color+'</option>';
-             });
-             $('#product_color').html(productcolorhtml);
-            }
-
-            $('input[name="product_model"]').val(data.product_model);
-
-           }
-
-          });
-           $('.check_record').removeAttr("disabled");
-         }
-        });
-
-
      });
 
     $(document).ready(function() {
@@ -705,7 +634,7 @@ $(document).ready(function () {
                 $('input[name="min_price"]').prop('disabled', false);
             }
             else{
-               $('input[name="min_price"]').prop('disabled', true);
+               $('input[name="min_price"]').prop('disabled', true); 
             }
         });
 
@@ -714,7 +643,7 @@ $(document).ready(function () {
                 $('select[name="allow_offer"]').prop('disabled', false);
             }
             else{
-               $('select[name="allow_offer"]').prop('disabled', true);
+               $('select[name="allow_offer"]').prop('disabled', true); 
             }
         });
 
@@ -723,7 +652,7 @@ $(document).ready(function () {
                 $('input[name="min_qty_order"]').prop('disabled', false);
             }
             else{
-               $('input[name="min_qty_order"]').prop('disabled', true);
+               $('input[name="min_qty_order"]').prop('disabled', true); 
             }
         });
     });
