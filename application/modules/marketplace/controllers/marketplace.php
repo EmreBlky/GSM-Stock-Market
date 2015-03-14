@@ -1,27 +1,27 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Marketplace extends MX_Controller
+class Marketplace extends MX_Controller 
 {
     function __construct()
     {
         parent::__construct();
         if ( ! $this->session->userdata('logged_in'))
-        {
+        { 
             redirect('login');
         }
-         $this->load->model('marketplace_model');
+         $this->load->model('marketplace_model'); 
     }
 
     function index()
     {
-        $data['main'] = 'marketplace';
-        $data['title'] = 'GSM - Market Place';
+        $data['main'] = 'marketplace';        
+        $data['title'] = 'GSM - Market Place';        
         $data['page'] = 'index';
-
+        
         $this->load->module('templates');
         $this->templates->page($data);
     }
-
+    
     function buy($offset=0)
     {
         $per_page=10;
@@ -42,14 +42,31 @@ class Marketplace extends MX_Controller
         $data['pagination']=$this->pagination->create_links();
         $data['offset'] = $offset;
 
+        $member_id=$this->session->userdata('members_id');
+
+       // $data['advance_search'] = $this->marketplace_model->get_result('listing',array('status'=>1,'listing_type'=>1,"member_id !=$member_id" =>null,"schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'"=>null),array('product_mpn','product_isbn','product_make','product_model','product_type'));
+
+        $data['advance_search'] = $this->marketplace_model->advance_search($member_id,2);
+
+         //$data['advance_search_country'] = $this->marketplace_model->advance_search_country($member_id);
+
+        $items =  $this->marketplace_model->get_result('listing_categories','','',array('category_name','ASC'));
+        if( $items){
+            $tree = $this->buildTree($items);
+            $data['listing_categories']=$this->buildTree($items);
+        }else{
+           $data['listing_categories']=FALSE;
+        }
+
+        $data['member_id'] =$member_id;
         $data['main'] = 'marketplace';
         $data['title'] = 'GSM - Market Place: Purchase';
         $data['page'] = 'buy';
-
+        
         $this->load->module('templates');
         $this->templates->page($data);
     }
-
+    
     function sell($offset=0)
     {
         $per_page=10;
@@ -69,50 +86,63 @@ class Marketplace extends MX_Controller
         $this->pagination->initialize($config);
         $data['pagination']=$this->pagination->create_links();
         $data['offset'] = $offset;
+        $member_id=$this->session->userdata('members_id');
+        $data['advance_search'] = $this->marketplace_model->advance_search($member_id,1);
 
+        $items =  $this->marketplace_model->get_result('listing_categories','','',array('category_name','ASC'));
+        if( $items){
+            $tree = $this->buildTree($items);
+            $data['listing_categories']=$this->buildTree($items);
+        }else{
+           $data['listing_categories']=FALSE;
+        }
+         $data['member_id'] =$member_id;
         $data['main'] = 'marketplace';
         $data['title'] = 'GSM - Market Place: Sell';
         $data['page'] = 'sell';
-
+        
         $this->load->module('templates');
         $this->templates->page($data);
     }
-
+    
     function watching()
     {
-        $data['main'] = 'marketplace';
-        $data['title'] = 'GSM - Market Place: Watching';
+        $data['main'] = 'marketplace';        
+        $data['title'] = 'GSM - Market Place: Watching';        
         $data['page'] = 'watching';
-
+        
         $this->load->module('templates');
         $this->templates->page($data);
     }
-
+    
     function all()
     {
-        $data['main'] = 'marketplace';
-        $data['title'] = 'GSM - Market Place: All';
+        $data['main'] = 'marketplace';        
+        $data['title'] = 'GSM - Market Place: All';        
         $data['page'] = 'all';
-
+        
         $this->load->module('templates');
         $this->templates->page($data);
     }
-
+    
     function invoice()
     {
-        $data['main'] = 'marketplace';
-        $data['title'] = 'GSM - Market Place: Invoice';
+        $data['main'] = 'marketplace';        
+        $data['title'] = 'GSM - Market Place: Invoice';        
         $data['page'] = 'invoice';
-
+        
         $this->load->module('templates');
         $this->templates->page($data);
     }
-
+    
     function create_listing()
-    {
+    {   
 
         $member_id=$this->session->userdata('members_id');
         //$this->output->enable_profiler(TRUE);
+
+        $this->form_validation->set_rules('listing_categories', 'listing category', 'required');
+
         $this->form_validation->set_rules('schedule_date_time', '', '');
         $this->form_validation->set_rules('listing_type', 'listing type', 'required');
         $this->form_validation->set_rules('product_mpn', 'product mpn', '');
@@ -159,7 +189,7 @@ class Marketplace extends MX_Controller
         }
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
         if ($this->form_validation->run($this) == TRUE){
-
+           
            $min_price='';
            $allow_offer='';
            $min_qty_order='';
@@ -170,7 +200,7 @@ class Marketplace extends MX_Controller
             if(isset($_POST['allowoffer_checkbox'])){
                $allow_offer=$this->input->post('allow_offer');
             }
-
+            
             if(isset($_POST['orderqunatity_checkbox'])){
                $min_qty_order=$this->input->post('min_qty_order');
             }
@@ -196,6 +226,7 @@ class Marketplace extends MX_Controller
             }
             $data_insert=array(
             'schedule_date_time' =>  $schedule_date_time,
+            'listing_categories' =>$this->input->post('listing_categories'),
             'listing_type' =>$this->input->post('listing_type'),
             'product_mpn' =>$this->input->post('product_mpn'),
             'product_isbn' =>$this->input->post('product_isbn'),
@@ -203,7 +234,7 @@ class Marketplace extends MX_Controller
             'product_model' =>  $this->input->post('product_model'),
             'product_type' =>  $this->input->post('product_type'),
             'product_color' =>  $this->input->post('product_color'),
-            'condition' =>  $this->input->post('condition'),
+            'condition' =>  $this->input->post('condition'),    
             'spec' =>  $this->input->post('spec'),
             'currency' =>  $this->input->post('currency'),
             'unit_price' =>  $this->input->post('unit_price'),
@@ -216,12 +247,12 @@ class Marketplace extends MX_Controller
             'courier' =>  $courier,
             'product_desc' =>  $this->input->post('product_desc'),
             'duration' =>  $this->input->post('duration'),
-            'listing_end_datetime'  => date('Y-m-d H:i:s', strtotime("+".$this->input->post('duration')." days")),
-            'member_id'   => $member_id,
-            'status'  => $this->input->post('status'),
+            'listing_end_datetime'  => date('Y-m-d H:i:s', strtotime("+".$this->input->post('duration')." days")),            
+            'member_id'   => $member_id, 
+            'status'  => $this->input->post('status'), 
             'created' => date('Y-m-d h:i:s A'),
             );
-
+            
             if($this->session->userdata('image1_check')!=''):
                 $image1_check=$this->session->userdata('image1_check');
                 $data_insert['image1'] = 'public/upload/listing/'.$image1_check['image1'];
@@ -256,8 +287,8 @@ class Marketplace extends MX_Controller
            $this->session->set_flashdata('msg_success','Listing added successfully.');
            redirect('marketplace/create_listing');
         }
-        $data['main'] = 'marketplace';
-        $data['title'] = 'GSM - Market Place: Create Listing';
+        $data['main'] = 'marketplace';        
+        $data['title'] = 'GSM - Market Place: Create Listing';        
         $data['page'] = 'create-listing';
         $data['listing_attributes'] =  $this->marketplace_model->get_result('listing_attributes');
         $data['shippings'] =  $this->marketplace_model->get_result('shippings','','',array('shipping_name','ASC'));
@@ -267,77 +298,85 @@ class Marketplace extends MX_Controller
         $data['product_makes'] =  $this->marketplace_model->get_result_by_group('product_make');
         $data['product_types'] =  $this->marketplace_model->get_result_by_group('product_type');
 
+        $items =  $this->marketplace_model->get_result('listing_categories','','',array('category_name','ASC'));
+        if( $items){
+            $tree = $this->buildTree($items);
+            $data['listing_categories']=$this->buildTree($items);
+        }else{
+           $data['listing_categories']=FALSE;
+        }
+
         $this->load->module('templates');
         $this->templates->page($data);
     }
-
+    
     function open_orders()
     {
-        $data['main'] = 'marketplace';
-        $data['title'] = 'GSM - Market Place: Open Orders';
+        $data['main'] = 'marketplace';        
+        $data['title'] = 'GSM - Market Place: Open Orders';        
         $data['page'] = 'open-orders';
-
+        
         $this->load->module('templates');
         $this->templates->page($data);
     }
-
+    
     function listing()
     {
-        $data['main'] = 'marketplace';
-        $data['title'] = 'GSM - Market Place: Listing';
+        $data['main'] = 'marketplace';        
+        $data['title'] = 'GSM - Market Place: Listing';        
         $data['page'] = 'my-listings';
-
+        
         $this->load->module('templates');
         $this->templates->page($data);
     }
-
+    
     function sell_listing()
     {
-        $data['main'] = 'marketplace';
-        $data['title'] = 'GSM - Market Place: Sell Listing';
+        $data['main'] = 'marketplace';        
+        $data['title'] = 'GSM - Market Place: Sell Listing';        
         $data['page'] = 'sell-listing';
-
+        
         $this->load->module('templates');
         $this->templates->page($data);
     }
-
+    
     function saved_listing()
     {
-        $data['main'] = 'marketplace';
-        $data['title'] = 'GSM - Market Place: Saved Listing';
+        $data['main'] = 'marketplace';        
+        $data['title'] = 'GSM - Market Place: Saved Listing';        
         $data['page'] = 'saved-listing';
-
+        
         $this->load->module('templates');
         $this->templates->page($data);
     }
-
+    
     function buy_listing()
     {
-        $data['main'] = 'marketplace';
-        $data['title'] = 'GSM - Market Place: Buy Listing';
+        $data['main'] = 'marketplace';        
+        $data['title'] = 'GSM - Market Place: Buy Listing';        
         $data['page'] = 'buy-listing';
-
+        
         $this->load->module('templates');
         $this->templates->page($data);
     }
-
+    
     function history()
     {
-        $data['main'] = 'marketplace';
-        $data['title'] = 'GSM - Market Place: History';
+        $data['main'] = 'marketplace';        
+        $data['title'] = 'GSM - Market Place: History';        
         $data['page'] = 'order-history';
-
+        
         $this->load->module('templates');
         $this->templates->page($data);
     }
-
+    
     function invoice_print()
     {
 
-        $data['main'] = 'marketplace';
-        $data['title'] = 'GSM - Market Place: Invoice Print';
+        $data['main'] = 'marketplace';        
+        $data['title'] = 'GSM - Market Place: Invoice Print';        
         $data['page'] = 'invoice-print';
-
+        
         $this->load->module('templates');
         $this->templates->page($data);
     }
@@ -357,7 +396,7 @@ class Marketplace extends MX_Controller
       }
     header('Content-Type: application/json');
     echo json_encode($list);
-
+        
     }
 
 
@@ -365,7 +404,7 @@ class Marketplace extends MX_Controller
     if(empty($_FILES['image1']['name'])){
             $this->form_validation->set_message('image1_check','Choose Color Image');
            return FALSE;
-        }
+        }  
     if(!empty($_FILES['image1']['name'])):
         $config1['upload_path'] = './public/upload/listing/';
         $config1['allowed_types'] = 'gif|jpg|png';
@@ -374,12 +413,12 @@ class Marketplace extends MX_Controller
         $config1['max_height']  = '5024';
         $this->load->library('upload');
         $this->upload->initialize($config1);
-
+        
         if ( ! $this->upload->do_upload('image1')){
             $this->form_validation->set_message('image1_check', $this->upload->display_errors());
             return FALSE;
         }else{
-            $data = $this->upload->data(); // upload image
+            $data = $this->upload->data(); // upload image 
             $this->session->unset_userdata('image1_check');
             $this->session->set_userdata('image1_check',array('image_url'=>$config1['upload_path'].$data['file_name'],'image1'=>$data['file_name']));
             return TRUE;
@@ -391,11 +430,11 @@ class Marketplace extends MX_Controller
     }
 
     function image2_check2($str){
-
+       
     if(empty($_FILES['image2']['name'])){
             $this->form_validation->set_message('image2_check2','Choose Color Image');
            return FALSE;
-        }
+        }  
     if(!empty($_FILES['image2']['name'])):
         $config2['upload_path'] = './public/upload/listing/';
         $config2['allowed_types'] = 'gif|jpg|png';
@@ -404,12 +443,12 @@ class Marketplace extends MX_Controller
         $config2['max_height']  = '5024';
         $this->load->library('upload');
         $this->upload->initialize($config2);
-
+        
         if ( ! $this->upload->do_upload('image2')){
             $this->form_validation->set_message('image2_check2', $this->upload->display_errors());
             return FALSE;
         }else{
-            $data = $this->upload->data(); // upload image
+            $data = $this->upload->data(); // upload image 
             $this->session->unset_userdata('image2_check2');
             $this->session->set_userdata('image2_check2',array('image_url'=>$config2['upload_path'].$data['file_name'],'image2'=>$data['file_name']));
             return TRUE;
@@ -424,7 +463,7 @@ class Marketplace extends MX_Controller
     if(empty($_FILES['image3']['name'])){
             $this->form_validation->set_message('image3_check3','Choose Color Image');
            return FALSE;
-        }
+        }  
     if(!empty($_FILES['image3']['name'])):
         $config3['upload_path'] = './public/upload/listing/';
         $config3['allowed_types'] = 'gif|jpg|png';
@@ -433,12 +472,12 @@ class Marketplace extends MX_Controller
         $config3['max_height']  = '5024';
         $this->load->library('upload');
         $this->upload->initialize($config3);
-
+        
         if ( ! $this->upload->do_upload('image3')){
             $this->form_validation->set_message('image3_check3', $this->upload->display_errors());
             return FALSE;
         }else{
-            $data = $this->upload->data(); // upload image
+            $data = $this->upload->data(); // upload image 
             $this->session->unset_userdata('image3_check3');
             $this->session->set_userdata('image3_check3',array('image_url'=>$config3['upload_path'].$data['file_name'],'image3'=>$data['file_name']));
             return TRUE;
@@ -453,7 +492,7 @@ class Marketplace extends MX_Controller
     if(empty($_FILES['image4']['name'])){
             $this->form_validation->set_message('image4_check4','Choose Color Image');
            return FALSE;
-        }
+        }  
     if(!empty($_FILES['image4']['name'])):
         $config4['upload_path'] = './public/upload/listing/';
         $config4['allowed_types'] = 'gif|jpg|png';
@@ -462,12 +501,12 @@ class Marketplace extends MX_Controller
         $config4['max_height']  = '5024';
         $this->load->library('upload');
         $this->upload->initialize($config4);
-
+        
         if ( ! $this->upload->do_upload('image4')){
             $this->form_validation->set_message('image4_check4', $this->upload->display_errors());
             return FALSE;
         }else{
-            $data = $this->upload->data(); // upload image
+            $data = $this->upload->data(); // upload image 
             $this->session->unset_userdata('image4_check4');
             $this->session->set_userdata('image4_check4',array('image_url'=>$config4['upload_path'].$data['file_name'],'image4'=>$data['file_name']));
             return TRUE;
@@ -477,12 +516,12 @@ class Marketplace extends MX_Controller
         return FALSE;
     endif;
     }
-
+    
   function image5_check5($str){
     if(empty($_FILES['image5']['name'])){
             $this->form_validation->set_message('image5_check5','Choose Color Image');
            return FALSE;
-        }
+        }  
     if(!empty($_FILES['image5']['name'])):
         $config5['upload_path'] = './public/upload/listing/';
         $config5['allowed_types'] = 'gif|jpg|png';
@@ -491,12 +530,12 @@ class Marketplace extends MX_Controller
         $config5['max_height']  = '5024';
         $this->load->library('upload');
         $this->upload->initialize($config5);
-
+        
         if ( ! $this->upload->do_upload('image5')){
             $this->form_validation->set_message('image5_check5', $this->upload->display_errors());
             return FALSE;
         }else{
-            $data = $this->upload->data(); // upload image
+            $data = $this->upload->data(); // upload image 
             $this->session->unset_userdata('image5_check5');
             $this->session->set_userdata('image5_check5',array('image_url'=>$config5['upload_path'].$data['file_name'],'image5'=>$data['file_name']));
             return TRUE;
@@ -507,14 +546,30 @@ class Marketplace extends MX_Controller
     endif;
     }
 
-    function listing_detail($id)
+    function listing_detail($id=0)
     {
+        //$this->output->enable_profiler(TRUE);
         if(empty($id)) { redirect('marketplace/index'); }
         $member_id=$this->session->userdata('members_id');
-        $data['main'] = 'marketplace';
-        $data['title'] = 'GSM - Market Place';
+        $data['main'] = 'marketplace';        
+        $data['title'] = 'GSM - Market Place';        
         $data['page'] = 'listing_detail';
-        $data['listing_detail'] =  $this->marketplace_model->get_row('listing',array('id'=>$id,'member_id'=>$member_id));
+        //$data['page'] = 'buy_html';
+        $data['member_id'] =$member_id;
+        $data['listing_detail'] =  $this->marketplace_model->get_row('listing',array('id'=>$id));
+        if($data['listing_detail']==FALSE)   redirect('marketplace/index');
+
+        $data['member'] = $this->marketplace_model->get_row('members',array('id'=> $data['listing_detail']->member_id));
+        if($data['member']){
+        $data['company'] = $this->marketplace_model->get_row('company',array('id'=>$data['member']->company_id));
+
+        $data['memberships'] = $this->marketplace_model->get_row('membership',array('id'=>$data['member']->membership),array('membership'));
+
+
+       } else
+         $data['company'] = FALSE;
+       // $data['memberships']= FALSE;
+
         $this->load->module('templates');
         $this->templates->page($data);
     }
@@ -537,6 +592,18 @@ class Marketplace extends MX_Controller
             endif;
         endif;
        // $data['couriers'] =  $this->marketplace_model->get_result('couriers','','',array('courier_name','ASC'));
+    }
 
+    private function buildTree($items) {
+
+        $childs = array();
+
+        foreach($items as $item)
+            $childs[$item->parent_id][] = $item;
+
+        foreach($items as $item) if (isset($childs[$item->id]))
+            $item->childs = $childs[$item->id];
+
+        return $childs[0];
     }
 }

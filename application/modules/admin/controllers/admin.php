@@ -535,4 +535,99 @@ class Admin extends MX_Controller
            redirect('admin/shippings');
         }
     }
+
+    // listing categories
+     public function listing_categories($offset=0){
+        $this->check_authentication();//check login authentication
+
+        $per_page=20;
+        $data['listing_categories'] = $this->admin_model->listing_categories($offset,$per_page);
+        $config=backend_pagination();
+        $config['base_url'] = base_url().'admin/listing_categories/';
+        $config['total_rows'] = $this->admin_model->listing_categories(0,0);
+        $config['per_page'] = $per_page;
+        $config['uri_segment'] = 3;
+        if(!empty($_SERVER['QUERY_STRING'])){
+        $config['suffix'] = "?".$_SERVER['QUERY_STRING'];
+        }else{
+        $config['suffix'] ='';
+        }
+        $config['first_url'] = $config['base_url'].$config['suffix'];
+        $this->pagination->initialize($config);
+        $data['pagination']=$this->pagination->create_links();
+        $data['offset'] = $offset;
+
+
+        $data['main'] = 'admin';
+        $data['title'] = 'GSM - Admin Panel: shippings';
+        $data['page'] = 'listing_categories';
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+
+    public function listing_category_add(){
+       $this->check_authentication();//check login authentication
+
+       $this->form_validation->set_rules('category_name', 'Category name', 'required');
+       $this->form_validation->set_rules('parent_id', 'Parent Category name', 'required');
+
+        if ($this->form_validation->run() == TRUE) {
+            $post_data=array(
+                'parent_id'     => $this->input->post('parent_id'),
+                'category_name' => $this->input->post('category_name')
+                );
+           if($this->admin_model->insert('listing_categories',$post_data)){
+            $this->session->set_flashdata('msg_success','Category name added successfully.');
+            redirect('admin/listing_categories');
+           }
+        }
+
+        $data['listing_parent_categories'] = $this->admin_model->get_result('listing_categories',array('parent_id'=>0));
+
+        $data['main'] = 'admin';
+        $data['title'] = 'GSM - Admin Panel: listing category Add New';
+
+        $data['page'] = 'listing_category_add';
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+
+    public function listing_category_edit($id=0){
+         if(empty($id)){ redirect('admin/listing_categories'); }
+
+        $data['listing_categories']= $this->admin_model->get_row('listing_categories',array('id'=>$id));
+        if( $data['listing_categories']==FALSE)  redirect('admin/listing_categories');
+
+        $this->form_validation->set_rules('category_name', 'Category name', 'required');
+        $this->form_validation->set_rules('parent_id', 'Parent Category name', 'required');
+
+        if ($this->form_validation->run() == TRUE) {
+             $post_data=array(
+                'parent_id'     => $this->input->post('parent_id'),
+                'category_name' => $this->input->post('category_name')
+                );
+           if($this->admin_model->update('listing_categories',$post_data,array('id'=>$id))){
+            $this->session->set_flashdata('msg_success','listing category updated successfully.');
+            redirect('admin/listing_categories');
+           }
+        }
+
+        $data['listing_parent_categories'] = $this->admin_model->get_result('listing_categories',array('parent_id'=>0));
+
+        $data['main'] = 'admin';
+        $data['title'] = 'GSM - Admin Panel: listing category Edit';
+        $data['page'] = 'listing_category_edit';
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+
+    public function listing_category_delete($id=0){
+          $this->check_authentication();//check login authentication
+        if(empty($id)){ redirect('admin/listing_categories'); }
+
+        if($this->admin_model->delete('listing_categories',array('id'=>$id))){
+            $this->session->set_flashdata('msg_success','listing category deleted successfully.');
+           redirect('admin/listing_categories');
+        }
+    }
 }

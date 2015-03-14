@@ -24,25 +24,170 @@
 <div class="ibox-title">
     <h5>Search</h5>
 </div>
+<?php
+//print_r($advance_search);
+$dataasa=array();
+if(!empty($advance_search)):
+foreach ($advance_search as $row) {
+$dataasa['product_mpn'][]   = $row->product_mpn;
+$dataasa['product_isbn'][]  = $row->product_isbn;
+$dataasa['product_make'][]  = $row->product_make ;
+$dataasa['product_model'][] = $row->product_model ;
+$dataasa['product_type'][]  = $row->product_type;
+$dataasa['product_countrys'][] =array('country_id'=>$row->country_id,'product_country'=>$row->product_country);
+}
+endif;
+?>
 
 <div class="ibox-content">
-    <div class="row">
-    	<div class="col-lg-3" style="padding-right:0">
-        	<select class="form-control" tabindex="1">
-            	<option value="" selected="">All Categories</option>
-                <option>Accessories</option>
-                <option>- Batteries</option>
-                <option>- Cases</option>
-                <option>- Data Cables</option>
-                <option>- Phone Kits</option>
-                <option>Mobile Phones</option>
-                <option>Spare Parts</option>
-            </select>
+<form action="<?php echo base_url('marketplace/sell'); ?>/<?php echo $offset ?>/" method="get" accept-charset="utf-8">
+     <div class="row">
+            <div class="col-lg-3" style="padding-right:0">
+                <select name="lc" class="form-control" tabindex="1">
+                    <option value="" selected="">All Categories</option>
+                    <?php if (!empty($listing_categories)): ?>
+                    <?php foreach ($listing_categories as $row): ?>
+                       <option value="<?php echo $row->category_name ?>" <?php if(!empty($_GET['lc']) && $row->category_name==$_GET['lc']){ echo'selected';}?> ><?php echo $row->category_name ?></option>
+                        <?php if (!empty($row->childs)): ?>
+                            <?php foreach ($row->childs as $child): ?>
+                                <option value="<?php echo $child->category_name ?>" <?php if(!empty($_GET['lc']) && $child->category_name==$_GET['lc']){ echo'selected';}?> >- <?php echo $child->category_name ?></option>
+                            <?php endforeach ?>
+                        <?php endif ?>
+                    <?php endforeach ?>
+                    <?php endif ?>
+                </select>
+            </div>
+            <div class="col-lg-7" style="padding-right:0">
+                <select name="query" data-placeholder="All Makes & Models" id="models" class="chosen-select form-control" tabindex="1">
+                    <option value="">Search here </option>
+                    <?php if(!empty($dataasa['product_make'])){
+                  foreach (array_unique ($dataasa['product_make']) as $row) { ?>
+                  <option value="<?php echo $row; ?>"><?php echo $row; ?></option>
+                  <?php }} ?>
+                  <?php if(!empty($dataasa['product_model'])){
+                  foreach (array_unique ($dataasa['product_model']) as $row) { ?>
+                  <option value="<?php echo $row; ?>"><?php echo $row; ?></option>
+                  <?php }} ?>
+                </select>
+            </div>
+            <div class="col-lg-2">
+                <input type="submit" class="btn btn-primary" style="width:100%" value="Search"/>
+            </div>
         </div>
-    	<div class="col-lg-9">
-            <select data-placeholder="All Makes & Models" id="models" class="chosen-select form-control" multiple tabindex="1"></select>
+    </form>
+       <div class="row">
+
+            <div class="col-lg-12">
+
+                <div class="text-right">
+                    <button class="btn btn-primary0" type="button" data-toggle="collapse" data-target="#AdvanceSearch" aria-expanded="true" aria-controls="collapseExample">Advance Search</button>
+                </div>
+
+                <div id="AdvanceSearch"   <?php if(isset($_GET['search'])) echo 'class="collapse in" aria-expanded="true"'; else echo 'class="collapse"'; ?> style=" border: 1px solid #f0f0f0; padding: 10px;">
+                <div class="well0 row">
+                 <form action="<?php echo base_url('marketplace/sell'); ?>/<?php echo $offset ?>/" method="get" accept-charset="utf-8">
+
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                         <label for="">Search by Date</label>
+                            <input type="text" class="form-control" id="date" name="date" placeholder="format (yyyy-mm-dd)" value="<?php if(!empty($_GET['date'])) echo $_GET['date'] ?>">
+                        </div>
+                         <div class="form-group">
+                          <label for="">Search by MPN</label>
+                            <input type="type" class="form-control" id="mpn" list="mpns" name="mpn" placeholder="MPN" value="<?php if(!empty($_GET['mpn'])) echo $_GET['mpn'] ?>">
+                             <datalist id="mpns">
+                            <?php if(!empty($dataasa['product_mpn'])){
+                                 foreach (array_unique ($dataasa['product_mpn']) as $row) { ?>
+                               <option value="<?php echo $row; ?>"><?php echo $row; ?></option>
+                                 <?php }} ?>
+                            </datalist>
+                        </div>
+                        <div class="form-group">
+                         <label for="">Search By ISBN</label>
+                            <input type="text" class="form-control" name="isbn" id="isbn" list="isbns" placeholder="ISBN" value="<?php if(!empty($_GET['isbn'])) echo $_GET['isbn'] ?>">
+                             <datalist id="isbns">
+                            <?php if(!empty($dataasa['product_isbn'])){
+                                 foreach (array_unique ($dataasa['product_isbn']) as $row) { ?>
+                               <option value="<?php echo $row; ?>"><?php echo $row; ?></option>
+                                 <?php }} ?>
+                            </datalist>
+                        </div>
+                    </div>
+                     <div class="col-lg-4">
+                     <div class="form-group">
+                            <label for="">Search by Rating</label>
+                            <input type="text" class="form-control" name="rating" id="rating" placeholder="Rating" value="<?php if(!empty($_GET['rating'])) echo $_GET['rating'] ?>">
+                        </div>
+
+                        <div class="form-group">
+                             <label for="">Search By Make (Manufacturer)</label>
+                            <input type="type" class="form-control" list="manufacturers" name="manufacturer" id="manufacturer" placeholder="Make Name" value="<?php if(!empty($_GET['manufacturer'])) echo $_GET['manufacturer'] ?>">
+                             <datalist id="manufacturers">
+                            <?php if(!empty($dataasa['product_make'])){
+                                 foreach (array_unique ($dataasa['product_make']) as $row) { ?>
+                               <option value="<?php echo $row; ?>"><?php echo $row; ?></option>
+                                 <?php }} ?>
+                            </datalist>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Search By Model</label>
+                            <input type="type" class="form-control" list="modelss" id="model"  name="model" placeholder="Model number" value="<?php if(!empty($_GET['model'])) echo $_GET['model'] ?>">
+                              <datalist id="modelss">
+                                <?php if(!empty($dataasa['product_model'])){
+                                 foreach (array_unique ($dataasa['product_model']) as $row) { ?>
+                               <option value="<?php echo $row; ?>"><?php echo $row; ?></option>
+                                 <?php }} ?>
+                            </datalist>
+                        </div>
+                        </div>
+                     <div class="col-lg-4">
+                        <div class="form-group">
+                             <label for="">Search By Product Type</label>
+                            <input type="text" class="form-control" list="product_types" name="product_type" id="product_type" placeholder="Product Type" value="<?php if(!empty($_GET['product_type'])) echo $_GET['product_type'] ?>">
+                            <datalist id="product_types">
+                                <?php if(!empty($dataasa['product_type'])){
+                                foreach (array_unique ($dataasa['product_type']) as $row) { ?>
+                               <option value="<?php echo $row; ?>"><?php echo $row; ?></option>
+                                 <?php }} ?>
+                            </datalist>
+                        </div>
+                         <div class="form-group">
+                         <label for="">Search By Price Range</label>
+                         <div class="row">
+                            <div class="col-xs-6">
+                            <input type="text" class="form-control" id="price_range_start" name="price_range_start" placeholder="Start Price" value="<?php if(!empty($_GET['price_range_start'])) echo $_GET['price_range_start'] ?>">
+                            </div>
+                            <div class="col-xs-6">
+                            <input type="text" class="form-control" id="price_range_end" name="price_range_end" placeholder="End Price" value="<?php if(!empty($_GET['price_range_end'])) echo $_GET['price_range_end'] ?>">
+                            </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                             <label for="">Search By Country</label>
+                            <input type="text" class="form-control" list="countrys" name="country" id="country" placeholder="Country Name" value="<?php if(!empty($_GET['country'])) echo $_GET['country'] ?>">
+                             <datalist id="countrys">
+                                <?php if(!empty($dataasa['product_countrys'])){
+                                    $product_countrys =  array_map('unserialize', array_unique(array_map('serialize', $dataasa['product_countrys'])));
+                                foreach ($product_countrys as $row) { ?>
+                               <option value="<?php echo $row['country_id']; ?>" label="<?php echo $row['product_country']; ?>"><?php echo $row['product_country']; ?></option>
+                                 <?php }} ?>
+                            </datalist>
+
+                        </div>
+                     </div>
+                     <div class="row">
+                         <div class="col-lg-4 col-lg-offset-4">
+                         <button type="submit" class="btn btn-lg btn-primary" name="search" >
+                         <i class="fa fa-search"></i> Search Now</button>
+                         </div>
+                     </div>
+                 </form>
+                </div>
+                </div> <!-- AdvanceSearch -->
+
+            </div>
         </div>
-    </div>
 </div><!-- /ibox-content -->
 </div>
 </div>
@@ -77,9 +222,17 @@
 <?php if($listing_sell){
      foreach ($listing_sell as $value) {?>
     <tr data-toggle="modal" data-target="#myModal5">
-    <td><?php echo $value->listing_end_datetime; ?></td>
+    <td>
+<?php
+$now = new DateTime();
+$future_date = new DateTime($value->listing_end_datetime);
+$interval = $future_date->diff($now);
+$timeremaining= $interval->format("%dd&nbsp;%hh&nbsp;%im&nbsp;");
+?>
+<p><?php echo $timeremaining ?></p>
+    </td>
     <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
-     <td> <?php if(!empty($value->product_mpn)){ echo "MPN: ".$value->product_mpn; } ?>
+    <td> <?php if(!empty($value->product_mpn)){ echo "MPN: ".$value->product_mpn; } ?>
                     <br>
                 <?php if(!empty($value->product_isbn)){ echo "ISBN: ".$value->product_isbn; } ?></td>
     <td><?php echo $value->product_make; ?></td>
@@ -89,7 +242,10 @@
     <td data-toggle="tooltip" data-placement="left" title="mouseover currency"><?php echo $value->unit_price; ?></td>
     <td><?php echo $value->total_qty; ?></td>
     <td><?php echo $value->spec; ?></td>
-    <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+    <td>
+   <span style="display:none"><?php echo $value->country ?></span>
+        <img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" title="<?php echo $value->product_country ?>" />
+    </td>
     <th>
     <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
     <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>
@@ -97,7 +253,7 @@
     </tr>
     <?php }}else{
         ?>
-        <th colspan="12">No Such Listing Found </th><?php
+        <th colspan="12"><center>No Such Listing Found</center>  </th><?php
         }?>
 </table>
 </div>
@@ -255,6 +411,7 @@
     <!-- Page-Level Scripts -->
     <script type="text/javascript">
         $(document).ready(function() {
+            <?php  if(!empty($listing_sell)): ?>
             $('.dataTables-example').dataTable({
                 responsive: true,
                 "dom": 'T<"clear">lfrtip',
@@ -262,6 +419,7 @@
                     "sSwfPath": "public/main/template/core/js/plugins/dataTables/swf/copy_csv_xls_pdf.swf"
                 }
             });
+            <?php endif; ?>
 			/* multi select */
        	var config = {
                 '.chosen-select'           : {search_contains:true},

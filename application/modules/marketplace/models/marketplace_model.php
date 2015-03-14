@@ -87,11 +87,45 @@ class Marketplace_model extends MY_Model {
 
 	public function listing_buy($offset='', $per_page=''){
 		$member_id=$this->session->userdata('members_id');
+		$this->db->select('listing.*,company.country  AS country_id,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
+
+
+		if(!empty($_GET['rating'])){
+			//$this->db->or_where("product_mpn",trim($_GET['date']));
+		}
+		if(!empty($_GET['mpn'])){
+			$this->db->or_where("product_mpn",trim($_GET['mpn']));
+		}
+		if(!empty($_GET['isbn'])){
+			$this->db->or_where("product_isbn",trim($_GET['isbn']));
+		}
+		if(!empty($_GET['manufacturer'])){
+			$this->db->or_where("product_make",trim($_GET['manufacturer']));
+		}
+		if(!empty($_GET['model'])){
+			$this->db->or_where("product_model",trim($_GET['model']));
+		}
+		if(!empty($_GET['product_type'])){
+			$this->db->or_where("product_type",trim($_GET['product_type']));
+		}
+		if(!empty($_GET['price_range_start']) && !empty($_GET['price_range_end'])){
+			$price_range_start=trim($_GET['price_range_start']);
+			$price_range_end=trim($_GET['price_range_end']);
+			$this->db->or_where("(unit_price>=$price_range_start AND unit_price<=$price_range_end)");
+		}
+		if(!empty($_GET['country'])){
+			//$this->db->or_where("product_mpn",trim($_GET['country']));
+		}
+		if(!empty($_GET['date'])){
+			$this->db->like("listing_end_datetime",trim($_GET['date']),'after');
+		}
+
 		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
 		$this->db->from('listing');
+		$this->db->join('company','company.id=listing.member_id');
 		$this->db->where('status', 1);
-		$this->db->where('listing_type', 1);
-		$this->db->where('member_id != '.$member_id);
+		$this->db->where('listing_type', 2);
+		//$this->db->where('member_id != '.$member_id);
 		if($offset>=0 && $per_page>0){
 			$this->db->limit($per_page,$offset);
 			$query = $this->db->get();
@@ -106,11 +140,52 @@ class Marketplace_model extends MY_Model {
 
 	public function listing_sell($offset='', $per_page=''){
 		$member_id=$this->session->userdata('members_id');
+		$this->db->select('listing.*,company.country  AS country_id,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
+
+
+		if(!empty($_GET['rating'])){
+			//$this->db->or_where("product_mpn",trim($_GET['date']));
+		}
+		if(!empty($_GET['mpn'])){
+			$this->db->or_where("product_mpn",trim($_GET['mpn']));
+		}
+		if(!empty($_GET['isbn'])){
+			$this->db->or_where("product_isbn",trim($_GET['isbn']));
+		}
+		if(!empty($_GET['manufacturer'])){
+			$this->db->or_where("product_make",trim($_GET['manufacturer']));
+		}
+		if(!empty($_GET['model'])){
+			$this->db->or_where("product_model",trim($_GET['model']));
+		}
+		if(!empty($_GET['product_type'])){
+			$this->db->or_where("product_type",trim($_GET['product_type']));
+		}
+		if(!empty($_GET['price_range_start']) && !empty($_GET['price_range_end'])){
+			$price_range_start=trim($_GET['price_range_start']);
+			$price_range_end=trim($_GET['price_range_end']);
+			$this->db->or_where("(unit_price>=$price_range_start AND unit_price<=$price_range_end)");
+		}
+		if(!empty($_GET['country'])){
+			//$this->db->or_where("product_mpn",trim($_GET['country']));
+		}
+
+		if(!empty($_GET['date'])){
+			$this->db->like("listing_end_datetime",trim($_GET['date']),'after');
+		}
+
+		if(!empty($_GET['lc']) && !empty($_GET['query'])){
+			$this->db->where('listing_categories', $_GET['lc']);
+			$this->db->or_like("product_model",trim($_GET['query']));
+			$this->db->or_like("product_make",trim($_GET['query']));
+		}
+
 		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
 		$this->db->from('listing');
+		$this->db->join('company','company.id=listing.member_id');
 		$this->db->where('status', 1);
-		$this->db->where('listing_type', 2);
-		$this->db->where('member_id != '.$member_id);
+		$this->db->where('listing_type', 1);
+		//$this->db->where('member_id != '.$member_id);
 		if($offset>=0 && $per_page>0){
 			$this->db->limit($per_page,$offset);
 			$query = $this->db->get();
@@ -127,6 +202,23 @@ class Marketplace_model extends MY_Model {
 		$this->db->from('couriers');
 		if(empty($couriers)) return FALSE;
 		$this->db->where_in('id', json_decode($couriers));
+		$query = $this->db->get();
+		if($query->num_rows()>0)
+			return $query->result();
+		else
+			return FALSE;
+	}
+
+	public function advance_search($member_id=0,$listing_type=0){
+
+		$this->db->select('listing.product_mpn,listing.product_isbn,listing.product_make,listing.product_model,listing.product_type,company.country AS country_id,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
+
+		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
+		$this->db->from('listing');
+		$this->db->join('company','company.id=listing.member_id');
+		$this->db->where('status', 1);
+		$this->db->where('listing_type', $listing_type);
+		//$this->db->where('member_id != '.$member_id);
 		$query = $this->db->get();
 		if($query->num_rows()>0)
 			return $query->result();
