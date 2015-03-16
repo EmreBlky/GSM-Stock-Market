@@ -72,7 +72,7 @@ class Marketplace extends MX_Controller
         $per_page=10;
         $data['listing_sell'] = $this->marketplace_model->listing_sell($offset,$per_page);
         $config=backend_pagination();
-        $config['base_url'] = base_url().'marketplace/buy';
+        $config['base_url'] = base_url().'marketplace/sell';
         $config['total_rows'] = $this->marketplace_model->listing_sell(0,0);
         $config['per_page'] = $per_page;
         $config['uri_segment'] = 4;
