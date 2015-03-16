@@ -102,13 +102,13 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
         <div class="row">
             <div class="col-lg-12">
             	<div class="ibox float-e-margins">
-                    <div class="ibox-content">
+                    <div class="ibox-content" style="padding-bottom:15px">
             			<div class="row">
                         <div class="col-lg-2">
                             <label class="checkbox-inline i-checks" style="margin:10px"> <input type="checkbox"> Favourites </label>
                         </div>
                         <div class="col-lg-2">
-                            <select class="form-control m-b dropdown_one" name="dropdown_one">
+                            <select class="form-control dropdown_one" name="dropdown_one">
                                 <option value="ORDER BY company ASC" selected="selected">A - Z Company</option>
                                 <option value="ORDER BY company DESC">Z - A Company</option>
                                 <option value="ORDER BY individual ASC">A - Z Individual</option>
@@ -117,7 +117,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                             </select>    
                         </div>
                         <div class="col-lg-3">
-                            <select class="form-control m-b dropdown_two" name="dropdown_two">
+                            <select class="form-control dropdown_two" name="dropdown_two">
                                 <option value="ALL" selected="selected">All Business Activities</option>
                                 <option value="New Mobiles (Sim Free)">New Mobiles (Sim Free)</option>
                                 <option value="New Mobiles (Network Stocks)">New Mobiles (Network Stocks)</option>
@@ -136,7 +136,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                             </select>
                         </div>
                         <div class="col-lg-2">
-                            <select class="form-control m-b dropdown_three" name="dropdown_three">
+                            <select class="form-control dropdown_three" name="dropdown_three">
                                 <option value="ALL" selected="selected">All Countries</option>
                                 <?php foreach($country as $country){?>
                                 <option value="<?php echo $country->id?>"><?php echo $country->country?></option>
@@ -144,7 +144,6 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                             </select>
                         </div>
                         <div class="col-lg-3">
-                            <a href="addressbook/" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i></a>
                             <?php
 
                                 $this->load->module('search');
@@ -154,16 +153,16 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                         </div>
                     	</div><!-- row -->
                     </div><!-- ibox-content -->
-            </div>
-        </div><!-- row end --> 
+            </div></div>
+        </div><!-- row end -->
         <div id="results"></div>
         <div class="row original">
         <?php 
             if($results['search_addressbook'] != 'No results found'){
         ?>
-            <div class="col-lg-12">
+            		<div class="col-lg-12">
                         <div class="ibox float-e-margins">
-                            <div class="ibox-content">Results for <strong><?php echo $q;?></strong></div>   
+                            <div class="ibox-content"><a href="addressbook/" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="right" title="Clear Search Results"><i class="fa fa-times"></i></a> Results for <strong><?php echo $q;?></strong></div>   
                         </div>
                     </div>
         <?php    
@@ -317,7 +316,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                 echo '
                     <div class="col-lg-12">
                         <div class="ibox float-e-margins">
-                            <div class="ibox-content">'.$results['search_addressbook'].' for <strong>'.$q.'</strong>!</div>   
+                            <div class="ibox-content"><a href="addressbook/" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Clear Search Results"><i class="fa fa-times"></i></a> '.$results['search_addressbook'].' for <strong>'.$q.'</strong>!</div>   
                         </div>
                     </div>
                      ';

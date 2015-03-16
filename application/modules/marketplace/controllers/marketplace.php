@@ -41,9 +41,26 @@ class Marketplace extends MX_Controller
         $this->pagination->initialize($config);
         $data['pagination']=$this->pagination->create_links();
         $data['offset'] = $offset;
-        
-        $data['main'] = 'marketplace';        
-        $data['title'] = 'GSM - Market Place: Purchase';        
+
+        $member_id=$this->session->userdata('members_id');
+
+       // $data['advance_search'] = $this->marketplace_model->get_result('listing',array('status'=>1,'listing_type'=>1,"member_id !=$member_id" =>null,"schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'"=>null),array('product_mpn','product_isbn','product_make','product_model','product_type'));
+
+        $data['advance_search'] = $this->marketplace_model->advance_search($member_id,2);
+
+         //$data['advance_search_country'] = $this->marketplace_model->advance_search_country($member_id);
+
+        $items =  $this->marketplace_model->get_result('listing_categories','','',array('category_name','ASC'));
+        if( $items){
+            $tree = $this->buildTree($items);
+            $data['listing_categories']=$this->buildTree($items);
+        }else{
+           $data['listing_categories']=FALSE;
+        }
+
+        $data['member_id'] =$member_id;
+        $data['main'] = 'marketplace';
+        $data['title'] = 'GSM - Market Place: Purchase';
         $data['page'] = 'buy';
         
         $this->load->module('templates');
@@ -69,9 +86,19 @@ class Marketplace extends MX_Controller
         $this->pagination->initialize($config);
         $data['pagination']=$this->pagination->create_links();
         $data['offset'] = $offset;
+        $member_id=$this->session->userdata('members_id');
+        $data['advance_search'] = $this->marketplace_model->advance_search($member_id,1);
 
-        $data['main'] = 'marketplace';        
-        $data['title'] = 'GSM - Market Place: Sell';        
+        $items =  $this->marketplace_model->get_result('listing_categories','','',array('category_name','ASC'));
+        if( $items){
+            $tree = $this->buildTree($items);
+            $data['listing_categories']=$this->buildTree($items);
+        }else{
+           $data['listing_categories']=FALSE;
+        }
+         $data['member_id'] =$member_id;
+        $data['main'] = 'marketplace';
+        $data['title'] = 'GSM - Market Place: Sell';
         $data['page'] = 'sell';
         
         $this->load->module('templates');
@@ -113,13 +140,17 @@ class Marketplace extends MX_Controller
 
         $member_id=$this->session->userdata('members_id');
         //$this->output->enable_profiler(TRUE);
+
+        $this->form_validation->set_rules('listing_categories', 'listing category', 'required');
+
         $this->form_validation->set_rules('schedule_date_time', '', '');
         $this->form_validation->set_rules('listing_type', 'listing type', 'required');
-        $this->form_validation->set_rules('product_mpn_isbn', 'product_mpn_isbn', 'required');
+        $this->form_validation->set_rules('product_mpn', 'product mpn', '');
+        $this->form_validation->set_rules('product_isbn', 'product isbn', '');
         $this->form_validation->set_rules('product_make', 'product make', 'required');
-        $this->form_validation->set_rules('product_model', 'product_model', 'required');
+        $this->form_validation->set_rules('product_model', 'product model', 'required');
         $this->form_validation->set_rules('product_type', 'product type', 'required');
-        $this->form_validation->set_rules('product_color', 'product_color', 'required');
+        $this->form_validation->set_rules('product_color', 'product color', 'required');
         $this->form_validation->set_rules('condition', 'condition', 'required');
         $this->form_validation->set_rules('spec', 'spec', 'required');
         $this->form_validation->set_rules('currency', 'currency', 'required');
@@ -195,8 +226,10 @@ class Marketplace extends MX_Controller
             }
             $data_insert=array(
             'schedule_date_time' =>  $schedule_date_time,
+            'listing_categories' =>$this->input->post('listing_categories'),
             'listing_type' =>$this->input->post('listing_type'),
-            'product_mpn_isbn' =>$this->input->post('product_mpn_isbn'),
+            'product_mpn' =>$this->input->post('product_mpn'),
+            'product_isbn' =>$this->input->post('product_isbn'),
             'product_make' =>  $this->input->post('product_make'),
             'product_model' =>  $this->input->post('product_model'),
             'product_type' =>  $this->input->post('product_type'),
@@ -264,6 +297,14 @@ class Marketplace extends MX_Controller
         $data['product_colors'] =  $this->marketplace_model->get_result_by_group('product_color');
         $data['product_makes'] =  $this->marketplace_model->get_result_by_group('product_make');
         $data['product_types'] =  $this->marketplace_model->get_result_by_group('product_type');
+
+        $items =  $this->marketplace_model->get_result('listing_categories','','',array('category_name','ASC'));
+        if( $items){
+            $tree = $this->buildTree($items);
+            $data['listing_categories']=$this->buildTree($items);
+        }else{
+           $data['listing_categories']=FALSE;
+        }
 
         $this->load->module('templates');
         $this->templates->page($data);
@@ -340,16 +381,19 @@ class Marketplace extends MX_Controller
         $this->templates->page($data);
     }
 
-  function get_attributes_info(){
-
+  function get_attributes_info($type='MPN'){
     $check_status='false';
      $list=array('STATUS'=>$check_status);
      if($_POST){
         $attr_id=trim($_POST['product_mpn_isbn']);
-        $information = $this->marketplace_model->get_row('listing_attributes',array('product_mpn_isbn'=>$attr_id));
+
+        if($type=='MPN') $type_column='product_mpn'; else; $type_column='product_isbn';
+        $information = $this->marketplace_model->get_row('listing_attributes',array($type_column=>$attr_id));
+        if($information):
         $check_status='true';
         $list=array('STATUS'=>$check_status,'product_make'=>$information->product_make,'product_model'=>$information->product_model,'product_type'=>$information->product_type,'product_color'=>$information->product_color);
-      }   
+        endif;
+      }
     header('Content-Type: application/json');
     echo json_encode($list);
         
@@ -502,14 +546,30 @@ class Marketplace extends MX_Controller
     endif;
     }
 
-    function listing_detail($id)
-    {   
+    function listing_detail($id=0)
+    {
+        //$this->output->enable_profiler(TRUE);
         if(empty($id)) { redirect('marketplace/index'); }
         $member_id=$this->session->userdata('members_id');
         $data['main'] = 'marketplace';        
         $data['title'] = 'GSM - Market Place';        
         $data['page'] = 'listing_detail';
-        $data['listing_detail'] =  $this->marketplace_model->get_row('listing',array('id'=>$id,'member_id'=>$member_id));
+        //$data['page'] = 'buy_html';
+        $data['member_id'] =$member_id;
+        $data['listing_detail'] =  $this->marketplace_model->get_row('listing',array('id'=>$id));
+        if($data['listing_detail']==FALSE)   redirect('marketplace/index');
+
+        $data['member'] = $this->marketplace_model->get_row('members',array('id'=> $data['listing_detail']->member_id));
+        if($data['member']){
+        $data['company'] = $this->marketplace_model->get_row('company',array('id'=>$data['member']->company_id));
+
+        $data['memberships'] = $this->marketplace_model->get_row('membership',array('id'=>$data['member']->membership),array('membership'));
+
+
+       } else
+         $data['company'] = FALSE;
+       // $data['memberships']= FALSE;
+
         $this->load->module('templates');
         $this->templates->page($data);
     }
@@ -527,9 +587,23 @@ class Marketplace extends MX_Controller
              <label class="checkbox-inline i-checks iCheck-helper"><input type="checkbox" value="<?php echo $row->courier_name; ?>" name="courier[]" <?php if(!empty($_POST['courier']) && in_array($row->courier_name, $_POST['courier'])){ echo'checked';}?>/> <?php echo $row->courier_name;?> </label>
             <?php
             endforeach;
+            else:
+                echo "NO courier found.";
             endif;
         endif;
        // $data['couriers'] =  $this->marketplace_model->get_result('couriers','','',array('courier_name','ASC'));
+    }
 
+    private function buildTree($items) {
+
+        $childs = array();
+
+        foreach($items as $item)
+            $childs[$item->parent_id][] = $item;
+
+        foreach($items as $item) if (isset($childs[$item->id]))
+            $item->childs = $childs[$item->id];
+
+        return $childs[0];
     }
 }

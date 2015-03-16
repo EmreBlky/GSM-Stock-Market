@@ -70,7 +70,19 @@ class Admin_model extends MY_Model {
 	public function delete($table_name='', $id_array=''){		
 	 return $this->db->delete($table_name, $id_array);
 	}
-	
-	
-}
 
+	public function listing_categories($offset=0,$per_page=0){
+		$this->db->select('listing_categories.*,(SELECT category_name FROM listing_categories AS lc WHERE lc.id =listing_categories.parent_id) AS parent_category_name');
+		$this->db->from('listing_categories');
+		if($offset>=0 && $per_page>0){
+			$this->db->limit($per_page,$offset);
+			$query = $this->db->get();
+			if($query->num_rows()>0)
+				return $query->result();
+			else
+				return FALSE;
+		}else{
+			return $this->db->count_all_results();
+		}
+	}
+}

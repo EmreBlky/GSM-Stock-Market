@@ -28,6 +28,27 @@
 </div>
 <div class="ibox-content">
 
+
+    <div class="form-group"><label class="col-md-3 control-label">Listing Category</label>
+        <div class="col-md-9">
+            <select class="form-control" name="listing_categories">
+                <option selected value="0" >-Select-</option>
+                <?php if (!empty($listing_categories)): ?>
+                <?php foreach ($listing_categories as $row): ?>
+                   <option value="<?php echo $row->category_name ?>" <?php if(!empty($_POST['listing_categories']) && $row->category_name==$_POST['listing_categories']){ echo'selected';}?> ><?php echo $row->category_name ?></option>
+                    <?php if (!empty($row->childs)): ?>
+                        <?php foreach ($row->childs as $child): ?>
+                            <option value="<?php echo $child->category_name ?>" <?php if(!empty($_POST['listing_categories']) && $child->category_name==$_POST['listing_categories']){ echo'selected';}?> >- <?php echo $child->category_name ?></option>
+                        <?php endforeach ?>
+                    <?php endif ?>
+                <?php endforeach ?>
+                <?php endif ?>
+            </select>
+            <?php echo form_error('listing_categories'); ?>
+        </div>
+    </div>
+
+
      <div class="form-group"><label class="col-md-3 control-label">Schedule Listing</label>
      <div class="col-md-9">
           <div class="input-group date form_datetime " data-date="<?php echo date('Y').'-'.date('m').'-'.date('d')?>" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
@@ -53,17 +74,31 @@
     </div>
     
     <div class="hr-line-dashed"></div>
-    
-    <div class="form-group"><label class="col-md-3 control-label">MPN/ISBN</label>
+
+    <div class="form-group"><label class="col-md-3 control-label">MPN</label>
         <div class="col-md-9">
-            <input type="type" id="mpn1" list="mpn" class="form-control check_record" placeholder="Auto fill the rest of the data if MPN/ISBN is found in the database"  name="product_mpn_isbn" value="<?php echo set_value('product_mpn_isbn');?>"/>
+            <input type="type" id="mpn1" list="mpn" class="form-control check_record" placeholder="Auto fill the rest of the data if MPN is found in the database"  name="product_mpn" value="<?php echo set_value('product_mpn');?>"/>
             <datalist id="mpn">
-            <?php if(!empty($listing_attributes)){ 
+            <?php if(!empty($listing_attributes)){
                  foreach ($listing_attributes as $row) { ?>
-                <option value="<?php echo $row->product_mpn_isbn; ?>"><?php echo $row->product_mpn_isbn; ?></option>
+                <option value="<?php echo $row->product_mpn; ?>"><?php echo $row->product_mpn; ?></option>
                  <?php }} ?>
             </datalist>
-             <?php echo form_error('product_mpn_isbn'); ?>
+             <?php echo form_error('product_mpn'); ?>
+        </div>
+    </div>
+
+
+     <div class="form-group"><label class="col-md-3 control-label">ISBN</label>
+        <div class="col-md-9">
+            <input type="type" id="mpn2" list="mpn2" class="form-control check_record" placeholder="Auto fill the rest of the data if ISBN is found in the database"  name="product_isbn" value="<?php echo set_value('product_isbn');?>"/>
+            <datalist id="mpn2">
+            <?php if(!empty($listing_attributes)){
+                 foreach ($listing_attributes as $row) { ?>
+                <option value="<?php echo $row->product_isbn; ?>"><?php echo $row->product_isbn; ?></option>
+                 <?php }} ?>
+            </datalist>
+             <?php echo form_error('product_isbn'); ?>
         </div>
     </div>
     
@@ -552,8 +587,8 @@ $(document).ready(function () {
      var product_mpn_isbn = $(this).val(); 
      if(product_mpn_isbn){
         $('.check_record').attr("disabled", "disabled");
-        jQuery.post('<?php echo base_url()?>marketplace/get_attributes_info/',{product_mpn_isbn:product_mpn_isbn},
-        function(data){ 
+        jQuery.post('<?php echo base_url()?>marketplace/get_attributes_info/MPN',{product_mpn_isbn:product_mpn_isbn},
+        function(data){
          var prod_make= <?php echo json_encode($product_makes); ?>;
          var producttypes= <?php echo json_encode($product_types); ?>;
          var productcolors= <?php echo json_encode($product_colors); ?>;
@@ -626,6 +661,60 @@ $(document).ready(function () {
            $('.check_record').removeAttr("disabled");   
          }
         });
+
+     $("#mpn2").change(function(){
+     var product_mpn_isbn = $(this).val();
+     if(product_mpn_isbn){
+        $('.check_record').attr("disabled", "disabled");
+        jQuery.post('<?php echo base_url()?>marketplace/get_attributes_info/ISBN',{product_mpn_isbn:product_mpn_isbn},
+        function(data){
+         var prod_make= <?php echo json_encode($product_makes); ?>;
+         var producttypes= <?php echo json_encode($product_types); ?>;
+         var productcolors= <?php echo json_encode($product_colors); ?>;
+        if(data.STATUS=='true'){
+          if(prod_make){
+          var productmakehtml='<option  selected value="">Product Make</option>';
+            $.each(prod_make, function(index, val) {
+                productmakehtml +='<option value="'+val.product_make+'"';
+                if(val.product_make==data.product_make)
+                productmakehtml +=' Selected';
+                productmakehtml +=' >'+val.product_make+'</option>';
+             });
+             $('#product_make').html(productmakehtml);
+            }
+
+            if(producttypes){
+            var producttypehtml='<option  selected value="">Product Type</option>';
+            $.each(producttypes, function(index, val) {
+                producttypehtml +='<option';
+                if(val.product_type==data.product_type)
+                producttypehtml +=' Selected';
+                producttypehtml +=' >'+val.product_type+'</option>';
+             });
+             $('#product_type').html(producttypehtml);
+            }
+
+             if(productcolors){
+            var productcolorhtml='<option  selected value="">Product Color</option>';
+            $.each(productcolors, function(index, val) {
+                productcolorhtml +='<option value="'+val.product_color+'"';
+                if(val.product_color==data.product_color)
+                productcolorhtml +=' Selected';
+                productcolorhtml +=' >'+val.product_color+'</option>';
+             });
+             $('#product_color').html(productcolorhtml);
+            }
+
+            $('input[name="product_model"]').val(data.product_model);
+
+           }
+
+          });
+           $('.check_record').removeAttr("disabled");
+         }
+        });
+
+
      });
 
     $(document).ready(function() {

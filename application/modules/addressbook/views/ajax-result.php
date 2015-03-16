@@ -169,7 +169,7 @@ function country($name)
                 echo '
                     <div class="col-lg-12">
                         <div class="ibox float-e-margins">
-                            <div class="ibox-content">There are '.$addressbook_count.' Results.</div>   
+                            <div class="ibox-content"><a href="addressbook/" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="right" title="Clear Search Results"><i class="fa fa-times"></i></a> There are '.$addressbook_count.' Results.</div>   
                         </div>
                     </div>
                      ';

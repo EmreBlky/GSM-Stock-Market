@@ -1,9 +1,9 @@
 <?php 
-        $attributes = array('class' => 'pull-right mail-search');
+        $attributes = array('class' => '');
         echo form_open('search/addressbookSearch/', $attributes); 
     ?>
     <div class="input-group">
-        <input type="text" class="form-control"id="search_addressbook" name="search" placeholder="Search Addressbook">
+        <input type="text" class="form-control"id="search_addressbook" name="search" placeholder="Enter your search terms">
         <span class="input-group-btn" >
             <button type="submit" class="btn btn-primary">Search</button> 
         </span>
