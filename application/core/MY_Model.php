@@ -94,7 +94,8 @@ class MY_Model extends CI_Model {
 			   $data = $row;
 		   }
 				
-		}		
+		}
+                
 		
 		return $data;
 	
@@ -114,12 +115,13 @@ class MY_Model extends CI_Model {
 		
 		if($query->num_rows() > 0){
 				
-			foreach ($query->result() as $row)
+                   foreach ($query->result() as $row)
 		   {
 			   $data[] = $row;
 		   }
 				
-		}		
+		}
+                
 		
 		return $data;
 	
