@@ -32,7 +32,7 @@ class Addressbook extends MX_Controller
         $data['main'] = 'addressbook';
         $data['title'] = 'GSM - Addressbook';        
         $data['page'] = 'index';
-        $data['address_all'] = $this->addressbook_model->get_all();
+        $data['address_all'] = $this->addressbook_model->get_where_multiples('member_id',$this->session->userdata('members_id'));
         
         if(isset($off) && $off > 1){
             $new_mem = $off-1;
