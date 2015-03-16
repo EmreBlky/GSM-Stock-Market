@@ -360,17 +360,16 @@ if ( ! function_exists('currency_class')) {
 	}
 }
 
-if(! function_exists('get_currency')){
+if( ! function_exists('get_currency')){
 	function get_currency($from_Currency, $to_Currency, $amount) {
-		$value = '';
-		$curl = curl_init();
-		curl_setopt($curl, CURLOPT_URL, "http://jsonrates.com/convert/?from=".$from_Currency."&to=".$to_Currency."&amount=".$amount."&apiKey=jr-199aebc4591596e450c50d07d0917a87");
-		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);			
-		$content = curl_exec($curl);			
-		curl_close($curl); 
-		$json = json_decode($content);
-		 $cur_amount = (float) $json->amount;
-		 return round($cur_amount,2);
+			$curl = curl_init();
+			curl_setopt($curl, CURLOPT_URL, "http://jsonrates.com/convert/?from=".$from_Currency."&to=".$to_Currency."&amount=".$amount."&apiKey=jr-199aebc4591596e450c50d07d0917a87");
+			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);			
+			$content = curl_exec($curl);			
+			curl_close($curl); 
+			$json = json_decode($content);
+			 $cur_amount = (float) $json->amount;
+			 return round($cur_amount,2);
 		}
 	
 }
