@@ -50,10 +50,10 @@
                       <div class="hr-line-dashed"></div>
                     <dl class="dl-horizontal">
                         <h4>Price</h4>
-                        <dt>Sale Currency:</dt> <dd> <?php if(!empty($listing_detail->currency)) { echo $listing_detail->currency; } ?></dd>
-                        <dt>GBP Price:</dt> <dd><strong>  &pound;96.00</strong></dd>
-                        <dt>EUR Price:</dt> <dd>  &euro;130.55</dd>
-                        <dt>USD Price:</dt> <dd>  $147.59</dd>
+                        <dt>Sale Currency:</dt> <dd> <?php if(!empty($listing_detail->currency)) { echo currency_class($listing_detail->currency); } ?></dd>
+                        <dt>GBP Price:</dt> <dd><strong>  &pound; <?php echo get_currency(currency_class($listing_detail->currency), 'GBP', $listing_detail->unit_price); ?></strong></dd>
+                        <dt>EUR Price:</dt> <dd>  &euro; <?php echo get_currency(currency_class($listing_detail->currency), 'EUR', $listing_detail->unit_price); ?></dd>
+                        <dt>USD Price:</dt> <dd>  $ <?php echo get_currency(currency_class($listing_detail->currency), 'USD', $listing_detail->unit_price); ?></dd>
                     </dl>
                      <div class="hr-line-dashed"></div> 
                     <dl class="dl-horizontal">
