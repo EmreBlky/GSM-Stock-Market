@@ -11,6 +11,7 @@ class Profile extends MX_Controller {
             redirect('login');
         }
         $this->load->model('member/member_model', 'member_model');
+        $this->load->model('block/block_model', 'block_model');
         $this->load->model('company/company_model', 'company_model');
         $this->load->model('viewed/viewed_model', 'viewed_model');
         $this->load->model('country/country_model', 'country_model');
@@ -62,6 +63,13 @@ class Profile extends MX_Controller {
     }
 
     function who_viewed($page = NULL, $off = NULL) {
+        
+        //$blocked = $this->block_model->get_where_multiples('block_member_id', $this->session->userdata('members_id'));
+        
+        //echo '<pre>';
+        //print_r($blocked);
+        //exit;
+        
         $this->load->library('pagination');
         $data['base'] = $this->config->item('base_url');
         $data['main'] = 'profile';

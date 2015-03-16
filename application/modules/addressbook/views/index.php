@@ -104,7 +104,8 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
             <div class="col-lg-12">
             	<div class="ibox float-e-margins">
                     <div class="ibox-content" style="padding-bottom:15px">
-            			<div class="row">
+            		<div class="row">
+                        <?php if($address_all){?>
                         <div class="col-lg-2">                            
 <!--                                <label class="checkbox-inline i-checks" style="margin:10px"> -->
                                     <input id="fav_check" type="checkbox" value="yes"> Favourites
@@ -154,6 +155,9 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
 
                             ?>
                         </div>
+                        <?php } else {?> 
+                            <h2>You have no contacts in your address book at present.</h2>
+                        <?php } ?>
                     	</div><!-- row -->
                     </div><!-- ibox-content -->
             </div></div>

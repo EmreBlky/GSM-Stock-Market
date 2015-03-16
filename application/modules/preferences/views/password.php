@@ -1,4 +1,16 @@
-
+<script>
+    
+    $(document).ready(function() {   
+    <?php if($this->session->flashdata('title')){?>    
+        <?php if($this->session->flashdata('title') != 'Password Success'){ ?>
+            toastr.error('<?php echo $this->session->flashdata('message');?>', '<?php echo $this->session->flashdata('title');?>');
+        <?php } else{ ?>
+            toastr.success('<?php echo $this->session->flashdata('message');?>', '<?php echo $this->session->flashdata('title');?>');
+        <?php }?>
+    <?php }?>    
+     });
+     
+</script>
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
                     <h2>Change Password</h2>
@@ -22,14 +34,15 @@
                         <div class="ibox-title">
                             <h5>Edit Password</h5>
                         </div>
-                        <div class="ibox-content">                            
+                        <div class="ibox-content">
+                            
                             <?php 
                                 $attributes = array('class' => 'form-horizontal');
                                 echo form_open('preferences/passwordUpdate', $attributes); 
                             ?>    
                         	<div class="form-group"><label class="col-md-3 control-label">Current Password</label>
                                     <div class="col-md-9">
-                                        <input type="password" placeholder="Current Password" id="password" class="form-control" name="old_password">
+                                        <input type="password" placeholder="Current Password" id="password" class="form-control" name="old_password" id="old_password">
                                     </div>
                                 </div>  
                                 
@@ -37,7 +50,7 @@
                                 
                         		<div class="form-group"><label class="col-md-3 control-label">New Password</label>
                                     <div class="col-md-9">
-                                        <input type="password" id="new_password" name="password" type="text" class="form-control required">
+                                        <input type="password" id="new_password" name="new_password" type="text" class="form-control required">
                                     </div>
                                 </div>  
                         		<div class="form-group"><label class="col-md-3 control-label">Repeat New Password</label>
@@ -83,3 +96,38 @@
                         }
                     });
 	</script>
+        
+        <script src="public/main/template/core/js/plugins/jsKnob/jquery.knob.js"></script>
+        
+    <!-- Toastr script -->
+    <script src="public/main/template/core/js/plugins/toastr/toastr.min.js"></script><!-- ALERTS -->
+    
+    <script type="text/javascript">
+        $(function () {
+                toastr.options = {
+                    closeButton: false,
+                    debug:false,
+                    progressBar: false,
+                    positionClass: 'toast-bottom-right',
+                    onclick: null,
+					showDuration: 400,
+					hideDuration: 1000,
+					timeOut: 7000,
+					extendedTimeOut: 1000,
+					showEasing: 'swing',
+					hideEasing: 'linear',
+					showMethod: 'fadeIn',
+					hideMethod: 'fadeOut',
+				};
+            $('#blocked').click(function (){
+                toastr.error('They are unable to communicate or see you in anyway on this website.', 'User Blocked!');
+            });
+            $('#unblocked').click(function (){
+                toastr.success('You will now be visible to this user again and can communicate with them.', 'User Unblocked');
+            });
+            $('#conversation').click(function (){
+                toastr.warning('Both users need to add each other as a contact before they can use GSM Messenger!', 'Chat Unavailable');
+            });
+        	$(".dial").knob();
+        })
+    </script>
