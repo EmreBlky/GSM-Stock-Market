@@ -41,8 +41,51 @@ class Preferences extends MX_Controller
     
     function passwordUpdate()
     {
-        echo '<pre>';
-        print_r($_POST);
+        $data['main'] = 'preferences';        
+        $data['title'] = 'GSM - Change Password';        
+        $data['page'] = 'password';
+        
+        $this->load->library('form_validation');
+        
+        $this->form_validation->set_rules('old_password', 'Old Password', 'xss_clean');
+        $this->form_validation->set_rules('new_password', 'New Password', 'xss_clean');
+        $this->form_validation->set_rules('confirm', 'Confirm', 'xss_clean');
+        
+        $this->load->model('member/member_model', 'member_model');
+        $current = $this->member_model->get_where($this->session->userdata('members_id'))->password;
+        $old = $this->input->post('old_password');
+        $new = $this->input->post('new_password');
+        $confirm = $this->input->post('confirm');
+        
+        if(md5($old) == $current){            
+            
+            if($new == $confirm){
+                
+                if($this->form_validation->run()){
+                    
+                    $data = array(
+                        'password' => md5($confirm)
+                    );
+                    $this->member_model->_update($this->session->userdata('members_id'), $data);
+                    
+                    $this->session->set_flashdata('title', 'Password Success');
+                    $this->session->set_flashdata('message', 'Your password has been successfully updated.');
+                    redirect('preferences/password');
+                }
+            }
+            else{
+                $this->session->set_flashdata('title', 'Password Error');
+                $this->session->set_flashdata('message', 'Password does not match. Please try again.');
+                redirect('preferences/password');                
+            }
+            
+        }
+        else{
+            $this->session->set_flashdata('title', 'Password Error');
+            $this->session->set_flashdata('message', 'Current Password does not match. Please try again.');
+            redirect('preferences/password');
+        }
+        
     }
     
     function newsletter()
