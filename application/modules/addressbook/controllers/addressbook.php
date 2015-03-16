@@ -11,6 +11,7 @@ class Addressbook extends MX_Controller
         }
         $this->load->model('addressbook/addressbook_model', 'addressbook_model');
         $this->load->model('activity/activity_model', 'activity_model');
+        $this->load->model('block/block_model', 'block_model');
         $this->load->model('country/country_model', 'country_model');
         $this->load->model('login/login_model', 'login_model');
         $this->load->model('favourite/favourite_model', 'favourite_model');
@@ -33,6 +34,8 @@ class Addressbook extends MX_Controller
         $data['title'] = 'GSM - Addressbook';        
         $data['page'] = 'index';
         $data['address_all'] = $this->addressbook_model->get_where_multiples('member_id',$this->session->userdata('members_id'));
+        $data['blocked'] = $this->block_model->get_where_multiples('block_member_id', $this->session->userdata('members_id'));
+
         
         if(isset($off) && $off > 1){
             $new_mem = $off-1;
@@ -440,7 +443,7 @@ class Addressbook extends MX_Controller
     function searchQuery($one, $two, $three, $fave = NULL)
     {
         $this->load->library('pagination');
-        
+        $data['blocked'] = $this->block_model->get_where_multiples('block_member_id', $this->session->userdata('members_id'));
         $data['base'] = $this->config->item('base_url');
         if(isset($off) && $off > 1){
             $new_mem = $off-1;

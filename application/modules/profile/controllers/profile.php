@@ -64,17 +64,18 @@ class Profile extends MX_Controller {
 
     function who_viewed($page = NULL, $off = NULL) {
         
-        //$blocked = $this->block_model->get_where_multiples('block_member_id', $this->session->userdata('members_id'));
-        
-        //echo '<pre>';
-        //print_r($blocked);
-        //exit;
+//        $blocked = $this->block_model->get_where_multiples('block_member_id', $this->session->userdata('members_id'));
+//        
+//        echo '<pre>';
+//        print_r($blocked);
+//        exit;
         
         $this->load->library('pagination');
         $data['base'] = $this->config->item('base_url');
         $data['main'] = 'profile';
         $data['title'] = 'GSM - Whos Viewed Profile';
         $data['page'] = 'whos-viewed';
+        $data['blocked'] = $this->block_model->get_where_multiples('block_member_id', $this->session->userdata('members_id'));
 
         if (isset($off) && $off > 1) {
             $new_mem = $off - 1;
