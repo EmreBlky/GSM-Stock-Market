@@ -367,9 +367,12 @@ if( ! function_exists('get_currency')){
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);			
 			$content = curl_exec($curl);			
 			curl_close($curl); 
-			$json = json_decode($content);
-			 $cur_amount = (float) $json->amount;
+			if(!empty($json->amount)){
+    		 $cur_amount = (float) $json->amount;
 			 return round($cur_amount,2);
+			}else{
+			 return 0;	
+			}
 		}
 	
 }
