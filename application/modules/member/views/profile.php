@@ -14,12 +14,14 @@
                 var cust_added          = $('#cust_added').val();                
                 var cust_individual     = $('#cust_individual').val();
                 var cust_company        = $('#cust_company').val();
-                var cust_business       = $('#cust_business').val();
+                var cust_business1      = $('#cust_business1').val();
+                var cust_business2      = $('#cust_business2').val();
+                var cust_business3      = $('#cust_business3').val();
                 var cust_country        = $('#cust_country').val();
                 
                  $.ajax({
                         type: "POST",
-                        url: "addressbook/add/"+ cust_added +"/"+ cust_individual +"/"+ cust_company +"/"+ cust_business +"/"+ cust_country +"",
+                        url: "addressbook/add/"+ cust_added +"/"+ cust_individual +"/"+ cust_company +"/"+ cust_business1 +"/"+ cust_business2 +"/"+ cust_business3 +"/"+ cust_country +"",
                         dataType: "html",
                         success:function(data){
                           $('#contact_added').replaceWith('<button onclick="contactRemove();" type="button" class="btn btn-success btn-sm btn-block" id="contact_removed"><i class="fa fa-book"></i> Remove Contact</button>');                             
@@ -209,7 +211,9 @@
                                         <input type="hidden" id="cust_added" name="cust_added" value="<?php echo $member_info->id;?>"/>
                                         <input type="hidden" id="cust_individual" name="cust_individual" value="<?php echo $member_info->firstname.' '.$member_info->lastname;?>"/>
                                         <input type="hidden" id="cust_company" name="cust_company" value="<?php echo $member_company->company_name;?>"/>
-                                        <input type="hidden" id="cust_business" name="cust_business" value="<?php if($member_company->business_sector_1 != ''){echo $member_company->business_sector_1;} else{ if($member_company->other_business != ''){echo $member_company->other_business;}else{ echo 'NULL';}}?>"/>
+                                        <input type="hidden" id="cust_business1" name="cust_business1" value="<?php if($member_company->business_sector_1 != ''){echo $member_company->business_sector_1;} else{ if($member_company->other_business != ''){echo $member_company->other_business;}else{ echo 'NULL';}}?>"/>
+                                        <input type="hidden" id="cust_business2" name="cust_business2" value="<?php echo $member_company->business_sector_2; ?>"/>
+                                        <input type="hidden" id="cust_business3" name="cust_business3" value="<?php echo $member_company->business_sector_3; ?>"/>
                                         <input type="hidden" id="cust_country" name="cust_country" value="<?php echo $member_company->country?>"/>
                                         <?php 
                                         
