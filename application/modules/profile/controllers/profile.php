@@ -64,11 +64,11 @@ class Profile extends MX_Controller {
 
     function who_viewed($page = NULL, $off = NULL) {
         
-        $blocked = $this->block_model->get_where_multiples('block_member_id', $this->session->userdata('members_id'));
+        //$blocked = $this->block_model->get_where_multiples('block_member_id', $this->session->userdata('members_id'));
         
-        echo '<pre>';
-        print_r($blocked);
-        exit;
+        //echo '<pre>';
+        //print_r($blocked);
+        //exit;
         
         $this->load->library('pagination');
         $data['base'] = $this->config->item('base_url');
