@@ -408,17 +408,19 @@ class Addressbook extends MX_Controller
         return $var;
     }
     
-    function add($mid, $individual, $company, $business, $country)
+    function add($mid, $individual, $company, $business1, $business2, $business3, $country)
     {
         $data = array(
-                        'member_id'             => $this->session->userdata('members_id'),
-                        'address_member_id'     => $mid,
-                        'individual'            => $this->characterReplace($individual),
-                        'company'               => $this->characterReplace($company),
-                        'favourite'             => 'no',
-                        'business_activities'   => $this->characterReplace($business),
-                        'country'               => $country,
-                        'date'                  => date('Y-m-d H:i:s')
+                        'member_id'                     => $this->session->userdata('members_id'),
+                        'address_member_id'             => $mid,
+                        'individual'                    => $this->characterReplace($individual),
+                        'company'                       => $this->characterReplace($company),
+                        'favourite'                     => 'no',
+                        'business_activities'           => $this->characterReplace($business1),
+                        'second_business_activities'    => $this->characterReplace($business2),
+                        'third_business_activities'     => $this->characterReplace($business3),
+                        'country'                       => $country,
+                        'date'                          => date('Y-m-d H:i:s')
                     );
         $this->addressbook_model->_insert($data);
         
