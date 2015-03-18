@@ -25,7 +25,7 @@ class Paypal extends MX_Controller
         $config['notify_url']           = $base .'paypal/process'; //IPN Post
         $config['production']           = FALSE; //Its false by default and will use sandbox
         //$config['discount_rate_cart']   = 20; //This means 20% discount
-        $config["invoice"]              = 'INV8'; //The invoice id
+        $config["invoice"]              = 'INV9'; //The invoice id
 
         $this->load->library('paypal_lib',$config);
 
@@ -66,11 +66,12 @@ class Paypal extends MX_Controller
     
     function process()
     {
-        $data = array(
-                    'invoice' => $this->input->post('invoice'),
+        $pid = $this->paypal_model->get_where_multiples('invoice', $this->input->post('invoice'))->id;
+        
+        $data = array(                    
                     'payment_status' => $this->input->post('payment_status')
                     );
-        $this->paypal_model->_insert($data);
+        $this->paypal_model->_insert($pid, $data);
     }
 	
 }
