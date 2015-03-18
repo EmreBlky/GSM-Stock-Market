@@ -68,11 +68,13 @@
                         </a>
                     </li>
                     
+                    <!--
                     <li>
                         <a href="messenger"><i class="fa fa-wechat"></i> <span class="nav-label">Messenger</span>
-<!--                            <span class="label label-warning pull-right">0/1</span>-->
+	                        <span class="label label-warning pull-right">0/1</span>
                         </a>
                     </li>
+                    -->
                     
                     <li>
                         <a href="addressbook"><i class="fa fa-book"></i> <span class="nav-label">Address Book</span></a>
@@ -93,11 +95,13 @@
                     </li>
                     
                     <li>
-                        <a href="/"><i class="fa fa-search"></i> <span class="nav-label">Search</span> <span class="fa arrow"></span></a>
+                        <a href="search/company"><i class="fa fa-search"></i> <span class="nav-label">Search</span></a>
+                        <!--
                         <ul class="nav nav-second-level">
                             <li><a href="search/user"><i class="fa fa-user"></i> User Search</a></li>
                             <li><a href="search/company"><i class="fa fa-users"></i> Company Search</a></li>
                         </ul>
+                        -->
                     </li>
                     
                     <li>
@@ -111,9 +115,11 @@
                         </ul>
                     </li>
                     
+                    <!--
                     <li>
                         <a href="#"><i class="fa fa-users"></i> <span class="nav-label">Social Hub</span></a>
                     </li>
+                    -->
                     
                     <li>
                         <a href="/"><i class="fa fa-support"></i> <span class="nav-label">Support</span> <span class="fa arrow"></span></a>
@@ -127,8 +133,8 @@
                         <a href="/"><i class="fa fa-cog"></i> <span class="nav-label">Preferences</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="preferences/password"><i class="fa fa-lock"></i> Change Password</a></li>
-                            <li><a href="preferences/subscription"><i class="fa fa-cubes"></i> Manage Subscription</a></li>
-                            <li><a href="preferences/newsletter"><i class="fa fa-newspaper-o"></i> Newsletter</a></li>
+                            <li><a href="preferences/subscription"><i class="fa fa-cubes"></i> My Subscription</a></li><!--
+                            <li><a href="preferences/newsletter"><i class="fa fa-newspaper-o"></i> Newsletter</a></li>-->
                         </ul>
                     </li>
                     
