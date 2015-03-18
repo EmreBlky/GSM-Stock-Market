@@ -40,11 +40,17 @@ class Paypal extends MX_Controller
     
     function notify_payment()
     {
-        $data = print_r($this->input->post(), TRUE);
+        $info = print_r($this->input->post(), TRUE);
         
         echo '<pre>';
-        echo $data;
+        echo $info;
         echo '</pre>';
+        
+        $data = array(
+                    'invoice' => $this->input->post('invoice'),
+                    'payment_status' => $this->input->post('payment_status')
+                    );
+        $this->paypal_model->_insert($data);
     }
     
     function cancel_return()
