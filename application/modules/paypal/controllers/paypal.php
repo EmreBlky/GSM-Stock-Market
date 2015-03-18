@@ -25,14 +25,14 @@ class Paypal extends MX_Controller
         $config['notify_url']           = $base .'paypal/process'; //IPN Post
         $config['production']           = FALSE; //Its false by default and will use sandbox
         //$config['discount_rate_cart']   = 20; //This means 20% discount
-        $config["invoice"]              = 'INV2003'; //The invoice id
+        $config["invoice"]              = 'INV3'; //The invoice id
 
         $this->load->library('paypal_lib',$config);
 
         #$this->paypal->add(<name>,<price>,<quantity>[Default 1],<code>[Optional]);
 
-        $this->paypal_lib->add('T-shirt', 2.99, 6); //First item
-        $this->paypal_lib->add('Pants', 40, 3); 	  //Second item
+        $this->paypal_lib->add('GSM Credit Top Up', 5, 1); //First item
+        //$this->paypal_lib->add('Pants', 40, 3); 	  //Second item
         //$this->paypal_lib->add('Blowse',10,10,'B-199-26'); //Third item with code
 
         $this->paypal_lib->pay(); //Proccess the payment
@@ -49,8 +49,13 @@ class Paypal extends MX_Controller
     
     function cancel_return()
     {
-        echo '<pre>';
-        print_r($this->input->post(), TRUE);
+        //echo '<pre>';
+        //print_r($this->input->post(), TRUE);
+        $data = array(
+                    'invoice' => $this->input->post('invoice'),
+                    'payment_status' => $this->input->post('payment_status')
+                    );
+        $this->paypal_model->_insert($data);
     }
     
     function process()
