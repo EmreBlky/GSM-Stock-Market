@@ -110,7 +110,7 @@ class Paypal_lib {
 
 		#API Configuration-->
 		$config["upload"] 		 = '1'; //Do not modify
-		$config["currency_code"] = 'GBP'; //http://bit.ly/anciiH
+		$config["currency_code"] = 'USD'; //http://bit.ly/anciiH
 		$config["disp_tot"] = 'Y';
 
 		#Page Layout -->
