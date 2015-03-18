@@ -101,7 +101,7 @@ class Paypal_lib {
 	{
 		#Account information
 		$config["business"] 	= ''; //Account email or id
-		$config["cmd"] 			= 'subscr_signup'; //Do not modify
+		//$config["cmd"] 			= '_cart'; //Do not modify
 		$config["production"] 	= FALSE;
 
 		#Custom variable here we send the billing code-->
