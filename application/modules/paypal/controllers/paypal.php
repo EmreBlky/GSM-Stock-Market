@@ -19,7 +19,8 @@ class Paypal extends MX_Controller
     {
         $base = $this->config->item('base_url');
         $config['business']             = 'info@gsmstockmarket.com';
-        $config['cpp_header_image']     = ''; //Image header url [750 pixels wide by 90 pixels high]
+        $config['cpp_header_image']     = $base .'public/main/template/gsm/images/gsm.png'; //Image header url [750 pixels wide by 90 pixels high]
+        $config["cmd"] 			= '_cart'; //Do not modify
         $config['return']               = $base .'paypal/notify_payment';
         $config['cancel_return']        = $base .'paypal/cancel_return';
         $config['notify_url']           = $base .'paypal/process'; //IPN Post
