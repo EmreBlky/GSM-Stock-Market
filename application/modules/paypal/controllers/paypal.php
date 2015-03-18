@@ -66,12 +66,13 @@ class Paypal extends MX_Controller
     
     function process()
     {
-        $pid = $this->paypal_model->get_where_multiples('invoice', $this->input->post('invoice'))->id;
+        echo $pid = $this->paypal_model->get_where_multiple('invoice', 'INV9')->id;
+        exit;
         
-        $data = array(                    
-                    'payment_status' => $this->input->post('payment_status')
-                    );
-        $this->paypal_model->_insert($pid, $data);
+//        $data = array(                    
+//                    'payment_status' => $this->input->post('payment_status')
+//                    );
+//        $this->paypal_model->_insert($pid, $data);
     }
 	
 }
