@@ -25,7 +25,7 @@ class Paypal extends MX_Controller
         $config['notify_url']           = $base .'paypal/process'; //IPN Post
         $config['production']           = FALSE; //Its false by default and will use sandbox
         //$config['discount_rate_cart']   = 20; //This means 20% discount
-        $config["invoice"]              = 'INV2001'; //The invoice id
+        $config["invoice"]              = 'INV2002'; //The invoice id
 
         $this->load->library('paypal_lib',$config);
 
