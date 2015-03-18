@@ -19,14 +19,14 @@ class Paypal extends MX_Controller
     {
         $base = $this->config->item('base_url');
         $config['business']             = 'info@gsmstockmarket.com';
-        $config['cpp_header_image']     = $base .'public/main/template/gsm/images/gsm.png'; //Image header url [750 pixels wide by 90 pixels high]
+        $config['cpp_header_image']     = $base .'public/main/template/gsm/images/paypal_gsm.png'; //Image header url [750 pixels wide by 90 pixels high]
         $config["cmd"] 			= '_cart'; //Do not modify
         $config['return']               = $base .'paypal/notify_payment';
         $config['cancel_return']        = $base .'paypal/cancel_return';
         $config['notify_url']           = $base .'paypal/process'; //IPN Post
         $config['production']           = FALSE; //Its false by default and will use sandbox
         //$config['discount_rate_cart']   = 20; //This means 20% discount
-        $config["invoice"]              = 'INV10'; //The invoice id
+        $config["invoice"]              = 'INV12344'; //The invoice id
 
         $this->load->library('paypal_lib',$config);
 
@@ -56,13 +56,7 @@ class Paypal extends MX_Controller
     
     function cancel_return()
     {
-        //echo '<pre>';
-        //print_r($this->input->post(), TRUE);
-        $data = array(
-                    'invoice' => $this->input->post('invoice'),
-                    'payment_status' => $this->input->post('payment_status')
-                    );
-        $this->paypal_model->_insert($data);
+        $this->load->view('cancel-return');
     }
     
     function process()
