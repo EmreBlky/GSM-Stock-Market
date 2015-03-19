@@ -46,7 +46,7 @@
                     <tbody>
                 <?php  if(!empty($seller_offer)): ?>
                     <?php foreach ($seller_offer as $value): ?>
-                    <tr data-toggle="modal" data-target="#myModal5">
+                    <tr>
                         <td><?php echo $value->listing_end_datetime; ?></td>
                         <td><?php echo $value->product_make; ?></td>
                         <td><?php echo $value->product_model; ?></td>
@@ -58,7 +58,7 @@
                         <td><img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" title="<?php echo $value->product_country ?>" /></td>
                         <th>
                         <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
-                        <a href="javascript:void(0)" class="btn btn-danger" style="font-size:10px">Unwatch</a>
+                        <a href="<?php echo base_url().'marketplace/listing_unwatch/'.$value->id ?>" class="btn btn-danger" style="font-size:10px">Unwatch</a>
                         <a href="<?php echo base_url().'marketplace/listing_detail/'.$value->id ?>" class="btn btn-primary" style="font-size:10px">More Info</a></th>
                     </tr>
                         
@@ -97,7 +97,7 @@
                     <tbody>
                     <?php  if(!empty($buying_request)): ?>
                     <?php foreach ($buying_request as $value): ?>
-                    <tr data-toggle="modal" data-target="#myModal5">
+                    <tr>
                         <td><?php echo $value->listing_end_datetime; ?></td>
                         <td><?php echo $value->product_make; ?></td>
                         <td><?php echo $value->product_model; ?></td>
