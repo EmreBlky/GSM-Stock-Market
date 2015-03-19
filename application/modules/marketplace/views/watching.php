@@ -19,7 +19,7 @@
                 </div>
             </div>
         <div class="wrapper wrapper-content animated fadeInRight">
-        	
+            
             <div class="row">
                 <div class="col-lg-12">
                 <div class="ibox float-e-margins">
@@ -44,216 +44,27 @@
                     </tr>
                     </thead>
                     <tbody>
+                <?php  if(!empty($seller_offer)): ?>
+                    <?php foreach ($seller_offer as $value): ?>
                     <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Apple</td>
-                        <td>Apple iPhone 4S 16GB</td>
-                        <td>Data Cable</td>
-                        <td>Refurbished</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <td><?php echo $value->listing_end_datetime; ?></td>
+                        <td><?php echo $value->product_make; ?></td>
+                        <td><?php echo $value->product_model; ?></td>
+                        <td><?php echo $value->product_type; ?></td>
+                        <td><?php echo $value->condition; ?></td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
+                        <td><?php echo $value->total_qty; ?></td>
+                        <td><?php echo $value->spec; ?></td>
+                        <td><img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" title="<?php echo $value->product_country ?>" /></td>
                         <th>
                         <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
-                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+                        <a href="javascript:void(0)" class="btn btn-danger" style="font-size:10px">Unwatch</a>
+                        <a href="<?php echo base_url().'marketplace/listing_detail/'.$value->id ?>" class="btn btn-primary" style="font-size:10px">More Info</a></th>
                     </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Apple</td>
-                        <td>Apple iPhone 5S 32GB</td>
-                        <td>Data Cable</td>
-                        <td>Refurbished</td>
-                        <td>GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
-                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Apple</td>
-                        <td>Apple iPhone 2G 4GB</td>
-                        <td>Data Cable</td>
-                        <td>Refurbished</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
-                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S4 16GB</td>
-                        <td>Data Cable</td>
-                        <td>New</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
-                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S3 16GB</td>
-                        <td>Data Cable</td>
-                        <td>New</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
-                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S2 8GB</td>
-                        <td>Data Cable</td>
-                        <td>New</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
-                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S2 8GB</td>
-                        <td>Data Cable</td>
-                        <td>New</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
-                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S2 8GB</td>
-                        <td>Data Cable</td>
-                        <td>New</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
-                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S2 8GB</td>
-                        <td>Data Cable</td>
-                        <td>New</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
-                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S2 8GB</td>
-                        <td>Data Cable</td>
-                        <td>New</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
-                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S2 8GB</td>
-                        <td>Data Cable</td>
-                        <td>New</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
-                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S2 8GB</td>
-                        <td>Data Cable</td>
-                        <td>New</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
-                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S2 8GB</td>
-                        <td>Data Cable</td>
-                        <td>New</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
-                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S2 8GB</td>
-                        <td>Data Cable</td>
-                        <td>New</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
-                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
+                        
+                    <?php endforeach ?>
+                <?php endif; ?>
+                    
                     </tbody>
                     </table>
 
@@ -284,216 +95,26 @@
                     </tr>
                     </thead>
                     <tbody>
+                    <?php  if(!empty($buying_request)): ?>
+                    <?php foreach ($buying_request as $value): ?>
                     <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Apple</td>
-                        <td>Apple iPhone 4S 16GB</td>
-                        <td>Data Cable</td>
-                        <td>Refurbished</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
+                        <td><?php echo $value->listing_end_datetime; ?></td>
+                        <td><?php echo $value->product_make; ?></td>
+                        <td><?php echo $value->product_model; ?></td>
+                        <td><?php echo $value->product_type; ?></td>
+                        <td><?php echo $value->condition; ?></td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
+                        <td><?php echo $value->total_qty; ?></td>
+                        <td><?php echo $value->spec; ?></td>
+                        <td><img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" title="<?php echo $value->product_country ?>" /></td>
                         <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
-                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Make Offer</button>
+                        <a href="<?php echo base_url().'marketplace/listing_unwatch/'.$value->id ?>" class="btn btn-danger" style="font-size:10px">Unwatch</a>
+                        <a href="<?php echo base_url().'marketplace/listing_detail/'.$value->id ?>" class="btn btn-primary" style="font-size:10px">More Info</a></th>
                     </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Apple</td>
-                        <td>Apple iPhone 5S 32GB</td>
-                        <td>Data Cable</td>
-                        <td>Refurbished</td>
-                        <td>GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
-                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Apple</td>
-                        <td>Apple iPhone 2G 4GB</td>
-                        <td>Data Cable</td>
-                        <td>Refurbished</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
-                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S4 16GB</td>
-                        <td>Data Cable</td>
-                        <td>New</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
-                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S3 16GB</td>
-                        <td>Data Cable</td>
-                        <td>New</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
-                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S2 8GB</td>
-                        <td>Data Cable</td>
-                        <td>New</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
-                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S2 8GB</td>
-                        <td>Data Cable</td>
-                        <td>New</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
-                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S2 8GB</td>
-                        <td>Data Cable</td>
-                        <td>New</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
-                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S2 8GB</td>
-                        <td>Data Cable</td>
-                        <td>New</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
-                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S2 8GB</td>
-                        <td>Data Cable</td>
-                        <td>New</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
-                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S2 8GB</td>
-                        <td>Data Cable</td>
-                        <td>New</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
-                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S2 8GB</td>
-                        <td>Data Cable</td>
-                        <td>New</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
-                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S2 8GB</td>
-                        <td>Data Cable</td>
-                        <td>New</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
-                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
-                        <td>17:22 11-02</td>
-                        <td>Samsung</td>
-                        <td>Galaxy S2 8GB</td>
-                        <td>Data Cable</td>
-                        <td>New</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td>23</td>
-                        <td>UK</td>
-                        <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" alt="United Kingdom" /></td>
-                        <th>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
-                        <button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-                    </tr>
+                        
+                    <?php endforeach ?>
+                <?php endif; ?>
                     </tbody>
                     </table>
 
