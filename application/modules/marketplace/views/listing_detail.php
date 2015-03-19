@@ -65,14 +65,43 @@
                 </div>
                 <div class="col-lg-6">
                     <p style="text-align:center">
-                       <?php if(!empty($listing_detail->image1)) {?>
-                        <img style="height: 300px;" src="<?php echo base_url().$listing_detail->image1; ?>" /><br /><br />
+                       <?php if(!empty($listing_detail->image1)) { ?>
+                        <img style="height: 300px;" src="<?php echo base_url().$listing_detail->image1; ?>" /><br/><br/>
                         <?php } ?>
+                         <?php if(!empty($listing_detail->image1)) { ?>
+                        <a class="fancybox" rel="gallery1" href="<?php echo base_url().$listing_detail->image1; ?>" title="<?php echo base_url().$listing_detail->image1; ?>">
+                            <img src="<?php echo base_url().$listing_detail->image1; ?>" alt="" />
+                        </a>
+                        <?php } ?>
+                         <?php if(!empty($listing_detail->image2)) { ?>
+                        <a class="fancybox" rel="gallery1" href="<?php echo base_url().$listing_detail->image2; ?>" title="<?php echo base_url().$listing_detail->image2; ?>">
+                            <img src="<?php echo base_url().$listing_detail->image2; ?>" alt="" />
+                        </a>
+                        <?php } ?>
+                         <?php if(!empty($listing_detail->image3)) { ?>
+                        <a class="fancybox" rel="gallery1" href="<?php echo base_url().$listing_detail->image3; ?>" title="<?php echo base_url().$listing_detail->image3; ?>">
+                            <img src="<?php echo base_url().$listing_detail->image3; ?>" alt="" />
+                        </a>
+                        <?php } ?>
+                         <?php if(!empty($listing_detail->image4)) { ?>
+                        <a class="fancybox" rel="gallery1" href="<?php echo base_url().$listing_detail->image4; ?>" title="<?php echo base_url().$listing_detail->image4; ?>">
+                            <img src="<?php echo base_url().$listing_detail->image4; ?>" alt="" />
+                        </a>
+                        <?php } ?>
+                        <?php if(!empty($listing_detail->image5)) { ?>
+                        <a class="fancybox" rel="gallery1" href="<?php echo base_url().$listing_detail->image5; ?>" title="<?php echo base_url().$listing_detail->image5; ?>">
+                            <img src="<?php echo base_url().$listing_detail->image5; ?>" alt="" />
+                        </a>
+                        <?php } ?>
+
+                    </p>
+                    <div style="text-align:center">
                         <?php if(!empty($listing_detail->listing_end_datetime)) { ?> 
                         <span style="color:red">Listing Ends: <?php echo $listing_detail->listing_end_datetime; ?></span><br /><br />
                         <?php } ?>
                         <button type="button" class="btn btn-danger" style="font-size:10px">Pay asking price</button>
-                    </p>
+                    </div>
+
 
                          <?php if (!empty($member_id) && $member_id!=$listing_detail->member_id): ?>
                     <dl class="dl-horizontal" style="margin-top:20px" disabled>
@@ -403,4 +432,3 @@ padding-left:20px;}
                                     </div>
                                 </div>
                             </div>
-
