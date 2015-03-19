@@ -173,7 +173,7 @@ class Profile extends MX_Controller
 
             $path = dirname($_SERVER["SCRIPT_FILENAME"]) . '/public/main/template/gsm/images/company';
             $args = array($_POST['avatar_src'], $_POST['avatar_data'], $_FILES['avatar_file'], $path . "/original", $path, $this->session->userdata('members_id'));
-            $crop = $this->load->library('cropavatar', $args);
+            $crop = $this->load->library('CropAvatar', $args);
             $response = array(
                 'state' => 200,
                 'message' => $this->cropavatar->getMsg(),
