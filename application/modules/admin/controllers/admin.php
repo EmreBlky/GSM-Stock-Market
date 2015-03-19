@@ -19,7 +19,7 @@ class Admin extends MX_Controller
         $data['page'] = 'dashboard';
         $this->load->module('templates');
         $this->templates->admin($data);
-	
+    
     }
     
     function login()
@@ -327,6 +327,60 @@ class Admin extends MX_Controller
         $data['page'] = 'add_listing_attribute';
         $this->load->module('templates');
         $this->templates->admin($data);
+    }
+
+    function listing()
+    {
+        $this->check_authentication();//check login authentication
+
+        $data['listing'] =  $this->admin_model->get_result('listing', array('status'=>0));
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel: Listing';  
+        $data['page'] = 'listing';
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+
+   function listing_status($id='',$status='',$offset=''){
+        $user_status = '';
+        $msg_success = '';
+       
+        if($status=='1'){
+
+            $this->admin_model->update('listing',array('status'=>1),array('id'=>$id));
+            $user_status = "Approve";
+            $msg_success = "Listing Status Approve successfully.";
+
+        }else if($status=='3'){
+            $this->admin_model->delete('listing',array('id'=>$id));
+            $user_status = "Decline";
+            $msg_success = "Listing Status Decline successfully.";
+
+        }
+        // $email_template=$this->developer_email->get_email_template(3);
+
+        // $param=array(
+        //    'template'  =>  array(
+        //         'temp'  =>  $email_template->template_body,
+        //         'var_name'  =>  array(
+        //                 'user_name'  => $member_info->firstname.' '. $member_info->lastname,
+        //                 'status'=> $user_status,
+        //                 'message'=> $msg_success,
+        //                 'site_name'=>SITE_NAME,
+
+        //               ),
+        //           ),
+        //     'email' =>  array(
+        //     'to'    =>  $member_info->email,
+        //     'from'  =>   NO_REPLY_EMAIL,
+        //     'from_name' =>   SITE_NAME,
+        //     'subject' =>   $email_template->template_subject,
+        //   )
+        // );
+
+        // $this->developer_email->send_mail($param);
+        $this->session->set_flashdata('msg_success',$msg_success);
+        redirect('admin/listing');
     }
 
     function listing_attributes()
