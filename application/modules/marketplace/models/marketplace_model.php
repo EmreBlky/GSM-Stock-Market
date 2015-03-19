@@ -3,7 +3,7 @@
 class Marketplace_model extends MY_Model {
 
     function __construct()
-    {    	
+    {        
         parent::__construct();
         $this->table = 'marketplace';
     }
@@ -225,5 +225,23 @@ class Marketplace_model extends MY_Model {
 		else
 			return FALSE;
 	}
-}
 
+	public function get_watch_list($member_id, $listing_type=0){
+
+		$this->db->select('listing.id,listing.listing_end_datetime,listing.product_mpn,listing.product_isbn,listing.product_make,listing.product_model,listing.product_type,listing.condition,listing.unit_price,listing.total_qty,listing.spec,listing.currency,company.country AS country_id,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
+
+		//$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
+		$this->db->from('listing');
+		$this->db->join('company','company.id=listing.member_id');
+		$this->db->join('listing_watch','listing_watch.listing_id=listing.id');
+		$this->db->where('listing.status', 1);
+		$this->db->where('listing.listing_type', $listing_type);
+		$this->db->where('listing_watch.user_id ',$member_id);
+		$query = $this->db->get();
+		if($query->num_rows()>0)
+			return $query->result();
+		else
+			return FALSE;
+	}
+
+}
