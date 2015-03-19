@@ -23,6 +23,7 @@
 
     <!-- datepicker chapter247 -->
     <link href="public/admin/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="public/admin/css/jquery.fancybox.css?v=2.1.5" media="screen" />
 
     <!-- Main jQuery -->
     <script src="public/main/template/core/js/jquery-2.1.1.js"></script>
@@ -30,6 +31,8 @@
     <script src="public/main/template/core/js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="public/main/template/core/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
     <script src="public/main/template/core/js/inspinia.js"></script>
+    <script type="text/javascript" src="public/admin/js/jquery.fancybox.js?v=2.1.5"></script>
+
 	<script type="text/javascript">
         var weekdaystxt=["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"]
         function showLocalTime(container, servermode, offsetMinutes, displayversion){
