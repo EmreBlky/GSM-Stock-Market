@@ -30,7 +30,6 @@
 </div>
 <div class="ibox-content">
 <div class="wrapper wrapp er-content">
-   
      <div class="row">
                 <div class="col-lg-6">               
                     <dl class="dl-horizontal">
@@ -50,7 +49,7 @@
                       <div class="hr-line-dashed"></div>
                     <dl class="dl-horizontal">
                         <h4>Price</h4>
-                       <dt>Sale Currency:</dt> <dd> <?php if(!empty($listing_detail->currency)) { echo currency_class($listing_detail->currency); } ?></dd>
+                        <dt>Sale Currency:</dt> <dd> <?php if(!empty($listing_detail->currency)) { echo currency_class($listing_detail->currency); } ?></dd>
                         <dt>GBP Price:</dt> <dd><strong>  &pound; <?php echo get_currency(currency_class($listing_detail->currency), 'GBP', $listing_detail->unit_price); ?></strong></dd>
                         <dt>EUR Price:</dt> <dd>  &euro; <?php echo get_currency(currency_class($listing_detail->currency), 'EUR', $listing_detail->unit_price); ?></dd>
                         <dt>USD Price:</dt> <dd>  $ <?php echo get_currency(currency_class($listing_detail->currency), 'USD', $listing_detail->unit_price); ?></dd>
@@ -102,15 +101,16 @@
                         <button type="button" class="btn btn-danger" style="font-size:10px">Pay asking price</button>
                     </div>
 
-
                          <?php if (!empty($member_id) && $member_id!=$listing_detail->member_id): ?>
                     <dl class="dl-horizontal" style="margin-top:20px" disabled>
                         <h4>or Make an Offer</h4>
                         <dt><div class="input-group m-b"><span class="input-group-addon">QTY</span>  
                             <input type="text" class="form-control" /><span class="input-group-addon">@</span></dt> 
                             <dd><div class="input-group m-b"><span class="input-group-addon"><?php if(!empty($listing_detail->currency)) { echo $listing_detail->currency; } ?></span>  
-                            <input type="text" class="form-control" /></dd>
+                        
+                        <input type="text" class="form-control" /></dd>
                         <p style="text-align:center"><button type="button" class="btn btn-warning" style="font-size:10px">Send Offer</button></p>
+
                         <p class="small" style="text-align:center">Offers sent will expire after 24 hours</p>
                         </dd>
                          <?php endif; ?>
@@ -128,11 +128,13 @@
 
     </div>
   <div class="modal-footer">
-            <button type="button" class="btn btn-warning">Watch</button>
-            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#price_graph">Product Price Data</button>
+        <?php if (!empty($member_id) && $member_id!=$listing_detail->member_id): ?>
+            <a href="<?php echo base_url().'marketplace/listing_watch/'.$listing_detail->id ?>" class="btn btn-warning">Watch</a>
+           <!--  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#price_graph">Product Price Data</button> -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#profile_user">Seller Profile</button>
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#profile_message">Ask a question</button>
-            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+        <?php endif; ?>
+            <a href="<?php echo base_url().'marketplace/sell' ?>" class="btn btn-white">Back</a>
         </div>
                 
 
@@ -231,25 +233,7 @@
                                 </div>
                             </div>
 
-                            <div class="modal inmodal fade" id="profile_message" tabindex="-1" role="dialog"  aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                            <h4 class="modal-title">Send Message</h4>
-                                            <small class="font-bold">Send a message to GSMStockMarket.com</small>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p><strong>Form here</strong> generic stuff bla bla</p>
-                                        </div>
-
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Send Message</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
 
                             <div class="modal inmodal fade" id="profile_user" tabindex="-1" role="dialog"  aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
@@ -432,3 +416,69 @@ padding-left:20px;}
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="modal inmodal fade" id="profile_message" tabindex="-1" role="dialog"  aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">Ask Question</h4>
+                                            <small class="font-bold">Welcome to GSMStockMarket.com. Ask your question.</small>
+                                        </div>
+
+                                        <form id="question_form">
+                                            <div class="modal-body">
+                                            <div id="msg"></div>
+                                                <input type="hidden" name="listing_id" class="listing" value="<?php if(!empty($listing_detail->id)) echo $listing_detail->id; ?>"/>
+                                                <input type="hidden" name="seller_id" value="<?php if(!empty($listing_detail->member_id)) echo $listing_detail->member_id; ?>"/>
+                                                <textarea rows="10" cols="10" class="form-control" name="ask_question" placeholder="Enter your question." required></textarea>
+                                            </div>
+
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary" id="send_msg">Send Message</button>
+                                            </div>
+                                        </form>
+                                        <div class="question_list"></div>
+                                    </div>
+                                </div>
+                            </div>
+<script>
+    $(document).ready(function(){
+        $('#send_msg').on('click', function(){
+          var question_form =  $('#question_form').serialize();
+          $.post('<?php echo base_url() ?>marketplace/listing_question', question_form,function(data){
+            $('#msg').html(data);
+           });
+        });
+       
+
+        $.get('<?php echo base_url()."marketplace/get_listing_question/".$listing_detail->id; ?>', function(data){
+            $('.question_list').html(data);
+           })
+
+        $(".fancybox").fancybox({
+        openEffect  : 'none',
+        closeEffect : 'none'
+        });
+    });
+
+// function delete_data(row_id) {
+//     if(confirm('Are you sure want to delete')){
+//         $.post('<?php echo base_url()."marketplace/delete_listing_question/"; ?>',{row_id:row_id},function(data){
+//             $('#del_msg').html(data);
+//            });
+//         $.get('<?php echo base_url() ?>marketplace/get_listing_question', function(data){
+//             $('.question_list').html(data);
+//            })
+//      }else{
+//         return false;
+//      }
+// }
+</script>
+<style>
+    .question_list{
+        padding: 0 3%;
+    }
+</style>
+
