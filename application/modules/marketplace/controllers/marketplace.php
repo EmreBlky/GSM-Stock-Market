@@ -527,7 +527,7 @@ class Marketplace extends MX_Controller
      if($_POST){
         $attr_id=trim($_POST['product_mpn_isbn']);
 
-        if($type=='MPN') $type_column='product_mpn'; else; $type_column='product_isbn';
+        if($type=='MPN') $type_column='product_mpn'; else $type_column='product_isbn';
         $information = $this->marketplace_model->get_row('listing_attributes',array($type_column=>$attr_id));
         if($information):
         $check_status='true';
