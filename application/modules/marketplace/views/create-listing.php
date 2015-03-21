@@ -81,7 +81,9 @@
             <datalist id="mpn">
             <?php if(!empty($listing_attributes)){
                  foreach ($listing_attributes as $row) { ?>
+                   <?php if (!empty($row->product_mpn)): ?>
                 <option value="<?php echo $row->product_mpn; ?>"><?php echo $row->product_mpn; ?></option>
+                  <?php endif ?>
                  <?php }} ?>
             </datalist>
              <?php echo form_error('product_mpn'); ?>
@@ -91,11 +93,13 @@
 
      <div class="form-group"><label class="col-md-3 control-label">ISBN</label>
         <div class="col-md-9">
-            <input type="type" id="mpn2" list="mpn2" class="form-control check_record" placeholder="Auto fill the rest of the data if ISBN is found in the database"  name="product_isbn" value="<?php echo set_value('product_isbn');?>"/>
-            <datalist id="mpn2">
+            <input type="type" id="isbn1" list="isbn" class="form-control check_record" placeholder="Auto fill the rest of the data if ISBN is found in the database"  name="product_isbn" value="<?php echo set_value('product_isbn');?>"/>
+            <datalist id="isbn">
             <?php if(!empty($listing_attributes)){
                  foreach ($listing_attributes as $row) { ?>
+                 <?php if (!empty($row->product_isbn)): ?>
                 <option value="<?php echo $row->product_isbn; ?>"><?php echo $row->product_isbn; ?></option>
+                 <?php endif ?>
                  <?php }} ?>
             </datalist>
              <?php echo form_error('product_isbn'); ?>
@@ -662,7 +666,7 @@ $(document).ready(function () {
          }
         });
 
-     $("#mpn2").change(function(){
+     $("#isbn1").change(function(){
      var product_mpn_isbn = $(this).val();
      if(product_mpn_isbn){
         $('.check_record').attr("disabled", "disabled");
