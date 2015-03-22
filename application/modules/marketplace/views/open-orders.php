@@ -282,11 +282,31 @@
                       <small class="font-bold"><strong >Feedback</strong> for GSMStockMarket.com Limited</small>
                   </div>
                   <div class="modal-body">
-                  	<input class="rb-rating">
-                  	<input class="rb-rating">
-                  	<input class="rb-rating">
+                  <div class="row">
+                  <form>
+                  	<input type="text" class="form-control" placeholder="Summary of your thoughts and experience for this user" />
+                    <div class="form-group" style="margin-top:15px">
+                        <label class="col-md-5 control-label" style="margin-top:10px;text-align:right">Communication</label>
+                        <div class="col-md-7">
+                            <input class="rb-rating">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-5 control-label" style="margin-top:10px;text-align:right">Shipping</label>
+                        <div class="col-md-7">
+                            <input class="rb-rating">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-5 control-label" style="margin-top:10px;text-align:right">Quality of Goods</label>
+                        <div class="col-md-7">
+                            <input class="rb-rating">
+                        </div>
+                    </div>
+                  </form>  
                   </div>
-
+                  </div>
+					
                   <div class="modal-footer">
                       <button type="button" class="btn btn-primary">Leave Feedback</button>
                       <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
