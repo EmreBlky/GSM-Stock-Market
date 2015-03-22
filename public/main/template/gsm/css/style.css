@@ -97,7 +97,7 @@ a.btn-success:active {
 }
 
 
-.skin-1 .ibox-content:last-child {
+.skin-1 .ibox-content:last-child, .bronze .ibox-content:last-child, .silver .ibox-content:last-child, .gold .ibox-content:last-child, .platinum .ibox-content:last-child  {
   border-style:none
 }
 
