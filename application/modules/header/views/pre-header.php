@@ -83,8 +83,14 @@
 
 
 </head>
-
-<body class="skin-1">
+<?php
+            $this->load->model('member/member_model', 'member_model');
+            $this->load->model('membership/membership_model', 'membership_model');
+            $member = $this->member_model->get_where($this->session->userdata('members_id'));
+            //echo $member->membership;
+            //exit;
+        ?>
+<body class="<?php echo strtolower($this->membership_model->get_where($member->membership)->membership); ?>">
 
 
 	
