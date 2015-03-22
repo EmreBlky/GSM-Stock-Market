@@ -14,7 +14,7 @@
     <meta name="google-translate-customization" content=""/>
     
     <!-- Icons -->    
-    <link href="public/main/template/gsm/images/icons/favicon.png" rel="shortcut" type="image/x-icon" />
+    <link href="public/main/template/gsm/images/icons/favicon.png" rel="shortcut icon" type="image/x-icon" />
 	<link href="public/main/template/gsm/images/icons/apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
 	<link href="public/main/template/gsm/images/icons/icon-hires.png" rel="icon" sizes="192x192" />
 
