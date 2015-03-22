@@ -12,6 +12,10 @@
     <meta name="description" content="GSM Stock Market The ultimate trading platform for mobile phone trade companies globally. Members are retailers, wholesalers, distributors, manufacturers, network operators and service centres from all over the world." />
 	<meta name="keywords" content="gsm stock market, gsm trading, gsm market, gsm stock, mobile trading, phone trading, mobile phone, phone companies, mobile phone directory" />
     <meta name="google-translate-customization" content=""/>
+    
+    <link rel="shortcut icon" href="public/main/template/gsm/images/favicon.ico" type="image/x-icon" />
+	<link href="public/main/template/gsm/images/icons/apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
+	<link href="public/main/template/gsm/images/icons/icon-hires.png" rel="icon" sizes="192x192" />
 
     <!-- Main Stylesheets -->
     <link href="public/main/template/core/css/bootstrap.min.css" rel="stylesheet">
