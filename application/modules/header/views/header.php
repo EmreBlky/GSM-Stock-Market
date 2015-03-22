@@ -62,7 +62,7 @@
                 <ul class="dropdown-menu dropdown-messages"></ul>
                 
             </li>
-            <li class="dropdown">
+            <li class="dropdown" style="display:none">
                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                     <i class="fa fa-wechat"></i>  <!-- <span class="label label-warning">3</span> -->
                 </a>
