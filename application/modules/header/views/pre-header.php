@@ -4,15 +4,21 @@
 <head>
 
     <base href="<?php echo $base;?>">
-    
-    <!-- Meta Data --> 
+
+    <!-- Meta Data -->
     <meta charset="utf-8">
     <title><?php echo $title; ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="GSM Stock Market The ultimate trading platform for mobile phone trade companies globally. Members are retailers, wholesalers, distributors, manufacturers, network operators and service centres from all over the world." />
 	<meta name="keywords" content="gsm stock market, gsm trading, gsm market, gsm stock, mobile trading, phone trading, mobile phone, phone companies, mobile phone directory" />
     <meta name="google-translate-customization" content=""/>
+    <meta name="apple-mobile-web-app-title" content="Trading">
     
+    <!-- Icons -->    
+    <link href="public/main/template/gsm/images/icons/favicon.png" rel="shortcut icon" type="image/x-icon" />
+	<link href="public/main/template/gsm/images/icons/apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
+	<link href="public/main/template/gsm/images/icons/icon-hires.png" rel="icon" sizes="192x192" />
+
     <!-- Main Stylesheets -->
     <link href="public/main/template/core/css/bootstrap.min.css" rel="stylesheet">
     <link href="public/main/template/core/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -24,9 +30,19 @@
     <!-- datepicker chapter247 -->
     <link href="public/admin/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 
-    <!-- Main jQuery -->
+
+    <!-- Main jQuery-->
     <script src="public/main/template/core/js/jquery-2.1.1.js"></script>
     <script src="public/main/template/core/js/bootstrap.min.js"></script>
+
+
+    <!-- Cropper -->
+    <link href="public/main/template/core/css/plugins/cropper/cropper.min.css" rel="stylesheet">
+    <link href="public/main/template/core/css/plugins/cropper/main.css" rel="stylesheet">
+    <script src="public/main/template/core/js/plugins/cropper/cropper.js"></script>
+    <script src="public/main/template/core/js/plugins/cropper/main.js"></script>
+
+
     <script src="public/main/template/core/js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="public/main/template/core/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
     <script src="public/main/template/core/js/inspinia.js"></script>
@@ -69,11 +85,18 @@
         return (num<=9)? "0"+num : num//if this is minute or sec field
         }
     </script>
-   
+
+
 
 </head>
-
-<body class="skin-1">
+<?php
+            $this->load->model('member/member_model', 'member_model');
+            $this->load->model('membership/membership_model', 'membership_model');
+            $member = $this->member_model->get_where($this->session->userdata('members_id'));
+            //echo $member->membership;
+            //exit;
+        ?>
+<body class="<?php echo strtolower($this->membership_model->get_where($member->membership)->membership); ?>">
 
 
 	

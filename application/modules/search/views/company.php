@@ -22,34 +22,6 @@
                             <h5>Search</h5>
                         </div>
                         <div class="ibox-content">
-                            <form role="form" id="form" class="form-horizontal">
-                        		<div class="form-group"><label class="col-md-3 control-label">Current Password</label>
-                                    <div class="col-md-9">
-                                        <input type="password" placeholder="Current Password" id="password" class="form-control" name="old_password">
-                                    </div>
-                                </div>  
-                                
-                                <div class="hr-line-dashed"></div>
-                                
-                        		<div class="form-group"><label class="col-md-3 control-label">New Password</label>
-                                    <div class="col-md-9">
-                                        <input type="password" id="new_password" name="password" type="text" class="form-control required">
-                                    </div>
-                                </div>  
-                        		<div class="form-group"><label class="col-md-3 control-label">Repeat New Password</label>
-                                    <div class="col-md-9">
-                                        <input type="password" id="confirm" name="confirm" type="text" class="form-control required">
-                                    </div>
-                                </div> 
-                                
-                                <div class="hr-line-dashed"></div>
-                                <div class="form-group">
-                                    <div class="col-md-4 col-md-offset-3">
-                                        <button class="btn btn-white" type="submit">Cancel</button>
-                                        <button class="btn btn-primary" name="submit_form" type="submit" id="submit_form">Update Password</button>
-                                    </div>
-                                </div> 
-                                </form>
                         </div>
                     </div>
 

@@ -107,6 +107,9 @@ class Marketplace extends MX_Controller
     
     function watching()
     {
+        $member_id=$this->session->userdata('members_id');
+        $data['seller_offer'] = $this->marketplace_model->get_watch_list($member_id,2);
+        $data['buying_request'] = $this->marketplace_model->get_watch_list($member_id,1);
         $data['main'] = 'marketplace';        
         $data['title'] = 'GSM - Market Place: Watching';        
         $data['page'] = 'watching';
@@ -224,33 +227,54 @@ class Marketplace extends MX_Controller
             if($this->input->post('schedule_date_time')){
                 $schedule_date_time=$this->input->post('schedule_date_time');
             }
+
+        /*product mpn and isbn check*/
+            $product_mpn    = $this->input->post('product_mpn');
+            $product_isbn   = $this->input->post('product_isbn');
+
+            $check_product_mpn = $this->marketplace_model->get_row('listing_attributes', array('product_mpn'=>$product_mpn));
+            $check_product_isbn = $this->marketplace_model->get_row('listing_attributes', array('product_isbn'=>$product_isbn));
+
+            $status = '';
+            if(!empty($check_product_mpn)){
+                $status = $this->input->post('status');
+            }else{
+                $status = 0;
+            }
+
+            if(!empty($check_product_isbn)){
+                 $status = $this->input->post('status');
+            }else{
+                $status = 0;
+            }
+
             $data_insert=array(
-            'schedule_date_time' =>  $schedule_date_time,
-            'listing_categories' =>$this->input->post('listing_categories'),
-            'listing_type' =>$this->input->post('listing_type'),
-            'product_mpn' =>$this->input->post('product_mpn'),
-            'product_isbn' =>$this->input->post('product_isbn'),
-            'product_make' =>  $this->input->post('product_make'),
-            'product_model' =>  $this->input->post('product_model'),
-            'product_type' =>  $this->input->post('product_type'),
-            'product_color' =>  $this->input->post('product_color'),
-            'condition' =>  $this->input->post('condition'),    
-            'spec' =>  $this->input->post('spec'),
-            'currency' =>  $this->input->post('currency'),
-            'unit_price' =>  $this->input->post('unit_price'),
-            'min_price' =>  $min_price,
-            'allow_offer' =>  $allow_offer,
-            'total_qty' =>  $this->input->post('total_qty'),
-            'qty_available'=> $this->input->post('total_qty'),
-            'min_qty_order' =>  $min_qty_order,
-            'shipping_term' =>  $shipping_terms,
-            'courier' =>  $courier,
-            'product_desc' =>  $this->input->post('product_desc'),
-            'duration' =>  $this->input->post('duration'),
-            'listing_end_datetime'  => date('Y-m-d H:i:s', strtotime("+".$this->input->post('duration')." days")),            
-            'member_id'   => $member_id, 
-            'status'  => $this->input->post('status'), 
-            'created' => date('Y-m-d h:i:s A'),
+            'schedule_date_time'    =>  $schedule_date_time,
+            'listing_categories'    =>  $this->input->post('listing_categories'),
+            'listing_type'          =>  $this->input->post('listing_type'),
+            'product_mpn'           =>  $this->input->post('product_mpn'),
+            'product_isbn'          =>  $this->input->post('product_isbn'),
+            'product_make'          =>  $this->input->post('product_make'),
+            'product_model'         =>  $this->input->post('product_model'),
+            'product_type'          =>  $this->input->post('product_type'),
+            'product_color'         =>  $this->input->post('product_color'),
+            'condition'             =>  $this->input->post('condition'),    
+            'spec'                  =>  $this->input->post('spec'),
+            'currency'              =>  $this->input->post('currency'),
+            'unit_price'            =>  $this->input->post('unit_price'),
+            'min_price'             =>  $min_price,
+            'allow_offer'           =>  $allow_offer,
+            'total_qty'             =>  $this->input->post('total_qty'),
+            'qty_available'         => $this->input->post('total_qty'),
+            'min_qty_order'         =>  $min_qty_order,
+            'shipping_term'         =>  $shipping_terms,
+            'courier'               =>  $courier,
+            'product_desc'          =>  $this->input->post('product_desc'),
+            'duration'              =>  $this->input->post('duration'),
+            'listing_end_datetime'  =>  date('Y-m-d H:i:s', strtotime("+".$this->input->post('duration')." days")),            
+            'member_id'             => $member_id, 
+            'status'                => $status, 
+            'created'               => date('Y-m-d h:i:s A'),
             );
             
             if($this->session->userdata('image1_check')!=''):
@@ -297,7 +321,7 @@ class Marketplace extends MX_Controller
         $data['product_colors'] =  $this->marketplace_model->get_result_by_group('product_color');
         $data['product_makes'] =  $this->marketplace_model->get_result_by_group('product_make');
         $data['product_types'] =  $this->marketplace_model->get_result_by_group('product_type');
-
+       
         $items =  $this->marketplace_model->get_result('listing_categories','','',array('category_name','ASC'));
         if( $items){
             $tree = $this->buildTree($items);
@@ -359,6 +383,122 @@ class Marketplace extends MX_Controller
         $this->load->module('templates');
         $this->templates->page($data);
     }
+
+    function listing_watch($listing_id='')
+    {
+       $user_id =  $this->session->userdata('members_id');
+        $check_list = $this->marketplace_model->get_row('listing_watch', array('listing_id'=>$listing_id,'user_id'=>$user_id));
+        if(empty($check_list)){
+         $data_insert=array(
+                            'listing_id' =>  $listing_id,
+                            'user_id'    =>  $user_id,
+                            'created'    =>  date('Y-m-d')
+                            );
+         $this->marketplace_model->insert('listing_watch',$data_insert);
+         redirect('marketplace/listing_detail/'.$listing_id);
+        }else{
+         $this->session->set_flashdata('msg_info','you have already watch.');  
+         redirect('marketplace/listing_detail/'.$listing_id);
+        }
+    }
+
+    function listing_unwatch($listing_id='')
+    {
+         $this->marketplace_model->delete('listing_watch',array('listing_id'=>$listing_id));
+         $this->session->set_flashdata('msg_success','you have unwatch successfully.');  
+         redirect('marketplace/watching');
+     
+    }
+
+    function listing_question()
+    {
+        if(!empty($_POST['ask_question'])){
+            $user_id =  $this->session->userdata('members_id');
+            $listing_id = $this->input->post('listing_id');
+            $data_insert=array(
+                            'listing_id' =>  $listing_id,
+                            'seller_id' => $this->input->post('seller_id'),
+                            'buyer_id'  =>  $user_id,
+                            'question'   =>  $this->input->post('ask_question'),
+                            'created'    =>  date('Y-m-d')
+                            );
+            $question_id = $this->marketplace_model->insert('listing_question',$data_insert);
+            if(!empty($question_id)){
+                echo "<div class='alert alert-success'>Your question sent successfully. You will get response as soon as possible</div>";
+            }else{
+               echo "<div class='alert alert-warning'>Please Try again.</div>"; 
+            }
+            
+        }
+    }
+
+    function get_listing_question($listing_id=0)
+    {
+        $user_id =  $this->session->userdata('members_id');
+
+       $seller_question = $this->marketplace_model->get_result('listing_question', array('seller_id'=>$user_id,'listing_id'=>$listing_id)); 
+       $buyer_question = $this->marketplace_model->get_result('listing_question', array('buyer_id'=>$user_id,'listing_id'=>$listing_id));
+      
+
+       ?>
+       <h4><strong>Seller Question List</strong></h4>
+       <div id="del_msg"></div>
+        <table class="table table-striped table-bordered table-hover dataTables-example">
+            <thead>
+            <tr>
+                <th width="10%">ID</th>
+                <th width="60%">Question</th>
+                <!-- <th width="30%">Action</th> -->
+            </tr>
+            </thead>
+            <tbody>
+            <?php if(!empty($seller_question)){
+                    foreach ($seller_question as $value) {  ?>
+                            <tr>
+                                <td><?php echo '#'.$value->id; ?></td>
+                                <td><?php echo $value->question; ?>
+                                </td><!-- <td><button class="btn btn-danger" onclick="delete_data(<?php //echo $value->id; ?>)">delete</buttton> --></td>
+                            </tr>
+                    <?php }
+                }else{
+                    echo "No Question List Found.";
+                } ?>
+        </table>
+        <h4><strong>Buyer Question List</strong></h4>
+         <table class="table table-striped table-bordered table-hover dataTables-example">
+            <thead>
+            <tr>
+                <th width="10%">ID</th>
+                <th width="60%">Question</th>
+                <!-- <th width="30%">Action</th> -->
+            </tr>
+            </thead>
+            <tbody>
+            <?php if(!empty($buyer_question)){
+                    foreach ($buyer_question as $value) {  ?>
+                            <tr>
+                                <td><?php echo '#'.$value->id; ?></td>
+                                <td><?php echo character_limiter($value->question,10); ?>
+                                </td><!-- <td><button class="btn btn-danger" onclick="delete_data(<?php //echo $value->id; ?>)">delete</buttton> --></td>
+                            </tr>
+                    <?php }
+                }else{
+                    echo "No Question List Found.";
+                } ?>
+        </table>
+       <?php 
+    }
+
+    // function delete_listing_question()
+    // {
+    //     $delete_data = $this->marketplace_model->delete('listing_question', array('id'=>$this->input->post('row_id')));
+    //     if(!empty($delete_data)){
+    //         echo "<div class='alert alert-success'>question delete successfully.</div>";
+    //     }else{
+    //        echo "<div class='alert alert-warning'>Please Try again.</div>"; 
+
+    //     }
+    // }
     
     function history()
     {
@@ -387,7 +527,7 @@ class Marketplace extends MX_Controller
      if($_POST){
         $attr_id=trim($_POST['product_mpn_isbn']);
 
-        if($type=='MPN') $type_column='product_mpn'; else; $type_column='product_isbn';
+        if($type=='MPN') $type_column='product_mpn'; else $type_column='product_isbn';
         $information = $this->marketplace_model->get_row('listing_attributes',array($type_column=>$attr_id));
         if($information):
         $check_status='true';
@@ -419,9 +559,23 @@ class Marketplace extends MX_Controller
             return FALSE;
         }else{
             $data = $this->upload->data(); // upload image 
+            $upload_file = explode('.', $data['file_name']);
+            
+            if(in_array($upload_file[1], array('gif','jpeg','jpg','png','bmp','jpe'))){
+                $param2=array(
+                    'source_image'  =>  $data['file_path'].$data['file_name'],
+                    'new_image'     =>  $data['file_path'].$data['file_name'],
+                    'create_thumb'  =>  FALSE,
+                    'maintain_ratio'=>  FALSE,
+                    'width'         =>  300,
+                    'height'        =>  300,
+                    );
+           
+            image_resize($param2);
             $this->session->unset_userdata('image1_check');
             $this->session->set_userdata('image1_check',array('image_url'=>$config1['upload_path'].$data['file_name'],'image1'=>$data['file_name']));
-            return TRUE;
+           return TRUE;
+             }
         }
     else:
         $this->form_validation->set_message('image1_check', 'The %s field required.');
@@ -449,10 +603,24 @@ class Marketplace extends MX_Controller
             return FALSE;
         }else{
             $data = $this->upload->data(); // upload image 
+            $upload_file = explode('.', $data['file_name']);
+            
+            if(in_array($upload_file[1], array('gif','jpeg','jpg','png','bmp','jpe'))){
+                $param2=array(
+                    'source_image'  =>  $data['file_path'].$data['file_name'],
+                    'new_image'     =>  $data['file_path'].$data['file_name'],
+                    'create_thumb'  =>  FALSE,
+                    'maintain_ratio'=>  FALSE,
+                    'width'         =>  300,
+                    'height'        =>  300,
+                    );
+           
+            image_resize($param2);
             $this->session->unset_userdata('image2_check2');
             $this->session->set_userdata('image2_check2',array('image_url'=>$config2['upload_path'].$data['file_name'],'image2'=>$data['file_name']));
             return TRUE;
         }
+    }
     else:
         $this->form_validation->set_message('image1_check2', 'The %s field required.');
         return FALSE;
@@ -478,10 +646,24 @@ class Marketplace extends MX_Controller
             return FALSE;
         }else{
             $data = $this->upload->data(); // upload image 
+            $upload_file = explode('.', $data['file_name']);
+            
+            if(in_array($upload_file[1], array('gif','jpeg','jpg','png','bmp','jpe'))){
+                $param2=array(
+                    'source_image'  =>  $data['file_path'].$data['file_name'],
+                    'new_image'     =>  $data['file_path'].$data['file_name'],
+                    'create_thumb'  =>  FALSE,
+                    'maintain_ratio'=>  FALSE,
+                    'width'         =>  300,
+                    'height'        =>  300,
+                    );
+           
+            image_resize($param2);
             $this->session->unset_userdata('image3_check3');
             $this->session->set_userdata('image3_check3',array('image_url'=>$config3['upload_path'].$data['file_name'],'image3'=>$data['file_name']));
             return TRUE;
         }
+    }
     else:
         $this->form_validation->set_message('image3_check3', 'The %s field required.');
         return FALSE;
@@ -507,10 +689,24 @@ class Marketplace extends MX_Controller
             return FALSE;
         }else{
             $data = $this->upload->data(); // upload image 
+            $upload_file = explode('.', $data['file_name']);
+            
+            if(in_array($upload_file[1], array('gif','jpeg','jpg','png','bmp','jpe'))){
+                $param2=array(
+                    'source_image'  =>  $data['file_path'].$data['file_name'],
+                    'new_image'     =>  $data['file_path'].$data['file_name'],
+                    'create_thumb'  =>  FALSE,
+                    'maintain_ratio'=>  FALSE,
+                    'width'         =>  300,
+                    'height'        =>  300,
+                    );
+           
+            image_resize($param2);
             $this->session->unset_userdata('image4_check4');
             $this->session->set_userdata('image4_check4',array('image_url'=>$config4['upload_path'].$data['file_name'],'image4'=>$data['file_name']));
             return TRUE;
         }
+    }
     else:
         $this->form_validation->set_message('image4_check4', 'The %s field required.');
         return FALSE;
@@ -535,11 +731,25 @@ class Marketplace extends MX_Controller
             $this->form_validation->set_message('image5_check5', $this->upload->display_errors());
             return FALSE;
         }else{
-            $data = $this->upload->data(); // upload image 
+            $data = $this->upload->data(); // upload image
+            $upload_file = explode('.', $data['file_name']);
+            
+            if(in_array($upload_file[1], array('gif','jpeg','jpg','png','bmp','jpe'))){
+                $param2=array(
+                    'source_image'  =>  $data['file_path'].$data['file_name'],
+                    'new_image'     =>  $data['file_path'].$data['file_name'],
+                    'create_thumb'  =>  FALSE,
+                    'maintain_ratio'=>  FALSE,
+                    'width'         =>  300,
+                    'height'        =>  300,
+                    );
+           
+            image_resize($param2); 
             $this->session->unset_userdata('image5_check5');
             $this->session->set_userdata('image5_check5',array('image_url'=>$config5['upload_path'].$data['file_name'],'image5'=>$data['file_name']));
             return TRUE;
         }
+    }
     else:
         $this->form_validation->set_message('image5_check5', 'The %s field required.');
         return FALSE;

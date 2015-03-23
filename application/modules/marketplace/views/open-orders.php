@@ -42,7 +42,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr data-toggle="modal" data-target="#myModal5">
+                    <tr>
                         <td><span class="label label-warning">Send Payment</span></td>
                         <td>ClickMobileShop.com Limited</td>
                         <td>Apple iPhone 4S 16GB</td>
@@ -56,10 +56,10 @@
                         </div>
                         </td>
                         <td>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px" data-toggle="modal" data-target="#myModal5">Deal Info</button>
                         <button type="button" class="btn btn-success" style="font-size:10px">Make Payment</button></td>
                     </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
+                    <tr>
                         <td><span class="label label-primary">Payment Sent</span></td>
                         <td>ClickMobileShop.com Limited</td>
                         <td>Apple iPhone 4S 16GB</td>
@@ -73,9 +73,9 @@
                         </div>
                         </td>
                         <td>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button></td>
+                        <button type="button" class="btn btn-primary" style="font-size:10px" data-toggle="modal" data-target="#myModal5">Deal Info</button></td>
                     </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
+                    <tr>
                         <td><span class="label label-warning">Awaiting Shipment</span></td>
                         <td>ClickMobileShop.com Limited</td>
                         <td>Apple iPhone 4S 16GB</td>
@@ -89,10 +89,10 @@
                         </div>
                         </td>
                         <td>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px" data-toggle="modal" data-target="#myModal5">Deal Info</button>
                         <button type="button" class="btn btn-success" style="font-size:10px">Complete Deal</button></td>
                     </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
+                    <tr>
                         <td><span class="label label-primary">Shipment Arrived</span></td>
                         <td>ClickMobileShop.com Limited</td>
                         <td>Apple iPhone 4S 16GB</td>
@@ -106,8 +106,8 @@
                         </div>
                         </td>
                         <td>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button>
-                        <button type="button" class="btn btn-info" style="font-size:10px">Leave Feedback</button></td>
+                        <button type="button" class="btn btn-primary" style="font-size:10px" data-toggle="modal" data-target="#myModal5">Deal Info</button>
+                        <button type="button" class="btn btn-info" style="font-size:10px" data-toggle="modal" data-target="#feedback">Leave Feedback</button></td>
                     </tr>
                     </tbody>
                     </table>
@@ -139,7 +139,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr data-toggle="modal" data-target="#myModal5">
+                    <tr>
                         <td><span class="label label-warning">Awaiting Payment</span></td>
                         <td>ClickMobileShop.com Limited</td>
                         <td>Apple iPhone 4S 16GB</td>
@@ -153,10 +153,10 @@
                         </div>
                         </td>
                         <td>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px" data-toggle="modal" data-target="#myModal5">Deal Info</button>
                         <button type="button" class="btn btn-success" style="font-size:10px">Confirm Payment</button></td>
                     </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
+                    <tr>
                         <td><span class="label label-primary">Payment Received</span></td>
                         <td>ClickMobileShop.com Limited</td>
                         <td>Apple iPhone 4S 16GB</td>
@@ -170,10 +170,10 @@
                         </div>
                         </td>
                         <td>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button>
+                        <button type="button" class="btn btn-primary" style="font-size:10px" data-toggle="modal" data-target="#myModal5">Deal Info</button>
                         <button type="button" class="btn btn-success" style="font-size:10px">Add Tracking</button></td>
                     </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
+                    <tr>
                         <td><span class="label label-warning">Awaiting Completion</span></td>
                         <td>ClickMobileShop.com Limited</td>
                         <td>Apple iPhone 4S 16GB</td>
@@ -187,9 +187,9 @@
                         </div>
                         </td>
                         <td>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button></td>
+                        <button type="button" class="btn btn-primary" style="font-size:10px" data-toggle="modal" data-target="#myModal5">Deal Info</button></td>
                     </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
+                    <tr>
                         <td><span class="label label-primary">Shipment Arrived</span></td>
                         <td>ClickMobileShop.com Limited</td>
                         <td>Apple iPhone 4S 16GB</td>
@@ -203,8 +203,8 @@
                         </div>
                         </td>
                         <td>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button>
-                        <button type="button" class="btn btn-info" style="font-size:10px">Leave Feedback</button></td>
+                        <button type="button" class="btn btn-primary" style="font-size:10px" data-toggle="modal" data-target="#myModal5">Deal Info</button>
+                        <button type="button" class="btn btn-info" style="font-size:10px" data-toggle="modal" data-target="#feedback">Leave Feedback</button></td>
                     </tr>
                     </tbody>
                     </table>
@@ -271,6 +271,49 @@
                                     </div>
                                 </div>
                             </div>
+                            
+                            
+      <div class="modal inmodal fade" id="feedback" tabindex="-1" role="dialog"  aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                      <h4 class="modal-title">Leave Feedback</h4>
+                      <small class="font-bold"><strong >Feedback</strong> for GSMStockMarket.com Limited</small>
+                  </div>
+                  <div class="modal-body">
+                  <div class="row">
+                  <form>
+                  	<input type="text" class="form-control" placeholder="Summary of your thoughts and experience for this user" />
+                    <div class="form-group" style="margin-top:15px">
+                        <label class="col-md-5 control-label" style="margin-top:10px;text-align:right">Communication</label>
+                        <div class="col-md-7">
+                            <input class="rb-rating">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-5 control-label" style="margin-top:10px;text-align:right">Shipping</label>
+                        <div class="col-md-7">
+                            <input class="rb-rating">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-5 control-label" style="margin-top:10px;text-align:right">Quality of Goods</label>
+                        <div class="col-md-7">
+                            <input class="rb-rating">
+                        </div>
+                    </div>
+                  </form>  
+                  </div>
+                  </div>
+					
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-primary">Leave Feedback</button>
+                      <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                  </div>
+              </div>
+          </div>
+      </div>
             
 
     <!-- Data Tables -->
@@ -280,6 +323,15 @@
     
     <!-- Multi Select -->
     <link href="public/main/template/core/css/plugins/chosen/chosen.css" rel="stylesheet">
+    
+    <!-- Feedback Stars -->
+    <link rel="stylesheet" href="public/main/template/gsm/css/star-rating.min.css" rel="stylesheet">
+    <script type="text/javascript" src="public/main/template/gsm/js/star-rating.min.js"></script>
+    <script>
+    jQuery(document).ready(function () {
+        $('.rb-rating').rating({'showCaption':true, 'stars':'5', 'min':'0', 'max':'5', 'step':'1', 'size':'xs', 'starCaptions': {0:'Very Poor', 1:'Very Poor', 2:'Poor', 3:'Average', 4:'Good', 5:'Excellent'}});
+    });
+</script>
 
     <!-- Data Tables -->
     <script type="text/javascript" src="public/main/template/core/js/plugins/dataTables/jquery.dataTables.js"></script>
