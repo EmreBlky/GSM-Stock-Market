@@ -286,15 +286,6 @@
     
     <!-- Multi Select -->
     <link href="public/main/template/core/css/plugins/chosen/chosen.css" rel="stylesheet">
-    
-    <!-- Feedback Stars -->
-    <link rel="stylesheet" href="public/main/template/gsm/css/star-rating.min.css" rel="stylesheet">
-    <script type="text/javascript" src="public/main/template/gsm/js/star-rating.min.js"></script>
-    <script>
-    jQuery(document).ready(function () {
-        $('.rb-rating').rating({'showCaption':true, 'stars':'5', 'min':'0', 'max':'5', 'step':'1', 'size':'xs', 'starCaptions': {0:'Very Poor', 1:'Very Poor', 2:'Poor', 3:'Average', 4:'Good', 5:'Excellent'}});
-    });
-</script>
 
     <!-- Data Tables -->
     <script type="text/javascript" src="public/main/template/core/js/plugins/dataTables/jquery.dataTables.js"></script>
