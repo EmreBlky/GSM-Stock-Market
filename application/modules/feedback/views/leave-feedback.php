@@ -1,4 +1,5 @@
-      <div class="modal inmodal fade" id="feedback" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal inmodal fade" id="feedback" tabindex="-1" role="dialog"  aria-hidden="true"> 
+
           <div class="modal-dialog modal-lg">
               <div class="modal-content">
                   <div class="modal-header">
@@ -45,11 +46,11 @@
                   </div>
               </div>
           </div>
-      </div>
-            
+    </div>
+   
     <!-- Feedback Stars -->
-    <link rel="stylesheet" href="public/main/template/gsm/css/star-rating.min.css" rel="stylesheet">
-    <script type="text/javascript" src="public/main/template/gsm/js/star-rating.min.js"></script>
+    <link rel="stylesheet" href="http://localhost/projects/codeigniter/gsm-secure/public/main/template/gsm/css/star-rating.min.css" rel="stylesheet">
+    <script type="text/javascript" src="http://localhost/projects/codeigniter/gsm-secure/public/main/template/gsm/js/star-rating.min.js"></script>
     <script>
     jQuery(document).ready(function () {
         $('.description-rating').rating({'showCaption':true, 'stars':'5', 'min':'0', 'max':'5', 'step':'1', 'size':'xs', 'starCaptions': {0:'Very inaccurate', 1:'Very inaccurate', 2:'Inaccurate', 3:'Neither inaccurate nor accurate', 4:'Accurate', 5:'Very accurate'}});
@@ -57,5 +58,5 @@
         $('.shipping-rating').rating({'showCaption':true, 'stars':'5', 'min':'0', 'max':'5', 'step':'1', 'size':'xs', 'starCaptions': {0:'Very Slowly', 1:'Very Slowly', 2:'Slowly', 3:'Neither slowly nor quickly', 4:'Quickly', 5:'Very quickly'}});
         $('.company-rating').rating({'showCaption':true, 'stars':'5', 'min':'0', 'max':'5', 'step':'1', 'size':'xs', 'starCaptions': {0:'Very unlikely', 1:'Very unlikely', 2:'Unlikely', 3:'Neither likely or unlikely', 4:'Likely', 5:'Very likely'}});
     });
-	</script>
+    </script>
     

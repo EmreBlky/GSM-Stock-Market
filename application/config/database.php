@@ -71,7 +71,7 @@ $active_record = TRUE;
   $db['default']['autoinit'] = TRUE;
   $db['default']['stricton'] = FALSE;
  } 
- elseif($base_url == 'localhost/projects/codeigniter/gsm/gsm-secure/'){
+ elseif($base_url == 'localhost/projects/codeigniter/gsm-secure/'){
      
     $db['default']['hostname'] = 'localhost';
     $db['default']['username'] = 'root';

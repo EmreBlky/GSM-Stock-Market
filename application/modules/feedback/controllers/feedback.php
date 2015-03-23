@@ -25,11 +25,9 @@ class Feedback extends MX_Controller
     function leave_feedback($mid)
     {
         $data['main'] = 'feedback';
-	$data['title'] = 'feedback';
-        $data['page'] = 'leave-feedback';
-        $data['member'] = $this->company_model->get_where($this->member_model->get_where($mid)->company_id)->company_name;
-        $this->load->module('templates');
-        $this->templates->page($data);
+        $data['base'] = $this->config->item('base_url');
+        //$data['member'] = $this->company_model->get_where($this->member_model->get_where($mid)->company_id)->company_name;
+        $this->load->view('leave-feedback', $data);
     }
     
     function processFeedback()

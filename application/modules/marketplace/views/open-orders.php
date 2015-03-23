@@ -271,13 +271,11 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                            
-      <?php
-        $this->load->module('feedback');
-        $this->feedback->leave_feedback($this->session->userdata('members_id'));
-      ?>
-            
+
+                <?php
+                    $this->load->module('feedback');
+                    $this->feedback->leave_feedback($this->session->userdata('members_id'));
+                  ?>
 
     <!-- Data Tables -->
     <link href="public/main/template/core/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
