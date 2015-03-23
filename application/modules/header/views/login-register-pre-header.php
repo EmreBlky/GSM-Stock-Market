@@ -19,6 +19,13 @@
 
     <link href="public/main/template/core/css/animate.css" rel="stylesheet">
     <link href="public/main/template/core/css/style.css" rel="stylesheet">
+    
+    <style>
+
+@media (max-height: 700px) {
+	.loginscreen.middle-box {margin-top:-250px}
+}
+</style>
 
 </head>
 
