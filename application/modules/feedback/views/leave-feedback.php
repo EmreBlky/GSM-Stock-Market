@@ -12,26 +12,26 @@
                   	<input type="text" class="form-control" id="summary_feedback" placeholder="Summary of your thoughts and experience for this user" />
                     
                     <div class="form-group" style="margin-top:15px">
-                        <label class="col-md-7 control-label" style="margin-top:10px;text-align:right">How accurate was the item description?</label>
-                        <div class="col-md-5">
+                        <label class="col-md-6 control-label" style="margin-top:10px;text-align:right">How accurate was the item description?</label>
+                        <div class="col-md-6">
                             <input class="description-rating">
                         </div>
                     </div>
                     <div class="form-group" style="margin-top:15px">
-                        <label class="col-md-7 control-label" style="margin-top:10px;text-align:right">How satisfied were you with the users communication?</label>
-                        <div class="col-md-5">
+                        <label class="col-md-6 control-label" style="margin-top:10px;text-align:right">How satisfied were you with the users communication?</label>
+                        <div class="col-md-6">
                             <input class="communication-rating">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-7 control-label" style="margin-top:10px;text-align:right">How quickly did the user dispatch the item(s)?</label>
-                        <div class="col-md-5">
+                        <label class="col-md-6 control-label" style="margin-top:10px;text-align:right">How quickly did the user dispatch the item(s)?</label>
+                        <div class="col-md-6">
                             <input class="shipping-rating">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-7 control-label" style="margin-top:10px;text-align:right">Would you recommend this company to other users?</label>
-                        <div class="col-md-5">
+                        <label class="col-md-6 control-label" style="margin-top:10px;text-align:right">Would you recommend this company to other users?</label>
+                        <div class="col-md-6">
                             <input class="company-rating">
                         </div>
                     </div>
