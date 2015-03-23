@@ -223,7 +223,7 @@ div#world-clock {float:left;margin-top:22px}
 }
 .bronze .nav-header {
   background: #8C7853;
-  #background: url('patterns/shattered.png');
+  background: url('patterns/bronze-overlay.png');
 }
 .bronze.mini-navbar .nav-second-level {
   background: #3e495f;
@@ -316,11 +316,11 @@ body.bronze {
   margin: 14px 5px 5px 15px;
 }
 .silver .spin-icon {
-  background: #E6E8FA !important;
+  background: #c0c0c0 !important;
 }
 .silver .nav-header {
-  background: #E6E8FA;
-  #background: url('patterns/header-profile-skin-1.png');
+  background: #c0c0c0;
+  background: url('patterns/silver-overlay.png');
 }
 .silver.mini-navbar .nav-second-level {
   background: #3e495f;
@@ -341,8 +341,8 @@ body.bronze {
   color: #fff;
 }
 .silver .navbar-minimalize {
-  background: #E6E8FA;
-  border-color: #E6E8FA;
+  background: #c0c0c0;
+  border-color: #c0c0c0;
 }
 body.silver {
   background: #3e495f;
@@ -402,7 +402,7 @@ body.silver {
 }
 
 
-/* gold Member */
+/* Gold Member */
 .gold .minimalize-styl-2 {
   margin: 14px 5px 5px 30px;
 }
@@ -417,7 +417,7 @@ body.silver {
 }
 .gold .nav-header {
   background: #DBDB70;
-  #background: url('patterns/header-profile-skin-1.png');
+  background: url('patterns/gold-overlay.png');
 }
 .gold.mini-navbar .nav-second-level {
   background: #3e495f;
@@ -510,11 +510,11 @@ body.gold {
   margin: 14px 5px 5px 15px;
 }
 .platinum .spin-icon {
-  background: #E5E4E2 !important;
+  background: #999999 !important;
 }
 .platinum .nav-header {
-  background: #E5E4E2;
-  #background: url('patterns/header-profile-skin-1.png');
+  background: #999999;
+  background: url('patterns/platinum-overlay.png');
 }
 .platinum.mini-navbar .nav-second-level {
   background: #3e495f;
@@ -535,8 +535,8 @@ body.gold {
   color: #fff;
 }
 .platinum .navbar-minimalize {
-  background: #E5E4E2;
-  border-color: #E5E4E2;
+  background: #999999;
+  border-color: #999999;
 }
 body.platinum {
   background: #3e495f;
