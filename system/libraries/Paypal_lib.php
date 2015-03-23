@@ -73,9 +73,9 @@ Implementation
 class Paypal_lib {
 	
 	var $config 		= Array();
-	var $production_url = 'https://www.paypal.com/cgi-bin/webscr?';
+	var $production_url     = 'https://www.paypal.com/cgi-bin/webscr?';
 	var $sandbox_url	= 'https://www.sandbox.paypal.com/cgi-bin/webscr?';
-	var $item			= 1;
+	var $item		= 1;
 	
 	/**
 	 * Constructor

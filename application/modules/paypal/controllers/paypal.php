@@ -39,6 +39,42 @@ class Paypal extends MX_Controller
         $this->paypal_lib->pay(); //Proccess the payment
     }
     
+    function subscribe()
+    {
+        $this->load->library('paypal_subscribe');
+        $base = $this->config->item('base_url');
+        
+        $paymentAmount = 10;
+        $currencyCodeType = "USD";
+        $paymentType = "Sale";
+        #$paymentType = "Authorization";
+        #$paymentType = "Order";
+        $returnURL = $base .'paypal/notify_payment';
+        $cancelURL = $base .'paypal/cancel_return';
+        $resArray = $this->paypal_subscribe->CallShortcutExpressCheckout($paymentAmount, $currencyCodeType, $paymentType, $returnURL, $cancelURL);
+
+        $ack = strtoupper($resArray["ACK"]);
+        
+        if($ack=="SUCCESS" || $ack=="SUCCESSWITHWARNING")
+        {
+                $this->paypal_subscribe->RedirectToPayPal ( $resArray["TOKEN"] );
+        } 
+        else  
+        {
+                //Display a user friendly Error on the page using any of the following error information returned by PayPal
+                $ErrorCode = urldecode($resArray["L_ERRORCODE0"]);
+                $ErrorShortMsg = urldecode($resArray["L_SHORTMESSAGE0"]);
+                $ErrorLongMsg = urldecode($resArray["L_LONGMESSAGE0"]);
+                $ErrorSeverityCode = urldecode($resArray["L_SEVERITYCODE0"]);
+
+                echo "SetExpressCheckout API call failed. ";
+                echo "Detailed Error Message: " . $ErrorLongMsg;
+                echo "Short Error Message: " . $ErrorShortMsg;
+                echo "Error Code: " . $ErrorCode;
+                echo "Error Severity Code: " . $ErrorSeverityCode;
+        }
+    }
+    
     function notify_payment()
     {
         $info = print_r($this->input->post(), TRUE);
