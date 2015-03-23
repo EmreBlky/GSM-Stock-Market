@@ -6,10 +6,7 @@ class Login extends MX_Controller{
     {
         parent::__construct();
         
-        if ($this->session->userdata('logged_in'))
-        { 
-            redirect('home');
-        }
+        
         
         $this->load->model('login/login_model', 'login_model');
         $this->load->model('member/member_model', 'member_model');
@@ -18,6 +15,11 @@ class Login extends MX_Controller{
         
     function index()
     { 
+        
+        if ($this->session->userdata('members_id') > 0)
+        { 
+            redirect('home');
+        }
 //        if ( $this->session->userdata('admin_logged_in'))
 //        { 
 //            redirect('admin');
