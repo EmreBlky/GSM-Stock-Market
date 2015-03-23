@@ -1,3 +1,127 @@
+<head>
+
+<meta name="viewport" content="width=device-width, user-scalable=no">
+<title>The worlds best B2B mobile phone trading platform, trade with anyone at a click of a button - GSMStockMarket.com</title>
+<base href="//www.gsmstockmarket.com/">
+
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:600,700' rel='stylesheet' type='text/css'>
+        <link href="http://fonts.googleapis.com/css?family=Righteous" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="wp-content/themes/gsm/css/countdown.demo.css" type="text/css">
+
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(window).on('load resize', function () {
+  if ($(window).width() > 768) {
+     // Check the initial Poistion of the Sticky Header
+        var gsmNaviMenu = $('#navi-bar-wrapper').offset().top;
+ 
+        $(window).scroll(function(){
+                if( $(window).scrollTop() > gsmNaviMenu ) {
+                        $('#navi-bar-wrapper').css({position: 'fixed', top: '0px'});
+                        $('#content, .slider-home').css({margin:'106px 0 0'});
+                } else {
+                        $('#navi-bar-wrapper').css({position: 'static', top: '30px'})
+                        $('#content, .slider-home').css({margin:'0'});
+                }
+        });
+  }
+ else if ($(window).width() < 768) {
+     // Check the initial Poistion of the Sticky Header
+        var gsmNaviMenu = $('#navi-bar-wrapper').offset().top;
+ 
+        $(window).scroll(function(){
+                if( $(window).scrollTop() > gsmNaviMenu ) {
+                        $('#navi-bar-wrapper').css({position: 'relative', top: '0px'});
+                        $('#content').css({margin:'0'}); /* safari fix */
+                } else {
+                        $('#navi-bar-wrapper').css({position: 'relative', top: '0px'});
+                        $('#content').css({margin:'0'});  /* safari fix */
+                }
+        });
+  }
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	//Check to see if the window is top if not then display button
+	$(window).scroll(function(){
+		if ($(this).scrollTop() > 100) {
+			$('.scrollToTop').fadeIn();
+		} else {
+			$('.scrollToTop').fadeOut();
+		}
+	});
+	
+	//Click event to scroll to top
+	$('.scrollToTop').click(function(){
+		$('html, body').animate({scrollTop : 0},800);
+		return false;
+	});
+	
+});
+</script>
+<script type="text/javascript"> <!-- THIS SCRIPT NEEDS TO BE GOTTEN FROM FUNCTIONS FOR MOBILE DROPDOWN -->
+jQuery(document).ready(function() {
+    jQuery( ".select-menu" ).change(function() {
+        window.location = jQuery(this).find("option:selected").val();
+    });
+});
+</script>
+
+<script type="text/javascript" src="wp-content/themes/gsm/js/modernizr.custom.79639.js"></script>
+        <link rel="stylesheet" href="public/main/template/www/css/style.css" />
+		<style>@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);</style> <!-- NOT WORKING IN CSS FILE * TO FIX-->
+</head>
+
+<header>
+    <div id="tiny-menu-wrapper">
+    	<div class="tiny-menu container">
+        <ul class="mini" style="list-style:none;margin-top:5px;float:right;width:auto;white-space:nowrap">
+        	<li>
+        	<a href="//support.gsmstockmarket.com/">Support <i class="glyphicon glyphicon-search"></i></a>
+            </li>
+        	<li>
+        	<a href="//support.gsmstockmarket.com/customer/portal/emails/new">Contact <i class="glyphicon glyphicon-envelope"></i></a>
+            </li>
+        	<li>
+        	<a href="">Account <i class="glyphicon glyphicon-user"></i></a>
+            </li>
+        </ul>
+        </div>
+    </div><!-- /tiny-menu-wrapper -->
+    <div id="navi-bar-wrapper">
+        <div class="navi-bar container">
+        	<div class="navi-logo">
+				<a href="/"><img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="Navi GSM Logo" /></a>
+            </div><!-- /navi-logo -->
+            <div class="navi-menu">
+            	 <?php wp_nav_menu($navimenu = array(
+	'theme_location'  => 'navigation-menu',
+	'menu'            => '',
+	'container'       => false,
+	'container_class' => '',
+	'container_id'    => '',
+	'menu_class'      => 'menu',
+	'menu_id'         => '',
+	'echo'            => true,
+	'fallback_cb'     => 'wp_page_menu',
+	'before'          => '',
+	'after'           => '',
+	'link_before'     => '',
+	'link_after'      => '',
+	'items_wrap'      => '<ul id="navi-menu">%3$s</ul>',
+	'depth'           => 0,
+	'walker'          => ''
+) ); ?>
+            	 <?php wp_nav_menu_select(array('navigation-menu' => 'select-menu')); ?>
+            </div><!-- /navi-menu -->
+        
+        </div><!-- /navi-bar -->
+	</div><!-- /navi-bar-wrapper -->
+    </header>
+
+
 <script type="text/javascript">
 
     var is_primary_set = false;
