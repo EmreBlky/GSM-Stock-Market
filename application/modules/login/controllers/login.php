@@ -5,10 +5,11 @@ class Login extends MX_Controller{
     function __construct()
     {
         parent::__construct();
-//        if ( $this->session->userdata('admin_logged_in'))
-//        { 
-//            redirect('admin');
-//        }
+        
+        if ($this->session->userdata('logged_in'))
+        { 
+            redirect('home');
+        }
         
         $this->load->model('login/login_model', 'login_model');
         $this->load->model('member/member_model', 'member_model');
