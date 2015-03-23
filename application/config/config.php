@@ -16,7 +16,7 @@
 */
 
 //SERVER SITE:
-$config['base_url']	= 'https://secure.gsmstockmarket.com/';
+$config['base_url']	= 'http://secure.gsmstockmarket.com/';
 
 //LIVE SITE:
 //$config['base_url']	= '';
