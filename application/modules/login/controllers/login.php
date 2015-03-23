@@ -6,8 +6,6 @@ class Login extends MX_Controller{
     {
         parent::__construct();
         
-        
-        
         $this->load->model('login/login_model', 'login_model');
         $this->load->model('member/member_model', 'member_model');
         $this->load->model('admin/admin_model', 'admin_model');
