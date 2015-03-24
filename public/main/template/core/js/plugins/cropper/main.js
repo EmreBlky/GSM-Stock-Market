@@ -271,8 +271,6 @@
         },
 
         submitDone: function (data) {
-            console.log(data);
-
             if ($.isPlainObject(data) && data.state === 200) {
                 if (data.result) {
                     this.url = data.result;
@@ -300,7 +298,7 @@
         },
 
         submitEnd: function () {
-            this.$loading.fadeOut();
+            ///this.$loading.fadeOut();
         },
 
         cropDone: function () {

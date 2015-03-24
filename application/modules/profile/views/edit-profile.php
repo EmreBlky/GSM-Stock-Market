@@ -1329,15 +1329,15 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                             <div class="avatar-view" title="Change the avatar">
                                 <?php if (file_exists("public/main/template/gsm/images/company/" . $member->company_id . ".png")) { ?>
                                     <img
-                                        src="public/main/template/gsm/images/company/<?php echo $member->company_id; ?>.png">
+                                        src="public/main/template/gsm/images/company/<?php echo $member->company_id; ?>.png" onload="$('.loading').hide()">
                                 <?php } else { ?>
-                                    <img src="public/main/template/gsm/images/company/no_company.jpg" width="300"
+                                    <img src="public/main/template/gsm/images/company/no_company.jpg" width="300" onload="$('.loading').hide()"
                                          height="150">
                                 <?php } ?>
                             </div>
                             <div style="margin-top: 10px;">
-                                <label class="btn btn-danger mt-md" id="deleteCompanyImage">Delete</label>
-                                <label class="btn btn-primary pull-right" id="changeCompanyImage">Change</label>
+                                <label class="btn btn-danger mt-md pull-right" id="deleteCompanyImage">Delete</label>
+                                <label class="btn btn-primary pull-left" id="changeCompanyImage">Upload</label>
                             </div>
                             <!-- Cropping modal -->
                             <div class="modal fade" id="avatar-modal" aria-hidden="true"
@@ -1361,7 +1361,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                                                     <input class="avatar-data" name="avatar_data" type="hidden">
                                                     <!-- <label for="avatarInput">Local upload</label> -->
                                                     <input class="avatar-input" id="avatarInput" name="avatar_file"
-                                                           style="display:none;" type="file">
+                                                           style="display:none;" type="file" accept="image/*">
                                                 </div>
 
                                                 <!-- Crop and preview -->
@@ -1712,8 +1712,8 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                                 <?php } ?>
                             </div>
                             <div style="margin-top: 10px;">
-                                <label class="btn btn-danger mt-md" id="deleteMemberImage">Delete</label>
-                                <label class="btn btn-primary pull-right" id="changeMemberImage">Change</label>
+                                <label class="btn btn-danger mt-md pull-right" id="deleteMemberImage">Delete</label>
+                                <label class="btn btn-primary pull-left" id="changeMemberImage">Upload</label>
                             </div>
 
                             <!-- Cropping modal -->
@@ -1738,7 +1738,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                                                     <input class="avatar-data" name="avatar_data" type="hidden">
                                                     <!-- <label for="avatarInput">Local upload</label> -->
                                                     <input class="avatar-input" id="avatarInput" name="avatar_file"
-                                                           style="display:none;" type="file">
+                                                           style="display:none;" type="file" accept="image/*">
                                                 </div>
 
                                                 <!-- Crop and preview -->
