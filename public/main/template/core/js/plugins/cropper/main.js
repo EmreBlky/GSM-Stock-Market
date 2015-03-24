@@ -309,8 +309,8 @@
             var n = d.getTime();
 
             this.$avatarForm.get(0).reset();
-            this.$avatar.attr('src', "public/main/template/core/css/plugins/cropper/loading.gif")
-            this.$avatar.attr('src', this.url + "?" + n).css("width",'100%');
+            this.$avatar.attr('src', "public/main/template/core/css/plugins/cropper/loading.gif").css("width", 35);
+            this.$avatar.attr('src', this.url + "?" + n).css("width", '100%');
             this.stopCropper();
             this.$avatarModal.modal('hide');
         },
