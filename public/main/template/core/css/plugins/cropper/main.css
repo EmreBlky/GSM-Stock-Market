@@ -52,7 +52,7 @@
 .avatar-wrapper img {
   display: block;
   height: auto;
-  max-width: 100%;
+  width: auto;
 }
 
 .avatar-preview {
