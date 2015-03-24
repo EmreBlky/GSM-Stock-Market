@@ -310,10 +310,7 @@
 
             this.$avatarForm.get(0).reset();
             //this.$avatar.attr('src', "public/main/template/core/css/plugins/cropper/loading.gif");
-            this.$loading.fadeIn();
-            this.$avatar.attr('src', this.url + "?" + n).load(function () {
-                this.$loading.fadeOut();
-            });
+            this.$avatar.attr('src', this.url + "?" + n);
             this.stopCropper();
             this.$avatarModal.modal('hide');
         },
