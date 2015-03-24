@@ -4,8 +4,8 @@
 //print_r($company_users);
 //exit;
 $this->load->model('membership/membership_model', 'membership_model');
-?>	
-            
+?>
+
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
                     <h2>View Profile</h2>
@@ -23,12 +23,12 @@ $this->load->model('membership/membership_model', 'membership_model');
                 </div><!-- /col-lg-10 -->
                 <div class="col-lg-2"></div>
             </div>
-            
+
             <div class="row">
                 <div class="wrapper wrapper-content animated fadeInUp">
                     <div class="ibox">
                         <div class="ibox-content">
-                        
+
                             <div class="row">
                                 <div class="col-lg-12">
                                     <!--<div class="alert alert-danger alert-dismissable">
@@ -43,7 +43,7 @@ $this->load->model('membership/membership_model', 'membership_model');
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="row">
                                 <div class="col-lg-5 col-lg-offset-1">
                                     <dl class="dl-horizontal">
@@ -53,9 +53,9 @@ $this->load->model('membership/membership_model', 'membership_model');
                                     <dl class="dl-horizontal">
                                         <dt>Company Number:</dt> <dd><?php echo $member_company->company_number;?></dd>
                                         <dt>VAT/Tax Number:</dt> <dd><?php echo $member_company->vat_tax;?></dd>
-                                    </dl>                                    
+                                    </dl>
                                     <dl class="dl-horizontal">
-                                        <dt>Address:</dt> <dd>  
+                                        <dt>Address:</dt> <dd>
                                             <?php echo $member_company->address_line_1;?><br/>
                                             <?php echo $member_company->address_line_2;?><br />
                                             <?php echo $member_company->town_city;?><br />
@@ -63,7 +63,7 @@ $this->load->model('membership/membership_model', 'membership_model');
                                             <?php echo $member_company->post_code;?><br />
                                             <?php echo $this->country_model->get_where($member_company->country)->country;?></dd>
                                     </dl>
-                                    
+
                                     <dl class="dl-horizontal">
                                         <dt>Phone:</dt> <dd>  <?php echo $member_info->phone_number;?></dd>
                                         <dt>Skype:</dt> <dd>  <?php echo $member_info->skype;?></dd>
@@ -72,7 +72,7 @@ $this->load->model('membership/membership_model', 'membership_model');
                                         <dt>Twitter:</dt> <dd>  <?php echo $member_info->twitter;?></dd>
                                         <dt>Linkedin:</dt> <dd>  <?php echo $member_info->linkedin;?></dd>
                                     </dl>
-                                    
+
                                     <dl class="dl-horizontal">
                                         <dt>Primary Business:</dt>
                                         <dd><?php echo $member_company->business_sector_1;?></dd>
@@ -83,16 +83,16 @@ $this->load->model('membership/membership_model', 'membership_model');
                                         <dt>Other Activities:</dt>
                                         <dd><?php echo $member_company->other_business;?></dd>
                                     </dl>
-                                    
+
                                 </div>
                                 <div class="col-lg-5 col-lg-offset-1">
-									<?php if(file_exists("public/main/template/gsm/images/company/".$member_company->id.".jpg")){?>
-                                        <img src="public/main/template/gsm/images/company/<?php echo $member_company->id; ?>.jpg" class="img-responsive" style="margin:0 auto">
+									<?php if(file_exists("public/main/template/gsm/images/company/".$this->session->userdata('members_id').".png")){?>
+                                        <img src="public/main/template/gsm/images/company/<?php echo $this->session->userdata('members_id'); ?>.png" class="img-responsive" style="margin:0 auto">
                                     <?php } else {?>
                                         <img src="public/main/template/gsm/images/company/no_company.jpg" class="img-responsive" style="margin:0 auto">
                                     <?php }?>
-                                
-                                
+
+
                               		<div class="m-r-md" style="text-align:center">
                             			<input type="text" value="94" class="dial m-r" data-fgColor="#1AB394" data-width="85" data-height="85" data-angleOffset=-125 data-angleArc=250 readonly/>
                                         <div style="display:inline;height:65px;width:65px;padding:10px;margin-left:20px;"><i class="fa fa-star" style="font-size:75px;color:#FC6;vertical-align:top"></i></div>
@@ -104,31 +104,37 @@ $this->load->model('membership/membership_model', 'membership_model');
                                         <dt>Company Users:</dt>
                                         <dd class="project-people">
                                             <?php if($company_users){
-                                                
+
                                                 foreach($company_users as $user){
-                                                    
+
                                             ?>
-                                            
-                                                <a data-toggle="modal" data-target="#profile-<?php echo $user->id;?>"><img alt="image" class="img-circle" src="public/main/template/gsm/images/members/<?php echo $user->id;?>.jpg"></a>
-                                            
+
+                                                <a data-toggle="modal" data-target="#profile-<?php echo $user->id;?>">
+                                                    <?php if(file_exists("public/main/template/gsm/images/members/".$user->id.".png")){?>
+                                                    <img alt="<?php echo $user->lastname ?>" class="img-circle" src="public/main/template/gsm/images/members/<?php echo $user->id;?>.png">
+                                                    <?php } else {?>
+                                                        <img src="public/main/template/gsm/images/members/no_profile.jpg" class="img-circle" alt="<?php echo $user->lastname ?>">
+                                                    <?php }?>
+                                                </a>
+
                                             <?php
 
                                                     }
                                                 }
-                                            ?>  
-                                        
+                                            ?>
+
                                         </dd>
                                     </dl>
-                                    
+
                                 </div>
-                                
+
                                 <div class="row">
                                 	<div class="col-lg-10 col-lg-offset-1">
                             <?php echo $member_company->company_profile;?>
                                     </div>
                                 </div>
-                                
-                                
+
+
                             </div>
                             <div class="row m-t-sm">
                                 <div class="col-lg-12">
@@ -148,14 +154,14 @@ $this->load->model('membership/membership_model', 'membership_model');
                                 <div class="tab-content">
                                 <div class="tab-pane active" id="feedposts">
                                 <?php
-                                
+
                                     $this->load->module('feed');
                                     $this->feed->feed_list();
                                     $this->feed->post_feed();
                                 ?>
-                                
+
                                 </div>
-                                
+
                                 <div class="tab-pane" id="feedback">
                                     <div class="feed-activity-list">
                                         <div class="feed-element">
@@ -175,7 +181,7 @@ $this->load->model('membership/membership_model', 'membership_model');
 									div#feedback dt {width:120px}
 									div#feedback dd {margin-left:130px}
 									</style>
-									
+
                                     <dl class="dl-horizontal">
                                         <dt>Communication:</dt> <dd>  <i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i></dd>
                                         <dt>Shipping:</dt> <dd>  <i class="fa fa-star"></i><i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i></dd>
@@ -184,14 +190,14 @@ $this->load->model('membership/membership_model', 'membership_model');
                                     </dl>
                         						</div>
                                                 </div>
-                                                    
+
                                             </div>
                                         </div>
-                                        
+
                                     </div>
 
                                 </div>
-                                
+
                                 <div class="tab-pane" id="credit-information">
 									<div class="row">
                     					<div class="col-lg-12" style="text-align:center;margin:15px 0">
@@ -204,9 +210,9 @@ $this->load->model('membership/membership_model', 'membership_model');
                         					<button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#buycreditcheck"><i class="fa fa-check-square-o"></i>Buy Credit Check</button>
                         				</div>
                    					</div>
-                                	
+
                                 </div>
-                                
+
                                 </div>
 
                                 </div>
@@ -219,9 +225,9 @@ $this->load->model('membership/membership_model', 'membership_model');
                 </div>
         </div>
                                             <?php if($company_users){
-                                                
+
                                                 foreach($company_users as $user){
-                                                    
+
                                             ?>
         					<div class="modal inmodal fade" id="profile-<?php echo $user->id;?>" tabindex="-1" role="dialog"  aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
@@ -232,7 +238,14 @@ $this->load->model('membership/membership_model', 'membership_model');
                                             <small class="font-bold">Role</small>
                                         </div>
                                         <div class="modal-body">
-                                            <p><img alt="image" class="img-circle" src="public/main/template/gsm/images/members/<?php echo $user->id;?>.jpg"></p>
+                                            <p>
+                                                <?php if(file_exists("public/main/template/gsm/images/members/".$user->id.".png")){?>
+                                                    <img alt="<?php echo $user->lastname ?>" class="img-circle" width="128" src="public/main/template/gsm/images/members/<?php echo $user->id;?>.png">
+                                                <?php } else {?>
+                                                    <img src="public/main/template/gsm/images/members/no_profile.jpg" class="img-circle" alt="<?php echo $user->lastname ?>">
+                                                <?php }?>
+                                            </p>
+
                                             <p><strong>£5.00 Credit available</strong></p>
                                             <p><strong>£5.00 Credit required</strong></p>
                                         </div>
@@ -242,14 +255,14 @@ $this->load->model('membership/membership_model', 'membership_model');
                                         </div>
                                     </div>
                                 </div>
-                            </div> 
-                                            
+                            </div>
+
                                             <?php
 
                                                     }
                                                 }
-                                            ?>    
-        
+                                            ?>
+
                             <div class="modal inmodal fade" id="buycreditcheck" tabindex="-1" role="dialog"  aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
@@ -270,8 +283,8 @@ $this->load->model('membership/membership_model', 'membership_model');
                                         </div>
                                     </div>
                                 </div>
-                            </div>        
-                            
+                            </div>
+
                             <div class="modal inmodal fade" id="report_user" tabindex="-1" role="dialog"  aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
@@ -291,15 +304,15 @@ $this->load->model('membership/membership_model', 'membership_model');
                                     </div>
                                 </div>
                             </div>
-            
-            
-	<!-- Page Specific Scripts -->    
-    
+
+
+	<!-- Page Specific Scripts -->
+
 	<script src="public/main/template/core/js/plugins/jsKnob/jquery.knob.js"></script>
-        
+
     <!-- Toastr script -->
     <script src="public/main/template/core/js/plugins/toastr/toastr.min.js"></script><!-- ALERTS -->
-    
+
     <script type="text/javascript">
         $(function () {
                 toastr.options = {
