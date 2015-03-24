@@ -205,6 +205,7 @@
                     aspectRatio: this.$aspectRatio,
                     preview: this.$avatarPreview.selector,
                     strict: true,
+                    minContainerWidth: 800,
                     crop: function (data) {
                         var json = [
                             '{"x":' + data.x,
@@ -234,6 +235,7 @@
             var url = this.$avatarForm.attr('action'),
                 data = new FormData(this.$avatarForm[0]),
                 _this = this;
+            _this.$avatarModal.modal('hide');
             data.append("udpate", 1);
             $.ajax(url, {
                 type: 'post',
@@ -307,6 +309,7 @@
             var n = d.getTime();
 
             this.$avatarForm.get(0).reset();
+            this.$avatar.attr('src', "public/main/template/core/css/plugins/cropper/loading.gif");
             this.$avatar.attr('src', this.url + "?" + n);
             this.stopCropper();
             this.$avatarModal.modal('hide');
@@ -325,7 +328,7 @@
     };
 
     $(function () {
-        return new CropAvatar($('#crop-avatar'), 4 / 2);
+        return new CropAvatar($('#crop-avatar'), 8 / 4);
     });
     $(function () {
         return new CropAvatar($('#crop-avatar1'), 2 / 2);
