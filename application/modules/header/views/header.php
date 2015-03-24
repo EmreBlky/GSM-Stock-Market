@@ -131,7 +131,7 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="grid_options.html">
+                        <a href="grid_options.html"> 
                             <div>
                                 <i class="fa fa-upload fa-fw"></i> Server Rebooted
                                 <span class="pull-right text-muted small">4 minutes ago</span>
