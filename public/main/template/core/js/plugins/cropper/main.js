@@ -16,8 +16,9 @@
             }
         };
 
-    function CropAvatar($element) {
+    function CropAvatar($element, $ratio) {
         this.$container = $element;
+        this.$aspectRatio = $ratio;
 
         this.$avatarView = this.$container.find('.avatar-view');
         this.$avatar = this.$avatarView.find('img');
@@ -36,7 +37,7 @@
         this.$avatarPreview = this.$avatarModal.find('.avatar-preview');
 
         this.init();
-        console.log(this);
+        //console.log(this);
     }
 
     CropAvatar.prototype = {
@@ -82,7 +83,6 @@
 
         initPreview: function () {
             var url = this.$avatar.attr('src');
-
             this.$avatarPreview.empty().html('<img src="' + url + '">');
         },
 
@@ -130,6 +130,7 @@
 
         click: function () {
             this.$avatarModal.modal('show');
+            this.$avatarInput.click();
             this.initPreview();
         },
 
@@ -201,9 +202,9 @@
                 this.$img = $('<img src="' + this.url + '">');
                 this.$avatarWrapper.empty().html(this.$img);
                 this.$img.cropper({
-                    aspectRatio: 4 / 2,
+                    aspectRatio: this.$aspectRatio,
                     preview: this.$avatarPreview.selector,
-                    strict: false,
+                    strict: true,
                     crop: function (data) {
                         var json = [
                             '{"x":' + data.x,
@@ -233,7 +234,7 @@
             var url = this.$avatarForm.attr('action'),
                 data = new FormData(this.$avatarForm[0]),
                 _this = this;
-
+            data.append("udpate", 1);
             $.ajax(url, {
                 type: 'post',
                 data: data,
@@ -324,7 +325,10 @@
     };
 
     $(function () {
-        return new CropAvatar($('#crop-avatar'));
+        return new CropAvatar($('#crop-avatar'), 4 / 2);
+    });
+    $(function () {
+        return new CropAvatar($('#crop-avatar1'), 2 / 2);
     });
 
 });
