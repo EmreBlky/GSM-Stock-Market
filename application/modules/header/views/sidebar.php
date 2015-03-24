@@ -14,7 +14,7 @@
                                 <?php if(file_exists("public/main/template/gsm/images/members/".$this->session->userdata('members_id').".png")){?>
                                     <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/template/gsm/images/members/<?php echo $this->session->userdata('members_id'); ?>.png" height="48" width="48">
                                 <?php } else {?>
-                                    <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/template/gsm/images/members/no_profile.png" height="48" width="48">
+                                    <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/template/gsm/images/members/no_profile.jpg" height="48" width="48">
                                 <?php }?>                            
                             </span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
