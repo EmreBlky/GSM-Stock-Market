@@ -1,16 +1,3 @@
-<script>
-    
-    $(document).ready(function() {   
-    <?php if($this->session->flashdata('title')){?>    
-        <?php if($this->session->flashdata('title') != 'Password Success'){ ?>
-            toastr.error('<?php echo $this->session->flashdata('message');?>', '<?php echo $this->session->flashdata('title');?>');
-        <?php } else{ ?>
-            toastr.success('<?php echo $this->session->flashdata('message');?>', '<?php echo $this->session->flashdata('title');?>');
-        <?php }?>
-    <?php }?>    
-     });
-     
-</script>
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
                     <h2>Change Password</h2>
@@ -97,8 +84,6 @@
                     });
 	</script>
         
-        <script src="public/main/template/core/js/plugins/jsKnob/jquery.knob.js"></script>
-        
     <!-- Toastr script -->
     <script src="public/main/template/core/js/plugins/toastr/toastr.min.js"></script><!-- ALERTS -->
     
@@ -118,16 +103,13 @@
 					hideEasing: 'linear',
 					showMethod: 'fadeIn',
 					hideMethod: 'fadeOut',
-				};
-            $('#blocked').click(function (){
-                toastr.error('They are unable to communicate or see you in anyway on this website.', 'User Blocked!');
-            });
-            $('#unblocked').click(function (){
-                toastr.success('You will now be visible to this user again and can communicate with them.', 'User Unblocked');
-            });
-            $('#conversation').click(function (){
-                toastr.warning('Both users need to add each other as a contact before they can use GSM Messenger!', 'Chat Unavailable');
-            });
-        	$(".dial").knob();
-        })
-    </script>
+				};  
+    <?php if($this->session->flashdata('title')){?>    
+        <?php if($this->session->flashdata('title') != 'Password Success'){ ?>
+            toastr.error('<?php echo $this->session->flashdata('message');?>', '<?php echo $this->session->flashdata('title');?>');
+        <?php } else{ ?>
+            toastr.success('<?php echo $this->session->flashdata('message');?>', '<?php echo $this->session->flashdata('title');?>');
+        <?php }?>
+    <?php }?>    
+     });
+     </script>

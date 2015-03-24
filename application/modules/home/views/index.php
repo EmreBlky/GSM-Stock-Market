@@ -7,7 +7,7 @@
                                 <span class="label label-success pull-right">Monthly</span>
                                 <h5>Sales</h5>
                             </div>
-                            <div class="ibox-content" style="min-height:89px">
+                            <div class="ibox-content no_sub" style="min-height:89px">
                                 <h1 class="no-margins">£886,200</h1>
                                 <div class="stat-percent font-bold text-success">23% <i class="fa fa-level-up"></i></div>
                                 <small>Total income</small>
@@ -20,7 +20,7 @@
                                 <span class="label label-info pull-right">Annual</span>
                                 <h5>Purchases</h5>
                             </div>
-                            <div class="ibox-content" style="min-height:89px">
+                            <div class="ibox-content no_sub" style="min-height:89px">
                                 <h1 class="no-margins">£275,800</h1>
                                 <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
                                 <small>My Purchases</small>
@@ -67,7 +67,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="ibox-content">
+                            <div class="ibox-content no_sub">
                                 <div class="row">
                                 <div class="col-lg-9">
                                     <div class="flot-chart">

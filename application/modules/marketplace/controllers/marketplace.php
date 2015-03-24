@@ -138,7 +138,7 @@ class Marketplace extends MX_Controller
         $this->templates->page($data);
     }
     
-    function create_listing()
+    function create_listing($list_id='')
     {   
 
         $member_id=$this->session->userdata('members_id');
@@ -169,12 +169,19 @@ class Marketplace extends MX_Controller
            $this->form_validation->set_rules('min_qty_order', 'min quantity order', 'required|numeric');
         }
         $this->form_validation->set_rules('shipping_term', 'shipping term', 'required');
+        if(empty($list_id)){
         $this->form_validation->set_rules('courier[]', 'courier', 'required');
+            
+        }
         $this->form_validation->set_rules('product_desc', 'product description', 'required');
         $this->form_validation->set_rules('duration', 'duration', 'required');
-        $this->form_validation->set_rules('termsandcondition', 'Terms and condition', 'required');
-        $this->form_validation->set_rules('image1','','callback_image1_check');
 
+        if(empty($list_id)){
+            $this->form_validation->set_rules('termsandcondition', 'Terms and condition', 'required');
+        }
+         if(empty($list_id)){
+        $this->form_validation->set_rules('image1','','callback_image1_check['.$list_id.']');
+        }
         if(!empty($_FILES['image2']['name'])){
             $this->form_validation->set_rules('image2', '', 'callback_image2_check2');
             }
@@ -276,38 +283,83 @@ class Marketplace extends MX_Controller
             'status'                => $status, 
             'created'               => date('Y-m-d h:i:s A'),
             );
+        $list_update = '';
+        if(!empty($list_id)){
+        $list_update =  $this->marketplace_model->get_row('listing', array('id'=>$list_id));
+        }
             
             if($this->session->userdata('image1_check')!=''):
+                if(!empty($list_update->image1)&&file_exists($list_update->image1)){
+                    $img1 = explode('/', $list_update->image1);
+                    @unlink($list_update->image1);
+                    @unlink('public/upload/listing/small/'.$img1[3]);
+                    @unlink('public/upload/listing/large/'.$img1[3]);
+                    @unlink('public/upload/listing/thumbnail/'.$img1[3]);
+                }
                 $image1_check=$this->session->userdata('image1_check');
                 $data_insert['image1'] = 'public/upload/listing/'.$image1_check['image1'];
                $this->session->unset_userdata('image1_check');
             endif;
 
             if($this->session->userdata('image2_check2')!=''):
+                if(!empty($list_update->image2)&&file_exists($list_update->image2)){
+                   $img2 = explode('/', $list_update->image2);
+                    @unlink($list_update->image2);
+                    @unlink('public/upload/listing/small/'.$img2[3]);
+                    @unlink('public/upload/listing/large/'.$img2[3]);
+                    @unlink('public/upload/listing/thumbnail/'.$img2[3]);
+                }
                 $image2_check2=$this->session->userdata('image2_check2');
                 $data_insert['image2'] = 'public/upload/listing/'.$image2_check2['image2'];
                 $this->session->unset_userdata('image2_check2');
             endif;
 
             if($this->session->userdata('check3_image3')!=''):
+                if(!empty($list_update->image3)&&file_exists($list_update->image3)){
+                   $img3 = explode('/', $list_update->image3);
+                    @unlink($list_update->image3);
+                    @unlink('public/upload/listing/small/'.$img3[3]);
+                    @unlink('public/upload/listing/large/'.$img3[3]);
+                    @unlink('public/upload/listing/thumbnail/'.$img3[3]);
+                }
                 $check3_image3=$this->session->userdata('check3_image3');
                 $data_insert['image3'] = 'public/upload/listing/'.$check3_image3['image3'];
                 $this->session->unset_userdata('check3_image3');
             endif;
 
             if($this->session->userdata('check4_image4')!=''):
+                if(!empty($list_update->image4)&&file_exists($list_update->image4)){
+                   $img4 = explode('/', $list_update->image4);
+                    @unlink($list_update->image4);
+                    @unlink('public/upload/listing/small/'.$img4[3]);
+                    @unlink('public/upload/listing/large/'.$img4[3]);
+                    @unlink('public/upload/listing/thumbnail/'.$img4[3]);
+                }
                 $check4_image4=$this->session->userdata('check4_image4');
                 $data_insert['image4'] = 'public/upload/listing/'.$check4_image4['image4'];
                 $this->session->unset_userdata('check4_image4');
             endif;
 
             if($this->session->userdata('check5_image5')!=''):
+                if(!empty($list_update->image5)&&file_exists($list_update->image5)){
+                   $img5 = explode('/', $list_update->image5);
+                    @unlink($list_update->image5);
+                    @unlink('public/upload/listing/small/'.$img5[3]);
+                    @unlink('public/upload/listing/large/'.$img5[3]);
+                    @unlink('public/upload/listing/thumbnail/'.$img5[3]);
+                }
                 $check5_image5=$this->session->userdata('check5_image5');
                 $data_insert['image5'] = 'public/upload/listing/'.$check5_image5['image5'];
                 $this->session->unset_userdata('check5_image5');
             endif;
 
+        if(!empty($list_id)){
+            $this->marketplace_model->update('listing',$data_insert, array('id'=>$list_id));
+            $this->session->set_flashdata('msg_success','Listing Update successfully.');
+            redirect('marketplace/listing');
+        }else{
            $this->marketplace_model->insert('listing',$data_insert);
+        }
            $this->session->set_flashdata('msg_success','Listing added successfully.');
            redirect('marketplace/create_listing');
         }
@@ -321,7 +373,9 @@ class Marketplace extends MX_Controller
         $data['product_colors'] =  $this->marketplace_model->get_result_by_group('product_color');
         $data['product_makes'] =  $this->marketplace_model->get_result_by_group('product_make');
         $data['product_types'] =  $this->marketplace_model->get_result_by_group('product_type');
-       
+
+         $data['product_list']   =  $this->marketplace_model->get_row('listing',array('id'=>$list_id));
+
         $items =  $this->marketplace_model->get_result('listing_categories','','',array('category_name','ASC'));
         if( $items){
             $tree = $this->buildTree($items);
@@ -336,6 +390,8 @@ class Marketplace extends MX_Controller
     
     function open_orders()
     {
+        $data['sell_order'] = $this->marketplace_model->sell_order();
+        $data['buy_order'] = $this->marketplace_model->buy_order();
         $data['main'] = 'marketplace';        
         $data['title'] = 'GSM - Market Place: Open Orders';        
         $data['page'] = 'open-orders';
@@ -346,6 +402,10 @@ class Marketplace extends MX_Controller
     
     function listing()
     {
+        $data['sell_offer'] = $this->marketplace_model->listing_sell_offer();
+        $data['buying_request'] = $this->marketplace_model->listing_buying_offer();
+        $data['counter_offer'] = $this->marketplace_model->listing_counter_offer();
+        
         $data['main'] = 'marketplace';        
         $data['title'] = 'GSM - Market Place: Listing';        
         $data['page'] = 'my-listings';
@@ -527,7 +587,7 @@ class Marketplace extends MX_Controller
      if($_POST){
         $attr_id=trim($_POST['product_mpn_isbn']);
 
-        if($type=='MPN') $type_column='product_mpn'; else; $type_column='product_isbn';
+        if($type=='MPN') $type_column='product_mpn'; else $type_column='product_isbn';
         $information = $this->marketplace_model->get_row('listing_attributes',array($type_column=>$attr_id));
         if($information):
         $check_status='true';
@@ -540,8 +600,9 @@ class Marketplace extends MX_Controller
     }
 
 
-    function image1_check($str){
-    if(empty($_FILES['image1']['name'])){
+    function image1_check($str,$list_id=0){
+
+    if(empty($_FILES['image1']['name']) && empty($list_id)){
             $this->form_validation->set_message('image1_check','Choose Color Image');
            return FALSE;
         }  
@@ -562,16 +623,47 @@ class Marketplace extends MX_Controller
             $upload_file = explode('.', $data['file_name']);
             
             if(in_array($upload_file[1], array('gif','jpeg','jpg','png','bmp','jpe'))){
-                $param2=array(
-                    'source_image'  =>  $data['file_path'].$data['file_name'],
-                    'new_image'     =>  $data['file_path'].$data['file_name'],
+        //thumbimage
+                $param_thumb=array(
+                    'file_name'     =>  $data['file_name'],
+                    'source_image'  =>  $data['file_path'],
+                    'new_image'     =>  $data['file_path'].'/thumbnail/',
                     'create_thumb'  =>  FALSE,
                     'maintain_ratio'=>  FALSE,
-                    'width'         =>  300,
-                    'height'        =>  300,
+                    'width'         =>  75,
+                    'height'        =>  75,
                     );
            
-            image_resize($param2);
+            create_thumbnail($param_thumb);
+
+        //small image
+
+             $param_small=array(
+                    'file_name'     =>  $data['file_name'],
+                    'source_image'  =>  $data['file_path'],
+                    'new_image'     =>  $data['file_path'].'/small/',
+                    'create_thumb'  =>  FALSE,
+                    'maintain_ratio'=>  FALSE,
+                    'width'         =>  200,
+                    'height'        =>  200,
+                    );
+           
+            create_thumbnail($param_small);
+
+        // large image
+
+             $param_large=array(
+                    'file_name'     =>  $data['file_name'],
+                    'source_image'  =>  $data['file_path'],
+                    'new_image'     =>  $data['file_path'].'/large/',
+                    'create_thumb'  =>  FALSE,
+                    'maintain_ratio'=>  FALSE,
+                    'width'         =>  1200,
+                    'height'        =>  1200,
+                    );
+           
+            create_thumbnail($param_large);
+
             $this->session->unset_userdata('image1_check');
             $this->session->set_userdata('image1_check',array('image_url'=>$config1['upload_path'].$data['file_name'],'image1'=>$data['file_name']));
            return TRUE;
@@ -606,16 +698,46 @@ class Marketplace extends MX_Controller
             $upload_file = explode('.', $data['file_name']);
             
             if(in_array($upload_file[1], array('gif','jpeg','jpg','png','bmp','jpe'))){
-                $param2=array(
-                    'source_image'  =>  $data['file_path'].$data['file_name'],
-                    'new_image'     =>  $data['file_path'].$data['file_name'],
+               //thumbimage
+                $param_thumb=array(
+                    'file_name'     =>  $data['file_name'],
+                    'source_image'  =>  $data['file_path'],
+                    'new_image'     =>  $data['file_path'].'/thumbnail/',
                     'create_thumb'  =>  FALSE,
                     'maintain_ratio'=>  FALSE,
-                    'width'         =>  300,
-                    'height'        =>  300,
+                    'width'         =>  75,
+                    'height'        =>  75,
                     );
            
-            image_resize($param2);
+            create_thumbnail($param_thumb);
+
+        //small image
+
+             $param_small=array(
+                    'file_name'     =>  $data['file_name'],
+                    'source_image'  =>  $data['file_path'],
+                    'new_image'     =>  $data['file_path'].'/small/',
+                    'create_thumb'  =>  FALSE,
+                    'maintain_ratio'=>  FALSE,
+                    'width'         =>  200,
+                    'height'        =>  200,
+                    );
+           
+            create_thumbnail($param_small);
+
+        // large image
+
+             $param_large=array(
+                    'file_name'     =>  $data['file_name'],
+                    'source_image'  =>  $data['file_path'],
+                    'new_image'     =>  $data['file_path'].'/large/',
+                    'create_thumb'  =>  FALSE,
+                    'maintain_ratio'=>  FALSE,
+                    'width'         =>  1200,
+                    'height'        =>  1200,
+                    );
+           
+            create_thumbnail($param_large);
             $this->session->unset_userdata('image2_check2');
             $this->session->set_userdata('image2_check2',array('image_url'=>$config2['upload_path'].$data['file_name'],'image2'=>$data['file_name']));
             return TRUE;
@@ -649,16 +771,46 @@ class Marketplace extends MX_Controller
             $upload_file = explode('.', $data['file_name']);
             
             if(in_array($upload_file[1], array('gif','jpeg','jpg','png','bmp','jpe'))){
-                $param2=array(
-                    'source_image'  =>  $data['file_path'].$data['file_name'],
-                    'new_image'     =>  $data['file_path'].$data['file_name'],
+               //thumbimage
+                $param_thumb=array(
+                    'file_name'     =>  $data['file_name'],
+                    'source_image'  =>  $data['file_path'],
+                    'new_image'     =>  $data['file_path'].'/thumbnail/',
                     'create_thumb'  =>  FALSE,
                     'maintain_ratio'=>  FALSE,
-                    'width'         =>  300,
-                    'height'        =>  300,
+                    'width'         =>  75,
+                    'height'        =>  75,
                     );
            
-            image_resize($param2);
+            create_thumbnail($param_thumb);
+
+        //small image
+
+             $param_small=array(
+                    'file_name'     =>  $data['file_name'],
+                    'source_image'  =>  $data['file_path'],
+                    'new_image'     =>  $data['file_path'].'/small/',
+                    'create_thumb'  =>  FALSE,
+                    'maintain_ratio'=>  FALSE,
+                    'width'         =>  200,
+                    'height'        =>  200,
+                    );
+           
+            create_thumbnail($param_small);
+
+        // large image
+
+             $param_large=array(
+                    'file_name'     =>  $data['file_name'],
+                    'source_image'  =>  $data['file_path'],
+                    'new_image'     =>  $data['file_path'].'/large/',
+                    'create_thumb'  =>  FALSE,
+                    'maintain_ratio'=>  FALSE,
+                    'width'         =>  1200,
+                    'height'        =>  1200,
+                    );
+           
+            create_thumbnail($param_large);
             $this->session->unset_userdata('image3_check3');
             $this->session->set_userdata('image3_check3',array('image_url'=>$config3['upload_path'].$data['file_name'],'image3'=>$data['file_name']));
             return TRUE;
@@ -692,16 +844,46 @@ class Marketplace extends MX_Controller
             $upload_file = explode('.', $data['file_name']);
             
             if(in_array($upload_file[1], array('gif','jpeg','jpg','png','bmp','jpe'))){
-                $param2=array(
-                    'source_image'  =>  $data['file_path'].$data['file_name'],
-                    'new_image'     =>  $data['file_path'].$data['file_name'],
+               //thumbimage
+                $param_thumb=array(
+                    'file_name'     =>  $data['file_name'],
+                    'source_image'  =>  $data['file_path'],
+                    'new_image'     =>  $data['file_path'].'/thumbnail/',
                     'create_thumb'  =>  FALSE,
                     'maintain_ratio'=>  FALSE,
-                    'width'         =>  300,
-                    'height'        =>  300,
+                    'width'         =>  75,
+                    'height'        =>  75,
                     );
            
-            image_resize($param2);
+            create_thumbnail($param_thumb);
+
+        //small image
+
+             $param_small=array(
+                    'file_name'     =>  $data['file_name'],
+                    'source_image'  =>  $data['file_path'],
+                    'new_image'     =>  $data['file_path'].'/small/',
+                    'create_thumb'  =>  FALSE,
+                    'maintain_ratio'=>  FALSE,
+                    'width'         =>  200,
+                    'height'        =>  200,
+                    );
+           
+            create_thumbnail($param_small);
+
+        // large image
+
+             $param_large=array(
+                    'file_name'     =>  $data['file_name'],
+                    'source_image'  =>  $data['file_path'],
+                    'new_image'     =>  $data['file_path'].'/large/',
+                    'create_thumb'  =>  FALSE,
+                    'maintain_ratio'=>  FALSE,
+                    'width'         =>  1200,
+                    'height'        =>  1200,
+                    );
+           
+            create_thumbnail($param_large);
             $this->session->unset_userdata('image4_check4');
             $this->session->set_userdata('image4_check4',array('image_url'=>$config4['upload_path'].$data['file_name'],'image4'=>$data['file_name']));
             return TRUE;
@@ -735,16 +917,46 @@ class Marketplace extends MX_Controller
             $upload_file = explode('.', $data['file_name']);
             
             if(in_array($upload_file[1], array('gif','jpeg','jpg','png','bmp','jpe'))){
-                $param2=array(
-                    'source_image'  =>  $data['file_path'].$data['file_name'],
-                    'new_image'     =>  $data['file_path'].$data['file_name'],
+                //thumbimage
+                $param_thumb=array(
+                    'file_name'     =>  $data['file_name'],
+                    'source_image'  =>  $data['file_path'],
+                    'new_image'     =>  $data['file_path'].'/thumbnail/',
                     'create_thumb'  =>  FALSE,
                     'maintain_ratio'=>  FALSE,
-                    'width'         =>  300,
-                    'height'        =>  300,
+                    'width'         =>  75,
+                    'height'        =>  75,
                     );
            
-            image_resize($param2); 
+            create_thumbnail($param_thumb);
+
+        //small image
+
+             $param_small=array(
+                    'file_name'     =>  $data['file_name'],
+                    'source_image'  =>  $data['file_path'],
+                    'new_image'     =>  $data['file_path'].'/small/',
+                    'create_thumb'  =>  FALSE,
+                    'maintain_ratio'=>  FALSE,
+                    'width'         =>  200,
+                    'height'        =>  200,
+                    );
+           
+            create_thumbnail($param_small);
+
+        // large image
+
+             $param_large=array(
+                    'file_name'     =>  $data['file_name'],
+                    'source_image'  =>  $data['file_path'],
+                    'new_image'     =>  $data['file_path'].'/large/',
+                    'create_thumb'  =>  FALSE,
+                    'maintain_ratio'=>  FALSE,
+                    'width'         =>  1200,
+                    'height'        =>  1200,
+                    );
+           
+            create_thumbnail($param_large);
             $this->session->unset_userdata('image5_check5');
             $this->session->set_userdata('image5_check5',array('image_url'=>$config5['upload_path'].$data['file_name'],'image5'=>$data['file_name']));
             return TRUE;
@@ -815,5 +1027,121 @@ class Marketplace extends MX_Controller
             $item->childs = $childs[$item->id];
 
         return $childs[0];
+    }
+
+    function make_offer()
+    {
+
+        $this->form_validation->set_rules('product_qty', 'product Quantity', 'required');
+        $this->form_validation->set_rules('unit_price', 'Unit Price', 'required');
+        $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+        if($this->form_validation->run($this) == TRUE){
+            $listing_id  = $this->input->post('listing_id');
+            $data_insert = array(
+                                'buyer_currency'=> $this->input->post('buyer_currency'),
+                                'buyer_id'     => $this->session->userdata('members_id'),
+                                'seller_id'     => $this->input->post('seller_id'),
+                                'listing_id'    => $listing_id,
+                                'product_qty'   => $this->input->post('product_qty'),
+                                'unit_price'    => $this->input->post('unit_price'),
+                                'created'       => date('Y-m-d')
+                                );
+            $insert_id = $this->marketplace_model->insert('make_offer', $data_insert);
+            if(!empty($insert_id)){
+               $this->session->set_flashdata('msg_success','you have offer send successfully. you will get response as soon as posible');  
+               redirect('marketplace/listing_detail/'.$listing_id);
+            }
+        }
+    }
+
+    function get_buyers_offer()
+    {
+        $list = $this->input->post('listing_id');
+        $make_offer = $this->marketplace_model->get_buyers_offer($list);
+        if(!empty($make_offer)){ ?>
+            <table class="table table-bordered" >
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Rating</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Country</th>
+                        <th>Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+        
+        <?php foreach ($make_offer as $value) { ?>
+
+                    <tr>
+                        <td><?php echo $value->company_name; ?></td>
+                        <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
+                        <td><?php echo $value->product_qty; ?></td>
+                        <td><?php echo currency_class($value->buyer_currency); ?> <?php echo $value->unit_price; ?></td>
+                        <td><img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" alt="Currency" /></td>
+                        <td style="text-align:center">
+                        <button type="button" class="btn btn-outline btn-warning"><i class="fa fa-hand-o-down"></i> Counter Offer</button>
+                        <a onclick="offer_status(<?php echo $value->listing_id; ?>,<?php echo $value->buyer_id ?>)" class="btn btn-outline btn-primary" <?php if (!empty($value->offer_status) && $value->offer_status == 1 ): ?> id="offer_status_accept"<?php endif ?>><i class="fa fa-check"></i> Accept</a>
+                        <button type="button" class="btn btn-outline btn-danger"<?php if (!empty($value->offer_status) && $value->offer_status == 2 ): ?> id="offer_status_declined"<?php endif ?>><i class="fa fa-times"></i> Decline</button>
+                        </td>
+                    </tr>
+        <?php    } ?>
+                    </tbody>
+                    </table>
+        <?php }
+    }
+
+    function view_offer()
+    {
+        $list = $this->input->post('listing_id');
+        $make_offer = $this->marketplace_model->view_offer($list);
+        if(!empty($make_offer)){ ?>
+            <table class="table table-bordered" >
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Rating</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Country</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+        
+        <?php foreach ($make_offer as $value) { ?>
+
+                    <tr>
+                        <td><?php echo $value->company_name; ?></td>
+                        <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
+                        <td><?php echo $value->product_qty; ?></td>
+                        <td><?php echo $value->buyer_currency; ?> <?php echo $value->unit_price; ?></td>
+                        <td><img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" alt="Currency" /></td>
+                    </tr>
+        <?php    } ?>
+                    </tbody>
+                    </table>
+        <?php }
+    }
+
+    public function offer_status()
+    {
+       $list = $this->input->post('listing_id');
+       $buyer_id = $this->input->post('buyer_id');
+
+
+        $update_all = $this->marketplace_model->update('make_offer',array('offer_status'=>2), array('listing_id'=>$list));
+    if(!empty($update_all)){
+        
+       $query = $this->marketplace_model->update('make_offer',array('offer_status'=>1), array('listing_id'=>$list, 'buyer_id'=>$buyer_id));
+
+       if(!empty($query)){
+        echo "offer status updated successfully.";
+       }else{
+        echo "updation failed.";
+       }
+    }
+
     }
 }

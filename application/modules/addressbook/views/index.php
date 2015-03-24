@@ -169,7 +169,9 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                             ?>
                         </div>
                         <?php } else {?> 
-                            <h2>You have no contacts in your address book at present.</h2>
+                        	<div class="alert alert-danger" style="margin-bottom:0">
+                                You have no contacts in your address book at present. <a class="alert-link" href="search/company">Search for Companies</a> or visit <a class="alert-link" href="profile/who_viewed">Who's Viewed</a> to add to your address book.
+                            </div>
                         <?php } ?>
                     	</div><!-- row -->
                     </div><!-- ibox-content -->
@@ -474,7 +476,6 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
         ?>
            
          
-        </div>
         </div>
 
         <!-- iCheck -->

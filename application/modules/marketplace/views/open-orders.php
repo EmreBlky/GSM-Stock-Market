@@ -42,73 +42,47 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr data-toggle="modal" data-target="#myModal5">
+                <?php if (!empty($buy_order)): ?>
+                    <?php foreach ($buy_order as  $value): ?>
+                    <tr>
+                    <?php if ($value->offer_status == 1): $progress = "25%"; ?>
                         <td><span class="label label-warning">Send Payment</span></td>
-                        <td>ClickMobileShop.com Limited</td>
-                        <td>Apple iPhone 4S 16GB</td>
-                        <td>Data Cable</td>
-                        <td>Refurbished</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td class="project-completion">
-                        <small>25% Complete</small>
-                        <div class="progress progress-mini">
-                        <div style="width: 25%;" class="progress-bar"></div>
-                        </div>
-                        </td>
-                        <td>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Make Payment</button></td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
+                    <?php elseif($value->offer_status == 2): $progress = "50%"?>
                         <td><span class="label label-primary">Payment Sent</span></td>
-                        <td>ClickMobileShop.com Limited</td>
-                        <td>Apple iPhone 4S 16GB</td>
-                        <td>Data Cable</td>
-                        <td>Refurbished</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td class="project-completion">
-                        <small>50% Complete</small>
-                        <div class="progress progress-mini">
-                        <div style="width: 50%;" class="progress-bar"></div>
-                        </div>
-                        </td>
-                        <td>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button></td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
+                    <?php elseif($value->offer_status == 3): $progress = "75%" ?>
                         <td><span class="label label-warning">Awaiting Shipment</span></td>
-                        <td>ClickMobileShop.com Limited</td>
-                        <td>Apple iPhone 4S 16GB</td>
-                        <td>Data Cable</td>
-                        <td>Refurbished</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td class="project-completion">
-                        <small>75% Complete</small>
-                        <div class="progress progress-mini">
-                        <div style="width: 75%;" class="progress-bar"></div>
-                        </div>
-                        </td>
-                        <td>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Complete Deal</button></td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
+                    <?php elseif($value->offer_status == 4): $progress = "100%" ?>
                         <td><span class="label label-primary">Shipment Arrived</span></td>
-                        <td>ClickMobileShop.com Limited</td>
-                        <td>Apple iPhone 4S 16GB</td>
-                        <td>Data Cable</td>
-                        <td>Refurbished</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
+                    <?php endif ?>
+                        <td><?php echo $value->company_name; ?></td>
+                        <td><?php echo $value->product_make; ?></td>
+                        <td><?php echo $value->product_type; ?></td>
+                        <td><?php echo $value->condition; ?></td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency"><?php echo currency_class($value->currency).' '.$value->unit_price; ?></td>
                         <td class="project-completion">
-                        <small>100% Complete</small>
+                        <small><?php echo $progress ?> Complete</small>
                         <div class="progress progress-mini">
-                        <div style="width: 100%;" class="progress-bar"></div>
+                        <div style="width: <?php echo $progress ?>;" class="progress-bar"></div>
                         </div>
                         </td>
                         <td>
                         <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button>
-                        <button type="button" class="btn btn-info" style="font-size:10px">Leave Feedback</button></td>
+                    <?php if ($value->offer_status == 1): ?>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Make Payment</button>
+
+                       
+                    <?php elseif($value->offer_status == 3): ?>
+                      <button type="button" class="btn btn-info" style="font-size:10px">Complete Deal</button>
+
+                    <?php elseif($value->offer_status == 4): ?>
+                       <button type="button" class="btn btn-info" style="font-size:10px">Leave Feedback</button></td>
+                    <?php endif ?>
+
+                       </td>
                     </tr>
+                        
+                    <?php endforeach ?>
+                <?php endif ?>
                     </tbody>
                     </table>
 
@@ -139,73 +113,50 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr data-toggle="modal" data-target="#myModal5">
+                    <?php if(!empty($sell_order)): $progress='0%'; ?>
+                        <?php foreach ($sell_order as $value): ?>
+                    <tr>
+                    <?php if ($value->offer_status == 1): $progress = "25%"; ?>
+
                         <td><span class="label label-warning">Awaiting Payment</span></td>
-                        <td>ClickMobileShop.com Limited</td>
-                        <td>Apple iPhone 4S 16GB</td>
-                        <td>Data Cable</td>
-                        <td>Refurbished</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td class="project-completion">
-                        <small>25% Complete</small>
-                        <div class="progress progress-mini">
-                        <div style="width: 25%;" class="progress-bar"></div>
-                        </div>
-                        </td>
-                        <td>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Confirm Payment</button></td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
+
+                    <?php elseif($value->offer_status == 2): $progress = "50%"?>
                         <td><span class="label label-primary">Payment Received</span></td>
-                        <td>ClickMobileShop.com Limited</td>
-                        <td>Apple iPhone 4S 16GB</td>
-                        <td>Data Cable</td>
-                        <td>Refurbished</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td class="project-completion">
-                        <small>50% Complete</small>
-                        <div class="progress progress-mini">
-                        <div style="width: 50%;" class="progress-bar"></div>
-                        </div>
-                        </td>
-                        <td>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button>
-                        <button type="button" class="btn btn-success" style="font-size:10px">Add Tracking</button></td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
+                        
+                    <?php elseif($value->offer_status == 3): $progress = "75%" ?>
                         <td><span class="label label-warning">Awaiting Completion</span></td>
-                        <td>ClickMobileShop.com Limited</td>
-                        <td>Apple iPhone 4S 16GB</td>
-                        <td>Data Cable</td>
-                        <td>Refurbished</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
-                        <td class="project-completion">
-                        <small>75% Complete</small>
-                        <div class="progress progress-mini">
-                        <div style="width: 50%;" class="progress-bar"></div>
-                        </div>
-                        </td>
-                        <td>
-                        <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button></td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#myModal5">
+
+                    <?php elseif($value->offer_status == 4): $progress = "100%" ?>
                         <td><span class="label label-primary">Shipment Arrived</span></td>
-                        <td>ClickMobileShop.com Limited</td>
-                        <td>Apple iPhone 4S 16GB</td>
-                        <td>Data Cable</td>
-                        <td>Refurbished</td>
-                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency">GBP 154.02</td>
+
+                    <?php endif ?>
+                        <td><?php echo $value->company_name; ?></td>
+                        <td><?php echo $value->product_make; ?></td>
+                        <td><?php echo $value->product_type; ?></td>
+                        <td><?php echo $value->condition; ?></td>
+                        <td data-toggle="tooltip" data-placement="left" title="mouseover currency"><?php echo currency_class($value->currency).' '.$value->unit_price; ?></td>
                         <td class="project-completion">
-                        <small>100% Complete</small>
+                        <small><?php echo $progress ?> Complete</small>
                         <div class="progress progress-mini">
-                        <div style="width: 100%;" class="progress-bar"></div>
+                        <div style="width: <?php echo $progress ?>;" class="progress-bar"></div>
                         </div>
                         </td>
                         <td>
                         <button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button>
-                        <button type="button" class="btn btn-info" style="font-size:10px">Leave Feedback</button></td>
+                    <?php if ($value->offer_status == 1): ?>
+                        <button type="button" class="btn btn-success" style="font-size:10px">Confirm Payment</button>
+
+                    <?php elseif($value->offer_status == 2): ?>
+                         <button type="button" class="btn btn-success" style="font-size:10px">Add Tracking</button>
+                       
+                    <?php elseif($value->offer_status == 4): ?>
+                      <button type="button" class="btn btn-info" style="font-size:10px">Leave Feedback</button>
+                    <?php endif ?>
                     </tr>
+                            
+                        <?php endforeach ?>
+                    <?php endif ?>
+                    
                     </tbody>
                     </table>
 
@@ -271,6 +222,49 @@
                                     </div>
                                 </div>
                             </div>
+                            
+                            
+      <div class="modal inmodal fade" id="feedback" tabindex="-1" role="dialog"  aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                      <h4 class="modal-title">Leave Feedback</h4>
+                      <small class="font-bold"><strong >Feedback</strong> for GSMStockMarket.com Limited</small>
+                  </div>
+                  <div class="modal-body">
+                  <div class="row">
+                  <form>
+                  	<input type="text" class="form-control" placeholder="Summary of your thoughts and experience for this user" />
+                    <div class="form-group" style="margin-top:15px">
+                        <label class="col-md-5 control-label" style="margin-top:10px;text-align:right">Communication</label>
+                        <div class="col-md-7">
+                            <input class="rb-rating">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-5 control-label" style="margin-top:10px;text-align:right">Shipping</label>
+                        <div class="col-md-7">
+                            <input class="rb-rating">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-5 control-label" style="margin-top:10px;text-align:right">Quality of Goods</label>
+                        <div class="col-md-7">
+                            <input class="rb-rating">
+                        </div>
+                    </div>
+                  </form>  
+                  </div>
+                  </div>
+					
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-primary">Leave Feedback</button>
+                      <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                  </div>
+              </div>
+          </div>
+      </div>
             
 
     <!-- Data Tables -->
@@ -280,6 +274,15 @@
     
     <!-- Multi Select -->
     <link href="public/main/template/core/css/plugins/chosen/chosen.css" rel="stylesheet">
+    
+    <!-- Feedback Stars -->
+    <link rel="stylesheet" href="public/main/template/gsm/css/star-rating.min.css" rel="stylesheet">
+    <script type="text/javascript" src="public/main/template/gsm/js/star-rating.min.js"></script>
+    <script>
+    jQuery(document).ready(function () {
+        $('.rb-rating').rating({'showCaption':true, 'stars':'5', 'min':'0', 'max':'5', 'step':'1', 'size':'xs', 'starCaptions': {0:'Very Poor', 1:'Very Poor', 2:'Poor', 3:'Average', 4:'Good', 5:'Excellent'}});
+    });
+</script>
 
     <!-- Data Tables -->
     <script type="text/javascript" src="public/main/template/core/js/plugins/dataTables/jquery.dataTables.js"></script>

@@ -222,15 +222,7 @@ endif;
 <?php if($listing_sell){
      foreach ($listing_sell as $value) {?>
     <tr data-toggle="modal" data-target="#myModal5">
-    <td>
-<?php
-$now = new DateTime();
-$future_date = new DateTime($value->listing_end_datetime);
-$interval = $future_date->diff($now);
-$timeremaining= $interval->format("%dd&nbsp;%hh&nbsp;%im&nbsp;");
-?>
-<p><?php echo $timeremaining ?></p>
-    </td>
+    <td><p><span data-countdown="<?php echo $value->listing_end_datetime; ?>"></span></p></td>
     <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
     <td> <?php if(!empty($value->product_mpn)){ echo "MPN: ".$value->product_mpn; } ?>
                     <br>
@@ -239,7 +231,8 @@ $timeremaining= $interval->format("%dd&nbsp;%hh&nbsp;%im&nbsp;");
     <td><?php echo $value->product_model; ?></td>
     <td><?php echo $value->product_type; ?></td>
     <td><?php echo $value->condition; ?></td>
-    <td data-toggle="tooltip" data-placement="left" title="mouseover currency"><?php echo $value->unit_price; ?></td>
+
+    <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>, &euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,   $ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo  currency_class($value->currency) ?><?php echo $value->unit_price; ?></td>
     <td><?php echo $value->total_qty; ?></td>
     <td><?php echo $value->spec; ?></td>
     <td>
@@ -448,3 +441,14 @@ button.DTTT_button:hover, div.DTTT_button:hover, a.DTTT_button:hover {border: 1p
 .chosen-container-multi .chosen-choices {border-radius:5px;border:1px solid #e5e6e7}
 .chosen-container-multi .chosen-choices li.search-choice {color:#FFF;background:#1ab394}
 </style>
+<script src="public/admin/js/jquery.countdown.min.js"></script>
+<script>
+jQuery(document).ready(function($) {
+    $('[data-countdown]').each(function() {
+       var $this = $(this), finalDate = $(this).data('countdown');
+       $this.countdown(finalDate, function(event) {
+         $this.html(event.strftime('%Dd %Hh %Mm %Ss'));
+       });
+     });
+});
+</script>

@@ -81,7 +81,7 @@
                     </li>
                     
                     <li>
-                        <a href="/"><i class="fa fa-line-chart"></i> <span class="nav-label">Marketplace</span> <span class="fa arrow"></span></a>
+                        <a href=""><i class="fa fa-line-chart"></i> <span class="nav-label">Marketplace</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Buy</a></li>
                             <li><a href="marketplace/sell"><i class="fa fa-tag"></i> Sell</a></li>
@@ -105,11 +105,11 @@
                     </li>
                     
                     <li>
-                        <a href="/"><i class="fa fa-money"></i> <span class="nav-label">My Wallet</span><span class="label label-primary pull-right">£5.00</span></a>
+                        <a href=""><i class="fa fa-money"></i> <span class="nav-label">My Wallet</span><span class="label label-primary pull-right">£5.00</span></a>
                     </li>
                     
                     <li>
-                        <a href="/"><i class="fa fa-barcode"></i> <span class="nav-label">IMEI Services</span> <span class="fa arrow"></span></a>
+                        <a href=""><i class="fa fa-barcode"></i> <span class="nav-label">IMEI Services</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="#"><i class="fa fa-unlock-alt"></i> Mobile Unlocking</a></li>
                         </ul>
@@ -122,15 +122,15 @@
                     -->
                     
                     <li>
-                        <a href="/"><i class="fa fa-support"></i> <span class="nav-label">Support</span> <span class="fa arrow"></span></a>
+                        <a href=""><i class="fa fa-support"></i> <span class="nav-label">Support</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="support/faq"><i class="fa fa-question"></i> FAQ</a></li>
+                            <li><a href="http://support.gsmstockmarket.com/customer/portal/topics/744522-frequently-asked-questions/questions" target="_blank"><i class="fa fa-question"></i> FAQ</a></li>
                             <li><a href="support/submit_ticket"><i class="fa fa-ticket"></i> Submit a Ticket</a></li>
                         </ul>
                     </li>
                     
                     <li>
-                        <a href="/"><i class="fa fa-cog"></i> <span class="nav-label">Preferences</span> <span class="fa arrow"></span></a>
+                        <a href=""><i class="fa fa-cog"></i> <span class="nav-label">Preferences</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="preferences/password"><i class="fa fa-lock"></i> Change Password</a></li>
                             <li><a href="preferences/subscription"><i class="fa fa-cubes"></i> My Subscription</a></li><!--

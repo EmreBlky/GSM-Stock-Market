@@ -376,5 +376,13 @@ if(! function_exists('get_currency')){
 			 return 0;	
 			}
 		}
-	
+}
+
+if(!function_exists('offer_count')){
+    function offer_count($list_id=0)
+	{
+		$CI =& get_instance();
+		$CI->load->model('marketplace_model');
+		return $CI->marketplace_model->count_offer($list_id);
+	}
 }

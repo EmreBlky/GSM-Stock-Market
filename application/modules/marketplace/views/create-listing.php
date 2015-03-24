@@ -35,10 +35,13 @@
                 <option selected value="0" >-Select-</option>
                 <?php if (!empty($listing_categories)): ?>
                 <?php foreach ($listing_categories as $row): ?>
-                   <option value="<?php echo $row->category_name ?>" <?php if(!empty($_POST['listing_categories']) && $row->category_name==$_POST['listing_categories']){ echo'selected';}?> ><?php echo $row->category_name ?></option>
+                   <option value="<?php echo $row->category_name ?>"<?php if(!empty($_POST['listing_categories']) && $row->category_name==$_POST['listing_categories']){ echo'selected';}?> 
+                   <?php if(!empty($product_list->listing_categories) && $row->category_name==$product_list->listing_categories){ echo'selected="selected"';}?>>
+                   <?php echo $row->category_name ?></option>
                     <?php if (!empty($row->childs)): ?>
                         <?php foreach ($row->childs as $child): ?>
-                            <option value="<?php echo $child->category_name ?>" <?php if(!empty($_POST['listing_categories']) && $child->category_name==$_POST['listing_categories']){ echo'selected';}?> >- <?php echo $child->category_name ?></option>
+                            <option value="<?php echo $child->category_name ?>" <?php if(!empty($_POST['listing_categories']) && $child->category_name==$_POST['listing_categories']){ echo'selected';}?> 
+                            <?php if(!empty($product_list->listing_categories) && $child->category_name==$product_list->listing_categories){ echo'selected="selected"';}?>>- <?php echo $child->category_name ?></option>
                         <?php endforeach ?>
                     <?php endif ?>
                 <?php endforeach ?>
@@ -52,7 +55,7 @@
      <div class="form-group"><label class="col-md-3 control-label">Schedule Listing</label>
      <div class="col-md-9">
           <div class="input-group date form_datetime " data-date="<?php echo date('Y').'-'.date('m').'-'.date('d')?>" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
-            <input class="form-control" size="16" type="text" value="<?php echo set_value('schedule_date_time');?>" readonly >
+            <input class="form-control" size="16" type="text" value="<?php if(!empty($product_list->schedule_date_time)) echo $product_list->schedule_date_time; else echo set_value('schedule_date_time'); ?>" readonly >
             <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
             <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span><br>
         </div>
@@ -65,8 +68,8 @@
         <div class="col-md-9">
             <select class="form-control" name="listing_type">
                 <option selected value="" >Buying or Selling?</option>
-                <option value="1" <?php if(!empty($_POST) && 1==$_POST['listing_type']){ echo'selected';}?>>Buying Request</option>
-                <option <?php if(!empty($_POST) && 2==$_POST['listing_type']){ echo'selected';}?> value="2">Selling Offer</option>
+                <option value="1" <?php if(!empty($_POST) && 1==$_POST['listing_type']){ echo'selected';}?><?php if(!empty($product_list->listing_type) && 1==$product_list->listing_type){ echo'selected';}?>>Buying Request</option>
+                <option <?php if(!empty($_POST) && 2==$_POST['listing_type']){ echo'selected';}?><?php if(!empty($product_list->listing_type) && 2==$product_list->listing_type){ echo'selected';}?> value="2">Selling Offer</option>
             </select>
             <?php echo form_error('listing_type'); ?>
             
@@ -77,11 +80,13 @@
 
     <div class="form-group"><label class="col-md-3 control-label">MPN</label>
         <div class="col-md-9">
-            <input type="type" id="mpn1" list="mpn" class="form-control check_record" placeholder="Auto fill the rest of the data if MPN is found in the database"  name="product_mpn" value="<?php echo set_value('product_mpn');?>"/>
+            <input type="type" id="mpn1" list="mpn" class="form-control check_record" placeholder="Auto fill the rest of the data if MPN is found in the database"  name="product_mpn" value="<?php if(!empty($product_list->product_mpn)) echo $product_list->product_mpn; else echo set_value('product_mpn');?>"/>
             <datalist id="mpn">
             <?php if(!empty($listing_attributes)){
                  foreach ($listing_attributes as $row) { ?>
+                   <?php if (!empty($row->product_mpn)): ?>
                 <option value="<?php echo $row->product_mpn; ?>"><?php echo $row->product_mpn; ?></option>
+                  <?php endif ?>
                  <?php }} ?>
             </datalist>
              <?php echo form_error('product_mpn'); ?>
@@ -91,11 +96,13 @@
 
      <div class="form-group"><label class="col-md-3 control-label">ISBN</label>
         <div class="col-md-9">
-            <input type="type" id="mpn2" list="mpn2" class="form-control check_record" placeholder="Auto fill the rest of the data if ISBN is found in the database"  name="product_isbn" value="<?php echo set_value('product_isbn');?>"/>
-            <datalist id="mpn2">
+            <input type="type" id="isbn1" list="isbn" class="form-control check_record" placeholder="Auto fill the rest of the data if ISBN is found in the database"  name="product_isbn" value="<?php echo set_value('product_isbn');?>"/>
+            <datalist id="isbn">
             <?php if(!empty($listing_attributes)){
                  foreach ($listing_attributes as $row) { ?>
+                 <?php if (!empty($row->product_isbn)): ?>
                 <option value="<?php echo $row->product_isbn; ?>"><?php echo $row->product_isbn; ?></option>
+                 <?php endif ?>
                  <?php }} ?>
             </datalist>
              <?php echo form_error('product_isbn'); ?>
@@ -117,7 +124,7 @@
     
     <div class="form-group"><label class="col-md-3 control-label">Model</label>
         <div class="col-md-9">
-            <input type="type" class="form-control check_record" placeholder="When make is selected list models associated with make" name="product_model" value="<?php echo set_value('product_model');?>"/>
+            <input type="type" class="form-control check_record" placeholder="When make is selected list models associated with make" name="product_model" value="<?php if(!empty($product_list->schedule_date_time)) echo $product_list->product_model; else echo set_value('product_model');?>"/>
             <?php echo form_error('product_model'); ?>
         </div>
     </div>
@@ -130,7 +137,7 @@
             <option  selected  value="">Select Make</option>
             <?php if(!empty($product_types)){ 
                  foreach ($product_types as $row) { ?>
-                <option value="<?php echo $row->product_type; ?>" <?php if(!empty($_POST) && $row->product_type==$_POST['product_type']){ echo'selected';}?>><?php echo $row->product_type; ?></option>
+                <option value="<?php echo $row->product_type; ?>" <?php if(!empty($_POST) && $row->product_type==$_POST['product_type']){ echo'selected';}?><?php if(!empty($product_list->product_type) && $row->product_type==$product_list->product_type){ echo'selected';}?>><?php echo $row->product_type; ?></option>
                  <?php }} ?>
         </select>
         <?php echo form_error('product_type'); ?>
@@ -143,7 +150,8 @@
             <option selected value="">Select Color</option>
             <?php if(!empty($product_colors)){ 
                  foreach ($product_colors as $row) { ?>
-                <option value="<?php echo $row->product_color; ?>" <?php if(!empty($_POST) && $row->product_color==$_POST['product_color']){ echo'selected';}?>><?php echo $row->product_color; ?></option>
+                <option value="<?php echo $row->product_color; ?>" <?php if(!empty($_POST) && $row->product_color==$_POST['product_color']){ echo'selected';}?>
+                <?php if(!empty($product_list->product_color) && $row->product_color==$product_list->product_color){ echo'selected';}?>><?php echo $row->product_color; ?></option>
                  <?php }} ?>
         </select>           
             <?php echo form_error('product_color'); ?>
@@ -155,11 +163,11 @@
     <div class="form-group"><label class="col-md-3 control-label">Condition</label>
         <div class="col-md-9">
             <select class="form-control" name="condition">
-            <option selected value="">Condition</option>
+            <option value="">Condition</option>
             <?php $condition = condition(); 
             if($condition){
                 foreach ($condition as $key => $value){ ?>
-                  <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['condition']){ echo'selected';}?>><?php echo $value; ?></option>
+                  <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['condition']){ echo'selected';}?><?php if(!empty($product_list->condition) && $value == $product_list->condition){ echo'selected="selected"';}?>><?php echo $value; ?></option>
                   <?php } 
             } ?>
             </select>
@@ -173,7 +181,7 @@
             <?php $spec = spec(); 
             if($spec){
                 foreach ($spec as $key => $value){ ?>
-                  <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['spec']){ echo'selected';}?>><?php echo $value; ?></option>
+                  <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['spec']){ echo'selected';}?><?php if(!empty($product_list->spec) && $value==$product_list->spec){ echo'selected';}?>><?php echo $value; ?></option>
                   <?php } 
             } ?>
         </select>
@@ -190,7 +198,7 @@
                 if($currency){
                     $i=1;
                 foreach ($currency as $key => $value){ ?>
-                  <option <?php if(!empty($_POST) && $i==$_POST['currency']){ echo'selected';}?> value="<?php echo $i;?>"><?php echo $value; ?></option>
+                  <option <?php if(!empty($_POST) && $i==$_POST['currency']){ echo'selected';}?><?php if(!empty($product_list->currency) && $i==$product_list->currency){ echo'selected';}?> value="<?php echo $i;?>"><?php echo $value; ?></option>
                   <?php $i++;} 
                 } ?>
             </select>
@@ -202,14 +210,14 @@
 
     <div class="form-group"><label class="col-md-3 control-label">Unit Price</label>
         <div class="col-md-9">
-            <input type="type" class="form-control" name="unit_price" value="<?php echo set_value('unit_price');?>"/>
+            <input type="type" class="form-control" name="unit_price" value="<?php if(!empty($product_list->unit_price)) echo $product_list->unit_price; else echo set_value('unit_price');?>"/>
             <?php echo form_error('unit_price'); ?>
         </div>
     </div>
     
     <div class="form-group"><label class="col-md-3 control-label">Minimum Price</label>
         <div class="col-md-9">
-            <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="minimum_checkbox" id="minimum_checkbox" <?php if(!empty($_POST['minimum_checkbox']) ){ echo'checked';}?>/> </span> <input type="text" class="form-control" placeholder="only make typable when clicked" name="min_price" value="<?php echo set_value('min_price');?>" <?php if(empty($_POST['minimum_checkbox']) ){ echo'disabled';}?>></div>
+            <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="minimum_checkbox" id="minimum_checkbox" <?php if(!empty($_POST['minimum_checkbox']) ){ echo'checked';}?><?php if(!empty($product_list->min_price)){ echo'checked';}?>/> </span> <input type="text" class="form-control" placeholder="only make typable when clicked" name="min_price" value="<?php if(!empty($product_list->min_price)) echo $product_list->min_price; else echo set_value('min_price');?>" <?php if(empty($product_list->min_price) ){ echo'disabled';}?>></div>
             <p class="small">tick to enable. Any offers below this will be auto rejected, leave blank to allow any offers if ticked.</p>
             <?php echo form_error('min_price'); ?>
         </div>
@@ -217,11 +225,11 @@
     
     <div class="form-group"><label class="col-md-3 control-label">Allow Offers</label>
         <div class="col-md-9">
-            <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="allowoffer_checkbox" id="allowoffer_checkbox" <?php if(!empty($_POST['allowoffer_checkbox']) ){ echo'checked';}?>/> </span>
-            <select class="form-control" name="allow_offer" <?php if(empty($_POST['allowoffer_checkbox']) ){ echo'disabled';}?> >
+            <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="allowoffer_checkbox" id="allowoffer_checkbox" <?php if(!empty($_POST['allowoffer_checkbox']) ){ echo'checked';}?><?php if(!empty($product_list->allow_offer) ){ echo'checked';}?>/> </span>
+            <select class="form-control" name="allow_offer" <?php if(empty($product_list->allow_offer)){ echo'disabled';}else{ echo "enable"; } ?> >
                 <option selected value="">default</option>
                 <?php for($i=4; $i<=10; $i++){
-                    ?><option <?php if(isset($_POST['allow_offer']) && $i==$_POST['allow_offer']){ echo'selected';}?>><?php echo $i;?></option>
+                    ?><option <?php if(isset($_POST['allow_offer']) && $i==$_POST['allow_offer']){ echo'selected';}?><?php if(!empty($product_list->allow_offer) && $i == $product_list->allow_offer){ echo'selected="selected"'; }?>><?php echo $i;?></option>
                     <?php }?>
             </select>
             </div>
@@ -232,14 +240,14 @@
     
     <div class="form-group"><label class="col-md-3 control-label">Quantity Available</label>
         <div class="col-md-9">
-            <input type="type" class="form-control" name="total_qty" value="<?php echo set_value('total_qty');?>"/>
+            <input type="type" class="form-control" name="total_qty" value="<?php if(!empty($product_list->total_qty)) echo $product_list->total_qty; else  echo set_value('total_qty');?>"/>
             <?php echo form_error('total_qty'); ?>
         </div>
     </div>
     
     <div class="form-group"><label class="col-md-3 control-label">Min Order Quantity</label>
         <div class="col-md-9">
-            <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="orderqunatity_checkbox" id="orderqunatity_checkbox" <?php if(!empty($_POST['orderqunatity_checkbox']) ){ echo'checked';}?>/> </span> <input type="text" class="form-control" placeholder="only make typable when clicked" name="min_qty_order" value="<?php echo set_value('min_qty_order');?>" <?php if(empty($_POST['orderqunatity_checkbox']) ){ echo'disabled';}?>></div>
+            <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="orderqunatity_checkbox" id="orderqunatity_checkbox" <?php if(!empty($_POST['orderqunatity_checkbox']) ){ echo'checked';}?> <?php if(!empty($product_list->min_qty_order)){ echo'checked';}?>/> </span> <input type="text" class="form-control" placeholder="only make typable when clicked" name="min_qty_order" value="<?php if(!empty($product_list->min_qty_order)) echo $product_list->min_qty_order; else echo set_value('min_qty_order');?>" <?php if(empty($_POST['orderqunatity_checkbox']) ){ echo'disabled';}?><?php if(empty($product_list->min_qty_order) ){ echo'disabled';} else{ echo 'enable';} ?>></div>
             <p class="small">Allow minimum order quantity else full quantity sale available only</p>
             <?php echo form_error('min_qty_order'); ?>
         </div>
@@ -251,10 +259,10 @@
     <div class="col-md-9">
 
         <select class="form-control" name="shipping_term" onchange="shippings_to_couriers(this.value);">
-            <option selected value="">Select Terms</option>
+            <option value="">Select Terms</option>
             <?php if($shippings){
-                foreach ($shippings as $row){ ?>
-                  <option value="<?php echo $row->id; ?>@@<?php echo $row->shipping_name; ?>" <?php if(!empty($_POST) && $value==$_POST['shipping_term']){ echo'selected';}?>><?php echo $row->shipping_name; ?> <?php echo $row->description; ?></option>
+                foreach ($shippings as $row){  ?>
+                  <option value="<?php echo $row->id; ?>@@<?php echo $row->shipping_name; ?>" <?php if(!empty($_POST) && $row->id.'@@'.$row->shipping_name==$_POST['shipping_term']){ echo'selected="selected"';} ?><?php if(!empty($product_list->shipping_term) && $row->shipping_name == $product_list->shipping_term){ echo'selected="selected"'; } ?>><?php echo $row->shipping_name; ?> <?php echo $row->description; ?></option>
                   <?php }
             } ?>
         </select>
@@ -273,10 +281,12 @@
             // foreach ($courier as $key => $value){ ?>
            <!--  <label class="checkbox-inline i-checks"><input type="checkbox" value="option<?php //echo $i; ?>" id="inlineCheckbox<?php //echo $i; ?>" name="courier[]" <?php //if(!empty($_POST['courier']) && in_array('option'.$i, $_POST['courier'])){ echo'checked';}?>/> <?php //echo $value;?> </label> -->
             <?php  //$i++;}} ?>
+            <?php if(!empty($product_list->courier)){ echo  $product_list->courier; } ?>
             <?php if (!empty($couriers)): ?>
             <?php foreach ($couriers as $rowc): ?>
-            <span id="courier<?php echo $rowc->id ?>" style="display:none;">
-            <label class="checkbox-inline i-checks"><input type="checkbox" value="option<?php echo $i; ?>" id="inlineCheckbox<?php echo $i; ?>" name="courier[]" <?php if(!empty($_POST['courier']) && in_array('option'.$i, $_POST['courier'])){ echo'checked';}?>/> <?php echo $rowc->courier_name;?> </label>
+            <span id="courier<?php echo $rowc->id ?>" style="<?php if(!empty($product_list->courier)) echo'display:block'; else echo 'display:none'; ?>">
+            <label class="checkbox-inline i-checks"><input type="checkbox" value="option<?php echo $i; ?>" id="inlineCheckbox<?php echo $i; ?>" name="courier[]" <?php if(!empty($_POST['courier']) && in_array('option'.$i, $_POST['courier'])){ echo'checked';}?>
+                /> <?php echo $rowc->courier_name;?> </label>
             </span>
             <?php endforeach ?>
             <?php endif ?>
@@ -288,7 +298,7 @@
     
     <div class="form-group"><label class="col-md-3 control-label">Product Description</label>
         <div class="col-md-9">
-            <textarea type="type" class="form-control" rows="5" id="product_desc" name="product_desc"><?php echo set_value('product_desc');?></textarea>
+            <textarea type="type" class="form-control" rows="5" id="product_desc" name="product_desc"><?php if(!empty($product_list->product_desc)) echo $product_list->product_desc; else echo set_value('product_desc');?></textarea>
             <?php echo form_error('product_desc'); ?>
         </div>
     </div>
@@ -301,25 +311,29 @@
             <?php $duration = list_duration(); 
             if($duration){
                 foreach ($duration as $key => $value){ ?>
-                  <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['duration']){ echo'selected';}?>><?php echo $value; ?> day</option>
+                  <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['duration']){ echo'selected';}?><?php if(isset($product_list->duration) && $value==$product_list->duration){ echo'selected';}?>><?php echo $value; ?> day</option>
                   <?php } 
             } ?>
             </select>
             <?php echo form_error('duration'); ?>
         </div> 
-    </div>  
-    
+    </div> 
+
+   <?php if (empty($product_list->id)): ?>
     <div class="form-group"><label class="col-md-3 control-label">Terms &amp; Conditions</label>
         <div class="col-md-9">
         <input type="checkbox" class="checkbox-inline i-checks" name="termsandcondition" <?php if(!empty($_POST['termsandcondition']) ){ echo'checked';}?>/> I agree to the GSMStockMarket.com Limited Terms and Conditions
          <?php echo form_error('termsandcondition'); ?>
         </div>
     </div>
+   <?php endif ?>
     
     <div class="form-group">
         <div class="col-md-9 col-md-offset-3">
             <a class="btn btn-danger" href="">Cancel</a>
+        <?php if(empty($product_list->id)): ?>
             <button class="btn btn-warning" type="submit" name="status" value="2">Save for later</button>
+        <?php endif ?>
             <button class="btn btn-primary" type="submit" name="status" value="1">List Now</button>
         </div>
     </div>
@@ -339,27 +353,47 @@
            
             <label  class="col-md-4" >Image 1</label>
             <div  class="col-md-8">
+            <?php if (!empty($product_list->image1) && file_exists($product_list->image1)): 
+            $img1 = explode('/', $product_list->image1)?>
+                <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img1[3]; ?>" class="thumbnail"/>
+            <?php endif ?>
              <input type="file" name="image1" class="btn default btn-file">
-             </div>
+            </div>
              <?php echo form_error('image1'); ?>
              <label  class="col-md-4" >Image 2</label>
             <div  class="col-md-8">
+            <?php if (!empty($product_list->image2) && file_exists($product_list->image2)): 
+            $img2 = explode('/', $product_list->image2)?>
+                <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img2[3]; ?>" class="thumbnail"/>
+            <?php endif ?>
              <input type="file" name="image2" class="btn default btn-file">
              </div>
              <?php echo form_error('image2'); ?>
              <label  class="col-md-4" >Image 3</label>
             <div  class="col-md-8">
+            <?php if (!empty($product_list->image3)&& file_exists($product_list->image3)): 
+            $img3 = explode('/', $product_list->image3)?>
+                <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img3[3]; ?>" class="thumbnail"/>
+            <?php endif ?>
              <input type="file" name="image3" class="btn default btn-file">
              </div>
              <?php echo form_error('image3'); ?>
              <label  class="col-md-4" >Image 4</label>
             <div  class="col-md-8">
+            <?php if (!empty($product_list->image4)&& file_exists($product_list->image4)): 
+            $img4 = explode('/', $product_list->image4)?>
+                <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img4[3]; ?>" class="thumbnail"/>
+            <?php endif ?>
              <input type="file" name="image4" class="btn default btn-file">
              </div>
              <?php echo form_error('image4'); ?>
 
               <label  class="col-md-4" >Image 5</label>
             <div  class="col-md-8">
+             <?php if (!empty($product_list->image5)&& file_exists($product_list->image5)): 
+            $img5 = explode('/', $product_list->image5)?>
+                <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img5[3]; ?>" class="thumbnail"/>
+            <?php endif ?>
              <input type="file" name="image5" class="btn default btn-file">
              </div>
              <?php echo form_error('image5'); ?>
@@ -662,7 +696,7 @@ $(document).ready(function () {
          }
         });
 
-     $("#mpn2").change(function(){
+     $("#isbn1").change(function(){
      var product_mpn_isbn = $(this).val();
      if(product_mpn_isbn){
         $('.check_record').attr("disabled", "disabled");

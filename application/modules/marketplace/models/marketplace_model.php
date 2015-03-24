@@ -122,7 +122,7 @@ class Marketplace_model extends MY_Model {
 
 		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
 		$this->db->from('listing');
-		$this->db->join('company','company.id=listing.member_id');
+		$this->db->join('company','company.admin_member_id=listing.member_id');
 		$this->db->where('status', 1);
 		$this->db->where('listing_type', 2);
 		//$this->db->where('member_id != '.$member_id);
@@ -182,7 +182,7 @@ class Marketplace_model extends MY_Model {
 
 		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
 		$this->db->from('listing');
-		$this->db->join('company','company.id=listing.member_id');
+		$this->db->join('company','company.admin_member_id=listing.member_id');
 		$this->db->where('status', 1);
 		$this->db->where('listing_type', 1);
 		//$this->db->where('member_id != '.$member_id);
@@ -196,6 +196,82 @@ class Marketplace_model extends MY_Model {
 		}else{
 			return $this->db->count_all_results();
 		}
+	}
+
+	public function listing_counter_offer(){
+		$this->db->select('listing.*,company.country  AS country_id,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
+
+		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
+		$this->db->from('listing');
+		$this->db->join('company','company.admin_member_id=listing.member_id');
+		$this->db->join('make_offer','make_offer.listing_id=listing.id');
+		$this->db->where('status', 1);
+				$query = $this->db->get();
+			if($query->num_rows()>0)
+				return $query->result();
+			else
+				return FALSE;
+	}
+
+	public function listing_sell_offer(){
+		$member_id=$this->session->userdata('members_id');
+		$this->db->select('listing.*,company.country  AS country_id,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
+
+		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
+		$this->db->from('listing');
+		$this->db->join('company','company.admin_member_id=listing.member_id');
+		$this->db->join('make_offer','make_offer.listing_id=listing.id');
+		$this->db->group_by('listing.id');
+		 $this->db->where('status', 1);
+		 $this->db->where('listing_type', 1);
+		//$this->db->where('member_id != '.$member_id);
+		$query = $this->db->get();
+			if($query->num_rows()>0)
+				return $query->result();
+			else
+				return FALSE;
+	}
+
+	public function listing_buying_offer(){
+		$this->db->select('listing.*,company.country  AS country_id,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
+
+		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
+		$this->db->from('listing');
+		$this->db->join('company','company.admin_member_id=listing.member_id');
+		$this->db->where('status', 1);
+		$this->db->where('listing_type', 2);
+		//$this->db->where('member_id != '.$member_id);
+			$query = $this->db->get();
+			if($query->num_rows()>0)
+				return $query->result();
+			else
+				return FALSE;
+	}
+
+	public function get_buyers_offer($list_id=0){
+		$member_id = $this->session->userdata('members_id');
+		$this->db->select('company.*,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country,make_offer.*');
+		$this->db->from('make_offer');
+		$this->db->join('company','company.admin_member_id=make_offer.buyer_id');
+		$this->db->where('make_offer.listing_id',$list_id);
+		$this->db->where('make_offer.seller_id',$member_id);
+		$query = $this->db->get();
+			if($query->num_rows()>0)
+				return $query->result();
+			else
+				return FALSE;
+	}
+
+	public function view_offer($list_id=0){
+		$this->db->select('company.*,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country,make_offer.*');
+		$this->db->from('make_offer');
+		$this->db->join('company','company.id=make_offer.buyer_id');
+		$this->db->where('make_offer.listing_id',$list_id);
+		$query = $this->db->get();
+			if($query->num_rows()>0)
+				return $query->result();
+			else
+				return FALSE;
 	}
 
 	public function get_shippings_to_couriers_data($couriers=array()){
@@ -242,6 +318,50 @@ class Marketplace_model extends MY_Model {
 			return $query->result();
 		else
 			return FALSE;
+	}
+
+	public function count_offer($list_id=0)
+	{
+		$this->db->from('make_offer');
+		$this->db->where('listing_id', $list_id);
+		return $this->db->count_all_results();
+		
+	}
+
+	public function sell_order(){
+		$member_id=$this->session->userdata('members_id');
+		$this->db->select('listing.*,company.company_name,make_offer.*');
+		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
+		$this->db->from('listing');
+		$this->db->join('company','company.admin_member_id=listing.member_id');
+		$this->db->join('make_offer','make_offer.listing_id=listing.id');
+		$this->db->where('status', 1);
+		//$this->db->where('listing_type', 1);
+		$this->db->where('make_offer.offer_status',1);
+		$this->db->where('make_offer.seller_id',$member_id);
+		$query = $this->db->get();
+			if($query->num_rows()>0)
+				return $query->result();
+			else
+				return FALSE;
+	}
+
+	public function buy_order(){
+		$member_id=$this->session->userdata('members_id');
+		$this->db->select('listing.*,company.company_name,make_offer.*');
+		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
+		$this->db->from('listing');
+		$this->db->join('company','company.admin_member_id=listing.member_id');
+		$this->db->join('make_offer','make_offer.listing_id=listing.id');
+		$this->db->where('status', 1);
+		//$this->db->where('listing_type', 2);
+		$this->db->where('make_offer.offer_status',1);
+		$this->db->where('make_offer.buyer_id',$member_id);
+		$query = $this->db->get();
+			if($query->num_rows()>0)
+				return $query->result();
+			else
+				return FALSE;
 	}
 
 }

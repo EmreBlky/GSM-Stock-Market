@@ -344,7 +344,12 @@ class Admin extends MX_Controller
    function listing_status($id='',$status='',$offset=''){
         $user_status = '';
         $msg_success = '';
-       
+        $listing  = $this->admin_model->get_row('listing', array('id'=>$id));
+        if(empty($listing->member_id)) redirect('admin/listing');
+            
+        $member = $this->admin_model->get_row('members', array('id'=>$listing->member_id));
+        $member_email = $member->email; //fatch member email for decline information
+
         if($status=='1'){
 
             $this->admin_model->update('listing',array('status'=>1),array('id'=>$id));
@@ -357,28 +362,27 @@ class Admin extends MX_Controller
             $msg_success = "Listing Status Decline successfully.";
 
         }
-        // $email_template=$this->developer_email->get_email_template(3);
 
-        // $param=array(
-        //    'template'  =>  array(
-        //         'temp'  =>  $email_template->template_body,
-        //         'var_name'  =>  array(
-        //                 'user_name'  => $member_info->firstname.' '. $member_info->lastname,
-        //                 'status'=> $user_status,
-        //                 'message'=> $msg_success,
-        //                 'site_name'=>SITE_NAME,
+        //send email for decline listing request.
 
-        //               ),
-        //           ),
-        //     'email' =>  array(
-        //     'to'    =>  $member_info->email,
-        //     'from'  =>   NO_REPLY_EMAIL,
-        //     'from_name' =>   SITE_NAME,
-        //     'subject' =>   $email_template->template_subject,
-        //   )
-        // );
+        $this->load->library('email');
 
-        // $this->developer_email->send_mail($param);
+        $config['protocol'] = 'sendmail';
+        $config['mailpath'] = '/usr/sbin/sendmail';
+        $config['charset'] = 'iso-8859-1';
+        $config['wordwrap'] = TRUE;
+
+        $this->email->initialize($config);
+
+        $this->email->from('info@gsmstock.com', 'Admin');
+        $this->email->to($member_email);
+        $this->email->subject('Decline listing request');
+        $html = "hello user,";
+        $html .= "your listing request has been declined.";
+        $this->email->message($html);
+
+        $this->email->send();
+
         $this->session->set_flashdata('msg_success',$msg_success);
         redirect('admin/listing');
     }

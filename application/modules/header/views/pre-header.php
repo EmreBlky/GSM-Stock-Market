@@ -14,6 +14,12 @@
     <meta name="keywords"
           content="gsm stock market, gsm trading, gsm market, gsm stock, mobile trading, phone trading, mobile phone, phone companies, mobile phone directory"/>
     <meta name="google-translate-customization" content=""/>
+    <meta name="apple-mobile-web-app-title" content="Trading">
+    
+    <!-- Icons -->    
+    <link href="public/main/template/gsm/images/icons/favicon.png" rel="shortcut icon" type="image/x-icon" />
+	<link href="public/main/template/gsm/images/icons/apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
+	<link href="public/main/template/gsm/images/icons/icon-hires.png" rel="icon" sizes="192x192" />
 
     <!-- Main Stylesheets -->
     <link href="public/main/template/core/css/bootstrap.min.css" rel="stylesheet">
@@ -108,8 +114,14 @@
 
 
 </head>
-
-<body class="skin-1">
+<?php
+            $this->load->model('member/member_model', 'member_model');
+            $this->load->model('membership/membership_model', 'membership_model');
+            $member = $this->member_model->get_where($this->session->userdata('members_id'));
+            //echo $member->membership;
+            //exit;
+        ?>
+<body class="<?php echo strtolower($this->membership_model->get_where($member->membership)->membership); ?>">
 
 
 	
