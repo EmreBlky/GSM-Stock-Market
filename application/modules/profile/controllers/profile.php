@@ -375,7 +375,7 @@ class Profile extends MX_Controller
             $files = $_FILES;
 
             $count = 0;
-            if (isset($_FILES)) {
+            if (isset($files['userfile']['size'])) {
                 foreach ($files['userfile']['size'] as $file) {
 
                     if ($file > 0) {
