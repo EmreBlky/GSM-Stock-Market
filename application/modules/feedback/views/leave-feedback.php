@@ -41,7 +41,9 @@
                   </div>
 					
                   <div class="modal-footer">
-                      <button type="button" class="btn btn-primary">Leave Feedback</button>
+                      <input type="hidden" name="sent_by" id="sent_by" value="3"/>
+                      <input type="hidden" name="sent_to" id="sent_to" value="1"/>
+                      <button type="button" id="submit_message" class="btn btn-primary">Leave Feedback</button>
                       <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
                   </div>
               </div>
@@ -57,6 +59,35 @@
         $('.communication-rating').rating({'showCaption':true, 'stars':'5', 'min':'0', 'max':'5', 'step':'1', 'size':'xs', 'starCaptions': {0:'Very Poor', 1:'Very Poor', 2:'Poor', 3:'Average', 4:'Good', 5:'Excellent'}});
         $('.shipping-rating').rating({'showCaption':true, 'stars':'5', 'min':'0', 'max':'5', 'step':'1', 'size':'xs', 'starCaptions': {0:'Very Slowly', 1:'Very Slowly', 2:'Slowly', 3:'Neither slowly nor quickly', 4:'Quickly', 5:'Very quickly'}});
         $('.company-rating').rating({'showCaption':true, 'stars':'5', 'min':'0', 'max':'5', 'step':'1', 'size':'xs', 'starCaptions': {0:'Very unlikely', 1:'Very unlikely', 2:'Unlikely', 3:'Neither likely or unlikely', 4:'Likely', 5:'Very likely'}});
+        
+         $("#submit_message").click(function(){
+        
+        //$("#submit_message").hide(); 
+        var mid             = $('#sent_by').val();
+        var sid             = $("#sent_to").val();
+        var rateDesc        = $('.description-rating').val();
+        var rateComms       = $('.communication-rating').val();
+        var rateShip        = $('.shipping-rating').val();
+        var rateCompany     = $('.company-rating').val();
+                
+        //var subject = $("#subject").val().replace(/(\r\n|\n|\r)/gm, '%0D%0A');
+        var body    = $("#summary_feedback").val().replace(/(\r\n|\n|\r)/gm, 'BREAK1');
+        var body    = body.replace(/\//g, 'SLASH1');
+        var body    = body.replace(/\?/g, 'QUEST1');
+        var body    = body.replace(/\%/g, 'PERCENT1');
+        
+         $.ajax({
+                type: "POST",
+                url: "feedback/processFeedback/"+ mid +"/"+ sid +"/"+ rateDesc +"/"+ rateComms +"/"+ rateShip +"/"+ rateCompany +"/"+ body +"",
+                dataType: "html",
+                success:function(data){
+                  $('#summary_feedback').val('');  
+                  $('#feedback').modal('hide');                  
+                  toastr.success('Your message has been sent.', 'Feedbac Alert');
+                  $("#submit_message").show('slow');
+                },
+            });    
+    });
     });
     </script>
     

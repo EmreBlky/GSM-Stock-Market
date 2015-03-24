@@ -60,7 +60,7 @@ class Feed extends MX_Controller
     
     function admin_feed_count()
     {
-        $f_count = $feed_count = $this->feed_model->count_where('approved', 'awaiting_approval');
+        $f_count = $this->feed_model->count_where('approved', 'awaiting_approval');
         
         if($f_count > 0){
             echo '<span class="label label-warning pull-right">'.$f_count.'</span>';

@@ -1,4 +1,8 @@
 <?php echo $this->session->flashdata('confirm-login'); ?>
+<?php                                        
+    $this->load->module('feedback');
+    $overall = $this->feedback->overallScore($this->session->userdata('members_id'));
+?>
 <div class="wrapper wrapper-content">
         <div class="row">
                     <div class="col-lg-3">
@@ -40,19 +44,84 @@
                             </div>
                         </div>
                     </div>
+            <?php if($overall > 0) {?>
                     <div class="col-lg-3">
-                        <div class="ibox float-e-margins">
-                            <div class="ibox-title">
-                                <span class="label label-primary pull-right">Good Standing</span>
-                                <h5>My Rating</h5>
+                        <?php if($overall >= 95){ ?>
+                        
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <span class="label label-success pull-right">Excellent</span>
+                                    <h5>My Rating</h5>
+                                </div>
+                                <div class="ibox-content" style="min-height:89px;padding:0 20px;text-align:center">
+                                    <div class="m-r-md inline">                                            
+                                            <input type="text" value="<?php echo $overall; ?>" class="dial m-r" data-fgColor="#1c84c6" data-width="85" data-height="85" data-angleOffset=-125 data-angleArc=250 readonly/>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="ibox-content" style="min-height:89px;padding:0 20px;text-align:center">
-                              		<div class="m-r-md inline">
-                            			<input type="text" value="94" class="dial m-r" data-fgColor="#1AB394" data-width="85" data-height="85" data-angleOffset=-125 data-angleArc=250 readonly/>
-                            		</div>
+                        
+                        <?php } elseif($overall <= 94 && $overall >= 80) {?>
+                        
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <span class="label label-primary pull-right">Good</span>
+                                    <h5>My Rating</h5>
+                                </div>
+                                <div class="ibox-content" style="min-height:89px;padding:0 20px;text-align:center">
+                                    <div class="m-r-md inline">                                            
+                                            <input type="text" value="<?php echo $overall; ?>" class="dial m-r" data-fgColor="#1AB394" data-width="85" data-height="85" data-angleOffset=-125 data-angleArc=250 readonly/>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        
+                        <?php } elseif($overall <= 79 && $overall >= 51) {?>
+                        
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <span class="label label-warning pull-right">Average</span>
+                                    <h5>My Rating</h5>
+                                </div>
+                                <div class="ibox-content" style="min-height:89px;padding:0 20px;text-align:center">
+                                    <div class="m-r-md inline">                                            
+                                            <input type="text" value="<?php echo $overall; ?>" class="dial m-r" data-fgColor="#f8ac59" data-width="85" data-height="85" data-angleOffset=-125 data-angleArc=250 readonly/>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        <?php } else {?>
+                        
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <span class="label label-danger pull-right">Poor</span>
+                                    <h5>My Rating</h5>
+                                </div>
+                                <div class="ibox-content" style="min-height:89px;padding:0 20px;text-align:center">
+                                    <div class="m-r-md inline">                                            
+                                        <input type="text" value="<?php echo $overall; ?>" class="dial m-r" data-fgColor="#ed5565" data-width="85" data-height="85" data-angleOffset=-125 data-angleArc=250 readonly/>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        <?php }?>                        
             </div>
+            <?php } else {?>
+            
+                <div class="col-lg-3">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <span class="label label-success pull-right"></span>
+                                    <h5>My Rating</h5>
+                                </div>
+                                <div class="ibox-content" style="min-height:89px;padding:0 20px;text-align:center">
+                                    <div class="m-r-md inline">  
+                                        <p>No rating at present.</p>
+<!--                                            <input type="text" value="<?php echo $overall; ?>" class="dial m-r" data-fgColor="#1c84c6" data-width="85" data-height="85" data-angleOffset=-125 data-angleArc=250 readonly/>-->
+                                    </div>
+                                </div>
+                            </div>
+                </div>    
+            
+            <?php }?>
         </div>
         <div class="row">
                     <div class="col-lg-12">

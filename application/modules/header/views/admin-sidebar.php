@@ -23,6 +23,8 @@
                 <ul class="nav nav-second-level">
                     <li><a href="#"><i class="fa fa-cog"></i> <span class="nav-label">Company Bio</span><!-- <span class="label label-warning pull-right">7</span> --></a></li>
                     <li><a href="admin/feed"><i class="fa fa-cog"></i> <span class="nav-label">Profile Feed</span><?php $this->load->module('feed'); $this->feed->admin_feed_count();?></a></li>
+                    <li><a href="admin/feedback"><i class="fa fa-cog"></i> <span class="nav-label">Feedback</span><?php $this->load->module('feedback'); $this->feedback->admin_feed_count();?></a></li>
+                
                 </ul>
             </li>
             <li>

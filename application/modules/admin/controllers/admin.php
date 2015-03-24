@@ -252,6 +252,151 @@ class Admin extends MX_Controller
         redirect('admin/feed/');
     }
     
+    function feedback($id = NULL)
+    {
+        if ( ! $this->session->userdata('admin_logged_in'))
+        { 
+            redirect('admin/login');
+        }
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel: Feedback';        
+        $data['page'] = 'feedback';
+        
+        $var = 'feedback';
+        $var_model = $var.'_model';
+        
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        if(isset($id)){
+            $data[$var] = $this->{$var_model}->get_where($id);
+        }else{
+            $count = $this->{$var_model}->count_where('authorised', 'no');
+            if($count > 0){
+                $data[$var.'_count'] = $count;
+                $data[$var] = $this->{$var_model}->get_where_multiples_order('datetime', 'DESC', 'authorised', 'no');
+            }
+            else{
+                $data[$var.'_count'] = 0;
+            }
+        }
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+    
+    function edit_feedback($id)
+    {
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel: Feedback';        
+        $data['page'] = 'edit-feedback';
+        
+        $var = 'feedback';
+        $var_model = $var.'_model';
+        
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        $data[$var] = $this->{$var_model}->get_where($id);
+        
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+    
+    function feedbackApprove($id)
+    {
+        if ( ! $this->session->userdata('admin_logged_in'))
+        { 
+            redirect('admin/login');
+        }
+        $var = 'feedback';
+        $var_model = $var.'_model';
+        
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        $mem = $this->{$var_model}->get_where($id)->member_id;
+        //echo $mem;
+        //exit;
+        $data = array(
+                    'authorised'      => 'yes',
+                    //'approved_date' => date('Y-m-d H:i:s')
+                  );
+        $this->{$var_model}->_update($id, $data);
+        
+        $var1 = 'mailbox';
+        $var1_model = $var1.'_model';
+        
+        $this->load->model(''.$var1.'/'.$var1.'_model', ''.$var1.'_model');
+        
+         $data = array(
+                                    'member_id'         => 5,
+                                    'sent_member_id'    => $mem,
+                                    'subject'           => 'Feedback Approved',
+                                    'body'              => 'Your feedback has been approved',
+                                    'inbox'             => 'yes',
+                                    'sent'              => 'yes',
+                                    'date'              => date('d-m-Y'),
+                                    'time'              => date('H:i'),
+                                    'sent_from'         => 'support',
+                                    'datetime'          => date('Y-m-d H:i:s')
+                                  ); 
+        $this->{$var1_model}->_insert($data);
+        
+        redirect('admin/feedback/');
+    }
+    
+    function feedbackUpdate($id)
+    {
+        $var = 'feedback';
+        $var_model = $var.'_model';
+        
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        $mem = $this->{$var_model}->get_where($id)->member_id;
+        //echo $mem;
+        //exit;
+        $data = array(
+                    'authorised'      => 'yes',
+                    'comments'       => nl2br($this->input->post('content')),
+                    //'approved_date' => date('Y-m-d H:i:s')
+                  );
+        $this->{$var_model}->_update($id, $data);
+        
+        $var1 = 'mailbox';
+        $var1_model = $var1.'_model';
+        
+        $this->load->model(''.$var1.'/'.$var1.'_model', ''.$var1.'_model');
+        
+         $data = array(
+                                    'member_id'         => 5,
+                                    'sent_member_id'    => $mem,
+                                    'subject'           => 'Feedback Approved',
+                                    'body'              => 'Your feedback has been approved',
+                                    'inbox'             => 'yes',
+                                    'sent'              => 'yes',
+                                    'date'              => date('d-m-Y'),
+                                    'time'              => date('H:i'),
+                                    'sent_from'         => 'support',
+                                    'datetime'          => date('Y-m-d H:i:s')
+                                  ); 
+        $this->{$var1_model}->_insert($data);
+        
+        redirect('admin/feedback/');
+    }
+            
+    function feedbackDecline($id)
+    {
+        if ( ! $this->session->userdata('admin_logged_in'))
+        { 
+            redirect('admin/login');
+        }
+        $var = 'feedback';
+        $var_model = $var.'_model';
+        
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        
+        $data = array(
+                    'authorised'      => 'declined',
+                    //'approved_date' => date('Y-m-d H:i:s')
+                  );
+        $this->{$var_model}->_update($id, $data);
+        
+        redirect('admin/feedback/');
+    }
+            
     function user_level()
     {
         if ( ! $this->session->userdata('admin_logged_in'))
