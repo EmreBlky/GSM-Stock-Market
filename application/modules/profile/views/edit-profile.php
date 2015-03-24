@@ -1681,9 +1681,9 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                         <div class="confirm-div-personal"></div>
                         <div class="col-md-12" style="text-align:center; display: none;">
                             <?php if (file_exists("public/main/template/gsm/images/members/" . $member->id . ".jpg")) { ?>
-                                <img src="public/main/template/gsm/images/members/<?php echo $member->id; ?>.jpg">
+                                <img src="public/main/template/gsm/images/members/<?php echo $member->id; ?>.jpg" onload="$('.loading').hide()">
                             <?php } else { ?>
-                                <img src="public/main/template/gsm/images/members/no_profile.jpg"/>
+                                <img src="public/main/template/gsm/images/members/no_profile.jpg" onload="$('.loading').hide()" />
                             <?php } ?>
 
                         </div>
