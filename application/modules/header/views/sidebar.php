@@ -11,10 +11,10 @@
                         <li class="nav-header <?php echo $member->membership; ?>">                                
                         <div class="dropdown profile-element">
                             <span>
-                                <?php if(file_exists("public/main/template/gsm/images/members/".$this->session->userdata('members_id').".jpg")){?>
-                                    <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/template/gsm/images/members/<?php echo $this->session->userdata('members_id'); ?>.jpg" height="48" width="48">
+                                <?php if(file_exists("public/main/template/gsm/images/members/".$this->session->userdata('members_id').".png")){?>
+                                    <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/template/gsm/images/members/<?php echo $this->session->userdata('members_id'); ?>.png" height="48" width="48">
                                 <?php } else {?>
-                                    <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/template/gsm/images/members/no_profile.jpg" height="48" width="48">
+                                    <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/template/gsm/images/members/no_profile.png" height="48" width="48">
                                 <?php }?>                            
                             </span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -68,20 +68,18 @@
                         </a>
                     </li>
                     
-                    <!--
                     <li>
                         <a href="messenger"><i class="fa fa-wechat"></i> <span class="nav-label">Messenger</span>
-	                        <span class="label label-warning pull-right">0/1</span>
+<!--                            <span class="label label-warning pull-right">0/1</span>-->
                         </a>
                     </li>
-                    -->
                     
                     <li>
                         <a href="addressbook"><i class="fa fa-book"></i> <span class="nav-label">Address Book</span></a>
                     </li>
                     
                     <li>
-                        <a href=""><i class="fa fa-line-chart"></i> <span class="nav-label">Marketplace</span> <span class="fa arrow"></span></a>
+                        <a href="/"><i class="fa fa-line-chart"></i> <span class="nav-label">Marketplace</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Buy</a></li>
                             <li><a href="marketplace/sell"><i class="fa fa-tag"></i> Sell</a></li>
@@ -95,46 +93,42 @@
                     </li>
                     
                     <li>
-                        <a href="search/company"><i class="fa fa-search"></i> <span class="nav-label">Search</span></a>
-                        <!--
+                        <a href="/"><i class="fa fa-search"></i> <span class="nav-label">Search</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="search/user"><i class="fa fa-user"></i> User Search</a></li>
                             <li><a href="search/company"><i class="fa fa-users"></i> Company Search</a></li>
                         </ul>
-                        -->
                     </li>
                     
                     <li>
-                        <a href=""><i class="fa fa-money"></i> <span class="nav-label">My Wallet</span><span class="label label-primary pull-right">£5.00</span></a>
+                        <a href="/"><i class="fa fa-money"></i> <span class="nav-label">My Wallet</span><span class="label label-primary pull-right">£5.00</span></a>
                     </li>
                     
                     <li>
-                        <a href=""><i class="fa fa-barcode"></i> <span class="nav-label">IMEI Services</span> <span class="fa arrow"></span></a>
+                        <a href="/"><i class="fa fa-barcode"></i> <span class="nav-label">IMEI Services</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="#"><i class="fa fa-unlock-alt"></i> Mobile Unlocking</a></li>
                         </ul>
                     </li>
                     
-                    <!--
                     <li>
                         <a href="#"><i class="fa fa-users"></i> <span class="nav-label">Social Hub</span></a>
                     </li>
-                    -->
                     
                     <li>
-                        <a href=""><i class="fa fa-support"></i> <span class="nav-label">Support</span> <span class="fa arrow"></span></a>
+                        <a href="/"><i class="fa fa-support"></i> <span class="nav-label">Support</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="http://support.gsmstockmarket.com/customer/portal/topics/744522-frequently-asked-questions/questions" target="_blank"><i class="fa fa-question"></i> FAQ</a></li>
+                            <li><a href="support/faq"><i class="fa fa-question"></i> FAQ</a></li>
                             <li><a href="support/submit_ticket"><i class="fa fa-ticket"></i> Submit a Ticket</a></li>
                         </ul>
                     </li>
                     
                     <li>
-                        <a href=""><i class="fa fa-cog"></i> <span class="nav-label">Preferences</span> <span class="fa arrow"></span></a>
+                        <a href="/"><i class="fa fa-cog"></i> <span class="nav-label">Preferences</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="preferences/password"><i class="fa fa-lock"></i> Change Password</a></li>
-                            <li><a href="preferences/subscription"><i class="fa fa-cubes"></i> My Subscription</a></li><!--
-                            <li><a href="preferences/newsletter"><i class="fa fa-newspaper-o"></i> Newsletter</a></li>-->
+                            <li><a href="preferences/subscription"><i class="fa fa-cubes"></i> Manage Subscription</a></li>
+                            <li><a href="preferences/newsletter"><i class="fa fa-newspaper-o"></i> Newsletter</a></li>
                         </ul>
                     </li>
                     
