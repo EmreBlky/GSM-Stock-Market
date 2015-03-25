@@ -26,7 +26,7 @@
 <h5>Listing Details</h5>
 
 </div>
-<div class="ibox-content">
+<div class="ibox-content"> <!-- Selling -->
 
 
     <div class="form-group"><label class="col-md-3 control-label">Listing Category</label>
@@ -215,7 +215,7 @@
         </div>
     </div>
     
-    <div class="form-group"><label class="col-md-3 control-label">Minimum Price</label>
+    <div class="form-group"><label class="col-md-3 control-label">Min Unit Price</label>
         <div class="col-md-9">
             <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="minimum_checkbox" id="minimum_checkbox" <?php if(!empty($_POST['minimum_checkbox']) ){ echo'checked';}?><?php if(!empty($product_list->min_price)){ echo'checked';}?>/> </span> <input type="text" class="form-control" placeholder="only make typable when clicked" name="min_price" value="<?php if(!empty($product_list->min_price)) echo $product_list->min_price; else echo set_value('min_price');?>" <?php if(empty($product_list->min_price) ){ echo'disabled';}?>></div>
             <p class="small">tick to enable. Any offers below this will be auto rejected, leave blank to allow any offers if ticked.</p>
@@ -251,30 +251,7 @@
             <p class="small">Allow minimum order quantity else full quantity sale available only</p>
             <?php echo form_error('min_qty_order'); ?>
         </div>
-    </div>
-    
-    <div class="hr-line-dashed"></div>
-    
-    
-    <div class="form-group"><label class="col-md-3 control-label">Shipping Terms <button class="btn btn-success btn-circle" type="button" style="width:20px;height:20px;border-radius:10px;font-size:10px;padding:0;margin-bottom:0" data-toggle="modal" data-target="#shipping" title="Click for more information"><i class="fa fa-question"></i></button></label>
-    <div class="col-md-9">
-			<label class="checkbox-inline i-checks" title="EXW (Ex Works)"><input type="checkbox" value="TNT" name="courier"]/> EXW</label>
-			<label class="checkbox-inline i-checks" title="FOB (Freight on Board)"><input type="checkbox" value="TNT" name="courier"]/> FOB</label>
-			<label class="checkbox-inline i-checks" title="CIP (Carriage and Insurance Paid to)"><input type="checkbox" value="TNT" name="courier"]/> CIP</label>
-			<label class="checkbox-inline i-checks" title="CPT (Carriage Paid to)"><input type="checkbox" value="TNT" name="courier"]/> CPT</label>
-    </div>
-	</div>
-    
-    
-    <div class="form-group"><label class="col-md-3 control-label">Shipping Charges</label>
-    <div class="col-md-9">
-            <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="minimum_checkbox" id="minimum_checkbox"/> </span> <input type="text" class="form-control" placeholder="only make typable when clicked" name="min_price" value="" disabled></div>
-            <p class="small">Allow additional shipping charges. Leave unticked for all quotes to include free shipping</p>
-    </div>
-	</div>
-    
-    
-    
+    </div> 
     
     
     <div class="hr-line-dashed"></div>  
@@ -425,6 +402,267 @@
                 
 
   </div>
+  BUYING
+  <div class="ibox-content"> <!-- Buying -->
+
+
+    <div class="form-group"><label class="col-md-3 control-label">Listing Category</label>
+        <div class="col-md-9">
+            <select class="form-control" name="listing_categories">
+                <option selected value="0" >-Select-</option>
+                <?php if (!empty($listing_categories)): ?>
+                <?php foreach ($listing_categories as $row): ?>
+                   <option value="<?php echo $row->category_name ?>"<?php if(!empty($_POST['listing_categories']) && $row->category_name==$_POST['listing_categories']){ echo'selected';}?> 
+                   <?php if(!empty($product_list->listing_categories) && $row->category_name==$product_list->listing_categories){ echo'selected="selected"';}?>>
+                   <?php echo $row->category_name ?></option>
+                    <?php if (!empty($row->childs)): ?>
+                        <?php foreach ($row->childs as $child): ?>
+                            <option value="<?php echo $child->category_name ?>" <?php if(!empty($_POST['listing_categories']) && $child->category_name==$_POST['listing_categories']){ echo'selected';}?> 
+                            <?php if(!empty($product_list->listing_categories) && $child->category_name==$product_list->listing_categories){ echo'selected="selected"';}?>>- <?php echo $child->category_name ?></option>
+                        <?php endforeach ?>
+                    <?php endif ?>
+                <?php endforeach ?>
+                <?php endif ?>
+            </select>
+            <?php echo form_error('listing_categories'); ?>
+        </div>
+    </div>
+
+
+     <div class="form-group"><label class="col-md-3 control-label">Schedule Listing</label>
+     <div class="col-md-9">
+          <div class="input-group date form_datetime " data-date="<?php echo date('Y').'-'.date('m').'-'.date('d')?>" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+            <input class="form-control" size="16" type="text" value="<?php if(!empty($product_list->schedule_date_time)) echo $product_list->schedule_date_time; else echo set_value('schedule_date_time'); ?>" readonly >
+            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+            <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span><br>
+        </div>
+        <?php echo form_error('schedule_date_time'); ?>
+        </div>
+        <input type="hidden" id="dtp_input1" value="<?php echo set_value('schedule_date_time');?>" name="schedule_date_time"/><br/>
+    </div>
+
+    <div class="form-group"><label class="col-md-3 control-label">Listing Type</label>
+        <div class="col-md-9">
+            <select class="form-control" name="listing_type">
+                <option selected value="" >Buying or Selling?</option>
+                <option value="1" <?php if(!empty($_POST) && 1==$_POST['listing_type']){ echo'selected';}?><?php if(!empty($product_list->listing_type) && 1==$product_list->listing_type){ echo'selected';}?>>Buying Request</option>
+                <option <?php if(!empty($_POST) && 2==$_POST['listing_type']){ echo'selected';}?><?php if(!empty($product_list->listing_type) && 2==$product_list->listing_type){ echo'selected';}?> value="2">Selling Offer</option>
+            </select>
+            <?php echo form_error('listing_type'); ?>
+            
+        </div>
+    </div>
+    
+    <div class="hr-line-dashed"></div>
+
+    <div class="form-group"><label class="col-md-3 control-label">MPN</label>
+        <div class="col-md-9">
+            <input type="type" id="mpn1" list="mpn" class="form-control check_record" placeholder="Auto fill the rest of the data if MPN is found in the database"  name="product_mpn" value="<?php if(!empty($product_list->product_mpn)) echo $product_list->product_mpn; else echo set_value('product_mpn');?>"/>
+            <datalist id="mpn">
+            <?php if(!empty($listing_attributes)){
+                 foreach ($listing_attributes as $row) { ?>
+                   <?php if (!empty($row->product_mpn)): ?>
+                <option value="<?php echo $row->product_mpn; ?>"><?php echo $row->product_mpn; ?></option>
+                  <?php endif ?>
+                 <?php }} ?>
+            </datalist>
+             <?php echo form_error('product_mpn'); ?>
+        </div>
+    </div>
+    
+    <div class="form-group"><label class="col-md-3 control-label">Make</label>
+        <div class="col-md-9">
+        <select class="form-control check_record" name="product_make" id="product_make">
+            <option  selected value="">Select Make</option>
+            <?php if(!empty($product_makes)){ 
+                 foreach ($product_makes as $row) { ?>
+                <option value="<?php echo $row->product_make; ?>" <?php if(!empty($_POST) && $row->product_make==$_POST['product_make']){ echo'selected';}?>><?php echo $row->product_make; ?></option>
+                 <?php }} ?>
+        </select>
+        <?php echo form_error('product_make'); ?>
+        </div>
+    </div>
+    
+    <div class="form-group"><label class="col-md-3 control-label">Model</label>
+        <div class="col-md-9">
+            <input type="type" class="form-control check_record" placeholder="When make is selected list models associated with make" name="product_model" value="<?php if(!empty($product_list->schedule_date_time)) echo $product_list->product_model; else echo set_value('product_model');?>"/>
+            <?php echo form_error('product_model'); ?>
+        </div>
+    </div>
+    
+
+
+    <div class="form-group"><label class="col-md-3 control-label">Product Type</label>
+        <div class="col-md-9">
+        <select class="form-control check_record" name="product_type" id="product_type">
+            <option  selected  value="">Select Make</option>
+            <?php if(!empty($product_types)){ 
+                 foreach ($product_types as $row) { ?>
+                <option value="<?php echo $row->product_type; ?>" <?php if(!empty($_POST) && $row->product_type==$_POST['product_type']){ echo'selected';}?><?php if(!empty($product_list->product_type) && $row->product_type==$product_list->product_type){ echo'selected';}?>><?php echo $row->product_type; ?></option>
+                 <?php }} ?>
+        </select>
+        <?php echo form_error('product_type'); ?>
+        </div>
+    </div>
+
+    <div class="form-group"><label class="col-md-3 control-label">Colour</label>
+        <div class="col-md-9">
+            <select class="form-control check_record" name="product_color" id="product_color">
+            <option selected value="">Any</option>
+            <?php if(!empty($product_colors)){ 
+                 foreach ($product_colors as $row) { ?>
+                <option value="<?php echo $row->product_color; ?>" <?php if(!empty($_POST) && $row->product_color==$_POST['product_color']){ echo'selected';}?>
+                <?php if(!empty($product_list->product_color) && $row->product_color==$product_list->product_color){ echo'selected';}?>><?php echo $row->product_color; ?></option>
+                 <?php }} ?>
+        </select>           
+            <?php echo form_error('product_color'); ?>
+        </div>
+    </div>
+    
+    
+    <div class="hr-line-dashed"></div>
+    <div class="form-group"><label class="col-md-3 control-label">Condition</label>
+        <div class="col-md-9">
+            <select class="form-control" name="condition">
+            <option selected value="">Any</option>
+            <?php $condition = condition(); 
+            if($condition){
+                foreach ($condition as $key => $value){ ?>
+                  <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['condition']){ echo'selected';}?><?php if(!empty($product_list->condition) && $value == $product_list->condition){ echo'selected="selected"';}?>><?php echo $value; ?></option>
+                  <?php } 
+            } ?>
+            </select>
+            <?php echo form_error('condition'); ?>
+        </div>
+    </div>
+    <div class="form-group"><label class="col-md-3 control-label">Spec</label>
+    <div class="col-md-9">
+        <select class="form-control" name="spec">
+            <option selected value="">Any</option>
+            <?php $spec = spec(); 
+            if($spec){
+                foreach ($spec as $key => $value){ ?>
+                  <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['spec']){ echo'selected';}?><?php if(!empty($product_list->spec) && $value==$product_list->spec){ echo'selected';}?>><?php echo $value; ?></option>
+                  <?php } 
+            } ?>
+        </select>
+        <?php echo form_error('spec'); ?>
+    </div>
+</div>    
+    <div class="hr-line-dashed"></div>
+    
+    <div class="form-group"><label class="col-md-3 control-label">Currency</label>
+        <div class="col-md-9">
+            <select class="form-control" name="currency">
+                <option selected value="">Default (account preference defalut)</option>
+                <?php $currency = currency(); 
+                if($currency){
+                    $i=1;
+                foreach ($currency as $key => $value){ ?>
+                  <option <?php if(!empty($_POST) && $i==$_POST['currency']){ echo'selected';}?><?php if(!empty($product_list->currency) && $i==$product_list->currency){ echo'selected';}?> value="<?php echo $i;?>"><?php echo $value; ?></option>
+                  <?php $i++;} 
+                } ?>
+            </select>
+            <p class="small">Select the currency you want to buy in.</p>
+            <?php echo form_error('currency'); ?>
+        </div>
+    </div>
+    
+
+    <div class="form-group"><label class="col-md-3 control-label">Unit Price</label>
+        <div class="col-md-9">
+            <input type="type" class="form-control" name="unit_price" value="<?php if(!empty($product_list->unit_price)) echo $product_list->unit_price; else echo set_value('unit_price');?>"/>
+            <?php echo form_error('unit_price'); ?>
+        </div>
+    </div>
+    
+    <div class="form-group"><label class="col-md-3 control-label">Max Unit Price</label>
+        <div class="col-md-9">
+            <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="minimum_checkbox" id="minimum_checkbox" <?php if(!empty($_POST['minimum_checkbox']) ){ echo'checked';}?><?php if(!empty($product_list->min_price)){ echo'checked';}?>/> </span> <input type="text" class="form-control" placeholder="only make typable when clicked" name="min_price" value="<?php if(!empty($product_list->min_price)) echo $product_list->min_price; else echo set_value('min_price');?>" <?php if(empty($product_list->min_price) ){ echo'disabled';}?>></div>
+            <p class="small">tick to enable. Any offers above this will be auto rejected, leave blank to allow any offers if ticked.</p>
+            <?php echo form_error('min_price'); ?>
+        </div>
+    </div>
+    
+    <div class="form-group"><label class="col-md-3 control-label">Quantity requested</label>
+        <div class="col-md-9">
+            <input type="type" class="form-control" name="total_qty" value="<?php if(!empty($product_list->total_qty)) echo $product_list->total_qty; else  echo set_value('total_qty');?>"/>
+            <?php echo form_error('total_qty'); ?>
+        </div>
+    </div>
+    
+    <div class="hr-line-dashed"></div>
+    
+    
+    <div class="form-group"><label class="col-md-3 control-label">Shipping Terms <button class="btn btn-success btn-circle" type="button" style="width:20px;height:20px;border-radius:10px;font-size:10px;padding:0;margin-bottom:0" data-toggle="modal" data-target="#shipping" title="Click for more information"><i class="fa fa-question"></i></button></label>
+    <div class="col-md-9">
+			<label class="checkbox-inline i-checks" title="EXW (Ex Works)"><input type="checkbox" value="TNT" name="courier"]/> EXW</label>
+			<label class="checkbox-inline i-checks" title="FOB (Freight on Board)"><input type="checkbox" value="TNT" name="courier"]/> FOB</label>
+			<label class="checkbox-inline i-checks" title="CIP (Carriage and Insurance Paid to)"><input type="checkbox" value="TNT" name="courier"]/> CIP</label>
+			<label class="checkbox-inline i-checks" title="CPT (Carriage Paid to)"><input type="checkbox" value="TNT" name="courier"]/> CPT</label>
+    </div>
+	</div>
+    
+    
+    <div class="form-group"><label class="col-md-3 control-label">Shipping Charges</label>
+    <div class="col-md-9">
+            <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="minimum_checkbox" id="minimum_checkbox"/> </span> <input type="text" class="form-control" placeholder="only make typable when clicked" name="min_price" value="" disabled></div>
+            <p class="small">Allow additional shipping charges. Leave unticked for all quotes to include free shipping</p>
+    </div>
+	</div>
+    
+    
+    
+    
+    
+    <div class="hr-line-dashed"></div>                                
+    
+    <div class="form-group"><label class="col-md-3 control-label">Product Description</label>
+        <div class="col-md-9">
+            <textarea type="type" class="form-control" rows="5" id="product_desc" name="product_desc"><?php if(!empty($product_list->product_desc)) echo $product_list->product_desc; else echo set_value('product_desc');?></textarea>
+            <?php echo form_error('product_desc'); ?>
+        </div>
+    </div>
+    
+    <div class="hr-line-dashed"></div>
+    
+    <div class="form-group"><label class="col-md-3 control-label">List Duration</label>
+        <div class="col-md-9">
+            <select class="form-control" name="duration">
+            <?php $duration = list_duration(); 
+            if($duration){
+                foreach ($duration as $key => $value){ ?>
+                  <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['duration']){ echo'selected';}?><?php if(isset($product_list->duration) && $value==$product_list->duration){ echo'selected';}?>><?php echo $value; ?> day</option>
+                  <?php } 
+            } ?>
+            </select>
+            <?php echo form_error('duration'); ?>
+        </div> 
+    </div> 
+
+   <?php if (empty($product_list->id)): ?>
+    <div class="form-group"><label class="col-md-3 control-label">Terms &amp; Conditions</label>
+        <div class="col-md-9">
+        <input type="checkbox" class="checkbox-inline i-checks" name="termsandcondition" <?php if(!empty($_POST['termsandcondition']) ){ echo'checked';}?>/> I agree to the GSMStockMarket.com Limited Terms and Conditions
+         <?php echo form_error('termsandcondition'); ?>
+        </div>
+    </div>
+   <?php endif ?>
+    
+    <div class="form-group">
+        <div class="col-md-9 col-md-offset-3">
+            <a class="btn btn-danger" href="">Cancel</a>
+        <?php if(empty($product_list->id)): ?>
+            <button class="btn btn-warning" type="submit" name="status" value="2">Save for later</button>
+        <?php endif ?>
+            <button class="btn btn-primary" type="submit" name="status" value="1">List Now</button>
+        </div>
+    </div>
+                
+
+  </div>
+  
+  
  </div>
 </div>
 <div class="col-lg-5">

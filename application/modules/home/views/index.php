@@ -109,13 +109,12 @@
                 <div class="col-lg-3">
                             <div class="ibox float-e-margins">
                                 <div class="ibox-title">
-                                    <span class="label label-success pull-right"></span>
+                                    <span class="label pull-right">No Rating</span>
                                     <h5>My Rating</h5>
                                 </div>
                                 <div class="ibox-content" style="min-height:89px;padding:0 20px;text-align:center">
-                                    <div class="m-r-md inline">  
-                                        <p>No rating at present.</p>
-<!--                                            <input type="text" value="<?php echo $overall; ?>" class="dial m-r" data-fgColor="#1c84c6" data-width="85" data-height="85" data-angleOffset=-125 data-angleArc=250 readonly/>-->
+                                    <div class="m-r-md inline">                                            
+                                        <input type="text" value="0" class="dial m-r" data-fgColor="#AAA" data-width="85" data-height="85" data-angleOffset=-125 data-angleArc=250 readonly/>
                                     </div>
                                 </div>
                             </div>

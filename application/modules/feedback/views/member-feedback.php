@@ -29,6 +29,6 @@
 
     <?php } ?>
 
-<?php } else { ?> 
-        <p>No rating at present.</p>                   
+<?php } else { ?>                                          
+        <input type="text" value="0" class="dial m-r" data-fgColor="#AAA" data-width="85" data-height="85" data-angleOffset=-125 data-angleArc=250 readonly/>          
 <?php } ?>
