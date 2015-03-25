@@ -290,38 +290,12 @@
                                 </div>
                                 
                                 <div class="tab-pane" id="feedback">
-                                    <div class="feed-activity-list">
-                                        <div class="feed-element">
-                                            <a href="#" class="pull-left">
-                                                <img alt="image" class="img-circle" src="public/main/template/core/img/profile_small.jpg">
-                                            </a>
-                                            <div class="media-body ">
-                                                <div class="row">
-                    							<div class="col-md-7">
-                                                	<strong>Daniel Gregory</strong> from <strong>GSMStockMarket.com Limited</strong> <br>
-                                                	<small>2h ago</small>
-                        							<p>Fantastic customer to do business with. Would highly recommend and look forward to dealing with them again in the future.</p>
-                        						</div>
-                    							<div class="col-md-5">
-                                    <style>
-									div#feedback dl.dl-horizontal {float:right}
-									div#feedback dt {width:120px}
-									div#feedback dd {margin-left:130px}
-									</style>
-									
-                                    <dl class="dl-horizontal">
-                                        <dt>Communication:</dt> <dd>  <i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i></dd>
-                                        <dt>Shipping:</dt> <dd>  <i class="fa fa-star"></i><i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i></dd>
-                                        <dt>Accuracy:</dt> <dd>  <i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i><i class="fa fa-star" style="color:#FC6"></i></dd>
-                                        <dt>Final Rating:</dt> <dd>  <span class="label label-primary">95</span></dd>
-                                    </dl>
-                        						</div>
-                                                </div>
-                                                    
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
+                                    
+                                    <?php
+                                    
+                                        $this->load->module('feedback');
+                                        $this->feedback->feedback_list($member_info->id);
+                                    ?>
 
                                 </div>
                                 <div class="tab-pane" id="selling-offers">

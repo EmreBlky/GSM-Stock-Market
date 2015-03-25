@@ -168,7 +168,7 @@ $this->load->model('membership/membership_model', 'membership_model');
                                 <?php
                                 
                                     $this->load->module('feedback');
-                                    $this->feedback->feedback_list();
+                                    $this->feedback->feedback_list($this->session->userdata('members_id'));
                                 ?>
                                 </div>
                                 

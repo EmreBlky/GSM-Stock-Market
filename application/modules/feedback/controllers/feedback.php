@@ -103,9 +103,9 @@ class Feedback extends MX_Controller
        
     }
     
-    function feedback_list()
+    function feedback_list($mid)
     {
-        $mid = $this->session->userdata('members_id');
+        //$mid = $this->session->userdata('members_id');
         $feedback =  $this->feedback_model->_custom_query("SELECT COUNT(*) AS count FROM feedback WHERE member_id = '".$mid."' AND authorised = 'yes'");
         
         if($feedback[0]->count > 0){
