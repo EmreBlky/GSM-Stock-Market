@@ -303,8 +303,11 @@
             <option>Flat fee</option>
         </select>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-3">
     	<input type="text" class="form-control" />
+    </div>
+    <div class="col-md-3">
+    	<button class="btn btn-primary"><i class="fa fa-plus"></i> Add Shipping</button>
     </div>
 	</div>
     
@@ -323,23 +326,23 @@
               <tbody>
               <tr>
                   <td>Exworks</td>
-                  <td>TNT, UPS, Other</td>
+                  <td>TNT</td>
                   <td>Unit Price</td>
                   <td>12.00</td>
                   <td style="text-align:center"><button class="btn btn-danger btn-circle" type="button" style="width:20px;height:20px;border-radius:10px;font-size:10px;padding:0;margin-bottom:0"><i class="fa fa-times"></i></button></td>
               </tr>
               <tr>
                   <td>Exworks</td>
-                  <td>TNT, UPS, Other</td>
+                  <td>UPS</td>
                   <td>Unit Price</td>
-                  <td>12.00</td>
+                  <td>11.00</td>
                   <td style="text-align:center"><button class="btn btn-danger btn-circle" type="button" style="width:20px;height:20px;border-radius:10px;font-size:10px;padding:0;margin-bottom:0"><i class="fa fa-times"></i></button></td>
               </tr>
               <tr>
                   <td>Exworks</td>
                   <td>TNT, UPS, Other</td>
-                  <td>Unit Price</td>
-                  <td>12.00</td>
+                  <td>Flat Fee</td>
+                  <td>97.00</td>
                   <td style="text-align:center"><button class="btn btn-danger btn-circle" type="button" style="width:20px;height:20px;border-radius:10px;font-size:10px;padding:0;margin-bottom:0"><i class="fa fa-times"></i></button></td>
               </tr>
               </tbody>
