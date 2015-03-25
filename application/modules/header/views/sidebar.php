@@ -103,11 +103,11 @@
                         </ul>
                         -->
                     </li>
-                    
+                    <!--
                     <li>
                         <a href=""><i class="fa fa-money"></i> <span class="nav-label">My Wallet</span><span class="label label-primary pull-right">£5.00</span></a>
                     </li>
-                    
+                    -->
                     <li>
                         <a href="imei/"><i class="fa fa-barcode"></i> <span class="nav-label">IMEI Services</span> 
 <!--                            <span class="fa arrow"></span>-->
