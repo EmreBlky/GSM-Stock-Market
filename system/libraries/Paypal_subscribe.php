@@ -95,7 +95,7 @@ class Paypal_subscribe {
 
 		$nvpstr = "&AMT=". $paymentAmount;
 		$nvpstr = $nvpstr . "&PAYMENTACTION=" . $paymentType;
-		$nvpstr = $nvpstr . "&BILLINGAGREEMENTDESCRIPTION=".urlencode("Test Recurring Payment($1 monthly)");
+		$nvpstr = $nvpstr . "&BILLINGAGREEMENTDESCRIPTION=".urlencode("GSMStockmarket - Membership Fee");
 		$nvpstr = $nvpstr . "&BILLINGTYPE=RecurringPayments";
 		$nvpstr = $nvpstr . "&RETURNURL=" . $returnURL;
 		$nvpstr = $nvpstr . "&CANCELURL=" . $cancelURL;
