@@ -64,39 +64,62 @@
                 </div>
                 <div class="col-lg-6">
                     <p style="text-align:center">
-                       <?php if(!empty($listing_detail->image1)) { ?>
-                        <img style="height: 300px;" src="<?php echo base_url().$listing_detail->image1; ?>" /><br/><br/>
-                        <?php } ?>
-                         <?php if(!empty($listing_detail->image1)) { ?>
-                        <a class="fancybox" rel="gallery1" href="<?php echo base_url().$listing_detail->image1; ?>" title="<?php echo base_url().$listing_detail->image1; ?>">
-                            <img src="<?php echo base_url().$listing_detail->image1; ?>" alt="" />
-                        </a>
-                        <?php } ?>
-                         <?php if(!empty($listing_detail->image2)) { ?>
-                        <a class="fancybox" rel="gallery1" href="<?php echo base_url().$listing_detail->image2; ?>" title="<?php echo base_url().$listing_detail->image2; ?>">
-                            <img src="<?php echo base_url().$listing_detail->image2; ?>" alt="" />
-                        </a>
-                        <?php } ?>
-                         <?php if(!empty($listing_detail->image3)) { ?>
-                        <a class="fancybox" rel="gallery1" href="<?php echo base_url().$listing_detail->image3; ?>" title="<?php echo base_url().$listing_detail->image3; ?>">
-                            <img src="<?php echo base_url().$listing_detail->image3; ?>" alt="" />
-                        </a>
-                        <?php } ?>
-                         <?php if(!empty($listing_detail->image4)) { ?>
-                        <a class="fancybox" rel="gallery1" href="<?php echo base_url().$listing_detail->image4; ?>" title="<?php echo base_url().$listing_detail->image4; ?>">
-                            <img src="<?php echo base_url().$listing_detail->image4; ?>" alt="" />
-                        </a>
-                        <?php } ?>
-                        <?php if(!empty($listing_detail->image5)) { ?>
-                        <a class="fancybox" rel="gallery1" href="<?php echo base_url().$listing_detail->image5; ?>" title="<?php echo base_url().$listing_detail->image5; ?>">
-                            <img src="<?php echo base_url().$listing_detail->image5; ?>" alt="" />
-                        </a>
-                        <?php } ?>
+
+                   
+                        <?php 
+                        $img1 = explode('/', $listing_detail->image1);  
+                        $img2 = explode('/', $listing_detail->image2);
+                        $img3 = explode('/', $listing_detail->image3);
+                        $img4 = explode('/', $listing_detail->image4);
+                        $img5 = explode('/', $listing_detail->image5);
+
+                        ?>
+
+
+                        <img id="zoom_03" src="<?php echo base_url().'public/upload/listing/small/'.$img1[3]; ?>" data-zoom-image="<?php echo base_url().'public/upload/listing/large/'.$img1[3]; ?>"/>
+
+                        <div id="gallery_01">
+                        <?php if(!empty($listing_detail->image2)): ?> 
+                          <a href="#" data-image="<?php echo base_url().'public/upload/listing/small/'.$img1[3]; ?>" data-zoom-image="<?php echo base_url().'public/upload/listing/large/'.$img1[3]; ?>">
+                            <img id="img_01" src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img1[3]; ?>" />
+                          </a>
+                        <?php endif; ?>
+
+                         <?php if(!empty($listing_detail->image2)): ?>
+                          <a href="#" data-image="<?php echo base_url().'public/upload/listing/small/'.$img2[3]; ?>" data-zoom-image="<?php echo base_url().'public/upload/listing/large/'.$img2[3]; ?>">
+                            <img id="img_02" src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img2[3]; ?>" />
+                          </a>
+                        <?php endif; ?>
+
+                        <?php if (!empty($listing_detail->image3)): ?>
+                          <a href="#" data-image="<?php echo base_url().'public/upload/listing/small/'.$img3[3]; ?>" data-zoom-image="<?php echo base_url().'public/upload/listing/large/'.$img3[3]; ?>">
+                            <img id="img_03" src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img3[3]; ?>" />
+                          </a>
+                        <?php endif ?>
+
+                        <?php if (!empty($listing_detail->image4)): ?>
+                          <a href="#" data-image="<?php echo base_url().'public/upload/listing/small/'.$img4[3]; ?>" data-zoom-image="<?php echo base_url().'public/upload/listing/large/'.$img4[3]; ?>">
+                            <img id="img_04" src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img4[3]; ?>" />
+                          </a>
+                          <?php endif ?>
+                        <?php if (!empty($listing_detail->image5)): ?>
+                          <a href="#" data-image="<?php echo base_url().'public/upload/listing/small/'.$img5[3]; ?>" data-zoom-image="<?php echo base_url().'public/upload/listing/large/'.$img5[3]; ?>">
+                            <img id="img_05" src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img5[3]; ?>" />
+                          </a>
+
+
+                        <?php endif ?>
+
+
+                        </div>
+
+
 
                     </p>
+
                     <div style="text-align:center">
                         <?php if(!empty($listing_detail->listing_end_datetime)) { ?> 
-                        <span style="color:red">Listing Ends: <?php echo $listing_detail->listing_end_datetime; ?></span><br /><br />
+                        <span style="color:red">Listing Ends: <span data-countdown="<?php echo $listing_detail->listing_end_datetime; ?>"></span></span><br /><br />
                         <?php } ?>
                         <button type="button" class="btn btn-danger" style="font-size:10px">Pay asking price</button>
                     </div>
@@ -104,12 +127,17 @@
                          <?php if (!empty($member_id) && $member_id!=$listing_detail->member_id): ?>
                     <dl class="dl-horizontal" style="margin-top:20px" disabled>
                         <h4>or Make an Offer</h4>
-                        <dt><div class="input-group m-b"><span class="input-group-addon">QTY</span>  
-                            <input type="text" class="form-control" /><span class="input-group-addon">@</span></dt> 
-                            <dd><div class="input-group m-b"><span class="input-group-addon"><?php if(!empty($listing_detail->currency)) { echo $listing_detail->currency; } ?></span>  
+                    <form method="post" action="<?php echo base_url().'marketplace/make_offer' ?>">
+                        <dt><div class="input-group m-b"><span class="input-group-addon">QTY</span>    <input type="hidden" name="listing_id" class="form-control" value="<?php echo $listing_detail->id; ?>" />
+                            <input type="hidden" name="seller_id" class="form-control" value="<?php echo $listing_detail->member_id; ?>" />
+                            <input type="hidden" name="buyer_currency" class="form-control" value="<?php echo $listing_detail->currency; ?>" />
+                            <input type="text" name="product_qty" class="form-control" value="<?php echo set_value('product_qty'); ?>" /><span class="input-group-addon">@</span></dt> <?php echo form_error('product_qty'); ?>
+                            <dd><div class="input-group m-b"><span class="input-group-addon"><?php if(!empty($listing_detail->currency)) { echo currency_class($listing_detail->currency); } ?></span>  
                         
-                        <input type="text" class="form-control" /></dd>
-                        <p style="text-align:center"><button type="button" class="btn btn-warning" style="font-size:10px">Send Offer</button></p>
+                        <input type="text" class="form-control" name="unit_price" value="<?php echo set_value('unit_price'); ?>" /><?php echo form_error('unit_price'); ?></dd>
+                        <p style="text-align:center"><input type="submit" name="submit" class="btn btn-warning" value="Send Offer" style="font-size:10px"/></p>
+                    </form>
+
 
                         <p class="small" style="text-align:center">Offers sent will expire after 24 hours</p>
                         </dd>
@@ -457,10 +485,10 @@ padding-left:20px;}
             $('.question_list').html(data);
            })
 
-        $(".fancybox").fancybox({
-        openEffect  : 'none',
-        closeEffect : 'none'
-        });
+        // $(".fancybox").fancybox({
+        // openEffect  : 'none',
+        // closeEffect : 'none'
+        // });
     });
 
 // function delete_data(row_id) {
@@ -476,9 +504,42 @@ padding-left:20px;}
 //      }
 // }
 </script>
+
+<script src="public/admin/js/jquery.countdown.min.js"></script>
+<script>
+
+jQuery(document).ready(function($) {
+    $('[data-countdown]').each(function() {
+       var $this = $(this), finalDate = $(this).data('countdown');
+       $this.countdown(finalDate, function(event) {
+         $this.html(event.strftime('%Dd %Hh %Mm %Ss'));
+       });
+     });
+});
+</script>
+
+<script>
+    
+    //initiate the plugin and pass the id of the div containing gallery images
+$("#zoom_03").elevateZoom({gallery:'gallery_01', cursor: 'pointer', galleryActiveClass: 'active', imageCrossfade: true, loadingIcon: '../images/loader.gif', zoomWindowPosition: 10}); 
+
+//pass the images to Fancybox
+$("#zoom_03").bind("click", function(e) {  
+  var ez =   $('#zoom_03').data('elevateZoom'); 
+    $.fancybox(ez.getGalleryList());
+  return false;
+});
+
+</script>
 <style>
     .question_list{
         padding: 0 3%;
     }
 </style>
-
+ <style type="text/css">
+    /*set a border on the images to prevent shifting*/
+ #gallery_01 img{border:2px solid white;}
+ 
+ /*Change the colour*/
+ .active img{border:2px solid #333 !important;}
+</style>
