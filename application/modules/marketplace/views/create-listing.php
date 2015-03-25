@@ -258,6 +258,30 @@
     
     <div class="form-group"><label class="col-md-3 control-label">Shipping Terms <button class="btn btn-success btn-circle" type="button" style="width:20px;height:20px;border-radius:10px;font-size:10px;padding:0;margin-bottom:0" data-toggle="modal" data-target="#shipping" title="Click for more information"><i class="fa fa-question"></i></button></label>
     <div class="col-md-9">
+			<label class="checkbox-inline i-checks" title="EXW (Ex Works)"><input type="checkbox" value="TNT" name="courier"]/> EXW</label>
+			<label class="checkbox-inline i-checks" title="FOB (Freight on Board)"><input type="checkbox" value="TNT" name="courier"]/> FOB</label>
+			<label class="checkbox-inline i-checks" title="CIP (Carriage and Insurance Paid to)"><input type="checkbox" value="TNT" name="courier"]/> CIP</label>
+			<label class="checkbox-inline i-checks" title="CPT (Carriage Paid to)"><input type="checkbox" value="TNT" name="courier"]/> CPT</label>
+    </div>
+	</div>
+    
+    
+    <div class="form-group"><label class="col-md-3 control-label">Shipping Charges</label>
+    <div class="col-md-9">
+            <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="minimum_checkbox" id="minimum_checkbox"/> </span> <input type="text" class="form-control" placeholder="only make typable when clicked" name="min_price" value="" disabled></div>
+            <p class="small">Allow additional shipping charges. Leave unticked for all quotes to include free shipping</p>
+    </div>
+	</div>
+    
+    
+    
+    
+    
+    <div class="hr-line-dashed"></div>  
+    
+    
+    <div class="form-group"><label class="col-md-3 control-label">Shipping Terms <button class="btn btn-success btn-circle" type="button" style="width:20px;height:20px;border-radius:10px;font-size:10px;padding:0;margin-bottom:0" data-toggle="modal" data-target="#shipping" title="Click for more information"><i class="fa fa-question"></i></button></label>
+    <div class="col-md-9">
 
         <select class="form-control" name="shipping_term" onchange="shippings_to_couriers(this.value);">
             <option value="">Select Terms</option>
@@ -299,6 +323,7 @@
     <div class="form-group"><label class="col-md-3 control-label">Shipping Fee</label>
     <div class="col-md-3">
     	<select class="form-control">
+        	<option>Free shipping</option>
         	<option>Price per unit</option>
             <option>Flat fee</option>
         </select>
@@ -307,7 +332,7 @@
     	<input type="text" class="form-control" />
     </div>
     <div class="col-md-3">
-    	<button class="btn btn-primary"><i class="fa fa-plus"></i> Add Shipping</button>
+    	<button class="btn btn-primary"><i class="fa fa-plus"></i> Add Shipping Option</button>
     </div>
 	</div>
     
