@@ -332,7 +332,7 @@
     	<input type="text" class="form-control" />
     </div>
     <div class="col-md-3">
-    	<button class="btn btn-primary"><i class="fa fa-plus"></i> Add Shipping</button>
+    	<button class="btn btn-primary"><i class="fa fa-plus"></i> Add Shipping Option</button>
     </div>
 	</div>
     
