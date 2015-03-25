@@ -4,6 +4,8 @@
 //print_r($company_users);
 //exit;
 $this->load->model('membership/membership_model', 'membership_model');
+
+
 ?>	
             
             <div class="row wrapper border-bottom white-bg page-heading">
@@ -94,8 +96,15 @@ $this->load->model('membership/membership_model', 'membership_model');
                                 
                                 
                               		<div class="m-r-md" style="text-align:center">
-                            			<input type="text" value="94" class="dial m-r" data-fgColor="#1AB394" data-width="85" data-height="85" data-angleOffset=-125 data-angleArc=250 readonly/>
-                                        <div style="display:inline;height:65px;width:65px;padding:10px;margin-left:20px;"><i class="fa fa-star" style="font-size:75px;color:#FC6;vertical-align:top"></i></div>
+                                        
+                                            <?php
+                                            
+                                                $this->load->module('feedback');
+                                                $this->feedback->member_feedback($member_info->id);
+                                            ?>
+                                            
+                                            
+                            		<div style="display:inline;height:65px;width:65px;padding:10px;margin-left:20px;"><i class="fa fa-star" style="font-size:75px;color:#FC6;vertical-align:top"></i></div>
                             		</div>
                                     <dl class="dl-horizontal" >
 

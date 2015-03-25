@@ -120,4 +120,10 @@ class Feedback extends MX_Controller
         
         $this->load->view('feedback-list', $data);
     }
+    
+    function member_feedback($mid)
+    {
+       $data['mid'] = $mid;
+       $this->load->view('member-feedback', $data);
+    }
 }
