@@ -15,9 +15,19 @@ class Paypal extends MX_Controller
         $this->load->view('');
     }
     
-    function purchase()
+    function completed()
     {
-        $base = $this->config->item('base_url');
+        $this->load->view('completed');
+    }
+    
+    function pending()
+    {
+        $this->load->view('pending');
+    }
+        
+    function purchase($invoice = NULL, $product = NULL, $amount = NULL)
+    {
+        $base                           = $this->config->item('base_url');
         $config['business']             = 'info@gsmstockmarket.com';
         $config['cpp_header_image']     = $base .'public/main/template/gsm/images/paypal_gsm.png'; //Image header url [750 pixels wide by 90 pixels high]
         $config["cmd"] 			= '_cart'; //Do not modify
@@ -26,7 +36,7 @@ class Paypal extends MX_Controller
         $config['notify_url']           = $base .'paypal/process'; //IPN Post
         $config['production']           = FALSE; //Its false by default and will use sandbox
         //$config['discount_rate_cart']   = 20; //This means 20% discount
-        $config["invoice"]              = 'INV12344'; //The invoice id
+        $config["invoice"]              = $invoice; //The invoice id
 
         $this->load->library('paypal_lib',$config);
 
@@ -77,17 +87,48 @@ class Paypal extends MX_Controller
     
     function notify_payment()
     {
-        $info = print_r($this->input->post(), TRUE);
-        
-        echo '<pre>';
-        echo $info;
-        echo '</pre>';
-        
+//        $info = print_r($this->input->post(), TRUE);
+//        
+//        echo '<pre>';
+//        echo $info;
+//        echo '</pre>';
         $data = array(
+                    'mc_gross' => $this->input->post('mc_gross'),
                     'invoice' => $this->input->post('invoice'),
+                    'protection_eligibility' => $this->input->post('protection_eligibility'),
+                    'address_status' => $this->input->post('address_status'),
+                    'item_name1' => $this->input->post('item_name1'),
+                    'mc_gross_1' => $this->input->post('mc_gross_1'),
+                    'payer_id' => $this->input->post('payer_id'),
+                    'tax' => $this->input->post('tax'),
+                    'address_name' => $this->input->post('address_name'),
+                    'address_street' => $this->input->post('address_street'),
+                    'address_city' => $this->input->post('address_city'),
+                    'address_state' => $this->input->post('address_state'),
+                    'address_country' => $this->input->post('address_country'),
+                    'address_zip' => $this->input->post('address_zip'),
+                    'address_country_code' => $this->input->post('address_country_code'),
+                    'payment_date' => $this->input->post('payment_date'),
+                    'payer_status' => $this->input->post('payer_status'),
+                    'verify_sign' => $this->input->post('verify_sign'),
                     'payment_status' => $this->input->post('payment_status')
                     );
         $this->paypal_model->_insert($data);
+        
+        $status = $this->input->post('payment_status');
+        
+        if($status == 'Completed'){
+            
+            redirect('paypal/completed');
+            
+        }
+        elseif($status == 'Pending'){
+            
+            redirect('paypal/pending');
+            
+        }
+        
+        
     }
     
     function cancel_return()
@@ -103,6 +144,15 @@ class Paypal extends MX_Controller
                     'payment_status' => $this->input->post('payment_status')
                     );
         $this->paypal_model->_update($pid, $data);
+        
+        $status = $this->input->post('payment_status');
+        
+        if($status == 'Completed'){
+            
+        }
+        elseif($status == 'Refunded'){
+            
+        }
     }
 	
 }
