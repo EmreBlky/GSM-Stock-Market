@@ -8,8 +8,8 @@ class Paypal_subscribe {
 	 
 	Defines all the global variables and the wrapper functions 
 	********************************************/
-	var $PROXY_HOST = '127.0.0.1';
-	var $PROXY_PORT = '808';
+	var $PROXY_HOST = '109.203.125.39';
+	var $PROXY_PORT = '80';
 
 	var $SandboxFlag = true;
 
