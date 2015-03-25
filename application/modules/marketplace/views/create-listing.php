@@ -323,6 +323,7 @@
     <div class="form-group"><label class="col-md-3 control-label">Shipping Fee</label>
     <div class="col-md-3">
     	<select class="form-control">
+        	<option>Free shipping</option>
         	<option>Price per unit</option>
             <option>Flat fee</option>
         </select>
