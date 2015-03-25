@@ -6,7 +6,8 @@ class Paypal extends MX_Controller
     {
         parent::__construct();
         $this->load->helper('string');
-        $this->load->model('paypal/paypal_model', 'paypal_model');
+        $this->load->model('paypal/paypal_model', 'paypal_model');        
+        $this->load->library('paypal_subscribe');
     }
 	
 	
@@ -25,7 +26,7 @@ class Paypal extends MX_Controller
         $this->load->view('pending');
     }
         
-    function purchase($invoice = NULL, $product = NULL, $amount = NULL)
+    function purchase($invoice = NULL, $product = NULL)
     {
         $base                           = $this->config->item('base_url');
         $config['business']             = 'info@gsmstockmarket.com';
@@ -36,32 +37,41 @@ class Paypal extends MX_Controller
         $config['notify_url']           = $base .'paypal/process'; //IPN Post
         $config['production']           = FALSE; //Its false by default and will use sandbox
         //$config['discount_rate_cart']   = 20; //This means 20% discount
-        $config["invoice"]              = $invoice; //The invoice id
-
-        $this->load->library('paypal_lib',$config);
+        $config["invoice"]              = $invoice; //The invoice id        
+        
+        if($product == 'platinum'){
+           $description = "GSMStockmarket - Platinum Membership Fee";
+           $amount = 5000;
+        }
+//        elseif($product == 'gold'){
+//            $description = "GSMStockmarket - Gold Membership Fee";
+//        }
+        elseif($product == 'silver'){
+            $description = "GSMStockmarket - Silver Membership Fee";
+            $amount = 1295;
+        }
 
         #$this->paypal->add(<name>,<price>,<quantity>[Default 1],<code>[Optional]);
-
-        $this->paypal_lib->add('GSM Credit Top Up', 5, 1); //First item
+        $this->load->library('paypal_lib',$config);
+        $this->paypal_lib->add($description, $amount, 1); //First item
         //$this->paypal_lib->add('Pants', 40, 3); 	  //Second item
         //$this->paypal_lib->add('Blowse',10,10,'B-199-26'); //Third item with code
 
         $this->paypal_lib->pay(); //Proccess the payment
     }
     
-    function subscribe()
-    {
-        $this->load->library('paypal_subscribe');
+    function subscribe($type, $amount)
+    {        
         $base = $this->config->item('base_url');
         
-        $paymentAmount = 10;
-        $currencyCodeType = "USD";
+        $paymentAmount = $amount;
+        $currencyCodeType = "GBP";
         $paymentType = "Sale";
         #$paymentType = "Authorization";
         #$paymentType = "Order";
-        $returnURL = $base .'paypal/notify_payment';
+        $returnURL = $base .'paypal/review_payment';
         $cancelURL = $base .'paypal/cancel_return';
-        $resArray = $this->paypal_subscribe->CallShortcutExpressCheckout($paymentAmount, $currencyCodeType, $paymentType, $returnURL, $cancelURL);
+        $resArray = $this->paypal_subscribe->CallShortcutExpressCheckout($type, $paymentAmount, $currencyCodeType, $paymentType, $returnURL, $cancelURL);
 
         $ack = strtoupper($resArray["ACK"]);
         
@@ -136,6 +146,48 @@ class Paypal extends MX_Controller
         $this->load->view('cancel-return');
     }
     
+    
+    function review_payment()
+    {
+        $token = '';        
+        $data['results'] = $this->paypal_subscribe->GetShippingDetails($token);
+        
+        $this->load->view('review-payment', $data);
+        
+        //echo '<pre>';
+        //print_r($results);
+    }
+    
+    function order_confirm(
+                            $token, 
+                            $email, 
+                            $shipToName, 
+                            $shipToStreet, 
+                            $shipToCity, 
+                            $shipToState, 
+                            $shipToZip , 
+                            $shipToCountry,
+                            $amount
+                            )
+    {
+        //$finalPaymentAmount = $amount;
+        
+        $results = $this->paypal_subscribe->CreateRecurringPaymentsProfile(
+                                                                            $token, 
+                                                                            $email, 
+                                                                            $shipToName, 
+                                                                            $shipToStreet, 
+                                                                            $shipToCity, 
+                                                                            $shipToState, 
+                                                                            $shipToZip , 
+                                                                            $shipToCountry,
+                                                                            $amount
+                                                                        );
+        
+        echo '<pre>';
+        print_r($results);
+    }
+            
     function process()
     {
         $pid = $this->paypal_model->get_where_multiple('invoice', $this->input->post('invoice'))->id;

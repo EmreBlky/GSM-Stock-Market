@@ -9,8 +9,8 @@ class Paypal_subscribe {
 	 
 	Defines all the global variables and the wrapper functions 
 	********************************************/
-	var $PROXY_HOST = '109.203.125.39';
-	var $PROXY_PORT = '80';
+	var $PROXY_HOST = '127.0.0.1';
+	var $PROXY_PORT = '808';
 
 	var $SandboxFlag = true;
 
@@ -84,6 +84,7 @@ class Paypal_subscribe {
 	'--------------------------------------------------------------------------------------------------------------------------------------------	
 	*/
 	function CallShortcutExpressCheckout(
+                                            $type,
                                             $paymentAmount, 
                                             $currencyCodeType, 
                                             $paymentType, 
@@ -93,10 +94,19 @@ class Paypal_subscribe {
 	{
 		//------------------------------------------------------------------------------------------------------------------------------------
 		// Construct the parameter string that describes the SetExpressCheckout API call in the shortcut implementation
-
+                if($type == 'platinum'){
+                   $description = "GSMStockmarket - Platinum Membership Fee"; 
+                }
+                elseif($type == 'gold'){
+                    $description = "GSMStockmarket - Gold Membership Fee";
+                }
+                elseif($type == 'silver'){
+                    $description = "GSMStockmarket - Silver Membership Fee";
+                }
+                
 		$nvpstr = "&AMT=". $paymentAmount;
 		$nvpstr = $nvpstr . "&PAYMENTACTION=" . $paymentType;
-		$nvpstr = $nvpstr . "&BILLINGAGREEMENTDESCRIPTION=".urlencode("GSMStockmarket - Membership Fee");
+		$nvpstr = $nvpstr . "&BILLINGAGREEMENTDESCRIPTION=".urlencode($description);
 		$nvpstr = $nvpstr . "&BILLINGTYPE=RecurringPayments";
 		$nvpstr = $nvpstr . "&RETURNURL=" . $returnURL;
 		$nvpstr = $nvpstr . "&CANCELURL=" . $cancelURL;
@@ -104,7 +114,8 @@ class Paypal_subscribe {
                 
                 $payPaldata = array(
                     'currencyCodeType'  => $currencyCodeType,
-                    'PaymentType'       => $paymentType
+                    'PaymentType'       => $paymentType,
+                    'MembershipType'    => $type
                 );
 
                 $this->CI->session->set_userdata($payPaldata);
@@ -165,7 +176,7 @@ class Paypal_subscribe {
                                         $shipToZip,
                                         $shipToStreet2,
                                         $phoneNum
-                ) 
+                                        ) 
 	{
 		//------------------------------------------------------------------------------------------------------------------------------------
 		// Construct the parameter string that describes the SetExpressCheckout API call in the shortcut implementation
@@ -311,7 +322,17 @@ class Paypal_subscribe {
 		return $resArray;
 	}
 	
-	function CreateRecurringPaymentsProfile()
+	function CreateRecurringPaymentsProfile(
+                                                $token, 
+                                                $email, 
+                                                $shipToName, 
+                                                $shipToStreet, 
+                                                $shipToCity, 
+                                                $shipToState, 
+                                                $shipToZip , 
+                                                $shipToCountry,
+                                                $amount
+                                                )
 	{
 		//'--------------------------------------------------------------
 		//' At this point, the buyer has completed authorizing the payment
@@ -321,19 +342,34 @@ class Paypal_subscribe {
 		//' at this state - the buyer still needs an additional step to finalize
 		//' the transaction
 		//'--------------------------------------------------------------
-		$token                  = urlencode($this->CI->session->userdata('TOKEN'));
-		$email                  = urlencode($this->CI->session->userdata('email'));
-		$shipToName		= urlencode($this->CI->session->userdata('shipToName'));
-		$shipToStreet		= urlencode($this->CI->session->userdata('shipToStreet'));
-		$shipToCity		= urlencode($this->CI->session->userdata('shipToCity'));
-		$shipToState		= urlencode($this->CI->session->userdata('shipToState'));
-		$shipToZip		= urlencode($this->CI->session->userdata('shipToZip'));
-		$shipToCountry          = urlencode($this->CI->session->userdata('shipToCountry'));
+//		$token                  = urlencode($this->CI->session->userdata('TOKEN'));
+//		$email                  = urlencode($this->CI->session->userdata('email'));
+//		$shipToName		= urlencode($this->CI->session->userdata('shipToName'));
+//		$shipToStreet		= urlencode($this->CI->session->userdata('shipToStreet'));
+//		$shipToCity		= urlencode($this->CI->session->userdata('shipToCity'));
+//		$shipToState		= urlencode($this->CI->session->userdata('shipToState'));
+//		$shipToZip		= urlencode($this->CI->session->userdata('shipToZip'));
+//		$shipToCountry          = urlencode($this->CI->session->userdata('shipToCountry'));
 	   
 	    //'---------------------------------------------------------------------------
 		//' Build a second API request to PayPal, using the token as the
 		//'  ID to get the details on the payment authorization
 		//'---------------------------------------------------------------------------
+            
+                $date = date('Y-m-d 00:00:00', strtotime($date . ' + 1 day'));
+                
+                $type = $this->CI->session->userdata('MembershipType');
+                
+                if($type == 'platinum'){
+                   $description = "GSMStockmarket - Platinum Membership Fee"; 
+                }
+                elseif($type == 'gold'){
+                    $description = "GSMStockmarket - Gold Membership Fee";
+                }
+                elseif($type == 'silver'){
+                    $description = "GSMStockmarket - Silver Membership Fee";
+                }
+                
 		$nvpstr="&TOKEN=".$token;
 		#$nvpstr.="&EMAIL=".$email;
 		$nvpstr.="&SHIPTONAME=".$shipToName;
@@ -342,12 +378,12 @@ class Paypal_subscribe {
 		$nvpstr.="&SHIPTOSTATE=".$shipToState;
 		$nvpstr.="&SHIPTOZIP=".$shipToZip;
 		$nvpstr.="&SHIPTOCOUNTRY=".$shipToCountry;
-		$nvpstr.="&PROFILESTARTDATE=".urlencode("2011-07-01T0:0:0");
-		$nvpstr.="&DESC=".urlencode("Test Recurring Payment($1 monthly)");
+		$nvpstr.="&PROFILESTARTDATE=".urlencode($date);
+		$nvpstr.="&DESC=".urlencode($description);
 		$nvpstr.="&BILLINGPERIOD=Month";
-		$nvpstr.="&BILLINGFREQUENCY=5";
-		$nvpstr.="&AMT=1";
-		$nvpstr.="&CURRENCYCODE=USD";
+		$nvpstr.="&BILLINGFREQUENCY=12";
+		$nvpstr.="&AMT=".$amount;
+		$nvpstr.="&CURRENCYCODE=GBP";
 		$nvpstr.="&IPADDRESS=" . $_SERVER['REMOTE_ADDR'];
 		
 		//'---------------------------------------------------------------------------
@@ -356,7 +392,7 @@ class Paypal_subscribe {
 		//' 	an action to complete the payment.  
 		//'	If failed, show the error
 		//'---------------------------------------------------------------------------
-		$resArray=hash_call("CreateRecurringPaymentsProfile",$nvpstr);
+		$resArray= $this->hash_call("CreateRecurringPaymentsProfile",$nvpstr);
 		$ack = strtoupper($resArray["ACK"]);
 		return $resArray;
 	}
