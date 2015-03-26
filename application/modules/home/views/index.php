@@ -202,7 +202,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="ibox-content">
+                                    <div class="ibox-content no_sub">
                                         <table class="table table-hover no-margins">
                                             <thead>
                                             <tr>
@@ -273,7 +273,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="ibox-content">
+                                    <div class="ibox-content no_sub">
                                         <table class="table table-hover no-margins">
                                             <thead>
                                             <tr>
@@ -344,7 +344,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="ibox-content">
+                                    <div class="ibox-content no_sub">
                                         <table class="table table-hover no-margins">
                                             <thead>
                                             <tr>
