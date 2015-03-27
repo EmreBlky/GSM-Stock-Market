@@ -1,3 +1,18 @@
+<script type="text/javascript">
+    $(document).on("change", "#continent", function () {
+        $("#regions").children("optgroup").show();
+        var selectedval = $("#continent option:selected").val();
+        if(selectedval != "")
+        $("#regions").children("optgroup[label!='" + selectedval + "']").hide();
+    })
+
+    $(document).on("change", "#regions", function () {
+        $("#countries").children("optgroup").show();
+        var selectedval = $("#regions option:selected").val();
+        if(selectedval != "")
+            $("#countries").children("optgroup[label!='" + selectedval + "']").hide();
+    })
+</script>
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
         <h2>Search</h2>
@@ -25,14 +40,13 @@
                     <?php echo form_open('search/company/', array("method" => 'get')); ?>
                     <div class="row">
                         <div class="col-lg-3">
-                            <select class="form-control" name="sort">
-                                <option value="primary-business" selected="selected" disabled>Sort by (Primary
-                                    Business)
-                                </option>
-                                <option value="new-user">Sort by (Newest Users)</option>
-                                <option value="last-online">Sort by (Last Online)</option>
-                                <option value="high-rating">Sort by (Highest Rating)</option>
-                            </select>
+                            <?php
+                            $options = array("primary-business" => "Sort by (Primary Business)",
+                                "new-user" => "Sort by (Newest Users)",
+                                "last-online" => "Sort by (Last Online)",
+                                "high-rating" => "Sort by (Highest Rating)");
+                            echo form_dropdown("sort", $options, $this->input->get('sort'), 'class="form-control"')
+                            ?>
                         </div>
                         <div class="col-lg-4" style="padding:0">
                             <?php
@@ -75,26 +89,26 @@
                             foreach ($continents as $continents) {
                                 $options[$continents->continent] = $continents->continent;
                             }
-                            echo form_dropdown("continent", $options, $this->input->get('continent'), 'class="form-control"')
+                            echo form_dropdown("continent", $options, $this->input->get('continent'), 'class="form-control" id="continent"')
                             ?>
                         </div>
                         <div class="col-lg-4" style="padding:0">
                             <?php
                             $options = array("" => "All Regions");
                             foreach ($regions as $regions) {
-                                $options[$regions->region] = $regions->region;
+                                $options[$regions->continent][$regions->region] = $regions->region;
                             }
-                            echo form_dropdown("region", $options, $this->input->get('region'), 'class="form-control"')
+                            echo form_dropdown("region", $options, $this->input->get('region'), 'class="form-control" id="regions"')
                             ?>
                         </div>
                         <div class="col-lg-4">
-                                <?php
-                                $options = array("" => "All Countries");
-                                foreach ($country as $country) {
-                                    $options[$country->id] = $country->country;
-                                }
-                                echo form_dropdown("countries", $options, $this->input->get('countries'), 'class="form-control"')
-                                ?>
+                            <?php
+                            $options = array("" => "All Countries");
+                            foreach ($country as $country) {
+                                $options[$country->region][$country->id] = $country->country;
+                            }
+                            echo form_dropdown("countries", $options, $this->input->get('countries'), 'class="form-control" id="countries"')
+                            ?>
 
                         </div>
                     </div>
@@ -126,7 +140,7 @@
                                              src="public/main/template/gsm/images/company/no_company.jpg">
                                     <?php } ?>
 
-                                    <input type="text" value="65" class="dial m-r" data-fgColor="#f8ac59"
+                                    <input type="text" value="<?php echo $result->rating; ?>" class="dial m-r" data-fgColor="#f8ac59"
                                            data-width="50"
                                            data-height="50" data-angleOffset=-125 data-angleArc=250 readonly/>
 

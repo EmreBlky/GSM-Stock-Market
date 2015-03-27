@@ -128,7 +128,7 @@ class Search extends MX_Controller
                 return "l.date DESC";
                 break;
             case "high-rating":
-                return "c.company_name";
+                return "rating DESC";
                 break;
             default:
                 return "c.business_sector_1";
@@ -183,9 +183,9 @@ class Search extends MX_Controller
         $data['last_result'] = $last_result;
         $data['total_results'] = $total_results;
         $data['results'] = $results;
-        $data['country'] = $this->country_model->_custom_query("SELECT id, country FROM country GROUP BY country ORDER BY country ASC");
+        $data['country'] = $this->country_model->_custom_query("SELECT id, country, continent, region FROM country GROUP BY country ORDER BY country ASC");
         $data['continents'] = $this->country_model->_custom_query("SELECT continent FROM country GROUP BY continent ORDER BY continent ASC");
-        $data['regions'] = $this->country_model->_custom_query("SELECT region FROM country GROUP BY region ORDER BY region ASC");
+        $data['regions'] = $this->country_model->_custom_query("SELECT region, continent FROM country GROUP BY region ORDER BY region ASC");
 
         $this->load->module('templates');
         $this->templates->page($data);

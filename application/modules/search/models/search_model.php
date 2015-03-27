@@ -38,8 +38,8 @@ class Search_model extends MY_Model
         }
 
         $sql = "SELECT c.id,c.admin_member_id, c.company_name, cnt.country, c.company_profile, ms.membership, c.admin_member_id, c.business_sector_1, c.business_sector_2, c.business_sector_3,
-other_business
-
+other_business,
+                        COALESCE ((SELECT SUM(feedback_score) FROM feedback as f WHERE f.member_id = m.id AND authorised = 'yes'),0)  as rating
                         FROM company as c
                         INNER JOIN members as m
                         ON m.id = c.admin_member_id
