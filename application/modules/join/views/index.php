@@ -8,7 +8,7 @@
     <link href="http://fonts.googleapis.com/css?family=Righteous" rel="stylesheet" type="text/css">
     <style>@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);</style>
     <link rel="stylesheet" href="http://www.gsmstockmarket.com/wp-content/template/gsm/css/countdown.demo.css" type="text/css">
-    <link rel="stylesheet" type="text/css" href="http://www.gsmstockmarket.com/wp-content/template/gsm/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="http://www.gsmstockmarket.com/wp-content/themes/gsm/style.css" media="screen" />
     
     <!-- Latest compiled and minified JavaScript -->
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
