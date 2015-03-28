@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Billing e.g. invoices and receipts</title>
+    <title>Welcome to GSMStockMarket.com</title>
     <style>
 		/* -------------------------------------
 		GLOBAL
@@ -157,20 +157,6 @@
 		text-transform: capitalize;
 	  }
 	  
-	  .btn-success {
-		text-decoration: none;
-		color: #FFF;
-		background-color: #1c84c6;
-		border: solid #1c84c6;
-		border-width: 5px 10px;
-		line-height: 2;
-		font-weight: bold;
-		text-align: center;
-		cursor: pointer;
-		display: inline-block;
-		text-transform: capitalize;
-	  }
-	  
 	  /* -------------------------------------
 		OTHER STYLES THAT MIGHT BE USEFUL
 	  ------------------------------------- */
@@ -295,65 +281,32 @@
             <div class="content">
                 <table class="main" width="100%" cellpadding="0" cellspacing="0">
                     <tr>
-                        <td class="content-wrap aligncenter">
-                            <table width="100%" cellpadding="0" cellspacing="0">
+                        <td class="content-wrap">
+                            <table  cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        <img class="img-responsive" src="http://secure-dev.gsmstockmarket.com/public/main/template/gsm/images/email/header.png"/>
+                                        <img class="img-responsive" src="<?php echo $base; ?>public/main/template/gsm/images/email/header.png"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="content-block">
-                                        <table class="invoice">
-                                            <tr>
-                                                <td>Company name<br>Invoice #12345<br>June 01 2015</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <table class="invoice-items" cellpadding="0" cellspacing="0">
-                                                        <tr>
-                                                            <td>Service 1</td>
-                                                            <td class="alignright">£ 20.00</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Service 2</td>
-                                                            <td class="alignright">£ 10.00</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Service 3</td>
-                                                            <td class="alignright">£ 6.00</td>
-                                                        </tr>
-                                                        <tr class="total">
-                                                            <td class="alignright" width="80%">Total</td>
-                                                            <td class="alignright">£ 36.00</td>
-                                                        </tr>
-                                                    </table>
-                                                </td>
-                                            </tr>
-                                        </table>
+                                        <h3>You have now become a Silver Member!</h3>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="content-block">
-                                        <a href="#">View in browser</a> < Point to transaction id page?
+                                    <p>Something something.</p>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="content-block">
-                                        	GSMStockMarket.com Limited<br />The Old Dairy, Hazlemere, Hazlemere Crossroads,<br/>High Wycombe, Buckinghamshire, HP15 7LG. United Kingdom<br />Tel: +44 (0)1494 717321
+                                    <td class="content-block aligncenter">
+                                        <a href="<?php echo $base; ?>" class="btn-primary">Log in to view account</a>
                                     </td>
                                 </tr>
-                            </table>
+                              </table>
                         </td>
                     </tr>
-                </table>
-                <div class="footer">
-                    <table width="100%">
-                        <tr>
-                            <td class="aligncenter content-block">Billing questions? Email <a href="mailto:billing@gsmstockmarket.com">billing@gsmstockmarket.com</a></td>
-                        </tr>
-                    </table>
-                </div></div>
+                </table></div>
         </td>
         <td></td>
     </tr>

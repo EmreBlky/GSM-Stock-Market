@@ -285,7 +285,7 @@
                             <table  cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        <img class="img-responsive" src="//secure.gsmstockmarket.com/public/main/template/gsm/images/email/header.png"/>
+                                        <img class="img-responsive" src="<?php echo $base; ?>public/main/template/gsm/images/email/header.png"/>
                                     </td>
                                 </tr>
                                 <tr>
@@ -295,8 +295,9 @@
                                 </tr>
                                 <tr>
                                     <td class="content-block">
-                                        Before we can create your account we will need you to confirm your email address by clicking the activation link below. 
-                                        We may need to send you critical information about our service and it is important that we have an accurate email address.
+                                        <p>Dear <?php echo $name; ?>,</p>
+                                        <p>Before we can create your account we will need you to confirm your email address by clicking the activation link below. 
+                                        We may need to send you critical information about our service and it is important that we have an accurate email address.</p>
                                     </td>
                                 </tr>
                                 <tr>
@@ -306,7 +307,7 @@
                                 </tr>
                                 <tr>
                                     <td class="content-block aligncenter">
-                                        <a href="#" class="btn-primary">Activate my account</a>
+                                        <a href="<?php echo $base; ?>register/confirm/<?php echo $activation_code; ?>" class="btn-primary">Activate my account</a>
                                     </td>
                                 </tr>
                               </table>

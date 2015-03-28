@@ -299,28 +299,30 @@
                             <table  cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        <img class="img-responsive" src="http://secure-dev.gsmstockmarket.com/public/main/template/gsm/images/email/header.png"/>
+                                        <img class="img-responsive" src="<?php echo $base; ?>public/main/template/gsm/images/email/header.png"/>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="content-block">
-                                        <h3>Your password has been reset</h3>
+                                        <h3>Your account is now activated!</h3>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="content-block">
-                                        <p>Please use the password below to access your account.</p>
+                                        <p>Welcome <?php echo $name; ?>,</p>
+                                        <p>Login now to access your account and start using the platform.<p/>
+					<p>Remember to complete your personal and company profile contact details information, upload your logos and images and ensure all your business trading sectors are completed, this will help other members get a better understanding about your business and start generating more enquiries from new suppliers and customers.</p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="content-block aligncenter">
                                     	<h3 style="margin-top:0">Your Password is</h3>
-                                        <p class="btn-success">Zsjs9ua907sahl</p>
+                                        <p class="btn-success"><?php echo $password; ?></p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="content-block">
-                                    	<p>To access your account visit <a href="https://secure.gsmstockmarket.com/login">https://secure.gsmstockmarket.com/login</a> and sign in with your email on signup and the password given to you above.</p>
+                                    	<p>To access your account visit <a href="<?php echo $base; ?>login">https://secure.gsmstockmarket.com/login</a> and sign in with your email on signup and the password given to you above.</p>
                                     </td>
                                 </tr>
                                 <tr>
