@@ -56,22 +56,22 @@
       <file leaf-file-name="search_model.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/modules/search/models/search_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.17142858" vertical-offset="573" max-vertical-offset="4862">
-              <caret line="39" column="102" selection-start-line="39" selection-start-column="102" selection-end-line="39" selection-end-column="102" />
+            <state vertical-scroll-proportion="0.6247619" vertical-offset="1134" max-vertical-offset="4862">
+              <caret line="86" column="112" selection-start-line="86" selection-start-column="112" selection-end-line="86" selection-end-column="112" />
               <folding>
-                <marker date="1427526824025" expanded="true" signature="509:666" placeholder="SELECT url, ..pages..." />
-                <marker date="1427526824025" expanded="true" signature="1074:2361" placeholder="SELECT c.id,..company..." />
-                <marker date="1427526824025" expanded="true" signature="1309:1402" placeholder="SELECT SUM(f..feedback..." />
-                <marker date="1427526824025" expanded="true" signature="2656:3465" placeholder="SELECT COUNT..." />
-                <marker date="1427526824025" expanded="true" signature="3796:4185" placeholder="SELECT * FRO..mailbox..." />
-                <marker date="1427526824025" expanded="true" signature="4603:5008" placeholder="SELECT * FRO..mailbox..." />
-                <marker date="1427526824025" expanded="true" signature="5423:5822" placeholder="SELECT * FRO..mailbox..." />
-                <marker date="1427526824025" expanded="true" signature="6235:6624" placeholder="SELECT * FRO..mailbox..." />
-                <marker date="1427526824025" expanded="true" signature="7037:7430" placeholder="SELECT * FRO..mailbox..." />
-                <marker date="1427526824025" expanded="true" signature="7895:8390" placeholder="SELECT * FRO..mailbox..." />
-                <marker date="1427526824025" expanded="true" signature="8778:9165" placeholder="SELECT * FRO..mailbox..." />
-                <marker date="1427526824025" expanded="true" signature="10323:10451" placeholder="SELECT COUNT..." />
-                <marker date="1427526824025" expanded="true" signature="10889:11162" placeholder="SELECT DISTI..addressbook..." />
+                <marker date="1427527267032" expanded="true" signature="509:666" placeholder="SELECT url, ..pages..." />
+                <marker date="1427527267032" expanded="true" signature="1074:2361" placeholder="SELECT c.id,..company..." />
+                <marker date="1427527267032" expanded="true" signature="1309:1402" placeholder="SELECT SUM(f..feedback..." />
+                <marker date="1427527267032" expanded="true" signature="2664:3473" placeholder="SELECT COUNT..." />
+                <marker date="1427527267032" expanded="true" signature="3812:4201" placeholder="SELECT * FRO..mailbox..." />
+                <marker date="1427527267032" expanded="true" signature="4619:5024" placeholder="SELECT * FRO..mailbox..." />
+                <marker date="1427527267032" expanded="true" signature="5439:5838" placeholder="SELECT * FRO..mailbox..." />
+                <marker date="1427527267032" expanded="true" signature="6251:6640" placeholder="SELECT * FRO..mailbox..." />
+                <marker date="1427527267032" expanded="true" signature="7053:7446" placeholder="SELECT * FRO..mailbox..." />
+                <marker date="1427527267032" expanded="true" signature="7911:8406" placeholder="SELECT * FRO..mailbox..." />
+                <marker date="1427527267032" expanded="true" signature="8794:9181" placeholder="SELECT * FRO..mailbox..." />
+                <marker date="1427527267032" expanded="true" signature="10339:10467" placeholder="SELECT COUNT..." />
+                <marker date="1427527267032" expanded="true" signature="10905:11178" placeholder="SELECT DISTI..addressbook..." />
               </folding>
             </state>
           </provider>
@@ -366,19 +366,19 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="318" max-vertical-offset="4862">
           <caret line="41" column="132" selection-start-line="41" selection-start-column="132" selection-end-line="41" selection-end-column="132" />
           <folding>
-            <marker date="1427526824025" expanded="true" signature="509:666" placeholder="SELECT url, ..pages..." />
-            <marker date="1427526824025" expanded="true" signature="1074:2361" placeholder="SELECT c.id,..company..." />
-            <marker date="1427526824025" expanded="true" signature="1309:1402" placeholder="SELECT SUM(f..feedback..." />
-            <marker date="1427526824025" expanded="true" signature="2656:3465" placeholder="SELECT COUNT..." />
-            <marker date="1427526824025" expanded="true" signature="3796:4185" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427526824025" expanded="true" signature="4603:5008" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427526824025" expanded="true" signature="5423:5822" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427526824025" expanded="true" signature="6235:6624" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427526824025" expanded="true" signature="7037:7430" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427526824025" expanded="true" signature="7895:8390" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427526824025" expanded="true" signature="8778:9165" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427526824025" expanded="true" signature="10323:10451" placeholder="SELECT COUNT..." />
-            <marker date="1427526824025" expanded="true" signature="10889:11162" placeholder="SELECT DISTI..addressbook..." />
+            <marker date="1427527267032" expanded="true" signature="509:666" placeholder="SELECT url, ..pages..." />
+            <marker date="1427527267032" expanded="true" signature="1074:2361" placeholder="SELECT c.id,..company..." />
+            <marker date="1427527267032" expanded="true" signature="1309:1402" placeholder="SELECT SUM(f..feedback..." />
+            <marker date="1427527267032" expanded="true" signature="2664:3473" placeholder="SELECT COUNT..." />
+            <marker date="1427527267032" expanded="true" signature="3812:4201" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427527267032" expanded="true" signature="4619:5024" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427527267032" expanded="true" signature="5439:5838" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427527267032" expanded="true" signature="6251:6640" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427527267032" expanded="true" signature="7053:7446" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427527267032" expanded="true" signature="7911:8406" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427527267032" expanded="true" signature="8794:9181" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427527267032" expanded="true" signature="10339:10467" placeholder="SELECT COUNT..." />
+            <marker date="1427527267032" expanded="true" signature="10905:11178" placeholder="SELECT DISTI..addressbook..." />
           </folding>
         </state>
       </provider>
@@ -458,19 +458,19 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="981" max-vertical-offset="4862">
           <caret line="86" column="126" selection-start-line="86" selection-start-column="126" selection-end-line="86" selection-end-column="126" />
           <folding>
-            <marker date="1427526824025" expanded="true" signature="509:666" placeholder="SELECT url, ..pages..." />
-            <marker date="1427526824025" expanded="true" signature="1074:2361" placeholder="SELECT c.id,..company..." />
-            <marker date="1427526824025" expanded="true" signature="1309:1402" placeholder="SELECT SUM(f..feedback..." />
-            <marker date="1427526824025" expanded="true" signature="2656:3465" placeholder="SELECT COUNT..." />
-            <marker date="1427526824025" expanded="true" signature="3796:4185" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427526824025" expanded="true" signature="4603:5008" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427526824025" expanded="true" signature="5423:5822" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427526824025" expanded="true" signature="6235:6624" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427526824025" expanded="true" signature="7037:7430" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427526824025" expanded="true" signature="7895:8390" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427526824025" expanded="true" signature="8778:9165" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427526824025" expanded="true" signature="10323:10451" placeholder="SELECT COUNT..." />
-            <marker date="1427526824025" expanded="true" signature="10889:11162" placeholder="SELECT DISTI..addressbook..." />
+            <marker date="1427527267032" expanded="true" signature="509:666" placeholder="SELECT url, ..pages..." />
+            <marker date="1427527267032" expanded="true" signature="1074:2361" placeholder="SELECT c.id,..company..." />
+            <marker date="1427527267032" expanded="true" signature="1309:1402" placeholder="SELECT SUM(f..feedback..." />
+            <marker date="1427527267032" expanded="true" signature="2664:3473" placeholder="SELECT COUNT..." />
+            <marker date="1427527267032" expanded="true" signature="3812:4201" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427527267032" expanded="true" signature="4619:5024" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427527267032" expanded="true" signature="5439:5838" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427527267032" expanded="true" signature="6251:6640" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427527267032" expanded="true" signature="7053:7446" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427527267032" expanded="true" signature="7911:8406" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427527267032" expanded="true" signature="8794:9181" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427527267032" expanded="true" signature="10339:10467" placeholder="SELECT COUNT..." />
+            <marker date="1427527267032" expanded="true" signature="10905:11178" placeholder="SELECT DISTI..addressbook..." />
           </folding>
         </state>
       </provider>
@@ -660,22 +660,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/modules/search/models/search_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17142858" vertical-offset="573" max-vertical-offset="4862">
-          <caret line="39" column="102" selection-start-line="39" selection-start-column="102" selection-end-line="39" selection-end-column="102" />
+        <state vertical-scroll-proportion="0.6247619" vertical-offset="1134" max-vertical-offset="4862">
+          <caret line="86" column="112" selection-start-line="86" selection-start-column="112" selection-end-line="86" selection-end-column="112" />
           <folding>
-            <marker date="1427526824025" expanded="true" signature="509:666" placeholder="SELECT url, ..pages..." />
-            <marker date="1427526824025" expanded="true" signature="1074:2361" placeholder="SELECT c.id,..company..." />
-            <marker date="1427526824025" expanded="true" signature="1309:1402" placeholder="SELECT SUM(f..feedback..." />
-            <marker date="1427526824025" expanded="true" signature="2656:3465" placeholder="SELECT COUNT..." />
-            <marker date="1427526824025" expanded="true" signature="3796:4185" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427526824025" expanded="true" signature="4603:5008" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427526824025" expanded="true" signature="5423:5822" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427526824025" expanded="true" signature="6235:6624" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427526824025" expanded="true" signature="7037:7430" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427526824025" expanded="true" signature="7895:8390" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427526824025" expanded="true" signature="8778:9165" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427526824025" expanded="true" signature="10323:10451" placeholder="SELECT COUNT..." />
-            <marker date="1427526824025" expanded="true" signature="10889:11162" placeholder="SELECT DISTI..addressbook..." />
+            <marker date="1427527267032" expanded="true" signature="509:666" placeholder="SELECT url, ..pages..." />
+            <marker date="1427527267032" expanded="true" signature="1074:2361" placeholder="SELECT c.id,..company..." />
+            <marker date="1427527267032" expanded="true" signature="1309:1402" placeholder="SELECT SUM(f..feedback..." />
+            <marker date="1427527267032" expanded="true" signature="2664:3473" placeholder="SELECT COUNT..." />
+            <marker date="1427527267032" expanded="true" signature="3812:4201" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427527267032" expanded="true" signature="4619:5024" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427527267032" expanded="true" signature="5439:5838" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427527267032" expanded="true" signature="6251:6640" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427527267032" expanded="true" signature="7053:7446" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427527267032" expanded="true" signature="7911:8406" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427527267032" expanded="true" signature="8794:9181" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427527267032" expanded="true" signature="10339:10467" placeholder="SELECT COUNT..." />
+            <marker date="1427527267032" expanded="true" signature="10905:11178" placeholder="SELECT DISTI..addressbook..." />
           </folding>
         </state>
       </provider>
