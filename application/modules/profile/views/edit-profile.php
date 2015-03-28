@@ -1251,7 +1251,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                             <div class="input-group m-b"><span class="input-group-addon"><i
                                         class="fa fa-google-plus"></i></span>
                                 <?php
-                                if ($member->skype) {
+                                if ($member->gplus) {
 
                                     $data = array(
                                         'name' => 'gplus',
@@ -1744,7 +1744,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                                                 <!-- Crop and preview -->
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <div class="avatar-wrapper" style="width: 400px; margin: auto"></div>
+                                                        <div class="avatar-wrapper"></div>
                                                     </div>
                                                     <div class="col-md-3" style="display: none">
                                                         <div class="avatar-preview preview-lg"></div>
