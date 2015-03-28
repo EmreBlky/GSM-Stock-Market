@@ -5,10 +5,12 @@ class Country extends MX_Controller
     function __construct()
     {
         parent::__construct();
+        
         if ( ! $this->session->userdata('logged_in'))
         { 
             redirect('login');
         }
+        
         $this->load->model('member/member_model', 'member_model');
         $this->load->model('company/company_model', 'company_model');
         $this->load->model('country/country_model', 'country_model');

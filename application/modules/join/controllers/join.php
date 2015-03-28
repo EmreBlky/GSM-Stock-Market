@@ -4,7 +4,9 @@ class Join extends MX_Controller
 {
     function __construct()
     {
+        ob_start();
         parent::__construct();
+        $this->session->set_userdata('logged_in', 1);
 
     }
 
@@ -22,6 +24,7 @@ class Join extends MX_Controller
         $data['title'] = 'GSM - Edit Profile';
         $data['page'] = 'edit-profile';
         $this->load->view('index', $data);
+        $this->session->unset_userdata('logged_in');
     }
     
     function profileCreate()
