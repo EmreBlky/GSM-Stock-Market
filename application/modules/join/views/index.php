@@ -7,8 +7,8 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:600,700' rel='stylesheet' type='text/css'>
     <link href="http://fonts.googleapis.com/css?family=Righteous" rel="stylesheet" type="text/css">
     <style>@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);</style>
-    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/countdown.demo.css" type="text/css">
-    <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/style.css" media="screen" />
+    <link rel="stylesheet" href="http://www.gsmstockmarket.com/wp-content/template/gsm/css/countdown.demo.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="http://www.gsmstockmarket.com/wp-content/template/gsm/style.css" media="screen" />
     
     <!-- Latest compiled and minified JavaScript -->
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
@@ -72,7 +72,7 @@
         });
     });
     </script>
-    <script type="text/javascript" src="wp-content/themes/gsm/js/modernizr.custom.79639.js"></script>
+    <script type="text/javascript" src="http://www.gsmstockmarket.com/wp-content/template/gsmwp-content/themes/gsm/js/modernizr.custom.79639.js"></script>
   </head>  
 <html>
 
@@ -1062,7 +1062,7 @@
                         <label class="col-md-3 control-label">Last Name <span style="color:red">*</span></label>
 
                         <div class="col-md-9">
-                        	<input type="text" class="form-control" name="lastname" required>
+                        	<input type="text" name="lastname" class="form-control" required>
                         </div>
                     </div>
 
@@ -1080,7 +1080,7 @@
                                 style="color:red">*</span></label>
 
                         <div class="col-md-9">
-                        	<input type="text" class="form-control" name="email" required>
+                        	<input type="text" name="email" class="form-control" required>
                         </div>
                     </div>
 
