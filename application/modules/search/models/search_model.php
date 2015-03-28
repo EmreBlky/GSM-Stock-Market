@@ -53,7 +53,7 @@ other_business,
                         ON m.id = l.member_id
                         WHERE c.company_name LIKE ?
                         AND
-                        (c.business_sector_1 LIKE ? OR c.business_sector_2 LIKE ? OR c.business_sector_3 LIKE ? OR other_business = ?)
+                        (c.business_sector_1 LIKE ? OR c.business_sector_2 LIKE ? OR c.business_sector_3 LIKE ? OR other_business LIKE ?)
                         AND cnt.id LIKE ?
                         AND cnt.region LIKE ?
                          AND cnt.continent LIKE ?
@@ -81,7 +81,7 @@ other_business,
                         ON m.id = l.member_id
                         WHERE c.company_name LIKE ?
                         AND
-                        (c.business_sector_1 LIKE ? OR c.business_sector_2 LIKE ? OR c.business_sector_3 LIKE ?  OR other_business = ?) AND cnt.id LIKE ?
+                        (c.business_sector_1 LIKE ? OR c.business_sector_2 LIKE ? OR c.business_sector_3 LIKE ?  OR other_business LIKE ?) AND cnt.id LIKE ?
                         AND cnt.region LIKE ?
                          AND cnt.continent LIKE ?";
         $query = $this->db->query($sql, array("%".$terms."%", $b_sector, $b_sector, $b_sector, "%".$b_sector."%", $countries, $region, $continent));
