@@ -96,28 +96,15 @@
     <div id="navi-bar-wrapper">
         <div class="navi-bar container">
         	<div class="navi-logo">
-				<a href="/"><img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="Navi GSM Logo" /></a>
+				<a href="/"><img src="http://www.gsmstockmarket.com/wp-content/themes/gsm/media/navi-logo.png" height="76" width="251" alt="Navi GSM Logo"></a>
             </div><!-- /navi-logo -->
             <div class="navi-menu">
-            	 <?php wp_nav_menu($navimenu = array(
-					  'theme_location'  => 'navigation-menu',
-					  'menu'            => '',
-					  'container'       => false,
-					  'container_class' => '',
-					  'container_id'    => '',
-					  'menu_class'      => 'menu',
-					  'menu_id'         => '',
-					  'echo'            => true,
-					  'fallback_cb'     => 'wp_page_menu',
-					  'before'          => '',
-					  'after'           => '',
-					  'link_before'     => '',
-					  'link_after'      => '',
-					  'items_wrap'      => '<ul id="navi-menu">%3$s</ul>',
-					  'depth'           => 0,
-					  'walker'          => ''
-				  ) ); ?>
-            	 <?php wp_nav_menu_select(array('navigation-menu' => 'select-menu')); ?>
+            	 <ul id="navi-menu">
+		                <li id="menu-item-27"><a href="http://www.gsmstockmarket.com/membership/">Membership</a></li>
+		                <li id="menu-item-40"><a href="http://www.gsmstockmarket.com/events/">Events</a></li>
+	               	 <li id="menu-item-34"><a href="http://support.gsmstockmarket.com/customer/portal/topics/744522-frequently-asked-questions/questions">FAQ</a></li>
+		                <li id="menu-item-23"><a href="http://www.gsmstockmarket.com/join/">Sign Up</a></li>
+		              </ul>
             </div><!-- /navi-menu -->
         
         </div><!-- /navi-bar -->
