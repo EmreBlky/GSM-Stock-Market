@@ -92,7 +92,7 @@ class Join extends MX_Controller
         
             if($email_activatedNo[0]->count > 0 && $email_activatedYes[0]->count < 1){
                 $this->session->set_flashdata('register_title', 'registered_not_activated');
-                $this->session->set_flashdata('message', 'That email address has been registered but not activated. Please activate your account via the confirmation email. Please check your spam folder if you hav not received one.');
+                $this->session->set_flashdata('message', 'That email address has been registered but not activated. Please activate your account via the confirmation email. <a href="'.$this->config->item('base_url').'login/resend/'.$this->input->post('email').'">Resend Email</a> or Please check your spam folder if you have not received one.');
                 redirect('join/validateAccount');
 
             }

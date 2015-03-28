@@ -6,9 +6,19 @@
 
     </div>
     <h3>Welcome to GSMStockMarket</h3>
-    <p>The worlds best B2B trading platform.
-    </p>
-    <?php echo form_open('login/password_validation'); ?>
+    <p>The worlds best B2B trading platform.</p>
+    <?php 
+        $title = $this->session->flashdata('title');
+
+        if($title == 'error'){
+           echo '<div class="alert alert-warning">'.$this->session->flashdata('message').'</div>';                    
+        }
+        elseif($title == 'success'){
+           echo '<div class="alert alert-success">'.$this->session->flashdata('message').'</div>';  
+        }
+
+    ?>
+    <?php echo form_open('login/passwordResend'); ?>
         <div class="form-group">
             <?php
 
