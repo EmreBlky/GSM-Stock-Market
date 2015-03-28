@@ -95,6 +95,9 @@ class MY_Model extends CI_Model {
 		   }
 				
 		}
+                else{
+                    $data['id'] = '0';
+                }
                 
 		
 		return $data;
@@ -121,6 +124,9 @@ class MY_Model extends CI_Model {
 		   }
 				
 		}
+                else{
+                    $data['id'] = '0';
+                }
                 
 		
 		return $data;
