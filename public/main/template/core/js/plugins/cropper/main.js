@@ -205,7 +205,7 @@
                     aspectRatio: this.$aspectRatio,
                     preview: this.$avatarPreview.selector,
                     strict: true,
-                    minContainerWidth: 800,
+                    minContainerWidth: (this.$aspectRatio == 8/4) ? 800 : 400,
                     crop: function (data) {
                         var json = [
                             '{"x":' + data.x,

@@ -37,7 +37,7 @@ class Search_model extends MY_Model
             $limit = '';
         }
 
-        $sql = "SELECT c.id,c.admin_member_id, c.company_name, cnt.country, c.company_profile, ms.membership, c.admin_member_id, c.business_sector_1, c.business_sector_2, c.business_sector_3,
+        $sql = "SELECT c.id,c.admin_member_id, c.company_name, cnt.country, c.company_profile,m.email, ms.membership, c.admin_member_id, c.business_sector_1, c.business_sector_2, c.business_sector_3,
 other_business,
                         COALESCE ((SELECT SUM(feedback_score) FROM feedback as f WHERE f.member_id = m.id AND authorised = 'yes'),0)  as rating
                         FROM company as c
@@ -53,14 +53,14 @@ other_business,
                         ON m.id = l.member_id
                         WHERE c.company_name LIKE ?
                         AND
-                        (c.business_sector_1 LIKE ? OR c.business_sector_2 LIKE ? OR c.business_sector_3 LIKE ?)
+                        (c.business_sector_1 LIKE ? OR c.business_sector_2 LIKE ? OR c.business_sector_3 LIKE ? OR other_business = ?)
                         AND cnt.id LIKE ?
                         AND cnt.region LIKE ?
                          AND cnt.continent LIKE ?
                         GROUP BY l.member_id
                         ORDER BY $orderBy
                         $limit";
-        $query = $this->db->query($sql, array("%".$terms."%", $b_sector, $b_sector, $b_sector, $countries, $region, $continent));
+        $query = $this->db->query($sql, array("%".$terms."%", $b_sector, $b_sector, $b_sector, $b_sector, $countries, $region, $continent));
 
         return $query->result();
     }
@@ -81,10 +81,10 @@ other_business,
                         ON m.id = l.member_id
                         WHERE c.company_name LIKE ?
                         AND
-                        (c.business_sector_1 LIKE ? OR c.business_sector_2 LIKE ? OR c.business_sector_3 LIKE ?) AND cnt.id LIKE ?
+                        (c.business_sector_1 LIKE ? OR c.business_sector_2 LIKE ? OR c.business_sector_3 LIKE ?  OR other_business = ?) AND cnt.id LIKE ?
                         AND cnt.region LIKE ?
                          AND cnt.continent LIKE ?";
-        $query = $this->db->query($sql, array("%".$terms."%", $b_sector, $b_sector, $b_sector, $countries, $region, $continent));
+        $query = $this->db->query($sql, array("%".$terms."%", $b_sector, $b_sector, $b_sector, $b_sector, $countries, $region, $continent));
         return $query->row()->count;
     }
 
