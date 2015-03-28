@@ -1,82 +1,82 @@
-<head>
-
-<meta name="viewport" content="width=device-width, user-scalable=no">
-<title>The worlds best B2B mobile phone trading platform, trade with anyone at a click of a button - GSMStockMarket.com</title>
-
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans:600,700' rel='stylesheet' type='text/css'>
-        <link href="http://fonts.googleapis.com/css?family=Righteous" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="public/main/template/core/css/bootstrap.css" type="text/css">
-
-<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-$(window).on('load resize', function () {
-  if ($(window).width() > 768) {
-     // Check the initial Poistion of the Sticky Header
-        var gsmNaviMenu = $('#navi-bar-wrapper').offset().top;
- 
-        $(window).scroll(function(){
-                if( $(window).scrollTop() > gsmNaviMenu ) {
-                        $('#navi-bar-wrapper').css({position: 'fixed', top: '0px'});
-                        $('#content, .slider-home').css({margin:'106px 0 0'});
-                } else {
-                        $('#navi-bar-wrapper').css({position: 'static', top: '30px'})
-                        $('#content, .slider-home').css({margin:'0'});
-                }
-        });
-  }
- else if ($(window).width() < 768) {
-     // Check the initial Poistion of the Sticky Header
-        var gsmNaviMenu = $('#navi-bar-wrapper').offset().top;
- 
-        $(window).scroll(function(){
-                if( $(window).scrollTop() > gsmNaviMenu ) {
-                        $('#navi-bar-wrapper').css({position: 'relative', top: '0px'});
-                        $('#content').css({margin:'0'}); /* safari fix */
-                } else {
-                        $('#navi-bar-wrapper').css({position: 'relative', top: '0px'});
-                        $('#content').css({margin:'0'});  /* safari fix */
-                }
-        });
-  }
-});
-</script>
-<script type="text/javascript">
-$(document).ready(function(){
-	
-	//Check to see if the window is top if not then display button
-	$(window).scroll(function(){
-		if ($(this).scrollTop() > 100) {
-			$('.scrollToTop').fadeIn();
-		} else {
-			$('.scrollToTop').fadeOut();
-		}
-	});
-	
-	//Click event to scroll to top
-	$('.scrollToTop').click(function(){
-		$('html, body').animate({scrollTop : 0},800);
-		return false;
-	});
-	
-});
-</script>
-<script type="text/javascript"> <!-- THIS SCRIPT NEEDS TO BE GOTTEN FROM FUNCTIONS FOR MOBILE DROPDOWN -->
-jQuery(document).ready(function() {
-    jQuery( ".select-menu" ).change(function() {
-        window.location = jQuery(this).find("option:selected").val();
+  <head>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>The worlds best B2B mobile phone trading platform, trade with anyone at a click of a button - GSMStockMarket.com</title>
+    
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:600,700' rel='stylesheet' type='text/css'>
+    <link href="http://fonts.googleapis.com/css?family=Righteous" rel="stylesheet" type="text/css">
+    <style>@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);</style>
+    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/countdown.demo.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/style.css" media="screen" />
+    
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+    $(window).on('load resize', function () {
+      if ($(window).width() > 768) {
+         // Check the initial Poistion of the Sticky Header
+            var gsmNaviMenu = $('#navi-bar-wrapper').offset().top;
+     
+            $(window).scroll(function(){
+                    if( $(window).scrollTop() > gsmNaviMenu ) {
+                            $('#navi-bar-wrapper').css({position: 'fixed', top: '0px'});
+                            $('.banner_full').css({margin:'106px 0 0'});
+                    } else {
+                            $('#navi-bar-wrapper').css({position: 'static', top: '30px'})
+                            $('.banner_full').css({margin:'0'});
+                    }
+            });
+      }
+     else if ($(window).width() < 768) {
+         // Check the initial Poistion of the Sticky Header
+            var gsmNaviMenu = $('#navi-bar-wrapper').offset().top;
+     
+            $(window).scroll(function(){
+                    if( $(window).scrollTop() > gsmNaviMenu ) {
+                            $('#navi-bar-wrapper').css({position: 'relative', top: '0px'});
+                            $('#content').css({margin:'0'}); /* safari fix */
+                    } else {
+                            $('#navi-bar-wrapper').css({position: 'relative', top: '0px'});
+                            $('#content').css({margin:'0'});  /* safari fix */
+                    }
+            });
+      }
     });
-});
-</script>
-
-<script type="text/javascript" src="http://www.gsmstockmarket.com/wp-content/themes/gsm/js/modernizr.custom.79639.js"></script>
-        <link rel="stylesheet" href="public/main/template/www/css/style.css" />
-		<style>@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);</style> <!-- NOT WORKING IN CSS FILE * TO FIX-->
-</head>
-
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        
+        //Check to see if the window is top if not then display button
+        $(window).scroll(function(){
+            if ($(this).scrollTop() > 100) {
+                $('.scrollToTop').fadeIn();
+            } else {
+                $('.scrollToTop').fadeOut();
+            }
+        });
+        
+        //Click event to scroll to top
+        $('.scrollToTop').click(function(){
+            $('html, body').animate({scrollTop : 0},800);
+            return false;
+        });
+        
+    });
+    </script>
+    <script type="text/javascript"> <!-- THIS SCRIPT NEEDS TO BE GOTTEN FROM FUNCTIONS FOR MOBILE DROPDOWN -->
+    jQuery(document).ready(function() {
+        jQuery( ".select-menu" ).change(function() {
+            window.location = jQuery(this).find("option:selected").val();
+        });
+    });
+    </script>
+    <script type="text/javascript" src="wp-content/themes/gsm/js/modernizr.custom.79639.js"></script>
+  </head>  
 <html>
-<body class="menu-item-23">
-<div id="container" style="min-height:100%">
 
+<body>
 <header>
     <div id="tiny-menu-wrapper">
     	<div class="tiny-menu container">
@@ -88,7 +88,7 @@ jQuery(document).ready(function() {
         	<a href="//support.gsmstockmarket.com/customer/portal/emails/new">Contact <i class="glyphicon glyphicon-envelope"></i></a>
             </li>
         	<li>
-        	<a href="">Account <i class="glyphicon glyphicon-user"></i></a>
+        	<a href="">Login <i class="glyphicon glyphicon-user"></i></a>
             </li>
         </ul>
         </div>
@@ -96,26 +96,49 @@ jQuery(document).ready(function() {
     <div id="navi-bar-wrapper">
         <div class="navi-bar container">
         	<div class="navi-logo">
-				<a href="/"><img src="http://www.gsmstockmarket.com/wp-content/themes/gsm/media/navi-logo.png" height="76" width="251" alt="Navi GSM Logo"></a>
+				<a href="/"><img src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="Navi GSM Logo" /></a>
             </div><!-- /navi-logo -->
             <div class="navi-menu">
-              <ul id="navi-menu">
-                <li id="menu-item-27"><a href="http://www.gsmstockmarket.com/membership/">Membership</a></li>
-                <li id="menu-item-40"><a href="http://www.gsmstockmarket.com/events/">Events</a></li>
-                <li id="menu-item-34"><a href="http://support.gsmstockmarket.com/customer/portal/topics/744522-frequently-asked-questions/questions">FAQ</a></li>
-                <li id="menu-item-23"><a href="http://www.gsmstockmarket.com/join/">Sign Up</a></li>
-              </ul>
+            	 <?php wp_nav_menu($navimenu = array(
+					  'theme_location'  => 'navigation-menu',
+					  'menu'            => '',
+					  'container'       => false,
+					  'container_class' => '',
+					  'container_id'    => '',
+					  'menu_class'      => 'menu',
+					  'menu_id'         => '',
+					  'echo'            => true,
+					  'fallback_cb'     => 'wp_page_menu',
+					  'before'          => '',
+					  'after'           => '',
+					  'link_before'     => '',
+					  'link_after'      => '',
+					  'items_wrap'      => '<ul id="navi-menu">%3$s</ul>',
+					  'depth'           => 0,
+					  'walker'          => ''
+				  ) ); ?>
+            	 <?php wp_nav_menu_select(array('navigation-menu' => 'select-menu')); ?>
             </div><!-- /navi-menu -->
         
         </div><!-- /navi-bar -->
 	</div><!-- /navi-bar-wrapper -->
-</header>
-    
-    <div id="content">  
-    	<div class="signup container">
-        
-        
-        <script type="text/javascript" xmlns="http://www.w3.org/1999/html">
+    </header>
+
+
+
+
+
+<?php
+//echo '<pre>';
+//print_r($country);
+//exit;
+//echo "<pre>";
+//print_r($company);
+//echo "</pre>";
+?>
+
+
+<script type="text/javascript" xmlns="http://www.w3.org/1999/html">
 
     var is_primary_set = false;
     $(document).ready(function () {
@@ -658,55 +681,40 @@ jQuery(document).ready(function() {
                 }
             }
 
-        });
-        $('.confirm-div-company').hide();
-        $('.confirm-div-personal').hide();
-        <?php if ($this->session->flashdata('msg_company')) { ?>
-        $('.confirm-div-company').html('<?php echo $this->session->flashdata('msg_company'); ?>').show();
-        <?php } ?>;
-        <?php if ($this->session->flashdata('msg_personal')) { ?>
-        $('.confirm-div-personal').html('<?php echo $this->session->flashdata('msg_personal'); ?>').show();
-        <?php } ?>;
-    });</script>
-<?php
-$attributes = array('class' => 'form-horizontal validation', 'onsubmit' => 'return validate_info()');
-echo form_open_multipart('profile/profileEdit', $attributes);
-?>
-
-
-<div class="wrapper wrapper-content">
+        });</script>
+        
+    
 
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>Company Details</h5>
                 </div>
                 <div class="ibox-content">
-                    <?php
-                    $attributes = array('class' => 'form-horizontal validation', 'onsubmit' => 'return validate_info()');
-                    echo form_open('profile/profileEdit', $attributes);
-                    ?>
+                	<form class="form-horizontal validation">
 
-                    <div class="form-group"><label class="col-md-3 control-label">Company Name <span style="color:red">*</span></label>
+                    <div class="form-group"><label class="col-md-3 control-label">Company Name <span
+                                style="color:red">*</span></label>
+
                         <div class="col-md-9">
-                        <input type="text" name="company_name" class="form-control" required>
+                        	<input type="text" class="form-control" name="company_name" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-3 control-label">Company Number</label>
+
                         <div class="col-md-9">
-                        <input type="text" name="company_number" class="form-control" required>
-                        </div>
+                        	<input type="text" class="form-control" name="company_number" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-3 col-md-4 control-label">VAT/Tax Number</label>
+
                         <div class="col-md-9">
-                        <input type="text" name="vat_tax" class="form-control" required>
-                        </div>
+                        	<input type="text" class="form-control" name="vat_tax" required>
                         </div>
                     </div>
 
@@ -714,36 +722,41 @@ echo form_open_multipart('profile/profileEdit', $attributes);
 
                     <div class="form-group">
                         <label class="col-md-3 control-label">Address Line 1 <span style="color:red">*</span></label>
+
                         <div class="col-md-9">
-                        <input type="text" name="address_line_1" class="form-control" required>
+                        	<input type="text" class="form-control" name="address_line_1" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-3 control-label">Address Line 2</label>
+
                         <div class="col-md-9">
-                        <input type="text" name="address_line_2" class="form-control" required>
+                        	<input type="text" class="form-control" name="address_line_2" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-3 control-label">Town/City <span style="color:red">*</span></label>
+
                         <div class="col-md-9">
-                        <input type="text" name="town_city" class="form-control" required>
+                        	<input type="text" class="form-control" name="town_city" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-3 control-label">County <span style="color:red">*</span></label>
+
                         <div class="col-md-9">
-                        <input type="text" name="county" class="form-control" required>
+                        	<input type="text" class="form-control" name="county" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-3 control-label">Postal/Zip Code <span style="color:red">*</span></label>
+
                         <div class="col-md-9">
-                        <input type="text" name="post_code" class="form-control" required>
+                        	<input type="text" class="form-control" name="post_code" required>
                         </div>
                     </div>
 
@@ -751,10 +764,10 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                                 style="color:red">*</span></label>
 
                         <div class="col-md-9">
-                            <?php /*
+                            <?php
                             $this->load->module('country');
                             $this->country->select_country($member->id);
-                            */ ?>
+                            ?>
                         </div>
                     </div>
 
@@ -762,40 +775,17 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                         <label class="col-md-3 control-label">Phone Number <span style="color:red">*</span></label>
 
                         <div class="col-md-3" style="padding-right:0">
-                            <?php /*
+                            <?php
                             $this->load->module('country');
                             $this->country->select_phone($member->id);
                             ?>
                         </div>
                         <div class="col-md-6">
-                            <?php
-                            if ($company->phone_number) {
-
-                                $data = array(
-                                    'name' => 'phone_number',
-                                    'class' => 'form-control',
-                                    'value' => $company->phone_number,
-                                    'required' => 'required'
-                                );
-
-                                echo form_input($data);
-                            } else {
-
-                                $data = array(
-                                    'name' => 'phone_number',
-                                    'class' => 'form-control',
-                                    'value' => $this->input->post('phone_number'),
-                                    'required' => 'required'
-                                );
-
-                                echo form_input($data);
-                            } */
-                            ?>
+                        	<input type="text" class="form-control" name="phone_number" required>
                         </div>
                     </div>
-                    -->
 
-                    <?php /*
+                    <?php
                     $other_business = explode(',', $company->other_business);
                     $other_business1 = isset($other_business[0]) ? trim($other_business[0]) : '';
                     $other_business2 = isset($other_business[1]) ? trim($other_business[1]) : '';
@@ -942,7 +932,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                                     } else {
                                         ?>
                                         <option value="">[Select One]</option>
-                                    <?php } */ ?>
+                                    <?php } ?>
                                 </select>
                             </div>
 
@@ -967,29 +957,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                         <div class="col-md-9">
                             <div class="input-group m-b"><span class="input-group-addon"><i
                                         class="fa fa-globe"></i></span>
-                                <?php /*
-                                if ($company->website) {
-
-                                    $data = array(
-                                        'name' => 'website',
-                                        'class' => 'form-control',
-                                        'type' => 'url',
-                                        'value' => $company->website,
-                                    );
-
-                                    echo form_input($data);
-                                } else {
-
-                                    $data = array(
-                                        'name' => 'website',
-                                        'class' => 'form-control',
-                                        'type' => 'url',
-                                        'value' => $this->input->post('website')
-                                    );
-
-                                    echo form_input($data);
-                                } */
-                                ?>
+                        	<input type="text" class="form-control" name="website" type="url" required>
                             </div>
                         </div>
                     </div>
@@ -1000,27 +968,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                         <div class="col-md-9">
                             <div class="input-group m-b"><span class="input-group-addon"><i
                                         class="fa fa-skype"></i></span>
-                                <?php /*
-                                if ($member->skype) {
-
-                                    $data = array(
-                                        'name' => 'skype',
-                                        'class' => 'form-control',
-                                        'value' => $member->skype,
-                                    );
-
-                                    echo form_input($data);
-                                } else {
-
-                                    $data = array(
-                                        'name' => 'skype',
-                                        'class' => 'form-control',
-                                        'value' => $this->input->post('skype')
-                                    );
-
-                                    echo form_input($data);
-                                } */
-                                ?>
+                        	<input type="text" class="form-control" name="skype" required>
                             </div>
                         </div>
                     </div>
@@ -1030,27 +978,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
 
                         <div class="col-md-9">
                             <div class="input-group m-b"><span class="input-group-addon"><i class="fa fa-facebook"></i></span>
-                                <?php /*
-                                if ($member->facebook) {
-
-                                    $data = array(
-                                        'name' => 'facebook',
-                                        'class' => 'form-control',
-                                        'value' => $member->facebook,
-                                    );
-
-                                    echo form_input($data);
-                                } else {
-
-                                    $data = array(
-                                        'name' => 'facebook',
-                                        'class' => 'form-control',
-                                        'value' => $this->input->post('facebook')
-                                    );
-
-                                    echo form_input($data);
-                                } */
-                                ?>
+                        	<input type="text" class="form-control" name="facebook" required>
                             </div>
                         </div>
                     </div>
@@ -1061,27 +989,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                         <div class="col-md-9">
                             <div class="input-group m-b"><span class="input-group-addon"><i
                                         class="fa fa-twitter"></i></span>
-                                <?php /*
-                                if ($member->twitter) {
-
-                                    $data = array(
-                                        'name' => 'twitter',
-                                        'class' => 'form-control',
-                                        'value' => $member->twitter,
-                                    );
-
-                                    echo form_input($data);
-                                } else {
-
-                                    $data = array(
-                                        'name' => 'twitter',
-                                        'class' => 'form-control',
-                                        'value' => $this->input->post('twitter')
-                                    );
-
-                                    echo form_input($data);
-                                } */
-                                ?>
+                        	<input type="text" class="form-control" name="twitter" required>
                             </div>
                         </div>
                     </div>
@@ -1091,27 +999,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
 
                         <div class="col-md-9">
                             <div class="input-group m-b"><span class="input-group-addon"><i class="fa fa-linkedin"></i></span>
-                                <?php /*
-                                if ($member->linkedin) {
-
-                                    $data = array(
-                                        'name' => 'linkedin',
-                                        'class' => 'form-control',
-                                        'value' => $member->linkedin,
-                                    );
-
-                                    echo form_input($data);
-                                } else {
-
-                                    $data = array(
-                                        'name' => 'linkedin',
-                                        'class' => 'form-control',
-                                        'value' => $this->input->post('linkedin')
-                                    );
-
-                                    echo form_input($data);
-                                } */
-                                ?>
+                        	<input type="text" class="form-control" name="linkedin" required>
                             </div>
                         </div>
                     </div>
@@ -1122,27 +1010,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                         <div class="col-md-9">
                             <div class="input-group m-b"><span class="input-group-addon"><i
                                         class="fa fa-google-plus"></i></span>
-                                <?php /*
-                                if ($member->gplus) {
-
-                                    $data = array(
-                                        'name' => 'gplus',
-                                        'class' => 'form-control',
-                                        'value' => $member->gplus,
-                                    );
-
-                                    echo form_input($data);
-                                } else {
-
-                                    $data = array(
-                                        'name' => 'gplus',
-                                        'class' => 'form-control',
-                                        'value' => $this->input->post('gplus')
-                                    );
-
-                                    echo form_input($data);
-                                } */
-                                ?>
+                        	<input type="text" class="form-control" name="gplus" required>
                             </div>
                         </div>
                     </div>
@@ -1154,9 +1022,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                         <label class="col-md-3 col-md-4 control-label">Company Bio</label>
 
                         <div class="col-md-9">
-                            <textarea class="form-control" rows="5" id="companybio"
-                                      name="company_profile"><?php echo $company->company_profile; ?></textarea>
-
+                        	<textarea class="form-control" name="company_profile" id="companybio" rows="5"></textarea>
                             <div id="charNum"></div>
                         </div>
                     </div>
@@ -1164,7 +1030,6 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                 </div>
             </div>
         </div>
-
 
     <div class="row">
         <div class="col-lg-8">
@@ -1187,31 +1052,35 @@ echo form_open_multipart('profile/profileEdit', $attributes);
 
                     <div class="form-group">
                         <label class="col-md-3 control-label">First Name <span style="color:red">*</span></label>
+
                         <div class="col-md-9">
-                        <input type="text" name="first name" class="form-control" required>
-                        </div>
+                        	<input type="text" class="form-control" name="firstname" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-3 control-label">Last Name <span style="color:red">*</span></label>
+
                         <div class="col-md-9">
-                        <input type="text" name="lastname" class="form-control" required>
+                        	<input type="text" class="form-control" name="lastname" required>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-md-3 col-md-4 control-label">Company Role <span style="color:red">*</span></label>
+                        <label class="col-md-3 col-md-4 control-label">Company Role <span
+                                style="color:red">*</span></label>
+
                         <div class="col-md-9">
-                        <input type="text" name="role" class="form-control" required>
+                        	<input type="text" class="form-control" name="gplus" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-3 col-md-4 control-label">Email Address <span
                                 style="color:red">*</span></label>
+
                         <div class="col-md-9">
-                        <input type="text" name="email" class="form-control" required>
+                        	<input type="text" class="form-control" name="email" required>
                         </div>
                     </div>
 
@@ -1219,33 +1088,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                         <label class="col-md-3 control-label">Mobile Number</label>
 
                         <div class="col-md-3" style="padding-right:0">
-                            <?php
-                            $this->load->module('country');
-                            $this->country->select_mobile($member->id);
-                            ?>
-                        </div>
-                        <div class="col-md-6">
-                            <?php /*
-                            if ($member->mobile_number) {
-
-                                $data = array(
-                                    'name' => 'mobile_number',
-                                    'class' => 'form-control',
-                                    'value' => $member->mobile_number,
-                                );
-
-                                echo form_input($data);
-                            } else {
-
-                                $data = array(
-                                    'name' => 'mobile_number',
-                                    'class' => 'form-control',
-                                    'value' => $this->input->post('mobile_number')
-                                );
-
-                                echo form_input($data);
-                            } */
-                            ?>
+                        	<input type="text" class="form-control" name="mobile_number" required>
                         </div>
                     </div>
 
@@ -1278,41 +1121,9 @@ echo form_open_multipart('profile/profileEdit', $attributes);
             </div>
         </div>
 
-
-        <div class="col-lg-4">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Personal Photo</h5>
-                </div>
-                <div class="ibox-content">
-                    <div class="row">
-                        <div class="confirm-div-personal"></div>
-                        <div class="col-md-12" style="text-align:center">
-                            <?php if (file_exists("public/main/template/gsm/images/members/" . $member->id . ".jpg")) { ?>
-                                <img src="public/main/template/gsm/images/members/<?php echo $member->id; ?>.jpg">
-                            <?php } else { ?>
-                                <img src="public/main/template/gsm/images/members/no_profile.jpg"/>
-                            <?php } ?>
-
-                        </div>
-                        <div class="col-md-12" style="text-align:center;margin-top:20px">
-                            <div class="btn-group">
-                                <label title="Upload image file" for="inputImage" class="btn btn-primary">
-                                    <input type="file" accept="image" multiple name="userfile[]"/>Upload new
-                                    image</label>
-                                <label class="btn btn-danger">Delete</label>
-                            </div>
-                        </div>
-                        <p class="small" style="text-align:center">Personal profile image should be no smaller than
-                            150px width x 150px height.<br/>Personal images are scaled 1:1 ratio.</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
     </div>
 </div><!-- /row -->
-<?php //echo form_close() ?>
+</form>
 
 
 
@@ -1497,54 +1308,6 @@ echo form_open_multipart('profile/profileEdit', $attributes);
         });
     });
 </script>
-
-        
-        
-        
-        
-        
-        
-        
-        
-	</div>
-    </div>
-        
-        
-		<footer>
-        	<div class="row-responsive first">
-            	<div class="container">
-                	<div class="social">
-                    	<h3>Follow us</h3>
-                        <ul>
-                        	<li><a href="//facebook.com/gsmstockmarket" class="facebook square" title="Facebook"></a></li>
-                        	<li><a href="//twitter.com/gsmstockmarket" class="twitter square" title="Twitter"></a></li>
-                        	<li><a href="" class="linkedin square" title="Linkedin"></a></li>
-                        	<li><a href="#" class="googleplus square" title="Google +"></a></li>
-                        	<li><a href="#" class="youtube square" title="YouTube"></a></li>
-                        	<li><a href="#" class="rss square" title="RSS Feed"></a></li>
-						</ul>
-                    
-                    
-                    
-                    </div>
-                    <div class="subscribe">
-                    	<h3>Signup for news and offers</h3>
-                    	<form action="http://info.gsmstockmarket.com/t/d/s/tyfjk/" method="post">
-						<input id="fieldEmail" name="cm-tyfjk-tyfjk" type="email" class="input-text" placeholder="Email Address" required />
-						<button class="button" type="submit">Subscribe</button>
-						</form>
-                    </div>
-                </div>
-            </div>
-            
-        	<div class="row-responsive second">
-            	<div class="container">
-                </div>
-            </div>
-        </footer>
-        <a href="#" class="scrollToTop"></a>
-
-</div> <!-- /container -->
 
 </body>
 </html>
