@@ -753,7 +753,7 @@
                         <div class="col-md-9">
                             <?php
                             $this->load->module('country');
-                            $this->country->select_country($member->id);
+                            $this->country->select_country();
                             ?>
                         </div>
                     </div>
@@ -764,7 +764,7 @@
                         <div class="col-md-3" style="padding-right:0">
                             <?php
                             $this->load->module('country');
-                            $this->country->select_phone($member->id);
+                            $this->country->select_phone();
                             ?>
                         </div>
                         <div class="col-md-6">
@@ -773,9 +773,9 @@
                     </div>
 
                     <?php
-                    $other_business = explode(',', $company->other_business);
-                    $other_business1 = isset($other_business[0]) ? trim($other_business[0]) : '';
-                    $other_business2 = isset($other_business[1]) ? trim($other_business[1]) : '';
+                    //$other_business = explode(',', $company->other_business);
+                    //$other_business1 = isset($other_business[0]) ? trim($other_business[0]) : '';
+                    //$other_business2 = isset($other_business[1]) ? trim($other_business[1]) : '';
 
                     //                    echo "<pre>";
                     //                    print_r($company);
@@ -785,7 +785,7 @@
                         <label class="col-md-3 control-label">Business Sectors <span style="color:red">*</span><br/>
                             <small class="text-navy">Select up to 5</small>
                         </label>
-
+                        
                         <div class="col-md-4">
                             <div class="checkbox i-checks"><label>
                                     <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'New Mobiles (Sim Free)' || $company->business_sector_2 == 'New Mobiles (Sim Free)' || $company->business_sector_3 == 'New Mobiles (Sim Free)' || $other_business1 == 'New Mobiles (Sim Free)' || $other_business2 == 'New Mobiles (Sim Free)')) ? 'checked="checked"' : '' ?>
@@ -846,16 +846,17 @@
                                         type="checkbox" value="Insurance" name="bsectors[]" id="bsectors14"
                                         class='business_cycle'> <i></i> Insurance </label></div>
                         </div>
+                       
                         <div class="col-md-4">
                             <div id="primary-business">
 
                                 <?php
                                 $SelectedBiz = array();
-                                $SelectedBiz[] = $company->business_sector_1;
-                                $SelectedBiz[] = $company->business_sector_2;
-                                $SelectedBiz[] = $company->business_sector_3;
-                                $SelectedBiz[] = $other_business1;
-                                $SelectedBiz[] = $other_business2;
+                                $SelectedBiz[] = '';
+                                $SelectedBiz[] = '';
+                                $SelectedBiz[] = '';
+                                $SelectedBiz[] = '';
+                                $SelectedBiz[] = '';
                                 ?>
                                 <label class="col-md-12">Primary Business <span style="color:red">*</span></label>
 
@@ -1017,7 +1018,7 @@
                 </div>
             </div>
         </div>
-
+    </div>    
     <div class="row">
         <div class="col-lg-8">
             <div class="ibox float-e-margins">
@@ -1085,7 +1086,7 @@
                         <div class="col-md-4">
                             <?php
                             $this->load->module('language');
-                            $this->language->select($member->id);
+                            $this->language->select();
                             ?>
                         </div>
                     </div>
