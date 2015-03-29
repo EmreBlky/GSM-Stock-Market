@@ -26,8 +26,12 @@
                         </div>
                         <div class="ibox-content">
                         <div class="row">
-                        	<div class="col-md-6 col-md-offset-4">
-                                    <dl class="dl-horizontal">
+                        	<div class="col-md-12">
+                            		<style>
+										dl.full-width dt, dl.full-width dd {width:50%}
+										dl.full-width dd {margin-left:51%}
+									</style>
+                                    <dl class="dl-horizontal full-width">
                                         <dt>Current Subscription:</dt> <dd>  Bronze Member</dd>
                                         <dt>Join Date:</dt> <dd>  N/A</dd>
                                         <dt>Renewal Date</dt> <dd>  N/A</dd>
@@ -50,7 +54,7 @@
                         <div class="ibox-content">
                         <div class="row">
                         <div class="row db-padding-btm db-attached col-lg-10 col-lg-offset-1">
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <div class="col-sm-12 col-md-4 col-lg-4">
                 <div class="db-wrapper">
                     <div class="db-pricing-eleven db-bk-color-one">
                         <div class="price">
@@ -74,7 +78,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <div class="col-sm-12 col-md-4 col-lg-4">
                  <div class="db-wrapper">
                 <div class="db-pricing-eleven db-bk-color-two popular">
                     <div class="price">
@@ -99,7 +103,7 @@
                 </div>
                      </div>
             </div>
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <div class="col-sm-12 col-md-4 col-lg-4">
                  <div class="db-wrapper">
                 <div class="db-pricing-eleven db-bk-color-three">
                     <div class="price">
