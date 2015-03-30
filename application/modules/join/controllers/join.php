@@ -45,9 +45,9 @@ class Join extends MX_Controller
     
     function profileCreate()
     {
-        echo '<pre>';
-        print_r($_POST);
-        exit;
+        //echo '<pre>';
+        //print_r($_POST);
+        //exit;
         
         $this->session->set_userdata('logged_in', 1);
         
@@ -141,7 +141,7 @@ class Join extends MX_Controller
                         'gplus' => $this->input->post('gplus'),
                         'linkedin' => $this->input->post('linkedin'),
                         'skype' => $this->input->post('skype'),
-                        'role' => $this->input->post('role')
+                        'role' => $this->input->post('company_role')
                     );
 
 
