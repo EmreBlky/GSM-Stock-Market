@@ -2,6 +2,7 @@
 
 //echo '<pre>';
 //print_r($member);
+//print_r($blocked);
 //exit;
 
 ?>	
@@ -71,6 +72,38 @@
                         success:function(data){
                           $('#favourite_removed').replaceWith('<button  onclick="faveAdd();"  type="button" class="btn btn-warning btn-sm btn-block" id="favourite_added"><i class="fa fa-star"></i> Add Favourite</button>');                             
                           toastr.error('This user has been removed from your favourites.', 'Favourite Removed');
+                        },
+                });
+            }
+            
+            function block()
+            {
+                var cust_id         = "<?php echo $this->session->userdata('members_id');?>";
+                var cust_blocked    = $('#cust_added').val();
+                
+                 $.ajax({
+                        type: "POST",
+                        url: "block/customerBlock/"+ cust_id +"/"+ cust_blocked +"",
+                        dataType: "html",
+                        success:function(data){
+                          $('#blocked').replaceWith('<button onclick="unblock();" type="button" class="btn btn-warning btn-sm btn-block" id="unblocked">Unblock</button>');                             
+                         toastr.error('They are unable to communicate or see you in anywhere on this website.', 'User Blocked!');                    
+                        },
+                });
+            }
+            
+            function unblock()
+            {
+                var cust_id         = "<?php echo $this->session->userdata('members_id');?>";
+                var cust_blocked    = $('#cust_added').val();
+                
+                 $.ajax({
+                        type: "POST",
+                        url: "block/customerUnblock/"+ cust_id +"/"+ cust_blocked +"",
+                        dataType: "html",
+                        success:function(data){
+                          $('#unblocked').replaceWith('<button onclick="block();" type="button" class="btn btn-danger btn-sm btn-block" id="blocked"><i class="fa fa-ban"></i> Block</button>');                             
+                          toastr.success('You will now be visible to this user and you can communicate with them.', 'User Unblocked');
                         },
                 });
             }
@@ -212,9 +245,12 @@
                                     
                                     <div class="row">
                                         <?php ?>
+                                        <?php if($this->session->userdata('membership') != 1) {?>
                                         <div class="col-md-10 col-md-offset-1" style="margin-top:15px">
                                             <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#profile_message"><i class="fa fa-envelope"></i> Send Message</button>
-                                        </div><!--
+                                        </div>
+                                        <?php } ?>
+                                        <!--
                                         <div class="col-md-6" style="margin-top:15px">
                                             <button type="button" class="btn btn-default btn-sm btn-block" id="conversation"><i class="fa fa-wechat"></i> Start Conversation</button>
                                         </div>-->
@@ -483,8 +519,16 @@
                          	<button type="button" class="btn btn-warning btn-sm btn-block" data-toggle="modal" data-target="#report_user"><i class="fa fa-exclamation"></i> Report</button>
                         </div>
                         <div class="col-lg-6" style="margin-top:15px">
-                         	<button type="button" class="btn btn-danger btn-sm btn-block" id="blocked"><i class="fa fa-ban"></i> Block</button>
-                        </div>
+                        <?php if($blocked){?>    
+                            <?php if($blocked[0]->block_member_id > 0){?>
+                                <button onclick="unblock();" type="button" class="btn btn-warning btn-sm btn-block" id="unblocked">Unblock</button>
+                            <?php } else { ?>
+                                <button onclick="block();" type="button" class="btn btn-danger btn-sm btn-block" id="blocked"><i class="fa fa-ban"></i> Block</button>                        
+                            <?php }?>
+                        <?php } else { ?>  
+                                <button onclick="block();" type="button" class="btn btn-danger btn-sm btn-block" id="blocked"><i class="fa fa-ban"></i> Block</button>
+                        <?php }?>        
+                         </div>
                    </div>
                 </div>
             </div>
@@ -563,12 +607,7 @@
 					showMethod: 'fadeIn',
 					hideMethod: 'fadeOut',
 				};
-            $('#blocked').click(function (){
-                toastr.error('They are unable to communicate or see you in anyway on this website.', 'User Blocked!');
-            });
-            $('#unblocked').click(function (){
-                toastr.success('You will now be visible to this user again and can communicate with them.', 'User Unblocked');
-            });
+            
             $('#conversation').click(function (){
                 toastr.warning('Both users need to add each other as a contact before they can use GSM Messenger!', 'Chat Unavailable');
             });

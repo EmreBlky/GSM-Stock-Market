@@ -14,6 +14,7 @@ class Member extends MX_Controller
         $this->load->model('member/member_model', 'member_model');
         $this->load->model('company/company_model', 'company_model');
         $this->load->model('country/country_model', 'country_model');
+        $this->load->model('viewed/viewed_model', 'viewed_model');
         
         $this->load->model('activity/activity_model', 'activity_model');
         
@@ -36,7 +37,7 @@ class Member extends MX_Controller
     }
     function profile($pid)
     {
-        $this->load->model('viewed/viewed_model', 'viewed_model');
+        
         
         $this->viewed_model->_delete_where('viewed_id' ,$pid, 'viewer_id', $this->session->userdata('members_id'));
         
@@ -56,6 +57,8 @@ class Member extends MX_Controller
         $data['page'] = 'profile';
         $data['member_info'] = $this->member_model->get_where($pid);
         $data['member_company'] = $this->company_model->get_where($this->member_model->get_where($pid)->company_id);
+        $this->load->model('block/block_model', 'block_model');
+        $data['blocked'] = $this->block_model->get_where_multiples('member_id', $this->session->userdata('members_id'), 'block_member_id', $pid);
 
         $this->load->module('templates');
         $this->templates->page($data); 

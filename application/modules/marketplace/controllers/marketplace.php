@@ -9,6 +9,9 @@ class Marketplace extends MX_Controller
         { 
             redirect('login');
         }
+        if($this->session->userdata('membership') < 2) {
+            redirect('preferences/notice');
+        }
          $this->load->model('marketplace_model'); 
     }
 

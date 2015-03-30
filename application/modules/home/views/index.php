@@ -1,4 +1,6 @@
-<?php echo $this->session->flashdata('confirm-login'); ?>
+<?php 
+  echo $this->session->flashdata('confirm-login'); 
+?>
 <?php                                        
     $this->load->module('feedback');
     $overall = $this->feedback->overallScore($this->session->userdata('members_id'));
