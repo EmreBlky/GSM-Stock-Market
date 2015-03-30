@@ -77,15 +77,18 @@
 
 
 </script>
-<div class="row wrapper border-bottom white-bg page-heading">
+			<div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
                     <h2>View Profile</h2>
                     <ol class="breadcrumb">
                         <li>
                             <a href="home">Home</a>
-                        </li>                        
+                        </li>                            
+                        <li>
+                            View Profile
+                        </li>              
                         <li class="active">
-                            <strong><?php echo $member_info->firstname.' '.$member_info->lastname; ?></strong>
+                            <strong><?php echo $member_company->company_name;?></strong>
                         </li>
                     </ol>
                 </div>
@@ -116,6 +119,7 @@
 										dl.full-width dt, dl.full-width dd {width:50%}
 										dl.full-width dd {margin-left:51%}
 									</style>
+                                    
                               		<div class="m-r-md" style="text-align:center">
 										<?php if(file_exists("public/main/template/gsm/images/company/".$member_company->id.".jpg")){?>
                                             <img src="public/main/template/gsm/images/company/<?php echo $member_company->id; ?>.jpg" class="img-responsive" style="margin:0 auto">
@@ -140,6 +144,11 @@
                                             <?php echo $this->country_model->get_where($member_company->country)->country;?></dd>
                                     </dl>
                                     
+                                    <dl class="dl-horizontal full-width">                                    
+                                        <dt>Phone Number:</dt>
+                                        <dd> <?php echo $member_info->phone_number?></dd>
+                                    </dl>
+                                    
                                     <dl class="dl-horizontal full-width">
                                         <dt>Primary Business:</dt>
                                         <dd><?php echo $member_company->business_sector_1;?></dd>
@@ -157,15 +166,15 @@
                                     
                                     
                                     <dl class="dl-horizontal full-width" >
-                    <div style="margin-top:20px;text-align:center;margin-bottom:41px">
-					<?php
-
-                        $this->load->module('feedback');
-                        $this->feedback->member_feedback($member_info->id);
+                                        <div style="margin-top:20px;text-align:center;margin-bottom:41px">
+                                        <?php
                     
-                    ?>
-                    <div style="display:inline;height:65px;width:65px;padding:10px;margin-left:20px;"><i class="fa fa-star star-<?php echo $this->membership_model->get_where($member_info->membership)->membership;?>" class="star-" style="font-size:75px;vertical-align:top"></i></div>
-                    </div>
+                                            $this->load->module('feedback');
+                                            $this->feedback->member_feedback($member_info->id);
+                                        
+                                        ?>
+                                        <div style="display:inline;height:65px;width:65px;padding:10px;margin-left:20px;"><i class="fa fa-star star-<?php echo $this->membership_model->get_where($member_info->membership)->membership;?>" class="star-" style="font-size:75px;vertical-align:top"></i></div>
+                                    </div>
                                     
                                     <dl class="dl-horizontal full-width">
                                         <dt>Status:  </dt>
@@ -177,10 +186,14 @@
                                             <dt>Last Logged:  </dt>
                                             <dd><?php echo $this->login_model->get_where_multiple('member_id', $member_info->id, 'logged', 'yes')->date?></dd>
                                             <?php }?>
-                                        <?php } ?>
-                                        
+                                        <?php } ?>                                        
+                                    </dl>
+                                    
+                                    <dl class="dl-horizontal full-width">
                                         <dt>Subscription:</dt> 
                                         <dd><?php echo $this->membership_model->get_where($member_info->membership)->membership;?> Member</dd>
+
+                                        <dt>Member Since:</dt> <dd> <?php echo $member_info->date?></dd>
                                     </dl>
                                     
                                     <dl class="dl-horizontal full-width" >
@@ -196,9 +209,10 @@
                                         <dd> <?php echo $member_info->skype?></dd>
                                         
                                     </dl>
+                                    
                                     <div class="row">
                                         <?php ?>
-                                        <div class="col-md-12" style="margin-top:15px">
+                                        <div class="col-md-10 col-md-offset-1" style="margin-top:15px">
                                             <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#profile_message"><i class="fa fa-envelope"></i> Send Message</button>
                                         </div><!--
                                         <div class="col-md-6" style="margin-top:15px">
@@ -220,13 +234,13 @@
                                         
                                         if($a_count < 1){
                                         ?>
-                                            <div class="col-md-6" style="margin-top:15px">
+                                            <div class="col-md-5 col-md-offset-1" style="margin-top:15px">
                                                 <button type="button" onclick="contactAdd();" class="btn btn-success btn-sm btn-block" id="contact_added"><i class="fa fa-book"></i> Add Contact</button>
                                             </div>
                                         <?php
                                         } else{
                                         ?>
-                                            <div class="col-md-6" style="margin-top:15px">
+                                            <div class="col-md-5 col-md-offset-1" style="margin-top:15px">
                                                 <button type="button" onclick="contactRemove();" class="btn btn-success btn-sm btn-block" id="contact_removed"><i class="fa fa-book"></i> Remove Contact</button>
                                             </div>
                                         <?php
@@ -239,13 +253,13 @@
                                         
                                         if($f_count < 1){
                                         ?>
-                                            <div class="col-md-6" style="margin-top:15px">
+                                            <div class="col-md-5" style="margin-top:15px">
                                                 <button  onclick="faveAdd();"  type="button" class="btn btn-warning btn-sm btn-block" id="favourite_added"><i class="fa fa-star"></i> Add Favourite</button>
                                             </div>
                                         <?php
                                         } else {
                                         ?>
-                                            <div class="col-md-6" style="margin-top:15px">
+                                            <div class="col-md-5" style="margin-top:15px">
                                                 <button  onclick="faveRemove();"  type="button" class="btn btn-warning btn-sm btn-block" id="favourite_removed"><i class="fa fa-star"></i> Remove Favourite</button>
                                             </div>
                                         <?php
@@ -455,8 +469,6 @@
                                         <dd> <?php echo $member_info->role?></dd>
                                         <dt>Mobile Number:</dt> 
                                         <dd> <?php echo $member_info->mobile_number?></dd>
-                                        <dt>Phone Number:</dt>
-                                        <dd> <?php echo $member_info->phone_number?></dd>
                                     </dl>  
                                     
                     
@@ -484,13 +496,11 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                            <h4 class="modal-title">Buy Credit Check</h4>
-                                            <small class="font-bold">This transaction will buy you the credit data for <?php echo $member_company->company_name; ?>.</small>
+                                            <h4 class="modal-title">Credit Check</h4>
+                                            <small class="font-bold">This transaction will generate a credit check for <?php echo $member_company->company_name; ?>.</small>
                                         </div>
-                                        <div class="modal-body">
-                                            <p><strong>Payment will be taken from your GSM Wallet</strong> and the credit data for this company will be viewable from your account while your subscription lasts.</p>
-                                            <p><strong>£5.00 Credit available</strong></p>
-                                            <p><strong>£5.00 Credit required</strong></p>
+                                        <div class="modal-body no_sub">
+                                            <p>View company credit information. Unavailable</p>
                                         </div>
 
                                         <div class="modal-footer">
