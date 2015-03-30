@@ -46,7 +46,7 @@ $CI =& get_instance();
   | the active record class
  * 
  */
-$base_url = ltrim($CI->config->item('base_url'), 'https://');
+$base_url = ltrim($CI->config->item('base_url'), 'http://');
 
 $active_group = 'default';
 $active_record = TRUE;

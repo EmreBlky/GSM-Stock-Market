@@ -15,12 +15,8 @@
 |
 */
 
-$root=(isset($_SERVER['HTTPS']) ? "https://" : "http://").$_SERVER['HTTP_HOST'];
-$root.= str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
-$config['base_url'] = $root;
-
 //SERVER SITE:
-//$config['base_url']	= '';
+$config['base_url']	= '';
 
 //LIVE SITE:
 //$config['base_url']	= '';
@@ -45,8 +41,8 @@ elseif($base_url == 'http://localhost/secure.gsmstockmarket.com/'){
 elseif($base_url == 'http://secure-dev.gsmstockmarket.com/'){
 	$config['base_url']	= 'http://secure-dev.gsmstockmarket.com/';
 }
-elseif($base_url == 'https://secure.gsmstockmarket.com/'){
-	$config['base_url']	= 'https://secure.gsmstockmarket.com/';
+elseif($base_url == 'http://secure.gsmstockmarket.com/'){
+	$config['base_url']	= 'http://secure.gsmstockmarket.com/';
 }
 
 /*
