@@ -196,7 +196,7 @@
 
         var count = 1;
         var ids = new Array();
-        while (count <= 14) {
+        while (count <= 16) {
             var chk = $('#bsectors' + count).prop("checked");
             var id = $('#bsectors' + count).attr('id');
             if (chk == true) {
@@ -288,7 +288,7 @@
 
         var count = 1;
         var ids = new Array();
-        while (count <= 14) {		// Get all checkboxes ids
+        while (count <= 16) {		// Get all checkboxes ids
             var chk = $('#bsectors' + count).prop("checked");
             var id = $('#bsectors' + count).attr('id');
             if (chk == true) {
@@ -337,7 +337,7 @@
 
         var count = 1;
         var ids = new Array();
-        while (count <= 14) {
+        while (count <= 16) {
             var chk = $('#bsectors' + count).prop("checked");
             var id = $('#bsectors' + count).attr('id');
             if (chk == true) {
@@ -382,7 +382,7 @@
 
         var count = 1;
         var ids = new Array();
-        while (count <= 14) {
+        while (count <= 16) {
             var chk = $('#bsectors' + count).prop("checked");
             var id = $('#bsectors' + count).attr('id');
             if (chk == true) {
