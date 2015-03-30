@@ -46,7 +46,7 @@ $CI =& get_instance();
   | the active record class
  * 
  */
-$base_url = ltrim($CI->config->item('base_url'), 'http://');
+$base_url = ltrim($CI->config->item('base_url'), 'https://');
 
 $active_group = 'default';
 $active_record = TRUE;
@@ -134,7 +134,7 @@ $active_record = TRUE;
     $db['default']['hostname'] = '109.203.125.38';
     $db['default']['username'] = 'gsmstock_admin';
     $db['default']['password'] = 'zv.4qAb17ph$;?$PF!';
-    $db['default']['database'] = 'gsmstock_securelive';
+    $db['default']['database'] = 'gsmstock_secure';
     $db['default']['dbdriver'] = 'mysql';
     $db['default']['dbprefix'] = '';
     $db['default']['pconnect'] = FALSE;
