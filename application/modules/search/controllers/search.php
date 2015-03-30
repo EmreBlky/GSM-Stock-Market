@@ -142,23 +142,25 @@ class Search extends MX_Controller
         $data['title'] = 'GSM - Search Company';
         $data['page'] = 'company';
 
-        $term = $this->input->get('term', TRUE);
-        $term = (!empty($term)) ? $term : '%';
-
         $start = $this->input->get('start', TRUE);
         $start = (!empty($start)) ? $start : 0;
 
+        $where = " m.id <> " . $this->session->userdata('members_id');
+
+        $term = $this->input->get('term', TRUE);
+        $where .= (!empty($term)) ? " AND c.company_name LIKE '%$term%'" : '';
+
         $business = $this->input->get('business', TRUE);
-        $business = (!empty($business)) ? $business : '%';
+        $where .= (!empty($business)) ? " AND (c.business_sector_1 LIKE '$business' OR c.business_sector_2 LIKE '$business' OR c.business_sector_3 LIKE '$business' OR other_business LIKE '%$business%')" : '';
 
         $region = $this->input->get('region', TRUE);
-        $region = (!empty($region)) ? $region : '%';
+        $where .= (!empty($region)) ? " AND cnt.region LIKE '$region' " : '';
 
         $continent = $this->input->get('continent', TRUE);
-        $continent = (!empty($continent)) ? $continent : '%';
+        $where .= (!empty($continent)) ? " AND cnt.continent LIKE '$continent'" : '';
 
         $countries = $this->input->get('countries', TRUE);
-        $countries = (!empty($countries)) ? $countries : '%';
+        $where .= (!empty($countries)) ? " AND cnt.id = '$countries'" : '';
 
         $sort = $this->getSortingString();
 
@@ -169,11 +171,11 @@ class Search extends MX_Controller
         $this->load->model('search_model');
         $this->load->model('country/country_model', 'country_model');
 
-        $results = $this->search_model->searchCompanies($term, $business, $countries, $region, $continent, $sort, $start, $results_per_page, $this->session->userdata('members_id'));
-        $total_results = $this->search_model->companiesCount($term, $business, $countries, $region, $continent);
+        $results = $this->search_model->searchCompanies($where, $business, $sort, $start, $results_per_page);
+        $total_results = $this->search_model->companiesCount($where);
 
         $this->benchmark->mark('search_end');
-        $this->_setup_pagination('/search/companysearch/?' . $_SERVER['QUERY_STRING'], $total_results, $results_per_page);
+        $this->_setup_pagination('/search/company/?' . $_SERVER['QUERY_STRING'], $total_results, $results_per_page);
         $data['pagination'] = $this->pagination->create_links();
         $first_result = $start + 1;
         $last_result = min($start + $results_per_page, $total_results);

@@ -1,115 +1,175 @@
-  <head>
+<head>
     <meta name="viewport" content="width=device-width, user-scalable=no">
-    <title>The worlds best B2B mobile phone trading platform, trade with anyone at a click of a button - GSMStockMarket.com</title>
-    
+    <title>The worlds best B2B mobile phone trading platform, trade with anyone at a click of a button -
+        GSMStockMarket.com</title>
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:600,700' rel='stylesheet' type='text/css'>
     <link href="http://fonts.googleapis.com/css?family=Righteous" rel="stylesheet" type="text/css">
     <style>@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);</style>
-    <link rel="stylesheet" href="http://www.gsmstockmarket.com/wp-content/template/gsm/css/countdown.demo.css" type="text/css">
-    <link rel="stylesheet" type="text/css" href="http://www.gsmstockmarket.com/wp-content/themes/gsm/style.css" media="screen" />  
-    <link href="public/main/template/core/font-awesome/css/font-awesome.css" rel="stylesheet">  
-    
+    <link rel="stylesheet" href="http://www.gsmstockmarket.com/wp-content/template/gsm/css/countdown.demo.css"
+          type="text/css">
+    <link rel="stylesheet" type="text/css" href="http://www.gsmstockmarket.com/wp-content/themes/gsm/style.css"
+          media="screen"/>
+    <link href="public/main/template/core/font-awesome/css/font-awesome.css" rel="stylesheet">
+
     <!-- Latest compiled and minified JavaScript -->
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-	<script type="text/javascript">
-    $(window).on('load resize', function () {
-      if ($(window).width() > 768) {
-         // Check the initial Poistion of the Sticky Header
-            var gsmNaviMenu = $('#navi-bar-wrapper').offset().top;
-     
-            $(window).scroll(function(){
-                    if( $(window).scrollTop() > gsmNaviMenu ) {
-                            $('#navi-bar-wrapper').css({position: 'fixed', top: '0px'});
-                            $('.banner_full').css({margin:'106px 0 0'});
-                    } else {
-                            $('#navi-bar-wrapper').css({position: 'static', top: '30px'})
-                            $('.banner_full').css({margin:'0'});
-                    }
-            });
-      }
-     else if ($(window).width() < 768) {
-         // Check the initial Poistion of the Sticky Header
-            var gsmNaviMenu = $('#navi-bar-wrapper').offset().top;
-     
-            $(window).scroll(function(){
-                    if( $(window).scrollTop() > gsmNaviMenu ) {
-                            $('#navi-bar-wrapper').css({position: 'relative', top: '0px'});
-                            $('#content').css({margin:'0'}); /* safari fix */
-                    } else {
-                            $('#navi-bar-wrapper').css({position: 'relative', top: '0px'});
-                            $('#content').css({margin:'0'});  /* safari fix */
-                    }
-            });
-      }
-    });
-    </script>
     <script type="text/javascript">
-    $(document).ready(function(){
-        
-        //Check to see if the window is top if not then display button
-        $(window).scroll(function(){
-            if ($(this).scrollTop() > 100) {
-                $('.scrollToTop').fadeIn();
-            } else {
-                $('.scrollToTop').fadeOut();
+        $(window).on('load resize', function () {
+            if ($(window).width() > 768) {
+                // Check the initial Poistion of the Sticky Header
+                var gsmNaviMenu = $('#navi-bar-wrapper').offset().top;
+
+                $(window).scroll(function () {
+                    if ($(window).scrollTop() > gsmNaviMenu) {
+                        $('#navi-bar-wrapper').css({position: 'fixed', top: '0px'});
+                        $('.banner_full').css({margin: '106px 0 0'});
+                    } else {
+                        $('#navi-bar-wrapper').css({position: 'static', top: '30px'})
+                        $('.banner_full').css({margin: '0'});
+                    }
+                });
+            }
+            else if ($(window).width() < 768) {
+                // Check the initial Poistion of the Sticky Header
+                var gsmNaviMenu = $('#navi-bar-wrapper').offset().top;
+
+                $(window).scroll(function () {
+                    if ($(window).scrollTop() > gsmNaviMenu) {
+                        $('#navi-bar-wrapper').css({position: 'relative', top: '0px'});
+                        $('#content').css({margin: '0'});
+                        /* safari fix */
+                    } else {
+                        $('#navi-bar-wrapper').css({position: 'relative', top: '0px'});
+                        $('#content').css({margin: '0'});
+                        /* safari fix */
+                    }
+                });
             }
         });
-        
-        //Click event to scroll to top
-        $('.scrollToTop').click(function(){
-            $('html, body').animate({scrollTop : 0},800);
-            return false;
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //Check to see if the window is top if not then display button
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 100) {
+                    $('.scrollToTop').fadeIn();
+                } else {
+                    $('.scrollToTop').fadeOut();
+                }
+            });
+
+            //Click event to scroll to top
+            $('.scrollToTop').click(function () {
+                $('html, body').animate({scrollTop: 0}, 800);
+                return false;
+            });
+
         });
-        
-    });
     </script>
     <script type="text/javascript"> <!-- THIS SCRIPT NEEDS TO BE GOTTEN FROM FUNCTIONS FOR MOBILE DROPDOWN -->
-    jQuery(document).ready(function() {
-        jQuery( ".select-menu" ).change(function() {
-            window.location = jQuery(this).find("option:selected").val();
+        jQuery(document).ready(function () {
+            jQuery(".select-menu").change(function () {
+                window.location = jQuery(this).find("option:selected").val();
+            });
         });
-    });
     </script>
-    <script type="text/javascript" src="http://www.gsmstockmarket.com/wp-content/template/gsm/wp-content/themes/gsm/js/modernizr.custom.79639.js"></script>
-  </head>  
+    <script type="text/javascript"
+            src="http://www.gsmstockmarket.com/wp-content/template/gsm/wp-content/themes/gsm/js/modernizr.custom.79639.js"></script>
+    <script type="text/javascript">
+
+        //bprimary, bsecondary, btertiary
+        $(document).ready(function () {
+
+            appendOptions();
+
+            $(document).on("change", "input[name='bsectors[]']", function () {
+
+                if ($("input[name='bsectors[]']:checked").length > 5) {
+                    $(this).attr("checked", false);
+                    return;
+                }
+
+                $("#bprimary, #bsecondary, #btertiary").html('<option value="">[Select One]</option>');
+                appendOptions();
+            })
+
+            $(document).on("change", ".bsnssector", function () {
+                $(".bsnssector option").show();
+                $(".bsnssector option:selected").each(function () {
+                    if ($(this).val() != "")
+                        $(".bsnssector").not(this).find("option[value='" + $(this).val() + "']").hide();
+                })
+
+            })
+
+        })
+
+        function appendOptions() {
+            var counter = 0;
+            $("input[name='bsectors[]']:checked").each(function () {
+                $("#bprimary, #bsecondary, #btertiary").append($("<option></option>")
+                    .attr("value", $(this).val())
+                    .text($(this).val()));
+                counter++;
+            });
+
+            if (counter == 1) {
+                $("#bprimary option:eq(1)").attr("selected", true);
+            }
+
+        }
+    </script>
+</head>
 <html>
 
 <body>
 <header>
     <div id="tiny-menu-wrapper">
-    	<div class="tiny-menu container">
-        <ul class="mini" style="list-style:none;margin-top:5px;float:right;width:auto;white-space:nowrap">
-        	<li>
-        	<a href="//support.gsmstockmarket.com/">Support <i class="glyphicon glyphicon-search"></i></a>
-            </li>
-        	<li>
-        	<a href="//support.gsmstockmarket.com/customer/portal/emails/new">Contact <i class="glyphicon glyphicon-envelope"></i></a>
-            </li>
-        	<li>
-        	<a href="">Login <i class="glyphicon glyphicon-user"></i></a>
-            </li>
-        </ul>
+        <div class="tiny-menu container">
+            <ul class="mini" style="list-style:none;margin-top:5px;float:right;width:auto;white-space:nowrap">
+                <li>
+                    <a href="//support.gsmstockmarket.com/">Support <i class="glyphicon glyphicon-search"></i></a>
+                </li>
+                <li>
+                    <a href="//support.gsmstockmarket.com/customer/portal/emails/new">Contact <i
+                            class="glyphicon glyphicon-envelope"></i></a>
+                </li>
+                <li>
+                    <a href="">Login <i class="glyphicon glyphicon-user"></i></a>
+                </li>
+            </ul>
         </div>
-    </div><!-- /tiny-menu-wrapper -->
+    </div>
+    <!-- /tiny-menu-wrapper -->
     <div id="navi-bar-wrapper">
         <div class="navi-bar container">
-        	<div class="navi-logo">
-				<a href="http://www.gsmstockmarket.com/"><img src="http://www.gsmstockmarket.com/wp-content/themes/gsm/media/navi-logo.png" height="76" width="251" alt="Navi GSM Logo"></a>
-            </div><!-- /navi-logo -->
+            <div class="navi-logo">
+                <a href="http://www.gsmstockmarket.com/"><img
+                        src="http://www.gsmstockmarket.com/wp-content/themes/gsm/media/navi-logo.png" height="76"
+                        width="251" alt="Navi GSM Logo"></a>
+            </div>
+            <!-- /navi-logo -->
             <div class="navi-menu">
-            	 <ul id="navi-menu">
-		                <li id="menu-item-27"><a href="http://www.gsmstockmarket.com/membership/">Membership</a></li>
-	               	 <li id="menu-item-34"><a href="http://support.gsmstockmarket.com/customer/portal/topics/744522-frequently-asked-questions/questions">FAQ</a></li>
-		                <li id="menu-item-23"><a href="http://www.gsmstockmarket.com/join/">Sign Up</a></li>
-		              </ul>
-            </div><!-- /navi-menu -->
-        
-        </div><!-- /navi-bar -->
-	</div><!-- /navi-bar-wrapper -->
-    </header>
+                <ul id="navi-menu">
+                    <li id="menu-item-27"><a href="http://www.gsmstockmarket.com/membership/">Membership</a></li>
+                    <li id="menu-item-34"><a
+                            href="http://support.gsmstockmarket.com/customer/portal/topics/744522-frequently-asked-questions/questions">FAQ</a>
+                    </li>
+                    <li id="menu-item-23"><a href="http://www.gsmstockmarket.com/join/">Sign Up</a></li>
+                </ul>
+            </div>
+            <!-- /navi-menu -->
+
+        </div>
+        <!-- /navi-bar -->
+    </div>
+    <!-- /navi-bar-wrapper -->
+</header>
 
 
 
@@ -669,13 +729,13 @@
             }
 
         });</script>
-        
-    
-    <?php
-        $attributes = array('class' => 'form-horizontal validation');
-        echo form_open('join/profileCreate', $attributes);
-    ?>    
-    <div class="container">
+
+
+<?php
+$attributes = array('class' => 'form-horizontal validation');
+echo form_open('join/profileCreate', $attributes);
+?>
+<div class="container">
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
@@ -683,21 +743,21 @@
                     <h2>Company Details</h2>
                 </div>
                 <div class="ibox-content">
-                    <?php 
+                    <?php
                     $title = $this->session->flashdata('register_title');
-                    
-                        if($title == 'registered_not_activated' || $title == 'registered_activated'){
 
-                           echo '<div class="alert alert-warning">'.$this->session->flashdata('message').'</div>';                    
-                        }  
+                    if ($title == 'registered_not_activated' || $title == 'registered_activated') {
+
+                        echo '<div class="alert alert-warning">' . $this->session->flashdata('message') . '</div>';
+                    }
 
                     ?>
 
-                    <div class="form-group"><label class="col-md-3 control-label">Company Name 
+                    <div class="form-group"><label class="col-md-3 control-label">Company Name
                             <span style="color:red">*</span></label>
 
                         <div class="col-md-9">
-                        	<input type="text" class="form-control" name="company_name" required>
+                            <input type="text" class="form-control" name="company_name" required>
                         </div>
                     </div>
 
@@ -705,7 +765,7 @@
                         <label class="col-md-3 control-label">Company Number</label>
 
                         <div class="col-md-9">
-                        	<input type="text" class="form-control" name="company_number">
+                            <input type="text" class="form-control" name="company_number">
                         </div>
                     </div>
 
@@ -713,7 +773,7 @@
                         <label class="col-md-3 col-md-4 control-label">VAT/Tax Number</label>
 
                         <div class="col-md-9">
-                        	<input type="text" class="form-control" name="vat_tax">
+                            <input type="text" class="form-control" name="vat_tax">
                         </div>
                     </div>
 
@@ -723,7 +783,7 @@
                         <label class="col-md-3 control-label">Address Line 1 <span style="color:red">*</span></label>
 
                         <div class="col-md-9">
-                        	<input type="text" class="form-control" name="address_line_1" required>
+                            <input type="text" class="form-control" name="address_line_1" required>
                         </div>
                     </div>
 
@@ -731,7 +791,7 @@
                         <label class="col-md-3 control-label">Address Line 2</label>
 
                         <div class="col-md-9">
-                        	<input type="text" class="form-control" name="address_line_2">
+                            <input type="text" class="form-control" name="address_line_2">
                         </div>
                     </div>
 
@@ -739,7 +799,7 @@
                         <label class="col-md-3 control-label">Town/City <span style="color:red">*</span></label>
 
                         <div class="col-md-9">
-                        	<input type="text" class="form-control" name="town_city" required>
+                            <input type="text" class="form-control" name="town_city" required>
                         </div>
                     </div>
 
@@ -747,7 +807,7 @@
                         <label class="col-md-3 control-label">County <span style="color:red">*</span></label>
 
                         <div class="col-md-9">
-                        	<input type="text" class="form-control" name="county" required>
+                            <input type="text" class="form-control" name="county" required>
                         </div>
                     </div>
 
@@ -755,11 +815,11 @@
                         <label class="col-md-3 control-label">Postal/Zip Code <span style="color:red">*</span></label>
 
                         <div class="col-md-9">
-                        	<input type="text" class="form-control" name="post_code" required>
+                            <input type="text" class="form-control" name="post_code" required>
                         </div>
                     </div>
 
-                    <div class="form-group"><label class="col-md-3 control-label">Country 
+                    <div class="form-group"><label class="col-md-3 control-label">Country
                             <span style="color:red">*</span></label>
 
                         <div class="col-md-9">
@@ -780,7 +840,7 @@
                             ?>
                         </div>
                         <div class="col-md-6">
-                        	<input type="text" class="form-control" name="phone_number" required>
+                            <input type="text" class="form-control" name="phone_number" required>
                         </div>
                     </div>
 
@@ -797,7 +857,7 @@
                         <label class="col-md-3 control-label">Business Sectors <span style="color:red">*</span><br/>
                             <small class="text-navy">Select up to 5</small>
                         </label>
-                        
+
                         <div class="col-md-4">
                             <div class="checkbox i-checks"><label>
                                     <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'New Mobiles (Sim Free)' || $company->business_sector_2 == 'New Mobiles (Sim Free)' || $company->business_sector_3 == 'New Mobiles (Sim Free)' || $other_business1 == 'New Mobiles (Sim Free)' || $other_business2 == 'New Mobiles (Sim Free)')) ? 'checked="checked"' : '' ?>
@@ -866,7 +926,7 @@
                                         type="checkbox" value="Sim Cards" name="bsectors[]" id="bsectors14"
                                         class='business_cycle'> <i></i> Sim Cards </label></div>
                         </div>
-                       
+
                         <div class="col-md-4">
                             <div id="primary-business">
 
@@ -880,7 +940,8 @@
                                 ?>
                                 <label class="col-md-12">Primary Business <span style="color:red">*</span></label>
 
-                                <select class="form-control m-b" id="bprimary" name="bprimary" style="float:left"
+                                <select class="form-control m-b bsnssector" required="required" id="bprimary" name="bprimary"
+                                        style="float:left"
                                         onchange="updateSelects1(this.value)">
                                     <?php
                                     if (isset($company->business_sector_1)) {
@@ -905,7 +966,8 @@
 
 
                                 <label class="col-md-12">Secondary Business <span style="color:red">*</span></label>
-                                <select class="form-control m-b" name="bsecondary" id="bsecondary" style="float:left"
+                                <select class="form-control m-b bsnssector" required="required" name="bsecondary" id="bsecondary"
+                                        style="float:left"
                                         onchange="updateSelects2(this.value)">
                                     <?php
                                     if (isset($company->business_sector_2)) {
@@ -926,7 +988,8 @@
 
                             <div id="tertiary-business">
                                 <label class="col-md-12">Tertiary Business <span style="color:red">*</span></label>
-                                <select class="form-control m-b" name="btertiary" id="btertiary" style="float:left"
+                                <select class="form-control m-b bsnssector" required="required" name="btertiary" id="btertiary"
+                                        style="float:left"
                                         onchange="updateSelects3(this.value)">
                                     <?php
                                     if (isset($company->business_sector_3)) {
@@ -965,7 +1028,7 @@
                         <div class="col-md-9">
                             <div class="input-group m-b"><span class="input-group-addon"><i
                                         class="fa fa-globe"></i></span>
-                        	<input type="text" class="form-control" name="website" type="url">
+                                <input type="text" class="form-control" name="website" type="url">
                             </div>
                         </div>
                     </div>
@@ -976,7 +1039,7 @@
                         <div class="col-md-9">
                             <div class="input-group m-b"><span class="input-group-addon"><i
                                         class="fa fa-skype"></i></span>
-                        	<input type="text" class="form-control" name="skype">
+                                <input type="text" class="form-control" name="skype">
                             </div>
                         </div>
                     </div>
@@ -986,7 +1049,7 @@
 
                         <div class="col-md-9">
                             <div class="input-group m-b"><span class="input-group-addon"><i class="fa fa-facebook"></i></span>
-                        	<input type="text" class="form-control" name="facebook">
+                                <input type="text" class="form-control" name="facebook">
                             </div>
                         </div>
                     </div>
@@ -997,7 +1060,7 @@
                         <div class="col-md-9">
                             <div class="input-group m-b"><span class="input-group-addon"><i
                                         class="fa fa-twitter"></i></span>
-                        	<input type="text" class="form-control" name="twitter">
+                                <input type="text" class="form-control" name="twitter">
                             </div>
                         </div>
                     </div>
@@ -1007,7 +1070,7 @@
 
                         <div class="col-md-9">
                             <div class="input-group m-b"><span class="input-group-addon"><i class="fa fa-linkedin"></i></span>
-                        	<input type="text" class="form-control" name="linkedin">
+                                <input type="text" class="form-control" name="linkedin">
                             </div>
                         </div>
                     </div>
@@ -1018,7 +1081,7 @@
                         <div class="col-md-9">
                             <div class="input-group m-b"><span class="input-group-addon"><i
                                         class="fa fa-google-plus"></i></span>
-                        	<input type="text" class="form-control" name="gplus">
+                                <input type="text" class="form-control" name="gplus">
                             </div>
                         </div>
                     </div>
@@ -1030,7 +1093,8 @@
                         <label class="col-md-3 col-md-4 control-label">Company Bio</label>
 
                         <div class="col-md-9">
-                        	<textarea class="form-control" name="company_profile" id="companybio" rows="5"></textarea>
+                            <textarea class="form-control" name="company_profile" id="companybio" rows="5"></textarea>
+
                             <div id="charNum"></div>
                         </div>
                     </div>
@@ -1038,7 +1102,7 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
@@ -1062,7 +1126,7 @@
                         <label class="col-md-3 control-label">First Name <span style="color:red">*</span></label>
 
                         <div class="col-md-9">
-                        	<input type="text" class="form-control" name="firstname" required>
+                            <input type="text" class="form-control" name="firstname" required>
                         </div>
                     </div>
 
@@ -1070,7 +1134,7 @@
                         <label class="col-md-3 control-label">Last Name <span style="color:red">*</span></label>
 
                         <div class="col-md-9">
-                        	<input type="text" name="lastname" class="form-control" required>
+                            <input type="text" name="lastname" class="form-control" required>
                         </div>
                     </div>
 
@@ -1079,7 +1143,7 @@
                                 style="color:red">*</span></label>
 
                         <div class="col-md-9">
-                        	<input type="text" class="form-control" name="company_role" required>
+                            <input type="text" class="form-control" name="company_role" required>
                         </div>
                     </div>
 
@@ -1088,13 +1152,13 @@
                                 style="color:red">*</span></label>
 
                         <div class="col-md-9">
-                        	<input type="text" name="email" class="form-control" required>
+                            <input type="text" name="email" class="form-control" required>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-3 control-label">Mobile Number</label>
-                        
+
                         <div class="col-md-3" style="padding-right:0">
                             <?php
                             $this->load->module('country');
@@ -1102,11 +1166,10 @@
                             ?>
                         </div>
                         <div class="col-md-6">
-                        	<input type="text" class="form-control" name="mobile_number" required>
+                            <input type="text" class="form-control" name="mobile_number" required>
                         </div>
-                        
-                        
-                        
+
+
                     </div>
 
                     <div class="form-group">
@@ -1126,27 +1189,30 @@
         </div>
 
     </div>
-    
+
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
 
-                    <div class="hr-line-dashed"></div>
-                    <div class="form-group">
-                        <div class="col-md-6 col-md-offset-3">
-                            <div class="checkbox i-checks"><input type="checkbox" value="terms" name="terms" id="terms"><label> I agree to the GSM Stock Market terms and conditions </label></div>
-                        </div>
-                        <div class="col-md-3">
-                            <input class="btn btn-primary" name="submit_form" type="submit" id="submit_form" value="Create Account"/>
-                        </div>
+                <div class="hr-line-dashed"></div>
+                <div class="form-group">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="checkbox i-checks"><input type="checkbox" value="terms" name="terms"
+                                                              id="terms"><label> I agree to the GSM Stock Market terms
+                                and conditions </label></div>
                     </div>
-
+                    <div class="col-md-3">
+                        <input class="btn btn-primary" name="submit_form" type="submit" id="submit_form"
+                               value="Create Account"/>
+                    </div>
                 </div>
 
             </div>
-        </div>
 
+        </div>
     </div>
+
+</div>
 <!-- </div> /row -->
 </form>
 
@@ -1154,44 +1220,45 @@
 
 
 <footer>
-        	<div class="row-responsive first">
-            	<div class="container">
-                	<div class="social">
-                    	<h3>Follow us</h3>
-                        <ul>
-                        	<li><a href="//facebook.com/gsmstockmarket" class="facebook square" title="Facebook"></a></li>
-                        	<li><a href="//twitter.com/gsmstockmarket" class="twitter square" title="Twitter"></a></li>
-                        	<li><a href="" class="linkedin square" title="Linkedin"></a></li>
-                        	<li><a href="#" class="googleplus square" title="Google +"></a></li>
-                        	<li><a href="#" class="youtube square" title="YouTube"></a></li>
-                        	<li><a href="#" class="rss square" title="RSS Feed"></a></li>
-						</ul>
-                    
-                    
-                    
-                    </div>
-                    <div class="subscribe">
-                    	<h3>Signup for news and offers</h3>
-                    	<form action="http://info.gsmstockmarket.com/t/d/s/tyfjk/" method="post">
-						<input id="fieldEmail" name="cm-tyfjk-tyfjk" type="email" class="input-text" placeholder="Email Address" required />
-						<button class="button" type="submit">Subscribe</button>
-						</form>
-                    </div>
-                </div>
-            </div>
-            
-        	<div class="row-responsive second">
-            	<div class="container">
-                <div class="row"
-                	<div class="col-md-12">
-                    	<p style="margin:15px 0;text-align:center">Copyright 2015 GSM Stock Market.com Limited. Registered in England and Wales. Company No. 07458787</p>
-                    </div>
-                </div>
-                </div>
-            </div>
-        </footer>
-        <a href="#" class="scrollToTop"></a>
+    <div class="row-responsive first">
+        <div class="container">
+            <div class="social">
+                <h3>Follow us</h3>
+                <ul>
+                    <li><a href="//facebook.com/gsmstockmarket" class="facebook square" title="Facebook"></a></li>
+                    <li><a href="//twitter.com/gsmstockmarket" class="twitter square" title="Twitter"></a></li>
+                    <li><a href="" class="linkedin square" title="Linkedin"></a></li>
+                    <li><a href="#" class="googleplus square" title="Google +"></a></li>
+                    <li><a href="#" class="youtube square" title="YouTube"></a></li>
+                    <li><a href="#" class="rss square" title="RSS Feed"></a></li>
+                </ul>
 
+
+            </div>
+            <div class="subscribe">
+                <h3>Signup for news and offers</h3>
+
+                <form action="http://info.gsmstockmarket.com/t/d/s/tyfjk/" method="post">
+                    <input id="fieldEmail" name="cm-tyfjk-tyfjk" type="email" class="input-text"
+                           placeholder="Email Address" required/>
+                    <button class="button" type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="row-responsive second">
+        <div class="container">
+            <div class="row"
+            <div class="col-md-12">
+                <p style="margin:15px 0;text-align:center">Copyright 2015 GSM Stock Market.com Limited. Registered in
+                    England and Wales. Company No. 07458787</p>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+<a href="#" class="scrollToTop"></a>
 
 
 <!-- checkbox css -->
@@ -1373,93 +1440,108 @@
     });
 </script>
 <style>
-/* INPUTS */
-.inline {
-  display: inline-block !important;
-}
-.input-s-sm {
-  width: 120px;
-}
-.input-s {
-  width: 200px;
-}
-.input-s-lg {
-  width: 250px;
-}
-.i-checks {
-  padding-left: 0;
-}
-.form-control,
-.single-line {
-  background-color: #FFFFFF;
-  background-image: none;
-  border: 1px solid #e5e6e7;
-  border-radius: 1px;
-  color: inherit;
-  display: block;
-  padding: 6px 12px;
-  transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
-  width: 100%;
-  font-size: 14px;
-}
-.form-control:focus,
-.single-line:focus {
-  border-color: #1ab394;
-}
-.has-success .form-control {
-  border-color: #1ab394;
-}
-.has-warning .form-control {
-  border-color: #f8ac59;
-}
-.has-error .form-control {
-  border-color: #ed5565;
-}
-.has-success .control-label {
-  color: #1ab394;
-}
-.has-warning .control-label {
-  color: #f8ac59;
-}
-.has-error .control-label {
-  color: #ed5565;
-}
-.input-group-addon {
-  background-color: #fff;
-  border: 1px solid #E5E6E7;
-  border-radius: 1px;
-  color: inherit;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1;
-  padding: 6px 12px;
-  text-align: center;
-}
-.spinner-buttons.input-group-btn .btn-xs {
-  line-height: 1.13;
-}
-.spinner-buttons.input-group-btn {
-  width: 20%;
-}
-.noUi-connect {
-  background: none repeat scroll 0 0 #1ab394;
-  box-shadow: none;
-}
-.slider_red .noUi-connect {
-  background: none repeat scroll 0 0 #ed5565;
-  box-shadow: none;
-}
+    /* INPUTS */
+    .inline {
+        display: inline-block !important;
+    }
 
+    .input-s-sm {
+        width: 120px;
+    }
 
+    .input-s {
+        width: 200px;
+    }
 
-/* LINE */
-.hr-line-dashed {
-  border-top: 1px dashed #e7eaec;
-  color: #ffffff;
-  background-color: #ffffff;
-  height: 1px;
-  margin: 20px 0;
-}
+    .input-s-lg {
+        width: 250px;
+    }
+
+    .i-checks {
+        padding-left: 0;
+    }
+
+    .form-control,
+    .single-line {
+        background-color: #FFFFFF;
+        background-image: none;
+        border: 1px solid #e5e6e7;
+        border-radius: 1px;
+        color: inherit;
+        display: block;
+        padding: 6px 12px;
+        transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .form-control:focus,
+    .single-line:focus {
+        border-color: #1ab394;
+    }
+
+    .has-success .form-control {
+        border-color: #1ab394;
+    }
+
+    .has-warning .form-control {
+        border-color: #f8ac59;
+    }
+
+    .has-error .form-control {
+        border-color: #ed5565;
+    }
+
+    .has-success .control-label {
+        color: #1ab394;
+    }
+
+    .has-warning .control-label {
+        color: #f8ac59;
+    }
+
+    .has-error .control-label {
+        color: #ed5565;
+    }
+
+    .input-group-addon {
+        background-color: #fff;
+        border: 1px solid #E5E6E7;
+        border-radius: 1px;
+        color: inherit;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1;
+        padding: 6px 12px;
+        text-align: center;
+    }
+
+    .spinner-buttons.input-group-btn .btn-xs {
+        line-height: 1.13;
+    }
+
+    .spinner-buttons.input-group-btn {
+        width: 20%;
+    }
+
+    .noUi-connect {
+        background: none repeat scroll 0 0 #1ab394;
+        box-shadow: none;
+    }
+
+    .slider_red .noUi-connect {
+        background: none repeat scroll 0 0 #ed5565;
+        box-shadow: none;
+    }
+
+    /* LINE */
+    .hr-line-dashed {
+        border-top: 1px dashed #e7eaec;
+        color: #ffffff;
+        background-color: #ffffff;
+        height: 1px;
+        margin: 20px 0;
+    }
 </style>
 </body>
 </html>

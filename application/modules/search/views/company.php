@@ -1,17 +1,23 @@
 <script type="text/javascript">
-    $(document).on("change", "#continent", function () {
+    $(document).ready(function () {
+        changeOptions();
+    })
+
+    $(document).on("change", "#continent, #regions", function () {
+        changeOptions();
+    })
+
+    function changeOptions() {
         $("#regions").children("optgroup").show();
         var selectedval = $("#continent option:selected").val();
         if (selectedval != "")
             $("#regions").children("optgroup[label!='" + selectedval + "']").hide();
-    })
 
-    $(document).on("change", "#regions", function () {
         $("#countries").children("optgroup").show();
         var selectedval = $("#regions option:selected").val();
         if (selectedval != "")
             $("#countries").children("optgroup[label!='" + selectedval + "']").hide();
-    })
+    }
 </script>
 <script type="text/javascript">
 
