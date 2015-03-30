@@ -48,7 +48,7 @@ other_business,
                         ON m.membership = ms.id
                          INNER JOIN country as cnt
                         ON c.country = cnt.id
-                        INNER JOIN
+                        LEFT JOIN
                         login as l
                         ON m.id = l.member_id
                         WHERE c.company_name LIKE ?
