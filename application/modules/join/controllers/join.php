@@ -154,6 +154,13 @@ class Join extends MX_Controller
                         'company_number' => $this->input->post('company_number'),
                     );
                     
+                    $cid = $this->company_model->_insert($data);
+
+                    $data = array(
+                                    'company_id' => $cid
+                                 );
+                    $this->member_model->_update($mid, $data);
+                    
                     $this->load->module('emails');
                     $config = Array(
                                 'protocol' => 'smtp',
@@ -498,8 +505,6 @@ class Join extends MX_Controller
                 $this->email->message($email_body);
 
                 $this->email->send();
-                echo $this->email->print_debugger();
-                exit;
                     
                     redirect('http://www.gsmstockmarket.com/success');
 
