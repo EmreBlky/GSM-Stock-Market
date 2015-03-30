@@ -12,6 +12,7 @@ class Preferences extends MX_Controller
         
         $this->load->model('activity/activity_model', 'activity_model');
         $this->load->model('member/member_model', 'member_model');
+        $this->load->model('membership/membership_model', 'membership_model');
         $data_activity = array(
                                 'activity' => 'Preferences',
                                 'time' => date('H:i:s')
@@ -107,6 +108,8 @@ class Preferences extends MX_Controller
         $inv = $this->member_model->get_where($this->session->userdata('members_id'))->invoice_number;
         $data['invoice'] = 'GSM-'.$this->session->userdata('members_id').'-'.$inv;
         $this->member_model->_custom_query_action("UPDATE members SET invoice_number = (invoice_number+1) WHERE id = '".$this->session->userdata('members_id')."'");
+        
+        $data['member'] = $this->member_model->get_where($this->session->userdata('members_id'));
         
         $this->load->module('templates');
         $this->templates->page($data);

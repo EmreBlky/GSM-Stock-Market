@@ -2,6 +2,7 @@
 
 //echo '<pre>';
 //echo $invoice;
+//print_r($member);
 //exit;
 
 ?>            <div class="row wrapper border-bottom white-bg page-heading">
@@ -30,27 +31,48 @@
                         <div class="ibox-title">
                             <h5>Current Subscription</h5>
                         </div>
+                        
+                        <?php if($member->membership > 1) {?>
                         <div class="ibox-content">
                         <div class="row">
                         	<div class="col-md-12">
                             		<style>
-										dl.full-width dt, dl.full-width dd {width:50%}
-										dl.full-width dd {margin-left:51%}
-									</style>
+                                                dl.full-width dt, dl.full-width dd {width:50%}
+                                                dl.full-width dd {margin-left:51%}
+                                        </style>
                                     <dl class="dl-horizontal full-width">
-                                        <dt>Current Subscription:</dt> <dd>  Bronze Member</dd>
-                                        <dt>Join Date:</dt> <dd>  N/A</dd>
-                                        <dt>Renewal Date</dt> <dd>  N/A</dd>
-                                        <dt>Payment Method:</dt> <dd>  PayPal</dd>
-                                        <dt>Close Account</dt> <dd>  PayPal</dd>
+                                        <dt>Current Subscription:</dt> <dd><?php echo $this->membership_model->get_where($member->membership)->membership?></dd>
+                                        <dt>Join Date:</dt> <dd><?php echo $member->date; ?></dd>
+ <!--                                         <dt>Renewal Date</dt> <dd>2233333</dd>
+                                      <dt>Payment Method:</dt> <dd>232323</dd>
+                                        <dt>Close Account</dt> <dd>23233</dd>-->
                                     </dl>
                             </div>
                         </div>
                         </div>
+                        <?php } else {?>
+                        <div class="ibox-content">
+                        <div class="row">
+                        	<div class="col-md-12">
+                            		<style>
+                                                dl.full-width dt, dl.full-width dd {width:50%}
+                                                dl.full-width dd {margin-left:51%}
+                                        </style>
+                                    <dl class="dl-horizontal full-width">
+                                        <dt>Current Subscription:</dt> <dd>  Bronze Member</dd>
+                                        <dt>Join Date:</dt> <dd><?php echo $member->date; ?></dd>
+<!--                                          <dt>Renewal Date</dt> <dd>  N/A</dd>
+                                        <dt>Payment Method:</dt> <dd>  PayPal</dd>
+                                        <dt>Close Account</dt> <dd>  PayPal</dd>-->
+                                    </dl>
+                            </div>
+                        </div>
+                        </div>
+                        <?php }?>                        
                     </div>
                 </div>
             </div>
-            
+            <?php if($member->membership < 2) {?>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
@@ -144,7 +166,7 @@
                     </div>
                 </div>
             </div>
-
+            <?php } ?>
         </div>
         
         
