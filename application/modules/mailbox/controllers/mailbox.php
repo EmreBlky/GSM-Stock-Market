@@ -882,6 +882,56 @@ class Mailbox extends MX_Controller
         $this->templates->page($data);
     }
     
+    function composeSupport()
+    {
+        //echo '<pre>';
+        //print_r($_POST);
+        
+        $this->load->library('form_validation');
+        
+        $this->form_validation->set_rules('from', 'Email From', 'xss_clean');
+        $this->form_validation->set_rules('subject', 'Subject', 'xss_clean');
+        $this->form_validation->set_rules('message', 'Message Body', 'xss_clean');
+        
+        if($this->form_validation->run()){
+            
+            $this->load->module('emails');
+                    $config = Array(
+                                'protocol' => 'smtp',
+                                'smtp_host' => 'ssl://secure.gsmstockmarket.com',
+                                'smtp_port' => 465,
+                                'smtp_user' => 'noreply@gsmstockmarket.com',
+                                'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
+                                'charset' => 'utf-8',
+                                'wordwrap' => TRUE,
+                                'newline' => "\r\n",
+                                'crlf'    => ""
+
+                            );
+                
+                $this->load->library('email', $config);
+                
+                $this->email->set_mailtype("html");
+                $email_body = '<div>'.$this->input->post('message').'</div>';
+                
+               
+                $this->email->from($this->input->post('from'), $this->input->post('cust_name'));
+
+                //$list = array('info@imarveldesign.co.uk');
+                $this->email->to('support@gsmstockmarket.com');
+                $this->email->subject($this->input->post('subject'));
+                $this->email->message($email_body);
+
+                $this->email->send();
+                
+                $this->session->set_flashdata('title', 'GSM Support.');
+                $this->session->set_flashdata('message', 'Your email has been sent.');
+                redirect('support/submit_ticket');
+                //echo $this->email->print_debugger();
+        }
+        
+    }
+    
     function composeMail()
     {
 //        echo '<pre>';

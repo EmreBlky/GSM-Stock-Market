@@ -11,6 +11,7 @@ class Support extends MX_Controller
         }
         
         $this->load->model('activity/activity_model', 'activity_model');
+        $this->load->model('member/member_model', 'member_model');
         
         $data_activity = array(
                                 'activity' => 'Support',
@@ -44,6 +45,8 @@ class Support extends MX_Controller
         $data['main'] = 'support';        
         $data['title'] = 'GSM - Submit A Ticket';        
         $data['page'] = 'submit-ticket';
+        
+        $data['member'] = $this->member_model->get_where($this->session->userdata('members_id'));
         
         $this->load->module('templates');
         $this->templates->page($data);
