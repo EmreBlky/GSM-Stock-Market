@@ -1,4 +1,10 @@
-            <div class="row wrapper border-bottom white-bg page-heading">
+<?php
+
+//echo '<pre>';
+//echo $invoice;
+//exit;
+
+?>            <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
                     <h2>My Subcription</h2>
                     <ol class="breadcrumb">
@@ -94,7 +100,7 @@
                     </ul>
                     <div class="pricing-footer">
 
-                        <a href="#" class="btn db-button-color-square btn-lg">UPGRADE</a>
+                        <a href="<?php echo $base?>paypal/purchase/<?php echo $invoice; ?>/silver" class="btn db-button-color-square btn-lg">UPGRADE</a>
                     </div>
                 </div>
                      </div>

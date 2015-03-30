@@ -11,7 +11,7 @@ class Preferences extends MX_Controller
         }
         
         $this->load->model('activity/activity_model', 'activity_model');
-        
+        $this->load->model('member/member_model', 'member_model');
         $data_activity = array(
                                 'activity' => 'Preferences',
                                 'time' => date('H:i:s')
@@ -49,9 +49,8 @@ class Preferences extends MX_Controller
         
         $this->form_validation->set_rules('old_password', 'Old Password', 'xss_clean');
         $this->form_validation->set_rules('new_password', 'New Password', 'xss_clean');
-        $this->form_validation->set_rules('confirm', 'Confirm', 'xss_clean');
+        $this->form_validation->set_rules('confirm', 'Confirm', 'xss_clean');      
         
-        $this->load->model('member/member_model', 'member_model');
         $current = $this->member_model->get_where($this->session->userdata('members_id'))->password;
         $old = $this->input->post('old_password');
         $new = $this->input->post('new_password');
@@ -103,6 +102,11 @@ class Preferences extends MX_Controller
         $data['main'] = 'preferences';        
         $data['title'] = 'GSM - Manage Subscription';        
         $data['page'] = 'subscription';
+        
+        $data['base'] = $this->config->item('base_url');
+        $inv = $this->member_model->get_where($this->session->userdata('members_id'))->invoice_number;
+        $data['invoice'] = 'GSM-'.$this->session->userdata('members_id').'-'.$inv;
+        $this->member_model->_custom_query_action("UPDATE members SET invoice_number = (invoice_number+1) WHERE id = '".$this->session->userdata('members_id')."'");
         
         $this->load->module('templates');
         $this->templates->page($data);

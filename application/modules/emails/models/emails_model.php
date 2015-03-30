@@ -1,12 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
-class Email_model extends MY_Model {
+class Emails_model extends MY_Model {
 
 	function __construct()
 	{		
 		parent::__construct();
-		$this->table = 'email';
+		$this->table = 'emails';
 	
 	}
 }
