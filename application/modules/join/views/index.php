@@ -10,7 +10,7 @@
     <style>@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);</style>
     <link rel="stylesheet" type="text/css" href="http://www.gsmstockmarket.com/wp-content/themes/gsm/style.css"
           media="screen"/>
-    <link href="public/main/template/core/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="../public/main/template/core/font-awesome/css/font-awesome.css" rel="stylesheet">
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
@@ -80,7 +80,7 @@
                 $(".bsnssector option").show();
                 $(".bsnssector option:selected").each(function () {
                     if ($(this).val() != "")
-                        $(".bsnssector").not(this).find('option[value="' + $(this).val() + '"]').hide();
+                        $(".bsnssector").not(this).find("option[value='" + $(this).val() + "']").hide();
                 });
 
             });
@@ -102,7 +102,7 @@
             }
 
         }
-    </script>
+    </script> -->
 </head>
 <html>
 
@@ -1246,10 +1246,10 @@
 
 
 <!-- checkbox css -->
-<link href="public/main/template/core/css/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="../public/main/template/core/css/plugins/iCheck/custom.css" rel="stylesheet">
 
 <!-- iCheck -->
-<script src="public/main/template/core/js/plugins/iCheck/icheck.min.js"></script>
+<script src="../public/main/template/core/js/plugins/iCheck/icheck.min.js"></script>
 <script>
     $(document).ready(function () {
         $('.i-checks').iCheck({
@@ -1392,7 +1392,7 @@
 
 
 <!-- Jquery Validate -->
-<script src="public/main/template/core/js/plugins/validate/jquery.validate.min.js"></script>
+<script src="../public/main/template/core/js/plugins/validate/jquery.validate.min.js"></script>
 
 <script>
     $(document).ready(function () {
