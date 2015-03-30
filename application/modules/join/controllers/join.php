@@ -497,7 +497,7 @@ class Join extends MX_Controller
                                 ';
                 
                 
-                $this->email->from('info@gsmstockmarket.com', 'Support Team');
+                $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket');
 
                 //$list = array('info@imarveldesign.co.uk');
                 $this->email->to($this->input->post('email'));
