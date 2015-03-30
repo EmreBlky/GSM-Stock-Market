@@ -164,8 +164,8 @@ class Join extends MX_Controller
                     $this->load->module('emails');
                     $config = Array(
                                 'protocol' => 'smtp',
-                                'smtp_host' => 'ssl://secure.gsmstockmarket.com',
-                                'smtp_port' => 465,
+                                'smtp_host' => 'secure.gsmstockmarket.com',
+                                'smtp_port' => 25,
                                 'smtp_user' => 'noreply@gsmstockmarket.com',
                                 'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
                                 'charset' => 'utf-8',
