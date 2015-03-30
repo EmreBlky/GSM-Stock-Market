@@ -162,10 +162,10 @@ class Paypal extends MX_Controller
                 $this->load->module('emails');
                 $config = Array(
                                 'protocol' => 'smtp',
-                                'smtp_host' => 'ssl://smtp.googlemail.com',
+                                'smtp_host' => 'ssl://secure.gsmstockmarket.com',
                                 'smtp_port' => 465,
-                                'smtp_user' => 'dipogeorge@googlemail.com',
-                                'smtp_pass' => 'People2906',
+                                'smtp_user' => 'noreply@gsmstockmarket.com',
+                                'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
                                 'charset' => 'utf-8',
                                 'wordwrap' => TRUE,
                                 'newline' => "\r\n",

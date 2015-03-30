@@ -53,7 +53,7 @@ class Join extends MX_Controller
         //echo '<pre>';
         //print_r($_POST);
         
-        
+        $base = $this->config->item('base_url');
             $bsectors4 = '';
             $bsectors5 = '';
 
@@ -164,10 +164,10 @@ class Join extends MX_Controller
                     $this->load->module('emails');
                     $config = Array(
                                 'protocol' => 'smtp',
-                                'smtp_host' => 'ssl://smtp.googlemail.com',
+                                'smtp_host' => 'ssl://secure.gsmstockmarket.com',
                                 'smtp_port' => 465,
-                                'smtp_user' => 'dipogeorge@googlemail.com',
-                                'smtp_pass' => 'People2906',
+                                'smtp_user' => 'noreply@gsmstockmarket.com',
+                                'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
                                 'charset' => 'utf-8',
                                 'wordwrap' => TRUE,
                                 'newline' => "\r\n",
@@ -479,13 +479,13 @@ class Join extends MX_Controller
                                     	You will be notified by email once you have activated your account and sent a pre-generated password.
                                     </td>
                                 </tr>
-                                <!--
+                                
                                 <tr>
                                     <td class="content-block aligncenter">
-                                        <a href="'.$base.'register/confirm/'.$activation_code.'" class="btn-primary">Activate my account</a>
+                                        <a href="'.$base.'register/confirm/'.$validation_code.'" class="btn-primary">Activate my account</a>
                                     </td>
                                 </tr>
-                                -->
+                                
                               </table>
                         </td>
                     </tr>
