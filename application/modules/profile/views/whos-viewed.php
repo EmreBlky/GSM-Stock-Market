@@ -130,7 +130,9 @@ function country($name)
                     </div>
                     <div class="col-sm-12 gsm-contact">
                             <div>
+                                <?php if($this->session->userdata('membership') != 1) {?>
                                 <button class="btn btn-message" type="button" data-toggle="modal" data-target="#profile_message_<?php echo $view->viewer_id;?>" value="<?php echo $view->viewer_id;?>"><i class="fa fa-envelope"></i>&nbsp;Message</button>
+                                <?php } ?>
                             <button onclick="location.href='<?php echo $base;?>member/profile/<?php echo $view->viewer_id?>'" class="btn btn-profile" type="button" data-toggle="modal" ><i class="fa fa-user"></i>&nbsp;View Profile</button>
                             </div>
                     </div>
@@ -256,7 +258,9 @@ function country($name)
                     </div>
                     <div class="col-sm-12 gsm-contact">
                             <div>
+                                <?php if($this->session->userdata('membership') != 1) {?>
                                 <button class="btn btn-message" type="button" data-toggle="modal" data-target="#profile_message_<?php echo $view->viewer_id;?>" value="<?php echo $view->viewer_id;?>"><i class="fa fa-envelope"></i>&nbsp;Message</button>
+                                <?php } ?>
                             <button onclick="location.href='<?php echo $base;?>member/profile/<?php echo $view->viewer_id?>'" class="btn btn-profile" type="button" data-toggle="modal" ><i class="fa fa-user"></i>&nbsp;View Profile</button>
                             </div>
                     </div>

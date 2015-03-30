@@ -4,6 +4,7 @@
 //echo '</pre>';
 //echo '<pre>';
 //print_r($blocked);
+//exit;
 //echo '</pre>';
 $bm = '';
 if($blocked){
@@ -254,13 +255,17 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                             <?php }?>                           
                             
                             <?php if($this->member_model->get_where_multiple('id', $address->address_member_id)->online_status == 'online'){?>
+                            <!--
                             <div>    
                                  <button class="btn btn-messenger" type="button"><i class="fa fa-wechat"></i>&nbsp;Messenger</button>  
-                            </div>     
+                            </div>  
+                            -->
                             <?php }?>                           
                             
                             <div>
+                            <?php if($this->session->userdata('membership') != 1) {?>    
                             <button class="btn btn-message" type="button" data-toggle="modal" data-target="#profile_message_<?php echo $address->address_member_id;?>" value="<?php echo $address->address_member_id;?>"><i class="fa fa-envelope"></i>&nbsp;Message</button>
+                            <?php } ?>
                             <button  onclick="location.href='member/profile/<?php echo $address->address_member_id ?>'" class="btn btn-profile" type="button"><i class="fa fa-user"></i>&nbsp;View Profile</button>
                             </div>
                     </div>
@@ -397,13 +402,17 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                             <?php }?>                           
                             
                             <?php if($this->member_model->get_where_multiple('id', $address->address_member_id)->online_status == 'online'){?>
+                            <!-- 
                             <div>    
                                  <button class="btn btn-messenger" type="button"><i class="fa fa-wechat"></i>&nbsp;Messenger</button>  
-                            </div>     
+                            </div>
+                            -->
                             <?php }?>                           
                             
                             <div>
+                            <?php if($this->session->userdata('membership') != 1) {?>    
                             <button class="btn btn-message" type="button" data-toggle="modal" data-target="#profile_message_<?php echo $address->address_member_id;?>" value="<?php echo $address->address_member_id;?>"><i class="fa fa-envelope"></i>&nbsp;Message</button>
+                            <?php } ?>
                             <button  onclick="location.href='member/profile/<?php echo $address->address_member_id ?>'" class="btn btn-profile" type="button"><i class="fa fa-user"></i>&nbsp;View Profile</button>
                             </div>
                     </div>

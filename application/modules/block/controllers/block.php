@@ -9,6 +9,7 @@ class Block extends MX_Controller
 //        { 
 //            redirect('login');
 //        }
+        $this->load->model('block/block_model', 'block_model');
     }
 
     function index()
@@ -19,4 +20,18 @@ class Block extends MX_Controller
         $this->load->module('templates');
         $this->templates->page($data);
     } 
+    
+    function customerBlock($mid, $bid)
+    {
+        $data = array(
+                    'member_id' => $mid,
+                    'block_member_id' => $bid
+                );
+        $this->block_model->_insert($data);
+    }
+    
+    function customerUnblock($mid, $bid)
+    {
+        $this->block_model->_delete_where('member_id', $mid, 'block_member_id', $bid);
+    }
 }

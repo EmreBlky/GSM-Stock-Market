@@ -108,9 +108,11 @@ function country($name)
                             <?php }?>                           
                             
                             <?php if($this->member_model->get_where_multiple('id', $address->address_member_id)->online_status == 'online'){?>
+                            <!--
                             <div>    
                                  <button class="btn btn-messenger" type="button"><i class="fa fa-wechat"></i>&nbsp;Messenger</button>  
-                            </div>     
+                            </div>  
+                            -->
                             <?php }?>                           
                             
                             <div>

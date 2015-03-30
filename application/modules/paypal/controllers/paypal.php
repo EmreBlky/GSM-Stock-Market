@@ -159,6 +159,8 @@ class Paypal extends MX_Controller
             
                 $this->member_model->_update_where($data_member, 'id', $trans_id);
                 
+                $this->session->set_userdata('membership', 2);
+                
                 $this->load->module('emails');
                 $config = Array(
                                 'protocol' => 'smtp',

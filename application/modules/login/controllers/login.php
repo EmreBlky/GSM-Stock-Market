@@ -184,7 +184,7 @@ class Login extends MX_Controller{
 
                     $user_data = array(
                                                     'members_id'  	=> $mid,
-                                                    //'username'  	=> $member->username,
+                                                    'membership'  	=> $member->membership,
                                                     'firstname'         => $member->firstname,
                                                     'lastname'          => $member->lastname,
                                                     'logged_in' 	=> TRUE
@@ -272,6 +272,7 @@ class Login extends MX_Controller{
         $this->member_model->_update($mid, $data);
         
         $this->session->unset_userdata('members_id');
+        $this->session->unset_userdata('membership');
         $this->session->unset_userdata('username');
         $this->session->unset_userdata('logged_in');
         $this->session->unset_userdata('online_status');

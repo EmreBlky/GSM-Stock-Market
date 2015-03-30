@@ -8,6 +8,7 @@ class Search extends MX_Controller
         if (!$this->session->userdata('logged_in')) {
             redirect('login');
         }
+
         $this->load->model('search_model');
     }
 
@@ -138,6 +139,9 @@ class Search extends MX_Controller
 
     function company()
     {
+        if($this->session->userdata('membership') < 2) {
+            redirect('preferences/notice');
+        }
         $data['main'] = 'search';
         $data['title'] = 'GSM - Search Company';
         $data['page'] = 'company';
