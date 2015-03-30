@@ -129,7 +129,7 @@
         <div class="navi-bar container">
             <div class="navi-logo">
                 <a href="http://www.gsmstockmarket.com/"><img
-                        src="http://www.gsmstockmarket.com/wp-content/themes/gsm/media/navi-logo.png" height="76"
+                        src="https://secure.gsmstockmarket.com/public/main/template/gsm/images/navi-logo.png" height="76"
                         width="251" alt="Navi GSM Logo"></a>
             </div>
             <!-- /navi-logo -->
@@ -1200,48 +1200,6 @@
 
 </div>
 </div>
-
-
-<footer>
-    <div class="row-responsive first">
-        <div class="container">
-            <div class="social">
-                <h3>Follow us</h3>
-                <ul>
-                    <li><a href="//facebook.com/gsmstockmarket" class="facebook square" title="Facebook"></a></li>
-                    <li><a href="//twitter.com/gsmstockmarket" class="twitter square" title="Twitter"></a></li>
-                    <li><a href="" class="linkedin square" title="Linkedin"></a></li>
-                    <li><a href="#" class="googleplus square" title="Google +"></a></li>
-                    <li><a href="#" class="youtube square" title="YouTube"></a></li>
-                    <li><a href="#" class="rss square" title="RSS Feed"></a></li>
-                </ul>
-
-
-            </div>
-            <div class="subscribe">
-                <h3>Signup for news and offers</h3>
-
-                <form action="http://info.gsmstockmarket.com/t/d/s/tyfjk/" method="post">
-                    <input id="fieldEmail" name="cm-tyfjk-tyfjk" type="email" class="input-text"
-                           placeholder="Email Address" required/>
-                    <button class="button" type="submit">Subscribe</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <div class="row-responsive second">
-        <div class="container">
-            <div class="row"
-            <div class="col-md-12">
-                <p style="margin:15px 0;text-align:center">Copyright 2015 GSM Stock Market.com Limited. Registered in
-                    England and Wales. Company No. 07458787</p>
-            </div>
-        </div>
-    </div>
-    </div>
-</footer>
-<a href="#" class="scrollToTop"></a>
 
 
 <!-- checkbox css -->
