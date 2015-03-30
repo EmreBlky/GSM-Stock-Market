@@ -715,6 +715,10 @@
 
 <div class="container">
 <div class="space">
+						  <?php
+          $attributes = array('class' => 'form-horizontal validation');
+          echo form_open('join/profileCreate', $attributes);
+          ?>
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
@@ -722,10 +726,6 @@
                     <h2>Company Details</h2>
                 </div>
                 <div class="ibox-content">
-						  <?php
-          $attributes = array('class' => 'form-horizontal validation');
-          echo form_open('join/profileCreate', $attributes);
-          ?>
                     <?php
                     $title = $this->session->flashdata('register_title');
 
@@ -1180,8 +1180,7 @@
                 <div class="hr-line-dashed"></div>
                 <div class="form-group">
                     <div class="col-md-6 col-md-offset-3">
-                        <div class="checkbox i-checks"><input type="checkbox" value="terms" name="terms"
-                                                              id="terms"><label> I agree to the GSM Stock Market terms
+                        <div class="checkbox i-checks"><input type="checkbox" value="terms" name="terms" id="terms" required><label> I agree to the GSM Stock Market terms
                                 and conditions </label></div>
                     </div>
                     <div class="col-md-3">
