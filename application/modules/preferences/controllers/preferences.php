@@ -117,7 +117,12 @@ class Preferences extends MX_Controller
     
     function notice()
     {
-        $this->load->view('notice');
+        $data['main'] = 'preferences';        
+        $data['title'] = 'GSM - Manage Subscription: Notice';        
+        $data['page'] = 'notice';        
+        
+        $this->load->module('templates');
+        $this->templates->page($data);
     }
 	
 }

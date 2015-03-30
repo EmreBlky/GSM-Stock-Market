@@ -6,8 +6,15 @@
     $overall = $this->feedback->overallScore($this->session->userdata('members_id'));
 ?>
 <div class="wrapper wrapper-content">
+    <?php if($this->session->userdata('membership') < 2) {?>
+    <div class="alert alert-danger" style="margin-bottom:10px;">
+        Upgrade your account to <a class="alert-link" href="preferences/subscription">Silver</a> to access the full features on the site.
+    </div>
+    <?php }?>
         <div class="row">
+            
                     <div class="col-lg-3">
+                        
                         <div class="ibox float-e-margins">
                             <div class="ibox-title">
                                 <span class="label label-success pull-right">Monthly</span>

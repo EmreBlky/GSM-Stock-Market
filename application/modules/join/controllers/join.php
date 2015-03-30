@@ -45,17 +45,31 @@ class Join extends MX_Controller
     
     function profileCreate()
     {
+        echo '<pre>';
+        print_r($_POST);
+        exit;
+        
         $this->session->set_userdata('logged_in', 1);
         
         $this->load->model('member/member_model', 'member_model');
         $this->load->model('company/company_model', 'company_model');
-        $this->load->helper('string');
-        //echo '<pre>';
-        //print_r($_POST);
+        $this->load->helper('string');        
         
         $base = $this->config->item('base_url');
+        
             $bsectors4 = '';
             $bsectors5 = '';
+            
+            $bsectors = $this->input->post('bsectors');
+            
+            if(isset($bsectors[3])){
+                
+                $bsectors4 = $bsectors[3];
+            }
+            if(isset($bsectors[4])){
+                
+                $bsectors5 = $bsectors[4];
+            }
 
             $this->load->library('form_validation');
 

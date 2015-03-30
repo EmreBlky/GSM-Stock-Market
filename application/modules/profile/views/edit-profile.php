@@ -1491,10 +1491,11 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                               }
                              */ ?>
                             <select class="form-control" name="title">
-                                <option>Mr.</option>
-                                <option>Mrs.</option>
-                                <option>Miss.</option>
-                                <option>Ms.</option>
+                                <option value="<?php echo $member->title;?>" selected><?php echo $member->title;?>
+                                <option value="Mr.">Mr.
+                                <option value="Mrs.">Mrs.
+                                <option value="Miss.">Miss.
+                                <option value="Ms.">Ms.
                             </select>
                         </div>
                     </div>

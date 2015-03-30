@@ -1097,10 +1097,10 @@
 
                         <div class="col-md-2">
                             <select class="form-control" name="title">
-                                <option>Mr.</option>
-                                <option>Mrs.</option>
-                                <option>Miss.</option>
-                                <option>Ms.</option>
+                                <option value="Mr.">Mr.
+                                <option value="Mrs.">Mrs.
+                                <option value="Miss.">Miss.
+                                <option value="Ms.">Ms.
                             </select>
                         </div>
                     </div>

@@ -1147,4 +1147,14 @@ class Marketplace extends MX_Controller
     }
 
     }
+    
+    function notice()
+    {
+        $data['main'] = 'marketplace';        
+        $data['title'] = 'GSM - MMarketplace: Notice';        
+        $data['page'] = 'notice';        
+        
+        $this->load->module('templates');
+        $this->templates->page($data);
+    }
 }
