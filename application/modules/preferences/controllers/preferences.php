@@ -110,6 +110,11 @@ class Preferences extends MX_Controller
         
         $this->load->module('templates');
         $this->templates->page($data);
+    }    
+    
+    function notice()
+    {
+        $this->load->view('notice');
     }
 	
 }

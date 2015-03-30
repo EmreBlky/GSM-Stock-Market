@@ -514,5 +514,6 @@ class Join extends MX_Controller
         
         $this->session->unset_userdata('logged_in');
         
-    }
+    }    
+    
 }
