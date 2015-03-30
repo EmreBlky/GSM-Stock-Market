@@ -35,14 +35,14 @@
               </dl>
           </div><!-- /world-clock -->
           <script type="text/javascript">
-              new showLocalTime("timeLA", "server-php", -96, "short")
-              new showLocalTime("timeNY", "server-php", -60, "short")
-              new showLocalTime("timeLondon", "server-php", 0, "short")
-              new showLocalTime("timeParis", "server-php", 12, "short")
-              new showLocalTime("timeDubai", "server-php", 48, "short")
-              new showLocalTime("timeDelhi", "server-php", 66, "short")
-              new showLocalTime("timeHongKong", "server-php", 96, "short")
-              new showLocalTime("timeSydney", "server-php", 132, "short")
+              new showLocalTime("timeLA", "server-php", -108, "short")
+              new showLocalTime("timeNY", "server-php", -72, "short")
+              new showLocalTime("timeLondon", "server-php", -12, "short")
+              new showLocalTime("timeParis", "server-php", 0, "short")
+              new showLocalTime("timeDubai", "server-php", 24, "short")
+              new showLocalTime("timeDelhi", "server-php", 42, "short")
+              new showLocalTime("timeHongKong", "server-php", 72, "short")
+              new showLocalTime("timeSydney", "server-php", 108, "short")
           </script>
         
         <ul class="nav navbar-top-links navbar-right">
