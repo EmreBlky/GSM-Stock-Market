@@ -29,7 +29,7 @@ class Search_model extends MY_Model
     }
 
 
-    function searchCompanies($terms, $b_sector, $countries, $region, $continent, $orderBy, $start = 0, $results_per_page = 0, $user)
+    function searchCompanies($where, $b_sector, $orderBy, $start = 0, $results_per_page = 0)
     {
         if ($results_per_page > 0) {
             $limit = "LIMIT $start, $results_per_page";
@@ -51,22 +51,15 @@ other_business,
                         LEFT JOIN
                         login as l
                         ON m.id = l.member_id
-                        WHERE c.company_name LIKE ?
-                        AND
-                        (c.business_sector_1 LIKE ? OR c.business_sector_2 LIKE ? OR c.business_sector_3 LIKE ? OR other_business LIKE ?)
-                        AND cnt.id LIKE ?
-                        AND cnt.region LIKE ?
-                         AND cnt.continent LIKE ?
-                         AND m.id <> ?
+                        WHERE $where
                         GROUP BY l.member_id
                         ORDER BY (c.business_sector_1 LIKE ?) DESC, (c.business_sector_2 LIKE ?) DESC, (c.business_sector_3 LIKE ?) DESC, (c.other_business LIKE ?) DESC $orderBy
                         $limit";
-        $query = $this->db->query($sql, array("%".$terms."%", $b_sector, $b_sector, $b_sector, "%".$b_sector."%", $countries, $region, $continent, $user, $b_sector, $b_sector, $b_sector, $b_sector));
-
+        $query = $this->db->query($sql, array($b_sector, $b_sector, $b_sector, $b_sector));
         return $query->result();
     }
 
-    function companiesCount($terms, $b_sector,  $countries, $region, $continent)
+    function companiesCount($where)
     {
 
         $sql = "SELECT COUNT(*) as count FROM company as c
@@ -77,15 +70,11 @@ other_business,
                         ON m.membership = ms.id
                          INNER JOIN country as cnt
                         ON c.country = cnt.id
-                        INNER JOIN
+                        LEFT JOIN
                         login as l
                         ON m.id = l.member_id
-                        WHERE c.company_name LIKE ?
-                        AND
-                        (c.business_sector_1 LIKE ? OR c.business_sector_2 LIKE ? OR c.business_sector_3 LIKE ?  OR other_business LIKE ?) AND cnt.id LIKE ?
-                        AND cnt.region LIKE ?
-                         AND cnt.continent LIKE ?";
-        $query = $this->db->query($sql, array("%".$terms."%", $b_sector, $b_sector, $b_sector, "%".$b_sector."%", $countries, $region, $continent));
+                        WHERE $where";
+        $query = $this->db->query($sql);
         return $query->row()->count;
     }
 
