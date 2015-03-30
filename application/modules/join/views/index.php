@@ -80,7 +80,9 @@
     </script>
     <script type="text/javascript"
             src="http://www.gsmstockmarket.com/wp-content/template/gsm/wp-content/themes/gsm/js/modernizr.custom.79639.js"></script>
-    <script type="text/javascript">
+
+
+    <!-- <script type="text/javascript">
 
         //bprimary, bsecondary, btertiary
         $(document).ready(function () {
@@ -96,22 +98,23 @@
 
                 $("#bprimary, #bsecondary, #btertiary").html('<option value="">[Select One]</option>');
                 appendOptions();
-            })
+            });
 
             $(document).on("change", ".bsnssector", function () {
                 $(".bsnssector option").show();
                 $(".bsnssector option:selected").each(function () {
                     if ($(this).val() != "")
                         $(".bsnssector").not(this).find("option[value='" + $(this).val() + "']").hide();
-                })
+                });
 
-            })
+            });
 
-        })
+        });
 
         function appendOptions() {
             var counter = 0;
             $("input[name='bsectors[]']:checked").each(function () {
+
                 $("#bprimary, #bsecondary, #btertiary").append($("<option></option>")
                     .attr("value", $(this).val())
                     .text($(this).val()));
@@ -123,7 +126,7 @@
             }
 
         }
-    </script>
+    </script> -->
 </head>
 <html>
 
@@ -728,7 +731,9 @@
                 }
             }
 
-        });</script>
+        });
+    });
+</script>
 
 
 <?php
