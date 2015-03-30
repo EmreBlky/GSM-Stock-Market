@@ -138,7 +138,7 @@
     function getCheckedBoxesCount() {
         var count = 1;
         var total = 0;
-        while (count <= 14) {
+        while (count <= 16) {
             var chk = $('#bsectors' + count).prop("checked");
             if (chk == true) {
                 total = total + 1;
@@ -156,7 +156,7 @@
         var count = 1;
         var ids = new Array();
         if (counter >= 5) {
-            while (count <= 14) {
+            while (count <= 16) {
                 var chk = $('#bsectors' + count).prop("checked");
                 var id = $('#bsectors' + count).attr('id');
                 if (chk == false) {
@@ -166,7 +166,7 @@
                 count++;
             }
         } else {
-            while (count <= 14) {
+            while (count <= 16) {
                 var chk = $('#bsectors' + count).prop("checked");
                 var id = $('#bsectors' + count).attr('id');
                 if (chk == false) {
@@ -586,7 +586,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
 <div class="wrapper wrapper-content">
 
 
-    <div class="row">
+    <div class="row" style="display:none">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
@@ -996,6 +996,14 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                                     <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'Insurance' || $company->business_sector_2 == 'Insurance' || $company->business_sector_3 == 'Insurance' || $other_business1 == 'Insurance' || $other_business2 == 'Insurance')) ? 'checked="checked"' : '' ?>
                                         type="checkbox" value="Insurance" name="bsectors[]" id="bsectors14"
                                         class='business_cycle'> <i></i> Insurance </label></div>
+                            <div class="checkbox i-checks"><label>
+                                    <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'Tablets' || $company->business_sector_2 == 'Tablets' || $company->business_sector_3 == 'Tablets' || $other_business1 == 'Tablets' || $other_business2 == 'Tablets')) ? 'checked="checked"' : '' ?>
+                                        type="checkbox" value="Tablets" name="bsectors[]" id="bsectors15"
+                                        class='business_cycle'> <i></i> Tablets </label></div>
+                            <div class="checkbox i-checks"><label>
+                                    <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'Sim Cards' || $company->business_sector_2 == 'Sim Cards' || $company->business_sector_3 == 'Sim Cards' || $other_business1 == 'Sim Cards' || $other_business2 == 'Sim Cards')) ? 'checked="checked"' : '' ?>
+                                        type="checkbox" value="Sim Cards" name="bsectors[]" id="bsectors16"
+                                        class='business_cycle'> <i></i> Sim Cards </label></div>
                         </div>
                         <div class="col-md-4">
                             <div id="primary-business">
