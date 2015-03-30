@@ -102,7 +102,7 @@
             }
 
         }
-    </script> -->
+    </script>
 </head>
 <html>
 
@@ -1149,7 +1149,7 @@
                             ?>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="mobile_number" required>
+                            <input type="text" class="form-control" name="mobile_number">
                         </div>
 
 
