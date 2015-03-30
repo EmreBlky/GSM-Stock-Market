@@ -386,3 +386,64 @@ if(!function_exists('offer_count')){
 		return $CI->marketplace_model->count_offer($list_id);
 	}
 }
+
+/**
+ *  thumbnail image
+ */
+
+if (!function_exists('create_thumbnail')) {
+
+
+
+    function create_thumbnail($config_img = '')
+
+    {
+
+     
+        $CI = & get_instance();
+
+        $config_image['image_library'] = 'gd2';
+
+        $config_image['source_image'] = $config_img['source_image'] . $config_img['file_name'];
+
+        //$config_image['encrypt_name'] = TRUE;
+
+        $config_image['new_image'] = $config_img['new_image'] . $config_img['file_name'];
+
+        $config_image['maintain_ratio'] = FALSE;
+
+        $config_image['height'] = $config_img['height'];
+
+        $config_image['width'] = $config_img['width'];
+
+    if (!empty($config_image['image_resize'])) {
+        list($width, $height, $type, $attr) = getimagesize($config_img['source_path'] . $config_img['file_name']);
+
+        if ($width < $height) {
+
+            $cal = $width / $height;
+
+            $config_image['width'] = $config_img['width'] * $cal;
+
+        }
+
+        if ($height < $width) {
+
+            $cal = $height / $width;
+
+            $config_image['height'] = $config_img['height'] * $cal;
+
+        }
+    }
+       
+        $CI->load->library('image_lib');
+        $CI->image_lib->initialize($config_image);
+        if (!$CI->image_lib->resize()) return array('status' => FALSE, 'error_msg' => $CI->image_lib->display_errors());
+
+        else return array('status' => TRUE, 'file_name' => $config_img['file_name']);
+
+    }
+
+
+
+}
