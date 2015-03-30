@@ -505,8 +505,8 @@ class Join extends MX_Controller
                 $this->email->message($email_body);
 
                 $this->email->send();
-                echo $this->email->print_debugger();
-                exit;
+                //echo $this->email->print_debugger();
+                //exit;
                     
                 redirect('http://www.gsmstockmarket.com/success');
 
