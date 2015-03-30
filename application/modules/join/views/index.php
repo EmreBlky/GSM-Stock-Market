@@ -1094,10 +1094,19 @@
 
                     <div class="form-group">
                         <label class="col-md-3 control-label">Mobile Number</label>
-
+                        
                         <div class="col-md-3" style="padding-right:0">
+                            <?php
+                            $this->load->module('country');
+                            $this->country->select_phone();
+                            ?>
+                        </div>
+                        <div class="col-md-6">
                         	<input type="text" class="form-control" name="mobile_number" required>
                         </div>
+                        
+                        
+                        
                     </div>
 
                     <div class="form-group">
