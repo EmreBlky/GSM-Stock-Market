@@ -496,15 +496,17 @@ class Join extends MX_Controller
 </table>
                                 ';
                 
-                
+                $cust_email = $this->input->post('email');
                 $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket');
 
                 //$list = array('info@imarveldesign.co.uk');
-                $this->email->to($this->input->post('email'));
+                $this->email->to($cust_email);
                 $this->email->subject('Please verify your account.');
                 $this->email->message($email_body);
 
                 $this->email->send();
+                echo $this->email->print_debugger();
+                exit;
                     
                 redirect('http://www.gsmstockmarket.com/success');
 
