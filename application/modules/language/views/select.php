@@ -6,7 +6,7 @@
 
 ?>
 
-<select class="form-control" name="language">
+<select class="form-control" name="language" required>
     <?php 
         if($lid > 0){
     ?>

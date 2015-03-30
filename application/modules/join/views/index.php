@@ -8,11 +8,9 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:600,700' rel='stylesheet' type='text/css'>
     <link href="http://fonts.googleapis.com/css?family=Righteous" rel="stylesheet" type="text/css">
     <style>@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);</style>
-    <link rel="stylesheet" href="http://www.gsmstockmarket.com/wp-content/template/gsm/css/countdown.demo.css"
-          type="text/css">
     <link rel="stylesheet" type="text/css" href="http://www.gsmstockmarket.com/wp-content/themes/gsm/style.css"
           media="screen"/>
-    <link href="public/main/template/core/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="../public/main/template/core/font-awesome/css/font-awesome.css" rel="stylesheet">
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
@@ -26,10 +24,10 @@
                 $(window).scroll(function () {
                     if ($(window).scrollTop() > gsmNaviMenu) {
                         $('#navi-bar-wrapper').css({position: 'fixed', top: '0px'});
-                        $('.banner_full').css({margin: '106px 0 0'});
+                        $('.space').css({margin: '106px 0 0'});
                     } else {
                         $('#navi-bar-wrapper').css({position: 'static', top: '30px'})
-                        $('.banner_full').css({margin: '0'});
+                        $('.space').css({margin: '0'});
                     }
                 });
             }
@@ -40,35 +38,15 @@
                 $(window).scroll(function () {
                     if ($(window).scrollTop() > gsmNaviMenu) {
                         $('#navi-bar-wrapper').css({position: 'relative', top: '0px'});
-                        $('#content').css({margin: '0'});
+                        $('.space').css({margin: '0'});
                         /* safari fix */
                     } else {
                         $('#navi-bar-wrapper').css({position: 'relative', top: '0px'});
-                        $('#content').css({margin: '0'});
+                        $('.space').css({margin: '0'});
                         /* safari fix */
                     }
                 });
             }
-        });
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-
-            //Check to see if the window is top if not then display button
-            $(window).scroll(function () {
-                if ($(this).scrollTop() > 100) {
-                    $('.scrollToTop').fadeIn();
-                } else {
-                    $('.scrollToTop').fadeOut();
-                }
-            });
-
-            //Click event to scroll to top
-            $('.scrollToTop').click(function () {
-                $('html, body').animate({scrollTop: 0}, 800);
-                return false;
-            });
-
         });
     </script>
     <script type="text/javascript"> <!-- THIS SCRIPT NEEDS TO BE GOTTEN FROM FUNCTIONS FOR MOBILE DROPDOWN -->
@@ -78,8 +56,8 @@
             });
         });
     </script>
-    <script type="text/javascript"
-            src="http://www.gsmstockmarket.com/wp-content/template/gsm/wp-content/themes/gsm/js/modernizr.custom.79639.js"></script>
+
+
     <script type="text/javascript">
 
         //bprimary, bsecondary, btertiary
@@ -96,22 +74,23 @@
 
                 $("#bprimary, #bsecondary, #btertiary").html('<option value="">[Select One]</option>');
                 appendOptions();
-            })
+            });
 
             $(document).on("change", ".bsnssector", function () {
                 $(".bsnssector option").show();
                 $(".bsnssector option:selected").each(function () {
                     if ($(this).val() != "")
                         $(".bsnssector").not(this).find("option[value='" + $(this).val() + "']").hide();
-                })
+                });
 
-            })
+            });
 
-        })
+        });
 
         function appendOptions() {
             var counter = 0;
             $("input[name='bsectors[]']:checked").each(function () {
+
                 $("#bprimary, #bsecondary, #btertiary").append($("<option></option>")
                     .attr("value", $(this).val())
                     .text($(this).val()));
@@ -150,7 +129,7 @@
         <div class="navi-bar container">
             <div class="navi-logo">
                 <a href="http://www.gsmstockmarket.com/"><img
-                        src="http://www.gsmstockmarket.com/wp-content/themes/gsm/media/navi-logo.png" height="76"
+                        src="https://secure.gsmstockmarket.com/public/main/template/gsm/images/navi-logo.png" height="76"
                         width="251" alt="Navi GSM Logo"></a>
             </div>
             <!-- /navi-logo -->
@@ -315,7 +294,7 @@
     function getCheckedBoxesCount() {
         var count = 1;
         var total = 0;
-        while (count <= 14) {
+        while (count <= 16) {
             var chk = $('#bsectors' + count).prop("checked");
             if (chk == true) {
                 total = total + 1;
@@ -333,7 +312,7 @@
         var count = 1;
         var ids = new Array();
         if (counter >= 5) {
-            while (count <= 14) {
+            while (count <= 16) {
                 var chk = $('#bsectors' + count).prop("checked");
                 var id = $('#bsectors' + count).attr('id');
                 if (chk == false) {
@@ -343,7 +322,7 @@
                 count++;
             }
         } else {
-            while (count <= 14) {
+            while (count <= 16) {
                 var chk = $('#bsectors' + count).prop("checked");
                 var id = $('#bsectors' + count).attr('id');
                 if (chk == false) {
@@ -373,7 +352,7 @@
 
         var count = 1;
         var ids = new Array();
-        while (count <= 14) {
+        while (count <= 16) {
             var chk = $('#bsectors' + count).prop("checked");
             var id = $('#bsectors' + count).attr('id');
             if (chk == true) {
@@ -465,7 +444,7 @@
 
         var count = 1;
         var ids = new Array();
-        while (count <= 14) {		// Get all checkboxes ids
+        while (count <= 16) {		// Get all checkboxes ids
             var chk = $('#bsectors' + count).prop("checked");
             var id = $('#bsectors' + count).attr('id');
             if (chk == true) {
@@ -514,7 +493,7 @@
 
         var count = 1;
         var ids = new Array();
-        while (count <= 14) {
+        while (count <= 16) {
             var chk = $('#bsectors' + count).prop("checked");
             var id = $('#bsectors' + count).attr('id');
             if (chk == true) {
@@ -559,7 +538,7 @@
 
         var count = 1;
         var ids = new Array();
-        while (count <= 14) {
+        while (count <= 16) {
             var chk = $('#bsectors' + count).prop("checked");
             var id = $('#bsectors' + count).attr('id');
             if (chk == true) {
@@ -728,14 +707,18 @@
                 }
             }
 
-        });</script>
+        });
+    });
+</script>
 
 
-<?php
-$attributes = array('class' => 'form-horizontal validation');
-echo form_open('join/profileCreate', $attributes);
-?>
+
 <div class="container">
+<div class="space">
+						  <?php
+          $attributes = array('class' => 'form-horizontal validation');
+          echo form_open('join/profileCreate', $attributes);
+          ?>
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
@@ -919,11 +902,11 @@ echo form_open('join/profileCreate', $attributes);
                                         class='business_cycle'> <i></i> Insurance </label></div>
                             <div class="checkbox i-checks"><label>
                                     <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'Tablets' || $company->business_sector_2 == 'Tablets' || $company->business_sector_3 == 'Tablets' || $other_business1 == 'Tablets' || $other_business2 == 'Tablets')) ? 'checked="checked"' : '' ?>
-                                        type="checkbox" value="Tablets" name="bsectors[]" id="bsectors14"
+                                        type="checkbox" value="Tablets" name="bsectors[]" id="bsectors15"
                                         class='business_cycle'> <i></i> Tablets </label></div>
                             <div class="checkbox i-checks"><label>
                                     <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'Sim Cards' || $company->business_sector_2 == 'Sim Cards' || $company->business_sector_3 == 'Sim Cards' || $other_business1 == 'Sim Cards' || $other_business2 == 'Sim Cards')) ? 'checked="checked"' : '' ?>
-                                        type="checkbox" value="Sim Cards" name="bsectors[]" id="bsectors14"
+                                        type="checkbox" value="Sim Cards" name="bsectors[]" id="bsectors16"
                                         class='business_cycle'> <i></i> Sim Cards </label></div>
                         </div>
 
@@ -1166,7 +1149,7 @@ echo form_open('join/profileCreate', $attributes);
                             ?>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="mobile_number" required>
+                            <input type="text" class="form-control" name="mobile_number">
                         </div>
 
 
@@ -1190,15 +1173,14 @@ echo form_open('join/profileCreate', $attributes);
 
     </div>
 
-    <div class="row">
+    <div class="row" style="margin-bottom:30px">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
 
                 <div class="hr-line-dashed"></div>
                 <div class="form-group">
                     <div class="col-md-6 col-md-offset-3">
-                        <div class="checkbox i-checks"><input type="checkbox" value="terms" name="terms"
-                                                              id="terms"><label> I agree to the GSM Stock Market terms
+                        <div class="checkbox i-checks"><input type="checkbox" value="terms" name="terms" id="terms" required><label> I agree to the GSM Stock Market terms
                                 and conditions </label></div>
                     </div>
                     <div class="col-md-3">
@@ -1217,36 +1199,10 @@ echo form_open('join/profileCreate', $attributes);
 </form>
 
 </div>
+</div>
 
 
 <footer>
-    <div class="row-responsive first">
-        <div class="container">
-            <div class="social">
-                <h3>Follow us</h3>
-                <ul>
-                    <li><a href="//facebook.com/gsmstockmarket" class="facebook square" title="Facebook"></a></li>
-                    <li><a href="//twitter.com/gsmstockmarket" class="twitter square" title="Twitter"></a></li>
-                    <li><a href="" class="linkedin square" title="Linkedin"></a></li>
-                    <li><a href="#" class="googleplus square" title="Google +"></a></li>
-                    <li><a href="#" class="youtube square" title="YouTube"></a></li>
-                    <li><a href="#" class="rss square" title="RSS Feed"></a></li>
-                </ul>
-
-
-            </div>
-            <div class="subscribe">
-                <h3>Signup for news and offers</h3>
-
-                <form action="http://info.gsmstockmarket.com/t/d/s/tyfjk/" method="post">
-                    <input id="fieldEmail" name="cm-tyfjk-tyfjk" type="email" class="input-text"
-                           placeholder="Email Address" required/>
-                    <button class="button" type="submit">Subscribe</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
     <div class="row-responsive second">
         <div class="container">
             <div class="row"
@@ -1258,14 +1214,13 @@ echo form_open('join/profileCreate', $attributes);
     </div>
     </div>
 </footer>
-<a href="#" class="scrollToTop"></a>
 
 
 <!-- checkbox css -->
-<link href="public/main/template/core/css/plugins/iCheck/custom.css" rel="stylesheet">
+<link href="../public/main/template/core/css/plugins/iCheck/custom.css" rel="stylesheet">
 
 <!-- iCheck -->
-<script src="public/main/template/core/js/plugins/iCheck/icheck.min.js"></script>
+<script src="../public/main/template/core/js/plugins/iCheck/icheck.min.js"></script>
 <script>
     $(document).ready(function () {
         $('.i-checks').iCheck({
@@ -1408,7 +1363,7 @@ echo form_open('join/profileCreate', $attributes);
 
 
 <!-- Jquery Validate -->
-<script src="public/main/template/core/js/plugins/validate/jquery.validate.min.js"></script>
+<script src="../public/main/template/core/js/plugins/validate/jquery.validate.min.js"></script>
 
 <script>
     $(document).ready(function () {
@@ -1541,7 +1496,7 @@ echo form_open('join/profileCreate', $attributes);
         background-color: #ffffff;
         height: 1px;
         margin: 20px 0;
-    }
+    }  body {background:white}
 </style>
 </body>
 </html>
