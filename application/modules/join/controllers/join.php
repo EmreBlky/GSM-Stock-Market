@@ -501,14 +501,12 @@ class Join extends MX_Controller
 
                 //$list = array('info@imarveldesign.co.uk');
                 $this->email->to($this->input->post('email'));
-                $this->email->subject('Your Account has been upgraded');
+                $this->email->subject('Please verify your account.');
                 $this->email->message($email_body);
 
                 $this->email->send();
-                //echo $this->email->print_debugger();
-                //exit;
                     
-                    redirect('http://www.gsmstockmarket.com/success');
+                redirect('http://www.gsmstockmarket.com/success');
 
                 }
             }
