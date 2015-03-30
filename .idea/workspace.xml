@@ -28,50 +28,46 @@
       <file leaf-file-name="company.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/modules/search/views/company.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.5192308" vertical-offset="3319" max-vertical-offset="5287">
-              <caret line="206" column="62" selection-start-line="206" selection-start-column="48" selection-end-line="206" selection-end-column="62" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h4#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#a#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#0;n#a#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/modules/addressbook/views/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.4423075" vertical-offset="4934" max-vertical-offset="10931">
-              <caret line="318" column="18" selection-start-line="269" selection-start-column="12" selection-end-line="318" selection-end-column="18" />
+            <state vertical-scroll-proportion="-3.1923077" vertical-offset="3846" max-vertical-offset="5287">
+              <caret line="236" column="100" selection-start-line="236" selection-start-column="56" selection-end-line="236" selection-end-column="100" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="search_model.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="search.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/modules/search/controllers/search.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.58285713" vertical-offset="2601" max-vertical-offset="4216">
+              <caret line="171" column="141" selection-start-line="171" selection-start-column="141" selection-end-line="171" selection-end-column="141" />
+              <folding>
+                <marker date="1427708241182" expanded="true" signature="5979:6067" placeholder="SELECT id, c..country..." />
+                <marker date="1427708241182" expanded="true" signature="6138:6209" placeholder="SELECT conti..country..." />
+                <marker date="1427708241182" expanded="true" signature="6277:6350" placeholder="SELECT regio..country..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="search_model.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/modules/search/models/search_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.30095237" vertical-offset="777" max-vertical-offset="4862">
-              <caret line="55" column="134" selection-start-line="55" selection-start-column="134" selection-end-line="55" selection-end-column="134" />
+            <state vertical-scroll-proportion="-13.269231" vertical-offset="726" max-vertical-offset="4879">
+              <caret line="63" column="153" selection-start-line="63" selection-start-column="153" selection-end-line="63" selection-end-column="153" />
               <folding>
-                <marker date="1427527418479" expanded="true" signature="509:666" placeholder="SELECT url, ..pages..." />
-                <marker date="1427527418479" expanded="true" signature="1074:2364" placeholder="SELECT c.id,..company..." />
-                <marker date="1427527418479" expanded="true" signature="1309:1402" placeholder="SELECT SUM(f..feedback..." />
-                <marker date="1427527418479" expanded="true" signature="2667:3479" placeholder="SELECT COUNT..." />
-                <marker date="1427527418479" expanded="true" signature="3818:4207" placeholder="SELECT * FRO..mailbox..." />
-                <marker date="1427527418479" expanded="true" signature="4625:5030" placeholder="SELECT * FRO..mailbox..." />
-                <marker date="1427527418479" expanded="true" signature="5445:5844" placeholder="SELECT * FRO..mailbox..." />
-                <marker date="1427527418479" expanded="true" signature="6257:6646" placeholder="SELECT * FRO..mailbox..." />
-                <marker date="1427527418479" expanded="true" signature="7059:7452" placeholder="SELECT * FRO..mailbox..." />
-                <marker date="1427527418479" expanded="true" signature="7917:8412" placeholder="SELECT * FRO..mailbox..." />
-                <marker date="1427527418479" expanded="true" signature="8800:9187" placeholder="SELECT * FRO..mailbox..." />
-                <marker date="1427527418479" expanded="true" signature="10345:10473" placeholder="SELECT COUNT..." />
-                <marker date="1427527418479" expanded="true" signature="10911:11184" placeholder="SELECT DISTI..addressbook..." />
+                <marker date="1427708227997" expanded="true" signature="509:666" placeholder="SELECT url, ..pages..." />
+                <marker date="1427708227997" expanded="true" signature="1081:2546" placeholder="SELECT c.id,..company..." />
+                <marker date="1427708227997" expanded="true" signature="1316:1409" placeholder="SELECT SUM(f..feedback..." />
+                <marker date="1427708227997" expanded="true" signature="2900:3712" placeholder="SELECT COUNT..." />
+                <marker date="1427708227997" expanded="true" signature="4051:4440" placeholder="SELECT * FRO..mailbox..." />
+                <marker date="1427708227997" expanded="true" signature="4858:5263" placeholder="SELECT * FRO..mailbox..." />
+                <marker date="1427708227997" expanded="true" signature="5678:6077" placeholder="SELECT * FRO..mailbox..." />
+                <marker date="1427708227997" expanded="true" signature="6490:6879" placeholder="SELECT * FRO..mailbox..." />
+                <marker date="1427708227997" expanded="true" signature="7292:7685" placeholder="SELECT * FRO..mailbox..." />
+                <marker date="1427708227997" expanded="true" signature="8150:8645" placeholder="SELECT * FRO..mailbox..." />
+                <marker date="1427708227997" expanded="true" signature="9033:9420" placeholder="SELECT * FRO..mailbox..." />
+                <marker date="1427708227997" expanded="true" signature="10578:10706" placeholder="SELECT COUNT..." />
+                <marker date="1427708227997" expanded="true" signature="11144:11417" placeholder="SELECT DISTI..addressbook..." />
               </folding>
             </state>
           </provider>
@@ -86,12 +82,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/application/config/database.php" />
-        <option value="$PROJECT_DIR$/application/modules/search/controllers/search.php" />
         <option value="$PROJECT_DIR$/public/main/template/core/js/plugins/cropper/main.js" />
         <option value="$PROJECT_DIR$/public/main/template/core/css/plugins/cropper/main.css" />
         <option value="$PROJECT_DIR$/application/modules/profile/views/edit-profile.php" />
         <option value="$PROJECT_DIR$/application/modules/search/views/company.php" />
+        <option value="$USER_HOME$/AppData/Local/Temp/fz3temp-1/updatemanagerteampoint.php" />
         <option value="$PROJECT_DIR$/application/modules/search/models/search_model.php" />
+        <option value="$PROJECT_DIR$/application/modules/search/controllers/search.php" />
       </list>
     </option>
   </component>
@@ -203,6 +200,10 @@
               <option name="myItemId" value="search" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -230,6 +231,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gsmcodebase" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gsmcodebase" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="search" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -254,15 +281,15 @@
       <BehatRunner />
       <method />
     </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server" server_id="698e3af8-edb4-493a-9eb5-cce187416922" server_name="Fariqak">
-      <method />
-    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
       <tasks />
       <pass-parent-envs>true</pass-parent-envs>
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server" server_id="698e3af8-edb4-493a-9eb5-cce187416922" server_name="Fariqak">
       <method />
     </configuration>
     <list size="0" />
@@ -278,7 +305,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1366" height="728" extended-state="0" />
+    <frame x="0" y="0" width="1366" height="728" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -293,13 +320,13 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -325,17 +352,47 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/application/modules/search/views/company.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3757">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3319" max-vertical-offset="5287">
+          <caret line="206" column="62" selection-start-line="206" selection-start-column="48" selection-end-line="206" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/modules/addressbook/views/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4934" max-vertical-offset="10931">
+          <caret line="318" column="18" selection-start-line="269" selection-start-column="12" selection-end-line="318" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/modules/search/models/search_model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4862">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h4#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#a#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#a#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
+            <marker date="1427708227997" expanded="true" signature="509:666" placeholder="SELECT url, ..pages..." />
+            <marker date="1427708227997" expanded="true" signature="1081:2546" placeholder="SELECT c.id,..company..." />
+            <marker date="1427708227997" expanded="true" signature="1316:1409" placeholder="SELECT SUM(f..feedback..." />
+            <marker date="1427708227997" expanded="true" signature="2900:3712" placeholder="SELECT COUNT..." />
+            <marker date="1427708227997" expanded="true" signature="4051:4440" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427708227997" expanded="true" signature="4858:5263" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427708227997" expanded="true" signature="5678:6077" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427708227997" expanded="true" signature="6490:6879" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427708227997" expanded="true" signature="7292:7685" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427708227997" expanded="true" signature="8150:8645" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427708227997" expanded="true" signature="9033:9420" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427708227997" expanded="true" signature="10578:10706" placeholder="SELECT COUNT..." />
+            <marker date="1427708227997" expanded="true" signature="11144:11417" placeholder="SELECT DISTI..addressbook..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/modules/search/views/company.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3757">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -343,9 +400,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="5592" max-vertical-offset="18020">
           <caret line="335" column="13" selection-start-line="335" selection-start-column="13" selection-end-line="335" selection-end-column="13" />
-          <folding>
-            <marker date="1426776410265" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -354,9 +408,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="2069" max-vertical-offset="4216">
           <caret line="130" column="30" selection-start-line="130" selection-start-column="24" selection-end-line="130" selection-end-column="30" />
           <folding>
-            <marker date="1427441301962" expanded="true" signature="-1:-1" placeholder="SELECT id, c..country..." />
-            <marker date="1427441301962" expanded="true" signature="-1:-1" placeholder="SELECT conti..country..." />
-            <marker date="1427441301962" expanded="true" signature="-1:-1" placeholder="SELECT regio..country..." />
+            <marker date="1427708241182" expanded="true" signature="5979:6067" placeholder="SELECT id, c..country..." />
+            <marker date="1427708241182" expanded="true" signature="6138:6209" placeholder="SELECT conti..country..." />
+            <marker date="1427708241182" expanded="true" signature="6277:6350" placeholder="SELECT regio..country..." />
           </folding>
         </state>
       </provider>
@@ -366,19 +420,19 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="318" max-vertical-offset="4862">
           <caret line="41" column="132" selection-start-line="41" selection-start-column="132" selection-end-line="41" selection-end-column="132" />
           <folding>
-            <marker date="1427527418479" expanded="true" signature="509:666" placeholder="SELECT url, ..pages..." />
-            <marker date="1427527418479" expanded="true" signature="1074:2364" placeholder="SELECT c.id,..company..." />
-            <marker date="1427527418479" expanded="true" signature="1309:1402" placeholder="SELECT SUM(f..feedback..." />
-            <marker date="1427527418479" expanded="true" signature="2667:3479" placeholder="SELECT COUNT..." />
-            <marker date="1427527418479" expanded="true" signature="3818:4207" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427527418479" expanded="true" signature="4625:5030" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427527418479" expanded="true" signature="5445:5844" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427527418479" expanded="true" signature="6257:6646" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427527418479" expanded="true" signature="7059:7452" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427527418479" expanded="true" signature="7917:8412" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427527418479" expanded="true" signature="8800:9187" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427527418479" expanded="true" signature="10345:10473" placeholder="SELECT COUNT..." />
-            <marker date="1427527418479" expanded="true" signature="10911:11184" placeholder="SELECT DISTI..addressbook..." />
+            <marker date="1427708227997" expanded="true" signature="509:666" placeholder="SELECT url, ..pages..." />
+            <marker date="1427708227997" expanded="true" signature="1081:2546" placeholder="SELECT c.id,..company..." />
+            <marker date="1427708227997" expanded="true" signature="1316:1409" placeholder="SELECT SUM(f..feedback..." />
+            <marker date="1427708227997" expanded="true" signature="2900:3712" placeholder="SELECT COUNT..." />
+            <marker date="1427708227997" expanded="true" signature="4051:4440" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427708227997" expanded="true" signature="4858:5263" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427708227997" expanded="true" signature="5678:6077" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427708227997" expanded="true" signature="6490:6879" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427708227997" expanded="true" signature="7292:7685" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427708227997" expanded="true" signature="8150:8645" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427708227997" expanded="true" signature="9033:9420" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427708227997" expanded="true" signature="10578:10706" placeholder="SELECT COUNT..." />
+            <marker date="1427708227997" expanded="true" signature="11144:11417" placeholder="SELECT DISTI..addressbook..." />
           </folding>
         </state>
       </provider>
@@ -395,33 +449,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="998" max-vertical-offset="11458">
           <caret line="73" column="68" selection-start-line="73" selection-start-column="12" selection-end-line="73" selection-end-column="68" />
-          <folding>
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..country..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..country..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..country..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..country..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..country..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..country..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..country..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -429,15 +456,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3519">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h4#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#a#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#a#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -446,9 +465,9 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="2579" max-vertical-offset="4216">
           <caret line="171" column="107" selection-start-line="171" selection-start-column="107" selection-end-line="171" selection-end-column="107" />
           <folding>
-            <marker date="1427441301962" expanded="true" signature="-1:-1" placeholder="SELECT id, c..country..." />
-            <marker date="1427441301962" expanded="true" signature="-1:-1" placeholder="SELECT conti..country..." />
-            <marker date="1427441301962" expanded="true" signature="-1:-1" placeholder="SELECT regio..country..." />
+            <marker date="1427708241182" expanded="true" signature="5979:6067" placeholder="SELECT id, c..country..." />
+            <marker date="1427708241182" expanded="true" signature="6138:6209" placeholder="SELECT conti..country..." />
+            <marker date="1427708241182" expanded="true" signature="6277:6350" placeholder="SELECT regio..country..." />
           </folding>
         </state>
       </provider>
@@ -458,19 +477,19 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="981" max-vertical-offset="4862">
           <caret line="86" column="126" selection-start-line="86" selection-start-column="126" selection-end-line="86" selection-end-column="126" />
           <folding>
-            <marker date="1427527418479" expanded="true" signature="509:666" placeholder="SELECT url, ..pages..." />
-            <marker date="1427527418479" expanded="true" signature="1074:2364" placeholder="SELECT c.id,..company..." />
-            <marker date="1427527418479" expanded="true" signature="1309:1402" placeholder="SELECT SUM(f..feedback..." />
-            <marker date="1427527418479" expanded="true" signature="2667:3479" placeholder="SELECT COUNT..." />
-            <marker date="1427527418479" expanded="true" signature="3818:4207" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427527418479" expanded="true" signature="4625:5030" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427527418479" expanded="true" signature="5445:5844" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427527418479" expanded="true" signature="6257:6646" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427527418479" expanded="true" signature="7059:7452" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427527418479" expanded="true" signature="7917:8412" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427527418479" expanded="true" signature="8800:9187" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427527418479" expanded="true" signature="10345:10473" placeholder="SELECT COUNT..." />
-            <marker date="1427527418479" expanded="true" signature="10911:11184" placeholder="SELECT DISTI..addressbook..." />
+            <marker date="1427708227997" expanded="true" signature="509:666" placeholder="SELECT url, ..pages..." />
+            <marker date="1427708227997" expanded="true" signature="1081:2546" placeholder="SELECT c.id,..company..." />
+            <marker date="1427708227997" expanded="true" signature="1316:1409" placeholder="SELECT SUM(f..feedback..." />
+            <marker date="1427708227997" expanded="true" signature="2900:3712" placeholder="SELECT COUNT..." />
+            <marker date="1427708227997" expanded="true" signature="4051:4440" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427708227997" expanded="true" signature="4858:5263" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427708227997" expanded="true" signature="5678:6077" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427708227997" expanded="true" signature="6490:6879" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427708227997" expanded="true" signature="7292:7685" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427708227997" expanded="true" signature="8150:8645" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427708227997" expanded="true" signature="9033:9420" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427708227997" expanded="true" signature="10578:10706" placeholder="SELECT COUNT..." />
+            <marker date="1427708227997" expanded="true" signature="11144:11417" placeholder="SELECT DISTI..addressbook..." />
           </folding>
         </state>
       </provider>
@@ -487,33 +506,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="998" max-vertical-offset="11458">
           <caret line="73" column="68" selection-start-line="73" selection-start-column="12" selection-end-line="73" selection-end-column="68" />
-          <folding>
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..country..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..country..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..country..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..country..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..country..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..country..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..country..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -556,45 +548,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="998" max-vertical-offset="11458">
           <caret line="73" column="68" selection-start-line="73" selection-start-column="12" selection-end-line="73" selection-end-column="68" />
-          <folding>
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..country..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..country..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..country..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..country..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..country..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..country..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..addressbook..." />
-            <marker date="1426776401776" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..country..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/modules/search/controllers/search.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26208177" vertical-offset="2069" max-vertical-offset="4216">
-          <caret line="130" column="30" selection-start-line="130" selection-start-column="24" selection-end-line="130" selection-end-column="30" />
-          <folding>
-            <marker date="1427441301962" expanded="true" signature="-1:-1" placeholder="SELECT id, c..country..." />
-            <marker date="1427441301962" expanded="true" signature="-1:-1" placeholder="SELECT conti..country..." />
-            <marker date="1427441301962" expanded="true" signature="-1:-1" placeholder="SELECT regio..country..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -602,9 +555,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.19144982" vertical-offset="5592" max-vertical-offset="18020">
           <caret line="335" column="13" selection-start-line="335" selection-start-column="13" selection-end-line="335" selection-end-column="13" />
-          <folding>
-            <marker date="1426776410265" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -612,9 +562,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33266532" vertical-offset="29006" max-vertical-offset="33609">
           <caret line="1746" column="117" selection-start-line="1746" selection-start-column="117" selection-end-line="1746" selection-end-column="117" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#3;n#div#0;n#div#1;n#div#0;n#div#1;n#div#2;n#div#1;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -622,7 +569,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.30319148" vertical-offset="543" max-vertical-offset="2125">
           <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="49" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -630,52 +576,55 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36702126" vertical-offset="3312" max-vertical-offset="5797">
           <caret line="207" column="64" selection-start-line="207" selection-start-column="64" selection-end-line="207" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/modules/addressbook/views/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4934" max-vertical-offset="10931">
+          <caret line="318" column="18" selection-start-line="269" selection-start-column="12" selection-end-line="318" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/modules/search/views/company.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.5192308" vertical-offset="3319" max-vertical-offset="5287">
-          <caret line="206" column="62" selection-start-line="206" selection-start-column="48" selection-end-line="206" selection-end-column="62" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h4#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#a#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#0;n#a#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#2;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/modules/addressbook/views/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.4423075" vertical-offset="4934" max-vertical-offset="10931">
-          <caret line="318" column="18" selection-start-line="269" selection-start-column="12" selection-end-line="318" selection-end-column="18" />
+        <state vertical-scroll-proportion="-3.1923077" vertical-offset="3846" max-vertical-offset="5287">
+          <caret line="236" column="100" selection-start-line="236" selection-start-column="56" selection-end-line="236" selection-end-column="100" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/modules/search/models/search_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30095237" vertical-offset="777" max-vertical-offset="4862">
-          <caret line="55" column="134" selection-start-line="55" selection-start-column="134" selection-end-line="55" selection-end-column="134" />
+        <state vertical-scroll-proportion="-13.269231" vertical-offset="726" max-vertical-offset="4879">
+          <caret line="63" column="153" selection-start-line="63" selection-start-column="153" selection-end-line="63" selection-end-column="153" />
           <folding>
-            <marker date="1427527418479" expanded="true" signature="509:666" placeholder="SELECT url, ..pages..." />
-            <marker date="1427527418479" expanded="true" signature="1074:2364" placeholder="SELECT c.id,..company..." />
-            <marker date="1427527418479" expanded="true" signature="1309:1402" placeholder="SELECT SUM(f..feedback..." />
-            <marker date="1427527418479" expanded="true" signature="2667:3479" placeholder="SELECT COUNT..." />
-            <marker date="1427527418479" expanded="true" signature="3818:4207" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427527418479" expanded="true" signature="4625:5030" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427527418479" expanded="true" signature="5445:5844" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427527418479" expanded="true" signature="6257:6646" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427527418479" expanded="true" signature="7059:7452" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427527418479" expanded="true" signature="7917:8412" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427527418479" expanded="true" signature="8800:9187" placeholder="SELECT * FRO..mailbox..." />
-            <marker date="1427527418479" expanded="true" signature="10345:10473" placeholder="SELECT COUNT..." />
-            <marker date="1427527418479" expanded="true" signature="10911:11184" placeholder="SELECT DISTI..addressbook..." />
+            <marker date="1427708227997" expanded="true" signature="509:666" placeholder="SELECT url, ..pages..." />
+            <marker date="1427708227997" expanded="true" signature="1081:2546" placeholder="SELECT c.id,..company..." />
+            <marker date="1427708227997" expanded="true" signature="1316:1409" placeholder="SELECT SUM(f..feedback..." />
+            <marker date="1427708227997" expanded="true" signature="2900:3712" placeholder="SELECT COUNT..." />
+            <marker date="1427708227997" expanded="true" signature="4051:4440" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427708227997" expanded="true" signature="4858:5263" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427708227997" expanded="true" signature="5678:6077" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427708227997" expanded="true" signature="6490:6879" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427708227997" expanded="true" signature="7292:7685" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427708227997" expanded="true" signature="8150:8645" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427708227997" expanded="true" signature="9033:9420" placeholder="SELECT * FRO..mailbox..." />
+            <marker date="1427708227997" expanded="true" signature="10578:10706" placeholder="SELECT COUNT..." />
+            <marker date="1427708227997" expanded="true" signature="11144:11417" placeholder="SELECT DISTI..addressbook..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/modules/search/controllers/search.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.58285713" vertical-offset="2601" max-vertical-offset="4216">
+          <caret line="171" column="141" selection-start-line="171" selection-start-column="141" selection-end-line="171" selection-end-column="141" />
+          <folding>
+            <marker date="1427708241182" expanded="true" signature="5979:6067" placeholder="SELECT id, c..country..." />
+            <marker date="1427708241182" expanded="true" signature="6138:6209" placeholder="SELECT conti..country..." />
+            <marker date="1427708241182" expanded="true" signature="6277:6350" placeholder="SELECT regio..country..." />
           </folding>
         </state>
       </provider>

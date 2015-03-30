@@ -1331,6 +1331,9 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                             smaller than 300px
                             width x 150px height.<br/>Company Images are scaled twice the width of the height.</p>
                         <!-- Hammad sibtain Crop Functionality -->
+                        
+                        <div class="col-md-10 col-md-offset-1">
+                        
                         <div class="containers" id="crop-avatar">
 
                             <!-- Current avatar -->
@@ -1339,10 +1342,12 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                                     <img
                                         src="public/main/template/gsm/images/company/<?php echo $member->company_id; ?>.png" onload="$('.loading').hide()">
                                 <?php } else { ?>
-                                    <img src="public/main/template/gsm/images/company/no_company.jpg" width="300" onload="$('.loading').hide()"
-                                         height="150">
+                                    <img src="public/main/template/gsm/images/company/no_company.jpg" onload="$('.loading').hide()" >
                                 <?php } ?>
                             </div>
+                            
+                            
+                            
                             <div style="margin-top: 10px;">
                                 <label class="btn btn-danger mt-md pull-right" id="deleteCompanyImage">Delete</label>
                                 <label class="btn btn-primary pull-left" id="changeCompanyImage">Upload</label>
@@ -1438,6 +1443,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                             <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
                         </div>
                         <!-- /Hammad sibtain Crop Functionality -->
+                        </div>
                     </div>
                 </div>
 
@@ -1707,6 +1713,8 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                             smaller than
                             150px width x 150px height.<br/>Personal images are scaled 1:1 ratio.</p>
 
+                        
+                        <div class="col-md-8 col-md-offset-2">
 
                         <!-- Cropper -->
                         <div class="containers" id="crop-avatar1">
@@ -1752,7 +1760,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                                                 <!-- Crop and preview -->
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <div class="avatar-wrapper"></div>
+                                                        <div class="avatar-wrapper" style="width: 400px; margin: auto"></div>
                                                     </div>
                                                     <div class="col-md-3" style="display: none">
                                                         <div class="avatar-preview preview-lg"></div>
@@ -1815,6 +1823,8 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                             <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
                         </div>
                         <!-- /Cropper -->
+                        
+                        </div>
                     </div>
                 </div>
 

@@ -122,17 +122,17 @@ class Search extends MX_Controller
         $sort = $this->input->get('sort', TRUE);
         switch ($sort) {
             case "new-user":
-                return "m.date DESC";
+                return ", m.date DESC";
                 break;
             case "last-online":
-                return "l.date DESC";
+                return ", l.date DESC";
                 break;
             case "high-rating":
-                return "rating DESC";
+                return ", rating DESC";
                 break;
-            default:
+            /*default:
                 return "c.business_sector_1";
-                break;
+                break;*/
         }
     }
 
@@ -169,7 +169,7 @@ class Search extends MX_Controller
         $this->load->model('search_model');
         $this->load->model('country/country_model', 'country_model');
 
-        $results = $this->search_model->searchCompanies($term, $business, $countries, $region, $continent, $sort, $start, $results_per_page);
+        $results = $this->search_model->searchCompanies($term, $business, $countries, $region, $continent, $sort, $start, $results_per_page, $this->session->userdata('members_id'));
         $total_results = $this->search_model->companiesCount($term, $business, $countries, $region, $continent);
 
         $this->benchmark->mark('search_end');
