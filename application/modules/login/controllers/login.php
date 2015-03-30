@@ -43,7 +43,39 @@ class Login extends MX_Controller{
         $this->templates->page($data);
 
     }
+    
+    function passwordResend()
+    {
+        $email = $this->member_model->_custom_query_count("SELECT COUNT(*) AS count FROM members WHERE email = '".$this->input->post('email')."'");
         
+        if($email[0]->count > 0){
+            
+            $password = random_string('alnum', 8);
+            
+            $mid = $this->member_model->get_where_multiple('email', $this->input->post('email'))->id;            
+            
+            $data = array(                        
+                        'password' => md5($password),
+                        'unhash_password' => $password
+                    );
+            
+            $this->member_model->_update($mid, $data);
+            
+            $this->session->set_flashdata('title', 'success');
+            $this->session->set_flashdata('message', 'Your password has been reset. You should receive an email shortly.');
+
+            redirect('login/forgotten_password');
+           
+        }
+        else{
+            $this->session->set_flashdata('title', 'error');
+            $this->session->set_flashdata('message', 'That email address has not been recognised. Please try again.');
+
+            redirect('login/forgotten_password');
+        }
+            
+    }
+            
     function login_validation(){
         
         $this->load->library('form_validation');
@@ -266,6 +298,13 @@ class Login extends MX_Controller{
     {
         $this->session->unset_userdata('admin_logged_in');
         redirect('admin/login');
+    }
+    
+    function resend($email)
+    {
+        $code = $this->member_model->get_where_multiple('email', $email)->validation_code;
+        
+        echo $code;
     }
     
     

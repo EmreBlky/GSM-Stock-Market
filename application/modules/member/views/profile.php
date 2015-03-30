@@ -111,21 +111,63 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-lg-7">
-                                    <dl class="dl-horizontal">
-                                        <dt>
-                                        <dd>
-                                            <span>
-                                                <?php if(file_exists("public/main/template/gsm/images/members/".$member_info->id.".jpg")){?>
-                                                    <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/template/gsm/images/members/<?php echo $member_info->id; ?>.jpg">
-                                                <?php } else {?>
-                                                    <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/template/gsm/images/members/no_profile.jpg">
-                                                <?php }?>                            
-                                            </span>
-                                        </dd>
-                                        </dt>
+                                <div class="col-lg-6">
+                            		<style>
+										dl.full-width dt, dl.full-width dd {width:50%}
+										dl.full-width dd {margin-left:51%}
+									</style>
+                              		<div class="m-r-md" style="text-align:center">
+										<?php if(file_exists("public/main/template/gsm/images/company/".$member_company->id.".jpg")){?>
+                                            <img src="public/main/template/gsm/images/company/<?php echo $member_company->id; ?>.jpg" class="img-responsive" style="margin:0 auto">
+                                        <?php } else {?>
+                                            <img src="public/main/template/gsm/images/company/no_company.jpg" class="img-responsive" style="margin:0 auto">
+                                        <?php }?>
+                            		</div>                                        
+                                        
+                                    <dl class="dl-horizontal full-width">
+                                        <dt>Company Number:</dt> 
+                                        <dd><?php echo $member_company->company_number;?></dd>
+                                        <dt>VAT/Tax Number:</dt> 
+                                        <dd><?php echo $member_company->vat_tax;?></dd>
+                                    </dl>                                    
+                                    <dl class="dl-horizontal full-width">
+                                        <dt>Address:</dt> <dd>  
+                                            <?php echo $member_company->address_line_1;?><br/>
+                                            <?php echo $member_company->address_line_2;?><br />
+                                            <?php echo $member_company->town_city;?><br />
+                                            <?php echo $member_company->county;?><br />
+                                            <?php echo $member_company->post_code;?><br />
+                                            <?php echo $this->country_model->get_where($member_company->country)->country;?></dd>
                                     </dl>
-                                    <dl class="dl-horizontal">
+                                    
+                                    <dl class="dl-horizontal full-width">
+                                        <dt>Primary Business:</dt>
+                                        <dd><?php echo $member_company->business_sector_1;?></dd>
+                                        <dt>Secondary Business:</dt>
+                                        <dd><?php echo $member_company->business_sector_2;?></dd>
+                                        <dt>Tertiary Business:</dt>
+                                        <dd><?php echo $member_company->business_sector_3;?></dd>
+                                        <dt>Other Activities:</dt>
+                                        <dd><?php echo $member_company->other_business;?></dd>
+                                    </dl>
+                                    
+                                </div>
+                                <div class="col-lg-6" id="cluster_info">
+                                
+                                    
+                                    
+                                    <dl class="dl-horizontal full-width" >
+                    <div style="margin-top:20px;text-align:center;margin-bottom:41px">
+					<?php
+
+                        $this->load->module('feedback');
+                        $this->feedback->member_feedback($member_info->id);
+                    
+                    ?>
+                    <div style="display:inline;height:65px;width:65px;padding:10px;margin-left:20px;"><i class="fa fa-star star-<?php echo $this->membership_model->get_where($member_info->membership)->membership;?>" class="star-" style="font-size:75px;vertical-align:top"></i></div>
+                    </div>
+                                    
+                                    <dl class="dl-horizontal full-width">
                                         <dt>Status:  </dt>
                                         <?php if($member_info->online_status == 'online') {?>
                                             <dd><span class="label label-primary">Online</span></dd>
@@ -138,59 +180,10 @@
                                         <?php } ?>
                                         
                                         <dt>Subscription:</dt> 
-                                        <dd><?php echo $this->membership_model->get_where($member_info->membership)->membership;?></dd>
-                                    </dl>
-                                    <dl class="dl-horizontal">
-                                        <dt>Company Number:</dt> 
-                                        <dd><?php echo $member_company->company_number;?></dd>
-                                        <dt>VAT/Tax Number:</dt> 
-                                        <dd><?php echo $member_company->vat_tax;?></dd>
-                                    </dl>                                    
-                                    <dl class="dl-horizontal">
-                                        <dt>Address:</dt> <dd>  
-                                            <?php echo $member_company->address_line_1;?><br/>
-                                            <?php echo $member_company->address_line_2;?><br />
-                                            <?php echo $member_company->town_city;?><br />
-                                            <?php echo $member_company->county;?><br />
-                                            <?php echo $member_company->post_code;?><br />
-                                            <?php echo $this->country_model->get_where($member_company->country)->country;?></dd>
+                                        <dd><?php echo $this->membership_model->get_where($member_info->membership)->membership;?> Member</dd>
                                     </dl>
                                     
-                                    <dl class="dl-horizontal">
-                                        <dt>Primary Business:</dt>
-                                        <dd><?php echo $member_company->business_sector_1;?></dd>
-                                        <dt>Secondary Business:</dt>
-                                        <dd><?php echo $member_company->business_sector_2;?></dd>
-                                        <dt>Tertiary Business:</dt>
-                                        <dd><?php echo $member_company->business_sector_3;?></dd>
-                                        <dt>Other Activities:</dt>
-                                        <dd><?php echo $member_company->other_business;?></dd>
-                                    </dl>
-                                    
-                                </div>
-                                <div class="col-lg-5" id="cluster_info">
-                              		<div class="m-r-md" style="text-align:center">
-                                        <?php
-
-                                            $this->load->module('feedback');
-                                            $this->feedback->member_feedback($member_info->id);
-                                        
-                                        ?>
-                                        <div style="display:inline;height:65px;width:65px;padding:10px;margin-left:20px;"><i class="fa fa-star" style="font-size:75px;color:#FC6;vertical-align:top"></i></div>
-                            		</div>
-                                    <dl class="dl-horizontal" >
-                                        <dt>Title:  </dt> 
-                                        <dd> <?php echo $member_info->title?></dd>
-                                        <dt>Firstname:</dt> 
-                                        <dd> <?php echo $member_info->firstname?></dd>
-                                        <dt>Surname:</dt> 
-                                        <dd> <?php echo $member_info->lastname?></dd>
-                                        <dt>Role:</dt> 
-                                        <dd> <?php echo $member_info->role?></dd>
-                                        <dt>Phone Number:</dt>
-                                        <dd> <?php echo $member_info->phone_number?></dd>
-                                        <dt>Mobile Number:</dt> 
-                                        <dd> <?php echo $member_info->mobile_number?></dd>
+                                    <dl class="dl-horizontal full-width" >
                                         <dt>Facebook:</dt> 
                                         <dd> <?php echo $member_info->facebook?></dd>
                                         <dt>Twitter:</dt> 
@@ -205,12 +198,12 @@
                                     </dl>
                                     <div class="row">
                                         <?php ?>
-                                        <div class="col-md-6" style="margin-top:15px">
+                                        <div class="col-md-12" style="margin-top:15px">
                                             <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#profile_message"><i class="fa fa-envelope"></i> Send Message</button>
-                                        </div>
+                                        </div><!--
                                         <div class="col-md-6" style="margin-top:15px">
                                             <button type="button" class="btn btn-default btn-sm btn-block" id="conversation"><i class="fa fa-wechat"></i> Start Conversation</button>
-                                        </div>
+                                        </div>-->
                                     </div>
                                     <div class="row">
                                         <input type="hidden" id="cust_added" name="cust_added" value="<?php echo $member_info->id;?>"/>
@@ -260,8 +253,13 @@
                                         ?>
                                     </div>
                                 </div>
+                                
+                                <div class="col-lg-10 col-lg-offset-1">
+                                    <h4>Company Bio</h4>
+                                	<p style="margin-top:20px"><?php echo $member_company->company_profile;?></p>
+                                </div>
+                                
                             </div>
-                            <?php echo $member_company->company_profile;?>
                             <div class="row m-t-sm">
                                 <div class="col-lg-12">
                                 <div class="panel blank-panel">
@@ -298,7 +296,7 @@
                                     ?>
 
                                 </div>
-                                <div class="tab-pane" id="selling-offers">
+                                <div class="tab-pane no_sub" id="selling-offers">
                                 	<table class="table table-hover no-margins">
                                         <thead>
                                             <tr>
@@ -355,7 +353,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="tab-pane" id="buying-requests">
+                                <div class="tab-pane no_sub" id="buying-requests">
                                 	<table class="table table-hover no-margins">
                                         <thead>
                                             <tr>
@@ -413,18 +411,17 @@
                                     </table>
                                 </div>
                                 
-                                <div class="tab-pane" id="credit-information">
+                                <div class="tab-pane no_sub" id="credit-information">
 									<div class="row">
                     					<div class="col-lg-12" style="text-align:center;margin:15px 0">
-                        					<p>Request a credit check to be done on this company.</p>
-                                            <p>Payment will be taken from your GSM Wallet and the credit data for this company will be viewable from your account while your subscription lasts.</p>
+                        					<p>View this companies credit check information</p>
                         				</div>
-                   					</div>
+                   					</div><!--
 									<div class="row">
                     					<div class="col-lg-4" style="float:none;margin:0 auto">
                         					<button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#buycreditcheck"><i class="fa fa-check-square-o"></i>Buy Credit Check</button>
                         				</div>
-                   					</div>
+                   					</div>-->
                                 	
                                 </div>
                                 
@@ -441,12 +438,28 @@
             </div>
             <div class="col-lg-3">
                 <div class="wrapper wrapper-content project-manager">
-                    <h4>Company Bio</h4>
-                    <?php if(file_exists("public/main/template/gsm/images/company/".$member_company->id.".jpg")){?>
-                        <img src="public/main/template/gsm/images/company/<?php echo $member_company->id; ?>.jpg" class="img-responsive" style="margin:0 auto">
-                    <?php } else {?>
-                        <img src="public/main/template/gsm/images/company/no_company.jpg" class="img-responsive" style="margin:0 auto">
-                    <?php }?>
+                    <h2>Company User</h2>
+                    	<div class="m-r-md" style="text-align:center;margin-top:20px;margin-bottom:20px;">
+                                                <?php if(file_exists("public/main/template/gsm/images/members/".$member_info->id.".jpg")){?>
+                                                    <img alt="image" class="img-circle" style="width:30%" src="<?php echo $base; ?>public/main/template/gsm/images/members/<?php echo $member_info->id; ?>.jpg">
+                                                <?php } else {?>
+                                                    <img alt="image" class="img-circle" style="width:30%" src="<?php echo $base; ?>public/main/template/gsm/images/members/no_profile.jpg">
+                                                <?php }?>  
+                            		</div>
+                                                                     
+                                        
+                                    <dl class="dl-horizontal full-width">
+                                        <dt>Name:</dt> 
+                                        <dd> <?php echo $member_info->title?> <?php echo $member_info->firstname?> <?php echo $member_info->lastname?></dd>
+                                        <dt>Role:</dt> 
+                                        <dd> <?php echo $member_info->role?></dd>
+                                        <dt>Mobile Number:</dt> 
+                                        <dd> <?php echo $member_info->mobile_number?></dd>
+                                        <dt>Phone Number:</dt>
+                                        <dd> <?php echo $member_info->phone_number?></dd>
+                                    </dl>  
+                                    
+                    
                     
 					<div class="row" style="margin-top:20px">
                     	<div class="col-lg-12">

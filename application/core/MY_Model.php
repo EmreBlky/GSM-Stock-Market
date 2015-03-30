@@ -96,6 +96,7 @@ class MY_Model extends CI_Model {
 				
 		}
                 
+                
 		
 		return $data;
 	
@@ -121,6 +122,7 @@ class MY_Model extends CI_Model {
 		   }
 				
 		}
+                
                 
 		
 		return $data;
@@ -297,6 +299,11 @@ class MY_Model extends CI_Model {
 		
 		return $id;
 	
+	}
+        
+        function _custom_query_action($mysql_query) 
+	{		
+            $query = $this->db->query($mysql_query);	
 	}
 	
 	function _custom_query($mysql_query) 

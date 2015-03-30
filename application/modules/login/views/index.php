@@ -1,4 +1,4 @@
-
+<?php //echo $this->uri->segment(1); ?>
 <div>
     <div style="margin-bottom:30px">
 

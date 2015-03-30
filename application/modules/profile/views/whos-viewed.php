@@ -1,7 +1,7 @@
 <?php
 //echo '<pre>';
 //print_r($blocked);
-//echo '</pre>';
+//exit;
 $bm = '';
 if($blocked){
     foreach($blocked as $block){

@@ -8,8 +8,7 @@
     <link href="http://fonts.googleapis.com/css?family=Righteous" rel="stylesheet" type="text/css">
     <style>@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);</style>
     <link rel="stylesheet" href="http://www.gsmstockmarket.com/wp-content/template/gsm/css/countdown.demo.css" type="text/css">
-    <link rel="stylesheet" type="text/css" href="http://www.gsmstockmarket.com/wp-content/themes/gsm/style.css" media="screen" />  
-    <link href="public/main/template/core/font-awesome/css/font-awesome.css" rel="stylesheet">  
+    <link rel="stylesheet" type="text/css" href="http://www.gsmstockmarket.com/wp-content/themes/gsm/style.css" media="screen" />    
     
     <!-- Latest compiled and minified JavaScript -->
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
@@ -73,7 +72,7 @@
         });
     });
     </script>
-    <script type="text/javascript" src="http://www.gsmstockmarket.com/wp-content/template/gsm/wp-content/themes/gsm/js/modernizr.custom.79639.js"></script>
+    <script type="text/javascript" src="http://www.gsmstockmarket.com/wp-content/template/gsmwp-content/themes/gsm/js/modernizr.custom.79639.js"></script>
   </head>  
 <html>
 
@@ -97,11 +96,12 @@
     <div id="navi-bar-wrapper">
         <div class="navi-bar container">
         	<div class="navi-logo">
-				<a href="http://www.gsmstockmarket.com/"><img src="http://www.gsmstockmarket.com/wp-content/themes/gsm/media/navi-logo.png" height="76" width="251" alt="Navi GSM Logo"></a>
+				<a href="join"><img src="http://www.gsmstockmarket.com/wp-content/themes/gsm/media/navi-logo.png" height="76" width="251" alt="Navi GSM Logo"></a>
             </div><!-- /navi-logo -->
             <div class="navi-menu">
             	 <ul id="navi-menu">
 		                <li id="menu-item-27"><a href="http://www.gsmstockmarket.com/membership/">Membership</a></li>
+		                <li id="menu-item-40"><a href="http://www.gsmstockmarket.com/events/">Events</a></li>
 	               	 <li id="menu-item-34"><a href="http://support.gsmstockmarket.com/customer/portal/topics/744522-frequently-asked-questions/questions">FAQ</a></li>
 		                <li id="menu-item-23"><a href="http://www.gsmstockmarket.com/join/">Sign Up</a></li>
 		              </ul>
@@ -675,12 +675,11 @@
         $attributes = array('class' => 'form-horizontal validation');
         echo form_open('join/profileCreate', $attributes);
     ?>    
-    <div class="container">
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h2>Company Details</h2>
+                    <h5>Company Details</h5>
                 </div>
                 <div class="ibox-content">
                     <?php 
@@ -857,14 +856,6 @@
                                     <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'Insurance' || $company->business_sector_2 == 'Insurance' || $company->business_sector_3 == 'Insurance' || $other_business1 == 'Insurance' || $other_business2 == 'Insurance')) ? 'checked="checked"' : '' ?>
                                         type="checkbox" value="Insurance" name="bsectors[]" id="bsectors14"
                                         class='business_cycle'> <i></i> Insurance </label></div>
-                            <div class="checkbox i-checks"><label>
-                                    <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'Tablets' || $company->business_sector_2 == 'Tablets' || $company->business_sector_3 == 'Tablets' || $other_business1 == 'Tablets' || $other_business2 == 'Tablets')) ? 'checked="checked"' : '' ?>
-                                        type="checkbox" value="Tablets" name="bsectors[]" id="bsectors14"
-                                        class='business_cycle'> <i></i> Tablets </label></div>
-                            <div class="checkbox i-checks"><label>
-                                    <input <?php echo (isset($company->business_sector_1) && ($company->business_sector_1 == 'Sim Cards' || $company->business_sector_2 == 'Sim Cards' || $company->business_sector_3 == 'Sim Cards' || $other_business1 == 'Sim Cards' || $other_business2 == 'Sim Cards')) ? 'checked="checked"' : '' ?>
-                                        type="checkbox" value="Sim Cards" name="bsectors[]" id="bsectors14"
-                                        class='business_cycle'> <i></i> Sim Cards </label></div>
                         </div>
                        
                         <div class="col-md-4">
@@ -1040,10 +1031,10 @@
         </div>
     </div>    
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-8">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h2>Personal Details</h2>
+                    <h5>Personal Details</h5>
                 </div>
                 <div class="ibox-content form-horizontal">
                     <div class="form-group"><label class="col-md-3 control-label">Title <span style="color:red">*</span></label>
@@ -1094,19 +1085,10 @@
 
                     <div class="form-group">
                         <label class="col-md-3 control-label">Mobile Number</label>
-                        
+
                         <div class="col-md-3" style="padding-right:0">
-                            <?php
-                            $this->load->module('country');
-                            $this->country->select_phone();
-                            ?>
-                        </div>
-                        <div class="col-md-6">
                         	<input type="text" class="form-control" name="mobile_number" required>
                         </div>
-                        
-                        
-                        
                     </div>
 
                     <div class="form-group">
@@ -1120,24 +1102,15 @@
                         </div>
                     </div>
 
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-    
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-
                     <div class="hr-line-dashed"></div>
                     <div class="form-group">
-                        <div class="col-md-6 col-md-offset-3">
-                            <div class="checkbox i-checks"><input type="checkbox" value="terms" name="terms" id="terms"><label> I agree to the GSM Stock Market terms and conditions </label></div>
-                        </div>
-                        <div class="col-md-3">
-                            <input class="btn btn-primary" name="submit_form" type="submit" id="submit_form" value="Create Account"/>
+                        <div class="col-md-4 col-md-offset-3">
+                            <button class="btn btn-white" type="submit">Cancel</button>
+                            <!--
+<button class="btn btn-primary" name="submit_form" type="submit" id="submit_form"
+                            >Save changes</button>
+                            -->
+                            <input class="btn btn-primary" name="submit_form" type="submit" id="submit_form" value="Save changes"/>
                         </div>
                     </div>
 
@@ -1149,50 +1122,6 @@
     </div>
 <!-- </div> /row -->
 </form>
-
-</div>
-
-
-<footer>
-        	<div class="row-responsive first">
-            	<div class="container">
-                	<div class="social">
-                    	<h3>Follow us</h3>
-                        <ul>
-                        	<li><a href="//facebook.com/gsmstockmarket" class="facebook square" title="Facebook"></a></li>
-                        	<li><a href="//twitter.com/gsmstockmarket" class="twitter square" title="Twitter"></a></li>
-                        	<li><a href="" class="linkedin square" title="Linkedin"></a></li>
-                        	<li><a href="#" class="googleplus square" title="Google +"></a></li>
-                        	<li><a href="#" class="youtube square" title="YouTube"></a></li>
-                        	<li><a href="#" class="rss square" title="RSS Feed"></a></li>
-						</ul>
-                    
-                    
-                    
-                    </div>
-                    <div class="subscribe">
-                    	<h3>Signup for news and offers</h3>
-                    	<form action="http://info.gsmstockmarket.com/t/d/s/tyfjk/" method="post">
-						<input id="fieldEmail" name="cm-tyfjk-tyfjk" type="email" class="input-text" placeholder="Email Address" required />
-						<button class="button" type="submit">Subscribe</button>
-						</form>
-                    </div>
-                </div>
-            </div>
-            
-        	<div class="row-responsive second">
-            	<div class="container">
-                <div class="row"
-                	<div class="col-md-12">
-                    	<p style="margin:15px 0;text-align:center">Copyright 2015 GSM Stock Market.com Limited. Registered in England and Wales. Company No. 07458787</p>
-                    </div>
-                </div>
-                </div>
-            </div>
-        </footer>
-        <a href="#" class="scrollToTop"></a>
-
-
 
 <!-- checkbox css -->
 <link href="public/main/template/core/css/plugins/iCheck/custom.css" rel="stylesheet">
@@ -1372,94 +1301,6 @@
         });
     });
 </script>
-<style>
-/* INPUTS */
-.inline {
-  display: inline-block !important;
-}
-.input-s-sm {
-  width: 120px;
-}
-.input-s {
-  width: 200px;
-}
-.input-s-lg {
-  width: 250px;
-}
-.i-checks {
-  padding-left: 0;
-}
-.form-control,
-.single-line {
-  background-color: #FFFFFF;
-  background-image: none;
-  border: 1px solid #e5e6e7;
-  border-radius: 1px;
-  color: inherit;
-  display: block;
-  padding: 6px 12px;
-  transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
-  width: 100%;
-  font-size: 14px;
-}
-.form-control:focus,
-.single-line:focus {
-  border-color: #1ab394;
-}
-.has-success .form-control {
-  border-color: #1ab394;
-}
-.has-warning .form-control {
-  border-color: #f8ac59;
-}
-.has-error .form-control {
-  border-color: #ed5565;
-}
-.has-success .control-label {
-  color: #1ab394;
-}
-.has-warning .control-label {
-  color: #f8ac59;
-}
-.has-error .control-label {
-  color: #ed5565;
-}
-.input-group-addon {
-  background-color: #fff;
-  border: 1px solid #E5E6E7;
-  border-radius: 1px;
-  color: inherit;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1;
-  padding: 6px 12px;
-  text-align: center;
-}
-.spinner-buttons.input-group-btn .btn-xs {
-  line-height: 1.13;
-}
-.spinner-buttons.input-group-btn {
-  width: 20%;
-}
-.noUi-connect {
-  background: none repeat scroll 0 0 #1ab394;
-  box-shadow: none;
-}
-.slider_red .noUi-connect {
-  background: none repeat scroll 0 0 #ed5565;
-  box-shadow: none;
-}
 
-
-
-/* LINE */
-.hr-line-dashed {
-  border-top: 1px dashed #e7eaec;
-  color: #ffffff;
-  background-color: #ffffff;
-  height: 1px;
-  margin: 20px 0;
-}
-</style>
 </body>
 </html>

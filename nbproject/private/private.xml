@@ -3,17 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm/gsm-secure/application/modules/addressbook/controllers/addressbook.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm/gsm-secure/application/modules/addressbook/views/ajax-result.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm/gsm-secure/application/modules/profile/controllers/profile.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm/gsm-secure/application/modules/profile/views/whos-viewed.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm/gsm-secure/application/modules/paypal/views/cancel-return.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm/gsm-secure/system/libraries/Paypal_lib.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm/gsm-secure/application/modules/paypal/controllers/paypal.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm/gsm-secure/application/core/MY_Model.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm/gsm-secure/application/modules/addressbook/views/index.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm/gsm-secure/application/modules/paypal/controllers/controller.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm/gsm-secure/application/modules/paypal/views/notify-payment.php</file>
+            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/emails/models/emails_model.php</file>
+            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/join/controllers/join.php</file>
+            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/emails/views/en_signup.php</file>
+            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/transaction/models/transaction_model.php</file>
+            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/preferences/views/subscription.php</file>
+            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/emails/controllers/emails.php</file>
+            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/transaction/controllers/transaction.php</file>
+            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/paypal/controllers/paypal.php</file>
+            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/home/controllers/home.php</file>
+            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/core/MY_Model.php</file>
+            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/system/libraries/Email.php</file>
+            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/emails/views/en_activation.php</file>
+            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/emails/views/en_upgrade.php</file>
+            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/preferences/controllers/preferences.php</file>
         </group>
     </open-files>
 </project-private>
