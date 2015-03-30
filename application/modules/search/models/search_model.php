@@ -29,7 +29,7 @@ class Search_model extends MY_Model
     }
 
 
-    function searchCompanies($terms, $b_sector, $countries, $region, $continent, $orderBy, $start = 0, $results_per_page = 0)
+    function searchCompanies($terms, $b_sector, $countries, $region, $continent, $orderBy, $start = 0, $results_per_page = 0, $user)
     {
         if ($results_per_page > 0) {
             $limit = "LIMIT $start, $results_per_page";
@@ -57,10 +57,11 @@ other_business,
                         AND cnt.id LIKE ?
                         AND cnt.region LIKE ?
                          AND cnt.continent LIKE ?
+                         AND m.id <> ?
                         GROUP BY l.member_id
-                        ORDER BY $orderBy
+                        ORDER BY (c.business_sector_1 LIKE ?) DESC, (c.business_sector_2 LIKE ?) DESC, (c.business_sector_3 LIKE ?) DESC, (c.other_business LIKE ?) DESC $orderBy
                         $limit";
-        $query = $this->db->query($sql, array("%".$terms."%", $b_sector, $b_sector, $b_sector, "%".$b_sector."%", $countries, $region, $continent));
+        $query = $this->db->query($sql, array("%".$terms."%", $b_sector, $b_sector, $b_sector, "%".$b_sector."%", $countries, $region, $continent, $user, $b_sector, $b_sector, $b_sector, $b_sector));
 
         return $query->result();
     }
