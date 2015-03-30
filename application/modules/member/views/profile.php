@@ -188,9 +188,9 @@
                                     
                               		<div class="m-r-md" style="text-align:center">
 										<?php if(file_exists("public/main/template/gsm/images/company/".$member_company->id.".jpg")){?>
-                                            <img src="public/main/template/gsm/images/company/<?php echo $member_company->id; ?>.jpg" class="img-responsive" style="margin:0 auto">
+                                            <img src="public/main/template/gsm/images/company/<?php echo $member_company->id; ?>.jpg" class="img-responsive" style="margin:0 auto;max-height:150px">
                                         <?php } else {?>
-                                            <img src="public/main/template/gsm/images/company/no_company.jpg" class="img-responsive" style="margin:0 auto">
+                                            <img src="public/main/template/gsm/images/company/no_company.jpg" class="img-responsive" style="margin:0 auto;max-height:150px">
                                         <?php }?>
                             		</div>                                        
                                         
