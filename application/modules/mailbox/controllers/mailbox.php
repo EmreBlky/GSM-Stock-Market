@@ -887,27 +887,25 @@ class Mailbox extends MX_Controller
         //echo '<pre>';
         //print_r($_POST);
         
-        $this->load->library('form_validation');
+        $this->load->library('form_validation');        
         
-        $this->form_validation->set_rules('from', 'Email From', 'xss_clean');
-        $this->form_validation->set_rules('subject', 'Subject', 'xss_clean');
         $this->form_validation->set_rules('message', 'Message Body', 'xss_clean');
         
         if($this->form_validation->run()){
             
-            $this->load->module('emails');
-                    $config = Array(
-                                'protocol' => 'smtp',
-                                'smtp_host' => 'ssl://secure.gsmstockmarket.com',
-                                'smtp_port' => 465,
-                                'smtp_user' => 'noreply@gsmstockmarket.com',
-                                'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
-                                'charset' => 'utf-8',
-                                'wordwrap' => TRUE,
-                                'newline' => "\r\n",
-                                'crlf'    => ""
+                $this->load->module('emails');
+                $config = Array(
+                    'protocol' => 'smtp',
+                    'smtp_host' => 'ssl://secure.gsmstockmarket.com',
+                    'smtp_port' => 465,
+                    'smtp_user' => 'noreply@gsmstockmarket.com',
+                    'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
+                    'charset' => 'utf-8',
+                    'wordwrap' => TRUE,
+                    'newline' => "\r\n",
+                    'crlf'    => ""
 
-                            );
+                );
                 
                 $this->load->library('email', $config);
                 
@@ -925,11 +923,54 @@ class Mailbox extends MX_Controller
                 $this->email->send();
                 
                 $this->session->set_flashdata('title', 'GSM Support.');
-                $this->session->set_flashdata('message', 'Your email has been sent.');
-                redirect('support/submit_ticket');
+                $this->session->set_flashdata('message', 'Your email has been sent.');                
                 //echo $this->email->print_debugger();
+                //exit;                
+                redirect('support/submit_ticket');
         }
         
+    }
+    
+    function reportUser($from, $cust_name, $report, $subject, $message)
+    {
+        $this->load->model('report/report_model', 'report_model');
+        $data = array(
+            'report_id' => $from,
+            'abuse_id' => '',
+            'message' => $message
+        );
+        $this->report_model->_insert($data);
+        
+        $this->load->module('emails');
+                $config = Array(
+                    'protocol' => 'smtp',
+                    'smtp_host' => 'ssl://secure.gsmstockmarket.com',
+                    'smtp_port' => 465,
+                    'smtp_user' => 'noreply@gsmstockmarket.com',
+                    'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
+                    'charset' => 'utf-8',
+                    'wordwrap' => TRUE,
+                    'newline' => "\r\n",
+                    'crlf'    => ""
+
+                );
+                
+                $this->load->library('email', $config);
+                
+                $this->email->set_mailtype("html");
+                $email_body = $message;
+                
+               
+                $this->email->from($from, $this->characterReplace($cust_name));
+
+                //$list = array('info@imarveldesign.co.uk');
+                $this->email->to('info@imarveldesign.co.uk');
+                $this->email->subject('Abuse and Complaints for '.$this->member_model->get_where($report)->firstname.' '.$this->member_model->get_where($report)->lastname);
+                $this->email->message($email_body);
+
+                $this->email->send();                               
+                //echo $this->email->print_debugger();
+                //exit;                
     }
     
     function composeMail()

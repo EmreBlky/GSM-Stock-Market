@@ -5,7 +5,41 @@
 //print_r($blocked);
 //exit;
 
-?>	
+?>
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        /*
+        $("#submit_report").click(function(){
+            
+                var from                = $('#from').val();
+                var cust_name           = $('#cust_name').val();
+                var report              = $('#report').val();
+                var report_message      = $('#report_message').val().replace(/(\r\n|\n|\r)/gm, 'BREAK1');
+                var report_message      = report_message.replace(/\//g, 'SLASH1');
+                var report_message      = report_message.replace(/\?/g, 'QUEST1');
+                var report_message      = report_message.replace(/\%/g, 'PERCENT1');
+                
+                $.ajax({
+                        type: "POST",
+                        url: "mailbox/reportUser/"+ from +"/"+ cust_name +"/"+ report +"/"+ report_message +"",
+                        dataType: "html",
+                        success:function(data){
+                            $('#message').val('');  
+                            $('#report_user').modal('hide');                  
+                            toastr.success('Your message has been sent.', 'Message Alert');
+                            $("#submit_report").show('slow');
+                    },
+                });
+            });
+            */
+           $("#report_user").click(function(){
+            
+                window.location.replace("support/submit_ticket");
+               
+            });
+  });
+</script>
 <script type="text/javascript">
     
             function contactAdd()
@@ -107,8 +141,7 @@
                         },
                 });
             }
-
-
+            
 </script>
 			<div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
@@ -516,7 +549,8 @@
                    </div>
 					<div class="row">
                         <div class="col-lg-6" style="margin-top:15px">
-                         	<button type="button" class="btn btn-warning btn-sm btn-block" data-toggle="modal" data-target="#report_user"><i class="fa fa-exclamation"></i> Report</button>
+<!--                         	<button type="button" class="btn btn-warning btn-sm btn-block" data-toggle="modal" data-target="#report_user"><i class="fa fa-exclamation"></i> Report</button>-->
+                            <button type="button" class="btn btn-warning btn-sm btn-block" id="report_user"><i class="fa fa-exclamation"></i> Report</button>
                         </div>
                         <div class="col-lg-6" style="margin-top:15px">
                         <?php if($blocked){?>    
@@ -570,13 +604,40 @@
                                             <h4 class="modal-title">Report this user!</h4>
                                             <small class="font-bold">Please fill in the form below to submit a report</small>
                                         </div>
+                                        
+                                        <input type="hidden" name="from" id="from" value="<?php echo $this->member_model->get_where($this->session->userdata('members_id'))->email; ?>" />
+                                        <input type="hidden" name="cust_name" id="cust_name" value="<?php echo $this->member_model->get_where($this->session->userdata('members_id'))->firstname. ' '.$this->member_model->get_where($this->session->userdata('members_id'))->lastname; ?>" />
+                                        <input type="hidden" name="report" id="report" value="<?php echo $member_info->id; ?>" />
                                         <div class="modal-body">
-                                            <p><strong>Form to support service.</strong></p>
+                                                <p><strong>Form to support service.</strong></p>
+<!--                                                <select class="form-control" name="subject" class="subject">
+                                                    <option value="General">General Enquiry</option>
+                                                    <option value="Billing">Billing &amp; Accounts</option>
+                                                    <option value="Complaint">Abuse &amp; Complaints</option>
+                                                    <option value="Market Issue">Marketplace Issue</option>                                
+                                                    <option value="Feedback">Website Feedback</option>
+                                                    <option value="Other">Other</option>
+                                                </select>-->
+                                                <br/>
+<!--                                                <textarea class="form-control" rows="8" name="report_message" id="message"></textarea>-->
+                                                <?php 
+
+                                                    $data = array(
+                                                                'name'          => 'report_message',
+                                                                'id'            => 'report_message',
+                                                                'class'         => 'form-control', 
+                                                                'style'         => 'border:none',
+                                                                'required'      => 'required'
+                                                              );
+
+                                                    echo form_textarea($data);
+
+                                                ?>
                                         </div>
 
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Send Report</button>
+                                            <button type="button" class="btn btn-primary" id="submit_report">Send Report</button>
                                         </div>
                                     </div>
                                 </div>
