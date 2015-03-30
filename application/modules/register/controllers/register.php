@@ -179,7 +179,8 @@ class Register extends MX_Controller{
             $mid = $this->member_model->get_where_multiple('validation_code', $vcode);
             
             $data = array(
-                            'validated' => 'yes'
+                            'validated' => 'yes',
+                            'online_status' => 'online'
                           );            
             $this->member_model->_update($mid->id, $data);
             
