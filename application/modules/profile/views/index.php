@@ -27,6 +27,7 @@ $this->load->model('membership/membership_model', 'membership_model');
             </div>
             
             <div class="row">
+            <div class="col-lg-9">
                 <div class="wrapper wrapper-content animated fadeInUp">
                     <div class="ibox">
                         <div class="ibox-content">
@@ -47,16 +48,28 @@ $this->load->model('membership/membership_model', 'membership_model');
                             </div>
                             
                             <div class="row">
-                                <div class="col-lg-5 col-lg-offset-1">
-                                    <dl class="dl-horizontal">
-                                        <dt>Status:</dt> <dd><span class="label label-primary">Active</span></dd>
-                                        <dt>Subscription:</dt> <dd><?php echo $this->membership_model->get_where($member_info->membership)->membership; ?> Member</dd>
-                                    </dl>
-                                    <dl class="dl-horizontal">
-                                        <dt>Company Number:</dt> <dd><?php echo $member_company->company_number;?></dd>
-                                        <dt>VAT/Tax Number:</dt> <dd><?php echo $member_company->vat_tax;?></dd>
-                                    </dl>                                    
-                                    <dl class="dl-horizontal">
+                                <div class="col-lg-6">
+                            		<style>
+										dl.full-width dt, dl.full-width dd {width:50%}
+										dl.full-width dd {margin-left:51%}
+									</style>
+                                    
+                              		<div class="m-r-md" style="text-align:center">
+										<?php if(file_exists("public/main/template/gsm/images/company/".$member_company->id.".png")){?>
+                                            <img src="public/main/template/gsm/images/company/<?php echo $member_company->id; ?>.png" class="img-responsive" style="margin:0 auto">
+                                        <?php } else {?>
+                                            <img src="public/main/template/gsm/images/company/no_company.jpg" class="img-responsive" style="margin:0 auto">
+                                        <?php }?>
+                            		</div>                                
+                                        
+                                    <dl class="dl-horizontal full-width">
+                                        <dt>Company Number:</dt> 
+                                        <dd><?php echo $member_company->company_number;?></dd>
+                                        <dt>VAT/Tax Number:</dt> 
+                                        <dd><?php echo $member_company->vat_tax;?></dd>
+                                    </dl>  
+                                                                      
+                                    <dl class="dl-horizontal full-width">
                                         <dt>Address:</dt> <dd>  
                                             <?php echo $member_company->address_line_1;?><br/>
                                             <?php echo $member_company->address_line_2;?><br />
@@ -66,16 +79,12 @@ $this->load->model('membership/membership_model', 'membership_model');
                                             <?php echo $this->country_model->get_where($member_company->country)->country;?></dd>
                                     </dl>
                                     
-                                    <dl class="dl-horizontal">
-                                        <dt>Phone:</dt> <dd>  <?php echo $member_info->phone_number;?></dd>
-                                        <dt>Skype:</dt> <dd>  <?php echo $member_info->skype;?></dd>
-                                        <dt>Website:</dt> <dd>  <?php echo $member_company->website;?></dd>
-                                        <dt>Facebook:</dt> <dd>  <?php echo $member_info->facebook;?></dd>
-                                        <dt>Twitter:</dt> <dd>  <?php echo $member_info->twitter;?></dd>
-                                        <dt>Linkedin:</dt> <dd>  <?php echo $member_info->linkedin;?></dd>
+                                    <dl class="dl-horizontal full-width">                                    
+                                        <dt>Phone Number:</dt>
+                                        <dd> <?php echo $member_info->phone_number?></dd>
                                     </dl>
                                     
-                                    <dl class="dl-horizontal">
+                                    <dl class="dl-horizontal full-width">
                                         <dt>Primary Business:</dt>
                                         <dd><?php echo $member_company->business_sector_1;?></dd>
                                         <dt>Secondary Business:</dt>
@@ -87,54 +96,58 @@ $this->load->model('membership/membership_model', 'membership_model');
                                     </dl>
                                     
                                 </div>
-                                <div class="col-lg-5 col-lg-offset-1">
-									<?php if(file_exists("public/main/template/gsm/images/company/".$member_company->id.".png")){?>
-                                        <img src="public/main/template/gsm/images/company/<?php echo $member_company->id; ?>.png" class="img-responsive" width="300" height="150" style="margin:0 auto">
-                                    <?php } else {?>
-                                        <img src="public/main/template/gsm/images/company/no_company.jpg" class="img-responsive"width="300" height="150" style="margin:0 auto">
-                                    <?php }?>
-                                
-                                
-                              		<div class="m-r-md" style="text-align:center;margin-top:20px">
+                                <div class="col-lg-6" id="cluster_info">
+                                	
+                                    <dl class="dl-horizontal full-width" >
+                                        <div style="margin-top:20px;text-align:center;margin-bottom:41px">
+                                        <?php
+                    
+                                            $this->load->module('feedback');
+                                            $this->feedback->member_feedback($member_info->id);
                                         
-                                            <?php
-                                            
-                                                $this->load->module('feedback');
-                                                $this->feedback->member_feedback($member_info->id);
-                                            ?>
-                                            
-                                            
-                            		<div style="display:inline;height:65px;width:65px;padding:10px;margin-left:20px;"><i class="fa fa-star" style="font-size:75px;color:#FC6;vertical-align:top"></i></div>
-                            		</div>
-                                    <dl class="dl-horizontal" >
+                                        ?>
+                                        <div style="display:inline;height:65px;width:65px;padding:10px;margin-left:20px;"><i class="fa fa-star star-<?php echo $this->membership_model->get_where($member_info->membership)->membership;?>" class="star-" style="font-size:75px;vertical-align:top"></i></div>
+                                    </div>
+                                    
+                                    <dl class="dl-horizontal full-width">
+                                        <dt>Status:  </dt>
+                                        <?php if($member_info->online_status == 'online') {?>
+                                            <dd><span class="label label-primary">Online</span></dd>
+                                        <?php } else { ?>
+                                            <dd><span class="label label-danger">Offline</span></dd>
+                                            <?php if($this->login_model->get_where_multiple('member_id', $member_info->id, 'logged', 'yes')) {?>
+                                            <dt>Last Logged:  </dt>
+                                            <dd><?php echo $this->login_model->get_where_multiple('member_id', $member_info->id, 'logged', 'yes')->date?></dd>
+                                            <?php }?>
+                                        <?php } ?>                                        
+                                    </dl>
+                                    
+                                    <dl class="dl-horizontal full-width">
+                                        <dt>Subscription:</dt> 
+                                        <dd><?php echo $this->membership_model->get_where($member_info->membership)->membership;?> Member</dd>
 
-                                        <dt>Date Created:</dt> <dd> <?php echo $member_info->date?></dd>
-                                        <dt>Last Online:</dt> <dd><?php echo $last_logged->date.' '.$last_logged->time?></dd>
-                                        <dt>Company Users:</dt>
-                                        <dd class="project-people">
-                                            <?php if($company_users){
-                                                
-                                                foreach($company_users as $user){
-                                                    
-                                            ?>
-                                            
-                                                <a data-toggle="modal" data-target="#profile-<?php echo $user->id;?>"><img alt="image" class="img-circle" src="public/main/template/gsm/images/members/<?php echo $user->id;?>.jpg"></a>
-                                            
-                                            <?php
-
-                                                    }
-                                                }
-                                            ?>  
+                                        <dt>Member Since:</dt> <dd> <?php echo $member_info->date?></dd>
+                                    </dl>
+                                    
+                                    <dl class="dl-horizontal full-width" >
+                                        <dt>Facebook:</dt> 
+                                        <dd> <?php echo $member_info->facebook?></dd>
+                                        <dt>Twitter:</dt> 
+                                        <dd> <?php echo $member_info->twitter?></dd>
+                                        <dt>Google Plus:</dt>
+                                        <dd> <?php echo $member_info->gplus?></dd>
+                                        <dt>LinkedIn:</dt> 
+                                        <dd> <?php echo $member_info->linkedin?></dd>
+                                        <dt>Skype:</dt> 
+                                        <dd> <?php echo $member_info->skype?></dd>
                                         
-                                        </dd>
                                     </dl>
                                     
                                 </div>
                                 
-                                <div class="row">
-                                	<div class="col-lg-10 col-lg-offset-1">
-                            <?php echo $member_company->company_profile;?>
-                                    </div>
+                                <div class="col-lg-10 col-lg-offset-1">
+                                    <h4>Company Bio</h4>
+                                	<p style="margin-top:20px"><?php echo $member_company->company_profile;?></p>
                                 </div>
                                 
                                 
@@ -147,6 +160,8 @@ $this->load->model('membership/membership_model', 'membership_model');
                                         <ul class="nav nav-tabs">
                                             <li class="active"><a href="#feedposts" data-toggle="tab">Feed Posts</a></li>
                                             <li class=""><a href="#feedback" data-toggle="tab">Feedback</a></li>
+                                            <li class=""><a href="#selling-offers" data-toggle="tab">Selling Offers</a></li>
+                                            <li class=""><a href="#buying-requests" data-toggle="tab">Buying Requests</a></li>
                                             <li class=""><a href="#credit-information" data-toggle="tab">Credit Info</a></li>
                                         </ul>
                                     </div>
@@ -172,18 +187,132 @@ $this->load->model('membership/membership_model', 'membership_model');
                                 ?>
                                 </div>
                                 
-                                <div class="tab-pane" id="credit-information">
+                                <div class="tab-pane no_sub" id="selling-offers">
+                                	<table class="table table-hover no-margins">
+                                        <thead>
+                                            <tr>
+                                            	<th class="mobihide">Make</th>
+                                                <th>Model</th>
+                                                <th>Price</th>
+                                                <th class="mobihide">Qty</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td class="mobihide">400</td>
+                                                <td><span class="label label-primary">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td class="mobihide">400</td>
+                                                <td><span class="label label-primary">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td class="mobihide">400</td>
+                                                <td><span class="label label-success">Completed</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td class="mobihide">400</td>
+                                                <td><span class="label label-success">Completed</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td class="mobihide">400</td>
+                                                <td><span class="label label-warning">Pending</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td class="mobihide">400</td>
+                                                <td><span class="label label-danger">Cancelled</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane no_sub" id="buying-requests">
+                                	<table class="table table-hover no-margins">
+                                        <thead>
+                                            <tr>
+                                            	<th class="mobihide">Make</th>
+                                                <th>Model</th>
+                                                <th>Price</th>
+                                                <th class="mobihide">Qty</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td class="mobihide">400</td>
+                                                <td><span class="label label-primary">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td class="mobihide">400</td>
+                                                <td><span class="label label-primary">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td class="mobihide">400</td>
+                                                <td><span class="label label-success">Completed</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td class="mobihide">400</td>
+                                                <td><span class="label label-success">Completed</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td class="mobihide">400</td>
+                                                <td><span class="label label-warning">Pending</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td class="mobihide">400</td>
+                                                <td><span class="label label-danger">Cancelled</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="tab-pane no_sub" id="credit-information">
 									<div class="row">
                     					<div class="col-lg-12" style="text-align:center;margin:15px 0">
-                        					<p>Request a credit check to be done on this company.</p>
-                                            <p>Payment will be taken from your GSM Wallet and the credit data for this company will be viewable from your account while your subscription lasts.</p>
+                        					<p>View this companies credit check information</p>
                         				</div>
-                   					</div>
+                   					</div><!--
 									<div class="row">
                     					<div class="col-lg-4" style="float:none;margin:0 auto">
                         					<button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#buycreditcheck"><i class="fa fa-check-square-o"></i>Buy Credit Check</button>
                         				</div>
-                   					</div>
+                   					</div>-->
                                 	
                                 </div>
                                 
@@ -198,50 +327,62 @@ $this->load->model('membership/membership_model', 'membership_model');
                     </div>
                 </div>
         </div>
-                                            <?php if($company_users){
-                                                
-                                                foreach($company_users as $user){
-                                                    
-                                            ?>
-        					<div class="modal inmodal fade" id="profile-<?php echo $user->id;?>" tabindex="-1" role="dialog"  aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                            <h4 class="modal-title">User Name</h4>
-                                            <small class="font-bold">Role</small>
-                                        </div>
-                                        <div class="modal-body">
-                                            <p><img alt="image" class="img-circle" src="public/main/template/gsm/images/members/<?php echo $user->id;?>.jpg"></p>
-                                            <p><strong>£5.00 Credit available</strong></p>
-                                            <p><strong>£5.00 Credit required</strong></p>
-                                        </div>
-
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> 
-                                            
-                                            <?php
-
-                                                    }
-                                                }
-                                            ?>    
+            <div class="col-lg-3">
+                <div class="wrapper wrapper-content project-manager">
+                    <h2>Company User</h2>
+                    	<div class="m-r-md" style="text-align:center;margin-top:20px;margin-bottom:20px;">
+                                                <?php if(file_exists("public/main/template/gsm/images/members/".$member_info->id.".jpg")){?>
+                                                    <img alt="image" class="img-circle" style="width:30%" src="<?php echo $base; ?>public/main/template/gsm/images/members/<?php echo $member_info->id; ?>.jpg">
+                                                <?php } else {?>
+                                                    <img alt="image" class="img-circle" style="width:30%" src="<?php echo $base; ?>public/main/template/gsm/images/members/no_profile.jpg">
+                                                <?php }?>  
+                            		</div>
+                                                                     
+                                        
+                                    <dl class="dl-horizontal full-width">
+                                        <dt>Name:</dt> 
+                                        <dd> <?php echo $member_info->title?> <?php echo $member_info->firstname?> <?php echo $member_info->lastname?></dd>
+                                        <dt>Role:</dt> 
+                                        <dd> <?php echo $member_info->role?></dd>
+                                        <dt>Mobile Number:</dt> 
+                                        <dd> <?php echo $member_info->mobile_number?></dd>
+                                        <dt>Phone Number:</dt>
+                                        <dd> <?php echo $member_info->phone_number?></dd>
+                                    </dl>  
+                                    
+                    
+                    
+					<div class="row" style="margin-top:20px">
+                    	<div class="col-lg-12">
+                        	<button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#buycreditcheck"><i class="fa fa-check-square-o"></i> Credit Check</button>
+                        </div>
+                   </div>
+					<div class="row">
+                        <div class="col-lg-6" style="margin-top:15px">
+                         	<button type="button" class="btn btn-warning btn-sm btn-block" data-toggle="modal" data-target="#report_user"><i class="fa fa-exclamation"></i> Report</button>
+                        </div>
+                        <div class="col-lg-6" style="margin-top:15px">
+                         	<button type="button" class="btn btn-danger btn-sm btn-block" id="blocked"><i class="fa fa-ban"></i> Block</button>
+                        </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
         
                             <div class="modal inmodal fade" id="buycreditcheck" tabindex="-1" role="dialog"  aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                            <h4 class="modal-title">Buy Credit Check</h4>
-                                            <small class="font-bold">This transaction will buy you the credit data for GSMStockMarket.com Limited.</small>
+                                            <h4 class="modal-title">Credit Check</h4>
+                                            <small class="font-bold">This transaction will generate a credit check for <?php echo $member_company->company_name; ?>.</small>
                                         </div>
-                                        <div class="modal-body">
-                                            <p><strong>Payment will be taken from your GSM Wallet</strong> and the credit data for this company will be viewable from your account while your subscription lasts.</p>
-                                            <p><strong>£5.00 Credit available</strong></p>
-                                            <p><strong>£5.00 Credit required</strong></p>
+                                        <div class="modal-body no_sub">
+                                            <p>View company credit information. Unavailable</p>
                                         </div>
 
                                         <div class="modal-footer">
