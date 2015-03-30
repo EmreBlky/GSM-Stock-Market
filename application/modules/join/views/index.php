@@ -1202,6 +1202,20 @@
 </div>
 
 
+<footer>
+    <div class="row-responsive second">
+        <div class="container">
+            <div class="row"
+            <div class="col-md-12">
+                <p style="margin:15px 0;text-align:center">Copyright 2015 GSM Stock Market.com Limited. Registered in
+                    England and Wales. Company No. 07458787</p>
+            </div>
+        </div>
+    </div>
+    </div>
+</footer>
+
+
 <!-- checkbox css -->
 <link href="../public/main/template/core/css/plugins/iCheck/custom.css" rel="stylesheet">
 
