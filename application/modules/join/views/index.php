@@ -82,7 +82,7 @@
             src="http://www.gsmstockmarket.com/wp-content/template/gsm/wp-content/themes/gsm/js/modernizr.custom.79639.js"></script>
 
 
-    <!-- <script type="text/javascript">
+    <script type="text/javascript">
 
         //bprimary, bsecondary, btertiary
         $(document).ready(function () {
@@ -104,7 +104,7 @@
                 $(".bsnssector option").show();
                 $(".bsnssector option:selected").each(function () {
                     if ($(this).val() != "")
-                        $(".bsnssector").not(this).find("option[value='" + $(this).val() + "']").hide();
+                        $(".bsnssector").not(this).find('option[value="' + $(this).val() + '"]').hide();
                 });
 
             });
@@ -126,7 +126,7 @@
             }
 
         }
-    </script> -->
+    </script>
 </head>
 <html>
 
