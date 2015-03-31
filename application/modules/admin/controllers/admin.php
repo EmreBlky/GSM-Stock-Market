@@ -107,6 +107,58 @@ class Admin extends MX_Controller
 	
     }
     
+    function company_bio($id = NULL)
+    {
+        if ( ! $this->session->userdata('admin_logged_in'))
+        { 
+            redirect('admin/login');
+        }
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel: Company Bio';        
+        $data['page'] = 'company-bio';
+        
+        $var = 'company';
+        $var_model = $var.'_model';
+        
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        if(isset($id)){
+            $data[$var] = $this->{$var_model}->get_where($id);
+        }else{
+            $count = $this->{$var_model}->_custom_query_count('SELECT COUNT(*) AS count FROM company WHERE company_profile_approval != ""');
+            if($count[0]->count > 0){
+                $data[$var.'_count'] = $count[0]->count;
+                $data[$var] = $this->{$var_model}->_custom_query('SELECT * FROM company WHERE company_profile_approval != "" ORDER BY id DESC');
+            }
+            else{
+                $data[$var.'_count'] = 0;
+            }
+        }
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+    
+    function edit_bio($id)
+    {
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel: Edit Feed';        
+        $data['page'] = 'edit-bio';
+        
+        $var = 'company';
+        $var_model = $var.'_model';
+        
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        $data[$var] = $this->{$var_model}->get_where($id);
+        
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+
+    function bioApprove()
+    {}
+
+    function bioDecline()
+    {}
+    
     function feed($id = NULL)
     {
         if ( ! $this->session->userdata('admin_logged_in'))
@@ -376,7 +428,7 @@ class Admin extends MX_Controller
         
         redirect('admin/feedback/');
     }
-            
+    
     function feedbackDecline($id)
     {
         if ( ! $this->session->userdata('admin_logged_in'))

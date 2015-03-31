@@ -164,7 +164,7 @@ class Paypal extends MX_Controller
                 $this->load->module('emails');
                 $config = Array(
                                 'protocol' => 'smtp',
-                                'smtp_host' => 'ssl://secure.gsmstockmarket.com',
+                                'smtp_host' => 'ssl://server.gsmstockmarket.com',
                                 'smtp_port' => 465,
                                 'smtp_user' => 'noreply@gsmstockmarket.com',
                                 'smtp_pass' => 'ehT56.l}iW]I2ba3f0',

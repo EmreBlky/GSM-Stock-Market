@@ -356,7 +356,8 @@ class Profile extends MX_Controller
                 'business_sector_2' => $this->input->post('bsecondary'),
                 'business_sector_3' => $this->input->post('btertiary'),
                 'other_business' => $bsectors4 . $bsectors5,
-                'company_profile' => $this->input->post('company_profile'),
+                'company_profile' => '',
+                'company_profile_approval' => $this->input->post('company_profile'),
                 'vat_tax' => $this->input->post('vat_tax'),
                 'company_number' => $this->input->post('company_number'),
             );

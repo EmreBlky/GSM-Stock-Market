@@ -163,7 +163,8 @@ class Join extends MX_Controller
                         'business_sector_2' => $this->input->post('bsecondary'),
                         'business_sector_3' => $this->input->post('btertiary'),
                         'other_business' => $bsectors4 . $bsectors5,
-                        'company_profile' => $this->input->post('company_profile'),
+                        'company_profile' => '',
+                        'company_profile_approval' => $this->input->post('company_profile'),
                         'vat_tax' => $this->input->post('vat_tax'),
                         'company_number' => $this->input->post('company_number'),
                     );
@@ -178,7 +179,7 @@ class Join extends MX_Controller
                     $this->load->module('emails');
                     $config = Array(
                                 'protocol' => 'smtp',
-                                'smtp_host' => 'ssl://secure.gsmstockmarket.com',
+                                'smtp_host' => 'ssl://server.gsmstockmarket.com',
                                 'smtp_port' => 465,
                                 'smtp_user' => 'noreply@gsmstockmarket.com',
                                 'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
