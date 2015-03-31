@@ -119,7 +119,7 @@
                             class="glyphicon glyphicon-envelope"></i></a>
                 </li>
                 <li>
-                    <a href="">Login <i class="glyphicon glyphicon-user"></i></a>
+                    <a href="http://secure.gsmstockmarket.com/login">Login <i class="glyphicon glyphicon-user"></i></a>
                 </li>
             </ul>
         </div>
