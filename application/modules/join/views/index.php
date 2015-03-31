@@ -4,17 +4,17 @@
         GSMStockMarket.com</title>
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:600,700' rel='stylesheet' type='text/css'>
-    <link href="http://fonts.googleapis.com/css?family=Righteous" rel="stylesheet" type="text/css">
-    <style>@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);</style>
-    <link rel="stylesheet" type="text/css" href="http://www.gsmstockmarket.com/wp-content/themes/gsm/style.css"
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:600,700' rel='stylesheet' type='text/css'>
+    <link href="//fonts.googleapis.com/css?family=Righteous" rel="stylesheet" type="text/css">
+    <style>@import url(//fonts.googleapis.com/css?family=Lato:300,400,700);</style>
+    <link rel="stylesheet" type="text/css" href="../public/main/template/www/style.css"
           media="screen"/>
     <link href="../public/main/template/core/font-awesome/css/font-awesome.css" rel="stylesheet">
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         $(window).on('load resize', function () {
             if ($(window).width() > 768) {
