@@ -1131,7 +1131,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-md-3 col-md-4 control-label">Email Address <span
+                        <label class="col-md-3 col-md-4 control-label" type="email">Email Address <span
                                 style="color:red">*</span></label>
 
                         <div class="col-md-9">
