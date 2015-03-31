@@ -8,7 +8,7 @@
     <link href='//fonts.googleapis.com/css?family=Open+Sans:600,700' rel='stylesheet' type='text/css'>
     <link href="//fonts.googleapis.com/css?family=Righteous" rel="stylesheet" type="text/css">
     <style>@import url(//fonts.googleapis.com/css?family=Lato:300,400,700);</style>
-    <link rel="stylesheet" type="text/css" href="../public/main/template/www/style.css"
+    <link rel="stylesheet" type="text/css" href="../public/main/template/www/css/style.css"
           media="screen"/>
     <link href="../public/main/template/core/font-awesome/css/font-awesome.css" rel="stylesheet">
 
