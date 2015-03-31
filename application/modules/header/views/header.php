@@ -107,7 +107,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="dropdown">
+            <li class="dropdown" style="display:none">
                 <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                     <i class="fa fa-bell"></i>  <!-- <span class="label label-primary">8</span> -->
                 </a>
