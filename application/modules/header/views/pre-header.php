@@ -38,6 +38,31 @@
     <script src="public/main/template/core/js/bootstrap.min.js"></script>
 
 
+    <!-- Cropper -->
+    <link href="public/main/template/core/css/plugins/cropper/cropper.min.css" rel="stylesheet">
+    <link href="public/main/template/core/css/plugins/cropper/main.css" rel="stylesheet">
+    <script src="public/main/template/core/js/plugins/cropper/cropper.js"></script>
+    <script src="public/main/template/core/js/plugins/cropper/main.js"></script>
+    <script type="text/javascript">
+        $(document).on("click", "#deleteMemberImage", function () {
+            $(this).parent().prev('.avatar-view').html('<img src="public/main/template/gsm/images/members/no_profile.jpg" />');
+            $.ajax('profile/profileImage', {type: 'post', data: {'reset': 1}, dataType: 'json'});
+        })
+        $(document).on("click", "#changeMemberImage", function () {
+            $(this).parent().prev('.avatar-view').click();
+        })
+
+
+        $(document).on("click", "#deleteCompanyImage", function () {
+            $(this).parent().prev('.avatar-view').html('<img src="public/main/template/gsm/images/company/no_company.jpg" />');
+            $.ajax('profile/companyImage', {type: 'post', data: {'reset': 1}, dataType: 'json'});
+        })
+        $(document).on("click", "#changeCompanyImage", function () {
+            $(this).parent().prev('.avatar-view').click();
+        })
+    </script>
+
+
     <script src="public/main/template/core/js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="public/main/template/core/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
     <script src="public/main/template/core/js/inspinia.js"></script>
