@@ -207,7 +207,3 @@
 ## http://developer.yahoo.com/performance/rules.html#etags
 
     #FileETag none
-	
-RewriteEngine On
-RewriteCond %{HTTPS} on
-RewriteRule (.*) http://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
