@@ -15,7 +15,7 @@
             
             <div class="col-lg-12">
                 <div class="wrapper wrapper-content animated fadeInRight">
-				  <?php if($this->session->userdata('membership') > 0) {?>
+				  <?php if($this->session->userdata('membership') < 2) {?>
                     <div class="alert alert-danger" style="margin-bottom:10px;">
                       Your subscription is unable to view this page. Upgrade to <a class="alert-link" href="preferences/subscription">Silver Member</a> to access the full features on the site. <a class="alert-link" href="preferences/subscription">UPGRADE NOW</a>
                     </div>
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                   <?php }?>
-				  <?php if($this->session->userdata('membership') > 0) {?>
+				  <?php if($this->session->userdata('membership') > 1) {?>
                     <div class="alert alert-warning" style="margin-bottom:10px;">
                       This feature is currently unavailable. The marketplace will launch 1st May 2015.
                     </div>
