@@ -588,11 +588,13 @@ class Paypal extends MX_Controller
                 
             }
             
-            
+           redirect('paypal/completed'); 
         }
         elseif($status == 'Refunded'){
             
         }
     }
+    
+    //ssQh6lZtzMtwKt5jXibpGXgLDb3m0_TJu-ITSsUtyiIJT_mXxGkMCiHIOH4
 	
 }
