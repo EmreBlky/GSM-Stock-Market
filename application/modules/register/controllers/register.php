@@ -474,7 +474,7 @@ class Register extends MX_Controller{
                             <tr>
                             <td class="content-block aligncenter">
                             <h3 style="margin-top:0">Your Password is</h3>
-                            <p class="btn-success">'.$mid->unhash_password.'</p>
+                            <p class="btn-success" style="cursor: none !importnat;">'.$mid->unhash_password.'</p>
                             </td>
                             </tr>
                             <tr>

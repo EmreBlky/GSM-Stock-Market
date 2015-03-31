@@ -47,9 +47,89 @@ $CI =& get_instance();
  * 
  */
 $base_url = ltrim($CI->config->item('base_url'), 'http://');
+$baseSSL_url = ltrim($CI->config->item('base_url'), 'https://');
 
 $active_group = 'default';
 $active_record = TRUE;
+
+
+ if($base_url == 'localhost/gsm/gsm-secure/'){
+    
+  //DEVELOPMENT DATABASE:
+  $db['default']['hostname'] = 'localhost';
+  $db['default']['username'] = 'root';
+  $db['default']['password'] = 'Rwt189K72';
+  $db['default']['database'] = 'gsmstock_secure';
+  $db['default']['dbdriver'] = 'mysql';
+  $db['default']['dbprefix'] = '';
+  $db['default']['pconnect'] = TRUE;
+  $db['default']['db_debug'] = TRUE;
+  $db['default']['cache_on'] = FALSE;
+  $db['default']['cachedir'] = '';
+  $db['default']['char_set'] = 'utf8';
+  $db['default']['dbcollat'] = 'utf8_general_ci';
+  $db['default']['swap_pre'] = '';
+  $db['default']['autoinit'] = TRUE;
+  $db['default']['stricton'] = FALSE;
+ } 
+ elseif($base_url == 'localhost/projects/codeigniter/gsm-secure/'){
+     
+    $db['default']['hostname'] = 'localhost';
+    $db['default']['username'] = 'root';
+    $db['default']['password'] = 'People1205';
+    $db['default']['database'] = 'gsmstock_secure';
+    $db['default']['dbdriver'] = 'mysql';
+    $db['default']['dbprefix'] = '';
+    $db['default']['pconnect'] = TRUE;
+    $db['default']['db_debug'] = TRUE;
+    $db['default']['cache_on'] = FALSE;
+    $db['default']['cachedir'] = '';
+    $db['default']['char_set'] = 'utf8';
+    $db['default']['dbcollat'] = 'utf8_general_ci';
+    $db['default']['swap_pre'] = '';
+    $db['default']['autoinit'] = TRUE;
+    $db['default']['stricton'] = FALSE;
+     
+ } 
+ elseif($base_url == 'localhost/secure.gsmstockmarket.com/'){
+    
+    $db['default']['hostname'] = 'localhost';
+    $db['default']['username'] = 'root';
+    $db['default']['password'] = 'root';
+    $db['default']['database'] = 'gsmstock_secure';
+    $db['default']['dbdriver'] = 'mysql';
+    $db['default']['dbprefix'] = '';
+    $db['default']['pconnect'] = TRUE;
+    $db['default']['db_debug'] = TRUE;
+    $db['default']['cache_on'] = FALSE;
+    $db['default']['cachedir'] = '';
+    $db['default']['char_set'] = 'utf8';
+    $db['default']['dbcollat'] = 'utf8_general_ci';
+    $db['default']['swap_pre'] = '';
+    $db['default']['autoinit'] = TRUE;
+    $db['default']['stricton'] = FALSE;
+
+  }
+  elseif($base_url == 'secure-dev.gsmstockmarket.com/'){
+     
+    //LIVE DATABASE:
+    $db['default']['hostname'] = '109.203.125.38';
+    $db['default']['username'] = 'gsmstock_admin';
+    $db['default']['password'] = 'zv.4qAb17ph$;?$PF!';
+    $db['default']['database'] = 'gsmstock_secure';
+    $db['default']['dbdriver'] = 'mysql';
+    $db['default']['dbprefix'] = '';
+    $db['default']['pconnect'] = FALSE;
+    $db['default']['db_debug'] = TRUE;
+    $db['default']['cache_on'] = FALSE;
+    $db['default']['cachedir'] = '';
+    $db['default']['char_set'] = 'utf8';
+    $db['default']['dbcollat'] = 'utf8_general_ci';
+    $db['default']['swap_pre'] = '';
+    $db['default']['autoinit'] = TRUE;
+    $db['default']['stricton'] = FALSE;
+  }
+  elseif($base_url == 'secure.gsmstockmarket.com/'){
      
     //LIVE DATABASE:
     $db['default']['hostname'] = '109.203.125.38';
@@ -67,4 +147,24 @@ $active_record = TRUE;
     $db['default']['swap_pre'] = '';
     $db['default']['autoinit'] = TRUE;
     $db['default']['stricton'] = FALSE;
- 
+  }
+  elseif($baseSSL_url == 'secure.gsmstockmarket.com/'){
+      //echo 5;
+      //exit;
+      //LIVE DATABASE:
+    $db['default']['hostname'] = '109.203.125.38';
+    $db['default']['username'] = 'gsmstock_admin';
+    $db['default']['password'] = 'zv.4qAb17ph$;?$PF!';
+    $db['default']['database'] = 'gsmstock_securelive';
+    $db['default']['dbdriver'] = 'mysql';
+    $db['default']['dbprefix'] = '';
+    $db['default']['pconnect'] = FALSE;
+    $db['default']['db_debug'] = TRUE;
+    $db['default']['cache_on'] = FALSE;
+    $db['default']['cachedir'] = '';
+    $db['default']['char_set'] = 'utf8';
+    $db['default']['dbcollat'] = 'utf8_general_ci';
+    $db['default']['swap_pre'] = '';
+    $db['default']['autoinit'] = TRUE;
+    $db['default']['stricton'] = FALSE;
+  }
