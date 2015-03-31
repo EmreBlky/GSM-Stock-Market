@@ -208,7 +208,7 @@ function country($name)
             if($viewed_count > 0){
                 foreach ($viewed as $view) {
                     
-                    if($view->viewer_id != $this->session->userdata('members_id')){
+                    if($view->viewer_id != $this->session->userdata('members_id') || $view->viewer_id != 5){
                     
             ?>
             

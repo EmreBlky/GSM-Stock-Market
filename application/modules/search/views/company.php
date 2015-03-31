@@ -158,6 +158,8 @@
 
     <?php if ($total_results > 0) {
     foreach ($results as $result) {
+        
+        if($result->id != 5){
     ?>
     <div class="row">
 
@@ -290,6 +292,7 @@
     </div>
 
 </div>
+        <?php } ?>    
 <?php
 echo $pagination;
 }

@@ -27,6 +27,9 @@ class Member extends MX_Controller
 
     function index()
     {
+        if($this->session->userdata('members_id') != 5){
+            redirect('home/');
+        }
         $data['main'] = 'member';        
         $data['title'] = 'GSM - Home';        
         $data['page'] = 'index';
