@@ -1109,7 +1109,6 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                                     $data = array(
                                         'name' => 'website',
                                         'class' => 'form-control',
-                                        'type' => 'url',
                                         'value' => $company->website,
                                     );
 
@@ -1119,7 +1118,6 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                                     $data = array(
                                         'name' => 'website',
                                         'class' => 'form-control',
-                                        'type' => 'url',
                                         'value' => $this->input->post('website')
                                     );
 

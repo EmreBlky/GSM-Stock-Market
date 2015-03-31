@@ -62,7 +62,7 @@ $this->load->model('membership/membership_model', 'membership_model');
                                         <?php }?>
                             		</div>                                
                                         
-                                    <dl class="dl-horizontal full-width">
+                                    <dl class="dl-horizontal full-width" style="margin-top:20px">
                                         <dt>Company Number:</dt> 
                                         <dd><?php echo $member_company->company_number;?></dd>
                                         <dt>VAT/Tax Number:</dt> 
@@ -99,7 +99,7 @@ $this->load->model('membership/membership_model', 'membership_model');
                                 <div class="col-lg-6" id="cluster_info">
                                 	
                                     <dl class="dl-horizontal full-width" >
-                                        <div style="margin-top:20px;text-align:center;margin-bottom:41px">
+                                        <div style="margin-top:20px;text-align:center;margin-bottom:61px">
                                         <?php
                     
                                             $this->load->module('feedback');
