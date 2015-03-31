@@ -15,25 +15,8 @@
 |
 */
 
-//SERVER SITE:
-$config['base_url']	= '';
+$config['base_url'] = 'https://secure.gsmstockmarket.com/';
 
-//LIVE SITE:
-//$config['base_url']	= '';
-
-//DEVLOPMENT SITE:
-//$config['base_url']	= 'http://localhost/gsm/gsm-secure/';
-
-$base_url = $_SERVER['HTTP_HOST'].$_SERVER["REQUEST_URI"];
-
-if($base_url == 'http://secure.gsmstockmarket.com/')
-{
-	$config['base_url'] = 'https://secure.gsmstockmarket.com/';
-}
-elseif($base_url == 'https://secure.gsmstockmarket.com/'){
-    
-        $config['base_url'] = 'https://secure.gsmstockmarket.com/';
-}
 
 
 /*
