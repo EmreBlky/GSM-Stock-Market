@@ -10,7 +10,7 @@ $CI =& get_instance();
   | page of the User Guide.
   |
   | -------------------------------------------------------------------
-  | EXPLANATION OF VARIABLES
+  | EXPLANATION OF VARIABLES 
   | -------------------------------------------------------------------
   |
   |	['hostname'] The hostname of your database server.
