@@ -1,7 +1,7 @@
 <!-- <iframe src="http://imei.gsmstockmarket.com" height="1750px" width="100%"></iframe> -->
             <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-12">
-                    <h2>Access Denied</h2>
+                    <h2>IMEI Services</h2>
                     <ol class="breadcrumb">
                         <li>
                             <a href="/">Home</a>
@@ -16,31 +16,9 @@
             
             <div class="col-lg-12">
                 <div class="wrapper wrapper-content animated fadeInRight">
-				  <?php if($this->session->userdata('membership') < 2) {?>
                     <div class="alert alert-warning" style="margin-bottom:10px;">
-                      This feature is currently unavailable. The IMEI services will launch soon
+                      <p>This feature is currently unavailable. The IMEI services will launch soon</p>
                     </div>
-                    <div class="ibox-content p-xl" style="margin-bottom:50px">
-                    	<div class="row">
-                        	<h1 style="text-align:center;margin-bottom:20px">IMEI phone checking launch coming soon!</h1>
-                              <div class="col-md-12 nopadding">
-                                <div class="col-md-7 nopadding">
-                                <h1>SPECIAL OFFER - SAVE £500</h1>
-                                <h2>Upgrade to Silver now for only £1295 per year</h2>
-                                <p class="small">Offer until 31st April 2015. Normal price £1795</p>
-                                </div>
-                              </div>
-                            <div class="col-md-12" style="text-align:center">
-                			<a href="preferences/subscription" class="btn btn-primary navbar-btn" style="font-size:36px;margin-top:40px">Upgrade Today!</a>
-                            </div>
-                        </div>
-                    </div>
-                  <?php }?>
-				  <?php if($this->session->userdata('membership') > 1) {?>
-                    <div class="alert alert-warning" style="margin-bottom:10px;">
-                      This feature is currently unavailable. The IMEI services will launch soon
-                    </div>
-                  <?php }?>
                     
                 </div>
             </div>
