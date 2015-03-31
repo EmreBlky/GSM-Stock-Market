@@ -19,8 +19,7 @@ if(is_numeric($id)){?>
                     View Company Bio
                 </h2>
                 <div class="mail-tools tooltip-demo m-t-md">                    
-                    <h5>
-                        
+                    <h5>                        
                         <span class="font-noraml">From: </span><?php echo $this->member_model->get_where($company->admin_member_id)->firstname.' '.$this->member_model->get_where($company->admin_member_id)->lastname.' ('.$this->company_model->get_where($this->member_model->get_where($company->admin_member_id)->company_id)->company_name.')'; ?>
                     </h5>
                 </div>
@@ -102,7 +101,7 @@ if(is_numeric($id)){?>
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>There are no feeds for approval. </h5>
+                    <h5>There are no company bio's for approval. </h5>
 
                 </div>
             </div>

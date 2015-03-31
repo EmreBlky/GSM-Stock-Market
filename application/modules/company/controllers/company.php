@@ -54,5 +54,16 @@ class Company extends MX_Controller
         $this->load->module('templates');
         $this->templates->page($data);
     }	
+    
+    function admin_companybio_count()
+    {
+        $count = $this->company_model->_custom_query_count('SELECT COUNT(*) AS count FROM company WHERE company_profile_approval != ""');
+        
+        if($count[0]->count > 0){
+            echo '<span class="label label-warning pull-right">'.$count[0]->count.'</span>';            
+        }
+       
+        
+    }
 	
 }

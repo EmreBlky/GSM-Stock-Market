@@ -1287,14 +1287,25 @@ echo form_open_multipart('profile/profileEdit', $attributes);
 
 
                     <div class="form-group">
-                        <label class="col-md-3 col-md-4 control-label">Company Bio</label>
+                        
+                        <?php if($bio_count > 0) {?>
+                        
+                            <label class="col-md-3 col-md-4 control-label">Company Bio</label>
+                            
+                            <span class="label label-warning">Company Bio awaiting approval.</span>
+                            
+                        <?php } else {?>
+                            
+                            <label class="col-md-3 col-md-4 control-label">Company Bio</label>
 
-                        <div class="col-md-9">
-                            <textarea class="form-control" rows="5" id="companybio"
-                                      name="company_profile"><?php echo $company->company_profile; ?></textarea>
+                            <div class="col-md-9">
+                                <textarea class="form-control" rows="5" id="companybio" name="company_profile"><?php echo strip_tags($company->company_profile); ?></textarea>
 
-                            <div id="charNum"></div>
-                        </div>
+                                <div id="charNum"></div>
+                            </div>
+                            
+                        <?php }?>
+                        
                     </div>
 
                 </div>

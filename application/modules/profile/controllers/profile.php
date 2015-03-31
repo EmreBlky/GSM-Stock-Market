@@ -224,6 +224,15 @@ class Profile extends MX_Controller
 
         $data['member'] = $this->member_model->get_where($this->session->userdata('members_id'));
         $data['company'] = $this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id);
+        
+        $count = $this->company_model->_custom_query_count('SELECT COUNT(*) AS count FROM company WHERE admin_member_id = "'.$this->session->userdata('members_id').'" AND company_profile_approval != ""');
+        
+        if($count[0]->count > 0){
+            $data['bio_count'] = $count[0]->count;
+        }
+        else{
+            $data['bio_count'] = 0;
+        }
 
 //        echo "<pre>";
 //        print_r($data['company']);

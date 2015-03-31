@@ -152,12 +152,117 @@ class Admin extends MX_Controller
         $this->load->module('templates');
         $this->templates->admin($data);
     }
+    
+    function bioUpdate($id)
+    {
+        $var = 'company';
+        $var_model = $var.'_model';
+        
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        $mem = $this->{$var_model}->get_where($id)->admin_member_id;
+        //echo $mem;
+        //exit;
+        $data = array(
+                    'company_profile_approval'      => '',
+                    'company_profile'               => nl2br($this->input->post('content'))
+                  );
+        $this->{$var_model}->_update($id, $data);
+        
+        $var1 = 'mailbox';
+        $var1_model = $var1.'_model';
+        
+        $this->load->model(''.$var1.'/'.$var1.'_model', ''.$var1.'_model');
+        
+         $data = array(
+                                    'member_id'         => 5,
+                                    'sent_member_id'    => $mem,
+                                    'subject'           => 'Company Bio Approved',
+                                    'body'              => 'Your company bio has been approved',
+                                    'inbox'             => 'yes',
+                                    'sent'              => 'yes',
+                                    'date'              => date('d-m-Y'),
+                                    'time'              => date('H:i'),
+                                    'sent_from'         => 'support',
+                                    'datetime'          => date('Y-m-d H:i:s')
+                                  ); 
+        $this->{$var1_model}->_insert($data);
+        
+        redirect('admin/company_bio/');
+    }
 
-    function bioApprove()
-    {}
+    function bioApprove($id)
+    {
+        $var = 'company';
+        $var_model = $var.'_model';
+        
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        $mem = $this->{$var_model}->get_where($id)->admin_member_id;
+        $profile = $this->{$var_model}->get_where($id)->company_profile_approval;
+        
+        $data = array(
+                    'company_profile_approval'      => '',
+                    'company_profile'               => nl2br($profile)
+                  );
+        $this->{$var_model}->_update($id, $data);
+        
+        $var1 = 'mailbox';
+        $var1_model = $var1.'_model';
+        
+        $this->load->model(''.$var1.'/'.$var1.'_model', ''.$var1.'_model');
+        
+         $data = array(
+                                    'member_id'         => 5,
+                                    'sent_member_id'    => $mem,
+                                    'subject'           => 'Company Bio Approved',
+                                    'body'              => 'Your company bio has been approved',
+                                    'inbox'             => 'yes',
+                                    'sent'              => 'yes',
+                                    'date'              => date('d-m-Y'),
+                                    'time'              => date('H:i'),
+                                    'sent_from'         => 'support',
+                                    'datetime'          => date('Y-m-d H:i:s')
+                                  ); 
+        $this->{$var1_model}->_insert($data);
+        
+        redirect('admin/company_bio/');
+        
+    }
 
-    function bioDecline()
-    {}
+    function bioDecline($id)
+    {
+        $var = 'company';
+        $var_model = $var.'_model';
+        
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        $mem = $this->{$var_model}->get_where($id)->admin_member_id;
+        
+        $data = array(
+                    'company_profile_approval'      => '',
+                    'company_profile'               => ''
+                  );
+        $this->{$var_model}->_update($id, $data);
+        
+        $var1 = 'mailbox';
+        $var1_model = $var1.'_model';
+        
+        $this->load->model(''.$var1.'/'.$var1.'_model', ''.$var1.'_model');
+        
+         $data = array(
+                                    'member_id'         => 5,
+                                    'sent_member_id'    => $mem,
+                                    'subject'           => 'Company Bio Declined',
+                                    'body'              => 'Your company bio has been declined. Please update you information.',
+                                    'inbox'             => 'yes',
+                                    'sent'              => 'yes',
+                                    'date'              => date('d-m-Y'),
+                                    'time'              => date('H:i'),
+                                    'sent_from'         => 'support',
+                                    'datetime'          => date('Y-m-d H:i:s')
+                                  ); 
+        $this->{$var1_model}->_insert($data);
+        
+        redirect('admin/company_bio/');
+    }
     
     function feed($id = NULL)
     {
