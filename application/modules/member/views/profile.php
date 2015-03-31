@@ -523,8 +523,8 @@
                 <div class="wrapper wrapper-content project-manager">
                     <h2>Company User</h2>
                     	<div class="m-r-md" style="text-align:center;margin-top:20px;margin-bottom:20px;">
-                                                <?php if(file_exists("public/main/template/gsm/images/members/".$member_info->id.".jpg")){?>
-                                                    <img alt="image" class="img-circle" style="width:30%" src="<?php echo $base; ?>public/main/template/gsm/images/members/<?php echo $member_info->id; ?>.jpg">
+                                                <?php if(file_exists("public/main/template/gsm/images/members/".$member_info->id.".png")){?>
+                                                    <img alt="image" class="img-circle" style="width:30%" src="<?php echo $base; ?>public/main/template/gsm/images/members/<?php echo $member_info->id; ?>.png">
                                                 <?php } else {?>
                                                     <img alt="image" class="img-circle" style="width:30%" src="<?php echo $base; ?>public/main/template/gsm/images/members/no_profile.jpg">
                                                 <?php }?>  
