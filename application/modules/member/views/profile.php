@@ -232,7 +232,7 @@
                                     
                                     
                                     <dl class="dl-horizontal full-width" >
-                                        <div style="margin-top:20px;text-align:center;margin-bottom:61px">
+                                        <div style="margin-top:40px;text-align:center;margin-bottom:41px">
                                         <?php
                     
                                             $this->load->module('feedback');

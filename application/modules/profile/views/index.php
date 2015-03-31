@@ -99,7 +99,7 @@ $this->load->model('membership/membership_model', 'membership_model');
                                 <div class="col-lg-6" id="cluster_info">
                                 	
                                     <dl class="dl-horizontal full-width" >
-                                        <div style="margin-top:20px;text-align:center;margin-bottom:61px">
+                                        <div style="margin-top:40px;text-align:center;margin-bottom:41px">
                                         <?php
                     
                                             $this->load->module('feedback');
@@ -346,8 +346,6 @@ $this->load->model('membership/membership_model', 'membership_model');
                                         <dd> <?php echo $member_info->role?></dd>
                                         <dt>Mobile Number:</dt> 
                                         <dd> <?php echo $member_info->mobile_number?></dd>
-                                        <dt>Phone Number:</dt>
-                                        <dd> <?php echo $member_info->phone_number?></dd>
                                     </dl>  
                                     
                     
