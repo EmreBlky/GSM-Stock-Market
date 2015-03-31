@@ -496,9 +496,10 @@ class Paypal extends MX_Controller
 
                 $this->email->send();
                 //echo $this->email->print_debugger();
+                redirect('paypal/completed');
             }
             
-            redirect('paypal/completed');
+            
             
         }
         elseif($status == 'Pending'){
