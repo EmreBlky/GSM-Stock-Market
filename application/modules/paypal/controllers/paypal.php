@@ -40,7 +40,7 @@ class Paypal extends MX_Controller
 //        }
         elseif($product == 'silver'){
             $description = "GSMStockmarket - Silver Membership Fee";
-            $amount = 1;
+            $amount = 1295;
             $quantity = 1;
         }
         
@@ -462,12 +462,15 @@ class Paypal extends MX_Controller
                                                         </tr>
                                                         <tr>
                                                             <td class="content-block">
-                                                                <h3>You have now become a Silver Member!</h3>
+                                                                <h3>Silver Membership Activated!</h3>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td class="content-block">
-                                                            <p>Something something.</p>
+                                                            <p>Thank you for upgrading to Silver Membership on GSM Stock Market.</p>
+                                                            <p>The marketplace goes live on May 1st at 10am GMT.</p>
+                                                            <p>You have access now so please update your profile description and logos ready for the big launch.</p>
+                                                            <p>In the meantime if you have any questions or queries please do not hesitate to contact us using the platform ticket system within your account or by phone on +44 (0)1494 717236</p>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -488,7 +491,7 @@ class Paypal extends MX_Controller
                 
                 $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket');
 
-                $list = array('tim@gsmstockmarket.com');
+                $list = array('tim@gsmstockmarket.com', 'info@gsmstockmarket.com');
                 $this->email->to($this->member_model->get_where($trans_id)->email);
                 $this->email->bcc($list);
                 $this->email->subject('Your Account has been upgraded');
