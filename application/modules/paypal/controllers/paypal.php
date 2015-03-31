@@ -40,7 +40,7 @@ class Paypal extends MX_Controller
 //        }
         elseif($product == 'silver'){
             $description = "GSMStockmarket - Silver Membership Fee";
-            $amount = 1295;
+            $amount = 1;
             $quantity = 1;
         }
         
