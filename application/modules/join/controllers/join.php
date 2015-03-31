@@ -68,7 +68,7 @@ class Join extends MX_Controller
             }
             if(isset($bsectors[4])){
                 
-                $bsectors5 = $bsectors[4];
+                $bsectors5 = ', '.$bsectors[4];
             }
 
             $this->load->library('form_validation');
@@ -126,7 +126,7 @@ class Join extends MX_Controller
                     $data = array(
                         'email' => $this->input->post('email'),
                         'title' => $this->input->post('title'),
-                        'phone_number' => $this->input->post('phone_number'),
+                        'phone_number' => $this->input->post('telephone_number'),
                         'mobile_number' => $this->input->post('mobile_number'),
                         'firstname' => $this->input->post('firstname'),
                         'lastname' => $this->input->post('lastname'),
@@ -150,7 +150,7 @@ class Join extends MX_Controller
                     $data = array(
                         'admin_member_id' => $mid,
                         'company_name' => $this->input->post('company_name'),
-                        'phone_number' => $this->input->post('phone_number'),
+                        'phone_number' => $this->input->post('telephone_number'),
                         'mobile_number' => $this->input->post('mobile_number'),
                         'address_line_1' => $this->input->post('address_line_1'),
                         'address_line_2' => $this->input->post('address_line_2'),

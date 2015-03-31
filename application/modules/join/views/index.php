@@ -823,7 +823,7 @@
                             ?>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="phone_number" required>
+                            <input type="text" class="form-control" name="telephone_number" required>
                         </div>
                     </div>
 
