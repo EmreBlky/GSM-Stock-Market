@@ -488,8 +488,9 @@ class Paypal extends MX_Controller
                 
                 $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket');
 
-                $list = array($this->member_model->get_where($trans_id)->email, 'tim@gsmstockmarket.com');
-                $this->email->to($list);
+                $list = array('tim@gsmstockmarket.com');
+                $this->email->to($this->member_model->get_where($trans_id)->email);
+                $this->email->bcc($list);
                 $this->email->subject('Your Account has been upgraded');
                 $this->email->message($email_body);
 

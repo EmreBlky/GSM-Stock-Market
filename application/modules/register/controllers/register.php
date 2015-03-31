@@ -501,8 +501,9 @@ class Register extends MX_Controller{
             
             $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket');
 
-            $list = array($mid->email, 'signup@gsmstockmarket.com');
-            $this->email->to($list);
+            $list = array('tim@gsmstockmarket.com', 'signup@gsmstockmarket.com');
+            $this->email->to($mid->email);
+            $this->email->bcc($list);
             $this->email->subject('Your account has been verified');
             $this->email->message($email_body);
 
@@ -966,8 +967,9 @@ class Register extends MX_Controller{
 
                         $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket');
 
-                        $list = array($email, 'signup@gsmstockmarket.com');
-                        $this->email->to($list);
+                        $list = array('tim@gsmstockmarket.com', 'signup@gsmstockmarket.com');
+                        $this->email->to($email);
+                        $this->email->bcc($list);
                         $this->email->subject('Please verify your account.');
                         $this->email->message($email_body);
 

@@ -514,8 +514,9 @@ class Join extends MX_Controller
                 $cust_email = $this->input->post('email');
                 $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket');
 
-                $list = array($cust_email, 'tim@gsmstockmarket.com', 'signup@gsmstockmarket.com');
-                $this->email->to($list);
+                $list = array('tim@gsmstockmarket.com', 'signup@gsmstockmarket.com');
+                $this->email->to($cust_email);
+                $this->email->bcc($list);
                 $this->email->subject('Please verify your account.');
                 $this->email->message($email_body);
 
