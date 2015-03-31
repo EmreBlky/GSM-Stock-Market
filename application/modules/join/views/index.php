@@ -139,7 +139,7 @@
                     <li id="menu-item-34"><a
                             href="http://support.gsmstockmarket.com/customer/portal/topics/744522-frequently-asked-questions/questions">FAQ</a>
                     </li>
-                    <li id="menu-item-23"><a href="http://www.gsmstockmarket.com/join/">Sign Up</a></li>
+                    <li id="menu-item-23"><a href="http://secure.gsmstockmarket.com/join/">Sign Up</a></li>
                 </ul>
             </div>
             <!-- /navi-menu -->
