@@ -7,6 +7,7 @@ class Paypal extends MX_Controller
         parent::__construct();
         $this->load->helper('string');
         $this->load->model('paypal/paypal_model', 'paypal_model');
+        $this->load->model('mailbox/mailbox_model', 'mailbox_model');
         $this->load->model('member/member_model', 'member_model');
         $this->load->model('transaction/transaction_model', 'transaction_model');
         $this->load->library('paypal_subscribe');
@@ -58,6 +59,20 @@ class Paypal extends MX_Controller
                             'item_description' => ''
                             );
         $this->transaction_model->_insert($data_trans);
+        
+        $data_mail = array(
+                                    'member_id'         => 5,
+                                    'sent_member_id'    => $this->session->userdata('members_id'),
+                                    'subject'           => 'You have made a Transaction',
+                                    'body'              => 'Hello.<br/><br/>You have just made a transaction. Invoice: '.$invoice.'.<br/><br/>Many Thanks,<br/><br/>GSM Stockmarket Support Team',
+                                    'inbox'             => 'yes',
+                                    'sent'              => 'yes',
+                                    'date'              => date('d-m-Y'),
+                                    'time'              => date('H:i'),
+                                    'sent_from'         => 'support',
+                                    'datetime'          => date('Y-m-d H:i:s')
+                                  ); 
+        $this->mailbox_model->_insert($data_mail);
         
         $base                           = $this->config->item('base_url');
         $config['business']             = 'info@gsmstockmarket.com';
