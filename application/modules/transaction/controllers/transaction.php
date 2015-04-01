@@ -11,6 +11,7 @@ class Transaction extends MX_Controller
 //        }
         $this->load->model('activity/activity_model', 'activity_model');
         $this->load->model('member/member_model', 'member_model');
+        $this->load->model('mailboxr/mailbox_model', 'mailbox_model');
         $this->load->model('country/country_model', 'country_model');
         $this->load->model('company/company_model', 'company_model');
         $this->load->model('membership/membership_model', 'membership_model');
