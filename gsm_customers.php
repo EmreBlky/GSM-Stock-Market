@@ -59,6 +59,5 @@ $data . "\n\n" .
 "--{$mime_boundary}--\n";
 
 mail($email_to,$email_subject,$email_message,$headers);
-//header('location: https://www.theoutdoorshop.com/cron_google/cron_email.php');
 
 ?>
