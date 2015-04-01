@@ -10,6 +10,10 @@ class Selling extends MX_Controller
             redirect('login');
         }
         
+    }
+
+    function index()
+    {
         $this->load->model('activity/activity_model', 'activity_model');
         
         $data_activity = array(
@@ -18,10 +22,7 @@ class Selling extends MX_Controller
                                 'date' => date('d-m-Y')
                                 );
         $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
-    }
-
-    function index()
-    {
+        
         $data['main'] = 'selling';
 	$data['title'] = 'selling';
         $data['page'] = 'index';

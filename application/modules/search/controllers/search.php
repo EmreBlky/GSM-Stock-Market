@@ -7,14 +7,7 @@ class Search extends MX_Controller
         parent::__construct();
         if (!$this->session->userdata('logged_in')) {
             redirect('login');
-        }
-        
-        $data_activity = array(
-                                'activity' => 'Search',
-                                'time' => date('H:i:s'),
-                                'date' => date('d-m-Y')
-                                );
-        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
+        }        
 
         $this->load->model('search_model');
     }

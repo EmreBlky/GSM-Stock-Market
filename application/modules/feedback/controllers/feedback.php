@@ -10,12 +10,6 @@ class Feedback extends MX_Controller
             redirect('login');
         }
         
-        $data_activity = array(
-                                'activity' => 'Feedback',
-                                'time' => date('H:i:s'),
-                                'date' => date('d-m-Y')
-                                );
-        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
         $this->load->model('feedback/feedback_model', 'feedback_model');
         $this->load->model('member/member_model', 'member_model');
         $this->load->model('company/company_model', 'company_model');
@@ -23,6 +17,14 @@ class Feedback extends MX_Controller
 
     function index()
     {
+        $this->load->model('activity/activity_model', 'activity_model');
+        $data_activity = array(
+                                'activity' => 'Feedback',
+                                'time' => date('H:i:s'),
+                                'date' => date('d-m-Y')
+                                );
+        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
+        
         $data['main'] = 'feedback';
 	$data['title'] = 'feedback';
         $data['page'] = 'index';

@@ -319,7 +319,7 @@
 
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel Order</button>
-                                            <a href="#" class="btn btn-primary">Confirm Purchase</a>
+                                            <a href="<?php echo $base?>transaction/banktransfer_gbp/<?php echo $invoice; ?>/silver" class="btn btn-primary">Confirm Purchase</a>
                                         </div>
                                     </div>
                                 </div>

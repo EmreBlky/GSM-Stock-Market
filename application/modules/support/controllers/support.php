@@ -11,14 +11,8 @@ class Support extends MX_Controller
         }
         
         $this->load->model('activity/activity_model', 'activity_model');
-        $this->load->model('member/member_model', 'member_model');
+        $this->load->model('member/member_model', 'member_model');        
         
-        $data_activity = array(
-                                'activity' => 'Support',
-                                'time' => date('H:i:s'),
-                                'date' => date('d-m-Y')
-                                );
-        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
     }
 
     function index()
@@ -33,6 +27,13 @@ class Support extends MX_Controller
     
     function faq()
     {
+        $data_activity = array(
+                                'activity' => 'Support: FAQ',
+                                'time' => date('H:i:s'),
+                                'date' => date('d-m-Y')
+                                );
+        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
+        
         $data['main'] = 'support';        
         $data['title'] = 'GSM - FAQ';        
         $data['page'] = 'faq';
@@ -43,6 +44,13 @@ class Support extends MX_Controller
     
     function submit_ticket()
     {
+        $data_activity = array(
+                                'activity' => 'Support: Submit Ticket',
+                                'time' => date('H:i:s'),
+                                'date' => date('d-m-Y')
+                                );
+        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
+        
         $data['main'] = 'support';        
         $data['title'] = 'GSM - Submit A Ticket';        
         $data['page'] = 'submit-ticket';

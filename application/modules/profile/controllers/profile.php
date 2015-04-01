@@ -16,13 +16,7 @@ class Profile extends MX_Controller
         $this->load->model('country/country_model', 'country_model');
         $this->load->model('login/login_model', 'login_model');
         $this->load->model('activity/activity_model', 'activity_model');
-
-        $data_activity = array(
-            'activity' => 'Profile',
-            'time' => date('H:i:s'),
-            'date' => date('d-m-Y')
-        );
-        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
+        
     }
 
     function index()
@@ -71,8 +65,15 @@ class Profile extends MX_Controller
 //        $blocked = $this->block_model->get_where_multiples('block_member_id', $this->session->userdata('members_id'));
 //        
 //        echo '<pre>';
-//        print_r($blocked);
+//        prin
+//        t_r($blocked);
 //        exit;
+        $data_activity = array(
+            'activity' => 'Whos Viewed',
+            'time' => date('H:i:s'),
+            'date' => date('d-m-Y')
+        );
+        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
 
         $this->load->library('pagination');
         $data['base'] = $this->config->item('base_url');
@@ -139,6 +140,14 @@ class Profile extends MX_Controller
 
     function viewed_profile()
     {
+        
+        $data_activity = array(
+            'activity' => 'View Profile',
+            'time' => date('H:i:s'),
+            'date' => date('d-m-Y')
+        );
+        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
+        
         $data['main'] = 'profile';
         $data['title'] = 'GSM - Viewed Profiles';
         $data['page'] = 'view-profile';
@@ -220,6 +229,13 @@ class Profile extends MX_Controller
 
     function edit_profile()
     {
+        $data_activity = array(
+            'activity' => 'Edit Profile',
+            'time' => date('H:i:s'),
+            'date' => date('d-m-Y')
+        );
+        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
+        
         $this->load->model('member/member_model', 'member_model');
 
 

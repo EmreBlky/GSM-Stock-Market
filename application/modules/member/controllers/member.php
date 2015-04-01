@@ -16,14 +16,7 @@ class Member extends MX_Controller
         $this->load->model('country/country_model', 'country_model');
         $this->load->model('viewed/viewed_model', 'viewed_model');
         
-        $this->load->model('activity/activity_model', 'activity_model');
         
-        $data_activity = array(
-                                'activity' => 'Member',
-                                'time' => date('H:i:s'),
-                                'date' => date('d-m-Y')
-                                );
-        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
     }
 
     function index()

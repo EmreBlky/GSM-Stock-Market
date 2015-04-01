@@ -10,7 +10,6 @@ class Addressbook extends MX_Controller
             redirect('login');
         }
         $this->load->model('addressbook/addressbook_model', 'addressbook_model');
-        $this->load->model('activity/activity_model', 'activity_model');
         $this->load->model('block/block_model', 'block_model');
         $this->load->model('country/country_model', 'country_model');
         $this->load->model('login/login_model', 'login_model');
@@ -18,17 +17,18 @@ class Addressbook extends MX_Controller
         $this->load->model('member/member_model', 'member_model');
         $this->load->model('company/company_model', 'company_model');
         
+        
+    }
+
+    function index($page = NULL, $off = NULL)
+    {
+        $this->load->model('activity/activity_model', 'activity_model');
         $data_activity = array(
                                 'activity' => 'Address Book',
                                 'time' => date('H:i:s'),
                                 'date' => date('d-m-Y')
                                 );
         $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
-    }
-
-    function index($page = NULL, $off = NULL)
-    {
-        
         
         $this->load->library('pagination');
         $data['main'] = 'addressbook';

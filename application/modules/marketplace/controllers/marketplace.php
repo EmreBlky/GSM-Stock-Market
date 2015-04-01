@@ -12,17 +12,20 @@ class Marketplace extends MX_Controller
         if($this->session->userdata('membership') < 2) {
             redirect('preferences/notice');
         }
+        
+         $this->load->model('marketplace_model'); 
+    }
+
+    function index()
+    {
+        $this->load->model('activity/activity_model', 'activity_model');
         $data_activity = array(
                                 'activity' => 'Market Place',
                                 'time' => date('H:i:s'),
                                 'date' => date('d-m-Y')
                                 );
         $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
-         $this->load->model('marketplace_model'); 
-    }
-
-    function index()
-    {
+        
         $data['main'] = 'marketplace';        
         $data['title'] = 'GSM - Market Place';        
         $data['page'] = 'index';
