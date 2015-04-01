@@ -9,6 +9,7 @@ class Home extends MX_Controller
             redirect('login');
         }
         
+        $this->load->model('activity/activity_model', 'activity_model');
         $data_activity = array(
                                 'activity' => 'Home',
                                 'time' => date('H:i:s'),
