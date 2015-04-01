@@ -334,7 +334,9 @@ class Profile extends MX_Controller
             $data = array(
                 'email' => $this->input->post('email'),
                 'title' => $this->input->post('title'),
-                'phone_number' => $this->input->post('phone_number'),
+                'dial_phone' => $this->input->post('phone_number'),
+                'phone_number' => $this->input->post('telephone_number'),
+                'dial_mobile' => $this->input->post('phone_number'),
                 'mobile_number' => $this->input->post('mobile_number'),
                 'firstname' => $this->input->post('firstname'),
                 'lastname' => $this->input->post('lastname'),
@@ -352,7 +354,9 @@ class Profile extends MX_Controller
 
             $data = array(
                 'company_name' => $this->input->post('company_name'),
-                'phone_number' => $this->input->post('phone_number'),
+                'dial_phone' => $this->input->post('phone_number'),
+                'phone_number' => $this->input->post('telephone_number'),
+                'dial_mobile' => $this->input->post('phone_number'),
                 'mobile_number' => $this->input->post('mobile_number'),
                 'address_line_1' => $this->input->post('address_line_1'),
                 'address_line_2' => $this->input->post('address_line_2'),

@@ -126,7 +126,9 @@ class Join extends MX_Controller
                     $data = array(
                         'email' => $this->input->post('email'),
                         'title' => $this->input->post('title'),
+                        'dial_phone' => $this->input->post('phone_number'),
                         'phone_number' => $this->input->post('telephone_number'),
+                        'dial_mobile' => $this->input->post('phone_number'),
                         'mobile_number' => $this->input->post('mobile_number'),
                         'firstname' => $this->input->post('firstname'),
                         'lastname' => $this->input->post('lastname'),
@@ -150,7 +152,9 @@ class Join extends MX_Controller
                     $data = array(
                         'admin_member_id' => $mid,
                         'company_name' => $this->input->post('company_name'),
+                        'dial_phone' => $this->input->post('phone_number'),
                         'phone_number' => $this->input->post('telephone_number'),
+                        'dial_mobile' => $this->input->post('phone_number'),
                         'mobile_number' => $this->input->post('mobile_number'),
                         'address_line_1' => $this->input->post('address_line_1'),
                         'address_line_2' => $this->input->post('address_line_2'),

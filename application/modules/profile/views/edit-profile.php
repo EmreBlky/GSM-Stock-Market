@@ -880,7 +880,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                             if ($company->phone_number) {
 
                                 $data = array(
-                                    'name' => 'phone_number',
+                                    'name' => 'telephone_number',
                                     'class' => 'form-control',
                                     'value' => $company->phone_number,
                                     'required' => 'required'
@@ -890,9 +890,9 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                             } else {
 
                                 $data = array(
-                                    'name' => 'phone_number',
+                                    'name' => 'telephone_number',
                                     'class' => 'form-control',
-                                    'value' => $this->input->post('phone_number'),
+                                    'value' => $this->input->post('telephone_number'),
                                     'required' => 'required'
                                 );
 
