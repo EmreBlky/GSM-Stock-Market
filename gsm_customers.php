@@ -6,21 +6,21 @@ mysql_select_db('gsmstock_securelive');
 //mysql_connect('localhost', 'root', 'People1205');
 //mysql_select_db('gsmstock_secure');
 
-$qry = mysql_query("SELECT * FROM members") or die (mysql_error());
+$qry = mysql_query("SELECT * FROM members WHERE gsm_check = 'no'") or die (mysql_error());
 $email_message = "";
 $data = "";
 $blank = "";
-$data ="Name,Email Address,Date Added,Address Line 1,Address Line 2,Business Sectors,ClickMobileShop Retail,ClickMobileShop Trade,Company Name,Company Number,Country,County,Facebook,GooglePlus,Group,GSMStockMarket,Language,Linkedin,Phone Number,Please state other business,Postal/Zip Code,Role,Sent First Email,Skype,Town/City,Twitter,VAT/Tax Number,Website\n";
+$data ="Name,Email Address,Date Added,Country,Phone Number,Role,Skype,Website\n";
 
 while($rowMember = mysql_fetch_array($qry)) {
 	
   $qry_company = mysql_query("SELECT * FROM company WHERE admin_member_id = '".$rowMember['id']."'") or die (mysql_error());
   while($rowCompany = mysql_fetch_array($qry_company)) {
 	
-	$data .= $rowMember['firstname'].' '.$rowMember['lastname'].",".$rowMember['email'].",".$rowMember['date'].",".$rowCompany['address_line_1'].",".$rowCompany['address_line_2'].",".$rowCompany['business_sector_1'].'||'.$rowCompany['business_sector_2'].'||'.$rowCompany['business_sector_3'].",".$blank.",".$blank.",".$rowCompany['company_number'].",".$rowCompany['country'].",".$rowCompany['county'].",".$rowMember['facebook'].",".$rowMember['gplus'].",".$blank.",".$blank.",".$rowMember['language'].",".$rowMember['linkedin'].",".$rowMember['mobile_number'].",".$rowMember['phone_number'].",".$blank.",".$rowCompany['post_code'].",".$rowMember['role'].",".$blank.",".$rowMember['skype'].",".$rowCompany['town_city'].",".$rowMember['twitter'].",".$rowCompany['vat_tax'].",".$rowCompany['website']."\n";
+	$data .= $rowMember['firstname'].' '.$rowMember['lastname'].",".$rowMember['email'].",".$rowMember['date'].",".$rowCompany['country'].",".$rowMember['phone_number'].",".$rowMember['role'].",".$rowMember['skype'].",".$rowCompany['website']."\n";
   
   }
-	
+  mysql_query("UPDATE members SET gsm_check = 'yes' WHERE id = '".$rowMember['id']."'") or die (mysql_error());
 }
 
 $file = 'public/main/template/gsm/files/gsm_customers.csv';
