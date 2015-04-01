@@ -116,10 +116,10 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
         
         <div class="row">
             <div class="col-lg-12">
+                        <?php if($address_all){?>
             	<div class="ibox float-e-margins">
                     <div class="ibox-content" style="padding-bottom:15px">
             		<div class="row">
-                        <?php if($address_all){?>
                         <div class="col-lg-2">                            
 <!--                                <label class="checkbox-inline i-checks" style="margin:10px"> -->
                                     <input id="fav_check" type="checkbox" value="yes"> Favourites
@@ -169,14 +169,16 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
 
                             ?>
                         </div>
+                    	</div><!-- row -->
+                    </div><!-- ibox-content -->
+            </div>
+            
                         <?php } else {?> 
                         	<div class="alert alert-danger" style="margin-bottom:0">
                                 You have no contacts in your address book at present. <a class="alert-link" href="search/company">Search for Companies</a> or visit <a class="alert-link" href="profile/who_viewed">Who's Viewed</a> to add to your address book.
                             </div>
                         <?php } ?>
-                    	</div><!-- row -->
-                    </div><!-- ibox-content -->
-            </div></div>
+            </div>
         </div><!-- row end --> 
         <div id="results"></div>
         <div class="row original">

@@ -194,7 +194,7 @@
                                         <?php }?>
                             		</div>                                        
                                         
-                                    <dl class="dl-horizontal full-width">
+                                    <dl class="dl-horizontal full-width" style="margin-top:20px">
                                         <dt>Company Number:</dt> 
                                         <dd><?php echo $member_company->company_number;?></dd>
                                         <dt>VAT/Tax Number:</dt> 
@@ -232,7 +232,7 @@
                                     
                                     
                                     <dl class="dl-horizontal full-width" >
-                                        <div style="margin-top:20px;text-align:center;margin-bottom:41px">
+                                        <div style="margin-top:40px;text-align:center;margin-bottom:41px">
                                         <?php
                     
                                             $this->load->module('feedback');

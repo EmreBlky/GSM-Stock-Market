@@ -8,7 +8,7 @@
 <div class="wrapper wrapper-content">
     <?php if($this->session->userdata('membership') < 2) {?>
     <div class="alert alert-danger" style="margin-bottom:10px;">
-        Upgrade your account to <a class="alert-link" href="preferences/subscription">Silver</a> to access the full features on the site.
+        Upgrade your account to <a class="alert-link" href="preferences/subscription">Silver</a> to access the full features on the site. <a class="alert-link" href="preferences/subscription">UPGRADE NOW</a>
     </div>
     <?php }?>
         <div class="row">

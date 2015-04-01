@@ -4,8 +4,8 @@
 			<a href="mailbox/inbox/all/<?php echo $inbox->id; ?>" class="message_alert">
             <li>
                 <div class="dropdown-messages-box">
-                        <?php if(file_exists("public/main/template/gsm/images/members/".$inbox->member_id.".jpg")){?>
-                            <img alt="image" class="img-circle pull-left message_alert" src="<?php echo $base; ?>public/main/template/gsm/images/members/<?php echo $inbox->member_id; ?>.jpg" height="128" width="128">
+                        <?php if(file_exists("public/main/template/gsm/images/members/".$inbox->member_id.".png")){?>
+                            <img alt="image" class="img-circle pull-left message_alert" src="<?php echo $base; ?>public/main/template/gsm/images/members/<?php echo $inbox->member_id; ?>.png" height="128" width="128">
                         <?php } else {?>
                             <img alt="image" class="img-circle pull-left message_alert" src="<?php echo $base; ?>public/main/template/gsm/images/members/no_profile.jpg" height="128" width="128">
                         <?php }?>
