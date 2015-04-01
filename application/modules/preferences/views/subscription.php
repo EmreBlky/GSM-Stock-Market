@@ -308,9 +308,13 @@
                                             <small class="font-bold">Upgrade your GSMStockMarket.com account to Silver membership</small>
                                         </div>
                                         <div class="modal-body">
-                                            <p><strong>Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
-                                                printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
-                                                remaining essentially unchanged.</p>
+                                            <p>You have selected <strong>Bank Transfer</strong> as your form of payment.</p>
+											<p>Once you click confirm purchase our system will send an email proforma invoice to your accounts email address with instructions on how to send your payment.<p/>
+                                            <p>If you would like a printer friendly invoice you will be able to view and print the proforma invoice from within your account by going to <strong>Preferences > My Subscription</strong> and viewing the subscription history tab.</p>
+                                            <h4 style="color:red;margin-top:20px">IMPORTANT!</h5>
+                                            <p>- Make sure your payment is sent in the correct sum in &pound; (GBP)</p>
+                                            <p>- Add the invoice number as reference to your payment to avoid delays</p>
+                                            <p style="margin-top:20px">Once payment is received you will be emailed your upgrade confirmation and full access to your account will be instant.</p>
                                         </div>
 
                                         <div class="modal-footer">
