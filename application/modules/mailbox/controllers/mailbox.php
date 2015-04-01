@@ -11,6 +11,7 @@ class Mailbox extends MX_Controller
         }
         $this->load->model('mailbox/mailbox_model', 'mailbox_model');
         $this->load->model('member/member_model', 'member_model');
+        $this->load->model('activity/activity_model', 'activity_model');
         $this->load->library('pagination');
         
         
@@ -19,13 +20,6 @@ class Mailbox extends MX_Controller
 
     function index()
     {
-        $this->load->model('activity/activity_model', 'activity_model');
-        $data_activity = array(
-                                'activity' => 'Mailbox',
-                                'time' => date('H:i:s'),
-                                'date' => date('d-m-Y')
-                                );
-        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
         
         $data['main'] = 'mailbox';        
         $data['title'] = 'GSM - Mailbox';        
@@ -37,6 +31,12 @@ class Mailbox extends MX_Controller
     
     function inbox($from = NULL, $mid = NULL, $off = NULL)
     {
+        $data_activity = array(
+                                'activity' => 'Mailbox: Inbox',
+                                'time' => date('H:i:s'),
+                                'date' => date('d-m-Y')
+                                );
+        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
         
         $config['base_url'] = $this->config->item('base_url').'mailbox/inbox/'.$from.'/page';
         $config['uri_segment'] = 2;
@@ -356,7 +356,13 @@ class Mailbox extends MX_Controller
     }
     
     function reply($oid, $mid = NULL)
-    { 
+    {
+        $data_activity = array(
+                                'activity' => 'Mailbox: Reply',
+                                'time' => date('H:i:s'),
+                                'date' => date('d-m-Y')
+                                );
+        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
 //        if(){
 //            redirect('mailbox/inbox', 'refresh')
 //        }
@@ -388,6 +394,12 @@ class Mailbox extends MX_Controller
     
     function sent($mid = NULL, $off = NULL)
     {
+        $data_activity = array(
+                                'activity' => 'Mailbox: Sent',
+                                'time' => date('H:i:s'),
+                                'date' => date('d-m-Y')
+                                );
+        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
         
         if(isset($mid) && $mid != 'page'){
             
@@ -608,6 +620,12 @@ class Mailbox extends MX_Controller
     
     function draft($mid = NULL, $off = NULL)
     {
+        $data_activity = array(
+                                'activity' => 'Mailbox: Draft',
+                                'time' => date('H:i:s'),
+                                'date' => date('d-m-Y')
+                                );
+        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
 //        echo $count = $this->mailbox_model->count_where_multiple('draft', 'yes',  'draft_belong', $this->session->userdata('members_id'));
 //                exit;
         if(isset($mid) && $mid != 'page'){
@@ -725,6 +743,13 @@ class Mailbox extends MX_Controller
     
     function trash($mid = NULL, $off = NULL)
     {
+        $data_activity = array(
+                                'activity' => 'Mailbox: Trash',
+                                'time' => date('H:i:s'),
+                                'date' => date('d-m-Y')
+                                );
+        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
+        
         if(isset($mid) && $mid != 'page'){
             $cid = $this->mailbox_model->get_where($mid)->trash_belong;
             
