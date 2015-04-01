@@ -1,4 +1,12 @@
-            <div class="row wrapper border-bottom white-bg page-heading">
+<?php
+
+//echo '<pre>';
+//print_r($transaction);
+//exit;
+
+?>            
+
+<div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-8">
                     <h2>Invoice</h2>
                     <ol class="breadcrumb">
@@ -39,18 +47,38 @@
 
                                 <div class="col-sm-6 text-right">
                                     <h4>Invoice No.</h4>
-                                    <h4 class="text-navy">GSM-5-1</h4>
+                                    <h4 class="text-navy"><?php echo $transaction->invoice; ?></h4>
                                     <span>To:</span>
                                     <address>
-                                        <strong>Company Name</strong><br>
-                                        Address Line 1, Address Line 2 (if exists)<br />
-                                        Town, County<br />
-                                        Country<br />
-                                        <abbr title="Phone">P:</abbr> Phone Number<br />
-                                        VAT Number (if exists)                                        
+                                        <strong><?php echo $this->member_model->get_where($transaction->buyer_id)->firstname.''.$this->member_model->get_where($transaction->buyer_id)->lastname ?></strong><br>
+                                        <strong><?php echo $this->company_model->get_where($this->member_model->get_where($transaction->buyer_id)->company_id)->company_name; ?></strong><br>
+                                        <?php echo $this->company_model->get_where($this->member_model->get_where($transaction->buyer_id)->company_id)->address_line_1; ?>,<br/>
+                                        <?php 
+                                        $add_2 = $this->company_model->get_where($this->member_model->get_where($transaction->buyer_id)->company_id)->address_line_2;                                        
+                                        
+                                        if(!empty($add_2)){
+                                        ?>
+                                        <?php echo  $add_2; ?>,<br />
+                                        <?php
+                                            }
+                                        ?>
+                                        <?php echo $this->company_model->get_where($this->member_model->get_where($transaction->buyer_id)->company_id)->town_city; ?>,<br/> 
+                                        <?php echo $this->company_model->get_where($this->member_model->get_where($transaction->buyer_id)->company_id)->county; ?>.<br />
+                                        <?php echo $this->company_model->get_where($this->member_model->get_where($transaction->buyer_id)->company_id)->post_code; ?>.<br />
+                                        <?php echo $this->country_model->get_where($this->company_model->get_where($this->member_model->get_where($transaction->buyer_id)->company_id)->country)->country; ?><br />
+                                        <abbr title="Phone">P:</abbr> <?php echo $this->member_model->get_where($transaction->buyer_id)->phone_number;?><br />
+                                        <?php
+                                        $vat = $this->company_model->get_where($this->member_model->get_where($transaction->buyer_id)->company_id)->vat_tax;
+                                                
+                                                if(!empty($vat)) {
+                                        ?>
+                                                    VAT Number <?php echo $this->company_model->get_where($this->member_model->get_where($transaction->buyer_id)->company_id)->vat_tax;?>     
+                                        <?php
+                                                }
+                                        ?>
                                     </address>
                                     <p>
-                                        <span><strong>Invoice Date:</strong> April 1, 2015</span>
+                                        <span><strong>Invoice Date:</strong> <?php echo date('F j, Y', strtotime($transaction->date));?></span>
                                     </p>
                                 </div>
                             </div>
@@ -66,10 +94,10 @@
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td><div><strong>Silver Subscription</strong></div>
-                                            <small>12 Month membership with the GSM Stock Market trading platform. Expires 31st April 2016.</small></td>
-                                        <td>1</td>
-                                        <td>&pound;1,295.00</td>
+                                        <td><div><strong><?php echo $transaction->item;?></strong></div>
+                                            <small><?php echo $transaction->item_description;?></small></td>
+                                        <td><?php echo $transaction->quantity;?></td>
+                                        <td>&pound;<?php echo number_format($transaction->amount, 2,".",",");;?></td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -79,7 +107,15 @@
                                 <tbody>
                                 <tr>
                                     <td><strong>TOTAL :</strong></td>
-                                    <td>&pound;1295.00</td>
+                                    <td>&pound;
+                                        <?php 
+                                                                                
+                                        $total_amount = $transaction->amount*$transaction->quantity;
+                                        
+                                        echo number_format($transaction->amount, 2,".",",");
+                                        
+                                        ?>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -95,7 +131,7 @@
                             </div>
                             
                             <div class="text-right">
-                        		<a href="transaction/invoice_print" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i> Print Transaction </a>
+                        		<a href="transaction/invoice_print/<?php echo $transaction->id;?>" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i> Print Transaction </a>
                             </div>
                         </div>
                 </div>
