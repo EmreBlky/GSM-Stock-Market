@@ -14,9 +14,23 @@ class Transaction extends MX_Controller
     function index()
     {
         $data['main'] = 'transaction';
-	$data['title'] = 'transaction';
+	$data['title'] = 'Transaction';
         $data['page'] = 'index';
         $this->load->module('templates');
         $this->templates->page($data);
     } 
+    
+    function invoice()
+    {
+        $data['main'] = 'transaction';
+	$data['title'] = 'Transaction: Invoice';
+        $data['page'] = 'invoice';
+        $this->load->module('templates');
+        $this->templates->page($data);
+    }
+    
+    function invoice_print()
+    {
+        $this->load->view('invoice-print');
+    }
 }
