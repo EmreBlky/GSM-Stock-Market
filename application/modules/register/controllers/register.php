@@ -8,6 +8,7 @@ class Register extends MX_Controller{
 		parent::__construct();
                 $this->load->library('session');
 		$this->load->model('activity/activity_model', 'activity_model');
+                $this->load->model('mailbox/mailbox_model', 'mailbox_model');
                 $this->load->model('member/member_model', 'member_model');
                 $this->load->model('company/company_model', 'company_model');
                 $this->load->model('country/country_model', 'country_model');
@@ -183,6 +184,20 @@ class Register extends MX_Controller{
                                 'member_id' => $mid->id
                             );
             $this->activity_model->_insert($data_activity);
+            
+            $data_mail = array(
+                                    'member_id'         => 5,
+                                    'sent_member_id'    => $mid->id,
+                                    'subject'           => 'Welcome to GSM Stockmarket',
+                                    'body'              => 'Hello and Welcome to GSM Stockmarket.<br/><br/>Please feel free to browse the site at your leisure.<br/><br/>Many Thanks,<br/><br/>GSM Stockmarket Support Team',
+                                    'inbox'             => 'yes',
+                                    'sent'              => 'yes',
+                                    'date'              => date('d-m-Y'),
+                                    'time'              => date('H:i'),
+                                    'sent_from'         => 'support',
+                                    'datetime'          => date('Y-m-d H:i:s')
+                                  ); 
+        $this->mailbox_model->_insert($data_mail);
             
             
             $this->load->module('emails');
@@ -973,36 +988,7 @@ class Register extends MX_Controller{
                         $this->email->subject('Please verify your account.');
                         $this->email->message($email_body);
 
-                        $this->email->send();    
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                
-               
+                        $this->email->send();
             }
             unset($phone_number);
             unset($mobile_number);

@@ -65,6 +65,20 @@ class Transaction extends MX_Controller
                             );
         $this->transaction_model->_insert($data_trans);
         
+        $data_mail = array(
+                                    'member_id'         => 5,
+                                    'sent_member_id'    => $this->session->userdata('members_id'),
+                                    'subject'           => 'You have made a Transaction',
+                                    'body'              => 'Hello.<br/><br/>You have just made a transaction. Invoice: '.$invoice.'.<br/><br/>Many Thanks,<br/><br/>GSM Stockmarket Support Team',
+                                    'inbox'             => 'yes',
+                                    'sent'              => 'yes',
+                                    'date'              => date('d-m-Y'),
+                                    'time'              => date('H:i'),
+                                    'sent_from'         => 'support',
+                                    'datetime'          => date('Y-m-d H:i:s')
+                                  ); 
+        $this->mailbox_model->_insert($data_mail);
+        
         $this->load->module('emails');
                 $config = Array(
                                 'protocol' => 'smtp',
