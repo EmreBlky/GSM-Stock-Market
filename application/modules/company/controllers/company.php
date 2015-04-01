@@ -10,6 +10,12 @@ class Company extends MX_Controller
         { 
             redirect('login');
         }
+        $data_activity = array(
+                                'activity' => 'Company',
+                                'time' => date('H:i:s'),
+                                'date' => date('d-m-Y')
+                                );
+        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
         $this->load->model('company/company_model', 'company_model');
     }
 

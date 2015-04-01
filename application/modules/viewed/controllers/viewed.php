@@ -9,6 +9,12 @@ class Viewed extends MX_Controller
         { 
             redirect('login');
         }
+        $data_activity = array(
+                                'activity' => 'Viewed',
+                                'time' => date('H:i:s'),
+                                'date' => date('d-m-Y')
+                                );
+        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
     }
 
     function index()

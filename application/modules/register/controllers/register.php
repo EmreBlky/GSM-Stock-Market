@@ -11,11 +11,6 @@ class Register extends MX_Controller{
                 $this->load->model('member/member_model', 'member_model');
                 $this->load->model('company/company_model', 'company_model');
                 $this->load->model('country/country_model', 'country_model');
-                
-                $data = array(
-                                'member_id' => ''
-                            );
-                
 		
 	}
         
@@ -183,6 +178,11 @@ class Register extends MX_Controller{
                             'online_status' => 'online'
                           );            
             $this->member_model->_update($mid->id, $data);
+            
+            $data_activity = array(
+                                'member_id' => $mid->id
+                            );
+            $this->activity_model->_insert($data_activity);
             
             
             $this->load->module('emails');

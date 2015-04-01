@@ -9,6 +9,16 @@ class Transaction extends MX_Controller
 //        { 
 //            redirect('login');
 //        }
+        $this->load->model('activity/activity_model', 'activity_model');
+        $this->load->model('member/member_model', 'member_model');
+        $this->load->model('membership/membership_model', 'membership_model');
+        $this->load->model('transaction/transaction_model', 'transaction_model');
+        $data_activity = array(
+                                'activity' => 'Transactions',
+                                'time' => date('H:i:s'),
+                                'date' => date('d-m-Y')
+                                );
+        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
     }
 
     function index()

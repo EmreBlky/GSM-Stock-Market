@@ -9,6 +9,13 @@ class Feed extends MX_Controller
 //        { 
 //            redirect('login');
 //        }
+        $data_activity = array(
+                                'activity' => 'Feed',
+                                'time' => date('H:i:s'),
+                                'date' => date('d-m-Y')
+                                );
+        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
+        
         $this->load->model('feed/feed_model', 'feed_model');
     }
 

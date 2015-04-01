@@ -10,6 +10,12 @@ class Paypal extends MX_Controller
         $this->load->model('member/member_model', 'member_model');
         $this->load->model('transaction/transaction_model', 'transaction_model');
         $this->load->library('paypal_subscribe');
+        $data_activity = array(
+                                'activity' => 'PayPal',
+                                'time' => date('H:i:s'),
+                                'date' => date('d-m-Y')
+                                );
+        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
     }
 	
 	

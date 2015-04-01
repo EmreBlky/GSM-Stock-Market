@@ -16,7 +16,8 @@ class Preferences extends MX_Controller
         $this->load->model('transaction/transaction_model', 'transaction_model');
         $data_activity = array(
                                 'activity' => 'Preferences',
-                                'time' => date('H:i:s')
+                                'time' => date('H:i:s'),
+                                'date' => date('d-m-Y')
                                 );
         $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
     }

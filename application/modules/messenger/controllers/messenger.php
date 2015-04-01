@@ -14,7 +14,8 @@ class Messenger extends MX_Controller
         
         $data_activity = array(
                                 'activity' => 'Messenger',
-                                'time' => date('H:i:s')
+                                'time' => date('H:i:s'),
+                                'date' => date('d-m-Y')
                                 );
         $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
     }
