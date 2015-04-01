@@ -26,52 +26,78 @@
             </div>
         <div class="wrapper wrapper-content  animated fadeInRight">
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5>Current Subscription</h5>
-                        </div>
+            
+            
+					<?php if($member->membership > 3) {?> 
                         
-                        <?php if($member->membership > 1) {?>
-                        <div class="ibox-content">
-                        <div class="row">
-                        	<div class="col-md-12">
+                    <div class="col-lg-12">
+                        <div class="ibox">
+                            <div class="ibox-title">
+                                <h5>Current Subscription</h5>
+                            </div>
+                            <div class="ibox-content">
                             		<style>
                                                 dl.full-width dt, dl.full-width dd {width:50%}
                                                 dl.full-width dd {margin-left:51%}
                                         </style>
                                     <dl class="dl-horizontal full-width">
-                                        <dt>Current Subscription:</dt> <dd><?php echo $this->membership_model->get_where($member->membership)->membership?></dd>
+                                        <dt>Current Subscription:</dt> <dd><?php echo $this->membership_model->get_where($member->membership)->membership?> Member</dd>
                                         <dt>Join Date:</dt> <dd><?php echo $member->date; ?></dd>
- <!--                                         <dt>Renewal Date</dt> <dd>2233333</dd>
-                                      <dt>Payment Method:</dt> <dd>232323</dd>
-                                        <dt>Close Account</dt> <dd>23233</dd>-->
                                     </dl>
                             </div>
                         </div>
-                        </div>
-                        <?php } else {?>
-                        <div class="ibox-content">
-                        <div class="row">
-                        	<div class="col-md-12">
+                    </div>                    
+                    
+                    <?php } else {?>
+                    
+            		<div class="col-lg-6">                        
+                        <div class="ibox">
+                            <div class="ibox-title">
+                            	<h5>Current Subscription</h5>
+                            </div>
+                            <div class="ibox-content" style="min-height:89px">
                             		<style>
                                                 dl.full-width dt, dl.full-width dd {width:50%}
                                                 dl.full-width dd {margin-left:51%}
                                         </style>
                                     <dl class="dl-horizontal full-width">
-                                        <dt>Current Subscription:</dt> <dd>  Bronze Member</dd>
+                                        <dt>Current Subscription:</dt> <dd> Bronze Member</dd>
                                         <dt>Join Date:</dt> <dd><?php echo $member->date; ?></dd>
-<!--                                          <dt>Renewal Date</dt> <dd>  N/A</dd>
-                                        <dt>Payment Method:</dt> <dd>  PayPal</dd>
-                                        <dt>Close Account</dt> <dd>  PayPal</dd>-->
                                     </dl>
                             </div>
                         </div>
-                        </div>
-                        <?php }?>                        
                     </div>
-                </div>
-            </div>
+                    <div class="col-lg-6">
+                        <div class="ibox">
+                            <div class="ibox-title">
+                                <span class="label label-primary pull-right">Accout Eligible</span>
+                                <h5>Upgrade to Silver Membership</h5>
+                            </div>
+                            <div class="ibox-content" style="min-height:89px;text-align:center">
+                        	<label class="control-label">Payment Method: </label>
+                            <select id="selectMe" class="form-control" style="width:auto;display:inline-block">
+                              <option value="option1">PayPal</option>
+                              <option value="option2">Bank Transfer</option>
+                              <option value="option3">Credit/Debit Card</option>
+                            </select>
+                            <button id="option1" class="payment_method btn btn-primary" data-toggle="modal" data-target="#payment_paypal" style="font-size:12px;margin-bottom:3px">Upgrade Now</button>
+                            <button id="option2" class="payment_method btn btn-primary" data-toggle="modal" data-target="#payment_banktransfer" style="font-size:12px;margin-bottom:3px">Upgrade Now</button>
+                            <button id="option3" class="payment_method btn btn-primary" data-toggle="modal" data-target="#payment_card" style="font-size:12px;margin-bottom:3px">Upgrade Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                        
+                        <?php }?>  
+              </div>
+                
+                
+            
+            
+            
+            
+            
+            
             <?php if($member->membership < 2) {?>
             <div class="row">
                 <div class="col-lg-12">
@@ -167,7 +193,134 @@
                 </div>
             </div>
             <?php } ?>
+            
+            
+            
+            <div class="row">
+                <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5>Subscription Payments</h5>
+                    </div>
+                    <div class="ibox-content">
+
+                    <table class="table table-striped table-bordered table-hover dataTables-example" >
+                    <thead>
+                    <tr>
+                        <th>Invoice No.</th>
+                        <th>Invoice Date</th>
+                        <th>Item</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                        <th>Options</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>GSM-5-1</td>
+                        <td>April 1, 2015</td>
+                        <td>Silver Membership Subscription</td>
+                        <td>£1295.00</td>
+                        <td style="text-align:center"><span class="label label-primary">Paid</span></td>
+                        <td style="text-align:center"><a href="/" class="btn btn-primary" style="font-size:10px">View Invoice</a></td>
+                    </tr>
+                    <tr>
+                        <td>GSM-5-2</td>
+                        <td>April 1, 2015</td>
+                        <td>Silver Membership Subscription</td>
+                        <td>£1295.00</td>
+                        <td style="text-align:center"><span class="label label-danger">Unpaid</span></td>
+                        <td style="text-align:center"><a href="/" class="btn btn-primary" style="font-size:10px">View Invoice</a></td>
+                    </tr>
+                    </tbody>
+                    </table>
+
+                    </div>
+
+
+                    
+                    
+                    
+                </div>
+            </div>
+            </div>
+            
+            
+            
         </div>
+        
+        
+        
+                            <div class="modal inmodal fade" id="payment_paypal" tabindex="-1" role="dialog"  aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">Payment Method: PayPal</h4>
+                                            <small class="font-bold">Upgrade your GSMStockMarket.com account to Silver membership</small>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>You have selected <strong>PayPal</strong> as your form of payment.</p>
+                                            <p>When you confirm your order you will be redirected to <strong>PayPal</strong> and will be able to make payment using your <strong>PayPal</strong> account.</p>
+                                            <p>Once payment is complete you will be redirected back to our website.</p>  
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel Order</button>
+                                            <a href="<?php echo $base?>paypal/purchase/<?php echo $invoice; ?>/silver" class="btn btn-primary">Confirm Purchase</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+        
+                            <div class="modal inmodal fade" id="payment_banktransfer" tabindex="-1" role="dialog"  aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">Payment Method: Bank Transfer</h4>
+                                            <small class="font-bold">Upgrade your GSMStockMarket.com account to Silver membership</small>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p><strong>Lorem Ipsum is simply dummy</strong> text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+                                                printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
+                                                remaining essentially unchanged.</p>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel Order</button>
+                                            <a href="#" class="btn btn-primary">Confirm Purchase</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="modal inmodal fade" id="payment_card" tabindex="-1" role="dialog"  aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">Payment Method: Credit/Debit Card</h4>
+                                            <small class="font-bold">Upgrade your GSMStockMarket.com account to Silver membership</small>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>You have selected <strong>Credit/Debit Card</strong> as your form of payment.</p>
+                                            <p>We use PayPal for our Credit/Debit Card transactions.</p>
+                                            <p>Once you click confirm purchase you will be redirected to Paypal, you will not need a PayPal account to make the payment. Simply clicky on the pay with debit or credit card below the login area.</p>
+                                            <p>Once payment is complete you will be redirected back to our website and you will have your new subscriber access when payment is accepted.</p>  
+                                            <p><img src="public/main/template/gsm/images/paypal_card.png" class="img-responsive" style="max-width:80%;margin-left:10%"/>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel Order</button>
+                                            <a href="<?php echo $base?>paypal/purchase/<?php echo $invoice; ?>/silver" class="btn btn-primary">Confirm Purchase</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+        
+        
+        
         
         
         <style>
@@ -291,3 +444,89 @@ PRICING STYLES
         padding-top: 80px;
     }
 	</style>
+    
+    
+    
+<!-- Data Tables -->
+<link href="public/main/template/core/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+<link href="public/main/template/core/css/plugins/dataTables/dataTables.responsive.css" rel="stylesheet">
+<link href="public/main/template/core/css/plugins/dataTables/dataTables.tableTools.min.css" rel="stylesheet">
+
+<!-- Multi Select -->
+<link href="public/main/template/core/css/plugins/chosen/chosen.css" rel="stylesheet">
+
+<!-- Data Tables -->
+<script type="text/javascript" src="public/main/template/core/js/plugins/dataTables/jquery.dataTables.js"></script>
+<script type="text/javascript" src="public/main/template/core/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+<script type="text/javascript" src="public/main/template/core/js/plugins/dataTables/dataTables.responsive.js"></script>
+<script type="text/javascript" src="public/main/template/core/js/plugins/dataTables/dataTables.tableTools.min.js"></script>
+
+<!-- Chosen -->
+<script src="public/main/template/core/js/plugins/chosen/chosen.jquery.js"></script>
+
+
+<!-- Page-Level Scripts -->
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.dataTables-example').dataTable({
+        responsive: true,
+        "dom": 'T<"clear">lfrtip',
+        "tableTools": {
+            "sSwfPath": "public/main/template/core/js/plugins/dataTables/swf/copy_csv_xls_pdf.swf"
+        }
+    });
+	/* multi select */
+	var config = {
+        '.chosen-select'           : {search_contains:true},
+        '.chosen-select-deselect'  : {allow_single_deselect:true},
+        '.chosen-select-no-single' : {disable_search_threshold:10},
+        '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+        '.chosen-select-width'     : {width:"95%"}
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }			
+
+});
+</script>
+<style>
+    body.DTTT_Print {
+        background: #fff;
+
+    }
+    .DTTT_Print #page-wrapper {
+        margin: 0;
+        background:#fff;
+    }
+
+    button.DTTT_button, div.DTTT_button, a.DTTT_button {
+        border: 1px solid #e7eaec;
+        background: #fff;
+        color: #676a6c;
+        box-shadow: none;
+        padding: 6px 8px;
+    }
+    button.DTTT_button:hover, div.DTTT_button:hover, a.DTTT_button:hover {
+        border: 1px solid #d2d2d2;
+        background: #fff;
+        color: #676a6c;
+        box-shadow: none;
+        padding: 6px 8px;
+    }
+
+    .dataTables_filter label {
+        margin-right: 5px;
+
+    }
+</style>
+
+<script>
+$(document).ready(function () {
+  $('.payment_method').hide();
+  $('#option1').show();
+  $('#selectMe').change(function () {
+    $('.payment_method').hide();
+    $('#'+$(this).val()).show();
+  })
+});
+</script>
