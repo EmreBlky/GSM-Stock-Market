@@ -6,6 +6,17 @@ mysql_select_db('gsmstock_securelive');
 //mysql_connect('localhost', 'root', 'People1205');
 //mysql_select_db('gsmstock_secure');
 
+function country($code)
+{
+    $qry = mysql_query("SELECT country FROM country WHERE id = '".$code."'") or die (mysql_error());
+    
+    while($row = mysql_fetch_array($qry)) {        
+        $country = $row['country'];
+    }
+    
+    return $country;
+}
+
 $qry = mysql_query("SELECT * FROM members WHERE gsm_check = 'no'") or die (mysql_error());
 $email_message = "";
 $data = "";
@@ -17,7 +28,7 @@ while($rowMember = mysql_fetch_array($qry)) {
   $qry_company = mysql_query("SELECT * FROM company WHERE admin_member_id = '".$rowMember['id']."'") or die (mysql_error());
   while($rowCompany = mysql_fetch_array($qry_company)) {
 	
-	$data .= $rowMember['firstname'].' '.$rowMember['lastname'].",".$rowMember['email'].",".$rowMember['date'].",".$rowCompany['country'].",".$rowMember['phone_number'].",".$rowMember['role'].",".$rowMember['skype'].",".$rowCompany['website']."\n";
+	$data .= $rowMember['firstname'].' '.$rowMember['lastname'].",".$rowMember['email'].",".$rowMember['date'].",".country($rowCompany['country']).",".$rowMember['phone_number'].",".$rowMember['role'].",".$rowMember['skype'].",".$rowCompany['website']."\n";
   
   }
   mysql_query("UPDATE members SET gsm_check = 'yes' WHERE id = '".$rowMember['id']."'") or die (mysql_error());
