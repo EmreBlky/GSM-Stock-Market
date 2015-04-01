@@ -463,6 +463,11 @@ class Transaction extends MX_Controller
 
                 $this->email->send();
                 //echo $this->email->print_debugger();
+                $this->session->set_flashdata('confirm-transaction', '<div style="margin-top: 15px; margin-left: 10px;">    
+                                                                <div class="alert alert-success">
+                                                                    Thank you. Your transaction is being processed.
+                                                                </div>
+                                                            </div>');
                 redirect('preferences/subscription');
     }
     

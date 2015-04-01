@@ -26,7 +26,9 @@
             </div>
         <div class="wrapper wrapper-content  animated fadeInRight">
             <div class="row">
-            
+            <?php 
+                echo $this->session->flashdata('confirm-transaction'); 
+              ?>
             
                     <?php if($member->membership > 1) {?> 
                         
