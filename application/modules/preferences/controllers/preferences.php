@@ -13,6 +13,7 @@ class Preferences extends MX_Controller
         $this->load->model('activity/activity_model', 'activity_model');
         $this->load->model('member/member_model', 'member_model');
         $this->load->model('membership/membership_model', 'membership_model');
+        $this->load->model('transaction/transaction_model', 'transaction_model');
         $data_activity = array(
                                 'activity' => 'Preferences',
                                 'time' => date('H:i:s')
@@ -103,6 +104,17 @@ class Preferences extends MX_Controller
         $data['main'] = 'preferences';        
         $data['title'] = 'GSM - Manage Subscription';        
         $data['page'] = 'subscription';
+        
+        $count = $this->transaction_model->_custom_query_count("SELECT COUNT(*) AS count FROM transaction WHERE buyer_id = '".$this->session->userdata('members_id')."'");
+        
+        if($count[0]->count > 0){
+            $data['trans_count'] = $count[0]->count;
+            $data['transaction'] = $this->transaction_model->get_where_multiples('buyer_id', $this->session->userdata('members_id'));
+        }
+        else{
+            $data['trans_count'] = 0;
+        }
+        
         
         $data['base'] = $this->config->item('base_url');
         $inv = $this->member_model->get_where($this->session->userdata('members_id'))->invoice_number;

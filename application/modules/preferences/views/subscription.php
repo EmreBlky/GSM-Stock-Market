@@ -2,7 +2,7 @@
 
 //echo '<pre>';
 //echo $invoice;
-//print_r($member);
+//print_r($transaction);
 //exit;
 
 ?>            <div class="row wrapper border-bottom white-bg page-heading">
@@ -28,7 +28,7 @@
             <div class="row">
             
             
-					<?php if($member->membership > 3) {?> 
+                    <?php if($member->membership > 1) {?> 
                         
                     <div class="col-lg-12">
                         <div class="ibox">
@@ -90,15 +90,9 @@
                         
                         <?php }?>  
               </div>
-                
-                
             
             
-            
-            
-            
-            
-            <?php if($member->membership < 2) {?>
+            <?php if($member->membership < 2) { ?>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
@@ -203,8 +197,41 @@
                         <h5>Subscription Payments</h5>
                     </div>
                     <div class="ibox-content">
-
-                    <table class="table table-striped table-bordered table-hover dataTables-example" >
+                    
+                    <?php if($trans_count > 0) {?>
+                        
+                        <table class="table table-striped table-bordered table-hover dataTables-example" >
+                        <thead>
+                        <tr>
+                            <th>Invoice No.</th>
+                            <th>Invoice Date</th>
+                            <th>Item</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                            <th>Options</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        
+                        <?php foreach($transaction as $trans) {?>
+                            <tr>
+                                <td><?php echo $trans->invoice;?></td>
+                                <td><?php echo date('F j, Y', strtotime($trans->date));?></td>
+                                <td><?php echo $trans->item;?></td>
+                                <td><?php echo '&pound;'.number_format($trans->amount, 2,".",",");?></td>
+                                <?php if($trans->status == 'completed') {?>
+                                    <td style="text-align:center"><span class="label label-primary">Paid</span></td>
+                                <?php } else {?>
+                                    <td style="text-align:center"><span class="label label-danger">Unpaid</span></td>
+                                <?php }?>
+                                <td style="text-align:center"><a href="transaction/invoice/<?php echo $trans->id;?>" class="btn btn-primary" style="font-size:10px">View Invoice</a></td>
+                            </tr>
+                        <?php }?>
+                        </tbody>
+                    </table>    
+                    <?php } else {?>
+                            
+                    <table class="table table-striped table-bordered table-hover" >
                     <thead>
                     <tr>
                         <th>Invoice No.</th>
@@ -216,24 +243,23 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>GSM-5-1</td>
-                        <td>April 1, 2015</td>
-                        <td>Silver Membership Subscription</td>
-                        <td>£1295.00</td>
-                        <td style="text-align:center"><span class="label label-primary">Paid</span></td>
-                        <td style="text-align:center"><a href="/" class="btn btn-primary" style="font-size:10px">View Invoice</a></td>
+                    <tr>                        
+                        <td colspan="6" align="center">There are no transactions at present.</td>
                     </tr>
-                    <tr>
+                    
+                    </tbody>
+                    </table>
+                    <?php }?>
+<!--                    <tr>
                         <td>GSM-5-2</td>
                         <td>April 1, 2015</td>
                         <td>Silver Membership Subscription</td>
                         <td>£1295.00</td>
                         <td style="text-align:center"><span class="label label-danger">Unpaid</span></td>
                         <td style="text-align:center"><a href="/" class="btn btn-primary" style="font-size:10px">View Invoice</a></td>
-                    </tr>
-                    </tbody>
-                    </table>
+                    </tr>-->
+                    
+                    
 
                     </div>
 

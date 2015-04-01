@@ -47,6 +47,7 @@ class Paypal extends MX_Controller
         $data_trans = array(
                             'invoice' => $invoice,
                             'item' => $description,
+                            'date' => date('Y-m-d H:i:s'),
                             'buyer_id' => $this->session->userdata('members_id'),
                             'seller_id' => '',
                             'amount' => $amount,
