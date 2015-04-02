@@ -188,8 +188,8 @@ class Register extends MX_Controller{
             $data_mail = array(
                                     'member_id'         => 5,
                                     'sent_member_id'    => $mid->id,
-                                    'subject'           => 'Welcome to GSM Stockmarket',
-                                    'body'              => 'Hello and Welcome to GSM Stockmarket.<br/><br/>Please feel free to browse the site at your leisure.<br/><br/>Many Thanks,<br/><br/>GSM Stockmarket Support Team',
+                                    'subject'           => 'Welcome to GSMStockMarket.com',
+                                    'body'              => 'Thank you for signing up to GSMStockMarket.com<br /><br/>Your account is now fully active and you have your bronze membership. To get started head over to <strong>My Profile > Edit Profile</strong> and complete your profile so other users will be able to search and find your company.<br /><br/>With bronze access you will receive the following:<br />- View and edit your own profile<br />- Check out who has viewed your profile<br />- Reply to members who contact you via the mailbox system<br />- Add users to your address book/favourites<br /><br />We currently have a new feature called <strong>IMEI services</strong> which all bronze members will have access to. This feature will let you use our unlocking services and IMEI blacklist check, ensuring all mobile phones bought and sold are not reported missing or stolen. This feature will be available shortly.<br /><br />If you have any issues using our website feel free to contact us through the submit a ticket system under the support tab. <br /><br />if you also experience any issues browsing/using the website or would like to have any features added then let us know! We would love to hear from you, just submit a feedback ticket and we will do our best to help you out.<br /><br />Kind Regards,<br />GSMStockMarket.com Team',
                                     'inbox'             => 'yes',
                                     'sent'              => 'yes',
                                     'date'              => date('d-m-Y'),
