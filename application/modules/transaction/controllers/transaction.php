@@ -189,9 +189,9 @@ class Transaction extends MX_Controller
 
                 $this->email->send();
                 //echo $this->email->print_debugger();
-                $this->session->set_flashdata('confirm-transaction', '<div style="margin-top: 15px; margin-left: 10px;">    
+                $this->session->set_flashdata('confirm-transaction', '<div style="margin:0 15px">    
                                                                 <div class="alert alert-success">
-                                                                    Thank you. Your transaction is being processed.
+                                                                    Order has been placed. Your invoice has been generated below.
                                                                 </div>
                                                             </div>');
                 redirect('preferences/subscription');
