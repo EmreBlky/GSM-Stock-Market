@@ -270,44 +270,12 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <?php 
-                                        
-                                        $this->load->model('addressbook/addressbook_model', 'addressbook_model');
-                                        $a_count =  $this->addressbook_model->count_where('member_id', $this->session->userdata('members_id'), 'address_member_id', $member_info->id);
-                                        
-                                        if($a_count < 1){
-                                        ?>
                                             <div class="col-md-5 col-md-offset-1" style="margin-top:15px">
                                                 <button type="button" onclick="contactAdd();" class="btn btn-success btn-sm btn-block" id="contact_added"><i class="fa fa-book"></i> Add Contact</button>
                                             </div>
-                                        <?php
-                                        } else{
-                                        ?>
-                                            <div class="col-md-5 col-md-offset-1" style="margin-top:15px">
-                                                <button type="button" onclick="contactRemove();" class="btn btn-success btn-sm btn-block" id="contact_removed"><i class="fa fa-book"></i> Remove Contact</button>
-                                            </div>
-                                        <?php
-                                        }
-                                        ?>
-                                        <?php 
-                                        
-                                        $this->load->model('favourite/favourite_model', 'favourite_model');
-                                        $f_count =  $this->favourite_model->count_where('member_id', $this->session->userdata('members_id'), 'favourite_id', $member_info->id);
-                                        
-                                        if($f_count < 1){
-                                        ?>
                                             <div class="col-md-5" style="margin-top:15px">
                                                 <button  onclick="faveAdd();"  type="button" class="btn btn-warning btn-sm btn-block" id="favourite_added"><i class="fa fa-star"></i> Add Favourite</button>
                                             </div>
-                                        <?php
-                                        } else {
-                                        ?>
-                                            <div class="col-md-5" style="margin-top:15px">
-                                                <button  onclick="faveRemove();"  type="button" class="btn btn-warning btn-sm btn-block" id="favourite_removed"><i class="fa fa-star"></i> Remove Favourite</button>
-                                            </div>
-                                        <?php
-                                        }
-                                        ?>
                                     </div>
                                 </div>
                                 
