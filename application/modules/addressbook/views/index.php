@@ -182,7 +182,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
         </div><!-- row end --> 
         
                         <!-- Daniel Added -->
-                    <?php if($member->membership < 2)  if($addressbook_count < 1) {?> 
+                    <?php if($member->membership < 2)  if($addressbook_count < 3) {?> 
              <div class="alert alert-info" style="margin:0 0 15px">
                 <p><i class="fa fa-info-circle"></i> Find Companies you have added as a contact or favourite within your address book. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
             </div>
