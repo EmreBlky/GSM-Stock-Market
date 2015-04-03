@@ -186,7 +186,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
              <div class="alert alert-info" style="margin:0 0 15px">
                 <p><i class="fa fa-info-circle"></i> Find Companies you have added as a contact or favourite within your address book. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
             </div>
-                            <div class="row">
+           <div class="row">
             <div class="col-lg-12">
             	<div class="ibox float-e-margins">
                     <div class="ibox-content" style="padding-bottom:15px">
@@ -572,6 +572,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                     </form>
                 </div>
             </div>
+                             
                                 
                         <?php } else {?> 
                         <!-- Daniel Added -->
@@ -883,7 +884,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
             }
         ?>
            
-        <!-- Daniel Added ->
+        <!-- Daniel Added -->
                         <?php } ?>
          
         </div>

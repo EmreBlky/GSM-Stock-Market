@@ -19,6 +19,72 @@
             $("#countries").children("optgroup[label!='" + selectedval + "']").hide();
     }
 </script>
+<style type="text/css">
+    #pagination{
+        margin-bottom: 30px;
+    }
+    ul.tsc_pagination li a {
+        border: solid 1px;
+        border-radius: 3px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        padding: 6px 9px 6px 9px;
+    }
+
+    ul.tsc_pagination li {
+        padding-bottom: 1px;
+    }
+
+    ul.tsc_pagination li a:hover,
+    ul.tsc_pagination li a.current {
+        color: #FFFFFF;
+        box-shadow: 0px 1px #EDEDED;
+        -moz-box-shadow: 0px 1px #EDEDED;
+        -webkit-box-shadow: 0px 1px #EDEDED;
+    }
+
+    ul.tsc_pagination {
+        margin: 4px 0;
+        padding: 0px;
+        height: 100%;
+        overflow: hidden;
+        font: 12px 'Tahoma';
+        list-style-type: none;
+    }
+
+    ul.tsc_pagination li {
+        float: left;
+        margin: 0px;
+        padding: 0px;
+        margin-left: 5px;
+    }
+
+    ul.tsc_pagination li a {
+        color: black;
+        display: block;
+        text-decoration: none;
+        padding: 7px 10px 7px 10px;
+    }
+
+    ul.tsc_pagination li a img {
+        border: none;
+    }
+
+    ul.tsc_pagination li a {
+        color: #0A7EC5;
+        border-color: #8DC5E6;
+        background: #F8FCFF;
+    }
+
+    ul.tsc_pagination li a:hover,
+    ul.tsc_pagination li a.current {
+        text-shadow: 0px 1px #388DBE;
+        border-color: #3390CA;
+        background: #58B0E7;
+        background: -moz-linear-gradient(top, #B4F6FF 1px, #63D0FE 1px, #58B0E7);
+        background: -webkit-gradient(linear, 0 0, 0 100%, color-stop(0.02, #B4F6FF), color-stop(0.02, #63D0FE), color-stop(1, #58B0E7));
+    }
+</style>
 <script type="text/javascript">
 
     function sendMessage(mid, sid) {
@@ -50,7 +116,7 @@
 </script>
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>Search</h2>
+        <h2>Search (<?php echo $total_results; ?>)</h2>
         <ol class="breadcrumb">
             <li>
                 <a href="/">Home</a>
@@ -158,8 +224,8 @@
 
     <?php if ($total_results > 0) {
     foreach ($results as $result) {
-        
-        if($result->id != 5){
+
+    if ($result->id != 5){
     ?>
     <div class="row">
 
@@ -188,7 +254,7 @@
                 </div>
                 <div class="col-md-5">
                     <h3><strong><?php echo $result->company_name; ?></strong> <img class="novert"
-                                                                                   alt="image"
+                                                                                   alt="<?php echo $result->country; ?>"
                                                                                    src="public/main/template/gsm/img/flags/<?php echo str_replace(" ", "_", $result->country); ?>.png"
                                                                                    title="<?php echo $result->country; ?>"/>
                     </h3>
@@ -292,10 +358,20 @@
     </div>
 
 </div>
-        <?php } ?>    
+<?php } ?>
 <?php
-echo $pagination;
 }
+?>
+<div id="pagination" class="pull-right">
+    <ul class="tsc_pagination">
+        <?php foreach ($links as $link) {
+            echo "<li>" . $link . "</li>";
+        }
+        ?>
+    </ul>
+</div>
+<div class="clearfix"></div>
+<?php
 } else {
     echo 'No Record Found.';
 } ?>

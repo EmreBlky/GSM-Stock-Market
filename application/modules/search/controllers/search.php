@@ -137,7 +137,7 @@ class Search extends MX_Controller
         }
     }
 
-    function company()
+    function company($start = 0)
     {
         if($this->session->userdata('membership') < 2) {
             redirect('preferences/notice');
@@ -145,9 +145,6 @@ class Search extends MX_Controller
         $data['main'] = 'search';
         $data['title'] = 'GSM - Search Company';
         $data['page'] = 'company';
-
-        $start = $this->input->get('start', TRUE);
-        $start = (!empty($start)) ? $start : 0;
 
         $where = " m.id <> " . $this->session->userdata('members_id');
 
@@ -169,22 +166,37 @@ class Search extends MX_Controller
         $sort = $this->getSortingString();
 
 
-        $results_per_page = $this->config->item('results_per_page');
-        $this->benchmark->mark('search_start');
+        //$results_per_page = $this->config->item('results_per_page');
+        $results_per_page = 20;
 
         $this->load->model('search_model');
         $this->load->model('country/country_model', 'country_model');
+        $this->load->library('pagination');
 
         $results = $this->search_model->searchCompanies($where, $business, $sort, $start, $results_per_page);
         $total_results = $this->search_model->companiesCount($where);
 
-        $this->benchmark->mark('search_end');
-        $this->_setup_pagination('/search/company/?' . $_SERVER['QUERY_STRING'], $total_results, $results_per_page);
+        $this->pagination->initialize(array(
+            'base_url' => site_url('/search/company/'),
+            'uri_segment' => 3,
+            'num_links' => 5,
+            'use_page_numbers' => TRUE,
+            'cur_tag_open' => '&nbsp;<a class="current">',
+            'cur_tag_close' => '</a>',
+            'next_link' => 'Next',
+            'prev_link' => 'Prev',
+            'last_link' => 'Last',
+            'first_link' => 'First',
+            'suffix'=> '?'.$_SERVER['QUERY_STRING'],
+            'total_rows' => $total_results,
+            'per_page' => $results_per_page
+        ));
+
         $data['pagination'] = $this->pagination->create_links();
         $first_result = $start + 1;
         $last_result = min($start + $results_per_page, $total_results);
-
-
+        $str_links = $this->pagination->create_links();
+        $data["links"] = explode('&nbsp;',$str_links );
         $data['first_result'] = $first_result;
         $data['last_result'] = $last_result;
         $data['total_results'] = $total_results;
