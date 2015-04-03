@@ -179,6 +179,7 @@ class Search extends MX_Controller
         $this->pagination->initialize(array(
             'base_url' => site_url('/search/company/'),
             'uri_segment' => 3,
+            'num_links' => 5,
             'use_page_numbers' => TRUE,
             'cur_tag_open' => '&nbsp;<a class="current">',
             'cur_tag_close' => '</a>',

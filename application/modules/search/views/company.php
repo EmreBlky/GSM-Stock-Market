@@ -116,7 +116,7 @@
 </script>
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>Search</h2>
+        <h2>Search(<?php echo $total_results; ?>)</h2>
         <ol class="breadcrumb">
             <li>
                 <a href="/">Home</a>
