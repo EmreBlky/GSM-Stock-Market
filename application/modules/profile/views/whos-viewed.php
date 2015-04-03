@@ -72,7 +72,341 @@ function country($name)
             </div>
         <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
+        			
             
+            <!-- Daniel Added Start -->
+                    <?php if($member->membership < 2)  if($viewed_count < 1) {?> 
+            <div class="alert alert-info" style="margin:0 15px 15px">
+                <p><i class="fa fa-info-circle"></i> This page displays all the users who have viewed your profile. They will be listed as most recent first and you will be able to message them directly or view their profiles from this page if you are Silver member or above. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
+            </div>
+                    
+            <div class="col-lg-4"><!-- Profile Widget Start -->
+                <div class="contact-box example">
+                    <a href="<?php echo $base;?>member/profile/5">
+                    <div class="col-sm-4">
+                        <div class="text-center">
+                            <?php if(file_exists("public/main/template/gsm/images/members/5.png")){?>
+                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/5.png" height="128" width="128"/>
+                            <?php } else {?>
+                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/no_profile.jpg" height="128" width="128"/>
+                            <?php }?>
+                        </div>
+                        <div class="text-center" style="margin-top:10px">
+                                <span class="label label-primary">Online</span>
+                            
+                        </div>
+                    </div>
+                    </a>
+                    <div class="col-sm-8 profile-minh">
+                    	<div class="col-sm-12 nopadding">
+                    	<div class="col-sm-11 nopadding">
+                            <h3 style="margin-bottom:0"><strong>GSM Support</strong></h3>
+                        	Web Admin
+                        </div>
+                        <div class="col-sm-1" style="padding:5px 0">
+                            <img alt="image" src="public/main/template/gsm/img/flags/United_Kingdom.png" title="United Kingdom">
+                        </div>
+                        </div>
+                        
+                    	<div class="col-sm-12 nopadding">
+                        
+                        <h4 style="margin:15px 0 0 0"><strong>GSMStockMarket.com</strong></h4>
+                        <ul style="list-style:none;padding:0">
+                            <li>Primary Business</li>
+                            <li>Secondary Business</li>
+                            <li>Tiertary Business</li>
+                        </ul>
+                        </div>
+                        
+                    </div>
+                    <div class="col-sm-12 gsm-contact">
+                            <div>
+                                <button class="btn btn-message" type="button" data-toggle="modal" data-target="#profile_message_5" value="5"><i class="fa fa-envelope"></i>&nbsp;Message</button>
+                            <button onclick="location.href='<?php echo $base;?>member/profile/5'" class="btn btn-profile" type="button" data-toggle="modal" ><i class="fa fa-user"></i>&nbsp;View Profile</button>
+                            </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div><!-- Profile Widget End -->
+                    
+            <div class="col-lg-4"><!-- Profile Widget Start -->
+                <div class="contact-box example">
+                    <a href="<?php echo $base;?>member/profile/5">
+                    <div class="col-sm-4">
+                        <div class="text-center">
+                            <?php if(file_exists("public/main/template/gsm/images/members/5.png")){?>
+                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/5.png" height="128" width="128"/>
+                            <?php } else {?>
+                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/no_profile.jpg" height="128" width="128"/>
+                            <?php }?>
+                        </div>
+                        <div class="text-center" style="margin-top:10px">
+                                <span class="label label-primary">Online</span>
+                            
+                        </div>
+                    </div>
+                    </a>
+                    <div class="col-sm-8 profile-minh">
+                    	<div class="col-sm-12 nopadding">
+                    	<div class="col-sm-11 nopadding">
+                            <h3 style="margin-bottom:0"><strong>GSM Support</strong></h3>
+                        	Web Admin
+                        </div>
+                        <div class="col-sm-1" style="padding:5px 0">
+                            <img alt="image" src="public/main/template/gsm/img/flags/United_Kingdom.png" title="United Kingdom">
+                        </div>
+                        </div>
+                        
+                    	<div class="col-sm-12 nopadding">
+                        
+                        <h4 style="margin:15px 0 0 0"><strong>GSMStockMarket.com</strong></h4>
+                        <ul style="list-style:none;padding:0">
+                            <li>Primary Business</li>
+                            <li>Secondary Business</li>
+                            <li>Tiertary Business</li>
+                        </ul>
+                        </div>
+                        
+                    </div>
+                    <div class="col-sm-12 gsm-contact">
+                            <div>
+                                <button class="btn btn-message" type="button" data-toggle="modal" data-target="#profile_message_5" value="5"><i class="fa fa-envelope"></i>&nbsp;Message</button>
+                            <button onclick="location.href='<?php echo $base;?>member/profile/5'" class="btn btn-profile" type="button" data-toggle="modal" ><i class="fa fa-user"></i>&nbsp;View Profile</button>
+                            </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div><!-- Profile Widget End -->
+                    
+            <div class="col-lg-4"><!-- Profile Widget Start -->
+                <div class="contact-box example">
+                    <a href="<?php echo $base;?>member/profile/5">
+                    <div class="col-sm-4">
+                        <div class="text-center">
+                            <?php if(file_exists("public/main/template/gsm/images/members/5.png")){?>
+                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/5.png" height="128" width="128"/>
+                            <?php } else {?>
+                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/no_profile.jpg" height="128" width="128"/>
+                            <?php }?>
+                        </div>
+                        <div class="text-center" style="margin-top:10px">
+                                <span class="label label-danger">Offline</span>
+                            
+                        </div>
+                    </div>
+                    </a>
+                    <div class="col-sm-8 profile-minh">
+                    	<div class="col-sm-12 nopadding">
+                    	<div class="col-sm-11 nopadding">
+                            <h3 style="margin-bottom:0"><strong>GSM Support</strong></h3>
+                        	Web Admin
+                        </div>
+                        <div class="col-sm-1" style="padding:5px 0">
+                            <img alt="image" src="public/main/template/gsm/img/flags/United_Kingdom.png" title="United Kingdom">
+                        </div>
+                        </div>
+                        
+                    	<div class="col-sm-12 nopadding">
+                        
+                        <h4 style="margin:15px 0 0 0"><strong>GSMStockMarket.com</strong></h4>
+                        <ul style="list-style:none;padding:0">
+                            <li>Primary Business</li>
+                            <li>Secondary Business</li>
+                            <li>Tiertary Business</li>
+                        </ul>
+                        </div>
+                        
+                    </div>
+                    <div class="col-sm-12 gsm-contact">
+                            <div>
+                                <button class="btn btn-message" type="button" data-toggle="modal" data-target="#profile_message_5" value="5"><i class="fa fa-envelope"></i>&nbsp;Message</button>
+                            <button onclick="location.href='<?php echo $base;?>member/profile/5'" class="btn btn-profile" type="button" data-toggle="modal" ><i class="fa fa-user"></i>&nbsp;View Profile</button>
+                            </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div><!-- Profile Widget End -->
+                    
+            <div class="col-lg-4"><!-- Profile Widget Start -->
+                <div class="contact-box example">
+                    <a href="<?php echo $base;?>member/profile/5">
+                    <div class="col-sm-4">
+                        <div class="text-center">
+                            <?php if(file_exists("public/main/template/gsm/images/members/5.png")){?>
+                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/5.png" height="128" width="128"/>
+                            <?php } else {?>
+                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/no_profile.jpg" height="128" width="128"/>
+                            <?php }?>
+                        </div>
+                        <div class="text-center" style="margin-top:10px">
+                                <span class="label label-primary">Online</span>
+                            
+                        </div>
+                    </div>
+                    </a>
+                    <div class="col-sm-8 profile-minh">
+                    	<div class="col-sm-12 nopadding">
+                    	<div class="col-sm-11 nopadding">
+                            <h3 style="margin-bottom:0"><strong>GSM Support</strong></h3>
+                        	Web Admin
+                        </div>
+                        <div class="col-sm-1" style="padding:5px 0">
+                            <img alt="image" src="public/main/template/gsm/img/flags/United_Kingdom.png" title="United Kingdom">
+                        </div>
+                        </div>
+                        
+                    	<div class="col-sm-12 nopadding">
+                        
+                        <h4 style="margin:15px 0 0 0"><strong>GSMStockMarket.com</strong></h4>
+                        <ul style="list-style:none;padding:0">
+                            <li>Primary Business</li>
+                            <li>Secondary Business</li>
+                            <li>Tiertary Business</li>
+                        </ul>
+                        </div>
+                        
+                    </div>
+                    <div class="col-sm-12 gsm-contact">
+                            <div>
+                                <button class="btn btn-message" type="button" data-toggle="modal" data-target="#profile_message_5" value="5"><i class="fa fa-envelope"></i>&nbsp;Message</button>
+                            <button onclick="location.href='<?php echo $base;?>member/profile/5'" class="btn btn-profile" type="button" data-toggle="modal" ><i class="fa fa-user"></i>&nbsp;View Profile</button>
+                            </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div><!-- Profile Widget End -->
+                    
+            <div class="col-lg-4"><!-- Profile Widget Start -->
+                <div class="contact-box example">
+                    <a href="<?php echo $base;?>member/profile/5">
+                    <div class="col-sm-4">
+                        <div class="text-center">
+                            <?php if(file_exists("public/main/template/gsm/images/members/5.png")){?>
+                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/5.png" height="128" width="128"/>
+                            <?php } else {?>
+                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/no_profile.jpg" height="128" width="128"/>
+                            <?php }?>
+                        </div>
+                        <div class="text-center" style="margin-top:10px">
+                                <span class="label label-danger">Offline</span>
+                            
+                        </div>
+                    </div>
+                    </a>
+                    <div class="col-sm-8 profile-minh">
+                    	<div class="col-sm-12 nopadding">
+                    	<div class="col-sm-11 nopadding">
+                            <h3 style="margin-bottom:0"><strong>GSM Support</strong></h3>
+                        	Web Admin
+                        </div>
+                        <div class="col-sm-1" style="padding:5px 0">
+                            <img alt="image" src="public/main/template/gsm/img/flags/United_Kingdom.png" title="United Kingdom">
+                        </div>
+                        </div>
+                        
+                    	<div class="col-sm-12 nopadding">
+                        
+                        <h4 style="margin:15px 0 0 0"><strong>GSMStockMarket.com</strong></h4>
+                        <ul style="list-style:none;padding:0">
+                            <li>Primary Business</li>
+                            <li>Secondary Business</li>
+                            <li>Tiertary Business</li>
+                        </ul>
+                        </div>
+                        
+                    </div>
+                    <div class="col-sm-12 gsm-contact">
+                            <div>
+                                <button class="btn btn-message" type="button" data-toggle="modal" data-target="#profile_message_5" value="5"><i class="fa fa-envelope"></i>&nbsp;Message</button>
+                            <button onclick="location.href='<?php echo $base;?>member/profile/5'" class="btn btn-profile" type="button" data-toggle="modal" ><i class="fa fa-user"></i>&nbsp;View Profile</button>
+                            </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div><!-- Profile Widget End -->
+                    
+            <div class="col-lg-4"><!-- Profile Widget Start -->
+                <div class="contact-box example">
+                    <a href="<?php echo $base;?>member/profile/5">
+                    <div class="col-sm-4">
+                        <div class="text-center">
+                            <?php if(file_exists("public/main/template/gsm/images/members/5.png")){?>
+                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/5.png" height="128" width="128"/>
+                            <?php } else {?>
+                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/no_profile.jpg" height="128" width="128"/>
+                            <?php }?>
+                        </div>
+                        <div class="text-center" style="margin-top:10px">
+                                <span class="label label-danger">Offline</span>
+                            
+                        </div>
+                    </div>
+                    </a>
+                    <div class="col-sm-8 profile-minh">
+                    	<div class="col-sm-12 nopadding">
+                    	<div class="col-sm-11 nopadding">
+                            <h3 style="margin-bottom:0"><strong>GSM Support</strong></h3>
+                        	Web Admin
+                        </div>
+                        <div class="col-sm-1" style="padding:5px 0">
+                            <img alt="image" src="public/main/template/gsm/img/flags/United_Kingdom.png" title="United Kingdom">
+                        </div>
+                        </div>
+                        
+                    	<div class="col-sm-12 nopadding">
+                        
+                        <h4 style="margin:15px 0 0 0"><strong>GSMStockMarket.com</strong></h4>
+                        <ul style="list-style:none;padding:0">
+                            <li>Primary Business</li>
+                            <li>Secondary Business</li>
+                            <li>Tiertary Business</li>
+                        </ul>
+                        </div>
+                        
+                    </div>
+                    <div class="col-sm-12 gsm-contact">
+                            <div>
+                                <button class="btn btn-message" type="button" data-toggle="modal" data-target="#profile_message_5" value="5"><i class="fa fa-envelope"></i>&nbsp;Message</button>
+                            <button onclick="location.href='<?php echo $base;?>member/profile/5'" class="btn btn-profile" type="button" data-toggle="modal" ><i class="fa fa-user"></i>&nbsp;View Profile</button>
+                            </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div><!-- Profile Widget End -->
+            
+            <div class="modal inmodal fade" id="profile_message_5" tabindex="-1" role="dialog"  aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                    	<form id="form">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title" data-dismiss="modal">Send Message</h4>
+                            <small class="font-bold">Send a message to GSMStockMarket.com Limited</small>
+                            <input type="hidden" id="sent_by" name="sent_by" value="5"/>
+                            <input type="hidden" id="sent_to" name="sent_to" value="5"/>                
+                            <input type="hidden" id="email_address" name="email_address" value="5"/>
+                            <input type="hidden" id="subject_5" name="subject_5" value="Profile Message"/>
+                        </div>
+                        <div class="modal-body">
+                        	<textarea name="body_5" id="body_5" class="form-control" style="border:none" rows="10" required placeholder="Here you can send any user who has viewed you a message, this feature is available to members silver and above. Bronze members will only be allowed to reply to messages sent to the in their mailbox."></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="hidden" name="submit" value="Send Message"/>
+                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Send Message</button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+                  
+                    
+                    <?php } else {?>
+            <!-- Daniel Added End -->
+        
+        
+        
+        
             <?php if($blocked){ ?>
                 <?php
             
@@ -90,8 +424,8 @@ function country($name)
                     <div class="col-sm-4">
                         <div class="text-center">
 <!--                            <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/img/daniel_big.jpg">-->
-                            <?php if(file_exists("public/main/template/gsm/images/members/".$view->viewer_id.".jpg")){?>
-                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/<?php echo $view->viewer_id; ?>.jpg" height="128" width="128"/>
+                            <?php if(file_exists("public/main/template/gsm/images/members/".$view->viewer_id.".png")){?>
+                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/<?php echo $view->viewer_id; ?>.png" height="128" width="128"/>
                             <?php } else {?>
                                 <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/no_profile.jpg" height="128" width="128"/>
                             <?php }?>
@@ -218,8 +552,8 @@ function country($name)
                     <div class="col-sm-4">
                         <div class="text-center">
 <!--                            <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/img/daniel_big.jpg">-->
-                            <?php if(file_exists("public/main/template/gsm/images/members/".$view->viewer_id.".jpg")){?>
-                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/<?php echo $view->viewer_id; ?>.jpg" height="128" width="128"/>
+                            <?php if(file_exists("public/main/template/gsm/images/members/".$view->viewer_id.".png")){?>
+                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/<?php echo $view->viewer_id; ?>.png" height="128" width="128"/>
                             <?php } else {?>
                                 <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/no_profile.jpg" height="128" width="128"/>
                             <?php }?>
@@ -330,6 +664,12 @@ function country($name)
                      
             ?>
             <?php }?>
+            
+            <!-- Daniel Added Start -->
+            <?php } ?> 
+            <!-- Daniel Added End -->
+            
+            
        	</div><!-- Row End -->
 <!--        <div class="row" style="margin:0 0 25px 0">
         <div class="btn-group pull-right">
@@ -341,6 +681,7 @@ function country($name)
             <button type="button" class="btn btn-white"><i class="fa fa-chevron-right"></i> </button>
         </div>
         </div>-->
+                        
         
            
         </div>
@@ -370,6 +711,6 @@ function country($name)
             $(".dial").knob();                    
         });
     </script>
-                            
+           
                                
             

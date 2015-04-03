@@ -81,6 +81,10 @@ class Profile extends MX_Controller
         $data['title'] = 'GSM - Whos Viewed Profile';
         $data['page'] = 'whos-viewed';
         $data['blocked'] = $this->block_model->get_where_multiples('block_member_id', $this->session->userdata('members_id'));
+		
+		/* Daniel Added Start */
+        $data['member'] = $this->member_model->get_where($this->session->userdata('members_id'));
+		/* Daniel Added End */
 
         if (isset($off) && $off > 1) {
             $new_mem = $off - 1;

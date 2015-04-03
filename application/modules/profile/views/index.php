@@ -200,10 +200,38 @@ $this->load->model('membership/membership_model', 'membership_model');
                                         </thead>
                                         <tbody>
                                             <tr>
+                                            	<td class="mobihide">Apple</td>
+                                                <td>iPhone 6 Plus</td>
+                                                <td>£34,000.00</td>
+                                                <td class="mobihide">600</td>
+                                                <td><span class="label label-info">7 Offers</span></td>
+                                            </tr>
+                                            <tr>
                                             	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
                                                 <td class="mobihide">400</td>
+                                                <td><span class="label label-info">2 Offers</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9300 Galaxy S3</td>
+                                                <td>£6,200.00</td>
+                                                <td class="mobihide">100</td>
+                                                <td><span class="label label-info">1 Offer</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Nokia</td>
+                                                <td>6103</td>
+                                                <td>£700.00</td>
+                                                <td class="mobihide">30</td>
+                                                <td><span class="label label-primary">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Apple</td>
+                                                <td>iPhone 6 Plus</td>
+                                                <td>£34,000.00</td>
+                                                <td class="mobihide">600</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
@@ -215,31 +243,17 @@ $this->load->model('membership/membership_model', 'membership_model');
                                             </tr>
                                             <tr>
                                             	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-success">Completed</span></td>
+                                                <td>i9300 Galaxy S3</td>
+                                                <td>£6,200.00</td>
+                                                <td class="mobihide">100</td>
+                                                <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-success">Completed</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-warning">Pending</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-danger">Cancelled</span></td>
+                                            	<td class="mobihide">Nokia</td>
+                                                <td>6103</td>
+                                                <td>£700.00</td>
+                                                <td class="mobihide">30</td>
+                                                <td><span class="label label-danger">Ended</span></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -257,10 +271,24 @@ $this->load->model('membership/membership_model', 'membership_model');
                                         </thead>
                                         <tbody>
                                             <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
+                                            	<td class="mobihide">Nokia</td>
+                                                <td>6103</td>
+                                                <td>£700.00</td>
+                                                <td class="mobihide">30</td>
+                                                <td><span class="label label-info">4 Offers</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Apple</td>
+                                                <td>iPhone 6 Plus</td>
+                                                <td>£34,000.00</td>
+                                                <td class="mobihide">600</td>
+                                                <td><span class="label label-info">2 Offers</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Apple</td>
+                                                <td>iPhone 6 Plus</td>
+                                                <td>£34,000.00</td>
+                                                <td class="mobihide">600</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
@@ -275,28 +303,28 @@ $this->load->model('membership/membership_model', 'membership_model');
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
                                                 <td class="mobihide">400</td>
-                                                <td><span class="label label-success">Completed</span></td>
+                                                <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
                                             	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-success">Completed</span></td>
+                                                <td>i9300 Galaxy S3</td>
+                                                <td>£6,200.00</td>
+                                                <td class="mobihide">100</td>
+                                                <td><span class="label label-danger">Ended</span></td>
                                             </tr>
                                             <tr>
                                             	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-warning">Pending</span></td>
+                                                <td>i9300 Galaxy S3</td>
+                                                <td>£6,200.00</td>
+                                                <td class="mobihide">100</td>
+                                                <td><span class="label label-danger">Ended</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-danger">Cancelled</span></td>
+                                            	<td class="mobihide">Nokia</td>
+                                                <td>6103</td>
+                                                <td>£700.00</td>
+                                                <td class="mobihide">30</td>
+                                                <td><span class="label label-danger">Ended</span></td>
                                             </tr>
                                         </tbody>
                                     </table>

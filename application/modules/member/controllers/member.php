@@ -56,6 +56,11 @@ class Member extends MX_Controller
         $data['member_company'] = $this->company_model->get_where($this->member_model->get_where($pid)->company_id);
         $this->load->model('block/block_model', 'block_model');
         $data['blocked'] = $this->block_model->get_where_multiples('member_id', $this->session->userdata('members_id'), 'block_member_id', $pid);
+		
+		/* Daniel Added Start */
+        $data['member'] = $this->member_model->get_where($this->session->userdata('members_id'));
+		
+		/* Daniel Added End */
 
         $this->load->module('templates');
         $this->templates->page($data); 
