@@ -47,7 +47,7 @@ class Profile extends MX_Controller
 
     function who_viewed_count()
     {
-        $viewed_count = $this->viewed_model->_custom_query_count("SELECT COUNT(DISTINCT viewer_id) AS 'viewed' FROM gsmstock_secure.viewed WHERE viewed_id = '" . $this->session->userdata('members_id') . "' AND notified = 'no'");
+        $viewed_count = $this->viewed_model->_custom_query_count("SELECT COUNT(DISTINCT viewer_id) AS 'viewed' FROM viewed WHERE viewed_id = '" . $this->session->userdata('members_id') . "' AND notified = 'no'");
 
         foreach ($viewed_count as $viewed) {
             $viewed = $viewed->viewed;
@@ -94,7 +94,7 @@ class Profile extends MX_Controller
         );
         $this->viewed_model->_update_where($datas, 'viewed_id', $this->session->userdata('members_id'), 'notified', 'no');
 
-        $viewed_count = $this->viewed_model->_custom_query_count("SELECT COUNT(DISTINCT viewer_id) AS 'viewed' FROM gsmstock_secure.viewed WHERE viewed_id = '" . $this->session->userdata('members_id') . "'");
+        $viewed_count = $this->viewed_model->_custom_query_count("SELECT COUNT(DISTINCT viewer_id) AS 'viewed' FROM viewed WHERE viewed_id = '" . $this->session->userdata('members_id') . "'");
 
         foreach ($viewed_count as $viewed) {
             $viewed = $viewed->viewed;
@@ -106,7 +106,7 @@ class Profile extends MX_Controller
 //echo $viewed;
 //exit;
 
-            $data['viewed'] = $this->viewed_model->_custom_query("SELECT DISTINCT viewer_id FROM gsmstock_secure.viewed WHERE viewed_id = '" . $this->session->userdata('members_id') . "' ORDER BY datetime DESC LIMIT " . $offset . ", 21");
+            $data['viewed'] = $this->viewed_model->_custom_query("SELECT DISTINCT viewer_id FROM viewed WHERE viewed_id = '" . $this->session->userdata('members_id') . "' ORDER BY datetime DESC LIMIT " . $offset . ", 21");
             $config['base_url'] = $this->config->item('base_url') . 'profile/who_viewed/page';
             $config['total_rows'] = $viewed;
             $config['per_page'] = 21;
