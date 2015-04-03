@@ -2,25 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/profile/controllers/profile.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/join/controllers/join.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/preferences/views/password.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/join/views/validate-account.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/support/views/submit-ticket.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/join/views/index.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/marketplace/controllers/marketplace.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/mailbox/views/reply.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/register/controllers/register.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/member/views/profile.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/marketplace/views/notice.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/support/controllers/support.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/preferences/controllers/preferences.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/home/views/index.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/mailbox/controllers/mailbox.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/profile/views/edit-profile.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/header/views/sidebar.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/addressbook/views/index.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
