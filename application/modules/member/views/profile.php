@@ -271,10 +271,10 @@
                                     </div>
                                     <div class="row">
                                             <div class="col-md-5 col-md-offset-1" style="margin-top:15px">
-                                                <button type="button" class="btn btn-success btn-sm btn-block" id="contact_added"><i class="fa fa-book"></i> Add Contact</button>
+                                                <button type="button" class="btn btn-success btn-sm btn-block"><i class="fa fa-book"></i> Add Contact</button>
                                             </div>
                                             <div class="col-md-5" style="margin-top:15px">
-                                                <button  type="button" class="btn btn-warning btn-sm btn-block" id="favourite_added"><i class="fa fa-star"></i> Add Favourite</button>
+                                                <button type="button" class="btn btn-warning btn-sm btn-block"><i class="fa fa-star"></i> Add Favourite</button>
                                             </div>
                                     </div>
                                 </div>
