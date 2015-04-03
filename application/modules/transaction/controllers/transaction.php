@@ -69,8 +69,20 @@ class Transaction extends MX_Controller
         $data_mail = array(
                                     'member_id'         => 5,
                                     'sent_member_id'    => $this->session->userdata('members_id'),
-                                    'subject'           => 'You have made a Transaction',
-                                    'body'              => 'Hello.<br/><br/>You have just made a transaction. Invoice: '.$invoice.'.<br/><br/>Many Thanks,<br/><br/>GSM Stockmarket Support Team',
+                                    'subject'           => 'Bank Transfer Transaction - '.$invoice.'',
+                                    'body'              => '<p>Thank you for upgrading your membership on GSMStockMarket.com. We have emailed you an order summary with our bank details to make payment.</p>
+															<p>Once payment has been made using the details below we will upgrade your account within 24 hours after payment has been completed. You will be sent a message confirming your upgrade.</p>
+									<h4>Payment Instructions</h4>
+                                                            <p>Please make sure your invoice number <strong>'.$invoice.'</strong> is the reference on your transaction and that the total amount payable in <strong>£ (GBP)</strong> to:</p><br />
+                                                            <p style="text-align:left;margin:0 15px"><strong>Account Name:</strong> GSM Stock Market.com Ltd<br />
+                                                            <strong>IBAN:</strong> GB73 BARC 2040 7153 1834 24<br />
+                                                            <strong>SWIFTBIC:</strong> BARCGB22<br />
+                                                            <strong>Account no:</strong> 53183424<br />
+                                                            <strong>Sort Code:</strong> 20-40-71<br />
+                                                            Barclays Bank. 12 Station Approach, Gerrards Cross, Bucks. SL9 8PP. UK.</p><br />
+                                                            <p>To view the full invoice you can go to <strong>Preferences > My Subscription</strong> and print off a copy direct from within your account.</p>
+															<p>If you have any billing issues or queries please do not hesitate to email us at billing@gsmstockmarket.com, message us through the submit a ticket system or call us on +44 (0)1494 717236</p>
+															<P>Kind Regards,<br>GSMStockMarket.com Team</p>',
                                     'inbox'             => 'yes',
                                     'sent'              => 'yes',
                                     'date'              => date('d-m-Y'),
@@ -96,362 +108,76 @@ class Transaction extends MX_Controller
                 
                 $this->load->library('email', $config);                
                 $this->email->set_mailtype("html");
-                $email_body = '<html>
-                                <head>
-                                <style>
-                                 /* -------------------------------------
-                                        GLOBAL
-                                        A very basic CSS reset
-                                  ------------------------------------- */
-                                  * {
-                                       margin: 0;
-                                        padding: 0;
-                                        font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-                                        box-sizing: border-box;
-                                        font-size: 14px;
-                                  }
-
-                                  img {
-                                        max-width: 100%;
-                                  }
-
-                                  body {
-                                        -webkit-font-smoothing: antialiased;
-                                        -webkit-text-size-adjust: none;
-                                        width: 100% !important;
-                                        height: 100%;
-                                        line-height: 1.6;
-                                  }
-
-
-                                  table td {
-                                        vertical-align: top;
-                                  }
-
-                                  /* -------------------------------------
-                                        BODY & CONTAINER
-                                  ------------------------------------- */
-                                  body {
-                                        background-color: #f6f6f6;
-                                  }
-
-                                  .body-wrap {
-                                        background-color: #f6f6f6;
-                                        width: 100%;
-                                  }
-
-                                  .container {
-                                        display: block !important;
-                                        max-width: 600px !important;
-                                        margin: 0 auto !important;
-                                        /* makes it centered */
-                                        clear: both !important;
-                                  }
-
-                                  .content {
-                                        max-width: 600px;
-                                        margin: 0 auto;
-                                        display: block;
-                                        padding: 20px;
-                                  }
-
-                                  /* -------------------------------------
-                                        HEADER, FOOTER, MAIN
-                                  ------------------------------------- */
-                                  .main {
-                                        background: #fff;
-                                        border: 1px solid #e9e9e9;
-                                        border-radius: 3px;
-                                  }
-
-                                  .content-wrap {
-                                        padding: 20px;
-                                  }
-
-                                  .content-block {
-                                        padding: 0 0 20px;
-                                  }
-
-                                  .header {
-                                        width: 100%;
-                                        margin-bottom: 20px;
-                                  }
-
-                                  .footer {
-                                        width: 100%;
-                                        clear: both;
-                                        color: #999;
-                                        padding: 20px;
-                                  }
-                                  .footer a {
-                                        color: #999;
-                                  }
-                                  .footer p, .footer a, .footer unsubscribe, .footer td {
-                                        font-size: 12px;
-                                  }
-
-                                  /* -------------------------------------
-                                        TYPOGRAPHY
-                                  ------------------------------------- */
-                                  h1, h2, h3 {
-                                        font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-                                        color: #000;
-                                        margin: 40px 0 0;
-                                        line-height: 1.2;
-                                        font-weight: 400;
-                                  }
-
-                                  h1 {
-                                        font-size: 32px;
-                                        font-weight: 500;
-                                  }
-
-                                  h2 {
-                                        font-size: 24px;
-                                  }
-
-                                  h3 {
-                                        font-size: 18px;
-                                  }
-
-                                  h4 {
-                                        font-size: 14px;
-                                        font-weight: 600;
-                                  }
-
-                                  p, ul, ol {
-                                        margin-bottom: 10px;
-                                        font-weight: normal;
-                                  }
-                                  p li, ul li, ol li {
-                                        margin-left: 5px;
-                                        list-style-position: inside;
-                                  }
-
-                                  /* -------------------------------------
-                                        LINKS & BUTTONS
-                                  ------------------------------------- */
-                                  a {
-                                        color: #1ab394;
-                                        text-decoration: underline;
-                                  }
-
-                                  .btn-primary {
-                                        text-decoration: none;
-                                        color: #FFF;
-                                        background-color: #1ab394;
-                                        border: solid #1ab394;
-                                        border-width: 5px 10px;
-                                        line-height: 2;
-                                        font-weight: bold;
-                                        text-align: center;
-                                        cursor: pointer;
-                                        display: inline-block;
-                                        border-radius: 5px;
-                                        text-transform: capitalize;
-                                  }
-
-                                  .btn-success {
-                                        text-decoration: none;
-                                        color: #FFF;
-                                        background-color: #1c84c6;
-                                        border: solid #1c84c6;
-                                        border-width: 5px 10px;
-                                        line-height: 2;
-                                        font-weight: bold;
-                                        text-align: center;
-                                        cursor: pointer;
-                                        display: inline-block;
-                                        text-transform: capitalize;
-                                  }
-
-                                  /* -------------------------------------
-                                        OTHER STYLES THAT MIGHT BE USEFUL
-                                  ------------------------------------- */
-                                  .last {
-                                        margin-bottom: 0;
-                                  }
-
-                                  .first {
-                                        margin-top: 0;
-                                  }
-
-                                  .aligncenter {
-                                        text-align: center;
-                                  }
-
-                                  .alignright {
-                                        text-align: right;
-                                  }
-
-                                  .alignleft {
-                                        text-align: left;
-                                  }
-
-                                  .clear {
-                                        clear: both;
-                                  }
-
-                                  /* -------------------------------------
-                                        ALERTS
-                                        Change the class depending on warning email, good email or bad email
-                                  ------------------------------------- */
-                                  .alert {
-                                        font-size: 16px;
-                                        color: #fff;
-                                        font-weight: 500;
-                                        padding: 20px;
-                                        text-align: center;
-                                        border-radius: 3px 3px 0 0;
-                                  }
-                                  .alert a {
-                                        color: #fff;
-                                        text-decoration: none;
-                                        font-weight: 500;
-                                        font-size: 16px;
-                                  }
-                                  .alert.alert-warning {
-                                        background: #f8ac59;
-                                  }
-                                  .alert.alert-bad {
-                                        background: #ed5565;
-                                  }
-                                  .alert.alert-good {
-                                        background: #1ab394;
-                                  }
-
-                                  /* -------------------------------------
-                                        INVOICE
-                                        Styles for the billing table
-                                  ------------------------------------- */
-                                  .invoice {
-                                        margin: 40px auto;
-                                        text-align: left;
-                                        width: 80%;
-                                  }
-                                  .invoice td {
-                                        padding: 5px 0;
-                                  }
-                                  .invoice .invoice-items {
-                                        width: 100%;
-                                  }
-                                  .invoice .invoice-items td {
-                                        border-top: #eee 1px solid;
-                                  }
-                                  .invoice .invoice-items .total td {
-                                        border-top: 2px solid #333;
-                                        border-bottom: 2px solid #333;
-                                        font-weight: 700;
-                                  }
-
-                                  /* -------------------------------------
-                                        RESPONSIVE AND MOBILE FRIENDLY STYLES
-                                  ------------------------------------- */
-                                  @media only screen and (max-width: 640px) {
-                                        h1, h2, h3, h4 {
-                                                font-weight: 600 !important;
-                                                margin: 20px 0 5px !important;
-                                        }
-
-                                        h1 {
-                                                font-size: 22px !important;
-                                        }
-
-                                        h2 {
-                                                font-size: 18px !important;
-                                        }
-
-                                        h3 {
-                                                font-size: 16px !important;
-                                        }
-
-                                        .container {
-                                                width: 100% !important;
-                                        }
-
-                                        .content, .content-wrap {
-                                                padding: 10px !important;
-                                        }
-
-                                        .invoice {
-                                                width: 100% !important;
-                                        }
-                                  }
-                            </style>
-                            </head>
-                    <body>
-                    <table class="body-wrap">
-                        <tr>
-                            <td></td>
-                            <td class="container" width="600">
-                                <div class="content">
-                                    <table class="main" width="100%" cellpadding="0" cellspacing="0">
-                                        <tr>
-                                            <td class="content-wrap aligncenter">
-                                                <table width="100%" cellpadding="0" cellspacing="0">
-                                                    <tr>
-                                                        <td>
-                                                            <img class="img-responsive" src="'.$base.'public/main/template/gsm/images/email/header.png"/>
+                $email_body = '                    <table class="body-wrap" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;background-color: #f6f6f6;width: 100%;">
+                        <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                            <td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;"></td>
+                            <td class="container" width="600" style="margin: 0 auto !important;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;display: block !important;max-width: 600px !important;clear: both !important;">
+                                <div class="content" style="margin: 0 auto;padding: 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;max-width: 600px;display: block;">
+                                    <table class="main" width="100%" cellpadding="0" cellspacing="0" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;background: #fff;border: 1px solid #e9e9e9;border-radius: 3px;">
+                                        <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                            <td class="content-wrap aligncenter" style="margin: 0;padding: 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;text-align: center;">
+                                                <table width="100%" cellpadding="0" cellspacing="0" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                    <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                        <td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                                                            <img class="img-responsive" src="'.$base.'public/main/template/gsm/images/email/header.png" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;max-width: 100%;">
                                                         </td>
                                                     </tr>
-                                                    <tr>
-                                                        <td class="content-block">
-                                                            <table class="invoice">
-                                                                <tr>
-                                                                    <td>
-                                                                    Company name: '.$this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id)->company_name.'<br>
-                                                                    Invoice no. '.$invoice.'<br>
+                                                    <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                        <td class="content-block" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                                                            <table class="invoice" style="margin: 40px auto;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;text-align: left;width: 80%;">
+                                                                <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                                    <td style="margin: 0;padding: 5px 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                                                                    Company name: '.$this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id)->company_name.'<br style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                                    Invoice no. '.$invoice.'<br style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
                                                                     '.date('F j, Y', strtotime(date('Y-m-d H:i:s'))).'
                                                                     </td>
                                                                 </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <table class="invoice-items" cellpadding="0" cellspacing="0">
-                                                                            <tr>
-                                                                                <td>Silver Membership Upgrade</td>
-                                                                                <td class="alignright">&pound; 1295.00</td>
+                                                                <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                                    <td style="margin: 0;padding: 5px 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                                                                        <table class="invoice-items" cellpadding="0" cellspacing="0" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;width: 100%;">
+                                                                            <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                                                <td style="margin: 0;padding: 5px 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;border-top: #eee 1px solid;">Silver Membership Upgrade</td>
+                                                                                <td class="alignright" style="margin: 0;padding: 5px 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;text-align: right;border-top: #eee 1px solid;">&pound; 1295.00</td>
                                                                             </tr>
-                                                                            <tr class="total">
-                                                                                <td class="alignright" width="80%">Total</td>
-                                                                                <td class="alignright">&pound; 1295.00</td>
+                                                                            <tr class="total" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                                                <td class="alignright" width="80%" style="margin: 0;padding: 5px 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;text-align: right;border-top: 2px solid #333;border-bottom: 2px solid #333;font-weight: 700;">Total</td>
+                                                                                <td class="alignright" style="margin: 0;padding: 5px 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;text-align: right;border-top: 2px solid #333;border-bottom: 2px solid #333;font-weight: 700;">&pound; 1295.00</td>
                                                                             </tr>
                                                                         </table>
                                                                     </td>
                                                                 </tr>
                                                             </table>
-                                                            <p>This is a summary of your order and not an official invoice.</p>
+                                                            <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">This is a summary of your order and not an official invoice.</p>
                                                         </td>
                                                     </tr>
-                                                    <tr>
-                                                        <td class="content-block">
-                                                            <h4>Payment Instructions</h4>
-                                                            <p>Please make sure your invoice number is the reference on your transaction and that the total amount payable in <strong>£ (GBP)</strong> to:</p>
-                                                            <p style="text-align:left;margin:0 15px"><strong>Account Name:</strong> GSM Stock Market.com Ltd<br />
-                                                            <strong>IBAN:</strong> GB73 BARC 2040 7153 1834 24<br />
-                                                            <strong>SWIFTBIC:</strong> BARCGB22<br />
-                                                            <strong>Account no:</strong> 53183424<br />
-                                                            <strong>Sort Code:</strong> 20-40-71<br />
-                                                            Barclays Bank. 12 Station Approach, Gerrards Cross, Bucks. SL9 8PP. UK.</p><br />
-                                                            <p>To view the full invoice you can login to your account and go to<br  /><strong>Preferences > My Subscription</strong> and print off a copy direct from our website</p>
+                                                    <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                        <td class="content-block" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                                                            <h4 style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;font-weight: 600;">Payment Instructions</h4>
+                                                            <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">Please make sure your invoice number is the reference on your transaction and that the total amount payable in <strong style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">£ (GBP)</strong> to:</p>
+                                                            <p style="text-align: left;margin: 0 15px;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;"><strong style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">Account Name:</strong> GSM Stock Market.com Ltd<br style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                            <strong style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">IBAN:</strong> GB73 BARC 2040 7153 1834 24<br style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                            <strong style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">SWIFTBIC:</strong> BARCGB22<br style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                            <strong style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">Account no:</strong> 53183424<br style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                            <strong style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">Sort Code:</strong> 20-40-71<br style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                            Barclays Bank. 12 Station Approach, Gerrards Cross, Bucks. SL9 8PP. UK.</p><br style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                            <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">To view the full invoice you can login to your account and go to<br style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;"><strong style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">Preferences > My Subscription</strong> and print off a copy direct from our website</p>
                                                         </td>
                                                     </tr>
                                                 </table>
                                             </td>
                                         </tr>
                                     </table>
-                                    <div class="footer">
-                                        <table width="100%">
-                                            <tr>
-                                                <td class="aligncenter content-block">Billing questions? Email <a href="mailto:billing@gsmstockmarket.com">billing@gsmstockmarket.com</a></td>
+                                    <div class="footer" style="margin: 0;padding: 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;width: 100%;clear: both;color: #999;">
+                                        <table width="100%" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                            <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                <td class="aligncenter content-block" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 12px;vertical-align: top;text-align: center;">Billing questions? Email <a href="mailto:billing@gsmstockmarket.com" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 12px;color: #999;text-decoration: underline;">billing@gsmstockmarket.com</a></td>
                                             </tr>
                                         </table>
                                     </div></div>
                             </td>
-                            <td></td>
+                            <td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;"></td>
                         </tr>
-                    </table>
-                    </body>
-                    </html>';
+                    </table>';
                 
                 $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket');
 
@@ -463,9 +189,9 @@ class Transaction extends MX_Controller
 
                 $this->email->send();
                 //echo $this->email->print_debugger();
-                $this->session->set_flashdata('confirm-transaction', '<div style="margin-top: 15px; margin-left: 10px;">    
+                $this->session->set_flashdata('confirm-transaction', '<div style="margin:0 15px">    
                                                                 <div class="alert alert-success">
-                                                                    Thank you. Your transaction is being processed.
+                                                                    Order has been placed. Your invoice has been generated below.
                                                                 </div>
                                                             </div>');
                 redirect('preferences/subscription');

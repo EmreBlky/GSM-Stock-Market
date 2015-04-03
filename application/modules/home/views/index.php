@@ -7,8 +7,8 @@
 ?>
 <div class="wrapper wrapper-content">
     <?php if($this->session->userdata('membership') < 2) {?>
-    <div class="alert alert-danger" style="margin-bottom:10px;">
-        Upgrade your account to <a class="alert-link" href="preferences/subscription">Silver</a> to access the full features on the site. <a class="alert-link" href="preferences/subscription">UPGRADE NOW</a>
+    <div class="alert alert-info" style="margin-bottom:10px;">
+        You currently have Bronze Membership. This dashboard is an example of what members silver and above will see. Here you can see your total sale, purchases, profile visits and your marketplace feedback rating. We also provide in-depth graphs for your sales so you can track marketplace deals. View what offers you have on any buying requests or selling offers you have posted and even keep track of what you watch on the marketplace. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>
     </div>
     <?php }?>
         <div class="row">
@@ -47,8 +47,8 @@
                                 <h5>Visits</h5>
                             </div>
                             <div class="ibox-content" style="min-height:89px">
-                                <h1 class="no-margins">1,320</h1>
-                                <div class="stat-percent font-bold text-navy">44% <i class="fa fa-level-up"></i></div>
+                                <h1 class="no-margins">0</h1>
+                                <div class="stat-percent font-bold text-navy">0% <i class="fa fa-level-up"></i></div>
                                 <small>New visits</small>
                             </div>
                         </div>
@@ -224,10 +224,38 @@
                                             </thead>
                                             <tbody>
                                             <tr>
+                                            	<td class="mobihide">Apple</td>
+                                                <td>iPhone 6 Plus</td>
+                                                <td>£34,000.00</td>
+                                                <td class="mobihide">600</td>
+                                                <td><span class="label label-info">7 Offers</span></td>
+                                            </tr>
+                                            <tr>
                                             	<td class="mobihide">Samsung</td>
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
                                                 <td class="mobihide">400</td>
+                                                <td><span class="label label-info">2 Offers</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9300 Galaxy S3</td>
+                                                <td>£6,200.00</td>
+                                                <td class="mobihide">100</td>
+                                                <td><span class="label label-info">1 Offer</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Nokia</td>
+                                                <td>6103</td>
+                                                <td>£700.00</td>
+                                                <td class="mobihide">30</td>
+                                                <td><span class="label label-primary">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Apple</td>
+                                                <td>iPhone 6 Plus</td>
+                                                <td>£34,000.00</td>
+                                                <td class="mobihide">600</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
@@ -239,31 +267,17 @@
                                             </tr>
                                             <tr>
                                             	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-success">Completed</span></td>
+                                                <td>i9300 Galaxy S3</td>
+                                                <td>£6,200.00</td>
+                                                <td class="mobihide">100</td>
+                                                <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-success">Completed</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-warning">Pending</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-danger">Cancelled</span></td>
+                                            	<td class="mobihide">Nokia</td>
+                                                <td>6103</td>
+                                                <td>£700.00</td>
+                                                <td class="mobihide">30</td>
+                                                <td><span class="label label-danger">Ended</span></td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -295,10 +309,24 @@
                                             </thead>
                                             <tbody>
                                             <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
+                                            	<td class="mobihide">Nokia</td>
+                                                <td>6103</td>
+                                                <td>£700.00</td>
+                                                <td class="mobihide">30</td>
+                                                <td><span class="label label-info">4 Offers</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Apple</td>
+                                                <td>iPhone 6 Plus</td>
+                                                <td>£34,000.00</td>
+                                                <td class="mobihide">600</td>
+                                                <td><span class="label label-info">2 Offers</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Apple</td>
+                                                <td>iPhone 6 Plus</td>
+                                                <td>£34,000.00</td>
+                                                <td class="mobihide">600</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
@@ -313,28 +341,28 @@
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
                                                 <td class="mobihide">400</td>
-                                                <td><span class="label label-success">Completed</span></td>
+                                                <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
                                             	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-success">Completed</span></td>
+                                                <td>i9300 Galaxy S3</td>
+                                                <td>£6,200.00</td>
+                                                <td class="mobihide">100</td>
+                                                <td><span class="label label-danger">Ended</span></td>
                                             </tr>
                                             <tr>
                                             	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-warning">Pending</span></td>
+                                                <td>i9300 Galaxy S3</td>
+                                                <td>£6,200.00</td>
+                                                <td class="mobihide">100</td>
+                                                <td><span class="label label-danger">Ended</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-danger">Cancelled</span></td>
+                                            	<td class="mobihide">Nokia</td>
+                                                <td>6103</td>
+                                                <td>£700.00</td>
+                                                <td class="mobihide">30</td>
+                                                <td><span class="label label-danger">Ended</span></td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -370,13 +398,27 @@
                                                 <td>i9105 Galaxy S2 Plus</td>
                                                 <td>£23,505.00</td>
                                                 <td class="mobihide">400</td>
+                                                <td><span class="label label-success">Completed</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Nokia</td>
+                                                <td>6103</td>
+                                                <td>£700.00</td>
+                                                <td class="mobihide">30</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
+                                            	<td class="mobihide">Apple</td>
+                                                <td>iPhone 6 Plus</td>
+                                                <td>£34,000.00</td>
+                                                <td class="mobihide">600</td>
+                                                <td><span class="label label-primary">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Apple</td>
+                                                <td>iPhone 6 Plus</td>
+                                                <td>£34,000.00</td>
+                                                <td class="mobihide">600</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
@@ -388,24 +430,24 @@
                                             </tr>
                                             <tr>
                                             	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
+                                                <td>i9300 Galaxy S3</td>
+                                                <td>£6,200.00</td>
+                                                <td class="mobihide">100</td>
                                                 <td><span class="label label-success">Completed</span></td>
                                             </tr>
                                             <tr>
                                             	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-warning">Pending</span></td>
+                                                <td>i9300 Galaxy S3</td>
+                                                <td>£6,200.00</td>
+                                                <td class="mobihide">100</td>
+                                                <td><span class="label label-success">Completed</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-danger">Cancelled</span></td>
+                                            	<td class="mobihide">Nokia</td>
+                                                <td>6103</td>
+                                                <td>£700.00</td>
+                                                <td class="mobihide">30</td>
+                                                <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             </tbody>
                                         </table>

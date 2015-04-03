@@ -132,7 +132,7 @@ class Register extends MX_Controller{
                                         <br/>
                                         <br/>
                                         Many Thanks,<br/><br/>
-                                        ------ Team
+                                        GSMStockMarket.com Team
                                         ';
 
                         $this->email->message($body);
@@ -188,8 +188,8 @@ class Register extends MX_Controller{
             $data_mail = array(
                                     'member_id'         => 5,
                                     'sent_member_id'    => $mid->id,
-                                    'subject'           => 'Welcome to GSM Stockmarket',
-                                    'body'              => 'Hello and Welcome to GSM Stockmarket.<br/><br/>Please feel free to browse the site at your leisure.<br/><br/>Many Thanks,<br/><br/>GSM Stockmarket Support Team',
+                                    'subject'           => 'Welcome to GSMStockMarket.com',
+                                    'body'              => 'Thank you for signing up to GSMStockMarket.com<br /><br/>Your account is now fully active and you have your bronze membership. To get started head over to <strong>My Profile > Edit Profile</strong> and complete your profile so other users will be able to search and find your company.<br /><br/>With bronze access you will receive the following:<br />- View and edit your own profile<br />- Check out who has viewed your profile<br />- Reply to members who contact you via the mailbox system<br />- Add users to your address book/favourites<br /><br />We currently have a new feature called <strong>IMEI services</strong> which all bronze members will have access to. This feature will let you use our unlocking services and IMEI blacklist check, ensuring all mobile phones bought and sold are not reported missing or stolen. This feature will be available shortly.<br /><br />If you have any issues using our website feel free to contact us through the submit a ticket system under the support tab. <br /><br />if you also experience any issues browsing/using the website or would like to have any features added then let us know! We would love to hear from you, just submit a feedback ticket and we will do our best to help you out.<br /><br />Kind Regards,<br />GSMStockMarket.com Team',
                                     'inbox'             => 'yes',
                                     'sent'              => 'yes',
                                     'date'              => date('d-m-Y'),
@@ -216,291 +216,47 @@ class Register extends MX_Controller{
 
             $this->load->library('email', $config);
             $this->email->set_mailtype("html");
-            $email_body = ' 
-                            <style>
-                            /* -------------------------------------
-                            GLOBAL
-                            A very basic CSS reset
-                            ------------------------------------- */
-                            * {
-                            margin: 0;
-                            padding: 0;
-                            font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-                            box-sizing: border-box;
-                            font-size: 14px;
-                            }
-                            img {
-                            max-width: 100%;
-                            }
-                            body {
-                            -webkit-font-smoothing: antialiased;
-                            -webkit-text-size-adjust: none;
-                            width: 100% !important;
-                            height: 100%;
-                            line-height: 1.6;
-                            }
-                            table td {
-                            vertical-align: top;
-                            }
-                            /* -------------------------------------
-                            BODY & CONTAINER
-                            ------------------------------------- */
-                            body {
-                            background-color: #f6f6f6;
-                            }
-                            .body-wrap {
-                            background-color: #f6f6f6;
-                            width: 100%;
-                            }
-                            .container {
-                            display: block !important;
-                            max-width: 600px !important;
-                            margin: 0 auto !important;
-                            /* makes it centered */
-                            clear: both !important;
-                            }
-                            .content {
-                            max-width: 600px;
-                            margin: 0 auto;
-                            display: block;
-                            padding: 20px;
-                            }
-                            /* -------------------------------------
-                            HEADER, FOOTER, MAIN
-                            ------------------------------------- */
-                            .main {
-                            background: #fff;
-                            border: 1px solid #e9e9e9;
-                            border-radius: 3px;
-                            }
-                            .content-wrap {
-                            padding: 20px;
-                            }
-                            .content-block {
-                            padding: 0 0 20px;
-                            }
-                            .header {
-                            width: 100%;
-                            margin-bottom: 20px;
-                            }
-                            .footer {
-                            width: 100%;
-                            clear: both;
-                            color: #999;
-                            padding: 20px;
-                            }
-                            .footer a {
-                            color: #999;
-                            }
-                            .footer p, .footer a, .footer unsubscribe, .footer td {
-                            font-size: 12px;
-                            }
-                            /* -------------------------------------
-                            TYPOGRAPHY
-                            ------------------------------------- */
-                            h1, h2, h3 {
-                            font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-                            color: #000;
-                            margin: 40px 0 0;
-                            line-height: 1.2;
-                            font-weight: 400;
-                            }
-                            h1 {
-                            font-size: 32px;
-                            font-weight: 500;
-                            }
-                            h2 {
-                            font-size: 24px;
-                            }
-                            h3 {
-                            font-size: 18px;
-                            }
-                            h4 {
-                            font-size: 14px;
-                            font-weight: 600;
-                            }
-                            p, ul, ol {
-                            margin-bottom: 10px;
-                            font-weight: normal;
-                            }
-                            p li, ul li, ol li {
-                            margin-left: 5px;
-                            list-style-position: inside;
-                            }
-                            /* -------------------------------------
-                            LINKS & BUTTONS
-                            ------------------------------------- */
-                            a {
-                            color: #1ab394;
-                            text-decoration: underline;
-                            }
-                            .btn-primary {
-                            text-decoration: none;
-                            color: #FFF;
-                            background-color: #1ab394;
-                            border: solid #1ab394;
-                            border-width: 5px 10px;
-                            line-height: 2;
-                            font-weight: bold;
-                            text-align: center;
-                            cursor: pointer;
-                            display: inline-block;
-                            border-radius: 5px;
-                            text-transform: capitalize;
-                            }
-                            .btn-success {
-                            text-decoration: none;
-                            color: #FFF;
-                            background-color: #1c84c6;
-                            border: solid #1c84c6;
-                            border-width: 5px 10px;
-                            line-height: 2;
-                            font-weight: bold;
-                            text-align: center;
-                            cursor: pointer;
-                            display: inline-block;
-                            text-transform: capitalize;
-                            }
-                            /* -------------------------------------
-                            OTHER STYLES THAT MIGHT BE USEFUL
-                            ------------------------------------- */
-                            .last {
-                            margin-bottom: 0;
-                            }
-                            .first {
-                            margin-top: 0;
-                            }
-                            .aligncenter {
-                            text-align: center;
-                            }
-                            .alignright {
-                            text-align: right;
-                            }
-                            .alignleft {
-                            text-align: left;
-                            }
-                            .clear {
-                            clear: both;
-                            }
-                            /* -------------------------------------
-                            ALERTS
-                            Change the class depending on warning email, good email or bad email
-                            ------------------------------------- */
-                            .alert {
-                            font-size: 16px;
-                            color: #fff;
-                            font-weight: 500;
-                            padding: 20px;
-                            text-align: center;
-                            border-radius: 3px 3px 0 0;
-                            }
-                            .alert a {
-                            color: #fff;
-                            text-decoration: none;
-                            font-weight: 500;
-                            font-size: 16px;
-                            }
-                            .alert.alert-warning {
-                            background: #f8ac59;
-                            }
-                            .alert.alert-bad {
-                            background: #ed5565;
-                            }
-                            .alert.alert-good {
-                            background: #1ab394;
-                            }
-                            /* -------------------------------------
-                            INVOICE
-                            Styles for the billing table
-                            ------------------------------------- */
-                            .invoice {
-                            margin: 40px auto;
-                            text-align: left;
-                            width: 80%;
-                            }
-                            .invoice td {
-                            padding: 5px 0;
-                            }
-                            .invoice .invoice-items {
-                            width: 100%;
-                            }
-                            .invoice .invoice-items td {
-                            border-top: #eee 1px solid;
-                            }
-                            .invoice .invoice-items .total td {
-                            border-top: 2px solid #333;
-                            border-bottom: 2px solid #333;
-                            font-weight: 700;
-                            }
-                            /* -------------------------------------
-                            RESPONSIVE AND MOBILE FRIENDLY STYLES
-                            ------------------------------------- */
-                            @media only screen and (max-width: 640px) {
-                            h1, h2, h3, h4 {
-                            font-weight: 600 !important;
-                            margin: 20px 0 5px !important;
-                            }
-                            h1 {
-                            font-size: 22px !important;
-                            }
-                            h2 {
-                            font-size: 18px !important;
-                            }
-                            h3 {
-                            font-size: 16px !important;
-                            }
-                            .container {
-                            width: 100% !important;
-                            }
-                            .content, .content-wrap {
-                            padding: 10px !important;
-                            }
-                            .invoice {
-                            width: 100% !important;
-                            }
-                            }
-                            </style>
-                            <table class="body-wrap">
-                            <tr>
-                            <td></td>
-                            <td class="container" width="600">
-                            <div class="content">
-                            <table class="main" width="100%" cellpadding="0" cellspacing="0">
-                            <tr>
-                            <td class="content-wrap">
-                            <table  cellpadding="0" cellspacing="0">
-                            <tr>
-                            <td>
-                            <img class="img-responsive" src="'.$base.'public/main/template/gsm/images/email/header.png"/>
+            $email_body = '<table class="body-wrap" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;background-color: #f6f6f6;width: 100%;">
+                            <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                            <td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;"></td>
+                            <td class="container" width="600" style="margin: 0 auto !important;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;display: block !important;max-width: 600px !important;clear: both !important;">
+                            <div class="content" style="margin: 0 auto;padding: 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;max-width: 600px;display: block;">
+                            <table class="main" width="100%" cellpadding="0" cellspacing="0" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;background: #fff;border: 1px solid #e9e9e9;border-radius: 3px;">
+                            <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                            <td class="content-wrap" style="margin: 0;padding: 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                            <table cellpadding="0" cellspacing="0" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                            <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                            <td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                            <img class="img-responsive" src="'.$base.'public/main/template/gsm/images/email/header.png" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;max-width: 100%;">
                             </td>
                             </tr>
-                            <tr>
-                            <td class="content-block">
-                            <h3>Your account is now activated!</h3>
+                            <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                            <td class="content-block" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                            <h3 style="margin: 40px 0 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Grande&quot;, sans-serif;box-sizing: border-box;font-size: 18px;color: #000;line-height: 1.2;font-weight: 400;">Your account is now activated!</h3>
                             </td>
                             </tr>
-                            <tr>
-                            <td class="content-block">
-                            <p>Welcome '.$mid->firstname.',</p>
-                            <p>Login now to access your account and start using the platform.<p/>
-                            <p>Remember to complete your personal and company profile contact details information, upload your logos and images and ensure all your business trading sectors are completed, this will help other members get a better understanding about your business and start generating more enquiries from new suppliers and customers.</p>
+                            <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                            <td class="content-block" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                            <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">Welcome '.$mid->firstname.',</p>
+                            <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">Login now to access your account and start using the platform.<p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;"></p>
+                            </p><p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">Remember to complete your personal and company profile contact details information, upload your logos and images and ensure all your business trading sectors are completed, this will help other members get a better understanding about your business and start generating more enquiries from new suppliers and customers.</p>
                             </td>
                             </tr>
-                            <tr>
-                            <td class="content-block aligncenter">
-                            <h3 style="margin-top:0">Your Password is</h3>
-                            <p class="btn-success" style="cursor: none !importnat;">'.$mid->unhash_password.'</p>
+                            <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                            <td class="content-block aligncenter" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;text-align: center;">
+                            <h3 style="margin-top: 0;margin: 40px 0 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Grande&quot;, sans-serif;box-sizing: border-box;font-size: 18px;color: #000;line-height: 1.2;font-weight: 400;">Your Password is</h3>
+                            <p class="btn-success" style="cursor: none !importnat;margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: bold;text-decoration: none;color: #FFF;background-color: #1c84c6;border: solid #1c84c6;border-width: 5px 10px;line-height: 2;text-align: center;display: inline-block;text-transform: capitalize;">'.$mid->unhash_password.'</p>
                             </td>
                             </tr>
-                            <tr>
-                            <td class="content-block">
-                            <p>To access your account visit <a href="'.$base.'login">'.$base.'login</a> and sign in with your email on signup and the password given to you above.</p>
+                            <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                            <td class="content-block" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                            <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">To access your account visit <a href="'.$base.'login" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;color: #1ab394;text-decoration: underline;">'.$base.'login</a> and sign in with your email on signup and the password given to you above.</p>
                             </td>
                             </tr>
-                            <tr>
-                            <td class="content-block">
-                            <p>If you need any assistance please call us on +44 (0)1494 717236 or use the online ticketing customer support within your account and we’ll be happy to help you.</p>
-                            <p>Many Thanks,<br />
+                            <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                            <td class="content-block" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                            <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">If you need any assistance please call us on +44 (0)1494 717236 or use the online ticketing customer support within your account and we’ll be happy to help you.</p>
+                            <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">Many Thanks,<br style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
                             GSMStockMarket Team</p>
                             </td>
                             </tr>
@@ -509,12 +265,11 @@ class Register extends MX_Controller{
                             </tr>
                             </table></div>
                             </td>
-                            <td></td>
+                            <td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;"></td>
                             </tr>
-                            </table>
-                          ';
+                            </table>';
             
-            $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket');
+            $this->email->from('noreply@gsmstockmarket.com', 'GSMStockMarket.com');
 
             $list = array('tim@gsmstockmarket.com', 'signup@gsmstockmarket.com');
             $this->email->to($mid->email);

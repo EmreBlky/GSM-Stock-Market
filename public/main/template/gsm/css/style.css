@@ -209,6 +209,9 @@ div#world-clock {float:left;margin-top:22px}
 .bronze .no_sub {
   background:#FFF url('../images/subscriber_only.png');
 }
+.bronze .example {
+  background:#FFF url('../images/example.png');
+}
 .bronze .minimalize-styl-2 {
   margin: 14px 5px 5px 30px;
 }

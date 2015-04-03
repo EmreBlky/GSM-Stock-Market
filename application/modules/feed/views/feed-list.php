@@ -20,8 +20,8 @@ $this->load->model('company/company_model', 'company_model');
         ?>
         <div class="chat-element">
 <!--            <a href="#" class="pull-left">-->
-               <?php if(file_exists("public/main/template/gsm/images/members/".$feed->member_id.".jpg")){?>
-                    <img alt="image" class="img-circle pull-left" src="<?php echo $base; ?>public/main/template/gsm/images/members/<?php echo $feed->member_id; ?>.jpg" height="38" width="38">
+               <?php if(file_exists("public/main/template/gsm/images/members/".$feed->member_id.".png")){?>
+                    <img alt="image" class="img-circle pull-left" src="<?php echo $base; ?>public/main/template/gsm/images/members/<?php echo $feed->member_id; ?>.png" height="38" width="38">
                 <?php } else {?>
                     <img alt="image" class="img-circle pull-left" src="<?php echo $base; ?>public/main/template/gsm/images/members/no_profile.jpg" height="38" width="38">
                 <?php }?> 

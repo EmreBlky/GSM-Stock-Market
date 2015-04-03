@@ -36,6 +36,10 @@ class Addressbook extends MX_Controller
         $data['page'] = 'index';
         $data['address_all'] = $this->addressbook_model->get_where_multiples('member_id',$this->session->userdata('members_id'));
         $data['blocked'] = $this->block_model->get_where_multiples('block_member_id', $this->session->userdata('members_id'));
+		
+		/* Daniel Added Start */
+        $data['member'] = $this->member_model->get_where($this->session->userdata('members_id'));
+		/* Daniel Added End */
 
         
         if(isset($off) && $off > 1){

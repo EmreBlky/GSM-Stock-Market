@@ -143,6 +143,685 @@
             }
             
 </script>
+<?php if($member->membership < 2) {?>
+
+			<div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-10">
+                    <h2>View Profile</h2>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="home">Home</a>
+                        </li>                            
+                        <li>
+                            View Profile
+                        </li>              
+                        <li class="active">
+                            <strong>GSMStockMarket.com Limited</strong>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-lg-2">
+
+                </div>
+            </div>
+            <div class="alert alert-info" style="margin:15px 15px -15px">
+                <p><i class="fa fa-info-circle"></i> Here you can view a company profile in great detail, you can see all their contact details and business activities and even view their feedback, trade rating, feed posts, marketplace listings and even do credit checks on the user which are available for Silver to Silver or above users included a apart of the subscription. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
+            </div>
+            <div class="row">
+            <div class="col-lg-9">
+                <div class="wrapper wrapper-content animated fadeInUp">
+                    <div class="ibox">
+                        <div class="ibox-content">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    
+                                    <div class="m-b-md">                                        
+                                        <h2>GSMStockMarket.com Limited</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                            		<style>
+										dl.full-width dt, dl.full-width dd {width:50%}
+										dl.full-width dd {margin-left:51%}
+									</style>
+                                    
+                              		<div class="m-r-md" style="text-align:center">
+										<?php if(file_exists("public/main/template/gsm/images/company/5.png")){?>
+                                            <img src="public/main/template/gsm/images/company/5.png" class="img-responsive" style="margin:0 auto;max-height:150px">
+                                        <?php } else {?>
+                                            <img src="public/main/template/gsm/images/company/no_company.jpg" class="img-responsive" style="margin:0 auto;max-height:150px">
+                                        <?php }?>
+                            		</div>                                        
+                                        
+                                    <dl class="dl-horizontal full-width" style="margin-top:20px">
+                                        <dt>Company Number:</dt> 
+                                        <dd>07458787</dd>
+                                        <dt>VAT/Tax Number:</dt> 
+                                        <dd>GB 000 000 00</dd>
+                                    </dl>                                    
+                                    <dl class="dl-horizontal full-width">
+                                        <dt>Address:</dt> <dd>  
+                                            The Old Dairy<br/>
+                                            Hazlemere<br />
+                                            High Wycombe<br />
+                                            Buckinghamshire<br />
+                                            HP15 7JB<br />
+                                            United Kingdom</dd>
+                                    </dl>
+                                    
+                                    <dl class="dl-horizontal full-width">                                    
+                                        <dt>Phone Number:</dt>
+                                        <dd>+44 (0)1494 717236</dd>
+                                    </dl>
+                                    
+                                    <dl class="dl-horizontal full-width">
+                                        <dt>Primary Business:</dt>
+                                        <dd>Business Sector 1</dd>
+                                        <dt>Secondary Business:</dt>
+                                        <dd>Business Sector 2</dd>
+                                        <dt>Tertiary Business:</dt>
+                                        <dd>Business Sector 3</dd>
+                                        <dt>Other Activities:</dt>
+                                        <dd>Business Sector 4,<br />Business Sector 5</dd>
+                                    </dl>
+                                    
+                                </div>
+                                <div class="col-lg-6" id="cluster_info">
+                                
+                                    
+                                    
+                                    <dl class="dl-horizontal full-width" >
+                                        <div style="margin-top:40px;text-align:center;margin-bottom:41px">
+        <input type="text" value="93" class="dial m-r" data-fgColor="#1c84c6" data-width="85" data-height="85" data-angleOffset=-125 data-angleArc=250 readonly/>
+                                        <div style="display:inline;height:65px;width:65px;padding:10px;margin-left:20px;"><i class="fa fa-star star-Gold" style="font-size:75px;vertical-align:top"></i></div>
+                                    </div>
+                                    
+                                    <dl class="dl-horizontal full-width">
+                                        <dt>Status:  </dt>
+                                            <dd><span class="label label-primary">Online</span></dd>                                  
+                                    </dl>
+                                    
+                                    <dl class="dl-horizontal full-width">
+                                        <dt>Subscription:</dt> 
+                                        <dd>Gold Member</dd>
+
+                                        <dt>Member Since:</dt> <dd> 31-03-2015</dd>
+                                    </dl>
+                                    
+                                    <dl class="dl-horizontal full-width" >
+                                        <dt>Facebook:</dt> 
+                                        <dd> gsmstockmarket</dd>
+                                        <dt>Twitter:</dt> 
+                                        <dd> gsmstockmarket</dd>
+                                        <dt>Google Plus:</dt>
+                                        <dd> 115267224782612734999</dd>
+                                        <dt>LinkedIn:</dt> 
+                                        <dd> gsmstockmarket-com</dd>
+                                        <dt>Skype:</dt> 
+                                        <dd> n/a</dd>
+                                        
+                                    </dl>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-10 col-md-offset-1" style="margin-top:15px">
+                                            <button type="button" class="btn btn-primary btn-sm btn-block" data-toggle="modal" data-target="#profile_message"><i class="fa fa-envelope"></i> Send Message</button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <?php 
+                                        
+                                        $this->load->model('addressbook/addressbook_model', 'addressbook_model');
+                                        $a_count =  $this->addressbook_model->count_where('member_id', $this->session->userdata('members_id'), 'address_member_id', $member_info->id);
+                                        
+                                        if($a_count < 1){
+                                        ?>
+                                            <div class="col-md-5 col-md-offset-1" style="margin-top:15px">
+                                                <button type="button" onclick="contactAdd();" class="btn btn-success btn-sm btn-block" id="contact_added"><i class="fa fa-book"></i> Add Contact</button>
+                                            </div>
+                                        <?php
+                                        } else{
+                                        ?>
+                                            <div class="col-md-5 col-md-offset-1" style="margin-top:15px">
+                                                <button type="button" onclick="contactRemove();" class="btn btn-success btn-sm btn-block" id="contact_removed"><i class="fa fa-book"></i> Remove Contact</button>
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
+                                        <?php 
+                                        
+                                        $this->load->model('favourite/favourite_model', 'favourite_model');
+                                        $f_count =  $this->favourite_model->count_where('member_id', $this->session->userdata('members_id'), 'favourite_id', $member_info->id);
+                                        
+                                        if($f_count < 1){
+                                        ?>
+                                            <div class="col-md-5" style="margin-top:15px">
+                                                <button  onclick="faveAdd();"  type="button" class="btn btn-warning btn-sm btn-block" id="favourite_added"><i class="fa fa-star"></i> Add Favourite</button>
+                                            </div>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <div class="col-md-5" style="margin-top:15px">
+                                                <button  onclick="faveRemove();"  type="button" class="btn btn-warning btn-sm btn-block" id="favourite_removed"><i class="fa fa-star"></i> Remove Favourite</button>
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-10 col-lg-offset-1">
+                                    <h4>Company Bio</h4>
+                                	<p style="margin-top:20px">Welcome to GSMstockmarket.com. The ultimate B2B trading platform for companies who buy and sell mobile phones, accessories and spare parts.</p>
+                                </div>
+                                
+                            </div>
+                            <div class="row m-t-sm">
+                                <div class="col-lg-12">
+                                <div class="panel blank-panel">
+                                <div class="panel-heading">
+                                    <div class="panel-options">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#feedposts" data-toggle="tab">Feed Posts</a></li>
+                                            <li class=""><a href="#feedback" data-toggle="tab">Feedback</a></li>
+                                            <li class=""><a href="#selling-offers" data-toggle="tab">Selling Offers</a></li>
+                                            <li class=""><a href="#buying-requests" data-toggle="tab">Buying Requests</a></li>
+                                            <li class=""><a href="#credit-information" data-toggle="tab">Credit Info</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+
+                                <div class="tab-content">
+                                <div class="tab-pane active" id="feedposts"><div>
+            <div class="alert alert-info">
+                <p><i class="fa fa-info-circle"></i> Post to your feed and display your 10 latest posts for anyone who views your profile to advertise your services. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
+            </div>
+    <div class="chat-activity-list">
+        <div class="chat-element">
+               <?php if(file_exists("public/main/template/gsm/images/members/5.png")){?>
+                    <img alt="image" class="img-circle pull-left" src="<?php echo $base; ?>public/main/template/gsm/images/members/5.png" height="38" width="38">
+                <?php } else {?>
+                    <img alt="image" class="img-circle pull-left" src="<?php echo $base; ?>public/main/template/gsm/images/members/no_profile.jpg" height="38" width="38">
+                <?php }?> 
+            <div class="media-body ">
+                <small class="pull-right text-navy">
+                </small>
+                <strong>GSMStockMarket.com</strong>
+                <p class="m-b-xs">
+                    Looking to buy Samsung Galaxy LCD's, view my listings for more information.
+                </p>
+                <small class="text-muted">
+                   31st March 2014 - 12:00pm
+                </small>
+            </div>
+        </div>
+        <div class="chat-element">
+               <?php if(file_exists("public/main/template/gsm/images/members/5.png")){?>
+                    <img alt="image" class="img-circle pull-left" src="<?php echo $base; ?>public/main/template/gsm/images/members/5.png" height="38" width="38">
+                <?php } else {?>
+                    <img alt="image" class="img-circle pull-left" src="<?php echo $base; ?>public/main/template/gsm/images/members/no_profile.jpg" height="38" width="38">
+                <?php }?> 
+            <div class="media-body ">
+                <small class="pull-right text-navy">
+                </small>
+                <strong>GSMStockMarket.com</strong>
+                <p class="m-b-xs">
+                    Offering high grade Apple spare parts direct to all over Europe with fast shipping.
+                </p>
+                <small class="text-muted">
+                   1st April 2015 - 2:21pm
+                </small>
+            </div>
+        </div>
+        <div class="chat-element">
+               <?php if(file_exists("public/main/template/gsm/images/members/5.png")){?>
+                    <img alt="image" class="img-circle pull-left" src="<?php echo $base; ?>public/main/template/gsm/images/members/5.png" height="38" width="38">
+                <?php } else {?>
+                    <img alt="image" class="img-circle pull-left" src="<?php echo $base; ?>public/main/template/gsm/images/members/no_profile.jpg" height="38" width="38">
+                <?php }?> 
+            <div class="media-body ">
+                <small class="pull-right text-navy">
+                </small>
+                <strong>GSMStockMarket.com</strong>
+                <p class="m-b-xs">
+                    We can supply Nokia refurbishment services and now offer high quality shipping services for quality mobile devices.
+                </p>
+                <small class="text-muted">
+                   2nd April 2015 - 8:34am
+                </small>
+            </div>
+        </div>
+        
+    </div><!-- /chat-activity-list-->
+</div>
+                                </div>
+                                
+                                <div class="tab-pane" id="feedback">
+                                    
+                                    <div class="feed-activity-list">
+    <div class="feed-element"> 
+        <div class="media-body ">
+            <div class="alert alert-info">
+                <p><i class="fa fa-info-circle"></i> View the users marketplace feedback to make sure you're dealing with a trusted user. Our feedback system calculates a rating which is displayed on their profile. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                <p>Exceptional quality! Delivery was high-standard. Very, very delightful packaging. Wish all sellers were this first-rate. 
+Item was of first-class quality. Ever so splendid packaging. Exceptionally high-standard delivery. Service was superior. 
+The item was splendid. Swift to send. Quality of the wrapping was high-standard. Very, very pleased. Outstanding seller.</p>
+                </div>
+                <div class="col-md-5">
+                    <style>
+                    div#feedback dl.dl-horizontal {float:right}
+                    div#feedback dt {width:120px}
+                    div#feedback dd {margin-left:130px}
+                    </style>
+
+                    <dl class="dl-horizontal">
+                        <dt>Communication:</dt> 
+                        <dd>  
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+                        </dd>
+                        <dt>Shipping:</dt> 
+                        <dd>  
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+                        </dd>
+                        <dt>Company:</dt> 
+                        <dd>  
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+                        </dd><dt>Description:</dt> 
+                        <dd>  
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+                        </dd>
+                        <dt>Final Rating:</dt> 
+                        <dd>
+                                <span class="label label-success">100</span>
+                        </dd>
+                    </dl>
+               </div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                <p>Item was of the most passable quality. Very, very simple packaging. Remarkably typical delivery. 
+Item was of the most middling quality. Very plain packaging. Notably typical delivery. An exceptionally moderate seller. 
+Item was of reasonable quality. Delivery was notably neither fast nor slow. Packaging was passable. Notably indifferent. </p>
+                </div>
+                <div class="col-md-5">
+                    <style>
+                    div#feedback dl.dl-horizontal {float:right}
+                    div#feedback dt {width:120px}
+                    div#feedback dd {margin-left:130px}
+                    </style>
+
+                    <dl class="dl-horizontal">
+                        <dt>Communication:</dt> 
+                        <dd>  
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" ></i>
+                        </dd>
+                        <dt>Shipping:</dt> 
+                        <dd>  
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" ></i>
+        <i class="fa fa-star" ></i>
+                        </dd>
+                        <dt>Company:</dt> 
+                        <dd>  
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+                        </dd><dt>Description:</dt> 
+                        <dd>  
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+                        </dd>
+                        <dt>Final Rating:</dt> 
+                        <dd>
+                                <span class="label label-primary">85</span>
+                        </dd>
+                    </dl>
+               </div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                <p>Item superb. Delivery was notably speedy. Quality of the wrapping was first-rate. Seller is excellent and high-standard. 
+The item was superior! Quality of the wrapping was outstanding. Splendid delivery. Seller is first-rate and first-class. 
+Item was of exceptional quality. High-standard packaging. Ever so excellent delivery. Recommended. Would buy from again.</p>
+                </div>
+                <div class="col-md-5">
+                    <style>
+                    div#feedback dl.dl-horizontal {float:right}
+                    div#feedback dt {width:120px}
+                    div#feedback dd {margin-left:130px}
+                    </style>
+
+                    <dl class="dl-horizontal">
+                        <dt>Communication:</dt> 
+                        <dd>  
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+                        </dd>
+                        <dt>Shipping:</dt> 
+                        <dd>  
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+                        </dd>
+                        <dt>Company:</dt> 
+                        <dd>  
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+                        </dd><dt>Description:</dt> 
+                        <dd>  
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" style="color:#FC6"></i>
+        <i class="fa fa-star" ></i>
+                        </dd>
+                        <dt>Final Rating:</dt> 
+                        <dd>
+                                <span class="label label-success">95</span>
+                        </dd>
+                    </dl>
+               </div>
+            </div>
+        </div> 
+        
+    </div>
+    
+</div>
+
+                                </div>
+                                <div class="tab-pane no_sub" id="selling-offers">
+            <div class="alert alert-info">
+                <p><i class="fa fa-info-circle"></i> See what this user has for sale on the marketplace, visit their listings from this page to make offers and trade instantly. Our marketplace and order management system will make trading easy. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
+            </div>
+                                	<table class="table table-hover no-margins">
+                                        <thead>
+                                            <tr>
+                                            	<th class="mobihide">Make</th>
+                                                <th>Model</th>
+                                                <th>Price</th>
+                                                <th class="mobihide">Qty</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                            	<td class="mobihide">Apple</td>
+                                                <td>iPhone 6 Plus</td>
+                                                <td>£34,000.00</td>
+                                                <td class="mobihide">600</td>
+                                                <td><span class="label label-primary">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td class="mobihide">400</td>
+                                                <td><span class="label label-success">Completed</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9300 Galaxy S3</td>
+                                                <td>£6,200.00</td>
+                                                <td class="mobihide">100</td>
+                                                <td><span class="label label-success">Completed</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Nokia</td>
+                                                <td>6103</td>
+                                                <td>£700.00</td>
+                                                <td class="mobihide">30</td>
+                                                <td><span class="label label-primary">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Apple</td>
+                                                <td>iPhone 6 Plus</td>
+                                                <td>£34,000.00</td>
+                                                <td class="mobihide">600</td>
+                                                <td><span class="label label-primary">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td class="mobihide">400</td>
+                                                <td><span class="label label-success">Completed</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9300 Galaxy S3</td>
+                                                <td>£6,200.00</td>
+                                                <td class="mobihide">100</td>
+                                                <td><span class="label label-success">Completed</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Nokia</td>
+                                                <td>6103</td>
+                                                <td>£700.00</td>
+                                                <td class="mobihide">30</td>
+                                                <td><span class="label label-primary">Active</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane no_sub" id="buying-requests">
+            <div class="alert alert-info">
+                <p><i class="fa fa-info-circle"></i> This is what the user would like to buy displaying their desired price and quantity, if you have stock available matching their requirements then simply click on the listing, offer your stock and setup a deal within minutes. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
+            </div>
+                                	<table class="table table-hover no-margins">
+                                        <thead>
+                                            <tr>
+                                            	<th class="mobihide">Make</th>
+                                                <th>Model</th>
+                                                <th>Price</th>
+                                                <th class="mobihide">Qty</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                            	<td class="mobihide">Nokia</td>
+                                                <td>6103</td>
+                                                <td>£700.00</td>
+                                                <td class="mobihide">30</td>
+                                                <td><span class="label label-primary">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Apple</td>
+                                                <td>iPhone 6 Plus</td>
+                                                <td>£34,000.00</td>
+                                                <td class="mobihide">600</td>
+                                                <td><span class="label label-primary">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td class="mobihide">400</td>
+                                                <td><span class="label label-success">Completed</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9300 Galaxy S3</td>
+                                                <td>£6,200.00</td>
+                                                <td class="mobihide">100</td>
+                                                <td><span class="label label-success">Completed</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Nokia</td>
+                                                <td>6103</td>
+                                                <td>£700.00</td>
+                                                <td class="mobihide">30</td>
+                                                <td><span class="label label-primary">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Apple</td>
+                                                <td>iPhone 6 Plus</td>
+                                                <td>£34,000.00</td>
+                                                <td class="mobihide">600</td>
+                                                <td><span class="label label-primary">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9105 Galaxy S2 Plus</td>
+                                                <td>£23,505.00</td>
+                                                <td class="mobihide">400</td>
+                                                <td><span class="label label-success">Completed</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>i9300 Galaxy S3</td>
+                                                <td>£6,200.00</td>
+                                                <td class="mobihide">100</td>
+                                                <td><span class="label label-success">Completed</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="tab-pane example" id="credit-information">
+            <div class="alert alert-info">
+                <p><i class="fa fa-info-circle"></i> Want to make sure you're dealing with a legitimate user and want that extra level of safety? Run a credit check on them free of charge for Silver to Silver or higher members. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
+            </div>
+									<div class="row">
+                    					<div class="col-lg-12" style="text-align:center;margin:15px 0">
+                                            <p><img src="public/main/template/gsm/images/credit_example.png" class="img-responsive"/></p>
+                        				</div>
+                   					</div>
+                                	
+                                </div>
+                                
+                                </div>
+
+                                </div>
+
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="wrapper wrapper-content project-manager">
+                    <h2>Company User</h2>
+                    	<div class="m-r-md" style="text-align:center;margin-top:20px;margin-bottom:20px;">
+                                                <?php if(file_exists("public/main/template/gsm/images/members/".$member_info->id.".png")){?>
+                                                    <img alt="image" class="img-circle" style="width:30%" src="<?php echo $base; ?>public/main/template/gsm/images/members/<?php echo $member_info->id; ?>.png">
+                                                <?php } else {?>
+                                                    <img alt="image" class="img-circle" style="width:30%" src="<?php echo $base; ?>public/main/template/gsm/images/members/no_profile.jpg">
+                                                <?php }?>  
+                            		</div>
+                                                                     
+                                        
+                                    <dl class="dl-horizontal full-width">
+                                        <dt>Name:</dt> 
+                                        <dd> Mr. GSM</dd>
+                                        <dt>Role:</dt> 
+                                        <dd> Website</dd>
+                                        <dt>Mobile Number:</dt> 
+                                        <dd> +44 (0)1494 717236</dd>
+                                    </dl>  
+                                    
+                    
+                    
+					<div class="row" style="margin-top:20px">
+                    	<div class="col-lg-12">
+                        	<button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#buycreditcheck"><i class="fa fa-check-square-o"></i> Credit Check</button>
+                        </div>
+                   </div>
+					<div class="row">
+                        <div class="col-lg-6" style="margin-top:15px">
+                            <button type="button" class="btn btn-warning btn-sm btn-block" id="report_user"><i class="fa fa-exclamation"></i> Report</button>
+                        </div>
+                        <div class="col-lg-6" style="margin-top:15px">
+                        <?php if($blocked){?>    
+                            <?php if($blocked[0]->block_member_id > 0){?>
+                                <button onclick="unblock();" type="button" class="btn btn-warning btn-sm btn-block" id="unblocked">Unblock</button>
+                            <?php } else { ?>
+                                <button onclick="block();" type="button" class="btn btn-danger btn-sm btn-block" id="blocked"><i class="fa fa-ban"></i> Block</button>                        
+                            <?php }?>
+                        <?php } else { ?>  
+                                <button onclick="block();" type="button" class="btn btn-danger btn-sm btn-block" id="blocked"><i class="fa fa-ban"></i> Block</button>
+                        <?php }?>        
+                         </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+        
+        
+                            <div class="modal inmodal fade" id="buycreditcheck" tabindex="-1" role="dialog"  aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">Credit Check</h4>
+                                            <small class="font-bold">This is GSMStockMarket.com's credit information.</small>
+                                        </div>
+                                        <div class="modal-body example">
+                                            <p><img src="public/main/template/gsm/images/credit_example.png" class="img-responsive"/></p>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>        
+                            
+                            <?php
+                            
+                                $this->load->module('profile');
+                                $this->profile->send_message($member_company->id);
+                            
+                            ?>   
+
+
+<?php } else {?>
+<!-- Daniel Added End -->
+
+
 			<div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
                     <h2>View Profile</h2>
@@ -642,6 +1321,9 @@
                                     </div>
                                 </div>
                             </div>
+<!-- Daniel Added Start -->
+<?php } ?> 
+<!-- Daniel Added End -->
             
             
 	<!-- Page Specific Scripts -->    
@@ -682,9 +1364,4 @@
 		}
 		});
 	</script>
-            
-            
-            
-            
-            
         
