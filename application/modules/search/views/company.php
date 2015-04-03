@@ -254,7 +254,7 @@
                 </div>
                 <div class="col-md-5">
                     <h3><strong><?php echo $result->company_name; ?></strong> <img class="novert"
-                                                                                   alt="image"
+                                                                                   alt="<?php echo $result->country; ?>"
                                                                                    src="public/main/template/gsm/img/flags/<?php echo str_replace(" ", "_", $result->country); ?>.png"
                                                                                    title="<?php echo $result->country; ?>"/>
                     </h3>
