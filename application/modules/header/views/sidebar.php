@@ -83,8 +83,8 @@
                     <li>
                         <a href="marketplace/notice">
                             <i class="fa fa-line-chart"></i> 
-                            <span class="nav-label">Marketplace</span> 
-<!--                            <span class="fa arrow"></span>-->
+                            <span class="nav-label">Marketplace</span>
+                            <!--                            <span class="fa arrow"></span>-->
                         </a>
 <!--                        <ul class="nav nav-second-level">
                             <li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Buy</a></li>
