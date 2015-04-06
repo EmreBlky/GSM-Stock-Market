@@ -1062,7 +1062,7 @@ class Marketplace extends MX_Controller
 
         $data['main'] = 'marketplace';        
         $data['title'] = 'GSM - Market Place: Buy Listing';        
-        $data['page'] = 'buy_listing';
+        $data['page'] = 'buy-listing';
 
         $data['listing_attributes'] =  $this->marketplace_model->get_result('listing_attributes');
         $data['shippings'] =  $this->marketplace_model->get_result('shippings','','',array('shipping_name','ASC'));
