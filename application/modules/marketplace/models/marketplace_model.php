@@ -50,6 +50,34 @@ class Marketplace_model extends MY_Model {
 			return FALSE;
 	}
 
+	public function get_result_product_type()
+	{
+		$this->db->select('product_type');
+		$this->db->group_by('product_type'); 
+		$this->db->order_by('product_type', "asc"); 
+		$query=$this->db->get('listing_attributes');
+		if($query->num_rows()>0)
+			return $query->result();
+		else
+			return FALSE;
+	}
+
+	public function get_couriers_by_group($columns='')
+	{
+		$this->db->group_by($columns); 
+		$this->db->order_by($columns, "asc"); 
+
+		$query=$this->db->get('couriers');
+		if($query->num_rows()>0){
+		
+			return $query->result();
+		}else{
+			return FALSE;
+		}
+	}
+
+	
+
 
 	public function get_row($table_name='', $id_array='',$columns=array(),$order_by=array()){
 		
@@ -94,11 +122,9 @@ class Marketplace_model extends MY_Model {
 			//$this->db->or_where("product_mpn",trim($_GET['date']));
 		}
 		if(!empty($_GET['mpn'])){
-			$this->db->or_where("product_mpn",trim($_GET['mpn']));
+			$this->db->or_where("product_mpn_isbn",trim($_GET['mpn']));
 		}
-		if(!empty($_GET['isbn'])){
-			$this->db->or_where("product_isbn",trim($_GET['isbn']));
-		}
+		
 		if(!empty($_GET['manufacturer'])){
 			$this->db->or_where("product_make",trim($_GET['manufacturer']));
 		}
@@ -147,11 +173,9 @@ class Marketplace_model extends MY_Model {
 			//$this->db->or_where("product_mpn",trim($_GET['date']));
 		}
 		if(!empty($_GET['mpn'])){
-			$this->db->or_where("product_mpn",trim($_GET['mpn']));
+			$this->db->or_where("product_mpn_isbn",trim($_GET['mpn']));
 		}
-		if(!empty($_GET['isbn'])){
-			$this->db->or_where("product_isbn",trim($_GET['isbn']));
-		}
+		
 		if(!empty($_GET['manufacturer'])){
 			$this->db->or_where("product_make",trim($_GET['manufacturer']));
 		}
@@ -185,7 +209,7 @@ class Marketplace_model extends MY_Model {
 		$this->db->join('company','company.admin_member_id=listing.member_id');
 		$this->db->where('status', 1);
 		$this->db->where('listing_type', 1);
-		//$this->db->where('member_id != '.$member_id);
+		//$this->db->where('member_id = '.$member_id);
 		if($offset>=0 && $per_page>0){
 			$this->db->limit($per_page,$offset);
 			$query = $this->db->get();
@@ -199,8 +223,9 @@ class Marketplace_model extends MY_Model {
 	}
 
 	public function listing_counter_offer(){
+		$member_id=$this->session->userdata('members_id');
 		$this->db->select('listing.*,company.country  AS country_id,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
-
+		$this->db->where('member_id',$member_id);
 		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
 		$this->db->from('listing');
 		$this->db->join('company','company.admin_member_id=listing.member_id');
@@ -217,14 +242,12 @@ class Marketplace_model extends MY_Model {
 		$member_id=$this->session->userdata('members_id');
 		$this->db->select('listing.*,company.country  AS country_id,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
 
-		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
 		$this->db->from('listing');
 		$this->db->join('company','company.admin_member_id=listing.member_id');
-		$this->db->join('make_offer','make_offer.listing_id=listing.id');
 		$this->db->group_by('listing.id');
-		 $this->db->where('status', 1);
-		 $this->db->where('listing_type', 1);
-		//$this->db->where('member_id != '.$member_id);
+		$this->db->where('status', 1);
+		$this->db->where('listing_type', 1);
+		$this->db->where('member_id',$member_id);
 		$query = $this->db->get();
 			if($query->num_rows()>0)
 				return $query->result();
@@ -233,20 +256,22 @@ class Marketplace_model extends MY_Model {
 	}
 
 	public function listing_buying_offer(){
+		$member_id=$this->session->userdata('members_id');
 		$this->db->select('listing.*,company.country  AS country_id,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
-
-		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
 		$this->db->from('listing');
 		$this->db->join('company','company.admin_member_id=listing.member_id');
 		$this->db->where('status', 1);
 		$this->db->where('listing_type', 2);
-		//$this->db->where('member_id != '.$member_id);
+		$this->db->where('member_id',$member_id);
 			$query = $this->db->get();
 			if($query->num_rows()>0)
 				return $query->result();
 			else
 				return FALSE;
 	}
+
+
+
 
 	public function get_buyers_offer($list_id=0){
 		$member_id = $this->session->userdata('members_id');
@@ -287,7 +312,7 @@ class Marketplace_model extends MY_Model {
 
 	public function advance_search($member_id=0,$listing_type=0){
 
-		$this->db->select('listing.product_mpn,listing.product_isbn,listing.product_make,listing.product_model,listing.product_type,company.country AS country_id,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
+		$this->db->select('listing.product_mpn_isbn,listing.product_make,listing.product_model,listing.product_type,company.country AS country_id,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
 
 		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
 		$this->db->from('listing');
@@ -304,20 +329,35 @@ class Marketplace_model extends MY_Model {
 
 	public function get_watch_list($member_id, $listing_type=0){
 
-		$this->db->select('listing.id,listing.listing_end_datetime,listing.product_mpn,listing.product_isbn,listing.product_make,listing.product_model,listing.product_type,listing.condition,listing.unit_price,listing.total_qty,listing.spec,listing.currency,company.country AS country_id,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
+		$this->db->select('listing.id,listing.listing_end_datetime,listing.product_mpn_isbn,listing.product_make,listing.product_model,listing.product_type,listing.condition,listing.unit_price,listing.total_qty,listing.spec,listing.currency,company.country AS country_id,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
 
-		//$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
+		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
 		$this->db->from('listing');
 		$this->db->join('company','company.id=listing.member_id');
 		$this->db->join('listing_watch','listing_watch.listing_id=listing.id');
 		$this->db->where('listing.status', 1);
 		$this->db->where('listing.listing_type', $listing_type);
-		$this->db->where('listing_watch.user_id ',$member_id);
+		$this->db->where('listing_watch.seller_id',$member_id);
 		$query = $this->db->get();
 		if($query->num_rows()>0)
 			return $query->result();
 		else
 			return FALSE;
+	}
+
+	public function delete_unwatch($member_id=0)
+	{
+		$this->db->where('member_id',$member_id);
+		$this->db->where('listing_end_datetime <', date('Y-m-d h:i'));
+		$this->db->from('listing');
+		$query  =$this->db->get();
+		if($query->num_rows()>0){
+			foreach($query->result() as $row){
+					$this->db->query("delete from listing_watch where seller_id=".$row->member_id."");
+			}
+		}else{
+			return FALSE;
+		}
 	}
 
 	public function count_offer($list_id=0)

@@ -13,7 +13,7 @@
         <tr>
             <th>Attribute Id</th>
             <th>Added by</th>
-            <th>MPN/ISBN</th>
+            <th>MPN</th><!--MPN/ISBN-->
             <th>Make</th>
             <th>Model</th>
             <th>Product Type</th>
@@ -29,9 +29,9 @@
                 <td><?php if($row->user_type==1){ echo 'Admin'; }else{ echo'User';} ?></td>
                 <td>
 
-                <?php if(!empty($row->product_mpn)){ echo "MPN: ".$row->product_mpn; } ?>
-                    <br>
-                <?php if(!empty($row->product_isbn)){ echo "ISBN: ".$row->product_isbn; } ?>
+                <?php if(!empty($row->product_mpn_isbn)){ echo "MPN/ISBN: ".$row->product_mpn_isbn; } ?>
+                   <!--  <br> -->
+                <?php //if(!empty($row->product_isbn)){ echo "ISBN: ".$row->product_isbn; } ?>
 
                 </td>
                 <td><?php if(!empty($row->product_make)){ echo $row->product_make; } ?></td>

@@ -40,9 +40,12 @@
                     <li><a href="<?php echo base_url().'admin/add_listing_attribute';?>"><span class="nav-label">Add Listing Attributes</span></a></li>
                     <li><a href="<?php echo base_url().'admin/listing_attributes';?>"><span class="nav-label">View Listing Attributes</span></a></li>
                     <li><a href="<?php echo base_url().'admin/listing';?>"><span class="nav-label">View Listing</span></a></li>
+                    <li><a href="<?php echo base_url().'admin/product_make';?>"><span class="nav-label">View Product Make</span></a></li>
+                    <li><a href="<?php echo base_url().'admin/product_model';?>"><span class="nav-label">View Prouduct Model</span></a></li>
+                    <li><a href="<?php echo base_url().'admin/product_color';?>"><span class="nav-label">View Prouduct Color</span></a></li>
                     <li><a href="<?php echo base_url().'admin/couriers';?>"><span class="nav-label">Couriers</span></a></li>
                     <li><a href="<?php echo base_url().'admin/shippings';?>"><span class="nav-label">Shipping terms</span></a></li>
-                    <li><a href="<?php echo base_url().'admin/listing_categories';?>"><span class="nav-label">Listing Categories</span></a></li>
+                    <li><a href="<?php echo base_url().'admin/product_types';?>"><span class="nav-label">Product Types</span></a></li>
                 </ul>
             </li>
         </ul>

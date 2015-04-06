@@ -603,7 +603,7 @@ class Admin extends MX_Controller
         $this->check_authentication();//check login authentication
 
         $this->form_validation->set_rules('product_mpn', 'product mpn', '');
-        $this->form_validation->set_rules('product_isbn', 'product isbn', '');
+        //$this->form_validation->set_rules('product_isbn', 'product isbn', '');
         $this->form_validation->set_rules('product_make', 'product make', 'required');
         $this->form_validation->set_rules('product_model', 'product model', 'required');
         $this->form_validation->set_rules('product_type', 'product type', 'required');
@@ -612,8 +612,8 @@ class Admin extends MX_Controller
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
         if ($this->form_validation->run() == TRUE){
             $data_insert=array(
-            'product_mpn' =>  $this->input->post('product_mpn'),
-            'product_isbn' =>  $this->input->post('product_isbn'),
+            'product_mpn_isbn' =>  $this->input->post('product_mpn'),
+            //'product_isbn' =>  $this->input->post('product_isbn'),
             'product_make' =>  $this->input->post('product_make'),
             'product_model' =>  $this->input->post('product_model'),
             'product_type' =>  $this->input->post('product_type'),
@@ -624,12 +624,38 @@ class Admin extends MX_Controller
            $this->session->set_flashdata('msg_success','List Attribute added successfully.');
            redirect('admin/listing_attributes');
         }
+         $items =  $this->admin_model->get_result('listing_categories','','',array('category_name','ASC'));
+
+        if( $items){
+            $tree = $this->buildTree($items);
+            $data['product_types']=$this->buildTree($items);
+        }else{
+           $data['product_types']=FALSE;
+        }
+        $data['makers']  =  $this->admin_model->get_result('product_make');
+        $data['models']  =  $this->admin_model->get_result('product_model');
+        $data['colors']  =  $this->admin_model->get_result('product_color');
+
         $data['main'] = 'admin';        
         $data['title'] = 'GSM - Admin Panel: Listing Attribute Level';  
         $data['page'] = 'add_listing_attribute';
         $this->load->module('templates');
         $this->templates->admin($data);
     }
+
+    private function buildTree($items) {
+
+        $childs = array();
+
+        foreach($items as $item)
+            $childs[$item->parent_id][] = $item;
+
+        foreach($items as $item) if (isset($childs[$item->id]))
+            $item->childs = $childs[$item->id];
+
+        return $childs[0];
+    }
+
 
     function listing()
     {
@@ -646,7 +672,12 @@ class Admin extends MX_Controller
    function listing_status($id='',$status='',$offset=''){
         $user_status = '';
         $msg_success = '';
-       
+        $listing  = $this->admin_model->get_row('listing', array('id'=>$id));
+        if(empty($listing->member_id)) redirect('admin/listing');
+            
+        $member = $this->admin_model->get_row('members', array('id'=>$listing->member_id));
+        $member_email = $member->email; //fatch member email for decline information
+
         if($status=='1'){
 
             $this->admin_model->update('listing',array('status'=>1),array('id'=>$id));
@@ -659,28 +690,27 @@ class Admin extends MX_Controller
             $msg_success = "Listing Status Decline successfully.";
 
         }
-        // $email_template=$this->developer_email->get_email_template(3);
 
-        // $param=array(
-        //    'template'  =>  array(
-        //         'temp'  =>  $email_template->template_body,
-        //         'var_name'  =>  array(
-        //                 'user_name'  => $member_info->firstname.' '. $member_info->lastname,
-        //                 'status'=> $user_status,
-        //                 'message'=> $msg_success,
-        //                 'site_name'=>SITE_NAME,
+        //send email for decline listing request.
 
-        //               ),
-        //           ),
-        //     'email' =>  array(
-        //     'to'    =>  $member_info->email,
-        //     'from'  =>   NO_REPLY_EMAIL,
-        //     'from_name' =>   SITE_NAME,
-        //     'subject' =>   $email_template->template_subject,
-        //   )
-        // );
+        $this->load->library('email');
 
-        // $this->developer_email->send_mail($param);
+        $config['protocol'] = 'sendmail';
+        $config['mailpath'] = '/usr/sbin/sendmail';
+        $config['charset'] = 'iso-8859-1';
+        $config['wordwrap'] = TRUE;
+
+        $this->email->initialize($config);
+
+        $this->email->from('info@gsmstock.com', 'Admin');
+        $this->email->to($member_email);
+        $this->email->subject('Decline listing request');
+        $html = "hello user,";
+        $html .= "your listing request has been declined.";
+        $this->email->message($html);
+
+        $this->email->send();
+
         $this->session->set_flashdata('msg_success',$msg_success);
         redirect('admin/listing');
     }
@@ -703,20 +733,20 @@ class Admin extends MX_Controller
         
 
         $this->form_validation->set_rules('product_mpn', 'product mpn', '');
-        $this->form_validation->set_rules('product_isbn', 'product isbn', '');
+       // $this->form_validation->set_rules('product_isbn', 'product isbn', '');
         $this->form_validation->set_rules('product_make', 'product_make', 'required');
         $this->form_validation->set_rules('product_model', 'product_model', 'required');
-        $this->form_validation->set_rules('product_type', 'product_type', 'required');
+        //$this->form_validation->set_rules('product_type', 'product_type', 'required');
         $this->form_validation->set_rules('product_color', 'product_color', 'required');
        
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
         if ($this->form_validation->run() == TRUE){
             $data_update=array(
             'product_mpn' =>  $this->input->post('product_mpn'),
-            'product_isbn' =>  $this->input->post('product_isbn'),
+           // 'product_isbn' =>  $this->input->post('product_isbn'),
             'product_make' =>  $this->input->post('product_make'),
             'product_model' =>  $this->input->post('product_model'),
-            'product_type' =>  $this->input->post('product_type'),
+            //'product_type' =>  $this->input->post('product_type'),
             'product_color' =>  $this->input->post('product_color'),
             'updated' => date('Y-m-d h:i:s A'), 
             );
@@ -726,6 +756,13 @@ class Admin extends MX_Controller
         } 
        
         $data['listing_attributes'] =  $this->admin_model->get_row('listing_attributes',array('id'=>$list_id));
+        $items =  $this->admin_model->get_result('listing_categories','','',array('category_name','ASC'));
+        if( $items){
+            $tree = $this->buildTree($items);
+            $data['product_types']=$this->buildTree($items);
+        }else{
+           $data['product_types']=FALSE;
+        }
         $data['main'] = 'admin';        
         $data['title'] = 'GSM - Admin Panel: Listing Attribute Level';  
         $data['page'] = 'edit_listing_attribute';
@@ -893,14 +930,14 @@ class Admin extends MX_Controller
     }
 
     // listing categories
-     public function listing_categories($offset=0){
+     public function product_types($offset=0){
         $this->check_authentication();//check login authentication
 
         $per_page=20;
-        $data['listing_categories'] = $this->admin_model->listing_categories($offset,$per_page);
+        $data['product_types'] = $this->admin_model->product_types($offset,$per_page);
         $config=backend_pagination();
-        $config['base_url'] = base_url().'admin/listing_categories/';
-        $config['total_rows'] = $this->admin_model->listing_categories(0,0);
+        $config['base_url'] = base_url().'admin/product_types/';
+        $config['total_rows'] = $this->admin_model->product_types(0,0);
         $config['per_page'] = $per_page;
         $config['uri_segment'] = 3;
         if(!empty($_SERVER['QUERY_STRING'])){
@@ -915,13 +952,13 @@ class Admin extends MX_Controller
 
 
         $data['main'] = 'admin';
-        $data['title'] = 'GSM - Admin Panel: shippings';
-        $data['page'] = 'listing_categories';
+        $data['title'] = 'GSM - Admin Panel: product types';
+        $data['page'] = 'product_types';
         $this->load->module('templates');
         $this->templates->admin($data);
     }
 
-    public function listing_category_add(){
+    public function product_type_add(){
        $this->check_authentication();//check login authentication
 
        $this->form_validation->set_rules('category_name', 'Category name', 'required');
@@ -934,25 +971,25 @@ class Admin extends MX_Controller
                 );
            if($this->admin_model->insert('listing_categories',$post_data)){
             $this->session->set_flashdata('msg_success','Category name added successfully.');
-            redirect('admin/listing_categories');
+            redirect('admin/product_types');
            }
         }
 
-        $data['listing_parent_categories'] = $this->admin_model->get_result('listing_categories',array('parent_id'=>0));
+        $data['product_parent_categories'] = $this->admin_model->get_result('listing_categories',array('parent_id'=>0));
 
         $data['main'] = 'admin';
-        $data['title'] = 'GSM - Admin Panel: listing category Add New';
+        $data['title'] = 'GSM - Admin Panel: Product Type Add New';
 
-        $data['page'] = 'listing_category_add';
+        $data['page'] = 'product_type_add';
         $this->load->module('templates');
         $this->templates->admin($data);
     }
 
-    public function listing_category_edit($id=0){
-         if(empty($id)){ redirect('admin/listing_categories'); }
+    public function product_type_edit($id=0){
+         if(empty($id)){ redirect('admin/product_types'); }
 
-        $data['listing_categories']= $this->admin_model->get_row('listing_categories',array('id'=>$id));
-        if( $data['listing_categories']==FALSE)  redirect('admin/listing_categories');
+        $data['product_types']= $this->admin_model->get_row('listing_categories',array('id'=>$id));
+        if( $data['product_types']==FALSE)  redirect('admin/product_types');
 
         $this->form_validation->set_rules('category_name', 'Category name', 'required');
         $this->form_validation->set_rules('parent_id', 'Parent Category name', 'required');
@@ -963,27 +1000,178 @@ class Admin extends MX_Controller
                 'category_name' => $this->input->post('category_name')
                 );
            if($this->admin_model->update('listing_categories',$post_data,array('id'=>$id))){
-            $this->session->set_flashdata('msg_success','listing category updated successfully.');
-            redirect('admin/listing_categories');
+            $this->session->set_flashdata('msg_success','Product type updated successfully.');
+            redirect('admin/product_types');
            }
         }
 
-        $data['listing_parent_categories'] = $this->admin_model->get_result('listing_categories',array('parent_id'=>0));
+        $data['product_parent_categories'] = $this->admin_model->get_result('listing_categories',array('parent_id'=>0));
 
         $data['main'] = 'admin';
         $data['title'] = 'GSM - Admin Panel: listing category Edit';
-        $data['page'] = 'listing_category_edit';
+        $data['page'] = 'product_type_edit';
         $this->load->module('templates');
         $this->templates->admin($data);
     }
 
-    public function listing_category_delete($id=0){
+    public function product_type_delete($id=0){
           $this->check_authentication();//check login authentication
-        if(empty($id)){ redirect('admin/listing_categories'); }
+        if(empty($id)){ redirect('admin/product_types'); }
 
         if($this->admin_model->delete('listing_categories',array('id'=>$id))){
-            $this->session->set_flashdata('msg_success','listing category deleted successfully.');
-           redirect('admin/listing_categories');
+            $this->session->set_flashdata('msg_success','Product Type deleted successfully.');
+           redirect('admin/product_types');
         }
+    }
+
+     function product_make($maker_id=0)
+    {
+        $this->check_authentication();//check login authentication
+        if($this->input->post('product')==1){
+            $this->form_validation->set_rules('product_make', 'Product maker name', 'required');
+                if ($this->form_validation->run() == TRUE) {
+                    $post_data=array(
+                        'product_make' => $this->input->post('product_make'),
+                        'created' => date('Y-m-d')
+                        );
+               
+                   if($this->admin_model->insert('product_make',$post_data)){
+                    $this->session->set_flashdata('msg_success','Product Maker name added successfully.');
+                    redirect('admin/product_make');
+                   }
+                } 
+        }else{
+    //update
+            $id='';
+            if(!empty($_POST['make_submit'])){
+                $id = $_POST['make_submit'];
+           
+             
+            $post_data=array(
+                    'product_make' => $_POST['product_make_'.$id],
+                    'created' => date('Y-m-d')
+                    );
+            if($this->admin_model->update('product_make',$post_data,array('id'=>$id))){
+            $this->session->set_flashdata('msg_success','Product Maker updated successfully.');
+            redirect('admin/product_make');
+            }
+           }
+            
+        }
+    //delete
+        if(!empty($maker_id)){
+           if($this->admin_model->delete('product_make',array('id'=>$maker_id))){
+                $this->session->set_flashdata('msg_success','Product Maker delete successfully.');
+                redirect('admin/product_make');
+                }  
+        }
+
+        $data['product_makers'] =  $this->admin_model->get_result('product_make');
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel: Product Make';  
+        $data['page'] = 'product_make';
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+
+
+     function product_model($model_id=0)
+    {
+        $this->check_authentication();//check login authentication
+        if($this->input->post('product')==1){
+            $this->form_validation->set_rules('product_model', 'Product model name', 'required');
+                if ($this->form_validation->run() == TRUE) {
+                    $post_data=array(
+                        'product_model' => $this->input->post('product_model'),
+                        'created' => date('Y-m-d')
+                        );
+               
+                   if($this->admin_model->insert('product_model',$post_data)){
+                    $this->session->set_flashdata('msg_success','Product model name added successfully.');
+                    redirect('admin/product_model');
+                   }
+                } 
+        }else{
+    //update
+            $id='';
+            if(!empty($_POST['model_submit'])){
+                $id = $_POST['model_submit'];
+           
+             
+            $post_data=array(
+                    'product_model' => $_POST['product_model_'.$id],
+                    'created' => date('Y-m-d')
+                    );
+            if($this->admin_model->update('product_model',$post_data,array('id'=>$id))){
+            $this->session->set_flashdata('msg_success','Product model updated successfully.');
+            redirect('admin/product_model');
+            }
+           }
+            
+        }
+    //delete
+        if(!empty($model_id)){
+           if($this->admin_model->delete('product_model',array('id'=>$model_id))){
+                $this->session->set_flashdata('msg_success','Product model delete successfully.');
+                redirect('admin/product_model');
+                }  
+        }
+
+        $data['product_model'] =  $this->admin_model->get_result('product_model');
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel: Product model';  
+        $data['page'] = 'product_model';
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+
+    function product_color($color_id=0)
+    {
+        $this->check_authentication();//check login authentication
+        if($this->input->post('product')==1){
+            $this->form_validation->set_rules('product_color', 'Product color name', 'required');
+                if ($this->form_validation->run() == TRUE) {
+                    $post_data=array(
+                        'product_color' => $this->input->post('product_color'),
+                        'created' => date('Y-m-d')
+                        );
+               
+                   if($this->admin_model->insert('product_color',$post_data)){
+                    $this->session->set_flashdata('msg_success','Product color name added successfully.');
+                    redirect('admin/product_color');
+                   }
+                } 
+        }else{
+    //update
+            $id='';
+            if(!empty($_POST['color_submit'])){
+                $id = $_POST['color_submit'];
+           
+             
+            $post_data=array(
+                    'product_color' => $_POST['product_color_'.$id],
+                    'created' => date('Y-m-d')
+                    );
+            if($this->admin_model->update('product_color',$post_data,array('id'=>$id))){
+            $this->session->set_flashdata('msg_success','Product color updated successfully.');
+            redirect('admin/product_color');
+            }
+           }
+            
+        }
+    //delete
+        if(!empty($color_id)){
+           if($this->admin_model->delete('product_color',array('id'=>$color_id))){
+                $this->session->set_flashdata('msg_success','Product color delete successfully.');
+                redirect('admin/product_color');
+                }  
+        }
+
+        $data['product_color'] =  $this->admin_model->get_result('product_color');
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel: Product color';  
+        $data['page'] = 'product_color';
+        $this->load->module('templates');
+        $this->templates->admin($data);
     }
 }

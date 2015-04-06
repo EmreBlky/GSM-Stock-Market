@@ -150,8 +150,8 @@ if ( ! function_exists('image_resize')) {
 		$config['new_image']	= './assets/uploads/';		
 		$config['create_thumb'] = FALSE;
 		$config['maintain_ratio'] = FALSE;
-		$config['width']	 = 150;
-		$config['height']	= 150;
+		$config['width']	 = 300;
+		$config['height']	= 300;
 		
 		 if ($param) {
             $config = $param + $config;
@@ -166,6 +166,8 @@ if ( ! function_exists('image_resize')) {
 		}
 	}
 }
+
+
 /**
 *	image delete
 */
@@ -268,11 +270,14 @@ if ( ! function_exists('list_duration')) {
 	function list_duration($status='') {
 		$status_array = array(
                             '1' => '1',
-                            '2' => '3',
-                            '3' => '5',
-                            '4' => '7',
-                            '5' => '10',
-                            '6' => '14',
+                            '2' => '2',
+                            '3' => '3',
+                            '4' => '4',
+                            '5' => '5',
+                            '6' => '6',
+                            '7' => '7',
+                            // '5' => '10',
+                            // '6' => '14',
                              ); 
 		return $status_array;
 	}
@@ -282,11 +287,12 @@ if ( ! function_exists('list_duration_class')) {
 	function list_duration_class($status='') {
 		$status_array = array(
                                 '1' => '1',
-	                            '2' => '3',
-	                            '3' => '5',
-	                            '4' => '7',
-	                            '5' => '10',
-	                            '6' => '14',
+	                            '2' => '2',
+	                            '3' => '3',
+	                            '4' => '4',
+	                            '5' => '5',
+	                            '6' => '6',
+	                            '7' => '7',
                              ); 
 		return element($status, $status_array);
 	}
@@ -362,7 +368,7 @@ if ( ! function_exists('currency_class')) {
 
 
 if(! function_exists('get_currency')){
-    function get_currency($from_Currency, $to_Currency, $amount) {
+	function get_currency($from_Currency, $to_Currency, $amount=0) {
 			$curl = curl_init();
 			curl_setopt($curl, CURLOPT_URL, "http://jsonrates.com/convert/?from=".$from_Currency."&to=".$to_Currency."&amount=".$amount."&apiKey=jr-199aebc4591596e450c50d07d0917a87");
 			curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);			
