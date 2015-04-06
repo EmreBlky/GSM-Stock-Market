@@ -312,7 +312,7 @@
                  <?php echo form_error('image2'); ?>
                  <label  class="col-md-4" >Image 3</label>
                 <div  class="col-md-8">
-                <?php if (!empty($product_list->image3)&& file_exists($product_list->image3)): 
+                <?php if (!empty($product_list->image3) && file_exists($product_list->image3)): 
                 $img3 = explode('/', $product_list->image3)?>
                     <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img3[3]; ?>" class="thumbnail"/>
                 <?php endif ?>
@@ -321,7 +321,7 @@
                  <?php echo form_error('image3'); ?>
                  <label  class="col-md-4" >Image 4</label>
                 <div  class="col-md-8">
-                <?php if (!empty($product_list->image4)&& file_exists($product_list->image4)): 
+                <?php if (!empty($product_list->image4) && file_exists($product_list->image4)): 
                 $img4 = explode('/', $product_list->image4)?>
                     <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img4[3]; ?>" class="thumbnail"/>
                 <?php endif ?>
@@ -331,7 +331,7 @@
 
                   <label  class="col-md-4" >Image 5</label>
                 <div  class="col-md-8">
-                 <?php if (!empty($product_list->image5)&& file_exists($product_list->image5)): 
+                 <?php if (!empty($product_list->image5) && file_exists($product_list->image5)): 
                 $img5 = explode('/', $product_list->image5)?>
                     <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img5[3]; ?>" class="thumbnail"/>
                 <?php endif ?>
