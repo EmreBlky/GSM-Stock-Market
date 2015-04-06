@@ -783,6 +783,6 @@ var today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(
                                 </div>
                             </div><!-- /row -->
               </div></div></div></div>
-            <div class="col-lg-3">
-                                                    <img alt="image" class="img-circle" src="public/main/template/gsm/images/members/no_profile.jpg">  
-            </div>
+            <!--<div class="col-lg-3">
+                <img alt="image" class="img-circle" src="public/main/template/gsm/images/members/no_profile.jpg">  
+            </div>-->
