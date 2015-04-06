@@ -30,7 +30,7 @@ $dataasa=array();
 if(!empty($advance_search)):
 foreach ($advance_search as $row) {
 $dataasa['product_mpn'][]   = $row->product_mpn_isbn;
-$dataasa['product_isbn'][]  = $row->product_isbn;
+//$dataasa['product_isbn'][]  = $row->product_isbn;
 $dataasa['product_make'][]  = $row->product_make ;
 $dataasa['product_model'][] = $row->product_model ;
 $dataasa['product_type'][]  = $row->product_type;
