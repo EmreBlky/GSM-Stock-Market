@@ -601,10 +601,13 @@ class Marketplace extends MX_Controller
             if($this->input->post('schedule_date_time')){
                 $schedule_date_time=$this->input->post('schedule_date_time');
             }
+            
+             $shipping_fee = array();
+            if(!empty($_POST['shipping_terms'])){
             $arr_count = count($_POST['shipping_terms']);
 
            // print_r($_POST); die;
-             $shipping_fee = array();
+            
 
             for($i=0; $i < count($_POST['shipping_terms']); $i++){
                 $shipping_fee[] = array(
@@ -615,7 +618,7 @@ class Marketplace extends MX_Controller
                                    );
             } 
 
-        
+            }
            
         /*product mpn and isbn check*/
             $product_mpn    = $this->input->post('product_mpn');
