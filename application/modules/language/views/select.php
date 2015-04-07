@@ -10,7 +10,7 @@
     <?php 
         if($lid > 0){
     ?>
-        <option value="<?php echo $lid; ?>"><?php echo 'Selected Language: '.$language; ?></option>
+        <option value="<?php echo $lid; ?>"><?php echo 'Language: '.$language; ?></option>
     <?php 
 
         } else{

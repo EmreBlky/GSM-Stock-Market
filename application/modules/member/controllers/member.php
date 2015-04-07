@@ -35,7 +35,6 @@ class Member extends MX_Controller
     function profile($pid)
     {
         
-        
         $this->viewed_model->_delete_where('viewed_id' ,$pid, 'viewer_id', $this->session->userdata('members_id'));
         
         $data = array(
@@ -44,6 +43,7 @@ class Member extends MX_Controller
                     'time' => date('H:i:s'),
                     'date' => date('d-m-Y'),
                     'datetime' => date('d-m-Y H:i:s'),
+                    'record_date' => date('Y-m-d H:i:s')
                     );
         
         $this->viewed_model->_insert($data);

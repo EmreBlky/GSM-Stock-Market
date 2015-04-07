@@ -575,15 +575,21 @@
                     </div>
                     <div class="col-lg-3">
                         <div class="ibox float-e-margins">
-                            <div class="ibox-title">
-                                <span class="label label-success pull-right">Monthly</span>
+                            <div class="ibox-title"> 
+                                <!-- <a href="#"><span class="label label-success pull-right">Yearly</span></a> -->
+                                <a href="#"><span class="label label-success pull-right">Monthly</span></a>
+                                <!-- <a href="#"><span class="label label-success pull-right">Daily</span></a> -->
                                 <h5>My Profile Visits</h5>
                             </div>
-                            <div class="ibox-content" style="min-height:89px">
+<!--                            <div class="ibox-content" style="min-height:89px">
                                 <h1 class="no-margins">0</h1>
                                 <div class="stat-percent font-bold">0% <i class="fa fa-level-up"></i></div>
                                 <small>New visits</small>
-                            </div>
+                            </div>-->
+                        <?php
+                            $this->load->module('viewed');
+                            $this->viewed->view_month();
+                        ?>
                         </div>
                     </div>
             <?php if($overall > 0) {?>
