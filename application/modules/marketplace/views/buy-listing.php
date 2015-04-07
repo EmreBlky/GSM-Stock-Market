@@ -272,8 +272,9 @@
             <div class="col-md-9 col-md-offset-3">
                 <?php if ($this->uri->segment(4)!='' && $this->uri->segment(4)=='saved_listing'): ?>
                     <a class="btn btn-danger" href="<?php echo base_url().'marketplace/saved_listing'; ?>">Cancel</a>
+                <?php else: ?>
+                 <a class="btn btn-danger" href="<?php echo base_url().'marketplace/listing/'; ?>">Cancel</a>
                 <?php endif ?>
-                <a class="btn btn-danger" href="<?php echo base_url().'marketplace/listing/'; ?>">Cancel</a>
                  <?php if($this->uri->segment(3)==''): ?>
                     <button class="btn btn-warning" type="submit" name="status" value="2">Save for later</button>
                 <?php endif; ?>
