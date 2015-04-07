@@ -90,7 +90,7 @@
 
          <div class="form-group">
             <div class="col-md-9 col-md-offset-3">
-            <a href="<?php echo base_url('admin/listing_attributes')?>">Cancel</a>
+            <a href="<?php echo base_url('admin/listing_attributes')?>" class="btn btn-danger">Cancel</a>
                 <button class="btn btn-warning" type="submit">Update Attributes</button>
             </div>
         </div>
