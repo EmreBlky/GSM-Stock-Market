@@ -342,6 +342,13 @@ class Register extends MX_Controller{
             else{
                 $country = 225;
             }
+            
+            if($language != ''){
+                $language = $this->language_model->get_where_multiple('language', $language)->id;
+            }
+            else{
+                $language = 276459;
+            }
            
             $duplicate = $this->member_model->get_where_multiple('email', $data[1])->id;
             
