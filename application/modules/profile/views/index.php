@@ -143,7 +143,7 @@ $this->load->model('membership/membership_model', 'membership_model');
                                 
                                 <div class="col-lg-10 col-lg-offset-1">
                                     <h4>Company Bio</h4>
-                                	<p style="margin-top:20px"><?php echo $member_company->company_profile;?></p>
+                                	<p style="margin-top:20px"><?php echo nl2br ($member_company->company_profile);?></p>
                                 </div>
                                 
                                 

@@ -272,10 +272,12 @@ class Profile extends MX_Controller
 
     function profileEdit()
     {
-
-//        echo '<pre>';
-//        print_r($_POST);
-//        exit;
+        $company_bio = strip_tags($this->company_model->get_where_multiple('admin_member_id', $this->session->userdata('members_id'))->company_profile);
+        //echo '<hr>';
+        $company_bio_new = $this->input->post('company_profile');
+        //echo '<pre>';
+        //print_r($_POST);
+        //exit;
 
         $bsectors4 = '';
         $bsectors5 = '';
@@ -373,29 +375,55 @@ class Profile extends MX_Controller
             $this->load->model('member/member_model', 'member_model');
             $this->member_model->_update($this->session->userdata('members_id'), $data);
 
-            $data = array(
-                'company_name' => $this->input->post('company_name'),
-                'dial_phone' => $this->input->post('phone_number'),
-                'phone_number' => $this->input->post('telephone_number'),
-                'dial_mobile' => $this->input->post('phone_number'),
-                'mobile_number' => $this->input->post('mobile_number'),
-                'address_line_1' => $this->input->post('address_line_1'),
-                'address_line_2' => $this->input->post('address_line_2'),
-                'town_city' => $this->input->post('town_city'),
-                'county' => $this->input->post('county'),
-                'country' => $this->input->post('country'),
-                'post_code' => $this->input->post('post_code'),
-                'website' => $this->input->post('website'),
-                'business_sector_1' => $this->input->post('bprimary'),
-                'business_sector_2' => $this->input->post('bsecondary'),
-                'business_sector_3' => $this->input->post('btertiary'),
-                'other_business' => $bsectors4 . $bsectors5,
-                'company_profile' => '',
-                'company_profile_approval' => $this->input->post('company_profile'),
-                'vat_tax' => $this->input->post('vat_tax'),
-                'company_number' => $this->input->post('company_number'),
-            );
-
+            if($company_bio == $company_bio_new){
+                
+                $data = array(
+                    'company_name' => $this->input->post('company_name'),
+                    'dial_phone' => $this->input->post('phone_number'),
+                    'phone_number' => $this->input->post('telephone_number'),
+                    'dial_mobile' => $this->input->post('phone_number'),
+                    'mobile_number' => $this->input->post('mobile_number'),
+                    'address_line_1' => $this->input->post('address_line_1'),
+                    'address_line_2' => $this->input->post('address_line_2'),
+                    'town_city' => $this->input->post('town_city'),
+                    'county' => $this->input->post('county'),
+                    'country' => $this->input->post('country'),
+                    'post_code' => $this->input->post('post_code'),
+                    'website' => $this->input->post('website'),
+                    'business_sector_1' => $this->input->post('bprimary'),
+                    'business_sector_2' => $this->input->post('bsecondary'),
+                    'business_sector_3' => $this->input->post('btertiary'),
+                    'other_business' => $bsectors4 . $bsectors5,
+                    'company_profile' => $company_bio_new,
+                    'vat_tax' => $this->input->post('vat_tax'),
+                    'company_number' => $this->input->post('company_number'),
+                );
+            }
+            else{
+                $data = array(
+                    'company_name' => $this->input->post('company_name'),
+                    'dial_phone' => $this->input->post('phone_number'),
+                    'phone_number' => $this->input->post('telephone_number'),
+                    'dial_mobile' => $this->input->post('phone_number'),
+                    'mobile_number' => $this->input->post('mobile_number'),
+                    'address_line_1' => $this->input->post('address_line_1'),
+                    'address_line_2' => $this->input->post('address_line_2'),
+                    'town_city' => $this->input->post('town_city'),
+                    'county' => $this->input->post('county'),
+                    'country' => $this->input->post('country'),
+                    'post_code' => $this->input->post('post_code'),
+                    'website' => $this->input->post('website'),
+                    'business_sector_1' => $this->input->post('bprimary'),
+                    'business_sector_2' => $this->input->post('bsecondary'),
+                    'business_sector_3' => $this->input->post('btertiary'),
+                    'other_business' => $bsectors4 . $bsectors5,
+                    'company_profile' => '',
+                    'company_profile_approval' => $company_bio_new,
+                    'vat_tax' => $this->input->post('vat_tax'),
+                    'company_number' => $this->input->post('company_number'),
+                );
+            }
+            
             $this->company_model->_update($this->member_model->get_where($this->session->userdata('members_id'))->company_id, $data);
 //
 //            echo '<pre>';
