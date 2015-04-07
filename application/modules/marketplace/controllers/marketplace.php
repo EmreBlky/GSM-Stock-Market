@@ -539,7 +539,7 @@ class Marketplace extends MX_Controller
 
     }
     if(!empty($_FILES['image1']['name'])){
-            $this->form_validation->set_rules('image1','','callback_image1_check['.$list_id.']');
+            $this->form_validation->set_rules('image1','','callback_image1_check');
         }
         if(!empty($_FILES['image2']['name'])){
             $this->form_validation->set_rules('image2', '', 'callback_image2_check2');
@@ -695,7 +695,7 @@ class Marketplace extends MX_Controller
                 $this->session->unset_userdata('image2_check2');
             endif;
 
-            if($this->session->userdata('check3_image3')!=''):
+            if($this->session->userdata('image3_check3')!=''):
                 if(!empty($list_update->image3)&&file_exists($list_update->image3)){
                    $img3 = explode('/', $list_update->image3);
                     @unlink($list_update->image3);
@@ -703,12 +703,12 @@ class Marketplace extends MX_Controller
                     @unlink('public/upload/listing/large/'.$img3[3]);
                     @unlink('public/upload/listing/thumbnail/'.$img3[3]);
                 }
-                $check3_image3=$this->session->userdata('check3_image3');
-                $data_insert['image3'] = 'public/upload/listing/'.$check3_image3['image3'];
-                $this->session->unset_userdata('check3_image3');
+                $image3_check3=$this->session->userdata('image3_check3');
+                $data_insert['image3'] = 'public/upload/listing/'.$image3_check3['image3'];
+                $this->session->unset_userdata('image3_check3');
             endif;
 
-            if($this->session->userdata('check4_image4')!=''):
+            if($this->session->userdata('image4_check4')!=''):
                 if(!empty($list_update->image4)&&file_exists($list_update->image4)){
                    $img4 = explode('/', $list_update->image4);
                     @unlink($list_update->image4);
@@ -716,12 +716,12 @@ class Marketplace extends MX_Controller
                     @unlink('public/upload/listing/large/'.$img4[3]);
                     @unlink('public/upload/listing/thumbnail/'.$img4[3]);
                 }
-                $check4_image4=$this->session->userdata('check4_image4');
-                $data_insert['image4'] = 'public/upload/listing/'.$check4_image4['image4'];
-                $this->session->unset_userdata('check4_image4');
+                $image4_check4=$this->session->userdata('image4_check4');
+                $data_insert['image4'] = 'public/upload/listing/'.$image4_check4['image4'];
+                $this->session->unset_userdata('image4_check4');
             endif;
 
-            if($this->session->userdata('check5_image5')!=''):
+            if($this->session->userdata('image5_check5')!=''):
                 if(!empty($list_update->image5)&&file_exists($list_update->image5)){
                    $img5 = explode('/', $list_update->image5);
                     @unlink($list_update->image5);
@@ -729,9 +729,9 @@ class Marketplace extends MX_Controller
                     @unlink('public/upload/listing/large/'.$img5[3]);
                     @unlink('public/upload/listing/thumbnail/'.$img5[3]);
                 }
-                $check5_image5=$this->session->userdata('check5_image5');
-                $data_insert['image5'] = 'public/upload/listing/'.$check5_image5['image5'];
-                $this->session->unset_userdata('check5_image5');
+                $image5_check5=$this->session->userdata('image5_check5');
+                $data_insert['image5'] = 'public/upload/listing/'.$image5_check5['image5'];
+                $this->session->unset_userdata('image5_check5');
             endif;
 
         if(!empty($list_id)){
@@ -1003,7 +1003,7 @@ class Marketplace extends MX_Controller
                     $this->session->unset_userdata('image2_check2');
                 endif;
 
-                if($this->session->userdata('check3_image3')!=''):
+                if($this->session->userdata('image3_check3')!=''):
                     if(!empty($list_update->image3)&&file_exists($list_update->image3)){
                        $img3 = explode('/', $list_update->image3);
                         @unlink($list_update->image3);
@@ -1011,12 +1011,12 @@ class Marketplace extends MX_Controller
                         @unlink('public/upload/listing/large/'.$img3[3]);
                         @unlink('public/upload/listing/thumbnail/'.$img3[3]);
                     }
-                    $check3_image3=$this->session->userdata('check3_image3');
-                    $data_insert['image3'] = 'public/upload/listing/'.$check3_image3['image3'];
-                    $this->session->unset_userdata('check3_image3');
+                    $image3_check3=$this->session->userdata('image3_check3');
+                    $data_insert['image3'] = 'public/upload/listing/'.$image3_check3['image3'];
+                    $this->session->unset_userdata('image3_check3');
                 endif;
 
-                if($this->session->userdata('check4_image4')!=''):
+                if($this->session->userdata('image4_check4')!=''):
                     if(!empty($list_update->image4)&&file_exists($list_update->image4)){
                        $img4 = explode('/', $list_update->image4);
                         @unlink($list_update->image4);
@@ -1024,12 +1024,12 @@ class Marketplace extends MX_Controller
                         @unlink('public/upload/listing/large/'.$img4[3]);
                         @unlink('public/upload/listing/thumbnail/'.$img4[3]);
                     }
-                    $check4_image4=$this->session->userdata('check4_image4');
-                    $data_insert['image4'] = 'public/upload/listing/'.$check4_image4['image4'];
-                    $this->session->unset_userdata('check4_image4');
+                    $image4_check4=$this->session->userdata('image4_check4');
+                    $data_insert['image4'] = 'public/upload/listing/'.$image4_check4['image4'];
+                    $this->session->unset_userdata('image4_check4');
                 endif;
 
-                if($this->session->userdata('check5_image5')!=''):
+                if($this->session->userdata('image5_check5')!=''):
                     if(!empty($list_update->image5)&&file_exists($list_update->image5)){
                        $img5 = explode('/', $list_update->image5);
                         @unlink($list_update->image5);
@@ -1037,9 +1037,9 @@ class Marketplace extends MX_Controller
                         @unlink('public/upload/listing/large/'.$img5[3]);
                         @unlink('public/upload/listing/thumbnail/'.$img5[3]);
                     }
-                    $check5_image5=$this->session->userdata('check5_image5');
-                    $data_insert['image5'] = 'public/upload/listing/'.$check5_image5['image5'];
-                    $this->session->unset_userdata('check5_image5');
+                    $image5_check5=$this->session->userdata('image5_check5');
+                    $data_insert['image5'] = 'public/upload/listing/'.$image5_check5['image5'];
+                    $this->session->unset_userdata('image5_check5');
                 endif;
 
             if(!empty($list_id)){
@@ -1251,7 +1251,7 @@ class Marketplace extends MX_Controller
     }
 
 
-    function image1_check($str,$list_id=0){
+    function image1_check($str=''){
 
     // if(empty($_FILES['image1']['name']) && empty($list_id)){
     //         $this->form_validation->set_message('image1_check','Choose Color Image');
@@ -1473,7 +1473,7 @@ class Marketplace extends MX_Controller
     endif;
     }
 
-    function image4_check4($str){
+    function image4_check4($str=''){
     // if(empty($_FILES['image4']['name'])){
     //         $this->form_validation->set_message('image4_check4','Choose Color Image');
     //        return FALSE;
@@ -1546,7 +1546,7 @@ class Marketplace extends MX_Controller
     endif;
     }
     
-  function image5_check5($str){
+  function image5_check5($str=''){
     // if(empty($_FILES['image5']['name'])){
     //         $this->form_validation->set_message('image5_check5','Choose Color Image');
     //        return FALSE;
