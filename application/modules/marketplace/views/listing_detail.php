@@ -554,10 +554,15 @@ jQuery(document).ready(function($) {
        });
      });
 
+   <?php if(!empty($listing_detail->unit_price) && !empty($listing_detail->qty_available)) { ?>
+ 
     $('#core').on('change', function(){
-      $('#gross_price').html(parseInt($(this).val()) + parseInt($('#total_price').val()));
+      $('#gross_price').html(<?php echo currency_class($listing_detail->currency).' '; ?>+(parseInt($(this).val()) + parseInt($('#total_price').val())));
      
     });
+
+<?php } ?>
+
 
 
 });
