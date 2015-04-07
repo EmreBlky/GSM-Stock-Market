@@ -93,8 +93,8 @@ endif;
                             <input type="text" class="form-control" id="date" name="date" placeholder="format (yyyy-mm-dd)" value="<?php if(!empty($_GET['date'])) echo $_GET['date'] ?>">
                         </div>
                          <div class="form-group">
-                          <label for="">Search by MPN</label>
-                            <input type="type" class="form-control" id="mpn" list="mpns" name="mpn" placeholder="MPN" value="<?php if(!empty($_GET['mpn'])) echo $_GET['mpn'] ?>">
+                          <label for="">Search by MPN/ISBN</label>
+                            <input type="type" class="form-control" id="mpn" list="mpns" name="mpn" placeholder="MPN/ISBN" value="<?php if(!empty($_GET['mpn'])) echo $_GET['mpn'] ?>">
                              <datalist id="mpns">
                             <?php if(!empty($dataasa['product_mpn'])){
                                  foreach (array_unique ($dataasa['product_mpn']) as $row) { ?>
@@ -102,12 +102,12 @@ endif;
                                  <?php }} ?>
                             </datalist>
                         </div>
-                        <div class="form-group">
-                         <label for="">Search By ISBN</label>
-                            <input type="text" class="form-control" name="isbn" id="isbn" list="isbns" placeholder="ISBN" value="<?php if(!empty($_GET['isbn'])) echo $_GET['isbn'] ?>">
-                             <datalist id="isbns">
-                            <?php if(!empty($dataasa['product_isbn'])){
-                                 foreach (array_unique ($dataasa['product_isbn']) as $row) { ?>
+                         <div class="form-group">
+                            <label for="">Search By Model</label>
+                            <input type="type" class="form-control" list="modelss" id="model"  name="model" placeholder="Model number" value="<?php if(!empty($_GET['model'])) echo $_GET['model'] ?>">
+                              <datalist id="modelss">
+                                <?php if(!empty($dataasa['product_model'])){
+                                 foreach (array_unique ($dataasa['product_model']) as $row) { ?>
                                <option value="<?php echo $row; ?>"><?php echo $row; ?></option>
                                  <?php }} ?>
                             </datalist>
@@ -130,17 +130,20 @@ endif;
                             </datalist>
                         </div>
 
+                      
                         <div class="form-group">
-                            <label for="">Search By Model</label>
-                            <input type="type" class="form-control" list="modelss" id="model"  name="model" placeholder="Model number" value="<?php if(!empty($_GET['model'])) echo $_GET['model'] ?>">
-                              <datalist id="modelss">
-                                <?php if(!empty($dataasa['product_model'])){
-                                 foreach (array_unique ($dataasa['product_model']) as $row) { ?>
-                               <option value="<?php echo $row; ?>"><?php echo $row; ?></option>
+                             <label for="">Search By Country</label>
+                            <input type="text" class="form-control" list="countrys" name="country" id="country" placeholder="Country Name" value="<?php if(!empty($_GET['country'])) echo $_GET['country'] ?>">
+                             <datalist id="countrys">
+                                <?php if(!empty($dataasa['product_countrys'])){
+                                    $product_countrys =  array_map('unserialize', array_unique(array_map('serialize', $dataasa['product_countrys'])));
+                                foreach ($product_countrys as $row) { ?>
+                               <option value="<?php echo $row['country_id']; ?>" label="<?php echo $row['product_country']; ?>"><?php echo $row['product_country']; ?></option>
                                  <?php }} ?>
                             </datalist>
+
                         </div>
-                        </div>
+                    </div>
                      <div class="col-lg-4">
                         <div class="form-group">
                              <label for="">Search By Product Type</label>
@@ -163,18 +166,7 @@ endif;
                             </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                             <label for="">Search By Country</label>
-                            <input type="text" class="form-control" list="countrys" name="country" id="country" placeholder="Country Name" value="<?php if(!empty($_GET['country'])) echo $_GET['country'] ?>">
-                             <datalist id="countrys">
-                                <?php if(!empty($dataasa['product_countrys'])){
-                                    $product_countrys =  array_map('unserialize', array_unique(array_map('serialize', $dataasa['product_countrys'])));
-                                foreach ($product_countrys as $row) { ?>
-                               <option value="<?php echo $row['country_id']; ?>" label="<?php echo $row['product_country']; ?>"><?php echo $row['product_country']; ?></option>
-                                 <?php }} ?>
-                            </datalist>
-
-                        </div>
+                        
                      </div>
                      <div class="row">
                          <div class="col-lg-4 col-lg-offset-4">
@@ -224,8 +216,7 @@ endif;
     <tr data-toggle="modal" data-target="#myModal5">
     <td><p><span data-countdown="<?php echo $value->listing_end_datetime; ?>"></span></p></td>
     <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
-    <td> <?php if(!empty($value->product_mpn_isbn)){ echo "MPN/ISBN: ".$value->product_mpn; } ?>
-                   </td>
+    <td><?php if(!empty($value->product_mpn_isbn)){ echo "MPN/ISBN: ".$value->product_mpn_isbn; } ?></td>
     <td><?php echo $value->product_make; ?></td>
     <td><?php echo $value->product_model; ?></td>
     <td><?php echo $value->product_type; ?></td>
@@ -263,7 +254,7 @@ endif;
                     <small class="font-bold">Transaction ID: 0123456789-01</small>
                 </div>
                 <div class="modal-body">
-                	<div class="row">
+                    <div class="row">
                         <div class="col-lg-6">
                             <dl class="dl-horizontal">
                             	<h4>Product Details</h4>
