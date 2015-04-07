@@ -53,7 +53,7 @@
 
          <div class="form-group">
             <div class="col-md-9 col-md-offset-3">
-            <a class="btn btn-danger" href="<?php echo base_url('admin/listing_categories')?>">Cancel</a>
+            <a class="btn btn-danger" href="<?php echo base_url('admin/product_types')?>">Cancel</a>
                 <button class="btn btn-warning" type="submit">Save</button>
             </div>
         </div>
