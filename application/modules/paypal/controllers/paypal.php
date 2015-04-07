@@ -56,7 +56,8 @@ class Paypal extends MX_Controller
                             'tax_vat' => '',
                             'currency' => 'GBP',
                             'quantity' => $quantity,
-                            'item_description' => ''
+                            'item_description' => '',
+                            'payment_type' => 'PayPal'
                             );
         $this->transaction_model->_insert($data_trans);
         

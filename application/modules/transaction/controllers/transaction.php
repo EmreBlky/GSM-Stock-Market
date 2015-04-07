@@ -62,7 +62,8 @@ class Transaction extends MX_Controller
                             'tax_vat' => '',
                             'currency' => 'GBP',
                             'quantity' => $quantity,
-                            'item_description' => ''
+                            'item_description' => '',
+                            'payment_type' => 'Bank Transfer'
                             );
         $this->transaction_model->_insert($data_trans);
         
