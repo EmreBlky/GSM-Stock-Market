@@ -277,7 +277,7 @@
                                                     </dl>
                                                     <dl class="dl-horizontal">
                                                     <dt>Gross price:</dt>
-                                                    <dd id="gross_price"></dd>
+                                                    <dd id="gross_price">No Gross Price Available yet.</dd>
 
 
                                                     </dl>
