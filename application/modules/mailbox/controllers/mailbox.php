@@ -649,9 +649,9 @@ class Mailbox extends MX_Controller
                 $pcount = '';
             }
                 
-                $count = $this->mailbox_model->count_where_multiple('draft', 'yes', 'draft_belong', $this->session->userdata('members_id'));
-                
-                if($count > 0){            
+            $count = $this->mailbox_model->count_where_multiple('draft', 'yes', 'draft_belong', $this->session->userdata('members_id'));
+
+            if($count > 0){            
                     $data['inbox_draft_count_reply'] = $pcount;
                     $data['inbox_draft_message_reply'] = $this->mailbox_model->get_where_multiples_order('datetime', 'DESC', 'member_id', $this->session->userdata('members_id'), 'draft', 'yes', 'draft_belong', $this->session->userdata('members_id'), NULL, NULL, 20, $offset);
                     
@@ -692,7 +692,7 @@ class Mailbox extends MX_Controller
                 }
             //}
             else{
-                        
+                $data['email_info'] = '';       
                 $data['inbox_draft_count_reply'] = 0;                
             }
         
@@ -1034,7 +1034,29 @@ class Mailbox extends MX_Controller
                 
                 if($mail_type == 'draft'){
 
-                    $data = array(
+                    if($sid < 6){
+                        
+                        $data = array(
+                                    'member_id'         => $this->session->userdata('members_id'),
+                                    'member_name'       => $this->member_model->get_where($this->session->userdata('members_id'))->firstname.' '.$this->member_model->get_where($this->session->userdata('members_id'))->lastname,
+                                    'sent_member_id'    => $sid,
+                                    'sent_member_name'  => $this->member_model->get_where($sid)->firstname.' '.$this->member_model->get_where($sid)->lastname,
+                                    'subject'           => $this->input->post('subject'),
+                                    'body'              => nl2br($this->input->post('body')),
+                                    'inbox'             => 'yes',
+                                    'sent'              => 'yes',
+                                    'sent_belong'       => $this->session->userdata('members_id'),
+                                    'draft'             => 'no',
+                                    'date'              => date('d-m-Y'),
+                                    'time'              => date('H:i'),
+                                    'sent_from'         => 'support',
+                                    'parent_id'         => $this->input->post('parent_id'),
+                                    'datetime'          => date('Y-m-d H:i:s')
+                                  );
+                    }
+                    else{
+                        
+                        $data = array(
                                     'member_id'         => $this->session->userdata('members_id'),
                                     'member_name'       => $this->member_model->get_where($this->session->userdata('members_id'))->firstname.' '.$this->member_model->get_where($this->session->userdata('members_id'))->lastname,
                                     'sent_member_id'    => $sid,
@@ -1050,13 +1072,18 @@ class Mailbox extends MX_Controller
                                     'sent_from'         => 'member',
                                     'parent_id'         => $this->input->post('parent_id'),
                                     'datetime'          => date('Y-m-d H:i:s')
-                                  );                    
+                                  );
+                        
+                    }   
+                    
                     $this->mailbox_model->_update($this->input->post('mail_id'), $data);
                     redirect('mailbox/draft');
                 }
-                else{                    
-
-                    $data = array(
+                else{     
+                    
+                    if($sid < 6){
+                        
+                        $data = array(
                                     'member_id'         => $this->session->userdata('members_id'),
                                     'member_name'       => $this->member_model->get_where($this->session->userdata('members_id'))->firstname.' '.$this->member_model->get_where($this->session->userdata('members_id'))->lastname,
                                     'sent_member_id'    => $sid,
@@ -1068,10 +1095,30 @@ class Mailbox extends MX_Controller
                                     'sent_belong'       => $this->session->userdata('members_id'),
                                     'date'              => date('d-m-Y'),
                                     'time'              => date('H:i'),
-                                    'sent_from'         => 'member',
+                                    'sent_from'         => 'support',
                                     'parent_id'         => $this->input->post('parent_id'),
                                     'datetime'          => date('Y-m-d H:i:s')
-                                  );                    
+                                  );
+                    }
+                    else{
+
+                        $data = array(
+                                        'member_id'         => $this->session->userdata('members_id'),
+                                        'member_name'       => $this->member_model->get_where($this->session->userdata('members_id'))->firstname.' '.$this->member_model->get_where($this->session->userdata('members_id'))->lastname,
+                                        'sent_member_id'    => $sid,
+                                        'sent_member_name'  => $this->member_model->get_where($sid)->firstname.' '.$this->member_model->get_where($sid)->lastname,
+                                        'subject'           => $this->input->post('subject'),
+                                        'body'              => nl2br($this->input->post('body')),
+                                        'inbox'             => 'yes',
+                                        'sent'              => 'yes',
+                                        'sent_belong'       => $this->session->userdata('members_id'),
+                                        'date'              => date('d-m-Y'),
+                                        'time'              => date('H:i'),
+                                        'sent_from'         => 'member',
+                                        'parent_id'         => $this->input->post('parent_id'),
+                                        'datetime'          => date('Y-m-d H:i:s')
+                                      ); 
+                    }
                     $this->mailbox_model->_insert($data);
                     redirect('mailbox/inbox/all');
                 }
@@ -1111,23 +1158,44 @@ class Mailbox extends MX_Controller
                     
                 }
                 else{
+                    
+                    if($sid < 6){
+                        
+                        $data = array(
+                                        'member_id'         => $this->session->userdata('members_id'),
+                                        'member_name'       => $this->member_model->get_where($this->session->userdata('members_id'))->firstname.' '.$this->member_model->get_where($this->session->userdata('members_id'))->lastname,
+                                        'sent_member_id'    => $sid,
+                                        'sent_member_name'  => $this->member_model->get_where($sid)->firstname.' '.$this->member_model->get_where($sid)->lastname,
+                                        'subject'           => $this->input->post('subject'),
+                                        'body'              => nl2br($this->input->post('body')),
+                                        'inbox'             => 'yes',
+                                        'draft'             => 'yes',
+                                        'draft_belong'      => $this->session->userdata('members_id'),
+                                        'date'              => date('d-m-Y'),
+                                        'time'              => date('H:i'),
+                                        'sent_from'         => 'support',
+                                        'parent_id'         => $parent_id,
+                                        'datetime'          => date('Y-m-d H:i:s')
+                                      );
+                    }else{
 
-                    $data = array(
-                                    'member_id'         => $this->session->userdata('members_id'),
-                                    'member_name'       => $this->member_model->get_where($this->session->userdata('members_id'))->firstname.' '.$this->member_model->get_where($this->session->userdata('members_id'))->lastname,
-                                    'sent_member_id'    => $sid,
-                                    'sent_member_name'  => $this->member_model->get_where($sid)->firstname.' '.$this->member_model->get_where($sid)->lastname,
-                                    'subject'           => $this->input->post('subject'),
-                                    'body'              => nl2br($this->input->post('body')),
-                                    'inbox'             => 'yes',
-                                    'draft'             => 'yes',
-                                    'draft_belong'      => $this->session->userdata('members_id'),
-                                    'date'              => date('d-m-Y'),
-                                    'time'              => date('H:i'),
-                                    'sent_from'         => 'member',
-                                    'parent_id'         => $parent_id,
-                                    'datetime'          => date('Y-m-d H:i:s')
-                                  );
+                        $data = array(
+                                        'member_id'         => $this->session->userdata('members_id'),
+                                        'member_name'       => $this->member_model->get_where($this->session->userdata('members_id'))->firstname.' '.$this->member_model->get_where($this->session->userdata('members_id'))->lastname,
+                                        'sent_member_id'    => $sid,
+                                        'sent_member_name'  => $this->member_model->get_where($sid)->firstname.' '.$this->member_model->get_where($sid)->lastname,
+                                        'subject'           => $this->input->post('subject'),
+                                        'body'              => nl2br($this->input->post('body')),
+                                        'inbox'             => 'yes',
+                                        'draft'             => 'yes',
+                                        'draft_belong'      => $this->session->userdata('members_id'),
+                                        'date'              => date('d-m-Y'),
+                                        'time'              => date('H:i'),
+                                        'sent_from'         => 'member',
+                                        'parent_id'         => $parent_id,
+                                        'datetime'          => date('Y-m-d H:i:s')
+                                      );
+                    }
                     
                     $this->mailbox_model->_insert($data);
                     redirect('mailbox/draft');
@@ -1182,25 +1250,50 @@ class Mailbox extends MX_Controller
     
     function composeAjaxMail($mid, $sid, $subject, $body)
     {
+        if($sid < 6){
+            
+            $data = array(
+                        'member_id'         => $mid,
+                        'member_name'       => $this->member_model->get_where($mid)->firstname.' '.$this->member_model->get_where($mid)->lastname,
+                        'sent_member_id'    => $sid,
+                        'sent_member_name'  => $this->member_model->get_where($sid)->firstname.' '.$this->member_model->get_where($sid)->lastname,
+                        'subject'           => $this->characterReplace($subject),
+                        'body'              => nl2br($this->characterReplace($body)),
+                        'inbox'             => 'yes',
+                        'sent'              => 'yes',
+                        'sent_belong'       => $mid,
+                        'date'              => date('d-m-Y'),
+                        'time'              => date('H:i'),
+                        'sent_from'         => 'support',
+                        'parent_id'         => '',
+                        'datetime'          => date('Y-m-d H:i:s')
+                      );
+            
+        }
+        else{
+            
+            $data = array(
+                        'member_id'         => $mid,
+                        'member_name'       => $this->member_model->get_where($mid)->firstname.' '.$this->member_model->get_where($mid)->lastname,
+                        'sent_member_id'    => $sid,
+                        'sent_member_name'  => $this->member_model->get_where($sid)->firstname.' '.$this->member_model->get_where($sid)->lastname,
+                        'subject'           => $this->characterReplace($subject),
+                        'body'              => nl2br($this->characterReplace($body)),
+                        'inbox'             => 'yes',
+                        'sent'              => 'yes',
+                        'sent_belong'       => $mid,
+                        'date'              => date('d-m-Y'),
+                        'time'              => date('H:i'),
+                        'sent_from'         => 'member',
+                        'parent_id'         => '',
+                        'datetime'          => date('Y-m-d H:i:s')
+                      );
+            
+        }
         
-        $data = array(
-                                    'member_id'         => $mid,
-                                    'member_name'       => $this->member_model->get_where($mid)->firstname.' '.$this->member_model->get_where($mid)->lastname,
-                                    'sent_member_id'    => $sid,
-                                    'sent_member_name'  => $this->member_model->get_where($sid)->firstname.' '.$this->member_model->get_where($sid)->lastname,
-                                    'subject'           => $this->characterReplace($subject),
-                                    'body'              => nl2br($this->characterReplace($body)),
-                                    'inbox'             => 'yes',
-                                    'sent'              => 'yes',
-                                    'sent_belong'       => $mid,
-                                    'date'              => date('d-m-Y'),
-                                    'time'              => date('H:i'),
-                                    'sent_from'         => 'member',
-                                    'parent_id'         => '',
-                                    'datetime'          => date('Y-m-d H:i:s')
-                                  );                    
-                    $this->mailbox_model->_insert($data);
-                    redirect('mailbox/inbox/all');
+                            
+        $this->mailbox_model->_insert($data);
+        redirect('mailbox/inbox/all');
     }
             
     function archive($mid = NULL, $off = NULL)

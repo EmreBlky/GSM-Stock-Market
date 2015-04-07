@@ -36,27 +36,32 @@
                         <div class="col-sm-10">                                
                             <?php
                             $email = $this->input->post('email_address');
+                            $member_details = $this->member_model->get_where_multiple('id', $this->mailbox_model->get_where_multiple('id', $this->uri->segment(4))->member_id);
                             if($email == ''){
-                                
+                                echo '<p class="form-control-static">'.$member_details->firstname.' '.$member_details->lastname.' ('.$this->company_model->get_where($member_details->company_id)->company_name.')</p>';
+                                /*
                                 $data = array(
                                             'name'      => 'email_address',
-                                            'class'     => 'form-control',
+                                            'class'     => 'form-control-static',
                                             'value'     => $this->member_model->get_where_multiple('id', $this->mailbox_model->get_where_multiple('id', $this->uri->segment(4))->member_id)->email,     
                                             'required'  => 'required'
                                           );
 
                                 echo form_input($data);
-                                
+                                */
                             }
                             else{
+                                echo '<p class="form-control-static">NO</p>';
+                                /*
                                 $data = array(
                                             'name'      => 'email_address',
-                                            'class'     => 'form-control',
+                                            'class'     => 'form-control-static',
                                             'value'     => $email,     
                                             'required'  => 'required'
                                           );
 
                                 echo form_input($data);
+                                */
                             }
                             ?>
                         </div>

@@ -146,5 +146,15 @@ class Preferences extends MX_Controller
         $this->load->module('templates');
         $this->templates->page($data);
     }
+    
+    function notification()
+    {
+        $data['main'] = 'preferences';        
+        $data['title'] = 'GSM - Notifications Page';        
+        $data['page'] = 'notification';        
+        
+        $this->load->module('templates');
+        $this->templates->page($data);
+    }
 	
 }
