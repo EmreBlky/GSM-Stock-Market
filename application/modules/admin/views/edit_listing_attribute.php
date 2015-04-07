@@ -30,20 +30,20 @@
 
     <form method="post" action="<?php echo current_url()?>"  class="validation form-horizontal" />    	
 
-        <div class="form-group"><label class="col-md-3 control-label">Product  MPN</label>
+        <div class="form-group"><label class="col-md-3 control-label">Product  MPN/ISBN</label>
             <div class="col-md-9">
-                <input type="type" class="form-control" placeholder="MPN Number" name="product_mpn" value="<?php if(!empty($listing_attributes->product_mpn)){ echo $listing_attributes->product_mpn; }else{ echo set_value('product_mpn'); } ?>" />
+                <input type="type" class="form-control" placeholder="MPN Number" name="product_mpn" value="<?php if(!empty($listing_attributes->product_mpn_isbn)){ echo $listing_attributes->product_mpn_isbn; }else{ echo set_value('product_mpn_isbn'); } ?>" />
                 <?php echo form_error('product_mpn'); ?>
             </div>
           </div>
 
-           <div class="form-group"><label class="col-md-3 control-label">Product  ISBN</label>
+          <!--  <div class="form-group"><label class="col-md-3 control-label">Product  ISBN</label>
             <div class="col-md-9">
-                <input type="type" class="form-control" placeholder="ISBN Number" name="product_isbn" value="<?php if(!empty($listing_attributes->product_isbn)){ echo $listing_attributes->product_isbn; }else{ echo set_value('product_isbn'); } ?>" />
-                <?php echo form_error('product_isbn'); ?>
+                <input type="type" class="form-control" placeholder="ISBN Number" name="product_isbn" value="<?php //if(!empty($listing_attributes->product_isbn)){ echo $listing_attributes->product_isbn; }else{ echo set_value('product_isbn'); } ?>" />
+                <?php //echo form_error('product_isbn'); ?>
             </div>
           </div>
-
+ -->
           <div class="form-group"><label class="col-md-3 control-label">Product Make</label>
             <div class="col-md-9">
                 <input type="type" class="form-control" placeholder="Mention Make" name="product_make" value="<?php if(!empty($listing_attributes->product_make)){ echo $listing_attributes->product_make; }else{ echo set_value('product_make'); } ?>" />
@@ -59,10 +59,24 @@
           </div>
 
           <div class="form-group"><label class="col-md-3 control-label">Product Type</label>
-            <div class="col-md-9">
-                <input type="type" class="form-control" placeholder="Product Type" name="product_type" value="<?php if(!empty($listing_attributes->product_type)){ echo $listing_attributes->product_type; }else{ echo set_value('product_type'); } ?>"/>
-                <?php echo form_error('product_type'); ?>
-            </div>
+              <div class="col-md-9"> 
+              <select  name="product_type" id="product_type" class="form-control check_record">
+                     <option selected value="0" >-Select Product Type-</option>
+                      <?php if (!empty($product_types)): ?>
+                      <?php foreach ($product_types as $row): ?>
+                          <optgroup label="<?php echo $row->category_name ?>">
+                              <?php if (!empty($row->childs)): ?>
+                                  <?php foreach ($row->childs as $child): ?>
+                                      <option value="<?php echo $child->category_name ?>" 
+                                      <?php if(!empty($product_list->product_type) && $child->category_name==$product_list->product_type){ echo'selected="selected"';}?>>- <?php echo $child->category_name ?></option>
+                                  <?php endforeach ?>
+                              <?php endif ?>
+                          </optgroup>
+                      <?php endforeach ?>
+                      <?php endif ?>
+                  </select>
+                  <?php echo form_error('product_type'); ?>
+              </div>
           </div>
 
           <div class="form-group"><label class="col-md-3 control-label">Product color</label>
@@ -76,7 +90,7 @@
 
          <div class="form-group">
             <div class="col-md-9 col-md-offset-3">
-            <a href="<?php echo base_url('admin/listing_attributes')?>">Cancel</a>
+            <a href="<?php echo base_url('admin/listing_attributes')?>" class="btn btn-danger">Cancel</a>
                 <button class="btn btn-warning" type="submit">Update Attributes</button>
             </div>
         </div>

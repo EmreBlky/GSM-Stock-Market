@@ -66,17 +66,24 @@
     <script src="public/main/template/core/js/plugins/metisMenu/jquery.metisMenu.js"></script>
     <script src="public/main/template/core/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
     <script src="public/main/template/core/js/inspinia.js"></script>
-    <script type="text/javascript">
-        var weekdaystxt = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"]
-        function showLocalTime(container, servermode, offsetMinutes, displayversion) {
-            if (!document.getElementById || !document.getElementById(container)) return
-            this.container = document.getElementById(container)
-            this.displayversion = displayversion
-            var servertimestring = (servermode == "server-php") ? '<? print date("F d, Y H:i:s", time())?>' : (servermode == "server-ssi") ? '<!--#config timefmt="%B %d, %Y %H:%M:%S"-->				<!--#echo var="DATE_LOCAL" -->' : '<%= Now() %>'
-            this.localtime = this.serverdate = new Date(servertimestring)
-            this.localtime.setTime(this.serverdate.getTime() + offsetMinutes * 300 * 1000) //add user offset to server time
-            this.updateTime()
-            this.updateContainer()
+    <!-- datepicker chapter247 -->
+    <script type="text/javascript" src="public/admin/js/jquery.fancybox.js?v=2.1.5"></script>
+    <script type="text/javascript" src="public/admin/js/jquery.elevatezoom.js"></script>
+    
+    
+
+    
+	<script type="text/javascript">
+        var weekdaystxt=["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"]
+        function showLocalTime(container, servermode, offsetMinutes, displayversion){
+        if (!document.getElementById || !document.getElementById(container)) return
+        this.container=document.getElementById(container)
+        this.displayversion=displayversion
+        var servertimestring=(servermode=="server-php")? '<? print date("F d, Y H:i:s", time())?>' : (servermode=="server-ssi")? '<!--#config timefmt="%B %d, %Y %H:%M:%S"-->				<!--#echo var="DATE_LOCAL" -->' : '<%= Now() %>'
+        this.localtime=this.serverdate=new Date(servertimestring)
+        this.localtime.setTime(this.serverdate.getTime()+offsetMinutes*300*1000) //add user offset to server time
+        this.updateTime()
+        this.updateContainer()
         }
         showLocalTime.prototype.updateTime = function () {
             var thisobj = this

@@ -34,10 +34,6 @@ $this->load->model('membership/membership_model', 'membership_model');
                         
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <!--<div class="alert alert-danger alert-dismissable">
-                                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-                                        <i class="fa fa-ban"></i> You have blocked this company. They are unable to communicate or see you in anyway on this website. <a class="alert-link" href="#">Unblock</a>.
-                                    </div> -->
                                     <div class="m-b-md">
                                         <?php if($member_company->admin_member_id == $this->session->userdata('members_id')){?>
                                             <a href="profile/edit_profile" class="btn btn-white btn-xs pull-right">Edit Profile</a>
@@ -193,68 +189,12 @@ $this->load->model('membership/membership_model', 'membership_model');
                                             <tr>
                                             	<th class="mobihide">Make</th>
                                                 <th>Model</th>
-                                                <th>Price</th>
+                                                <th>Unit Price</th>
                                                 <th class="mobihide">Qty</th>
                                                 <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                            	<td class="mobihide">Apple</td>
-                                                <td>iPhone 6 Plus</td>
-                                                <td>£34,000.00</td>
-                                                <td class="mobihide">600</td>
-                                                <td><span class="label label-info">7 Offers</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-info">2 Offers</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9300 Galaxy S3</td>
-                                                <td>£6,200.00</td>
-                                                <td class="mobihide">100</td>
-                                                <td><span class="label label-info">1 Offer</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Nokia</td>
-                                                <td>6103</td>
-                                                <td>£700.00</td>
-                                                <td class="mobihide">30</td>
-                                                <td><span class="label label-primary">Active</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Apple</td>
-                                                <td>iPhone 6 Plus</td>
-                                                <td>£34,000.00</td>
-                                                <td class="mobihide">600</td>
-                                                <td><span class="label label-primary">Active</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-primary">Active</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9300 Galaxy S3</td>
-                                                <td>£6,200.00</td>
-                                                <td class="mobihide">100</td>
-                                                <td><span class="label label-primary">Active</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Nokia</td>
-                                                <td>6103</td>
-                                                <td>£700.00</td>
-                                                <td class="mobihide">30</td>
-                                                <td><span class="label label-danger">Ended</span></td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -264,68 +204,12 @@ $this->load->model('membership/membership_model', 'membership_model');
                                             <tr>
                                             	<th class="mobihide">Make</th>
                                                 <th>Model</th>
-                                                <th>Price</th>
+                                                <th>Unit Price</th>
                                                 <th class="mobihide">Qty</th>
                                                 <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                            	<td class="mobihide">Nokia</td>
-                                                <td>6103</td>
-                                                <td>£700.00</td>
-                                                <td class="mobihide">30</td>
-                                                <td><span class="label label-info">4 Offers</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Apple</td>
-                                                <td>iPhone 6 Plus</td>
-                                                <td>£34,000.00</td>
-                                                <td class="mobihide">600</td>
-                                                <td><span class="label label-info">2 Offers</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Apple</td>
-                                                <td>iPhone 6 Plus</td>
-                                                <td>£34,000.00</td>
-                                                <td class="mobihide">600</td>
-                                                <td><span class="label label-primary">Active</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-primary">Active</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-primary">Active</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9300 Galaxy S3</td>
-                                                <td>£6,200.00</td>
-                                                <td class="mobihide">100</td>
-                                                <td><span class="label label-danger">Ended</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9300 Galaxy S3</td>
-                                                <td>£6,200.00</td>
-                                                <td class="mobihide">100</td>
-                                                <td><span class="label label-danger">Ended</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Nokia</td>
-                                                <td>6103</td>
-                                                <td>£700.00</td>
-                                                <td class="mobihide">30</td>
-                                                <td><span class="label label-danger">Ended</span></td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -333,14 +217,9 @@ $this->load->model('membership/membership_model', 'membership_model');
                                 <div class="tab-pane no_sub" id="credit-information">
 									<div class="row">
                     					<div class="col-lg-12" style="text-align:center;margin:15px 0">
-                        					<p>View this companies credit check information</p>
+                        					<p>View your credit check information. Silver members and above only.</p>
                         				</div>
-                   					</div><!--
-									<div class="row">
-                    					<div class="col-lg-4" style="float:none;margin:0 auto">
-                        					<button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#buycreditcheck"><i class="fa fa-check-square-o"></i>Buy Credit Check</button>
-                        				</div>
-                   					</div>-->
+                   					</div>
                                 	
                                 </div>
                                 

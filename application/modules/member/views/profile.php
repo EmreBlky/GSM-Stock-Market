@@ -165,7 +165,7 @@
                 </div>
             </div>
             <div class="alert alert-info" style="margin:15px 15px -15px">
-                <p><i class="fa fa-info-circle"></i> Here you can view a company profile in great detail, you can see all their contact details and business activities and even view their feedback, trade rating, feed posts, marketplace listings and even do credit checks on the user which are available for Silver to Silver or above users included a apart of the subscription. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
+                <p><i class="fa fa-info-circle"></i> <strong>Only Silver members can view company profiles.</strong> Here you can view a company profile in great detail, you can see all their contact details and business activities and even view their feedback, trade rating, feed posts, marketplace listings and even do credit checks on the user which are available for Silver to Silver or above users included a apart of the subscription. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
             </div>
             <div class="row">
             <div class="col-lg-9">
@@ -270,44 +270,12 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <?php 
-                                        
-                                        $this->load->model('addressbook/addressbook_model', 'addressbook_model');
-                                        $a_count =  $this->addressbook_model->count_where('member_id', $this->session->userdata('members_id'), 'address_member_id', $member_info->id);
-                                        
-                                        if($a_count < 1){
-                                        ?>
                                             <div class="col-md-5 col-md-offset-1" style="margin-top:15px">
-                                                <button type="button" onclick="contactAdd();" class="btn btn-success btn-sm btn-block" id="contact_added"><i class="fa fa-book"></i> Add Contact</button>
+                                                <button type="button" class="btn btn-success btn-sm btn-block"><i class="fa fa-book"></i> Add Contact</button>
                                             </div>
-                                        <?php
-                                        } else{
-                                        ?>
-                                            <div class="col-md-5 col-md-offset-1" style="margin-top:15px">
-                                                <button type="button" onclick="contactRemove();" class="btn btn-success btn-sm btn-block" id="contact_removed"><i class="fa fa-book"></i> Remove Contact</button>
-                                            </div>
-                                        <?php
-                                        }
-                                        ?>
-                                        <?php 
-                                        
-                                        $this->load->model('favourite/favourite_model', 'favourite_model');
-                                        $f_count =  $this->favourite_model->count_where('member_id', $this->session->userdata('members_id'), 'favourite_id', $member_info->id);
-                                        
-                                        if($f_count < 1){
-                                        ?>
                                             <div class="col-md-5" style="margin-top:15px">
-                                                <button  onclick="faveAdd();"  type="button" class="btn btn-warning btn-sm btn-block" id="favourite_added"><i class="fa fa-star"></i> Add Favourite</button>
+                                                <button type="button" class="btn btn-warning btn-sm btn-block"><i class="fa fa-star"></i> Add Favourite</button>
                                             </div>
-                                        <?php
-                                        } else {
-                                        ?>
-                                            <div class="col-md-5" style="margin-top:15px">
-                                                <button  onclick="faveRemove();"  type="button" class="btn btn-warning btn-sm btn-block" id="favourite_removed"><i class="fa fa-star"></i> Remove Favourite</button>
-                                            </div>
-                                        <?php
-                                        }
-                                        ?>
                                     </div>
                                 </div>
                                 
@@ -579,67 +547,67 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                                             <tr>
                                             	<th class="mobihide">Make</th>
                                                 <th>Model</th>
-                                                <th>Price</th>
+                                                <th>Unit Price</th>
                                                 <th class="mobihide">Qty</th>
                                                 <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                            	<td class="mobihide">Apple</td>
-                                                <td>iPhone 6 Plus</td>
-                                                <td>£34,000.00</td>
-                                                <td class="mobihide">600</td>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>Galaxy S4 (i9505)</td>
+                                                <td>£194.00</td>
+                                                <td class="mobihide">325</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
                                             	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-success">Completed</span></td>
+                                                <td>Galaxy S4 Mini (i9515)</td>
+                                                <td>£117.00</td>
+                                                <td class="mobihide">219</td>
+                                                <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
                                             	<td class="mobihide">Samsung</td>
-                                                <td>i9300 Galaxy S3</td>
-                                                <td>£6,200.00</td>
-                                                <td class="mobihide">100</td>
-                                                <td><span class="label label-success">Completed</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Nokia</td>
-                                                <td>6103</td>
-                                                <td>£700.00</td>
-                                                <td class="mobihide">30</td>
+                                                <td>Galaxy S5 (i9600)</td>
+                                                <td>£245.00</td>
+                                                <td class="mobihide">95</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
                                             	<td class="mobihide">Apple</td>
-                                                <td>iPhone 6 Plus</td>
-                                                <td>£34,000.00</td>
-                                                <td class="mobihide">600</td>
+                                                <td>Iphone 5C 16GB</td>
+                                                <td>£250.00</td>
+                                                <td class="mobihide">216</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-success">Completed</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9300 Galaxy S3</td>
-                                                <td>£6,200.00</td>
+                                            	<td class="mobihide">Apple</td>
+                                                <td>iPhone 5 64GB</td>
+                                                <td>£24.00</td>
                                                 <td class="mobihide">100</td>
-                                                <td><span class="label label-success">Completed</span></td>
+                                                <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">Nokia</td>
-                                                <td>6103</td>
-                                                <td>£700.00</td>
-                                                <td class="mobihide">30</td>
+                                            	<td class="mobihide">Apple</td>
+                                                <td>iPhone 6 16GB</td>
+                                                <td>£454.00</td>
+                                                <td class="mobihide">46</td>
                                                 <td><span class="label label-primary">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">BlackBerry</td>
+                                                <td>9720</td>
+                                                <td>£74.00</td>
+                                                <td class="mobihide">34</td>
+                                                <td><span class="label label-primary">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Motorla</td>
+                                                <td>Nexus 6 32GB</td>
+                                                <td>£355.00</td>
+                                                <td class="mobihide">23</td>
+                                                <td><span class="label label-danger">Ended</span></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -653,67 +621,67 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                                             <tr>
                                             	<th class="mobihide">Make</th>
                                                 <th>Model</th>
-                                                <th>Price</th>
+                                                <th>Unit Price</th>
                                                 <th class="mobihide">Qty</th>
                                                 <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                            	<td class="mobihide">Nokia</td>
-                                                <td>6103</td>
-                                                <td>£700.00</td>
-                                                <td class="mobihide">30</td>
-                                                <td><span class="label label-primary">Active</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Apple</td>
-                                                <td>iPhone 6 Plus</td>
-                                                <td>£34,000.00</td>
-                                                <td class="mobihide">600</td>
-                                                <td><span class="label label-primary">Active</span></td>
-                                            </tr>
-                                            <tr>
                                             	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
+                                                <td>Note 3 (N9000)</td>
+                                                <td>£285.00</td>
+                                                <td class="mobihide">91</td>
+                                                <td><span class="label label-primary">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Amazon</td>
+                                                <td>Fire Phone</td>
+                                                <td>£115.00</td>
                                                 <td class="mobihide">400</td>
-                                                <td><span class="label label-success">Completed</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9300 Galaxy S3</td>
-                                                <td>£6,200.00</td>
-                                                <td class="mobihide">100</td>
-                                                <td><span class="label label-success">Completed</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Nokia</td>
-                                                <td>6103</td>
-                                                <td>£700.00</td>
-                                                <td class="mobihide">30</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">Apple</td>
-                                                <td>iPhone 6 Plus</td>
-                                                <td>£34,000.00</td>
-                                                <td class="mobihide">600</td>
+                                            	<td class="mobihide">BlackBerry</td>
+                                                <td>9810</td>
+                                                <td>£95.00</td>
+                                                <td class="mobihide">200</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-success">Completed</span></td>
+                                            	<td class="mobihide">BlackBerry</td>
+                                                <td>Q10</td>
+                                                <td>£127.00</td>
+                                                <td class="mobihide">100</td>
+                                                <td><span class="label label-primary">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">BlackBerry</td>
+                                                <td>Z30</td>
+                                                <td>£165.00</td>
+                                                <td class="mobihide">74</td>
+                                                <td><span class="label label-primary">Active</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Sony</td>
+                                                <td>Z3 Compact</td>
+                                                <td>£230</td>
+                                                <td class="mobihide">60</td>
+                                                <td><span class="label label-danger">Ended</span></td>
                                             </tr>
                                             <tr>
                                             	<td class="mobihide">Samsung</td>
-                                                <td>i9300 Galaxy S3</td>
-                                                <td>£6,200.00</td>
-                                                <td class="mobihide">100</td>
-                                                <td><span class="label label-success">Completed</span></td>
+                                                <td>P3110 Tab</td>
+                                                <td>£56</td>
+                                                <td class="mobihide">10</td>
+                                                <td><span class="label label-danger">Ended</span></td>
+                                            </tr>
+                                            <tr>
+                                            	<td class="mobihide">Samsung</td>
+                                                <td>Galaxy S3 (i9300)</td>
+                                                <td>£106.00</td>
+                                                <td class="mobihide">45</td>
+                                                <td><span class="label label-danger">Ended</span></td>
                                             </tr>
                                         </tbody>
                                     </table>

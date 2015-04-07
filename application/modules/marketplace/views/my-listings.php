@@ -13,11 +13,11 @@
                 </li>
             </ol>
         </div>
-                <div class="col-lg-4">
+                <!--<div class="col-lg-4">
                     <div class="title-action">
                         <a href="marketplace/create_listing" class="btn btn-primary" ><i class="fa fa-plus"></i> Create New Listing</a>
                     </div>
-                </div>
+                </div>-->
     </div>
     
         <div class="wrapper wrapper-content animated fadeInRight">
@@ -116,7 +116,7 @@
                         <?php if (!empty($value->member_id) && $value->member_id == $session_member_id): ?>
                             <button class="btn btn-info" type="button" style="font-size:10px" data-toggle="modal" data-target="#buyer_offers" onclick="get_buyers_offer(<?php echo $value->id; ?>)"><i class="fa fa-paste"></i> Offers </button>
                         <?php endif ?>
-                            <a href="<?php echo base_url().'marketplace/create_listing/'.$value->id; ?>" class="btn btn-warning" style="font-size:10px"><i class="fa fa-paste"></i> Edit</a>
+                            <a href="<?php echo base_url().'marketplace/buy_listing/'.$value->id; ?>" class="btn btn-warning" style="font-size:10px"><i class="fa fa-paste"></i> Edit</a>
                             <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
                             </th>
                         </tr>
@@ -177,7 +177,7 @@
                             <td><?php echo $value->spec; ?></td>
                             <th style="text-align:center">
                             <button class="btn btn-info" type="button" style="font-size:10px" data-toggle="modal" data-target="#buyer_offers" onclick="get_buyers_offer(<?php echo $value->id; ?>)"><i class="fa fa-paste"></i> Offers </button>
-                            <a href="<?php echo base_url().'marketplace/create_listing/'.$value->id; ?>" class="btn btn-warning" style="font-size:10px"><i class="fa fa-paste"></i> Edit</a>
+                            <a href="<?php echo base_url().'marketplace/sell_listing/'.$value->id; ?>" class="btn btn-warning" style="font-size:10px"><i class="fa fa-paste"></i> Edit</a>
                             <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
                             </th>
                         </tr>

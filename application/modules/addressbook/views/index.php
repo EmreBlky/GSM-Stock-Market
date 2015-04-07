@@ -182,7 +182,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
         </div><!-- row end --> 
         
                         <!-- Daniel Added -->
-                    <?php if($member->membership < 2)  if($addressbook_count < 1) {?> 
+                    <?php if($member->membership < 2 && $addressbook_count < 1) {?> 
              <div class="alert alert-info" style="margin:0 0 15px">
                 <p><i class="fa fa-info-circle"></i> Find Companies you have added as a contact or favourite within your address book. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
             </div>
@@ -251,11 +251,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                     <a href="<?php echo $base;?>member/profile/5">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <?php if(file_exists("public/main/template/gsm/images/members/5.png")){?>
-                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/5.png" height="128" width="128"/>
-                            <?php } else {?>
-                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/no_profile.jpg" height="128" width="128"/>
-                            <?php }?>
+                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/examples/1.jpg" height="128" width="128"/>
                         </div>
                         <div class="text-center" style="margin-top:10px">
                                 <span class="label label-primary">Online</span>
@@ -266,8 +262,8 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                     <div class="col-sm-8 profile-minh">
                     	<div class="col-sm-12 nopadding">
                     	<div class="col-sm-11 nopadding">
-                            <h3 style="margin-bottom:0"><strong>GSM Support</strong></h3>
-                        	Web Admin
+                            <h3 style="margin-bottom:0"><strong>Daniel Gregory</strong></h3>
+                        	Account Manager
                         </div>
                         <div class="col-sm-1" style="padding:5px 0">
                             <img alt="image" src="public/main/template/gsm/img/flags/United_Kingdom.png" title="United Kingdom">
@@ -301,11 +297,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                     <a href="<?php echo $base;?>member/profile/5">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <?php if(file_exists("public/main/template/gsm/images/members/5.png")){?>
-                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/5.png" height="128" width="128"/>
-                            <?php } else {?>
-                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/no_profile.jpg" height="128" width="128"/>
-                            <?php }?>
+                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/examples/2.jpg" height="128" width="128"/>
                         </div>
                         <div class="text-center" style="margin-top:10px">
                                 <span class="label label-primary">Online</span>
@@ -316,8 +308,8 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                     <div class="col-sm-8 profile-minh">
                     	<div class="col-sm-12 nopadding">
                     	<div class="col-sm-11 nopadding">
-                            <h3 style="margin-bottom:0"><strong>GSM Support</strong></h3>
-                        	Web Admin
+                            <h3 style="margin-bottom:0"><strong>Tim Meloni</strong></h3>
+                        	Account Manager
                         </div>
                         <div class="col-sm-1" style="padding:5px 0">
                             <img alt="image" src="public/main/template/gsm/img/flags/United_Kingdom.png" title="United Kingdom">
@@ -351,14 +343,10 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                     <a href="<?php echo $base;?>member/profile/5">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <?php if(file_exists("public/main/template/gsm/images/members/5.png")){?>
-                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/5.png" height="128" width="128"/>
-                            <?php } else {?>
-                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/no_profile.jpg" height="128" width="128"/>
-                            <?php }?>
+                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/examples/3.jpg" height="128" width="128"/>
                         </div>
                         <div class="text-center" style="margin-top:10px">
-                                <span class="label label-primary">Online</span>
+                                <span class="label label-danger">Offline</span>
                             
                         </div>
                     </div>
@@ -366,8 +354,8 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                     <div class="col-sm-8 profile-minh">
                     	<div class="col-sm-12 nopadding">
                     	<div class="col-sm-11 nopadding">
-                            <h3 style="margin-bottom:0"><strong>GSM Support</strong></h3>
-                        	Web Admin
+                            <h3 style="margin-bottom:0"><strong>Adam Pycroft</strong></h3>
+                        	Account Manager
                         </div>
                         <div class="col-sm-1" style="padding:5px 0">
                             <img alt="image" src="public/main/template/gsm/img/flags/United_Kingdom.png" title="United Kingdom">
@@ -401,11 +389,7 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                     <a href="<?php echo $base;?>member/profile/5">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <?php if(file_exists("public/main/template/gsm/images/members/5.png")){?>
-                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/5.png" height="128" width="128"/>
-                            <?php } else {?>
-                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/no_profile.jpg" height="128" width="128"/>
-                            <?php }?>
+                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/examples/4.jpg" height="128" width="128"/>
                         </div>
                         <div class="text-center" style="margin-top:10px">
                                 <span class="label label-primary">Online</span>
@@ -416,11 +400,11 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                     <div class="col-sm-8 profile-minh">
                     	<div class="col-sm-12 nopadding">
                     	<div class="col-sm-11 nopadding">
-                            <h3 style="margin-bottom:0"><strong>GSM Support</strong></h3>
-                        	Web Admin
+                            <h3 style="margin-bottom:0"><strong>Andrea M-Saunders</strong></h3>
+                        	Account Manager
                         </div>
                         <div class="col-sm-1" style="padding:5px 0">
-                            <img alt="image" src="public/main/template/gsm/img/flags/United_Kingdom.png" title="United Kingdom">
+                            <img alt="image" src="public/main/template/gsm/img/flags/Germany.png" title="Germany">
                         </div>
                         </div>
                         
@@ -451,14 +435,10 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                     <a href="<?php echo $base;?>member/profile/5">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <?php if(file_exists("public/main/template/gsm/images/members/5.png")){?>
-                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/5.png" height="128" width="128"/>
-                            <?php } else {?>
-                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/no_profile.jpg" height="128" width="128"/>
-                            <?php }?>
+                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/examples/5.jpg" height="128" width="128"/>
                         </div>
                         <div class="text-center" style="margin-top:10px">
-                                <span class="label label-primary">Online</span>
+                                <span class="label label-danger">Offline</span>
                             
                         </div>
                     </div>
@@ -466,11 +446,11 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                     <div class="col-sm-8 profile-minh">
                     	<div class="col-sm-12 nopadding">
                     	<div class="col-sm-11 nopadding">
-                            <h3 style="margin-bottom:0"><strong>GSM Support</strong></h3>
-                        	Web Admin
+                            <h3 style="margin-bottom:0"><strong>Andrea Rossi</strong></h3>
+                        	Account Manager
                         </div>
                         <div class="col-sm-1" style="padding:5px 0">
-                            <img alt="image" src="public/main/template/gsm/img/flags/United_Kingdom.png" title="United Kingdom">
+                            <img alt="image" src="public/main/template/gsm/img/flags/Italy.png" title="Italy">
                         </div>
                         </div>
                         
@@ -501,14 +481,10 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                     <a href="<?php echo $base;?>member/profile/5">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <?php if(file_exists("public/main/template/gsm/images/members/5.png")){?>
-                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/5.png" height="128" width="128"/>
-                            <?php } else {?>
-                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/no_profile.jpg" height="128" width="128"/>
-                            <?php }?>
+                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/examples/6.jpg" height="128" width="128"/>
                         </div>
                         <div class="text-center" style="margin-top:10px">
-                                <span class="label label-primary">Online</span>
+                                <span class="label label-danger">Offline</span>
                             
                         </div>
                     </div>
@@ -516,8 +492,8 @@ $this->load->model('favourite/favourite_model', 'favourite_model');
                     <div class="col-sm-8 profile-minh">
                     	<div class="col-sm-12 nopadding">
                     	<div class="col-sm-11 nopadding">
-                            <h3 style="margin-bottom:0"><strong>GSM Support</strong></h3>
-                        	Web Admin
+                            <h3 style="margin-bottom:0"><strong>Dipo George</strong></h3>
+                        	Web Developer
                         </div>
                         <div class="col-sm-1" style="padding:5px 0">
                             <img alt="image" src="public/main/template/gsm/img/flags/United_Kingdom.png" title="United Kingdom">

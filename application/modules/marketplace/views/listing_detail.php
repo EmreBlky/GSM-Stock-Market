@@ -16,7 +16,6 @@
 </div>
 
 <div class="wrapper wrapper-content">
-<form method="post" action="<?php echo current_url()?>"  class="validation form-horizontal"  enctype="multipart/form-data"/>  
 <div class="row">
 <div class="col-lg-12">
 <?php msg_alert(); ?>
@@ -41,8 +40,8 @@
                         <dt>Product Type:</dt> <dd>  <?php if(!empty($listing_detail->product_type)) { echo $listing_detail->product_type; } ?></dd>
                         <dt>Condition:</dt> <dd>  <?php if(!empty($listing_detail->condition)) { echo $listing_detail->condition; } ?></dd> 
                         <dt>Spec</dt> <dd>  <?php if(!empty($listing_detail->spec)) { echo $listing_detail->spec; } ?></dd>
-                        <dt>MPN</dt> <dd>  <?php if(!empty($listing_detail->product_mpn)) { echo $listing_detail->product_mpn; } ?></dd>
-                        <dt>ISBN</dt> <dd>  <?php if(!empty($listing_detail->product_isbn)) { echo $listing_detail->product_isbn; } ?></dd>
+                        <dt>MPN/ISBN</dt> <dd>  <?php if(!empty($listing_detail->product_mpn_isbn)) { echo $listing_detail->product_mpn_isbn; } ?></dd>
+                        
                        <!--  <dt>Network</dt> <dd>  <?php //if(!empty($listing_detail->product_make)) { echo $listing_detail->product_make; } ?></dd> -->
                         <dt>Quantity</dt> <dd> <?php if(!empty($listing_detail->qty_available)) { echo $listing_detail->qty_available; } ?></dd>
                     </dl>
@@ -58,8 +57,43 @@
                     <dl class="dl-horizontal">
                         <h4>Shipping</h4>
                         <dt>Courier</dt> <dd> <?php if(!empty($listing_detail->courier)) { echo $listing_detail->courier; } ?></dd>
-                        <dt>Terms:</dt> <dd> <?php if(!empty($listing_detail->shipping_term)) { echo $listing_detail->shipping_term; } ?></dd>
+                      <?php if(!empty($listing_detail->shipping_term)) { ?>  <dt>Terms:</dt> <dd> <?php echo $listing_detail->shipping_term; ?></dd> <?php } ?>
+                        
                     </dl>
+            <?php if (!empty($member_id) && $member_id==$listing_detail->member_id): ?>
+                    <?php if(!empty($listing_detail->sell_shipping_fee)){   ?>
+
+                      <table class="table table-bordered">
+                          <thead>
+                          <tr>
+                              <th>Shipping Terms</th>
+                              <th>Couriers</th>
+                              <th>Batch</th>
+                              <th>Price</th>
+                              
+                          </tr>
+                          </thead>
+                          <tbody id="opt_table">
+
+                        
+
+                            <?php
+                                foreach(json_decode($listing_detail->sell_shipping_fee) as $key => $value){
+                                   ?>
+                                  
+                                  <tr><td><?php if(!empty($value->shipping_term)) echo $value->shipping_term; ?><input type="hidden" name="shipping_terms[]" value="<?php if(!empty($value->shipping_term)) echo $value->shipping_term; ?>"/></td>
+                                  <td><?php if(!empty($value->coriars)) echo $value->coriars; ?><input type="hidden" name="coriars[]" value="<?php if(!empty($value->coriars)) echo $value->coriars; ?>"/></td>
+                                  <td><?php if(!empty($value->shipping_types)) echo $value->shipping_types; ?><input type="hidden" name="ship_types[]" value="<?php if(!empty($value->shipping_types)) echo $value->shipping_types; ?>"/></td>
+                                  <td><?php if(!empty($value->shipping_fees)) echo $value->shipping_fees; ?><input type="hidden" name="shipping_fees[]" value="<?php if(!empty($value->shipping_fees)) echo $value->shipping_fees; ?>"/></td>
+                                  </tr>
+                               
+                                 
+                        <?php   }  ?>
+                         
+                          </tbody>
+                    </table>
+                <?php  } ?>
+            <?php endif; ?>
                   <div class="hr-line-dashed"></div>
                 </div>
                 <div class="col-lg-6">
@@ -67,16 +101,26 @@
 
                    
                         <?php 
-                        $img1 = explode('/', $listing_detail->image1);  
+                        $img1 = ''; $img2 = ''; $img3 = ''; $img4 = ''; $img5 = '';
+
+                    if(!empty($listing_detail->image1))
+                        $img1 = explode('/', $listing_detail->image1); 
+                    if(!empty($listing_detail->image1)) 
                         $img2 = explode('/', $listing_detail->image2);
+                    if(!empty($listing_detail->image1))
                         $img3 = explode('/', $listing_detail->image3);
+                    if(!empty($listing_detail->image1))
                         $img4 = explode('/', $listing_detail->image4);
+                    if(!empty($listing_detail->image1))
                         $img5 = explode('/', $listing_detail->image5);
 
                         ?>
 
-
+                    <?php  if(!empty($img1[3])): ?>
                         <img id="zoom_03" src="<?php echo base_url().'public/upload/listing/small/'.$img1[3]; ?>" data-zoom-image="<?php echo base_url().'public/upload/listing/large/'.$img1[3]; ?>"/>
+                    <?php else: ?>
+                        <img src="<?php echo base_url().'public/main/template/gsm/images/icons/apple-touch-icon-180x180.png'; ?>"/>
+                    <?php endif; ?>
 
                         <div id="gallery_01">
                         <?php if(!empty($listing_detail->image2)): ?> 
@@ -121,23 +165,30 @@
                         <?php if(!empty($listing_detail->listing_end_datetime)) { ?> 
                         <span style="color:red">Listing Ends: <span data-countdown="<?php echo $listing_detail->listing_end_datetime; ?>"></span></span><br /><br />
                         <?php } ?>
-                        <button type="button" class="btn btn-danger" style="font-size:10px">Pay asking price</button>
+                       
                     </div>
 
-                         <?php if (!empty($member_id) && $member_id!=$listing_detail->member_id): ?>
+                    <?php if (!empty($member_id) && $member_id!=$listing_detail->member_id): ?> 
+    <!-- pay asking price -->
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal5" style="font-size:10px">Pay asking price</button>
+            <?php if (!empty($listing_detail->min_qty_order)): ?>
+                      <small>you will not able enter quantity to below <?php echo $listing_detail->min_qty_order ?> otherwise would be auto rejected. </small>
+            <?php endif ?>
                     <dl class="dl-horizontal" style="margin-top:20px" disabled>
                         <h4>or Make an Offer</h4>
                     <form method="post" action="<?php echo base_url().'marketplace/make_offer' ?>">
                         <dt><div class="input-group m-b"><span class="input-group-addon">QTY</span>    <input type="hidden" name="listing_id" class="form-control" value="<?php echo $listing_detail->id; ?>" />
                             <input type="hidden" name="seller_id" class="form-control" value="<?php echo $listing_detail->member_id; ?>" />
                             <input type="hidden" name="buyer_currency" class="form-control" value="<?php echo $listing_detail->currency; ?>" />
-                            <input type="text" name="product_qty" class="form-control" value="<?php echo set_value('product_qty'); ?>" /><span class="input-group-addon">@</span></dt> <?php echo form_error('product_qty'); ?>
+                            <input type="text" name="product_qty" class="form-control" value="<?php echo set_value('product_qty'); ?>" />
+
+                            <span class="input-group-addon">@</span></dt> <?php echo form_error('product_qty'); ?>
                             <dd><div class="input-group m-b"><span class="input-group-addon"><?php if(!empty($listing_detail->currency)) { echo currency_class($listing_detail->currency); } ?></span>  
                         
                         <input type="text" class="form-control" name="unit_price" value="<?php echo set_value('unit_price'); ?>" /><?php echo form_error('unit_price'); ?></dd>
                         <p style="text-align:center"><input type="submit" name="submit" class="btn btn-warning" value="Send Offer" style="font-size:10px"/></p>
                     </form>
-
+           
 
                         <p class="small" style="text-align:center">Offers sent will expire after 24 hours</p>
                         </dd>
@@ -157,11 +208,11 @@
     </div>
   <div class="modal-footer">
         <?php if (!empty($member_id) && $member_id!=$listing_detail->member_id): ?>
-            <a href="<?php echo base_url().'marketplace/listing_watch/'.$listing_detail->id ?>" class="btn btn-warning">Watch</a>
+            <a href="<?php echo base_url().'marketplace/listing_watch/'.$listing_detail->member_id.'/'.$listing_detail->id ?>" class="btn btn-warning">Watch</a>
            <!--  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#price_graph">Product Price Data</button> -->
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#profile_user">Seller Profile</button>
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#profile_message">Ask a question</button>
         <?php endif; ?>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#profile_message">Ask a question</button>
             <a href="<?php echo base_url().'marketplace/sell' ?>" class="btn btn-white">Back</a>
         </div>
                 
@@ -171,7 +222,6 @@
 </div>       
        
 </div>
-</form>
 </div>
 
 
@@ -186,80 +236,73 @@
 }
 </style>
 
-   <div class="modal inmodal fade" id="myModal5" tabindex="-1" role="dialog"  aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                            <h4 class="modal-title"><strong>Selling Offer</strong> by GSMStockMarket.com Limited</h4>
-                                            <small class="font-bold">Transaction ID: 0123456789-01</small>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="row">
-                                                <div class="col-lg-6">
-                                                    <dl class="dl-horizontal">
-                                                        <h4>Product Details</h4>
-                                                        <dt>Make:</dt> <dd>  Apple</dd>
-                                                        <dt>Model:</dt> <dd>  iPhone 4S</dd>
-                                                        <dt>Memory:</dt> <dd>  16GB</dd>
-                                                        <dt>Colour:</dt> <dd>  Black</dd>
-                                                        <dt>Product Type:</dt> <dd>  Data Cable</dd>
-                                                        <dt>Condition:</dt> <dd>  Refurbished</dd>
-                                                        <dt>Spec</dt> <dd>  UK</dd>
-                                                        <dt>MPN/ISBN</dt> <dd>  GH98-23907342</dd>
-                                                        <dt>Network</dt> <dd>  Network Locked</dd>
-                                                        <dt>Quantity</dt> <dd>  29</dd>
-                                                    </dl>
-                                                    <dl class="dl-horizontal">
-                                                        <h4>Price</h4>
-                                                        <dt>Sale Currency:</dt> <dd> GBP &pound;</dd>
-                                                        <dt>GBP Price:</dt> <dd><strong>  &pound;96.00</strong></dd>
-                                                        <dt>EUR Price:</dt> <dd>  &euro;130.55</dd>
-                                                        <dt>USD Price:</dt> <dd>  $147.59</dd>
-                                                    </dl>
-                                                    <dl class="dl-horizontal">
-                                                        <h4>Shipping</h4>
-                                                        <dt>Courier</dt> <dd> DHL</dd>
-                                                        <dt>Terms:</dt> <dd> CIF</dd>
-                                                    </dl>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <p style="text-align:center">
-                                                        <img style="text-align:center" src="public/main/template/gsm/images/marketplace/marketplace_photo.png" /><br /><br />
-                                                        <span style="color:red">Listing Ends: 4d 23h 22m 13s</span><br /><br />
-                                                        <button type="button" class="btn btn-danger" style="font-size:10px">Pay asking price</button>
-                                                    </p>
 
-                                                    <dl class="dl-horizontal" style="margin-top:20px">
-                                                        <h4>or Make an Offer</h4>
-                                                        <dt><div class="input-group m-b"><span class="input-group-addon">QTY</span>
-                                                            <input type="text" class="form-control" /><span class="input-group-addon">@</span></dt>
-                                                            <dd><div class="input-group m-b"><span class="input-group-addon">GBP <i class="fa fa-gbp"></i></span>
-                                                            <input type="text" class="form-control" /></dd>
-                                                        <p style="text-align:center"><button type="button" class="btn btn-warning" style="font-size:10px">Send Offer</button></p>
-                                                        <p class="small" style="text-align:center">Offers sent will expire after 24 hours</p>
+<div class="modal inmodal fade" id="myModal5" tabindex="-1" role="dialog"  aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                  <h4 class="modal-title"><strong>Buying Request</strong> by GSMStockMarket.com Limited</h4>
+                
+              </div>
+              <div class="modal-body">
+                  <div class="row">
+                      <div class="col-lg-6">
+                          <dl class="dl-horizontal">
+                             <dt>Quantity:</dt> <dd> <?php if(!empty($listing_detail->qty_available)) { echo $listing_detail->qty_available; } ?></dd>
+                           </dl>  
+                           <dl class="dl-horizontal">  
+                              <dt>Unit Price:</dt> <dd> <?php if(!empty($listing_detail->unit_price) && !empty($listing_detail->currency)) { echo currency_class($listing_detail->currency).' '.$listing_detail->unit_price; } ?></dd>
+                           </dl>  
+                           <dl class="dl-horizontal">  
+                              <input type="hidden" id="total_price" value="<?php if(!empty($listing_detail->unit_price) && !empty($listing_detail->qty_available)) echo $listing_detail->unit_price * $listing_detail->qty_available; ?>">
 
-                                                </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-12">
-                                                    <h4>Product Description</h4>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent diam odio, ultrices vitae erat quis, tristique posuere leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique massa et justo laoreet, et finibus lacus scelerisque. Suspendisse id orci vel sapien mollis dictum. Aenean id nisl pulvinar, euismod risus id, pharetra velit. In finibus libero sed elit viverra, hendrerit tincidunt lectus maximus. Nulla facilisi. Nulla tellus justo, lacinia eget mauris nec, imperdiet tincidunt elit. Donec elementum enim id felis commodo, non porta tortor sagittis.</p>
-                                                    </div>
+                              <dt>Total Offer Price:</dt> <dd> <?php if(!empty($listing_detail->unit_price) && !empty($listing_detail->qty_available)) { echo currency_class($listing_detail->currency).' '.$listing_detail->unit_price * $listing_detail->qty_available; } ?></dd>
+                          </dl>
+                      </div>
+                      <div class="col-lg-6">
+                          <p style="text-align:center">
+                            <dl class="dl-horizontal">
+                              <h4>Shipping</h4>
+                               <dt>Courier</dt> <dd> <?php if(!empty($listing_detail->courier)) { 
+                                $core =  explode(',', $listing_detail->courier); 
+                                ?>
 
-                                            </div>
-                                        </div>
+                                <select name="coriar" id="core" class="form-control">
+                                  <option value="">select courier</option>
+                                  <?php $demo_amt = 10;  foreach ($core as $key => $value): ?>
+                                  <option value="<?php echo $demo_amt; ?>">
+                                  <?php echo  $value; ?>
+                                  </option>
+                                    
+                                  <?php $demo_amt++;  endforeach; ?>
+                                </select>
 
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-warning">Watch</button>
-                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#price_graph">Product Price Data</button>
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#profile_user">Seller Profile</button>
-                                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#profile_message">Ask a question</button>
-                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                              <?php  } ?></dd>
+                          </dl>
+                          <dl class="dl-horizontal">
+                          <dt>Gross price:</dt>
+                          <dd id="gross_price"> No Gross Price Available yet.</dd>
+
+
+                          </dl>  
+                          </p>
+
+                          <dl class="dl-horizontal" style="margin-top:20px">
+                             
+                              <p style="text-align:center"><button type="button" class="btn btn-warning" style="font-size:10px">Send Offer</button></p>
+                              <p class="small" style="text-align:center">Offers sent will expire after 24 hours</p>
+                          </dl>
+
+                      </div>
+                      </div>
+                     
+              </div>
+
+             
+          </div>
+      </div>
+  </div>
 
                             
 
@@ -363,7 +406,7 @@ padding-left:20px;}
             <tr>
                 <th class="text-right"></th>
                 <th align="center0">
-                      <img width="200" src="public/main/template/gsm/images/marketplace/profile_graph.png" />
+                      <img width="200" src="public/main/template/gsm/images/members/no_profile.jpg" />
                 </th>
             </tr>
              <tr>
@@ -515,6 +558,18 @@ jQuery(document).ready(function($) {
          $this.html(event.strftime('%Dd %Hh %Mm %Ss'));
        });
      });
+
+   <?php if(!empty($listing_detail->unit_price) && !empty($listing_detail->qty_available)) { ?>
+ 
+    $('#core').on('change', function(){
+      $('#gross_price').html('<?php echo currency_class($listing_detail->currency).' '; ?>'+(parseInt($(this).val()) + parseInt($('#total_price').val())));
+     
+    });
+
+<?php } ?>
+
+
+
 });
 </script>
 
