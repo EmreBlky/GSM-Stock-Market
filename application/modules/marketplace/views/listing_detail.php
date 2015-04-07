@@ -237,7 +237,7 @@
 </style>
 
 
-   <div class="modal inmodal fade" id="myModal5" tabindex="-1" role="dialog"  aria-hidden="true">
+<div class="modal inmodal fade" id="myModal5" tabindex="-1" role="dialog"  aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -256,8 +256,9 @@
 
                                                         <dt>Total Offer Price</dt> <dd> <?php if(!empty($listing_detail->unit_price) && !empty($listing_detail->qty_available)) { echo currency_class($listing_detail->currency).' '.$listing_detail->unit_price * $listing_detail->qty_available; } ?></dd>
                                                     </dl>
-
-                                                    <dl class="dl-horizontal">
+                                                </div>
+                                                <div class="col-lg-6">
+                                                      <dl class="dl-horizontal">
                                                         <h4>Shipping</h4>
                                                          <dt>Courier</dt> <dd> <?php if(!empty($listing_detail->courier)) { 
                                                           $core =  explode(',', $listing_detail->courier); 
@@ -277,24 +278,16 @@
                                                     </dl>
                                                     <dl class="dl-horizontal">
                                                     <dt>Gross price:</dt>
-                                                    <dd id="gross_price">No Gross Price Available yet.</dd>
+                                                    <dd id="gross_price"> No Gross Price Available yet.</dd>
 
 
-                                                    </dl>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <p style="text-align:center">
-                                                        
-                                                    </p>
-
+                                                    </dl>  
+                                                    
                                                     <dl class="dl-horizontal" style="margin-top:20px">
-                                                        <h4>or Make an Offer</h4>
-                                                        <dt><div class="input-group m-b"><span class="input-group-addon">QTY</span>
-                                                            <input type="text" class="form-control" /><span class="input-group-addon">@</span></dt>
-                                                            <dd><div class="input-group m-b"><span class="input-group-addon">GBP <i class="fa fa-gbp"></i></span>
-                                                            <input type="text" class="form-control" /></dd>
+                                                       
                                                         <p style="text-align:center"><button type="button" class="btn btn-warning" style="font-size:10px">Send Offer</button></p>
                                                         <p class="small" style="text-align:center">Offers sent will expire after 24 hours</p>
+                                                    </dl>
 
                                                 </div>
                                                 </div>
