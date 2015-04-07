@@ -238,66 +238,71 @@
 
 
 <div class="modal inmodal fade" id="myModal5" tabindex="-1" role="dialog"  aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                            <h4 class="modal-title"><strong>Buying Request</strong> by GSMStockMarket.com Limited</h4>
-                                          
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="row">
-                                                <div class="col-lg-6">
-                                                    <dl class="dl-horizontal">
-                                                       <dt>Quantity</dt> <dd> <?php if(!empty($listing_detail->qty_available)) { echo $listing_detail->qty_available; } ?></dd>
-                                                        
-                                                        <dt>Unit Price</dt> <dd> <?php if(!empty($listing_detail->unit_price) && !empty($listing_detail->currency)) { echo currency_class($listing_detail->currency).' '.$listing_detail->unit_price; } ?></dd>
-                                                    <input type="hidden" id="total_price" value="<?php if(!empty($listing_detail->unit_price) && !empty($listing_detail->qty_available)) echo $listing_detail->unit_price * $listing_detail->qty_available; ?>">
+      <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                  <h4 class="modal-title"><strong>Buying Request</strong> by GSMStockMarket.com Limited</h4>
+                
+              </div>
+              <div class="modal-body">
+                  <div class="row">
+                      <div class="col-lg-6">
+                          <dl class="dl-horizontal">
+                             <dt>Quantity:</dt> <dd> <?php if(!empty($listing_detail->qty_available)) { echo $listing_detail->qty_available; } ?></dd>
+                           </dl>  
+                           <dl class="dl-horizontal">  
+                              <dt>Unit Price:</dt> <dd> <?php if(!empty($listing_detail->unit_price) && !empty($listing_detail->currency)) { echo currency_class($listing_detail->currency).' '.$listing_detail->unit_price; } ?></dd>
+                           </dl>  
+                           <dl class="dl-horizontal">  
+                              <input type="hidden" id="total_price" value="<?php if(!empty($listing_detail->unit_price) && !empty($listing_detail->qty_available)) echo $listing_detail->unit_price * $listing_detail->qty_available; ?>">
 
-                                                        <dt>Total Offer Price</dt> <dd> <?php if(!empty($listing_detail->unit_price) && !empty($listing_detail->qty_available)) { echo currency_class($listing_detail->currency).' '.$listing_detail->unit_price * $listing_detail->qty_available; } ?></dd>
-                                                    </dl>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                      <dl class="dl-horizontal">
-                                                        <h4>Shipping</h4>
-                                                         <dt>Courier</dt> <dd> <?php if(!empty($listing_detail->courier)) { 
-                                                          $core =  explode(',', $listing_detail->courier); 
-                                                          ?>
+                              <dt>Total Offer Price:</dt> <dd> <?php if(!empty($listing_detail->unit_price) && !empty($listing_detail->qty_available)) { echo currency_class($listing_detail->currency).' '.$listing_detail->unit_price * $listing_detail->qty_available; } ?></dd>
+                          </dl>
+                      </div>
+                      <div class="col-lg-6">
+                          <p style="text-align:center">
+                            <dl class="dl-horizontal">
+                              <h4>Shipping</h4>
+                               <dt>Courier</dt> <dd> <?php if(!empty($listing_detail->courier)) { 
+                                $core =  explode(',', $listing_detail->courier); 
+                                ?>
 
-                                                          <select name="coriar" id="core" class="form-control">
-                                                            <option value="">select courier</option>
-                                                            <?php $demo_amt = 10;  foreach ($core as $key => $value): ?>
-                                                            <option value="<?php echo $demo_amt; ?>">
-                                                            <?php echo  $value; ?>
-                                                            </option>
-                                                              
-                                                            <?php $demo_amt++;  endforeach; ?>
-                                                          </select>
+                                <select name="coriar" id="core" class="form-control">
+                                  <option value="">select courier</option>
+                                  <?php $demo_amt = 10;  foreach ($core as $key => $value): ?>
+                                  <option value="<?php echo $demo_amt; ?>">
+                                  <?php echo  $value; ?>
+                                  </option>
+                                    
+                                  <?php $demo_amt++;  endforeach; ?>
+                                </select>
 
-                                                        <?php  } ?></dd>
-                                                    </dl>
-                                                    <dl class="dl-horizontal">
-                                                    <dt>Gross price:</dt>
-                                                    <dd id="gross_price"> No Gross Price Available yet.</dd>
+                              <?php  } ?></dd>
+                          </dl>
+                          <dl class="dl-horizontal">
+                          <dt>Gross price:</dt>
+                          <dd id="gross_price"> No Gross Price Available yet.</dd>
 
 
-                                                    </dl>  
-                                                    
-                                                    <dl class="dl-horizontal" style="margin-top:20px">
-                                                       
-                                                        <p style="text-align:center"><button type="button" class="btn btn-warning" style="font-size:10px">Send Offer</button></p>
-                                                        <p class="small" style="text-align:center">Offers sent will expire after 24 hours</p>
-                                                    </dl>
+                          </dl>  
+                          </p>
 
-                                                </div>
-                                                </div>
-                                               
-                                        </div>
+                          <dl class="dl-horizontal" style="margin-top:20px">
+                             
+                              <p style="text-align:center"><button type="button" class="btn btn-warning" style="font-size:10px">Send Offer</button></p>
+                              <p class="small" style="text-align:center">Offers sent will expire after 24 hours</p>
+                          </dl>
 
-                                       
-                                    </div>
-                                </div>
-                            </div>
+                      </div>
+                      </div>
+                     
+              </div>
+
+             
+          </div>
+      </div>
+  </div>
 
                             
 
