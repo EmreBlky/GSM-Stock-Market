@@ -36,7 +36,6 @@
                 <option value="0">-No Parent Category required-</option>
                 <?php if (!empty($product_parent_categories)): ?>
                 <?php foreach ($product_parent_categories as $row): ?>
-                <?php echo $product_types->id .'=='. $row->id; ?>
                 <option value="<?php echo $row->id ?>" <?php if(!empty($product_types->parent_id) && $product_types->parent_id == $row->id) echo 'selected="selected"'; ?>><?php echo $row->category_name ?></option>
                 <?php endforeach ?>
                 <?php endif ?>
