@@ -36,7 +36,7 @@
                 <option value="0">-No Parent Category required-</option>
                 <?php if (!empty($product_parent_categories)): ?>
                 <?php foreach ($product_parent_categories as $row): ?>
-                <option value="<?php echo $row->id ?>" <?php if(!empty($_POST['parent_id']) && $_POST['parent_id']==$product_types->parent_id) echo 'selected="selected"'; ?>><?php echo $row->category_name ?></option>
+                <option value="<?php echo $row->id ?>" <?php if(!empty($product_types->parent_id) && $product_types->parent_id == $row->id) echo 'selected="selected"'; ?>><?php echo $row->category_name ?></option>
                 <?php endforeach ?>
                 <?php endif ?>
             </select>
@@ -46,14 +46,14 @@
 
         <div class="form-group"><label class="col-md-3 control-label">Category Name</label>
             <div class="col-md-9">
-                <input type="type" class="form-control" placeholder="Category Name" name="category_name" value="<?php if(!empty($listing_categories->category_name)){ echo $listing_categories->category_name; }else{ echo set_value('category_name'); } ?>" />
+                <input type="type" class="form-control" placeholder="Category Name" name="category_name" value="<?php if(!empty($product_types->category_name)){ echo $product_types->category_name; }else{ echo set_value('category_name'); } ?>" />
                 <?php echo form_error('category_name'); ?>
             </div>
           </div>
 
          <div class="form-group">
             <div class="col-md-9 col-md-offset-3">
-            <a class="btn btn-danger" href="<?php echo base_url('admin/listing_categories')?>">Cancel</a>
+            <a class="btn btn-danger" href="<?php echo base_url('admin/product_types')?>">Cancel</a>
                 <button class="btn btn-warning" type="submit">Update</button>
             </div>
         </div>
