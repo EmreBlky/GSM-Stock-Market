@@ -1231,6 +1231,7 @@ class Mailbox extends MX_Controller
         $var = str_replace('%20', ' ', $var);        
         $var = str_replace('BREAK1', '<br/>', $var);
         $var = str_replace('%22', '"', $var);
+        $var = str_replace("%27", "'", $var);
         $var = str_replace('%3C', '<', $var);
         $var = str_replace('%3E', '>', $var);
         $var = str_replace('%C2%B1', '±', $var);
