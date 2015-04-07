@@ -13,11 +13,11 @@
                 </li>
             </ol>
         </div>
-                <div class="col-lg-4">
+                <!--<div class="col-lg-4">
                     <div class="title-action">
                         <a href="marketplace/create_listing" class="btn btn-primary" ><i class="fa fa-plus"></i> Create New Listing</a>
                     </div>
-                </div>
+                </div>-->
     </div>
     
         <div class="wrapper wrapper-content animated fadeInRight">
