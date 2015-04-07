@@ -1094,9 +1094,9 @@ class Marketplace extends MX_Controller
         $this->templates->page($data);
     }
 
-    function listing_watch($listing_id='')
+    function listing_watch($seller_id='', $listing_id='')
     {
-        $user_id =  $this->session->userdata('members_id');
+       $user_id =  $this->session->userdata('members_id');
         $check_list = $this->marketplace_model->get_row('listing_watch', array('listing_id'=>$listing_id,'user_id'=>$user_id));
         if(empty($check_list)){
          $data_insert=array(
@@ -1112,6 +1112,7 @@ class Marketplace extends MX_Controller
          redirect('marketplace/listing_detail/'.$listing_id);
         }
     }
+
 
     function listing_unwatch($listing_id='')
     {
