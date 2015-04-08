@@ -32,6 +32,8 @@ class Login extends MX_Controller{
 
     }
     
+    
+    
     function forgotten_password()
     {                      
         $data['base'] = $this->config->item('base_url');
@@ -246,7 +248,7 @@ class Login extends MX_Controller{
 
                     $this->session->set_userdata($admin_data);
                     
-                    redirect('admin/');
+                    redirect('admin/dashboard');
             }
             else {
 

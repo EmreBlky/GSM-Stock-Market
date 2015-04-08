@@ -5,6 +5,7 @@ class Home extends MX_Controller
     {
         parent::__construct();
         //unset($data_activity);
+        
     }
 
     function index()
@@ -13,6 +14,7 @@ class Home extends MX_Controller
         { 
             redirect('login');
         }
+        
         
          $this->load->model('activity/activity_model', 'activity_model');
          $data_activity = array(
