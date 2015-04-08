@@ -34,36 +34,43 @@ class Member extends MX_Controller
     }
     function profile($pid)
     {
+//        if ($this->session->userdata('membership') < 2)
+//        { 
+//            redirect('home');
+//        }
         
-        $this->viewed_model->_delete_where('viewed_id' ,$pid, 'viewer_id', $this->session->userdata('members_id'));
-        
-        $data = array(
-                    'viewed_id' => $pid,
-                    'viewer_id' => $this->session->userdata('members_id'),
-                    'time' => date('H:i:s'),
-                    'date' => date('d-m-Y'),
-                    'datetime' => date('d-m-Y H:i:s'),
-                    'record_date' => date('Y-m-d H:i:s')
-                    );
-        
-        $this->viewed_model->_insert($data);
-        
-        $data['base'] = $this->config->item('base_url');
-        $data['main'] = 'member';        
-        $data['title'] = 'GSM - Members Page';        
-        $data['page'] = 'profile';
-        $data['member_info'] = $this->member_model->get_where($pid);
-        $data['member_company'] = $this->company_model->get_where($this->member_model->get_where($pid)->company_id);
-        $this->load->model('block/block_model', 'block_model');
-        $data['blocked'] = $this->block_model->get_where_multiples('member_id', $this->session->userdata('members_id'), 'block_member_id', $pid);
-		
-		/* Daniel Added Start */
-        $data['member'] = $this->member_model->get_where($this->session->userdata('members_id'));
-		
-		/* Daniel Added End */
+        $viewing_profile = $this->session->userdata('members_id');
+        if($viewing_profile != 5){
+            //$this->viewed_model->_delete_where('viewed_id' ,$pid, 'viewer_id', $this->session->userdata('members_id'));
 
-        $this->load->module('templates');
-        $this->templates->page($data); 
+            $data = array(
+                        'viewed_id' => $pid,
+                        'viewer_id' => $this->session->userdata('members_id'),
+                        'time' => date('H:i:s'),
+                        'date' => date('d-m-Y'),
+                        'datetime' => date('d-m-Y H:i:s'),
+                        'record_date' => date('Y-m-d H:i:s')
+                        );
+
+            $this->viewed_model->_insert($data);
+            }
+            $data['base'] = $this->config->item('base_url');
+            $data['main'] = 'member';        
+            $data['title'] = 'GSM - Members Page';        
+            $data['page'] = 'profile';
+            $data['member_info'] = $this->member_model->get_where($pid);
+            $data['member_company'] = $this->company_model->get_where($this->member_model->get_where($pid)->company_id);
+            $this->load->model('block/block_model', 'block_model');
+            $data['blocked'] = $this->block_model->get_where_multiples('member_id', $this->session->userdata('members_id'), 'block_member_id', $pid);
+
+                    /* Daniel Added Start */
+            $data['member'] = $this->member_model->get_where($this->session->userdata('members_id'));
+
+                    /* Daniel Added End */
+
+            $this->load->module('templates');
+            $this->templates->page($data); 
+        
     }
     
 }
