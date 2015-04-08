@@ -12,6 +12,14 @@ class Admin extends MX_Controller
     }
     function index()
     { 
+        if ( ! $this->session->userdata('admin_logged_in'))
+        { 
+            redirect('admin/login');
+        }
+        else{
+            
+            redirect('admin/dashboard');
+        }
         
     
     }
