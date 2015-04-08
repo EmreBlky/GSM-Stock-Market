@@ -7,7 +7,19 @@
         changeOptions();
     })
 
+
     function changeOptions() {
+        $("#regions").children().show();
+        var selectedval = $("#continent option:selected").val();
+        if (selectedval != "")
+            $("#regions").children("[data-continent!='" + selectedval + "']").hide();
+
+        $("#countries").children().show();
+        var selectedval = $("#regions option:selected").val();
+        if (selectedval != "")
+            $("#countries").children("[data-region!='" + selectedval + "']").hide();
+    }
+    /*function changeOptions() {
         $("#regions").children("optgroup").show();
         var selectedval = $("#continent option:selected").val();
         if (selectedval != "")
@@ -17,12 +29,13 @@
         var selectedval = $("#regions option:selected").val();
         if (selectedval != "")
             $("#countries").children("optgroup[label!='" + selectedval + "']").hide();
-    }
+    }*/
 </script>
 <style type="text/css">
-    #pagination{
+    #pagination {
         margin-bottom: 30px;
     }
+
     ul.tsc_pagination li a {
         border: solid 1px;
         border-radius: 3px;
@@ -192,24 +205,23 @@
                             }
                             echo form_dropdown("continent", $options, $this->input->get('continent'), 'class="form-control" id="continent"')
                             ?>
+
                         </div>
                         <div class="col-lg-4" style="padding:0">
-                            <?php
-                            $options = array("" => "All Regions");
-                            foreach ($regions as $regions) {
-                                $options[$regions->continent][$regions->region] = $regions->region;
-                            }
-                            echo form_dropdown("region", $options, $this->input->get('region'), 'class="form-control" id="regions"')
-                            ?>
+                            <select class="form-control" id="regions" name="region">
+                                <option value="">All Regions</option>
+                                <?php foreach ($regions as $regions) {
+                                    echo '<option value="' . $regions->region . '" data-continent="' . $regions->continent . '">' . $regions->region . '</option>';
+                                } ?>
+                            </select>
                         </div>
                         <div class="col-lg-4">
-                            <?php
-                            $options = array("" => "All Countries");
-                            foreach ($country as $country) {
-                                $options[$country->region][$country->id] = $country->country;
-                            }
-                            echo form_dropdown("countries", $options, $this->input->get('countries'), 'class="form-control" id="countries"')
-                            ?>
+                            <select class="form-control" id="countries" name="countries">
+                                <option value="">All Countries</option>
+                                <?php foreach ($country as $country) {
+                                    echo '<option value="' . $country->id . '" data-region="' . $country->region . '">' . $country->country . '</option>';
+                                } ?>
+                            </select>
 
                         </div>
                     </div>
