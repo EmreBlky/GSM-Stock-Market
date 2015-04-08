@@ -495,7 +495,6 @@ class Marketplace extends MX_Controller
          $member_id=$this->session->userdata('members_id');
         //$this->output->enable_profiler(TRUE);
 
-       // $this->form_validation->set_rules('listing_categories', 'listing category', 'required');
     if($this->input->post('status')==1) {
         $this->form_validation->set_rules('schedule_date_time', '', '');
        // $this->form_validation->set_rules('listing_type', 'listing type', 'required');
@@ -509,9 +508,9 @@ class Marketplace extends MX_Controller
         $this->form_validation->set_rules('spec', 'spec', 'required');
         $this->form_validation->set_rules('currency', 'currency', 'required');
         $this->form_validation->set_rules('unit_price', 'unit price', 'required|numeric');
-        if(isset($_POST['minimum_checkbox'])){
+        /*if(isset($_POST['minimum_checkbox'])){
           $this->form_validation->set_rules('min_price', 'min price', 'required|numeric');
-        }
+        }*/
         if(isset($_POST['allowoffer_checkbox'])){
            $this->form_validation->set_rules('allow_offer', 'allow offer', 'required');
         }
@@ -519,11 +518,7 @@ class Marketplace extends MX_Controller
         if(isset($_POST['orderqunatity_checkbox'])){
            $this->form_validation->set_rules('min_qty_order', 'min quantity order', 'required|numeric');
         }
-        // $this->form_validation->set_rules('shipping_term', 'shipping term', 'required');
-        // if(empty($list_id)){
-        // $this->form_validation->set_rules('courier[]', 'courier', 'required');
-            
-        // }
+        
         $this->form_validation->set_rules('product_desc', 'product description', 'required');
         $this->form_validation->set_rules('duration', 'duration', 'required');
 
@@ -663,7 +658,8 @@ class Marketplace extends MX_Controller
             $data_insert['updated']              = date('Y-m-d h:i:s A');
         else
             $data_insert['created']              = date('Y-m-d h:i:s A');
-            
+         print_r($data_insert);
+         die();   
         $list_update = '';
         if(!empty($list_id)){
         $list_update =  $this->marketplace_model->get_row('listing', array('id'=>$list_id));
@@ -803,22 +799,20 @@ class Marketplace extends MX_Controller
     
     function buy_listing($list_id='')
     {
-     $member_id=$this->session->userdata('members_id');
-    
-     //$this->output->enable_profiler(TRUE);
 
-     // $this->form_validation->set_rules('listing_categories', 'listing category', 'required');
+     $member_id=$this->session->userdata('members_id');
+
+     //$this->output->enable_profiler(TRUE);
      if($this->input->post('status')==1) {
         $this->form_validation->set_rules('schedule_date_time', '', '');
         $this->form_validation->set_rules('product_mpn_isbn', 'product mpn', '');
-        //$this->form_validation->set_rules('product_isbn', 'product isbn', '');
+        $this->form_validation->set_rules('product_isbn', 'product isbn', '');
         $this->form_validation->set_rules('product_make', 'product make', 'required');
         $this->form_validation->set_rules('product_model', 'product model', 'required');
         $this->form_validation->set_rules('product_type', 'product type', 'required');
         $this->form_validation->set_rules('product_color', 'product color', 'required');
         $this->form_validation->set_rules('condition', 'condition', 'required');
         $this->form_validation->set_rules('spec', 'spec', 'required');
-        $this->form_validation->set_rules('currency', 'currency', 'required');
         $this->form_validation->set_rules('currency', 'currency', 'required');
         $this->form_validation->set_rules('unit_price', 'unit price', 'required|numeric');
         /*if(isset($_POST['minimum_checkbox'])){
@@ -869,6 +863,7 @@ class Marketplace extends MX_Controller
         if(!empty($_FILES['image5']['name'])){
         $this->form_validation->set_rules('image5', '', 'callback_image5_check5');
         }
+
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
     
         if ($this->form_validation->run($this) == TRUE){
@@ -876,6 +871,13 @@ class Marketplace extends MX_Controller
            $min_price='';
            $allow_offer='';
            $min_qty_order='';
+           $allow_color='';
+
+           if(isset($_POST['color_allow'])){
+              $allow_color=1;
+            }else{
+               $allow_color='';
+            }
 
            /*if(isset($_POST['minimum_checkbox'])){
               $min_price=$this->input->post('min_price');
@@ -924,6 +926,7 @@ class Marketplace extends MX_Controller
             $schedule_date_time=date('Y-m-d h:i:s');
             if($this->input->post('schedule_date_time')){
                 $schedule_date_time=$this->input->post('schedule_date_time');
+                 $schedule_date_time=date('Y-m-d h:i:s',strtotime($schedule_date_time));
             }
 
         /*product mpn and isbn check*/
@@ -939,7 +942,7 @@ class Marketplace extends MX_Controller
             }
 
            
-            
+            $data_insert['allow_color']   =  $allow_color;
             $data_insert['schedule_date_time']   =  $schedule_date_time;
             $data_insert['listing_categories']   =  $this->input->post('listing_categories');
             $data_insert['listing_type']         =  1;
@@ -964,6 +967,7 @@ class Marketplace extends MX_Controller
             $data_insert['courier']              =  $courier;
             $data_insert['product_desc']         =  $this->input->post('product_desc');
             $data_insert['duration']             =  $this->input->post('duration');
+            $enddatetoin=$schedule_date_time;
             $data_insert['listing_end_datetime'] =  date('Y-m-d H:i:s', strtotime("+".$this->input->post('duration')." days"));            
             $data_insert['member_id']            = $member_id; 
             $data_insert['status']               = $status; 
@@ -1078,6 +1082,8 @@ class Marketplace extends MX_Controller
         //$data['product_types'] =  $this->marketplace_model->get_result_by_group('product_type');
 
         $data['pro_type'] =  $this->marketplace_model->get_result('listing_attributes','',array('product_type'));
+
+        
         if(!empty($list_id)){
          $data['product_list']   =  $this->marketplace_model->get_row('listing',array('id'=>$list_id));
         }
@@ -1236,6 +1242,7 @@ class Marketplace extends MX_Controller
   function get_attributes_info($type='MPN'){
     $check_status='false';
      $list=array('STATUS'=>$check_status);
+
      if($_POST){
         $attr_id=trim($_POST['product_mpn_isbn']);
 
@@ -1253,11 +1260,6 @@ class Marketplace extends MX_Controller
 
 
     function image1_check($str=''){
-
-    // if(empty($_FILES['image1']['name']) && empty($list_id)){
-    //         $this->form_validation->set_message('image1_check','Choose Color Image');
-    //        return FALSE;
-    //     }  
     if(!empty($_FILES['image1']['name'])):
         $config1['upload_path'] = './public/upload/listing/';
         $config1['allowed_types'] = 'gif|jpg|png';
@@ -1275,55 +1277,45 @@ class Marketplace extends MX_Controller
             $upload_file = explode('.', $data['file_name']);
             
             if(in_array($upload_file[1], array('gif','jpeg','jpg','png','bmp','jpe'))){
-        //thumbimage
-                $param_thumb=array(
-                    'file_name'     =>  $data['file_name'],
-                    'source_image'  =>  $data['file_path'],
-                    'new_image'     =>  $data['file_path'].'/thumbnail/',
-                    'create_thumb'  =>  FALSE,
-                    'maintain_ratio'=>  FALSE,
-                    'width'         =>  75,
-                    'height'        =>  75,
-                    );
-           
+         //thumbimage
+
+            $param_thumb=array();
+            $param_thumb['source_path'] = './public/upload/listing/';
+            $param_thumb['destination_path'] = './public/upload/listing/thumbnail/';
+            $param_thumb['width']  = '75';
+            $param_thumb['height']  = '75';
+            $param_thumb['file_name'] =$data['file_name'];
+            $this->load->library('upload');
+                $this->upload->initialize($config);
             create_thumbnail($param_thumb);
 
         //small image
+            $param_small=array();
+            $param_small['source_path'] = './public/upload/listing/';
+            $param_small['destination_path'] = './public/upload/listing/small/';
+            $param_small['width']  = '200';
+            $param_small['height']  = '200';
+            $param_small['file_name'] =$data['file_name'];
 
-             $param_small=array(
-                    'file_name'     =>  $data['file_name'],
-                    'source_image'  =>  $data['file_path'],
-                    'new_image'     =>  $data['file_path'].'/small/',
-                    'create_thumb'  =>  FALSE,
-                    'maintain_ratio'=>  FALSE,
-                    'width'         =>  200,
-                    'height'        =>  200,
-                    );
-           
             create_thumbnail($param_small);
 
-        // large image
+         // large image
 
-             $param_large=array(
-                    'file_name'     =>  $data['file_name'],
-                    'source_image'  =>  $data['file_path'],
-                    'new_image'     =>  $data['file_path'].'/large/',
-                    'create_thumb'  =>  FALSE,
-                    'maintain_ratio'=>  FALSE,
-                    'width'         =>  1200,
-                    'height'        =>  1200,
-                    );
-           
+            $param_large=array();
+            $param_large['source_path'] = './public/upload/listing/';
+            $param_large['destination_path'] = './public/upload/listing/large/';
+            $param_large['width']  = '700';
+            $param_large['height']  = '700';
+            $param_large['file_name'] =$data['file_name'];
+
             create_thumbnail($param_large);
+
 
             $this->session->unset_userdata('image1_check');
             $this->session->set_userdata('image1_check',array('image_url'=>$config1['upload_path'].$data['file_name'],'image1'=>$data['file_name']));
            return TRUE;
              }
         }
-    // else:
-    //     $this->form_validation->set_message('image1_check', 'The %s field required.');
-    //     return FALSE;
     endif;
     }
 
@@ -1351,44 +1343,33 @@ class Marketplace extends MX_Controller
             
             if(in_array($upload_file[1], array('gif','jpeg','jpg','png','bmp','jpe'))){
                //thumbimage
-                $param_thumb=array(
-                    'file_name'     =>  $data['file_name'],
-                    'source_image'  =>  $data['file_path'],
-                    'new_image'     =>  $data['file_path'].'/thumbnail/',
-                    'create_thumb'  =>  FALSE,
-                    'maintain_ratio'=>  FALSE,
-                    'width'         =>  75,
-                    'height'        =>  75,
-                    );
-           
+                $param_thumb=array();
+            $param_thumb['source_path'] = './public/upload/listing/';
+            $param_thumb['destination_path'] = './public/upload/listing/thumbnail/';
+            $param_thumb['width']  = '75';
+            $param_thumb['height']  = '75';
+            $param_thumb['file_name'] =$data['file_name'];
             create_thumbnail($param_thumb);
 
         //small image
+            $param_small=array();
+            $param_small['source_path'] = './public/upload/listing/';
+            $param_small['destination_path'] = './public/upload/listing/small/';
+            $param_small['width']  = '200';
+            $param_small['height']  = '200';
+            $param_small['file_name'] =$data['file_name'];
 
-             $param_small=array(
-                    'file_name'     =>  $data['file_name'],
-                    'source_image'  =>  $data['file_path'],
-                    'new_image'     =>  $data['file_path'].'/small/',
-                    'create_thumb'  =>  FALSE,
-                    'maintain_ratio'=>  FALSE,
-                    'width'         =>  200,
-                    'height'        =>  200,
-                    );
-           
             create_thumbnail($param_small);
 
-        // large image
+         // large image
 
-             $param_large=array(
-                    'file_name'     =>  $data['file_name'],
-                    'source_image'  =>  $data['file_path'],
-                    'new_image'     =>  $data['file_path'].'/large/',
-                    'create_thumb'  =>  FALSE,
-                    'maintain_ratio'=>  FALSE,
-                    'width'         =>  1200,
-                    'height'        =>  1200,
-                    );
-           
+            $param_large=array();
+            $param_large['source_path'] = './public/upload/listing/';
+            $param_large['destination_path'] = './public/upload/listing/large/';
+            $param_large['width']  = '700';
+            $param_large['height']  = '700';
+            $param_large['file_name'] =$data['file_name'];
+
             create_thumbnail($param_large);
             $this->session->unset_userdata('image2_check2');
             $this->session->set_userdata('image2_check2',array('image_url'=>$config2['upload_path'].$data['file_name'],'image2'=>$data['file_name']));
@@ -1423,46 +1404,35 @@ class Marketplace extends MX_Controller
             $upload_file = explode('.', $data['file_name']);
             
             if(in_array($upload_file[1], array('gif','jpeg','jpg','png','bmp','jpe'))){
-               //thumbimage
-                $param_thumb=array(
-                    'file_name'     =>  $data['file_name'],
-                    'source_image'  =>  $data['file_path'],
-                    'new_image'     =>  $data['file_path'].'/thumbnail/',
-                    'create_thumb'  =>  FALSE,
-                    'maintain_ratio'=>  FALSE,
-                    'width'         =>  75,
-                    'height'        =>  75,
-                    );
-           
+                 $param_thumb=array();
+            $param_thumb['source_path'] = './public/upload/listing/';
+            $param_thumb['destination_path'] = './public/upload/listing/thumbnail/';
+            $param_thumb['width']  = '75';
+            $param_thumb['height']  = '75';
+            $param_thumb['file_name'] =$data['file_name'];
             create_thumbnail($param_thumb);
 
         //small image
+            $param_small=array();
+            $param_small['source_path'] = './public/upload/listing/';
+            $param_small['destination_path'] = './public/upload/listing/small/';
+            $param_small['width']  = '200';
+            $param_small['height']  = '200';
+            $param_small['file_name'] =$data['file_name'];
 
-             $param_small=array(
-                    'file_name'     =>  $data['file_name'],
-                    'source_image'  =>  $data['file_path'],
-                    'new_image'     =>  $data['file_path'].'/small/',
-                    'create_thumb'  =>  FALSE,
-                    'maintain_ratio'=>  FALSE,
-                    'width'         =>  200,
-                    'height'        =>  200,
-                    );
-           
             create_thumbnail($param_small);
 
-        // large image
+         // large image
 
-             $param_large=array(
-                    'file_name'     =>  $data['file_name'],
-                    'source_image'  =>  $data['file_path'],
-                    'new_image'     =>  $data['file_path'].'/large/',
-                    'create_thumb'  =>  FALSE,
-                    'maintain_ratio'=>  FALSE,
-                    'width'         =>  1200,
-                    'height'        =>  1200,
-                    );
-           
+            $param_large=array();
+            $param_large['source_path'] = './public/upload/listing/';
+            $param_large['destination_path'] = './public/upload/listing/large/';
+            $param_large['width']  = '700';
+            $param_large['height']  = '700';
+            $param_large['file_name'] =$data['file_name'];
+
             create_thumbnail($param_large);
+
             $this->session->unset_userdata('image3_check3');
             $this->session->set_userdata('image3_check3',array('image_url'=>$config3['upload_path'].$data['file_name'],'image3'=>$data['file_name']));
             return TRUE;
@@ -1496,46 +1466,35 @@ class Marketplace extends MX_Controller
             $upload_file = explode('.', $data['file_name']);
             
             if(in_array($upload_file[1], array('gif','jpeg','jpg','png','bmp','jpe'))){
-               //thumbimage
-                $param_thumb=array(
-                    'file_name'     =>  $data['file_name'],
-                    'source_image'  =>  $data['file_path'],
-                    'new_image'     =>  $data['file_path'].'/thumbnail/',
-                    'create_thumb'  =>  FALSE,
-                    'maintain_ratio'=>  FALSE,
-                    'width'         =>  75,
-                    'height'        =>  75,
-                    );
-           
+                  $param_thumb=array();
+            $param_thumb['source_path'] = './public/upload/listing/';
+            $param_thumb['destination_path'] = './public/upload/listing/thumbnail/';
+            $param_thumb['width']  = '75';
+            $param_thumb['height']  = '75';
+            $param_thumb['file_name'] =$data['file_name'];
             create_thumbnail($param_thumb);
 
         //small image
+            $param_small=array();
+            $param_small['source_path'] = './public/upload/listing/';
+            $param_small['destination_path'] = './public/upload/listing/small/';
+            $param_small['width']  = '200';
+            $param_small['height']  = '200';
+            $param_small['file_name'] =$data['file_name'];
 
-             $param_small=array(
-                    'file_name'     =>  $data['file_name'],
-                    'source_image'  =>  $data['file_path'],
-                    'new_image'     =>  $data['file_path'].'/small/',
-                    'create_thumb'  =>  FALSE,
-                    'maintain_ratio'=>  FALSE,
-                    'width'         =>  200,
-                    'height'        =>  200,
-                    );
-           
             create_thumbnail($param_small);
 
-        // large image
+         // large image
 
-             $param_large=array(
-                    'file_name'     =>  $data['file_name'],
-                    'source_image'  =>  $data['file_path'],
-                    'new_image'     =>  $data['file_path'].'/large/',
-                    'create_thumb'  =>  FALSE,
-                    'maintain_ratio'=>  FALSE,
-                    'width'         =>  1200,
-                    'height'        =>  1200,
-                    );
-           
+            $param_large=array();
+            $param_large['source_path'] = './public/upload/listing/';
+            $param_large['destination_path'] = './public/upload/listing/large/';
+            $param_large['width']  = '700';
+            $param_large['height']  = '700';
+            $param_large['file_name'] =$data['file_name'];
+
             create_thumbnail($param_large);
+
             $this->session->unset_userdata('image4_check4');
             $this->session->set_userdata('image4_check4',array('image_url'=>$config4['upload_path'].$data['file_name'],'image4'=>$data['file_name']));
             return TRUE;
@@ -1569,45 +1528,33 @@ class Marketplace extends MX_Controller
             $upload_file = explode('.', $data['file_name']);
             
             if(in_array($upload_file[1], array('gif','jpeg','jpg','png','bmp','jpe'))){
-                //thumbimage
-                $param_thumb=array(
-                    'file_name'     =>  $data['file_name'],
-                    'source_image'  =>  $data['file_path'],
-                    'new_image'     =>  $data['file_path'].'/thumbnail/',
-                    'create_thumb'  =>  FALSE,
-                    'maintain_ratio'=>  FALSE,
-                    'width'         =>  75,
-                    'height'        =>  75,
-                    );
-           
+                   $param_thumb=array();
+            $param_thumb['source_path'] = './public/upload/listing/';
+            $param_thumb['destination_path'] = './public/upload/listing/thumbnail/';
+            $param_thumb['width']  = '75';
+            $param_thumb['height']  = '75';
+            $param_thumb['file_name'] =$data['file_name'];
             create_thumbnail($param_thumb);
 
         //small image
+            $param_small=array();
+            $param_small['source_path'] = './public/upload/listing/';
+            $param_small['destination_path'] = './public/upload/listing/small/';
+            $param_small['width']  = '200';
+            $param_small['height']  = '200';
+            $param_small['file_name'] =$data['file_name'];
 
-             $param_small=array(
-                    'file_name'     =>  $data['file_name'],
-                    'source_image'  =>  $data['file_path'],
-                    'new_image'     =>  $data['file_path'].'/small/',
-                    'create_thumb'  =>  FALSE,
-                    'maintain_ratio'=>  FALSE,
-                    'width'         =>  200,
-                    'height'        =>  200,
-                    );
-           
             create_thumbnail($param_small);
 
-        // large image
+         // large image
 
-             $param_large=array(
-                    'file_name'     =>  $data['file_name'],
-                    'source_image'  =>  $data['file_path'],
-                    'new_image'     =>  $data['file_path'].'/large/',
-                    'create_thumb'  =>  FALSE,
-                    'maintain_ratio'=>  FALSE,
-                    'width'         =>  1200,
-                    'height'        =>  1200,
-                    );
-           
+            $param_large=array();
+            $param_large['source_path'] = './public/upload/listing/';
+            $param_large['destination_path'] = './public/upload/listing/large/';
+            $param_large['width']  = '700';
+            $param_large['height']  = '700';
+            $param_large['file_name'] =$data['file_name'];
+
             create_thumbnail($param_large);
             $this->session->unset_userdata('image5_check5');
             $this->session->set_userdata('image5_check5',array('image_url'=>$config5['upload_path'].$data['file_name'],'image5'=>$data['file_name']));
