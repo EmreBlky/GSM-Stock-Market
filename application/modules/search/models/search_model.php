@@ -49,7 +49,7 @@ other_business,
                          INNER JOIN country as cnt
                         ON c.country = cnt.id
                         LEFT JOIN
-                        (SELECT DISTINCT(member_id) FROM login) as l ON l.member_id = m.id
+                        (SELECT DISTINCT(member_id), date FROM login) as l ON l.member_id = m.id
                         WHERE $where
                         ORDER BY (c.business_sector_1 LIKE ?) DESC, (c.business_sector_2 LIKE ?) DESC, (c.business_sector_3 LIKE ?) DESC, (c.other_business LIKE ?) DESC $orderBy
                         $limit";
@@ -69,7 +69,7 @@ other_business,
                          INNER JOIN country as cnt
                         ON c.country = cnt.id
                         LEFT JOIN
-                        (SELECT DISTINCT(member_id) FROM login) as l ON l.member_id = m.id
+                        (SELECT DISTINCT(member_id), date FROM login) as l ON l.member_id = m.id
                         WHERE $where";
         $query = $this->db->query($sql);
         return $query->row()->count;
