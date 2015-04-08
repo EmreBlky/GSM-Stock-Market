@@ -34,10 +34,10 @@ class Member extends MX_Controller
     }
     function profile($pid)
     {
-//        if ($this->session->userdata('membership') < 2)
-//        { 
-//            redirect('home');
-//        }
+        if ($this->session->userdata('membership') < 2)
+        { 
+            redirect('home');
+        }
         
         $viewing_profile = $this->session->userdata('members_id');
         if($viewing_profile != 5){

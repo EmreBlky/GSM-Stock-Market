@@ -237,10 +237,10 @@ class Login extends MX_Controller{
                     $admin = $this->admin_model->get_where($aid);
                     
                     $admin_data = array(
-                                                    'members_id'  	=> $aid,
+                                                    'admin_members_id'  	=> $aid,
                                                     //'username'  	=> $member->username,
-                                                    'firstname'         => $admin->firstname,
-                                                    'lastname'          => $admin->lastname,
+                                                    'admin_firstname'         => $admin->firstname,
+                                                    'admin_lastname'          => $admin->lastname,
                                                     'admin_logged_in' 	=> TRUE
                                                     );
 
