@@ -9,7 +9,7 @@
                 </div>
             </li>
             <li>
-                <a href="#"><i class="fa fa-desktop"></i> <span class="nav-label">Dashboard</span></a>
+                <a href="admin/"><i class="fa fa-desktop"></i> <span class="nav-label">Dashboard</span></a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-user"></i> <span class="nav-label">Edit Subscriptions</span><span class="fa arrow"></span></a>
