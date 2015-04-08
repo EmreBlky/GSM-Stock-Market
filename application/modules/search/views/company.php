@@ -1,35 +1,52 @@
 <script type="text/javascript">
+    var regions = <?php echo json_encode($regions); ?>;
+    var countries = <?php echo json_encode($country); ?>;
+    var searchedRegion = "<?php echo $this->input->get('region') ?>";
+    var searchedCountry = "<?php echo $this->input->get('countries') ?>";
+
     $(document).ready(function () {
-        changeOptions();
+        changeOptions("continent");
+        changeOptions("regions");
     })
 
     $(document).on("change", "#continent, #regions", function () {
-        changeOptions();
+        changeOptions($(this).attr("id"));
     })
 
 
-    function changeOptions() {
-        $("#regions").children().show();
-        var selectedval = $("#continent option:selected").val();
-        if (selectedval != "")
-            $("#regions").children("[data-continent!='" + selectedval + "']").hide();
+    function changeOptions(id) {
 
-        $("#countries").children().show();
-        var selectedval = $("#regions option:selected").val();
-        if (selectedval != "")
-            $("#countries").children("[data-region!='" + selectedval + "']").hide();
+        if (id == "continent") {
+            $("#regions").html('<option value="">All Regions</option>');
+            var selectedContinent = $("#continent option:selected").val();
+
+            $.each(regions, function (index, value) {
+                var selected = (searchedRegion == value.region) ? 'selected="selected"' : '';
+                if (value.continent == selectedContinent || selectedContinent == "")
+                    $("#regions").append('<option value="' + value.region + '" ' + selected + '>' + value.region + '</option>');
+            });
+        }
+        if (id == "regions") {
+            $("#countries").html('<option value="">All Countries</option>');
+            var selectedRegion = $("#regions option:selected").val();
+            $.each(countries, function (index, value) {
+                var selected = (searchedCountry == value.id) ? 'selected="selected"' : '';
+                if (value.region == selectedRegion || selectedRegion == "")
+                    $("#countries").append('<option value="' + value.id + '" ' + selected + '>' + value.country + '</option>');
+            });
+        }
     }
     /*function changeOptions() {
-        $("#regions").children("optgroup").show();
-        var selectedval = $("#continent option:selected").val();
-        if (selectedval != "")
-            $("#regions").children("optgroup[label!='" + selectedval + "']").hide();
+     $("#regions").children("optgroup").show();
+     var selectedval = $("#continent option:selected").val();
+     if (selectedval != "")
+     $("#regions").children("optgroup[label!='" + selectedval + "']").hide();
 
-        $("#countries").children("optgroup").show();
-        var selectedval = $("#regions option:selected").val();
-        if (selectedval != "")
-            $("#countries").children("optgroup[label!='" + selectedval + "']").hide();
-    }*/
+     $("#countries").children("optgroup").show();
+     var selectedval = $("#regions option:selected").val();
+     if (selectedval != "")
+     $("#countries").children("optgroup[label!='" + selectedval + "']").hide();
+     }*/
 </script>
 <style type="text/css">
     #pagination {
@@ -122,7 +139,7 @@
                 $('#profile_message_' + sid + '').modal('hide');
                 toastr.success('Your message has been sent.', 'Message Alert');
                 $("#submit_message_" + sid + "").show('slow');
-            },
+            }
         });
     }
 
@@ -210,8 +227,10 @@
                         <div class="col-lg-4" style="padding:0">
                             <select class="form-control" id="regions" name="region">
                                 <option value="">All Regions</option>
-                                <?php foreach ($regions as $regions) {
+                                <?php $i = 0;
+                                foreach ($regions as $regions) {
                                     echo '<option value="' . $regions->region . '" data-continent="' . $regions->continent . '">' . $regions->region . '</option>';
+                                    $i++;
                                 } ?>
                             </select>
                         </div>
@@ -265,10 +284,13 @@
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <h3><strong><?php echo $result->company_name; ?></strong> <img class="novert"
-                                                                                   alt="<?php echo $result->country; ?>"
-                                                                                   src="public/main/template/gsm/img/flags/<?php echo str_replace(" ", "_", $result->country); ?>.png"
-                                                                                   title="<?php echo $result->country; ?>"/>
+                    <h3><strong><?php echo $result->company_name; ?></strong>
+                        <?php if (file_exists("public/main/template/gsm/img/flags/" . str_replace(" ", "_", $result->country) . ".png")) { ?>
+                            <img class="novert"
+                                 alt="<?php echo $result->country; ?>"
+                                 src="public/main/template/gsm/img/flags/<?php echo str_replace(" ", "_", $result->country); ?>.png"
+                                 title="<?php echo $result->country; ?>"/>
+                        <?php } ?>
                     </h3>
 
                     <p><?php echo $result->company_profile; ?></p>
