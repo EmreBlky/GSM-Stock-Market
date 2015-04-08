@@ -10,6 +10,7 @@
         </li>
     </ol>
 </div>
+
 <div class="col-lg-2">
 
 </div>
@@ -98,46 +99,31 @@
                  <?php }} ?>
             </datalist>
         <?php echo form_error('product_color'); ?>
-
+        <input type="checkbox" name="color_allow" value="" <?php if(isset($_POST['color_allow']) ){ echo'checked';} elseif(!empty($product_list->color_allow)){ echo'checked';}?>> Allow offer for all colors.
         </div>
     </div>
 
      <div class="form-group"><label class="col-md-3 control-label">Product Type</label>
         <div class="col-md-9"> 
         <select  name="product_type" id="product_type" class="form-control check_record">
-                <option selected value="0" >-Select Product Type-</option>
-                <?php if (!empty($product_types)): ?>
-                <?php foreach ($product_types as $row): ?>
-                    <optgroup label="<?php echo $row->category_name ?>">
-                        <?php if (!empty($row->childs)): ?>
-                            <?php foreach ($row->childs as $child): ?>
-                                <option value="<?php echo $child->category_name ?>" <?php if(!empty($_POST['product_type']) && $child->category_name==$_POST['product_type']){ echo'selected';}?> 
-                                <?php if(!empty($product_list->product_type) && $child->category_name==$product_list->product_type){ echo'selected="selected"';}?>>- <?php echo $child->category_name ?></option>
-                            <?php endforeach ?>
-                        <?php endif ?>
-                    </optgroup>
-                <?php endforeach ?>
-                <?php endif ?>
+            <option selected value="0" >-Select Product Type-</option>
+            <?php if (!empty($product_types)): ?>
+            <?php foreach ($product_types as $row): ?>
+                <optgroup label="<?php echo $row->category_name ?>">
+                    <?php if (!empty($row->childs)): ?>
+                    <?php foreach ($row->childs as $child): ?>
+                    <option value="<?php echo $child->category_name ?>" <?php if(!empty($_POST['product_type']) && $child->category_name==$_POST['product_type']){ echo'selected';}?> 
+                    <?php if(!empty($product_list->product_type) && $child->category_name==$product_list->product_type){ echo'selected="selected"';}?>>- <?php echo $child->category_name ?></option>
+                    <?php endforeach ?>
+                    <?php endif ?>
+                </optgroup>
+            <?php endforeach ?>
+            <?php endif ?>
 
             </select>
             <?php echo form_error('product_type'); ?>
         </div>
     </div>
-
-       <!--  <div class="form-group"><label class="col-md-3 control-label">Colour</label>
-        <div class="col-md-9">
-            <select class="form-control check_record" name="product_color" id="product_color">
-            <option selected value="">Select Color</option>
-            <?php //if(!empty($product_colors)){ 
-                 //foreach ($product_colors as $row) { ?>
-                <option value="<?php //echo $row->product_color; ?>" <?php //if(!empty($_POST) && $row->product_color==$_POST['product_color']){ echo'selected';}?>
-                <?php //if(!empty($product_list->product_color) && $row->product_color==$product_list->product_color){ echo'selected';}?>><?php //echo $row->product_color; ?></option>
-                 <?php// }} ?>
-        </select>           
-            <?php //echo form_error('product_color'); ?>
-        </div>
-    </div> -->
-    
         <div class="hr-line-dashed"></div>
         <div class="form-group"><label class="col-md-3 control-label">Condition</label>
             <div class="col-md-9">
@@ -193,18 +179,15 @@
                 <?php echo form_error('unit_price'); ?>
             </div>
         </div>
-        
-       <!--  <div class="form-group"><label class="col-md-3 control-label">Min Unit Price</label>
-            <div class="col-md-9">
-                <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="minimum_checkbox" id="minimum_checkbox" <?php if(!empty($_POST['minimum_checkbox']) ){ echo'checked';}?><?php if(!empty($product_list->min_price)){ echo'checked';}?>/> </span> <input type="text" class="form-control" placeholder="only make typable when clicked" name="min_price" value="<?php if(!empty($product_list->min_price)) echo $product_list->min_price; else echo set_value('min_price');?>" <?php if(empty($product_list->min_price) ){ echo'disabled';}?>></div>
-                <p class="small">tick to enable. Any offers below this will be auto rejected, leave blank to allow any offers if ticked.</p>
-                <?php echo form_error('min_price'); ?>
-            </div>
-        </div> -->
+       
 
          <div class="form-group"><label class="col-md-3 control-label">Max Unit Price</label>
             <div class="col-md-9">
-                <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="maximum_checkbox" id="maximum_checkbox" <?php if(!empty($_POST['maximum_checkbox']) ){ echo'checked';}?><?php if(!empty($product_list->min_price)){ echo'checked';}?>/> </span> <input type="text" class="form-control" placeholder="only make typable when clicked" name="max_price" value="<?php if(!empty($product_list->max_price)) echo $product_list->max_price; else echo set_value('max_price');?>" <?php if(empty($product_list->max_price) ){ echo'disabled';}?>></div>
+                <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="maximum_checkbox" id="maximum_checkbox" <?php if(isset($_POST['maximum_checkbox']) ){ echo'checked';} elseif(!empty($product_list->min_price)){ echo'checked';}?>/> </span> 
+
+                <input type="text" class="form-control" placeholder="only make typable when clicked" name="max_price" value="<?php if(!empty($product_list->max_price)) echo $product_list->max_price; else echo set_value('max_price');?>" <?php if(isset($_POST['maximum_checkbox']) ){ echo'';} elseif(empty($product_list->max_price) ){ echo'disabled';}?>>
+
+                </div>
                 <p class="small">tick to enable. Any offers below this will be auto rejected, leave blank to allow any offers if ticked.</p>
                 <?php echo form_error('max_price'); ?>
             </div>
@@ -221,12 +204,22 @@
         
         
         <div class="form-group"><label class="col-md-3 control-label">Shipping Terms <button class="btn btn-success btn-circle" type="button" style="width:20px;height:20px;border-radius:10px;font-size:10px;padding:0;margin-bottom:0" data-toggle="modal" data-target="#shipping" title="Click for more information"><i class="fa fa-question"></i></button></label>
-         <?php $product = array(); if(!empty($product_list->courier)){ $product = explode(',', $product_list->courier);  } ?>
+         <?php $product = array(); 
+         if(!empty($product_list->courier)){ $product = explode(',', $product_list->courier);  } ?>
         <div class="col-md-9">
-                <label class="checkbox-inline i-checks" title="EXW (Ex Works)"><input type="checkbox" value="EXW" name="courier[]" <?php if(!empty($product) && in_array('EXW', $product)){ echo'checked';}?>/> EXW</label>
-                <label class="checkbox-inline i-checks" title="FOB (Freight on Board)"><input type="checkbox" value="FOB" name="courier[]" <?php if(!empty($product) && in_array('FOB', $product)){ echo'checked';}?>/> FOB</label>
-                <label class="checkbox-inline i-checks" title="CIP (Carriage and Insurance Paid to)"><input type="checkbox" value="CIP" name="courier[]" <?php if(!empty($product) && in_array('CIP', $product)){ echo'checked';}?>/> CIP</label>
-                <label class="checkbox-inline i-checks" title="CPT (Carriage Paid to)"><input type="checkbox" value="CPT" name="courier[]" <?php if(!empty($product) && in_array('CPT', $product)){ echo'checked';}?>/> CPT</label>
+
+        <?php if($shippings){
+            foreach ($shippings as $row){  ?>
+                <label class="checkbox-inline i-checks iCheck-helper" title="<?php echo $row->shipping_name; ?>">
+                <input type="checkbox" value="<?php echo $row->shipping_name; ?>" name="courier[]" <?php
+                if(isset($_POST['courier']) && in_array($row->shipping_name,$_POST['courier'])){
+                    echo "checked"; }
+                elseif(!empty($product_list->courier) && in_array($row->shipping_name,$product)){
+                    echo "checked";}?>/>
+                     <?php echo $row->shipping_name; ?></label>
+
+              <?php }
+        } ?>
         </div>
         </div>
     
@@ -234,8 +227,9 @@
 
         <div class="form-group"><label class="col-md-3 control-label">Shipping Charges</label>
         <div class="col-md-9">
-                <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="shipping_checkbox" id="shipping_checkbox" <?php if(!empty($product_list->shipping_charges)) echo 'checked'; ?>/> </span> <input type="text" class="form-control" placeholder="only make typable when clicked" name="shipping_charges" value="<?php if(!empty($product_list->shipping_charges)) echo $product_list->shipping_charges; else  echo set_value('shipping_charges');?>" disabled></div>
-                <p class="small">Allow additional shipping charges. Leave unticked for all quotes to include free shipping</p>
+           <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="shipping_checkbox" id="shipping_checkbox" <?php if(isset($_POST['shipping_checkbox']) ){ echo'checked';} elseif(!empty($product_list->shipping_charges)) echo 'checked'; ?>/> </span> 
+             <input type="text" class="form-control" placeholder="only make typable when clicked" name="shipping_charges" value="<?php if(!empty($product_list->shipping_charges)) echo $product_list->shipping_charges; else  echo set_value('shipping_charges');?>" <?php if(isset($_POST['shipping_charges']) ){ echo'';} elseif(empty($product_list->shipping_charges) ){ echo'disabled';}?>></div>
+           <p class="small">Allow additional shipping charges. Leave unticked for all quotes to include free shipping</p>
         </div>
         </div>
         <div class="hr-line-dashed"></div>                                
@@ -337,15 +331,7 @@
                  </div>
                  <?php echo form_error('image4'); ?>
 
-                  <label  class="col-md-4" >Image 5</label>
-                <div  class="col-md-8">
-                 <?php if (!empty($product_list->image5) && file_exists($product_list->image5)): 
-                $img5 = explode('/', $product_list->image5)?>
-                    <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img5[3]; ?>" class="thumbnail"/>
-                <?php endif ?>
-                 <input type="file" name="image5" class="btn default btn-file">
-                 </div>
-                 <?php echo form_error('image5'); ?>
+                  
 
                 </div>
                 <p class="small" style="text-align:center">You may have up to five (5) product images per listing.</p>
@@ -569,12 +555,13 @@ $(document).ready(function () {
    $(document).ready(function(){
      $("#mpn1").change(function(){
      var product_mpn_isbn = $(this).val(); 
+         var producttypes= <?php echo json_encode($product_types);?>;
      if(product_mpn_isbn){
         $('.check_record').attr("disabled", "disabled");
         jQuery.post('<?php echo base_url()?>marketplace/get_attributes_info/MPN',{product_mpn_isbn:product_mpn_isbn},
         function(data){
          var prod_make= <?php echo json_encode($product_makes); ?>;
-         var producttypes= <?php echo json_encode($pro_type); ?>;
+         console.log(producttypes);
          var productcolors= <?php echo json_encode($product_colors); ?>;
         if(data.STATUS=='true'){
           if(prod_make){
@@ -588,16 +575,22 @@ $(document).ready(function () {
              $('#product_make').html(productmakehtml);
             }
             
-          /*  if(producttypes){
+            if(producttypes){
+                //alert(producttypes);
             var producttypehtml='<option  selected value="">Product Type</option>';
-            $.each(producttypes, function(index, val) {
-                producttypehtml +='<option';
-                if(val.product_type==data.product_type)
-                producttypehtml +=' Selected';
-                producttypehtml +=' >'+val.product_type+'</option>';
-             });
+            $.each(producttypes, function(index, val){producttypehtml +='<optgroup label="'+val.category_name +'">';
+                 if(val.childs){
+                    $.each(val.childs, function(index, val1){ 
+                     producttypehtml +='<option';
+                        if(val1.category_name==data.product_type)
+                        producttypehtml +=' selected="selected"';
+                        producttypehtml +=' >'+val1.category_name+'</option>';
+                     });
+                 }
+              producttypehtml +='</optgroup>';
+              });
              $('#product_type').html(producttypehtml);
-            }*/
+            }
 
              if(productcolors){
             var productcolorhtml='<option  selected value="">Product Color</option>';
@@ -650,6 +643,20 @@ $(document).ready(function () {
             $('input[name="product_model"]').val('');
             $('input[name="product_make"]').val('');
             $('input[name="product_color"]').val('');
+            if(producttypes){
+                //alert(producttypes);
+            var producttypehtml='<option  selected value="">Product Type</option>';
+            $.each(producttypes, function(index, val){producttypehtml +='<optgroup label="'+val.category_name +'">';
+                 if(val.childs){
+                    $.each(val.childs, function(index, val1){ 
+                     producttypehtml +='<option';
+                        producttypehtml +=' >'+val1.category_name+'</option>';
+                     });
+                 }
+              producttypehtml +='</optgroup>';
+              });
+             $('#product_type').html(producttypehtml);
+            }
          }
         });
 
