@@ -803,264 +803,264 @@ class Marketplace extends MX_Controller
     
     function buy_listing($list_id='')
     {
-         $member_id=$this->session->userdata('members_id');
-        
-        //$this->output->enable_profiler(TRUE);
+     $member_id=$this->session->userdata('members_id');
+    
+     //$this->output->enable_profiler(TRUE);
 
-       // $this->form_validation->set_rules('listing_categories', 'listing category', 'required');
-        if($this->input->post('status')==1) {
-            $this->form_validation->set_rules('schedule_date_time', '', '');
-            $this->form_validation->set_rules('product_mpn_isbn', 'product mpn', '');
-            //$this->form_validation->set_rules('product_isbn', 'product isbn', '');
-            $this->form_validation->set_rules('product_make', 'product make', 'required');
-            $this->form_validation->set_rules('product_model', 'product model', 'required');
-            $this->form_validation->set_rules('product_type', 'product type', 'required');
-            $this->form_validation->set_rules('product_color', 'product color', 'required');
-            $this->form_validation->set_rules('condition', 'condition', 'required');
-            $this->form_validation->set_rules('spec', 'spec', 'required');
-            $this->form_validation->set_rules('currency', 'currency', 'required');
-            $this->form_validation->set_rules('currency', 'currency', 'required');
-            $this->form_validation->set_rules('unit_price', 'unit price', 'required|numeric');
-            if(isset($_POST['minimum_checkbox'])){
-              $this->form_validation->set_rules('min_price', 'min price', 'required|numeric');
+     // $this->form_validation->set_rules('listing_categories', 'listing category', 'required');
+     if($this->input->post('status')==1) {
+        $this->form_validation->set_rules('schedule_date_time', '', '');
+        $this->form_validation->set_rules('product_mpn_isbn', 'product mpn', '');
+        //$this->form_validation->set_rules('product_isbn', 'product isbn', '');
+        $this->form_validation->set_rules('product_make', 'product make', 'required');
+        $this->form_validation->set_rules('product_model', 'product model', 'required');
+        $this->form_validation->set_rules('product_type', 'product type', 'required');
+        $this->form_validation->set_rules('product_color', 'product color', 'required');
+        $this->form_validation->set_rules('condition', 'condition', 'required');
+        $this->form_validation->set_rules('spec', 'spec', 'required');
+        $this->form_validation->set_rules('currency', 'currency', 'required');
+        $this->form_validation->set_rules('currency', 'currency', 'required');
+        $this->form_validation->set_rules('unit_price', 'unit price', 'required|numeric');
+        /*if(isset($_POST['minimum_checkbox'])){
+          $this->form_validation->set_rules('min_price', 'min price', 'required|numeric');
+        }*/
+
+        if(isset($_POST['maximum_checkbox'])){
+          $this->form_validation->set_rules('max_price', 'Max price', 'required|numeric');
+        }
+        if(isset($_POST['allowoffer_checkbox'])){
+           $this->form_validation->set_rules('allow_offer', 'allow offer', 'required');
+        }
+        $this->form_validation->set_rules('total_qty', 'total quantity', 'required|numeric');
+        if(isset($_POST['orderqunatity_checkbox'])){
+           $this->form_validation->set_rules('min_qty_order', 'min quantity order', 'required|numeric');
+        }
+        if(empty($list_id)){
+        $this->form_validation->set_rules('courier[]', 'courier', 'required');
+            
+        }
+        $this->form_validation->set_rules('product_desc', 'product description', 'required');
+        $this->form_validation->set_rules('duration', 'duration', 'required');
+
+        if(empty($list_id)){
+            $this->form_validation->set_rules('termsandcondition', 'Terms and condition', 'required');
+        }
+
+    }else{
+        
+        $this->form_validation->set_rules('listing_type', 'listing type', '');
+
+    } 
+    if(!empty($_FILES['image1']['name'])){
+            $this->form_validation->set_rules('image1','','callback_image1_check');
             }
+        if(!empty($_FILES['image2']['name'])){
+            $this->form_validation->set_rules('image2', '', 'callback_image2_check2');
+            }
+
+        if(!empty($_FILES['image3']['name'])){
+            $this->form_validation->set_rules('image3', '', 'callback_image3_check3');
+            }
+
+         if(!empty($_FILES['image4']['name'])){
+            $this->form_validation->set_rules('image4', '', 'callback_image4_check4');
+            }
+
+        if(!empty($_FILES['image5']['name'])){
+        $this->form_validation->set_rules('image5', '', 'callback_image5_check5');
+        }
+        $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+    
+        if ($this->form_validation->run($this) == TRUE){
+
+           $min_price='';
+           $allow_offer='';
+           $min_qty_order='';
+
+           /*if(isset($_POST['minimum_checkbox'])){
+              $min_price=$this->input->post('min_price');
+            }else{
+               $min_price='';
+            }*/
 
             if(isset($_POST['maximum_checkbox'])){
-              $this->form_validation->set_rules('max_price', 'Max price', 'required|numeric');
+              $max_price=$this->input->post('max_price');
+            }else{
+               $max_price='';
             }
             if(isset($_POST['allowoffer_checkbox'])){
-               $this->form_validation->set_rules('allow_offer', 'allow offer', 'required');
-            }
-            $this->form_validation->set_rules('total_qty', 'total quantity', 'required|numeric');
-            if(isset($_POST['orderqunatity_checkbox'])){
-               $this->form_validation->set_rules('min_qty_order', 'min quantity order', 'required|numeric');
-            }
-            if(empty($list_id)){
-            $this->form_validation->set_rules('courier[]', 'courier', 'required');
-                
-            }
-            $this->form_validation->set_rules('product_desc', 'product description', 'required');
-            $this->form_validation->set_rules('duration', 'duration', 'required');
-
-            if(empty($list_id)){
-                $this->form_validation->set_rules('termsandcondition', 'Terms and condition', 'required');
-            }
-
-        }else{
-            
-            $this->form_validation->set_rules('listing_type', 'listing type', '');
-
-        } 
-        if(!empty($_FILES['image1']['name'])){
-                $this->form_validation->set_rules('image1','','callback_image1_check');
-                }
-            if(!empty($_FILES['image2']['name'])){
-                $this->form_validation->set_rules('image2', '', 'callback_image2_check2');
-                }
-
-            if(!empty($_FILES['image3']['name'])){
-                $this->form_validation->set_rules('image3', '', 'callback_image3_check3');
-                }
-
-             if(!empty($_FILES['image4']['name'])){
-                $this->form_validation->set_rules('image4', '', 'callback_image4_check4');
-                }
-
-            if(!empty($_FILES['image5']['name'])){
-            $this->form_validation->set_rules('image5', '', 'callback_image5_check5');
-            }
-            $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
-        
-            if ($this->form_validation->run($this) == TRUE){
-
-               $min_price='';
-               $allow_offer='';
-               $min_qty_order='';
-
-               if(isset($_POST['minimum_checkbox'])){
-                  $min_price=$this->input->post('min_price');
-                }else{
-                   $min_price='';
-                }
-
-                if(isset($_POST['maximum_checkbox'])){
-                  $max_price=$this->input->post('max_price');
-                }else{
-                   $max_price='';
-                }
-                if(isset($_POST['allowoffer_checkbox'])){
-                   $allow_offer=$this->input->post('allow_offer');
-                }else{
-                   $allow_offer='';
-                }
-                
-                if(isset($_POST['orderqunatity_checkbox'])){
-                   $min_qty_order=$this->input->post('min_qty_order');
-                }else{
-                   $min_qty_order='';
-                }
-
-                if(isset($_POST['shipping_checkbox'])){
-                  $shipping_charges=$this->input->post('shipping_charges');
-                }else{
-                   $shipping_charges='';
-                }
-
-                 $shipping_term=$this->input->post('shipping_term');
-                if(!empty($shipping_term)){
-                    $st=explode('@@',$shipping_term );
-                    $shipping_terms=$st[1];
-                }else{
-                    $shipping_terms='';
-                }
-                $courier='';
-                if($courier_array=$this->input->post('courier')){
-                   $courier = implode(',', $courier_array);
-                    /*foreach ($courier_array as $value) {
-                        //$courierinfo=courier_class($value);
-                        $courier=$courierinfo.','.$value;
-                    }*/
-                }
-                $schedule_date_time=date('Y-m-d h:i:s');
-                if($this->input->post('schedule_date_time')){
-                    $schedule_date_time=$this->input->post('schedule_date_time');
-                }
-
-            /*product mpn and isbn check*/
-                $product_mpn    = $this->input->post('product_mpn');
-                
-                $check_product_mpn = $this->marketplace_model->get_row('listing_attributes', array('product_mpn_isbn'=>$product_mpn));
-             
-                $status = '';
-                if(!empty($check_product_mpn) || ($this->input->post('status')==2)){
-                    $status = $this->input->post('status');
-                }else{
-                    $status = 0;
-                }
-
-               
-                
-                $data_insert['schedule_date_time']   =  $schedule_date_time;
-                $data_insert['listing_categories']   =  $this->input->post('listing_categories');
-                $data_insert['listing_type']         =  1;
-                $data_insert['product_mpn_isbn']     =  $this->input->post('product_mpn');
-                $data_insert['product_make']         =  $this->input->post('product_make');
-                $data_insert['product_model']        =  $this->input->post('product_model');
-                $data_insert['product_type']         =  $this->input->post('product_type');
-                $data_insert['product_color']        =  $this->input->post('product_color');
-                $data_insert['condition']            =  $this->input->post('condition');    
-                $data_insert['spec']                 =  $this->input->post('spec');
-                $data_insert['currency']             =  $this->input->post('currency');
-                $data_insert['unit_price']           =  $this->input->post('unit_price');
-                $data_insert['min_price']            =  $min_price;
-                $data_insert['max_price']            =  $max_price;
-                $data_insert['allow_offer']          =  $allow_offer;
-                $data_insert['total_qty']            =  $this->input->post('total_qty');
-                $data_insert['qty_available']        = $this->input->post('total_qty');
-                $data_insert['min_qty_order']        =  $min_qty_order;
-               // $data_insert['shipping_term']        =  $shipping_terms;
-
-                $data_insert['shipping_charges']     =  $shipping_charges;
-                $data_insert['courier']              =  $courier;
-                $data_insert['product_desc']         =  $this->input->post('product_desc');
-                $data_insert['duration']             =  $this->input->post('duration');
-                $data_insert['listing_end_datetime'] =  date('Y-m-d H:i:s', strtotime("+".$this->input->post('duration')." days"));            
-                $data_insert['member_id']            = $member_id; 
-                $data_insert['status']               = $status; 
-            if(!empty($list_id))
-                $data_insert['updated']              = date('Y-m-d h:i:s A');
-            else
-                $data_insert['created']              = date('Y-m-d h:i:s A');
-                
-            $list_update = '';
-            if(!empty($list_id)){
-            $list_update =  $this->marketplace_model->get_row('listing', array('id'=>$list_id));
-            }
-                
-                if($this->session->userdata('image1_check')!=''):
-                    if(!empty($list_update->image1)&&file_exists($list_update->image1)){
-                        $img1 = explode('/', $list_update->image1);
-                        @unlink($list_update->image1);
-                        @unlink('public/upload/listing/small/'.$img1[3]);
-                        @unlink('public/upload/listing/large/'.$img1[3]);
-                        @unlink('public/upload/listing/thumbnail/'.$img1[3]);
-                    }
-                    $image1_check=$this->session->userdata('image1_check');
-                    $data_insert['image1'] = 'public/upload/listing/'.$image1_check['image1'];
-                   $this->session->unset_userdata('image1_check');
-                endif;
-
-                if($this->session->userdata('image2_check2')!=''):
-                    if(!empty($list_update->image2)&&file_exists($list_update->image2)){
-                       $img2 = explode('/', $list_update->image2);
-                        @unlink($list_update->image2);
-                        @unlink('public/upload/listing/small/'.$img2[3]);
-                        @unlink('public/upload/listing/large/'.$img2[3]);
-                        @unlink('public/upload/listing/thumbnail/'.$img2[3]);
-                    }
-                    $image2_check2=$this->session->userdata('image2_check2');
-                    $data_insert['image2'] = 'public/upload/listing/'.$image2_check2['image2'];
-                    $this->session->unset_userdata('image2_check2');
-                endif;
-
-                if($this->session->userdata('image3_check3')!=''):
-                    if(!empty($list_update->image3)&&file_exists($list_update->image3)){
-                       $img3 = explode('/', $list_update->image3);
-                        @unlink($list_update->image3);
-                        @unlink('public/upload/listing/small/'.$img3[3]);
-                        @unlink('public/upload/listing/large/'.$img3[3]);
-                        @unlink('public/upload/listing/thumbnail/'.$img3[3]);
-                    }
-                    $image3_check3=$this->session->userdata('image3_check3');
-                    $data_insert['image3'] = 'public/upload/listing/'.$image3_check3['image3'];
-                    $this->session->unset_userdata('image3_check3');
-                endif;
-
-                if($this->session->userdata('image4_check4')!=''):
-                    if(!empty($list_update->image4)&&file_exists($list_update->image4)){
-                       $img4 = explode('/', $list_update->image4);
-                        @unlink($list_update->image4);
-                        @unlink('public/upload/listing/small/'.$img4[3]);
-                        @unlink('public/upload/listing/large/'.$img4[3]);
-                        @unlink('public/upload/listing/thumbnail/'.$img4[3]);
-                    }
-                    $image4_check4=$this->session->userdata('image4_check4');
-                    $data_insert['image4'] = 'public/upload/listing/'.$image4_check4['image4'];
-                    $this->session->unset_userdata('image4_check4');
-                endif;
-
-                if($this->session->userdata('image5_check5')!=''):
-                    if(!empty($list_update->image5)&&file_exists($list_update->image5)){
-                       $img5 = explode('/', $list_update->image5);
-                        @unlink($list_update->image5);
-                        @unlink('public/upload/listing/small/'.$img5[3]);
-                        @unlink('public/upload/listing/large/'.$img5[3]);
-                        @unlink('public/upload/listing/thumbnail/'.$img5[3]);
-                    }
-                    $image5_check5=$this->session->userdata('image5_check5');
-                    $data_insert['image5'] = 'public/upload/listing/'.$image5_check5['image5'];
-                    $this->session->unset_userdata('image5_check5');
-                endif;
-
-            if(!empty($list_id)){
-
-                $this->marketplace_model->update('listing',$data_insert, array('id'=>$list_id));
-                $this->session->set_flashdata('msg_success','Listing Update successfully.');
-                if(!empty($status) && $status == 2)
-                    redirect('marketplace/saved_listing');
-                else
-                redirect('marketplace/listing');
+               $allow_offer=$this->input->post('allow_offer');
             }else{
-               $this->marketplace_model->insert('listing',$data_insert);
+               $allow_offer='';
             }
-            if($status == 1){
-               $this->session->set_flashdata('msg_success','Listing added successfully.');
-                redirect('marketplace/listing');
-            }elseif($status == 2){
-               $this->session->set_flashdata('msg_success','Listing save for later, it will be under considration.');
-               redirect('marketplace/saved_listing');
-                
+            
+            if(isset($_POST['orderqunatity_checkbox'])){
+               $min_qty_order=$this->input->post('min_qty_order');
+            }else{
+               $min_qty_order='';
             }
+
+            if(isset($_POST['shipping_checkbox'])){
+              $shipping_charges=$this->input->post('shipping_charges');
+            }else{
+               $shipping_charges='';
+            }
+
+             $shipping_term=$this->input->post('shipping_term');
+            if(!empty($shipping_term)){
+                $st=explode('@@',$shipping_term );
+                $shipping_terms=$st[1];
+            }else{
+                $shipping_terms='';
+            }
+            $courier='';
+            if($courier_array=$this->input->post('courier')){
+               $courier = implode(',', $courier_array);
+                /*foreach ($courier_array as $value) {
+                    //$courierinfo=courier_class($value);
+                    $courier=$courierinfo.','.$value;
+                }*/
+            }
+            $schedule_date_time=date('Y-m-d h:i:s');
+            if($this->input->post('schedule_date_time')){
+                $schedule_date_time=$this->input->post('schedule_date_time');
+            }
+
+        /*product mpn and isbn check*/
+            $product_mpn    = $this->input->post('product_mpn');
+            
+            $check_product_mpn = $this->marketplace_model->get_row('listing_attributes', array('product_mpn_isbn'=>$product_mpn));
+         
+            $status = '';
+            if(!empty($check_product_mpn) || ($this->input->post('status')==2)){
+                $status = $this->input->post('status');
+            }else{
+                $status = 0;
+            }
+
+           
+            
+            $data_insert['schedule_date_time']   =  $schedule_date_time;
+            $data_insert['listing_categories']   =  $this->input->post('listing_categories');
+            $data_insert['listing_type']         =  1;
+            $data_insert['product_mpn_isbn']     =  $this->input->post('product_mpn');
+            $data_insert['product_make']         =  $this->input->post('product_make');
+            $data_insert['product_model']        =  $this->input->post('product_model');
+            $data_insert['product_type']         =  $this->input->post('product_type');
+            $data_insert['product_color']        =  $this->input->post('product_color');
+            $data_insert['condition']            =  $this->input->post('condition');    
+            $data_insert['spec']                 =  $this->input->post('spec');
+            $data_insert['currency']             =  $this->input->post('currency');
+            $data_insert['unit_price']           =  $this->input->post('unit_price');
+            //$data_insert['min_price']            =  $min_price;
+            $data_insert['max_price']            =  $max_price;
+            $data_insert['allow_offer']          =  $allow_offer;
+            $data_insert['total_qty']            =  $this->input->post('total_qty');
+            $data_insert['qty_available']        = $this->input->post('total_qty');
+            $data_insert['min_qty_order']        =  $min_qty_order;
+           // $data_insert['shipping_term']        =  $shipping_terms;
+
+            $data_insert['shipping_charges']     =  $shipping_charges;
+            $data_insert['courier']              =  $courier;
+            $data_insert['product_desc']         =  $this->input->post('product_desc');
+            $data_insert['duration']             =  $this->input->post('duration');
+            $data_insert['listing_end_datetime'] =  date('Y-m-d H:i:s', strtotime("+".$this->input->post('duration')." days"));            
+            $data_insert['member_id']            = $member_id; 
+            $data_insert['status']               = $status; 
+        if(!empty($list_id))
+            $data_insert['updated']              = date('Y-m-d h:i:s A');
+        else
+            $data_insert['created']              = date('Y-m-d h:i:s A');
+            
+        $list_update = '';
+        if(!empty($list_id)){
+        $list_update =  $this->marketplace_model->get_row('listing', array('id'=>$list_id));
+        }
+            
+            if($this->session->userdata('image1_check')!=''):
+                if(!empty($list_update->image1)&&file_exists($list_update->image1)){
+                    $img1 = explode('/', $list_update->image1);
+                    @unlink($list_update->image1);
+                    @unlink('public/upload/listing/small/'.$img1[3]);
+                    @unlink('public/upload/listing/large/'.$img1[3]);
+                    @unlink('public/upload/listing/thumbnail/'.$img1[3]);
+                }
+                $image1_check=$this->session->userdata('image1_check');
+                $data_insert['image1'] = 'public/upload/listing/'.$image1_check['image1'];
+               $this->session->unset_userdata('image1_check');
+            endif;
+
+            if($this->session->userdata('image2_check2')!=''):
+                if(!empty($list_update->image2)&&file_exists($list_update->image2)){
+                   $img2 = explode('/', $list_update->image2);
+                    @unlink($list_update->image2);
+                    @unlink('public/upload/listing/small/'.$img2[3]);
+                    @unlink('public/upload/listing/large/'.$img2[3]);
+                    @unlink('public/upload/listing/thumbnail/'.$img2[3]);
+                }
+                $image2_check2=$this->session->userdata('image2_check2');
+                $data_insert['image2'] = 'public/upload/listing/'.$image2_check2['image2'];
+                $this->session->unset_userdata('image2_check2');
+            endif;
+
+            if($this->session->userdata('image3_check3')!=''):
+                if(!empty($list_update->image3)&&file_exists($list_update->image3)){
+                   $img3 = explode('/', $list_update->image3);
+                    @unlink($list_update->image3);
+                    @unlink('public/upload/listing/small/'.$img3[3]);
+                    @unlink('public/upload/listing/large/'.$img3[3]);
+                    @unlink('public/upload/listing/thumbnail/'.$img3[3]);
+                }
+                $image3_check3=$this->session->userdata('image3_check3');
+                $data_insert['image3'] = 'public/upload/listing/'.$image3_check3['image3'];
+                $this->session->unset_userdata('image3_check3');
+            endif;
+
+            if($this->session->userdata('image4_check4')!=''):
+                if(!empty($list_update->image4)&&file_exists($list_update->image4)){
+                   $img4 = explode('/', $list_update->image4);
+                    @unlink($list_update->image4);
+                    @unlink('public/upload/listing/small/'.$img4[3]);
+                    @unlink('public/upload/listing/large/'.$img4[3]);
+                    @unlink('public/upload/listing/thumbnail/'.$img4[3]);
+                }
+                $image4_check4=$this->session->userdata('image4_check4');
+                $data_insert['image4'] = 'public/upload/listing/'.$image4_check4['image4'];
+                $this->session->unset_userdata('image4_check4');
+            endif;
+
+            if($this->session->userdata('image5_check5')!=''):
+                if(!empty($list_update->image5)&&file_exists($list_update->image5)){
+                   $img5 = explode('/', $list_update->image5);
+                    @unlink($list_update->image5);
+                    @unlink('public/upload/listing/small/'.$img5[3]);
+                    @unlink('public/upload/listing/large/'.$img5[3]);
+                    @unlink('public/upload/listing/thumbnail/'.$img5[3]);
+                }
+                $image5_check5=$this->session->userdata('image5_check5');
+                $data_insert['image5'] = 'public/upload/listing/'.$image5_check5['image5'];
+                $this->session->unset_userdata('image5_check5');
+            endif;
+
+        if(!empty($list_id)){
+
+            $this->marketplace_model->update('listing',$data_insert, array('id'=>$list_id));
+            $this->session->set_flashdata('msg_success','Listing Update successfully.');
+            if(!empty($status) && $status == 2)
+                redirect('marketplace/saved_listing');
+            else
+            redirect('marketplace/listing');
+        }else{
+           $this->marketplace_model->insert('listing',$data_insert);
+        }
+        if($status == 1){
+           $this->session->set_flashdata('msg_success','Listing added successfully.');
+            redirect('marketplace/listing');
+        }elseif($status == 2){
+           $this->session->set_flashdata('msg_success','Listing save for later, it will be under considration.');
+           redirect('marketplace/saved_listing');
+            
+        }
         }
 
         $data['main'] = 'marketplace';        

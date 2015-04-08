@@ -33,8 +33,11 @@
 <div class="ibox-content"> <!-- Selling -->
             <div class="form-group"><label class="col-md-3 control-label">Schedule Listing</label>
          <div class="col-md-9"> 
-            <div class="input-group date form_datetime " data-date="<?php if(!empty($product_list->schedule_date_time)) echo $product_list->schedule_date_time; else echo date('Y').'-'.date('m').'-'.date('d') ?>" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
-                <input class="form-control" size="16" type="text" value="<?php if(!empty($product_list->schedule_date_time)) echo $product_list->schedule_date_time; else echo set_value('schedule_date_time'); ?>" readonly >
+            <div class="input-group date form_datetime " data-date="<?php if(!empty($product_list->schedule_date_time)) echo $product_list->schedule_date_time; else echo date('Y-m-d') ?>" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+                <input class="form-control" size="16" type="text" value="<?php if(!empty($product_list->schedule_date_time)){ 
+                    echo $product_list->schedule_date_time;} 
+                    elseif(isset($_POST['schedule_date_time']) && !empty($_POST['schedule_date_time'])){  echo set_value('schedule_date_time');}
+                else{ echo date('d F Y - H:i a');} ?>" readonly >
                 <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                 <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span><br>
             </div>
@@ -95,6 +98,7 @@
                  <?php }} ?>
             </datalist>
         <?php echo form_error('product_color'); ?>
+
         </div>
     </div>
 
@@ -190,13 +194,13 @@
             </div>
         </div>
         
-        <div class="form-group"><label class="col-md-3 control-label">Min Unit Price</label>
+       <!--  <div class="form-group"><label class="col-md-3 control-label">Min Unit Price</label>
             <div class="col-md-9">
                 <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="minimum_checkbox" id="minimum_checkbox" <?php if(!empty($_POST['minimum_checkbox']) ){ echo'checked';}?><?php if(!empty($product_list->min_price)){ echo'checked';}?>/> </span> <input type="text" class="form-control" placeholder="only make typable when clicked" name="min_price" value="<?php if(!empty($product_list->min_price)) echo $product_list->min_price; else echo set_value('min_price');?>" <?php if(empty($product_list->min_price) ){ echo'disabled';}?>></div>
                 <p class="small">tick to enable. Any offers below this will be auto rejected, leave blank to allow any offers if ticked.</p>
                 <?php echo form_error('min_price'); ?>
             </div>
-        </div>
+        </div> -->
 
          <div class="form-group"><label class="col-md-3 control-label">Max Unit Price</label>
             <div class="col-md-9">
@@ -251,7 +255,7 @@
                 <?php $duration = list_duration(); 
                 if($duration){
                     foreach ($duration as $key => $value){ ?>
-                      <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['duration']){ echo'selected';}?><?php if(isset($product_list->duration) && $value==$product_list->duration){ echo'selected';}?>><?php echo $value; ?> day</option>
+                      <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['duration']){ echo'selected';}elseif($value==7){ echo "selected";}?><?php if(isset($product_list->duration) && $value==$product_list->duration){ echo'selected';}?>><?php echo $value; ?> day</option>
                       <?php } 
                 } ?>
                 </select>
@@ -584,7 +588,7 @@ $(document).ready(function () {
              $('#product_make').html(productmakehtml);
             }
             
-            if(producttypes){
+          /*  if(producttypes){
             var producttypehtml='<option  selected value="">Product Type</option>';
             $.each(producttypes, function(index, val) {
                 producttypehtml +='<option';
@@ -593,7 +597,7 @@ $(document).ready(function () {
                 producttypehtml +=' >'+val.product_type+'</option>';
              });
              $('#product_type').html(producttypehtml);
-            }
+            }*/
 
              if(productcolors){
             var productcolorhtml='<option  selected value="">Product Color</option>';
@@ -642,6 +646,11 @@ $(document).ready(function () {
           });
            $('.check_record').removeAttr("disabled");   
          }
+         else{
+            $('input[name="product_model"]').val('');
+            $('input[name="product_make"]').val('');
+            $('input[name="product_color"]').val('');
+         }
         });
 
     
@@ -654,6 +663,7 @@ $(document).ready(function () {
                 $('input[name="shipping_charges"]').prop('disabled', false);
             }
             else{
+                $('input[name="shipping_charges"]').val(''); 
                $('input[name="shipping_charges"]').prop('disabled', true); 
             }
         });
@@ -663,6 +673,7 @@ $(document).ready(function () {
                 $('select[name="allow_offer"]').prop('disabled', false);
             }
             else{
+                $('select[name="allow_offer"]').val('');
                $('select[name="allow_offer"]').prop('disabled', true); 
             }
         });
@@ -672,6 +683,8 @@ $(document).ready(function () {
                 $('input[name="min_qty_order"]').prop('disabled', false);
             }
             else{
+
+                $('input[name="min_qty_order"]').val(''); 
                $('input[name="min_qty_order"]').prop('disabled', true); 
             }
         });
@@ -681,6 +694,7 @@ $(document).ready(function () {
                 $('input[name="min_price"]').prop('disabled', false);
             }
             else{
+                $('input[name="min_price"]').val('');
                $('input[name="min_price"]').prop('disabled', true); 
             }
         });
@@ -690,7 +704,8 @@ $(document).ready(function () {
                 $('input[name="max_price"]').prop('disabled', false);
             }
             else{
-               $('input[name="max_price"]').prop('disabled', true); 
+               $('input[name="max_price"]').val(''); 
+               $('input[name="max_price"]').prop('disabled',true); 
             }
         });
 
@@ -744,49 +759,46 @@ var today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(
 
 
 
-                            <div class="modal inmodal fade" id="shipping" tabindex="-1" role="dialog"  aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                            <h4 class="modal-title">Shipping Terms</h4>
-                                            <small class="font-bold">Incoterms rules or International Commercial Terms</small>
-                                        </div>
+<div class="modal inmodal fade" id="shipping" tabindex="-1" role="dialog"  aria-hidden="true">
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title">Shipping Terms</h4>
+            <small class="font-bold">Incoterms rules or International Commercial Terms</small>
+        </div>
 
-                                        <div class="modal-body">
-                                          <strong>EXW – Ex Works (named place)</strong><br />
-                                          <p>The seller makes the goods available at his/her premises. This term places the maximum obligation on the buyer and minimum obligations on the seller. The Ex Works term is often used when making an initial quotation for the sale of goods without any costs included. EXW means that a buyer incurs the risks for bringing the goods to their final destination. The seller does not load the goods on collecting vehicles and does not clear them for export. If the seller does load the goods, he does so at buyer's risk and cost. If parties wish seller to be responsible for the loading of the goods on departure and to bear the risk and all costs of such loading, this must be made clear by adding explicit wording to this effect in the contract of sale.</p>
-                                          <p>The buyer arranges the pickup of the freight from the supplier's designated ship site, owns the in-transit freight, and is responsible for clearing the goods through Customs. The buyer is also responsible for completing all the export documentation.</p>
-                                          <p>These documentary requirements may cause two principal issues. Firstly, the stipulation for the buyer to complete the export declaration can be an issue in certain jurisdictions (not least the European Union) where the customs regulations require the declarant to be either an individual or corporation resident within the jurisdiction. Secondly, most jurisdictions require companies to provide proof of export for tax purposes. In an Ex-Works shipment the buyer is under no obligation to provide such proof, or indeed to even export the goods. It is therefore of utmost importance that these matters are discussed with the buyer before the contract is agreed. It may well be that another Incoterm, such as FCA seller's premises, may be more suitable.</p>
-                                          
-                                          
-                                          <strong>FOB – Free on Board (named port of shipment)</strong><br />
-                                          <p>The seller must advance government tax in the country of origin as of commitment to load the goods on board a vessel designated by the buyer. Cost and risk are divided when the goods are sea transport in containers (see Incoterms 2010, ICC publication 715). The seller must instruct the buyer the details of the vessel and the port where the goods are to be loaded, and there is no reference to, or provision for, the use of a carrier or forwarder. This term has been greatly misused over the last three decades ever since Incoterms 1980 explained that FCA should be used for container shipments.</p>
-                                          <p>It means the seller pays for transportation of goods to the port of shipment, loading cost. The buyer pays cost of marine freight transportation, insurance, unloading and transportation cost from the arrival port to destination. The passing of risk occurs when the goods are in buyer account. The buyer arranges for the vessel and the shipper has to load the goods and the named vessel at the named port of shipment with the dates stipulated in the contract of sale as informed by the buyer.</p>
-                                          
-                                          <strong>CPT – Carriage Paid To (named place of destination)</strong><br />
-                                          <p>CPT replaces the venerable C&F (cost and freight) and CFR terms for all shipping modes outside of non-containerised seafreight.</p>
-                                          <p>The seller pays for the carriage of the goods up to the named place of destination. Risk transfers to buyer upon handing goods over to the first carrier at the place of shipment in the country of Export. The Shipper is responsible for origin costs including export clearance and freight costs for carriage to named place (usually a destination port or airport). The shipper is not responsible for delivery to the final destination (generally the buyer's facilities), or for buying insurance. If the buyer does require the seller to obtain insurance, the Incoterm CIP should be considered.</p>
-                                          
-                                          <strong>CIP – Carriage and Insurance Paid to (named place of destination)</strong><br />
-                                          <p>This term is broadly similar to the above CPT term, with the exception that the seller is required to obtain insurance for the goods while in transit. CIP requires the seller to insure the goods for 110% of their value under at least the minimum cover of the Institute Cargo Clauses of the Institute of London Underwriters (which would be Institute Cargo Clauses (C)), or any similar set of clauses. The policy should be in the same currency as the contract.</p>
-                                          
-                                          <p>CIP can be used for all modes of transport, whereas the equivalent term CIF can only be used for non-containerised seafreight.</p>
-                                          <strong>Data Source</strong><br />
-                                          <p>Taken from <a href="http://en.wikipedia.org/wiki/Incoterms" target="_blank">Incoterms Wikipedia page</a></p>
+        <div class="modal-body">
+          <strong>EXW – Ex Works (named place)</strong><br />
+          <p>The seller makes the goods available at his/her premises. This term places the maximum obligation on the buyer and minimum obligations on the seller. The Ex Works term is often used when making an initial quotation for the sale of goods without any costs included. EXW means that a buyer incurs the risks for bringing the goods to their final destination. The seller does not load the goods on collecting vehicles and does not clear them for export. If the seller does load the goods, he does so at buyer's risk and cost. If parties wish seller to be responsible for the loading of the goods on departure and to bear the risk and all costs of such loading, this must be made clear by adding explicit wording to this effect in the contract of sale.</p>
+          <p>The buyer arranges the pickup of the freight from the supplier's designated ship site, owns the in-transit freight, and is responsible for clearing the goods through Customs. The buyer is also responsible for completing all the export documentation.</p>
+          <p>These documentary requirements may cause two principal issues. Firstly, the stipulation for the buyer to complete the export declaration can be an issue in certain jurisdictions (not least the European Union) where the customs regulations require the declarant to be either an individual or corporation resident within the jurisdiction. Secondly, most jurisdictions require companies to provide proof of export for tax purposes. In an Ex-Works shipment the buyer is under no obligation to provide such proof, or indeed to even export the goods. It is therefore of utmost importance that these matters are discussed with the buyer before the contract is agreed. It may well be that another Incoterm, such as FCA seller's premises, may be more suitable.</p>
+          
+          
+          <strong>FOB – Free on Board (named port of shipment)</strong><br />
+          <p>The seller must advance government tax in the country of origin as of commitment to load the goods on board a vessel designated by the buyer. Cost and risk are divided when the goods are sea transport in containers (see Incoterms 2010, ICC publication 715). The seller must instruct the buyer the details of the vessel and the port where the goods are to be loaded, and there is no reference to, or provision for, the use of a carrier or forwarder. This term has been greatly misused over the last three decades ever since Incoterms 1980 explained that FCA should be used for container shipments.</p>
+          <p>It means the seller pays for transportation of goods to the port of shipment, loading cost. The buyer pays cost of marine freight transportation, insurance, unloading and transportation cost from the arrival port to destination. The passing of risk occurs when the goods are in buyer account. The buyer arranges for the vessel and the shipper has to load the goods and the named vessel at the named port of shipment with the dates stipulated in the contract of sale as informed by the buyer.</p>
+          
+          <strong>CPT – Carriage Paid To (named place of destination)</strong><br />
+          <p>CPT replaces the venerable C&F (cost and freight) and CFR terms for all shipping modes outside of non-containerised seafreight.</p>
+          <p>The seller pays for the carriage of the goods up to the named place of destination. Risk transfers to buyer upon handing goods over to the first carrier at the place of shipment in the country of Export. The Shipper is responsible for origin costs including export clearance and freight costs for carriage to named place (usually a destination port or airport). The shipper is not responsible for delivery to the final destination (generally the buyer's facilities), or for buying insurance. If the buyer does require the seller to obtain insurance, the Incoterm CIP should be considered.</p>
+          
+          <strong>CIP – Carriage and Insurance Paid to (named place of destination)</strong><br />
+          <p>This term is broadly similar to the above CPT term, with the exception that the seller is required to obtain insurance for the goods while in transit. CIP requires the seller to insure the goods for 110% of their value under at least the minimum cover of the Institute Cargo Clauses of the Institute of London Underwriters (which would be Institute Cargo Clauses (C)), or any similar set of clauses. The policy should be in the same currency as the contract.</p>
+          
+          <p>CIP can be used for all modes of transport, whereas the equivalent term CIF can only be used for non-containerised seafreight.</p>
+          <strong>Data Source</strong><br />
+          <p>Taken from <a href="http://en.wikipedia.org/wiki/Incoterms" target="_blank">Incoterms Wikipedia page</a></p>
 
 
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        </div>
-                                        
-                                    </dl>
-                                </div>
-                            </div><!-- /row -->
-              </div></div></div></div>
-            <!--<div class="col-lg-3">
-                <img alt="image" class="img-circle" src="public/main/template/gsm/images/members/no_profile.jpg">  
-            </div>-->
+        
+        
+        
+        
+        
+        </div>
+        
+    </dl>
+</div>
+</div><!-- /row -->
+</div>
