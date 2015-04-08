@@ -17,7 +17,6 @@ class Admin extends MX_Controller
             redirect('admin/login');
         }
         else{
-            
             redirect('admin/dashboard');
         }
         
