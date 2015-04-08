@@ -5,15 +5,16 @@ class Admin extends MX_Controller
     {
         parent::__construct();   
         //$CI =& get_instance();
-        $this->load->model('admin_model');     
-       
-    }
-    function index()
-    { 
+        $this->load->model('admin_model'); 
         if ( ! $this->session->userdata('admin_logged_in'))
         { 
             redirect('admin/login');
         }
+       
+    }
+    function index()
+    { 
+        
         $data['main'] = 'admin';        
         $data['title'] = 'GSM - Admin Panel';        
         $data['page'] = 'dashboard';

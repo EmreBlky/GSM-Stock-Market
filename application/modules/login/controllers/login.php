@@ -238,10 +238,10 @@ class Login extends MX_Controller{
                     
                     $admin_data = array(
                                                     'admin_members_id'  	=> $aid,
-                                                    //'username'  	=> $member->username,
-                                                    'admin_firstname'         => $admin->firstname,
-                                                    'admin_lastname'          => $admin->lastname,
-                                                    'admin_logged_in' 	=> TRUE
+                                                    //'username'                  => $member->username,
+                                                    'admin_firstname'           => $admin->firstname,
+                                                    'admin_lastname'            => $admin->lastname,
+                                                    'admin_logged_in'           => TRUE
                                                     );
 
                     $this->session->set_userdata($admin_data);
