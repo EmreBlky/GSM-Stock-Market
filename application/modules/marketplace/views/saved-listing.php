@@ -15,131 +15,242 @@
         </div>
         <div class="col-lg-4">
             <div class="title-action">
-                <!-- <a href="marketplace/create_listing" class="btn btn-primary" ><i class="fa fa-plus"></i> Create New Listing</a> -->
             </div>
         </div>
     </div>
     <?php msg_alert(); ?>
     
-        <div class="wrapper wrapper-content animated fadeInRight">
-            <div class="row">
-                <div class="col-lg-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h5>Saved listing</h5>
-                    </div>
-                    <div class="ibox-content">
-
-                    <table class="table table-striped table-bordered table-hover selling_offers" >
-                    <thead>
-                    <tr>
-                        <th>End Date</th>
-                        <th>MPN/ISBN</th>
-                        <th>Make &amp; Model</th>
-                        <th>Condition</th>
-                        <th>Price</th>
-                        <th>QTY</th>
-                        <th>Spec</th>
-                        <th>Options</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php  if(!empty($listing_save_later)):  ?>
-                        <?php foreach ($listing_save_later as $value): ?>
-                        <tr>
-                            <td><?php echo date('h:i d-m', strtotime($value->listing_end_datetime)); ?></td>
-                            <td><?php echo $value->product_mpn_isbn; ?></td>
-                            <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
-                            <td><?php echo $value->condition; ?></td>
-                            <td data-toggle="tooltip" data-placement="left" title="t"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
-                            <td><?php echo $value->qty_available; ?></td>
-                            <td><?php echo $value->spec; ?></td>
-                            <th style="text-align:center">
-                            <?php if (!empty($value->listing_type) && $value->listing_type == 1): ?>
-                            <a href="<?php echo base_url().'marketplace/buy_listing/'.$value->id.'/saved_listing'; ?>" class="btn btn-warning" style="font-size:10px"><i class="fa fa-paste"></i> List Now</a>
-                        <?php elseif(!empty($value->listing_type) && $value->listing_type == 2): ?>
-                             <a href="<?php echo base_url().'marketplace/sell_listing/'.$value->id.'/saved_listing'; ?>" class="btn btn-warning" style="font-size:10px"><i class="fa fa-paste"></i> List Now</a>   
-                        <?php endif ?>
-                      
-                            <a class="btn btn-danger" href="<?php echo base_url().'marketplace/listing_delete/'.$value->id; ?>" style="font-size:10px" onclick=" if(confirm('Are you sure want to delete list')){ return true; }else{ return false; }"><i class="fa fa-times"></i> <span class="bold">Delete</span></a>
-                            </th>
-                        </tr>
-                   
-                        <?php endforeach ?>
-                    <?php endif; ?>
-                    </tbody>
-                    </table>
-
-                    </div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+            <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Saved listing - Buy</h5>
                 </div>
-            </div>
-            </div>
-            
-            
-            <div class="row">
-                <div class="col-lg-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h5>Scheduled listing</h5>
-                    </div>
-                    <div class="ibox-content">
+                <div class="ibox-content">
 
-                    <table class="table table-striped table-bordered table-hover buying_requests" >
-                    <thead>
+                <table class="table table-striped table-bordered table-hover selling_offers" >
+                <thead>
+                <tr>
+                    <th>End Date</th>
+                    <th>MPN/ISBN</th>
+                    <th>Make &amp; Model</th>
+                    <th>Condition</th>
+                    <th>Price</th>
+                    <th>QTY</th>
+                    <th>Spec</th>
+                    <th>Options</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php  if(!empty($listing_save_later_buy)):  ?>
+                    <?php foreach ($listing_save_later_buy as $value): ?>
                     <tr>
-                        <th>End Date</th>
-                        <th>MPN/ISBN</th>
-                        <th>Make &amp; Model</th>
-                        <th>Condition</th>
-                        <th>Price</th>
-                        <th>QTY</th>
-                        <th>Spec</th>
-                        <th>Options</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                     <?php if(!empty($schedule_listing)): ?>
-                        <?php foreach ($schedule_listing as $value):
-                   
-                        if($value->schedule_date_time >= $value->listing_end_datetime): ?>
-                        <tr>
-                           
-                            <td><?php echo date('h:i d-m', strtotime($value->listing_end_datetime)); ?></td>
-                            <td><?php echo $value->product_mpn_isbn; ?></td>
-                            <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
-                            <td><?php echo $value->condition; ?></td>
-                            <td data-toggle="tooltip" data-placement="left" title="t"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
-                            <td><?php echo $value->qty_available; ?></td>
-                            <td><?php echo $value->spec; ?></td>
-                            <th style="text-align:center">
+                        <td><?php echo date('h:i d-m', strtotime($value->listing_end_datetime)); ?></td>
+                        <td><?php echo $value->product_mpn_isbn; ?></td>
+                        <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
+                        <td><?php echo $value->condition; ?></td>
+                        <td data-toggle="tooltip" data-placement="left" title="t"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
+                        <td><?php echo $value->qty_available; ?></td>
+                        <td><?php echo $value->spec; ?></td>
+                        <th style="text-align:center">
                         <?php if (!empty($value->listing_type) && $value->listing_type == 1): ?>
-                           <a href="<?php echo base_url().'marketplace/buy_listing/'.$value->id.'/saved_listing'; ?>" class="btn btn-warning" style="font-size:10px"><i class="fa fa-paste"></i> Edit</a>
-                        <?php elseif(!empty($value->listing_type) && $value->listing_type == 2): ?>
-                             <a href="<?php echo base_url().'marketplace/sell_listing/'.$value->id.'/saved_listing'; ?>" class="btn btn-warning" style="font-size:10px"><i class="fa fa-paste"></i> Edit</a>   
-                        <?php endif ?>
+                        <a href="<?php echo base_url().'marketplace/buy_listing/'.$value->id.'/saved_listing'; ?>" class="btn btn-warning" style="font-size:10px"><i class="fa fa-paste"></i> List Now</a>
+                    <?php elseif(!empty($value->listing_type) && $value->listing_type == 2): ?>
+                         <a href="<?php echo base_url().'marketplace/sell_listing/'.$value->id.'/saved_listing'; ?>" class="btn btn-warning" style="font-size:10px"><i class="fa fa-paste"></i> List Now</a>   
+                    <?php endif ?>
+                  
+                        <a class="btn btn-danger" href="<?php echo base_url().'marketplace/listing_delete/'.$value->id; ?>" style="font-size:10px" onclick=" if(confirm('Are you sure want to delete list')){ return true; }else{ return false; }"><i class="fa fa-times"></i> <span class="bold">Delete</span></a>
+                        </th>
+                    </tr>
+               
+                    <?php endforeach ?>
+                <?php endif; ?>
+                </tbody>
+                </table>
 
-                            <a href="<?php echo base_url().'marketplace/list_now_status/'.$value->id; ?>" class="btn btn-info" style="font-size:10px"><i class="fa fa-paste"></i> List Now</a>
-                            <a class="btn btn-danger" href="<?php echo base_url().'marketplace/listing_delete/'.$value->id; ?>" style="font-size:10px" onclick=" if(confirm('Are you sure want to delete list')){ return true; }else{ return false; }"><i class="fa fa-times"></i> <span class="bold">Delete</span></a>
-                            </th>
-                        </tr>
-                     <?php endif; ?>
-                            
-                        <?php endforeach ?>
-                    <?php endif; ?>
-                    
-                    
-                    
-                    
-                    </tbody>
-                    </table>
-
-                    </div>
                 </div>
             </div>
-            
+        </div>
+        </div>
+    <div class="row">
+            <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Saved listing - Sell</h5>
             </div>
-            
+            <div class="ibox-content">
+
+            <table class="table table-striped table-bordered table-hover selling_offers" >
+            <thead>
+            <tr>
+                <th>End Date</th>
+                <th>MPN/ISBN</th>
+                <th>Make &amp; Model</th>
+                <th>Condition</th>
+                <th>Price</th>
+                <th>QTY</th>
+                <th>Spec</th>
+                <th>Options</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php  if(!empty($listing_save_later_sell)):  ?>
+                <?php foreach ($listing_save_later_sell as $value): ?>
+                <tr>
+                    <td><?php echo date('h:i d-m', strtotime($value->listing_end_datetime)); ?></td>
+                    <td><?php echo $value->product_mpn_isbn; ?></td>
+                    <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
+                    <td><?php echo $value->condition; ?></td>
+                    <td data-toggle="tooltip" data-placement="left" title="t"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
+                    <td><?php echo $value->qty_available; ?></td>
+                    <td><?php echo $value->spec; ?></td>
+                    <th style="text-align:center">
+                    <?php if (!empty($value->listing_type) && $value->listing_type == 1): ?>
+                    <a href="<?php echo base_url().'marketplace/buy_listing/'.$value->id.'/saved_listing'; ?>" class="btn btn-warning" style="font-size:10px"><i class="fa fa-paste"></i> List Now</a>
+                <?php elseif(!empty($value->listing_type) && $value->listing_type == 2): ?>
+                     <a href="<?php echo base_url().'marketplace/sell_listing/'.$value->id.'/saved_listing'; ?>" class="btn btn-warning" style="font-size:10px"><i class="fa fa-paste"></i> List Now</a>   
+                <?php endif ?>
+              
+                    <a class="btn btn-danger" href="<?php echo base_url().'marketplace/listing_delete/'.$value->id; ?>" style="font-size:10px" onclick=" if(confirm('Are you sure want to delete list')){ return true; }else{ return false; }"><i class="fa fa-times"></i> <span class="bold">Delete</span></a>
+                    </th>
+                </tr>
+           
+                <?php endforeach ?>
+            <?php endif; ?>
+            </tbody>
+            </table>
+
             </div>
+        </div>
+        </div>
+        </div> 
+        
+    <div class="row">
+        <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Scheduled listing - Buy</h5>
+            </div>
+            <div class="ibox-content">
+
+            <table class="table table-striped table-bordered table-hover buying_requests" >
+            <thead>
+            <tr>
+                <th>End Date</th>
+                <th>MPN/ISBN</th>
+                <th>Make &amp; Model</th>
+                <th>Condition</th>
+                <th>Price</th>
+                <th>QTY</th>
+                <th>Spec</th>
+                <th>Options</th>
+            </tr>
+            </thead>
+            <tbody>
+             <?php if(!empty($schedule_listing_buy)): ?>
+                <?php foreach ($schedule_listing_buy as $value):
+           
+                if($value->schedule_date_time >= $value->listing_end_datetime): ?>
+                <tr>
+                   
+                    <td><?php echo date('h:i d-m', strtotime($value->listing_end_datetime)); ?></td>
+                    <td><?php echo $value->product_mpn_isbn; ?></td>
+                    <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
+                    <td><?php echo $value->condition; ?></td>
+                    <td data-toggle="tooltip" data-placement="left" title="t"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
+                    <td><?php echo $value->qty_available; ?></td>
+                    <td><?php echo $value->spec; ?></td>
+                    <th style="text-align:center">
+                <?php if (!empty($value->listing_type) && $value->listing_type == 1): ?>
+                   <a href="<?php echo base_url().'marketplace/buy_listing/'.$value->id.'/saved_listing'; ?>" class="btn btn-warning" style="font-size:10px"><i class="fa fa-paste"></i> Edit</a>
+                <?php elseif(!empty($value->listing_type) && $value->listing_type == 2): ?>
+                     <a href="<?php echo base_url().'marketplace/sell_listing/'.$value->id.'/saved_listing'; ?>" class="btn btn-warning" style="font-size:10px"><i class="fa fa-paste"></i> Edit</a>   
+                <?php endif ?>
+
+                    <a href="<?php echo base_url().'marketplace/list_now_status/'.$value->id; ?>" class="btn btn-info" style="font-size:10px"><i class="fa fa-paste"></i> List Now</a>
+                    <a class="btn btn-danger" href="<?php echo base_url().'marketplace/listing_delete/'.$value->id; ?>" style="font-size:10px" onclick=" if(confirm('Are you sure want to delete list')){ return true; }else{ return false; }"><i class="fa fa-times"></i> <span class="bold">Delete</span></a>
+                    </th>
+                </tr>
+             <?php endif; ?>
+                    
+                <?php endforeach ?>
+            <?php endif; ?>
+            
+            
+            
+            
+            </tbody>
+            </table>
+
+            </div>
+        </div>
+    </div>
+    
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Scheduled listing - Sell</h5>
+            </div>
+            <div class="ibox-content">
+
+            <table class="table table-striped table-bordered table-hover buying_requests" >
+            <thead>
+            <tr>
+                <th>End Date</th>
+                <th>MPN/ISBN</th>
+                <th>Make &amp; Model</th>
+                <th>Condition</th>
+                <th>Price</th>
+                <th>QTY</th>
+                <th>Spec</th>
+                <th>Options</th>
+            </tr>
+            </thead>
+            <tbody>
+             <?php if(!empty($schedule_listing_buy)): ?>
+                <?php foreach ($schedule_listing_buy as $value):
+           
+                if($value->schedule_date_time >= $value->listing_end_datetime): ?>
+                <tr>
+                   
+                    <td><?php echo date('h:i d-m', strtotime($value->listing_end_datetime)); ?></td>
+                    <td><?php echo $value->product_mpn_isbn; ?></td>
+                    <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
+                    <td><?php echo $value->condition; ?></td>
+                    <td data-toggle="tooltip" data-placement="left" title="t"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
+                    <td><?php echo $value->qty_available; ?></td>
+                    <td><?php echo $value->spec; ?></td>
+                    <th style="text-align:center">
+                <?php if (!empty($value->listing_type) && $value->listing_type == 1): ?>
+                   <a href="<?php echo base_url().'marketplace/buy_listing/'.$value->id.'/saved_listing'; ?>" class="btn btn-warning" style="font-size:10px"><i class="fa fa-paste"></i> Edit</a>
+                <?php elseif(!empty($value->listing_type) && $value->listing_type == 2): ?>
+                     <a href="<?php echo base_url().'marketplace/sell_listing/'.$value->id.'/saved_listing'; ?>" class="btn btn-warning" style="font-size:10px"><i class="fa fa-paste"></i> Edit</a>   
+                <?php endif ?>
+
+                    <a href="<?php echo base_url().'marketplace/list_now_status/'.$value->id; ?>" class="btn btn-info" style="font-size:10px"><i class="fa fa-paste"></i> List Now</a>
+                    <a class="btn btn-danger" href="<?php echo base_url().'marketplace/listing_delete/'.$value->id; ?>" style="font-size:10px" onclick=" if(confirm('Are you sure want to delete list')){ return true; }else{ return false; }"><i class="fa fa-times"></i> <span class="bold">Delete</span></a>
+                    </th>
+                </tr>
+             <?php endif; ?>
+                    
+                <?php endforeach ?>
+            <?php endif; ?>
+            
+            
+            
+            
+            </tbody>
+            </table>
+
+            </div>
+        </div>
+    </div>
+    
+    </div>    
+    </div>
 
     <!-- Data Tables -->
     <link href="public/main/template/core/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
