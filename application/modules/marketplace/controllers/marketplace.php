@@ -60,25 +60,9 @@ class Marketplace extends MX_Controller
         $this->templates->page($data);
     }
     
-    function sell($offset=0)
+    function sell()
     {
-        $per_page=10;
-        $data['listing_sell'] = $this->marketplace_model->listing_sell($offset,$per_page);
-        $config=backend_pagination();
-        $config['base_url'] = base_url().'marketplace/sell';
-        $config['total_rows'] = $this->marketplace_model->listing_sell(0,0);
-        $config['per_page'] = $per_page;
-        $config['uri_segment'] = 4;
-        if(!empty($_SERVER['QUERY_STRING'])){
-        $config['suffix'] = "?".$_SERVER['QUERY_STRING'];
-        }
-        else{
-        $config['suffix'] ='';
-        }
-        $config['first_url'] = $config['base_url'].$config['suffix'];
-        $this->pagination->initialize($config);
-        $data['pagination']=$this->pagination->create_links();
-        $data['offset'] = $offset;
+        $data['listing_sell'] = $this->marketplace_model->listing_sell();
         $member_id=$this->session->userdata('members_id');
         $data['advance_search'] = $this->marketplace_model->advance_search($member_id,1);
 
