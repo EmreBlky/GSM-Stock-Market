@@ -789,7 +789,6 @@ var today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(
           <p>CIP can be used for all modes of transport, whereas the equivalent term CIF can only be used for non-containerised seafreight.</p>
           <strong>Data Source</strong><br />
           <p>Taken from <a href="http://en.wikipedia.org/wiki/Incoterms" target="_blank">Incoterms Wikipedia page</a></p>
-        
         </div>
         
     </dl>
