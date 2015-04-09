@@ -170,6 +170,8 @@ class Profile extends MX_Controller
 
                 $path = dirname($_SERVER["SCRIPT_FILENAME"]) . '/public/main/template/gsm/images/company';
                 $args = array($_POST['avatar_src'], $_POST['avatar_data'], $_FILES['avatar_file'], $path . "/original", $path, $this->session->userdata('members_id'));
+                $size = filesize($_FILES['avatar_file']['tmp_name']);
+                if($size <= 2097152) {
                 $crop = $this->load->library('CropAvatar', $args);
                 $response = array(
                     'state' => 200,
@@ -177,6 +179,13 @@ class Profile extends MX_Controller
                     //'result' => $this->cropavatar->getResult()
                     'result' => $this->config->item('base_url') . "public/main/template/gsm/images/company/" . $this->session->userdata('members_id') . ".png"
                 );
+                }else{
+                    $response = array(
+                        'state' => 400,
+                        'message' => "Image must be less than 2M",
+                        'result' => ""
+                    );
+                }
 
                 echo json_encode($response);
                 /* }*/
@@ -200,17 +209,25 @@ class Profile extends MX_Controller
     {
         if (isset($_POST) && isset($_POST['udpate'])) {
             if ($_FILES['avatar_file']['name'] != '') {
-
+//268435456
                 $path = dirname($_SERVER["SCRIPT_FILENAME"]) . '/public/main/template/gsm/images/members';
                 $args = array($_POST['avatar_src'], $_POST['avatar_data'], $_FILES['avatar_file'], $path . "/original", $path, $this->session->userdata('members_id'));
-                $crop = $this->load->library('CropAvatar', $args);
-                $response = array(
-                    'state' => 200,
-                    'message' => $this->cropavatar->getMsg(),
-                    //'result' => $this->cropavatar->getResult()
-                    'result' => $this->config->item('base_url') . "public/main/template/gsm/images/members/" . $this->session->userdata('members_id') . ".png"
-                );
-
+                $size = filesize($_FILES['avatar_file']['tmp_name']);
+                if($size <= 2097152) {
+                    $crop = $this->load->library('CropAvatar', $args);
+                    $response = array(
+                        'state' => 200,
+                        'message' => $this->cropavatar->getMsg(),
+                        //'result' => $this->cropavatar->getResult()
+                        'result' => $this->config->item('base_url') . "public/main/template/gsm/images/members/" . $this->session->userdata('members_id') . ".png"
+                    );
+                }else{
+                    $response = array(
+                        'state' => 400,
+                        'message' => "Image must be less than 2M",
+                        'result' => ""
+                    );
+                }
                 echo json_encode($response);
                 /* }*/
 

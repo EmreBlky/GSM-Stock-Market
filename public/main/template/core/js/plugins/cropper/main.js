@@ -289,7 +289,10 @@
                     this.alert(data.message);
                 }
             } else {
-                this.alert('Failed to response');
+                this.alert(data.message);
+                this.uploaded = false;
+                this.cropDone();
+                this.$loading.fadeOut();
             }
         },
 
@@ -320,7 +323,7 @@
                 msg,
                 '</div>'
             ].join('');
-
+alert(msg);
             this.$avatarUpload.after($alert);
         }
     };
