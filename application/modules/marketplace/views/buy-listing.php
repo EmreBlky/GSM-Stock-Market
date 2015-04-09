@@ -347,7 +347,7 @@
                  <input type="file" name="image5" class="btn default btn-file">
                  </div>
                  <?php echo form_error('image5'); ?>
-                 
+
                   
 
                 </div>
