@@ -14,6 +14,7 @@ class Marketplace extends MX_Controller
         // }
         
          $this->load->model('marketplace_model'); 
+        $this->load->model('member/member_model', 'member_model');
     }
 
     function index()
@@ -74,6 +75,9 @@ class Marketplace extends MX_Controller
         $data['main'] = 'marketplace';
         $data['title'] = 'GSM - Market Place: Purchase';
         $data['page'] = 'buy';
+		/* Daniel Added Start */
+        $data['member'] = $this->member_model->get_where($this->session->userdata('members_id'));
+		/* Daniel Added End */
         
         $this->load->module('templates');
         $this->templates->page($data);

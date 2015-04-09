@@ -32,6 +32,8 @@ class Login extends MX_Controller{
 
     }
     
+    
+    
     function forgotten_password()
     {                      
         $data['base'] = $this->config->item('base_url');
@@ -237,16 +239,16 @@ class Login extends MX_Controller{
                     $admin = $this->admin_model->get_where($aid);
                     
                     $admin_data = array(
-                                                    'members_id'  	=> $aid,
-                                                    //'username'  	=> $member->username,
-                                                    'firstname'         => $admin->firstname,
-                                                    'lastname'          => $admin->lastname,
-                                                    'admin_logged_in' 	=> TRUE
+                                                    'admin_members_id'  	=> $aid,
+                                                    //'username'                  => $member->username,
+                                                    'admin_firstname'           => $admin->firstname,
+                                                    'admin_lastname'            => $admin->lastname,
+                                                    'admin_logged_in'           => TRUE
                                                     );
 
                     $this->session->set_userdata($admin_data);
                     
-                    redirect('admin/');
+                    redirect('admin/dashboard');
             }
             else {
 

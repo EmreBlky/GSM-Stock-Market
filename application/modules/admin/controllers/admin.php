@@ -3,9 +3,11 @@ class Admin extends MX_Controller
 {
     function __construct()
     {
-        parent::__construct();   
+        parent::__construct(); 
+        
         //$CI =& get_instance();
-        $this->load->model('admin_model');     
+        $this->load->model('admin_model'); 
+        
        
     }
     function index()
@@ -14,12 +16,28 @@ class Admin extends MX_Controller
         { 
             redirect('admin/login');
         }
+        else{
+            redirect('admin/dashboard');
+        }
+        
+    
+    }
+    
+    function dashboard()
+    { 
+        
+        if ( ! $this->session->userdata('admin_logged_in'))
+        { 
+            redirect('admin/login');
+        }
+        
+        
         $data['main'] = 'admin';        
         $data['title'] = 'GSM - Admin Panel';        
         $data['page'] = 'dashboard';
         $this->load->module('templates');
         $this->templates->admin($data);
-    
+
     }
     
     function login()

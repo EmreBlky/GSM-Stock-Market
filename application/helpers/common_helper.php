@@ -3,7 +3,7 @@
 *    clear cache
 */
 if ( ! function_exists('clear_cache')) {
-	function clear_cache(){
+    function clear_cache(){
 		$CI =& get_instance();
 		$CI->output->set_header('Expires: Wed, 11 Jan 1984 05:00:00 GMT' );
 		$CI->output->set_header('Last-Modified: ' . gmdate( 'D, d M Y H:i:s' ) . 'GMT');
@@ -270,14 +270,11 @@ if ( ! function_exists('list_duration')) {
 	function list_duration($status='') {
 		$status_array = array(
                             '1' => '1',
-                            '2' => '2',
-                            '3' => '3',
-                            '4' => '4',
-                            '5' => '5',
-                            '6' => '6',
-                            '7' => '7',
-                            // '5' => '10',
-                            // '6' => '14',
+                            '2' => '3',
+                            '3' => '5',
+                            '4' => '7',
+                            '5' => '10',
+                            '6' => '14',
                              ); 
 		return $status_array;
 	}
@@ -287,12 +284,11 @@ if ( ! function_exists('list_duration_class')) {
 	function list_duration_class($status='') {
 		$status_array = array(
                                 '1' => '1',
-	                            '2' => '2',
-	                            '3' => '3',
-	                            '4' => '4',
-	                            '5' => '5',
-	                            '6' => '6',
-	                            '7' => '7',
+	                            '2' => '3',
+	                            '3' => '5',
+	                            '4' => '7',
+	                            '5' => '10',
+	                            '6' => '14',
                              ); 
 		return element($status, $status_array);
 	}
@@ -396,60 +392,39 @@ if(!function_exists('offer_count')){
 /**
  *  thumbnail image
  */
+if ( ! function_exists('create_thumbnail')) {
+	function create_thumbnail($config_img='',$img_fix='') {
+		$CI =& get_instance();
+		$config_image['image_library'] = 'gd2';
+		$config_image['source_image'] = $config_img['source_path'].$config_img['file_name'];	
+		//$config_image['create_thumb'] = TRUE;
+		$config_image['new_image'] = $config_img['destination_path'].$config_img['file_name'];
+		$config_image['height']=$config_img['height'];
+		$config_image['width']=$config_img['width'];
+		if($img_fix){
+		$config_image['maintain_ratio'] = FALSE;
+		}
+		else{
+			$config_image['maintain_ratio'] = TRUE;
+			list($width, $height, $type, $attr) = getimagesize($config_img['source_path'].$config_img['file_name']);
 
-if (!function_exists('create_thumbnail')) {
-
-
-
-    function create_thumbnail($config_img = '')
-
-    {
-
-     
-        $CI = & get_instance();
-
-        $config_image['image_library'] = 'gd2';
-
-        $config_image['source_image'] = $config_img['source_image'] . $config_img['file_name'];
-
-        //$config_image['encrypt_name'] = TRUE;
-
-        $config_image['new_image'] = $config_img['new_image'] . $config_img['file_name'];
-
-        $config_image['maintain_ratio'] = FALSE;
-
-        $config_image['height'] = $config_img['height'];
-
-        $config_image['width'] = $config_img['width'];
-
-    if (!empty($config_image['image_resize'])) {
-        list($width, $height, $type, $attr) = getimagesize($config_img['source_path'] . $config_img['file_name']);
-
-        if ($width < $height) {
-
-            $cal = $width / $height;
-
-            $config_image['width'] = $config_img['width'] * $cal;
-
-        }
-
-        if ($height < $width) {
-
-            $cal = $height / $width;
-
-            $config_image['height'] = $config_img['height'] * $cal;
-
-        }
-    }
-       
-        $CI->load->library('image_lib');
-        $CI->image_lib->initialize($config_image);
-        if (!$CI->image_lib->resize()) return array('status' => FALSE, 'error_msg' => $CI->image_lib->display_errors());
-
-        else return array('status' => TRUE, 'file_name' => $config_img['file_name']);
-
-    }
-
-
-
+	        if ($width < $height) {
+	        	$cal=$width/$height;
+	        	$config_image['width']=$config_img['width']*$cal;
+	        }
+			if ($height < $width)
+			{
+				$cal=$height/$width;
+		    	$config_image['height']=$config_img['height']*$cal;
+			}
+		}
+		
+		$CI->load->library('image_lib');
+		$CI->image_lib->initialize($config_image);
+		
+		if(!$CI->image_lib->resize()) 
+			return array('status'=>FALSE,'error_msg'=>$CI->image_lib->display_errors());
+		else
+			return array('status'=>TRUE,'file_name'=>$config_img['file_name']);
+	}
 }

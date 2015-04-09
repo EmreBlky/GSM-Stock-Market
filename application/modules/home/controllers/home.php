@@ -4,18 +4,18 @@ class Home extends MX_Controller
     function __construct()
     {
         parent::__construct();
+        //unset($data_activity);
+        
+    }
+
+    function index()
+    {
         if ( ! $this->session->userdata('logged_in') )
         { 
             redirect('login');
         }
         
         
-       
-        //unset($data_activity);
-    }
-
-    function index()
-    {
          $this->load->model('activity/activity_model', 'activity_model');
          $data_activity = array(
                                 'activity' => 'Home',

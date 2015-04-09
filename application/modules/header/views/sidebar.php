@@ -83,9 +83,9 @@
                     <li>
                         <a href="marketplace/notice">
                             <i class="fa fa-line-chart"></i> 
-                            <span class="nav-label">Marketplace</span> 
-                            <span class="fa arrow"></span>
-                        </a>
+                            <span class="nav-label">Marketplace</span> <!--
+                            <span class="fa arrow"></span>-->
+                        </a><!--
                        <ul class="nav nav-second-level">
                             <li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Buy</a></li>
                             <li><a href="marketplace/sell"><i class="fa fa-tag"></i> Sell</a></li>
@@ -99,7 +99,7 @@
 		                                </ul>
 		                            </li>
 		                            <li><a href="marketplace/saved_listing"><i class="fa fa-save"></i> Saved Listings <span class="label label-success pull-right">2</span></a></li>
-                        </ul>
+                        </ul>-->
                     </li>
                     
                     <li>
