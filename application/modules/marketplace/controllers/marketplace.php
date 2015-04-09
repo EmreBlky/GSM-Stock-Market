@@ -56,11 +56,7 @@ class Marketplace extends MX_Controller
 
         $member_id=$this->session->userdata('members_id');
 
-       // $data['advance_search'] = $this->marketplace_model->get_result('listing',array('status'=>1,'listing_type'=>1,"member_id !=$member_id" =>null,"schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'"=>null),array('product_mpn','product_isbn','product_make','product_model','product_type'));
-
         $data['advance_search'] = $this->marketplace_model->advance_search($member_id,2);
-
-         //$data['advance_search_country'] = $this->marketplace_model->advance_search_country($member_id);
 
         $items =  $this->marketplace_model->get_result('listing_categories','','',array('category_name','ASC'));
         if( $items){
@@ -772,8 +768,13 @@ class Marketplace extends MX_Controller
     function saved_listing()
     {
         $member_id=$this->session->userdata('members_id');
-        $data['listing_save_later'] = $this->marketplace_model->get_result('listing', array('member_id'=>$member_id,'status'=>2));
-        $data['schedule_listing'] = $this->marketplace_model->get_result('listing', array('member_id'=>$member_id,'status'=>1));
+        $data['listing_save_later_buy'] = $this->marketplace_model->get_result('listing', array('member_id'=>$member_id,'status'=>2,'listing_type'=>1));
+
+        $data['listing_save_later_sell'] = $this->marketplace_model->get_result('listing', array('member_id'=>$member_id,'status'=>2,'listing_type'=>2));
+
+        $data['schedule_listing_buy'] = $this->marketplace_model->get_result('listing', array('member_id'=>$member_id,'status'=>1,'listing_type'=>1));
+
+        $data['schedule_listing_sell'] = $this->marketplace_model->get_result('listing', array('member_id'=>$member_id,'status'=>1,'listing_type'=>2));
 
         $data['main'] = 'marketplace';        
         $data['title'] = 'GSM - Market Place: Saved Listing';        
