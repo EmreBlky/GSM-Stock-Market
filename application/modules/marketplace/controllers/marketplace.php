@@ -34,25 +34,10 @@ class Marketplace extends MX_Controller
         $this->templates->page($data);
     }
     
-    function buy($offset=0)
+    function buy()
     {
-        $per_page=10;
-        $data['listing_buy'] = $this->marketplace_model->listing_buy($offset,$per_page);
-        $config=backend_pagination();
-        $config['base_url'] = base_url().'marketplace/buy';
-        $config['total_rows'] = $this->marketplace_model->listing_buy(0,0);
-        $config['per_page'] = $per_page;
-        $config['uri_segment'] = 4;
-        if(!empty($_SERVER['QUERY_STRING'])){
-        $config['suffix'] = "?".$_SERVER['QUERY_STRING'];
-        }
-        else{
-        $config['suffix'] ='';
-        }
-        $config['first_url'] = $config['base_url'].$config['suffix'];
-        $this->pagination->initialize($config);
-        $data['pagination']=$this->pagination->create_links();
-        $data['offset'] = $offset;
+        
+        $data['listing_buy'] =$this->marketplace_model->listing_buy();
 
         $member_id=$this->session->userdata('members_id');
 
