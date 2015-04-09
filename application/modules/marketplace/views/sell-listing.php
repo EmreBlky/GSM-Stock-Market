@@ -297,7 +297,7 @@
       if(!empty($product_list->sell_shipping_fee)){
             $productlistjsondecode=json_decode($product_list->sell_shipping_fee);
            
-
+        if($productlistjsondecode){
         foreach($productlistjsondecode as $key => $value){
          ?>  
           <tr><td><?php echo $value->shipping_term; ?><input type="hidden" name="shipping_terms[]" value="<?php if(!empty($value->shipping_term)) echo $value->shipping_term; ?>"/></td>
@@ -306,7 +306,7 @@
           <td><?php echo $value->shipping_fees; ?><input type="hidden" name="shipping_fees[]" value="<?php if(!empty($value->shipping_fees)) echo $value->shipping_fees; ?>"/></td>
           <td style="text-align:center"><a class="wrapper btn btn-danger btn-circle" style="width:20px;height:20px;border-radius:10px;font-size:10px;padding:0;margin-bottom:0"><i class="fa fa-times"></i></a></td>
           </tr>             
-    <?php   }
+    <?php   }}
         }
       ?>
      
