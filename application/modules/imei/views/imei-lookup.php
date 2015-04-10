@@ -26,11 +26,78 @@
             <div class="form-group">
               <div class="col-lg-4 col-lg-offset-2">
               <input type="text" placeholder="Enter IMEI" class="form-control" /><br />
-              <p class="small">Please enter IMEI for Mobile Phones, and Serial Numbers for all other Devices, Consoles, Laptops etc</p>
+              <p class="text-navy">Please enter IMEI for Mobile Phones, and Serial Numbers for all other Devices, Consoles, Laptops etc</p>
               </div>
               <div class="col-lg-4">
               	<button class="btn btn-primary">Look up device</button>
               </div>
+            </div>
+            
+          </div><!-- Ibox Content -->
+        </div>        
+      </div><!-- /col -->
+      
+    
+      <div class="col-lg-12">
+        <div class="ibox">
+          <div class="ibox-title"><h5>Initial IMEI TAC Code Lookup:</h5></div>
+          
+          <div class="ibox-content" style="padding-top:0;padding-bottom:10px">
+          
+            <div class="form-group">              
+              <label class="col-lg-2 control-label">Make</label>
+              <div class="col-lg-2">
+                <p class="form-control-static">Apple Inc</p>
+              </div>
+              
+              <label class="col-lg-2 control-label">Marketing Name</label>
+              <div class="col-lg-6">
+                <p class="form-control-static">Apple iPhone 6 Plus (A1524)</p>
+              </div>
+              
+              <label class="col-lg-2 control-label">Model</label>
+              <div class="col-lg-2">
+                <p class="form-control-static">iPhone 6 Plus (A1524)</p>
+              </div>
+              
+              <label class="col-lg-2 control-label">OS</label>
+              <div class="col-lg-6">
+                <p class="form-control-static">iOS</p>
+              </div>
+              
+            </div>
+            
+          </div><!-- Ibox Content -->
+        </div>        
+      </div><!-- /col -->
+    
+      <div class="col-lg-6">
+        <div class="ibox">
+          <div class="ibox-title"><h5>ImeiHPI checks:</h5></div>
+          
+          <div class="ibox-content" style="padding-top:0;padding-bottom:10px">
+          
+            <div class="form-group">              
+              <label class="col-lg-8 control-label" style="text-align:left;font-size:2em">0 ImeiHPI checks found</label>
+              <div class="col-lg-4">
+              	<button class="btn btn-primary">Submit to ImeiHpi</button>
+              </div>
+              
+            </div>
+            
+          </div><!-- Ibox Content -->
+        </div>        
+      </div><!-- /col -->
+    
+      <div class="col-lg-6">
+        <div class="ibox">
+          <div class="ibox-title"><h5>Unlocks:</h5></div>
+          
+          <div class="ibox-content" style="padding-top:0;padding-bottom:10px">
+          
+            <div class="form-group">              
+              <label class="col-lg-12 control-label" style="text-align:left;font-size:2em">0 Activities Found</label>
+              
             </div>
             
           </div><!-- Ibox Content -->
