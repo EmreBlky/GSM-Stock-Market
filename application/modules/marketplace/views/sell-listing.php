@@ -375,6 +375,8 @@
         <div class="ibox float-e-margins">
             <div class="ibox-title">
                 <h5>Listing Pictures</h5>
+                <br>
+                <h4 class="danger">Item images Min size is 400 X 400 and Max size is 1200 X 1200.</h4>
             </div>
             <div class="ibox-content">
             <div class="row">
@@ -384,7 +386,7 @@
                 <div  class="col-md-8">
                 <?php if (!empty($product_list->image1) && file_exists($product_list->image1)): 
                 $img1 = explode('/', $product_list->image1)?>
-                    <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img1[3]; ?>" class="thumbnail"/>
+                    <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img1[3]; ?>" class="thumbnail uplodedimage"/>
                 <?php endif ?>
                  <input type="file" name="image1" class="btn default btn-file">
                 </div>
@@ -393,7 +395,7 @@
                 <div  class="col-md-8">
                 <?php if (!empty($product_list->image2) && file_exists($product_list->image2)): 
                 $img2 = explode('/', $product_list->image2)?>
-                    <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img2[3]; ?>" class="thumbnail"/>
+                    <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img2[3]; ?>" class="thumbnail uplodedimage"/>
                 <?php endif ?>
                  <input type="file" name="image2" class="btn default btn-file">
                  </div>
@@ -402,7 +404,7 @@
                 <div  class="col-md-8">
                 <?php if (!empty($product_list->image3)&& file_exists($product_list->image3)): 
                 $img3 = explode('/', $product_list->image3)?>
-                    <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img3[3]; ?>" class="thumbnail"/>
+                    <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img3[3]; ?>" class="thumbnail uplodedimage"/>
                 <?php endif ?>
                  <input type="file" name="image3" class="btn default btn-file">
                  </div>
@@ -411,7 +413,7 @@
                 <div  class="col-md-8">
                 <?php if (!empty($product_list->image4)&& file_exists($product_list->image4)): 
                 $img4 = explode('/', $product_list->image4)?>
-                    <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img4[3]; ?>" class="thumbnail"/>
+                    <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img4[3]; ?>" class="thumbnail uplodedimage"/>
                 <?php endif ?>
                  <input type="file" name="image4" class="btn default btn-file">
                  </div>
@@ -421,7 +423,7 @@
                 <div  class="col-md-8">
                  <?php if (!empty($product_list->image5)&& file_exists($product_list->image5)): 
                 $img5 = explode('/', $product_list->image5)?>
-                    <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img5[3]; ?>" class="thumbnail"/>
+                    <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img5[3]; ?>" class="thumbnail uplodedimage"/>
                 <?php endif ?>
                  <input type="file" name="image5" class="btn default btn-file">
                  </div>
@@ -971,6 +973,10 @@ var today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(
 .validation_message{
       padding: 10px;
   margin: 2px;
+}
+.uplodedimage{
+    max-width: 250px;
+    max-height: 250px;
 }
 </style>
 
