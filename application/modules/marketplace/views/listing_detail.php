@@ -29,180 +29,185 @@
 </div>
 <div class="ibox-content">
 <div class="wrapper wrapp er-content">
- <div class="row">
-            <div class="col-lg-6">               
-                <dl class="dl-horizontal">
-                    <h4>Product Details</h4>
-                    <dt>Make:</dt> <dd>  <?php if(!empty($listing_detail->product_make)) { echo $listing_detail->product_make; } ?></dd>
-                    <dt>Model:</dt> <dd>  <?php if(!empty($listing_detail->product_model)) { echo $listing_detail->product_model; } ?></dd>
-                    <!-- <dt>Memory:</dt> <dd> <?php //if(!empty($listing_detail->product_make)) { echo $listing_detail->product_make; } ?></dd> -->
-                    <dt>Colour:</dt> <dd>  <?php if(!empty($listing_detail->product_color)) { echo $listing_detail->product_color; } ?></dd>
-                    <dt>Product Type:</dt> <dd>  <?php if(!empty($listing_detail->product_type)) { echo $listing_detail->product_type; } ?></dd>
-                    <dt>Condition:</dt> <dd>  <?php if(!empty($listing_detail->condition)) { echo $listing_detail->condition; } ?></dd> 
-                    <dt>Spec</dt> <dd>  <?php if(!empty($listing_detail->spec)) { echo $listing_detail->spec; } ?></dd>
-                    <dt>MPN/ISBN</dt> <dd>  <?php if(!empty($listing_detail->product_mpn_isbn)) { echo $listing_detail->product_mpn_isbn; } ?></dd>
-                    
-                   <!--  <dt>Network</dt> <dd>  <?php //if(!empty($listing_detail->product_make)) { echo $listing_detail->product_make; } ?></dd> -->
-                    <dt>Quantity</dt> <dd> <?php if(!empty($listing_detail->qty_available)) { echo $listing_detail->qty_available; } ?></dd>
-                </dl>
-                  <div class="hr-line-dashed"></div>
-                <dl class="dl-horizontal">
-                    <h4>Price</h4>
-                    <dt>Sale Currency:</dt> <dd> <?php if(!empty($listing_detail->currency)) { echo currency_class($listing_detail->currency); } ?></dd>
-                    <dt>GBP Price:</dt> <dd><strong>  &pound; <?php echo get_currency(currency_class($listing_detail->currency), 'GBP', $listing_detail->unit_price); ?></strong></dd>
-                    <dt>EUR Price:</dt> <dd>  &euro; <?php echo get_currency(currency_class($listing_detail->currency), 'EUR', $listing_detail->unit_price); ?></dd>
-                    <dt>USD Price:</dt> <dd>  $ <?php echo get_currency(currency_class($listing_detail->currency), 'USD', $listing_detail->unit_price); ?></dd>
-                </dl>
-                 <div class="hr-line-dashed"></div> 
-                <dl class="dl-horizontal">
-                    <h4>Shipping</h4>
-                    <dt>Courier</dt> <dd> <?php if(!empty($listing_detail->courier)) { echo $listing_detail->courier; } ?></dd>
-                  <?php if(!empty($listing_detail->shipping_term)) { ?>  <dt>Terms:</dt> <dd> <?php echo $listing_detail->shipping_term; ?></dd> <?php } ?>
-                    
-                </dl>
-        <?php if (!empty($member_id) && $member_id==$listing_detail->member_id): ?>
-                <?php if(!empty($listing_detail->sell_shipping_fee)){   ?>
+<div class="row">
+<div class="col-lg-6">               
+    <dl class="dl-horizontal">
+        <h4>Product Details</h4>
+        <dt>Make:</dt> <dd>  <?php if(!empty($listing_detail->product_make)) { echo $listing_detail->product_make; } ?></dd>
+        <dt>Model:</dt> <dd>  <?php if(!empty($listing_detail->product_model)) { echo $listing_detail->product_model; } ?></dd>
+        <!-- <dt>Memory:</dt> <dd> <?php //if(!empty($listing_detail->product_make)) { echo $listing_detail->product_make; } ?></dd> -->
+        <dt>Colour:</dt> <dd>  <?php if(!empty($listing_detail->product_color)) { echo $listing_detail->product_color; } ?></dd>
+        <?php ?>
+        <dt>Product Type:</dt> <dd>  <?php if(!empty($listing_detail->product_type)) { echo $listing_detail->product_type; } ?></dd>
+        <dt>Condition:</dt> <dd>  <?php if(!empty($listing_detail->condition)) { echo $listing_detail->condition; } ?></dd> 
+        <dt>Spec</dt> <dd>  <?php if(!empty($listing_detail->spec)) { echo $listing_detail->spec; } ?></dd>
+        <dt>MPN/ISBN</dt> <dd>  <?php if(!empty($listing_detail->product_mpn_isbn)) { echo $listing_detail->product_mpn_isbn; } ?></dd>
+        
+       <!--  <dt>Network</dt> <dd>  <?php //if(!empty($listing_detail->product_make)) { echo $listing_detail->product_make; } ?></dd> -->
+        <dt>Quantity</dt> <dd> <?php if(!empty($listing_detail->qty_available)) { echo $listing_detail->qty_available; } ?></dd>
+    </dl>
+      <div class="hr-line-dashed"></div>
+    <dl class="dl-horizontal">
+        <h4>Price</h4>
+        <dt>Sale Currency:</dt> <dd> <?php if(!empty($listing_detail->currency)) { echo currency_class($listing_detail->currency); } ?></dd>
+        <dt>GBP Price:</dt> <dd><strong>  &pound; <?php echo get_currency(currency_class($listing_detail->currency), 'GBP', $listing_detail->unit_price); ?></strong></dd>
+        <dt>EUR Price:</dt> <dd>  &euro; <?php echo get_currency(currency_class($listing_detail->currency), 'EUR', $listing_detail->unit_price); ?></dd>
+        <dt>USD Price:</dt> <dd>  $ <?php echo get_currency(currency_class($listing_detail->currency), 'USD', $listing_detail->unit_price); ?></dd>
+    </dl>
+     <div class="hr-line-dashed"></div> 
+    <dl class="dl-horizontal">
+        <h4>Shipping</h4>
+        <dt>Courier</dt> <dd> <?php if(!empty($listing_detail->courier)) { echo $listing_detail->courier; } ?></dd>
+      <?php if(!empty($listing_detail->shipping_term)) { ?>  <dt>Terms:</dt> <dd> <?php echo $listing_detail->shipping_term; ?></dd> <?php } ?>
+        
+    </dl>
+  <?php if(!empty($listing_detail->sell_shipping_fee)){   ?>
 
-                  <table class="table table-bordered">
-                      <thead>
-                      <tr>
-                          <th>Shipping Terms</th>
-                          <th>Couriers</th>
-                          <th>Batch</th>
-                          <th>Price</th>
-                          
-                      </tr>
-                      </thead>
-                      <tbody id="opt_table">
+  <table class="table table-bordered">
+      <thead>
+      <tr>
+          <th>Shipping Terms</th>
+          <th>Couriers</th>
+          <th>Batch</th>
+          <th>Price</th>
+      </tr>
+      </thead>
+      <tbody id="opt_table">
+        <?php
+            foreach(json_decode($listing_detail->sell_shipping_fee) as $key => $value){
+               ?>
+              
+              <tr><td><?php if(!empty($value->shipping_term)) echo $value->shipping_term; ?><input type="hidden" name="shipping_terms[]" value="<?php if(!empty($value->shipping_term)) echo $value->shipping_term; ?>"/></td>
+              <td><?php if(!empty($value->coriars)) echo $value->coriars; ?><input type="hidden" name="coriars[]" value="<?php if(!empty($value->coriars)) echo $value->coriars; ?>"/></td>
+              <td><?php if(!empty($value->shipping_types)) echo $value->shipping_types; ?><input type="hidden" name="ship_types[]" value="<?php if(!empty($value->shipping_types)) echo $value->shipping_types; ?>"/></td>
+              <td><?php if(!empty($value->shipping_fees)) echo $value->shipping_fees; ?><input type="hidden" name="shipping_fees[]" value="<?php if(!empty($value->shipping_fees)) echo $value->shipping_fees; ?>"/></td>
+              </tr>
+           
+             
+    <?php   }  ?>
+     
+      </tbody>
+ </table>
+<?php  } ?>
+  
+  <div class="hr-line-dashed"></div>
+</div>
+<div class="col-lg-6">
+ <?php 
+    $img1 = ''; $img2 = ''; $img3 = ''; $img4 = ''; $img5 = '';
 
-                    
+if(!empty($listing_detail->image1))
+    $img1 = explode('/', $listing_detail->image1); 
+if(!empty($listing_detail->image1)) 
+    $img2 = explode('/', $listing_detail->image2);
+if(!empty($listing_detail->image1))
+    $img3 = explode('/', $listing_detail->image3);
+if(!empty($listing_detail->image1))
+    $img4 = explode('/', $listing_detail->image4);
+if(!empty($listing_detail->image1))
+    $img5 = explode('/', $listing_detail->image5);
 
-                        <?php
-                            foreach(json_decode($listing_detail->sell_shipping_fee) as $key => $value){
-                               ?>
-                              
-                              <tr><td><?php if(!empty($value->shipping_term)) echo $value->shipping_term; ?><input type="hidden" name="shipping_terms[]" value="<?php if(!empty($value->shipping_term)) echo $value->shipping_term; ?>"/></td>
-                              <td><?php if(!empty($value->coriars)) echo $value->coriars; ?><input type="hidden" name="coriars[]" value="<?php if(!empty($value->coriars)) echo $value->coriars; ?>"/></td>
-                              <td><?php if(!empty($value->shipping_types)) echo $value->shipping_types; ?><input type="hidden" name="ship_types[]" value="<?php if(!empty($value->shipping_types)) echo $value->shipping_types; ?>"/></td>
-                              <td><?php if(!empty($value->shipping_fees)) echo $value->shipping_fees; ?><input type="hidden" name="shipping_fees[]" value="<?php if(!empty($value->shipping_fees)) echo $value->shipping_fees; ?>"/></td>
-                              </tr>
-                           
-                             
-                    <?php   }  ?>
-                     
-                      </tbody>
-                </table>
-            <?php  } ?>
-        <?php endif; ?>
-              <div class="hr-line-dashed"></div>
-            </div>
-            <div class="col-lg-6">
-                <p>
-                 <?php 
-                    $img1 = ''; $img2 = ''; $img3 = ''; $img4 = ''; $img5 = '';
+    ?>
+<div class="main_image_gallery">
+<?php  if(!empty($img1[3])): ?>
+<img id="zoom_03" src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img1[3]; ?>" data-zoom-image="<?php echo base_url().'public/upload/listing/'.$img1[3]; ?>" class="gallerymainimg"/>
+<?php else: ?>
+<img src="<?php echo base_url().'public/main/template/gsm/images/icons/apple-touch-icon-180x180.png'; ?>"/>
+<?php endif; ?>
+</div>
+<div id="gallery_01">
+<?php if(!empty($listing_detail->image2)): ?> 
+  <a href="#" data-image="<?php echo base_url().'public/upload/listing/thumbnail/'.$img1[3]; ?>" data-zoom-image="<?php echo base_url().'public/upload/listing/'.$img1[3]; ?>">
+    <img id="img_01" class="gallerythumbsize" src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img1[3]; ?>" />
+  </a>
+<?php endif; ?>
 
-                if(!empty($listing_detail->image1))
-                    $img1 = explode('/', $listing_detail->image1); 
-                if(!empty($listing_detail->image1)) 
-                    $img2 = explode('/', $listing_detail->image2);
-                if(!empty($listing_detail->image1))
-                    $img3 = explode('/', $listing_detail->image3);
-                if(!empty($listing_detail->image1))
-                    $img4 = explode('/', $listing_detail->image4);
-                if(!empty($listing_detail->image1))
-                    $img5 = explode('/', $listing_detail->image5);
+ <?php if(!empty($listing_detail->image2)): ?>
+  <a href="#" data-image="<?php echo base_url().'public/upload/listing/thumbnail/'.$img2[3]; ?>" data-zoom-image="<?php echo base_url().'public/upload/listing/'.$img2[3]; ?>">
+    <img id="img_02" class="gallerythumbsize" src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img2[3]; ?>" />
+  </a>
+<?php endif; ?>
 
-                    ?>
-                   <div class="main_image_gallery">
-                <?php  if(!empty($img1[3])): ?>
-                    <img id="zoom_03" src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img1[3]; ?>" data-zoom-image="<?php echo base_url().'public/upload/listing/'.$img1[3]; ?>"/>
-                <?php else: ?>
-                    <img src="<?php echo base_url().'public/main/template/gsm/images/icons/apple-touch-icon-180x180.png'; ?>"/>
-                <?php endif; ?>
-                </div>
-                    <div id="gallery_01">
-                    <?php if(!empty($listing_detail->image2)): ?> 
-                      <a href="#" data-image="<?php echo base_url().'public/upload/listing/thumbnail/'.$img1[3]; ?>" data-zoom-image="<?php echo base_url().'public/upload/listing/'.$img1[3]; ?>">
-                        <img id="img_01" class="gallerythumbsize" src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img1[3]; ?>" />
-                      </a>
-                    <?php endif; ?>
+<?php if (!empty($listing_detail->image3)): ?>
+  <a href="#" data-image="<?php echo base_url().'public/upload/listing/thumbnail/'.$img3[3]; ?>" data-zoom-image="<?php echo base_url().'public/upload/listing/'.$img3[3]; ?>">
+    <img id="img_03" class="gallerythumbsize" src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img3[3]; ?>" />
+  </a>
+<?php endif ?>
 
-                     <?php if(!empty($listing_detail->image2)): ?>
-                      <a href="#" data-image="<?php echo base_url().'public/upload/listing/thumbnail/'.$img2[3]; ?>" data-zoom-image="<?php echo base_url().'public/upload/listing/'.$img2[3]; ?>">
-                        <img id="img_02" class="gallerythumbsize" src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img2[3]; ?>" />
-                      </a>
-                    <?php endif; ?>
-
-                    <?php if (!empty($listing_detail->image3)): ?>
-                      <a href="#" data-image="<?php echo base_url().'public/upload/listing/thumbnail/'.$img3[3]; ?>" data-zoom-image="<?php echo base_url().'public/upload/listing/'.$img3[3]; ?>">
-                        <img id="img_03" class="gallerythumbsize" src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img3[3]; ?>" />
-                      </a>
-                    <?php endif ?>
-
-                    <?php if (!empty($listing_detail->image4)): ?>
-                      <a href="#" data-image="<?php echo base_url().'public/upload/listing/thumbnail/'.$img4[3]; ?>" data-zoom-image="<?php echo base_url().'public/upload/listing/'.$img4[3]; ?>">
-                        <img id="img_04" class="gallerythumbsize" src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img4[3]; ?>" />
-                      </a>
-                      <?php endif ?>
-                    <?php if (!empty($listing_detail->image5)): ?>
-                      <a href="#" data-image="<?php echo base_url().'public/upload/listing/thumbnail/'.$img5[3]; ?>" data-zoom-image="<?php echo base_url().'public/upload/listing/'.$img5[3]; ?>">
-                        <img id="img_05" class="gallerythumbsize" src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img5[3]; ?>" />
-                      </a>
+<?php if (!empty($listing_detail->image4)): ?>
+  <a href="#" data-image="<?php echo base_url().'public/upload/listing/thumbnail/'.$img4[3]; ?>" data-zoom-image="<?php echo base_url().'public/upload/listing/'.$img4[3]; ?>">
+    <img id="img_04" class="gallerythumbsize" src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img4[3]; ?>" />
+  </a>
+  <?php endif ?>
+<?php if (!empty($listing_detail->image5)): ?>
+  <a href="#" data-image="<?php echo base_url().'public/upload/listing/thumbnail/'.$img5[3]; ?>" data-zoom-image="<?php echo base_url().'public/upload/listing/'.$img5[3]; ?>">
+    <img id="img_05" class="gallerythumbsize" src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img5[3]; ?>" />
+  </a>
+<?php endif ?>
+</div>
 
 
-                    <?php endif ?>
+<div style="text-align:center">
+    <?php if(!empty($listing_detail->listing_end_datetime)) { ?> 
+    <span class="listing-counter col-md-8 col-md-offset-2">Listing Ends In : <span  data-countdown="<?php echo $listing_detail->listing_end_datetime; ?>"></span></span><br /><br />
+    <?php } ?>
+   
+</div>
 
-
-                    </div>
-
-
-
-                </p>
-
-                <div style="text-align:center">
-                    <?php if(!empty($listing_detail->listing_end_datetime)) { ?> 
-                    <span style="color:red">Listing Ends: <span data-countdown="<?php echo $listing_detail->listing_end_datetime; ?>"></span></span><br /><br />
-                    <?php } ?>
-                   
-                </div>
-
-                <?php if (!empty($member_id) && $member_id!=$listing_detail->member_id): ?> 
+<?php if (!empty($member_id) && $member_id!=$listing_detail->member_id): ?> 
 <!-- pay asking price -->
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal5" style="font-size:10px">Pay asking price</button>
-        <?php if (!empty($listing_detail->min_qty_order)): ?>
-                  <small>you will not able enter quantity to below <?php echo $listing_detail->min_qty_order ?> otherwise would be auto rejected. </small>
-        <?php endif ?>
-                <dl class="dl-horizontal" style="margin-top:20px" disabled>
-                    <h4>or Make an Offer</h4>
-                <form method="post" action="<?php echo base_url().'marketplace/make_offer' ?>">
-                    <dt><div class="input-group m-b"><span class="input-group-addon">QTY</span>    <input type="hidden" name="listing_id" class="form-control" value="<?php echo $listing_detail->id; ?>" />
-                        <input type="hidden" name="seller_id" class="form-control" value="<?php echo $listing_detail->member_id; ?>" />
-                        <input type="hidden" name="buyer_currency" class="form-control" value="<?php echo $listing_detail->currency; ?>" />
-                        <input type="text" name="product_qty" class="form-control" value="<?php echo set_value('product_qty'); ?>" />
 
-                        <span class="input-group-addon">@</span></dt> <?php echo form_error('product_qty'); ?>
-                        <dd><div class="input-group m-b"><span class="input-group-addon"><?php if(!empty($listing_detail->currency)) { echo currency_class($listing_detail->currency); } ?></span>  
-                    
-                    <input type="text" class="form-control" name="unit_price" value="<?php echo set_value('unit_price'); ?>" /><?php echo form_error('unit_price'); ?></dd>
-                    <p style="text-align:center"><input type="submit" name="submit" class="btn btn-warning" value="Send Offer" style="font-size:10px"/></p>
-                </form>
-       
 
-                    <p class="small" style="text-align:center">Offers sent will expire after 24 hours</p>
-                    </dd>
-                     <?php endif; ?>
+<dl class="dl-horizontal" style="margin-top:20px" disabled>
+ <div><span><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal5">Pay asking price</button> </span> <span> <b>or Make an Offer</b></span>
+</div><br>
+ <?php if (!empty($listing_detail->min_qty_order)): ?>
+  <p>you will not able enter quantity to below <b><?php echo $listing_detail->min_qty_order ?></b> otherwise would be auto rejected. </p>
+<?php endif ?>
 
-            </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                <h4>Product Description</h4>
-                <p><?php if(!empty($listing_detail->product_desc)) { echo $listing_detail->product_desc; } ?></p>
-                </div>
-          
+<form method="post" action="<?php echo base_url().'marketplace/make_offer' ?>" id="form_valid">
+    <div class="col-md-6">
+
+    <div class="form-group">
+    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+    <div class="input-group">
+      <div class="input-group-addon">QTY</div>
+      <input type="text" name="product_qty" class="form-control" value="<?php echo set_value('product_qty'); ?>" placeholder="Quantity Ex - 10, 50" data-bvalidator-msg="Item Quantity" data-bvalidator="
+    <?php if (!empty($listing_detail->min_qty_order)){ ?> maxlength[<?php if(is_numeric($listing_detail->min_qty_order)){echo $listing_detail->min_qty_order; ?>],<?php }} ?>number,required">
+      <div class="input-group-addon">@</div>
+
+      <input type="hidden" name="listing_id" class="form-control" value="<?php echo $listing_detail->id; ?>" />
+    <input type="hidden" name="seller_id" class="form-control" value="<?php echo $listing_detail->member_id; ?>" />
+    <input type="hidden" name="buyer_currency" class="form-control" value="<?php echo $listing_detail->currency; ?>" />
+    </div>
+    </div>
+     </div>
+    
+    <div class="col-md-6">
+    <div class="input-group m-b">
+    <span class="input-group-addon"><?php if(!empty($listing_detail->currency)) { echo currency_class($listing_detail->currency); } ?></span>  
+    
+    <input type="text" class="form-control" name="unit_price" value="<?php echo set_value('unit_price'); ?>" placeholder="Price per Unit" data-bvalidator-msg="Per unit price" data-bvalidator="number,required"/><?php echo form_error('unit_price'); ?>
+    </div>
+    </div>
+   
+    <div class="col-md-12 pull-left">
+
+    <input type="submit" name="submit" class="btn btn-warning" value="Send Offer"/></div>
+</form>
+ 
+    <h4 class="small">Offers sent will expire after 24 hours</h4>
+    </dd>
+     <?php endif; ?>
+
+      </div>
+      </div>
+      <div class="row">
+          <div class="col-lg-12">
+          <h4>Product Description</h4>
+          <p><?php if(!empty($listing_detail->product_desc)) { echo $listing_detail->product_desc; } ?></p>
           </div>
-
-
+    </div>
 </div>
 <div class="modal-footer">
     <?php if (!empty($member_id) && $member_id!=$listing_detail->member_id): ?>
@@ -221,18 +226,6 @@
    
 </div>
 </div>
-
-
-<style>
-.error{
-color:rgba(255, 0, 0, 0.7);
-padding-left: 5px;
-}
-.error:before{
-content: "*";
-padding: 3px;
-}
-</style>
 
 
 <div class="modal inmodal fade" id="myModal5" tabindex="-1" role="dialog"  aria-hidden="true">
@@ -288,7 +281,7 @@ padding: 3px;
 
                       <dl class="dl-horizontal" style="margin-top:20px">
                          
-                          <p style="text-align:center"><button type="button" class="btn btn-warning" style="font-size:10px">Send Offer</button></p>
+                          <p style="text-align:center"><button type="button" class="btn btn-warning">Send Offer</button></p>
                           <p class="small" style="text-align:center">Offers sent will expire after 24 hours</p>
                       </dl>
 
@@ -301,10 +294,7 @@ padding: 3px;
       </div>
   </div>
 </div>
-
-                        
-
-                        <div class="modal inmodal fade" id="profile_user" tabindex="-1" role="dialog"  aria-hidden="true">
+  <div class="modal inmodal fade" id="profile_user" tabindex="-1" role="dialog"  aria-hidden="true">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -316,18 +306,13 @@ padding: 3px;
                                       <!--   <img src="public/main/template/gsm/images/marketplace/profile_summary.jpg" /> -->
 
 
-<style>
-table tr th{vertical-align: top;}
-table tr td{
-padding-left:20px;}
-</style>
+
 <div class="row" style="background:#FFF;">
 <div class="col-md-8 col-md-offset-1">
     <h1><?php if(!empty($company->company_name)) echo $company->company_name ?></h1>
 </div>
 <div class="col-md-6">
-
-    <table width="100%" border="0" cellpadding="5" cellspacing="5">
+ <table width="100%" border="0" cellpadding="5" cellspacing="5">
         <tr>
             <th width="55%" class="text-right">Status : </th>
             <td class="pull-left">                 <?php //print_r($company) ?>
@@ -396,7 +381,6 @@ padding-left:20px;}
             <td> <?php if(!empty($company->other_business)) echo $company->other_business ?></td>
         </tr>
     </table>
-
 </div>
 <div class="col-md-6">
 
@@ -458,13 +442,13 @@ padding-left:20px;}
 
 </div>
 </div>
-              </div>
+          </div>
 
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-              </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
           </div>
       </div>
+    </div>
   </div>
 
   <div class="modal inmodal fade" id="price_graph" tabindex="-1" role="dialog"  aria-hidden="true">
@@ -512,6 +496,7 @@ padding-left:20px;}
           </div>
       </div>
   </div>
+
 <script>
 $(document).ready(function(){
     $('#send_msg').on('click', function(){
@@ -526,24 +511,7 @@ $(document).ready(function(){
         $('.question_list').html(data);
        })
 
-    // $(".fancybox").fancybox({
-    // openEffect  : 'none',
-    // closeEffect : 'none'
-    // });
 });
-
-// function delete_data(row_id) {
-//     if(confirm('Are you sure want to delete')){
-//         $.post('<?php echo base_url()."marketplace/delete_listing_question/"; ?>',{row_id:row_id},function(data){
-//             $('#del_msg').html(data);
-//            });
-//         $.get('<?php echo base_url() ?>marketplace/get_listing_question', function(data){
-//             $('.question_list').html(data);
-//            })
-//      }else{
-//         return false;
-//      }
-// }
 </script>
 
 <script src="public/admin/js/jquery.countdown.min.js"></script>
@@ -558,32 +526,31 @@ $('[data-countdown]').each(function() {
  });
 
 <?php if(!empty($listing_detail->unit_price) && !empty($listing_detail->qty_available)) { ?>
-
 $('#core').on('change', function(){
   $('#gross_price').html('<?php echo currency_class($listing_detail->currency).' '; ?>'+(parseInt($(this).val()) + parseInt($('#total_price').val())));
  
 });
-
 <?php } ?>
-
-
-
 });
-</script>
 
-<script>
-
-//initiate the plugin and pass the id of the div containing gallery images
 $("#zoom_03").elevateZoom({gallery:'gallery_01', cursor: 'pointer', galleryActiveClass: 'active', imageCrossfade: true, loadingIcon: '../images/loader.gif', zoomWindowPosition: 10}); 
 
 //pass the images to Fancybox
 $("#zoom_03").bind("click", function(e) {  
 var ez =   $('#zoom_03').data('elevateZoom'); 
-$.fancybox(ez.getGalleryList());
 return false;
 });
 
 </script>
+
+<script type="text/javascript" src="public/main/template/gsm/validator/jquery.bvalidator.js"></script>
+<link href="public/main/template/gsm/validator/bvalidator.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">   
+    $(document).ready(function () {
+        $('#form_valid').bValidator();
+    });
+</script> 
+
 <style>
 .question_list{
     padding: 0 3%;
@@ -591,7 +558,7 @@ return false;
 </style>
 <style type="text/css">
 /*set a border on the images to prevent shifting*/
-#gallery_01 img{border:2px solid white;}
+#gallery_01 img{border:2px solid #ccc;padding: 5px;}
 #gallery_01{ text-align: center; }
 /*Change the colour*/
 .active img{border:2px solid #333 !important;}
@@ -600,8 +567,36 @@ return false;
   max-width: 75px;
 }
 .main_image_gallery{
-    text-align: right;
-  margin: 0px;
-  padding: 0px;
+  text-align: center;
+  margin-bottom: 20px;
+  /*padding: 0px;*/
 }
+.main_image_gallery .zoomWrapper img{  display: block;
+  padding: 10px;
+  border: 2px solid #E5E5E5;
+  border-radius: 5px;}
+table tr th{vertical-align: top;}
+table tr td{
+padding-left:20px;}
+
+.error{
+color:rgba(255, 0, 0, 0.7);
+padding-left: 5px;
+}
+.error:before{
+content: "*";
+padding: 3px;
+}
+.gallerymainimg{
+  max-height: 400px;
+  max-width: 400px;
+}
+.main_image_gallery .zoomWrapper{margin: 0 auto !important;margin-bottom: 20px;}
+.listing-counter{  display: block;
+  padding: 5px;
+  background: #ECECEC;
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: 16px;
+  color: rgb(30, 75, 22);}
 </style>
