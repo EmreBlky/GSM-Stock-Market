@@ -118,11 +118,14 @@
                     -->
                     <li>
                         <a href="imei/"><i class="fa fa-barcode"></i> <span class="nav-label">IMEI Services</span> 
-<!--                            <span class="fa arrow"></span>-->
+                            <span class="fa arrow"></span>
                         </a>
-<!--                        <ul class="nav nav-second-level">
-                            <li><a href="imei/"><i class="fa fa-unlock-alt"></i> Mobile Unlocking</a></li>
-                        </ul>-->
+                       <ul class="nav nav-second-level">
+                            <li><a href="imei/imei_lookup/"><i class="fa fa-eye"></i> IMEI Lookup</a></li>
+                            <li><a href="imei/unlocking/"><i class="fa fa-unlock-alt"></i> Unlocking</a></li>
+                            <li><a href="imei/archive/"><i class="fa fa-book"></i> Archive</a></li>
+                            <li><a href="imei/top_up/"><i class="fa fa-money"></i> <span class="nav-label">Top up</span><span class="label label-primary pull-right">£5.00</span></a></li>
+                        </ul>
                     </li>
                     
                     <!--
