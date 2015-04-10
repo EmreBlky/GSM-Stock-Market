@@ -18,7 +18,7 @@
 </div>
 </div>
 
-<?php if($member->membership > 1 ) {?> 
+<?php if(!empty($member) && $member->membership > 1 ) {?> 
 
 <div class="wrapper wrapper-content animated fadeInRight">
 <div class="row">
@@ -266,9 +266,6 @@ endif;
 </div>
 
 </div>
-    
-    
-
 
 <?php } else {?>
 <!-- Dummy Data Start -->
