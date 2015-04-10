@@ -18,7 +18,7 @@
 </div>
 </div>
 
-<?php if(!empty($member) && $member->membership > 1 ) {?> 
+<?php if($member->membership > 1 ) {?> 
 
 <div class="wrapper wrapper-content animated fadeInRight">
 <div class="row">
