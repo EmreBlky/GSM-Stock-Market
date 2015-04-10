@@ -182,7 +182,7 @@ class Profile extends MX_Controller
                 }else{
                     $response = array(
                         'state' => 400,
-                        'message' => "Image must be less than 2M",
+                        'message' => "Image must be less than 2MB",
                         'result' => ""
                     );
                 }
