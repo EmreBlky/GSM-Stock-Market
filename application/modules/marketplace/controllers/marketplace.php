@@ -37,6 +37,9 @@ class Marketplace extends MX_Controller
     function buy()
     {
         
+        $this->load->model('member/member_model', 'member_model');
+        $data['member'] = $this->member_model->get_where($this->session->userdata('members_id'));
+        
         $data['listing_buy'] =$this->marketplace_model->listing_buy();
 
         $member_id=$this->session->userdata('members_id');
