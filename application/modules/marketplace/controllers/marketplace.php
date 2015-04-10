@@ -39,7 +39,7 @@ class Marketplace extends MX_Controller
         
         $this->load->model('member/member_model', 'member_model');
         $data['member'] = $this->member_model->get_where($this->session->userdata('members_id'));
-        
+
         $data['listing_buy'] =$this->marketplace_model->listing_buy();
 
         $member_id=$this->session->userdata('members_id');
@@ -574,7 +574,7 @@ class Marketplace extends MX_Controller
         if(!empty($check_product_mpn) || ($this->input->post('status')==2)){
             $status = $this->input->post('status');
         }else{
-            $status = 0;
+            $status = 1;
         }
         $data_insert['schedule_date_time']   =  $schedule_date_time;
         $data_insert['listing_categories']   =  $this->input->post('listing_categories');
@@ -716,7 +716,7 @@ class Marketplace extends MX_Controller
         $check_securty=0;
         if(!empty($list_id)){
          if(is_numeric($list_id)){
-          if($data['product_list']   =  $this->marketplace_model->get_row('listing',array('id'=>$list_id,'member_id'=>$member_id))){
+          if($data['product_list']   =  $this->marketplace_model->get_row('listing',array('id'=>$list_id,'member_id'=>$member_id,'listing_type'=>2))){
             $check_securty=1;
           }
          }
@@ -897,7 +897,7 @@ class Marketplace extends MX_Controller
             if(!empty($check_product_mpn) || ($this->input->post('status')==2)){
                 $status = $this->input->post('status');
             }else{
-                $status = 0;
+                $status = 1;
             }
 
            
@@ -1044,7 +1044,7 @@ class Marketplace extends MX_Controller
         $check_securty=0;
         if(!empty($list_id)){
          if(is_numeric($list_id)){
-          if($data['product_list']   =  $this->marketplace_model->get_row('listing',array('id'=>$list_id,'member_id'=>$member_id))){
+          if($data['product_list']   =  $this->marketplace_model->get_row('listing',array('id'=>$list_id,'member_id'=>$member_id,'listing_type'=>1))){
             $check_securty=1;
           }
          }
@@ -1236,7 +1236,10 @@ class Marketplace extends MX_Controller
            $this->form_validation->set_message('image1_check', 'Oops! Your item image needs to be less than 1200 x 1200 pixels.');
            return FALSE;
        }
-
+       if ($image[0] < 400 || $image[1] < 400) {
+       $this->form_validation->set_message('image1_check', 'Oops! Your item image needs to be at least grater than 400 x 400 pixels.');
+       return FALSE;
+   }
     if(!empty($_FILES['image1']['name'])):
         $config1['upload_path'] = './public/upload/listing/';
         $config1['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -1256,8 +1259,8 @@ class Marketplace extends MX_Controller
             $param_thumb=array();
             $param_thumb['source_path'] = './public/upload/listing/';
             $param_thumb['destination_path'] = './public/upload/listing/thumbnail/';
-            $param_thumb['width']  = '200';
-            $param_thumb['height']  = '200';
+            $param_thumb['width']  = '400';
+            $param_thumb['height']  = '400';
             $param_thumb['file_name'] =$data['file_name'];
             create_thumbnail($param_thumb);
 
@@ -1279,6 +1282,10 @@ class Marketplace extends MX_Controller
            $this->form_validation->set_message('image2_check2', 'Oops! Your item image needs to be less than 1200 x 1200 pixels.');
            return FALSE;
        }
+       if ($image[0] < 400 || $image[1] < 400) {
+       $this->form_validation->set_message('image4_check4', 'Oops! Your item image needs to be at least grater than 400 x 400 pixels.');
+       return FALSE;
+   }
     if(!empty($_FILES['image2']['name'])):
         $config2['upload_path'] = './public/upload/listing/';
         $config2['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -1299,8 +1306,8 @@ class Marketplace extends MX_Controller
             $param_thumb=array();
             $param_thumb['source_path'] = './public/upload/listing/';
             $param_thumb['destination_path'] = './public/upload/listing/thumbnail/';
-            $param_thumb['width']  = '200';
-            $param_thumb['height']  = '200';
+            $param_thumb['width']  = '400';
+            $param_thumb['height']  = '400';
             $param_thumb['file_name'] =$data['file_name'];
             create_thumbnail($param_thumb);
 
@@ -1322,6 +1329,10 @@ class Marketplace extends MX_Controller
            $this->form_validation->set_message('image3_check3', 'Oops! Your item image needs to be less than 1200 x 1200 pixels.');
            return FALSE;
        }
+       if ($image[0] < 400 || $image[1] < 400) {
+       $this->form_validation->set_message('image4_check4', 'Oops! Your item image needs to be at least grater than 400 x 400 pixels.');
+       return FALSE;
+   }
 
     if(!empty($_FILES['image3']['name'])):
         $config3['upload_path'] = './public/upload/listing/';
@@ -1343,8 +1354,8 @@ class Marketplace extends MX_Controller
                  $param_thumb=array();
             $param_thumb['source_path'] = './public/upload/listing/';
             $param_thumb['destination_path'] = './public/upload/listing/thumbnail/';
-            $param_thumb['width']  = '200';
-            $param_thumb['height']  = '200';
+            $param_thumb['width']  = '400';
+            $param_thumb['height']  = '400';
             $param_thumb['file_name'] =$data['file_name'];
             create_thumbnail($param_thumb);
 
@@ -1366,6 +1377,10 @@ class Marketplace extends MX_Controller
            $this->form_validation->set_message('image4_check4', 'Oops! Your item image needs to be less than 1200 x 1200 pixels.');
            return FALSE;
        }
+    if ($image[0] < 400 || $image[1] < 400) {
+       $this->form_validation->set_message('image4_check4', 'Oops! Your item image needs to be at least grater than 400 x 400 pixels.');
+       return FALSE;
+   }
        
     if(!empty($_FILES['image4']['name'])):
         $config4['upload_path'] = './public/upload/listing/';
@@ -1387,8 +1402,8 @@ class Marketplace extends MX_Controller
                   $param_thumb=array();
             $param_thumb['source_path'] = './public/upload/listing/';
             $param_thumb['destination_path'] = './public/upload/listing/thumbnail/';
-            $param_thumb['width']  = '200';
-            $param_thumb['height']  = '200';
+            $param_thumb['width']  = '400';
+            $param_thumb['height']  = '400';
             $param_thumb['file_name'] =$data['file_name'];
             create_thumbnail($param_thumb);
 
@@ -1410,7 +1425,12 @@ class Marketplace extends MX_Controller
            $this->form_validation->set_message('image5_check5', 'Oops! Your item image needs to be less than 1200 x 1200 pixels.');
            return FALSE;
        }
- 
+        
+        if ($image[0] < 400 || $image[1] < 400) {
+           $this->form_validation->set_message('image5_check5', 'Oops! Your item image needs to be at least grater than 400 x 400 pixels.');
+           return FALSE;
+       }
+
     if(!empty($_FILES['image5']['name'])):
         $config5['upload_path'] = './public/upload/listing/';
         $config5['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -1431,8 +1451,8 @@ class Marketplace extends MX_Controller
                    $param_thumb=array();
             $param_thumb['source_path'] = './public/upload/listing/';
             $param_thumb['destination_path'] = './public/upload/listing/thumbnail/';
-            $param_thumb['width']  = '200';
-            $param_thumb['height']  = '200';
+            $param_thumb['width']  = '400';
+            $param_thumb['height']  = '400';
             $param_thumb['file_name'] =$data['file_name'];
             create_thumbnail($param_thumb);
 
@@ -1447,14 +1467,17 @@ class Marketplace extends MX_Controller
     function listing_detail($id=0)
     {
         //$this->output->enable_profiler(TRUE);
-        if(empty($id)) { redirect('marketplace/index'); }
+        if(empty($id) || !is_numeric($id)) { redirect('marketplace/index'); }
+
         $member_id=$this->session->userdata('members_id');
         $data['main'] = 'marketplace';        
         $data['title'] = 'GSM - Market Place';        
         $data['page'] = 'listing_detail';
         //$data['page'] = 'buy_html';
         $data['member_id'] =$member_id;
-        $data['listing_detail'] =  $this->marketplace_model->get_row('listing',array('id'=>$id));
+        if($data['listing_detail'] =  $this->marketplace_model->get_row('listing',array('id'=>$id))){
+            
+        }
         if($data['listing_detail']==FALSE)   redirect('marketplace/index');
 
         $data['member'] = $this->marketplace_model->get_row('members',array('id'=> $data['listing_detail']->member_id));
