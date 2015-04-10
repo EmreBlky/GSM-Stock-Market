@@ -18,7 +18,7 @@
 </div>
 </div>
 
-<?php if($member->membership > 1 ) {?> 
+<?php if(!empty($member) && $member->membership > 1 ) {?> 
 
 <div class="wrapper wrapper-content animated fadeInRight">
 <div class="row">
@@ -43,9 +43,9 @@ endif;
 ?>
 
     <div class="ibox-content">
-     <form action="<?php echo base_url('marketplace/buy'); ?>/<?php echo $offset ?>/" method="get" accept-charset="utf-8">
+     <form action="<?php echo base_url('marketplace/buy'); ?>/" method="get" accept-charset="utf-8">
            <div class="row">
-        	<div class="col-lg-3" style="padding-right:0">
+            <div class="col-lg-3" style="padding-right:0">
             	<select name="lc" class="form-control" tabindex="1">
                 	<option value="" selected="">All Categories</option>
                     <?php if (!empty($listing_categories)): ?>
@@ -90,7 +90,7 @@ endif;
 
                 <div id="AdvanceSearch"   <?php if(isset($_GET['search'])) echo 'class="collapse in" aria-expanded="true"'; else echo 'class="collapse"'; ?> style=" border: 1px solid #f0f0f0; padding: 10px;">
                 <div class="well0 row">
-                 <form action="<?php echo base_url('marketplace/buy'); ?>/<?php echo $offset ?>/" method="get" accept-charset="utf-8">
+                 <form action="<?php echo base_url('marketplace/buy'); ?>/" method="get" accept-charset="utf-8">
 
                     <div class="col-lg-4">
                         <div class="form-group">
@@ -266,9 +266,6 @@ endif;
 </div>
 
 </div>
-    
-    
-
 
 <?php } else {?>
 <!-- Dummy Data Start -->
@@ -300,7 +297,7 @@ endif;
 ?>
 
     <div class="ibox-content">
-     <form action="<?php echo base_url('marketplace/buy'); ?>/<?php echo $offset ?>/" method="get" accept-charset="utf-8">
+     <form action="<?php echo base_url('marketplace/buy'); ?>/" method="get" accept-charset="utf-8">
            <div class="row">
         	<div class="col-lg-3" style="padding-right:0">
             	<select name="lc" class="form-control" tabindex="1">
@@ -360,7 +357,7 @@ endif;
 
                 <div id="AdvanceSearch"   <?php if(isset($_GET['search'])) echo 'class="collapse in" aria-expanded="true"'; else echo 'class="collapse"'; ?> style="margin-top:10px">
                 <div class="well0 row">
-                 <form action="<?php echo base_url('marketplace/buy'); ?>/<?php echo $offset ?>/" method="get" accept-charset="utf-8">
+                 <form action="<?php echo base_url('marketplace/buy'); ?>/" method="get" accept-charset="utf-8">
 
                     <div class="col-lg-2">
                         <div class="form-group">
