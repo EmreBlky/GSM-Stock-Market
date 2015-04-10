@@ -24,11 +24,11 @@
           <div class="ibox-content">
           
             <div class="form-group">
-              <div class="col-lg-4 col-lg-offset-2">
+              <div class="col-lg-4 col-lg-offset-3">
               <input type="text" placeholder="Enter IMEI" class="form-control" /><br />
               <p class="text-navy">Please enter IMEI for Mobile Phones, and Serial Numbers for all other Devices, Consoles, Laptops etc</p>
               </div>
-              <div class="col-lg-4">
+              <div class="col-lg-3">
               	<button class="btn btn-primary">Look up device</button>
               </div>
             </div>
