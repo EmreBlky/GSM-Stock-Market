@@ -1192,4 +1192,96 @@ class Admin extends MX_Controller
         $this->load->module('templates');
         $this->templates->admin($data);
     }
+    
+    function upgrades($id = NULL)
+    {
+        if ( ! $this->session->userdata('admin_logged_in'))
+        { 
+            redirect('admin/login');
+        }
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel: Account Upgrades';        
+        $data['page'] = 'upgrades';
+        
+        $var = 'transaction';
+        $var_model = $var.'_model';
+        
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        if(isset($id)){
+            $data[$var] = $this->{$var_model}->get_where($id);
+        }else{
+            $count = $this->{$var_model}->count_where('status', 'not_completed');
+            if($count > 0){
+                $data[$var.'_count'] = $count;
+                $data[$var] = $this->{$var_model}->get_where_multiples_order('date', 'DESC', 'status', 'not_completed');
+            }
+            else{
+                $data[$var.'_count'] = 0;
+            }
+        }
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+    
+    function upgradeApprove($id)
+    {
+        $var = 'transaction';
+        $var_model = $var.'_model';
+        
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        $mem = $this->{$var_model}->get_where($id)->buyer_id;
+        
+        $data = array(                   
+                        'status'               => 'completed'
+                      );
+        $this->{$var_model}->_update($id, $data);
+        
+        $var1 = 'member';
+        $var1_model = $var1.'_model';
+                
+        $this->load->model(''.$var1.'/'.$var1.'_model', ''.$var1.'_model');
+        
+         $data = array(             
+                        'membership'          => 2
+                      ); 
+        $this->{$var1_model}->_update($mem, $data);
+        
+        $var2 = 'mailbox';
+        $var2_model = $var2.'_model';
+        
+        $this->load->model(''.$var2.'/'.$var2.'_model', ''.$var2.'_model');
+        
+         $data = array(
+                                    'member_id'         => 5,
+                                    'sent_member_id'    => $mem,
+                                    'subject'           => 'Member Profile Upgraded',
+                                    'body'              => 'Your Profile has been upgraded. Please logout and log back in to activate your membership.',
+                                    'inbox'             => 'yes',
+                                    'sent'              => 'yes',
+                                    'date'              => date('d-m-Y'),
+                                    'time'              => date('H:i'),
+                                    'sent_from'         => 'support',
+                                    'datetime'          => date('Y-m-d H:i:s')
+                                  ); 
+        $this->{$var2_model}->_insert($data);
+        
+        redirect('admin/upgrades/');
+    }
+    
+    function upgradeDecline($id)
+    {
+        $var = 'transaction';
+        $var_model = $var.'_model';
+        
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        //$mem = $this->{$var_model}->get_where($id)->buyer_id;
+        //$profile = $this->{$var_model}->get_where($id)->company_profile_approval;
+        
+        $data = array(                   
+                        'status'               => 'declined'
+                      );
+        $this->{$var_model}->_update($id, $data);
+        
+        redirect('admin/upgrades/');
+    }
 }
