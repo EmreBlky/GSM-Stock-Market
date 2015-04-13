@@ -1603,6 +1603,7 @@ class Marketplace extends MX_Controller
           if($listing->total_qty){
              $qty=$listing->total_qty;
           }
+        if($offersdone < $total_allow_offer){
         if(!empty($max_price) && !empty($qty)){
             if($product_qty <=$qty && $unit_price <=$max_price ){
                 $need_to_insert++;
@@ -1616,6 +1617,7 @@ class Marketplace extends MX_Controller
         }
         if(empty($need_to_insert)){
             $list=array('STATUS'=>4,'Message'=>'Offer is not accepted price is too high.');
+        }
         }
         else{
         $list=array('STATUS'=>2,'Message'=>'Offer limit exceed.'); 
