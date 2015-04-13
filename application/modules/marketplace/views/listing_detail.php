@@ -547,11 +547,11 @@ $(document).ready(function() {
         alert('Offer is not accepted.');
       }
       else if(data.STATUS=='5'){
-        if(data.chance_left = "null" || data.chance_left == ""){
-          alert('Your all chances get over now try it after 24 hours.');
+        if(data.chance_left > 0){
+           alert('Chance left to give offer '+data.chance_left);
         }
         else{
-          alert('Chance left to give offer '+data.chance_left);
+         alert('Your all chances get over now try it after 24 hours.');
         }
       }
       else if(data.STATUS=='6'){
