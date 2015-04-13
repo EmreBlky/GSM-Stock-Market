@@ -143,7 +143,7 @@ if(!empty($listing_detail->image1))
 <div class="clearfix"></div>
 <div class="col-md-8 col-md-offset-2 text-center">
     <?php if(!empty($listing_detail->listing_end_datetime)) { ?> 
-    <span class="countdowncounter ">Listing Ends : <span data-countdown="<?php echo $listing_detail->listing_end_datetime; ?>"></span>
+    <span class="countdowncounter" >Listing Ends : <span data-countdown="<?php echo $listing_detail->listing_end_datetime; ?>"></span>
     </span>
     <br /><br />
     <?php } ?>
@@ -538,28 +538,31 @@ $(document).ready(function() {
      }
     $.post('<?php echo base_url("marketplace/make_offer")?>', $( ".make_offer" ).serialize(), function(data) {
       if(data.STATUS=='1'){
-        //offermessage ='Offer added sucessfully.';
-        //classname='bg-info';
         alert('Offer added sucessfully.');
       }
       else if(data.STATUS=='2'){
-        // ='Offer limit exceed.';
         alert('Offer limit exceed.');
       }
       else if(data.STATUS=='4'){
-        //offermessage ='Offer is not accepted price is too high.';
         alert('Offer is not accepted.');
       }
-      else{
-        offermessage ='The offer is too low.';
-        alert('The offer is too low.');
+      else if(data.STATUS=='5'){
+        if(data.chance_left == "null" || data.chance_left == ""){
+          alert('Your all chances get over now try it after 24 hours.');
+        }
+      }
+      else if(data.STATUS=='6'){
+        alert('Try it after some hours.');
+      }
+      else if(data.STATUS=='7'){
+        alert('Offer is Already accepted.');
       }
     });
     /*alert(classname);
     alert(offermessage);*/
     
-    $('.offer_message_maindiv').CSS('display: block;');
-    $('#offer_message').addClass(classname);
+   // $('.offer_message_maindiv').CSS('display: block;');
+    //$('#offer_message').addClass(classname);
    });
   });
 </script>
