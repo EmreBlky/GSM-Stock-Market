@@ -1557,9 +1557,16 @@ class Marketplace extends MX_Controller
     if(!empty($product_qty) && is_numeric($product_qty) && !empty($unit_price) && is_numeric($unit_price) && !empty($listing_id) && is_numeric($listing_id)){
      
     if($listing=$this->marketplace_model->get_row('listing', array('id'=>$listing_id))){
+
     $offersdone_res=$this->marketplace_model->offerattempt($listing_id);
     $offersdone=$offersdone_res->totalrow;
+    $total_allow_offer=3;
+     if($listing->allow_offer){
+        $total_allow_offer=$listing->allow_offer;
+     }
 
+  if($offersdone < $total_allow_offer){
+    $offerleft=($total_allow_offer - $offersdone) - 1;
     if($listing->listing_type==2){
     $min_qty='';
 
@@ -1567,33 +1574,22 @@ class Marketplace extends MX_Controller
          $min_qty=$listing->min_qty_order;
       }
 
-     $min_price='';
-     if($listing->min_price){
+     $min_price='0';
+     if($listing->min_price != '0.00'){
          $min_price=$listing->min_price;
       }
       /*case III*/
-     $total_allow_offer=3;
-     if($listing->allow_offer){
-        $total_allow_offer=$listing->allow_offer;
-     }
-     
-     if($offersdone < $total_allow_offer){
-       
-      if(!empty($min_qty) && !empty($min_price)){
+      if(!empty($min_qty) && $min_price !='0.00'){
         if($product_qty >=$min_qty && $unit_price >=$min_price ){
             $need_to_insert++;
          }
        }
-       elseif(!empty($min_price) && $unit_price >=$min_price){
+       elseif($min_price !='0.00' && $unit_price >=$min_price){
              $need_to_insert++;
         }
        elseif(!empty($min_qty) && $product_qty >=$min_qty){
              $need_to_insert++;
-       }
-      }
-      else{
-        $list=array('STATUS'=>2,'Message'=>'Offer limit exceed.'); 
-      }     
+       } 
      }
      elseif($listing->listing_type==1){
         $max_price='';
@@ -1604,27 +1600,32 @@ class Marketplace extends MX_Controller
              $qty=$listing->total_qty;
           }
         if($offersdone < $total_allow_offer){
-        if(!empty($max_price) && !empty($qty)){
+        if(!empty($max_price) && $max_price !='0.00' && !empty($qty)){
             if($product_qty <=$qty && $unit_price <=$max_price ){
                 $need_to_insert++;
              }
         }
-        elseif(!empty($max_price) && $unit_price <=$max_price){
+        elseif(!empty($max_price) && $max_price !='0.00'  && $unit_price <=$max_price){
             $need_to_insert++;
         }
         elseif(!empty($qty) && $product_qty <=$qty){
            $need_to_insert++;
         }
         if(empty($need_to_insert)){
-            $list=array('STATUS'=>4,'Message'=>'Offer is not accepted price is too high.');
+            $list=array('STATUS'=>4,'Message'=>'Offer is not accepted.');
         }
         }
         else{
         $list=array('STATUS'=>2,'Message'=>'Offer limit exceed.'); 
       } 
      }
+       if( $need_to_insert){
 
-     if( $need_to_insert){
+        if($checkoffer=$this->marketplace_model->get_row('make_offer', array('buyer_id'=> $buyer_id,'seller_id' => $listing->member_id,'listing_id'=> $listing_id,'product_qty'   => $product_qty,'unit_price' => $unit_price))){
+
+        $list=array('STATUS'=>7,'Message'=>'Offer is Already accepted.'); 
+        }
+        else{
        $data_insert=array(
                 'buyer_id'      => $buyer_id,
                 'seller_id'     => $listing->member_id,
@@ -1635,9 +1636,22 @@ class Marketplace extends MX_Controller
                 'created'       => date('Y-m-d, H:i:s')
                 );
         $this->marketplace_model->insert('make_offer',$data_insert);
-        $list=array('STATUS'=>1,'Message'=>'Offer added sucessfully.'); 
+        $list=array('STATUS'=>1,'Message'=>'Offer added sucessfully.');
+        }
        }
-
+       else{
+         $data_insert_offer_attempt=array(
+                'buyer_id'      => $buyer_id,
+                'listing_id'    => $listing_id,
+                'created'       => date('Y-m-d, H:i:s')
+                );
+        $this->marketplace_model->insert('offer_attempt',$data_insert_offer_attempt);
+        $list=array('STATUS'=>5,'chance_left'=>$offerleft); 
+      }
+    } 
+    else{
+        $list=array('STATUS'=>6,'Message'=>'Try it later'); 
+      } 
       }
      }
     }
@@ -1665,21 +1679,21 @@ class Marketplace extends MX_Controller
         
         <?php foreach ($make_offer as $value) { ?>
 
-                    <tr>
-                        <td><?php echo $value->company_name; ?></td>
-                        <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
-                        <td><?php echo $value->product_qty; ?></td>
-                        <td><?php echo currency_class($value->buyer_currency); ?> <?php echo $value->unit_price; ?></td>
-                        <td><img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" alt="Currency" /></td>
-                        <td style="text-align:center">
-                        <button type="button" class="btn btn-outline btn-warning"><i class="fa fa-hand-o-down"></i> Counter Offer</button>
-                        <a onclick="offer_status(<?php echo $value->listing_id; ?>,<?php echo $value->buyer_id ?>)" class="btn btn-outline btn-primary" <?php if (!empty($value->offer_status) && $value->offer_status == 1 ): ?> id="offer_status_accept"<?php endif ?>><i class="fa fa-check"></i> Accept</a>
-                        <button type="button" class="btn btn-outline btn-danger"<?php if (!empty($value->offer_status) && $value->offer_status == 2 ): ?> id="offer_status_declined"<?php endif ?>><i class="fa fa-times"></i> Decline</button>
-                        </td>
-                    </tr>
+        <tr>
+         <td><?php echo $value->company_name; ?></td>
+                <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
+                <td><?php echo $value->product_qty; ?></td>
+                <td><?php echo currency_class($value->buyer_currency); ?> <?php echo $value->unit_price; ?></td>
+                <td><img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" alt="Currency" /></td>
+                <td style="text-align:center">
+                <button type="button" class="btn btn-outline btn-warning"><i class="fa fa-hand-o-down"></i> Counter Offer</button>
+                <a onclick="offer_status(<?php echo $value->listing_id; ?>,<?php echo $value->buyer_id ?>)" class="btn btn-outline btn-primary" <?php if (!empty($value->offer_status) && $value->offer_status == 1 ): ?> id="offer_status_accept"<?php endif ?>><i class="fa fa-check"></i> Accept</a>
+                <button type="button" class="btn btn-outline btn-danger"<?php if (!empty($value->offer_status) && $value->offer_status == 2 ): ?> id="offer_status_declined"<?php endif ?>><i class="fa fa-times"></i> Decline</button>
+                </td>
+            </tr>
         <?php    } ?>
-                    </tbody>
-                    </table>
+            </tbody>
+            </table>
         <?php }else{
             echo "<h3>No offers available yet.</h3>";
         }
@@ -1702,7 +1716,6 @@ class Marketplace extends MX_Controller
                     </tr>
                 </thead>
                 <tbody>
-        
         <?php foreach ($make_offer as $value) { ?>
 
                     <tr>
@@ -1718,8 +1731,8 @@ class Marketplace extends MX_Controller
                         </td>
                     </tr>
         <?php    } ?>
-                    </tbody>
-                    </table>
+        </tbody>
+        </table>
         <?php }
     }
 
