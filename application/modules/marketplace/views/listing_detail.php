@@ -84,7 +84,7 @@
                   <tr><td><?php if(!empty($value->shipping_term)) echo $value->shipping_term; ?><input type="hidden" name="shipping_terms[]" value="<?php if(!empty($value->shipping_term)) echo $value->shipping_term; ?>"/></td>
                   <td><?php if(!empty($value->coriars)) echo $value->coriars; ?><input type="hidden" name="coriars[]" value="<?php if(!empty($value->coriars)) echo $value->coriars; ?>"/></td>
                   <td><?php if(!empty($value->shipping_types)) echo $value->shipping_types; ?><input type="hidden" name="ship_types[]" value="<?php if(!empty($value->shipping_types)) echo $value->shipping_types; ?>"/></td>
-                  <td><?php if(!empty($value->shipping_fees)) echo $value->shipping_fees; ?><input type="hidden" name="shipping_fees[]" value="<?php if(!empty($value->shipping_fees)) echo $value->shipping_fees; ?>"/></td>
+                  <td><?php if(!empty($value->shipping_fees)){echo $value->shipping_fees;}else{ echo"Free";} ?></td>
                   </tr>
             <?php }  ?>
           </tbody>
