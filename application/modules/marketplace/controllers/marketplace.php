@@ -1629,6 +1629,7 @@ class Marketplace extends MX_Controller
                 'listing_id'    => $listing_id,
                 'product_qty'   => $product_qty,
                 'unit_price'    => $unit_price,
+                'buyer_currency'=>$listing->currency,
                 'created'       => date('Y-m-d, H:i:s')
                 );
         $this->marketplace_model->insert('make_offer',$data_insert);
