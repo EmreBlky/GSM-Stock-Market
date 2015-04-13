@@ -146,9 +146,11 @@ if(!empty($listing_detail->image1))
     <span class="countdowncounter" <?php 
     $date1 = $listing_detail->listing_end_datetime;; 
     $date2 = date('d-m-y H:i:s'); 
-    $diff = abs(strtotime($date2) - strtotime($date1)); 
+    $diff = abs(strtotime($date2) - strtotime($date1));
+    $years   = floor($diff / (365*60*60*24)); 
+    $months  = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));  
     $days    = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
-    if($days <=1000){
+    if($days <=1){
       echo "style='color:red!important'";
     }
     ?>>Listing Ends : <span data-countdown="<?php echo $listing_detail->listing_end_datetime; ?>" ></span>
