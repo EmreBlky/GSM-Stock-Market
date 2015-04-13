@@ -549,7 +549,7 @@ $(document).ready(function() {
       else if(data.STATUS=='5'){
 
         if(parseInt(data.chance_left) > 0){
-           alert('Chance left to give offer '+parseInt(data.chance_left));
+           alert(parseInt(data.chance_left)+' Chance left to give offer.');
         }
         else{
          alert('Your all chances get over now try it after 24 hours.');
