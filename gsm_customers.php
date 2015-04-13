@@ -40,7 +40,7 @@ while($rowMember = mysql_fetch_array($qry)) {
   $qry_company = mysql_query("SELECT * FROM company WHERE admin_member_id = '".$rowMember['id']."'") or die (mysql_error());
   while($rowCompany = mysql_fetch_array($qry_company)) {
 	
-	$data .= $rowMember['firstname'].' '.$rowMember['lastname'].",".$rowMember['email'].",".$rowMember['date'].",".country($rowCompany['country']).",".$rowCompany['company_name'].",".dial_code($rowMember['dial_phone']).$rowMember['phone_number'].",".$rowMember['role'].",".$rowMember['skype'].",".$rowCompany['website']."\n";
+	$data .= $rowMember['firstname'].' '.$rowMember['lastname'].",".$rowMember['email'].",".$rowMember['date'].",".country($rowCompany['country']).",".$rowCompany['company_name'].",".dial_code($rowMember['dial_phone']).' '.$rowMember['phone_number'].",".$rowMember['role'].",".$rowMember['skype'].",".$rowCompany['website']."\n";
   
   }
   mysql_query("UPDATE members SET gsm_check = 'yes' WHERE id = '".$rowMember['id']."'") or die (mysql_error());
