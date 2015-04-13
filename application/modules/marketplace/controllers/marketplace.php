@@ -529,7 +529,7 @@ class Marketplace extends MX_Controller
             if(isset($_POST['allowoffer_checkbox'])){
                $allow_offer=$this->input->post('allow_offer');
             }else{
-                $allow_offer='';
+                $allow_offer='3';
             }
             
             if(isset($_POST['orderqunatity_checkbox'])){
@@ -869,7 +869,7 @@ class Marketplace extends MX_Controller
             if(isset($_POST['allowoffer_checkbox'])){
                $allow_offer=$this->input->post('allow_offer');
             }else{
-               $allow_offer='';
+               $allow_offer='3';
             }
             
             if(isset($_POST['orderqunatity_checkbox'])){
@@ -1603,6 +1603,7 @@ class Marketplace extends MX_Controller
           if($listing->total_qty){
              $qty=$listing->total_qty;
           }
+        if($offersdone < $total_allow_offer){
         if(!empty($max_price) && !empty($qty)){
             if($product_qty <=$qty && $unit_price <=$max_price ){
                 $need_to_insert++;
@@ -1617,6 +1618,7 @@ class Marketplace extends MX_Controller
         if(empty($need_to_insert)){
             $list=array('STATUS'=>4,'Message'=>'Offer is not accepted price is too high.');
         }
+        }
         else{
         $list=array('STATUS'=>2,'Message'=>'Offer limit exceed.'); 
       } 
@@ -1629,6 +1631,7 @@ class Marketplace extends MX_Controller
                 'listing_id'    => $listing_id,
                 'product_qty'   => $product_qty,
                 'unit_price'    => $unit_price,
+                'buyer_currency'=> $listing->currency,
                 'created'       => date('Y-m-d, H:i:s')
                 );
         $this->marketplace_model->insert('make_offer',$data_insert);
@@ -1706,7 +1709,7 @@ class Marketplace extends MX_Controller
                         <td><?php echo $value->company_name; ?></td>
                         <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
                         <td><?php echo $value->product_qty; ?></td>
-                        <td><?php echo $value->buyer_currency; ?> <?php echo $value->unit_price; ?></td>
+                        <td><?php echo currency_class($value->buyer_currency); ?> <?php echo $value->unit_price; ?></td>
                         <td><img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" alt="Currency" /></td>
                         <td class="text-center">
                         <a class="btn btn-outline btn-warning"><i class="fa fa-hand-o-down"></i> Counter Offer</a>

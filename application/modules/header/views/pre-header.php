@@ -16,8 +16,8 @@
     
     <!-- Icons -->    
     <link href="public/main/template/gsm/images/icons/favicon.png" rel="shortcut icon" type="image/x-icon" />
-	<link href="public/main/template/gsm/images/icons/apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
-	<link href="public/main/template/gsm/images/icons/icon-hires.png" rel="icon" sizes="192x192" />
+    <link href="public/main/template/gsm/images/icons/apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
+    <link href="public/main/template/gsm/images/icons/icon-hires.png" rel="icon" sizes="192x192" />
 
     <!-- Main Stylesheets -->
     <link href="public/main/template/core/css/bootstrap.min.css" rel="stylesheet">
@@ -45,7 +45,7 @@
     <script src="public/main/template/core/js/plugins/cropper/main.js"></script>
     <script type="text/javascript">
         $(document).on("click", "#deleteMemberImage", function () {
-            $(this).parent().prev('.avatar-view').children('img').attr('src',"public/main/template/gsm/images/members/no_profile.jpg");
+            $(this).parent().prev('.avatar-view').html('<img src="public/main/template/gsm/images/members/no_profile.jpg" />');
             $.ajax('profile/profileImage', {type: 'post', data: {'reset': 1}, dataType: 'json'});
         })
         $(document).on("click", "#changeMemberImage", function () {
@@ -54,7 +54,7 @@
 
 
         $(document).on("click", "#deleteCompanyImage", function () {
-            $(this).parent().prev('.avatar-view').children('img').attr('src','public/main/template/gsm/images/company/no_company.jpg');
+            $(this).parent().prev('.avatar-view').html('<img src="public/main/template/gsm/images/company/no_company.jpg" />');
             $.ajax('profile/companyImage', {type: 'post', data: {'reset': 1}, dataType: 'json'});
         })
         $(document).on("click", "#changeCompanyImage", function () {
@@ -67,19 +67,19 @@
     <script src="public/main/template/core/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
     <script src="public/main/template/core/js/inspinia.js"></script>
     <!-- datepicker chapter247 -->
-    <script type="text/javascript" src="public/admin/js/jquery.fancybox.js?v=2.1.5"></script>
     <script type="text/javascript" src="public/admin/js/jquery.elevatezoom.js"></script>
-    
-    
+    <script type="text/javascript" src="public/admin/js/jquery.fancybox.js?v=2.1.5"></script>
+    <link rel="stylesheet" href="public/main/template/gsm/css/jquery.fancybox.css" />
+    <script src="public/main/template/core/js/plugins/validate/jquery.validate.min.js"></script>
 
     
-	<script type="text/javascript">
+    <script type="text/javascript">
         var weekdaystxt=["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"]
         function showLocalTime(container, servermode, offsetMinutes, displayversion){
         if (!document.getElementById || !document.getElementById(container)) return
         this.container=document.getElementById(container)
         this.displayversion=displayversion
-        var servertimestring=(servermode=="server-php")? '<? print date("F d, Y H:i:s", time())?>' : (servermode=="server-ssi")? '<!--#config timefmt="%B %d, %Y %H:%M:%S"-->				<!--#echo var="DATE_LOCAL" -->' : '<%= Now() %>'
+        var servertimestring=(servermode=="server-php")? '<? print date("F d, Y H:i:s", time())?>' : (servermode=="server-ssi")? '<!--#config timefmt="%B %d, %Y %H:%M:%S"-->               <!--#echo var="DATE_LOCAL" -->' : '<%= Now() %>'
         this.localtime=this.serverdate=new Date(servertimestring)
         this.localtime.setTime(this.serverdate.getTime()+offsetMinutes*300*1000) //add user offset to server time
         this.updateTime()
@@ -129,4 +129,4 @@
 <body class="<?php echo strtolower($this->membership_model->get_where($member->membership)->membership); ?>">
 
 
-	
+    
