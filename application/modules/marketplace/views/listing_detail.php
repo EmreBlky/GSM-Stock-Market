@@ -557,6 +557,9 @@ $(document).ready(function() {
       else if(data.STATUS=='7'){
         alert('Offer is Already accepted.');
       }
+      else{
+        alert('Offer is rejected.');
+      }
     });
     /*alert(classname);
     alert(offermessage);*/
