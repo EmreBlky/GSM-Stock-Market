@@ -143,7 +143,17 @@ if(!empty($listing_detail->image1))
 <div class="clearfix"></div>
 <div class="col-md-8 col-md-offset-2 text-center">
     <?php if(!empty($listing_detail->listing_end_datetime)) { ?> 
-    <span class="countdowncounter" >Listing Ends : <span data-countdown="<?php echo $listing_detail->listing_end_datetime; ?>"></span>
+    <span class="countdowncounter" <?php 
+    $date1 = $listing_detail->listing_end_datetime;; 
+    $date2 = date('d-m-y H:i:s'); 
+    $diff = abs(strtotime($date2) - strtotime($date1));
+    $years   = floor($diff / (365*60*60*24)); 
+    $months  = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));  
+    $days    = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+    if($days <=1){
+      echo "style='color:red!important'";
+    }
+    ?>>Listing Ends : <span data-countdown="<?php echo $listing_detail->listing_end_datetime; ?>" ></span>
     </span>
     <br /><br />
     <?php } ?>
@@ -619,6 +629,6 @@ padding: 3px;
   top: 10px;
   font-size: 18px;
   border: 1px solid #ccc;
-  color: #F70324;
+  color: #302F2F;
 }
 </style>
