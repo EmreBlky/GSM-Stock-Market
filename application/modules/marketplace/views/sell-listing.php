@@ -97,6 +97,7 @@
                  <?php }} ?>
             </datalist>
         <?php echo form_error('product_color'); ?>
+         <input type="checkbox" name="color_allow" value="" <?php if(isset($_POST['color_allow']) ){ echo'checked';} elseif(!empty($product_list->allow_color)){ echo'checked';}?>> Allow offers for all colors.
         </div>
     </div>
 
@@ -281,7 +282,7 @@
     
     <div class="form-group"><label class="col-md-3 control-label">Shipping and Handling Fee</label>
     <div class="col-md-9">
-<table class="table table-bordered">
+    <table class="table table-bordered">
       <thead>
       <tr>
           <th>Shipping Terms</th>
@@ -699,37 +700,36 @@ $(document).ready(function () {
     
     
 
-    <!-- Jquery Validate -->
-    <script src="public/main/template/core/js/plugins/validate/jquery.validate.min.js"></script>
+<!-- Jquery Validate -->
 
-      <script>
-         $(document).ready(function(){
+<script>
+$(document).ready(function(){
 
-             $(".validation").validate({
-                 rules: {
-                     password: {
-                         required: true,
-                         minlength: 3
-                     },
-                     url: {
-                         required: true,
-                         url: true
-                     },
-                     number: {
-                         required: true,
-                         number: true
-                     },
-                     min: {
-                         required: true,
-                         minlength: 6
-                     },
-                     max: {
-                         required: true,
-                         maxlength: 4
-                     }
-                 }
-             });
-        });
+$(".validation").validate({
+rules: {
+ password: {
+     required: true,
+     minlength: 3
+ },
+ url: {
+     required: true,
+     url: true
+ },
+ number: {
+     required: true,
+     number: true
+ },
+ min: {
+     required: true,
+     minlength: 6
+ },
+ max: {
+     required: true,
+     maxlength: 4
+ }
+}
+});
+});
 </script>
 <script>
    $(document).ready(function(){
