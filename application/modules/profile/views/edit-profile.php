@@ -565,6 +565,7 @@
 $attributes = array('class' => 'form-horizontal validation', 'onsubmit' => 'return validate_info()');
 echo form_open_multipart('profile/profileEdit', $attributes);
 ?>
+
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
         <h2>View Profile</h2>

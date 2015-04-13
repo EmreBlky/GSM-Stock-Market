@@ -143,14 +143,30 @@
 
                 if (files.length > 0) {
                     file = files[0];
+                    if (typeof FileReader !== "undefined") {
+                        var size = files[0].size;
+                        if (size > 2097152) {
+                            this.alert("Max allowed File size is 2MB");
+                            this.$avatarModal.modal('hide');
+                        }else{
+                            if (this.isImageFile(file)) {
+                                if (this.url) {
+                                    URL.revokeObjectURL(this.url); // Revoke the old one
+                                }
 
-                    if (this.isImageFile(file)) {
-                        if (this.url) {
-                            URL.revokeObjectURL(this.url); // Revoke the old one
+                                this.url = URL.createObjectURL(file);
+                                this.startCropper();
+                            }
                         }
+                    } else {
+                        if (this.isImageFile(file)) {
+                            if (this.url) {
+                                URL.revokeObjectURL(this.url); // Revoke the old one
+                            }
 
-                        this.url = URL.createObjectURL(file);
-                        this.startCropper();
+                            this.url = URL.createObjectURL(file);
+                            this.startCropper();
+                        }
                     }
                 }
             } else {
@@ -205,7 +221,7 @@
                     aspectRatio: this.$aspectRatio,
                     preview: this.$avatarPreview.selector,
                     strict: false,
-                    minContainerWidth: (this.$aspectRatio == 8/4) ? 800 : 400,
+                    minContainerWidth: (this.$aspectRatio == 8 / 4) ? 800 : 400,
                     crop: function (data) {
                         var json = [
                             '{"x":' + data.x,
@@ -289,7 +305,10 @@
                     this.alert(data.message);
                 }
             } else {
-                this.alert('Failed to response');
+                this.alert(data.message);
+                this.uploaded = false;
+                this.cropDone();
+                this.$loading.fadeOut();
             }
         },
 
@@ -320,8 +339,7 @@
                 msg,
                 '</div>'
             ].join('');
-
-            this.$avatarUpload.after($alert);
+            this.$avatarView.after($alert);
         }
     };
 

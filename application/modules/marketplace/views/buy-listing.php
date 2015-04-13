@@ -20,6 +20,7 @@
 
   
 <div class="row">
+<?php if($check_securty){?>
 <form method="post" action="<?php echo current_url()?>"  class="validation form-horizontal"  enctype="multipart/form-data"/>
 
 <div class="col-lg-7">
@@ -32,6 +33,7 @@
 </div>
 
 <div class="ibox-content"> <!-- Selling -->
+
             <div class="form-group"><label class="col-md-3 control-label">Schedule Listing</label>
          <div class="col-md-9"> 
             <div class="input-group date form_datetime " data-date="<?php if(!empty($product_list->schedule_date_time)) echo $product_list->schedule_date_time; else echo date('Y-m-d') ?>" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
@@ -41,8 +43,10 @@
                 else{ echo date('d F Y - H:i a');} ?>" readonly >
                 <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                 <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span><br>
+
             </div>
             <?php echo form_error('schedule_date_time'); ?>
+             Listing can be scheduled for future dates, by selecting future date.
             </div>
             <input type="hidden" id="dtp_input1" value="<?php if(!empty($product_list->schedule_date_time)) echo $product_list->schedule_date_time; else echo set_value('schedule_date_time');?>" name="schedule_date_time"/><br/>
     </div>   
@@ -99,14 +103,14 @@
                  <?php }} ?>
             </datalist>
         <?php echo form_error('product_color'); ?>
-        <input type="checkbox" name="color_allow" value="" <?php if(isset($_POST['color_allow']) ){ echo'checked';} elseif(!empty($product_list->color_allow)){ echo'checked';}?>> Allow offer for all colors.
+        <input type="checkbox" name="color_allow" value="" <?php if(isset($_POST['color_allow']) ){ echo'checked';} elseif(!empty($product_list->color_allow)){ echo'checked';}?>> Allow offers for all colors.
         </div>
     </div>
 
      <div class="form-group"><label class="col-md-3 control-label">Product Type</label>
         <div class="col-md-9"> 
         <select  name="product_type" id="product_type" class="form-control check_record">
-            <option selected value="0" >-Select Product Type-</option>
+            <option selected value="" >-Select Product Type-</option>
             <?php if (!empty($product_types)): ?>
             <?php foreach ($product_types as $row): ?>
                 <optgroup label="<?php echo $row->category_name ?>">
@@ -183,7 +187,8 @@
 
          <div class="form-group"><label class="col-md-3 control-label">Max Unit Price</label>
             <div class="col-md-9">
-                <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="maximum_checkbox" id="maximum_checkbox" <?php if(isset($_POST['maximum_checkbox']) ){ echo'checked';} elseif(!empty($product_list->min_price)){ echo'checked';}?>/> </span> 
+                <div class="input-group m-b"><span class="input-group-addon"> 
+                <input type="checkbox" name="maximum_checkbox" id="maximum_checkbox" <?php if(isset($_POST['maximum_checkbox']) ){ echo'checked';} elseif(!empty($product_list->max_price)){ echo'checked';}?>/> </span> 
 
                 <input type="text" class="form-control" placeholder="only make typable when clicked" name="max_price" value="<?php if(!empty($product_list->max_price)) echo $product_list->max_price; else echo set_value('max_price');?>" <?php if(isset($_POST['maximum_checkbox']) ){ echo'';} elseif(empty($product_list->max_price) ){ echo'disabled';}?>>
 
@@ -249,7 +254,9 @@
                 <?php $duration = list_duration(); 
                 if($duration){
                     foreach ($duration as $key => $value){ ?>
-                      <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['duration']){ echo'selected';}elseif($value==7){ echo "selected";}?><?php if(isset($product_list->duration) && $value==$product_list->duration){ echo'selected';}?>><?php echo $value; ?> day</option>
+                      <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['duration']){ echo'selected';}
+                    elseif(isset($product_list->duration) && $value==$product_list->duration){ echo'selected';}
+                    elseif($value == 7){ echo'selected';}?>><?php echo $value; ?> day</option>
                       <?php } 
                 } ?>
                 </select>
@@ -331,6 +338,16 @@
                  </div>
                  <?php echo form_error('image4'); ?>
 
+                   <label  class="col-md-4" >Image 5</label>
+                <div  class="col-md-8">
+                 <?php if (!empty($product_list->image5) && file_exists($product_list->image5)): 
+                $img5 = explode('/', $product_list->image5)?>
+                    <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img5[3]; ?>" class="thumbnail"/>
+                <?php endif ?>
+                 <input type="file" name="image5" class="btn default btn-file">
+                 </div>
+                 <?php echo form_error('image5'); ?>
+
                   
 
                 </div>
@@ -340,6 +357,9 @@
         </div>
     </div>        
 </form>
+<?php } else{?>
+    <p class="bg-danger validation_message">Invalid listing ID or you have not permission to access this listing.</p>
+<?php } ?>
 </div>
 </div>
             
@@ -524,7 +544,6 @@ $(document).ready(function () {
 
       <script>
          $(document).ready(function(){
-
              $(".validation").validate({
                  rules: {
                      password: {
@@ -608,34 +627,7 @@ $(document).ready(function () {
             $('input[name="product_color"]').val(data.product_color);
            
            } 
-            /* else{
-
-            if(prod_make){
-            var productmakehtml='<option "selected">Product Make</option>';
-            $.each(prod_make, function(index, val) {
-                productmakehtml +='<option value="'+val.product_make+'">'+val.product_make+'</option>';
-             });
-             $('#product_make').html(productmakehtml);
-            }
-            
-            if(producttypes){
-            var producttypehtml='<option "selected">Product Type</option>';
-            $.each(producttypes, function(index, val) {
-                producttypehtml +='<option value="'+val.product_type+'">'+val.product_type+'</option>';
-             });
-             $('#product_type').html(producttypehtml);
-            }
-
-            if(productcolors){
-            var productcolorhtml='<option "selected">Product Color</option>';
-            $.each(productcolors, function(index, val) {
-                productcolorhtml +='<option value="'+val.product_color+'">'+val.product_color+'</option>';
-             });
-             $('#product_color').html(productcolorhtml);
-            }
-
-            $('input[name="product_model"]').val(data.product_model);
-           } */
+      
           });
            $('.check_record').removeAttr("disabled");   
          }
@@ -659,9 +651,6 @@ $(document).ready(function () {
             }
          }
         });
-
-    
-
      });
 
     $(document).ready(function() {
@@ -761,6 +750,10 @@ var today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(
     content: "*";
     padding: 3px;
 }
+.validation_message{
+      padding: 10px;
+  margin: 2px;
+}
 </style>
 
 
@@ -796,13 +789,6 @@ var today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(
           <p>CIP can be used for all modes of transport, whereas the equivalent term CIF can only be used for non-containerised seafreight.</p>
           <strong>Data Source</strong><br />
           <p>Taken from <a href="http://en.wikipedia.org/wiki/Incoterms" target="_blank">Incoterms Wikipedia page</a></p>
-
-
-        
-        
-        
-        
-        
         </div>
         
     </dl>

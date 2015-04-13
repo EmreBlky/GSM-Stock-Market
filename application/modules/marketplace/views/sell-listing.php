@@ -11,35 +11,39 @@
     </ol>
 </div>
 <div class="col-lg-2">
-
 </div>
 </div>
 
 <div class="wrapper wrapper-content">
   
 <div class="row">
+<?php if($check_securty){?>
 <form method="post" action="<?php echo current_url()?>"  class="validation form-horizontal"  enctype="multipart/form-data"/>
-
 <div class="col-lg-7">
 <?php msg_alert(); ?>
 <div class="ibox float-e-margins">
 <div class="ibox-title">
-
 <h5>Listing Details</h5>
-
 </div>
+<?php if(validation_errors()){
+        ?><p class="bg-danger validation_message">Please check following errors validation below.</p><?php 
+    }?>
 <div class="ibox-content"> <!-- Selling -->
 
     <div class="form-group"><label class="col-md-3 control-label">Schedule Listing</label>
          <div class="col-md-9"> 
             <div class="input-group date form_datetime " data-date="<?php if(!empty($product_list->schedule_date_time)) echo $product_list->schedule_date_time; else echo date('Y').'-'.date('m').'-'.date('d') ?>" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
-                <input class="form-control" size="16" type="text" value="<?php if(!empty($product_list->schedule_date_time)) echo $product_list->schedule_date_time; else echo set_value('schedule_date_time'); ?>" readonly >
+                <input class="form-control" size="16" type="text" value="<?php if(!empty($product_list->schedule_date_time)){ 
+                    echo $product_list->schedule_date_time;} 
+                    elseif(isset($_POST['schedule_date_time']) && !empty($_POST['schedule_date_time'])){  echo set_value('schedule_date_time');}
+                else{ echo date('d F Y - H:i a');} ?>" readonly >
                 <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                 <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span><br>
-            </div>
+            <input type="hidden" id="dtp_input1" value="<?php if(!empty($product_list->schedule_date_time)) echo $product_list->schedule_date_time; else echo set_value('schedule_date_time');?>" name="schedule_date_time"/>
             <?php echo form_error('schedule_date_time'); ?>
             </div>
-            <input type="hidden" id="dtp_input1" value="<?php if(!empty($product_list->schedule_date_time)) echo $product_list->schedule_date_time; else echo set_value('schedule_date_time');?>" name="schedule_date_time"/><br/>
+            Listing can be scheduled for future dates, by selecting future date.
+            </div>
     </div>
 
     <div class="form-group"><label class="col-md-3 control-label">MPN/ISBN</label>
@@ -103,12 +107,12 @@
                 <?php if (!empty($product_types)): ?>
                 <?php foreach ($product_types as $row): ?>
                     <optgroup label="<?php echo $row->category_name ?>">
-                        <?php if (!empty($row->childs)): ?>
-                            <?php foreach ($row->childs as $child): ?>
-                                <option value="<?php echo $child->category_name ?>" <?php if(!empty($_POST['product_type']) && $child->category_name==$_POST['product_type']){ echo'selected';}?> 
-                                <?php if(!empty($product_list->product_type) && $child->category_name==$product_list->product_type){ echo'selected="selected"';}?>>- <?php echo $child->category_name ?></option>
-                            <?php endforeach ?>
-                        <?php endif ?>
+                    <?php if (!empty($row->childs)): ?>
+                    <?php foreach ($row->childs as $child): ?>
+                        <option value="<?php echo $child->category_name ?>" <?php if(!empty($_POST['product_type']) && $child->category_name==$_POST['product_type']){ echo'selected';}?> 
+                        <?php if(!empty($product_list->product_type) && $child->category_name==$product_list->product_type){ echo'selected="selected"';}?>>- <?php echo $child->category_name ?></option>
+                        <?php endforeach ?>
+                    <?php endif ?>
                     </optgroup>
                 <?php endforeach ?>
                 <?php endif ?>
@@ -155,13 +159,13 @@
         <div class="col-md-9">
             <select class="form-control" name="currency">
                 <option selected value="">Default (account preference defalut)</option>
-                <?php $currency = currency(); 
-                if($currency){
-                    $i=1;
-                foreach ($currency as $key => $value){ ?>
-                  <option <?php if(!empty($_POST) && $i==$_POST['currency']){ echo'selected';}?><?php if(!empty($product_list->currency) && $i==$product_list->currency){ echo'selected';}?> value="<?php echo $i;?>"><?php echo $value; ?></option>
-                  <?php $i++;} 
-                } ?>
+                    <?php $currency = currency(); 
+                    if($currency){
+                        $i=1;
+                    foreach ($currency as $key => $value){ ?>
+                      <option <?php if(!empty($_POST) && $i==$_POST['currency']){ echo'selected';}?><?php if(!empty($product_list->currency) && $i==$product_list->currency){ echo'selected';}?> value="<?php echo $i;?>"><?php echo $value; ?></option>
+                      <?php $i++;} 
+                    } ?>
             </select>
             <p class="small">Select the currency you wish this listing to be sold in.</p>
             <?php echo form_error('currency'); ?>
@@ -178,7 +182,12 @@
     
     <div class="form-group"><label class="col-md-3 control-label">Minimum Price</label>
         <div class="col-md-9">
-            <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="minimum_checkbox" id="minimum_checkbox" <?php if(!empty($_POST['minimum_checkbox']) ){ echo'checked';}?><?php if(!empty($product_list->min_price)){ echo'checked';}?>/> </span> <input type="text" class="form-control" placeholder="only make typable when clicked" name="min_price" value="<?php if(!empty($product_list->min_price)) echo $product_list->min_price; else echo set_value('min_price');?>" <?php if(empty($product_list->min_price) ){ echo'disabled';}?>></div>
+            <div class="input-group m-b">
+            <span class="input-group-addon"> 
+            <input type="checkbox" name="minimum_checkbox" id="minimum_checkbox" <?php if(isset($_POST['minimum_checkbox']) ){ echo'checked';} elseif(!empty($product_list->min_price)){ echo'checked';}?>/> </span> 
+
+            <input type="text" class="form-control" placeholder="only make typable when clicked" name="min_price" value="<?php if(!empty($product_list->min_price)) echo $product_list->min_price; else echo set_value('min_price');?>"
+            <?php if(isset($_POST['minimum_checkbox']) ){ echo'';} elseif(empty($product_list->min_price) ){ echo'disabled';}?>></div>
             <p class="small">tick to enable. Any offers below this will be auto rejected, leave blank to allow any offers if ticked.</p>
             <?php echo form_error('min_price'); ?>
         </div>
@@ -186,9 +195,9 @@
     
     <div class="form-group"><label class="col-md-3 control-label">Allow Offers</label>
         <div class="col-md-9">
-            <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="allowoffer_checkbox" id="allowoffer_checkbox" <?php if(!empty($_POST['allowoffer_checkbox']) ){ echo'checked';}?><?php if(!empty($product_list->allow_offer) ){ echo'checked';}?>/> </span>
-            <select class="form-control" name="allow_offer" <?php if(empty($product_list->allow_offer)){ echo'disabled';}else{ echo "enable"; } ?> >
-                <option selected value="">default</option>
+            <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="allowoffer_checkbox" id="allowoffer_checkbox" <?php if(isset($_POST['allowoffer_checkbox']) ){ echo'checked';} elseif(!empty($product_list->allow_offer)){ echo'checked';}?>/> </span>
+            <select class="form-control" name="allow_offer" <?php if(isset($_POST['allowoffer_checkbox']) ){ echo'';} elseif(empty($product_list->allow_offer) ){ echo'disabled';}?> >
+                <option selected value="3">3 is default</option>
                 <?php for($i=4; $i<=10; $i++){
                     ?><option <?php if(isset($_POST['allow_offer']) && $i==$_POST['allow_offer']){ echo'selected';}?><?php if(!empty($product_list->allow_offer) && $i == $product_list->allow_offer){ echo'selected="selected"'; }?>><?php echo $i;?></option>
                     <?php }?>
@@ -208,7 +217,13 @@
     
     <div class="form-group"><label class="col-md-3 control-label">Min Order Quantity</label>
         <div class="col-md-9">
-            <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="orderqunatity_checkbox" id="orderqunatity_checkbox" <?php if(!empty($_POST['orderqunatity_checkbox']) ){ echo'checked';}?> <?php if(!empty($product_list->min_qty_order)){ echo'checked';}?>/> </span> <input type="text" class="form-control" placeholder="only make typable when clicked" name="min_qty_order" value="<?php if(!empty($product_list->min_qty_order)) echo $product_list->min_qty_order; else echo set_value('min_qty_order');?>" <?php if(empty($_POST['orderqunatity_checkbox']) ){ echo'disabled';}?><?php if(empty($product_list->min_qty_order) ){ echo'disabled';} else{ echo 'enable';} ?>></div>
+            <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="orderqunatity_checkbox" id="orderqunatity_checkbox"
+            <?php if(isset($_POST['orderqunatity_checkbox']) ){ echo'checked';} elseif(!empty($product_list->min_qty_order)){ echo'checked';}?>/> </span> 
+
+            <input type="text" class="form-control" placeholder="only make typable when clicked" name="min_qty_order" value="<?php if(!empty($product_list->min_qty_order)) echo $product_list->min_qty_order; else echo set_value('min_qty_order');?>" 
+
+            <?php if(isset($_POST['orderqunatity_checkbox']) ){ echo'';} elseif(empty($product_list->min_qty_order) ){ echo'disabled';}?>
+            ></div>
             <p class="small">Allow minimum order quantity else full quantity sale available only</p>
             <?php echo form_error('min_qty_order'); ?>
         </div>
@@ -251,9 +266,8 @@
         <label class="col-md-3 control-label">Shipping Fee</label>
         <div class="col-md-3">
             <select class="form-control shipping-type" name="shipping_type">
-                <option value="">Select Type</option>
-                <option value="Free_Shipping">Free shipping</option>
                 <option value="Price_per_unit">Price per unit</option>
+                <option value="Free_Shipping">Free shipping</option>
                 <option value="Flat_fee">Flat fee</option>
             </select>
         </div>
@@ -267,35 +281,37 @@
     
     <div class="form-group"><label class="col-md-3 control-label">Shipping and Handling Fee</label>
     <div class="col-md-9">
-          <table class="table table-bordered">
-              <thead>
-              <tr>
-                  <th>Shipping Terms</th>
-                  <th>Couriers</th>
-                  <th>Batch</th>
-                  <th>Price</th>
-                  <th></th>
-              </tr>
-              </thead>
-              <tbody id="opt_table">
+<table class="table table-bordered">
+      <thead>
+      <tr>
+          <th>Shipping Terms</th>
+          <th>Couriers</th>
+          <th>Batch</th>
+          <th>Price</th>
+          <th></th>
+      </tr>
+      </thead>
+      <tbody id="opt_table">
 
-              <?php if(!empty($product_list->sell_shipping_fee)){
-                     foreach(json_decode($product_list->sell_shipping_fee) as $key => $value){
-                       ?>
-                      
-                      <tr><td><?php echo $value->shipping_term; ?><input type="hidden" name="shipping_terms[]" value="<?php if(!empty($value->shipping_term)) echo $value->shipping_term; ?>"/></td>
-                      <td><?php echo $value->coriars; ?><input type="hidden" name="coriars[]" value="<?php if(!empty($value->coriars)) echo $value->coriars; ?>"/></td>
-                      <td><?php echo $value->shipping_types; ?><input type="hidden" name="ship_types[]" value="<?php if(!empty($value->shipping_types)) echo $value->shipping_types; ?>"/></td>
-                      <td><?php echo $value->shipping_fees; ?><input type="hidden" name="shipping_fees[]" value="<?php if(!empty($value->shipping_fees)) echo $value->shipping_fees; ?>"/></td>
-                      <td style="text-align:center"><a class="wrapper btn btn-danger btn-circle" style="width:20px;height:20px;border-radius:10px;font-size:10px;padding:0;margin-bottom:0"><i class="fa fa-times"></i></a></td></tr>
-                   
-                     
-            <?php   }
-              }
-              ?>
-             
-              </tbody>
-          </table>
+      <?php 
+      if(!empty($product_list->sell_shipping_fee)){
+            $productlistjsondecode=json_decode($product_list->sell_shipping_fee);
+           
+        if($productlistjsondecode){
+        foreach($productlistjsondecode as $key => $value){
+         ?>  
+          <tr><td><?php echo $value->shipping_term; ?><input type="hidden" name="shipping_terms[]" value="<?php if(!empty($value->shipping_term)) echo $value->shipping_term; ?>"/></td>
+          <td><?php echo $value->coriars; ?><input type="hidden" name="coriars[]" value="<?php if(!empty($value->coriars)) echo $value->coriars; ?>"/></td>
+          <td><?php echo $value->shipping_types; ?><input type="hidden" name="ship_types[]" value="<?php if(!empty($value->shipping_types)) echo $value->shipping_types; ?>"/></td>
+          <td><?php echo $value->shipping_fees; ?><input type="hidden" name="shipping_fees[]" value="<?php if(!empty($value->shipping_fees)) echo $value->shipping_fees; ?>"/></td>
+          <td style="text-align:center"><a class="wrapper btn btn-danger btn-circle" style="width:20px;height:20px;border-radius:10px;font-size:10px;padding:0;margin-bottom:0"><i class="fa fa-times"></i></a></td>
+          </tr>             
+    <?php   }}
+        }
+      ?>
+     
+      </tbody>
+    </table>
     </div>
     </div>
     
@@ -317,7 +333,9 @@
             <?php $duration = list_duration(); 
             if($duration){
                 foreach ($duration as $key => $value){ ?>
-                  <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['duration']){ echo'selected';}?><?php if(isset($product_list->duration) && $value==$product_list->duration){ echo'selected';}?>><?php echo $value; ?> day</option>
+                  <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['duration']){ echo'selected';}
+                    elseif(isset($product_list->duration) && $value==$product_list->duration){ echo'selected';}
+                    elseif($value == 7){ echo'selected';}?>><?php echo $value; ?> day</option>
                   <?php } 
             } ?>
             </select>
@@ -357,6 +375,8 @@
         <div class="ibox float-e-margins">
             <div class="ibox-title">
                 <h5>Listing Pictures</h5>
+                <br>
+                <h4 class="danger">Item images Min size is 400 X 400 and Max size is 1200 X 1200.</h4>
             </div>
             <div class="ibox-content">
             <div class="row">
@@ -366,7 +386,7 @@
                 <div  class="col-md-8">
                 <?php if (!empty($product_list->image1) && file_exists($product_list->image1)): 
                 $img1 = explode('/', $product_list->image1)?>
-                    <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img1[3]; ?>" class="thumbnail"/>
+                    <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img1[3]; ?>" class="thumbnail uplodedimage"/>
                 <?php endif ?>
                  <input type="file" name="image1" class="btn default btn-file">
                 </div>
@@ -375,7 +395,7 @@
                 <div  class="col-md-8">
                 <?php if (!empty($product_list->image2) && file_exists($product_list->image2)): 
                 $img2 = explode('/', $product_list->image2)?>
-                    <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img2[3]; ?>" class="thumbnail"/>
+                    <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img2[3]; ?>" class="thumbnail uplodedimage"/>
                 <?php endif ?>
                  <input type="file" name="image2" class="btn default btn-file">
                  </div>
@@ -384,7 +404,7 @@
                 <div  class="col-md-8">
                 <?php if (!empty($product_list->image3)&& file_exists($product_list->image3)): 
                 $img3 = explode('/', $product_list->image3)?>
-                    <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img3[3]; ?>" class="thumbnail"/>
+                    <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img3[3]; ?>" class="thumbnail uplodedimage"/>
                 <?php endif ?>
                  <input type="file" name="image3" class="btn default btn-file">
                  </div>
@@ -393,7 +413,7 @@
                 <div  class="col-md-8">
                 <?php if (!empty($product_list->image4)&& file_exists($product_list->image4)): 
                 $img4 = explode('/', $product_list->image4)?>
-                    <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img4[3]; ?>" class="thumbnail"/>
+                    <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img4[3]; ?>" class="thumbnail uplodedimage"/>
                 <?php endif ?>
                  <input type="file" name="image4" class="btn default btn-file">
                  </div>
@@ -403,7 +423,7 @@
                 <div  class="col-md-8">
                  <?php if (!empty($product_list->image5)&& file_exists($product_list->image5)): 
                 $img5 = explode('/', $product_list->image5)?>
-                    <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img5[3]; ?>" class="thumbnail"/>
+                    <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img5[3]; ?>" class="thumbnail uplodedimage"/>
                 <?php endif ?>
                  <input type="file" name="image5" class="btn default btn-file">
                  </div>
@@ -416,6 +436,9 @@
         </div>
     </div>        
 </form>
+<?php } else{?>
+    <p class="bg-danger validation_message">Invalid listing ID or you have not permission to access this listing.</p>
+<?php } ?>
 </div>
 </div>
             
@@ -469,19 +492,15 @@ $('.shipping-type').on('change',function(){
     $('.shipping-opt').prop('disabled',false);
      shipping_type = $(this).val();
     }
-
-   
-
-
     });
 
 
-var add_shipping1=0;
+    var add_shipping1=0;
     $("#add_shipping").on("click", function() { 
-
         shipping_type = $('.shipping-type').val();
      
-    if(shipping_type !='' && shipping_type != 'Free_Shipping'){ 
+     
+    if(shipping_type !='' || shipping_type != 'Free_Shipping'){ 
 
         var coriar = [];
         $('body').find('#couriers_data input:checked').each(function(index, val){
@@ -494,18 +513,27 @@ var add_shipping1=0;
         var shipping_term = trm[1];
         var core = coriar;
         var ship_type = shipping_type;
-     
+       
+        if(core=='' || core==null){
+             alert('At least one courier must be selected to add the shipping option');
+            return false;
+         }
+        if(!shipping_type){
+             alert('At least one shipping term must be selected to add the shipping option');
+            return false;
+         }
+        shipping_fee ='0';
+        if($('input[name="shipping_fee"]').val()){
+            shipping_fee = $('input[name="shipping_fee"]').val();
+         }
 
-        shipping_fee = $('input[name="shipping_fee"]').val();
-
-        if(shipping_fee == ''){
+        $('#opt_table').append('<tr><td>'+shipping_term+'<input type="hidden" name="shipping_terms[]" value="'+shipping_term+'"/></td><td>'+core+'<input type="hidden" name="coriars[]" value="'+core+'"/></td><td>'+ship_type+'<input type="hidden" name="ship_types[]" value="'+ship_type+'"/></td><td>'+shipping_fee+'<input type="hidden" name="shipping_fees[]" value="'+shipping_fee+'"/></td><td style="text-align:center"><a class="wrapper btn btn-danger btn-circle" style="width:20px;height:20px;border-radius:10px;font-size:10px;padding:0;margin-bottom:0"><i class="fa fa-times"></i></a></td></tr>');  
+        }
+        else{
             alert('Enter Shipping Fee');
             return false;
         }
 
-
-        $('#opt_table').append('<tr><td>'+shipping_term+'<input type="hidden" name="shipping_terms[]" value="'+shipping_term+'"/></td><td>'+core+'<input type="hidden" name="coriars[]" value="'+core+'"/></td><td>'+ship_type+'<input type="hidden" name="ship_types[]" value="'+ship_type+'"/></td><td>'+shipping_fee+'<input type="hidden" name="shipping_fees[]" value="'+shipping_fee+'"/></td><td style="text-align:center"><a class="wrapper btn btn-danger btn-circle" style="width:20px;height:20px;border-radius:10px;font-size:10px;padding:0;margin-bottom:0"><i class="fa fa-times"></i></a></td></tr>');  
-}
            
     });
 
@@ -707,12 +735,12 @@ $(document).ready(function () {
    $(document).ready(function(){
      $("#mpn1").change(function(){
      var product_mpn_isbn = $(this).val(); 
+     var producttypes= <?php echo json_encode($product_types); ?>;
      if(product_mpn_isbn){
         $('.check_record').attr("disabled", "disabled");
         jQuery.post('<?php echo base_url()?>marketplace/get_attributes_info/MPN',{product_mpn_isbn:product_mpn_isbn},
         function(data){
          var prod_make= <?php echo json_encode($product_makes); ?>;
-         var producttypes= <?php echo json_encode($pro_type); ?>;
          var productcolors= <?php echo json_encode($product_colors); ?>;
         if(data.STATUS=='true'){
           if(prod_make){
@@ -728,13 +756,19 @@ $(document).ready(function () {
             }
             
             if(producttypes){
+                //alert(producttypes);
             var producttypehtml='<option  selected value="">Product Type</option>';
-            $.each(producttypes, function(index, val) {
-                producttypehtml +='<option';
-                if(val.product_type==data.product_type)
-                producttypehtml +=' Selected';
-                producttypehtml +=' >'+val.product_type+'</option>';
-             });
+            $.each(producttypes, function(index, val){producttypehtml +='<optgroup label="'+val.category_name +'">';
+                 if(val.childs){
+                    $.each(val.childs, function(index, val1){ 
+                     producttypehtml +='<option';
+                        if(val1.category_name==data.product_type)
+                        producttypehtml +=' selected="selected"';
+                        producttypehtml +=' >'+val1.category_name+'</option>';
+                     });
+                 }
+              producttypehtml +='</optgroup>';
+              });
              $('#product_type').html(producttypehtml);
             }
 
@@ -784,6 +818,25 @@ $(document).ready(function () {
            } */
           });
            $('.check_record').removeAttr("disabled");   
+         }
+          else{
+            $('input[name="product_model"]').val('');
+            $('input[name="product_make"]').val('');
+            $('input[name="product_color"]').val('');
+            if(producttypes){
+                //alert(producttypes);
+            var producttypehtml='<option  selected value="">Product Type</option>';
+            $.each(producttypes, function(index, val){producttypehtml +='<optgroup label="'+val.category_name +'">';
+                 if(val.childs){
+                    $.each(val.childs, function(index, val1){ 
+                     producttypehtml +='<option';
+                        producttypehtml +=' >'+val1.category_name+'</option>';
+                     });
+                 }
+              producttypehtml +='</optgroup>';
+              });
+             $('#product_type').html(producttypehtml);
+            }
          }
         });
 
@@ -848,6 +901,7 @@ $(document).ready(function () {
                 $('input[name="min_price"]').prop('disabled', false);
             }
             else{
+               $('input[name="min_price"]').val(''); 
                $('input[name="min_price"]').prop('disabled', true); 
             }
         });
@@ -866,6 +920,7 @@ $(document).ready(function () {
                 $('input[name="min_qty_order"]').prop('disabled', false);
             }
             else{
+                $('input[name="min_qty_order"]').val(''); 
                $('input[name="min_qty_order"]').prop('disabled', true); 
             }
         });
@@ -915,50 +970,56 @@ var today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(
     content: "*";
     padding: 3px;
 }
+.validation_message{
+      padding: 10px;
+  margin: 2px;
+}
+.uplodedimage{
+    max-width: 250px;
+    max-height: 250px;
+}
 </style>
 
 
+<div class="modal inmodal fade" id="shipping" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Shipping Terms</h4>
+                <small class="font-bold">Incoterms rules or International Commercial Terms</small>
+            </div>
+
+            <div class="modal-body">
+              <strong>EXW – Ex Works (named place)</strong><br />
+              <p>The seller makes the goods available at his/her premises. This term places the maximum obligation on the buyer and minimum obligations on the seller. The Ex Works term is often used when making an initial quotation for the sale of goods without any costs included. EXW means that a buyer incurs the risks for bringing the goods to their final destination. The seller does not load the goods on collecting vehicles and does not clear them for export. If the seller does load the goods, he does so at buyer's risk and cost. If parties wish seller to be responsible for the loading of the goods on departure and to bear the risk and all costs of such loading, this must be made clear by adding explicit wording to this effect in the contract of sale.</p>
+              <p>The buyer arranges the pickup of the freight from the supplier's designated ship site, owns the in-transit freight, and is responsible for clearing the goods through Customs. The buyer is also responsible for completing all the export documentation.</p>
+              <p>These documentary requirements may cause two principal issues. Firstly, the stipulation for the buyer to complete the export declaration can be an issue in certain jurisdictions (not least the European Union) where the customs regulations require the declarant to be either an individual or corporation resident within the jurisdiction. Secondly, most jurisdictions require companies to provide proof of export for tax purposes. In an Ex-Works shipment the buyer is under no obligation to provide such proof, or indeed to even export the goods. It is therefore of utmost importance that these matters are discussed with the buyer before the contract is agreed. It may well be that another Incoterm, such as FCA seller's premises, may be more suitable.</p>
+              
+              
+              <strong>FOB – Free on Board (named port of shipment)</strong><br />
+              <p>The seller must advance government tax in the country of origin as of commitment to load the goods on board a vessel designated by the buyer. Cost and risk are divided when the goods are sea transport in containers (see Incoterms 2010, ICC publication 715). The seller must instruct the buyer the details of the vessel and the port where the goods are to be loaded, and there is no reference to, or provision for, the use of a carrier or forwarder. This term has been greatly misused over the last three decades ever since Incoterms 1980 explained that FCA should be used for container shipments.</p>
+              <p>It means the seller pays for transportation of goods to the port of shipment, loading cost. The buyer pays cost of marine freight transportation, insurance, unloading and transportation cost from the arrival port to destination. The passing of risk occurs when the goods are in buyer account. The buyer arranges for the vessel and the shipper has to load the goods and the named vessel at the named port of shipment with the dates stipulated in the contract of sale as informed by the buyer.</p>
+              
+              <strong>CPT – Carriage Paid To (named place of destination)</strong><br />
+              <p>CPT replaces the venerable C&F (cost and freight) and CFR terms for all shipping modes outside of non-containerised seafreight.</p>
+              <p>The seller pays for the carriage of the goods up to the named place of destination. Risk transfers to buyer upon handing goods over to the first carrier at the place of shipment in the country of Export. The Shipper is responsible for origin costs including export clearance and freight costs for carriage to named place (usually a destination port or airport). The shipper is not responsible for delivery to the final destination (generally the buyer's facilities), or for buying insurance. If the buyer does require the seller to obtain insurance, the Incoterm CIP should be considered.</p>
+              
+              <strong>CIP – Carriage and Insurance Paid to (named place of destination)</strong><br />
+              <p>This term is broadly similar to the above CPT term, with the exception that the seller is required to obtain insurance for the goods while in transit. CIP requires the seller to insure the goods for 110% of their value under at least the minimum cover of the Institute Cargo Clauses of the Institute of London Underwriters (which would be Institute Cargo Clauses (C)), or any similar set of clauses. The policy should be in the same currency as the contract.</p>
+              
+              <p>CIP can be used for all modes of transport, whereas the equivalent term CIF can only be used for non-containerised seafreight.</p>
+              <strong>Data Source</strong><br />
+              <p>Taken from <a href="http://en.wikipedia.org/wiki/Incoterms" target="_blank">Incoterms Wikipedia page</a></p>
 
 
-                            <div class="modal inmodal fade" id="shipping" tabindex="-1" role="dialog"  aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                            <h4 class="modal-title">Shipping Terms</h4>
-                                            <small class="font-bold">Incoterms rules or International Commercial Terms</small>
-                                        </div>
-
-                                        <div class="modal-body">
-                                          <strong>EXW – Ex Works (named place)</strong><br />
-                                          <p>The seller makes the goods available at his/her premises. This term places the maximum obligation on the buyer and minimum obligations on the seller. The Ex Works term is often used when making an initial quotation for the sale of goods without any costs included. EXW means that a buyer incurs the risks for bringing the goods to their final destination. The seller does not load the goods on collecting vehicles and does not clear them for export. If the seller does load the goods, he does so at buyer's risk and cost. If parties wish seller to be responsible for the loading of the goods on departure and to bear the risk and all costs of such loading, this must be made clear by adding explicit wording to this effect in the contract of sale.</p>
-                                          <p>The buyer arranges the pickup of the freight from the supplier's designated ship site, owns the in-transit freight, and is responsible for clearing the goods through Customs. The buyer is also responsible for completing all the export documentation.</p>
-                                          <p>These documentary requirements may cause two principal issues. Firstly, the stipulation for the buyer to complete the export declaration can be an issue in certain jurisdictions (not least the European Union) where the customs regulations require the declarant to be either an individual or corporation resident within the jurisdiction. Secondly, most jurisdictions require companies to provide proof of export for tax purposes. In an Ex-Works shipment the buyer is under no obligation to provide such proof, or indeed to even export the goods. It is therefore of utmost importance that these matters are discussed with the buyer before the contract is agreed. It may well be that another Incoterm, such as FCA seller's premises, may be more suitable.</p>
-                                          
-                                          
-                                          <strong>FOB – Free on Board (named port of shipment)</strong><br />
-                                          <p>The seller must advance government tax in the country of origin as of commitment to load the goods on board a vessel designated by the buyer. Cost and risk are divided when the goods are sea transport in containers (see Incoterms 2010, ICC publication 715). The seller must instruct the buyer the details of the vessel and the port where the goods are to be loaded, and there is no reference to, or provision for, the use of a carrier or forwarder. This term has been greatly misused over the last three decades ever since Incoterms 1980 explained that FCA should be used for container shipments.</p>
-                                          <p>It means the seller pays for transportation of goods to the port of shipment, loading cost. The buyer pays cost of marine freight transportation, insurance, unloading and transportation cost from the arrival port to destination. The passing of risk occurs when the goods are in buyer account. The buyer arranges for the vessel and the shipper has to load the goods and the named vessel at the named port of shipment with the dates stipulated in the contract of sale as informed by the buyer.</p>
-                                          
-                                          <strong>CPT – Carriage Paid To (named place of destination)</strong><br />
-                                          <p>CPT replaces the venerable C&F (cost and freight) and CFR terms for all shipping modes outside of non-containerised seafreight.</p>
-                                          <p>The seller pays for the carriage of the goods up to the named place of destination. Risk transfers to buyer upon handing goods over to the first carrier at the place of shipment in the country of Export. The Shipper is responsible for origin costs including export clearance and freight costs for carriage to named place (usually a destination port or airport). The shipper is not responsible for delivery to the final destination (generally the buyer's facilities), or for buying insurance. If the buyer does require the seller to obtain insurance, the Incoterm CIP should be considered.</p>
-                                          
-                                          <strong>CIP – Carriage and Insurance Paid to (named place of destination)</strong><br />
-                                          <p>This term is broadly similar to the above CPT term, with the exception that the seller is required to obtain insurance for the goods while in transit. CIP requires the seller to insure the goods for 110% of their value under at least the minimum cover of the Institute Cargo Clauses of the Institute of London Underwriters (which would be Institute Cargo Clauses (C)), or any similar set of clauses. The policy should be in the same currency as the contract.</p>
-                                          
-                                          <p>CIP can be used for all modes of transport, whereas the equivalent term CIF can only be used for non-containerised seafreight.</p>
-                                          <strong>Data Source</strong><br />
-                                          <p>Taken from <a href="http://en.wikipedia.org/wiki/Incoterms" target="_blank">Incoterms Wikipedia page</a></p>
-
-
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
+            
+            
+            
+            
+            
+            </div>
+            
+        </div>
+    </div>
+</div>

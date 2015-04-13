@@ -83,9 +83,9 @@
                     <li>
                         <a href="marketplace/notice">
                             <i class="fa fa-line-chart"></i> 
-                            <span class="nav-label">Marketplace</span> <!--
-                            <span class="fa arrow"></span>-->
-                        </a><!--
+                            <span class="nav-label">Marketplace</span>
+                            <span class="fa arrow"></span>
+                        </a>
                        <ul class="nav nav-second-level">
                             <li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Buy</a></li>
                             <li><a href="marketplace/sell"><i class="fa fa-tag"></i> Sell</a></li>
@@ -99,7 +99,7 @@
 		                                </ul>
 		                            </li>
 		                            <li><a href="marketplace/saved_listing"><i class="fa fa-save"></i> Saved Listings <span class="label label-success pull-right">2</span></a></li>
-                        </ul>-->
+                        </ul>
                     </li>
                     
                     <li>
@@ -118,11 +118,14 @@
                     -->
                     <li>
                         <a href="imei/"><i class="fa fa-barcode"></i> <span class="nav-label">IMEI Services</span> 
-<!--                            <span class="fa arrow"></span>-->
+                            <span class="fa arrow"></span>
                         </a>
-<!--                        <ul class="nav nav-second-level">
-                            <li><a href="imei/"><i class="fa fa-unlock-alt"></i> Mobile Unlocking</a></li>
-                        </ul>-->
+                       <ul class="nav nav-second-level">
+                            <li><a href="imei/imei_lookup/"><i class="fa fa-eye"></i> IMEI Lookup</a></li>
+                            <li><a href="imei/unlocking/"><i class="fa fa-unlock-alt"></i> Unlocking</a></li>
+                            <li><a href="imei/archive/"><i class="fa fa-book"></i> Archive</a></li>
+                            <li><a href="imei/top_up/"><i class="fa fa-money"></i> <span class="nav-label">Top up</span><span class="label label-primary pull-right">£5.00</span></a></li>
+                        </ul>
                     </li>
                     
                     <!--
