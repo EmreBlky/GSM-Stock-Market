@@ -547,8 +547,9 @@ $(document).ready(function() {
         alert('Offer is not accepted.');
       }
       else if(data.STATUS=='5'){
-        if(data.chance_left > 0){
-           alert('Chance left to give offer '+data.chance_left);
+
+        if(parseInt(data.chance_left) > 0){
+           alert('Chance left to give offer '+parseInt(data.chance_left));
         }
         else{
          alert('Your all chances get over now try it after 24 hours.');
