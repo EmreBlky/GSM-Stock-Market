@@ -123,22 +123,25 @@ class Search extends MX_Controller
         $sort = $this->input->get('sort', TRUE);
         switch ($sort) {
             case "new-user":
-                return ", m.date DESC";
+                return "ORDER BY date_format(str_to_date(m.date, '%d-%m-%Y'), '%Y-%m-%d') DESC ";
                 break;
             case "last-online":
-                return ", l.date DESC";
+                return "ORDER BY str_to_date(CONCAT(date_format(str_to_date(l.date, '%d-%m-%Y'), '%Y-%m-%d'),' ',time_format(str_to_date(l.time, '%H:%i:%s'), '%H:%i:%s')), '%Y-%m-%d %H:%i:%s') DESC ";
                 break;
             case "high-rating":
-                return ", rating DESC";
+                return "ORDER BY rating DESC ";
                 break;
-            /*default:
-                return "c.business_sector_1";
-                break;*/
+            default:
+                return "";
+                break;
         }
     }
 
-    function company($start = 0)
+    function company($start = 1)
     {
+        $results_per_page = 20;
+        $start = ($start * $results_per_page) - $results_per_page;
+
         if($this->session->userdata('membership') < 2) {
             redirect('preferences/notice');
         }
@@ -167,7 +170,7 @@ class Search extends MX_Controller
 
 
         //$results_per_page = $this->config->item('results_per_page');
-        $results_per_page = 20;
+
 
         $this->load->model('search_model');
         $this->load->model('country/country_model', 'country_model');
