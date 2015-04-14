@@ -126,7 +126,7 @@ class Search extends MX_Controller
                 return "ORDER BY date_format(str_to_date(m.date, '%d-%m-%Y'), '%Y-%m-%d') DESC ";
                 break;
             case "last-online":
-                return "ORDER BY date_format(str_to_date(l.date, '%d-%m-%Y'), '%Y-%m-%d') DESC ";
+                return "ORDER BY str_to_date(CONCAT(date_format(str_to_date(date, '%d-%m-%Y'), '%Y-%m-%d'),' ',time_format(str_to_date(time, '%H:%i:%s'), '%H:%i:%s')), '%Y-%m-%d %H:%i:%s') DESC ";
                 break;
             case "high-rating":
                 return "ORDER BY rating DESC ";
