@@ -123,10 +123,10 @@ class Search extends MX_Controller
         $sort = $this->input->get('sort', TRUE);
         switch ($sort) {
             case "new-user":
-                return ", m.date DESC";
+                return ", date_format(str_to_date(m.date, '%d-%m-%Y'), '%Y-%m-%d') DESC";
                 break;
             case "last-online":
-                return ", l.date DESC";
+                return ", date_format(str_to_date(l.date, '%d-%m-%Y'), '%Y-%m-%d') DESC";
                 break;
             case "high-rating":
                 return ", rating DESC";
