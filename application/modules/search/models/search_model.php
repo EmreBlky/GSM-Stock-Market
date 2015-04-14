@@ -37,7 +37,7 @@ class Search_model extends MY_Model
             $limit = '';
         }
 
-        $sql = "SELECT c.id,c.admin_member_id, c.company_name, cnt.country, c.company_profile,m.email, ms.membership, c.admin_member_id, c.business_sector_1, c.business_sector_2, c.business_sector_3,
+        $sql = "SELECT DISTINCT (c.id),c.admin_member_id, c.company_name, cnt.country, c.company_profile,m.email, ms.membership, c.admin_member_id, c.business_sector_1, c.business_sector_2, c.business_sector_3,
 other_business,
                         COALESCE ((SELECT SUM(feedback_score) FROM feedback as f WHERE f.member_id = m.id AND authorised = 'yes'),0)  as rating
                         FROM company as c
@@ -54,13 +54,14 @@ other_business,
                         ORDER BY (c.business_sector_1 LIKE ?) DESC, (c.business_sector_2 LIKE ?) DESC, (c.business_sector_3 LIKE ?) DESC, (c.other_business LIKE ?) DESC $orderBy
                         $limit";
         $query = $this->db->query($sql, array($b_sector, $b_sector, $b_sector, $b_sector));
+       // echo $this->db->last_query();
         return $query->result();
     }
 
     function companiesCount($where)
     {
 
-        $sql = "SELECT COUNT(*) as count FROM company as c
+        $sql = "SELECT COUNT(DISTINCT (c.id)) as count FROM company as c
                         INNER JOIN members as m
                         ON m.id = c.admin_member_id
                         INNER JOIN
