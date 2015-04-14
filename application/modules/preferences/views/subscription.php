@@ -223,9 +223,11 @@
                                 <td><?php echo '&pound;'.number_format($trans->amount, 2,".",",");?></td>
                                 <?php if($trans->status == 'completed') {?>
                                     <td style="text-align:center"><span class="label label-primary">Paid</span></td>
+                                <?php } elseif($trans->status == 'not_completed') {?>
+                                    <td style="text-align:center"><span class="label label-warning">Unpaid</span></td>
                                 <?php } else {?>
-                                    <td style="text-align:center"><span class="label label-danger">Unpaid</span></td>
-                                <?php }?>
+                                    <td style="text-align:center"><span class="label label-danger">DECLINED</span></td>
+                                <?php }?>    
                                 <td style="text-align:center"><a href="transaction/invoice/<?php echo $trans->id;?>" class="btn btn-primary" style="font-size:10px">View Invoice</a></td>
                             </tr>
                         <?php }?>

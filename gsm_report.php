@@ -29,7 +29,7 @@ function dial_code($code)
     return $dial_code;
 }
 
-$qry = mysql_query("SELECT * FROM members WHERE gsm_check = 'no'") or die (mysql_error());
+$qry = mysql_query("SELECT * FROM members") or die (mysql_error());
 $email_message = "";
 $data = "";
 $blank = "";
@@ -46,7 +46,7 @@ while($rowMember = mysql_fetch_array($qry)) {
   mysql_query("UPDATE members SET gsm_check = 'yes' WHERE id = '".$rowMember['id']."'") or die (mysql_error());
 }
 
-$file = 'public/main/template/gsm/files/gsm_customers.csv';
+$file = 'public/main/template/gsm/files/gsm_report.csv';
 file_put_contents($file, $data);
 
 sleep(1);
@@ -54,11 +54,11 @@ sleep(1);
 $email_to = "tim@gsmstockmarket.com";
 //$email_to = "info@imarveldesign.co.uk";
 $email_from = "server@gsmstockmarket.com";
-$email_subject = "GSM Stock Members";
+$email_subject = "GSM Stock Members Weekly Report";
 $email_txt = "Please find csv attached with this email.";
-$fileatt = 'public/main/template/gsm/files/gsm_customers.csv';
+$fileatt = 'public/main/template/gsm/files/gsm_report.csv';
 $fileatt_type = "application/csv";
-$fileatt_name = "gsm_customers.csv";
+$fileatt_name = "gsm_report.csv";
 $file = fopen($fileatt,'rb');
 $data = fread($file,filesize($fileatt));
 fclose($file);

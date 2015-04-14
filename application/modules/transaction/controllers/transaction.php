@@ -55,6 +55,7 @@ class Transaction extends MX_Controller
         $data_trans = array(
                             'invoice' => $invoice,
                             'item' => $description,
+                            'time' => date('H:i:s'),
                             'date' => date('Y-m-d H:i:s'),
                             'buyer_id' => $this->session->userdata('members_id'),
                             'seller_id' => '',
@@ -232,4 +233,16 @@ class Transaction extends MX_Controller
         
         $this->load->view('invoice-print', $data);
     }
+    
+    function admin_transaction_count()
+    {
+         
+         
+         $t_count = $this->transaction_model->count_where('status', 'not_completed');
+         
+        if($t_count > 0){
+            echo '<span class="label label-warning pull-right">'.$t_count.'</span>';
+        }
+    }
 }
+

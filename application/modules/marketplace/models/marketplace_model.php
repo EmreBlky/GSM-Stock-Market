@@ -9,7 +9,7 @@ class Marketplace_model extends MY_Model {
     }
 
     public function insert($table_name='',  $data=''){
-    	$query=$this->db->insert($table_name, $data);
+        $query=$this->db->insert($table_name, $data);
 		if($query)
 			return $this->db->insert_id();
 		else
@@ -397,4 +397,21 @@ class Marketplace_model extends MY_Model {
 				return FALSE;
 	}
 
+	public function offerattempt($list_id=0)
+	{
+		$member_id=$this->session->userdata('members_id');
+		$this->db->select('COUNT(*) as totalrow');
+		$this->db->where('listing_id', $list_id);
+		$this->db->where('buyer_id', $member_id);
+		$startDate = time();
+		$yesterday=date('Y-m-d H:i:s', strtotime('-1 day', $startDate));
+		$where_condition="(`created` >='$yesterday')";
+		$this->db->where($where_condition);
+		$query=$this->db->get('offer_attempt');
+		if($query->num_rows()>0)
+			return $query->row();
+		else
+			return FALSE;
+		
+	}
 }

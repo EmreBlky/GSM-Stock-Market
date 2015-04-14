@@ -446,6 +446,18 @@ endif;
                         
                     <div class="col-lg-4">
                      	<div class="form-group">
+                         <label for="">Listing Type</label>
+                            <select name="continent" class="form-control">
+                            <option value="" selected="selected">Any</option>
+                            <option>Fixed Listing</option>
+                            <option>Tiered Listing</option>
+                            <option>Auction Listing</option>
+                            </select>
+                        </div>
+                    </div>  
+                        
+                    <div class="col-lg-4">
+                     	<div class="form-group">
                          <label for="">Seller Continent</label>
                             <select name="continent" class="form-control" id="continent">
                             <option value="" selected="selected">All Continents</option>
@@ -1004,7 +1016,7 @@ jQuery(document).ready(function($) {
 </div>
 
 <!-- Modal Data Item Condition -->
-<div class="modal inmodal fade" id="currency" tabindex="-1" role="dialog"  aria-hidden="true">
+<div class="modal inmodal fade" id="condition" tabindex="-1" role="dialog"  aria-hidden="true">
 <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header">

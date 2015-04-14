@@ -81,7 +81,7 @@ class Viewed extends MX_Controller
         else{
            echo 
                 '<div class="ibox-content" style="min-height:89px">
-                    <h1 class="no-margins">No Views This Month</h1>
+                    <h1 class="no-margins">0</h1>
                     <div class="stat-percent font-bold">
                     <!-- <i class="fa fa-level-up"></i> -->
                     </div>
