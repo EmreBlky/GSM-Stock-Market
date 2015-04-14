@@ -242,6 +242,40 @@ class Admin extends MX_Controller
                                   ); 
         $this->{$var1_model}->_insert($data);
         
+        $this->load->model('notification/notification_model', 'notification_model');
+        $email_support = $this->notification_model->get_where_multiple('member_id', $mem)->email_support;
+                      
+        if($email_support == 'yes'){
+
+              $this->load->module('emails');
+              $config = Array(
+                              'protocol' => 'smtp',
+                              'smtp_host' => 'ssl://server.gsmstockmarket.com',
+                              'smtp_port' => 465,
+                              'smtp_user' => 'noreply@gsmstockmarket.com',
+                              'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
+                              'charset' => 'utf-8',
+                              'wordwrap' => TRUE,
+                              'newline' => "\r\n",
+                              'crlf'    => ""
+
+                          );
+
+              $this->load->library('email', $config);
+              $this->email->set_mailtype("html");
+              $email_body = 'You have a message from the support team';
+
+
+              $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Support');
+
+              //$list = array('tim@gsmstockmarket.com', 'info@gsmstockmarket.com');
+              $this->email->to($this->member_model->get_where($mem)->email);
+              $this->email->subject('You have a message in your inbox');
+              $this->email->message($email_body);
+
+              $this->email->send();                          
+        }
+        
         redirect('admin/company_bio/');
         
     }
