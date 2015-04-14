@@ -37,7 +37,11 @@ class Transaction extends MX_Controller
     
     function banktransfer_gbp($invoice, $product)
     {
-        $base = $this->config->item('base_url');
+        $outstanding_trans = $this->transaction_model->get_where_multiple('buyer_id', $this->session->userdata('members_id'))->status;
+        
+        if($outstanding_trans != 'not_completed'){
+            
+            $base = $this->config->item('base_url');
         if($product == 'platinum'){
            $description = "GSMStockmarket - Platinum Membership Fee";
            $amount = 5000;
@@ -197,6 +201,17 @@ class Transaction extends MX_Controller
                                                                 </div>
                                                             </div>');
                 redirect('preferences/subscription');
+            
+        }
+        else{
+            $this->session->set_flashdata('confirm-transaction', '<div style="margin:0 15px">    
+                                                                <div class="alert alert-warning">
+                                                                    You have an outstanding invoice. Please resolve this before continuing.
+                                                                </div>
+                                                            </div>');
+            redirect('preferences/subscription');
+        }
+        
     }
     
     function invoice($inv_id)
@@ -236,9 +251,7 @@ class Transaction extends MX_Controller
     
     function admin_transaction_count()
     {
-         
-         
-         $t_count = $this->transaction_model->count_where('status', 'not_completed');
+        $t_count = $this->transaction_model->count_where('status', 'not_completed');
          
         if($t_count > 0){
             echo '<span class="label label-warning pull-right">'.$t_count.'</span>';
