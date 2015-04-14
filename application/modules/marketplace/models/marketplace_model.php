@@ -76,9 +76,6 @@ class Marketplace_model extends MY_Model {
 		}
 	}
 
-	
-
-
 	public function get_row($table_name='', $id_array='',$columns=array(),$order_by=array()){
 		
 		if(!empty($columns)):
@@ -248,6 +245,19 @@ class Marketplace_model extends MY_Model {
 				return FALSE;
 	}
 
+	public function question_asked($listing_id=0){
+		$this->db->select('listing_question.*,members.firstname,,members.lastname');
+		$this->db->from('listing_question');
+		$this->db->join('members','members.id=listing_question.buyer_id');
+		$this->db->where('listing_id', $listing_id);
+		$this->db->limit(5);
+		$this->db->order_by('id', "desc"); 
+		$query = $this->db->get();
+			if($query->num_rows()>0)
+				return $query->result();
+			else
+				return FALSE;
+	}
 	public function listing_buying_offer(){
 		$member_id=$this->session->userdata('members_id');
 		$this->db->select('listing.*,company.country  AS country_id,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
@@ -330,7 +340,7 @@ class Marketplace_model extends MY_Model {
 		$this->db->join('listing_watch','listing_watch.listing_id=listing.id');
 		$this->db->where('listing.status', 1);
 		$this->db->where('listing.listing_type', $listing_type);
-		$this->db->where('listing_watch.seller_id',$member_id);
+		$this->db->where('listing_watch.user_id',$member_id);
 		$query = $this->db->get();
 		if($query->num_rows()>0)
 			return $query->result();
