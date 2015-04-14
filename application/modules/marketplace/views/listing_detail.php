@@ -163,60 +163,25 @@ if(!empty($listing_detail->image1))
 <?php if (!empty($member_id) && $member_id!=$listing_detail->member_id): ?> 
 <!-- pay asking price -->
 <br>
-<div class="col-md-8 col-md-offset-2">
+<div class="col-md-6 col-md-offset-3">
 <span>
-<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal5" >Pay asking price</button>
-</span>&nbsp;&nbsp;
-<span><b>or Make an Offer</b></span>
-<dl class="dl-horizontal"  disabled>
- <?php if (!empty($min_qty_to_sell)){ ?>
-  <span>you will not able enter quantity to below <b><?php echo $min_qty_to_sell ?></b> otherwise would be auto rejected. </span><br>
-<?php } ?>
-<form method="post" action="<?php echo base_url().'marketplace/make_offer'?>" class="make_offer">
-<div class="row">
-    <div class="col-md-6">
-    <div class="input-group m-b">
-    <span class="input-group-addon">QTY</span> 
-    <input type="text" name="product_qty" class="form-control" value="<?php echo set_value('product_qty'); ?>" required="" />
-    <span class="input-group-addon">@</span>
-     <input type="hidden" name="listing_id" class="form-control" value="<?php echo $listing_detail->id; ?>" />
-    </div> 
-    </div>
-   <div class="col-md-6">
-    <div class="input-group m-b">
-    <span class="input-group-addon">
-    <?php if(!empty($listing_detail->currency)) { echo currency_class($listing_detail->currency); } ?>
-    </span>  
-    
-    <input type="text" class="form-control" name="unit_price" value="<?php echo set_value('unit_price'); ?>" required="" />
-    </div>
-   
-    </div>
-    <div class="col-md-12">
-    <a class="btn btn-warning senddataajax" >Send Offer </a>
-    </div>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" >Pay asking price</button>
+</span>&nbsp;<b>OR</b>&nbsp;
+<span><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal6" >Make an Offer</button></span>
 </div>
-</form>
-<div style="display:none;" class="offer_message_maindiv">
-  <div id="offer_message"></div>
-</div>
-    <p class="">Offers sent will expire after 24 hours</p>
-    </dl>
-</div>
-     <?php endif; ?>
+ <?php endif; ?>
+  </div>
+  </div>
+  <div class="row">
+      <div class="col-lg-12">
+      <h4>Product Description</h4>
+      <p><?php if(!empty($listing_detail->product_desc)) { echo $listing_detail->product_desc; } ?></p>
       </div>
-      </div>
-      <div class="row">
-          <div class="col-lg-12">
-          <h4>Product Description</h4>
-          <p><?php if(!empty($listing_detail->product_desc)) { echo $listing_detail->product_desc; } ?></p>
-          </div>
-    </div>
+</div>
 </div>
 <div class="modal-footer">
     <?php if (!empty($member_id) && $member_id!=$listing_detail->member_id): ?>
         <a href="<?php echo base_url().'marketplace/listing_watch/'.$listing_detail->member_id.'/'.$listing_detail->id ?>" class="btn btn-warning">Watch</a>
-       <!--  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#price_graph">Product Price Data</button> -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#profile_user">Seller Profile</button>
     <?php endif; ?>
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#profile_message">Ask a question</button>
@@ -287,7 +252,57 @@ if(!empty($listing_detail->image1))
       </div>
   </div>
 </div>
-  <div class="modal inmodal fade" id="profile_user" tabindex="-1" role="dialog"  aria-hidden="true">
+
+<div class="modal inmodal fade" id="myModal6" tabindex="-1" role="dialog"  aria-hidden="true">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+  <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4 class="modal-title"><strong>Make an offer</strong> by GSMStockMarket.com Limited</h4>
+  </div>
+<div class="modal-body">
+  <div class="row">
+    <dl class="dl-horizontal"  disabled>
+ <?php if (!empty($min_qty_to_sell)){ ?>
+  <span>you will not able enter quantity to below <b><?php echo $min_qty_to_sell ?></b> otherwise would be auto rejected. </span><br>
+<?php } ?>
+<form method="post" action="<?php echo base_url().'marketplace/make_offer'?>" class="make_offer">
+<div class="row">
+    <div class="col-md-6">
+    <div class="input-group m-b">
+    <span class="input-group-addon">QTY</span> 
+    <input type="text" name="product_qty" class="form-control" value="<?php echo set_value('product_qty'); ?>" required="" />
+    <span class="input-group-addon">@</span>
+     <input type="hidden" name="listing_id" class="form-control" value="<?php echo $listing_detail->id; ?>" />
+    </div> 
+    </div>
+   <div class="col-md-6">
+    <div class="input-group m-b">
+    <span class="input-group-addon">
+    <?php if(!empty($listing_detail->currency)) { echo currency_class($listing_detail->currency); } ?>
+    </span>  
+    
+    <input type="text" class="form-control" name="unit_price" value="<?php echo set_value('unit_price'); ?>" required="" />
+    </div>
+   
+    </div>
+    <div class="col-md-12">
+    <a class="btn btn-warning senddataajax" >Send Offer </a>
+    </div>
+</div>
+</form>
+<div style="display:none;" class="offer_message_maindiv">
+  <div id="offer_message"></div>
+</div>
+    <p class="">Offers sent will expire after 24 hours</p>
+    </dl>
+</div>
+</div>
+</div>
+  </div>
+</div>
+
+<div class="modal inmodal fade" id="profile_user" tabindex="-1" role="dialog"  aria-hidden="true">
 <div class="modal-dialog modal-lg">
   <div class="modal-content">
       <div class="modal-header">
@@ -295,8 +310,7 @@ if(!empty($listing_detail->image1))
           <h4 class="modal-title"View Profile</h4>
           <small class="font-bold"><?php if(!empty($company->company_name)) echo $company->company_name ?></small>
       </div>
-      <div class="modal-body">
-        <!--   <img src="public/main/template/gsm/images/marketplace/profile_summary.jpg" /> -->
+<div class="modal-body">
 <div class="row" style="background:#FFF;">
 <div class="col-md-8 col-md-offset-1">
     <h1><?php if(!empty($company->company_name)) echo $company->company_name ?></h1>
@@ -430,13 +444,14 @@ if(!empty($listing_detail->image1))
     </table>
 </div>
 </div>
-          </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-          </div>
       </div>
-    </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+      </div>
   </div>
+  </div>
+</div>
+
   <div class="modal inmodal fade" id="price_graph" tabindex="-1" role="dialog"  aria-hidden="true">
       <div class="modal-dialog modal-lg">
           <div class="modal-content">
@@ -462,12 +477,13 @@ if(!empty($listing_detail->image1))
                   <h4 class="modal-title">Ask Question</h4>
                   <small class="font-bold">Welcome to GSMStockMarket.com. Ask your question.</small>
               </div>
+
               <form id="question_form">
                   <div class="modal-body">
                   <div id="msg"></div>
                       <input type="hidden" name="listing_id" class="listing" value="<?php if(!empty($listing_detail->id)) echo $listing_detail->id; ?>"/>
                       <input type="hidden" name="seller_id" value="<?php if(!empty($listing_detail->member_id)) echo $listing_detail->member_id; ?>"/>
-                      <textarea rows="10" cols="10" class="form-control" name="ask_question" placeholder="Enter your question." required></textarea>
+                      <textarea rows="5" cols="10" class="form-control" name="ask_question" placeholder="Enter your question." required></textarea>
                   </div>
                   <div class="modal-footer">
                       <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
@@ -489,8 +505,8 @@ $(document).ready(function(){
    
     $.get('<?php echo base_url()."marketplace/get_listing_question/".$listing_detail->id; ?>', function(data){
         $('.question_list').html(data);
-       })
-});
+    });
+   });
 </script>
 <script src="public/admin/js/jquery.countdown.min.js"></script>
 <script src="public/main/template/core/js/plugins/validate/jquery.validate.min.js"></script>
@@ -557,7 +573,6 @@ $(document).ready(function() {
         alert('Offer is not accepted.');
       }
       else if(data.STATUS=='5'){
-
         if(parseInt(data.chance_left) > 0){
            alert(parseInt(data.chance_left)+' Chance left to give offer.');
         }
