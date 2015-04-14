@@ -36,7 +36,9 @@ class Search_model extends MY_Model
         } else {
             $limit = '';
         }
-
+        $bsnsOrder = ($orderBy == "")? "ORDER BY " : " , ";
+        $bsnsOrder .= ($b_sector == "" || $b_sector == 0)? "" : "  (c.business_sector_1 LIKE ?) DESC, (c.business_sector_2 LIKE ?) DESC, (c.business_sector_3 LIKE ?) DESC, (c.other_business LIKE ?) DESC";
+        $bsnsOrder = ($bsnsOrder == "ORDER BY " || $bsnsOrder == " , ")? "" : $bsnsOrder;
         $sql = "SELECT DISTINCT (c.id),c.admin_member_id, c.company_name, cnt.country, c.company_profile,m.email, ms.membership, c.admin_member_id, c.business_sector_1, c.business_sector_2, c.business_sector_3,
 other_business,
                         COALESCE ((SELECT SUM(feedback_score) FROM feedback as f WHERE f.member_id = m.id AND authorised = 'yes'),0)  as rating
@@ -51,10 +53,10 @@ other_business,
                         LEFT JOIN
                         (SELECT DISTINCT(member_id), date FROM login) as l ON l.member_id = m.id
                         WHERE $where
-                        ORDER BY (c.business_sector_1 LIKE ?) DESC, (c.business_sector_2 LIKE ?) DESC, (c.business_sector_3 LIKE ?) DESC, (c.other_business LIKE ?) DESC $orderBy
+                         $orderBy $bsnsOrder
                         $limit";
         $query = $this->db->query($sql, array($b_sector, $b_sector, $b_sector, $b_sector));
-       // echo $this->db->last_query();
+        //echo $this->db->last_query();
         return $query->result();
     }
 

@@ -123,17 +123,17 @@ class Search extends MX_Controller
         $sort = $this->input->get('sort', TRUE);
         switch ($sort) {
             case "new-user":
-                return ", date_format(str_to_date(m.date, '%d-%m-%Y'), '%Y-%m-%d') DESC";
+                return "ORDER BY date_format(str_to_date(m.date, '%d-%m-%Y'), '%Y-%m-%d') DESC ";
                 break;
             case "last-online":
-                return ", date_format(str_to_date(l.date, '%d-%m-%Y'), '%Y-%m-%d') DESC";
+                return "ORDER BY date_format(str_to_date(l.date, '%d-%m-%Y'), '%Y-%m-%d') DESC ";
                 break;
             case "high-rating":
-                return ", rating DESC";
+                return "ORDER BY rating DESC ";
                 break;
-            /*default:
-                return "c.business_sector_1";
-                break;*/
+            default:
+                return "";
+                break;
         }
     }
 
