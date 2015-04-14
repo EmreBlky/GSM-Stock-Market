@@ -304,208 +304,207 @@ if(!empty($listing_detail->image1))
 
 <div class="modal inmodal fade" id="profile_user" tabindex="-1" role="dialog"  aria-hidden="true">
 <div class="modal-dialog modal-lg">
-  <div class="modal-content">
-      <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <h4 class="modal-title"View Profile</h4>
-          <small class="font-bold"><?php if(!empty($company->company_name)) echo $company->company_name ?></small>
-      </div>
+<div class="modal-content">
+  <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4 class="modal-title"View Profile</h4>
+      <small class="font-bold"><?php if(!empty($company->company_name)) echo $company->company_name ?></small>
+  </div>
 <div class="modal-body">
 <div class="row" style="background:#FFF;">
 <div class="col-md-8 col-md-offset-1">
-    <h1><?php if(!empty($company->company_name)) echo $company->company_name ?></h1>
+  <h1><?php if(!empty($company->company_name)) echo $company->company_name ?></h1>
 </div>
 <div class="col-md-6">
- <table width="100%" border="0" cellpadding="5" cellspacing="5">
-        <tr>
-            <th width="55%" class="text-right">Status : </th>
-            <td class="pull-left">                 <?php //print_r($company) ?>
-            <?php //if(!empty($company)) { ?>
-                <?php //if ($company->status==0): ?>
-                <!-- <span class="label label-danger pull-right">Pending</span> -->
-                <?php //endif ?>
-                 <?php //if ($company->status==1): ?>
-                <!-- <span class="label label-primary pull-right">Active</span> -->
-                <?php //endif ?>
-                 <?php //if ($company->status==2): ?>
-                <!-- <span class="label label-warning pull-right">Save For later</span> -->
-                <?php //endif ?>
-                 <?php //if ($company->status==3): ?>
-                <!-- <span class="label label-danger pull-right">Inactive</span> -->
-                <?php //endif ?>
-            <?php //} ?>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">&nbsp;</td>
-        </tr>
-        <tr>
-            <th class="text-right">Subscription: </th>
-            <td> <?php if(!empty($memberships->membership)) echo $memberships->membership." Member"; ?></td>
-        </tr>
-        <tr>
-            <th class="text-right">Company Number:</th>
-            <td> <?php if(!empty($company->company_number)) echo $company->company_number ?></td>
-        </tr>
-        <tr>
-            <th class="text-right"> VAT/Tax Number:</th>
-            <td> <?php if(!empty($company->vat_tax)) echo $company->vat_tax ?></td>
-        </tr>
-        <tr>
-            <td colspan="2">&nbsp;</td>
-        </tr>
-        <tr>
-            <th class="text-right">Address:</th>
-            <td>
-            <?php if(!empty($company->address_line_1)) echo $company->address_line_1 ?><br>
-            <?php if(!empty($company->address_line_2)) echo $company->address_line_2 ?><br>
-            <?php if(!empty($company->town_city)) echo $company->town_city ?><br>
-            <?php if(!empty($company->county)) echo $company->county ?><br>
-            <?php if(!empty($company->post_code)) echo $company->post_code ?><br>
-            <?php if(!empty($company->country)) echo $company->country ?>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">&nbsp;</td>
-        </tr>
-        <tr>
-            <th class="text-right">Primary Business:</th>
-            <td> <?php if(!empty($company->business_sector_1)) echo $company->business_sector_1 ?></td>
-        </tr>
-        <tr>
-            <th class="text-right">Secondary Business:</th>
-            <td > <?php if(!empty($company->business_sector_2)) echo $company->business_sector_2 ?></td>
-        </tr>
-        <tr>
-            <th class="text-right">Tertiary Business:</th>
-            <td> <?php if(!empty($company->business_sector_3)) echo $company->business_sector_3 ?></td>
-        </tr>
-        <tr>
-            <th class="text-right" valign="top">Other Activities :</th>
-            <td> <?php if(!empty($company->other_business)) echo $company->other_business ?></td>
-        </tr>
-    </table>
+<table width="100%" border="0" cellpadding="5" cellspacing="5">
+      <tr>
+          <th width="55%" class="text-right">Status : </th>
+          <td class="pull-left">
+          </td>
+      </tr>
+      <tr>
+          <td colspan="2">&nbsp;</td>
+      </tr>
+      <tr>
+          <th class="text-right">Subscription: </th>
+          <td> <?php if(!empty($memberships->membership)) echo $memberships->membership." Member"; ?></td>
+      </tr>
+      <tr>
+          <th class="text-right">Company Number:</th>
+          <td> <?php if(!empty($company->company_number)) echo $company->company_number ?></td>
+      </tr>
+      <tr>
+          <th class="text-right"> VAT/Tax Number:</th>
+          <td> <?php if(!empty($company->vat_tax)) echo $company->vat_tax ?></td>
+      </tr>
+      <tr>
+          <td colspan="2">&nbsp;</td>
+      </tr>
+      <tr>
+          <th class="text-right">Address:</th>
+          <td>
+          <?php if(!empty($company->address_line_1)) echo $company->address_line_1 ?><br>
+          <?php if(!empty($company->address_line_2)) echo $company->address_line_2 ?><br>
+          <?php if(!empty($company->town_city)) echo $company->town_city ?><br>
+          <?php if(!empty($company->county)) echo $company->county ?><br>
+          <?php if(!empty($company->post_code)) echo $company->post_code ?><br>
+          <?php if(!empty($company->country)) echo $company->country ?>
+          </td>
+      </tr>
+      <tr>
+          <td colspan="2">&nbsp;</td>
+      </tr>
+      <tr>
+          <th class="text-right">Primary Business:</th>
+          <td> <?php if(!empty($company->business_sector_1)) echo $company->business_sector_1 ?></td>
+      </tr>
+      <tr>
+          <th class="text-right">Secondary Business:</th>
+          <td > <?php if(!empty($company->business_sector_2)) echo $company->business_sector_2 ?></td>
+      </tr>
+      <tr>
+          <th class="text-right">Tertiary Business:</th>
+          <td> <?php if(!empty($company->business_sector_3)) echo $company->business_sector_3 ?></td>
+      </tr>
+      <tr>
+          <th class="text-right" valign="top">Other Activities :</th>
+          <td> <?php if(!empty($company->other_business)) echo $company->other_business ?></td>
+      </tr>
+  </table>
 </div>
 <div class="col-md-6">
-    <table  width="100%" border="0" cellpadding="5" cellspacing="5">
-        <tr>
-            <th class="text-right"></th>
-            <th align="center0">
-                  <img width="200" src="public/main/template/gsm/images/members/no_profile.jpg" />
-            </th>
-        </tr>
-         <tr>
-            <td colspan="2">&nbsp;</td>
-        </tr>
-        <tr>
-            <th width="35%" class="text-right">Title:</th>
-            <td width="50%">  <?php if(!empty($member->firstname)) echo $member->firstname ?></td>
-        </tr>
-        <tr>
-            <th class="text-right">Firstname: </th>
-            <td> <?php if(!empty($member->firstname)) echo $member->firstname ?></td>
-        </tr>
-        <tr>
-            <th class="text-right">Surname:  </th>
-            <td> <?php if(!empty($member->lastname)) echo $member->lastname ?></td>
-        </tr>
-        <tr>
-            <th class="text-right">Role: </th>
-            <td> <?php if(!empty($member->role)) echo $member->role ?></td>
-        </tr>
-        <tr>
-            <th class="text-right">Phone Number: </th>
-            <td> <?php if(!empty($member->phone_number)) echo $member->phone_number ?></td>
-        </tr>
-        <tr>
-            <th class="text-right">Mobile Number: </th>
-            <td> <?php if(!empty($member->mobile_number)) echo $member->mobile_number ?></td>
-        </tr>
-        <tr>
-            <th class="text-right">Facebook: </th>
-            <td> <?php if(!empty($member->facebook)) echo $member->facebook ?></td>
-        </tr>
-        <tr>
-            <th class="text-right">Twitter: </th>
-            <td> <?php if(!empty($member->twitter)) echo $member->twitter ?></td>
-        </tr>
-        <tr>
-            <th class="text-right">Google Plus: </th>
-            <td> <?php if(!empty($member->gplus)) echo $member->gplus ?></td>
-        </tr>
-        <tr>
-            <th class="text-right">LinkedIn: </th>
-            <td> <?php if(!empty($member->linkedin)) echo $member->linkedin ?></td>
-        </tr>
-        <tr>
-            <th class="text-right">Skype: </th>
-            <td> <?php if(!empty($member->skype)) echo $member->skype ?></td>
-        </tr>
-    </table>
+  <table  width="100%" border="0" cellpadding="5" cellspacing="5">
+      <tr>
+          <th class="text-right"></th>
+          <th align="center">
+
+          <?php if (file_exists("public/main/template/gsm/images/members/".$member->id.".png")) { ?>
+                  <img src="public/main/template/gsm/images/members/<?php echo $member->id; ?>.png" width="200">
+              <?php } else { ?>
+                  <img src="public/main/template/gsm/images/members/no_profile.jpg"  <?php echo $member->id; ?> width="200"/>
+              <?php } ?>
+          </th>
+      </tr>
+       <tr>
+          <td colspan="2">&nbsp;</td>
+      </tr>
+      <tr>
+          <th width="35%" class="text-right">Title:</th>
+          <td width="50%">  <?php if(!empty($member->firstname)) echo $member->firstname ?></td>
+      </tr>
+      <tr>
+          <th class="text-right">Firstname: </th>
+          <td> <?php if(!empty($member->firstname)) echo $member->firstname ?></td>
+      </tr>
+      <tr>
+          <th class="text-right">Surname:  </th>
+          <td> <?php if(!empty($member->lastname)) echo $member->lastname ?></td>
+      </tr>
+      <tr>
+          <th class="text-right">Role: </th>
+          <td> <?php if(!empty($member->role)) echo $member->role ?></td>
+      </tr>
+      <tr>
+          <th class="text-right">Phone Number: </th>
+          <td> <?php if(!empty($member->phone_number)) echo $member->phone_number ?></td>
+      </tr>
+      <tr>
+          <th class="text-right">Mobile Number: </th>
+          <td> <?php if(!empty($member->mobile_number)) echo $member->mobile_number ?></td>
+      </tr>
+      <tr>
+          <th class="text-right">Facebook: </th>
+          <td> <?php if(!empty($member->facebook)) echo $member->facebook ?></td>
+      </tr>
+      <tr>
+          <th class="text-right">Twitter: </th>
+          <td> <?php if(!empty($member->twitter)) echo $member->twitter ?></td>
+      </tr>
+      <tr>
+          <th class="text-right">Google Plus: </th>
+          <td> <?php if(!empty($member->gplus)) echo $member->gplus ?></td>
+      </tr>
+      <tr>
+          <th class="text-right">LinkedIn: </th>
+          <td> <?php if(!empty($member->linkedin)) echo $member->linkedin ?></td>
+      </tr>
+      <tr>
+          <th class="text-right">Skype: </th>
+          <td> <?php if(!empty($member->skype)) echo $member->skype ?></td>
+      </tr>
+  </table>
 </div>
 </div>
-      </div>
-      <div class="modal-footer">
-          <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-      </div>
-  </div>
-  </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+    </div>
+</div>
+</div>
 </div>
 
-  <div class="modal inmodal fade" id="price_graph" tabindex="-1" role="dialog"  aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                  <h4 class="modal-title">iPhone 4S Buy &amp; Sell Data</h4>
-                  <span>Buying Price</span> / <span style="color:#8fd9ca">Selling Price</span>
-              </div>
-              <div class="modal-body">
-                  <img src="public/main/template/gsm/images/marketplace/product_data.jpg" />
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="modal inmodal fade" id="profile_message" tabindex="-1" role="dialog"  aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                  <h4 class="modal-title">Ask Question</h4>
-                  <small class="font-bold">Welcome to GSMStockMarket.com. Ask your question.</small>
-              </div>
+<div class="modal inmodal fade" id="price_graph" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">iPhone 4S Buy &amp; Sell Data</h4>
+                <span>Buying Price</span> / <span style="color:#8fd9ca">Selling Price</span>
+            </div>
+            <div class="modal-body">
+                <img src="public/main/template/gsm/images/marketplace/product_data.jpg" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-              <form id="question_form">
-                  <div class="modal-body">
-                  <div id="msg"></div>
-                      <input type="hidden" name="listing_id" class="listing" value="<?php if(!empty($listing_detail->id)) echo $listing_detail->id; ?>"/>
-                      <input type="hidden" name="seller_id" value="<?php if(!empty($listing_detail->member_id)) echo $listing_detail->member_id; ?>"/>
-                      <textarea rows="5" cols="10" class="form-control" name="ask_question" placeholder="Enter your question." required></textarea>
-                  </div>
-                  <div class="modal-footer">
-                      <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary" id="send_msg">Send Message</button>
-                  </div>
-              </form>
-              <div class="question_list"></div>
+<div class="modal inmodal fade" id="profile_message" tabindex="-1" role="dialog"  aria-hidden="true">
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title">Ask Question</h4>
+          <small class="font-bold">Welcome to GSMStockMarket.com. Ask your question.</small>
+      </div>
+      <?php if (!empty($member_id) && $member_id!=$listing_detail->member_id){ ?>
+      <form id="question_form">
+          <div class="modal-body">
+          <div id="msg"></div>
+              <input type="hidden" name="listing_id" class="listing" value="<?php if(!empty($listing_detail->id)) echo $listing_detail->id; ?>"/>
+              <input type="hidden" name="seller_id" value="<?php if(!empty($listing_detail->member_id)) echo $listing_detail->member_id; ?>"/>
+              <textarea rows="5" cols="10" class="form-control" name="ask_question" placeholder="Enter your question." required></textarea>
           </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="send_msg">Send Message</button>
+          </div>
+      </form>
+      <?php } ?>
+      <div class="question_list">
+
       </div>
   </div>
+</div>
+</div>
 <script>
+
 $(document).ready(function(){
+  var load_list=function(){
+    $.get('<?php echo base_url()."marketplace/get_listing_question/".$listing_detail->id; ?>', function(data){
+        $('.question_list').html(data);
+    });
+  }
     $('#send_msg').on('click', function(){
       var question_form =  $('#question_form').serialize();
       $.post('<?php echo base_url() ?>marketplace/listing_question', question_form,function(data){
         $('#msg').html(data);
        });
+      load_list();
     });
-   
-    $.get('<?php echo base_url()."marketplace/get_listing_question/".$listing_detail->id; ?>', function(data){
-        $('.question_list').html(data);
-    });
+   load_list();
    });
 </script>
 <script src="public/admin/js/jquery.countdown.min.js"></script>
@@ -523,6 +522,7 @@ $('[data-countdown]').each(function() {
  });
 <?php if(!empty($listing_detail->unit_price) && !empty($listing_detail->qty_available)) { ?>
 $('#core').on('change', function(){
+  alert(parseInt($(this).val()));
   $('#gross_price').html('<?php echo currency_class($listing_detail->currency).' '; ?>'+(parseInt($(this).val()) + parseInt($('#total_price').val())));
  
 });
