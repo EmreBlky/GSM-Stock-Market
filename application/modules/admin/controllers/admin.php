@@ -269,7 +269,7 @@ class Admin extends MX_Controller
                                     'member_id'         => 5,
                                     'sent_member_id'    => $mem,
                                     'subject'           => 'Company Bio Declined',
-                                    'body'              => 'Your company bio has been declined. Please update you information.',
+                                    'body'              => 'Your company bio has been declined. Please update your information.',
                                     'inbox'             => 'yes',
                                     'sent'              => 'yes',
                                     'date'              => date('d-m-Y'),
