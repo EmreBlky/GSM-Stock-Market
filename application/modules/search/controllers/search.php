@@ -137,8 +137,11 @@ class Search extends MX_Controller
         }
     }
 
-    function company($start = 0)
+    function company($start = 1)
     {
+        $results_per_page = 20;
+        $start = ($start * $results_per_page) - $results_per_page;
+
         if($this->session->userdata('membership') < 2) {
             redirect('preferences/notice');
         }
@@ -167,7 +170,7 @@ class Search extends MX_Controller
 
 
         //$results_per_page = $this->config->item('results_per_page');
-        $results_per_page = 20;
+
 
         $this->load->model('search_model');
         $this->load->model('country/country_model', 'country_model');
