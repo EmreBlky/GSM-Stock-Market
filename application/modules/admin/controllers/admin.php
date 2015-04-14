@@ -243,6 +243,7 @@ class Admin extends MX_Controller
         $this->{$var1_model}->_insert($data);
         
         $this->load->model('notification/notification_model', 'notification_model');
+        $this->load->model('member/member_model', 'member_model');
         $email_support = $this->notification_model->get_where_multiple('member_id', $mem)->email_support;
                       
         if($email_support == 'yes'){
