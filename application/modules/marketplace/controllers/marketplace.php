@@ -415,6 +415,15 @@ class Marketplace extends MX_Controller
         $this->load->module('templates');
         $this->templates->page($data);
     }
+    function listing_detail_html()
+    {
+        $data['main'] = 'marketplace';        
+        $data['title'] = 'GSM - Market Place: Listing';        
+        $data['page'] = 'listing_detail_html';
+        
+        $this->load->module('templates');
+        $this->templates->page($data);
+    }
      function listing_delete($listing_id='')
     {
         $member_id = $this->session->userdata('members_id');
@@ -1092,12 +1101,13 @@ class Marketplace extends MX_Controller
                             'listing_id' =>  $listing_id,
                             'seller_id' =>   $seller_id,
                             'user_id'    =>  $user_id,
-                            'created'    =>  date('Y-m-d')
+                            'created'    =>  date('Y-m-d,H:i:s')
                             );
          $this->marketplace_model->insert('listing_watch',$data_insert);
+         $this->session->set_flashdata('msg_info','Listing have been save sucessfully in your watch list.'); 
          redirect('marketplace/listing_detail/'.$listing_id);
         }else{
-         $this->session->set_flashdata('msg_info','you have already watch.');  
+         $this->session->set_flashdata('msg_info','This item is already exist in your watch list.');  
          redirect('marketplace/listing_detail/'.$listing_id);
         }
     }
@@ -1105,10 +1115,14 @@ class Marketplace extends MX_Controller
 
     function listing_unwatch($listing_id='')
     {
-         $this->marketplace_model->delete('listing_watch',array('listing_id'=>$listing_id));
-         $this->session->set_flashdata('msg_success','you have unwatch successfully.');  
+        $user_id =  $this->session->userdata('members_id');
+         if($this->marketplace_model->delete('listing_watch',array('listing_id'=>$listing_id, 'user_id'=>$user_id))){
+           $this->session->set_flashdata('msg_success','Listing removed successfully from your watch list.');  
+          }
+          else{
+          $this->session->set_flashdata('msg_info','Invalid...!');  
+          }
          redirect('marketplace/watching');
-     
     }
 
     function listing_question()
@@ -1118,14 +1132,15 @@ class Marketplace extends MX_Controller
             $listing_id = $this->input->post('listing_id');
             $data_insert=array(
                             'listing_id' =>  $listing_id,
-                            'seller_id' => $this->input->post('seller_id'),
-                            'buyer_id'  =>  $user_id,
-                            'question'   =>  $this->input->post('ask_question'),
-                            'created'    =>  date('Y-m-d')
+                            'seller_id'  =>  $this->input->post('seller_id'),
+                            'buyer_id'   =>  $user_id,
+                            'message'   =>  $this->input->post('ask_question'),
+                            'parent_id'  =>  '0',
+                            'created'    =>  date('Y-m-d,H:i:s')
                             );
             $question_id = $this->marketplace_model->insert('listing_question',$data_insert);
             if(!empty($question_id)){
-                echo "<div class='alert alert-success'>Your question sent successfully. You will get response as soon as possible</div>";
+                echo "<div class='alert alert-success'>Your question sent successfully. You will get response soon.</div>";
             }else{
                echo "<div class='alert alert-warning'>Please Try again.</div>"; 
             }
@@ -1136,11 +1151,7 @@ class Marketplace extends MX_Controller
     function get_listing_question($listing_id=0)
     {
         $user_id =  $this->session->userdata('members_id');
-
-       $seller_question = $this->marketplace_model->get_result('listing_question', array('seller_id'=>$user_id,'listing_id'=>$listing_id)); 
-       $buyer_question = $this->marketplace_model->get_result('listing_question', array('buyer_id'=>$user_id,'listing_id'=>$listing_id));
-      
-
+        $seller_question = $this->marketplace_model->get_result('listing_question', array('seller_id'=>$user_id,'listing_id'=>$listing_id)); 
        ?>
        <h4><strong>Seller Question List</strong></h4>
        <div id="del_msg"></div>
@@ -1148,59 +1159,26 @@ class Marketplace extends MX_Controller
             <thead>
             <tr>
                 <th width="10%">ID</th>
-                <th width="60%">Question</th>
-                <!-- <th width="30%">Action</th> -->
+                <th width="90%">Question</th>
             </tr>
             </thead>
             <tbody>
             <?php if(!empty($seller_question)){
+
+                $buyer_question = $this->marketplace_model->get_result('listing_question', array('buyer_id'=>$user_id,'listing_id'=>$listing_id));
                     foreach ($seller_question as $value) {  ?>
-                            <tr>
-                                <td><?php echo '#'.$value->id; ?></td>
-                                <td><?php echo $value->question; ?>
-                                </td><!-- <td><button class="btn btn-danger" onclick="delete_data(<?php //echo $value->id; ?>)">delete</buttton> --></td>
-                            </tr>
+                    <tr>
+                        <td><?php echo '#'.$value->id; ?></td>
+                        <td><?php echo $value->question; ?>
+                    </tr>
                     <?php }
                 }else{
-                    echo "No Question List Found.";
-                } ?>
-        </table>
-        <h4><strong>Buyer Question List</strong></h4>
-         <table class="table table-striped table-bordered table-hover dataTables-example">
-            <thead>
-            <tr>
-                <th width="10%">ID</th>
-                <th width="60%">Question</th>
-                <!-- <th width="30%">Action</th> -->
-            </tr>
-            </thead>
-            <tbody>
-            <?php if(!empty($buyer_question)){
-                    foreach ($buyer_question as $value) {  ?>
-                            <tr>
-                                <td><?php echo '#'.$value->id; ?></td>
-                                <td><?php echo character_limiter($value->question,10); ?>
-                                </td><!-- <td><button class="btn btn-danger" onclick="delete_data(<?php //echo $value->id; ?>)">delete</buttton> --></td>
-                            </tr>
-                    <?php }
-                }else{
-                    echo "No Question List Found.";
+                    echo "Do you want to ask any question ?<br>If yes than put your question above.";
                 } ?>
         </table>
        <?php 
     }
 
-    // function delete_listing_question()
-    // {
-    //     $delete_data = $this->marketplace_model->delete('listing_question', array('id'=>$this->input->post('row_id')));
-    //     if(!empty($delete_data)){
-    //         echo "<div class='alert alert-success'>question delete successfully.</div>";
-    //     }else{
-    //        echo "<div class='alert alert-warning'>Please Try again.</div>"; 
-
-    //     }
-    // }
-    
     function history()
     {
         $data['main'] = 'marketplace';        
