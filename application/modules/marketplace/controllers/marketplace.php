@@ -1132,15 +1132,30 @@ class Marketplace extends MX_Controller
             $listing_id = $this->input->post('listing_id');
             $data_insert=array(
                             'listing_id' =>  $listing_id,
-                            'seller_id'  =>  $this->input->post('seller_id'),
-                            'buyer_id'   =>  $user_id,
-                            'message'   =>  $this->input->post('ask_question'),
-                            'parent_id'  =>  '0',
-                            'created'    =>  date('Y-m-d,H:i:s')
+                            'seller_id' => $this->input->post('seller_id'),
+                            'buyer_id'  =>  $user_id,
+                            'question'   =>  $this->input->post('ask_question'),
+                            'created'    =>  date('Y-m-d')
                             );
             $question_id = $this->marketplace_model->insert('listing_question',$data_insert);
+
+            $data = array(
+                'member_id'         => $user_id,
+                'sent_member_id'    => $this->input->post('seller_id'),
+                'subject'           => 'Listing Ask question',
+                'body'              => $this->input->post('ask_question'),
+                'inbox'             => 'yes',
+                'sent'              => 'yes',
+                'date'              => date('d-m-Y'),
+                'time'              => date('H:i:s'),
+                'sent_from'         => 'market',
+                'datetime'          => date('Y-m-d H:i:s')
+              ); 
+           $this->load->model('mailbox/mailbox_model', 'mailbox_model');
+            $this->mailbox_model->_insert($data);
+
             if(!empty($question_id)){
-                echo "<div class='alert alert-success'>Your question sent successfully. You will get response soon.</div>";
+                echo "<div class='alert alert-success'>Your question sent successfully. You will get response as soon as possible</div>";
             }else{
                echo "<div class='alert alert-warning'>Please Try again.</div>"; 
             }
@@ -1151,33 +1166,30 @@ class Marketplace extends MX_Controller
     function get_listing_question($listing_id=0)
     {
         $user_id =  $this->session->userdata('members_id');
-        $seller_question = $this->marketplace_model->get_result('listing_question', array('seller_id'=>$user_id,'listing_id'=>$listing_id)); 
-       ?>
-       <h4><strong>Seller Question List</strong></h4>
+        $question_asked = $this->marketplace_model->question_asked($listing_id); 
+       if(!empty($question_asked)){?>
+       <h4><strong>Recently ask questions</strong></h4>
        <div id="del_msg"></div>
         <table class="table table-striped table-bordered table-hover dataTables-example">
-            <thead>
+            <?php
+            foreach ($question_asked as $value) {  ?>
             <tr>
-                <th width="10%">ID</th>
-                <th width="90%">Question</th>
+                <td>
+                <div class="row">
+                <div class="col-lg-6">
+                    <?php echo ucfirst($value->firstname).' '.$value->lastname; ?>
+                </div>
+                <div class="col-lg-6 pull-right">
+                    <?php echo $value->created; ?>
+                </div> 
+                <div class="col-lg-12">
+                <?php echo ucfirst($value->question); ?>
+                </div></td>
             </tr>
-            </thead>
-            <tbody>
-            <?php if(!empty($seller_question)){
-
-                $buyer_question = $this->marketplace_model->get_result('listing_question', array('buyer_id'=>$user_id,'listing_id'=>$listing_id));
-                    foreach ($seller_question as $value) {  ?>
-                    <tr>
-                        <td><?php echo '#'.$value->id; ?></td>
-                        <td><?php echo $value->question; ?>
-                    </tr>
-                    <?php }
-                }else{
-                    echo "Do you want to ask any question ?<br>If yes than put your question above.";
-                } ?>
+            <?php } ?>
         </table>
        <?php 
-    }
+    }}
 
     function history()
     {
@@ -1484,8 +1496,6 @@ class Marketplace extends MX_Controller
 
        } else
          $data['company'] = FALSE;
-       // $data['memberships']= FALSE;
-
         $this->load->module('templates');
         $this->templates->page($data);
     }
