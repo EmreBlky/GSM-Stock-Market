@@ -51,7 +51,7 @@ other_business,
                          INNER JOIN country as cnt
                         ON c.country = cnt.id
                         LEFT JOIN
-                        (SELECT DISTINCT(member_id), date FROM login) as l ON l.member_id = m.id
+                        (SELECT DISTINCT(member_id), date, time FROM login) as l ON l.member_id = m.id
                         WHERE $where
                          $orderBy $bsnsOrder
                         $limit";
