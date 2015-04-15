@@ -99,11 +99,11 @@ class Marketplace extends MX_Controller
         $this->templates->page($data);
     }
     
-    function all()
+    function offers()
     {
         $data['main'] = 'marketplace';        
-        $data['title'] = 'GSM - Market Place: All';        
-        $data['page'] = 'all';
+        $data['title'] = 'GSM - Market Place: Offers';        
+        $data['page'] = 'offers';
         
         $this->load->module('templates');
         $this->templates->page($data);
