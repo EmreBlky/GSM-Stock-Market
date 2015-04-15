@@ -35,7 +35,9 @@
       
       <div class="col-lg-6">
         <div class="ibox">
-          <div class="ibox-title"><h5>Reference Status</h5></div>
+          <div class="ibox-title">
+          <span class="label label-danger pull-right">Marketplace Inactive</span>
+          <h5>Reference Status</h5></div>
           
           <div class="ibox-content" style="min-height:170px">
           <div class="row">
