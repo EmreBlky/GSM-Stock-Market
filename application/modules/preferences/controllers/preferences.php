@@ -167,5 +167,12 @@ class Preferences extends MX_Controller
         $this->load->module('templates');
         $this->templates->page($data);
     }
+    
+    function trade_reference()
+    {
+        $this->load->module('reference');
+        $this->reference->view();
+        
+    }
 	
 }

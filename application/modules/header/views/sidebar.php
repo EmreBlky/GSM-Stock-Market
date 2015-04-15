@@ -234,13 +234,14 @@
                     </li>
                     <?php } ?>
                     
-                    <?php if($url == 'preferences') {?>
+                    <?php if($url == 'preferences' || $url == 'tradereference') {?>
                     <li class="active">
                         <a href=""><i class="fa fa-cog"></i> <span class="nav-label">Preferences</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="preferences/password"><i class="fa fa-lock"></i> Change Password</a></li>
                             <li><a href="preferences/subscription"><i class="fa fa-cubes"></i> My Subscription</a></li>
                             <li><a href="preferences/notification"><i class="fa fa-newspaper-o"></i> Notifications</a></li>
+                            <li><a href="tradereference/"><i class="fa fa-slideshare"></i> Trade Reference</a></li>
                             <!-- <li><a href="preferences/newsletter"><i class="fa fa-newspaper-o"></i> Newsletter</a></li> -->
                         </ul>
                     </li>
@@ -251,7 +252,7 @@
                             <li><a href="preferences/password"><i class="fa fa-lock"></i> Change Password</a></li>
                             <li><a href="preferences/subscription"><i class="fa fa-cubes"></i> My Subscription</a></li>
                             <li><a href="preferences/notification"><i class="fa fa-newspaper-o"></i> Notifications</a></li>
-                            <!-- <li><a href="preferences/newsletter"><i class="fa fa-newspaper-o"></i> Newsletter</a></li> -->
+                            <li><a href="tradereference/"><i class="fa fa-slideshare"></i> Trade Reference</a></li>
                         </ul>
                     </li>
                     <?php } ?>
