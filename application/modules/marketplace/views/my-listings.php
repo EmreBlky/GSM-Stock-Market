@@ -14,6 +14,7 @@
         </ol>
     </div>
 </div>
+<?php msg_alert(); ?>
 <div class="wrapper wrapper-content animated fadeInRight">
 <div class="row">
     <div class="col-lg-12">
@@ -53,7 +54,6 @@
                 <a onclick="view_offer(<?php echo $value->id; ?>)" class="btn btn-info"  data-toggle="modal" data-target="#view_offers"><i class="fa fa-paste"></i> View Offer </a>
                 </th>
             </tr>
-                
             <?php endforeach ?>
         <?php endif; ?>
         </tbody>
