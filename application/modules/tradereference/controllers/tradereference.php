@@ -15,6 +15,14 @@ class Tradereference extends MX_Controller
 
     function index()
     {
+        $count = $this->tradereference_model->count_where('member_id', $this->session->userdata('members_id'));
+        
+        if($count < 1){
+            $data = array(
+                          'member_id' => $this->session->userdata('members_id')
+            );
+            $this->tradereference_model->_insert($data);
+        }
         
         $data['main'] = 'tradereference';
 	$data['title'] = 'GSM - Trade Reference';
@@ -27,16 +35,6 @@ class Tradereference extends MX_Controller
     
     function submit_refs()
     {
-        
-        $count = $this->tradereference_model->count_where('member_id', $this->session->userdata('members_id'));
-        
-        if($count < 1){
-            $data = array(
-                          'member_id' => $this->session->userdata('members_id')
-            );
-            $this->tradereference_model->_insert($data);
-        }
-        
         
         $data['main'] = 'tradereference';
 	$data['title'] = 'GSM - Trade Reference';
