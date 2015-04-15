@@ -14,54 +14,8 @@
         </ol>
     </div>
 </div>
+<?php msg_alert(); ?>
 <div class="wrapper wrapper-content animated fadeInRight">
-<div class="row">
-    <div class="col-lg-12">
-    <div class="ibox float-e-margins">
-        <div class="ibox-title">
-            <h5>Counter Offers</h5>
-        </div>
-        <div class="ibox-content">
-        <table class="table table-striped table-bordered table-hover selling_offers" >
-        <thead>
-        <tr>
-            <th>Status</th>
-            <th>End Date</th>
-            <th>Make &amp; Model</th>
-            <th>Condition</th>
-            <th>Price</th>
-            <th>QTY</th>
-            <th>Spec</th>
-            <th>Options</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php if(!empty($counter_offer)): ?>
-            <?php foreach ($counter_offer as $value):
-            $offer_count = offer_count($value->id); ?>
-            <tr>
-                <td class="text-center">
-                <span class="label label-info">Offers Waiting (<?php echo $offer_count; ?>)</span>
-                </td>
-                <td><?php echo date('h:i d-m', strtotime($value->listing_end_datetime)); ?></td>
-                <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
-                <td><?php echo $value->condition; ?></td>
-                <td data-toggle="tooltip" data-placement="left" title="t"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
-                <td><?php echo $value->qty_available; ?></td>
-                <td><?php echo $value->spec; ?></td>
-                <th class="text-center">
-                <a onclick="view_offer(<?php echo $value->id; ?>)" class="btn btn-info"  data-toggle="modal" data-target="#view_offers"><i class="fa fa-paste"></i> View Offer </a>
-                </th>
-            </tr>
-                
-            <?php endforeach ?>
-        <?php endif; ?>
-        </tbody>
-        </table>
-        </div>
-    </div>
-</div>
-</div>
 <div class="row">
     <div class="col-lg-12">
     <div class="ibox float-e-margins">
@@ -105,7 +59,6 @@
                 <td><?php echo $value->qty_available; ?></td>
                 <td><?php echo $value->spec; ?></td>
                 <th class="text-center">
-                <button class="btn btn-info" type="button"  data-toggle="modal" data-target="#buyer_offers" onclick="get_buyers_offer(<?php echo $value->id; ?>)"><i class="fa fa-paste"></i> Offers </button>
                 <a href="<?php echo base_url().'marketplace/sell_listing/'.$value->id; ?>" class="btn btn-warning" ><i class="fa fa-paste"></i> Edit</a>
                 <button class="btn btn-danger" type="button" ><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
                 </th>
@@ -201,9 +154,6 @@
                 <td><?php echo $value->qty_available; ?></td>
                 <td><?php echo $value->spec; ?></td>
                 <th class="text-center">
-            <?php if (!empty($value->member_id) && $value->member_id == $session_member_id): ?>
-                <button class="btn btn-info" type="button"  data-toggle="modal" data-target="#buyer_offers" onclick="get_buyers_offer(<?php echo $value->id; ?>)"><i class="fa fa-paste"></i> Offers </button>
-            <?php endif ?>
                 <a href="<?php echo base_url().'marketplace/buy_listing/'.$value->id; ?>" class="btn btn-warning" ><i class="fa fa-paste"></i> Edit</a>
                 <button class="btn btn-danger" type="button" ><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
                 </th>
