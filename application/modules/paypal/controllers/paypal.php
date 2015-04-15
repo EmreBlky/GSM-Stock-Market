@@ -8,6 +8,7 @@ class Paypal extends MX_Controller
         $this->load->helper('string');
         $this->load->model('paypal/paypal_model', 'paypal_model');
         $this->load->model('mailbox/mailbox_model', 'mailbox_model');
+        $this->load->model('notification/notification_model', 'notification_model');
         $this->load->model('member/member_model', 'member_model');
         $this->load->model('transaction/transaction_model', 'transaction_model');
         $this->load->library('paypal_subscribe');
@@ -63,7 +64,9 @@ class Paypal extends MX_Controller
         
         $data_mail = array(
                                     'member_id'         => 5,
+                                    'member_name'       => $this->member_model->get_where(5)->firstname.' '.$this->member_model->get_where(5)->lastname,
                                     'sent_member_id'    => $this->session->userdata('members_id'),
+                                    'sent_member_name'  => $this->member_model->get_where($this->session->userdata('members_id'))->firstname.' '.$this->member_model->get_where($this->session->userdata('members_id'))->lastname,                        
                                     'subject'           => 'PayPal Transaction - '.$invoice.'',
                                     'body'              => '<p>Thank you for upgrading your membership on GSMStockMarket.com.</p>
                                                             <p>To view the full invoice you can go to <strong>Preferences > My Subscription</strong> and print off a copy direct from within your account.</p>

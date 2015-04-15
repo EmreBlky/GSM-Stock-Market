@@ -1355,7 +1355,7 @@ class Mailbox extends MX_Controller
             
             $data = array(
                         'member_id'         => $mid,
-                        'member_name'       => $this->member_model->get_where($mid)->firstname.' 1 '.$this->member_model->get_where($mid)->lastname,
+                        'member_name'       => $this->member_model->get_where($mid)->firstname.' '.$this->member_model->get_where($mid)->lastname,
                         'sent_member_id'    => $sid,
                         'sent_member_name'  => $this->member_model->get_where($sid)->firstname.' '.$this->member_model->get_where($sid)->lastname,
                         'subject'           => $this->characterReplace($subject),
@@ -1375,7 +1375,7 @@ class Mailbox extends MX_Controller
             
             $data = array(
                         'member_id'         => $mid,
-                        'member_name'       => $this->member_model->get_where($mid)->firstname.' 2 '.$this->member_model->get_where($mid)->lastname,
+                        'member_name'       => $this->member_model->get_where($mid)->firstname.' '.$this->member_model->get_where($mid)->lastname,
                         'sent_member_id'    => $sid,
                         'sent_member_name'  => $this->member_model->get_where($sid)->firstname.' '.$this->member_model->get_where($sid)->lastname,
                         'subject'           => $this->characterReplace($subject),
