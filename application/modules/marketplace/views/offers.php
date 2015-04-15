@@ -20,7 +20,7 @@
     <div class="col-lg-12">
     <div class="ibox float-e-margins">
         <div class="ibox-title">
-            <h5>Submitted Offers</h5>
+            <h5>Selling Offers</h5>
         </div>
         <div class="ibox-content">
         <table class="table table-striped table-bordered table-hover selling_offers" >
@@ -66,7 +66,7 @@
     <div class="col-lg-12">
     <div class="ibox float-e-margins">
         <div class="ibox-title">
-            <h5>My Listing Offers</h5>
+            <h5>Buying Request Offers</h5>
         </div>
         <div class="ibox-content">
         <table class="table table-striped table-bordered table-hover buying_requests" >
