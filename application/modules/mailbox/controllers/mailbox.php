@@ -1029,13 +1029,13 @@ class Mailbox extends MX_Controller
             
             if($this->form_validation->run()){
                 
-                
+                $mid = $this->session->userdata('members_id');
                 $sid = $this->member_model->get_where_multiple('email', $this->input->post('email_address'))->id;
                 $message_type = $this->input->post('message_type');
                 
                 if($mail_type == 'draft'){
 
-                    if($sid < 6){
+                    if($mid < 6){
                         
                         $data = array(
                                     'member_id'         => $this->session->userdata('members_id'),
@@ -1055,38 +1055,6 @@ class Mailbox extends MX_Controller
                                     'datetime'          => date('Y-m-d H:i:s')
                                   );
                         
-                        $email_support = $this->notification_model->get_where_multiple('member_id', $sid)->email_support;
-                      
-                      if($email_support == 'yes'){
-                          
-                            $this->load->module('emails');
-                            $config = Array(
-                                            'protocol' => 'smtp',
-                                            'smtp_host' => 'ssl://server.gsmstockmarket.com',
-                                            'smtp_port' => 465,
-                                            'smtp_user' => 'noreply@gsmstockmarket.com',
-                                            'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
-                                            'charset' => 'utf-8',
-                                            'wordwrap' => TRUE,
-                                            'newline' => "\r\n",
-                                            'crlf'    => ""
-
-                                        );
-
-                            $this->load->library('email', $config);
-                            $this->email->set_mailtype("html");
-                            $email_body = 'You have a message from the support team';
-
-
-                            $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Support');
-
-                            //$list = array('tim@gsmstockmarket.com', 'info@gsmstockmarket.com');
-                            $this->email->to($this->member_model->get_where($sid)->email);
-                            $this->email->subject('You have a message in your inbox');
-                            $this->email->message($email_body);
-
-                            $this->email->send();                          
-                      }
                     }
                     else{
                         
@@ -1108,47 +1076,63 @@ class Mailbox extends MX_Controller
                                     'datetime'          => date('Y-m-d H:i:s')
                                   );
                         
-                      $email_member = $this->notification_model->get_where_multiple('member_id', $sid)->email_member;
-                      
-                      if($email_member == 'yes'){
-                          
-                            $this->load->module('emails');
-                            $config = Array(
-                                            'protocol' => 'smtp',
-                                            'smtp_host' => 'ssl://server.gsmstockmarket.com',
-                                            'smtp_port' => 465,
-                                            'smtp_user' => 'noreply@gsmstockmarket.com',
-                                            'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
-                                            'charset' => 'utf-8',
-                                            'wordwrap' => TRUE,
-                                            'newline' => "\r\n",
-                                            'crlf'    => ""
-
-                                        );
-
-                            $this->load->library('email', $config);
-                            $this->email->set_mailtype("html");
-                            $email_body = 'You have a message from a member';
-
-
-                            $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Members Team');
-
-                            //$list = array('tim@gsmstockmarket.com', 'info@gsmstockmarket.com');
-                            $this->email->to($this->member_model->get_where($sid)->email);
-                            $this->email->subject('You have a message in your inbox');
-                            $this->email->message($email_body);
-
-                            $this->email->send();                          
-                      }
                         
-                    }   
-                    
+                    }                       
                     $this->mailbox_model->_update($this->input->post('mail_id'), $data);
+                    
+                    $this->load->module('emails');
+                    $config = Array(
+                                    'protocol' => 'smtp',
+                                    'smtp_host' => 'ssl://server.gsmstockmarket.com',
+                                    'smtp_port' => 465,
+                                    'smtp_user' => 'noreply@gsmstockmarket.com',
+                                    'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
+                                    'charset' => 'utf-8',
+                                    'wordwrap' => TRUE,
+                                    'newline' => "\r\n",
+                                    'crlf'    => ""
+
+                                );
+
+                    $this->load->library('email', $config);
+                    $this->email->set_mailtype("html");
+
+                    $email_support = $this->notification_model->get_where_multiple('member_id', $sid)->email_support;
+                    $email_member = $this->notification_model->get_where_multiple('member_id', $sid)->email_member;
+
+                        if($email_support == 'yes'){                       
+
+                              $email_body = 'You have a message from the support team';
+
+
+                              $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Support');
+
+                              //$list = array('tim@gsmstockmarket.com', 'info@gsmstockmarket.com');
+                              $this->email->to($this->member_model->get_where($sid)->email);
+                              $this->email->subject('You have a message in your inbox');
+                              $this->email->message($email_body);
+
+                              $this->email->send();                          
+                        }
+
+                        if($email_member == 'yes'){
+
+                                $email_body = 'You have a message from a member';
+
+                                $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Members Team');
+
+                                //$list = array('tim@gsmstockmarket.com', 'info@gsmstockmarket.com');
+                                $this->email->to($this->member_model->get_where($sid)->email);
+                                $this->email->subject('You have a message in your inbox');
+                                $this->email->message($email_body);
+
+                                $this->email->send();                          
+                          }
                     redirect('mailbox/draft');
                 }
                 else{     
                     
-                    if($sid < 6){
+                    if($mid < 6){
                         
                         $data = array(
                                     'member_id'         => $this->session->userdata('members_id'),
@@ -1166,38 +1150,7 @@ class Mailbox extends MX_Controller
                                     'parent_id'         => $this->input->post('parent_id'),
                                     'datetime'          => date('Y-m-d H:i:s')
                                   );
-                        $email_support = $this->notification_model->get_where_multiple('member_id', $sid)->email_support;
-                      
-                      if($email_support == 'yes'){
-                          
-                            $this->load->module('emails');
-                            $config = Array(
-                                            'protocol' => 'smtp',
-                                            'smtp_host' => 'ssl://server.gsmstockmarket.com',
-                                            'smtp_port' => 465,
-                                            'smtp_user' => 'noreply@gsmstockmarket.com',
-                                            'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
-                                            'charset' => 'utf-8',
-                                            'wordwrap' => TRUE,
-                                            'newline' => "\r\n",
-                                            'crlf'    => ""
-
-                                        );
-
-                            $this->load->library('email', $config);
-                            $this->email->set_mailtype("html");
-                            $email_body = 'You have a message from the support team';
-
-
-                            $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Support');
-
-                            //$list = array('tim@gsmstockmarket.com', 'info@gsmstockmarket.com');
-                            $this->email->to($this->member_model->get_where($sid)->email);
-                            $this->email->subject('You have a message in your inbox');
-                            $this->email->message($email_body);
-
-                            $this->email->send();                          
-                      }
+                        
                     }
                     else{
 
@@ -1217,46 +1170,62 @@ class Mailbox extends MX_Controller
                                         'parent_id'         => $this->input->post('parent_id'),
                                         'datetime'          => date('Y-m-d H:i:s')
                                       ); 
-                        $email_member = $this->notification_model->get_where_multiple('member_id', $sid)->email_member ;
-                      
-                      if($email_member == 'yes'){
-                          
-                            $this->load->module('emails');
-                            $config = Array(
-                                            'protocol' => 'smtp',
-                                            'smtp_host' => 'ssl://server.gsmstockmarket.com',
-                                            'smtp_port' => 465,
-                                            'smtp_user' => 'noreply@gsmstockmarket.com',
-                                            'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
-                                            'charset' => 'utf-8',
-                                            'wordwrap' => TRUE,
-                                            'newline' => "\r\n",
-                                            'crlf'    => ""
-
-                                        );
-
-                            $this->load->library('email', $config);
-                            $this->email->set_mailtype("html");
-                            $email_body = 'You have a message from a member';
-
-
-                            $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Members Team');
-
-                            //$list = array('tim@gsmstockmarket.com', 'info@gsmstockmarket.com');
-                            $this->email->to($this->member_model->get_where($sid)->email);
-                            $this->email->subject('You have a message in your inbox');
-                            $this->email->message($email_body);
-
-                            $this->email->send();                          
-                      }
+                        
                     }
                     $this->mailbox_model->_insert($data);
+                    
+                    $this->load->module('emails');
+                    $config = Array(
+                                    'protocol' => 'smtp',
+                                    'smtp_host' => 'ssl://server.gsmstockmarket.com',
+                                    'smtp_port' => 465,
+                                    'smtp_user' => 'noreply@gsmstockmarket.com',
+                                    'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
+                                    'charset' => 'utf-8',
+                                    'wordwrap' => TRUE,
+                                    'newline' => "\r\n",
+                                    'crlf'    => ""
+
+                                );
+
+                    $this->load->library('email', $config);
+                    $this->email->set_mailtype("html");
+
+                    $email_support = $this->notification_model->get_where_multiple('member_id', $sid)->email_support;
+                    $email_member = $this->notification_model->get_where_multiple('member_id', $sid)->email_member;
+
+                        if($email_support == 'yes'){                       
+
+                              $email_body = 'You have a message from the support team';
+
+
+                              $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Support');
+
+                              //$list = array('tim@gsmstockmarket.com', 'info@gsmstockmarket.com');
+                              $this->email->to($this->member_model->get_where($sid)->email);
+                              $this->email->subject('You have a message in your inbox');
+                              $this->email->message($email_body);
+
+                              $this->email->send();                          
+                        }
+
+                        if($email_member == 'yes'){
+
+                                $email_body = 'You have a message from a member';
+
+                                $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Members Team');
+
+                                //$list = array('tim@gsmstockmarket.com', 'info@gsmstockmarket.com');
+                                $this->email->to($this->member_model->get_where($sid)->email);
+                                $this->email->subject('You have a message in your inbox');
+                                $this->email->message($email_body);
+
+                                $this->email->send();                          
+                          }
                     redirect('mailbox/inbox/all');
                 }
                 
-            }            
-            
-            
+            } 
             
         }
         elseif($submit == 'Draft'){
@@ -1382,11 +1351,11 @@ class Mailbox extends MX_Controller
     
     function composeAjaxMail($mid, $sid, $subject, $body)
     {
-        if($sid < 6){
+        if($mid < 6){
             
             $data = array(
                         'member_id'         => $mid,
-                        'member_name'       => $this->member_model->get_where($mid)->firstname.' '.$this->member_model->get_where($mid)->lastname,
+                        'member_name'       => $this->member_model->get_where($mid)->firstname.' 1 '.$this->member_model->get_where($mid)->lastname,
                         'sent_member_id'    => $sid,
                         'sent_member_name'  => $this->member_model->get_where($sid)->firstname.' '.$this->member_model->get_where($sid)->lastname,
                         'subject'           => $this->characterReplace($subject),
@@ -1401,45 +1370,12 @@ class Mailbox extends MX_Controller
                         'datetime'          => date('Y-m-d H:i:s')
                       );
             
-                      $email_support = $this->notification_model->get_where_multiple('member_id', $sid)->email_support;
-                      
-                      if($email_support == 'yes'){
-                          
-                            $this->load->module('emails');
-                            $config = Array(
-                                            'protocol' => 'smtp',
-                                            'smtp_host' => 'ssl://server.gsmstockmarket.com',
-                                            'smtp_port' => 465,
-                                            'smtp_user' => 'noreply@gsmstockmarket.com',
-                                            'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
-                                            'charset' => 'utf-8',
-                                            'wordwrap' => TRUE,
-                                            'newline' => "\r\n",
-                                            'crlf'    => ""
-
-                                        );
-
-                            $this->load->library('email', $config);
-                            $this->email->set_mailtype("html");
-                            $email_body = 'You have a message from the support team';
-
-
-                            $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Support');
-
-                            //$list = array('tim@gsmstockmarket.com', 'info@gsmstockmarket.com');
-                            $this->email->to($this->member_model->get_where($sid)->email);
-                            $this->email->subject('You have a message in your inbox');
-                            $this->email->message($email_body);
-
-                            $this->email->send();                          
-                      }
-            
         }
         else{
             
             $data = array(
                         'member_id'         => $mid,
-                        'member_name'       => $this->member_model->get_where($mid)->firstname.' '.$this->member_model->get_where($mid)->lastname,
+                        'member_name'       => $this->member_model->get_where($mid)->firstname.' 2 '.$this->member_model->get_where($mid)->lastname,
                         'sent_member_id'    => $sid,
                         'sent_member_name'  => $this->member_model->get_where($sid)->firstname.' '.$this->member_model->get_where($sid)->lastname,
                         'subject'           => $this->characterReplace($subject),
@@ -1454,44 +1390,59 @@ class Mailbox extends MX_Controller
                         'datetime'          => date('Y-m-d H:i:s')
                       );
             
-            $email_member = $this->notification_model->get_where_multiple('member_id', $sid)->email_member;
-                      
-                      if($email_member == 'yes'){
-                          
-                            $this->load->module('emails');
-                            $config = Array(
-                                            'protocol' => 'smtp',
-                                            'smtp_host' => 'ssl://server.gsmstockmarket.com',
-                                            'smtp_port' => 465,
-                                            'smtp_user' => 'noreply@gsmstockmarket.com',
-                                            'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
-                                            'charset' => 'utf-8',
-                                            'wordwrap' => TRUE,
-                                            'newline' => "\r\n",
-                                            'crlf'    => ""
-
-                                        );
-
-                            $this->load->library('email', $config);
-                            $this->email->set_mailtype("html");
-                            $email_body = 'You have a message from a member';
-
-
-                            $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Members Team');
-
-                            //$list = array('tim@gsmstockmarket.com', 'info@gsmstockmarket.com');
-                            $this->email->to($this->member_model->get_where($sid)->email);
-                            $this->email->subject('You have a message in your inbox');
-                            $this->email->message($email_body);
-
-                            $this->email->send();                          
-                      }
-            
         }
         
-                            
         $this->mailbox_model->_insert($data);
-        redirect('mailbox/inbox/all');
+        
+        $this->load->module('emails');
+        $config = Array(
+                        'protocol' => 'smtp',
+                        'smtp_host' => 'ssl://server.gsmstockmarket.com',
+                        'smtp_port' => 465,
+                        'smtp_user' => 'noreply@gsmstockmarket.com',
+                        'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
+                        'charset' => 'utf-8',
+                        'wordwrap' => TRUE,
+                        'newline' => "\r\n",
+                        'crlf'    => ""
+
+                    );
+
+        $this->load->library('email', $config);
+        $this->email->set_mailtype("html");
+        
+        $email_support = $this->notification_model->get_where_multiple('member_id', $sid)->email_support;
+        $email_member = $this->notification_model->get_where_multiple('member_id', $sid)->email_member;
+                      
+            if($email_support == 'yes'){                       
+
+                  $email_body = 'You have a message from the support team';
+
+
+                  $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Support');
+
+                  //$list = array('tim@gsmstockmarket.com', 'info@gsmstockmarket.com');
+                  $this->email->to($this->member_model->get_where($sid)->email);
+                  $this->email->subject('You have a message in your inbox');
+                  $this->email->message($email_body);
+
+                  $this->email->send();                          
+            }
+            
+            if($email_member == 'yes'){
+                
+                    $email_body = 'You have a message from a member';
+                    
+                    $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Members Team');
+
+                    //$list = array('tim@gsmstockmarket.com', 'info@gsmstockmarket.com');
+                    $this->email->to($this->member_model->get_where($sid)->email);
+                    $this->email->subject('You have a message in your inbox');
+                    $this->email->message($email_body);
+
+                    $this->email->send();                          
+              }
+        //redirect('mailbox/inbox/all');
     }
             
     function archive($mid = NULL, $off = NULL)

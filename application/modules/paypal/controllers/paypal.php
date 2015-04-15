@@ -78,6 +78,39 @@ class Paypal extends MX_Controller
                                   ); 
         $this->mailbox_model->_insert($data_mail);
         
+        $email_support = $this->notification_model->get_where_multiple('member_id', $this->session->userdata('members_id'))->email_support;
+                      
+            if($email_support == 'yes'){
+
+                  $this->load->module('emails');
+                  $config = Array(
+                                  'protocol' => 'smtp',
+                                  'smtp_host' => 'ssl://server.gsmstockmarket.com',
+                                  'smtp_port' => 465,
+                                  'smtp_user' => 'noreply@gsmstockmarket.com',
+                                  'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
+                                  'charset' => 'utf-8',
+                                  'wordwrap' => TRUE,
+                                  'newline' => "\r\n",
+                                  'crlf'    => ""
+
+                              );
+
+                  $this->load->library('email', $config);
+                  $this->email->set_mailtype("html");
+                  $email_body = 'You have a message from the support team';
+
+
+                  $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Support');
+
+                  //$list = array('tim@gsmstockmarket.com', 'info@gsmstockmarket.com');
+                  $this->email->to($this->member_model->get_where($this->session->userdata('members_id'))->email);
+                  $this->email->subject('You have a message in your inbox');
+                  $this->email->message($email_body);
+
+                  $this->email->send();                          
+            }
+        
         $base                           = $this->config->item('base_url');
         $config['business']             = 'info@gsmstockmarket.com';
         $config['cpp_header_image']     = $base .'public/main/template/gsm/images/paypal_gsm.png'; //Image header url [750 pixels wide by 90 pixels high]
