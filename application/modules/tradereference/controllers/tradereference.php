@@ -11,6 +11,7 @@ class Tradereference extends MX_Controller
 //        }
         $this->load->model('tradereference/tradereference_model', 'tradereference_model');
         $this->load->model('country/country_model', 'country_model');
+        $this->load->model('member/member_model', 'member_model');
     }
 
     function index()
@@ -27,6 +28,8 @@ class Tradereference extends MX_Controller
         $data['main'] = 'tradereference';
 	$data['title'] = 'GSM - Trade Reference';
         $data['page'] = 'index';
+        $data['member'] = $this->member_model->get_where($this->session->userdata('members_id'));
+        $data['trade_ref'] = $this->tradereference_model->get_where_multiple('member_id', $this->session->userdata('members_id'));
         
         
         $this->load->module('templates');
@@ -72,8 +75,8 @@ class Tradereference extends MX_Controller
 
             if($this->form_validation->run()){
                 
-                $code1 = $this->session->userdata('members_id').'-'.random_string('alnum', 4).'-'.random_string('alnum', 4);
-                $code2 = $this->session->userdata('members_id').'-'.random_string('alnum', 4).'-'.random_string('alnum', 4);
+                $code1 = $this->session->userdata('members_id').'-'.random_string('alnum', 4).'-'.random_string('alnum', 4).'-trade_1_confirm';
+                $code2 = $this->session->userdata('members_id').'-'.random_string('alnum', 4).'-'.random_string('alnum', 4).'-trade_2_confirm';
                 
                 $data = array(
                             'trade_1_company'   => $this->input->post('trade_1_company'),

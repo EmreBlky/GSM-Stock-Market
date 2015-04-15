@@ -103,7 +103,7 @@ class Preferences extends MX_Controller
         $this->templates->page($data);
     }
     
-    function subscription()
+    function subscription($message = NULL)
     {
         $data_activity = array(
                                 'activity' => 'Preference: Subscription',
@@ -133,6 +133,17 @@ class Preferences extends MX_Controller
         $this->member_model->_custom_query_action("UPDATE members SET invoice_number = (invoice_number+1) WHERE id = '".$this->session->userdata('members_id')."'");
         
         $data['member'] = $this->member_model->get_where($this->session->userdata('members_id'));
+        
+        if($message == 'confirm'){
+            $data['trade_confirm'] = '<div style="margin:0 15px">    
+                                                                <div class="alert alert-warning">
+                                                                    Please upgrade to silver before you can submit the references.
+                                                                </div>
+                                                            </div>';
+        }
+        else{
+             $data['trade_confirm'] = '';
+        }
         
         $this->load->module('templates');
         $this->templates->page($data);
