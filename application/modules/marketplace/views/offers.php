@@ -20,7 +20,7 @@
     <div class="col-lg-12">
     <div class="ibox float-e-margins">
         <div class="ibox-title">
-            <h5>Selling Offers</h5>
+            <h5>Buying Requests (Items I want to buy)</h5>
         </div>
         <div class="ibox-content">
         <table class="table table-striped table-bordered table-hover selling_offers" >
@@ -37,26 +37,130 @@
         </tr>
         </thead>
         <tbody>
-        <?php if(!empty($counter_offer)): ?>
-            <?php foreach ($counter_offer as $value):
-            $offer_count = offer_count($value->id); ?>
             <tr>
                 <td class="text-center">
-                <span class="label label-info">Offers Waiting (<?php echo $offer_count; ?>)</span>
+                <span class="label label-info">Offers Waiting (7)</span>
                 </td>
-                <td><?php echo date('h:i d-m', strtotime($value->listing_end_datetime)); ?></td>
-                <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
-                <td><?php echo $value->condition; ?></td>
-                <td data-toggle="tooltip" data-placement="left" title="t"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
-                <td><?php echo $value->qty_available; ?></td>
-                <td><?php echo $value->spec; ?></td>
-                <th class="text-center">
-                <a onclick="view_offer(<?php echo $value->id; ?>)" class="btn btn-info"  data-toggle="modal" data-target="#view_offers"><i class="fa fa-paste"></i> View Offer </a>
-                </th>
-            </tr>
-            <?php endforeach ?>
-        <?php endif; ?>
-        </tbody>
+                <td>09:55 23-04</td>
+                <td>Samsung Galaxy S3 LTE (i9305)</td>
+                <td>New</td>
+                <td data-toggle="tooltip" data-placement="left" title="t">EURO 1200</td>
+                <td>200</td>
+                <td>UK</td>
+                <td>
+                <a class="btn btn-success" style="font-size:10px"><i class="fa fa-paste"></i> View Listing </a>
+                <a class="btn btn-info" style="font-size:10px"><i class="fa fa-paste"></i> View Offers </a>
+                </td>
+            </tr> 
+            <tr>
+                <td class="text-center">
+                <span class="label label-info">Offers Waiting (2)</span>
+                </td>
+                <td>09:55 23-04</td>
+                <td>Samsung Galaxy S3 LTE (i9305)</td>
+                <td>New</td>
+                <td data-toggle="tooltip" data-placement="left" title="t">EURO 1200</td>
+                <td>200</td>
+                <td>UK</td>
+                <td>
+                <a class="btn btn-success" style="font-size:10px"><i class="fa fa-paste"></i> View Listing </a>
+                <a class="btn btn-info" style="font-size:10px"><i class="fa fa-paste"></i> View Offers </a>
+                </td>
+            </tr> 
+            <tr>
+                <td class="text-center">
+                <span class="label label-info">Offers Waiting (4)</span>
+                </td>
+                <td>09:55 23-04</td>
+                <td>Samsung Galaxy S3 LTE (i9305)</td>
+                <td>New</td>
+                <td data-toggle="tooltip" data-placement="left" title="t">EURO 1200</td>
+                <td>200</td>
+                <td>UK</td>
+                <td>
+                <a class="btn btn-success" style="font-size:10px"><i class="fa fa-paste"></i> View Listing </a>
+                <a class="btn btn-info" style="font-size:10px"><i class="fa fa-paste"></i> View Offers </a>
+                </td>
+            </tr>   
+            <tr>
+                <td class="text-center">
+                <span class="label label-warning">Offers Sent</span>
+                </td>
+                <td>09:55 23-04</td>
+                <td>Samsung Galaxy S3 LTE (i9305)</td>
+                <td>New</td>
+                <td data-toggle="tooltip" data-placement="left" title="t">EURO 1200</td>
+                <td>200</td>
+                <td>UK</td>
+                <td>
+                <a class="btn btn-success" style="font-size:10px"><i class="fa fa-paste"></i> View Listing </a>
+                <a class="btn btn-info" style="font-size:10px"><i class="fa fa-paste"></i> View Offers </a>
+                </td>
+            </tr>  
+            <tr>
+                <td class="text-center">
+                <span class="label label-warning">Offers Sent</span>
+                </td>
+                <td>09:55 23-04</td>
+                <td>Samsung Galaxy S3 LTE (i9305)</td>
+                <td>New</td>
+                <td data-toggle="tooltip" data-placement="left" title="t">EURO 1200</td>
+                <td>200</td>
+                <td>UK</td>
+                <td>
+                <a class="btn btn-success" style="font-size:10px"><i class="fa fa-paste"></i> View Listing </a>
+                <a class="btn btn-info" style="font-size:10px"><i class="fa fa-paste"></i> View Offers </a>
+                </td>
+            </tr>  
+            <tr>
+                <td class="text-center">
+                <span class="label label-danger">Offer Expired</span>
+                </td>
+                <td>09:55 23-04</td>
+                <td>Samsung Galaxy S3 LTE (i9305)</td>
+                <td>New</td>
+                <td data-toggle="tooltip" data-placement="left" title="t">EURO 1200</td>
+                <td>200</td>
+                <td>UK</td>
+                <td>
+                <a class="btn btn-success" style="font-size:10px"><i class="fa fa-paste"></i> View Listing </a>
+                <a class="btn btn-primary" style="font-size:10px"><i class="fa fa-paste"></i> New Offer </a>
+                <a class="btn btn-danger" style="font-size:10px"><i class="fa fa-times"></i> Remove </a>
+                </td>
+            </tr>    
+            <tr>
+                <td class="text-center">
+                <span class="label label-danger">Offer Declined</span>
+                </td>
+                <td>09:55 23-04</td>
+                <td>Samsung Galaxy S3 LTE (i9305)</td>
+                <td>New</td>
+                <td data-toggle="tooltip" data-placement="left" title="t">EURO 1200</td>
+                <td>200</td>
+                <td>UK</td>
+                <td>
+                <a class="btn btn-success" style="font-size:10px"><i class="fa fa-paste"></i> View Listing </a>
+                <a class="btn btn-primary" style="font-size:10px"><i class="fa fa-paste"></i> New Offer </a>
+                <a class="btn btn-danger" style="font-size:10px"><i class="fa fa-times"></i> Remove </a>
+                </td>
+            </tr>  
+            <tr>
+                <td class="text-center">
+                <span class="label label-danger">Offer Declined</span>
+                </td>
+                <td>09:55 23-04</td>
+                <td>Samsung Galaxy S3 LTE (i9305)</td>
+                <td>New</td>
+                <td data-toggle="tooltip" data-placement="left" title="t">EURO 1200</td>
+                <td>200</td>
+                <td>UK</td>
+                <td>
+                <a class="btn btn-success" style="font-size:10px"><i class="fa fa-paste"></i> View Listing </a>
+                <a class="btn btn-primary" style="font-size:10px"><i class="fa fa-paste"></i> New Offer </a>
+                <a class="btn btn-danger" style="font-size:10px"><i class="fa fa-times"></i> Remove </a>
+                </td>
+            </tr>    
+            </tbody>
         </table>
         </div>
     </div>
@@ -66,7 +170,7 @@
     <div class="col-lg-12">
     <div class="ibox float-e-margins">
         <div class="ibox-title">
-            <h5>Buying Request Offers</h5>
+            <h5>Selling Offers (Items I want to sell)</h5>
         </div>
         <div class="ibox-content">
         <table class="table table-striped table-bordered table-hover buying_requests" >
@@ -83,40 +187,82 @@
         </tr>
         </thead>
         <tbody>
-         <?php if(!empty($buying_request)): ?>
-            <?php foreach ($buying_request as $value):
-            if(!empty($value->id)){
-             $offer_count = offer_count($value->id);   
-            }
-             ?>
             <tr>
                 <td class="text-center">
-               
-                 <?php if (!empty($value->offer_status) && $value->offer_status == 1): ?>
-                <span class="label label-success">Active</span>
-                <?php else: ?>
-                 <span class="label label-info">Offers Waiting (<?php echo $offer_count; ?>)</span>
-                <?php endif ?> 
+                <span class="label label-info">Offers Waiting (7)</span>
                 </td>
-                <td><?php echo date('h:i d-m', strtotime($value->listing_end_datetime)); ?></td>
-                <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
-                <td><?php echo $value->condition; ?></td>
-                <td data-toggle="tooltip" data-placement="left" title="t"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
-                <td><?php echo $value->qty_available; ?></td>
-                <td><?php echo $value->spec; ?></td>
-                <th class="text-center">
-                <button class="btn btn-info" type="button"  data-toggle="modal" data-target="#buyer_offers" onclick="get_buyers_offer(<?php echo $value->id; ?>)"><i class="fa fa-paste"></i> Offers </button>
-                <a href="<?php echo base_url().'marketplace/sell_listing/'.$value->id; ?>" class="btn btn-warning" ><i class="fa fa-paste"></i> Edit</a>
-                <button class="btn btn-danger" type="button" ><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
-                </th>
-            </tr>
-                
-            <?php endforeach ?>
-        <?php endif; ?>
-        
-        
-        
-        
+                <td>09:55 23-04</td>
+                <td>Samsung Galaxy S3 LTE (i9305)</td>
+                <td>New</td>
+                <td data-toggle="tooltip" data-placement="left" title="t">EURO 1200</td>
+                <td>200</td>
+                <td>UK</td>
+                <td>
+                <a class="btn btn-success" style="font-size:10px"><i class="fa fa-paste"></i> View Listing </a>
+                <a class="btn btn-info" style="font-size:10px"><i class="fa fa-paste"></i> View Offers </a>
+                </td>
+            </tr> 
+            <tr>
+                <td class="text-center">
+                <span class="label label-info">Offers Waiting (4)</span>
+                </td>
+                <td>09:55 23-04</td>
+                <td>Samsung Galaxy S3 LTE (i9305)</td>
+                <td>New</td>
+                <td data-toggle="tooltip" data-placement="left" title="t">EURO 1200</td>
+                <td>200</td>
+                <td>UK</td>
+                <td>
+                <a class="btn btn-success" style="font-size:10px"><i class="fa fa-paste"></i> View Listing </a>
+                <a class="btn btn-info" style="font-size:10px"><i class="fa fa-paste"></i> View Offers </a>
+                </td>
+            </tr>   
+            <tr>
+                <td class="text-center">
+                <span class="label label-warning">Offers Sent</span>
+                </td>
+                <td>09:55 23-04</td>
+                <td>Samsung Galaxy S3 LTE (i9305)</td>
+                <td>New</td>
+                <td data-toggle="tooltip" data-placement="left" title="t">EURO 1200</td>
+                <td>200</td>
+                <td>UK</td>
+                <td>
+                <a class="btn btn-success" style="font-size:10px"><i class="fa fa-paste"></i> View Listing </a>
+                <a class="btn btn-info" style="font-size:10px"><i class="fa fa-paste"></i> View Offers </a>
+                </td>
+            </tr>  
+            <tr>
+                <td class="text-center">
+                <span class="label label-warning">Offers Sent</span>
+                </td>
+                <td>09:55 23-04</td>
+                <td>Samsung Galaxy S3 LTE (i9305)</td>
+                <td>New</td>
+                <td data-toggle="tooltip" data-placement="left" title="t">EURO 1200</td>
+                <td>200</td>
+                <td>UK</td>
+                <td>
+                <a class="btn btn-success" style="font-size:10px"><i class="fa fa-paste"></i> View Listing </a>
+                <a class="btn btn-info" style="font-size:10px"><i class="fa fa-paste"></i> View Offers </a>
+                </td>
+            </tr>  
+            <tr>
+                <td class="text-center">
+                <span class="label label-danger">Offer Declined</span>
+                </td>
+                <td>09:55 23-04</td>
+                <td>Samsung Galaxy S3 LTE (i9305)</td>
+                <td>New</td>
+                <td data-toggle="tooltip" data-placement="left" title="t">EURO 1200</td>
+                <td>200</td>
+                <td>UK</td>
+                <td>
+                <a class="btn btn-success" style="font-size:10px"><i class="fa fa-paste"></i> View Listing </a>
+                <a class="btn btn-primary" style="font-size:10px"><i class="fa fa-paste"></i> New Offer </a>
+                <a class="btn btn-danger" style="font-size:10px"><i class="fa fa-times"></i> Remove </a>
+                </td>
+            </tr>   
         </tbody>
         </table>
         </div>
