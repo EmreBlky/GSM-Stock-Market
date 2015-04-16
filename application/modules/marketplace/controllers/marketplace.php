@@ -579,12 +579,23 @@ class Marketplace extends MX_Controller
 
 
             for($i=0; $i < count($_POST['shipping_terms']); $i++){
+                $shiptype='';
+                if($_POST['ship_types'][$i] == 'Price_per_unit'){
+                    $shiptype='Price Per unit';
+                }
+                elseif($_POST['ship_types'][$i] == 'Free_Shipping'){
+                    $shiptype='Free Shipping';
+                }
+                elseif($_POST['ship_types'][$i] == 'Flat_fee'){
+                    $shiptype='Flat fee';
+                }
                 $shipping_fee[] = 
                 array(
                'shipping_term'   =>  $_POST['shipping_terms'][$i],
                'coriars'         =>  $_POST['coriars'][$i],
                'shipping_types'  =>  $_POST['ship_types'][$i],
                'shipping_fees'   =>  $_POST['shipping_fees'][$i],
+               'shipping_name_display'=>$shiptype
                );
               }
             }
@@ -1540,6 +1551,12 @@ class Marketplace extends MX_Controller
     $product_qty=$_POST['product_qty'];
     $unit_price=$_POST['unit_price'];
     $listing_id=$_POST['listing_id'];
+    $shippingterm_index='';
+    if($shippingterm_value=$_POST['coriartoselect1']){
+        $explodeshipping=explode('-',$shippingterm_value);
+        $shippingterm_index=$explodeshipping[0];
+    }
+
     $buyer_id=$this->session->userdata('members_id');
     $need_to_insert=0;
     if(!empty($product_qty) && is_numeric($product_qty) && !empty($unit_price) && is_numeric($unit_price) && !empty($listing_id) && is_numeric($listing_id)){
@@ -1554,6 +1571,25 @@ class Marketplace extends MX_Controller
      }
 
   if($offersdone < $total_allow_offer){
+    $shippingterm ='';
+    $shippingamount =0;
+    if(!empty($listing->courier)) {
+      if($listing->listing_type==1){
+        $core =  explode(',', $listing->courier);
+        $shippingterm = $core[$shippingterm_index];
+      }
+      elseif($listing->listing_type==2){
+        $value=json_decode($listing->sell_shipping_fee);
+        $shippingterm = $value[$shippingterm_index]->shipping_term.' ('.$value[$shippingterm_index]->coriars.') '.$value[$shippingterm_index]->shipping_name_display;
+        if($value[$shippingterm_index]->shipping_types=='Free_Shipping'){
+            $shippingamount =0;
+        }elseif($value[$shippingterm_index]->shipping_types=='Price_per_unit'){
+            $shippingamount =$value[$shippingterm_index]->shipping_types * $product_qty;
+        }elseif($value[$shippingterm_index]->shipping_types=='Flat_fee'){
+            $shippingamount =$value[$shippingterm_index]->shipping_types;
+        }
+        } 
+      }
     $offerleft=($total_allow_offer - $offersdone) - 1;
     if($listing->listing_type==2){
     $min_qty='';
@@ -1614,6 +1650,7 @@ class Marketplace extends MX_Controller
         $list=array('STATUS'=>7,'Message'=>'Offer is Already accepted.'); 
         }
         else{
+         $total_price=  ($product_qty *  $unit_price) +  $shippingamount;
        $data_insert=array(
                 'buyer_id'      => $buyer_id,
                 'seller_id'     => $listing->member_id,
@@ -1621,7 +1658,10 @@ class Marketplace extends MX_Controller
                 'product_qty'   => $product_qty,
                 'unit_price'    => $unit_price,
                 'buyer_currency'=> $listing->currency,
-                'created'       => date('Y-m-d, H:i:s')
+                'total_price'   => $total_price,
+                'shipping'      => $shippingterm,
+                'shipping_price'=> $shippingamount,
+                'created'       => date('Y-m-d, H:i:s'),
                 );
         $this->marketplace_model->insert('make_offer',$data_insert);
         $list=array('STATUS'=>1,'Message'=>'Offer added sucessfully.');
@@ -1760,5 +1800,33 @@ class Marketplace extends MX_Controller
         
         $this->load->module('templates');
         $this->templates->page($data);
+    }
+    public function pay_asking_price()
+    {   
+        $listing_id=$_POST['listing_id'];
+        $buyer_id=$this->session->userdata('members_id');
+        $total_price= $_POST['total_calgross_price'];
+        $shipping=$_POST['shippingselected'];   
+        if($listing=$this->marketplace_model->get_row('listing', array('id'=>$listing_id))){
+
+        $data_insert=array(
+                'buyer_id'      => $buyer_id,
+                'seller_id'     => $listing->member_id,
+                'listing_id'    => $listing_id,
+                'product_qty'   => $listing->qty_available,
+                'unit_price'    => '',
+                'total_price'   => $total_price,
+                'shipping'      => $shipping,
+                'buyer_currency'=> $listing->currency,
+                'offer_status'        => 3,
+                'created'       => date('Y-m-d, H:i:s')
+                );
+        $this->marketplace_model->insert('make_offer',$data_insert);
+        $this->session->set_flashdata('msg_success','Request inserted sucessfully...! ');
+      }
+      else{
+        $this->session->set_flashdata('msg_error','Failed, Please try again.');
+      }
+      redirect($_SERVER['HTTP_REFERER']);
     }
 }

@@ -219,8 +219,8 @@ color: #fff;
 }
 </style>
 <script>
-    function get_buyers_offer(listing_id) {
-        var list = listing_id;
+ function get_buyers_offer(listing_id) {
+    var list = listing_id;
        $.post('<?php echo base_url() ?>marketplace/get_buyers_offer', {listing_id: list}, function(data) {
            $('#buyers_list').html(data);
        });
