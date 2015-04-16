@@ -101,6 +101,14 @@ class Marketplace extends MX_Controller
     
     function offers()
     {
+        $data['seller_offer_sent'] = $this->marketplace_model->listing_offer_common(2,2);
+
+        $data['buyer_offer_sent'] = $this->marketplace_model->listing_offer_common(1,2);
+
+        $data['seller_offer_recived'] = $this->marketplace_model->listing_offer_common(2,1);
+
+        $data['buyer_offer_recived'] = $this->marketplace_model->listing_offer_common(1,1);
+
         $data['main'] = 'marketplace';        
         $data['title'] = 'GSM - Market Place: Offers';        
         $data['page'] = 'offers';
@@ -109,6 +117,16 @@ class Marketplace extends MX_Controller
         $this->templates->page($data);
     }
     
+    function offers_html()
+    {
+        $data['main'] = 'marketplace';        
+        $data['title'] = 'GSM - Market Place: Offers';        
+        $data['page'] = 'offers_html';
+        
+        $this->load->module('templates');
+        $this->templates->page($data);
+    }
+
     function invoice()
     {
         $data['main'] = 'marketplace';        
@@ -396,7 +414,6 @@ class Marketplace extends MX_Controller
     {
         $data['sell_offer'] = $this->marketplace_model->listing_sell_offer();
         $data['buying_request'] = $this->marketplace_model->listing_buying_offer();
-        $data['counter_offer'] = $this->marketplace_model->listing_counter_offer();
         
         $data['main'] = 'marketplace';        
         $data['title'] = 'GSM - Market Place: Listing';        
@@ -641,6 +658,7 @@ class Marketplace extends MX_Controller
         if(!empty($list_id))
             $data_insert['updated']              = date('Y-m-d h:i:s A');
         else
+            $data_insert['updated']              = date('Y-m-d h:i:s A');
             $data_insert['created']              = date('Y-m-d h:i:s A');
            
         $list_update = '';
@@ -970,6 +988,7 @@ class Marketplace extends MX_Controller
         if(!empty($list_id))
             $data_insert['updated']              = date('Y-m-d h:i:s A');
         else
+            $data_insert['updated']              = date('Y-m-d h:i:s A');
             $data_insert['created']              = date('Y-m-d h:i:s A');
             
         $list_update = '';
