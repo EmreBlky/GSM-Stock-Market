@@ -239,7 +239,7 @@ if(!empty($listing_detail->image1))
               <option value="">Select Shipping Terms</option>
               <?php 
                foreach ($core as $key => $value): ?>
-                 <option data-other="<?php echo $value;?>">
+                 <option data-other="<?php echo $value;?>" value="0">
                    <?php echo  $value; ?>
                  </option>
               <?php endforeach; ?>
