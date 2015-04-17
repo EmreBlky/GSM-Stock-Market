@@ -105,9 +105,9 @@ class Marketplace extends MX_Controller
 
         $data['buyer_offer_sent'] = $this->marketplace_model->listing_offer_common(1,2);
 
-        $data['seller_offer_recived'] = $this->marketplace_model->listing_offer_common(2,1);
+        $data['seller_offer_recived'] = $this->marketplace_model->listing_offer_common(2,1,1);
 
-        $data['buyer_offer_recived'] = $this->marketplace_model->listing_offer_common(1,1);
+        $data['buyer_offer_recived'] = $this->marketplace_model->listing_offer_common(1,1,1);
 
         $data['main'] = 'marketplace';        
         $data['title'] = 'GSM - Market Place: Offers';        
@@ -1751,39 +1751,63 @@ class Marketplace extends MX_Controller
         $list = $this->input->post('listing_id');
         $make_offer = $this->marketplace_model->view_offer($list);
         if(!empty($make_offer)){ ?>
-            <table class="table table-bordered" >
-                <thead>
-                    <tr>
-                        <th>Company</th>
-                        <th>Rating</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                        <th>Country</th>
-                        <th>Options</th>
-                    </tr>
-                </thead>
-                <tbody>
+          <table class="table table-bordered" >
+            <thead>
+                <tr>
+                    <th>Country</th>
+                    <th>Company</th>
+                    <th>Rating</th>
+                    <th>Quantity</th>
+                    <th>Shipping</th>
+                    <th>Grand Total</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
         <?php foreach ($make_offer as $value) { ?>
+        <tr>
+            <td><img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" alt="Currency" /></td>
+            <td><?php echo $value->company_name; ?></td>
+            <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
+            <td><?php echo $value->product_qty; ?></td>
+            <td><?php echo $value->shipping; ?></td>
+            <td><?php echo currency_class($value->buyer_currency).' '.number_format($value->total_price,2);
+             ?></td>
+            <td class="text-center">
+            <?php 
+             //date('m-d-Y',strtotime($date1 . "+1 days"));
+            $date1 = strtotime(date('d-m-y H:i:s', strtotime($value->created . '+1 days'))); 
+            $date2 = strtotime(date('d-m-y H:i:s')); 
 
-                    <tr>
-                        <td><?php echo $value->company_name; ?></td>
-                        <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
-                        <td><?php echo $value->product_qty; ?></td>
-                        <td><?php echo currency_class($value->buyer_currency); ?> <?php echo $value->unit_price; ?></td>
-                        <td><img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" alt="Currency" /></td>
-                        <td class="text-center">
-                        <a class="btn btn-outline btn-warning"><i class="fa fa-hand-o-down"></i> Counter Offer</a>
-                        <a  class="btn btn-outline btn-primary"><i class="fa fa-check"></i> Accept</a>
-                        <a  class="btn btn-outline btn-danger"><i class="fa fa-times"></i> Decline</a>
-                        </td>
-                    </tr>
-        <?php    } ?>
+            if($date1 > $date2){           
+            if($value->seller_id==$this->session->userdata('members_id')){
+            ?>
+            <a href="<?php echo base_url().'marketplace/offer_status/'.$value->id.'/3/'.$value->buyer_id ?>" class="btn btn-outline btn-warning"><i class="fa fa-hand-o-down"></i> Counter Offer</a>
+            <a href="<?php echo base_url().'marketplace/offer_status/'.$value->id.'/1/'.$value->buyer_id ?>" class="btn btn-outline btn-primary"><i class="fa fa-check"></i> Accept</a>
+            <a href="<?php echo base_url().'marketplace/offer_status/'.$value->id.'/2/'.$value->buyer_id ?>" class="btn btn-outline btn-danger"><i class="fa fa-times"></i> Decline</a>
+            <?php }else{
+                if($value->offer_status==0){ ?>
+                <div class="btn btn-outline btn-warning"><i class="fa fa-hand-o-down"></i>Awaiting</div>
+              <?php }elseif($value->offer_status==1){ ?>
+                <div class="btn btn-outline btn-primary"><i class="fa fa-check"></i>Accepted</div>
+              <?php }
+              elseif($value->offer_status==2){ ?>
+                <div class="btn btn-outline btn-dangerbtn-outline btn-danger"><i class="fa fa-times"></i>Declined</div> 
+                <?php }
+                elseif($value->offer_status==3){ ?>
+                <div class="btn btn-outline btn-dangerbtn-outline btn-danger"><i class="fa fa-hand-o-down"></i>Dummy (negotiation)</div> <?php }
+                }} else{?>
+            <a class="btn btn-outline btn-danger"><i class="fa fa-times"></i> Offer Expired</a>
+            <?php } ?>
+            </td>
+        </tr>
+        <?php } ?>
         </tbody>
         </table>
         <?php }
     }
 
-    public function offer_status()
+    /*public function offer_status()
     {
        $list = $this->input->post('listing_id');
        $buyer_id = $this->input->post('buyer_id');
@@ -1801,7 +1825,7 @@ class Marketplace extends MX_Controller
        }
     }
 
-    }
+    }*/
     
     function negotiation(){
         $data['main'] = 'marketplace';        
@@ -1847,5 +1871,54 @@ class Marketplace extends MX_Controller
         $this->session->set_flashdata('msg_error','Failed, Please try again.');
       }
       redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    function offer_status($id='',$status='0',$buyer_id)
+    {
+      $seller_id =  $this->session->userdata('members_id');
+      if($this->marketplace_model->update('make_offer',array('offer_status'=>$status),array('id'=>$id, 'seller_id'=>$seller_id))){
+          if($status==1){
+             $data = array(
+                'member_id'         => $seller_id,
+                'sent_member_id'    => $buyer_id,
+                'subject'           => 'Offer is accepted',
+                'body'              => 'Offer is accepted',
+                'inbox'             => 'yes',
+                'sent'              => 'yes',
+                'date'              => date('d-m-Y'),
+                'time'              => date('H:i:s'),
+                'sent_from'         => 'market',
+                'datetime'          => date('Y-m-d H:i:s')
+              ); 
+           $this->load->model('mailbox/mailbox_model', 'mailbox_model');
+            $this->mailbox_model->_insert($data);
+
+            $this->session->set_flashdata('msg_success','Offer Accepted sucessfully and move in open order.');  
+          }elseif($status==2){
+
+            $data = array(
+                'member_id'         => $seller_id,
+                'sent_member_id'    => $buyer_id,
+                'subject'           => 'Offer is declined',
+                'body'              => 'Offer is declined Do you want to resent it.',
+                'inbox'             => 'yes',
+                'sent'              => 'yes',
+                'date'              => date('d-m-Y'),
+                'time'              => date('H:i:s'),
+                'sent_from'         => 'market',
+                'datetime'          => date('Y-m-d H:i:s')
+              ); 
+           $this->load->model('mailbox/mailbox_model', 'mailbox_model');
+            $this->mailbox_model->_insert($data);
+
+            $this->session->set_flashdata('msg_success','Offer Declined sucessfully.'); 
+          }elseif($status==3){
+            $this->session->set_flashdata('msg_success','Counter offer move in negotiation.'); 
+            }
+        }
+        else{
+          $this->session->set_flashdata('msg_info','Invalid.');  
+        }
+       redirect($_SERVER['HTTP_REFERER']);
     }
 }
