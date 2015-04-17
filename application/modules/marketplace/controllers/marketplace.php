@@ -1749,7 +1749,8 @@ class Marketplace extends MX_Controller
     function view_offer()
     {
         $list = $this->input->post('listing_id');
-        $make_offer = $this->marketplace_model->view_offer($list);
+        $setstatus = $this->input->post('status');
+        $make_offer = $this->marketplace_model->view_offer($list, $setstatus);
         if(!empty($make_offer)){ ?>
           <table class="table table-bordered" >
             <thead>
