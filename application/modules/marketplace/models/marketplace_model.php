@@ -317,10 +317,13 @@ class Marketplace_model extends MY_Model {
 				return FALSE;
 	}
 
-	public function view_offer($list_id=0){
+	public function view_offer($list_id=0,$status=0){
 		$this->db->select('make_offer.*,company.company_name,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
 		$this->db->from('make_offer');
 		$this->db->group_by('id');
+		if($status==2){
+			$this->db->where('make_offer.offer_status',0);
+		}
 		$this->db->join('company','company.id=make_offer.buyer_id');
 		$this->db->where('make_offer.listing_id',$list_id);
 		//$this->db->where('make_offer.offer_status',0);
@@ -330,6 +333,7 @@ class Marketplace_model extends MY_Model {
 			else
 				return FALSE;
 	}
+
 
 	public function get_shippings_to_couriers_data($couriers=array()){
 		$this->db->from('couriers');
