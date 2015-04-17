@@ -320,6 +320,7 @@ class Marketplace_model extends MY_Model {
 	public function view_offer($list_id=0){
 		$this->db->select('make_offer.*,company.company_name,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
 		$this->db->from('make_offer');
+		$this->db->group_by('id');
 		$this->db->join('company','company.id=make_offer.buyer_id');
 		$this->db->where('make_offer.listing_id',$list_id);
 		//$this->db->where('make_offer.offer_status',0);
