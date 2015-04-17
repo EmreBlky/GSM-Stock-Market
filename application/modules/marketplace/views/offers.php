@@ -60,7 +60,7 @@ $member_id=$this->session->userdata('members_id');?>
                 <td><?php echo $value->qty_available; ?></td>
                 <td><?php echo $value->spec; ?></td>
                 <td class="text-center">
-                <a class="btn btn-info" onclick="view_offer(<?php echo $value->id; ?>)" data-toggle="modal" data-target="#view_offers"><i class="fa fa-paste"></i> View Offer </a>
+                <a class="btn btn-info" onclick="view_offer(<?php echo $value->id; ?>,1)" data-toggle="modal" data-target="#view_offers"><i class="fa fa-paste"></i> View Offer </a>
                 </td>
             </tr>
             <?php endforeach ?>
@@ -113,7 +113,7 @@ $member_id=$this->session->userdata('members_id');?>
                 <td><?php echo $value->qty_available; ?></td>
                 <td><?php echo $value->spec; ?></td>
                 <td class="text-center">
-                <a class="btn btn-info" onclick="view_offer(<?php echo $value->id; ?>)" data-toggle="modal" data-target="#view_offers"><i class="fa fa-paste"></i> View Offer </a>
+                <a class="btn btn-info" onclick="view_offer(<?php echo $value->id; ?>,1)" data-toggle="modal" data-target="#view_offers"><i class="fa fa-paste"></i> View Offer </a>
                 </td>
             </tr>
             <?php endforeach ?>
@@ -206,7 +206,7 @@ $member_id=$this->session->userdata('members_id');?>
                 <td><?php echo $value->qty_available; ?></td>
                 <td><?php echo $value->spec; ?></td>
                 <td class="text-center">
-                <a onclick="view_offer(<?php echo $value->id; ?>)" class="btn btn-info"  data-toggle="modal" data-target="#view_offers"><i class="fa fa-paste"></i> View Offer </a>
+                <a onclick="view_offer(<?php echo $value->id; ?>,2)" class="btn btn-info"  data-toggle="modal" data-target="#view_offers"><i class="fa fa-paste"></i> View Offer </a>
                 </td>
             </tr>
             <?php endforeach ?>
@@ -259,7 +259,7 @@ $member_id=$this->session->userdata('members_id');?>
                 <td><?php echo $value->qty_available; ?></td>
                 <td><?php echo $value->spec; ?></td>
                 <td class="text-center">
-                <a onclick="view_offer(<?php echo $value->id; ?>)" class="btn btn-info"  data-toggle="modal" data-target="#view_offers"><i class="fa fa-paste"></i> View Offer </a>
+                <a onclick="view_offer(<?php echo $value->id; ?>,2)" class="btn btn-info"  data-toggle="modal" data-target="#view_offers"><i class="fa fa-paste"></i> View Offer </a>
                 </td>
             </tr>
             <?php endforeach ?>
@@ -368,9 +368,10 @@ color: #fff;
            $('#buyers_list').html(data);
        });
     }
-    function view_offer(listing_id) {
+    function view_offer(listing_id,status) {
+        var setstatus=status;
         var list = listing_id;
-       $.post('<?php echo base_url() ?>marketplace/view_offer', {listing_id: list}, function(data) {
+       $.post('<?php echo base_url() ?>marketplace/view_offer', {listing_id: list,status:setstatus}, function(data) {
            $('#view_offer').html(data);
        });
     }
