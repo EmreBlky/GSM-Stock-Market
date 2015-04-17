@@ -60,7 +60,7 @@ $member_id=$this->session->userdata('members_id');?>
                 <td><?php echo $value->qty_available; ?></td>
                 <td><?php echo $value->spec; ?></td>
                 <td class="text-center">
-                <a class="btn btn-info"  data-toggle="modal" data-target="#view_offers"><i class="fa fa-paste"></i> View Offer </a>
+                <a class="btn btn-info" onclick="view_offer(<?php echo $value->id; ?>)" data-toggle="modal" data-target="#view_offers"><i class="fa fa-paste"></i> View Offer </a>
                 </td>
             </tr>
             <?php endforeach ?>
@@ -113,7 +113,7 @@ $member_id=$this->session->userdata('members_id');?>
                 <td><?php echo $value->qty_available; ?></td>
                 <td><?php echo $value->spec; ?></td>
                 <td class="text-center">
-                <a class="btn btn-info"  data-toggle="modal" data-target="#view_offers"><i class="fa fa-paste"></i> View Offer </a>
+                <a class="btn btn-info" onclick="view_offer(<?php echo $value->id; ?>)" data-toggle="modal" data-target="#view_offers"><i class="fa fa-paste"></i> View Offer </a>
                 </td>
             </tr>
             <?php endforeach ?>
@@ -356,6 +356,9 @@ color: #fff;
 background-color: #ec4758;
 border-color: #ec4758;
 color: #fff;
+}
+.btn{
+    font-size: 10px;
 }
 </style>
 <script>
