@@ -117,6 +117,19 @@ class Marketplace extends MX_Controller
         $this->templates->page($data);
     }
     
+    
+
+   function open_order_html()
+    {
+        $data['deal_info'] =  $this->marketplace_model->get_row('listing',array('id'=>2));
+        $data['main'] = 'marketplace';        
+        $data['title'] = 'GSM - Market Place: Offers';        
+        $data['page'] = 'open_order_html';
+         
+        $this->load->module('templates');
+        $this->templates->page($data);
+    } 
+    
     function offers_html()
     {
         $data['main'] = 'marketplace';        
@@ -1874,52 +1887,58 @@ class Marketplace extends MX_Controller
       redirect($_SERVER['HTTP_REFERER']);
     }
 
-    function offer_status($id='',$status='0',$buyer_id)
+    function order_status($id='',$status='0')
     {
-      $seller_id =  $this->session->userdata('members_id');
-      if($this->marketplace_model->update('make_offer',array('offer_status'=>$status),array('id'=>$id, 'seller_id'=>$seller_id))){
-          if($status==1){
-             $data = array(
-                'member_id'         => $seller_id,
-                'sent_member_id'    => $buyer_id,
-                'subject'           => 'Offer is accepted',
-                'body'              => 'Offer is accepted',
-                'inbox'             => 'yes',
-                'sent'              => 'yes',
-                'date'              => date('d-m-Y'),
-                'time'              => date('H:i:s'),
-                'sent_from'         => 'market',
-                'datetime'          => date('Y-m-d H:i:s')
-              ); 
-           $this->load->model('mailbox/mailbox_model', 'mailbox_model');
-            $this->mailbox_model->_insert($data);
-
-            $this->session->set_flashdata('msg_success','Offer Accepted sucessfully and move in open order.');  
-          }elseif($status==2){
-
-            $data = array(
-                'member_id'         => $seller_id,
-                'sent_member_id'    => $buyer_id,
-                'subject'           => 'Offer is declined',
-                'body'              => 'Offer is declined Do you want to resent it.',
-                'inbox'             => 'yes',
-                'sent'              => 'yes',
-                'date'              => date('d-m-Y'),
-                'time'              => date('H:i:s'),
-                'sent_from'         => 'market',
-                'datetime'          => date('Y-m-d H:i:s')
-              ); 
-           $this->load->model('mailbox/mailbox_model', 'mailbox_model');
-            $this->mailbox_model->_insert($data);
-
-            $this->session->set_flashdata('msg_success','Offer Declined sucessfully.'); 
-          }elseif($status==3){
-            $this->session->set_flashdata('msg_success','Counter offer move in negotiation.'); 
-            }
+      $user_id =  $this->session->userdata('members_id');
+      if($this->marketplace_model->update('make_offer',array('order_status'=>$status),array('id'=>$id,'(seller_id = '.$user_id .' OR buyer_id ='.$user_id.')'=>null))){
+            $this->session->set_flashdata('msg_success','Order status change sucessfully.');  
         }
         else{
           $this->session->set_flashdata('msg_info','Invalid.');  
         }
        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+   function deal_info($listing_id='')
+    {
+        if($deal_info =  $this->marketplace_model->get_row('listing',array('id'=>$listing_id))){
+        ?>
+        <div class="col-lg-6">
+            <dl class="dl-horizontal">
+                <h4 style="text-align:center">Product Details</h4>
+                <dt>Make:</dt> <dd> <?php if(!empty($deal_info->product_make)){ echo $deal_info->product_make; } ?></dd>
+                <dt>Model:</dt> <dd>  <?php if(!empty($deal_info->product_model)){ echo $deal_info->product_model; } ?></dd>
+                <dt>Memory:</dt> <dd>  16GB</dd>
+                <dt>Colour:</dt> <dd> <?php if(!empty($deal_info->product_color)){ echo $deal_info->product_color; } ?></dd>
+                <dt>Product Type:</dt> <dd> <?php if(!empty($deal_info->product_type)){ echo $deal_info->product_type; } ?></dd>
+                <dt>Condition:</dt> <dd><?php if(!empty($deal_info->condition)){ echo $deal_info->condition; } ?></dd>
+                <dt>Spec</dt> <dd>  <?php if(!empty($deal_info->spec)){ echo $deal_info->spec; } ?></dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <h4 style="text-align:center">Price</h4>
+                <dt>Buy Price:</dt> <dd>  <?php if(!empty($deal_info->currency)) { echo currency_class($deal_info->currency); } ?><?php if(!empty($deal_info->min_price)){ echo $deal_info->min_price; } ?></dd>
+                <dt>Product Type:</dt> <dd>  <?php if(!empty($deal_info->product_type)){ echo $deal_info->product_type; } ?></dd>
+                <dt>Condition:</dt> <dd> <?php if(!empty($deal_info->condition)){ echo $deal_info->condition; } ?></dd>
+                <dt>Spec</dt> <dd><?php if(!empty($deal_info->spec)){ echo $deal_info->spec; } ?></dd>
+            </dl>
+        </div>
+        <div class="col-lg-6">
+            <?php if(!empty($deal_info->image1) || file_exists($deal_info->image1)){
+                
+        $img1 = '';
+            if(!empty($deal_info->image1)){
+                $img1 = explode('/', $deal_info->image1); 
+            }
+            ?>
+            <p style="text-align:center">
+            <img style="text-align:center" src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img1[3]; ?>" alt="">
+            <?php }else{ ?>
+             <p style="text-align:center">
+             <img style="text-align:center" src="public/main/template/gsm/images/marketplace/marketplace_photo.png" /></p>
+            <?php } ?>
+            <h4>Product Description</h4>
+            <?php if(!empty($deal_info->product_desc)){ echo $deal_info->product_desc; } ?>
+        </div>
+        <?php } 
     }
 }
