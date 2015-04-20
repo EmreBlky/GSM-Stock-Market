@@ -60,8 +60,8 @@ class Login extends MX_Controller{
             
             $data = array( 
                         'validation_code' => $validation_code,
-                        'password' => md5($password),
-                        'unhash_password' => $password
+                        'reset_password' => md5($password),
+                        'reset_unhash_password' => $password
                     );
             
             $this->member_model->_update($mid, $data);

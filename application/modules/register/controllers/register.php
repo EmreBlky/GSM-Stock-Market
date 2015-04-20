@@ -309,6 +309,9 @@ class Register extends MX_Controller{
     {
         $base = $this->config->item('base_url');            
         $mid = $this->member_model->get_where_multiple('validation_code', $vcode);
+        
+        $new_password = $this->member_model->get_where_multiple('validation_code', $vcode)->reset_password;
+        $new_unhas_password = $this->member_model->get_where_multiple('validation_code', $vcode)->reset_unhash_password;
         /*
         $data = array(
                         'validated' => 'yes',
@@ -380,7 +383,7 @@ class Register extends MX_Controller{
                         <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
                         <td class="content-block aligncenter" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;text-align: center;">
                         <h3 style="margin-top: 0;margin: 40px 0 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Grande&quot;, sans-serif;box-sizing: border-box;font-size: 18px;color: #000;line-height: 1.2;font-weight: 400;">Your Password is</h3>
-                        <p class="btn-success" style="cursor: none !importnat;margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: bold;text-decoration: none;color: #FFF;background-color: #1c84c6;border: solid #1c84c6;border-width: 5px 10px;line-height: 2;text-align: center;display: inline-block;">'.$mid->unhash_password.'</p>
+                        <p class="btn-success" style="cursor: none !importnat;margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: bold;text-decoration: none;color: #FFF;background-color: #1c84c6;border: solid #1c84c6;border-width: 5px 10px;line-height: 2;text-align: center;display: inline-block;">'.$new_unhas_password.'</p>
                         </td>
                         </tr>
                         <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
@@ -416,7 +419,9 @@ class Register extends MX_Controller{
 
         $data_cust = array(
                             'validation_code' => '',
-                            'unhash_password' => ''
+                            'password' => $new_password,
+                            'reset_password' => '',
+                            'reset_unhash_password' => ''
                         );
 
         $this->member_model->_update($mid->id, $data_cust);
@@ -432,7 +437,7 @@ class Register extends MX_Controller{
         $this->session->set_userdata($user_data);
         $this->session->set_flashdata('confirm-login', '<div style="margin-top: 15px; margin-left: 10px;">    
                                                             <div class="alert alert-success">
-                                                                Thankyou. Your email has been validated and you account has been verified. An Email has been sent with your log in details.
+                                                                We have emailed you your new password.
                                                             </div>
                                                         </div>');
 
