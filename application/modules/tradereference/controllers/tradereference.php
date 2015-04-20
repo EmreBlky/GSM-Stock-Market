@@ -164,11 +164,16 @@ class Tradereference extends MX_Controller
     
     function confirm($code = NULL)
     {
-        $data['main'] = 'tradereference';
-	$data['title'] = 'GSM - Trade Reference';
-        $data['page'] = 'confirm';
+        $confirm_code = substr($code, -15);
+        $member = $this->tradereference_model->_custom_query("SELECT member_id FROM tradereference WHERE (trade_1_code = '".$code."') OR (trade_2_code = '".$code."') ");
         
-        $this->load->module('templates');
-        $this->templates->page($data);
+        echo '<pre>';
+        print_r($member);
+//	$data['title'] = 'GSM - Trade Reference';
+//        $data['page'] = 'confirm';
+//        
+//        $this->load->module('templates');
+//        $this->templates->page($data);$newstring = substr($dynamicstring, -7);
+        echo $confirm_code;
     }
 }
