@@ -53,10 +53,13 @@ class Login extends MX_Controller{
         if($email[0]->count > 0){
             
             $password = random_string('alnum', 8);
+            $validation_code = random_string('alnum', 4).'-'. random_string('alnum', 4).'-'. random_string('alnum', 4).'-'. random_string('alnum', 4);
+
             
             $mid = $this->member_model->get_where_multiple('email', $this->input->post('email'))->id;            
             
-            $data = array(                        
+            $data = array( 
+                        'validation_code' => $validation_code,
                         'password' => md5($password),
                         'unhash_password' => $password
                     );
@@ -64,7 +67,7 @@ class Login extends MX_Controller{
             $this->member_model->_update($mid, $data);
             
             $this->session->set_flashdata('title', 'success');
-            $this->session->set_flashdata('message', 'Your password has been reset. You should receive an email shortly.');
+            $this->session->set_flashdata('message', 'Your password reset request has been sent. You should receive an email shortly.');
             
             $this->load->module('emails');
             $config = Array(
@@ -83,7 +86,19 @@ class Login extends MX_Controller{
             $this->load->library('email', $config);
 
             $this->email->set_mailtype("html");
-            $email_body = '<div>Your new password is: '.$password.'</div>';
+            $email_body = '
+                            Dear '.$this->member_model->get_where($mid)->firstname.',
+                            <br/>                                        
+                            <br/>
+                            <br/>
+                            Email: '.$this->input->post('email').'
+                            <br/>
+                            <br/>                                        
+                            Please <a href="'.$this->config->item('base_url').'register/reset/'.$validation_code.'">CLICK HERE</a> to reset your email.
+                            <br/>
+                            <br/>
+                            Many Thanks,<br/><br/>
+                            GSMStockMarket.com Team';
 
 
             $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Support Team');
