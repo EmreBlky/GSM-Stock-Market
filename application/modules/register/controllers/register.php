@@ -307,142 +307,149 @@ class Register extends MX_Controller{
 
     function reset($vcode)
     {
-        $base = $this->config->item('base_url');            
-        $mid = $this->member_model->get_where_multiple('validation_code', $vcode);
+       $v_count = $this->member_model->count_where('validation_code', $vcode);
         
-        $new_password = $this->member_model->get_where_multiple('validation_code', $vcode)->reset_password;
-        $new_unhas_password = $this->member_model->get_where_multiple('validation_code', $vcode)->reset_unhash_password;
-        /*
-        $data = array(
-                        'validated' => 'yes',
-                        'online_status' => 'online'
-                      );            
-        $this->member_model->_update($mid->id, $data);
+        if($v_count > 0){
+            
+            $base = $this->config->item('base_url');            
+            $mid = $this->member_model->get_where_multiple('validation_code', $vcode);
 
-        $data_activity = array(
-                            'member_id' => $mid->id
-                        );
-        $this->activity_model->_insert($data_activity);
+            $new_password = $this->member_model->get_where_multiple('validation_code', $vcode)->reset_password;
+            $new_unhas_password = $this->member_model->get_where_multiple('validation_code', $vcode)->reset_unhash_password;
+            /*
+            $data = array(
+                            'validated' => 'yes',
+                            'online_status' => 'online'
+                          );            
+            $this->member_model->_update($mid->id, $data);
 
-        $data_mail = array(
-                                'member_id'         => 5,
-                                'sent_member_id'    => $mid->id,
-                                'subject'           => 'Password Reset Request',
-                                'body'              => 'Thank you for signing up to GSMStockMarket.com<br /><br/>Your account is now fully active and you have your bronze membership. To get started head over to <strong>My Profile > Edit Profile</strong> and complete your profile so other users will be able to search and find your company.<br /><br/>With bronze access you will receive the following:<br />- View and edit your own profile<br />- Check out who has viewed your profile<br />- Reply to members who contact you via the mailbox system<br />- Add users to your address book/favourites<br /><br />We currently have a new feature called <strong>IMEI services</strong> which all bronze members will have access to. This feature will let you use our unlocking services and IMEI blacklist check, ensuring all mobile phones bought and sold are not reported missing or stolen. This feature will be available shortly.<br /><br />If you have any issues using our website feel free to contact us through the submit a ticket system under the support tab. <br /><br />if you also experience any issues browsing/using the website or would like to have any features added then let us know! We would love to hear from you, just submit a feedback ticket and we will do our best to help you out.<br /><br />Kind Regards,<br />GSMStockMarket.com Team',
-                                'inbox'             => 'yes',
-                                'sent'              => 'yes',
-                                'date'              => date('d-m-Y'),
-                                'time'              => date('H:i'),
-                                'sent_from'         => 'support',
-                                'datetime'          => date('Y-m-d H:i:s')
-                              ); 
-                    $this->mailbox_model->_insert($data_mail);
-        */
+            $data_activity = array(
+                                'member_id' => $mid->id
+                            );
+            $this->activity_model->_insert($data_activity);
 
-        $this->load->module('emails');
-        $config = Array(
-                    'protocol' => 'smtp',
-                    'smtp_host' => 'ssl://server.gsmstockmarket.com',
-                    'smtp_port' => 465,
-                    'smtp_user' => 'noreply@gsmstockmarket.com',
-                    'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
-                    'charset' => 'utf-8',
-                    'wordwrap' => TRUE,
-                    'newline' => "\r\n",
-                    'crlf'    => ""
+            $data_mail = array(
+                                    'member_id'         => 5,
+                                    'sent_member_id'    => $mid->id,
+                                    'subject'           => 'Password Reset Request',
+                                    'body'              => 'Thank you for signing up to GSMStockMarket.com<br /><br/>Your account is now fully active and you have your bronze membership. To get started head over to <strong>My Profile > Edit Profile</strong> and complete your profile so other users will be able to search and find your company.<br /><br/>With bronze access you will receive the following:<br />- View and edit your own profile<br />- Check out who has viewed your profile<br />- Reply to members who contact you via the mailbox system<br />- Add users to your address book/favourites<br /><br />We currently have a new feature called <strong>IMEI services</strong> which all bronze members will have access to. This feature will let you use our unlocking services and IMEI blacklist check, ensuring all mobile phones bought and sold are not reported missing or stolen. This feature will be available shortly.<br /><br />If you have any issues using our website feel free to contact us through the submit a ticket system under the support tab. <br /><br />if you also experience any issues browsing/using the website or would like to have any features added then let us know! We would love to hear from you, just submit a feedback ticket and we will do our best to help you out.<br /><br />Kind Regards,<br />GSMStockMarket.com Team',
+                                    'inbox'             => 'yes',
+                                    'sent'              => 'yes',
+                                    'date'              => date('d-m-Y'),
+                                    'time'              => date('H:i'),
+                                    'sent_from'         => 'support',
+                                    'datetime'          => date('Y-m-d H:i:s')
+                                  ); 
+                        $this->mailbox_model->_insert($data_mail);
+            */
 
-                );
+            $this->load->module('emails');
+            $config = Array(
+                        'protocol' => 'smtp',
+                        'smtp_host' => 'ssl://server.gsmstockmarket.com',
+                        'smtp_port' => 465,
+                        'smtp_user' => 'noreply@gsmstockmarket.com',
+                        'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
+                        'charset' => 'utf-8',
+                        'wordwrap' => TRUE,
+                        'newline' => "\r\n",
+                        'crlf'    => ""
 
-        $this->load->library('email', $config);
-        $this->email->set_mailtype("html");
-        $email_body = '<table class="body-wrap" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;background-color: #f6f6f6;width: 100%;">
-                        <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
-                        <td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;"></td>
-                        <td class="container" width="600" style="margin: 0 auto !important;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;display: block !important;max-width: 600px !important;clear: both !important;">
-                        <div class="content" style="margin: 0 auto;padding: 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;max-width: 600px;display: block;">
-                        <table class="main" width="100%" cellpadding="0" cellspacing="0" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;background: #fff;border: 1px solid #e9e9e9;border-radius: 3px;">
-                        <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
-                        <td class="content-wrap" style="margin: 0;padding: 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
-                        <table cellpadding="0" cellspacing="0" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
-                        <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
-                        <td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
-                        <img class="img-responsive" src="'.$base.'public/main/template/gsm/images/email/header.png" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;max-width: 100%;">
-                        </td>
-                        </tr>
-                        <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
-                        <td class="content-block" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
-                        <h3 style="margin: 40px 0 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Grande&quot;, sans-serif;box-sizing: border-box;font-size: 18px;color: #000;line-height: 1.2;font-weight: 400;">Your password has been reset!</h3>
-                        </td>
-                        </tr>
-                        <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
-                        <td class="content-block" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
-                        <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">Dear '.$mid->firstname.',</p>
-                        <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">Please use the below password to log into your account.<p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;"></p>
-                        </td>
-                        </tr>
-                        <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
-                        <td class="content-block aligncenter" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;text-align: center;">
-                        <h3 style="margin-top: 0;margin: 40px 0 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Grande&quot;, sans-serif;box-sizing: border-box;font-size: 18px;color: #000;line-height: 1.2;font-weight: 400;">Your Password is</h3>
-                        <p class="btn-success" style="cursor: none !importnat;margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: bold;text-decoration: none;color: #FFF;background-color: #1c84c6;border: solid #1c84c6;border-width: 5px 10px;line-height: 2;text-align: center;display: inline-block;">'.$new_unhas_password.'</p>
-                        </td>
-                        </tr>
-                        <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
-                        <td class="content-block" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
-                        <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">To access your account visit <a href="'.$base.'login" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;color: #1ab394;text-decoration: underline;">'.$base.'login</a> and sign in with your email on signup and the password given to you above.</p>
-                        </td>
-                        </tr>
-                        <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
-                        <td class="content-block" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
-                        <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">If you need any assistance please call us on +44 (0)1494 717236 or use the online ticketing customer support within your account and we’ll be happy to help you.</p>
-                        <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">Many Thanks,<br style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
-                        GSMStockMarket Team</p>
-                        </td>
-                        </tr>
-                        </table>
-                        </td>
-                        </tr>
-                        </table></div>
-                        </td>
-                        <td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;"></td>
-                        </tr>
-                        </table>';
+                    );
 
-        $this->email->from('noreply@gsmstockmarket.com', 'GSMStockMarket.com');
+            $this->load->library('email', $config);
+            $this->email->set_mailtype("html");
+            $email_body = '<table class="body-wrap" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;background-color: #f6f6f6;width: 100%;">
+                            <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                            <td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;"></td>
+                            <td class="container" width="600" style="margin: 0 auto !important;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;display: block !important;max-width: 600px !important;clear: both !important;">
+                            <div class="content" style="margin: 0 auto;padding: 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;max-width: 600px;display: block;">
+                            <table class="main" width="100%" cellpadding="0" cellspacing="0" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;background: #fff;border: 1px solid #e9e9e9;border-radius: 3px;">
+                            <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                            <td class="content-wrap" style="margin: 0;padding: 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                            <table cellpadding="0" cellspacing="0" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                            <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                            <td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                            <img class="img-responsive" src="'.$base.'public/main/template/gsm/images/email/header.png" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;max-width: 100%;">
+                            </td>
+                            </tr>
+                            <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                            <td class="content-block" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                            <h3 style="margin: 40px 0 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Grande&quot;, sans-serif;box-sizing: border-box;font-size: 18px;color: #000;line-height: 1.2;font-weight: 400;">Your password has been reset!</h3>
+                            </td>
+                            </tr>
+                            <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                            <td class="content-block" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                            <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">Dear '.$mid->firstname.',</p>
+                            <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">Please use the below password to log into your account.<p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;"></p>
+                            </td>
+                            </tr>
+                            <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                            <td class="content-block aligncenter" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;text-align: center;">
+                            <h3 style="margin-top: 0;margin: 40px 0 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Grande&quot;, sans-serif;box-sizing: border-box;font-size: 18px;color: #000;line-height: 1.2;font-weight: 400;">Your Password is</h3>
+                            <p class="btn-success" style="cursor: none !importnat;margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: bold;text-decoration: none;color: #FFF;background-color: #1c84c6;border: solid #1c84c6;border-width: 5px 10px;line-height: 2;text-align: center;display: inline-block;">'.$new_unhas_password.'</p>
+                            </td>
+                            </tr>
+                            <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                            <td class="content-block" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                            <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">To access your account visit <a href="'.$base.'login" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;color: #1ab394;text-decoration: underline;">'.$base.'login</a> and sign in with your email on signup and the password given to you above.</p>
+                            </td>
+                            </tr>
+                            <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                            <td class="content-block" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                            <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">If you need any assistance please call us on +44 (0)1494 717236 or use the online ticketing customer support within your account and we’ll be happy to help you.</p>
+                            <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">Many Thanks,<br style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                            GSMStockMarket Team</p>
+                            </td>
+                            </tr>
+                            </table>
+                            </td>
+                            </tr>
+                            </table></div>
+                            </td>
+                            <td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;"></td>
+                            </tr>
+                            </table>';
 
-        $list = array('tim@gsmstockmarket.com', 'signup@gsmstockmarket.com');
-        $this->email->to($mid->email);
-        $this->email->bcc($list);
-        $this->email->subject('Your account has been verified');
-        $this->email->message($email_body);
+            $this->email->from('noreply@gsmstockmarket.com', 'GSMStockMarket.com');
 
-        $this->email->send();
+            $list = array('tim@gsmstockmarket.com', 'signup@gsmstockmarket.com');
+            $this->email->to($mid->email);
+            $this->email->bcc($list);
+            $this->email->subject('Your account has been verified');
+            $this->email->message($email_body);
 
-        $data_cust = array(
-                            'validation_code' => '',
-                            'password' => $new_password,
-                            'reset_password' => '',
-                            'reset_unhash_password' => ''
-                        );
+            $this->email->send();
 
-        $this->member_model->_update($mid->id, $data_cust);
-
-        $user_data = array(
-                            'members_id'  	=> $mid->id,
-                            //'username'  	=> $member->username,
-                            'firstname'     => $mid->firstname,
-                            'lastname'      => $mid->lastname,
-                            'logged_in' 	=> TRUE
+            $data_cust = array(
+                                'validation_code' => '',
+                                'password' => $new_password,
+                                'reset_password' => '',
+                                'reset_unhash_password' => ''
                             );
 
-        $this->session->set_userdata($user_data);
-        $this->session->set_flashdata('confirm-login', '<div style="margin-top: 15px; margin-left: 10px;">    
-                                                            <div class="alert alert-success">
-                                                                We have emailed you your new password.
-                                                            </div>
-                                                        </div>');
+            $this->member_model->_update($mid->id, $data_cust);
 
-        redirect('home/');
+            $user_data = array(
+                                'members_id'  	=> $mid->id,
+                                //'username'  	=> $member->username,
+                                'firstname'     => $mid->firstname,
+                                'lastname'      => $mid->lastname,
+                                'logged_in' 	=> TRUE
+                                );
 
+            $this->session->set_userdata($user_data);
+            $this->session->set_flashdata('confirm-login', '<div style="margin-top: 15px; margin-left: 10px;">    
+                                                                <div class="alert alert-success">
+                                                                    We have emailed you your new password.
+                                                                </div>
+                                                            </div>');
+
+            redirect('home/');            
+        }
+        else{
+            echo 'That validation code is not recognised/ Has already been confirmed. <a href="home/">BACK</a>';
+        }
     }
         
     function csv_import()
