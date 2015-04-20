@@ -307,11 +307,12 @@ class Register extends MX_Controller{
 
     function reset($vcode)
     {
+       $base = $this->config->item('base_url'); 
        $v_count = $this->member_model->count_where('validation_code', $vcode);
         
         if($v_count > 0){
             
-            $base = $this->config->item('base_url');            
+                        
             $mid = $this->member_model->get_where_multiple('validation_code', $vcode);
 
             $new_password = $this->member_model->get_where_multiple('validation_code', $vcode)->reset_password;
@@ -448,7 +449,7 @@ class Register extends MX_Controller{
             redirect('home/');            
         }
         else{
-            echo 'That validation code is not recognised/ Has already been confirmed. <a href="home/">BACK</a>';
+            echo 'That validation code is not recognised/ Has already been confirmed. <a href="'.$base.'home/">BACK</a>';
         }
     }
         
