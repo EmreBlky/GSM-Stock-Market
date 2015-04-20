@@ -1265,6 +1265,7 @@ class Admin extends MX_Controller
         
         $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
         $mem = $this->{$var_model}->get_where($id)->buyer_id;
+        $item = $this->{$var_model}->get_where($id)->item;
         
         $data = array(                   
                         'status'               => 'completed'
@@ -1276,10 +1277,25 @@ class Admin extends MX_Controller
                 
         $this->load->model(''.$var1.'/'.$var1.'_model', ''.$var1.'_model');
         
-         $data = array(             
-                        'membership'          => 2
+        if($item == 'GSMStockmarket - Silver Membership Fee (1 Year)'){
+            
+            $data = array(             
+                        'membership'          => 2,
+                        'membership_expire_date' => date("Y-m-d H:i:s", strtotime("+1 year", strtotime(date("Y-m-d H:i:s"))))
                       ); 
-        $this->{$var1_model}->_update($mem, $data);
+            $this->{$var1_model}->_update($mem, $data);
+            
+        }
+        
+        if($item == 'GSMStockmarket - Silver Membership Fee (6 Months)'){
+            
+            $data = array(             
+                        'membership'          => 2,
+                        'membership_expire_date' => date("Y-m-d H:i:s", strtotime("+6 months", strtotime(date("Y-m-d H:i:s"))))
+                      ); 
+            $this->{$var1_model}->_update($mem, $data);
+            
+        }
         
         $var2 = 'mailbox';
         $var2_model = $var2.'_model';

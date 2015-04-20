@@ -50,9 +50,14 @@ class Transaction extends MX_Controller
 //        elseif($product == 'gold'){
 //            $description = "GSMStockmarket - Gold Membership Fee";
 //        }
-        elseif($product == 'silver'){
-            $description = "GSMStockmarket - Silver Membership Fee";
+        elseif($product == 'silver-12'){
+            $description = "GSMStockmarket - Silver Membership Fee (1 Year)";
             $amount = 1295;
+            $quantity = 1;
+        }
+        elseif($product == 'silver-6'){
+            $description = "GSMStockmarket - Silver Membership Fee (6 Months)";
+            $amount = 995;
             $quantity = 1;
         }
         

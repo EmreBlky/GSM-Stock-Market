@@ -61,8 +61,8 @@ if(is_numeric($id)){?>
                         <thead>
                         <tr>                            
                             <th>Customer</th>
+                            <th>Inv No.</th>
                             <th>Date</th>
-<!--                            <th>More</th>-->
                             <th>Action</th>
 <!--                            <th>More</th>-->
                         </tr>
@@ -74,10 +74,10 @@ if(is_numeric($id)){?>
                             <td>
                                 <span class="pie"><?php echo $this->member_model->get_where($transaction->buyer_id)->firstname.' '.$this->member_model->get_where($transaction->buyer_id)->lastname.' ('.$this->company_model->get_where($this->member_model->get_where($transaction->buyer_id)->company_id)->company_name.')'; ?></span>
                             </td>
+                            <td>
+                                <span class="pie"><?php echo $transaction->invoice?></span>
+                            </td>
                             <td><?php echo $transaction->date; ?></td>
-<!--                            <td>
-                                <a href="admin/transaction/<?php echo $transaction->id; ?>">CLICK HERE</a>
-                            </td>-->
                             <td>
 <!--                                <a href="admin/edit_transaction/<?php echo $transaction->id;?>"><i class="fa fa-book"></i> Edit</a>-->
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
