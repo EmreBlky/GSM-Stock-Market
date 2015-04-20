@@ -407,13 +407,15 @@ class Marketplace_model extends MY_Model {
 
 	public function sell_order(){
 		$member_id=$this->session->userdata('members_id');
-		$this->db->select('listing.*,company.company_name,make_offer.*');
+		$this->db->select('listing.*,company.company_name,make_offer.id as makeofferid,make_offer.listing_id,make_offer.seller_id,make_offer.buyer_id,make_offer.buyer_currency,make_offer.product_qty,make_offer.unit_price,make_offer.total_price,make_offer.shipping,make_offer.shipping_price,make_offer.offer_status,make_offer.order_status,make_offer.payment_detail,make_offer.payment_done,make_offer.shipping_received,make_offer.tracking_shipping,make_offer.buyer_feedback,make_offer.seller_feedback,make_offer.seller_history,make_offer.buyer_history,make_offer.payment_done_datetime,make_offer.payment_recevied_datetime,make_offer.shipping_arrived_datetime,make_offer.shipping_recevied_datetime,make_offer.buyer_feedback_datetime,make_offer.seller_feedback_datetime,make_offer.created');
 		
 		$this->db->from('listing');
 		$this->db->join('company','company.admin_member_id=listing.member_id');
 		$this->db->join('make_offer','make_offer.listing_id=listing.id');
 		//$this->db->where('listing.listing_type', 2);
 		
+		$this->db->where('make_offer.seller_history','');
+
 		$this->db->where('make_offer.offer_status',1);
 		$this->db->where('make_offer.seller_id',$member_id);
 		$query = $this->db->get();
@@ -425,12 +427,13 @@ class Marketplace_model extends MY_Model {
 
 	public function buy_order(){
 		$member_id=$this->session->userdata('members_id');
-		$this->db->select('listing.*,company.company_name,make_offer.*');
+		$this->db->select('listing.*,company.company_name,make_offer.id as makeofferid,make_offer.listing_id,make_offer.seller_id,make_offer.buyer_id,make_offer.buyer_currency,make_offer.product_qty,make_offer.unit_price,make_offer.total_price,make_offer.shipping,make_offer.shipping_price,make_offer.offer_status,make_offer.order_status,make_offer.payment_detail,make_offer.payment_done,make_offer.shipping_received,make_offer.tracking_shipping,make_offer.buyer_feedback,make_offer.seller_feedback,make_offer.seller_history,make_offer.buyer_history,make_offer.payment_done_datetime,make_offer.payment_recevied_datetime,make_offer.shipping_arrived_datetime,make_offer.shipping_recevied_datetime,make_offer.buyer_feedback_datetime,make_offer.seller_feedback_datetime,make_offer.created');
 		$this->db->from('listing');
 		$this->db->join('company','company.admin_member_id=listing.member_id');
 		$this->db->join('make_offer','make_offer.listing_id=listing.id');
 		//$this->db->where('listing.listing_type', 1);
 		$this->db->where('make_offer.offer_status',1);
+		$this->db->where('make_offer.buyer_history','');
 		$this->db->where('make_offer.buyer_id',$member_id);
 		$query = $this->db->get();
 			if($query->num_rows()>0)
@@ -455,5 +458,44 @@ class Marketplace_model extends MY_Model {
 		else
 			return FALSE;
 		
+	}
+
+	public function order_history_sell()
+	{
+		$member_id=$this->session->userdata('members_id');
+		$this->db->select('make_offer.*,company.company_name');
+		
+		$this->db->from('listing');
+		$this->db->join('company','company.admin_member_id=listing.member_id');
+		$this->db->join('make_offer','make_offer.listing_id=listing.id');
+		//$this->db->where('listing.listing_type', 2);
+		
+		$this->db->where('make_offer.seller_history','1');
+
+		$this->db->where('make_offer.offer_status',1);
+		$this->db->where('make_offer.seller_id',$member_id);
+		$query = $this->db->get();
+			if($query->num_rows()>0)
+				return $query->result();
+			else
+				return FALSE;
+	}
+
+	public function order_history_buy()
+	{
+		$member_id=$this->session->userdata('members_id');
+		$this->db->select('make_offer.*,company.company_name');
+		$this->db->from('listing');
+		$this->db->join('company','company.admin_member_id=listing.member_id');
+		$this->db->join('make_offer','make_offer.listing_id=listing.id');
+		//$this->db->where('listing.listing_type', 1);
+		$this->db->where('make_offer.offer_status',1);
+		$this->db->where('make_offer.buyer_history','1');
+		$this->db->where('make_offer.buyer_id',$member_id);
+		$query = $this->db->get();
+			if($query->num_rows()>0)
+				return $query->result();
+			else
+				return FALSE;
 	}
 }

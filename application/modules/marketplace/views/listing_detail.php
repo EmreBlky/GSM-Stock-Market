@@ -110,7 +110,7 @@ if(!empty($listing_detail->image1))
 <?php  if(!empty($img1[3])): ?>
 <img id="zoom_03" src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img1[3]; ?>" data-zoom-image="<?php echo base_url().'public/upload/listing/'.$img1[3]; ?>" class="gallerymainimg"/>
 <?php else: ?>
-<img src="<?php echo base_url().'public/main/template/gsm/images/icons/apple-touch-icon-180x180.png'; ?>"/>
+<img src="<?php echo base_url().'public/main/template/gsm/images/icons/apple-touch-icon-180x180.png'; ?>" class="gallerymainimg"/>
 <?php endif; ?>
 </div>
 <div id="gallery_01">
