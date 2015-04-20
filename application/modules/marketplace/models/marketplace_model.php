@@ -10,7 +10,7 @@ class Marketplace_model extends MY_Model {
 
     public function insert($table_name='',  $data=''){
         $query=$this->db->insert($table_name, $data);
-		if($query)
+    	if($query)
 			return $this->db->insert_id();
 		else
 			return FALSE;		
@@ -215,13 +215,40 @@ class Marketplace_model extends MY_Model {
 	public function listing_counter_offer(){
 		$member_id=$this->session->userdata('members_id');
 		$this->db->select('listing.*,company.country  AS country_id,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
-		$this->db->where('member_id',$member_id);
+		$where_condition="(`make_offer`.`seller_id` = ".$member_id." || `make_offer`.`buyer_id`=".$member_id.")";
+		$this->db->where($where_condition);
 		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
+		$this->db->where('listing.status', 1);
+		$this->db->where('listing.listing_type', 2);
 		$this->db->from('listing');
 		$this->db->join('company','company.admin_member_id=listing.member_id');
 		$this->db->join('make_offer','make_offer.listing_id=listing.id');
-		$this->db->where('status', 1);
 				$query = $this->db->get();
+			if($query->num_rows()>0)
+				return $query->result();
+			else
+				return FALSE;
+	}
+
+	public function listing_offer_common($listing_type='0',$case='1',$status=0){
+		$member_id=$this->session->userdata('members_id');
+		$this->db->select('listing.*');
+		if($case==1){
+			$this->db->where('make_offer.seller_id',$member_id);
+		}
+		else{
+			$this->db->where('make_offer.buyer_id',$member_id);
+		}
+		$this->db->where("listing.schedule_date_time <= '".date('Y-m-d h:i:s')."' and listing.listing_end_datetime >= '".date('Y-m-d h:i:s')."'" );
+		if($status=='1'){
+			$this->db->where('make_offer.offer_status',0);
+		}
+		$this->db->where('listing.status', 1);
+		$this->db->group_by('make_offer.id');
+		$this->db->where('listing.listing_type', $listing_type);
+		$this->db->from('listing');
+		$this->db->join('make_offer','make_offer.listing_id=listing.id');
+		$query = $this->db->get();
 			if($query->num_rows()>0)
 				return $query->result();
 			else
@@ -290,17 +317,23 @@ class Marketplace_model extends MY_Model {
 				return FALSE;
 	}
 
-	public function view_offer($list_id=0){
-		$this->db->select('company.*,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country,make_offer.*');
+	public function view_offer($list_id=0,$status=0){
+		$this->db->select('make_offer.*,company.company_name,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
 		$this->db->from('make_offer');
+		$this->db->group_by('id');
+		if($status==2){
+			$this->db->where('make_offer.offer_status',0);
+		}
 		$this->db->join('company','company.id=make_offer.buyer_id');
 		$this->db->where('make_offer.listing_id',$list_id);
+		//$this->db->where('make_offer.offer_status',0);
 		$query = $this->db->get();
 			if($query->num_rows()>0)
 				return $query->result();
 			else
 				return FALSE;
 	}
+
 
 	public function get_shippings_to_couriers_data($couriers=array()){
 		$this->db->from('couriers');
@@ -367,6 +400,7 @@ class Marketplace_model extends MY_Model {
 	{
 		$this->db->from('make_offer');
 		$this->db->where('listing_id', $list_id);
+		$this->db->where('offer_status', 0);
 		return $this->db->count_all_results();
 		
 	}
@@ -374,12 +408,12 @@ class Marketplace_model extends MY_Model {
 	public function sell_order(){
 		$member_id=$this->session->userdata('members_id');
 		$this->db->select('listing.*,company.company_name,make_offer.*');
-		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
+		
 		$this->db->from('listing');
 		$this->db->join('company','company.admin_member_id=listing.member_id');
 		$this->db->join('make_offer','make_offer.listing_id=listing.id');
-		$this->db->where('status', 1);
-		//$this->db->where('listing_type', 1);
+		//$this->db->where('listing.listing_type', 2);
+		
 		$this->db->where('make_offer.offer_status',1);
 		$this->db->where('make_offer.seller_id',$member_id);
 		$query = $this->db->get();
@@ -392,12 +426,10 @@ class Marketplace_model extends MY_Model {
 	public function buy_order(){
 		$member_id=$this->session->userdata('members_id');
 		$this->db->select('listing.*,company.company_name,make_offer.*');
-		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
 		$this->db->from('listing');
 		$this->db->join('company','company.admin_member_id=listing.member_id');
 		$this->db->join('make_offer','make_offer.listing_id=listing.id');
-		$this->db->where('status', 1);
-		//$this->db->where('listing_type', 2);
+		//$this->db->where('listing.listing_type', 1);
 		$this->db->where('make_offer.offer_status',1);
 		$this->db->where('make_offer.buyer_id',$member_id);
 		$query = $this->db->get();

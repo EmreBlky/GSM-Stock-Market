@@ -101,6 +101,14 @@ class Marketplace extends MX_Controller
     
     function offers()
     {
+        $data['seller_offer_sent'] = $this->marketplace_model->listing_offer_common(2,2);
+
+        $data['buyer_offer_sent'] = $this->marketplace_model->listing_offer_common(1,2);
+
+        $data['seller_offer_recived'] = $this->marketplace_model->listing_offer_common(2,1,1);
+
+        $data['buyer_offer_recived'] = $this->marketplace_model->listing_offer_common(1,1,1);
+
         $data['main'] = 'marketplace';        
         $data['title'] = 'GSM - Market Place: Offers';        
         $data['page'] = 'offers';
@@ -109,6 +117,29 @@ class Marketplace extends MX_Controller
         $this->templates->page($data);
     }
     
+    
+
+   function open_order_html()
+    {
+        $data['deal_info'] =  $this->marketplace_model->get_row('listing',array('id'=>2));
+        $data['main'] = 'marketplace';        
+        $data['title'] = 'GSM - Market Place: Offers';        
+        $data['page'] = 'open_order_html';
+         
+        $this->load->module('templates');
+        $this->templates->page($data);
+    } 
+    
+    function offers_html()
+    {
+        $data['main'] = 'marketplace';        
+        $data['title'] = 'GSM - Market Place: Offers';        
+        $data['page'] = 'offers_html';
+        
+        $this->load->module('templates');
+        $this->templates->page($data);
+    }
+
     function invoice()
     {
         $data['main'] = 'marketplace';        
@@ -396,7 +427,6 @@ class Marketplace extends MX_Controller
     {
         $data['sell_offer'] = $this->marketplace_model->listing_sell_offer();
         $data['buying_request'] = $this->marketplace_model->listing_buying_offer();
-        $data['counter_offer'] = $this->marketplace_model->listing_counter_offer();
         
         $data['main'] = 'marketplace';        
         $data['title'] = 'GSM - Market Place: Listing';        
@@ -579,12 +609,23 @@ class Marketplace extends MX_Controller
 
 
             for($i=0; $i < count($_POST['shipping_terms']); $i++){
+                $shiptype='';
+                if($_POST['ship_types'][$i] == 'Price_per_unit'){
+                    $shiptype='Price Per unit';
+                }
+                elseif($_POST['ship_types'][$i] == 'Free_Shipping'){
+                    $shiptype='Free Shipping';
+                }
+                elseif($_POST['ship_types'][$i] == 'Flat_fee'){
+                    $shiptype='Flat fee';
+                }
                 $shipping_fee[] = 
                 array(
                'shipping_term'   =>  $_POST['shipping_terms'][$i],
                'coriars'         =>  $_POST['coriars'][$i],
                'shipping_types'  =>  $_POST['ship_types'][$i],
                'shipping_fees'   =>  $_POST['shipping_fees'][$i],
+               'shipping_name_display'=>$shiptype
                );
               }
             }
@@ -630,6 +671,7 @@ class Marketplace extends MX_Controller
         if(!empty($list_id))
             $data_insert['updated']              = date('Y-m-d h:i:s A');
         else
+            $data_insert['updated']              = date('Y-m-d h:i:s A');
             $data_insert['created']              = date('Y-m-d h:i:s A');
            
         $list_update = '';
@@ -959,6 +1001,7 @@ class Marketplace extends MX_Controller
         if(!empty($list_id))
             $data_insert['updated']              = date('Y-m-d h:i:s A');
         else
+            $data_insert['updated']              = date('Y-m-d h:i:s A');
             $data_insert['created']              = date('Y-m-d h:i:s A');
             
         $list_update = '';
@@ -1540,6 +1583,12 @@ class Marketplace extends MX_Controller
     $product_qty=$_POST['product_qty'];
     $unit_price=$_POST['unit_price'];
     $listing_id=$_POST['listing_id'];
+    $shippingterm_index='';
+    if($shippingterm_value=$_POST['coriartoselect1']){
+        $explodeshipping=explode('-',$shippingterm_value);
+        $shippingterm_index=$explodeshipping[0];
+    }
+
     $buyer_id=$this->session->userdata('members_id');
     $need_to_insert=0;
     if(!empty($product_qty) && is_numeric($product_qty) && !empty($unit_price) && is_numeric($unit_price) && !empty($listing_id) && is_numeric($listing_id)){
@@ -1554,6 +1603,25 @@ class Marketplace extends MX_Controller
      }
 
   if($offersdone < $total_allow_offer){
+    $shippingterm ='';
+    $shippingamount =0;
+    if(!empty($listing->courier)) {
+      if($listing->listing_type==1){
+        $core =  explode(',', $listing->courier);
+        $shippingterm = $core[$shippingterm_index];
+      }
+      elseif($listing->listing_type==2){
+        $value=json_decode($listing->sell_shipping_fee);
+        $shippingterm = $value[$shippingterm_index]->shipping_term.' ('.$value[$shippingterm_index]->coriars.') '.$value[$shippingterm_index]->shipping_name_display;
+        if($value[$shippingterm_index]->shipping_types=='Free_Shipping'){
+            $shippingamount =0;
+        }elseif($value[$shippingterm_index]->shipping_types=='Price_per_unit'){
+            $shippingamount =$value[$shippingterm_index]->shipping_types * $product_qty;
+        }elseif($value[$shippingterm_index]->shipping_types=='Flat_fee'){
+            $shippingamount =$value[$shippingterm_index]->shipping_types;
+        }
+        } 
+      }
     $offerleft=($total_allow_offer - $offersdone) - 1;
     if($listing->listing_type==2){
     $min_qty='';
@@ -1614,6 +1682,7 @@ class Marketplace extends MX_Controller
         $list=array('STATUS'=>7,'Message'=>'Offer is Already accepted.'); 
         }
         else{
+         $total_price=  ($product_qty *  $unit_price) +  $shippingamount;
        $data_insert=array(
                 'buyer_id'      => $buyer_id,
                 'seller_id'     => $listing->member_id,
@@ -1621,7 +1690,10 @@ class Marketplace extends MX_Controller
                 'product_qty'   => $product_qty,
                 'unit_price'    => $unit_price,
                 'buyer_currency'=> $listing->currency,
-                'created'       => date('Y-m-d, H:i:s')
+                'total_price'   => $total_price,
+                'shipping'      => $shippingterm,
+                'shipping_price'=> $shippingamount,
+                'created'       => date('Y-m-d, H:i:s'),
                 );
         $this->marketplace_model->insert('make_offer',$data_insert);
         $list=array('STATUS'=>1,'Message'=>'Offer added sucessfully.');
@@ -1690,41 +1762,66 @@ class Marketplace extends MX_Controller
     function view_offer()
     {
         $list = $this->input->post('listing_id');
-        $make_offer = $this->marketplace_model->view_offer($list);
+        $setstatus = $this->input->post('status');
+        $make_offer = $this->marketplace_model->view_offer($list, $setstatus);
         if(!empty($make_offer)){ ?>
-            <table class="table table-bordered" >
-                <thead>
-                    <tr>
-                        <th>Company</th>
-                        <th>Rating</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
-                        <th>Country</th>
-                        <th>Options</th>
-                    </tr>
-                </thead>
-                <tbody>
+          <table class="table table-bordered" >
+            <thead>
+                <tr>
+                    <th>Country</th>
+                    <th>Company</th>
+                    <th>Rating</th>
+                    <th>Quantity</th>
+                    <th>Shipping</th>
+                    <th>Grand Total</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
         <?php foreach ($make_offer as $value) { ?>
+        <tr>
+            <td><img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" alt="Currency" /></td>
+            <td><?php echo $value->company_name; ?></td>
+            <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
+            <td><?php echo $value->product_qty; ?></td>
+            <td><?php echo $value->shipping; ?></td>
+            <td><?php echo currency_class($value->buyer_currency).' '.number_format($value->total_price,2);
+             ?></td>
+            <td class="text-center">
+            <?php 
+             //date('m-d-Y',strtotime($date1 . "+1 days"));
+            $date1 = strtotime(date('d-m-y H:i:s', strtotime($value->created . '+1 days'))); 
+            $date2 = strtotime(date('d-m-y H:i:s')); 
 
-                    <tr>
-                        <td><?php echo $value->company_name; ?></td>
-                        <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
-                        <td><?php echo $value->product_qty; ?></td>
-                        <td><?php echo currency_class($value->buyer_currency); ?> <?php echo $value->unit_price; ?></td>
-                        <td><img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" alt="Currency" /></td>
-                        <td class="text-center">
-                        <a class="btn btn-outline btn-warning"><i class="fa fa-hand-o-down"></i> Counter Offer</a>
-                        <a  class="btn btn-outline btn-primary"><i class="fa fa-check"></i> Accept</a>
-                        <a  class="btn btn-outline btn-danger"><i class="fa fa-times"></i> Decline</a>
-                        </td>
-                    </tr>
-        <?php    } ?>
+            if($date1 > $date2){           
+            if($value->seller_id==$this->session->userdata('members_id')){
+            ?>
+            <a href="<?php echo base_url().'marketplace/offer_status/'.$value->id.'/3/'.$value->buyer_id ?>" class="btn btn-outline btn-warning"><i class="fa fa-hand-o-down"></i> Counter Offer</a>
+            <a href="<?php echo base_url().'marketplace/offer_status/'.$value->id.'/1/'.$value->buyer_id ?>" class="btn btn-outline btn-primary"><i class="fa fa-check"></i> Accept</a>
+            <a href="<?php echo base_url().'marketplace/offer_status/'.$value->id.'/2/'.$value->buyer_id ?>" class="btn btn-outline btn-danger"><i class="fa fa-times"></i> Decline</a>
+            <?php }else{
+                if($value->offer_status==0){ ?>
+                <div class="btn btn-outline btn-warning"><i class="fa fa-hand-o-down"></i>Awaiting</div>
+              <?php }elseif($value->offer_status==1){ ?>
+                <div class="btn btn-outline btn-primary"><i class="fa fa-check"></i>Accepted</div>
+              <?php }
+              elseif($value->offer_status==2){ ?>
+                <div class="btn btn-outline btn-dangerbtn-outline btn-danger"><i class="fa fa-times"></i>Declined</div> 
+                <?php }
+                elseif($value->offer_status==3){ ?>
+                <div class="btn btn-outline btn-dangerbtn-outline btn-danger"><i class="fa fa-hand-o-down"></i>Dummy (negotiation)</div> <?php }
+                }} else{?>
+            <a class="btn btn-outline btn-danger"><i class="fa fa-times"></i> Offer Expired</a>
+            <?php } ?>
+            </td>
+        </tr>
+        <?php } ?>
         </tbody>
         </table>
         <?php }
     }
 
-    public function offer_status()
+    /*public function offer_status()
     {
        $list = $this->input->post('listing_id');
        $buyer_id = $this->input->post('buyer_id');
@@ -1742,7 +1839,7 @@ class Marketplace extends MX_Controller
        }
     }
 
-    }
+    }*/
     
     function negotiation(){
         $data['main'] = 'marketplace';        
@@ -1760,5 +1857,88 @@ class Marketplace extends MX_Controller
         
         $this->load->module('templates');
         $this->templates->page($data);
+    }
+    public function pay_asking_price()
+    {   
+        $listing_id=$_POST['listing_id'];
+        $buyer_id=$this->session->userdata('members_id');
+        $total_price= $_POST['total_calgross_price'];
+        $shipping=$_POST['shippingselected'];   
+        if($listing=$this->marketplace_model->get_row('listing', array('id'=>$listing_id))){
+
+        $data_insert=array(
+                'buyer_id'      => $buyer_id,
+                'seller_id'     => $listing->member_id,
+                'listing_id'    => $listing_id,
+                'product_qty'   => $listing->qty_available,
+                'unit_price'    => '',
+                'total_price'   => $total_price,
+                'shipping'      => $shipping,
+                'buyer_currency'=> $listing->currency,
+                'offer_status'        => 3,
+                'created'       => date('Y-m-d, H:i:s')
+                );
+        $this->marketplace_model->insert('make_offer',$data_insert);
+        $this->session->set_flashdata('msg_success','Request inserted sucessfully...! ');
+      }
+      else{
+        $this->session->set_flashdata('msg_error','Failed, Please try again.');
+      }
+      redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    function order_status($id='',$status='0')
+    {
+      $user_id =  $this->session->userdata('members_id');
+      if($this->marketplace_model->update('make_offer',array('order_status'=>$status),array('id'=>$id,'(seller_id = '.$user_id .' OR buyer_id ='.$user_id.')'=>null))){
+            $this->session->set_flashdata('msg_success','Order status change sucessfully.');  
+        }
+        else{
+          $this->session->set_flashdata('msg_info','Invalid.');  
+        }
+       redirect($_SERVER['HTTP_REFERER']);
+    }
+
+   function deal_info($listing_id='')
+    {
+        if($deal_info =  $this->marketplace_model->get_row('listing',array('id'=>$listing_id))){
+        ?>
+        <div class="col-lg-6">
+            <dl class="dl-horizontal">
+                <h4 style="text-align:center">Product Details</h4>
+                <dt>Make:</dt> <dd> <?php if(!empty($deal_info->product_make)){ echo $deal_info->product_make; } ?></dd>
+                <dt>Model:</dt> <dd>  <?php if(!empty($deal_info->product_model)){ echo $deal_info->product_model; } ?></dd>
+                <dt>Memory:</dt> <dd>  16GB</dd>
+                <dt>Colour:</dt> <dd> <?php if(!empty($deal_info->product_color)){ echo $deal_info->product_color; } ?></dd>
+                <dt>Product Type:</dt> <dd> <?php if(!empty($deal_info->product_type)){ echo $deal_info->product_type; } ?></dd>
+                <dt>Condition:</dt> <dd><?php if(!empty($deal_info->condition)){ echo $deal_info->condition; } ?></dd>
+                <dt>Spec</dt> <dd>  <?php if(!empty($deal_info->spec)){ echo $deal_info->spec; } ?></dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <h4 style="text-align:center">Price</h4>
+                <dt>Buy Price:</dt> <dd>  <?php if(!empty($deal_info->currency)) { echo currency_class($deal_info->currency); } ?><?php if(!empty($deal_info->min_price)){ echo $deal_info->min_price; } ?></dd>
+                <dt>Product Type:</dt> <dd>  <?php if(!empty($deal_info->product_type)){ echo $deal_info->product_type; } ?></dd>
+                <dt>Condition:</dt> <dd> <?php if(!empty($deal_info->condition)){ echo $deal_info->condition; } ?></dd>
+                <dt>Spec</dt> <dd><?php if(!empty($deal_info->spec)){ echo $deal_info->spec; } ?></dd>
+            </dl>
+        </div>
+        <div class="col-lg-6">
+            <?php if(!empty($deal_info->image1) || file_exists($deal_info->image1)){
+                
+        $img1 = '';
+            if(!empty($deal_info->image1)){
+                $img1 = explode('/', $deal_info->image1); 
+            }
+            ?>
+            <p style="text-align:center">
+            <img style="text-align:center" src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img1[3]; ?>" alt="">
+            <?php }else{ ?>
+             <p style="text-align:center">
+             <img style="text-align:center" src="public/main/template/gsm/images/marketplace/marketplace_photo.png" /></p>
+            <?php } ?>
+            <h4>Product Description</h4>
+            <?php if(!empty($deal_info->product_desc)){ echo $deal_info->product_desc; } ?>
+        </div>
+        <?php } 
     }
 }

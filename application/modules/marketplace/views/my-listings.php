@@ -20,7 +20,7 @@
     <div class="col-lg-12">
     <div class="ibox float-e-margins">
         <div class="ibox-title">
-            <h5>Selling Offers</h5>
+            <h5>Selling Request</h5>
         </div>
         <div class="ibox-content">
         <table class="table table-striped table-bordered table-hover buying_requests" >
@@ -33,6 +33,7 @@
             <th>Price</th>
             <th>QTY</th>
             <th>Spec</th>
+            <th>Last updated</th>
             <th>Options</th>
         </tr>
         </thead>
@@ -52,12 +53,13 @@
                  <span class="label label-info">Offers Waiting (<?php echo $offer_count; ?>)</span>
                 <?php endif ?> 
                 </td>
-                <td><?php echo date('h:i d-m', strtotime($value->listing_end_datetime)); ?></td>
+                <td><?php echo date('d-M-y, H:i', strtotime($value->listing_end_datetime)); ?></td>
                 <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
                 <td><?php echo $value->condition; ?></td>
                 <td data-toggle="tooltip" data-placement="left" title="t"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
                 <td><?php echo $value->qty_available; ?></td>
                 <td><?php echo $value->spec; ?></td>
+                <td><?php echo date('d-M-y, H:i', strtotime($value->updated)); ?></td>
                 <th class="text-center">
                 <a href="<?php echo base_url().'marketplace/sell_listing/'.$value->id; ?>" class="btn btn-warning" ><i class="fa fa-paste"></i> Edit</a>
                 <button class="btn btn-danger" type="button" ><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
@@ -130,6 +132,7 @@
             <th>Price</th>
             <th>QTY</th>
             <th>Spec</th>
+            <th>Last updated</th>
             <th>Options</th>
         </tr>
         </thead>
@@ -147,12 +150,13 @@
                     Offer Waiting
                 <?php endif ?> </span>
                 </td>
-                <td><?php echo date('h:i d-m', strtotime($value->listing_end_datetime)); ?></td>
+                <td><?php echo date('d-M-y, H:i', strtotime($value->listing_end_datetime)); ?></td>
                 <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
                 <td><?php echo $value->condition; ?></td>
                 <td data-toggle="tooltip" data-placement="left" title="t"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
                 <td><?php echo $value->qty_available; ?></td>
                 <td><?php echo $value->spec; ?></td>
+                <td><?php echo date('d-M-y, H:i', strtotime($value->updated)); ?></td>
                 <th class="text-center">
                 <a href="<?php echo base_url().'marketplace/buy_listing/'.$value->id; ?>" class="btn btn-warning" ><i class="fa fa-paste"></i> Edit</a>
                 <button class="btn btn-danger" type="button" ><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
@@ -219,8 +223,8 @@ color: #fff;
 }
 </style>
 <script>
-    function get_buyers_offer(listing_id) {
-        var list = listing_id;
+ function get_buyers_offer(listing_id) {
+    var list = listing_id;
        $.post('<?php echo base_url() ?>marketplace/get_buyers_offer', {listing_id: list}, function(data) {
            $('#buyers_list').html(data);
        });

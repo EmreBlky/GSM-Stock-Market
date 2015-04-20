@@ -81,9 +81,9 @@
             <?php
                 foreach(json_decode($listing_detail->sell_shipping_fee) as $key => $value){
                    ?>
-                  <tr><td><?php if(!empty($value->shipping_term)) echo $value->shipping_term; ?><input type="hidden" name="shipping_terms[]" value="<?php if(!empty($value->shipping_term)) echo $value->shipping_term; ?>"/></td>
-                  <td><?php if(!empty($value->coriars)) echo $value->coriars; ?><input type="hidden" name="coriars[]" value="<?php if(!empty($value->coriars)) echo $value->coriars; ?>"/></td>
-                  <td><?php if(!empty($value->shipping_types)) echo $value->shipping_types; ?><input type="hidden" name="ship_types[]" value="<?php if(!empty($value->shipping_types)) echo $value->shipping_types; ?>"/></td>
+                  <tr><td><?php if(!empty($value->shipping_term)) echo $value->shipping_term; ?></td>
+                  <td><?php if(!empty($value->coriars)) echo $value->coriars; ?></td>
+                  <td><?php if(!empty($value->shipping_name_display)) echo $value->shipping_name_display; ?></td>
                   <td><?php if(!empty($value->shipping_fees)){echo $value->shipping_fees;}else{ echo"Free";} ?></td>
                   </tr>
             <?php }  ?>
@@ -194,65 +194,101 @@ if(!empty($listing_detail->image1))
    
 </div>
 </div>
+
 <div class="modal inmodal fade" id="myModal5" tabindex="-1" role="dialog"  aria-hidden="true">
   <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-          <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-              <h4 class="modal-title"><strong>Buying Request</strong> by GSMStockMarket.com Limited</h4>
-            
-          </div>
-          <div class="modal-body">
-              <div class="row">
-                  <div class="col-lg-6">
-                      <dl class="dl-horizontal">
-                         <dt>Quantity:</dt> <dd> <?php if(!empty($listing_detail->qty_available)) { echo $listing_detail->qty_available; } ?></dd>
-                       </dl>  
-                       <dl class="dl-horizontal">  
-                          <dt>Unit Price:</dt> <dd> <?php if(!empty($listing_detail->unit_price) && !empty($listing_detail->currency)) { echo currency_class($listing_detail->currency).' '.$listing_detail->unit_price; } ?></dd>
-                       </dl>  
-                       <dl class="dl-horizontal">  
-                          <input type="hidden" id="total_price" value="<?php if(!empty($listing_detail->unit_price) && !empty($listing_detail->qty_available)) echo $listing_detail->unit_price * $listing_detail->qty_available; ?>">
-                          <dt>Total Offer Price:</dt> <dd> <?php if(!empty($listing_detail->unit_price) && !empty($listing_detail->qty_available)) { echo currency_class($listing_detail->currency).' '.$listing_detail->unit_price * $listing_detail->qty_available; } ?></dd>
-                      </dl>
-                  </div>
-                  <div class="col-lg-6">
-                      <p style="text-align:center">
-                        <dl class="dl-horizontal">
-                          <h4>Shipping</h4>
-                           <dt>Courier</dt> <dd> <?php if(!empty($listing_detail->courier)) { 
-                            $core =  explode(',', $listing_detail->courier); 
-                            ?>
-                            <select name="coriar" id="core" class="form-control">
-                              <option value="">select courier</option>
-                              <?php $demo_amt = 10;  foreach ($core as $key => $value): ?>
-                              <option value="<?php echo $demo_amt; ?>">
-                              <?php echo  $value; ?>
-                              </option>
-                                
-                              <?php $demo_amt++;  endforeach; ?>
-                            </select>
-                          <?php  } ?></dd>
-                      </dl>
-                      <dl class="dl-horizontal">
-                      <dt>Gross price:</dt>
-                      <dd id="gross_price"> No Gross Price Available yet.</dd>
-                      </dl>  
-                      </p>
-                      <dl class="dl-horizontal" style="margin-top:20px">
-                         
-                          <p style="text-align:center"><button type="button" class="btn btn-warning" >Send Offer</button></p>
-                          <p class="small" style="text-align:center">Offers sent will expire after 24 hours</p>
-                      </dl>
-                  </div>
-                  </div>
-                 
-          </div>
-         
-      </div>
+    <div class="modal-content">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h4 class="modal-title"><strong><?php if($listing_detail->listing_type==1){ echo "Selling Request"; } else{ echo"Buying Request";}?></strong> by GSMStockMarket.com Limited</h4>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+    <form method="post" action="<?php echo base_url().'marketplace/pay_asking_price'?>" class="make_offer">
+      <input type="hidden" name="listing_id" class="form-control" value="<?php echo $listing_detail->id; ?>"/>
+      <input type="hidden" name="total_calgross_price" value="">
+      <input type="hidden" name="shippingselected" value="">
+
+       <div class="col-lg-5">
+      <dl class="dl-horizontal">
+         <dt>Quantity:</dt> <dd> <?php if(!empty($listing_detail->qty_available)) { echo $listing_detail->qty_available; } ?></dd>
+       </dl>  
+       <dl class="dl-horizontal">  
+          <dt>Unit Price:</dt> <dd> <?php if(!empty($listing_detail->unit_price) && !empty($listing_detail->currency)) { echo currency_class($listing_detail->currency).' '.number_format($listing_detail->unit_price,2); } ?></dd>
+       </dl>  
+       <dl class="dl-horizontal"> 
+        <input type="hidden" id="total_price" value="<?php if(!empty($listing_detail->unit_price) && !empty($listing_detail->qty_available)) echo $listing_detail->unit_price * $listing_detail->qty_available; ?>">
+
+          <dt>Total Offer Price:</dt> 
+          <dd> <?php if(!empty($listing_detail->unit_price) && !empty($listing_detail->qty_available)) { 
+
+            $total_p=number_format($listing_detail->unit_price * $listing_detail->qty_available,2);
+
+            echo currency_class($listing_detail->currency).' '.$total_p; } ?></dd>
+      </dl>
+    </div>
+       <div class="col-lg-7">
+      <p style="text-align:center">
+        <dl class="dl-horizontal">
+           <dt>Shipping Terms:</dt> <dd> 
+           <?php if(!empty($listing_detail->courier)) {
+            if($listing_detail->listing_type==1){
+            $core =  explode(',', $listing_detail->courier);
+            ?>
+            <select name="coriar" id="core" class="form-control" required>
+              <option value="">Select Shipping Terms</option>
+              <?php 
+               foreach ($core as $key => $value): ?>
+                 <option data-other="<?php echo $value;?>" value="0">
+                   <?php echo  $value; ?>
+                 </option>
+              <?php endforeach; ?>
+            </select>
+          <?php }elseif(!empty($listing_detail->sell_shipping_fee) && $listing_detail->listing_type==2){
+              ?>
+              
+              <select name="coriar" id="core" class="form-control" required>
+              <option value="">Select Shipping Terms</option>
+              <?php 
+               foreach(json_decode($listing_detail->sell_shipping_fee) as $key => $value){
+                $othershippingfee='0';
+                 if(!empty($value->shipping_fees)){ 
+                  $othershippingfee=$value->shipping_fees;
+                } 
+                
+                $othercal=$value->shipping_term.' ('.$value->coriars.') '.$value->shipping_name_display;?>
+                 <option data-other="<?php echo $othercal;?>"
+                 value="<?php if(empty($value->shipping_fees)){ echo "0";}else{ 
+                  if($value->shipping_types == 'Price_per_unit'){ 
+                    echo $value->shipping_fees * $listing_detail->qty_available; }else{ echo $value->shipping_fees;}
+                    } ?>">
+                   <?php 
+                   echo currency_class($listing_detail->currency).' &nbsp;'.$othershippingfee.'&nbsp;'.$othercal;
+                      ?>
+                 </option>
+              <?php } ?>
+            </select>
+           <?php 
+            }} ?>
+          </dd>
+        </dl>
+        <dl class="dl-horizontal">
+        <dt>Gross price:</dt>
+        <dd id="gross_price"> Please choose any shipping term.</dd>
+        </dl>  
+        </p>
+        <dl class="dl-horizontal" style="margin-top:20px">
+            <button type="submit" class="btn btn-warning" >Send Request</button>
+            <p class="small" style="text-align:center">Offers sent will expire after 24 hours</p>
+        </dl>
+    </div>
+    </form>
+    </div> 
+   </div>
+  </div>
   </div>
 </div>
-
+<!-- make an offer modal -->
 <div class="modal inmodal fade" id="myModal6" tabindex="-1" role="dialog"  aria-hidden="true">
 <div class="modal-dialog modal-lg">
 <div class="modal-content">
@@ -268,7 +304,8 @@ if(!empty($listing_detail->image1))
 <?php } ?>
 <form method="post" action="<?php echo base_url().'marketplace/make_offer'?>" class="make_offer">
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
+    <br>
     <div class="input-group m-b">
     <span class="input-group-addon">QTY</span> 
     <input type="text" name="product_qty" class="form-control" value="<?php echo set_value('product_qty'); ?>" required="" />
@@ -276,7 +313,8 @@ if(!empty($listing_detail->image1))
      <input type="hidden" name="listing_id" class="form-control" value="<?php echo $listing_detail->id; ?>" />
     </div> 
     </div>
-   <div class="col-md-6">
+    <div class="col-md-4">
+    <br>
     <div class="input-group m-b">
     <span class="input-group-addon">
     <?php if(!empty($listing_detail->currency)) { echo currency_class($listing_detail->currency); } ?>
@@ -286,8 +324,50 @@ if(!empty($listing_detail->image1))
     </div>
    
     </div>
-    <div class="col-md-12">
-    <a class="btn btn-warning senddataajax" >Send Offer </a>
+     <div class="col-lg-4">
+        <dl class="dl-horizontal">
+           Shipping Terms:<br> 
+           <?php if(!empty($listing_detail->courier)) {
+            $ivarible=0;
+            if($listing_detail->listing_type==1){
+            $core =  explode(',', $listing_detail->courier);
+            ?>
+            <select name="coriartoselect1"  class="form-control" required>
+              <option value="">Select Shipping Terms</option>
+              <?php 
+               foreach ($core as $key => $value): ?>
+                 <option value="<?php echo $ivarible;?>-a">
+                   <?php echo $value; ?>
+                 </option>
+              <?php endforeach; ?>
+            </select>
+          <?php $ivarible++; }elseif(!empty($listing_detail->sell_shipping_fee) && $listing_detail->listing_type==2){
+              ?>
+              
+              <select name="coriartoselect1"  class="form-control" required>
+              <option value="">Select Shipping Terms</option>
+              <?php 
+               foreach(json_decode($listing_detail->sell_shipping_fee) as $key => $value){
+                $othershippingfee='0';
+                 if(!empty($value->shipping_fees)){ 
+                  $othershippingfee=$value->shipping_fees;
+                } 
+                $othercal=$value->shipping_term.' ('.$value->coriars.') '.$value->shipping_name_display;?>
+                 <option value="<?php echo $ivarible;?>-a">
+                   <?php 
+                   echo currency_class($listing_detail->currency).' &nbsp;'.$othershippingfee.'&nbsp;'.$othercal;
+                      ?>
+                 </option>
+              <?php } ?>
+            </select>
+           <?php 
+           $ivarible++;  }} ?>
+          
+        </dl>        
+    </div>
+   
+    <div class="col-md-12 pull-right">
+    <a class="btn btn-warning senddataajax pull-right" >Send Offer </a>
     </div>
 </div>
 </form>
@@ -301,13 +381,13 @@ if(!empty($listing_detail->image1))
 </div>
   </div>
 </div>
-
+<!-- user profile -->
 <div class="modal inmodal fade" id="profile_user" tabindex="-1" role="dialog"  aria-hidden="true">
 <div class="modal-dialog modal-lg">
 <div class="modal-content">
   <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <h4 class="modal-title"View Profile</h4>
+      <h4 class="modal-title">View Profile</h4>
       <small class="font-bold"><?php if(!empty($company->company_name)) echo $company->company_name ?></small>
   </div>
 <div class="modal-body">
@@ -460,7 +540,7 @@ if(!empty($listing_detail->image1))
         </div>
     </div>
 </div>
-
+<!-- Ask a question -->
 <div class="modal inmodal fade" id="profile_message" tabindex="-1" role="dialog"  aria-hidden="true">
 <div class="modal-dialog modal-lg">
   <div class="modal-content">
@@ -497,15 +577,15 @@ $(document).ready(function(){
         $('.question_list').html(data);
     });
   }
-    $('#send_msg').on('click', function(){
-      var question_form =  $('#question_form').serialize();
-      $.post('<?php echo base_url() ?>marketplace/listing_question', question_form,function(data){
-        $('#msg').html(data);
-       });
-      load_list();
-    });
-   load_list();
-   });
+  $('#send_msg').on('click', function(){
+    var question_form =  $('#question_form').serialize();
+    $.post('<?php echo base_url() ?>marketplace/listing_question', question_form,function(data){
+      $('#msg').html(data);
+     });
+    load_list();
+  });
+ load_list();
+ });
 </script>
 <script src="public/admin/js/jquery.countdown.min.js"></script>
 <script src="public/main/template/core/js/plugins/validate/jquery.validate.min.js"></script>
@@ -522,10 +602,22 @@ $('[data-countdown]').each(function() {
  });
 <?php if(!empty($listing_detail->unit_price) && !empty($listing_detail->qty_available)) { ?>
 $('#core').on('change', function(){
-  alert(parseInt($(this).val()));
-  $('#gross_price').html('<?php echo currency_class($listing_detail->currency).' '; ?>'+(parseInt($(this).val()) + parseInt($('#total_price').val())));
+  var valuetoset=$(this).val();
+
+  if(valuetoset){
+  var total_gross_price=parseFloat(parseInt(valuetoset) + parseInt($('#total_price').val()));
+    total_gross_price=total_gross_price.toFixed(2);
+   $('#gross_price').html('<?php echo currency_class($listing_detail->currency).' '; ?>'+total_gross_price);
+   $('input[name="total_calgross_price"]').val(total_gross_price);
+   $('input[name="shippingselected"]').val($('option:selected', this).attr('data-other'));
+  }else{
+    valuetoset='Please choose any shipping term.';
+      $('#gross_price').html(valuetoset);
+  }
  
 });
+
+
 <?php } ?>
 });
 $("#zoom_03").elevateZoom({gallery:'gallery_01', cursor: 'pointer', galleryActiveClass: 'active', imageCrossfade: true,zoomWindowPosition: 10,zoomWindowHeight: 400, zoomWindowWidth:400, loadingIcon: 'http://www.elevateweb.co.uk/spinner.gif',}); 

@@ -65,6 +65,35 @@ class Login extends MX_Controller{
             
             $this->session->set_flashdata('title', 'success');
             $this->session->set_flashdata('message', 'Your password has been reset. You should receive an email shortly.');
+            
+            $this->load->module('emails');
+            $config = Array(
+                'protocol' => 'smtp',
+                'smtp_host' => 'ssl://server.gsmstockmarket.com',
+                'smtp_port' => 465,
+                'smtp_user' => 'noreply@gsmstockmarket.com',
+                'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
+                'charset' => 'utf-8',
+                'wordwrap' => TRUE,
+                'newline' => "\r\n",
+                'crlf'    => ""
+
+            );
+
+            $this->load->library('email', $config);
+
+            $this->email->set_mailtype("html");
+            $email_body = '<div>Your new password is: '.$password.'</div>';
+
+
+            $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Support Team');
+
+            //$list = array('info@imarveldesign.co.uk');
+            $this->email->to($this->input->post('email'));
+            $this->email->subject($this->input->post('subject'));
+            $this->email->message($email_body);
+
+            $this->email->send();
 
             redirect('login/forgotten_password');
            
