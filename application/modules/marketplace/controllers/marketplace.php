@@ -1236,6 +1236,9 @@ class Marketplace extends MX_Controller
 
     function history()
     {
+        $data['sell_order'] = $this->marketplace_model->order_history_sell();
+        $data['buy_order'] = $this->marketplace_model->order_history_buy();
+        
         $data['main'] = 'marketplace';        
         $data['title'] = 'GSM - Market Place: History';        
         $data['page'] = 'order-history';
@@ -1573,6 +1576,55 @@ class Marketplace extends MX_Controller
             $item->childs = $childs[$item->id];
 
         return $childs[0];
+    }
+
+      function offer_status($id='',$status='0',$buyer_id)
+    {
+      $seller_id =  $this->session->userdata('members_id');
+      if($this->marketplace_model->update('make_offer',array('offer_status'=>$status),array('id'=>$id, 'seller_id'=>$seller_id))){
+          if($status==1){
+             $data = array(
+                'member_id'         => $seller_id,
+                'sent_member_id'    => $buyer_id,
+                'subject'           => 'Offer is accepted',
+                'body'              => 'Offer is accepted',
+                'inbox'             => 'yes',
+                'sent'              => 'yes',
+                'date'              => date('d-m-Y'),
+                'time'              => date('H:i:s'),
+                'sent_from'         => 'market',
+                'datetime'          => date('Y-m-d H:i:s')
+              ); 
+           $this->load->model('mailbox/mailbox_model', 'mailbox_model');
+            $this->mailbox_model->_insert($data);
+
+            $this->session->set_flashdata('msg_success','Offer Accepted sucessfully and move in open order.');  
+          }elseif($status==2){
+
+            $data = array(
+                'member_id'         => $seller_id,
+                'sent_member_id'    => $buyer_id,
+                'subject'           => 'Offer is declined',
+                'body'              => 'Offer is declined Do you want to resent it.',
+                'inbox'             => 'yes',
+                'sent'              => 'yes',
+                'date'              => date('d-m-Y'),
+                'time'              => date('H:i:s'),
+                'sent_from'         => 'market',
+                'datetime'          => date('Y-m-d H:i:s')
+              ); 
+           $this->load->model('mailbox/mailbox_model', 'mailbox_model');
+            $this->mailbox_model->_insert($data);
+
+            $this->session->set_flashdata('msg_success','Offer Declined sucessfully.'); 
+          }elseif($status==3){
+            $this->session->set_flashdata('msg_success','Counter offer move in negotiation.'); 
+            }
+        }
+        else{
+          $this->session->set_flashdata('msg_info','Invalid.');  
+        }
+       redirect($_SERVER['HTTP_REFERER']);
     }
 
   function make_offer()
@@ -1941,4 +1993,111 @@ class Marketplace extends MX_Controller
         </div>
         <?php } 
     }
+   public function insert_payment_info(){
+      $payment_detail = $this->input->post('payment_info');
+      $user_id = $this->session->userdata('members_id');
+      $id = $this->input->post('order_id');
+      if($this->marketplace_model->update('make_offer',array('order_status'=>1,'payment_detail'=>$payment_detail),array('id'=>$id,'seller_id' =>$user_id))){
+            $this->session->set_flashdata('msg_success','Payment information save sucessfully.');  
+        }
+        else{
+          $this->session->set_flashdata('msg_info','Invalid.');  
+        }
+       redirect($_SERVER['HTTP_REFERER']);
+   }
+   public function payment_done(){
+
+    if(isset($_POST['payment_done'])){
+      $user_id = $this->session->userdata('members_id');
+      $id = $this->input->post('order_id');
+      if($this->marketplace_model->update('make_offer',array('payment_done_datetime'=>date('Y-m-d h:i:s'),'payment_done'=>1),array('id'=>$id,'buyer_id'=>$user_id))){
+            $this->session->set_flashdata('msg_success','Payment Done sucessfully.');  
+        }else{
+          $this->session->set_flashdata('msg_info','Invalid.');  
+        }
+        }
+        else{
+          $this->session->set_flashdata('msg_info','Invalid.');  
+        }
+       redirect($_SERVER['HTTP_REFERER']);
+   }
+
+    public function payment_confirm(){
+      if(isset($_POST['payment_confirm'])){
+      $user_id = $this->session->userdata('members_id');
+      $id = $this->input->post('order_id');
+      if($this->marketplace_model->update('make_offer',array('order_status'=>2,'payment_recevied_datetime'=>date('Y-m-d h:i:s')),array('id'=>$id,'seller_id'=>$user_id))){
+            $this->session->set_flashdata('msg_success','Payment received sucessfully.');  
+        }
+        else{
+          $this->session->set_flashdata('msg_info','Invalid.');  
+        }}
+        else{
+          $this->session->set_flashdata('msg_info','Invalid.');  
+        }
+       redirect($_SERVER['HTTP_REFERER']);
+   }
+   public function add_tracking_shipping_info(){
+      $shipping_detail = $this->input->post('shipping_info');
+      $user_id = $this->session->userdata('members_id');
+      $id = $this->input->post('order_id');
+      if($this->marketplace_model->update('make_offer',array('order_status'=>3,'tracking_shipping'=>$shipping_detail,'shipping_arrived_datetime'=>date('Y-m-d h:i:s')),array('id'=>$id,'seller_id' =>$user_id))){
+            $this->session->set_flashdata('msg_success','Shipping Information save sucessfully.');  
+        }
+        else{
+          $this->session->set_flashdata('msg_info','Invalid.');  
+        }
+       redirect($_SERVER['HTTP_REFERER']);
+   }
+
+     public function shipping_received(){
+      if(isset($_POST['shipping_received'])){
+      $user_id = $this->session->userdata('members_id');
+      $id = $this->input->post('order_id');
+      if($this->marketplace_model->update('make_offer',array('order_status'=>4,'shipping_recevied_datetime'=>date('Y-m-d h:i:s'),'shipping_received'=>1),array('id'=>$id,'buyer_id'=>$user_id))){
+            $this->session->set_flashdata('msg_success','Order Statue changed sucessfully.');  
+        }
+        else{
+          $this->session->set_flashdata('msg_info','Invalid.');  
+        }}
+        else{
+          $this->session->set_flashdata('msg_info','Invalid.');  
+        }
+       redirect($_SERVER['HTTP_REFERER']);
+   }
+
+   public function buyer_feedback(){
+    if($_POST['feedback']){
+      $user_id = $this->session->userdata('members_id');
+      $id = $this->input->post('order_id');
+      if($this->marketplace_model->update('make_offer',array('buyer_feedback'=>$_POST['feedback'],'buyer_feedback_datetime'=>date('Y-m-d h:i:s'),'buyer_history'=>1),array('id'=>$id,'buyer_id'=>$user_id))){
+            $this->session->set_flashdata('msg_success','Feedback save is sucessfully.');  
+        }
+        else{
+          $this->session->set_flashdata('msg_info','Invalid.');  
+        }
+    }
+    else{
+          $this->session->set_flashdata('msg_info','Invalid.');  
+        }
+       redirect('marketplace/history');
+   }
+
+   public function seller_feedback(){
+    if($_POST['feedback']){
+      $user_id = $this->session->userdata('members_id');
+      $id = $this->input->post('order_id');
+      if($this->marketplace_model->update('make_offer',array('seller_feedback'=>$_POST['feedback'],'seller_feedback_datetime'=>date('Y-m-d h:i:s'),'seller_history'=>1),array('id'=>$id,'seller_id'=>$user_id))){
+            $this->session->set_flashdata('msg_success','Feedback save is sucessfully.');  
+        }
+        else{
+          $this->session->set_flashdata('msg_info','Invalid.');  
+        }
+    }
+    else{
+          $this->session->set_flashdata('msg_info','Invalid.');  
+        }
+       redirect('marketplace/history');
+   }
+
 }

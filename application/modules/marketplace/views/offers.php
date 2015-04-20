@@ -44,7 +44,6 @@ $member_id=$this->session->userdata('members_id');?>
             $offer_count = offer_count($value->id); ?>
             <tr>
                 <td class="text-center">
-                
                 <?php if($value->member_id==$member_id){?>
                 <span class="label label-info">
                 Offers Waiting (<?php echo $offer_count; ?>)
@@ -167,7 +166,7 @@ $member_id=$this->session->userdata('members_id');?>
   <div class="col-lg-12">
     <div class="ibox float-e-margins">
         <div class="ibox-title">
-            <h5>Offers Recived (Items I want to sell)</h5>
+            <h5>Offers Received (Items I want to sell)</h5>
         </div>
         <div class="ibox-content">
         <table class="table table-striped table-bordered table-hover selling_offers" >
@@ -186,8 +185,7 @@ $member_id=$this->session->userdata('members_id');?>
         <tbody>
             <?php if(!empty($seller_offer_recived)):
             
-            foreach ($seller_offer_recived as $value):
-            $offer_count = offer_count($value->id); ?>
+            foreach ($seller_offer_recived as $value): ?>
             <tr>
                 <td class="text-center">
                 
@@ -221,7 +219,7 @@ $member_id=$this->session->userdata('members_id');?>
     <div class="col-lg-12">
     <div class="ibox float-e-margins">
         <div class="ibox-title">
-            <h5>Offers Recived (Items I want to buy)</h5>
+            <h5>Offers Received (Items I want to buy)</h5>
         </div>
         <div class="ibox-content">
         <table class="table table-striped table-bordered table-hover buying_requests" >
