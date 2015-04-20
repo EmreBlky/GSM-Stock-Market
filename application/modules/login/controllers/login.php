@@ -89,15 +89,20 @@ class Login extends MX_Controller{
             $email_body = '
                             Dear '.$this->member_model->get_where($mid)->firstname.',
                             <br/>                                        
+                            <br/>                            
                             <br/>
-                            <br/>
-                            Email: '.$this->input->post('email').'
+                            You have requested a password reset for Email: '.$this->input->post('email').'
                             <br/>
                             <br/>                                        
-                            Please <a href="'.$this->config->item('base_url').'register/reset/'.$validation_code.'">CLICK HERE</a> to reset your email.
+                            If this is correct, please <a href="'.$this->config->item('base_url').'register/reset/'.$validation_code.'">CLICK HERE</a> to reset your password.
                             <br/>
                             <br/>
-                            Many Thanks,<br/><br/>
+                            If this is not correct, please ignore this email. You account has not been modified.
+                            <br/>
+                            <br/>
+                            Many Thanks,
+                            <br/>
+                            <br/>
                             GSMStockMarket.com Team';
 
 
