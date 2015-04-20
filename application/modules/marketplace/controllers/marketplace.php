@@ -1581,7 +1581,7 @@ class Marketplace extends MX_Controller
       function offer_status($id='',$status='0',$buyer_id)
     {
       $seller_id =  $this->session->userdata('members_id');
-      if($this->marketplace_model->update('make_offer',array('offer_status'=>$status),array('id'=>$id, 'seller_id'=>$seller_id))){
+      if($this->marketplace_model->update('make_offer',array('offer_status'=>$status,'invoice_no'=>$seller_id.'-'.$buyer_id.'-'.$id),array('id'=>$id, 'seller_id'=>$seller_id))){
           if($status==1){
              $data = array(
                 'member_id'         => $seller_id,
