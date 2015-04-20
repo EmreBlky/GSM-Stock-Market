@@ -41,8 +41,8 @@
     </tr>
     </thead>
     <tbody>
-      <?php if(!empty($sell_order)){
-        foreach ($sell_order as $value){ ?>
+      <?php if(!empty($buy_order)){
+        foreach ($buy_order as $value){ ?>
     <tr>
         <td><?php echo $value->invoice_no;?></td>
         <td><?php echo date('d-M-y, H:i', strtotime($value->shipping_recevied_datetime)); ?></td>
@@ -63,7 +63,7 @@
 <div class="col-lg-12">
 <div class="ibox float-e-margins">
     <div class="ibox-title">
-        <h5>View Buy Transactions</h5>
+        <h5>View Sell Transactions</h5>
     </div>
     <div class="ibox-content">
 
@@ -81,8 +81,8 @@
     </tr>
     </thead>
     <tbody>
-      <?php if(!empty($buy_order)){
-        foreach ($buy_order as $value){ ?>
+      <?php if(!empty($sell_order)){
+        foreach ($sell_order as $value){ ?>
     <tr>
         <td><?php echo $value->invoice_no;?></td>
         <td><?php echo date('d-M-y, H:i', strtotime($value->shipping_recevied_datetime)); ?></td>
