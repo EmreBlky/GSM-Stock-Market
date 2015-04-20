@@ -185,7 +185,8 @@ $member_id=$this->session->userdata('members_id');?>
         <tbody>
             <?php if(!empty($seller_offer_recived)):
             
-            foreach ($seller_offer_recived as $value): ?>
+            foreach ($seller_offer_recived as $value): 
+                 $offer_count = offer_count($value->id); ?>
             <tr>
                 <td class="text-center">
                 
