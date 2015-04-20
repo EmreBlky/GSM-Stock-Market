@@ -48,6 +48,7 @@ class Login extends MX_Controller{
     
     function passwordResend()
     {
+        $base = $this->config->item('base_url');
         $email = $this->member_model->_custom_query_count("SELECT COUNT(*) AS count FROM members WHERE email = '".$this->input->post('email')."'");
         
         if($email[0]->count > 0){
