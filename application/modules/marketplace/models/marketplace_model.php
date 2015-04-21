@@ -215,7 +215,7 @@ class Marketplace_model extends MY_Model {
 	public function listing_counter_offer(){
 		$member_id=$this->session->userdata('members_id');
 		$this->db->select('listing.*,company.country  AS country_id,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
-		$where_condition="(`make_offer`.`seller_id` = ".$member_id." || `make_offer`.`buyer_id`=".$member_id.")";
+		$where_condition="(`make_offer`.`seller_id` = ".$member_id." OR `make_offer`.`buyer_id`=".$member_id.")";
 		$this->db->where($where_condition);
 		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
 		$this->db->where('listing.status', 1);
@@ -464,10 +464,8 @@ class Marketplace_model extends MY_Model {
 	{
 		$member_id=$this->session->userdata('members_id');
 		$this->db->select('make_offer.*,company.company_name');
-		
-		$this->db->from('listing');
-		$this->db->join('company','company.admin_member_id=listing.member_id');
-		$this->db->join('make_offer','make_offer.listing_id=listing.id');
+		$this->db->from('make_offer');
+		$this->db->join('company','company.admin_member_id=make_offer.seller_id');
 		//$this->db->where('listing.listing_type', 2);
 		
 		$this->db->where('make_offer.seller_history','1');
@@ -485,9 +483,8 @@ class Marketplace_model extends MY_Model {
 	{
 		$member_id=$this->session->userdata('members_id');
 		$this->db->select('make_offer.*,company.company_name');
-		$this->db->from('listing');
-		$this->db->join('company','company.admin_member_id=listing.member_id');
-		$this->db->join('make_offer','make_offer.listing_id=listing.id');
+		$this->db->from('make_offer');
+		$this->db->join('company','company.admin_member_id=make_offer.seller_id');
 		//$this->db->where('listing.listing_type', 1);
 		$this->db->where('make_offer.offer_status',1);
 		$this->db->where('make_offer.buyer_history','1');
@@ -498,4 +495,21 @@ class Marketplace_model extends MY_Model {
 			else
 				return FALSE;
 	}
+
+	public function invoice($invoice_no)
+	{
+		$member_id=$this->session->userdata('members_id');
+		$this->db->select('make_offer.*,listing.product_mpn_isbn,listing.product_make,listing.product_model,listing.product_type,listing.product_color,listing.product_desc');
+		$this->db->like('make_offer.invoice_no',$invoice_no);
+		$where_condition="(`make_offer`.`seller_id` = ".$member_id." OR `make_offer`.`buyer_id`=".$member_id.")";
+		$this->db->where($where_condition);
+		$this->db->from('make_offer');
+		$this->db->join('listing','listing.id=make_offer.listing_id');
+		$query = $this->db->get('');
+			if($query->num_rows()>0)
+				return $query->row();
+			else
+				return FALSE;
+	}
+	
 }
