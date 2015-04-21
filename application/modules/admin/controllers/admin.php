@@ -1336,7 +1336,7 @@ class Admin extends MX_Controller
         redirect('admin/upgrades/');
     }
     
-    function trade_ref($mid = NULL)
+    function trade_ref($id = NULL, $code = NULL)
     {
         if ( ! $this->session->userdata('admin_logged_in'))
         { 
@@ -1349,13 +1349,129 @@ class Admin extends MX_Controller
         
         $var = 'tradereference';
         $var_model = $var.'_model';
-        
+
         $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
         
-        $data[$var] = $this->{$var_model}->get_where_multiples_order('id', 'DESC', 'trade_1_confirm', 'yes');
-        $data['ref_count'] = $this->{$var_model}->_custom_query("SELECT COUNT(trade_1_confim, trade_2_confim) FROM tradereference WHERE (trade_1_confirm = 'yes') OR (trade_2_confirm = 'yes')");
-           
+        if(isset($id)){
+            $trade_mem = $this->{$var_model}->_custom_query("SELECT id, member_id, ".$code."_company AS company, ".$code."_name AS name, ".$code."_email AS email, ".$code."_phone AS phone, ".$code."_comments AS comments FROM tradereference WHERE id = '".$id."'");
+            $data['ref'] = $trade_mem[0];
+            $data['code'] = $code;
+        }
+        else{
+
+            //$data[$var] = $this->{$var_model}->get_where_multiples_order('id', 'DESC', 'trade_1_confirm', 'yes', 'OR trade_2_confirm', 'yes');
+            $data[$var] = $this->{$var_model}->_custom_query("SELECT * FROM tradereference WHERE (trade_1_confirm = 'yes') OR (trade_2_confirm = 'yes')");
+            $data['ref_count'] = $this->{$var_model}->count_where('trade_completed', 'yes');
+        }   
         $this->load->module('templates');
         $this->templates->admin($data);
+    }
+    
+    function edit_tradeRef()
+    {}
+    
+    function tradeRefApprove($id = NULL, $code = NULL)
+    {
+        $var = 'tradereference';
+        $var_model = $var.'_model';
+
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        
+        $var1 = 'member';
+        $var1_model = $var1.'_model';
+
+        $this->load->model(''.$var1.'/'.$var1.'_model', ''.$var1.'_model');
+        
+        $var2 = 'mailbox';
+        $var2_model = $var2.'_model';
+
+        $this->load->model(''.$var2.'/'.$var2.'_model', ''.$var2.'_model');
+        
+        $data = array(
+                    $code.'_admin_approve' => 'yes'
+                    );
+        $trade_mem = $this->{$var_model}->_update_where($data, 'id', $id);
+        
+        $trade1 = $this->{$var_model}->get_where_multiple('id', $id)->trade_1_admin_approve;
+        $trade2 = $this->{$var_model}->get_where_multiple('id', $id)->trade_2_admin_approve;
+        $mid = $this->{$var_model}->get_where_multiple('id', $id)->member_id;
+        
+        if($trade1 == 'yes' && $trade2 == 'yes'){
+            
+            $data = array(
+                        'trade_completed' => 'completed'
+                        );
+            $this->{$var_model}->_update_where($data, 'id', $id);
+            
+            $data_mem = array(
+                        'marketplace' => 'active'
+                        );
+            $this->{$var1_model}->_update_where($data_mem, 'id', $mid); 
+            
+            $data_mail = array(
+                                    'member_id'         => 5,
+                                    'sent_member_id'    => $mid,
+                                    'subject'           => 'Trade Reference Approved',
+                                    'body'              => 'Your 2 Trade References have been approved. You are now able to access the Market Place.',
+                                    'inbox'             => 'yes',
+                                    'sent'              => 'yes',
+                                    'date'              => date('d-m-Y'),
+                                    'time'              => date('H:i'),
+                                    'sent_from'         => 'support',
+                                    'datetime'          => date('Y-m-d H:i:s')
+                                  ); 
+            $this->{$var2_model}->_insert($data_mail);
+            
+        }
+        
+        redirect('admin/trade_ref');
+    }
+
+    function tradeRefDecline($id = NULL, $code = NULL)
+    {
+        if($code == 'trade_1'){
+           $tade_customer = 'First Trade Reference'; 
+        }
+        else{
+            $tade_customer = 'Second Trade Reference';
+        }
+        
+        $var = 'tradereference';
+        $var_model = $var.'_model';
+
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        
+        $var1 = 'member';
+        $var1_model = $var1.'_model';
+
+        $this->load->model(''.$var1.'/'.$var1.'_model', ''.$var1.'_model');
+        
+        $var2 = 'mailbox';
+        $var2_model = $var2.'_model';
+
+        $this->load->model(''.$var2.'/'.$var2.'_model', ''.$var2.'_model');
+        
+        $mid = $this->{$var_model}->get_where_multiple('id', $id)->member_id;
+        
+        $data = array(
+                    $code.'_admin_approve' => 'declined'
+                    );
+        $trade_mem = $this->{$var_model}->_update_where($data, 'id', $id);
+        
+        $data_mail = array(
+                                'member_id'         => 5,
+                                'sent_member_id'    => $mid,
+                                'subject'           => 'Trade Reference Declined',
+                                'body'              => 'Your '.$tade_customer.' has been declined. Please could you amend your information.',
+                                'inbox'             => 'yes',
+                                'sent'              => 'yes',
+                                'date'              => date('d-m-Y'),
+                                'time'              => date('H:i'),
+                                'sent_from'         => 'support',
+                                'datetime'          => date('Y-m-d H:i:s')
+                              ); 
+        $this->{$var2_model}->_insert($data_mail);
+
+        redirect('admin/trade_ref');   
     }
 }

@@ -231,12 +231,25 @@ class Tradereference extends MX_Controller
             );
             $this->tradereference_model->_update_where($data, 'member_id', $mid); 
             
-        }
+        }        
+        
         $this->session->set_flashdata('confirm-reference', '<div style="margin:0 15px">    
                                                                 <div class="alert alert-warning">
                                                                     Thank you. Your comments have been submited.
                                                                 </div>
                                                             </div>');
+        
+        $trade1 = $this->tradereference_model->get_where_multiple('member_id', $mid)->trade_1_confirm;
+        $trade2 = $this->tradereference_model->get_where_multiple('member_id', $mid)->trade_2_confirm;
+        
+        if($trade1 == 'yes' && $trade2 == 'yes'){
+            
+            $data = array(
+                'trade_completed' => 'yes'
+            );
+            $this->tradereference_model->_update_where($data, 'member_id', $mid); 
+            
+        }
         redirect('tradereference/confirm');
     }
 }
