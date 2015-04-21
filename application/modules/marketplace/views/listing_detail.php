@@ -217,7 +217,7 @@ if(!empty($listing_detail->image1))
           <dt>Unit Price:</dt> <dd> <?php if(!empty($listing_detail->unit_price) && !empty($listing_detail->currency)) { echo currency_class($listing_detail->currency).' '.number_format($listing_detail->unit_price,2); } ?></dd>
        </dl>  
        <dl class="dl-horizontal"> 
-        <input type="hidden" id="total_price" value="<?php if(!empty($listing_detail->unit_price) && !empty($listing_detail->qty_available)) echo $listing_detail->unit_price * $listing_detail->qty_available; ?>">
+        <input name="grand_total" type="hidden" id="total_price" value="<?php if(!empty($listing_detail->unit_price) && !empty($listing_detail->qty_available)) echo $listing_detail->unit_price * $listing_detail->qty_available; ?>">
 
           <dt>Total Offer Price:</dt> 
           <dd> <?php if(!empty($listing_detail->unit_price) && !empty($listing_detail->qty_available)) { 
