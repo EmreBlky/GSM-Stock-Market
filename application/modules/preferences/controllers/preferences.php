@@ -14,6 +14,7 @@ class Preferences extends MX_Controller
         $this->load->model('membership/membership_model', 'membership_model');
         $this->load->model('transaction/transaction_model', 'transaction_model');
         $this->load->model('activity/activity_model', 'activity_model');
+        $this->load->model('notification/notification_model', 'notification_model');
         
     }
 
@@ -102,7 +103,7 @@ class Preferences extends MX_Controller
         $this->templates->page($data);
     }
     
-    function subscription()
+    function subscription($message = NULL)
     {
         $data_activity = array(
                                 'activity' => 'Preference: Subscription',
@@ -133,6 +134,17 @@ class Preferences extends MX_Controller
         
         $data['member'] = $this->member_model->get_where($this->session->userdata('members_id'));
         
+        if($message == 'confirm'){
+            $data['trade_confirm'] = '<div style="margin:0 15px">    
+                                                                <div class="alert alert-warning">
+                                                                    Please upgrade to silver before you can submit the references.
+                                                                </div>
+                                                            </div>';
+        }
+        else{
+             $data['trade_confirm'] = '';
+        }
+        
         $this->load->module('templates');
         $this->templates->page($data);
     }    
@@ -149,12 +161,29 @@ class Preferences extends MX_Controller
     
     function notification()
     {
+        $count = $this->notification_model->count_where('member_id', $this->session->userdata('members_id'));
+        
+        if($count < 1){
+            $data = array(
+                          'member_id' => $this->session->userdata('members_id')
+            );
+            $this->notification_model->_insert($data);
+        }
+        
         $data['main'] = 'preferences';        
         $data['title'] = 'GSM - Notifications Page';        
-        $data['page'] = 'notification';        
+        $data['page'] = 'notification'; 
+        $data['notification'] = $this->notification_model->get_where_multiple('member_id', $this->session->userdata('members_id'));
         
         $this->load->module('templates');
         $this->templates->page($data);
+    }
+    
+    function trade_reference()
+    {
+        $this->load->module('reference');
+        $this->reference->view();
+        
     }
 	
 }

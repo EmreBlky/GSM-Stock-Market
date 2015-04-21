@@ -8,6 +8,7 @@ class Paypal extends MX_Controller
         $this->load->helper('string');
         $this->load->model('paypal/paypal_model', 'paypal_model');
         $this->load->model('mailbox/mailbox_model', 'mailbox_model');
+        $this->load->model('notification/notification_model', 'notification_model');
         $this->load->model('member/member_model', 'member_model');
         $this->load->model('transaction/transaction_model', 'transaction_model');
         $this->load->library('paypal_subscribe');
@@ -40,9 +41,14 @@ class Paypal extends MX_Controller
 //        elseif($product == 'gold'){
 //            $description = "GSMStockmarket - Gold Membership Fee";
 //        }
-        elseif($product == 'silver'){
-            $description = "GSMStockmarket - Silver Membership Fee";
+        elseif($product == 'silver-12'){
+            $description = "GSMStockmarket - Silver Membership Fee (1 Year)";
             $amount = 1295;
+            $quantity = 1;
+        }
+        elseif($product == 'silver-6'){
+            $description = "GSMStockmarket - Silver Membership Fee (6 Months)";
+            $amount = 995;
             $quantity = 1;
         }
         
@@ -63,7 +69,9 @@ class Paypal extends MX_Controller
         
         $data_mail = array(
                                     'member_id'         => 5,
+                                    'member_name'       => $this->member_model->get_where(5)->firstname.' '.$this->member_model->get_where(5)->lastname,
                                     'sent_member_id'    => $this->session->userdata('members_id'),
+                                    'sent_member_name'  => $this->member_model->get_where($this->session->userdata('members_id'))->firstname.' '.$this->member_model->get_where($this->session->userdata('members_id'))->lastname,                        
                                     'subject'           => 'PayPal Transaction - '.$invoice.'',
                                     'body'              => '<p>Thank you for upgrading your membership on GSMStockMarket.com.</p>
                                                             <p>To view the full invoice you can go to <strong>Preferences > My Subscription</strong> and print off a copy direct from within your account.</p>
@@ -78,6 +86,39 @@ class Paypal extends MX_Controller
                                   ); 
         $this->mailbox_model->_insert($data_mail);
         
+        $email_support = $this->notification_model->get_where_multiple('member_id', $this->session->userdata('members_id'))->email_support;
+                      
+            if($email_support == 'yes'){
+
+                  $this->load->module('emails');
+                  $config = Array(
+                                  'protocol' => 'smtp',
+                                  'smtp_host' => 'ssl://server.gsmstockmarket.com',
+                                  'smtp_port' => 465,
+                                  'smtp_user' => 'noreply@gsmstockmarket.com',
+                                  'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
+                                  'charset' => 'utf-8',
+                                  'wordwrap' => TRUE,
+                                  'newline' => "\r\n",
+                                  'crlf'    => ""
+
+                              );
+
+                  $this->load->library('email', $config);
+                  $this->email->set_mailtype("html");
+                  $email_body = 'You have a message from the support team';
+
+
+                  $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Support');
+
+                  //$list = array('tim@gsmstockmarket.com', 'info@gsmstockmarket.com');
+                  $this->email->to($this->member_model->get_where($this->session->userdata('members_id'))->email);
+                  $this->email->subject('You have a message in your inbox');
+                  $this->email->message($email_body);
+
+                  $this->email->send();                          
+            }
+        
         $base                           = $this->config->item('base_url');
         $config['business']             = 'info@gsmstockmarket.com';
         $config['cpp_header_image']     = $base .'public/main/template/gsm/images/paypal_gsm.png'; //Image header url [750 pixels wide by 90 pixels high]
@@ -85,7 +126,7 @@ class Paypal extends MX_Controller
         $config['return']               = $base .'paypal/notify_payment';
         $config['cancel_return']        = $base .'paypal/cancel_return';
         $config['notify_url']           = $base .'paypal/process'; //IPN Post
-        $config['production']           = TRUE; //Its false by default and will use sandbox
+        $config['production']           = FALSE; //Its false by default and will use sandbox
         //$config['discount_rate_cart']   = 20; //This means 20% discount
         $config["invoice"]              = $invoice; //The invoice id
         
@@ -172,13 +213,30 @@ class Paypal extends MX_Controller
             $trans_type = $this->transaction_model->get_where_multiple('invoice', $this->input->post('invoice'))->item;
             $trans_id = $this->transaction_model->get_where_multiple('invoice', $this->input->post('invoice'))->buyer_id;
             
-            if($trans_type == 'GSMStockmarket - Silver Membership Fee'){
+            if($trans_type == 'GSMStockmarket - Silver Membership Fee (1 Year)' || $trans_type == 'GSMStockmarket - Silver Membership Fee (6 Months)'){
                 
-                $data_member = array(
-                                'membership' => 2
+                if($trans_type == 'GSMStockmarket - Silver Membership Fee (1 Year)'){
+                    
+                    $data_member = array(
+                                'membership' => 2,
+                                'membership_expire_date' => date("Y-m-d H:i:s", strtotime("+1 year", strtotime(date("Y-m-d H:i:s"))))
                                 );
             
-                $this->member_model->_update_where($data_member, 'id', $trans_id);
+                    $this->member_model->_update_where($data_member, 'id', $trans_id);
+                    
+                }
+                
+                if($trans_type == 'GSMStockmarket - Silver Membership Fee (6 Months)'){
+                    
+                    $data_member = array(
+                                'membership' => 2,
+                                'membership_expire_date' => date("Y-m-d H:i:s", strtotime("+6 months", strtotime(date("Y-m-d H:i:s"))))
+                                );
+            
+                    $this->member_model->_update_where($data_member, 'id', $trans_id);
+                    
+                }
+                
                 
                 $this->session->set_userdata('membership', 2);
                 

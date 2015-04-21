@@ -27,7 +27,8 @@
         <div class="wrapper wrapper-content  animated fadeInRight">
             <div class="row">
             <?php 
-                echo $this->session->flashdata('confirm-transaction'); 
+                echo $this->session->flashdata('confirm-transaction');
+                echo $trade_confirm;
               ?>
             
                     <?php if($member->membership > 1) {?> 
@@ -78,13 +79,19 @@
                             <div class="ibox-content" style="min-height:89px;text-align:center">
                         	<label class="control-label">Payment Method: </label>
                             <select id="selectMe" class="form-control" style="width:auto;display:inline-block">
-                              <option value="option1">PayPal</option>
-                              <option value="option2">Bank Transfer</option>
-                              <option value="option3">Credit/Debit Card</option>
+                              <option value="option1_6">PayPal (6 Months)</option>
+                              <option value="option1_12">PayPal (1 Year)</option>
+                              <option value="option2_6">Bank Transfer (6 Months)</option>
+                              <option value="option2_12">Bank Transfer (1 Year)</option>
+                              <option value="option3_6">Credit/Debit Card (6 Months)</option>
+                              <option value="option3_12">Credit/Debit Card (1 Year)</option>
                             </select>
-                            <button id="option1" class="payment_method btn btn-primary" data-toggle="modal" data-target="#payment_paypal" style="font-size:12px;margin-bottom:3px">Upgrade Now</button>
-                            <button id="option2" class="payment_method btn btn-primary" data-toggle="modal" data-target="#payment_banktransfer" style="font-size:12px;margin-bottom:3px">Upgrade Now</button>
-                            <button id="option3" class="payment_method btn btn-primary" data-toggle="modal" data-target="#payment_card" style="font-size:12px;margin-bottom:3px">Upgrade Now</button>
+                            <button id="option1_6" class="payment_method btn btn-primary" data-toggle="modal" data-target="#payment_paypal_6" style="font-size:12px;margin-bottom:3px">Upgrade Now</button>
+                            <button id="option1_12" class="payment_method btn btn-primary" data-toggle="modal" data-target="#payment_paypal_12" style="font-size:12px;margin-bottom:3px">Upgrade Now</button>
+                            <button id="option2_6" class="payment_method btn btn-primary" data-toggle="modal" data-target="#payment_banktransfer_6" style="font-size:12px;margin-bottom:3px">Upgrade Now</button>
+                            <button id="option2_12" class="payment_method btn btn-primary" data-toggle="modal" data-target="#payment_banktransfer_12" style="font-size:12px;margin-bottom:3px">Upgrade Now</button>
+                            <button id="option3_6" class="payment_method btn btn-primary" data-toggle="modal" data-target="#payment_card_6" style="font-size:12px;margin-bottom:3px">Upgrade Now</button>
+                            <button id="option3_12" class="payment_method btn btn-primary" data-toggle="modal" data-target="#payment_card_12" style="font-size:12px;margin-bottom:3px">Upgrade Now</button>
                             </div>
                         </div>
                     </div>
@@ -281,13 +288,13 @@
         
         
         
-                            <div class="modal inmodal fade" id="payment_paypal" tabindex="-1" role="dialog"  aria-hidden="true">
+                            <div class="modal inmodal fade" id="payment_paypal_6" tabindex="-1" role="dialog"  aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                                             <h4 class="modal-title">Payment Method: PayPal</h4>
-                                            <small class="font-bold">Upgrade your GSMStockMarket.com account to Silver membership</small>
+                                            <small class="font-bold">Upgrade your GSMStockMarket.com account to <b>6 month</b> Silver membership</small>
                                         </div>
                                         <div class="modal-body">
                                             <p>You have selected <strong>PayPal</strong> as your form of payment.</p>
@@ -297,19 +304,41 @@
 
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel Order</button>
-                                            <a href="<?php echo $base?>paypal/purchase/<?php echo $invoice; ?>/silver" class="btn btn-primary">Confirm Purchase</a>
+                                            <a href="<?php echo $base?>paypal/purchase/<?php echo $invoice; ?>/silver-6" class="btn btn-primary">Confirm Purchase</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal inmodal fade" id="payment_paypal_12" tabindex="-1" role="dialog"  aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">Payment Method: PayPal</h4>
+                                            <small class="font-bold">Upgrade your GSMStockMarket.com account to <b>1 year</b> Silver membership</small>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>You have selected <strong>PayPal</strong> as your form of payment.</p>
+                                            <p>When you confirm your order you will be redirected to <strong>PayPal</strong> and will be able to make payment using your <strong>PayPal</strong> account.</p>
+                                            <p>Once payment is complete you will be redirected back to our website.</p>  
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel Order</button>
+                                            <a href="<?php echo $base?>paypal/purchase/<?php echo $invoice; ?>/silver-12" class="btn btn-primary">Confirm Purchase</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
         
-                            <div class="modal inmodal fade" id="payment_banktransfer" tabindex="-1" role="dialog"  aria-hidden="true">
+                            <div class="modal inmodal fade" id="payment_banktransfer_6" tabindex="-1" role="dialog"  aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                                             <h4 class="modal-title">Payment Method: Bank Transfer</h4>
-                                            <small class="font-bold">Upgrade your GSMStockMarket.com account to Silver membership</small>
+                                            <small class="font-bold">Upgrade your GSMStockMarket.com account to <b>6 month</b> Silver membership</small>
                                         </div>
                                         <div class="modal-body">
                                             <p>You have selected <strong>Bank Transfer</strong> as your form of payment.</p>
@@ -323,19 +352,45 @@
 
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel Order</button>
-                                            <a href="<?php echo $base?>transaction/banktransfer_gbp/<?php echo $invoice; ?>/silver" class="btn btn-primary">Confirm Purchase</a>
+                                            <a href="<?php echo $base?>transaction/banktransfer_gbp/<?php echo $invoice; ?>/silver-6" class="btn btn-primary">Confirm Purchase</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal inmodal fade" id="payment_banktransfer_12" tabindex="-1" role="dialog"  aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">Payment Method: Bank Transfer</h4>
+                                            <small class="font-bold">Upgrade your GSMStockMarket.com account to <b>1 year</b> Silver membership</small>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>You have selected <strong>Bank Transfer</strong> as your form of payment.</p>
+											<p>Once you click confirm purchase our system will send an email proforma invoice to your accounts email address with instructions on how to send your payment.<p/>
+                                            <p>If you would like a printer friendly invoice you will be able to view and print the proforma invoice from within your account by going to <strong>Preferences > My Subscription</strong> and viewing the subscription history tab.</p>
+                                            <h4 style="color:red;margin-top:20px">IMPORTANT!</h5>
+                                            <p>- Make sure your payment is sent in the correct sum in &pound; (GBP)</p>
+                                            <p>- Add the invoice number as reference to your payment to avoid delays</p>
+                                            <p style="margin-top:20px">Once payment is received you will be emailed your upgrade confirmation and full access to your account will be instant.</p>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel Order</button>
+                                            <a href="<?php echo $base?>transaction/banktransfer_gbp/<?php echo $invoice; ?>/silver-12" class="btn btn-primary">Confirm Purchase</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             
-                            <div class="modal inmodal fade" id="payment_card" tabindex="-1" role="dialog"  aria-hidden="true">
+                            <div class="modal inmodal fade" id="payment_card_6" tabindex="-1" role="dialog"  aria-hidden="true">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                                             <h4 class="modal-title">Payment Method: Credit/Debit Card</h4>
-                                            <small class="font-bold">Upgrade your GSMStockMarket.com account to Silver membership</small>
+                                            <small class="font-bold">Upgrade your GSMStockMarket.com account to <b>6 month</b> Silver membership</small>
                                         </div>
                                         <div class="modal-body">
                                             <p>You have selected <strong>Credit/Debit Card</strong> as your form of payment.</p>
@@ -347,7 +402,31 @@
 
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel Order</button>
-                                            <a href="<?php echo $base?>paypal/purchase/<?php echo $invoice; ?>/silver" class="btn btn-primary">Confirm Purchase</a>
+                                            <a href="<?php echo $base?>paypal/purchase/<?php echo $invoice; ?>/silver-6" class="btn btn-primary">Confirm Purchase</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal inmodal fade" id="payment_card_12" tabindex="-1" role="dialog"  aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">Payment Method: Credit/Debit Card</h4>
+                                            <small class="font-bold">Upgrade your GSMStockMarket.com account to <b>1 year</b> Silver membership</small>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>You have selected <strong>Credit/Debit Card</strong> as your form of payment.</p>
+                                            <p>We use PayPal for our Credit/Debit Card transactions.</p>
+                                            <p>Once you click confirm purchase you will be redirected to Paypal, you will not need a PayPal account to make the payment. Simply clicky on the pay with debit or credit card below the login area.</p>
+                                            <p>Once payment is complete you will be redirected back to our website and you will have your new subscriber access when payment is accepted.</p>  
+                                            <p><img src="public/main/template/gsm/images/paypal_card.png" class="img-responsive" style="max-width:80%;margin-left:10%"/>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel Order</button>
+                                            <a href="<?php echo $base?>paypal/purchase/<?php echo $invoice; ?>/silver-12" class="btn btn-primary">Confirm Purchase</a>
                                         </div>
                                     </div>
                                 </div>
@@ -557,7 +636,7 @@ $(document).ready(function() {
 <script>
 $(document).ready(function () {
   $('.payment_method').hide();
-  $('#option1').show();
+  $('#option1_6').show();
   $('#selectMe').change(function () {
     $('.payment_method').hide();
     $('#'+$(this).val()).show();

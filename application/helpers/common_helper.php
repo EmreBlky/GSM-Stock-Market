@@ -4,7 +4,7 @@
 */
 if ( ! function_exists('clear_cache')) {
     function clear_cache(){
-		$CI =& get_instance();
+    	$CI =& get_instance();
 		$CI->output->set_header('Expires: Wed, 11 Jan 1984 05:00:00 GMT' );
 		$CI->output->set_header('Last-Modified: ' . gmdate( 'D, d M Y H:i:s' ) . 'GMT');
 		$CI->output->set_header("Cache-Control: no-cache, no-store, must-revalidate");
@@ -265,6 +265,33 @@ if ( ! function_exists('courier_class')) {
 		return element($status, $status_array);
 	}
 }
+
+if ( ! function_exists('payment_status')) {	
+	function payment_status($status='') {
+		$status_array = array(
+                            '1' => 'Send Payment',
+                            '2' => 'Payment Sent',
+                            '3' => 'Awaiting Shipment',
+                            '4' => 'Shipment Arrived',
+                            '5' => 'Feedback',
+                             ); 
+		return element($status, $status_array);
+	}
+}
+
+if ( ! function_exists('payment_status_class')) {	
+	function payment_status_class($status='') {
+		$status_array = array(
+                            '1' => 'warning',
+                            '2' => 'success',
+                            '3' => 'warning',
+                            '4' => 'Shipment Arrived',
+                            '5' => 'Feedback',
+                             ); 
+		return element($status, $status_array);
+	}
+}
+
 
 if ( ! function_exists('list_duration')) {	
 	function list_duration($status='') {

@@ -76,7 +76,7 @@ $active_record = TRUE;
      
     $db['default']['hostname'] = 'localhost';
     $db['default']['username'] = 'root';
-    $db['default']['password'] = 'People1205';
+    $db['default']['password'] = 'Rwt189K72';
     $db['default']['database'] = 'gsmstock_secure';
     $db['default']['dbdriver'] = 'mysql';
     $db['default']['dbprefix'] = '';

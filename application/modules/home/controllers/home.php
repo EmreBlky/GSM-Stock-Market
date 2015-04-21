@@ -379,6 +379,13 @@ class Home extends MX_Controller
         $this->load->module('templates');
         $this->templates->page($data);
 
-    }        
+    }  
+    
+    function test()
+    {
+        echo '<pre>';
+        print_r($_POST);
+
+    }
 
 }

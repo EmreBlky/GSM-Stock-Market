@@ -128,8 +128,9 @@
                             <li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Buy</a></li>
                             <li><a href="marketplace/sell"><i class="fa fa-tag"></i> Sell</a></li>
                             <li><a href="marketplace/watching"><i class="fa fa-eye"></i> Watching</a></li>
+                            <li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers<span class="label label-info pull-right">12</span></a></li>
                             <li><a href="marketplace/open_orders"><i class="fa fa-book"></i> Open Orders <span class="label label-warning pull-right">4</span></a></li>
-                            <li><a href="marketplace/listing"><i class="fa fa-list"></i> My Listing<span class="label label-info pull-right">12</span></a></li>
+                            <li><a href="marketplace/listing"><i class="fa fa-list"></i> My Listings</a></li>
                             <li><a href="marketplace/history"><i class="fa fa-file-text"></i> Order History</a></li>
 		                            <li><a href="javascript:void(0)"><i class="fa fa-plus"></i> Create Listing  <span class="fa arrow"></span></a>
 		                                <ul class="nav nav-second-level">		                                    <li><a href="marketplace/buy_listing"><i class="fa fa-plus"></i> Create Buy Listing</a></li>
@@ -150,8 +151,9 @@
                             <li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Buy</a></li>
                             <li><a href="marketplace/sell"><i class="fa fa-tag"></i> Sell</a></li>
                             <li><a href="marketplace/watching"><i class="fa fa-eye"></i> Watching</a></li>
+                            <li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers<span class="label label-info pull-right">12</span></a></li>
                             <li><a href="marketplace/open_orders"><i class="fa fa-book"></i> Open Orders <span class="label label-warning pull-right">4</span></a></li>
-                            <li><a href="marketplace/listing"><i class="fa fa-list"></i> My Listing<span class="label label-info pull-right">12</span></a></li>
+                            <li><a href="marketplace/listing"><i class="fa fa-list"></i> My Listings</a></li>
                             <li><a href="marketplace/history"><i class="fa fa-file-text"></i> Order History</a></li>
 		                            <li><a href="javascript:void(0)"><i class="fa fa-plus"></i> Create Listing  <span class="fa arrow"></span></a>
 		                                <ul class="nav nav-second-level">		                                    <li><a href="marketplace/buy_listing"><i class="fa fa-plus"></i> Create Buy Listing</a></li>
@@ -232,13 +234,14 @@
                     </li>
                     <?php } ?>
                     
-                    <?php if($url == 'preferences') {?>
+                    <?php if($url == 'preferences' || $url == 'tradereference') {?>
                     <li class="active">
                         <a href=""><i class="fa fa-cog"></i> <span class="nav-label">Preferences</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="preferences/password"><i class="fa fa-lock"></i> Change Password</a></li>
                             <li><a href="preferences/subscription"><i class="fa fa-cubes"></i> My Subscription</a></li>
                             <li><a href="preferences/notification"><i class="fa fa-newspaper-o"></i> Notifications</a></li>
+                            <li><a href="tradereference/"><i class="fa fa-slideshare"></i> Trade Reference</a></li>
                             <!-- <li><a href="preferences/newsletter"><i class="fa fa-newspaper-o"></i> Newsletter</a></li> -->
                         </ul>
                     </li>
@@ -249,7 +252,7 @@
                             <li><a href="preferences/password"><i class="fa fa-lock"></i> Change Password</a></li>
                             <li><a href="preferences/subscription"><i class="fa fa-cubes"></i> My Subscription</a></li>
                             <li><a href="preferences/notification"><i class="fa fa-newspaper-o"></i> Notifications</a></li>
-                            <!-- <li><a href="preferences/newsletter"><i class="fa fa-newspaper-o"></i> Newsletter</a></li> -->
+                            <li><a href="tradereference/"><i class="fa fa-slideshare"></i> Trade Reference</a></li>
                         </ul>
                     </li>
                     <?php } ?>

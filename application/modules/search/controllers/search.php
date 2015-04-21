@@ -190,9 +190,7 @@ class Search extends MX_Controller
             'prev_link' => 'Prev',
             'last_link' => 'Last',
             'first_link' => 'First',
-            'first_url' => 'search/company/1?'.$_SERVER['QUERY_STRING'],
             'suffix'=> '?'.$_SERVER['QUERY_STRING'],
-            'reuse_query_string'=> true,
             'total_rows' => $total_results,
             'per_page' => $results_per_page
         ));

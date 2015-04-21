@@ -242,6 +242,41 @@ class Admin extends MX_Controller
                                   ); 
         $this->{$var1_model}->_insert($data);
         
+        $this->load->model('notification/notification_model', 'notification_model');
+        $this->load->model('member/member_model', 'member_model');
+        $email_support = $this->notification_model->get_where_multiple('member_id', $mem)->email_support;
+                      
+        if($email_support == 'yes'){
+
+              $this->load->module('emails');
+              $config = Array(
+                              'protocol' => 'smtp',
+                              'smtp_host' => 'ssl://server.gsmstockmarket.com',
+                              'smtp_port' => 465,
+                              'smtp_user' => 'noreply@gsmstockmarket.com',
+                              'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
+                              'charset' => 'utf-8',
+                              'wordwrap' => TRUE,
+                              'newline' => "\r\n",
+                              'crlf'    => ""
+
+                          );
+
+              $this->load->library('email', $config);
+              $this->email->set_mailtype("html");
+              $email_body = 'You have a message from the support team';
+
+
+              $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Support');
+
+              //$list = array('tim@gsmstockmarket.com', 'info@gsmstockmarket.com');
+              $this->email->to($this->member_model->get_where($mem)->email);
+              $this->email->subject('You have a message in your inbox');
+              $this->email->message($email_body);
+
+              $this->email->send();                          
+        }
+        
         redirect('admin/company_bio/');
         
     }
@@ -1230,6 +1265,7 @@ class Admin extends MX_Controller
         
         $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
         $mem = $this->{$var_model}->get_where($id)->buyer_id;
+        $item = $this->{$var_model}->get_where($id)->item;
         
         $data = array(                   
                         'status'               => 'completed'
@@ -1241,10 +1277,25 @@ class Admin extends MX_Controller
                 
         $this->load->model(''.$var1.'/'.$var1.'_model', ''.$var1.'_model');
         
-         $data = array(             
-                        'membership'          => 2
+        if($item == 'GSMStockmarket - Silver Membership Fee (1 Year)'){
+            
+            $data = array(             
+                        'membership'          => 2,
+                        'membership_expire_date' => date("Y-m-d H:i:s", strtotime("+1 year", strtotime(date("Y-m-d H:i:s"))))
                       ); 
-        $this->{$var1_model}->_update($mem, $data);
+            $this->{$var1_model}->_update($mem, $data);
+            
+        }
+        
+        if($item == 'GSMStockmarket - Silver Membership Fee (6 Months)'){
+            
+            $data = array(             
+                        'membership'          => 2,
+                        'membership_expire_date' => date("Y-m-d H:i:s", strtotime("+6 months", strtotime(date("Y-m-d H:i:s"))))
+                      ); 
+            $this->{$var1_model}->_update($mem, $data);
+            
+        }
         
         $var2 = 'mailbox';
         $var2_model = $var2.'_model';
