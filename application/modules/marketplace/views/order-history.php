@@ -33,8 +33,8 @@
         <th>Inv No</th>
         <th>Date</th>
         <th>Seller</th>
-        <th>Amount</th>
-        <th>Tax/VAT</th>
+        <th>Quantity</th>
+        <th>Shipping</th>
         <th>Total</th>
         <th>Currency</th>
         <th>View Transaction</th>
@@ -46,9 +46,10 @@
     <tr>
         <td><?php echo $value->invoice_no;?></td>
         <td><?php echo date('d-M-y, H:i', strtotime($value->shipping_recevied_datetime)); ?></td>
-        <td>TebiHost Limited</td>
-        <td style="text-align:right">300.00</td>
-        <td style="text-align:right">60.00</td>
+        <td><?php echo $value->company_name;?></td>
+        <td><?php echo $value->product_qty;?></td>
+        <td style="text-align:right"><?php echo $value->shipping_price;?></td>
+       
         <td style="text-align:right"><?php echo $value->total_price;?></td>
         <td>  <?php echo currency_class($value->buyer_currency); ?>   </td>
         <th style="text-align:center"><a href="marketplace/invoice/"<?php echo $value->id?>><button type="button" class="btn btn-primary" style="font-size:10px">View Transaction</button></a></th>
@@ -72,9 +73,9 @@
     <tr>
         <th>Inv No</th>
         <th>Date</th>
-        <th>Seller</th>
-        <th>Amount</th>
-        <th>Tax/VAT</th>
+        <th>Buyer</th>
+        <th>Quantity</th>
+        <th>Shipping</th>
         <th>Total</th>
         <th>Currency</th>
         <th>View Transaction</th>
@@ -86,12 +87,13 @@
     <tr>
         <td><?php echo $value->invoice_no;?></td>
         <td><?php echo date('d-M-y, H:i', strtotime($value->shipping_recevied_datetime)); ?></td>
-        <td>TebiHost Limited</td>
-        <td style="text-align:right">300.00</td>
-        <td style="text-align:right">60.00</td>
+        <td><?php echo $value->company_name;?></td>
+        <td><?php echo $value->product_qty;?></td>
+        <td style="text-align:right"><?php echo $value->shipping_price;?></td>
+       
         <td style="text-align:right"><?php echo $value->total_price;?></td>
         <td>  <?php echo currency_class($value->buyer_currency); ?>   </td>
-        <th style="text-align:center"><a href="marketplace/invoice/"<?php echo $value->id?>><button type="button" class="btn btn-primary" style="font-size:10px">View Transaction</button></a></th>
+        <th style="text-align:center"><a class="btn btn-primary" href="marketplace/invoice/<?php echo $value->invoice_no;?>">View Transaction</a></th>
     </tr>
     <?php } } ?></tbody>
     </table>
