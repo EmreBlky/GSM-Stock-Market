@@ -121,7 +121,7 @@ class Marketplace extends MX_Controller
 
    function open_order_html()
     {
-        $data['deal_info'] =  $this->marketplace_model->get_row('listing',array('id'=>2));
+        
         $data['main'] = 'marketplace';        
         $data['title'] = 'GSM - Market Place: Offers';        
         $data['page'] = 'open_order_html';
@@ -140,8 +140,13 @@ class Marketplace extends MX_Controller
         $this->templates->page($data);
     }
 
-    function invoice()
+    function invoice($invoice_id='')
     {
+        $data['invoice'] = $this->marketplace_model->invoice($invoice_id);
+
+        if(empty($data['invoice'])){
+            redirect('marketplace/history');
+        }
         $data['main'] = 'marketplace';        
         $data['title'] = 'GSM - Market Place: Invoice';        
         $data['page'] = 'invoice';
@@ -150,6 +155,16 @@ class Marketplace extends MX_Controller
         $this->templates->page($data);
     }
     
+    function invoice_html()
+    {
+        $data['main'] = 'marketplace';        
+        $data['title'] = 'GSM - Market Place: Invoice';        
+        $data['page'] = 'invoice_html';
+        
+        $this->load->module('templates');
+        $this->templates->page($data);
+    }
+
     function create_listing($list_id='')
     {   
 
@@ -1741,8 +1756,10 @@ class Marketplace extends MX_Controller
                 'listing_id'    => $listing_id,
                 'product_qty'   => $product_qty,
                 'unit_price'    => $unit_price,
+                'grand_total'   => $unit_price * $product_qty,
                 'buyer_currency'=> $listing->currency,
                 'total_price'   => $total_price,
+                'shipping_price'=> $total_price - ($unit_price * $product_qty),
                 'shipping'      => $shippingterm,
                 'shipping_price'=> $shippingamount,
                 'created'       => date('Y-m-d, H:i:s'),
@@ -1912,28 +1929,38 @@ class Marketplace extends MX_Controller
     }
     public function pay_asking_price()
     {   
+        if($_POST){
+
         $listing_id=$_POST['listing_id'];
         $buyer_id=$this->session->userdata('members_id');
         $total_price= $_POST['total_calgross_price'];
         $shipping=$_POST['shippingselected'];   
         if($listing=$this->marketplace_model->get_row('listing', array('id'=>$listing_id))){
-
+         $grand_total=0;
+         if(!empty($listing->unit_price) && !empty($listing->qty_available)){ 
+         $grand_total= $listing->unit_price * $listing->qty_available;
+         }
         $data_insert=array(
                 'buyer_id'      => $buyer_id,
                 'seller_id'     => $listing->member_id,
                 'listing_id'    => $listing_id,
                 'product_qty'   => $listing->qty_available,
                 'unit_price'    => '',
+                'grand_total'   => $grand_total,
                 'total_price'   => $total_price,
+                'shipping_price'=> $total_price - $grand_total,
                 'shipping'      => $shipping,
                 'buyer_currency'=> $listing->currency,
-                'offer_status'        => 3,
+                'offer_status'  => 3,
                 'created'       => date('Y-m-d, H:i:s')
                 );
         $this->marketplace_model->insert('make_offer',$data_insert);
         $this->session->set_flashdata('msg_success','Request inserted sucessfully...! ');
       }
       else{
+        $this->session->set_flashdata('msg_error','Failed, Please try again.');
+      }
+    }else{
         $this->session->set_flashdata('msg_error','Failed, Please try again.');
       }
       redirect($_SERVER['HTTP_REFERER']);

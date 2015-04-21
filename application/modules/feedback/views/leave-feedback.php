@@ -51,8 +51,8 @@
     </div>
    
     <!-- Feedback Stars -->
-    <link rel="stylesheet" href="http://localhost/projects/codeigniter/gsm-secure/public/main/template/gsm/css/star-rating.min.css" rel="stylesheet">
-    <script type="text/javascript" src="http://localhost/projects/codeigniter/gsm-secure/public/main/template/gsm/js/star-rating.min.js"></script>
+    <link rel="stylesheet" href="public/main/template/gsm/css/star-rating.min.css" rel="stylesheet">
+    <script type="text/javascript" src="public/main/template/gsm/js/star-rating.min.js"></script>
     <script>
     jQuery(document).ready(function () {
         $('.description-rating').rating({'showCaption':true, 'stars':'5', 'min':'0', 'max':'5', 'step':'1', 'size':'xs', 'starCaptions': {0:'Very inaccurate', 1:'Very inaccurate', 2:'Inaccurate', 3:'Neither inaccurate nor accurate', 4:'Accurate', 5:'Very accurate'}});
