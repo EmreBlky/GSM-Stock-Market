@@ -77,11 +77,11 @@
             <a onclick="deal_info(<?php echo $value->listing_id;?>)" data-toggle="modal" data-target="#deal_infos" class="btn btn-primary" >Deal Info</a>
         <?php if ($value->order_status == 1 && empty($value->payment_done)){ 
             ?>
-            <a onclick="insert_order_id(<?php echo $value->makeofferid;?>)" data-toggle="modal" data-target="#payment_done" class="btn btn-primary" >Make Payment</a>
+            <a onclick="insert_order_id(<?php echo $value->makeofferid;?>)" data-toggle="modal" data-target="#payment_done" class="btn btn-warning" >Make Payment</a>
             <!-- modal paymment info -->
 
         <?php }elseif($value->order_status == 3){ ?>
-          <a onclick="insert_order_id(<?php echo $value->makeofferid;?>)" data-toggle="modal" data-target="#shipping_received"  class="btn btn-info" >Shipment Confirm</a><!-- only status change -->
+          <a onclick="insert_order_id(<?php echo $value->makeofferid;?>)" data-toggle="modal" data-target="#shipping_received"  class="btn btn-warning" >Shipment Confirm</a><!-- only status change -->
 
         <?php } elseif($value->order_status == 4 && empty($value->buyer_feedback)){ 
             if(empty($value->buyer_feedback)){?>
@@ -151,15 +151,15 @@
             <td>
             <a onclick="deal_info(<?php echo $value->listing_id;?>)" data-toggle="modal" data-target="#deal_infos" class="btn btn-primary" >Deal Info</a>
             <?php if (empty($value->order_status)){ ?>
-            <a onclick="insert_order_id(<?php echo $value->makeofferid;?>)" data-toggle="modal" data-target="#insert_payment_info" class="btn btn-primary">Send Payment details</a><!-- modal for send payment detail -->
+            <a onclick="insert_order_id(<?php echo $value->makeofferid;?>)" data-toggle="modal" data-target="#insert_payment_info" class="btn btn-warning">Send Payment details</a><!-- modal for send payment detail -->
             <?php }elseif ($value->order_status == 1){ if($value->payment_done){?>
-            <a onclick="insert_order_id(<?php echo $value->makeofferid;?>)" data-toggle="modal" data-target="#payment_confirm" class="btn btn-primary" >Payment Confirm</a>
+            <a onclick="insert_order_id(<?php echo $value->makeofferid;?>)" data-toggle="modal" data-target="#payment_confirm" class="btn btn-warning" >Payment Confirm</a>
             <?php } /*else{?>
-             <a class="btn btn-primary" >Awaiting Payment</a>
+             <a class="btn btn-warning" >Awaiting Payment</a>
             <?php }*/ ?>
             <!-- modal for payment confirm -->
             <?php }elseif($value->order_status == 2){ ?>
-              <a onclick="insert_order_id(<?php echo $value->makeofferid;?>)" data-toggle="modal" data-target="#add_tracking_shipping_info" class="btn btn-primary" >Add tracking / Shipping Info</a>
+              <a onclick="insert_order_id(<?php echo $value->makeofferid;?>)" data-toggle="modal" data-target="#add_tracking_shipping_info" class="btn btn-warning" >Add tracking / Shipping Info</a>
              <!-- modal to add shipping information -->
             <?php } elseif($value->order_status == 4 && empty($value->seller_feedback)){ 
                 if(empty($value->seller_feedback)){?>
@@ -416,7 +416,7 @@
                     "sSwfPath": "public/main/template/core/js/plugins/dataTables/swf/copy_csv_xls_pdf.swf"
                 }
             });
-			/* multi select */
+    		/* multi select */
        	var config = {
                 '.chosen-select'           : {search_contains:true},
                 '.chosen-select-deselect'  : {allow_single_deselect:true},
