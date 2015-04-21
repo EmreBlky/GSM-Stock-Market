@@ -11,8 +11,9 @@
     
 <h1>Trade References</h1>
 <h2>We require:  (all mandatory fields)</h2>
-
 <h3>Trade Reference One (a company you have done business with within the last 90 days)</h3>
+<?php if($trade_ref->trade_1_confirm != 'yes'){?>
+
 Company Name:
 <div class="form-group">
     <?php
@@ -131,9 +132,13 @@ Country:
         <option value="<?php echo $country_one->id; ?>"><?php echo $country_one->country; ?></option>
     <?php }?> 
 </select>
+<?php } else { ?>
+<strong>CONFIRMED</strong>
+<?php }?>
 <br/>
 <br/>
 <h3>Trade Reference Two (a company you have done business with within the last 90 days)</h3>
+<?php if($trade_ref->trade_2_confirm != 'yes'){?>
 Company Name:
 <div class="form-group">
     <?php
@@ -252,9 +257,13 @@ Country:
         <option value="<?php echo $country_two->id; ?>"><?php echo $country_two->country; ?></option>
     <?php }?> 
 </select>
+<?php } else { ?>
+<strong>CONFIRMED</strong>
+<?php }?>
 <br/>
 <br/>
+<?php if($trade_ref->trade_1_confirm != 'yes' || $trade_ref->trade_2_confirm != 'yes') {?>
 <input type="submit" value="submit"/>
-
+<?php }?>
 <?php echo form_close(); ?>
 

@@ -1335,4 +1335,27 @@ class Admin extends MX_Controller
         
         redirect('admin/upgrades/');
     }
+    
+    function trade_ref($mid = NULL)
+    {
+        if ( ! $this->session->userdata('admin_logged_in'))
+        { 
+            redirect('admin/login');
+        }
+        
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel: Trade References';        
+        $data['page'] = 'trade-refs';
+        
+        $var = 'tradereference';
+        $var_model = $var.'_model';
+        
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        
+        $data[$var] = $this->{$var_model}->get_where_multiples_order('id', 'DESC', 'trade_1_confirm', 'yes');
+        $data['ref_count'] = $this->{$var_model}->_custom_query("SELECT COUNT(trade_1_confim, trade_2_confim) FROM tradereference WHERE (trade_1_confirm = 'yes') OR (trade_2_confirm = 'yes')");
+           
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
 }

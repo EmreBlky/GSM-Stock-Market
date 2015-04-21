@@ -135,30 +135,34 @@
                                 <td><?php echo $trade_ref->trade_1_company ;?></td>
                                 <td><?php echo $trade_ref->trade_1_email ;?></td>
                                 <td><?php echo $trade_ref->trade_1_phone ;?></td>
-                                <td><?php echo $trade_ref->trade_1_country ;?></td>
+                                <td><?php echo $this->country_model->get_where($trade_ref->trade_1_country)->country ;?></td>
                                 <?php if($trade_ref->trade_1_confirm == 'yes') {?>
                                     <td style="text-align:center"><span class="label label-primary">Confirmed</span></td>
                                 <?php } else {?>
                                     <td style="text-align:center"><span class="label label-warning">Awaiting Confirmation</span></td>
                                 <?php } ?>                                
                                 <td style="text-align:center">
+                                    <?php if($trade_ref->trade_1_confirm != 'yes') {?>
                                     <a href="tradereference/submit_refs" class="btn btn-warning" style="font-size:10px">Edit</a>
                                     <a href="#" class="btn btn-success" style="font-size:10px">Resend Email</a>
+                                    <?php } ?>
                                 </td>
                             </tr>
                             <tr>
                                 <td><?php echo $trade_ref->trade_2_company ;?></td>
                                 <td><?php echo $trade_ref->trade_2_email ;?></td>
                                 <td><?php echo $trade_ref->trade_2_phone ;?></td>
-                                <td><?php echo $trade_ref->trade_2_country ;?></td>
+                                <td><?php echo $this->country_model->get_where($trade_ref->trade_2_country)->country  ;?></td>
                                 <?php if($trade_ref->trade_2_confirm == 'yes') {?>
                                     <td style="text-align:center"><span class="label label-primary">Confirmed</span></td>
                                 <?php } else {?>
                                     <td style="text-align:center"><span class="label label-warning">Awaiting Confirmation</span></td>
                                 <?php } ?>  
                                 <td style="text-align:center">
+                                    <?php if($trade_ref->trade_2_confirm != 'yes') {?>
                                     <a href="tradereference/submit_refs" class="btn btn-warning" style="font-size:10px">Edit</a> 
                                     <a href="#" class="btn btn-success" style="font-size:10px">Resend Email</a>
+                                    <?php } ?>
                                 </td>
                             </tr>
                         </tbody>

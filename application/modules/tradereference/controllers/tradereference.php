@@ -12,6 +12,7 @@ class Tradereference extends MX_Controller
         $this->load->model('tradereference/tradereference_model', 'tradereference_model');
         $this->load->model('country/country_model', 'country_model');
         $this->load->model('member/member_model', 'member_model');
+        $this->load->model('company/company_model', 'company_model');
     }
 
     function index()
@@ -75,8 +76,8 @@ class Tradereference extends MX_Controller
 
             if($this->form_validation->run()){
                 
-                $code1 = $this->session->userdata('members_id').'-'.random_string('alnum', 4).'-'.random_string('alnum', 4).'-trade_1_confirm';
-                $code2 = $this->session->userdata('members_id').'-'.random_string('alnum', 4).'-'.random_string('alnum', 4).'-trade_2_confirm';
+                $code1 = $this->session->userdata('members_id').'-'.random_string('alnum', 4).'-'.random_string('alnum', 4).'-trade_1';
+                $code2 = $this->session->userdata('members_id').'-'.random_string('alnum', 4).'-'.random_string('alnum', 4).'-trade_2';
                 
                 $data = array(
                             'trade_1_company'   => $this->input->post('trade_1_company'),
@@ -115,12 +116,12 @@ class Tradereference extends MX_Controller
             if($email1 != ''){
                 
                 $email_body = '
-                                You have been assigned as a reference for '.$this->session->userdata('members_id').'.
+                                You have been assigned as a reference for '.$this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id)->company_name.'.
                                 <br/>
                                 Please could you click on the link below:
                                 <br/>
                                 <br/>
-                                '.$this->config->item('base_url').'radereference/confirm/'.$code1.'  
+                                '.$this->config->item('base_url').'tradereference/confirm/'.$code1.'  
                               ';
                 
                 $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Support');
@@ -136,12 +137,12 @@ class Tradereference extends MX_Controller
             if($email2 != ''){
                 
                 $email_body = '
-                                You have been assigned as a reference for '.$this->session->userdata('members_id').'.
+                                You have been assigned as a reference for '.$this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id)->company_name.'.
                                 <br/>
                                 Please could you click on the link below:
                                 <br/>
                                 <br/>
-                                '.$this->config->item('base_url').'radereference/confirm/'.$code2.'  
+                                '.$this->config->item('base_url').'tradereference/confirm/'.$code2.'  
                               ';
                 
                 $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Support');
@@ -164,16 +165,78 @@ class Tradereference extends MX_Controller
     
     function confirm($code = NULL)
     {
-        $confirm_code = substr($code, -15);
-        $member = $this->tradereference_model->_custom_query("SELECT member_id FROM tradereference WHERE (trade_1_code = '".$code."') OR (trade_2_code = '".$code."') ");
+        $data['base'] = $this->config->item('base_url');
+        $data['title'] = 'GSM - Trade Reference';
         
-        echo '<pre>';
-        print_r($member);
-//	$data['title'] = 'GSM - Trade Reference';
-//        $data['page'] = 'confirm';
-//        
-//        $this->load->module('templates');
-//        $this->templates->page($data);$newstring = substr($dynamicstring, -7);
-        echo $confirm_code;
+        if($code){
+            
+            $confirm_code = substr($code, -7);
+            $members = $this->tradereference_model->_custom_query("SELECT member_id, ".$confirm_code."_company, ".$confirm_code."_name, ".$confirm_code."_email, ".$confirm_code."_phone, ".$confirm_code."_confirm FROM tradereference WHERE (trade_1_code = '".$code."') OR (trade_2_code = '".$code."') ");
+            $data['message'] = 'no';
+            //$member = $members[0]->member_id;
+            //echo '<pre>';
+            //print_r($member);
+            //echo $confirm_code;
+            //$data['main'] = 'tradereference';
+            
+            $data['cc'] = $confirm_code;
+            $data['member'] = $members[0]->member_id;
+
+            if($confirm_code == 'trade_1'){            
+
+                $data['company'] = $members[0]->trade_1_company;
+                $data['name'] = $members[0]->trade_1_name;
+                $data['confirm'] = 'trade_1_confirm';
+
+            }
+            else{
+
+                $data['company'] = $members[0]->trade_2_company;
+                $data['name'] = $members[0]->trade_2_name;
+                $data['confirm'] = 'trade_2_confirm';
+
+            }
+        }
+        else{
+            $data['message'] = 'yes';
+        }
+        
+        $this->load->view('confirm', $data);
+        //$this->load->module('templates');
+        //$this->templates->page($data);
+//        $newstring = substr($dynamicstring, -7);
+        
+    }
+    
+    function tradeRef($code)
+    {
+        //echo '<pre>';
+        //print_r($_POST);
+        $mid = $this->input->post('member_id');
+        
+        if($code == 'trade_1'){
+            
+            $data = array(
+                'trade_1_comments' => $this->input->post('comment'),
+                'trade_1_confirm' => 'yes'
+            );
+            $this->tradereference_model->_update_where($data, 'member_id', $mid); 
+            
+        }
+        else{
+            
+            $data = array(
+                'trade_2_comments' => $this->input->post('comment'),
+                'trade_2_confirm' => 'yes'
+            );
+            $this->tradereference_model->_update_where($data, 'member_id', $mid); 
+            
+        }
+        $this->session->set_flashdata('confirm-reference', '<div style="margin:0 15px">    
+                                                                <div class="alert alert-warning">
+                                                                    Thank you. Your comments have been submited.
+                                                                </div>
+                                                            </div>');
+        redirect('tradereference/confirm');
     }
 }
