@@ -455,3 +455,12 @@ if ( ! function_exists('create_thumbnail')) {
 			return array('status'=>TRUE,'file_name'=>$config_img['file_name']);
 	}
 }
+
+if(!function_exists('comapny_info')){
+    function comapny_info($id=0)
+	{
+		$CI =& get_instance();
+		$CI->load->model('marketplace_model');
+		return $CI->marketplace_model->get_row('company',array('id'=>$id));
+	}
+}
