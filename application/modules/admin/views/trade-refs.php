@@ -70,7 +70,7 @@ if(is_numeric($id)){?>
                         </thead>
                         <tbody>
                         <?php foreach($tradereference as $ref) {?>
-                            <?php if($ref->trade_1_confirm == 'yes') {?>
+                            <?php if($ref->trade_1_confirm == 'yes' && $ref->trade_1_admin_approve != 'yes') {?>
                                 <tr>                            
                                     <td>
                                         <span class="pie"><?php echo $this->member_model->get_where($ref->member_id)->firstname.' '.$this->member_model->get_where($ref->member_id)->lastname.' ('.$this->company_model->get_where($this->member_model->get_where($ref->member_id)->company_id)->company_name.')'; ?></span>
@@ -102,7 +102,7 @@ if(is_numeric($id)){?>
         <!--                            <td>A</td>-->
                                 </tr>
                                  <?php } ?>
-                                <?php if($ref->trade_2_confirm == 'yes') {?>
+                                <?php if($ref->trade_2_confirm == 'yes' && $ref->trade_2_admin_approve != 'yes') {?>
                                 <tr>                            
                                     <td>
                                         <span class="pie"><?php echo $this->member_model->get_where($ref->member_id)->firstname.' '.$this->member_model->get_where($ref->member_id)->lastname.' ('.$this->company_model->get_where($this->member_model->get_where($ref->member_id)->company_id)->company_name.')'; ?></span>
