@@ -45,7 +45,7 @@
         <div class="ibox">
           <div class="ibox-title">
               <?php if($member->marketplace == 'active') { ?>
-                <span class="label label-success pull-right">Marketplace Active</span>
+                <span class="label label-primary pull-right">Marketplace Active</span>
               <?php } else {?>
                 <span class="label label-danger pull-right">Marketplace Inactive</span>
               <?php }?>

@@ -265,7 +265,7 @@ class Tradereference extends MX_Controller
                 
                 $this->session->set_flashdata('trade-confirmation', '<div style="margin:0 15px">    
                                                                             <div class="alert alert-success">
-                                                                                Your Trade References have been updated.
+                                                                                Your Trade Reference(s) have been updated. We have sent an verification message to the email(s) supplied.
                                                                             </div>
                                                                         </div>');
                 redirect('tradereference/');
@@ -346,7 +346,7 @@ class Tradereference extends MX_Controller
         
         $this->session->set_flashdata('confirm-reference', '<div style="margin:0 15px">    
                                                                 <div class="alert alert-warning">
-                                                                    Thank you. Your comments have been submited.
+                                                                    Thank you. Your comments have been submitted.
                                                                 </div>
                                                             </div>');
         
@@ -434,7 +434,7 @@ class Tradereference extends MX_Controller
 
             $this->session->set_flashdata('confirm-resend', '<div style="margin:0 15px">    
                                                                 <div class="alert alert-success">
-                                                                    An email has been resent.
+                                                                    We have resent an email from <strong>noreply@gsmstockmarket.com</strong> to your trade reference.
                                                                 </div>
                                                             </div>');
 
