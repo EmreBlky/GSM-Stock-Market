@@ -4,8 +4,7 @@
 //    print_r($trade_ref);
 //    exit;
 ?>
-<?php 
-    echo '<br/>';
+<?php     
     echo $this->session->flashdata('trade-confirmation'); 
     echo $this->session->flashdata('confirm-resend');
 ?>

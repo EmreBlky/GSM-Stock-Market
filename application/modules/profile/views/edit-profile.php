@@ -604,7 +604,11 @@ echo form_open_multipart('profile/profileEdit', $attributes);
             </div>
         </div>
     </div>
-
+    <?php if(isset($support_edit)){ echo '<div style="margin:0 15px">    
+                                                                <div class="alert alert-warning">
+                                                                    *** WARNING *** Support Edit Enabled
+                                                                </div>
+                                                            </div>';}?>
     <div class="row">
         <div class="col-lg-8">
             <div class="ibox float-e-margins">
@@ -613,8 +617,9 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                 </div>
                 <div class="ibox-content">
                     <?php
-                    $attributes = array('class' => 'form-horizontal validation', 'onsubmit' => 'return validate_info()');
-                    echo form_open('profile/profileEdit', $attributes);
+                    
+                        $attributes = array('class' => 'form-horizontal validation', 'onsubmit' => 'return validate_info()');
+                        echo form_open('profile/profileEdit', $attributes);
                     ?>
 
                     <div class="form-group"><label class="col-md-3 control-label">Company Name <span
@@ -1442,6 +1447,13 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                                                 </div>
                                             </div>
                                         </div>
+                                        <?php
+                                        if(isset($support_edit)){
+                                        ?>                        
+                                            <input type="hidden" name="support_pic_edit" value="<?php echo $mid; ?>"/>                        
+                                        <?php                        
+                                        }  
+                                        ?>
                                         </form>
                                         <!-- Form Div -->
                                     </div>
@@ -1823,6 +1835,13 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                                                 </div>
                                             </div>
                                         </div>
+                                        <?php
+                                        if(isset($support_edit)){
+                                        ?>                        
+                                            <input type="hidden" name="support_pic_edit" value="<?php echo $mid; ?>"/>                        
+                                        <?php                        
+                                        }  
+                                        ?>
                                         </form>
                                         <!-- Form Div -->
                                     </div>
@@ -1834,7 +1853,13 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                             <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
                         </div>
                         <!-- /Cropper -->
-                        
+                        <?php
+                        if(isset($support_edit)){
+                        ?>                        
+                            <input type="hidden" name="support_edit" value="<?php echo $mid; ?>"/>                        
+                        <?php                        
+                        }  
+                        ?>
                         </div>
                     </div>
                 </div>
