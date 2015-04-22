@@ -137,7 +137,7 @@ class Preferences extends MX_Controller
         if($message == 'confirm'){
             $data['trade_confirm'] = '<div style="margin:0 15px">    
                                                                 <div class="alert alert-warning">
-                                                                    Please upgrade to silver before you can submit the references.
+                                                                    <i class="fa fa-warning"></i> Please upgrade to <strong>Silver Membership</strong> before you can submit any references.
                                                                 </div>
                                                             </div>';
         }

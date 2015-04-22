@@ -77,13 +77,13 @@
                                 <h5>Upgrade to Silver Membership</h5>
                             </div>
                             <div class="ibox-content" style="min-height:89px;text-align:center">
-                        	<label class="control-label">Payment Method: </label>
+                        	<label class="control-label">Subscription &amp; Payment: </label>                            
                             <select id="selectMe" class="form-control" style="width:auto;display:inline-block">
-                              <option value="option1_6">PayPal (6 Months)</option>
+                              <option value="option1_6" disabled style="display:none">PayPal (6 Months)</option>
                               <option value="option1_12">PayPal (1 Year)</option>
-                              <option value="option2_6">Bank Transfer (6 Months)</option>
+                              <option value="option2_6" disabled style="display:none">Bank Transfer (6 Months)</option>
                               <option value="option2_12">Bank Transfer (1 Year)</option>
-                              <option value="option3_6">Credit/Debit Card (6 Months)</option>
+                              <option value="option3_6" disabled style="display:none">Credit/Debit Card (6 Months)</option>
                               <option value="option3_12">Credit/Debit Card (1 Year)</option>
                             </select>
                             <button id="option1_6" class="payment_method btn btn-primary" data-toggle="modal" data-target="#payment_paypal_6" style="font-size:12px;margin-bottom:3px">Upgrade Now</button>
