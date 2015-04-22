@@ -90,11 +90,12 @@ if(is_numeric($id)){?>
                                     <td> DECLINED </td>
                                     <?php } else { ?>
                                     <td>
+                                        AWAITING APPROVAL
                                         <!-- <a href="admin/edit_bio/<?php echo $ref->id;?>"><i class="fa fa-book"></i> Edit</a>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <a href="admin/bioApprove/<?php echo $ref->id;?>"><i class="fa fa-check text-navy"></i> Approve</a>
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <a href="admin/bioDecline/<?php echo $ref->id;?>"><i class="fa fa-times text-warning"></i> Decline</a>
+                                        <a href="admin/bioDecline/<?php echo $ref->id;?>"><i class="fa fa-times text-warning"></i> Decline</a> -->
                                     </td>
                                     <?php } ?>
                                    
@@ -121,11 +122,12 @@ if(is_numeric($id)){?>
                                     <td> DECLINED </td>
                                     <?php } else { ?>
                                     <td>
+                                        AWAITING APPROVAL
                                         <!-- <a href="admin/edit_bio/<?php echo $ref->id;?>"><i class="fa fa-book"></i> Edit</a>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <a href="admin/bioApprove/<?php echo $ref->id;?>"><i class="fa fa-check text-navy"></i> Approve</a>
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <a href="admin/bioDecline/<?php echo $ref->id;?>"><i class="fa fa-times text-warning"></i> Decline</a>
+                                        <a href="admin/bioDecline/<?php echo $ref->id;?>"><i class="fa fa-times text-warning"></i> Decline</a> -->
                                     </td>
                                     <?php } ?>
         <!--                            <td>A</td>-->

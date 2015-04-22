@@ -5,7 +5,9 @@
 //    exit;
 ?>
 <?php 
+    echo '<br/>';
     echo $this->session->flashdata('trade-confirmation'); 
+    echo $this->session->flashdata('confirm-resend');
 ?>
 
   <div class="row wrapper border-bottom white-bg page-heading">
@@ -145,8 +147,8 @@
                                 <?php } ?>                                
                                 <td style="text-align:center">
                                     <?php if($trade_ref->trade_1_confirm == 'no' || $trade_ref->trade_1_admin_approve == 'declined') {?>                                    
-                                    <a href="tradereference/submit_refs" class="btn btn-warning" style="font-size:10px">Edit</a>
-                                    <a href="#" class="btn btn-success" style="font-size:10px">Resend Email</a>
+                                    <a href="tradereference/submit_refs/trade_1" class="btn btn-warning" style="font-size:10px">Edit</a>
+                                    <a href="tradereference/resend/<?php echo $trade_ref->member_id ;?>/<?php echo $trade_ref->trade_1_email ;?>/<?php echo $trade_ref->trade_1_code ;?>" class="btn btn-success" style="font-size:10px">Resend Email</a>
                                     <?php } ?>
                                 </td>
                             </tr>
@@ -164,8 +166,8 @@
                                 <?php } ?>   
                                 <td style="text-align:center">
                                     <?php if($trade_ref->trade_2_confirm == 'no' || $trade_ref->trade_2_admin_approve == 'declined') {?>
-                                    <a href="tradereference/submit_refs" class="btn btn-warning" style="font-size:10px">Edit</a> 
-                                    <a href="#" class="btn btn-success" style="font-size:10px">Resend Email</a>
+                                    <a href="tradereference/submit_refs/trade_2" class="btn btn-warning" style="font-size:10px">Edit</a> 
+                                    <a href="tradereference/resend/<?php echo $trade_ref->member_id; ?>/<?php echo $trade_ref->trade_2_email ;?>/<?php echo $trade_ref->trade_2_code ;?>" class="btn btn-success" style="font-size:10px">Resend Email</a>
                                     <?php } ?>
                                 </td>
                             </tr>

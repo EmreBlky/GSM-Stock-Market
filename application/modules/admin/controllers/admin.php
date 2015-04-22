@@ -1359,9 +1359,19 @@ class Admin extends MX_Controller
         }
         else{
 
+            $tade_count = $this->{$var_model}->_custom_query_count("SELECT COUNT(*) AS count FROM gsmstock_secure.tradereference WHERE (trade_1_confirm = 'yes') OR (trade_2_confirm = 'yes')");
+            //echo '<pre>';
+            //print_r($tade_count);
+            //exit;
+            
+            if($tade_count[0]->count > 0){
             //$data[$var] = $this->{$var_model}->get_where_multiples_order('id', 'DESC', 'trade_1_confirm', 'yes', 'OR trade_2_confirm', 'yes');
             $data[$var] = $this->{$var_model}->_custom_query("SELECT * FROM tradereference WHERE (trade_1_confirm = 'yes') OR (trade_2_confirm = 'yes')");
-            $data['ref_count'] = $this->{$var_model}->count_where('trade_completed', 'yes');
+            $data['ref_count'] = $tade_count[0]->count;
+            }
+            else{
+                $data['ref_count'] = 0;
+            }
         }   
         $this->load->module('templates');
         $this->templates->admin($data);

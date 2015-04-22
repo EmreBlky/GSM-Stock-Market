@@ -37,7 +37,7 @@ class Tradereference extends MX_Controller
         $this->templates->page($data);
     }
     
-    function submit_refs()
+    function submit_refs($trader = NULL)
     {
         
         $data['main'] = 'tradereference';
@@ -47,6 +47,12 @@ class Tradereference extends MX_Controller
         
         $data['trade_ref'] = $this->tradereference_model->get_where_multiple('member_id', $this->session->userdata('members_id'));
         
+        if($trader){
+            $data['trader'] = $trader;
+        }
+        else{
+            $data['trader'] = '';
+        }
         $data['country_one'] = $this->country_model->get_all();
         $data['country_two'] = $this->country_model->get_all();
         
@@ -57,6 +63,10 @@ class Tradereference extends MX_Controller
     
     function updateRef()
     {
+//        echo '<pre>';
+//        print_r($_POST);
+//        exit;        
+        
         $this->load->helper('string');
         $this->load->library('form_validation');		            
             
@@ -73,94 +83,129 @@ class Tradereference extends MX_Controller
         
         $email1 = $this->input->post('trade_1_email');
         $email2 = $this->input->post('trade_2_email');
+        $trader = $this->input->post('trader');
 
             if($this->form_validation->run()){
                 
                 $code1 = $this->session->userdata('members_id').'-'.random_string('alnum', 4).'-'.random_string('alnum', 4).'-trade_1';
                 $code2 = $this->session->userdata('members_id').'-'.random_string('alnum', 4).'-'.random_string('alnum', 4).'-trade_2';
                 
-                $data = array(
-                            'trade_1_company'   => $this->input->post('trade_1_company'),
-                            'trade_1_name'      => $this->input->post('trade_1_name'),
-                            'trade_1_email'     => $email1,
-                            'trade_1_phone'     => $this->input->post('trade_1_phone'),
-                            'trade_1_country'   => $this->input->post('trade_1_country'),
-                            'trade_1_code'      => $code1,
-                            'trade_2_company'   => $this->input->post('trade_2_company'),
-                            'trade_2_name'      => $this->input->post('trade_2_name'),
-                            'trade_2_email'     => $email2,
-                            'trade_2_phone'     => $this->input->post('trade_2_phone'),
-                            'trade_2_country'   => $this->input->post('trade_2_country'),
-                            'trade_2_code'      => $code2,
-                );
-                $this->tradereference_model->_update_where($data, 'member_id', $this->session->userdata('members_id'));
+                if($trader == 'trade_1'){
+                    
+                    $data = array(
+                                'trade_1_company'       => $this->input->post('trade_1_company'),
+                                'trade_1_name'          => $this->input->post('trade_1_name'),
+                                'trade_1_email'         => $email1,
+                                'trade_1_phone'         => $this->input->post('trade_1_phone'),
+                                'trade_1_country'       => $this->input->post('trade_1_country'),
+                                'trade_1_code'          => $code1,
+                                'trade_1_confirm'       => 'no',
+                                'trade_1_admin_approve' => 'no'
+                    );
+                    $this->tradereference_model->_update_where($data, 'member_id', $this->session->userdata('members_id'));
+                }
+                elseif($trader == 'trade_2'){
+                    
+                    $data = array(                                
+                                'trade_2_company'       => $this->input->post('trade_2_company'),
+                                'trade_2_name'          => $this->input->post('trade_2_name'),
+                                'trade_2_email'         => $email2,
+                                'trade_2_phone'         => $this->input->post('trade_2_phone'),
+                                'trade_2_country'       => $this->input->post('trade_2_country'),
+                                'trade_2_code'          => $code2,
+                                'trade_2_confirm'       => 'no',
+                                'trade_2_admin_approve' => 'no'
+                    );
+                    $this->tradereference_model->_update_where($data, 'member_id', $this->session->userdata('members_id'));
+                    
+                }
+                else{
+                
+                    $data = array(
+                                'trade_1_company'   => $this->input->post('trade_1_company'),
+                                'trade_1_name'      => $this->input->post('trade_1_name'),
+                                'trade_1_email'     => $email1,
+                                'trade_1_phone'     => $this->input->post('trade_1_phone'),
+                                'trade_1_country'   => $this->input->post('trade_1_country'),
+                                'trade_1_code'      => $code1,
+                                'trade_2_company'   => $this->input->post('trade_2_company'),
+                                'trade_2_name'      => $this->input->post('trade_2_name'),
+                                'trade_2_email'     => $email2,
+                                'trade_2_phone'     => $this->input->post('trade_2_phone'),
+                                'trade_2_country'   => $this->input->post('trade_2_country'),
+                                'trade_2_code'      => $code2,
+                    );
+                    $this->tradereference_model->_update_where($data, 'member_id', $this->session->userdata('members_id'));
 
-            }
-            
-            $this->load->module('emails');
-            $config = Array(
-                            'protocol' => 'smtp',
-                            'smtp_host' => 'ssl://server.gsmstockmarket.com',
-                            'smtp_port' => 465,
-                            'smtp_user' => 'noreply@gsmstockmarket.com',
-                            'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
-                            'charset' => 'utf-8',
-                            'wordwrap' => TRUE,
-                            'newline' => "\r\n",
-                            'crlf'    => ""
-                        );
+                }
 
-            $this->load->library('email', $config);
-            $this->email->set_mailtype("html");
-            
-            if($email1 != ''){
-                
-                $email_body = '
-                                You have been assigned as a reference for '.$this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id)->company_name.'.
-                                <br/>
-                                Please could you click on the link below:
-                                <br/>
-                                <br/>
-                                '.$this->config->item('base_url').'tradereference/confirm/'.$code1.'  
-                              ';
-                
-                $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Support');
-                
-                $this->email->to($email1);
-                $this->email->subject('GSM Stockmarket Trade Reference');
-                $this->email->message($email_body);
+                $this->load->module('emails');
+                $config = Array(
+                                'protocol' => 'smtp',
+                                'smtp_host' => 'ssl://server.gsmstockmarket.com',
+                                'smtp_port' => 465,
+                                'smtp_user' => 'noreply@gsmstockmarket.com',
+                                'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
+                                'charset' => 'utf-8',
+                                'wordwrap' => TRUE,
+                                'newline' => "\r\n",
+                                'crlf'    => ""
+                            );
 
-                $this->email->send();
-                
-            }
-            
-            if($email2 != ''){
-                
-                $email_body = '
-                                You have been assigned as a reference for '.$this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id)->company_name.'.
-                                <br/>
-                                Please could you click on the link below:
-                                <br/>
-                                <br/>
-                                '.$this->config->item('base_url').'tradereference/confirm/'.$code2.'  
-                              ';
-                
-                $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Support');
-                
-                $this->email->to($email2);
-                $this->email->subject('GSM Stockmarket Trade Reference');
-                $this->email->message($email_body);
+                $this->load->library('email', $config);
+                $this->email->set_mailtype("html");
 
-                $this->email->send();
+                if($email1 != ''){
+
+                    $email_body = '
+                                    You have been assigned as a reference for '.$this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id)->company_name.'.
+                                    <br/>
+                                    Please could you click on the link below:
+                                    <br/>
+                                    <br/>
+                                    '.$this->config->item('base_url').'tradereference/confirm/'.$code1.'  
+                                  ';
+
+                    $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Support');
+
+                    $this->email->to($email1);
+                    $this->email->subject('GSM Stockmarket Trade Reference');
+                    $this->email->message($email_body);
+
+                    $this->email->send();
+
+                }
+
+                if($email2 != ''){
+
+                    $email_body = '
+                                    You have been assigned as a reference for '.$this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id)->company_name.'.
+                                    <br/>
+                                    Please could you click on the link below:
+                                    <br/>
+                                    <br/>
+                                    '.$this->config->item('base_url').'tradereference/confirm/'.$code2.'  
+                                  ';
+
+                    $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Support');
+
+                    $this->email->to($email2);
+                    $this->email->subject('GSM Stockmarket Trade Reference');
+                    $this->email->message($email_body);
+
+                    $this->email->send();                   
+                       
+                }
                 
+                $this->session->set_flashdata('trade-confirmation', '<div style="margin:0 15px">    
+                                                                            <div class="alert alert-success">
+                                                                                Your Trade References have been updated.
+                                                                            </div>
+                                                                        </div>');
+                redirect('tradereference/');
             }
         
-        $this->session->set_flashdata('trade-confirmation', '<div style="margin:0 15px">    
-                                                                <div class="alert alert-success">
-                                                                    Your Trade References have been updated.
-                                                                </div>
-                                                            </div>');
-        redirect('tradereference/');    
+             
     }
     
     function confirm($code = NULL)
@@ -251,5 +296,49 @@ class Tradereference extends MX_Controller
             
         }
         redirect('tradereference/confirm');
+    }
+    
+    function resend($mid, $email, $code)
+    {
+        $this->load->module('emails');
+        $config = Array(
+                        'protocol' => 'smtp',
+                        'smtp_host' => 'ssl://server.gsmstockmarket.com',
+                        'smtp_port' => 465,
+                        'smtp_user' => 'noreply@gsmstockmarket.com',
+                        'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
+                        'charset' => 'utf-8',
+                        'wordwrap' => TRUE,
+                        'newline' => "\r\n",
+                        'crlf'    => ""
+                    );
+
+        $this->load->library('email', $config);
+        $this->email->set_mailtype("html");
+
+        $email_body = '
+                        You have been assigned as a reference for '.$this->company_model->get_where($this->member_model->get_where($mid)->company_id)->company_name.'.
+                        <br/>
+                        Please could you click on the link below:
+                        <br/>
+                        <br/>
+                        '.$this->config->item('base_url').'tradereference/confirm/'.$code.'  
+                      ';
+
+            $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Support');
+
+            $this->email->to($email);
+            $this->email->subject('GSM Stockmarket Trade Reference');
+            $this->email->message($email_body);
+
+            $this->email->send();
+
+            $this->session->set_flashdata('confirm-resend', '<div style="margin:0 15px">    
+                                                                <div class="alert alert-success">
+                                                                    An email has been resent..
+                                                                </div>
+                                                            </div>');
+
+            redirect('tradereference/');
     }
 }
