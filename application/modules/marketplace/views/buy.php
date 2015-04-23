@@ -46,7 +46,7 @@ endif;
      <form action="<?php echo base_url('marketplace/buy'); ?>/" method="get" accept-charset="utf-8">
            <div class="row">
             <div class="col-lg-3" style="padding-right:0">
-            	<select name="lc" class="form-control" tabindex="1">
+                <select name="lc" class="form-control" tabindex="1">
                 	<option value="" selected="">All Categories</option>
                     <?php if (!empty($listing_categories)): ?>
                     <?php foreach ($listing_categories as $row): ?>
@@ -244,7 +244,7 @@ endif;
         <td><?php echo $value->product_model; ?></td>
         <td><?php echo $value->product_type; ?></td>
         <td><?php echo $value->condition; ?></td>
-        <td data-toggle="tooltip" data-placement="left" title="mouseover currency"><?php echo $value->unit_price; ?></td>
+        <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo $value->unit_price; ?></td>
         <td><?php echo $value->total_qty; ?></td>
         <td><?php echo $value->spec; ?></td>
         <td>
