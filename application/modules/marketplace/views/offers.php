@@ -305,6 +305,28 @@ $member_id=$this->session->userdata('members_id');?>
         </div>
     </div>  
     
+    <div class="modal inmodal fade" id="form_counter_section" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog modal-sm">
+    <div class="modal-content">
+  <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4 class="modal-title">Counter offer</h4>
+  </div>
+  <div class="modal-body">
+   <form action="<?php echo base_url()."marketplace/counter_offer/";?>" method="post" accept-charset="utf-8">
+      <div class="row">
+        <input type="text" name="qty" value="" placeholder="Quantity" class="form-control">
+        <input type="hidden" name="offer_id" value="" class="offer_id_insert"><br>
+        <input type="text" name="per_unit_price" value="" placeholder="Per unit price"  class="form-control">
+    </div>
+    <div class="modal-footer">
+    <button type="submit" class="btn btn-primary">Send Offer</button>
+    </div>  
+    </form>
+    </div>
+  </div>
+</div>
+</div>
     </div> 
 </div>
 <!-- Data Tables -->
@@ -380,5 +402,8 @@ color: #fff;
        $.post('<?php echo base_url() ?>marketplace/offer_status', {listing_id: list, buyer_id: buyer_id}, function(data) {
            $('#offer_status_msg').html(data);
        });
+    }
+     function counter_offer(offer_id) {
+        $('.offer_id_insert').val(offer_id);  
     }
 </script>
