@@ -77,7 +77,7 @@
                                 <h5>Upgrade to Silver Membership</h5>
                             </div>
                             <div class="ibox-content" style="min-height:89px;text-align:center">
-                        	<label class="control-label">Subscription &amp; Payment: </label>                            
+                        	<label class="control-label">Subscription: </label>                            
                             <select id="selectMe" class="form-control" style="width:auto;display:inline-block">
                               <option value="option1_6" disabled style="display:none">PayPal (6 Months)</option>
                               <option value="option1_12">PayPal (1 Year)</option>
@@ -636,7 +636,7 @@ $(document).ready(function() {
 <script>
 $(document).ready(function () {
   $('.payment_method').hide();
-  $('#option1_6').show();
+  $('#option1_12').show();
   $('#selectMe').change(function () {
     $('.payment_method').hide();
     $('#'+$(this).val()).show();
