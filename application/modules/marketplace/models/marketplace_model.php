@@ -10,7 +10,7 @@ class Marketplace_model extends MY_Model {
 
     public function insert($table_name='',  $data=''){
         $query=$this->db->insert($table_name, $data);
-		if($query)
+    	if($query)
 			return $this->db->insert_id();
 		else
 			return FALSE;		
@@ -579,5 +579,42 @@ class Marketplace_model extends MY_Model {
 				return $query->result();
 			else
 				return FALSE;
+	}
+
+	public function count_all_offer()
+	{
+		$member_id=$this->session->userdata('members_id');
+		$query=$this->db->query("SELECT count(id) as totaloffer from make_offer where (seller_id = ".$member_id." or buyer_id=".$member_id.") AND (offer_status=0)" );
+		return $query->row()->totaloffer;
+	}
+
+	public function count_open_order()
+	{
+		$member_id=$this->session->userdata('members_id');
+		$query=$this->db->query("SELECT count(id) as totalopenorder from make_offer where (seller_id = ".$member_id." or buyer_id=".$member_id.") AND offer_status=1 AND order_status < 5 AND seller_history=0 AND buyer_history=0" );
+		return $query->row()->totalopenorder;
+	}
+
+	public function countmy_listing()
+	{
+		$member_id=$this->session->userdata('members_id');
+		$query=$this->db->query("SELECT count(id) as totallisting from listing where member_id=".$member_id." AND schedule_date_time <= '".date('Y-m-d h:i:s')."' AND `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'");
+		return $query->row()->totallisting;
+	}
+
+	
+	public function count_watch_listing()
+	{
+		$member_id=$this->session->userdata('members_id');
+		$query=$this->db->query("SELECT count(id) as totalwatching
+			from listing_watch where user_id=".$member_id);
+		return $query->row()->totalwatching;
+	}
+
+	public function count_save_listing()
+	{
+		$member_id=$this->session->userdata('members_id');
+		$query=$this->db->query("SELECT count(id) as totalsavelisting from listing where status=0 and member_id=".$member_id);
+		return $query->row()->totalsavelisting;
 	}
 }
