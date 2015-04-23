@@ -4,7 +4,7 @@
 */
 if ( ! function_exists('clear_cache')) {
     function clear_cache(){
-    	$CI =& get_instance();
+        $CI =& get_instance();
 		$CI->output->set_header('Expires: Wed, 11 Jan 1984 05:00:00 GMT' );
 		$CI->output->set_header('Last-Modified: ' . gmdate( 'D, d M Y H:i:s' ) . 'GMT');
 		$CI->output->set_header("Cache-Control: no-cache, no-store, must-revalidate");
@@ -463,4 +463,60 @@ if(!function_exists('comapny_info')){
 		$CI->load->model('marketplace_model');
 		return $CI->marketplace_model->get_row('company',array('id'=>$id));
 	}
+
+ if(! function_exists('all_offer')){
+   	   function all_offer(){
+          $CI = & get_instance();
+          $CI->load->model('marketplace_model');
+         if($query=$CI->marketplace_model->count_all_offer())
+		 	return $query;
+		 else
+		 	return false;
+     } 
+   }
+
+   if(! function_exists('count_open_order')){
+   	   function count_open_order(){
+          $CI = & get_instance();
+          $CI->load->model('marketplace_model');
+         if($query=$CI->marketplace_model->count_open_order())
+		 	return $query;
+		 else
+		 	return false;
+     } 
+   }
+
+   if(! function_exists('countmy_listing')){
+   	   function countmy_listing(){
+          $CI = & get_instance();
+          $CI->load->model('marketplace_model');
+         if($query=$CI->marketplace_model->countmy_listing())
+		 	return $query;
+		 else
+		 	return false;
+     } 
+   }
+
+    if(! function_exists('count_watch_listing')){
+   	   function count_watch_listing(){
+          $CI = & get_instance();
+          $CI->load->model('marketplace_model');
+         if($query=$CI->marketplace_model->count_watch_listing())
+		 	return $query;
+		 else
+		 	return false;
+     } 
+   }
+
+    if(! function_exists('count_save_listing')){
+   	   function count_save_listing(){
+          $CI = & get_instance();
+          $CI->load->model('marketplace_model');
+         if($query=$CI->marketplace_model->count_save_listing())
+		 	return $query;
+		 else
+		 	return false;
+     } 
+   }
+
 }
