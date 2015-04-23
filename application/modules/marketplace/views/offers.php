@@ -55,7 +55,7 @@ $member_id=$this->session->userdata('members_id');?>
                 <td><?php echo date('d-M-y, H:i', strtotime($value->listing_end_datetime)); ?></td>
                 <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
                 <td><?php echo $value->condition; ?></td>
-                <td data-toggle="tooltip" data-placement="left" title="t"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
+                <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
                 <td><?php echo $value->qty_available; ?></td>
                 <td><?php echo $value->spec; ?></td>
                 <td class="text-center">
@@ -108,7 +108,7 @@ $member_id=$this->session->userdata('members_id');?>
                 <td><?php echo date('d-M-y, H:i', strtotime($value->listing_end_datetime)); ?></td>
                 <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
                 <td><?php echo $value->condition; ?></td>
-                <td data-toggle="tooltip" data-placement="left" title="t"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
+                <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
                 <td><?php echo $value->qty_available; ?></td>
                 <td><?php echo $value->spec; ?></td>
                 <td class="text-center">
@@ -201,7 +201,7 @@ $member_id=$this->session->userdata('members_id');?>
                 <td><?php echo date('d-M-y, H:i', strtotime($value->listing_end_datetime)); ?></td>
                 <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
                 <td><?php echo $value->condition; ?></td>
-                <td data-toggle="tooltip" data-placement="left" title="t"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
+                <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
                 <td><?php echo $value->qty_available; ?></td>
                 <td><?php echo $value->spec; ?></td>
                 <td class="text-center">
@@ -254,7 +254,7 @@ $member_id=$this->session->userdata('members_id');?>
                 <td><?php echo date('d-M-y, H:i', strtotime($value->listing_end_datetime)); ?></td>
                 <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
                 <td><?php echo $value->condition; ?></td>
-                <td data-toggle="tooltip" data-placement="left" title="t"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
+                <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
                 <td><?php echo $value->qty_available; ?></td>
                 <td><?php echo $value->spec; ?></td>
                 <td class="text-center">
