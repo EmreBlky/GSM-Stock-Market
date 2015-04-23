@@ -10,7 +10,7 @@ class Marketplace_model extends MY_Model {
 
     public function insert($table_name='',  $data=''){
         $query=$this->db->insert($table_name, $data);
-    	if($query)
+		if($query)
 			return $this->db->insert_id();
 		else
 			return FALSE;		
@@ -500,7 +500,7 @@ class Marketplace_model extends MY_Model {
 	{
 		$member_id=$this->session->userdata('members_id');
 		$this->db->select('make_offer.*,listing.product_mpn_isbn,listing.product_make,listing.product_model,listing.product_type,listing.product_color,listing.product_desc');
-		$this->db->like('make_offer.invoice_no',$invoice_no);
+		$this->db->where('make_offer.invoice_no',$invoice_no);
 		$where_condition="(`make_offer`.`seller_id` = ".$member_id." OR `make_offer`.`buyer_id`=".$member_id.")";
 		$this->db->where($where_condition);
 		$this->db->from('make_offer');
@@ -511,5 +511,73 @@ class Marketplace_model extends MY_Model {
 			else
 				return FALSE;
 	}
+	public function sell_buy_negotiation(){
+		$member_id=$this->session->userdata('members_id');
+		$this->db->select('negotiation.*,listing.product_mpn_isbn,listing.product_make,listing.product_model,listing.product_type,listing.product_color,listing.condition,listing.product_desc,listing.listing_end_datetime,listing.currency,listing.qty_available,listing.spec,listing.member_id as listingmemberid');
+		//$this->db->where('negotiation.offer_type',1);
+		$where_condition="(`negotiation`.`seller_id` = ".$member_id." OR `negotiation`.`buyer_id`=".$member_id.")";
+		$this->db->where($where_condition);
+		$this->db->from('negotiation');
+		$this->db->join('listing','listing.id=negotiation.listing_id');
+		$this->db->where('negotiation.status',0);
+		$query = $this->db->get();
+			if($query->num_rows()>0)
+				return $query->result();
+			else
+				return FALSE;
+	}
 	
+	public function buyer_negotiation(){
+		$member_id=$this->session->userdata('members_id');
+		$this->db->select('negotiation.*,listing.product_mpn_isbn,listing.product_make,listing.product_model,listing.product_type,listing.product_color,listing.condition,listing.product_desc,listing.listing_end_datetime,listing.currency,listing.qty_available,listing.spec');
+		$where_condition="(`negotiation`.`seller_id` = ".$member_id." OR `negotiation`.`buyer_id`=".$member_id.")";
+		$this->db->where($where_condition);
+		
+		$this->db->from('negotiation');
+		$this->db->where('negotiation.status',0);
+		$this->db->join('listing','listing.id=negotiation.listing_id');
+		$query = $this->db->get();
+			if($query->num_rows()>0)
+				return $query->result();
+			else
+				return FALSE;
+	}
+
+	public function view_negotiation_payasking($parent_id=''){
+		$member_id=$this->session->userdata('members_id');
+		$this->db->select('negotiation.*,company.company_name,listing.product_mpn_isbn,listing.product_make,listing.product_model,listing.product_type,listing.product_color,listing.condition,listing.product_desc,listing.listing_end_datetime,listing.currency,listing.qty_available,listing.spec,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
+		
+		$where_condition="(`negotiation`.`status` != 1)";
+		$this->db->where($where_condition);
+
+		$this->db->where('negotiation.offer_id',$parent_id);
+		$this->db->from('negotiation');
+		$this->db->join('company','company.admin_member_id=negotiation.seller_id');
+		$this->db->join('listing','listing.id=negotiation.listing_id');
+		$query = $this->db->get();
+			if($query->num_rows()>0)
+				return $query->result();
+			else
+				return FALSE;
+	}
+
+	public function view_negotiation($parent_id=''){
+		$member_id=$this->session->userdata('members_id');
+		$this->db->select('negotiation.*,company.company_name,listing.product_mpn_isbn,listing.product_make,listing.product_model,listing.product_type,listing.product_color,listing.condition,listing.product_desc,listing.listing_end_datetime,listing.currency,listing.qty_available,listing.spec,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
+	
+		$where_condition="(`negotiation`.`status` != 1)";
+		$this->db->where($where_condition);
+
+		$this->db->where('negotiation.offer_id',$parent_id);
+		$this->db->from('negotiation');
+		$this->db->order_by("id", "desc"); 
+		$this->db->limit(1);
+		$this->db->join('company','company.admin_member_id=negotiation.seller_id');
+		$this->db->join('listing','listing.id=negotiation.listing_id');
+		$query = $this->db->get();
+			if($query->num_rows()>0)
+				return $query->result();
+			else
+				return FALSE;
+	}
 }
