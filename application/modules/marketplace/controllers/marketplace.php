@@ -1632,14 +1632,110 @@ class Marketplace extends MX_Controller
             $this->mailbox_model->_insert($data);
 
             $this->session->set_flashdata('msg_success','Offer Declined sucessfully.'); 
-          }elseif($status==3){
-            $this->session->set_flashdata('msg_success','Counter offer move in negotiation.'); 
-            }
+          }
         }
         else{
           $this->session->set_flashdata('msg_info','Invalid.');  
         }
        redirect($_SERVER['HTTP_REFERER']);
+    }
+  
+  function pay_asking_status($id='',$negotiation_id='',$status='0',$buyer_id)
+    {
+       $seller_id =  $this->session->userdata('members_id');
+       $this->marketplace_model->update('negotiation',array('status'=>$status),array('id'=>$negotiation_id));
+       if($this->marketplace_model->update('make_offer',array('offer_status'=>$status,'invoice_no'=>$seller_id.'-'.$buyer_id.'-'.$id),array('id'=>$id, 'seller_id'=>$seller_id))){
+          if($status==1){
+             $data = array(
+                'member_id'         => $seller_id,
+                'sent_member_id'    => $buyer_id,
+                'subject'           => 'Pay asking price is accepted',
+                'body'              => 'Pay asking price is accepted',
+                'inbox'             => 'yes',
+                'sent'              => 'yes',
+                'date'              => date('d-m-Y'),
+                'time'              => date('H:i:s'),
+                'sent_from'         => 'market',
+                'datetime'          => date('Y-m-d H:i:s')
+              ); 
+           $this->load->model('mailbox/mailbox_model', 'mailbox_model');
+            $this->mailbox_model->_insert($data);
+
+            $this->session->set_flashdata('msg_success','Offer Accepted sucessfully and move in open order.');
+            redirect('marketplace/open_orders');
+        }
+     else{
+        $data = array(
+                'member_id'         => $seller_id,
+                'sent_member_id'    => $buyer_id,
+                'subject'           => 'Pay asking price is declined',
+                'body'              => 'Pay asking price is declined Do you want to resent it.',
+                'inbox'             => 'yes',
+                'sent'              => 'yes',
+                'date'              => date('d-m-Y'),
+                'time'              => date('H:i:s'),
+                'sent_from'         => 'market',
+                'datetime'          => date('Y-m-d H:i:s')
+              ); 
+           $this->load->model('mailbox/mailbox_model', 'mailbox_model');
+            $this->mailbox_model->_insert($data);
+            $this->session->set_flashdata('msg_success','Offer Declined sucessfully.'); 
+        redirect($_SERVER['HTTP_REFERER']);
+       }
+     }else{
+          $this->session->set_flashdata('msg_info','Invalid.');  
+        }
+       redirect($_SERVER['HTTP_REFERER']);
+    }
+
+  function counter_offer(){
+
+    if($_POST){
+        $mellerid =  $this->session->userdata('members_id');
+        $offer_id=$_POST['offer_id'];
+        $qty=$_POST['qty'];
+        $per_unit_price=$_POST['per_unit_price'];
+        if($offerdetail=$this->marketplace_model->get_row('make_offer',array('id'=>$offer_id))){
+        $grand_total=$qty * $per_unit_price;
+
+        $listing=$this->marketplace_model->get_row('listing', array('id'=>$offerdetail->listing_id));
+
+        if($listing->listing_type==1){$offer_type=2;}
+        else{$offer_type=1;}
+
+        $data_insert_negotiation=array(
+            'buyer_id'      => $offerdetail->buyer_id,
+            'offer_id'      => $offerdetail->id,
+            'seller_id'     => $offerdetail->seller_id,
+            'listing_id'    => $offerdetail->listing_id,
+            'product_qty'   => $qty,
+            'unit_price'    => $per_unit_price,
+            'grand_total'   => $grand_total,
+            'total_price'   => $grand_total + $offerdetail->shipping_price,
+            'shipping_price'=> $offerdetail->shipping_price,
+            'shipping'      => $offerdetail->shipping,
+            'buyer_currency'=> $offerdetail->buyer_currency,
+            'status'        => 0,
+            'access'        => $mellerid,
+            'offer_type'    => $offer_type,
+            'pay_asking_price'=>0,
+            'created'       => date('Y-m-d, H:i:s')
+            );
+
+     $this->marketplace_model->update('make_offer',array('offer_status'=>3),array('id'=>$offer_id));
+
+     $this->marketplace_model->insert('negotiation',$data_insert_negotiation);
+        $this->session->set_flashdata('msg_success','Offer move to negotiation.'); 
+        }
+        else{
+            $this->session->set_flashdata('msg_info','Invalid.');
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+           redirect('marketplace/negotiation'); 
+        }else{
+            $this->session->set_flashdata('msg_info','Invalid.');
+            redirect($_SERVER['HTTP_REFERER']);
+        }
     }
 
   function make_offer()
@@ -1865,7 +1961,7 @@ class Marketplace extends MX_Controller
             if($date1 > $date2){           
             if($value->seller_id==$this->session->userdata('members_id')){
             ?>
-            <a href="<?php echo base_url().'marketplace/offer_status/'.$value->id.'/3/'.$value->buyer_id ?>" class="btn btn-outline btn-warning"><i class="fa fa-hand-o-down"></i> Counter Offer</a>
+            <a onclick="counter_offer(<?php echo $value->id; ?>)" class="btn btn-warning"  data-toggle="modal" data-target="#form_counter_section" ><i class="fa fa-hand-o-down"></i> Counter Offer</a>
             <a href="<?php echo base_url().'marketplace/offer_status/'.$value->id.'/1/'.$value->buyer_id ?>" class="btn btn-outline btn-primary"><i class="fa fa-check"></i> Accept</a>
             <a href="<?php echo base_url().'marketplace/offer_status/'.$value->id.'/2/'.$value->buyer_id ?>" class="btn btn-outline btn-danger"><i class="fa fa-times"></i> Decline</a>
             <?php }else{
@@ -1911,10 +2007,13 @@ class Marketplace extends MX_Controller
     }*/
     
     function negotiation(){
+        $this->output->enable_profiler(TRUE);
         $data['main'] = 'marketplace';        
-        $data['title'] = 'GSM - MMarketplace: Notice';        
+        $data['title'] = 'GSM - Negotiation';        
         $data['page'] = 'negotiation';        
         
+        $data['sell_buy_negotiation']=$this->marketplace_model->sell_buy_negotiation();
+
         $this->load->module('templates');
         $this->templates->page($data);
     }
@@ -1936,16 +2035,23 @@ class Marketplace extends MX_Controller
         $total_price= $_POST['total_calgross_price'];
         $shipping=$_POST['shippingselected'];   
         if($listing=$this->marketplace_model->get_row('listing', array('id'=>$listing_id))){
+            
          $grand_total=0;
          if(!empty($listing->unit_price) && !empty($listing->qty_available)){ 
          $grand_total= $listing->unit_price * $listing->qty_available;
          }
+         $unit_price='';
+         if($listing->qty_available){
+            $uprice=$grand_total/$listing->qty_available;
+            $unit_price=number_format($uprice,2);
+         }
+         
         $data_insert=array(
                 'buyer_id'      => $buyer_id,
                 'seller_id'     => $listing->member_id,
                 'listing_id'    => $listing_id,
                 'product_qty'   => $listing->qty_available,
-                'unit_price'    => '',
+                'unit_price'    => $unit_price,
                 'grand_total'   => $grand_total,
                 'total_price'   => $total_price,
                 'shipping_price'=> $total_price - $grand_total,
@@ -1954,7 +2060,32 @@ class Marketplace extends MX_Controller
                 'offer_status'  => 3,
                 'created'       => date('Y-m-d, H:i:s')
                 );
-        $this->marketplace_model->insert('make_offer',$data_insert);
+        $makeofferid=$this->marketplace_model->insert('make_offer',$data_insert);
+        if($listing->listing_type==1){$offer_type=2;
+            }else
+            {$offer_type=1;
+            }
+        $data_insert_negotiation=array(
+                'buyer_id'      => $buyer_id,
+                'offer_id'      => $makeofferid,
+                'seller_id'     => $listing->member_id,
+                'listing_id'    => $listing_id,
+                'product_qty'   => $listing->qty_available,
+                'unit_price'    => $unit_price,
+                'grand_total'   => $grand_total,
+                'total_price'   => $total_price,
+                'shipping_price'=> $total_price - $grand_total,
+                'shipping'      => $shipping,
+                'buyer_currency'=> $listing->currency,
+                'status'        => 0,
+                'access'        => $buyer_id,
+                'pay_asking_price'=> 1,
+                'offer_type'    => $offer_type,
+                'created'       => date('Y-m-d, H:i:s')
+                );
+
+         $this->marketplace_model->insert('negotiation',$data_insert_negotiation);
+
         $this->session->set_flashdata('msg_success','Request inserted sucessfully...! ');
       }
       else{
@@ -2127,4 +2258,255 @@ class Marketplace extends MX_Controller
        redirect('marketplace/history');
    }
 
+  function view_negotiation_payasking()
+  {
+    $member_id=$this->session->userdata('members_id');
+    $parent_id = $this->input->post('parent_id');
+    $counter_offer_sec = $this->marketplace_model->view_negotiation_payasking($parent_id);
+    if(!empty($counter_offer_sec)){ ?>
+      <table class="table table-bordered" >
+        <thead>
+            <tr>
+                <th>Country</th>
+                <th>Company</th>
+                <th>Rating</th>
+                <th>Quantity</th>
+                <th>Shipping</th>
+                <th>Grand Total</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+    <?php foreach ($counter_offer_sec as $value) { ?>
+    <tr>
+        <td><img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" alt="Currency" /></td>
+        <td><?php echo $value->company_name; ?></td>
+        <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
+        <td><?php echo $value->product_qty; ?></td>
+        <td><?php echo $value->shipping; ?></td>
+        <td><?php echo currency_class($value->buyer_currency).' '.number_format($value->total_price,2);
+         ?></td>
+        <td class="text-center">
+        <?php 
+         //date('m-d-Y',strtotime($date1 . "+1 days"));
+        $date1 = strtotime(date('d-m-y H:i:s', strtotime($value->created . '+1 days'))); 
+        $date2 = strtotime(date('d-m-y H:i:s')); 
+
+    if($value->access!=$member_id){
+        ?>
+        <a href="<?php echo base_url().'marketplace/pay_asking_status/'.$value->offer_id.'/'.$value->id.'/1/'.$value->buyer_id ?>" class="btn btn-outline btn-primary"><i class="fa fa-check"></i> Accept</a>
+        <a href="<?php echo base_url().'marketplace/pay_asking_status/'.$value->offer_id.'/'.$value->id.'/2/'.$value->buyer_id ?>" class="btn btn-outline btn-danger"><i class="fa fa-times"></i> Decline</a>
+        <?php }else{
+           ?>
+            <div class="btn btn-outline btn-warning"><i class="fa fa-hand-o-down"></i>Awaiting</div>
+          <?php }?>
+        </td>
+    </tr>
+    <?php } ?>
+    </tbody>
+    </table>
+    <?php }
+   }
+
+   function view_negotiation_offer()
+  {
+    $member_id=$this->session->userdata('members_id');
+    $parent_id = $this->input->post('parent_id');
+    $counter_offer_sec = $this->marketplace_model->view_negotiation($parent_id);
+    if(!empty($counter_offer_sec)){ ?>
+      <table class="table table-bordered" >
+        <thead>
+            <tr>
+                <th>Country</th>
+                <th>Company</th>
+                <th>Rating</th>
+                <th>Quantity</th>
+                <th>Shipping</th>
+                <th>Grand Total</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+    <?php foreach ($counter_offer_sec as $value) { ?>
+    <tr>
+        <td><img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" alt="Currency" /></td>
+        <td><?php echo $value->company_name; ?></td>
+        <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
+        <td><?php echo $value->product_qty; ?></td>
+        <td><?php echo $value->shipping; ?></td>
+        <td><?php echo currency_class($value->buyer_currency).' '.number_format($value->total_price,2);
+         ?></td>
+        <td class="text-center">
+        <?php 
+         //date('m-d-Y',strtotime($date1 . "+1 days"));
+        $date1 = strtotime(date('d-m-y H:i:s', strtotime($value->created . '+1 days'))); 
+        $date2 = strtotime(date('d-m-y H:i:s')); 
+
+    if($value->access!=$member_id){
+        if(empty($value->pay_asking_price)){?>
+        <a onclick="counter_offer(<?php echo $value->offer_id; ?>)" class="btn btn-warning"  data-toggle="modal" data-target="#form_counter_section" ><i class="fa fa-hand-o-down"></i> Counter Offer</a>
+        <?php } ?>
+        <a href="<?php echo base_url().'marketplace/offer_status_negotiation/'.$value->offer_id.'/'.$value->id.'/1/'.$value->buyer_id ?>" class="btn btn-outline btn-primary"><i class="fa fa-check"></i> Accept</a>
+        <a href="<?php echo base_url().'marketplace/offer_status_negotiation/'.$value->offer_id.'/'.$value->id.'/2/'.$value->buyer_id ?>" class="btn btn-outline btn-danger"><i class="fa fa-times"></i> Decline</a>
+        <?php }else{
+           ?>
+            <div class="btn btn-outline btn-warning"><i class="fa fa-hand-o-down"></i>Awaiting</div>
+          <?php }?>
+        </td>
+    </tr>
+    <?php } ?>
+    </tbody>
+    </table>
+    <?php }
+   }
+
+   function view_negotiation_offer_sell()
+  {
+    $parent_id = $this->input->post('parent_id');
+    $counter_offer_sec = $this->marketplace_model->view_counter_offer_sell($parent_id);
+    $member_id=$this->session->userdata('members_id');
+    if(!empty($counter_offer_sec)){ ?>
+      <table class="table table-bordered" >
+        <thead>
+            <tr>
+                <th>Country</th>
+                <th>Company</th>
+                <th>Rating</th>
+                <th>Quantity</th>
+                <th>Shipping</th>
+                <th>Grand Total</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+    <?php foreach ($counter_offer_sec as $value) { ?>
+    <tr>
+        <td><img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" alt="Currency" /></td>
+        <td><?php echo $value->company_name; ?></td>
+        <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
+        <td><?php echo $value->product_qty; ?></td>
+        <td><?php echo $value->shipping; ?></td>
+        <td><?php echo currency_class($value->buyer_currency).' '.number_format($value->total_price,2);
+         ?></td>
+        <td class="text-center">
+        <?php 
+         //date('m-d-Y',strtotime($date1 . "+1 days"));
+        $date1 = strtotime(date('d-m-y H:i:s', strtotime($value->created . '+1 days'))); 
+        $date2 = strtotime(date('d-m-y H:i:s')); 
+
+        if($value->access!=$member_id){
+        if(empty($value->pay_asking_price)){?>
+        <a onclick="counter_offer(<?php echo $value->id; ?>)" class="btn btn-warning"  data-toggle="modal" data-target="#form_counter_section" ><i class="fa fa-hand-o-down"></i> Counter Offer</a>
+        <?php } ?>
+        <a href="<?php echo base_url().'marketplace/offer_status/'.$value->id.'/1/'.$value->buyer_id ?>" class="btn btn-outline btn-primary"><i class="fa fa-check"></i> Accept</a>
+        <a href="<?php echo base_url().'marketplace/offer_status/'.$value->id.'/2/'.$value->buyer_id ?>" class="btn btn-outline btn-danger"><i class="fa fa-times"></i> Decline</a>
+        <?php }else{
+           ?>
+            <div class="btn btn-outline btn-warning"><i class="fa fa-hand-o-down"></i>Awaiting</div>
+          <?php }?>
+        </td>
+    </tr>
+    <?php } ?>
+    </tbody>
+    </table>
+    <?php }
+   }
+
+   function counter_offer_negotiation(){
+
+    if($_POST){
+        $mellerid =  $this->session->userdata('members_id');
+        $offer_id=$_POST['offer_id'];
+        $qty=$_POST['qty'];
+        $per_unit_price=$_POST['per_unit_price'];
+        if($offerdetail=$this->marketplace_model->get_row('make_offer',array('id'=>$offer_id))){
+        $grand_total=$qty * $per_unit_price;
+
+        $listing=$this->marketplace_model->get_row('listing', array('id'=>$offerdetail->listing_id));
+
+        if($listing->listing_type==1){$offer_type=2;}
+        else{$offer_type=1;}
+
+        $data_insert_negotiation=array(
+            'buyer_id'      => $offerdetail->buyer_id,
+            'offer_id'      => $offerdetail->id,
+            'seller_id'     => $offerdetail->seller_id,
+            'listing_id'    => $offerdetail->listing_id,
+            'product_qty'   => $qty,
+            'unit_price'    => $per_unit_price,
+            'grand_total'   => $grand_total,
+            'total_price'   => $grand_total + $offerdetail->shipping_price,
+            'shipping_price'=> $offerdetail->shipping_price,
+            'shipping'      => $offerdetail->shipping,
+            'buyer_currency'=> $offerdetail->buyer_currency,
+            'access'        => $mellerid,
+            'offer_type'    => $offer_type,
+            'pay_asking_price'=>0,
+            'created'       => date('Y-m-d, H:i:s')
+            );
+
+     $this->marketplace_model->update('negotiation',array('status'=>3),array('offer_id'=>$offer_id));
+
+     $this->marketplace_model->insert('negotiation',$data_insert_negotiation);
+        $this->session->set_flashdata('msg_success','Offer move to negotiation.'); 
+        }
+        else{
+            $this->session->set_flashdata('msg_info','Invalid.');
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+           redirect('marketplace/negotiation'); 
+        }else{
+            $this->session->set_flashdata('msg_info','Invalid.');
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+  function offer_status_negotiation($id='',$negotiation_id='0',$status='0',$buyer_id)
+    {
+      $seller_id =  $this->session->userdata('members_id');
+      $this->marketplace_model->update('negotiation',array('status'=>$status),array('id'=>$negotiation_id));
+      if($this->marketplace_model->update('make_offer',array('offer_status'=>$status,'invoice_no'=>$seller_id.'-'.$buyer_id.'-'.$id),array('id'=>$id))){
+          if($status==1){
+             $data = array(
+                'member_id'         => $seller_id,
+                'sent_member_id'    => $buyer_id,
+                'subject'           => 'Offer is accepted',
+                'body'              => 'Offer is accepted',
+                'inbox'             => 'yes',
+                'sent'              => 'yes',
+                'date'              => date('d-m-Y'),
+                'time'              => date('H:i:s'),
+                'sent_from'         => 'market',
+                'datetime'          => date('Y-m-d H:i:s')
+              ); 
+           $this->load->model('mailbox/mailbox_model', 'mailbox_model');
+            $this->mailbox_model->_insert($data);
+
+            $this->session->set_flashdata('msg_success','Offer Accepted sucessfully and move in open order.');  
+            redirect('marketplace/open_orders');
+          }elseif($status==2){
+
+            $data = array(
+                'member_id'         => $seller_id,
+                'sent_member_id'    => $buyer_id,
+                'subject'           => 'Offer is declined',
+                'body'              => 'Offer is declined Do you want to resent it.',
+                'inbox'             => 'yes',
+                'sent'              => 'yes',
+                'date'              => date('d-m-Y'),
+                'time'              => date('H:i:s'),
+                'sent_from'         => 'market',
+                'datetime'          => date('Y-m-d H:i:s')
+              ); 
+           $this->load->model('mailbox/mailbox_model', 'mailbox_model');
+            $this->mailbox_model->_insert($data);
+
+            $this->session->set_flashdata('msg_success','Offer Declined sucessfully.'); 
+          }
+        }
+        else{
+          $this->session->set_flashdata('msg_info','Invalid.');  
+        }
+       redirect($_SERVER['HTTP_REFERER']);
+    }
 }
