@@ -270,7 +270,7 @@ endif;
                                 <dt>Quantity</dt> <dd>  29</dd>
                             </dl>
                             <dl class="dl-horizontal">
-                            	<h4>Price</h4>
+                                <h4>Price</h4>
                                 <dt>Buying Currency:</dt> <dd> GBP &pound;</dd>
                                 <dt>GBP Price:</dt> <dd><strong>  &pound;96.00</strong></dd>
                                 <dt>EUR Price:</dt> <dd>  &euro;130.55</dd>
