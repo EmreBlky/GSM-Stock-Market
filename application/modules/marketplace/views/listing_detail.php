@@ -656,7 +656,7 @@ $(document).ready(function() {
      }
     $.post('<?php echo base_url("marketplace/make_offer")?>', $( ".make_offer" ).serialize(), function(data) {
       if(data.STATUS=='1'){
-        alert('Offer added sucessfully.');
+        window.location = "<?php echo base_url().'marketplace/redirect_link'?>";
       }
       else if(data.STATUS=='2'){
         alert('Offer limit exceed.');
