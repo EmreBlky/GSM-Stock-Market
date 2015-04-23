@@ -2465,7 +2465,17 @@ class Marketplace extends MX_Controller
     {
       $seller_id =  $this->session->userdata('members_id');
       $this->marketplace_model->update('negotiation',array('status'=>$status),array('id'=>$negotiation_id));
-      if($this->marketplace_model->update('make_offer',array('offer_status'=>$status,'invoice_no'=>$seller_id.'-'.$buyer_id.'-'.$id),array('id'=>$id))){
+
+      $negotiation_o=$this->marketplace_model->get_row('negotiation',array('id'=>$negotiation_id));
+
+      $make_offer=$this->marketplace_model->get_row('make_offer',array('id'=>$id));
+
+      $per_unit_price=$negotiation_o->unit_price;
+      $qty=$negotiation_o->product_qty;
+      $grand_price=$per_unit_price * $qty;
+      $total_price=$grand_price + $make_offer->shipping_price;
+
+      if($this->marketplace_model->update('make_offer',array('offer_status'=>$status,'invoice_no'=>$seller_id.'-'.$buyer_id.'-'.$id,'unit_price'=>$per_unit_price,'product_qty'=>$qty,'grand_total'=>$grand_price,'total_price'=>$total_price),array('id'=>$id))){
           if($status==1){
              $data = array(
                 'member_id'         => $seller_id,
