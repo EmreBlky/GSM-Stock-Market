@@ -2519,4 +2519,10 @@ class Marketplace extends MX_Controller
         }
        redirect($_SERVER['HTTP_REFERER']);
     }
+
+    public function redirect_link()
+    {
+        $this->session->set_flashdata('msg_success','Offer accepted '); 
+        redirect($_SERVER['HTTP_REFERER']);
+    }
 }
