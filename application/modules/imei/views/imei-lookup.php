@@ -25,11 +25,11 @@
           
             <div class="form-group">
               <div class="col-lg-4 col-lg-offset-3">
-              <input type="text" placeholder="Enter IMEI" class="form-control" /><br />
+              <input type="text" placeholder="Enter IMEI" class="form-control" id="lookup-imei"/><br />
               <p class="text-navy">Please enter IMEI for Mobile Phones, and Serial Numbers for all other Devices, Consoles, Laptops etc</p>
               </div>
               <div class="col-lg-3">
-              	<button class="btn btn-primary">Look up device</button>
+              	<button class="btn btn-primary" id="lookup-imei-submit">Look up device</button>
               </div>
             </div>
             
@@ -37,6 +37,25 @@
         </div>        
       </div><!-- /col -->
       
+      <script type="text/javascript">
+      $(document).ready(function(){
+        $('#lookup-imei-submit').click(function(e)
+        {
+          e.preventDefault();
+          var imei = $('#lookup-imei').val();
+
+          $.ajax(
+          {
+              url:'/ajax/lookup_imei/' + imei,
+              dataType: "json",
+              success: function(data)
+              { 
+                    alert(data.imei_code);
+              }
+          });
+        })
+      })
+      </script>
     
       <div class="col-lg-12">
         <div class="ibox">
