@@ -15,7 +15,7 @@
     </div>
   
     <div class="row">
-    <form class="form-horizontal"> 
+    <form class="form-horizontal validation"> 
     
       <div class="col-lg-12">
         <div class="ibox">
