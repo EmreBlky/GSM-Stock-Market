@@ -488,6 +488,7 @@ var shipping_type = '';
 $('.shipping-type').on('change',function(){
     if($(this).val() == 'Free_Shipping'){
     $('.shipping-opt').prop('disabled',true);
+    $('.shipping-opt').val('');
     shipping_type = $(this).val();
     }else{
     $('.shipping-opt').prop('disabled',false);
