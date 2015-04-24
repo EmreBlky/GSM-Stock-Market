@@ -15,7 +15,7 @@
     </div>
   
     <div class="row">
-    <form class="form-horizontal"> 
+    <form class="form-horizontal validation"> 
     
       <div class="col-lg-12">
         <div class="ibox">
@@ -25,7 +25,9 @@
           
             <div class="form-group">
               <div class="col-lg-4 col-lg-offset-3">
-              <input type="text" placeholder="Enter IMEI" class="form-control" id="lookup-imei"/><br />
+
+              <input type="text" placeholder="Enter IMEI" class="form-control"  maxlength="15" name="imei" id="lookup-imei"/><br />
+
               <p class="text-navy">Please enter IMEI for Mobile Phones, and Serial Numbers for all other Devices, Consoles, Laptops etc</p>
               </div>
               <div class="col-lg-3">
@@ -127,4 +129,26 @@
     </div>  <!-- /row -->
     
           
-  </div><!-- /Wrapper -->
+  </div><!-- /Wrapper -->  
+
+<!-- Jquery Validate -->
+<script src="public/main/template/core/js/plugins/validate/jquery.validate.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        $(".validation").validate({
+            rules: {
+                imei: {
+                    required: true,
+                    digits: true,
+                    minlength: 15,
+					maxlength: 15
+                },
+                agree: {
+                    required: true
+                }
+            }
+        });
+    });
+</script>

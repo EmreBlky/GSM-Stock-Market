@@ -13,9 +13,13 @@
       <div class="alert alert-warning" style="margin-bottom:10px;">
       <p>This feature is currently unavailable. The IMEI services will launch soon</p>
     </div>
+    
+      <div class="alert alert-danger" style="margin-bottom:10px;">
+      <p>Insufficient fund in your IMEI Services account. <a class="alert-link" href="imei/top_up">Top up now.</a></p>
+    </div>
   
     <div class="row">
-    <form class="form-horizontal"> 
+    <form class="form-horizontal validation"> 
     
       <div class="col-lg-12">
         <div class="ibox">
@@ -24,9 +28,9 @@
           <div class="ibox-content">
                
             <div class="form-group">
-              <label class="col-lg-3 col-lg-offset-1 control-label">IMEI <span style="color:red">*</span><br /><small class="text-navy">The IMEI number of the mobile phone to unlock. You can enter several IMEI (one per line) if you have several similar phones (for the same tool and the same information)</small></label>
+              <label class="col-lg-3 col-lg-offset-1 control-label">IMEI <span style="color:red">*</span></label>
               <div class="col-lg-6">
-              	<textarea class="form-control" rows="5"></textarea>
+              	<input type="text" class="form-control" maxlength="15" name="imei">
               </div>
             </div>
                
@@ -76,7 +80,10 @@
             
             <div class="hr-line-dashed"></div>
             <div class="form-group">
-              <div class="col-lg-6 col-lg-offset-4">
+              <div class="col-lg-3 col-lg-offset-4">
+              	<label> <input type="checkbox" class="i-checks" name="agree" required> Confirm unlock charge of &pound;00.00 </label>
+              </div>
+              <div class="col-lg-3">
               	<button class="btn btn-primary pull-right">Place Order</button>
               </div>
             </div>
@@ -90,3 +97,40 @@
     
           
   </div><!-- /Wrapper -->
+  
+  
+
+    <link href="public/main/template/core/css/plugins/iCheck/custom.css" rel="stylesheet">
+
+  <!-- iCheck -->
+  <script src="public/main/template/core/js/plugins/iCheck/icheck.min.js"></script>
+  <script>
+      $(document).ready(function () {
+          $('.i-checks').iCheck({
+              checkboxClass: 'icheckbox_square-green',
+              radioClass: 'iradio_square-green',
+          });
+      });
+  </script>
+
+<!-- Jquery Validate -->
+<script src="public/main/template/core/js/plugins/validate/jquery.validate.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        $(".validation").validate({
+            rules: {
+                imei: {
+                    required: true,
+                    digits: true,
+                    minlength: 15,
+					maxlength: 15
+                },
+                agree: {
+                    required: true
+                }
+            }
+        });
+    });
+</script>
