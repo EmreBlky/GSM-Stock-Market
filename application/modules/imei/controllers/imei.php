@@ -11,6 +11,7 @@ class Imei extends MX_Controller
         }
         
         $this->load->model('activity/activity_model', 'activity_model');
+        $this->load->model('imei/imei_model', 'imei_model');
         
     }
 
@@ -74,10 +75,13 @@ class Imei extends MX_Controller
                                 'date' => date('d-m-Y')
                                 );
         $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
+
+        $hpi_checks = $this->imei_model->get_hpi_checks();
         
         $data['main'] = 'imei';        
         $data['title'] = 'IMEI Archive';        
         $data['page'] = 'archive';
+        $data['hpi_checks'] = $hpi_checks;
         
         $this->load->module('templates');
         $this->templates->page($data);

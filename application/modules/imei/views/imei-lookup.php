@@ -45,16 +45,33 @@
         {
           e.preventDefault();
           var imei = $('#lookup-imei').val();
-
-          $.ajax(
+          if (imei != '')
+          {          
+            var r = confirm('The ImeiHPI check costs £1.10, do you wish to proceed?');
+            if (r)
+            {
+              $.ajax(
+              {
+                  url:'/ajax/lookup_imei/' + imei,
+                  dataType: "json",
+                  success: function(data)
+                  { 
+                        if (data.imei_code == false)
+                        {
+                          alert('IMEI code invalid.');
+                        }
+                        else if (data.imei_code == true)
+                        {
+                          alert('Lookup Successful - Data is now recorded in the archive section');
+                        }
+                  }
+              });
+            }
+          }
+          else
           {
-              url:'/ajax/lookup_imei/' + imei,
-              dataType: "json",
-              success: function(data)
-              { 
-                    alert(data.imei_code);
-              }
-          });
+            alert('No IMEI was entered.');
+          }
         })
       })
       </script>

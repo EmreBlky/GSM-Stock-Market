@@ -67,7 +67,7 @@
 					/* Add the API Key and the Action to the parameters */
 					$Parameters['Key'] = MOBICODE_API_KEY;
 					$Parameters['Action'] = $Action;
-					$postfields = MOBICODE::BuildQuery($Parameters);
+					$postfields = static::BuildQuery($Parameters);
 					if (preg_match('/Examples/', $_SERVER['REQUEST_URI'])) {
 						print '<hr>Sending to the server<br><textarea name="textarea" id="textarea" cols="120" rows="5">'.$postfields.'</textarea>';
 					}

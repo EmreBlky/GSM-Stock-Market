@@ -13,6 +13,72 @@
       <div class="alert alert-warning" style="margin-bottom:10px;">
       <p>This feature is currently unavailable. The IMEI services will launch soon</p>
     </div>
+
+                <div class="row">
+                <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5>ImeiHPI Lookups</h5>
+                    </div>
+                    <div class="ibox-content">                        
+                        <table class="table table-striped table-bordered table-hover dataTables-example" >
+                        <thead>
+                        <tr>
+                            <th>Certificate ID</th>
+                            <th>Serial</th>
+                            <th>Make</th>
+                            <th>Model</th>
+                            <th>Colour Code</th>
+                            <th>Colour</th>
+                            <th>CR Count</th>
+                            <th>Police Lost Property</th>
+                            <th>Owner Temporary Block</th>
+                            <th>Expired Owner Temporary Block</th>
+                            <th>Result</th>
+                            <th>Recycled Previously</th>
+                            <th>Report Path</th>
+                            <th>Created At</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <?php
+                            if (isset($hpi_checks))
+                            {
+                                foreach($hpi_checks as $hpi_check)
+                                {
+                                    echo '<tr>';
+                                        echo '<td>' . $hpi_check->cert_id . '</td>';
+                                        echo '<td>' . $hpi_check->serial . '</td>';
+                                        echo '<td>' . $hpi_check->make . '</td>';
+                                        echo '<td>' . $hpi_check->model . '</td>';
+                                        echo '<td>' . $hpi_check->colour_code . '</td>';
+                                        echo '<td>' . $hpi_check->colour . '</td>';
+                                        echo '<td>' . $hpi_check->cr_count . '</td>';
+                                        echo '<td>' . $hpi_check->police_lost_property . '</td>';
+                                        echo '<td>' . $hpi_check->owner_temp_block . '</td>';
+                                        echo '<td>' . $hpi_check->expired_owner_temp_block . '</td>';
+                                        echo '<td>' . $hpi_check->result . '</td>';
+                                        echo '<td>' . $hpi_check->recycled_previously . '</td>';
+                                        echo '<td><a target="_blank" href="' . $hpi_check->report_path . '">' . $hpi_check->report_path . '</a></td>';
+                                        echo '<td>' . $hpi_check->created_at . '</td>';
+                                    echo '</tr>';
+                                }
+                            }
+                        ?>
+                        </tbody>
+                    </table>                       
+                    
+
+                    </div>
+
+
+                    
+                    
+                    
+                </div>
+            </div>
+            </div>    
     
     
                 <div class="row">
