@@ -871,6 +871,23 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                             ?>
                         </div>
                     </div>
+                    
+                    <div class="form-group"><label class="col-md-3 control-label">Currency <span style="color:red">*</span></label>
+                        <div class="col-md-3">
+                            <select class="form-control m-b" name="currency">
+                                <?php if($member->currency == 'GBP'){ ?>
+                                    <option value="<?php echo $member->currency?>">SELECTED: Sterling (GBP)</option>
+                                <?php } elseif($member->currency == 'USD') {?>
+                                    <option value="<?php echo $member->currency?>">SELECTED: DOLLAR (USD)</option>
+                                <?php } else { ?>
+                                    <option value="<?php echo $member->currency?>">SELECTED: EUROs (EURO)</option>
+                                <?php } ?>                                
+                                <option value="GBP">Sterling (GBP)</option>
+                                <option value="USD">DOLLAR (USD)</option>
+                                <option value="EURO">EUROs (EURO)</option>                                                                   
+                            </select>
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <label class="col-md-3 control-label">Phone Number <span style="color:red">*</span></label>

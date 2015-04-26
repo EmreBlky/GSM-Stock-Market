@@ -811,6 +811,17 @@
                             ?>
                         </div>
                     </div>
+                    
+                    <div class="form-group"><label class="col-md-3 control-label">Currency <span style="color:red">*</span></label>
+                        <div class="col-md-3">
+                            <select class="form-control m-b" name="currency">
+                                <option value="GBP">Please select</option>
+                                <option value="GBP">Sterling (GBP)</option>
+                                <option value="USD">DOLLAR (USD)</option>
+                                <option value="EURO">EUROs (EURO)</option>                                                                   
+                            </select>
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <label class="col-md-3 control-label">Phone Number <span style="color:red">*</span></label>

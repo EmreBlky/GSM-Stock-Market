@@ -530,7 +530,8 @@ class Profile extends MX_Controller
                 'gplus' => $this->input->post('gplus'),
                 'linkedin' => $this->input->post('linkedin'),
                 'skype' => $this->input->post('skype'),
-                'role' => $this->input->post('role')
+                'role' => $this->input->post('role'),
+                'currency' => $this->input->post('currency')    
             );
 
             $this->load->model('member/member_model', 'member_model');
@@ -556,8 +557,7 @@ class Profile extends MX_Controller
                     'business_sector_3' => $this->input->post('btertiary'),
                     'other_business' => $bsectors4 . $bsectors5,
                     'company_profile' => $company_bio_new,
-                    'vat_tax' => $this->input->post('vat_tax'),
-                    'company_number' => $this->input->post('company_number'),
+                    'vat_tax' => $this->input->post('vat_tax')
                 );
             }
             else{
@@ -721,7 +721,8 @@ class Profile extends MX_Controller
                 'gplus' => $this->input->post('gplus'),
                 'linkedin' => $this->input->post('linkedin'),
                 'skype' => $this->input->post('skype'),
-                'role' => $this->input->post('role')
+                'role' => $this->input->post('role'),
+                'currency' => $this->input->post('currency') 
             );
 
             $this->load->model('member/member_model', 'member_model');

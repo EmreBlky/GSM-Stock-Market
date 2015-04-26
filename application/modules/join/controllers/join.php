@@ -143,7 +143,8 @@ class Join extends MX_Controller
                         'gplus' => $this->input->post('gplus'),
                         'linkedin' => $this->input->post('linkedin'),
                         'skype' => $this->input->post('skype'),
-                        'role' => $this->input->post('company_role')
+                        'role' => $this->input->post('company_role'),
+                        'currency' => $this->input->post('currency')
                     );
 
 
