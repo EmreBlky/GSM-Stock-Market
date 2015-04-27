@@ -18,7 +18,7 @@
                 <div class="col-lg-12">
                 <div class="ibox">
                     <div class="ibox-title">
-                        <h5>ImeiHPI Check</h5>
+                        <h5>ImeiHPI Check Archive</h5>
                     </div>
                     <div class="ibox-content">                        
                         <table class="table table-striped table-bordered table-hover dataTables-example" >
@@ -59,7 +59,7 @@
                                         echo '<td>' . $hpi_check->expired_owner_temp_block . '</td>'; */
                                         echo '<td style="color:' . $hpi_check->colour . '">' . $hpi_check->result . '</td>';/*
                                         echo '<td>' . $hpi_check->recycled_previously . '</td>';*/
-                                        echo '<td class="text-center"><a target="_blank" class="label label-primary" download href="' . $hpi_check->report_path . '">Download Report</a></td>';
+                                        echo '<td class="text-center"><a target="_blank" class="label label-warning" href="' . $hpi_check->report_path . '">View Report</a> <a target="_blank" class="label label-primary" download href="' . $hpi_check->report_path . '">Download Report</a></td>';
                                     echo '</tr>';
                                 }
                             }
