@@ -24,6 +24,7 @@
                         <table class="table table-striped table-bordered table-hover dataTables-example" >
                         <thead>
                         <tr>
+                            <th>Order Date</th>
                             <th>Certificate ID</th>
                             <th>IMEI Number</th>
                             <th>Make &amp; Model</th><!--
@@ -33,10 +34,9 @@
                             <th>Police Lost Property</th>
                             <th>Owner Temporary Block</th>
                             <th>Expired Owner Temporary Block</th> -->
-                            <th>Result</th>
-                            <th>Recycled Previously</th>
-                            <th>Report Path</th>
-                            <th>Created At</th>
+                            <th>Result</th><!--
+                            <th>Recycled Previously</th>-->
+                            <th>Options</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -47,6 +47,7 @@
                                 foreach($hpi_checks as $hpi_check)
                                 {
                                     echo '<tr>';
+                                        echo '<td>' . $hpi_check->created_at . '</td>';
                                         echo '<td>' . $hpi_check->cert_id . '</td>';
                                         echo '<td>' . $hpi_check->serial . '</td>';
                                         echo '<td>' . $hpi_check->make . ' ' . $hpi_check->model . '</td>'; /*
@@ -56,10 +57,9 @@
                                         echo '<td>' . $hpi_check->police_lost_property . '</td>';
                                         echo '<td>' . $hpi_check->owner_temp_block . '</td>';
                                         echo '<td>' . $hpi_check->expired_owner_temp_block . '</td>'; */
-                                        echo '<td style="color:' . $hpi_check->colour . '">' . $hpi_check->result . '</td>';
-                                        echo '<td>' . $hpi_check->recycled_previously . '</td>';
-                                        echo '<td><a target="_blank" class="label label-primary" href="' . $hpi_check->report_path . '">View Report</a></td>';
-                                        echo '<td>' . $hpi_check->created_at . '</td>';
+                                        echo '<td style="color:' . $hpi_check->colour . '">' . $hpi_check->result . '</td>';/*
+                                        echo '<td>' . $hpi_check->recycled_previously . '</td>';*/
+                                        echo '<td class="text-center"><a target="_blank" class="label label-primary" download href="' . $hpi_check->report_path . '">Download Report</a></td>';
                                     echo '</tr>';
                                 }
                             }
