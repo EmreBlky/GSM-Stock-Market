@@ -31,7 +31,7 @@
               <p class="text-navy">Please enter IMEI for Mobile Phones, and Serial Numbers for all other Devices, Consoles, Laptops etc</p>
               </div>
               <div class="col-lg-3">
-              	<button class="btn btn-primary" id="lookup-imei-submit">Look up device</button>
+              	<button class="btn btn-primary" id="lookup-imei-submit">Submit IMEI HPI</button>
               </div>
             </div>
             
@@ -75,7 +75,7 @@
         })
       })
       </script>
-    
+    <?php /*
       <div class="col-lg-12">
         <div class="ibox">
           <div class="ibox-title"><h5>Initial IMEI TAC Code Lookup:</h5></div>
@@ -140,7 +140,7 @@
             
           </div><!-- Ibox Content -->
         </div>        
-      </div><!-- /col -->
+      </div><!-- /col -->*/?>
     
     </form>  
     </div>  <!-- /row -->

@@ -1001,6 +1001,7 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                                             <li class=""><a href="#selling-offers" data-toggle="tab">Selling Offers</a></li>
                                             <li class=""><a href="#buying-requests" data-toggle="tab">Buying Requests</a></li>
                                             <li class=""><a href="#credit-information" data-toggle="tab">Credit Info</a></li>
+                                            <li class=""><a href="#events" data-toggle="tab">Events Attending</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -1153,6 +1154,53 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                         				</div>
                    					</div>-->
                                 	
+                                </div>
+                                
+                                <div class="tab-pane" id="events">
+                                	<!-- <p>This company isn't attending any upcoming events</p> -->
+                                    
+                                    <div class="feed-activity-list">
+                                    
+                                        <!-- Each Event Start --><div class="feed-element">
+                                            <div class="col-md-3">
+                                                <img alt="image" class="img-responsive" src="public/main/template/gsm/images/company/no_company.jpg">
+                                            </div>
+                                            <div class="col-md-9">
+                                            <div class="media-body">
+                                            	<a class="label label-primary pull-right" href="#" target="_blank">Visit Website</a>
+                                                <strong>CTIA - The Wireless Association<br /><small class="text-navy">Barcelona, Spain - 23 February 2016</small></strong><br />
+                                                <p>The Wireless Association, originally known as the Cellular Telephone Industries Association, is an international industry trade group representing all wireless communication sectors including cellular, personal communication services and enhanced specialized mobile radio. Founded in 1984, they are primarily involved in lobbying the US government and were instrumental in the passage of both the Electronic Communications Privacy Act and the Telecommunications Disclosure & Dispute Resolution Act.</p>
+                                            </div>
+                                            </div>
+                                        </div><!-- Each Event End -->  
+                                        <!-- Each Event Start --><div class="feed-element">
+                                            <div class="col-md-3">
+                                                <img alt="image" class="img-responsive" src="public/main/template/gsm/images/company/no_company.jpg">
+                                            </div>
+                                            <div class="col-md-9">
+                                            <div class="media-body">
+                                            	<a class="label label-primary pull-right" href="#" target="_blank">Visit Website</a>
+                                                <strong>CTIA - The Wireless Association<br /><small class="text-navy">Barcelona, Spain - 23 February 2016</small></strong><br />
+                                                <p>The Wireless Association, originally known as the Cellular Telephone Industries Association, is an international industry trade group representing all wireless communication sectors including cellular, personal communication services and enhanced specialized mobile radio. Founded in 1984, they are primarily involved in lobbying the US government and were instrumental in the passage of both the Electronic Communications Privacy Act and the Telecommunications Disclosure & Dispute Resolution Act.</p>
+                                            </div>
+                                            </div>
+                                        </div><!-- Each Event End -->  
+                                        <!-- Each Event Start --><div class="feed-element">
+                                            <div class="col-md-3">
+                                                <img alt="image" class="img-responsive" src="public/main/template/gsm/images/company/no_company.jpg">
+                                            </div>
+                                            <div class="col-md-9">
+                                            <div class="media-body">
+                                            	<a class="label label-primary pull-right" href="#" target="_blank">Visit Website</a>
+                                                <strong>CTIA - The Wireless Association<br /><small class="text-navy">Barcelona, Spain - 23 February 2016</small></strong><br />
+                                                <p>The Wireless Association, originally known as the Cellular Telephone Industries Association, is an international industry trade group representing all wireless communication sectors including cellular, personal communication services and enhanced specialized mobile radio. Founded in 1984, they are primarily involved in lobbying the US government and were instrumental in the passage of both the Electronic Communications Privacy Act and the Telecommunications Disclosure & Dispute Resolution Act.</p>
+                                            </div>
+                                            </div>
+                                        </div><!-- Each Event End -->  
+                                                                              
+                                    </div>
+                                
+
                                 </div>
                                 
                                 </div>
