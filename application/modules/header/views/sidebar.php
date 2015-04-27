@@ -204,6 +204,10 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
     </li>
     -->
     
+    <li>
+        <a href="events"><i class="fa fa-calendar"></i> <span class="nav-label">Events</span></a>
+    </li>
+    
     <?php if($url == 'imei') {?>
     <li class="active">
         <a href="imei/"><i class="fa fa-barcode"></i> <span class="nav-label">IMEI Services</span> 
