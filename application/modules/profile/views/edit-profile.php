@@ -876,15 +876,18 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                         <div class="col-md-3">
                             <select class="form-control m-b" name="currency">
                                 <?php if($member->currency == 'GBP'){ ?>
-                                    <option value="<?php echo $member->currency?>">SELECTED: Sterling (GBP)</option>
+                                    <option value="<?php echo $member->currency?>" selected>GBP - British Pound (&pound;)</option>
+                                	<option value="USD">USD - US Dollar ($)</option>
+                                	<option value="EURO">EUR - Euro (&euro;)</option>   
                                 <?php } elseif($member->currency == 'USD') {?>
-                                    <option value="<?php echo $member->currency?>">SELECTED: DOLLAR (USD)</option>
+                                	<option value="GBP">GBP - British Pound (&pound;)</option>
+                                    <option value="<?php echo $member->currency?>" selected>USD - US Dollar ($)</option>
+                               		<option value="EURO">EUR - Euro (&euro;)</option>  
                                 <?php } else { ?>
-                                    <option value="<?php echo $member->currency?>">SELECTED: EUROs (EURO)</option>
-                                <?php } ?>                                
-                                <option value="GBP">Sterling (GBP)</option>
-                                <option value="USD">DOLLAR (USD)</option>
-                                <option value="EURO">EUROs (EURO)</option>                                                                   
+                                	<option value="GBP">GBP - British Pound (&pound;)</option>
+                                	<option value="USD">USD - US Dollar ($)</option>
+                                    <option value="<?php echo $member->currency?>" selected>EUR - Euro (&euro;)</option>
+                                <?php } ?>                                                                                            
                             </select>
                         </div>
                     </div>
@@ -1327,7 +1330,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                             
                         <?php }?>
                         
-                    </div>
+                    </div>                    
 
                 </div>
             </div>
@@ -1482,6 +1485,73 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                             <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
                         </div>
                         <!-- /Hammad sibtain Crop Functionality -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="col-lg-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Events Attending</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                    <div class="form-group">                        
+                            <div class="col-md-12 text-center">
+                            			<label class="col-md-12">Mobile World Congress<br /><small class="text-navy">Barcelona, Spain - 22-25 February 2016</small></label><br />
+                                        <div class="radio-inline i-checks small"><label> <input type="radio" value="attending" name="1"> <i></i> Attending </label></div>
+                                        <div class="radio-inline i-checks small"><label> <input type="radio" value="not_attending" name="1" checked=""> <i></i> Not Attending </label></div>
+                            </div>                        
+                    </div>
+
+                    <div class="hr-line-dashed"></div>
+
+                    <div class="form-group">                        
+                            <div class="col-md-12 text-center">
+                            			<label class="col-md-12">Global Mobile Awards<br /><small class="text-navy">Barcelona, Spain - 23 February 2016</small></label><br />
+                                        <div class="radio-inline i-checks small"><label> <input type="radio" value="attending" name="2"> <i></i> Attending </label></div>
+                                        <div class="radio-inline i-checks small"><label> <input type="radio" value="not_attending" name="2" checked=""> <i></i> Not Attending </label></div>
+                            </div>                        
+                    </div>
+
+                    <div class="hr-line-dashed"></div>
+
+                    <div class="form-group">                        
+                            <div class="col-md-12 text-center">
+                            			<label class="col-md-12">Mobile World Congress Shanghai<br /><small class="text-navy">Shanghai, China -  15-17 July 2015</small></label><br />
+                                        <div class="radio-inline i-checks small"><label> <input type="radio" value="attending" name="3"> <i></i> Attending </label></div>
+                                        <div class="radio-inline i-checks small"><label> <input type="radio" value="not_attending" name="3" checked=""> <i></i> Not Attending </label></div>
+                            </div>                        
+                    </div>
+
+                    <div class="hr-line-dashed"></div>
+
+                    <div class="form-group">                        
+                            <div class="col-md-12 text-center">
+                            			<label class="col-md-12">Connected Women<br /><small class="text-navy">Atlanta, USA - 23 September 2014</small></label><br />
+                                        <div class="radio-inline i-checks small"><label> <input type="radio" value="attending" name="4"> <i></i> Attending </label></div>
+                                        <div class="radio-inline i-checks small"><label> <input type="radio" value="not_attending" name="4" checked=""> <i></i> Not Attending </label></div>
+                            </div>                        
+                    </div>
+
+                    <div class="hr-line-dashed"></div>
+
+                    <div class="form-group">                        
+                            <div class="col-md-12 text-center">
+                            			<label class="col-md-12">Mobile 360 Series<br /><small class="text-navy">N/A - N/A</small></label><br />
+                                        <div class="radio-inline i-checks small"><label> <input type="radio" value="attending" name="5"> <i></i> Attending </label></div>
+                                        <div class="radio-inline i-checks small"><label> <input type="radio" value="not_attending" name="5" checked=""> <i></i> Not Attending </label></div>
+                            </div>                        
+                    </div>
+                    
+                        
                         </div>
                     </div>
                 </div>
