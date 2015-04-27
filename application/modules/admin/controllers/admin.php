@@ -1501,19 +1501,151 @@ class Admin extends MX_Controller
         $this->templates->admin($data);
     }
     
-    function edit_event()
+    function eventAdd()
+    {
+        //echo '<pre>';
+        //print_r($_POST);
+        
+        $var = 'events';
+        $var_model = $var.'_model';
+
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        
+        $data = array(
+                    'name'          => $this->input->post('name'),
+                    'date'          => $this->input->post('date'),
+                    'venue'         => $this->input->post('venue'),
+                    'location'      => $this->input->post('location'),
+                    'website'       => $this->input->post('website'),
+                    'description'   => $this->input->post('description') 
+                     );
+        
+        $eid = $this->{$var_model}->_insert($data);
+        
+        $this->load->library('upload');
+        $base = $this->config->item('base_url');
+
+        $config['upload_path'] = dirname($_SERVER["SCRIPT_FILENAME"]) . '/public/main/template/gsm/images/events/';
+        $config['upload_url'] = $base . 'public/main/template/gsm/images/events/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['file_name'] = $eid;
+        $config['max_size'] = 4000;
+        $config['overwrite'] = TRUE;
+        $config['max_width'] = 1500;
+        $config['max_height'] = 1500;
+
+        $this->upload->initialize($config);
+        $this->upload->do_upload();        
+        
+        $this->session->set_flashdata('admin-events', '<div style="margin:0 15px">    
+                                                            <div class="alert alert-success">
+                                                                That has been added.
+                                                            </div>
+                                                        </div>');
+
+       redirect('admin/add_event');
+    }
+    
+    function edit_event($eid = NULL)
     {
         $data['main'] = 'admin';        
         $data['title'] = 'GSM - Admin Panel: Edit Feed';        
         $data['page'] = 'edit-event';
+
+        $var = 'events';
+        $var_model = $var.'_model';
+
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
         
-        //$var = 'company';
-        //$var_model = $var.'_model';
+        if(isset($eid)){
+            
+            $data['name'] = $this->{$var_model}->get_where($eid)->name;
+            $data['date'] = $this->{$var_model}->get_where($eid)->date;
+            $data['venue'] = $this->{$var_model}->get_where($eid)->venue;
+            $data['location'] = $this->{$var_model}->get_where($eid)->location;
+            $data['website'] = $this->{$var_model}->get_where($eid)->website;
+            $data['description'] = $this->{$var_model}->get_where($eid)->description;
+            $data['status'] = $this->{$var_model}->get_where($eid)->status;
+            
+        }
+        else{            
+            
+            $data[$var] = $this->{$var_model}->get_all();
+            $data[$var.'_count'] = $this->{$var_model}->count_all();
         
-        //$this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
-        //$data[$var] = $this->{$var_model}->get_where($id);
+        }
         
+        $data['base'] = $this->config->item('base_url');
         $this->load->module('templates');
         $this->templates->admin($data);
+    }
+    
+     function eventEdit($eid)
+    {
+//         echo '<pre>';
+//         print_r($_POST);
+//         echo $eid;
+//         
+        $var = 'events';
+        $var_model = $var.'_model';
+
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        
+        $data = array(
+                    'name'          => $this->input->post('name'),
+                    'date'          => $this->input->post('date'),
+                    'venue'         => $this->input->post('venue'),
+                    'location'      => $this->input->post('location'),
+                    'website'       => $this->input->post('website'),
+                    'description'   => $this->input->post('description') 
+                     );
+        
+        $this->{$var_model}->_update($eid, $data);
+        
+        $this->load->library('upload');
+        $base = $this->config->item('base_url');
+
+        $config['upload_path'] = dirname($_SERVER["SCRIPT_FILENAME"]) . '/public/main/template/gsm/images/events/';
+        $config['upload_url'] = $base . 'public/main/template/gsm/images/events/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['file_name'] = $eid;
+        $config['max_size'] = 4000;
+        $config['overwrite'] = TRUE;
+        $config['max_width'] = 1500;
+        $config['max_height'] = 1500;
+
+        $this->upload->initialize($config);
+        $this->upload->do_upload();  
+        
+        $this->session->set_flashdata('admin-events', '<div style="margin:0 15px">    
+                                                            <div class="alert alert-success">
+                                                                The has been edited.
+                                                            </div>
+                                                        </div>');
+
+       redirect('admin/edit_event');
+    }
+    
+    function eventActivation($eid, $status)
+    {
+        $var = 'events';
+        $var_model = $var.'_model';
+
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        
+        $data = array(
+                      'status' => $status            
+                     );
+        
+         $this->{$var_model}->_update_where($data, 'id', $eid);
+         
+         $this->session->set_flashdata('admin-events', '<div style="margin:0 15px">    
+                                                            <div class="alert alert-success">
+                                                                The status has been changed to '.$status.'.
+                                                            </div>
+                                                        </div>');
+
+       redirect('admin/edit_event/'.$eid);
+        
     }
 }

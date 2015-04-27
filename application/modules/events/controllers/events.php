@@ -9,6 +9,7 @@ class Events extends MX_Controller
         { 
             redirect('login');
         }
+        $this->load->model('events/events_model', 'events_model');
     }
 
     function index()
@@ -16,6 +17,11 @@ class Events extends MX_Controller
         $data['main'] = 'events';
 	$data['title'] = 'GSM Stockmarket : Events';
         $data['page'] = 'index';
+        
+        $data['events_count'] = $this->events_model->count_all();
+        $data['events_active'] = $this->events_model->count_where('status', 'active');
+        $data['events'] = $this->events_model->get_where_multiples('status', 'active');
+        
         $this->load->module('templates');
         $this->templates->page($data);
     }
