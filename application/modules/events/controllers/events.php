@@ -18,5 +18,14 @@ class Events extends MX_Controller
         $data['page'] = 'index';
         $this->load->module('templates');
         $this->templates->page($data);
-    } 
+    }
+    
+    function attendees()
+    {
+        $data['main'] = 'events';
+	$data['title'] = 'GSM Stockmarket : Events';
+        $data['page'] = 'attendees';
+        $this->load->module('templates');
+        $this->templates->page($data);
+    }
 }
