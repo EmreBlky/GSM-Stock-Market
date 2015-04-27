@@ -281,6 +281,21 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
     </li>
     <?php } ?>
     
+    <li>
+        <a href="events/"><i class="fa fa-calendar"></i> <span class="nav-label">Events</span></a>
+        <!--
+        <ul class="nav nav-second-level">
+            <li><a href="search/user"><i class="fa fa-user"></i> User Search</a></li>
+            <li><a href="search/company"><i class="fa fa-users"></i> Company Search</a></li>
+        </ul>
+        -->
+    </li>
+    <!--
+    <li>
+        <a href=""><i class="fa fa-money"></i> <span class="nav-label">My Wallet</span><span class="label label-primary pull-right">£5.00</span></a>
+    </li>
+    -->
+    
 </ul>
 
 </div>
