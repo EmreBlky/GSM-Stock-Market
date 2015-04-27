@@ -873,7 +873,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                     </div>
                     
                     <div class="form-group"><label class="col-md-3 control-label">Currency <span style="color:red">*</span></label>
-                        <div class="col-md-3">
+                        <div class="col-md-3" style="padding-right:0">
                             <select class="form-control m-b" name="currency">
                                 <?php if($member->currency == 'GBP'){ ?>
                                     <option value="<?php echo $member->currency?>" selected>GBP - British Pound (&pound;)</option>
