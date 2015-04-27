@@ -30,7 +30,7 @@
             <div class="form-group">
               <label class="col-lg-3 col-lg-offset-1 control-label">Service <span style="color:red">*</span></label>
               <div class="col-lg-6">
-              	<select class="form-control">
+              	<select id="service" class="form-control">
                   <optgroup label="0">
                   <option value="0" id="service-0-0">Please Select Service ....</option>
                   </optgroup>
@@ -112,10 +112,18 @@
               </div>
             </div>
                
-            <div class="form-group">
+            <div class="imei_input form-group" id="1-62">
               <label class="col-lg-3 col-lg-offset-1 control-label">IMEI <span style="color:red">*</span></label>
               <div class="col-lg-6">
-              	<input type="text" class="form-control" maxlength="15" name="imei">
+              	<input type="text" id="1-62" class="form-control imei_single" maxlength="15" name="imei">
+              </div>
+            </div>
+               
+            <div class="imei_input form-group" id="1-129">
+              <label class="col-lg-3 col-lg-offset-1 control-label">IMEI Bulk<span style="color:red">*</span><br /><p class="text-navy"></p></label>
+              <div class="col-lg-6">
+              	<textarea class="form-control" name="imei" rows="5"></textarea>
+              	<button class="btn btn-primary imei_bulk pull-right" style="margin-top:10px">.CSV Bulk Import IMEI</button>
               </div>
             </div>
                
@@ -354,7 +362,7 @@
             <div class="hr-line-dashed"></div>
             <div class="form-group">
               <div class="col-lg-3 col-lg-offset-4">
-              	<label> <input type="checkbox" class="i-checks" name="agree" required> Confirm unlock charge of &pound;00.00 </label>
+              	<label> <input type="checkbox" class="i-checks" name="agree" required> Confirm charge of &pound;00.00</label>
               </div>
               <div class="col-lg-3">
               	<button class="btn btn-primary pull-right">Place Order</button>
@@ -369,9 +377,19 @@
     </div>  <!-- /row -->
     
           
-  </div><!-- /Wrapper -->
+  </div><!-- /Wrapper -->            
   
-  
+<script>
+$(document).ready(function () {
+  $('.imei_input').hide();
+  $('#1-62').show();
+  $('#service').change(function () {
+    $('.imei_input').hide();
+    $('#'+$(this).val()).show();
+  })
+});
+</script>
+
 
     <link href="public/main/template/core/css/plugins/iCheck/custom.css" rel="stylesheet">
 
