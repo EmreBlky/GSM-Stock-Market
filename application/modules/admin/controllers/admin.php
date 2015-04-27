@@ -1484,4 +1484,36 @@ class Admin extends MX_Controller
 
         redirect('admin/trade_ref');   
     }
+    
+    function add_event()
+    {
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel: Edit Feed';        
+        $data['page'] = 'add-event';
+        
+        //$var = 'company';
+        //$var_model = $var.'_model';
+        
+        //$this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        //$data[$var] = $this->{$var_model}->get_where($id);
+        
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+    
+    function edit_event()
+    {
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel: Edit Feed';        
+        $data['page'] = 'edit-event';
+        
+        //$var = 'company';
+        //$var_model = $var.'_model';
+        
+        //$this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        //$data[$var] = $this->{$var_model}->get_where($id);
+        
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
 }

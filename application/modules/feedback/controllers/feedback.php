@@ -63,29 +63,42 @@ class Feedback extends MX_Controller
         }
     }
             
-    function leave_feedback($mid)
+    function leave_buy_feedback($mid, $sid)
     {
         $data['main'] = 'feedback';
         $data['base'] = $this->config->item('base_url');
+        $data['mid'] = $mid;
+        $data['sid'] = $sid;
         //$data['member'] = $this->company_model->get_where($this->member_model->get_where($mid)->company_id)->company_name;
-        $this->load->view('leave-feedback', $data);
+        $this->load->view('buy-feedback', $data);
     }
     
-    function processFeedback($mid, $sid, $rateDesc, $rateComms, $rateShip, $rateCompany, $body)
+    function leave_sell_feedback($mid, $sid)
+    {
+        $data['main'] = 'feedback';
+        $data['base'] = $this->config->item('base_url');
+        $data['mid'] = $mid;
+        $data['sid'] = $sid;
+        //$data['member'] = $this->company_model->get_where($this->member_model->get_where($mid)->company_id)->company_name;
+        $this->load->view('sell-feedback', $data);
+    }
+    
+    function processFeedback($mid, $sid, $rateDesc, $rateComms, $rateShip, $rateCompany, $body, $type)
     {
         $data = array(                       
-                    'member_id' => $mid,
-                    'feedback_member_id' => $sid,
-                    'feedback_score' => $rateDesc+$rateComms+$rateShip+$rateCompany,
-                    'comments' => $this->characterReplace($body),
-                    'communication' => $rateComms,
-                    'shipping' => $rateShip,
-                    'description' => $rateDesc,
-                    'company' => $rateCompany,
-                    'authorised' => 'no',
-                    'date' => date('d-m-Y'),
-                    'time' => date('H:i:s'),
-                    'datetime' => date('Y-m-d H:i:s')
+                    'member_id'             => $mid,
+                    'feedback_member_id'    => $sid,
+                    'feedback_score'        => $rateDesc+$rateComms+$rateShip+$rateCompany,
+                    'comments'              => $this->characterReplace($body),
+                    'communication'         => $rateComms,
+                    'shipping'              => $rateShip,
+                    'description'           => $rateDesc,
+                    'company'               => $rateCompany,
+                    'authorised'            => 'no',
+                    'date'                  => date('d-m-Y'),
+                    'time'                  => date('H:i:s'),
+                    'datetime'              => date('Y-m-d H:i:s'),
+                    'type'                  => $type
                 );                    
         $this->feedback_model->_insert($data);
         

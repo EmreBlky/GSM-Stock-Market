@@ -104,6 +104,23 @@
             <li>
                 <a href="admin/trade_ref"><i class="fa fa-slideshare"></i> <span class="nav-label">Trade References</span></a>
             </li>
+            <?php if($url == 'add_event' || $url == 'edit_event') {?>
+            <li class="active">
+                <a href="#"><i class="fa fa-calendar"></i> <span class="nav-label">Events</span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="<?php echo base_url().'admin/add_event';?>"><span class="nav-label">Add Event</span></a></li>
+                    <li><a href="<?php echo base_url().'admin/edit_event';?>"><span class="nav-label">Edit Event</span></a></li>
+                </ul>
+            </li>
+            <?php } else { ?>
+            <li>
+                <a href="#"><i class="fa fa fa-calendar"></i> <span class="nav-label">Events</span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="<?php echo base_url().'admin/add_event';?>"><span class="nav-label">Add Event</span></a></li>
+                    <li><a href="<?php echo base_url().'admin/edit_event';?>"><span class="nav-label">Edit Event</span></a></li>
+                </ul>
+            </li>
+            <?php } ?>
         </ul>
     </div>
 </nav>

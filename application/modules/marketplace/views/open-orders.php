@@ -1,3 +1,11 @@
+<?php
+
+//echo '<pre>';
+//print_r($buy_order);
+//print_r($sell_order);
+//exit;
+
+?>
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
         <h2>Open Orders</h2>
@@ -90,7 +98,11 @@
         <?php }} ?>
            </td>
         </tr>
-            
+            <?php
+
+                $this->load->module('feedback');
+                $this->feedback->leave_buy_feedback($value->seller_id, $value->buyer_id);
+            ?>
         <?php endforeach; ?>
     <?php endif; ?>
         </tbody>
@@ -167,6 +179,11 @@
                <!-- modal leave feedback seller-->
             <?php }} ?></td>
         </tr>
+            <?php
+
+                $this->load->module('feedback');
+                $this->feedback->leave_sell_feedback($value->seller_id, $value->buyer_id);
+            ?>
             <?php endforeach ?>
         <?php endif ?>
         </tbody>
@@ -317,52 +334,7 @@
   </div>
 </div>
 </div>
-
-<div class="modal inmodal fade" id="buyer_feedback" tabindex="-1" role="dialog" aria-hidden="true">
-<div class="modal-dialog modal-lg">
-    <div class="modal-content">
-  <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <h4 class="modal-title">Give feedback to Seller</h4>
-  </div>
-  <div class="modal-body">
-   <form action="<?php echo base_url()."marketplace/buyer_feedback/";?>" method="post" accept-charset="utf-8">
-      <div class="row">
-        <textarea name="feedback" cols="8" rows="5" class="form-control" placeholder="Give feedback to Seller."></textarea>
-        <input type="hidden" name="order_id" value="" class="order_id_insert">
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" id="send_msg">Send Feedback to Seller</button>
-    </div>  
-    </form>
-    </div>
-  </div>
-</div>
-</div>
-
-<div class="modal inmodal fade" id="seller_feedback" tabindex="-1" role="dialog" aria-hidden="true">
-<div class="modal-dialog modal-lg">
-    <div class="modal-content">
-  <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <h4 class="modal-title">Give feedback to Buyer</h4>
-  </div>
-  <div class="modal-body">
-   <form action="<?php echo base_url()."marketplace/seller_feedback/";?>" method="post" accept-charset="utf-8">
-      <div class="row">
-        <textarea name="feedback" cols="8" rows="5" class="form-control" placeholder="Give feedback to Buyer."></textarea>
-        <input type="hidden" name="order_id" value="" class="order_id_insert">
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" id="send_msg">Send Feedback to Buyer</button>
-    </div>  
-    </form>
-    </div>
-  </div>
-</div>
-</div>
+    
 </div>
 
 <script>
