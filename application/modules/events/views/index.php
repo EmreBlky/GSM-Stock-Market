@@ -39,7 +39,7 @@
                                 <img class="img-responsive" src="public/main/template/gsm/images/events/no_image.png">
                             <?php } ?>    
                         </div>
-                      <div class="col-md-8">
+                      <div class="col-md-8 equal_height">
                           <h3 style="margin:0"><strong><?php echo $event->name;?></h3>
                           <p class="text-navy"><?php echo $event->location;?>, <?php echo $event->venue;?> - <?php echo $event->date;?></strong></p>
                           <p><?php echo $event->description;?></p> 
@@ -60,7 +60,7 @@
                     There are no events at present.
                 </div>	
             </div>
-	</div>
+		</div>
        
     </div> 
     <?php } ?> 
@@ -79,8 +79,17 @@
     
         
         
-        
-        
-    </div>
 
 </div>
+
+<script>
+$( document ).ready(function() {
+    var heights = $(".equal_height").map(function() {
+        return $(this).height();
+    }).get(),
+
+    maxHeight = Math.max.apply(null, heights);
+
+    $(".equal_height").height(maxHeight);
+});
+</script>
