@@ -23,16 +23,9 @@
     
       <div class="col-lg-12">
         <div class="ibox">
-          <div class="ibox-title"><h5>Top up your account</h5></div>
+          <div class="ibox-title"><h5>IMEI HPI &amp; Unlocking Services</h5></div>
           
           <div class="ibox-content">
-               
-            <div class="form-group">
-              <label class="col-lg-3 col-lg-offset-1 control-label">IMEI <span style="color:red">*</span></label>
-              <div class="col-lg-6">
-              	<input type="text" class="form-control" maxlength="15" name="imei">
-              </div>
-            </div>
                
             <div class="form-group">
               <label class="col-lg-3 col-lg-offset-1 control-label">Service <span style="color:red">*</span></label>
@@ -116,6 +109,13 @@
                   <option value="2-63" id="service-13-10">2-63 - Toshiba (1.00 Credits)</option>
                   </optgroup>
                   </select>
+              </div>
+            </div>
+               
+            <div class="form-group">
+              <label class="col-lg-3 col-lg-offset-1 control-label">IMEI <span style="color:red">*</span></label>
+              <div class="col-lg-6">
+              	<input type="text" class="form-control" maxlength="15" name="imei">
               </div>
             </div>
                
