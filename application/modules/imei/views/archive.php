@@ -60,7 +60,7 @@
                                         echo '<td>' . $hpi_check->expired_owner_temp_block . '</td>';
                                         echo '<td>' . $hpi_check->result . '</td>';
                                         echo '<td>' . $hpi_check->recycled_previously . '</td>';
-                                        echo '<td><a target="_blank" href="' . $hpi_check->report_path . '">' . $hpi_check->report_path . '</a></td>';
+                                        echo '<td><a target="_blank" class="label label-primary" href="' . $hpi_check->report_path . '">Download Report</a></td>';
                                         echo '<td>' . $hpi_check->created_at . '</td>';
                                     echo '</tr>';
                                 }
@@ -80,7 +80,7 @@
             </div>
             </div>    
     
-    
+    <!--
                 <div class="row">
                 <div class="col-lg-12">
                 <div class="ibox">
@@ -165,7 +165,7 @@
                 </div>
             </div>
             </div>
-    
+    -->
           
   </div><!-- /Wrapper -->
   
