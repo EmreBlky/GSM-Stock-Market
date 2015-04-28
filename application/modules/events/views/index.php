@@ -45,7 +45,7 @@
                           <p><?php echo $event->description;?></p>
                       </div>
                       <div class="col-md-12">
-                          <a href="events/attendees/<?php echo $event->id;?>"><button class="btn btn-info pull-right" type="button" style="font-size:10px"><i class="fa fa-users"></i>&nbsp;View Atendees (12)</button></a>
+                          <a href="events/attendees/<?php echo $event->id;?>"><button class="btn btn-info pull-right" type="button" style="font-size:10px"><i class="fa fa-users"></i>&nbsp;View Attendees (12)</button></a>
                           <a href="<?php echo $event->website;?>" target="_blank"><button class="btn btn-primary pull-right" type="button" style="font-size:10px;margin-right:15px"><i class="fa fa-globe"></i>&nbsp;Visit Website</button></a>
                       </div>
                     </div>
