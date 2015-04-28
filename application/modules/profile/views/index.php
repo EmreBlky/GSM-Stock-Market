@@ -254,22 +254,6 @@ $this->load->model('membership/membership_model', 'membership_model');
                                         <dt>Mobile Number:</dt> 
                                         <dd> <?php echo $member_info->mobile_number?></dd>
                                     </dl>  
-                                    
-                    
-                    
-					<div class="row" style="margin-top:20px">
-                    	<div class="col-lg-12">
-                        	<button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#buycreditcheck"><i class="fa fa-check-square-o"></i> Credit Check</button>
-                        </div>
-                   </div>
-					<div class="row">
-                        <div class="col-lg-6" style="margin-top:15px">
-                         	<button type="button" class="btn btn-warning btn-sm btn-block" data-toggle="modal" data-target="#report_user"><i class="fa fa-exclamation"></i> Report</button>
-                        </div>
-                        <div class="col-lg-6" style="margin-top:15px">
-                         	<button type="button" class="btn btn-danger btn-sm btn-block" id="blocked"><i class="fa fa-ban"></i> Block</button>
-                        </div>
-                   </div>
                 </div>
             </div>
         </div>
