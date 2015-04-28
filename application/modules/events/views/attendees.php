@@ -62,7 +62,7 @@ function country($name)
     <div class="row">
     
         <?php 
-        
+            if($attendees_count > 0){
             foreach ($attendees as $attendee){
                 
         ?>        
@@ -160,9 +160,17 @@ function country($name)
             </div>
         
         <?php
-                
+            }   
+            } 
+            else {
+        ?>
+            <div class="col-lg-12"><!-- Profile Widget Start -->
+                <div class="contact-box">
+                    There are no attendees at present.
+                </div>
+            </div>
+        <?php    
             }
-        
         ?>        
         
     </div>

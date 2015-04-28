@@ -36,8 +36,17 @@ class Events extends MX_Controller
 	$data['title'] = 'GSM Stockmarket : Events';
         $data['page'] = 'attendees';
         
-        $data['event'] = $this->events_model->get_where($eid);
-        $data['attendees'] = $this->attending_model->get_where_multiples('event_id', $eid);
+        $attend_count = $this->attending_model->_custom_query_count("SELECT COUNT(*) AS count FROM attending WHERE event_id = '".$eid."'");
+        
+        if($attend_count[0]->count){
+            $data['attendees_count'] = $attend_count[0]->count;
+            $data['event'] = $this->events_model->get_where($eid);
+            $data['attendees'] = $this->attending_model->get_where_multiples('event_id', $eid);
+        }
+        else{
+            $data['event'] = $this->events_model->get_where($eid);
+            $data['attendees_count'] = 0;
+        }
              
         $this->load->module('templates');
         $this->templates->page($data);
