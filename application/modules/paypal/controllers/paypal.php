@@ -75,7 +75,7 @@ class Paypal extends MX_Controller
                                     'subject'           => 'PayPal Transaction - '.$invoice.'',
                                     'body'              => '<p>Thank you for upgrading your membership on GSMStockMarket.com.</p>
                                                             <p>To view the full invoice you can go to <strong>Preferences > My Subscription</strong> and print off a copy direct from within your account.</p>
-															<p>If you have any billing issues or queries please do not hesitate to email us at billing@gsmstockmarket.com, message us through the submit a ticket system or call us on +44 (0)1494 717236</p>
+															<p>If you have any billing issues or queries please do not hesitate to email us at billing@gsmstockmarket.com, message us through the submit a ticket system or call us on +44 (0)1494 717321</p>
 															<P>Kind Regards,<br>GSMStockMarket.com Team</p>',
                                     'inbox'             => 'yes',
                                     'sent'              => 'yes',
@@ -283,7 +283,7 @@ class Paypal extends MX_Controller
                                                             <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">Thank you for upgrading to Silver Membership on GSM Stock Market.</p>
                                                             <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">The marketplace goes live on May 1st at 10am GMT.</p>
                                                             <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">You have access now so please update your profile description and logos ready for the big launch.</p>
-                                                            <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">In the meantime if you have any questions or queries please do not hesitate to contact us using the platform ticket system within your account or by phone on +44 (0)1494 717236</p>
+                                                            <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">In the meantime if you have any questions or queries please do not hesitate to contact us using the platform ticket system within your account or by phone on +44 (0)1494 717321</p>
                                                             </td>
                                                         </tr>
                                                         <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">

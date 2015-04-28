@@ -92,7 +92,7 @@ class Transaction extends MX_Controller
                                                             <strong>Sort Code:</strong> 20-40-71<br />
                                                             Barclays Bank. 12 Station Approach, Gerrards Cross, Bucks. SL9 8PP. UK.</p><br />
                                                             <p>To view the full invoice you can go to <strong>Preferences > My Subscription</strong> and print off a copy direct from within your account.</p>
-															<p>If you have any billing issues or queries please do not hesitate to email us at billing@gsmstockmarket.com, message us through the submit a ticket system or call us on +44 (0)1494 717236</p>
+															<p>If you have any billing issues or queries please do not hesitate to email us at billing@gsmstockmarket.com, message us through the submit a ticket system or call us on +44 (0)1494 717321</p>
 															<P>Kind Regards,<br>GSMStockMarket.com Team</p>',
                                     'inbox'             => 'yes',
                                     'sent'              => 'yes',

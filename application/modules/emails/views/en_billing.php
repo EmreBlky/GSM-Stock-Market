@@ -341,7 +341,7 @@
                                         	GSMStockMarket.com Limited<br />
                                                 The Old Dairy, Hazlemere, Hazlemere Crossroads,<br/>
                                                 High Wycombe, Buckinghamshire, HP15 7LG. United Kingdom<br />
-                                                Tel: +44 (0)1494 717236
+                                                Tel: +44 (0)1494 717321
                                     </td>
                                 </tr>
                             </table>
