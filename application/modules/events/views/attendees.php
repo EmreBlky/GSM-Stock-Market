@@ -60,6 +60,20 @@ function country($name)
 <div class="wrapper wrapper-content  animated fadeInRight">
 
     <div class="row">
+        
+        <div class="col-lg-12"><!-- Profile Widget Start -->
+                <div class="contact-box">
+                    <?php echo $event->name;?>
+                    <br/>
+                    <?php echo $event->venue;?>
+                    <br/>
+                    <?php echo $event->location;?>
+                    <br/>
+                    <?php echo $event->date;?>
+                    <br/>
+                    <?php echo $event->description;?>
+                </div>
+            </div>
     
         <?php 
             if($attendees_count > 0){
