@@ -1580,48 +1580,70 @@ class Admin extends MX_Controller
         $this->templates->admin($data);
     }
     
-     function eventEdit($eid)
+     function eventEdit($eid = NULL)
     {
-//         echo '<pre>';
-//         print_r($_POST);
-//         echo $eid;
-//         
+         //echo '<pre>';
+         //print_r(str_replace('sort_order_', '', $_POST));         
+         //echo $eid;
+         //exit;
+//       
         $var = 'events';
         $var_model = $var.'_model';
 
         $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
         
-        $data = array(
-                    'name'          => $this->input->post('name'),
-                    'date'          => $this->input->post('date'),
-                    'venue'         => $this->input->post('venue'),
-                    'location'      => $this->input->post('location'),
-                    'website'       => $this->input->post('website'),
-                    'description'   => $this->input->post('description') 
-                     );
-        
-        $this->{$var_model}->_update($eid, $data);
-        
-        $this->load->library('upload');
-        $base = $this->config->item('base_url');
+        if($eid){
+            
+            $data = array(
+                        'name'          => $this->input->post('name'),
+                        'date'          => $this->input->post('date'),
+                        'venue'         => $this->input->post('venue'),
+                        'location'      => $this->input->post('location'),
+                        'website'       => $this->input->post('website'),
+                        'description'   => $this->input->post('description') 
+                         );
 
-        $config['upload_path'] = dirname($_SERVER["SCRIPT_FILENAME"]) . '/public/main/template/gsm/images/events/';
-        $config['upload_url'] = $base . 'public/main/template/gsm/images/events/';
-        $config['allowed_types'] = 'gif|jpg|png';
-        $config['file_name'] = $eid;
-        $config['max_size'] = 4000;
-        $config['overwrite'] = TRUE;
-        $config['max_width'] = 1500;
-        $config['max_height'] = 1500;
+            $this->{$var_model}->_update($eid, $data);
 
-        $this->upload->initialize($config);
-        $this->upload->do_upload();  
-        
-        $this->session->set_flashdata('admin-events', '<div style="margin:0 15px">    
-                                                            <div class="alert alert-success">
-                                                                The has been edited.
-                                                            </div>
-                                                        </div>');
+            $this->load->library('upload');
+            $base = $this->config->item('base_url');
+
+            $config['upload_path'] = dirname($_SERVER["SCRIPT_FILENAME"]) . '/public/main/template/gsm/images/events/';
+            $config['upload_url'] = $base . 'public/main/template/gsm/images/events/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['file_name'] = $eid;
+            $config['max_size'] = 4000;
+            $config['overwrite'] = TRUE;
+            $config['max_width'] = 1500;
+            $config['max_height'] = 1500;
+
+            $this->upload->initialize($config);
+            $this->upload->do_upload();  
+
+            $this->session->set_flashdata('admin-events', '<div style="margin:0 15px">    
+                                                                <div class="alert alert-success">
+                                                                    The has been edited.
+                                                                </div>
+                                                            </div>');
+        }
+        else{
+            
+            foreach ($_POST as $key => $value){
+             
+             $id = str_replace('sort_order_', '', $key);
+             
+             $data = array(
+                            'sort_order' => $value
+                          );
+             $this->{$var_model}->_update($id, $data);             
+            }
+            
+            $this->session->set_flashdata('admin-events', '<div style="margin:0 15px">    
+                                                                <div class="alert alert-success">
+                                                                    The has been updated.
+                                                                </div>
+                                                            </div>');
+        }
 
        redirect('admin/edit_event');
     }

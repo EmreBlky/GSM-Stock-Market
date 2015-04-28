@@ -20,7 +20,7 @@ class Events extends MX_Controller
         
         $data['events_count'] = $this->events_model->count_all();
         $data['events_active'] = $this->events_model->count_where('status', 'active');
-        $data['events'] = $this->events_model->get_where_multiples('status', 'active');
+        $data['events'] = $this->events_model->get_where_multiples_order('sort_order', 'ASC', 'status', 'active');
         
         $this->load->module('templates');
         $this->templates->page($data);

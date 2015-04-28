@@ -234,6 +234,7 @@ if(is_numeric($id)){?>
                     <div class="ibox-title">
                         <h5>Edit Events</h5>                        
                     </div>
+                    <?php echo form_open('admin/eventEdit'); ?>
                     <div class="ibox-content">
                
                         <div class="table-responsive">
@@ -244,6 +245,8 @@ if(is_numeric($id)){?>
                                     <th>Name</th>
                                     <th>Date</th>
                                     <th>Location</th>
+                                    <th>Status</th>
+                                    <th>Sort Order</th>
                                     <th>Action</th>
         <!--                            <th>More</th>-->
                                 </tr>
@@ -264,6 +267,38 @@ if(is_numeric($id)){?>
                                         <?php echo $event->location; ?>
                                     </td>
                                     <td>
+                                        <?php echo $event->status; ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                        
+                                        if($event->sort_order){
+                                            
+                                            $data = array(
+                                                            'name'          => 'sort_order_'.$event->id,                                                            
+                                                            'value'         => $event->sort_order,
+                                                            'size'          => 5,
+                                                            'style'         => 'text-align: center;',
+                                                            'required'      => 'required'
+                                                          );
+
+                                              echo form_input($data);
+                                            
+                                        }
+                                        else{
+
+                                            $data = array(
+                                                            'name'          => 'sort_order_'.$event->id,                                                            
+                                                            'value'         => $this->input->post('sort_order'),
+                                                            'size'          => 5,
+                                                            'required'      => 'required'
+                                                          );
+
+                                              echo form_input($data);
+                                        }      
+                                        ?>
+                                    </td>
+                                    <td>
                                         <a href="admin/edit_event/<?php echo $event->id;?>"><i class="fa fa-pencil"></i> Edit</a>
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                        
                                         <a href="admin/bioDecline/<?php echo $event->id;?>"><i class="fa fa-times text-warning"></i> Delete</a>
@@ -274,8 +309,9 @@ if(is_numeric($id)){?>
                                 </tbody>
                             </table>
                         </div>
-
+                        <input type="submit" class="btn btn-sm btn-white" value="Update"/>
                     </div>
+                    <?php form_close();?>
                 </div>
          </div>
     </div>
