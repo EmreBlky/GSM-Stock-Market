@@ -85,10 +85,10 @@
 </div>
 
 
-<script type="text/javascript" src="public/main/template/gsm/js/grids.min.js"></script>
+<script type="text/javascript" src="public/main/template/gsm/js/jquery.matchHeight-min.js"></script>
 
 <script type="text/javascript">
-	jQuery(function($) {
-		$('.element').responsiveEqualHeightGrid();	
-	});
+	$(function() {
+    $('.element').matchHeight();
+});
 </script>
