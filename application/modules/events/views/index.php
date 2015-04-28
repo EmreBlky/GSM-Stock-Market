@@ -34,9 +34,9 @@
                             <div class="row">
                       <div class="col-md-4">
                           <?php if(file_exists("public/main/template/gsm/images/events/".$event->id.".jpg")){?>
-                              <img class="img-responsive" src="public/main/template/gsm/images/events/<?php echo $event->id;?>.jpg">
+                              <img class="img-responsive" style="margin:auto" src="public/main/template/gsm/images/events/<?php echo $event->id;?>.jpg">
                           <?php } else {?>
-                              <img class="img-responsive" src="public/main/template/gsm/images/events/no_image.png">
+                              <img class="img-responsive" style="margin:auto" src="public/main/template/gsm/images/no_event_logo.png">
                           <?php } ?>    
                       </div>
                       <div class="col-md-8 element">
