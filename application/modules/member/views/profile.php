@@ -821,7 +821,10 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                                         <i class="fa fa-ban"></i> You have blocked this company. They are unable to communicate or see you in anyway on this website. <a class="alert-link" href="#">Unblock</a>.
                                     </div> -->
                                     
-                                    <div class="m-b-md">                                        
+                                    <div class="m-b-md">
+                                        <?php if($this->session->userdata('members_id') == 5){?>
+                                            <a href="profile/edit_profile/<?php echo $member_info->id;?>" class="btn btn-white btn-xs pull-right">Edit Profile</a>
+                                        <?php }?>
                                         <h2><?php echo $member_company->company_name;?></h2>
                                     </div>
                                 </div>
