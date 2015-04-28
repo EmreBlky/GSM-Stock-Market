@@ -45,7 +45,12 @@
                           <p><?php echo $event->description;?></p>
                       </div>
                       <div class="col-md-12">
-                          <a href="events/attendees/<?php echo $event->id;?>"><button class="btn btn-info pull-right" type="button" style="font-size:10px"><i class="fa fa-users"></i>&nbsp;View Attendees (12)</button></a>
+                          <?php $evcount = $this->attending_model->_custom_query_count("SELECT COUNT(*) AS count FROM attending WHERE event_id = '".$event->id."'"); ?>
+                          <?php if($evcount[0]->count > 0){?>
+                            <a href="events/attendees/<?php echo $event->id;?>"><button class="btn btn-info pull-right" type="button" style="font-size:10px"><i class="fa fa-users"></i>&nbsp;View Attendees (<?php echo $evcount[0]->count; ?>)</button></a>
+                          <?php } else {?>
+                            <button class="btn btn-info pull-right" type="button" style="font-size:10px"><i class="fa fa-users"></i>&nbsp;View Attendees (<?php echo $evcount[0]->count; ?>)</button>
+                          <?php }?>
                           <a href="<?php echo $event->website;?>" target="_blank"><button class="btn btn-primary pull-right" type="button" style="font-size:10px;margin-right:15px"><i class="fa fa-globe"></i>&nbsp;Visit Website</button></a>
                       </div>
                     </div>

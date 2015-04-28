@@ -1,6 +1,6 @@
 <?php
 //echo '<pre>';
-//print_r($country);
+//print_r($events);
 //exit;
 //echo "<pre>";
 //print_r($company);
@@ -1502,56 +1502,58 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                 <div class="ibox-content">
                     <div class="row">
                         <div class="col-md-12">
+                            <?php if($events_count > 0) {?>
+                            
+                            <?php if($events) {?>
+                            
+                            <?php foreach($events as $event) {?>
+                            
+                            <?php
+                            
+                                //$attending = $this->attending_model->get_where_multiple('event_id', $event->id, 'member_id', $this->session->userdata('members_id'))->id;
+                                $att_count = $this->attending_model->_custom_query_count("SELECT COUNT(*) AS count FROM attending WHERE member_id = '".$this->session->userdata('members_id')."' AND event_id = '".$event->id."'");
+                                
+                            ?>
 
-                    <div class="form-group">                        
-                            <div class="col-md-12 text-center">
-                            			<label class="col-md-12">Mobile World Congress<br /><small class="text-navy">Barcelona, Spain - 22-25 February 2016</small></label><br />
-                                        <div class="radio-inline i-checks small"><label> <input type="radio" value="attending" name="1"> <i></i> Attending </label></div>
-                                        <div class="radio-inline i-checks small"><label> <input type="radio" value="not_attending" name="1" checked=""> <i></i> Not Attending </label></div>
-                            </div>                        
-                    </div>
+                            <div class="form-group">                        
+                                <div class="col-md-12 text-center">
+                                    <label class="col-md-12"><?php echo $event->name; ?><br />
+                                        <small class="text-navy"><?php echo $event->location; ?>, <?php echo $event->venue; ?> - <?php echo $event->date; ?></small>
+                                    </label>
+                                    <br />
+                                    <?php if($att_count[0]->count > 0) {?>
+                                        <div class="radio-inline i-checks small"><label> <input type="radio" value="attending" name="<?php echo $event->id; ?>" checked=""> <i></i> Attending </label></div>
+                                        <div class="radio-inline i-checks small"><label> <input type="radio" value="not_attending" name="<?php echo $event->id; ?>"> <i></i> Not Attending </label></div>
+                                    <?php } else {?>
+                                        <div class="radio-inline i-checks small"><label> <input type="radio" value="attending" name="<?php echo $event->id; ?>"> <i></i> Attending </label></div>
+                                        <div class="radio-inline i-checks small"><label> <input type="radio" value="not_attending" name="<?php echo $event->id; ?>" checked=""> <i></i> Not Attending </label></div>
+                                    <?php }?>
+                                </div>                        
+                            </div>
 
-                    <div class="hr-line-dashed"></div>
-
-                    <div class="form-group">                        
-                            <div class="col-md-12 text-center">
-                            			<label class="col-md-12">Global Mobile Awards<br /><small class="text-navy">Barcelona, Spain - 23 February 2016</small></label><br />
-                                        <div class="radio-inline i-checks small"><label> <input type="radio" value="attending" name="2"> <i></i> Attending </label></div>
-                                        <div class="radio-inline i-checks small"><label> <input type="radio" value="not_attending" name="2" checked=""> <i></i> Not Attending </label></div>
-                            </div>                        
-                    </div>
-
-                    <div class="hr-line-dashed"></div>
-
-                    <div class="form-group">                        
-                            <div class="col-md-12 text-center">
-                            			<label class="col-md-12">Mobile World Congress Shanghai<br /><small class="text-navy">Shanghai, China -  15-17 July 2015</small></label><br />
-                                        <div class="radio-inline i-checks small"><label> <input type="radio" value="attending" name="3"> <i></i> Attending </label></div>
-                                        <div class="radio-inline i-checks small"><label> <input type="radio" value="not_attending" name="3" checked=""> <i></i> Not Attending </label></div>
-                            </div>                        
-                    </div>
-
-                    <div class="hr-line-dashed"></div>
-
-                    <div class="form-group">                        
-                            <div class="col-md-12 text-center">
-                            			<label class="col-md-12">Connected Women<br /><small class="text-navy">Atlanta, USA - 23 September 2014</small></label><br />
-                                        <div class="radio-inline i-checks small"><label> <input type="radio" value="attending" name="4"> <i></i> Attending </label></div>
-                                        <div class="radio-inline i-checks small"><label> <input type="radio" value="not_attending" name="4" checked=""> <i></i> Not Attending </label></div>
-                            </div>                        
-                    </div>
-
-                    <div class="hr-line-dashed"></div>
-
-                    <div class="form-group">                        
-                            <div class="col-md-12 text-center">
-                            			<label class="col-md-12">Mobile 360 Series<br /><small class="text-navy">N/A - N/A</small></label><br />
-                                        <div class="radio-inline i-checks small"><label> <input type="radio" value="attending" name="5"> <i></i> Attending </label></div>
-                                        <div class="radio-inline i-checks small"><label> <input type="radio" value="not_attending" name="5" checked=""> <i></i> Not Attending </label></div>
-                            </div>                        
-                    </div>
-                    
-                        
+                            <div class="hr-line-dashed"></div>
+                            
+                            <?php } ?>
+                            
+                            <?php } else {?>
+                            
+                                <div class="form-group">                        
+                                    <div class="col-md-12 text-center">
+                                        <label class="col-md-12">NO EVENTS</label>
+                                    </div>
+                                </div>
+                            
+                            <?php } ?>
+                            
+                            <?php } else { ?>
+                            
+                                <div class="form-group">                        
+                                    <div class="col-md-12 text-center">
+                                        <label class="col-md-12">NO EVENTS</label>
+                                    </div>
+                                </div>
+                            
+                            <?php }?>
                         </div>
                     </div>
                 </div>

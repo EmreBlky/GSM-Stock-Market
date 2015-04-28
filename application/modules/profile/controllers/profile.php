@@ -348,6 +348,22 @@ class Profile extends MX_Controller
 
     function edit_profile($mid = NULL)
     {
+        $this->load->model('events/events_model', 'events_model');
+        $this->load->model('attending/attending_model', 'attending_model');
+        
+        $e_count = $this->events_model->count_where('status', 'active');
+//        
+//        echo '<pre>';
+//        echo $e_count;
+//        exit;
+        
+        if($e_count > 0){
+            $data['events'] = $this->events_model->get_where_multiples_order('sort_order', 'ASC', 'status', 'active');
+            $data['events_count'] = $e_count;
+        }
+        else{
+            $data['events_count'] = 0;
+        }
         
        if(isset($mid)){
            
@@ -431,7 +447,6 @@ class Profile extends MX_Controller
 //        echo '<pre>';
 //        print_r($_POST);
 //        exit;
-        
         
         $mid = $this->input->post('support_edit');
 
@@ -895,6 +910,33 @@ class Profile extends MX_Controller
 
         }
         }
+        
+        $this->load->model('attending/attending_model', 'attending_model');
+        
+        foreach($_POST as $key => $value){
+            
+            if(is_numeric($key) && $value == 'attending'){
+                
+                $count = $this->attending_model->_custom_query_count("SELECT COUNT(*) AS count FROM attending WHERE member_id = '".$this->session->userdata('members_id')."' AND event_id = '".$key."'");
+                
+                if($count[0]->count < 1){
+                //echo $key.' - '.$value.'<br/>';
+                    $data_attending = array(
+                                            'event_id' => $key,
+                                            'member_id' => $this->session->userdata('members_id')
+                                            );
+                    $this->attending_model->_insert($data_attending);
+                
+                }
+            }
+            
+            if(is_numeric($key) && $value == 'not_attending'){
+                //echo $key.' - '.$value.'<br/>';
+                $this->attending_model->_custom_query_action("DELETE FROM attending WHERE event_id = '".$key."' AND member_id = '".$this->session->userdata('members_id')."'");
+            }
+            
+        }
+        
         redirect('profile/', 'refresh');
     }
 

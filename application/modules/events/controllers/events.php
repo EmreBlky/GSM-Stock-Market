@@ -9,7 +9,11 @@ class Events extends MX_Controller
 //        { 
 //            redirect('login');
 //        }
+        $this->load->model('member/member_model', 'member_model');
+        $this->load->model('country/country_model', 'country_model');
+        $this->load->model('company/company_model', 'company_model');
         $this->load->model('events/events_model', 'events_model');
+        $this->load->model('attending/attending_model', 'attending_model');
     }
 
     function index()
@@ -26,11 +30,15 @@ class Events extends MX_Controller
         $this->templates->page($data);
     }
     
-    function attendees()
+    function attendees($eid)
     {
         $data['main'] = 'events';
 	$data['title'] = 'GSM Stockmarket : Events';
         $data['page'] = 'attendees';
+        
+        $data['event'] = $this->events_model->get_where($eid);
+        $data['attendees'] = $this->attending_model->get_where_multiples('event_id', $eid);
+             
         $this->load->module('templates');
         $this->templates->page($data);
     }
