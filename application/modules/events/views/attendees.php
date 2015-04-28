@@ -63,6 +63,12 @@ function country($name)
         
         <div class="col-lg-12"><!-- Profile Widget Start -->
                 <div class="contact-box">
+                    <?php if(file_exists("public/main/template/gsm/images/events/".$event->id.".jpg")){?>
+                        <img class="img-responsive" style="margin:auto" src="public/main/template/gsm/images/events/<?php echo $event->id;?>.jpg">
+                    <?php } else {?>
+                        <img class="img-responsive" style="margin:auto" src="public/main/template/gsm/images/no_event_logo.png">
+                    <?php } ?>
+                    <br/>
                     <?php echo $event->name;?>
                     <br/>
                     <?php echo $event->venue;?>
