@@ -235,7 +235,7 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
 
 <?php if($url == 'creditcheck') {?>
 <li class="active">
-		<i class="fa fa-barcode"></i> <span class="nav-label">Credit Check</span><span class="fa arrow"></span>
+		<a href="creditcheck"><i class="fa fa-barcode"></i> <span class="nav-label">Credit Check</span><span class="fa arrow"></span></a>
 		<ul class="nav nav-second-level">
 				<li><a href="creditcheck/requests"><i class="fa fa-eye"></i> Requests</a></li>
 				<li><a href="creditcheck/reports"><i class="fa fa-unlock-alt"></i> My Reports</a></li>
