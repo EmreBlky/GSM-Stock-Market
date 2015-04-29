@@ -169,16 +169,8 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
         <?php } ?>
         </ul>
     </li>
-    <?php } else {?>
-    <li>
-        <a href="marketplace/notice">
-            <i class="fa fa-line-chart"></i> 
-            <span class="nav-label">Marketplace</span>
-            <span class="fa arrow"></span>
-        </a>
-      
-    </li>
-    <?php } ?>
+    <?php }?>
+  
     
     <li>
         <a href="search/company"><i class="fa fa-search"></i> <span class="nav-label">Search</span></a>
