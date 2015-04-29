@@ -1334,9 +1334,9 @@ jQuery(document).ready(function($) {
 </div>
 
 <script type="text/javascript">
-$("#continent").val("<?php echo $_GET['continent'] ?>");
-$("#region").val("<?php echo $_GET['region'] ?>");
-$("#countries").val(<?php echo $_GET['countries'] ?>);
+$("#continent").val("<?php if(isset($_GET['continent'])) echo $_GET['continent'] ?>");
+$("#region").val("<?php if(isset($_GET['region'])) echo $_GET['region'] ?>");
+$("#countries").val(<?php if(isset($_GET['countries'])) echo $_GET['countries'] ?>);
 
 $('#reset').click(function(){
         $('#search')[0].reset();
