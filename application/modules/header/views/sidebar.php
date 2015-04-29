@@ -233,20 +233,20 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
 </li>
 -->
 
-<?php if($url == 'creditcheck') {?>
+<?php if($url == 'creditdata') {?>
 <li class="active">
-		<a href="creditcheck"><i class="fa fa-clipboard"></i> <span class="nav-label">Credit Check</span><span class="fa arrow"></span></a>
+		<a href=""><i class="fa fa-clipboard"></i> <span class="nav-label">Credit Check</span><span class="fa arrow"></span></a>
 		<ul class="nav nav-second-level">
-				<li><a href="creditcheck/requests"><i class="fa fa-eye"></i> Requests</a></li>
-				<li><a href="creditcheck/reports"><i class="fa fa-list"></i> My Reports</a></li>
+				<li><a href="creditdate/requests"><i class="fa fa-eye"></i> Requests</a></li>
+				<li><a href="creditcdata/my_reports"><i class="fa fa-list"></i> My Reports</a></li>
 		</ul>
 </li>         
 <?php } else {?>
 <li>
 		<a href="creditcheck"><i class="fa fa-clipboard"></i> <span class="nav-label">Credit Check</span><span class="fa arrow"></span></a>
 		<ul class="nav nav-second-level">
-				<li><a href="creditcheck/requests"><i class="fa fa-eye"></i> Requests</a></li>
-				<li><a href="creditcheck/reports"><i class="fa fa-list"></i> My Reports</a></li>
+				<li><a href="creditdata/requests"><i class="fa fa-eye"></i> Requests</a></li>
+				<li><a href="creditdata/my_reports"><i class="fa fa-list"></i> My Reports</a></li>
 		</ul>
 </li>         
 <?php } ?>
