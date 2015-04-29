@@ -233,6 +233,32 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
 </li>
 -->
 
+<?php if($url == 'creditcheck') {?>
+<li class="active">
+		<i class="fa fa-barcode"></i> <span class="nav-label">Credit Check</span><span class="fa arrow"></span>
+		<ul class="nav nav-second-level">
+				<li><a href="creditcheck/requests"><i class="fa fa-eye"></i> Requests</a></li>
+				<li><a href="creditcheck/reports"><i class="fa fa-unlock-alt"></i> My Reports</a></li>
+		</ul>
+</li>         
+<?php } else {?>
+<li>
+		<i class="fa fa-barcode"></i> <span class="nav-label">Credit Check</span><span class="fa arrow"></span>
+		<ul class="nav nav-second-level">
+				<li><a href="creditcheck/requests"><i class="fa fa-eye"></i> Requests</a></li>
+				<li><a href="creditcheck/reports"><i class="fa fa-unlock-alt"></i> My Reports</a></li>
+		</ul>
+</li>         
+<?php } ?>
+
+
+<?php $mem_id = $this->member_model->get_where($this->session->userdata('members_id'))->membership; if($mem_id < 2){?>
+<li>
+		<a href="demo"><i class="fa fa-dekstop"></i> <span class="nav-label">Request a Demo</span></a>
+</li>
+<?php } else{} ?>
+
+
 <li>
 		<a href="events"><i class="fa fa-calendar"></i> <span class="nav-label">Events</span></a>
 </li>
