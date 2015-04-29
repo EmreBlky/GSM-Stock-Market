@@ -580,7 +580,7 @@ if(!empty($listing_detail->image1))
               <input type="hidden" name="listing_id" class="listing" value="<?php if(!empty($listing_detail->id)) echo $listing_detail->id; ?>"/>
               <input type="hidden" name="seller_id" value="<?php if(!empty($listing_detail->member_id)) echo $listing_detail->member_id; ?>"/>
 
-              <input type="hidden" name="message_title" value='Listing ID - #<?php echo $listing_detail->id; if($listing_detail->listing_type==1){ echo" Sell";}elseif($listing_detail->listing_type==2){ echo" Buy";}?> Offer made by <?php $companyinfo=company_name(); echo $companyinfo->company_name; ?>'/>
+              <input type="hidden" name="message_title" value='Listing ID - #<?php echo $listing_detail->id; if($listing_detail->listing_type==1){ echo" Sell";}elseif($listing_detail->listing_type==2){ echo" Buy";}?> Question from <?php $companyinfo=company_name(); echo $companyinfo->company_name; ?>'/>
 
               <textarea rows="5" cols="10" class="form-control" name="ask_question" placeholder="Enter your question." required></textarea>
           </div>
