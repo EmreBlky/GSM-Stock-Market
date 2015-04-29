@@ -111,7 +111,7 @@ class Marketplace_model extends MY_Model {
 	}
 
     public function listing_buy($offset='', $per_page=''){
-		$member_id=$this->session->userdata('members_id');
+    	$member_id=$this->session->userdata('members_id');
 
 		
 		$this->db->select('listing.*');
@@ -121,21 +121,21 @@ class Marketplace_model extends MY_Model {
 			//$this->db->or_where("product_mpn",trim($_GET['date']));
 		}
 		if(!empty($_GET['mpn'])){
-			$this->db->or_where("listing.product_mpn_isbn",trim($_GET['mpn']));
+			$this->db->where("listing.product_mpn_isbn",trim($_GET['mpn']));
 		}
 		
 		if(!empty($_GET['model'])){
-			$this->db->or_where("listing.product_model",trim($_GET['model']));
+			$this->db->where("listing.product_model",trim($_GET['model']));
 		}
 		
 		if(!empty($_GET['product_type'])){
-			$this->db->or_where("listing.product_type",trim($_GET['product_type']));
+			$this->db->where("listing.product_type",trim($_GET['product_type']));
 		}
 		
 		if(!empty($_GET['price_range_start']) && !empty($_GET['price_range_end'])){
 			$price_range_start = trim($_GET['price_range_start']);
 			$price_range_end = trim($_GET['price_range_end']);
-			$this->db->or_where("(listing.unit_price >= $price_range_start AND listing.unit_price <= $price_range_end)");
+			$this->db->where("(listing.unit_price >= $price_range_start AND listing.unit_price <= $price_range_end)");
 		}
 		
 
@@ -188,7 +188,7 @@ class Marketplace_model extends MY_Model {
 
 		if( !empty($_GET['query']) ){
 			foreach($_GET['query'] as $prod_make ){
-				$this->db->like("`listing`.product_make",trim($prod_make));
+				$this->db->where("(`listing`.product_make LIKE '%$prod_make%' OR `listing`.product_model LIKE '%$prod_make%')");
 			}
 		}
 
@@ -201,7 +201,6 @@ class Marketplace_model extends MY_Model {
 		
 		$query = $this->db->get();
 		
-			
 		if($query->num_rows()>0)
 			return $query->result();
 		else
@@ -209,7 +208,7 @@ class Marketplace_model extends MY_Model {
 		
 	}
 	
-	public function listing_sell($offset='', $per_page=''){
+ public function listing_sell($offset='', $per_page=''){
 		$member_id=$this->session->userdata('members_id');
 
 		$this->db->select('listing.*');
@@ -219,21 +218,21 @@ class Marketplace_model extends MY_Model {
 			//$this->db->or_where("product_mpn",trim($_GET['date']));
 		}
 		if(!empty($_GET['mpn'])){
-			$this->db->or_where("listing.product_mpn_isbn",trim($_GET['mpn']));
+			$this->db->where("listing.product_mpn_isbn",trim($_GET['mpn']));
 		}
 		
 		if(!empty($_GET['model'])){
-			$this->db->or_where("listing.product_model",trim($_GET['model']));
+			$this->db->where("listing.product_model",trim($_GET['model']));
 		}
 		
 		if(!empty($_GET['product_type'])){
-			$this->db->or_where("listing.product_type",trim($_GET['product_type']));
+			$this->db->where("listing.product_type",trim($_GET['product_type']));
 		}
 		
 		if(!empty($_GET['price_range_start']) && !empty($_GET['price_range_end'])){
 			$price_range_start = trim($_GET['price_range_start']);
 			$price_range_end = trim($_GET['price_range_end']);
-			$this->db->or_where("(listing.unit_price >= $price_range_start AND listing.unit_price <= $price_range_end)");
+			$this->db->where("(listing.unit_price >= $price_range_start AND listing.unit_price <= $price_range_end)");
 		}
 		
 
@@ -286,7 +285,7 @@ class Marketplace_model extends MY_Model {
 
 		if( !empty($_GET['query']) ){
 			foreach($_GET['query'] as $prod_make ){
-				$this->db->like("`listing`.product_make",trim($prod_make));
+				$this->db->where("(`listing`.product_make LIKE '%$prod_make%' OR `listing`.product_model LIKE '%$prod_make%')");
 			}
 		}
 
@@ -306,6 +305,7 @@ class Marketplace_model extends MY_Model {
 			return FALSE;
 		
 	}
+
 
 	public function listing_counter_offer(){
 		$member_id=$this->session->userdata('members_id');
