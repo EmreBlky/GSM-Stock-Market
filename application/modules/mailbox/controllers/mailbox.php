@@ -1246,8 +1246,8 @@ class Mailbox extends MX_Controller
                     $this->load->library('email', $config);
                     $this->email->set_mailtype("html");
 
-                    $email_support = $this->notification_model->get_where_multiple('member_id', $sid)->email_support;
-                    $email_member = $this->notification_model->get_where_multiple('member_id', $sid)->email_member;
+                    $email_support = $this->notification_model->get_where_multiples('member_id', $sid)->email_support;
+                    $email_member = $this->notification_model->get_where_multiples('member_id', $sid)->email_member;
 
                         if($email_support == 'yes'){                       
 
