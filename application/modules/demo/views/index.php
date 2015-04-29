@@ -31,7 +31,7 @@
                         <div class="ibox-content">
                         	<div class="row">
                         	<div class="col-lg-8">
-                            <p>If you are looking to try our platform before subscribing we completely understand. We are able to offer a 30-60 minute screen share demo with one of our dedicated managers on a one-to-one basis to guide you through our platform and answer any questions you might have.</p>
+                            <p>If you are looking to try our platform before subscribing we completely understand. We are able to offer a 30-60 minute screen share demo with one of our dedicated account managers on a one-to-one basis to guide you through our platform and answer any questions you might have.</p>
                             <p>In our demo we will show you all aspects of our marketplace and guide you through all the steps to buy and sell on our trading platform. On top of this we can show you through other aspects of our platform if you require, just let us know what you would like to see by sending us a message below.</p>
                             <p>To get started simply fill out the form below and one of our dedicated account managers will be in touch shortly to setup your appointment.</p>
                             </div>
