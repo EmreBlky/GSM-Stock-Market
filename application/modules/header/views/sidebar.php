@@ -196,46 +196,12 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
 	 <ul class="nav nav-second-level">
 				<li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Buy</a></li>
 				<li><a href="marketplace/sell"><i class="fa fa-tag"></i> Sell</a></li>
-				
-				
-				<li><a href="marketplace/watching"><i class="fa fa-eye"></i> Watching 
-				<?php $count_watch_listing=count_watch_listing(); 
-				if($count_watch_listing){ ?>
-				 <span class="label label-warning pull-right" id="count_watch_listing">
-				<?php  echo $count_watch_listing; ?>
-				</span><?php } ?>
-				</a></li> 
-				
-				<li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers
-				<?php 
-				$counteroffer=all_offer(); 
-				if($counteroffer){
-				?>
-				<span class="label label-info pull-right" id="count_offer">
-				<?php  echo $counteroffer; ?></span>
-				<?php } ?> 
-				</a></li>
-					
-				
-				<li><a href="marketplace/open_orders"><i class="fa fa-book"></i> Open Orders 
-        <?php 
-				$countopen_order=count_open_order(); 
-				if($countopen_order){ ?>
-        <span class="label label-warning pull-right" id="count_open_order">
-						<?php  echo $countopen_order; ?>
-				</span>
-				<?php }?>
+				<li><a href="marketplace/watching"><i class="fa fa-eye"></i> Watching  <span class="label label-warning pull-right" id="count_watch_listing"></span></a></li> 
+				<li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers<span class="label label-info pull-right" id="count_offer"></span></a></li>
+				<li><a href="marketplace/open_orders"><i class="fa fa-book"></i> Open Orders <span class="label label-warning pull-right" id="count_open_order"></span>
         </a></li>
 				<li><a href="marketplace/negotiation"><i class="fa fa-book"></i> Negotiation </a></li>
-				
-				
-				<li><a href="marketplace/listing"><i class="fa fa-list"></i> My Listings 
-        <?php $countmy_listing=countmy_listing(); 
-				if($countmy_listing){ ?>
-        <span class="label label-warning pull-right" id="countmy_listing">
-				<?php echo $countmy_listing; ?>
-				</span>
-        <?php } ?>
+				<li><a href="marketplace/listing"><i class="fa fa-list"></i> My Listings  <span class="label label-warning pull-right" id="countmy_listing"></span>
         </a></li>
 				
 				<li><a href="marketplace/history"><i class="fa fa-file-text"></i> Order History</a></li>
@@ -245,12 +211,7 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
 								</ul>
 						</li>
 		       
-		<li><a href="marketplace/saved_listing"><i class="fa fa-save"></i> Saved Listings 
-    <?php $count_save_listing=count_save_listing(); 
-		if($count_save_listing){ ?> 
-    <span class="label label-success pull-right" id="count_save_listing">
-		<?php  echo $count_save_listing; ?></span>
-    <?php } ?>
+		<li><a href="marketplace/saved_listing"><i class="fa fa-save"></i> Saved Listings   <span class="label label-success pull-right" id="count_save_listing"></span>
     </a></li>
 		
 		</ul>
