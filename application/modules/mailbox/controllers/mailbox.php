@@ -8,7 +8,13 @@ class Mailbox extends MX_Controller
         if ( ! $this->session->userdata('logged_in'))
         { 
             redirect('login');
-        }
+        }        
+
+//        if ($this->session->userdata('terms') == 'no')
+//        { 
+//            redirect('legal/terms_conditions');
+//        }
+        
         $this->load->model('mailbox/mailbox_model', 'mailbox_model');
         $this->load->model('member/member_model', 'member_model');
         $this->load->model('activity/activity_model', 'activity_model');

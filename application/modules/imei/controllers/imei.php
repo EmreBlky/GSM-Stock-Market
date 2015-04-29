@@ -10,6 +10,11 @@ class Imei extends MX_Controller
             redirect('login');
         }
         
+        if ($this->session->userdata('terms') == 'no')
+        { 
+            redirect('legal/terms_conditions');
+        }
+        
         $this->load->model('activity/activity_model', 'activity_model');
         $this->load->model('imei/imei_model', 'imei_model');
         

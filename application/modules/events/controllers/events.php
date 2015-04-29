@@ -4,11 +4,17 @@ class Events extends MX_Controller
 {
     function __construct()
     {
-//        parent::__construct();
-//        if ( ! $this->session->userdata('logged_in'))
-//        { 
-//            redirect('login');
-//        }
+        parent::__construct();
+        if ( ! $this->session->userdata('logged_in'))
+        { 
+            redirect('login');
+        }
+        
+        if ($this->session->userdata('terms') == 'no')
+        { 
+            redirect('legal/terms_conditions');
+        }
+        
         $this->load->model('member/member_model', 'member_model');
         $this->load->model('country/country_model', 'country_model');
         $this->load->model('company/company_model', 'company_model');

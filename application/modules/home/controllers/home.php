@@ -26,6 +26,9 @@ class Home extends MX_Controller
         $data['main'] = 'home';        
         $data['title'] = 'GSM - Home';        
         $data['page'] = 'index';
+        
+        $this->load->model('member/member_model', 'member_model');
+        $data['terms'] = $this->member_model->get_where($this->session->userdata('members_id'))->terms_conditions;
 
         $this->load->module('templates');
         $this->templates->page($data);

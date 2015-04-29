@@ -6,6 +6,11 @@
     $overall = $this->feedback->overallScore($this->session->userdata('members_id'));
 ?>
 <div class="wrapper wrapper-content">
+    <?php if($terms == 'no') {?>
+    <div class="alert alert-warning" style="margin-bottom:25px;">
+        The terms and conditions have been updated. Please can you confirm that you have read and acknowledged the <a class="alert-link" href="legal/terms_conditions">Terms &amp; Conditions</a> before you can proced with using this website.
+    </div>
+    <?php } ?>
     <?php if($this->session->userdata('membership') < 2) {?>
     <div class="alert alert-info" style="margin-bottom:25px;">
         Welcome <?php echo $this->session->userdata('firstname');?>! You currently have Bronze membership status. This Dashboard is an example of what Silver members will see. Your personalised Dashboard is a snapshot of total sales, purchases, number of profile visits, messages and your feedback rating from completed deals.  You can also see a summary of your Marketplace for current Buying requests, Selling offers and products you are watching. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>

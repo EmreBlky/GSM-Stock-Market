@@ -7,7 +7,12 @@ class Search extends MX_Controller
         parent::__construct();
         if (!$this->session->userdata('logged_in')) {
             redirect('login');
-        }        
+        }
+        
+        if ($this->session->userdata('terms') == 'no')
+        { 
+            redirect('legal/terms_conditions');
+        }
 
         $this->load->model('search_model');
     }

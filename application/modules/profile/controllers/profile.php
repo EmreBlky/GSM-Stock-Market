@@ -9,6 +9,7 @@ class Profile extends MX_Controller
         if (!$this->session->userdata('logged_in')) {
             redirect('login');
         }
+        
         $this->load->model('member/member_model', 'member_model');
         $this->load->model('block/block_model', 'block_model');
         $this->load->model('company/company_model', 'company_model');
@@ -17,10 +18,16 @@ class Profile extends MX_Controller
         $this->load->model('login/login_model', 'login_model');
         $this->load->model('activity/activity_model', 'activity_model');
         
+        
     }
 
     function index()
     {
+        if ($this->session->userdata('terms') == 'no')
+        { 
+            redirect('legal/terms_conditions');
+        }
+        
         $data['main'] = 'profile';
         $data['title'] = 'GSM - Profile';
         $data['page'] = 'index';
@@ -68,6 +75,11 @@ class Profile extends MX_Controller
 //        prin
 //        t_r($blocked);
 //        exit;
+        
+         if ($this->session->userdata('terms') == 'no')
+        { 
+            redirect('legal/terms_conditions');
+        }
         $data_activity = array(
             'activity' => 'Whos Viewed',
             'time' => date('H:i:s'),
@@ -394,6 +406,11 @@ class Profile extends MX_Controller
 
     function edit_profile($mid = NULL)
     {
+        if ($this->session->userdata('terms') == 'no')
+        { 
+            redirect('legal/terms_conditions');
+        }
+        
         $this->load->model('events/events_model', 'events_model');
         $this->load->model('attending/attending_model', 'attending_model');
         

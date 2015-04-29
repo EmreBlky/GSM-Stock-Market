@@ -9,6 +9,11 @@ class Marketplace extends MX_Controller
         { 
             redirect('login');
         }
+        
+        if ($this->session->userdata('terms') == 'no')
+        { 
+            redirect('legal/terms_conditions');
+        }
         // if($this->session->userdata('membership') < 2) {
         //     redirect('preferences/notice');
         // }

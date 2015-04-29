@@ -10,6 +10,11 @@ class Preferences extends MX_Controller
             redirect('login');
         }
         
+        if ($this->session->userdata('terms') == 'no')
+        { 
+            redirect('legal/terms_conditions');
+        }
+        
         $this->load->model('member/member_model', 'member_model');
         $this->load->model('membership/membership_model', 'membership_model');
         $this->load->model('transaction/transaction_model', 'transaction_model');

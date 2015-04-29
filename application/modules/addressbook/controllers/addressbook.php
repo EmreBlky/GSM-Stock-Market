@@ -9,6 +9,12 @@ class Addressbook extends MX_Controller
         { 
             redirect('login');
         }
+        
+        if ($this->session->userdata('terms') == 'no')
+        { 
+            redirect('legal/terms_conditions');
+        }
+        
         $this->load->model('addressbook/addressbook_model', 'addressbook_model');
         $this->load->model('block/block_model', 'block_model');
         $this->load->model('country/country_model', 'country_model');
