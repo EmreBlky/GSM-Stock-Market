@@ -1245,9 +1245,13 @@ class Mailbox extends MX_Controller
 
                     $this->load->library('email', $config);
                     $this->email->set_mailtype("html");
+                    
+                    $sid_count = $this->notification_model->_custom_query_count("SELECT COUNT(*) AS count FROM notification WHERE member_id = '".$sid."'");
+                    
+                    if($sid_count[0]->count > 0){
 
-                    $email_support = $this->notification_model->get_where_multiples('member_id', $sid)->email_support;
-                    $email_member = $this->notification_model->get_where_multiples('member_id', $sid)->email_member;
+                    $email_support = $this->notification_model->get_where_multiple('member_id', $sid)->email_support;
+                    $email_member = $this->notification_model->get_where_multiple('member_id', $sid)->email_member;
 
                         if($email_support == 'yes'){                       
 
@@ -1277,6 +1281,7 @@ class Mailbox extends MX_Controller
 
                                 $this->email->send();                          
                           }
+                    }
                     redirect('mailbox/inbox/all');
                 }
                 
