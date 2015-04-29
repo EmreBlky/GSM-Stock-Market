@@ -34,11 +34,12 @@ class Marketplace extends MX_Controller
         $this->templates->page($data);
     }
     
-    function buy()
+      function buy()
     {
         
         $this->load->model('member/member_model', 'member_model');
         $data['member'] = $this->member_model->get_where($this->session->userdata('members_id'));
+
 
         $data['listing_buy'] =$this->marketplace_model->listing_buy();
 
@@ -76,7 +77,7 @@ class Marketplace extends MX_Controller
         }else{
            $data['listing_categories']=FALSE;
         }
-         $data['member_id'] =$member_id;
+        $data['member_id'] =$member_id;
         $data['main'] = 'marketplace';
         $data['title'] = 'GSM - Market Place: Sell';
         $data['page'] = 'sell';
@@ -571,14 +572,14 @@ class Marketplace extends MX_Controller
     
         if ($this->form_validation->run($this) == TRUE){
 
-           $min_price='';
+           $min_price='1';
            $allow_offer='';
-           $min_qty_order='';
+           $min_qty_order='1';
 
            if(isset($_POST['minimum_checkbox'])){
               $min_price=$this->input->post('min_price');
             }else{
-                $min_price='';
+                $min_price='1';
             }
             if(isset($_POST['allowoffer_checkbox'])){
                $allow_offer=$this->input->post('allow_offer');
@@ -589,7 +590,7 @@ class Marketplace extends MX_Controller
             if(isset($_POST['orderqunatity_checkbox'])){
                $min_qty_order=$this->input->post('min_qty_order');
             }else{
-                $min_qty_order='';
+                $min_qty_order='1';
             }
 
              $shipping_term=$this->input->post('shipping_term');
@@ -910,9 +911,9 @@ class Marketplace extends MX_Controller
     
         if ($this->form_validation->run($this) == TRUE){
 
-           $min_price='';
+           $min_price='1';
            $allow_offer='';
-           $min_qty_order='';
+           $min_qty_order='1';
            $allow_color='';
 
            if(isset($_POST['color_allow'])){
@@ -941,7 +942,7 @@ class Marketplace extends MX_Controller
             if(isset($_POST['orderqunatity_checkbox'])){
                $min_qty_order=$this->input->post('min_qty_order');
             }else{
-               $min_qty_order='';
+               $min_qty_order='1';
             }
 
             if(isset($_POST['shipping_checkbox'])){
@@ -1150,16 +1151,22 @@ class Marketplace extends MX_Controller
         $this->templates->page($data);
     }
 
-    function listing_watch($seller_id='', $listing_id='')
+    function listing_watch($seller_id='', $listing_id='',$listing_type='')
     {
-       $user_id =  $this->session->userdata('members_id');
+        $user_id =  $this->session->userdata('members_id');
         $check_list = $this->marketplace_model->get_row('listing_watch', array('listing_id'=>$listing_id,'user_id'=>$user_id));
         if(empty($check_list)){
+        if($listing_type==1){
+            $listing_type=2;
+        }elseif($listing_type==2){
+            $listing_type=1;
+        }
          $data_insert=array(
                             'listing_id' =>  $listing_id,
                             'seller_id' =>   $seller_id,
                             'user_id'    =>  $user_id,
-                            'created'    =>  date('Y-m-d,H:i:s')
+                            'created'    =>  date('Y-m-d,H:i:s'),
+                            'listing_type'=>$listing_type
                             );
          $this->marketplace_model->insert('listing_watch',$data_insert);
          $this->session->set_flashdata('msg_info','Listing have been save sucessfully in your watch list.'); 
@@ -1180,7 +1187,7 @@ class Marketplace extends MX_Controller
           else{
           $this->session->set_flashdata('msg_info','Invalid...!');  
           }
-         redirect('marketplace/watching');
+         redirect($_SERVER['HTTP_REFERER']);
     }
 
     function listing_question()
@@ -1188,6 +1195,7 @@ class Marketplace extends MX_Controller
         if(!empty($_POST['ask_question'])){
             $user_id =  $this->session->userdata('members_id');
             $listing_id = $this->input->post('listing_id');
+            $message_title=$this->input->post('message_title');
             $data_insert=array(
                             'listing_id' =>  $listing_id,
                             'seller_id' => $this->input->post('seller_id'),
@@ -1200,7 +1208,7 @@ class Marketplace extends MX_Controller
             $data = array(
                 'member_id'         => $user_id,
                 'sent_member_id'    => $this->input->post('seller_id'),
-                'subject'           => 'Listing Ask question',
+                'subject'           => $message_title,
                 'body'              => $this->input->post('ask_question'),
                 'inbox'             => 'yes',
                 'sent'              => 'yes',
@@ -1213,18 +1221,18 @@ class Marketplace extends MX_Controller
             $this->mailbox_model->_insert($data);
 
             if(!empty($question_id)){
-                echo "<div class='alert alert-success'>Your question sent successfully. You will get response as soon as possible</div>";
+                $this->session->set_flashdata('msg_info','Your question sent successfully. You will get response as soon as possible'); 
             }else{
-               echo "<div class='alert alert-warning'>Please Try again.</div>"; 
+                 $this->session->set_flashdata('msg_info','Please Try again.');  
             }
-            
         }
+        redirect($_SERVER['HTTP_REFERER']);
     }
 
     function get_listing_question($listing_id=0)
     {
         $user_id =  $this->session->userdata('members_id');
-        $question_asked = $this->marketplace_model->question_asked($listing_id); 
+        $question_asked = $this->marketplace_model->question_asked($listing_id,$user_id); 
        if(!empty($question_asked)){?>
        <h4><strong>Recently ask questions</strong></h4>
        <div id="del_msg"></div>
@@ -1535,7 +1543,9 @@ class Marketplace extends MX_Controller
     function listing_detail($id=0)
     {
         //$this->output->enable_profiler(TRUE);
-        if(empty($id) || !is_numeric($id)) { redirect('marketplace/index'); }
+        if(empty($id) || !is_numeric($id)) {
+         redirect('marketplace/index'); 
+        }
 
         $member_id=$this->session->userdata('members_id');
         $data['main'] = 'marketplace';        
@@ -1543,18 +1553,17 @@ class Marketplace extends MX_Controller
         $data['page'] = 'listing_detail';
         //$data['page'] = 'buy_html';
         $data['member_id'] =$member_id;
-        if($data['listing_detail'] =  $this->marketplace_model->get_row('listing',array('id'=>$id))){
+        if($data['listing_detail'] =  $this->marketplace_model->listingdetailv($id)){
 
         }
-        if($data['listing_detail']==FALSE)   redirect('marketplace/index');
+        if($data['listing_detail']==FALSE)   
+            redirect('marketplace/index');
 
         $data['member'] = $this->marketplace_model->get_row('members',array('id'=> $data['listing_detail']->member_id));
         if($data['member']){
         $data['company'] = $this->marketplace_model->get_row('company',array('id'=>$data['member']->company_id));
 
         $data['memberships'] = $this->marketplace_model->get_row('membership',array('id'=>$data['member']->membership),array('membership'));
-
-
        } else
          $data['company'] = FALSE;
         $this->load->module('templates');

@@ -19,9 +19,16 @@
 <?php msg_alert(); ?>
 <div class="ibox float-e-margins">
 <div class="ibox-title">
-<h5>Listing Details
+<h5>Listing Details - 
+
+<?php if($listing_detail->listing_type==1){ ?>
+<span class="label label-info  pull-right">This is a Sell listing</span>
+<?php }elseif($listing_detail->listing_type==2){ ?>
+<span class="label label-info  pull-right">This is a Buy listing</span>
+<?php } ?>
+
 <?php if (!empty($member_id) && $member_id==$listing_detail->member_id): ?>
-<span class="label label-danger pull-right">this is your listing</span>
+<span class="label label-danger pull-right">( this is your listing )</span>
 <?php endif ?></h5>
 </div>
 <div class="ibox-content">
@@ -50,14 +57,23 @@
             $min_qty_to_sell=$listing_detail->min_qty_order;
           }
         ?></dd>
+
+        <dt>Minimum order quantity</dt> <dd> <?php 
+        $min_qty_to_sell=0;          
+          if($listing_detail->min_qty_order){
+            $min_qty_to_sell=$listing_detail->min_qty_order;
+          }
+          echo $min_qty_to_sell;
+        ?></dd>
+
     </dl>
       <div class="hr-line-dashed"></div>
     <dl class="dl-horizontal">
         <h4>Price</h4>
         <dt>Sale Currency:</dt> <dd> <?php if(!empty($listing_detail->currency)) { echo currency_class($listing_detail->currency); } ?></dd>
-        <dt>GBP Price:</dt> <dd>  &pound; <?php echo get_currency(currency_class($listing_detail->currency), 'GBP', $listing_detail->unit_price); ?></dd>
-        <dt>EUR Price:</dt> <dd>  &euro; <?php echo get_currency(currency_class($listing_detail->currency), 'EUR', $listing_detail->unit_price); ?></dd>
-        <dt>USD Price:</dt> <dd>  $ <?php echo get_currency(currency_class($listing_detail->currency), 'USD', $listing_detail->unit_price); ?></dd>
+        <dt>GBP Price:</dt> <dd style="<?php if($listing_detail->currency==1){ echo"font-weight: bold;"; }?>">  &pound; <?php echo get_currency(currency_class($listing_detail->currency), 'GBP', $listing_detail->unit_price); ?></dd>
+        <dt >EUR Price:</dt> <dd style="<?php if($listing_detail->currency==2){ echo"font-weight: bold;"; }?>">  &euro; <?php echo get_currency(currency_class($listing_detail->currency), 'EUR', $listing_detail->unit_price); ?></dd>
+        <dt>USD Price:</dt> <dd style="<?php if($listing_detail->currency==3){ echo"font-weight: bold;"; }?>">  $ <?php echo get_currency(currency_class($listing_detail->currency), 'USD', $listing_detail->unit_price); ?></dd>
     </dl>
      <div class="hr-line-dashed"></div> 
     <?php if(!empty($listing_detail->courier) && $listing_detail->listing_type==1){   ?>
@@ -106,16 +122,20 @@ if(!empty($listing_detail->image1))
 if(!empty($listing_detail->image1))
     $img5 = explode('/', $listing_detail->image5);
     ?>
+
+<?php  if(!empty($img1[3])){?>
 <div class="main_image_gallery">
-<?php  if(!empty($img1[3])): ?>
-<img id="zoom_03" src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img1[3]; ?>" data-zoom-image="<?php echo base_url().'public/upload/listing/'.$img1[3]; ?>" class="gallerymainimg"/>
-<?php else: ?>
-<img src="<?php echo base_url().'public/main/template/gsm/images/icons/apple-touch-icon-180x180.png'; ?>" class="gallerymainimg"/>
-<?php endif; ?>
-</div>
+<img id="zoom_03" src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img1[3]; ?>" data-zoom-image="<?php echo base_url().'public/upload/listing/'.$img1[3]; ?>" class="gallerymainimg"/></div>
+<?php }else{ ?>
+<div class="main_image_gallery" style="text-align: center;!important;">
+<img src="<?php echo base_url().'public/main/template/gsm/images/no_marketplace_photo.png'; ?>" class="gallerymainimg"/><br>
+<b>No images uploaded by listing owner.</b></div>
+<?php } ?>
+
 <div id="gallery_01">
 <?php if(!empty($listing_detail->image2)): ?> 
   <a href="#" data-image="<?php echo base_url().'public/upload/listing/thumbnail/'.$img1[3]; ?>" data-zoom-image="<?php echo base_url().'public/upload/listing/'.$img1[3]; ?>">
+
     <img id="img_01" class="gallerythumbsize" src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img1[3]; ?>" />
   </a>
 <?php endif; ?>
@@ -180,10 +200,14 @@ if(!empty($listing_detail->image1))
 </div>
 </div>
 <div class="modal-footer">
-    <?php if (!empty($member_id) && $member_id!=$listing_detail->member_id): ?>
-        <a href="<?php echo base_url().'marketplace/listing_watch/'.$listing_detail->member_id.'/'.$listing_detail->id ?>" class="btn btn-warning">Watch</a>
+    <?php if (!empty($member_id) && $member_id!=$listing_detail->member_id){ 
+      if(check_watch_list($listing_detail->id)){?>
+        <a href="<?php echo base_url().'marketplace/listing_unwatch/'.$listing_detail->id ?>" class="btn btn-danger">Unwatch</a>
+      <?php }else{ ?>
+        <a href="<?php echo base_url().'marketplace/listing_watch/'.$listing_detail->member_id.'/'.$listing_detail->id.'/'.$listing_detail->listing_type ?>" class="btn btn-warning">Watch</a>
+        <?php } ?>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#profile_user">Seller Profile</button>
-    <?php endif; ?>
+    <?php } ?>
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#profile_message">Ask a question</button>
         <a href="<?php echo base_url().'marketplace/sell' ?>" class="btn btn-white">Back</a>
     </div>
@@ -550,16 +574,19 @@ if(!empty($listing_detail->image1))
           <small class="font-bold">Welcome to GSMStockMarket.com. Ask your question.</small>
       </div>
       <?php if (!empty($member_id) && $member_id!=$listing_detail->member_id){ ?>
-      <form id="question_form">
+      <form  action="marketplace/listing_question" method="post">
           <div class="modal-body">
           <div id="msg"></div>
               <input type="hidden" name="listing_id" class="listing" value="<?php if(!empty($listing_detail->id)) echo $listing_detail->id; ?>"/>
               <input type="hidden" name="seller_id" value="<?php if(!empty($listing_detail->member_id)) echo $listing_detail->member_id; ?>"/>
+
+              <input type="hidden" name="message_title" value='Listing ID - #<?php echo $listing_detail->id; if($listing_detail->listing_type==1){ echo" Sell";}elseif($listing_detail->listing_type==2){ echo" Buy";}?> Question from <?php $companyinfo=company_name(); echo $companyinfo->company_name; ?>'/>
+
               <textarea rows="5" cols="10" class="form-control" name="ask_question" placeholder="Enter your question." required></textarea>
           </div>
           <div class="modal-footer">
-              <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" id="send_msg">Send Message</button>
+             
+              <button type="submit" class="btn btn-primary">Send Message</button>
           </div>
       </form>
       <?php } ?>

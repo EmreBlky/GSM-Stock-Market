@@ -5,7 +5,7 @@
 if ( ! function_exists('clear_cache')) {
     function clear_cache(){
         $CI =& get_instance();
-		$CI->output->set_header('Expires: Wed, 11 Jan 1984 05:00:00 GMT' );
+    	$CI->output->set_header('Expires: Wed, 11 Jan 1984 05:00:00 GMT' );
 		$CI->output->set_header('Last-Modified: ' . gmdate( 'D, d M Y H:i:s' ) . 'GMT');
 		$CI->output->set_header("Cache-Control: no-cache, no-store, must-revalidate");
 		$CI->output->set_header("Pragma: no-cache");			
@@ -464,6 +464,16 @@ if(!function_exists('comapny_info')){
 		return $CI->marketplace_model->get_row('company',array('id'=>$id));
 	}
 
+if(!function_exists('company_name')){
+    function company_name()
+	{
+		$CI =& get_instance();
+		$member_id=$CI->session->userdata('members_id');
+		$CI->load->model('marketplace_model');
+		return $CI->marketplace_model->get_row('company',array('admin_member_id'=>$member_id),array('company_name'));
+	}
+}
+
  if(! function_exists('all_offer')){
    	   function all_offer(){
           $CI = & get_instance();
@@ -513,6 +523,18 @@ if(!function_exists('comapny_info')){
           $CI = & get_instance();
           $CI->load->model('marketplace_model');
          if($query=$CI->marketplace_model->count_save_listing())
+		 	return $query;
+		 else
+		 	return false;
+     } 
+   }
+
+   if(! function_exists('check_watch_list')){
+   	   function check_watch_list($listing_id){
+          $CI = & get_instance();
+   	   	$member_id=$CI->session->userdata('members_id');
+          $CI->load->model('marketplace_model');
+         if($query=$CI->marketplace_model->get_row('listing_watch',array('listing_id'=>$listing_id,'user_id'=>$member_id)))
 		 	return $query;
 		 else
 		 	return false;

@@ -1149,6 +1149,11 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
 									<div class="row">
                     					<div class="col-lg-12" style="text-align:center;margin:15px 0">
                         					<p>View this companies credit check information</p>
+											  <?php if(file_exists("public/main/template/gsm/images/creditscore/".$member_company->id.".pdf")){?>
+                                                  <a href="public/main/template/gsm/images/creditscore/<?php echo $member_company->id; ?>.pdf" target="_blank"><button type="button" class="btn btn-info btn-sm"><i class="fa fa-check-square-o"></i> View Company Credit Data</button></a>
+                                              <?php } else {?>
+                                                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-check-square-o"></i> No Credit Data Available</button>
+                                              <?php }?>                                            
                         				</div>
                    					</div><!--
 									<div class="row">
@@ -1205,9 +1210,16 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                     
 					<div class="row" style="margin-top:20px">
                     	<div class="col-lg-12">
-                        	<button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#buycreditcheck"><i class="fa fa-check-square-o"></i> Credit Check</button>
+								<?php if(file_exists("public/main/template/gsm/images/creditscore/".$member_company->id.".pdf")){?>
+                                    <a href="public/main/template/gsm/images/creditscore/<?php echo $member_company->id; ?>.pdf" target="_blank"><button type="button" class="btn btn-info btn-sm btn-block"><i class="fa fa-check-square-o"></i> View Company Credit Data</button>
+                                <?php } else {?>
+                                    <button type="button" class="btn btn-default btn-sm btn-block" data-toggle="modal" data-target="#buycreditcheck"><i class="fa fa-check-square-o"></i> No Credit Data Available</button>
+                                <?php }?>
                         </div>
                    </div>
+                   
+                   
+                   
 					<div class="row">
                         <div class="col-lg-6" style="margin-top:15px">
 <!--                         	<button type="button" class="btn btn-warning btn-sm btn-block" data-toggle="modal" data-target="#report_user"><i class="fa fa-exclamation"></i> Report</button>-->
@@ -1227,28 +1239,7 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                    </div>
                 </div>
             </div>
-        </div>
-        
-        
-                            <div class="modal inmodal fade" id="buycreditcheck" tabindex="-1" role="dialog"  aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                            <h4 class="modal-title">Credit Check</h4>
-                                            <small class="font-bold">This transaction will generate a credit check for <?php echo $member_company->company_name; ?>.</small>
-                                        </div>
-                                        <div class="modal-body no_sub">
-                                            <p>View company credit information. Unavailable</p>
-                                        </div>
-
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Confirm Purchase</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>        
+        </div>   
                             
                             <?php
                             
