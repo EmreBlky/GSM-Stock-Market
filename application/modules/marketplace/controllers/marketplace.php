@@ -34,11 +34,12 @@ class Marketplace extends MX_Controller
         $this->templates->page($data);
     }
     
-    function buy()
+      function buy()
     {
         
         $this->load->model('member/member_model', 'member_model');
         $data['member'] = $this->member_model->get_where($this->session->userdata('members_id'));
+
 
         $data['listing_buy'] =$this->marketplace_model->listing_buy();
 
@@ -76,7 +77,7 @@ class Marketplace extends MX_Controller
         }else{
            $data['listing_categories']=FALSE;
         }
-         $data['member_id'] =$member_id;
+        $data['member_id'] =$member_id;
         $data['main'] = 'marketplace';
         $data['title'] = 'GSM - Market Place: Sell';
         $data['page'] = 'sell';
