@@ -11,7 +11,7 @@ class Marketplace_model extends MY_Model {
     public function insert($table_name='',  $data=''){
         $query=$this->db->insert($table_name, $data);
         if($query)
-			return $this->db->insert_id();
+    		return $this->db->insert_id();
 		else
 			return FALSE;		
 	}
@@ -187,9 +187,9 @@ class Marketplace_model extends MY_Model {
 		}
 
 		if( !empty($_GET['query']) ){
-			foreach($_GET['query'] as $prod_make ){
-				$this->db->where("(`listing`.product_make LIKE '%$prod_make%' OR `listing`.product_model LIKE '%$prod_make%')");
-			}
+			$querytoset="'".implode("','", $_GET['query'])."'";
+			$where_con="(`listing`.`product_make` IN (".$querytoset.") OR `listing`.`product_model` IN (".$querytoset."))";
+				$this->db->where($where_con);
 		}
 
 		$this->db->where("listing.schedule_date_time <= '".date('Y-m-d h:i:s')."' and listing.listing_end_datetime >= '".date('Y-m-d h:i:s')."'" );
@@ -284,10 +284,11 @@ class Marketplace_model extends MY_Model {
 		}
 
 		if( !empty($_GET['query']) ){
-			foreach($_GET['query'] as $prod_make ){
-				$this->db->where("(`listing`.product_make LIKE '%$prod_make%' OR `listing`.product_model LIKE '%$prod_make%')");
-			}
+			$querytoset="'".implode("','", $_GET['query'])."'";
+			$where_con="(`listing`.`product_make` IN (".$querytoset.") OR `listing`.`product_model` IN (".$querytoset."))";
+				$this->db->where($where_con);
 		}
+
 
 		$this->db->where("listing.schedule_date_time <= '".date('Y-m-d h:i:s')."' and listing.listing_end_datetime >= '".date('Y-m-d h:i:s')."'" );
 		
