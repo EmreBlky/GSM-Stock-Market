@@ -1673,4 +1673,63 @@ class Admin extends MX_Controller
        redirect('admin/edit_event/'.$eid);
         
     }
+    
+    function terms_conditions()
+    {
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel: Terms &amp; Conditions';        
+        $data['page'] = 'terms-conditions';
+        
+        $var = 'legal';
+        $var_model = $var.'_model';
+        
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        
+        $data['terms'] = $this->{$var_model}->get_where(1);
+        
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+    
+    function privacy_policy()
+    {
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel: Privacy Policy';        
+        $data['page'] = 'privacy-policy';
+        
+        $var = 'legal';
+        $var_model = $var.'_model';
+        
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        
+        $data['policy'] = $this->{$var_model}->get_where(2);
+        
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+    
+    function legalEdit($id)
+    {
+        //echo '<pre>';
+        //print_r($_POST);
+        
+        $var = 'legal';
+        $var_model = $var.'_model';
+        
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        
+        $data = array(
+                    'title' => $this->input->post('title'),
+                    'url_link' => $this->input->post('url_link'),
+                    'content' => $this->input->post('content')
+        );
+        
+        $this->{$var_model}->_update($id, $data);
+        
+        if($id == 1){
+            redirect('admin/terms_conditions');
+        }else{
+            redirect('admin/privacy_policy');
+        }
+    }
 }

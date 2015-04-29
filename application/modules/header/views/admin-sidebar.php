@@ -87,7 +87,7 @@
             </li>
             <?php } else { ?>
             <li>
-                <a href="#"><i class="fa fa-line-chart"></i> <span class="nav-label">Marketplace</span><span class="fa arrow"></span></a></a>
+                <a href="#"><i class="fa fa-line-chart"></i> <span class="nav-label">Marketplace</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="<?php echo base_url().'admin/add_listing_attribute';?>"><span class="nav-label">Add Listing Attributes</span></a></li>
                     <li><a href="<?php echo base_url().'admin/listing_attributes';?>"><span class="nav-label">View Listing Attributes</span></a></li>
@@ -106,7 +106,7 @@
             </li>
             <?php if($url == 'add_event' || $url == 'edit_event') {?>
             <li class="active">
-                <a href="#"><i class="fa fa-calendar"></i> <span class="nav-label">Events</span></a>
+                <a href="#"><i class="fa fa-calendar"></i> <span class="nav-label">Events</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="<?php echo base_url().'admin/add_event';?>"><span class="nav-label">Add Event</span></a></li>
                     <li><a href="<?php echo base_url().'admin/edit_event';?>"><span class="nav-label">Edit Event</span></a></li>
@@ -114,10 +114,27 @@
             </li>
             <?php } else { ?>
             <li>
-                <a href="#"><i class="fa fa fa-calendar"></i> <span class="nav-label">Events</span></a>
+                <a href="#"><i class="fa fa fa-calendar"></i> <span class="nav-label">Events</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="<?php echo base_url().'admin/add_event';?>"><span class="nav-label">Add Event</span></a></li>
                     <li><a href="<?php echo base_url().'admin/edit_event';?>"><span class="nav-label">Edit Event</span></a></li>
+                </ul>
+            </li>
+            <?php } ?>
+            <?php if($url == 'terms_conditions' || $url == 'privacy_policy') {?>
+            <li class="active">
+                <a href="#"><i class="fa fa-legal"></i> <span class="nav-label">Legal</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="<?php echo base_url().'admin/terms_conditions';?>"><span class="nav-label">Terms & Conditions</span></a></li>
+                    <li><a href="<?php echo base_url().'admin/privacy_policy';?>"><span class="nav-label">Privacy Policy</span></a></li>
+                </ul>
+            </li>
+            <?php } else { ?>
+            <li>
+                <a href="#"><i class="fa fa fa-legal"></i> <span class="nav-label">Legal</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="<?php echo base_url().'admin/terms_conditions';?>"><span class="nav-label">Terms & Conditions</span></a></li>
+                    <li><a href="<?php echo base_url().'admin/privacy_policy';?>"><span class="nav-label">Privacy Policy</span></a></li>
                 </ul>
             </li>
             <?php } ?>

@@ -144,7 +144,8 @@ class Join extends MX_Controller
                         'linkedin' => $this->input->post('linkedin'),
                         'skype' => $this->input->post('skype'),
                         'role' => $this->input->post('company_role'),
-                        'currency' => $this->input->post('currency')
+                        'currency' => $this->input->post('currency'),
+                        'terms_conditions' => 'yes'
                     );
 
 
@@ -350,7 +351,7 @@ class Join extends MX_Controller
 		cursor: pointer;
 		display: inline-block;
 		border-radius: 5px;
-		text-transform: capitalize;
+		/*text-transform: capitalize;*/
 	  }
 	  
 	  /* -------------------------------------
