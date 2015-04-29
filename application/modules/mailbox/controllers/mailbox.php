@@ -966,55 +966,6 @@ class Mailbox extends MX_Controller
         
     }
     
-    function composeDemo()
-    {
-        //echo '<pre>';
-        //print_r($_POST);
-        
-        $this->load->library('form_validation');        
-        
-        $this->form_validation->set_rules('message', 'Message Body', 'xss_clean');
-        
-        if($this->form_validation->run()){
-            
-                $this->load->module('emails');
-                $config = Array(
-                    'protocol' => 'smtp',
-                    'smtp_host' => 'ssl://server.gsmstockmarket.com',
-                    'smtp_port' => 465,
-                    'smtp_user' => 'noreply@gsmstockmarket.com',
-                    'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
-                    'charset' => 'utf-8',
-                    'wordwrap' => TRUE,
-                    'newline' => "\r\n",
-                    'crlf'    => ""
-
-                );
-                
-                $this->load->library('email', $config);
-                
-                $this->email->set_mailtype("html");
-                $email_body = '<div>'.$this->input->post('message').'</div>';
-                
-               
-                $this->email->from($this->input->post('from'), $this->input->post('cust_name'));
-
-                //$list = array('info@imarveldesign.co.uk');
-                $this->email->to('daniel@gsmstockmarket.com');
-                $this->email->subject($this->input->post('subject'));
-                $this->email->message($email_body);
-
-                $this->email->send();
-                
-                $this->session->set_flashdata('title', 'cust_name');
-                $this->session->set_flashdata('message', 'Your email has been sent.');                
-                //echo $this->email->print_debugger();
-                //exit;                
-                redirect('demo/index');
-        }
-        
-    }
-    
     function reportUser($from, $cust_name, $report, $subject, $message)
     {
         $this->load->model('report/report_model', 'report_model');
