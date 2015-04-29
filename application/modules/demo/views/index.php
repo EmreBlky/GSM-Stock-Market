@@ -19,7 +19,7 @@
                 	<?php 
                     $title = $this->session->flashdata('title');
                     	{
-                           echo '<div class="alert alert-success">Your request for a demo has been submitted. We will get back to you shortly.</div>';                    
+                           echo '<div class="alert alert-success">Your request for a demonstration has been submitted. We will get back to you shortly.</div>';                    
                         }  
 
                     ?>
@@ -91,6 +91,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         </div>
         
     <!-- checkbox css -->

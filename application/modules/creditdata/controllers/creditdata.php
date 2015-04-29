@@ -5,11 +5,14 @@ class Creditdata extends MX_Controller
     function __construct()
     {
         parent::__construct();
-//        if ( ! $this->session->userdata('logged_in'))
-//        { 
-//            redirect('login');
-//        }
+        
+        if ( ! $this->session->userdata('logged_in'))
+        { 
+            redirect('login');
+        }
+        
     }
+
 
     function requests()
     {
@@ -22,7 +25,7 @@ class Creditdata extends MX_Controller
 
     function my_reports()
     {
-        $data['main'] = 'my_reports';
+        $data['main'] = 'creditdata';
 		$data['title'] = 'My Reports';
         $data['page'] = 'my_reports';
         $this->load->module('templates');

@@ -1,12 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 
-class Creditdata extends MY_Model {
+class Creditdata_model extends MY_Model {
 
 	function __construct()
 	{		
 		parent::__construct();
-		$this->table = 'Creditdata';
+		$this->table = 'creditdata';
 	
 	}
 }

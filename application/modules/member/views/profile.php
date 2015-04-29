@@ -1003,7 +1003,6 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                                             <li class=""><a href="#feedback" data-toggle="tab">Feedback</a></li>
                                             <li class=""><a href="#selling-offers" data-toggle="tab">Selling Offers</a></li>
                                             <li class=""><a href="#buying-requests" data-toggle="tab">Buying Requests</a></li>
-                                            <li class=""><a href="#credit-information" data-toggle="tab">Credit Info</a></li>
                                             <li class=""><a href="#events" data-toggle="tab">Events Attending</a></li>
                                         </ul>
                                     </div>
@@ -1145,25 +1144,6 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                                     </table>
                                 </div>
                                 
-                                <div class="tab-pane no_sub" id="credit-information">
-									<div class="row">
-                    					<div class="col-lg-12" style="text-align:center;margin:15px 0">
-                        					<p>View this companies credit check information</p>
-											  <?php if(file_exists("public/main/template/gsm/images/creditscore/".$member_company->id.".pdf")){?>
-                                                  <a href="public/main/template/gsm/images/creditscore/<?php echo $member_company->id; ?>.pdf" target="_blank"><button type="button" class="btn btn-info btn-sm"><i class="fa fa-check-square-o"></i> View Company Credit Data</button></a>
-                                              <?php } else {?>
-                                                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-check-square-o"></i> No Credit Data Available</button>
-                                              <?php }?>                                            
-                        				</div>
-                   					</div><!--
-									<div class="row">
-                    					<div class="col-lg-4" style="float:none;margin:0 auto">
-                        					<button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#buycreditcheck"><i class="fa fa-check-square-o"></i>Buy Credit Check</button>
-                        				</div>
-                   					</div>-->
-                                	
-                                </div>
-                                
                                 <div class="tab-pane" id="events">
                                 
                                     <?php
@@ -1210,11 +1190,7 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                     
 					<div class="row" style="margin-top:20px">
                     	<div class="col-lg-12">
-								<?php if(file_exists("public/main/template/gsm/images/creditscore/".$member_company->id.".pdf")){?>
-                                    <a href="public/main/template/gsm/images/creditscore/<?php echo $member_company->id; ?>.pdf" target="_blank"><button type="button" class="btn btn-info btn-sm btn-block"><i class="fa fa-check-square-o"></i> View Company Credit Data</button>
-                                <?php } else {?>
-                                    <button type="button" class="btn btn-default btn-sm btn-block" data-toggle="modal" data-target="#buycreditcheck"><i class="fa fa-check-square-o"></i> No Credit Data Available</button>
-                                <?php }?>
+                        	<button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#creditdata"><i class="fa fa-check-square-o"></i> Request Credit Check</button>         
                         </div>
                    </div>
                    
@@ -1294,6 +1270,31 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                                     </div>
                                 </div>
                             </div>
+                                 
+                            <div class="modal inmodal fade" id="creditdata" tabindex="-1" role="dialog"  aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">Request a Credit Check</h4>
+                                            <small class="font-bold">You will need to get permission from this user to access their credit data</small>
+                                        </div>
+                                        <input type="hidden" name="from" id="from" value="<?php echo $this->member_model->get_where($this->session->userdata('members_id'))->email; ?>" />
+                                        <input type="hidden" name="cust_name" id="cust_name" value="<?php echo $this->member_model->get_where($this->session->userdata('members_id'))->firstname. ' '.$this->member_model->get_where($this->session->userdata('members_id'))->lastname; ?>" />
+                                        <input type="hidden" name="report" id="report" value="<?php echo $member_info->id; ?>" />
+                                        <div class="modal-body">
+                                        <p class="text-navy"><strong>Notice:</strong> Please be aware although credit reports are free you will still need permission from the users company first.<br />The user can accept or decline at their own discretion, It is ideal to message them first before requesting a credit check so they know your intentions.</p><br />
+                                        <div class="radio i-checks"><label> <input type="radio" value="option1" name="creditdata"> <i></i> Request their company credit report and <strong>deny</strong> them access to yours.</label></div>
+                                        <div class="radio i-checks"><label> <input type="radio" checked="" value="option2" name="creditdata"> <i></i> Request their company credit report and <strong>allow</strong> them access to yours. (Recommended)</label></div>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary" id="submit">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 <!-- Daniel Added Start -->
 <?php } ?> 
 <!-- Daniel Added End -->
@@ -1337,4 +1338,18 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
 		}
 		});
 	</script>
+        
+    <!-- checkbox css -->
+    <link href="public/main/template/core/css/plugins/iCheck/custom.css" rel="stylesheet">
+    
+    <!-- iCheck -->
+    <script src="public/main/template/core/js/plugins/iCheck/icheck.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
         
