@@ -127,41 +127,46 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
        <ul class="nav nav-second-level">
             <li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Buy</a></li>
             <li><a href="marketplace/sell"><i class="fa fa-tag"></i> Sell</a></li>
-            <li><a href="marketplace/watching"><i class="fa fa-eye"></i> Watching <span class="label label-warning pull-right">
+            
             <?php $count_watch_listing=count_watch_listing(); 
-            if($count_watch_listing){ echo $count_watch_listing;}
-            else{ echo '0'; } ?>
+            if($count_watch_listing){ ?>
+            <li><a href="marketplace/watching"><i class="fa fa-eye"></i> Watching <span class="label label-warning pull-right" id="count_watch_listing">
+            <?php  echo $count_watch_listing; ?>
             </span>
-            </a></li>
-            <li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers<span class="label label-info pull-right"><?php $counteroffer=all_offer(); 
-            if($counteroffer){ echo $counteroffer;}else{
-                echo '0';
-                } ?></span></a></li>
-            <li><a href="marketplace/open_orders"><i class="fa fa-book"></i> Open Orders <span class="label label-warning pull-right">
-                <?php $countopen_order=count_open_order(); 
-            if($countopen_order){ echo $countopen_order;}else{
-                echo '0';
-                } ?>
-
-            </span></a></li>
-
+            </a></li> <?php }
+						
+						$counteroffer=all_offer(); 
+            if($counteroffer){
+						?>
+            <li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers<span class="label label-info pull-right" id="count_offer"><?php  echo $counteroffer; ?></span></a></li><?php }
+            
+						$countopen_order=count_open_order(); 
+            if($countopen_order){
+						?>
+            <li><a href="marketplace/open_orders"><i class="fa fa-book"></i> Open Orders <span class="label label-warning pull-right" id="count_open_order">
+                <?php  echo $countopen_order; ?>
+            </span></a></li><?php }
+						?>
             <li><a href="marketplace/negotiation"><i class="fa fa-book"></i> Negotiation </a></li>
-
-            <li><a href="marketplace/listing"><i class="fa fa-list"></i> My Listings <span class="label label-warning pull-right">
+						
             <?php $countmy_listing=countmy_listing(); 
-            if($countmy_listing){ echo $countmy_listing;}
-            else{ echo '0'; } ?>
+            if($countmy_listing){ ?>
+            
+            <li><a href="marketplace/listing"><i class="fa fa-list"></i> My Listings <span class="label label-warning pull-right" id="countmy_listing">
+            <?php echo $countmy_listing; ?>
             </span></a></li>
+            <?php } ?>
             <li><a href="marketplace/history"><i class="fa fa-file-text"></i> Order History</a></li>
                 <li><a href="javascript:void(0)"><i class="fa fa-plus"></i> Create Listing  <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">		                                    <li><a href="marketplace/buy_listing"> Create Buy Listing</a></li>
                         <li><a href="marketplace/sell_listing"> Create Sell Listing</a></li>
                     </ul>
                 </li>
-        <li><a href="marketplace/saved_listing"><i class="fa fa-save"></i> Saved Listings <span class="label label-success pull-right">
         <?php $count_save_listing=count_save_listing(); 
-            if($count_save_listing){ echo $count_save_listing;}
-            else{ echo '0'; } ?></span></a></li>
+            if($count_save_listing){ ?>        
+        <li><a href="marketplace/saved_listing"><i class="fa fa-save"></i> Saved Listings <span class="label label-success pull-right" id="count_save_listing">
+        <?php  echo $count_save_listing; ?></span></a></li>
+        <?php } ?>
         </ul>
     </li>
     <?php } else {?>
@@ -289,3 +294,18 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
 
 </div>
 </nav>
+<script type="text/javascript">
+ function autoRefresh_div()
+ {
+      $("#count_offer").load("<?php echo base_url().'header/ajax/offer'; ?>");
+      $("#count_watch_listing").load("<?php echo base_url().'header/ajax/watch_listing'; ?>");
+      $("#count_open_order").load("<?php echo base_url().'header/ajax/open_order'; ?>");
+      $("#countmy_listing").load("<?php echo base_url().'header/ajax/my_listing'; ?>");
+      $("#count_save_listing").load("<?php echo base_url().'header/ajax/save_listing'; ?>");
+      $("#count_watch_listing").load("<?php echo base_url().'header/ajax/watch_listing'; ?>");
+			
+  }
+	
+ 
+  setInterval('autoRefresh_div()', 3000); // refresh div after 5 secs
+</script>
