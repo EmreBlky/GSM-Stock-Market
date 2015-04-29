@@ -377,7 +377,15 @@ function country($name)
             </div>
                   
                     
-                    <?php } elseif ($member->membership > 0 || $viewed_count > 0) {?>
+            <?php } elseif($member->membership > 1 && $viewed_count < 1) {?> 
+            <div class="alert alert-warning" style="margin:0 15px 15px">
+                <p><i class="fa fa-info-warning"></i> You have had no views yet. If you haven't already, update your profile to let businesses know which sectors you operate and also add a company image to your profile to gain more views. <a class="alert-link" href="profile/edit_profile">Update Profile</a>.</p>
+            </div>
+            
+            
+            
+            
+            <?php } elseif ($member->membership > 0 || $viewed_count > 0) {?>
             <!-- Daniel Added End -->
         
         
