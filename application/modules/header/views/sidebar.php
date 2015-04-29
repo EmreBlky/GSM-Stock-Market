@@ -117,7 +117,7 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
         <a href="addressbook"><i class="fa fa-book"></i> <span class="nav-label">Address Book</span></a>
     </li>
    
-    <?php if($url == 'marketplace') {?>
+    <?php echo $url; die;if($url == 'marketplace') {?>
     <li class="active">
         <a href="marketplace/notice">
             <i class="fa fa-line-chart"></i> 
