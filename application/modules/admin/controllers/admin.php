@@ -277,6 +277,9 @@ class Admin extends MX_Controller
               $this->email->send();                          
         }
         
+        $this->load->module('profile');
+        $this->profile->profile_completion($id);
+        
         redirect('admin/company_bio/');
         
     }

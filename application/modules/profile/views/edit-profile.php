@@ -587,15 +587,15 @@ echo form_open_multipart('profile/profileEdit', $attributes);
 <div class="wrapper wrapper-content">
 
 
-    <div class="row" style="display:none">
+    <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Profile Completion (43%)</h5>
+                    <h5>Profile Completion (<?php echo $member->profile_completion; ?>%)</h5>
                 </div>
                 <div class="ibox-content">
                     <div class="progress progress-bar-default">
-                        <div style="width: 43%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="43"
+                        <div style="width: <?php echo $member->profile_completion; ?>%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="43"
                              role="progressbar" class="progress-bar progress-bar-success">
                         </div>
                     </div>

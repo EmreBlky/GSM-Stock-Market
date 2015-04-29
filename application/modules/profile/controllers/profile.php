@@ -173,7 +173,7 @@ class Profile extends MX_Controller
                 if ($_FILES['avatar_file']['name'] != '') {
 
                     $path = dirname($_SERVER["SCRIPT_FILENAME"]) . '/public/main/template/gsm/images/company';
-                    $args = array($_POST['avatar_src'], $_POST['avatar_data'], $_FILES['avatar_file'], $path . "/original", $path, $mid);
+                    $args = array($_POST['avatar_src'], $_POST['avatar_data'], $_FILES['avatar_file'], $path . "/original", $path, $this->member_model->get_where($mid)->company_id);
                     $size = filesize($_FILES['avatar_file']['tmp_name']);
                     if($size <= 2097152) {
                     $crop = $this->load->library('CropAvatar', $args);
@@ -181,7 +181,7 @@ class Profile extends MX_Controller
                         'state' => 200,
                         'message' => $this->cropavatar->getMsg(),
                         //'result' => $this->cropavatar->getResult()
-                        'result' => $this->config->item('base_url') . "public/main/template/gsm/images/company/" . $mid . ".png"
+                        'result' => $this->config->item('base_url') . "public/main/template/gsm/images/company/" . $this->member_model->get_where($mid)->company_id . ".png"
                     );
                     }else{
                         $response = array(
@@ -193,20 +193,34 @@ class Profile extends MX_Controller
 
                     echo json_encode($response);
                     /* }*/
+                    
+                    $data_image = array(
+                                'photo' => 'yes'
+                                );
+                    $this->company_model->_update($this->member_model->get_where($mid)->company_id, $data_image);
 
-                }
+                }               
+                
+                
             } else if (isset($_POST) && isset($_POST['reset'])) {
                 $path = dirname($_SERVER["SCRIPT_FILENAME"]) . '/public/main/template/gsm/images/company/';
-                unlink($path . $mid . '.png');
-                if (file_exists($path . "original/" . $mid . '.jpg'))
-                    unlink($path . "original/" . $mid . '.jpg');
-                else if (file_exists($path . "original/" . $mid . '.jpeg'))
-                    unlink($path . "original/" . $mid . '.jpeg');
-                else if (file_exists($path . "original/" . $mid . '.gif'))
-                    unlink($path . "original/" . $mid . '.gif');
-                else if (file_exists($path . "original/" . $mid . '.png'))
-                    unlink($path . "original/" . $mid . '.png');
-            }
+                unlink($path . $this->member_model->get_where($mid)->company_id . '.png');
+                if (file_exists($path . "original/" . $this->member_model->get_where($mid)->company_id . '.jpg'))
+                    unlink($path . "original/" . $this->member_model->get_where($mid)->company_id . '.jpg');
+                else if (file_exists($path . "original/" . $this->member_model->get_where($mid)->company_id . '.jpeg'))
+                    unlink($path . "original/" . $this->member_model->get_where($mid)->company_id . '.jpeg');
+                else if (file_exists($path . "original/" . $this->member_model->get_where($mid)->company_id . '.gif'))
+                    unlink($path . "original/" . $this->member_model->get_where($mid)->company_id . '.gif');
+                else if (file_exists($path . "original/" . $this->member_model->get_where($mid)->company_id . '.png'))
+                    unlink($path . "original/" . $this->member_model->get_where($mid)->company_id . '.png');
+                
+                $data_image = array(
+                                'photo' => 'no'
+                                );
+                $this->company_model->_update($this->member_model->get_where($mid)->company_id, $data_image);
+            }            
+            
+            
             
         }
         else{
@@ -215,7 +229,7 @@ class Profile extends MX_Controller
                 if ($_FILES['avatar_file']['name'] != '') {
 
                     $path = dirname($_SERVER["SCRIPT_FILENAME"]) . '/public/main/template/gsm/images/company';
-                    $args = array($_POST['avatar_src'], $_POST['avatar_data'], $_FILES['avatar_file'], $path . "/original", $path, $this->session->userdata('members_id'));
+                    $args = array($_POST['avatar_src'], $_POST['avatar_data'], $_FILES['avatar_file'], $path . "/original", $path, $this->member_model->get_where($this->session->userdata('members_id'))->company_id);
                     $size = filesize($_FILES['avatar_file']['tmp_name']);
                     if($size <= 2097152) {
                     $crop = $this->load->library('CropAvatar', $args);
@@ -223,7 +237,7 @@ class Profile extends MX_Controller
                         'state' => 200,
                         'message' => $this->cropavatar->getMsg(),
                         //'result' => $this->cropavatar->getResult()
-                        'result' => $this->config->item('base_url') . "public/main/template/gsm/images/company/" . $this->session->userdata('members_id') . ".png"
+                        'result' => $this->config->item('base_url') . "public/main/template/gsm/images/company/" . $this->member_model->get_where($this->session->userdata('members_id'))->company_id . ".png"
                     );
                     }else{
                         $response = array(
@@ -235,19 +249,31 @@ class Profile extends MX_Controller
 
                     echo json_encode($response);
                     /* }*/
+                    
+                    $data_image = array(
+                                'photo' => 'yes'
+                                );
+                    $this->company_model->_update($this->member_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id)->company_id, $data_image);
+            
 
                 }
             } else if (isset($_POST) && isset($_POST['reset'])) {
                 $path = dirname($_SERVER["SCRIPT_FILENAME"]) . '/public/main/template/gsm/images/company/';
-                unlink($path . $this->session->userdata('members_id') . '.png');
-                if (file_exists($path . "original/" . $this->session->userdata('members_id') . '.jpg'))
-                    unlink($path . "original/" . $this->session->userdata('members_id') . '.jpg');
-                else if (file_exists($path . "original/" . $this->session->userdata('members_id') . '.jpeg'))
-                    unlink($path . "original/" . $this->session->userdata('members_id') . '.jpeg');
-                else if (file_exists($path . "original/" . $this->session->userdata('members_id') . '.gif'))
-                    unlink($path . "original/" . $this->session->userdata('members_id') . '.gif');
-                else if (file_exists($path . "original/" . $this->session->userdata('members_id') . '.png'))
-                    unlink($path . "original/" . $this->session->userdata('members_id') . '.png');
+                unlink($path . $this->member_model->get_where($this->session->userdata('members_id'))->company_id . '.png');
+                if (file_exists($path . "original/" . $this->member_model->get_where($this->session->userdata('members_id'))->company_id . '.jpg'))
+                    unlink($path . "original/" . $this->member_model->get_where($this->session->userdata('members_id'))->company_id . '.jpg');
+                else if (file_exists($path . "original/" . $this->member_model->get_where($this->session->userdata('members_id'))->company_id . '.jpeg'))
+                    unlink($path . "original/" . $this->member_model->get_where($this->session->userdata('members_id'))->company_id . '.jpeg');
+                else if (file_exists($path . "original/" . $this->member_model->get_where($this->session->userdata('members_id'))->company_id . '.gif'))
+                    unlink($path . "original/" . $this->member_model->get_where($this->session->userdata('members_id'))->company_id . '.gif');
+                else if (file_exists($path . "original/" . $this->member_model->get_where($this->session->userdata('members_id'))->company_id . '.png'))
+                    unlink($path . "original/" . $this->member_model->get_where($this->session->userdata('members_id'))->company_id . '.png');
+                
+                $data_image = array(
+                                'photo' => 'no'
+                                );
+                $this->company_model->_update($this->member_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id)->company_id, $data_image);
+            
             }
             
         }
@@ -283,6 +309,11 @@ class Profile extends MX_Controller
                     }
                     echo json_encode($response);
                     /* }*/
+                    
+                    $data_image = array(
+                                'photo' => 'yes'
+                                );
+                    $this->member_model->_update($mid, $data_image);
 
                 }
             } else if (isset($_POST) && isset($_POST['reset'])) {
@@ -298,6 +329,11 @@ class Profile extends MX_Controller
                     unlink($path . "original/" . $mid . '.gif');
                 else if (file_exists($path . "original/" . $mid . '.png'))
                     unlink($path . "original/" . $mid . '.png');
+                
+                $data_image = array(
+                                'photo' => 'no'
+                                );
+                $this->member_model->_update($mid, $data_image);
             }
             
         }
@@ -326,6 +362,11 @@ class Profile extends MX_Controller
                     }
                     echo json_encode($response);
                     /* }*/
+                    
+                    $data_image = array(
+                                'photo' => 'yes'
+                                );
+                    $this->member_model->_update($this->session->userdata('members_id'), $data_image);
 
                 }
             } else if (isset($_POST) && isset($_POST['reset'])) {
@@ -341,6 +382,11 @@ class Profile extends MX_Controller
                     unlink($path . "original/" . $this->session->userdata('members_id') . '.gif');
                 else if (file_exists($path . "original/" . $this->session->userdata('members_id') . '.png'))
                     unlink($path . "original/" . $this->session->userdata('members_id') . '.png');
+                
+                $data_image = array(
+                                'photo' => 'no'
+                                );
+                $this->member_model->_update($this->session->userdata('members_id'), $data_image);
             }
             
         }        
@@ -402,7 +448,8 @@ class Profile extends MX_Controller
            }
            
        }
-       else{ 
+       else{           
+           
            $data_activity = array(
             'activity' => 'Edit Profile',
             'time' => date('H:i:s'),
@@ -601,6 +648,8 @@ class Profile extends MX_Controller
             }
             
             $this->company_model->_update($this->member_model->get_where($mid)->company_id, $data);
+            
+            $this->profile_completion($mid);
 //
 //            echo '<pre>';
 //            print_r($_FILES);
@@ -793,6 +842,8 @@ class Profile extends MX_Controller
             }
             
             $this->company_model->_update($this->member_model->get_where($this->session->userdata('members_id'))->company_id, $data);
+            
+            $this->profile_completion($this->session->userdata('members_id'));
 //
 //            echo '<pre>';
 //            print_r($_FILES);
@@ -938,6 +989,113 @@ class Profile extends MX_Controller
         }
         
         redirect('profile/', 'refresh');
+    }
+    
+    function profile_completion($mid)
+    {        
+        $company_name = $this->company_model->get_where($this->member_model->get_where($mid)->company_id)->company_name;
+        $address = $this->company_model->get_where($this->member_model->get_where($mid)->company_id)->address_line_1;
+        $town = $this->company_model->get_where($this->member_model->get_where($mid)->company_id)->town_city;
+        $county = $this->company_model->get_where($this->member_model->get_where($mid)->company_id)->county;
+        $postcode = $this->company_model->get_where($this->member_model->get_where($mid)->company_id)->post_code;
+        $country = $this->company_model->get_where($this->member_model->get_where($mid)->company_id)->country;
+        $phone_number = $this->company_model->get_where($this->member_model->get_where($mid)->company_id)->phone_number;
+        $business_sector_1 = $this->company_model->get_where($this->member_model->get_where($mid)->company_id)->business_sector_1;
+        $company_profile = $this->company_model->get_where($this->member_model->get_where($mid)->company_id)->company_profile;
+        $company_profile_approval = $this->company_model->get_where($this->member_model->get_where($mid)->company_id)->company_profile_approval;
+        $company_photo = $this->company_model->get_where($this->member_model->get_where($mid)->company_id)->photo;
+             
+        $title = $this->member_model->get_where($mid)->title;
+        $firstname = $this->member_model->get_where($mid)->firstname;
+        $lastname = $this->member_model->get_where($mid)->lastname;
+        $role = $this->member_model->get_where($mid)->role;
+        $email = $this->member_model->get_where($mid)->email;
+        $language = $this->member_model->get_where($mid)->language;
+        $profile_photo = $this->member_model->get_where($mid)->photo;
+        
+        if($company_name != ''){ 
+            $profile_1 = 5;                    
+        }
+        
+        if($address != ''){ 
+            $profile_2 = 5;                    
+        }
+        
+        if($town != ''){ 
+            $profile_3 = 5;                    
+        }
+        
+        if($county != ''){ 
+            $profile_4 = 5;                    
+        }
+        
+        if($postcode != ''){ 
+            $profile_5 = 5;                    
+        }
+        
+        if($country != ''){ 
+            $profile_6 = 5;                    
+        }
+        
+        if($phone_number != ''){ 
+            $profile_7 = 5;                    
+        }
+        
+        if($business_sector_1 != ''){ 
+            $profile_8 = 5;                    
+        }
+        
+        if(!is_numeric($company_profile) && $company_profile_approval == ''){ 
+            $profile_9 = 10;                    
+        }
+        else{
+            $profile_9 = 0;
+        }
+        
+        if($company_photo == 'yes'){ 
+            $profile_10 = 10;                    
+        }
+        else{
+            $profile_10 = 0;
+        }
+        
+        if($title != ''){ 
+            $profile_11 = 5;                    
+        }
+        
+        if($firstname != ''){ 
+            $profile_12 = 5;                    
+        }
+        
+        if($lastname != ''){ 
+            $profile_13 = 5;                    
+        }
+        
+        if($role != ''){ 
+            $profile_14 = 5;                    
+        }
+        
+        if($email != ''){ 
+            $profile_15 = 5;                    
+        }
+        
+        if($language != ''){ 
+            $profile_16 = 5;                    
+        }
+        
+        if($profile_photo == 'yes'){ 
+            $profile_17 = 10;                    
+        }
+        else{
+            $profile_17 = 0;
+        }
+        
+        $profile_score = $profile_1+$profile_2+$profile_3+$profile_4+$profile_5+$profile_6+$profile_7+$profile_8+$profile_9+$profile_10+$profile_11+$profile_12+$profile_13+$profile_14+$profile_15+$profile_16+$profile_17;
+        
+        $data = array(
+                      'profile_completion' =>  $profile_score 
+                      );
+        $this->member_model->_update($mid, $data);
     }
 
 }

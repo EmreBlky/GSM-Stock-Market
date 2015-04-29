@@ -28,3 +28,4 @@ foreach(glob('public/main/template/gsm/images/company/*.*') as $filename){
     
 }
 
+echo 'That has been completed.';
