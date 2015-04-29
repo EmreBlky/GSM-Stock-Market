@@ -1711,7 +1711,8 @@ class Admin extends MX_Controller
     function legalEdit($id)
     {
         //echo '<pre>';
-        //print_r($_POST);
+        //print_r($_POST);;
+        $user_terms = $this->input->post('user_terms');
         
         $var = 'legal';
         $var_model = $var.'_model';
@@ -1725,6 +1726,15 @@ class Admin extends MX_Controller
         );
         
         $this->{$var_model}->_update($id, $data);
+        
+        if($user_terms == 'yes'){
+            
+            $var1 = 'member';
+            $var1_model = $var1.'_model';
+
+            $this->load->model(''.$var1.'/'.$var1.'_model', ''.$var1.'_model');
+            $this->{$var1_model}->_custom_query_action("UPDATE members SET terms_conditions = 'no' WHERE id != 5");
+        }
         
         if($id == 1){
             redirect('admin/terms_conditions');

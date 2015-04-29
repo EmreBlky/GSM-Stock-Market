@@ -113,6 +113,10 @@
                             }
                             ?>
                         </div>
+                        <div class="form-group">
+                            <span>Update User Terms &amp; Conditions?</span>
+                            <input type="radio" name="user_terms" value="yes"/>Yes or <input type="radio" name="user_terms" value="no" checked="checked"/>No
+                        </div>
                        
                         <div class="form-group">
                             <div class="mail-body text-right tooltip-demo">
