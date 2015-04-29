@@ -10,7 +10,7 @@ class Marketplace_model extends MY_Model {
 
     public function insert($table_name='',  $data=''){
         $query=$this->db->insert($table_name, $data);
-    	if($query)
+        if($query)
 			return $this->db->insert_id();
 		else
 			return FALSE;		
@@ -273,10 +273,12 @@ class Marketplace_model extends MY_Model {
 	}
 
 	public function question_asked($listing_id=0){
+		 $user_id =  $this->session->userdata('members_id');
 		$this->db->select('listing_question.*,members.firstname,,members.lastname');
 		$this->db->from('listing_question');
 		$this->db->join('members','members.id=listing_question.buyer_id');
 		$this->db->where('listing_id', $listing_id);
+		$this->db->where('buyer_id', $user_id);
 		$this->db->limit(5);
 		$this->db->order_by('id', "desc"); 
 		$query = $this->db->get();
@@ -285,6 +287,7 @@ class Marketplace_model extends MY_Model {
 			else
 				return FALSE;
 	}
+	
 	public function listing_buying_offer(){
 		$member_id=$this->session->userdata('members_id');
 		$this->db->select('listing.*,company.country  AS country_id,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
@@ -381,6 +384,17 @@ class Marketplace_model extends MY_Model {
 			return FALSE;
 	}
 
+	public function listingdetailv($id){
+		$this->db->where('id',$id);
+		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
+		$this->db->from('listing');
+		$this->db->where('listing.status', 1);
+		$query = $this->db->get();
+		if($query->num_rows()>0)
+			return $query->row();
+		else
+			return FALSE;
+	}
 	public function delete_unwatch($member_id=0)
 	{
 		$this->db->where('member_id',$member_id);
