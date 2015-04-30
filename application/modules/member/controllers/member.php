@@ -96,12 +96,12 @@ class Member extends MX_Controller
         
         foreach ($lists as $list){
             
-            $list->firstname;//Customer's First Name
-            $list->lastname;//Customer's Surname
-            $this->company_model->get_where($this->member_model->get_where($list->id)->company_id)->company_name;// Customer's Company
+            $fname = $list->firstname;//Customer's First Name
+            $lname = $list->lastname;//Customer's Surname
+            $company = $this->company_model->get_where($this->member_model->get_where($list->id)->company_id)->company_name;// Customer's Company
             
             
-            $email_body = 'You have a message from the support team';
+            $email_body = 'Dear '.$fname.' '.$lname.' ('.$company.')';
 
             $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Support');
 
@@ -137,12 +137,12 @@ class Member extends MX_Controller
         
         foreach ($lists as $list){
             
-            $list->firstname;//Customer's First Name
-            $list->lastname;//Customer's Surname
-            $this->company_model->get_where($this->member_model->get_where($list->id)->company_id)->company_name;// Customer's Company
+            $fname = $list->firstname;//Customer's First Name
+            $lname = $list->lastname;//Customer's Surname
+            $company = $this->company_model->get_where($this->member_model->get_where($list->id)->company_id)->company_name;// Customer's Company
             
             
-            $email_body = 'You have a message from the support team';
+            $email_body = 'Dear '.$fname.' '.$lname.' ('.$company.')';
 
             $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Support');
 
