@@ -75,19 +75,84 @@ class Member extends MX_Controller
     
     function email_activation()
     {
+        $this->load->module('emails');
+        $config = Array(
+                        'protocol' => 'smtp',
+                        'smtp_host' => 'ssl://server.gsmstockmarket.com',
+                        'smtp_port' => 465,
+                        'smtp_user' => 'noreply@gsmstockmarket.com',
+                        'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
+                        'charset' => 'utf-8',
+                        'wordwrap' => TRUE,
+                        'newline' => "\r\n",
+                        'crlf'    => ""
+
+                    );
+
+        $this->load->library('email', $config);
+        $this->email->set_mailtype("html");
+        
         $lists = $this->member_model->get_where_multiples('validated', 'no');
         
         foreach ($lists as $list){
-            echo $list->id.'<br/>';
+            
+            $list->firstname;//Customer's First Name
+            $list->lastname;//Customer's Surname
+            $this->company_model->get_where($this->member_model->get_where($list->id)->company_id)->company_name;// Customer's Company
+            
+            
+            $email_body = 'You have a message from the support team';
+
+            $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Support');
+
+            //$list = array('tim@gsmstockmarket.com', 'info@gsmstockmarket.com');
+            $this->email->to($list->email);
+            $this->email->subject('You have a message in your inbox');
+            $this->email->message($email_body);
+
+            $this->email->send();
         }
     }
     
     function email_profile()
     {
+        $this->load->module('emails');
+        $config = Array(
+                        'protocol' => 'smtp',
+                        'smtp_host' => 'ssl://server.gsmstockmarket.com',
+                        'smtp_port' => 465,
+                        'smtp_user' => 'noreply@gsmstockmarket.com',
+                        'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
+                        'charset' => 'utf-8',
+                        'wordwrap' => TRUE,
+                        'newline' => "\r\n",
+                        'crlf'    => ""
+
+                    );
+
+        $this->load->library('email', $config);
+        $this->email->set_mailtype("html");
+        
         $lists = $this->member_model->_custom_query("SELECT * FROM members WHERE profile_completion < 100");
         
         foreach ($lists as $list){
-            echo $list->id.'<br/>';
+            
+            $list->firstname;//Customer's First Name
+            $list->lastname;//Customer's Surname
+            $this->company_model->get_where($this->member_model->get_where($list->id)->company_id)->company_name;// Customer's Company
+            
+            
+            $email_body = 'You have a message from the support team';
+
+            $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Support');
+
+            //$list = array('tim@gsmstockmarket.com', 'info@gsmstockmarket.com');
+            $this->email->to($list->email);
+            $this->email->subject('You have a message in your inbox');
+            $this->email->message($email_body);
+
+            $this->email->send();
+            
         }
     }
     
