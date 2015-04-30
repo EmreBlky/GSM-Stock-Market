@@ -143,7 +143,7 @@
         <div class="form-group"><label class="col-md-3 control-label">Spec</label>
         <div class="col-md-9">
             <select class="form-control" name="spec">
-                <option selected value="">Spec</option>
+                <option selected value="Any">Any</option>
                 <?php $spec = spec(); 
                 if($spec){
                     foreach ($spec as $key => $value){ ?>
@@ -188,7 +188,7 @@
 
             <input type="text" class="form-control" placeholder="Minimum Unit Price" name="min_price" value="<?php if(!empty($product_list->min_price)) echo $product_list->min_price; else echo set_value('min_price');?>"
             <?php if(isset($_POST['minimum_checkbox']) ){ echo'';} elseif(empty($product_list->min_price) ){ echo'disabled';}?>></div>
-            <p class="small text-navy">Tick allow offers. Any offers below this will be auto rejected, leave blank to allow any offers if ticked.</p>
+            <p class="small text-navy">Tick to allow offers. Any offers below this will be auto rejected.</p>
             <?php echo form_error('min_price'); ?>
         </div>
     </div>
@@ -209,7 +209,7 @@
 
             <?php if(isset($_POST['orderqunatity_checkbox']) ){ echo'';} elseif(empty($product_list->min_qty_order) ){ echo'disabled';}?>
             ></div>
-            <p class="small text-navy">Allow minimum order quantity else full quantity sale available only</p>
+            <p class="small text-navy">Allow minimum order quantity otherwise users can only buy all.</p>
             <?php echo form_error('min_qty_order'); ?>
         </div>
     </div>
