@@ -16,13 +16,7 @@
         </div>
         <div class="wrapper wrapper-content  animated fadeInRight">
             <div class="row">
-                	<?php 
-                    $title = $this->session->flashdata('title');
-                    	{
-                           echo '<div class="alert alert-success">Your request for a demonstration has been submitted. We will get back to you shortly.</div>';                    
-                        }  
-
-                    ?>
+                	<?php echo $this->session->flashdata('message');?>
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
@@ -63,11 +57,12 @@
                         </div>
                         </div>                        
 			<div class="form-group">
-                        <label class="col-md-4 control-label">Demo Language <span style="color:red">*</span><br /><small class="text-navy">Select at least one (1)</small></label>
+<!--                        <label class="col-md-4 control-label">Demo Language <span style="color:red">*</span><br /><small class="text-navy">Select at least one (1)</small></label>-->
+                            <label class="col-md-4 control-label">Demo Language <span style="color:red">*</span></label>
                         <div class="col-md-6">
-                              <label class="checkbox-inline i-checks"> <input type="checkbox" value="language" checked> English </label>
-                              <label class="checkbox-inline i-checks"> <input type="checkbox" value="language"> German </label>
-                              <label class="checkbox-inline i-checks"> <input type="checkbox" value="language"> Italian </label>
+                            <label class="checkbox-inline i-checks"> <input type="radio" name="lang" value="Engish" required="required" checked="checked"> English </label>
+                            <label class="checkbox-inline i-checks"> <input type="radio" name="lang" value="German" required="required"> German </label>
+                            <label class="checkbox-inline i-checks"> <input type="radio" name="lang" value="Italian" required="required"> Italian </label>
                         </div>                      
                     	</div>
                         

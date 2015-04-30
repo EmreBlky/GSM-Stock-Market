@@ -970,6 +970,7 @@ class Mailbox extends MX_Controller
     {
         //echo '<pre>';
         //print_r($_POST);
+        //exit;
         
         $this->load->library('form_validation');        
         
@@ -994,20 +995,25 @@ class Mailbox extends MX_Controller
                 $this->load->library('email', $config);
                 
                 $this->email->set_mailtype("html");
-                $email_body = '<div>'.$this->input->post('message').'</div>';
+                $email_body = '<div>
+                                  Name: '.$this->input->post('cust_name').'<br/>
+                                  Language Rquested: '.$this->input->post('lang').'<br/> 
+                                  Message: '.$this->input->post('message').'<br/> 
+                               </div>';
                 
                
                 $this->email->from($this->input->post('from'), $this->input->post('cust_name'));
 
-                //$list = array('info@imarveldesign.co.uk');
-                $this->email->to('daniel@gsmstockmarket.com');
-                $this->email->subject($this->input->post('subject'));
+                $list = array('daniel@gsmstockmarket.com', 'danny@tebihost.com', 'maill@danielgregory.me');
+                $this->email->to($list);
+                //$this->email->to('info@imarveldesign.co.uk');
+                $this->email->subject('Demo Request.');
                 $this->email->message($email_body);
 
                 $this->email->send();
                 
                 $this->session->set_flashdata('title', 'cust_name');
-                $this->session->set_flashdata('message', 'Your email has been sent.');                
+                $this->session->set_flashdata('message', '<div class="alert alert-success">Your request for a demonstration has been submitted. We will get back to you shortly.</div>');                
                 //echo $this->email->print_debugger();
                 //exit;                
                 redirect('demo/index');
