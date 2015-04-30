@@ -586,7 +586,6 @@ echo form_open_multipart('profile/profileEdit', $attributes);
 
 <div class="wrapper wrapper-content">
 
-
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
@@ -595,8 +594,11 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                 </div>
                 <div class="ibox-content">
                     <div class="progress progress-bar-default">
-                        <div style="width: <?php echo $member->profile_completion; ?>%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="43"
-                             role="progressbar" class="progress-bar progress-bar-success">
+                        <div style="width: <?php echo $member->profile_completion; ?>%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="43" role="progressbar" class="progress-bar <?php if($member->profile_completion < 71){ ?>progress-bar-danger
+							<?php } elseif($member->profile_completion > 70 && $member->profile_completion < 81) { ?>progress-bar-warning
+							<?php } elseif($member->profile_completion > 80 && $member->profile_completion < 91) { ?>progress-bar-success
+							<?php } elseif($member->profile_completion > 99) { ?>progress-bar-primary
+                            <?php } ?>">
                         </div>
                     </div>
 
@@ -604,6 +606,9 @@ echo form_open_multipart('profile/profileEdit', $attributes);
             </div>
         </div>
     </div>
+    
+    
+    
     <?php if(isset($support_edit)){ echo '<div style="margin:0 15px">    
                                                                 <div class="alert alert-warning">
                                                                     *** WARNING *** Support Edit Enabled
