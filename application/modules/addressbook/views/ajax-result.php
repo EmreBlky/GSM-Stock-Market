@@ -47,8 +47,8 @@ function country($name)
                     <a href="member/profile/<?php echo $address->address_member_id?>">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <?php if(file_exists("public/main/template/gsm/images/members/".$address->address_member_id.".jpg")){?>
-                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/<?php echo $address->address_member_id; ?>.jpg" height="128" width="128"/>
+                            <?php if(file_exists("public/main/template/gsm/images/members/".$address->address_member_id.".png")){?>
+                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/<?php echo $address->address_member_id; ?>.png" height="128" width="128"/>
                             <?php } else {?>
                                 <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/no_profile.jpg" height="128" width="128"/>
                             <?php }?>
@@ -192,8 +192,8 @@ function country($name)
                     <a href="member/profile/<?php echo $address->address_member_id?>">
                     <div class="col-sm-4">
                         <div class="text-center">
-                            <?php if(file_exists("public/main/template/gsm/images/members/".$address->address_member_id.".jpg")){?>
-                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/<?php echo $address->address_member_id; ?>.jpg" height="128" width="128"/>
+                            <?php if(file_exists("public/main/template/gsm/images/members/".$address->address_member_id.".png")){?>
+                                <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/<?php echo $address->address_member_id; ?>.png" height="128" width="128"/>
                             <?php } else {?>
                                 <img alt="image" class="img-circle m-t-xs img-responsive fullhw" src="public/main/template/gsm/images/members/no_profile.jpg" height="128" width="128"/>
                             <?php }?>
