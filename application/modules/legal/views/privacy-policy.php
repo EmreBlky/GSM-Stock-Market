@@ -5,4 +5,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+?>
+
+<h1><?php echo $privacy->title;?></h1>
+<?php echo $privacy->content;?>
 

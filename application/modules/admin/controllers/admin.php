@@ -1679,6 +1679,7 @@ class Admin extends MX_Controller
         $data['main'] = 'admin';        
         $data['title'] = 'GSM - Admin Panel: Terms &amp; Conditions';        
         $data['page'] = 'terms-conditions';
+        $data['base'] = $this->config->item('base_url'); 
         
         $var = 'legal';
         $var_model = $var.'_model';
