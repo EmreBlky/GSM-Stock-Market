@@ -52,7 +52,7 @@ class Transaction extends MX_Controller
 //        }
         elseif($product == 'silver-12'){
             $description = "GSMStockmarket - Silver Membership Fee (1 Year)";
-            $amount = 1295;
+            $amount = 1795;
             $quantity = 1;
         }
         elseif($product == 'silver-6'){
@@ -82,6 +82,7 @@ class Transaction extends MX_Controller
                                     'sent_member_id'    => $this->session->userdata('members_id'),
                                     'subject'           => 'Bank Transfer Transaction - '.$invoice.'',
                                     'body'              => '<p>Thank you for upgrading your membership on GSMStockMarket.com. We have emailed you an order summary with our bank details to make payment.</p>
+															<p><strong style="color:red">Important:</strong> To gain access to the site you will also need to <a href="tradereference/">submit two (2) trade references.</a> Once approved you will have complete access.</p>
 															<p>Once payment has been made using the details below we will upgrade your account within 24 hours after payment has been completed. You will be sent a message confirming your upgrade.</p>
 									<h4>Payment Instructions</h4>
                                                             <p>Please make sure your invoice number <strong>'.$invoice.'</strong> is the reference on your transaction and that the total amount payable in <strong>£ (GBP)</strong> to:</p><br />
@@ -148,17 +149,17 @@ class Transaction extends MX_Controller
                                                                         <table class="invoice-items" cellpadding="0" cellspacing="0" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;width: 100%;">
                                                                             <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
                                                                                 <td style="margin: 0;padding: 5px 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;border-top: #eee 1px solid;">Silver Membership Upgrade</td>
-                                                                                <td class="alignright" style="margin: 0;padding: 5px 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;text-align: right;border-top: #eee 1px solid;">&pound; 1295.00</td>
+                                                                                <td class="alignright" style="margin: 0;padding: 5px 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;text-align: right;border-top: #eee 1px solid;">&pound; 1795.00</td>
                                                                             </tr>
                                                                             <tr class="total" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
                                                                                 <td class="alignright" width="80%" style="margin: 0;padding: 5px 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;text-align: right;border-top: 2px solid #333;border-bottom: 2px solid #333;font-weight: 700;">Total</td>
-                                                                                <td class="alignright" style="margin: 0;padding: 5px 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;text-align: right;border-top: 2px solid #333;border-bottom: 2px solid #333;font-weight: 700;">&pound; 1295.00</td>
+                                                                                <td class="alignright" style="margin: 0;padding: 5px 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;text-align: right;border-top: 2px solid #333;border-bottom: 2px solid #333;font-weight: 700;">&pound; 1795.00</td>
                                                                             </tr>
                                                                         </table>
                                                                     </td>
                                                                 </tr>
                                                             </table>
-                                                            <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">This is a summary of your order and not an official invoice.</p>
+                                                            <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">This is a summary of your order and not an official invoice.<br /><strong style="color:red">Important:</strong> To gain access to the site you will also need to <strong>submit two (2) trade references.</strong> Once approved you will have complete access.</p>
                                                         </td>
                                                     </tr>
                                                     <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
