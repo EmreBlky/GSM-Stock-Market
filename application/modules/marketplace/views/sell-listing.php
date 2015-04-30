@@ -48,7 +48,7 @@
 
     <div class="form-group"><label class="col-md-3 control-label">MPN/ISBN</label>
         <div class="col-md-9">
-            <input type="type" id="mpn1" list="mpn" class="form-control check_record" placeholder="Auto fill the rest of the data if MPN/ISBN is found in the database"  name="product_mpn" value="<?php if(!empty($product_list->product_mpn_isbn)) echo $product_list->product_mpn_isbn; ?><?php if(!empty($_POST['product_mpn'])) echo $_POST['product_mpn']; ?>"/>
+            <input type="type" id="mpn1" list="mpn" class="form-control check_record" placeholder="MPN/ISBN"  name="product_mpn" value="<?php if(!empty($product_list->product_mpn_isbn)) echo $product_list->product_mpn_isbn; ?><?php if(!empty($_POST['product_mpn'])) echo $_POST['product_mpn']; ?>"/>
             <datalist id="mpn">
             <?php if(!empty($listing_attributes)){
                  foreach ($listing_attributes as $row) { ?>
@@ -63,7 +63,7 @@
   
      <div class="form-group"><label class="col-md-3 control-label">Make</label>
         <div class="col-md-9">
-         <input type="text" list="make" id="product_make" class="form-control check_record" placeholder="Auto fill the rest of the data if Product Makers is found in the database"  name="product_make" value="<?php if(!empty($product_list->product_make)) echo $product_list->product_make; else echo set_value('product_make');?>"/>
+         <input type="text" list="make" id="product_make" class="form-control check_record" placeholder="Make"  name="product_make" value="<?php if(!empty($product_list->product_make)) echo $product_list->product_make; else echo set_value('product_make');?>"/>
            <datalist id="make">
             <?php if(!empty($product_makes)){ 
                  foreach ($product_makes as $row) { ?>
@@ -76,7 +76,7 @@
     
    <div class="form-group"><label class="col-md-3 control-label">Model</label>
         <div class="col-md-9">
-         <input type="text" list="model" id="product_model" class="form-control check_record" placeholder="Auto fill the rest of the data if Product Model is found in the database"  name="product_model" value="<?php if(!empty($product_list->product_model)) echo $product_list->product_model; else echo set_value('product_model');?>"/>
+         <input type="text" list="model" id="product_model" class="form-control check_record" placeholder="Model"  name="product_model" value="<?php if(!empty($product_list->product_model)) echo $product_list->product_model; else echo set_value('product_model');?>"/>
            <datalist id="model">
             <?php if(!empty($product_models)){ 
                  foreach ($product_models as $row) { ?>
@@ -89,7 +89,7 @@
 
    <div class="form-group"><label class="col-md-3 control-label">Colour</label>
         <div class="col-md-9">
-         <input type="text" list="color" id="product_color" class="form-control check_record" placeholder="Auto fill the rest of the data if Product Color is found in the database"  name="product_color" value="<?php if(!empty($product_list->product_color)) echo $product_list->product_color; else echo set_value('product_color');?>"/>
+         <input type="text" list="color" id="product_color" class="form-control check_record" placeholder="Colour"  name="product_color" value="<?php if(!empty($product_list->product_color)) echo $product_list->product_color; else echo set_value('product_color');?>"/>
            <datalist id="color">
             <?php if(!empty($product_colors)){ 
                  foreach ($product_colors as $row) { ?>
@@ -159,7 +159,6 @@
     <div class="form-group"><label class="col-md-3 control-label">Currency</label>
         <div class="col-md-9">
             <select class="form-control" name="currency">
-                <option selected value="">Default (account preference defalut)</option>
                     <?php $currency = currency(); 
                     if($currency){
                         $i=1;
@@ -168,7 +167,7 @@
                       <?php $i++;} 
                     } ?>
             </select>
-            <p class="small">Select the currency you wish this listing to be sold in.</p>
+            <p class="small text-navy">Select the currency you wish this listing to be sold in.</p>
             <?php echo form_error('currency'); ?>
         </div>
     </div>
@@ -187,25 +186,10 @@
             <span class="input-group-addon"> 
             <input type="checkbox" name="minimum_checkbox" id="minimum_checkbox" <?php if(isset($_POST['minimum_checkbox']) ){ echo'checked';} elseif(!empty($product_list->min_price)){ echo'checked';}?>/> </span> 
 
-            <input type="text" class="form-control" placeholder="only make typable when clicked" name="min_price" value="<?php if(!empty($product_list->min_price)) echo $product_list->min_price; else echo set_value('min_price');?>"
+            <input type="text" class="form-control" placeholder="What is your minumum price?" name="min_price" value="<?php if(!empty($product_list->min_price)) echo $product_list->min_price; else echo set_value('min_price');?>"
             <?php if(isset($_POST['minimum_checkbox']) ){ echo'';} elseif(empty($product_list->min_price) ){ echo'disabled';}?>></div>
-            <p class="small">tick to enable. Any offers below this will be auto rejected, leave blank to allow any offers if ticked.</p>
+            <p class="small text-navy">Tick allow offers. Any offers below this will be auto rejected, leave blank to allow any offers if ticked.</p>
             <?php echo form_error('min_price'); ?>
-        </div>
-    </div>
-    
-    <div class="form-group"><label class="col-md-3 control-label">Allow Offers</label>
-        <div class="col-md-9">
-            <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="allowoffer_checkbox" id="allowoffer_checkbox" <?php if(isset($_POST['allowoffer_checkbox']) ){ echo'checked';} elseif(!empty($product_list->allow_offer)){ echo'checked';}?>/> </span>
-            <select class="form-control" name="allow_offer" <?php if(isset($_POST['allowoffer_checkbox']) ){ echo'';} elseif(empty($product_list->allow_offer) ){ echo'disabled';}?> >
-                <option selected value="3">3 is default</option>
-                <?php for($i=4; $i<=10; $i++){
-                    ?><option <?php if(isset($_POST['allow_offer']) && $i==$_POST['allow_offer']){ echo'selected';}?><?php if(!empty($product_list->allow_offer) && $i == $product_list->allow_offer){ echo'selected="selected"'; }?>><?php echo $i;?></option>
-                    <?php }?>
-            </select>
-            </div>
-            <?php echo form_error('allow_offer'); ?>
-            <p class="small">Allow people to make offers and how many per 24 hour period. (default is 3)</p>
         </div>
     </div>
     
@@ -221,11 +205,11 @@
             <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="orderqunatity_checkbox" id="orderqunatity_checkbox"
             <?php if(isset($_POST['orderqunatity_checkbox']) ){ echo'checked';} elseif(!empty($product_list->min_qty_order)){ echo'checked';}?>/> </span> 
 
-            <input type="text" class="form-control" placeholder="only make typable when clicked" name="min_qty_order" value="<?php if(!empty($product_list->min_qty_order)) echo $product_list->min_qty_order; else echo set_value('min_qty_order');?>" 
+            <input type="text" class="form-control" placeholder="Minimum Order Quantity" name="min_qty_order" value="<?php if(!empty($product_list->min_qty_order)) echo $product_list->min_qty_order; else echo set_value('min_qty_order');?>" 
 
             <?php if(isset($_POST['orderqunatity_checkbox']) ){ echo'';} elseif(empty($product_list->min_qty_order) ){ echo'disabled';}?>
             ></div>
-            <p class="small">Allow minimum order quantity else full quantity sale available only</p>
+            <p class="small text-navy">Allow minimum order quantity else full quantity sale available only</p>
             <?php echo form_error('min_qty_order'); ?>
         </div>
     </div>

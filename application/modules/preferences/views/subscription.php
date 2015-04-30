@@ -79,11 +79,11 @@
                             <div class="ibox-content" style="min-height:89px;text-align:center">
                         	<label class="control-label">Subscription: </label>                            
                             <select id="selectMe" class="form-control" style="width:auto;display:inline-block">
-                              <option value="option1_6" disabled style="display:none">PayPal (6 Months)</option>
-                              <option value="option1_12">PayPal (1 Year)</option>
-                              <option value="option2_6" disabled style="display:none">Bank Transfer (6 Months)</option>
+                              <option value="option1_6">PayPal (6 Months)</option>
+                              <option value="option1_12" selected>PayPal (1 Year)</option>
+                              <option value="option2_6">Bank Transfer (6 Months)</option>
                               <option value="option2_12">Bank Transfer (1 Year)</option>
-                              <option value="option3_6" disabled style="display:none">Credit/Debit Card (6 Months)</option>
+                              <option value="option3_6">Credit/Debit Card (6 Months)</option>
                               <option value="option3_12">Credit/Debit Card (1 Year)</option>
                             </select>
                             <button id="option1_6" class="payment_method btn btn-primary" data-toggle="modal" data-target="#payment_paypal_6" style="font-size:12px;margin-bottom:3px">Upgrade Now</button>
@@ -261,14 +261,6 @@
                     </tbody>
                     </table>
                     <?php }?>
-<!--                    <tr>
-                        <td>GSM-5-2</td>
-                        <td>April 1, 2015</td>
-                        <td>Silver Membership Subscription</td>
-                        <td>£1295.00</td>
-                        <td style="text-align:center"><span class="label label-danger">Unpaid</span></td>
-                        <td style="text-align:center"><a href="/" class="btn btn-primary" style="font-size:10px">View Invoice</a></td>
-                    </tr>-->
                     
                     
 
@@ -294,12 +286,13 @@
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                                             <h4 class="modal-title">Payment Method: PayPal</h4>
-                                            <small class="font-bold">Upgrade your GSMStockMarket.com account to <b>6 month</b> Silver membership</small>
+                                            <small class="font-bold">Upgrade your GSMStockMarket.com account to <b>6 month</b> Silver membership @ £995.00</small>
                                         </div>
                                         <div class="modal-body">
                                             <p>You have selected <strong>PayPal</strong> as your form of payment.</p>
                                             <p>When you confirm your order you will be redirected to <strong>PayPal</strong> and will be able to make payment using your <strong>PayPal</strong> account.</p>
-                                            <p>Once payment is complete you will be redirected back to our website.</p>  
+                                            <p>Once payment is complete you will be redirected back to our website.</p> 
+                                            <p><strong style="color:red">Notice:</strong>You will still need to add two (2) trade references to your account and have them confirmed by GSMstockmarket before you have complete access.</p>  
                                         </div>
 
                                         <div class="modal-footer">
@@ -316,12 +309,13 @@
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                                             <h4 class="modal-title">Payment Method: PayPal</h4>
-                                            <small class="font-bold">Upgrade your GSMStockMarket.com account to <b>1 year</b> Silver membership</small>
+                                            <small class="font-bold">Upgrade your GSMStockMarket.com account to <b>1 year</b> Silver membership @ £1795.00</small>
                                         </div>
                                         <div class="modal-body">
                                             <p>You have selected <strong>PayPal</strong> as your form of payment.</p>
                                             <p>When you confirm your order you will be redirected to <strong>PayPal</strong> and will be able to make payment using your <strong>PayPal</strong> account.</p>
                                             <p>Once payment is complete you will be redirected back to our website.</p>  
+                                            <p><strong style="color:red">Notice:</strong>You will still need to add two (2) trade references to your account and have them confirmed by GSMstockmarket before you have complete access.</p> 
                                         </div>
 
                                         <div class="modal-footer">
@@ -338,7 +332,7 @@
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                                             <h4 class="modal-title">Payment Method: Bank Transfer</h4>
-                                            <small class="font-bold">Upgrade your GSMStockMarket.com account to <b>6 month</b> Silver membership</small>
+                                            <small class="font-bold">Upgrade your GSMStockMarket.com account to <b>6 month</b> Silver membership @ £995.00</small>
                                         </div>
                                         <div class="modal-body">
                                             <p>You have selected <strong>Bank Transfer</strong> as your form of payment.</p>
@@ -347,7 +341,7 @@
                                             <h4 style="color:red;margin-top:20px">IMPORTANT!</h5>
                                             <p>- Make sure your payment is sent in the correct sum in &pound; (GBP)</p>
                                             <p>- Add the invoice number as reference to your payment to avoid delays</p>
-                                            <p style="margin-top:20px">Once payment is received you will be emailed your upgrade confirmation and full access to your account will be instant.</p>
+                                            <p><strong style="color:red">Notice:</strong>You will still need to add two (2) trade references to your account and have them confirmed by GSMstockmarket before you have complete access.</p> 
                                         </div>
 
                                         <div class="modal-footer">
@@ -364,7 +358,7 @@
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                                             <h4 class="modal-title">Payment Method: Bank Transfer</h4>
-                                            <small class="font-bold">Upgrade your GSMStockMarket.com account to <b>1 year</b> Silver membership</small>
+                                            <small class="font-bold">Upgrade your GSMStockMarket.com account to <b>1 year</b> Silver membership @ £1795.00</small>
                                         </div>
                                         <div class="modal-body">
                                             <p>You have selected <strong>Bank Transfer</strong> as your form of payment.</p>
@@ -373,7 +367,7 @@
                                             <h4 style="color:red;margin-top:20px">IMPORTANT!</h5>
                                             <p>- Make sure your payment is sent in the correct sum in &pound; (GBP)</p>
                                             <p>- Add the invoice number as reference to your payment to avoid delays</p>
-                                            <p style="margin-top:20px">Once payment is received you will be emailed your upgrade confirmation and full access to your account will be instant.</p>
+                                            <p><strong style="color:red">Notice:</strong>You will still need to add two (2) trade references to your account and have them confirmed by GSMstockmarket before you have complete access.</p>  
                                         </div>
 
                                         <div class="modal-footer">
@@ -390,13 +384,14 @@
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                                             <h4 class="modal-title">Payment Method: Credit/Debit Card</h4>
-                                            <small class="font-bold">Upgrade your GSMStockMarket.com account to <b>6 month</b> Silver membership</small>
+                                            <small class="font-bold">Upgrade your GSMStockMarket.com account to <b>6 month</b> Silver membership @ £995.00</small>
                                         </div>
                                         <div class="modal-body">
                                             <p>You have selected <strong>Credit/Debit Card</strong> as your form of payment.</p>
                                             <p>We use PayPal for our Credit/Debit Card transactions.</p>
                                             <p>Once you click confirm purchase you will be redirected to Paypal, you will not need a PayPal account to make the payment. Simply clicky on the pay with debit or credit card below the login area.</p>
-                                            <p>Once payment is complete you will be redirected back to our website and you will have your new subscriber access when payment is accepted.</p>  
+                                            <p>Once payment is complete you will be redirected back to our website and you will have your new subscriber access when payment is accepted.</p>
+                                            <p><strong style="color:red">Notice:</strong>You will still need to add two (2) trade references to your account and have them confirmed by GSMstockmarket before you have complete access.</p>  
                                             <p><img src="public/main/template/gsm/images/paypal_card.png" class="img-responsive" style="max-width:80%;margin-left:10%"/>
                                         </div>
 
@@ -414,13 +409,14 @@
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                                             <h4 class="modal-title">Payment Method: Credit/Debit Card</h4>
-                                            <small class="font-bold">Upgrade your GSMStockMarket.com account to <b>1 year</b> Silver membership</small>
+                                            <small class="font-bold">Upgrade your GSMStockMarket.com account to <b>1 year</b> Silver membership @ £1795.00</small>
                                         </div>
                                         <div class="modal-body">
                                             <p>You have selected <strong>Credit/Debit Card</strong> as your form of payment.</p>
                                             <p>We use PayPal for our Credit/Debit Card transactions.</p>
                                             <p>Once you click confirm purchase you will be redirected to Paypal, you will not need a PayPal account to make the payment. Simply clicky on the pay with debit or credit card below the login area.</p>
                                             <p>Once payment is complete you will be redirected back to our website and you will have your new subscriber access when payment is accepted.</p>  
+                                            <p><strong style="color:red">Notice:</strong>You will still need to add two (2) trade references to your account and have them confirmed by GSMstockmarket before you have complete access.</p>  
                                             <p><img src="public/main/template/gsm/images/paypal_card.png" class="img-responsive" style="max-width:80%;margin-left:10%"/>
                                         </div>
 
