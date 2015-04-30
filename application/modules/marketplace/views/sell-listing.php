@@ -180,13 +180,13 @@
         </div>
     </div>
     
-    <div class="form-group"><label class="col-md-3 control-label">Minimum Price</label>
+    <div class="form-group"><label class="col-md-3 control-label">Min Unit Price</label>
         <div class="col-md-9">
             <div class="input-group m-b">
             <span class="input-group-addon"> 
             <input type="checkbox" name="minimum_checkbox" id="minimum_checkbox" <?php if(isset($_POST['minimum_checkbox']) ){ echo'checked';} elseif(!empty($product_list->min_price)){ echo'checked';}?>/> </span> 
 
-            <input type="text" class="form-control" placeholder="What is your minumum price?" name="min_price" value="<?php if(!empty($product_list->min_price)) echo $product_list->min_price; else echo set_value('min_price');?>"
+            <input type="text" class="form-control" placeholder="Minimum Unit Price" name="min_price" value="<?php if(!empty($product_list->min_price)) echo $product_list->min_price; else echo set_value('min_price');?>"
             <?php if(isset($_POST['minimum_checkbox']) ){ echo'';} elseif(empty($product_list->min_price) ){ echo'disabled';}?>></div>
             <p class="small text-navy">Tick allow offers. Any offers below this will be auto rejected, leave blank to allow any offers if ticked.</p>
             <?php echo form_error('min_price'); ?>
