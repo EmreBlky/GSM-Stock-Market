@@ -251,20 +251,20 @@
         <label class="col-md-3 control-label">Shipping Fee</label>
         <div class="col-md-3">
             <select class="form-control shipping-type" name="shipping_type">
-                <option value="Price_per_unit">Price per unit</option>
-                <option value="Free_Shipping">Free shipping</option>
+                <option value="Free_Shipping" selected>Free shipping</option>
                 <option value="Flat_fee">Flat fee</option>
+                <option value="Price_per_unit">Price per unit</option>
             </select>
         </div>
         <div class="col-md-3 ">
-            <input type="text" class="form-control shipping-opt" name="shipping_fee" />
+            <input type="text" class="form-control shipping-opt" name="shipping_fee" disabled/>
         </div>
         <div class="col-md-3">
             <a class="btn btn-primary shipping-opt" id="add_shipping"><i class="fa fa-plus"></i> Add Shipping Option</a>
         </div>
     </div>
     
-    <div class="form-group"><label class="col-md-3 control-label">Shipping and Handling Fee</label>
+    <div class="form-group"><label class="col-md-3 control-label">Shipping and Handling Fee<br /><small class="text-navy">Add at least one (1) option</small></label>
     <div class="col-md-9">
     <table class="table table-bordered">
       <thead>
