@@ -54,7 +54,7 @@
 
         <div class="form-group"><label class="col-md-3 control-label">MPN/ISBN</label>
         <div class="col-md-9">
-            <input type="text" id="mpn1" list="mpn" class="form-control check_record" placeholder="Auto fill the rest of the data if MPN/ISBN is found in the database"  name="product_mpn" value="<?php if(!empty($product_list->product_mpn_isbn)) echo $product_list->product_mpn_isbn; ?><?php if(!empty($_POST['product_mpn'])) echo $_POST['product_mpn']; ?>"/>
+            <input type="text" id="mpn1" list="mpn" class="form-control check_record" placeholder="MPN/ISBN"  name="product_mpn" value="<?php if(!empty($product_list->product_mpn_isbn)) echo $product_list->product_mpn_isbn; ?><?php if(!empty($_POST['product_mpn'])) echo $_POST['product_mpn']; ?>"/>
             <datalist id="mpn">
             <?php if(!empty($listing_attributes)){
                  foreach ($listing_attributes as $row) { ?>
@@ -69,7 +69,7 @@
     
     <div class="form-group"><label class="col-md-3 control-label">Make</label>
         <div class="col-md-9">
-         <input type="text" list="make" id="product_make" class="form-control check_record" placeholder="Auto fill the rest of the data if Product Makers is found in the database"  name="product_make" value="<?php if(!empty($product_list->product_make)) echo $product_list->product_make; else echo set_value('product_make');?>"/>
+         <input type="text" list="make" id="product_make" class="form-control check_record" placeholder="Make"  name="product_make" value="<?php if(!empty($product_list->product_make)) echo $product_list->product_make; else echo set_value('product_make');?>"/>
            <datalist id="make">
             <?php if(!empty($product_makes)){ 
                  foreach ($product_makes as $row) { ?>
@@ -82,7 +82,7 @@
 
     <div class="form-group"><label class="col-md-3 control-label">Model</label>
         <div class="col-md-9">
-         <input type="text" list="model" id="product_model" class="form-control check_record" placeholder="Auto fill the rest of the data if Product Model is found in the database"  name="product_model" value="<?php if(!empty($product_list->product_model)) echo $product_list->product_model; else echo set_value('product_model');?>"/>
+         <input type="text" list="model" id="product_model" class="form-control check_record" placeholder="Model"  name="product_model" value="<?php if(!empty($product_list->product_model)) echo $product_list->product_model; else echo set_value('product_model');?>"/>
            <datalist id="model">
             <?php if(!empty($product_models)){ 
                  foreach ($product_models as $row) { ?>
@@ -95,7 +95,7 @@
     
     <div class="form-group"><label class="col-md-3 control-label">Colour</label>
         <div class="col-md-9">
-         <input type="text" list="color" id="product_color" class="form-control check_record" placeholder="Auto fill the rest of the data if Product Color is found in the database"  name="product_color" value="<?php if(!empty($product_list->product_color)) echo $product_list->product_color; else echo set_value('product_color');?>"/>
+         <input type="text" list="color" id="product_color" class="form-control check_record" placeholder="Colour"  name="product_color" value="<?php if(!empty($product_list->product_color)) echo $product_list->product_color; else echo set_value('product_color');?>"/>
            <datalist id="color">
             <?php if(!empty($product_colors)){ 
                  foreach ($product_colors as $row) { ?>
@@ -162,7 +162,6 @@
         <div class="form-group"><label class="col-md-3 control-label">Currency</label>
             <div class="col-md-9">
                 <select class="form-control" name="currency">
-                    <option selected value="">Default (account preference defalut)</option>
                     <?php $currency = currency(); 
                     if($currency){
                         $i=1;
@@ -171,7 +170,7 @@
                       <?php $i++;} 
                     } ?>
                 </select>
-                <p class="small">Select the currency you wish this listing to be sold in.</p>
+                <p class="small text-navy">Select the currency you wish this listing to be sold in.</p>
                 <?php echo form_error('currency'); ?>
             </div>
         </div>
@@ -190,10 +189,10 @@
                 <div class="input-group m-b"><span class="input-group-addon"> 
                 <input type="checkbox" name="maximum_checkbox" id="maximum_checkbox" <?php if(isset($_POST['maximum_checkbox']) ){ echo'checked';} elseif(!empty($product_list->max_price)){ echo'checked';}?>/> </span> 
 
-                <input type="text" class="form-control" placeholder="only make typable when clicked" name="max_price" value="<?php if(!empty($product_list->max_price)) echo $product_list->max_price; else echo set_value('max_price');?>" <?php if(isset($_POST['maximum_checkbox']) ){ echo'';} elseif(empty($product_list->max_price) ){ echo'disabled';}?>>
+                <input type="text" class="form-control" placeholder="Maxiumum Unit Price" name="max_price" value="<?php if(!empty($product_list->max_price)) echo $product_list->max_price; else echo set_value('max_price');?>" <?php if(isset($_POST['maximum_checkbox']) ){ echo'';} elseif(empty($product_list->max_price) ){ echo'disabled';}?>>
 
                 </div>
-                <p class="small">tick to enable. Any offers below this will be auto rejected, leave blank to allow any offers if ticked.</p>
+                <p class="small text-navy">tick to enable. Any offers below this will be auto rejected, leave blank to allow any offers if ticked.</p>
                 <?php echo form_error('max_price'); ?>
             </div>
         </div>
@@ -233,8 +232,8 @@
         <div class="form-group"><label class="col-md-3 control-label">Shipping Charges</label>
         <div class="col-md-9">
            <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="shipping_checkbox" id="shipping_checkbox" <?php if(isset($_POST['shipping_checkbox']) ){ echo'checked';} elseif(!empty($product_list->shipping_charges)) echo 'checked'; ?>/> </span> 
-             <input type="text" class="form-control" placeholder="only make typable when clicked" name="shipping_charges" value="<?php if(!empty($product_list->shipping_charges)) echo $product_list->shipping_charges; else  echo set_value('shipping_charges');?>" <?php if(isset($_POST['shipping_charges']) ){ echo'';} elseif(empty($product_list->shipping_charges) ){ echo'disabled';}?>></div>
-           <p class="small">Allow additional shipping charges. Leave unticked for all quotes to include free shipping</p>
+             <input type="text" class="form-control" placeholder="" name="shipping_charges" value="<?php if(!empty($product_list->shipping_charges)) echo $product_list->shipping_charges; else  echo set_value('shipping_charges');?>" <?php if(isset($_POST['shipping_charges']) ){ echo'';} elseif(empty($product_list->shipping_charges) ){ echo'disabled';}?>></div>
+           <p class="small text-navy">Allow additional shipping charges. Leave unticked for all quotes to include free shipping</p>
         </div>
         </div>
         <div class="hr-line-dashed"></div>                                
