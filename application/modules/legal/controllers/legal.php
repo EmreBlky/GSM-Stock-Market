@@ -60,7 +60,7 @@ class Legal extends MX_Controller
         $data = array(
                       'terms_conditions' => 'yes'
                     );
-        $this->member_model->update($id, $data);
+        $this->member_model->_update($id, $data);
         
         $user_data = array(
                             'terms'             => 'yes'
