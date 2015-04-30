@@ -73,4 +73,22 @@ class Member extends MX_Controller
         
     }
     
+    function email_activation()
+    {
+        $lists = $this->member_model->get_where_multiples('validated', 'no');
+        
+        foreach ($lists as $list){
+            echo $list->id.'<br/>';
+        }
+    }
+    
+    function email_profile()
+    {
+        $lists = $this->member_model->_custom_query("SELECT * FROM members WHERE profile_completion < 100");
+        
+        foreach ($lists as $list){
+            echo $list->id.'<br/>';
+        }
+    }
+    
 }
