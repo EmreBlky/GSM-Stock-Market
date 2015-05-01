@@ -25,6 +25,8 @@
 
     </div>
 </div>
+<?php $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id);
+if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 
 <?php msg_alert(); ?>
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -337,6 +339,150 @@
     
 </div>
 
+<?php } else { ?>
+<?php if($member->membership == 1 ){ ?>
+            <div class="alert alert-info" style="margin:15px 15px -15px">
+        <p><i class="fa fa-info-circle"></i> <strong>This is a Demo</strong> Silver members and above with criteria met will have access to the live marketplace. This is our order management system, it can assist you in the progress of an order. Send payment details, add tracking information and check up on the status of your order. Labels in yellow are actions waiting on you and labels in green are actions waiting on the company you are trading with. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
+            </div>
+
+<?php } else if($member->membership == 2 && $member->marketplace == 'inactive'){?>
+            <div class="alert alert-warning" style="margin:15px 15px -15px">
+                <p><i class="fa fa-warning"></i> You still need to supply 2 trade references so we can enable your membership to view profiles and access the marketplace. <a class="alert-link" href="tradereference">Submit trade references</a>.</p>
+            </div>
+
+<?php }?>
+<div class="wrapper wrapper-content animated fadeInRight">
+
+<div class="row">
+    <div class="col-lg-12">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>Open Orders - Item you are buying</h5>
+        </div>
+        <div class="ibox-content">
+
+        <table id="marketplace" class="table table-striped table-bordered table-hover dataTables-example" >
+        <thead>
+        <tr>
+            <th>Status</th>
+            <th>Seller</th>
+            <th>Product</th>
+            <th>Product Type</th>
+            <th>Condition</th>
+            <th>Progress</th>
+            <th>Options</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="text-center"><span class="label label-warning">Awaiting Your Payment</span></td>
+            <td>Sales Company Limited</td>
+            <td>Apple iPhone 4</td>
+            <td>LCD</td>
+            <td>Used Grade A</td>
+            <td class="project-completion">
+            <small>25% Complete</small>
+            <div class="progress progress-mini">
+            <div style="width: 25%;" class="progress-bar"></div>
+            </div>
+            </td>
+            <td><button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button> <button type="button" class="btn btn-warning" style="font-size:10px">Make Payment</button></td>
+        </tr>
+        <tr>
+            <td class="text-center"><span class="label label-primary">Payment Sent</span></td>
+            <td>Sales Company Limited</td>
+            <td>HTC One X</td>
+            <td>Handsets</td>
+            <td>New</td>
+            <td class="project-completion">
+            <small>50% Complete</small>
+            <div class="progress progress-mini">
+            <div style="width: 50%;" class="progress-bar"></div>
+            </div>
+            </td>
+            <td><button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button></td>
+        </tr>
+        <tr>
+            <td class="text-center"><span class="label label-warning">Shipment Sent</span></td>
+            <td>Sales Company Limited</td>
+            <td>Samsung Galaxy S2 (i9100)</td>
+            <td>LCD</td>
+            <td>Used Grade B</td>
+            <td class="project-completion">
+            <small>75% Complete</small>
+            <div class="progress progress-mini">
+            <div style="width: 75%;" class="progress-bar"></div>
+            </div>
+            </td>
+            <td><button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button> <button type="button" class="btn btn-warning" style="font-size:10px">Items Received</button></td>
+        </tr>
+        </tbody>
+        </table>
+
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>Open Orders - Items you are selling</h5>
+        </div>
+        <div class="ibox-content">
+
+        <table id="marketplace" class="table table-striped table-bordered table-hover dataTables-example" >
+        <thead>
+        <tr>
+            <th>Status</th>
+            <th>Buyer</th>
+            <th>Product</th>
+            <th>Product Type</th>
+            <th>Condition</th>
+            <th>Progress</th>
+            <th>Options</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td class="text-center"><span class="label label-primary">Awaiting Payment</span></td>
+            <td>Buying Company Limited</td>
+            <td>Nokia Lumia 810</td>
+            <td>LCD</td>
+            <td>Used Grade C</td>
+            <td class="project-completion">
+            <small>25% Complete</small>
+            <div class="progress progress-mini">
+            <div style="width: 25%;" class="progress-bar"></div>
+            </div>
+            </td>
+            <td><button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button></td>
+        </tr>
+        <tr>
+            <td class="text-center"><span class="label label-primary">Deal Complete</span></td>
+            <td>Buying Company Limited</td>
+            <td>Nokia Lumia 815</td>
+            <td>Handsets</td>
+            <td>Refurbished</td>
+            <td class="project-completion">
+            <small>100% Complete</small>
+            <div class="progress progress-mini">
+            <div style="width: 100%;" class="progress-bar"></div>
+            </div>
+            </td>
+            <td><button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button> <button type="button" class="btn btn-info" style="font-size:10px">Leave Feedback</button></td>
+        </tr>
+        </tbody>
+        </table>
+
+        </div>
+    </div>
+</div>
+</div>
+<?php } ?>
+
+</div>
 <script>
  function deal_info(listing_id) {
         var list = listing_id;

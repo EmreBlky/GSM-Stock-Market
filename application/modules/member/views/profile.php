@@ -120,7 +120,7 @@ $cust_id = $this->uri->segment(3);
                         url: "block/customerBlock/"+ cust_id +"/"+ cust_blocked +"",
                         dataType: "html",
                         success:function(data){
-                          $('#blocked').replaceWith('<button onclick="unblock();" type="button" class="btn btn-warning btn-sm btn-block" id="unblocked">Unblock</button>');                             
+                          $('#blocked').replaceWith('<button onclick="unblock();" type="button" class="btn btn-warning btn-sm btn-block" id="unblocked"><i class="fa fa-thumbs-up"></i> Unblock</button>');                             
                          toastr.error('They are unable to communicate or see you in anywhere on this website.', 'User Blocked!');                    
                         },
                 });
@@ -687,18 +687,6 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                                     </table>
                                 </div>
                                 
-                                <div class="tab-pane example" id="credit-information">
-            <div class="alert alert-info">
-                <p><i class="fa fa-info-circle"></i> Want to make sure you're dealing with a legitimate user and want that extra level of safety? Run a credit check on them free of charge for Silver to Silver or higher members. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
-            </div>
-									<div class="row">
-                    					<div class="col-lg-12" style="text-align:center;margin:15px 0">
-                                            <p><img src="public/main/template/gsm/images/credit_example.png" class="img-responsive"/></p>
-                        				</div>
-                   					</div>
-                                	
-                                </div>
-                                
                                 </div>
 
                                 </div>
@@ -729,23 +717,23 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                                         <dd> Website</dd>
                                         <dt>Mobile Number:</dt> 
                                         <dd> +44 (0)1494 717321</dd>
-                                    </dl>  
-                                    
+                                    </dl>
                     
                     
 					<div class="row" style="margin-top:20px">
                     	<div class="col-lg-12">
-                        	<button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#buycreditcheck"><i class="fa fa-check-square-o"></i> Credit Check</button>
+                        	<button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#creditdata"><i class="fa fa-check-square-o"></i> Request Credit Check</button>         
                         </div>
                    </div>
-					<div class="row">
+                   
+                   <div class="row">
                         <div class="col-lg-6" style="margin-top:15px">
                             <button type="button" class="btn btn-warning btn-sm btn-block" id="report_user"><i class="fa fa-exclamation"></i> Report</button>
                         </div>
                         <div class="col-lg-6" style="margin-top:15px">
                         <?php if($blocked){?>    
                             <?php if($blocked[0]->block_member_id > 0){?>
-                                <button onclick="unblock();" type="button" class="btn btn-warning btn-sm btn-block" id="unblocked">Unblock</button>
+                                <button onclick="unblock();" type="button" class="btn btn-warning btn-sm btn-block" id="unblocked"><i class="fa fa-thumbs-up"></i> Unblock</button>
                             <?php } else { ?>
                                 <button onclick="block();" type="button" class="btn btn-danger btn-sm btn-block" id="blocked"><i class="fa fa-ban"></i> Block</button>                        
                             <?php }?>
@@ -777,6 +765,37 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                                     </div>
                                 </div>
                             </div>        
+                            
+                            
+                                 
+                            <div class="modal inmodal fade" id="creditdata" tabindex="-1" role="dialog"  aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                            <h4 class="modal-title">Request a Credit Check</h4>
+                                            <small class="font-bold">You will need to get permission from this user to access their credit data</small>
+                                        </div>
+                                        <input type="hidden" name="from" id="from" value="" />
+                                        <input type="hidden" name="cust_name" id="cust_name" value="" />
+                                        <input type="hidden" name="report" id="report" value="" />
+                                        <div class="modal-body">
+                                        <div class="alert alert-info">
+                                            <p><i class="fa fa-info-circle"></i> Request a credit check from any user silver or above. Available to silver membership only <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
+                                        </div>
+                                        <p class="text-navy"><strong>Notice:</strong> Please be aware although credit reports are free you will still need permission from the users company first.<br />The user can accept or decline at their own discretion, It is ideal to message them first before requesting a credit check so they know your intentions.</p><br />
+                                        <div class="radio i-checks"><label> <input type="radio" value="option1" name="creditdata"> <i></i> Request their company credit report and <strong>deny</strong> them access to yours.</label></div>
+                                        <div class="radio i-checks"><label> <input type="radio" checked="" value="option2" name="creditdata"> <i></i> Request their company credit report and <strong>allow</strong> them access to yours. (Recommended)</label></div>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary" id="submit" data-dismiss="modal">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
                             
                             <?php
                             
@@ -1204,7 +1223,7 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                         <div class="col-lg-6" style="margin-top:15px">
                         <?php if($blocked){?>    
                             <?php if($blocked[0]->block_member_id > 0){?>
-                                <button onclick="unblock();" type="button" class="btn btn-warning btn-sm btn-block" id="unblocked">Unblock</button>
+                                <button onclick="unblock();" type="button" class="btn btn-warning btn-sm btn-block" id="unblocked"><i class="fa fa-thumbs-up"></i>Unblock</button>
                             <?php } else { ?>
                                 <button onclick="block();" type="button" class="btn btn-danger btn-sm btn-block" id="blocked"><i class="fa fa-ban"></i> Block</button>                        
                             <?php }?>
