@@ -138,7 +138,7 @@
         </div>
         </div>
         </div>   
-        
+        </div>
     <!-- Data Tables -->
     <link href="public/main/template/core/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
     <link href="public/main/template/core/css/plugins/dataTables/dataTables.responsive.css" rel="stylesheet">

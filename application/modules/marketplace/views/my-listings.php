@@ -243,7 +243,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                 </th>
             </tr>
             <tr>
-                <td class="text-center"><span class="label label-danger">Ended</span></td>
+                <td class="text-center"><span class="label label-success">Scheduled</span></td>
                 <td>11-May-15, 12:01</td>
                 <td>Sony Xperia Z</td>
                 <td>New</td>
