@@ -55,7 +55,7 @@
                                 
                                 <td class="text-center">
                                 	<a href=""><button class="btn btn-primary" style="font-size:10px"><i class="fa fa-check"></i> Accept</button></a> 
-                                	<a href="creditdata/declineRequest/<?php echo $request->id;?>"><button class="btn btn-danger" style="font-size:10px"><i class="fa fa-times"></i> Decline</button></a>
+                                	<a href="creditdata/declineRequest/<?php echo $request->id;?>/<?php echo $request->request_id;?>/<?php echo $request->requester_id;?>"><button class="btn btn-danger" style="font-size:10px"><i class="fa fa-times"></i> Decline</button></a>
                                 	<a href="member/profile/<?php echo $request->requester_id;?>"><button class="btn btn-success" style="font-size:10px"><i class="fa fa-user"></i> View Profile</button></a>
                                 </td>
                             </tr>

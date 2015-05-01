@@ -11,6 +11,7 @@ class Creditdata extends MX_Controller
             redirect('login');
         }
         $this->load->model('member/member_model', 'member_model');
+        $this->load->model('mailbox/mailbox_model', 'mailbox_model');
         $this->load->model('company/company_model', 'company_model');
         $this->load->model('country/country_model', 'country_model');
         $this->load->model('creditdata/creditdata_model', 'creditdata_model');
@@ -83,12 +84,30 @@ class Creditdata extends MX_Controller
         
     }
     
-    function declineRequest($id)
+    function declineRequest($id, $mid, $sid)
     {
         $data = array(
                       'request_action' => 'dcline'  
         );
         $this->creditdata_model->_update($id, $data);
+        
+        $data_mail = array(
+                                    'member_id'         => 5,
+                                    'member_name'       => 'GSM Support',
+                                    'sent_member_id'    => $sid,
+                                    'sent_member_name'  => $this->member_model->get_where($sid)->firstname.' '.$this->member_model->get_where($sid)->lastname,
+                                    'subject'           => 'Credit Check Declined',
+                                    'body'              => 'You request for a credit check of company '.$this->company_model->get_where($this->member_model->get_where($mid)->company_id)->company_name.' was denied.',
+                                    'inbox'             => 'yes',
+                                    'sent'              => 'yes',
+                                    'sent_belong'       => 5,
+                                    'draft'             => 'no',
+                                    'date'              => date('d-m-Y'),
+                                    'time'              => date('H:i'),
+                                    'sent_from'         => 'support',
+                                    'parent_id'         => $this->input->post('parent_id'),
+                                    'datetime'          => date('Y-m-d H:i:s')
+                                  );
         
         $this->session->set_flashdata('confirm', '<div style="margin:15px 15px">    
                                                                 <div class="alert alert-success">
