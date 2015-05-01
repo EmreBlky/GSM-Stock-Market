@@ -541,6 +541,7 @@ endif;
 </div>
 </div>
 </div>
+</div>
 
 <?php } else {?>
 <?php if($member->membership == 1 ){ ?>
