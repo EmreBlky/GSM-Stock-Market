@@ -78,6 +78,11 @@ class Creditdata extends MX_Controller
         $this->creditdata_model->_insert($data);
     }
     
+    function acceptRequest($id)
+    {
+        
+    }
+    
     function declineRequest($id)
     {
         $data = array(
