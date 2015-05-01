@@ -17,9 +17,9 @@
 
 </div>
 </div>
-
-<?php if(!empty($member) && $member->membership > 1 ) { ?> 
-
+<?php $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id);
+if($member->membership > 1 && $member->marketplace == 'active'){ ?>
+            
 <div class="wrapper wrapper-content animated fadeInRight">
 <div class="row">
 
@@ -542,15 +542,25 @@ endif;
 
 </div>
 
-<?php } else {
-?>
+<?php } else {?>
+<?php if($member->membership == 1 ){ ?>
+            <div class="alert alert-info" style="margin:15px 15px -15px">
+        <p><i class="fa fa-info-circle"></i> <strong>This is a Demo</strong> Silver members and above with criteria met will have access to the live marketplace. You can search by product category and make/model, if you are looking to narrow your results down further you can view the advanced search options. Any extra details you need can be found by clicking on the <i class="fa fa-question-circle cursor"></i> icons. This section of the marketplace displays all offers companies on GSMStockMarket have for sale and which you can choose to make an offer on. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
+            </div>
+
+<?php } else if($member->membership == 2 && $member->marketplace == 'inactive'){?>
+            <div class="alert alert-warning" style="margin:15px 15px -15px">
+                <p><i class="fa fa-warning"></i> You still need to supply 2 trade references so we can enable your membership to view profiles and access the marketplace. <a class="alert-link" href="tradereference">Submit trade references</a>.</p>
+            </div>
+
+<?php }?>
+
+
+
+
 <!-- Dummy Data Start -->
 <div class="wrapper wrapper-content animated fadeInRight">
 <div class="row">
-
-    <div class="alert alert-info" style="margin:0 15px 15px">
-        <p><i class="fa fa-info-circle"></i> Silver members and above will have access to the live marketplace upon launch. You can search by product category and make/model, if you are looking to narrow your results down further you can view the advanced search options. Any extra details you need can be found by clicking on the <i class="fa fa-question-circle cursor"></i> icons. This section of the marketplace displays all offers companies on GSMStockMarket have for sale and which you can choose to make an offer or . <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
-    </div>
     
 <div class="col-lg-12">
 <div class="ibox float-e-margins">
@@ -558,22 +568,8 @@ endif;
 <h5>Search</h5>
 </div>
 
-<?php
-$dataasa=array();
-if(!empty($advance_search)):
-foreach ($advance_search as $row) {
-$dataasa['product_mpn'][]        = $row->product_mpn_isbn;
-//$dataasa['product_isbn'][]       = $row->product_isbn;
-$dataasa['product_make'][]       = $row->product_make ;
-$dataasa['product_model'][]      = $row->product_model ;
-$dataasa['product_type'][]       = $row->product_type;
-$dataasa['product_countrys'][]   = array('country_id'=>$row->country_id,'product_country'=>$row->product_country);
-}
-endif;
-?>
-
 <div class="ibox-content">
-<form action="<?php echo base_url('marketplace/buy'); ?>/" method="get" accept-charset="utf-8">
+<form action="" method="get" accept-charset="utf-8">
    <div class="row">
     <div class="col-lg-3" style="padding-right:0">
     	<select name="lc" class="form-control" tabindex="1">
@@ -633,7 +629,7 @@ endif;
 
         <div id="AdvanceSearch"   <?php if(isset($_GET['search'])) echo 'class="collapse in" aria-expanded="true"'; else echo 'class="collapse"'; ?> style="margin-top:10px">
         <div class="well0 row">
-         <form action="<?php echo base_url('marketplace/buy'); ?>/" method="get" accept-charset="utf-8">
+         <form action="" method="get" accept-charset="utf-8">
 
             <div class="col-lg-2">
                 <div class="form-group">
@@ -1041,7 +1037,7 @@ endif;
 <th>Model</th>
 <th>Product Type</th>
 <th>Condition</th>
-<th>Price</th>
+<th>Unit Price</th>
 <th>QTY</th>
 <th>Spec</th>
 <th>Country</th>
@@ -1056,14 +1052,14 @@ endif;
 <td>Galaxy S4 (i9500)</td>
 <td>LCD</td>
 <td>New</td>
-<td data-toggle="tooltip" data-placement="left" title="mouseover currency">12</td>
+<td>GBP 12</td>
 <td>200</td>
 <td>UK</td>
 <td>
 <img src="public/main/template/gsm/img/flags/United_Kingdom.png" />
 </td>
 <th>
-<a href="marketplace/listing_detail/"><button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></a></th>
+<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
 </tr>
 <tr>
 <td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+1 week 2 days")); ?>"></span></p></td>
@@ -1073,7 +1069,7 @@ endif;
 <td>Galaxy S4 (i9500)</td>
 <td>LCD</td>
 <td>New</td>
-<td data-toggle="tooltip" data-placement="left" title="mouseover currency">12</td>
+<td>GBP 12</td>
 <td>200</td>
 <td>UK</td>
 <td>
@@ -1090,14 +1086,14 @@ endif;
 <td>iPhone 6</td>
 <td>Handset</td>
 <td>Refurbished</td>
-<td data-toggle="tooltip" data-placement="left" title="mouseover currency">98</td>
+<td>EUR 98</td>
 <td>200</td>
 <td>EURO</td>
 <td>
 <img src="public/main/template/gsm/img/flags/Germany.png" />
 </td>
 <th>
-<a href="marketplace/listing_detail/"><button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></a></th>
+<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
 </tr>
 <tr>
 <td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+2 days")); ?>"></span></p></td>
@@ -1107,14 +1103,14 @@ endif;
 <td>iPhone 6</td>
 <td>Handset</td>
 <td>Refurbished</td>
-<td data-toggle="tooltip" data-placement="left" title="mouseover currency">98</td>
+<td>EUR 98</td>
 <td>200</td>
 <td>EURO</td>
 <td>
 <img src="public/main/template/gsm/img/flags/Germany.png" />
 </td>
 <th>
-<a href="marketplace/listing_detail/"><button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></a></th>
+<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
 </tr>
 <tr>
 <td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+2 days")); ?>"></span></p></td>
@@ -1124,7 +1120,7 @@ endif;
 <td>iPhone 6</td>
 <td>Handset</td>
 <td>Refurbished</td>
-<td data-toggle="tooltip" data-placement="left" title="mouseover currency">98</td>
+<td>EUR 98</td>
 <td>200</td>
 <td>EURO</td>
 <td>
@@ -1141,14 +1137,14 @@ endif;
 <td>iPhone 6</td>
 <td>Handset</td>
 <td>Refurbished</td>
-<td data-toggle="tooltip" data-placement="left" title="mouseover currency">98</td>
+<td>USD 98</td>
 <td>200</td>
 <td>US</td>
 <td>
 <img src="public/main/template/gsm/img/flags/United_States.png" />
 </td>
 <th>
-<a href="marketplace/listing_detail/"><button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></a></th>
+<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
 </tr>
 <tr>
 <td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+2 days")); ?>"></span></p></td>
@@ -1158,14 +1154,14 @@ endif;
 <td>iPhone 6</td>
 <td>Handset</td>
 <td>Refurbished</td>
-<td data-toggle="tooltip" data-placement="left" title="mouseover currency">98</td>
+<td>USD 98</td>
 <td>200</td>
 <td>ASIA</td>
 <td>
 <img src="public/main/template/gsm/img/flags/China.png" />
 </td>
 <th>
-<a href="marketplace/listing_detail/"><button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></a></th>
+<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
 </tr>
 <tr>
 <td><p><span style="color:red" data-countdown="<?php echo date('m/d/Y', strtotime("+1 day")); ?>"></span></p></td>
@@ -1175,14 +1171,14 @@ endif;
 <td>iPhone 6</td>
 <td>Handset</td>
 <td>Refurbished</td>
-<td data-toggle="tooltip" data-placement="left" title="mouseover currency">98</td>
+<td>EUR 98</td>
 <td>200</td>
 <td>EURO</td>
 <td>
 <img src="public/main/template/gsm/img/flags/France.png" />
 </td>
 <th>
-<a href="marketplace/listing_detail/"><button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></a></th>
+<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
 </tr>
 </table>
 

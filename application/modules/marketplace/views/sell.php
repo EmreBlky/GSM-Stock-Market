@@ -17,6 +17,10 @@
 
 </div>
 </div>
+
+
+<?php $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id);
+if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <div class="wrapper wrapper-content animated fadeInRight">
 <div class="row">
 <div class="col-lg-12">
@@ -537,135 +541,663 @@ endif;
 </div>
 </div>
 </div>
+
+<?php } else {?>
+<?php if($member->membership == 1 ){ ?>
+            <div class="alert alert-info" style="margin:15px 15px -15px">
+        <p><i class="fa fa-info-circle"></i> <strong>This is a Demo</strong> Silver members and above with criteria met will have access to the live marketplace. You can search by product category and make/model, if you are looking to narrow your results down further you can view the advanced search options. Any extra details you need can be found by clicking on the <i class="fa fa-question-circle cursor"></i> icons. This section of the marketplace displays all offers companies on GSMStockMarket would like to buy and whom you can sell your stocks too. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
+            </div>
+
+<?php } else if($member->membership == 2 && $member->marketplace == 'inactive'){?>
+            <div class="alert alert-warning" style="margin:15px 15px -15px">
+                <p><i class="fa fa-warning"></i> You still need to supply 2 trade references so we can enable your membership to view profiles and access the marketplace. <a class="alert-link" href="tradereference">Submit trade references</a>.</p>
+            </div>
+
+<?php }?>
+
+<!-- Dummy Data Start -->
+<div class="wrapper wrapper-content animated fadeInRight">
+<div class="row">
+    
+<div class="col-lg-12">
+<div class="ibox float-e-margins">
+<div class="ibox-title">
+<h5>Search</h5>
+</div>
+
+<div class="ibox-content">
+<form action="" method="get" accept-charset="utf-8">
+   <div class="row">
+    <div class="col-lg-3" style="padding-right:0">
+    	<select name="lc" class="form-control" tabindex="1">
+        	<option value="" selected="">All Categories</option>
+            <option>Accessories</option>
+            <option>Accessories > Batteries</option>
+            <option>Accessories > Bluetooth</option>
+            <option>Accessories > Car Kits</option>
+            <option>Accessories > Cables</option>
+            <option>Accessories > Chargers</option>
+            <option>Accessories > Cases</option>
+            <option>Accessories > Headphones</option>
+            <option>Accessories > Memory Cards</option>
+            <option>Accessories > Mobile Internet</option>
+            <option>Accessories > Sim Cards</option>
+            <option>Spare Parts</option>
+            <option>Spare Parts > Components</option>
+            <option>Spare Parts > Handsets</option>
+            <option>Spare Parts > Housings</option>
+            <option>Spare Parts > Keypads</option>
+            <option>Spare Parts > LCDs</option>
+            <option>Spare Parts > Main Boards</option>
+            <option>Spare Parts > Mobile Boxes</option>
+            <option>Spare Parts > Tools</option>
+        </select>
+    </div>
+	<div class="col-lg-5" style="padding-right:0">
+       <select data-placeholder="Make and Model" class="chosen-select form-control" multiple tabindex="2">
+        <option>Apple iPhone 3G</option>
+        <option>Apple iPhone 3GS</option>
+        <option>Apple iPhone 4</option>
+        <option>Apple iPhone 4S</option>
+        <option>Apple iPhone 5</option>
+        <option>Apple iPhone 5C</option>
+        <option>Apple iPhone 5S</option>
+        <option>Apple iPhone 6</option>
+        <option>Apple iPhone 6 Plus</option>
+        <option>Samsung Galaxy S1 (i9000)</option>
+        <option>Samsung Galaxy S2 (i9100)</option>
+        <option>Samsung Galaxy S2 LTE (i9105)</option>
+        <option>Samsung Galaxy S3 (i9300)</option>
+        <option>Samsung Galaxy S3 LTE (i9305)</option>
+        </select>
+    </div>
+	<div class="col-lg-2">
+    	<input type="submit" class="btn btn-primary btn-block" value="Search"/>
+    </div>
+	<div class="col-lg-2">
+            <button class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#AdvanceSearch" aria-expanded="true" aria-controls="collapseExample">Advanced Search</button>
+    </div>
+   
+</div>
+</form>
+<div class="row">
+
+    <div class="col-lg-12">
+
+        <div id="AdvanceSearch"   <?php if(isset($_GET['search'])) echo 'class="collapse in" aria-expanded="true"'; else echo 'class="collapse"'; ?> style="margin-top:10px">
+        <div class="well0 row">
+         <form action="" method="get" accept-charset="utf-8">
+
+            <div class="col-lg-2">
+                <div class="form-group">
+                 <label for="">Selling Currency <i class="fa fa-question-circle cursor" data-toggle="modal" data-target="#currency" title="Click for more information"></i></label>
+                    <select name="date" class="form-control" tabindex="1">
+                        <option value="" selected="">Any</option>
+                        <option>GBP &pound;</option>
+                        <option>Euro &euro;</option>
+                        <option>USD $</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="col-lg-2">
+             	<div class="form-group">
+                 <label for="">Item Condition <i class="fa fa-question-circle cursor" data-toggle="modal" data-target="#condition" title="Click for more information"></i></label>
+                    <select name="condition" class="form-control" tabindex="3">
+                        <option value="" selected="">Any</option>
+                          <option>New</option>
+                          <option>Used</option>
+                          <option>Refurbished</option>
+                          <option>Grade A</option>
+                          <option>Grade B</option>
+                          <option>Grade C</option>
+                          <option>Grade F</option>
+                    </select>
+                </div>                        
+            </div>   
+                
+            <div class="col-lg-4">
+             	<div class="form-group">
+                 <label for="">Seller Rating</label>
+                        <div class="input-group">
+                            <input type="text" class="input-sm form-control" name="start" value="0"/>
+                            <span class="input-group-addon">to</span>
+                            <input type="text" class="input-sm form-control" name="end" value="100" />
+                        </div>
+                </div>
+            </div>
+                
+             <div class="col-lg-4">
+             	<div class="form-group">
+                 <label for="">Item Colour</label>
+                    <select name="color" class="form-control" tabindex="3">
+                        <option value="" selected="">Any</option>
+                          <option>Black</option>
+                          <option>Blue</option>
+                          <option>Brown</option>
+                          <option>Gold</option>
+                          <option>Green</option>
+                          <option>Grey</option>
+                          <option>Orange</option>
+                          <option>Pink</option>
+                          <option>Purple</option>
+                          <option>Red</option>
+                          <option>Silver</option>
+                          <option>White</option>
+                          <option>Yellow</option>
+                    </select>
+                </div>
+            </div> 
+            
+            <div class="col-lg-4">                        
+                 <div class="form-group">
+                 <label for="">Unit Price Range</label>
+                        <div class="input-group">
+                            <input type="text" class="input-sm form-control" name="start" value=""/>
+                            <span class="input-group-addon">to</span>
+                            <input type="text" class="input-sm form-control" name="end" value="" />
+                        </div>
+                </div>
+            </div>      
+              
+             <div class="col-lg-4">
+                <div class="form-group">
+                  <label for="">MPN/ISBN</label>
+                    <input type="type" class="form-control" id="mpn" list="mpns" name="mpn" placeholder="MPN/ISBN" value="<?php if(!empty($_GET['mpn'])) echo $_GET['mpn'] ?>">
+                     <datalist id="mpns">
+                    <?php if(!empty($dataasa['product_mpn'])){
+                         foreach (array_unique ($dataasa['product_mpn']) as $row) { ?>
+                       <option value="<?php echo $row; ?>"><?php echo $row; ?></option>
+                         <?php }} ?>
+                    </datalist>
+                </div>
+            </div>
+                
+            <div class="col-lg-4">
+             	<div class="form-group">
+                 <label for="">Listing Type</label>
+                    <select name="continent" class="form-control">
+                    <option value="" selected="selected">Any</option>
+                    <option>Fixed Listing</option>
+                    <option>Tiered Listing</option>
+                    <option>Auction Listing</option>
+                    </select>
+                </div>
+            </div>  
+                
+            <div class="col-lg-4">
+             	<div class="form-group">
+                 <label for="">Seller Continent</label>
+                    <select name="continent" class="form-control" id="continent">
+                    <option value="" selected="selected">All Continents</option>
+                    <option value="Africa">Africa</option>
+                    <option value="Asia">Asia</option>
+                    <option value="Europe">Europe</option>
+                    <option value="Oceania">Oceania</option>
+                    <option value="The Americas">The Americas</option>
+                    </select>
+                </div>
+            </div>        
+              
+            <div class="col-lg-4">                    
+             	<div class="form-group">
+                 <label for="">Seller Region</label>
+                    <select class="form-control" id="regions" name="region">
+                    <option value="">All Regions</option>
+                    <option value="Australia and New Zealand">Australia and New Zealand</option>
+                    <option value="Central Africa">Central Africa</option>
+                    <option value="Central America">Central America</option>
+                    <option value="Central Asia">Central Asia</option>
+                    <option value="Eastern Africa">Eastern Africa</option>
+                    <option value="Eastern Asia">Eastern Asia</option>
+                    <option value="Eastern Europe">Eastern Europe</option>
+                    <option value="Melanesia">Melanesia</option>
+                    <option value="Micronesia">Micronesia</option>
+                    <option value="North America">North America</option>
+                    <option value="Northern Africa">Northern Africa</option>
+                    <option value="Northern Europe">Northern Europe</option>
+                    <option value="Polynesia">Polynesia</option>
+                    <option value="South America">South America</option>
+                    <option value="South-Eastern Asia">South-Eastern Asia</option>
+                    <option value="Southern Africa">Southern Africa</option>
+                    <option value="Southern Asia">Southern Asia</option>
+                    <option value="Southern Europe">Southern Europe</option>
+                    <option value="The Caribbean">The Caribbean</option>
+                    <option value="Western Africa">Western Africa</option>
+                    <option value="Western Asia">Western Asia</option>
+                    <option value="Western Europe">Western Europe</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">                        
+                <div class="form-group">
+                     <label for="">Seller Country</label>
+                     <select class="form-control" id="countries" name="countries">
+                      <option value="">All Countries</option>
+                      <option value="1">Afghanistan</option>
+                      <option value="2">Albania</option>
+                      <option value="3">Algeria</option>
+                      <option value="4">American Samoa</option>
+                      <option value="5">Andorra</option>
+                      <option value="6">Angola</option>
+                      <option value="7">Anguilla</option>
+                      <option value="8">Antigua and Barbuda</option>
+                      <option value="9">Argentina</option>
+                      <option value="10">Armenia</option>
+                      <option value="11">Aruba</option>
+                      <option value="12">Australia</option>
+                      <option value="13">Austria</option>
+                      <option value="14">Azerbaijan</option>
+                      <option value="15">Bahamas</option>
+                      <option value="16">Bahrain</option>
+                      <option value="17">Bangladesh</option>
+                      <option value="18">Barbados</option>
+                      <option value="19">Belarus</option>
+                      <option value="20">Belgium</option>
+                      <option value="21">Belize</option>
+                      <option value="22">Benin</option>
+                      <option value="23">Bermuda</option>
+                      <option value="24">Bhutan</option>
+                      <option value="25">Bolivia</option>
+                      <option value="26">Bosnia Herzegovina</option>
+                      <option value="27">Botswana</option>
+                      <option value="28">Brazil</option>
+                      <option value="29">Brunei</option>
+                      <option value="30">Bulgaria</option>
+                      <option value="31">Burkina Faso</option>
+                      <option value="32">Burma (Myanmar)</option>
+                      <option value="33">Burundi</option>
+                      <option value="34">Cambodia</option>
+                      <option value="35">Cameroon</option>
+                      <option value="36">Canada</option>
+                      <option value="37">Cape Verde</option>
+                      <option value="38">Cayman Islands</option>
+                      <option value="39">Central African Republic</option>
+                      <option value="40">Chad</option>
+                      <option value="41">Chile</option>
+                      <option value="42">China</option>
+                      <option value="43">Christmas Island</option>
+                      <option value="44">Cocos (Keeling) Islands</option>
+                      <option value="45">Colombia</option>
+                      <option value="46">Comoros</option>
+                      <option value="47">Congo (Democratic Republic of the)</option>
+                      <option value="48">Congo (Republic of the)</option>
+                      <option value="49">Cook Islands</option>
+                      <option value="50">Costa Rica</option>
+                      <option value="51">Cote d'Ivoire</option>
+                      <option value="52">Croatia</option>
+                      <option value="53">Cuba</option>
+                      <option value="54">Cyprus</option>
+                      <option value="55">Czech Republic</option>
+                      <option value="56">Denmark</option>
+                      <option value="57">Djibouti</option>
+                      <option value="58">Dominica</option>
+                      <option value="59">Dominican Republic</option>
+                      <option value="60">Ecuador</option>
+                      <option value="61">Egypt</option>
+                      <option value="62">El Salvador</option>
+                      <option value="63">Equatorial Guinea</option>
+                      <option value="64">Eritrea</option>
+                      <option value="65">Estonia</option>
+                      <option value="66">Ethiopia</option>
+                      <option value="67">Falkland Islands</option>
+                      <option value="68">Faroe Islands</option>
+                      <option value="69">Fiji</option>
+                      <option value="70">Finland</option>
+                      <option value="71">France</option>
+                      <option value="72">French Polynesia</option>
+                      <option value="73">Gabon</option>
+                      <option value="74">Gambia</option>
+                      <option value="75">Georgia</option>
+                      <option value="76">Germany</option>
+                      <option value="77">Ghana</option>
+                      <option value="78">Gibraltar</option>
+                      <option value="79">Greece</option>
+                      <option value="80">Greenland</option>
+                      <option value="81">Grenada</option>
+                      <option value="82">Guam</option>
+                      <option value="83">Guatemala</option>
+                      <option value="84">Guinea</option>
+                      <option value="85">Guinea-Bissau</option>
+                      <option value="86">Guyana</option>
+                      <option value="87">Haiti</option>
+                      <option value="88">Honduras</option>
+                      <option value="89">Hong Kong</option>
+                      <option value="90">Hungary</option>
+                      <option value="91">Iceland</option>
+                      <option value="92">India</option>
+                      <option value="93">Indonesia</option>
+                      <option value="94">Iran</option>
+                      <option value="95">Iraq</option>
+                      <option value="96">Ireland</option>
+                      <option value="97">Israel</option>
+                      <option value="98">Italy</option>
+                      <option value="99">Jamaica</option>
+                      <option value="100">Japan</option>
+                      <option value="101">Jordan</option>
+                      <option value="102">Kazakhstan</option>
+                      <option value="103">Kenya</option>
+                      <option value="104">Kiribati</option>
+                      <option value="105">Korea North</option>
+                      <option value="106">Korea South</option>
+                      <option value="107">Kuwait</option>
+                      <option value="108">Kyrgyzstan</option>
+                      <option value="109">Laos</option>
+                      <option value="110">Latvia</option>
+                      <option value="111">Lebanon</option>
+                      <option value="112">Lesotho</option>
+                      <option value="113">Liberia</option>
+                      <option value="114">Libya</option>
+                      <option value="115">Liechtenstein</option>
+                      <option value="116">Lithuania</option>
+                      <option value="117">Luxembourg</option>
+                      <option value="118">Macau</option>
+                      <option value="119">Macedonia</option>
+                      <option value="120">Madagascar</option>
+                      <option value="121">Malawi</option>
+                      <option value="122">Malaysia</option>
+                      <option value="123">Maldives</option>
+                      <option value="124">Mali</option>
+                      <option value="125">Malta</option>
+                      <option value="126">Marshall Islands</option>
+                      <option value="127">Mauritania</option>
+                      <option value="128">Mauritius</option>
+                      <option value="129">Mayotte</option>
+                      <option value="130">Mexico</option>
+                      <option value="225">Missing Info</option>
+                      <option value="131">Moldova</option>
+                      <option value="132">Monaco</option>
+                      <option value="133">Mongolia</option>
+                      <option value="134">Montenegro</option>
+                      <option value="135">Montserrat</option>
+                      <option value="136">Morocco</option>
+                      <option value="137">Mozambique</option>
+                      <option value="138">Namibia</option>
+                      <option value="139">Nauru</option>
+                      <option value="140">Nepal</option>
+                      <option value="141">Netherland Antilles</option>
+                      <option value="142">Netherlands</option>
+                      <option value="143">New Caledonia</option>
+                      <option value="144">New Zealand</option>
+                      <option value="145">Nicaragua</option>
+                      <option value="146">Niger</option>
+                      <option value="147">Nigeria</option>
+                      <option value="148">Niue</option>
+                      <option value="149">Norway</option>
+                      <option value="150">Oman</option>
+                      <option value="151">Pakistan</option>
+                      <option value="152">Palau</option>
+                      <option value="153">Panama</option>
+                      <option value="154">Papua New Guinea</option>
+                      <option value="155">Paraguay</option>
+                      <option value="156">Peru</option>
+                      <option value="157">Philippines</option>
+                      <option value="158">Pitcairn</option>
+                      <option value="159">Poland</option>
+                      <option value="160">Portugal</option>
+                      <option value="161">Puerto Rico</option>
+                      <option value="162">Qatar</option>
+                      <option value="163">Romania</option>
+                      <option value="164">Russia</option>
+                      <option value="165">Rwanda</option>
+                      <option value="166">Saint Barthelemy</option>
+                      <option value="167">Saint Helena</option>
+                      <option value="168">Saint Kitts and Nevis</option>
+                      <option value="169">Saint Lucia</option>
+                      <option value="170">Saint Pierre and Miquelon</option>
+                      <option value="171">Saint Vincent and Grenadines</option>
+                      <option value="172">Samoa</option>
+                      <option value="173">San Marino</option>
+                      <option value="174">Sao Tome and Principe</option>
+                      <option value="175">Saudi Arabia</option>
+                      <option value="176">Senegal</option>
+                      <option value="177">Serbia</option>
+                      <option value="178">Seychelles</option>
+                      <option value="179">Sierra Leone</option>
+                      <option value="180">Singapore</option>
+                      <option value="181">Slovakia</option>
+                      <option value="182">Slovenia</option>
+                      <option value="183">Solomon Islands</option>
+                      <option value="184">Somalia</option>
+                      <option value="185">South Africa</option>
+                      <option value="186">Spain</option>
+                      <option value="187">Sri Lanka</option>
+                      <option value="188">Sudan</option>
+                      <option value="189">Suriname</option>
+                      <option value="190">Swaziland</option>
+                      <option value="191">Sweden</option>
+                      <option value="192">Switzerland</option>
+                      <option value="193">Syria</option>
+                      <option value="194">Taiwan</option>
+                      <option value="195">Tajikistan</option>
+                      <option value="196">Tanzania</option>
+                      <option value="197">Thailand</option>
+                      <option value="198">Timor-Leste</option>
+                      <option value="199">Togo</option>
+                      <option value="200">Tokelau</option>
+                      <option value="201">Tonga</option>
+                      <option value="202">Trinidad and Tobago</option>
+                      <option value="203">Tunisia</option>
+                      <option value="204">Turkey</option>
+                      <option value="205">Turkmenistan</option>
+                      <option value="206">Turks and Caicos Islands</option>
+                      <option value="207">Tuvalu</option>
+                      <option value="208">Uganda</option>
+                      <option value="209">Ukraine</option>
+                      <option value="210">United Arab Emirates</option>
+                      <option value="211">United Kingdom</option>
+                      <option value="212">United States</option>
+                      <option value="213">Uruguay</option>
+                      <option value="214">Uzbekistan</option>
+                      <option value="215">Vanuatu</option>
+                      <option value="216">Vatican City State</option>
+                      <option value="217">Venezuela</option>
+                      <option value="218">Vietnam</option>
+                      <option value="219">Virgin Islands (British)</option>
+                      <option value="220">Virgin Islands (US)</option>
+                      <option value="221">Wallis and Futana</option>
+                      <option value="222">Yemen</option>
+                      <option value="223">Zambia</option>
+                      <option value="224">Zimbabwe</option>
+                      </select>
+                </div>
+            </div>
+                
+             </div>
+         </form>
+        </div>
+        </div> <!-- AdvanceSearch -->
+
+    </div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-lg-12">
+<div class="ibox float-e-margins">
+<div class="ibox-title">
+<h5>Live Marketplace - Buying Requests</h5>
+</div>
+<div class="ibox-content">
+
+<table id="marketplace" class="table table-striped table-bordered table-hover dataTables-example" >
+<thead>
+<tr>
+<th>Listing End</th>
+<th>Rating</th>
+<th>MPN/ISBN</th>
+<th>Make</th>
+<th>Model</th>
+<th>Product Type</th>
+<th>Condition</th>
+<th>Unit Price</th>
+<th>QTY</th>
+<th>Spec</th>
+<th>Country</th>
+<th>Options</th>
+</tr>
+</thead>
+<tr>
+<td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+2 days")); ?>"></span></p></td>
+<td><span class="fa fa-star star-Gold"></span> <span class="label label-success">98</span></td>
+<td>A1586</td>
+<td>Apple</td>
+<td>iPhone 6</td>
+<td>Handset</td>
+<td>Refurbished</td>
+<td>USD 98</td>
+<td>200</td>
+<td>ASIA</td>
+<td>
+<img src="public/main/template/gsm/img/flags/China.png" />
+</td>
+<th>
+<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+</tr>
+<tr>
+<td><p><span style="color:red" data-countdown="<?php echo date('m/d/Y', strtotime("+1 day")); ?>"></span></p></td>
+<td><span class="fa fa-star star-Gold"></span> <span class="label label-success">100</span></td>
+<td>A1586</td>
+<td>Apple</td>
+<td>iPhone 6</td>
+<td>Handset</td>
+<td>Refurbished</td>
+<td>EUR 98</td>
+<td>200</td>
+<td>EURO</td>
+<td>
+<img src="public/main/template/gsm/img/flags/France.png" />
+</td>
+<th>
+<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+</tr>
+<tr>
+<td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+1 week")); ?>"></span></p></td>
+<td><span class="fa fa-star star-Silver"></span> <span class="label label-primary">94</span></td>
+<td>GH98-123456</td>
+<td>Samsung</td>
+<td>Galaxy S4 (i9500)</td>
+<td>LCD</td>
+<td>New</td>
+<td>GBP 12</td>
+<td>200</td>
+<td>UK</td>
+<td>
+<img src="public/main/template/gsm/img/flags/United_Kingdom.png" />
+</td>
+<th>
+<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+</tr>
+<tr>
+<td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+1 week 2 days")); ?>"></span></p></td>
+<td><span class="fa fa-star star-Silver"></span> <span class="label label-success">97</span></td>
+<td>GH98-123456</td>
+<td>Samsung</td>
+<td>Galaxy S4 (i9500)</td>
+<td>LCD</td>
+<td>New</td>
+<td>GBP 12</td>
+<td>200</td>
+<td>UK</td>
+<td>
+<img src="public/main/template/gsm/img/flags/United_Kingdom.png" />
+</td>
+<th>
+<a href="marketplace/listing_detail/"><button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></a></th>
+</tr>
+<tr>
+<td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+2 days")); ?>"></span></p></td>
+<td><span class="fa fa-star star-Silver"></span> <span class="label label-primary">83</span></td>
+<td>A1586</td>
+<td>Apple</td>
+<td>iPhone 6</td>
+<td>Handset</td>
+<td>Refurbished</td>
+<td>EUR 98</td>
+<td>200</td>
+<td>EURO</td>
+<td>
+<img src="public/main/template/gsm/img/flags/Germany.png" />
+</td>
+<th>
+<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+</tr>
+<tr>
+<td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+2 days")); ?>"></span></p></td>
+<td><span class="fa fa-star star-Silver"></span> <span class="label label-warning">75</span></td>
+<td>A1586</td>
+<td>Apple</td>
+<td>iPhone 6</td>
+<td>Handset</td>
+<td>Refurbished</td>
+<td>EUR 98</td>
+<td>200</td>
+<td>EURO</td>
+<td>
+<img src="public/main/template/gsm/img/flags/Germany.png" />
+</td>
+<th>
+<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+</tr>
+<tr>
+<td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+2 days")); ?>"></span></p></td>
+<td><span class="fa fa-star star-Silver"></span> <span class="label label-danger">45</span></td>
+<td>A1586</td>
+<td>Apple</td>
+<td>iPhone 6</td>
+<td>Handset</td>
+<td>Refurbished</td>
+<td>EUR 98</td>
+<td>200</td>
+<td>EURO</td>
+<td>
+<img src="public/main/template/gsm/img/flags/Germany.png" />
+</td>
+<th>
+<a href="marketplace/listing_detail/"><button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></a></th>
+</tr>
+<tr>
+<td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+2 days")); ?>"></span></p></td>
+<td><span class="fa fa-star star-Gold"></span> <span class="label label-success">98</span></td>
+<td>A1586</td>
+<td>Apple</td>
+<td>iPhone 6</td>
+<td>Handset</td>
+<td>Refurbished</td>
+<td>USD 98</td>
+<td>200</td>
+<td>US</td>
+<td>
+<img src="public/main/template/gsm/img/flags/United_States.png" />
+</td>
+<th>
+<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+</tr>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+
+<?php 
+
+} ?> 
+<!-- Daniel Added End -->
+
+
+
+
+
 </div>            
             
-    <div class="modal inmodal fade" id="myMo dal5" tabindex="-1" role="dialog"  aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title"><strong>Selling Offer</strong> by GSMStockMarket.com Limited</h4>
-                    <small class="font-bold">Transaction ID: 0123456789-01</small>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <dl class="dl-horizontal">
-                                <h4>Product Details</h4>
-                                <dt>Make:</dt> <dd>  Apple</dd>
-                                <dt>Model:</dt> <dd>  iPhone 4S</dd>
-                                <dt>Memory:</dt> <dd>  16GB</dd>
-                                <dt>Colour:</dt> <dd>  Black</dd>
-                                <dt>Product Type:</dt> <dd>  Data Cable</dd>
-                                <dt>Condition:</dt> <dd>  Refurbished</dd>
-                                <dt>Spec</dt> <dd>  UK</dd>
-                                <dt>MPN/ISBN</dt> <dd>  GH98-23907342</dd>
-                                <dt>Network</dt> <dd>  Network Locked</dd>
-                                <dt>Quantity</dt> <dd>  29</dd>
-                            </dl>
-                            <dl class="dl-horizontal">
-                                <h4>Price</h4>
-                                <dt>Buying Currency:</dt> <dd> GBP &pound;</dd>
-                                <dt>GBP Price:</dt> <dd><strong>  &pound;96.00</strong></dd>
-                                <dt>EUR Price:</dt> <dd>  &euro;130.55</dd>
-                                <dt>USD Price:</dt> <dd>  $147.59</dd>
-                            </dl>
-                        </div>
-                        <div class="col-lg-6">
-                        	<p style="text-align:center">
-                            	<img style="text-align:center" src="public/main/template/gsm/images/marketplace/marketplace_photo.png" /><br /><br />
-                                <span style="color:red">Listing Ends: 4d 23h 22m 13s</span><br /><br />
-                                <button type="button" class="btn btn-danger" style="font-size:10px">Pay asking price</button>
-                            </p>
-                                
-                            <dl class="dl-horizontal" style="margin-top:20px">
-                            	<h4>or Make an Offer</h4>
-                                <dt><div class="input-group m-b"><span class="input-group-addon">QTY</span>  
-                                    <input type="text" class="form-control" /><span class="input-group-addon">@</span></dt> 
-                                    <dd><div class="input-group m-b"><span class="input-group-addon">GBP <i class="fa fa-gbp"></i></span>  
-                                    <input type="text" class="form-control" /></dd>
-                                <p style="text-align:center"><button type="button" class="btn btn-warning" style="font-size:10px">Send Offer</button></p>
-                                <p class="small" style="text-align:center">Offers sent will expire after 24 hours</p>
-                                
-                        </div>
-                        </div>
-                        <div class="row">
-                        	<div class="col-lg-12">
-                            <h4>Product Description</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent diam odio, ultrices vitae erat quis, tristique posuere leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tristique massa et justo laoreet, et finibus lacus scelerisque. Suspendisse id orci vel sapien mollis dictum. Aenean id nisl pulvinar, euismod risus id, pharetra velit. In finibus libero sed elit viverra, hendrerit tincidunt lectus maximus. Nulla facilisi. Nulla tellus justo, lacinia eget mauris nec, imperdiet tincidunt elit. Donec elementum enim id felis commodo, non porta tortor sagittis.</p>
-                            </div>
-                      
-                    </div>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-warning">Watch</button>
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#price_graph">Product Price Data</button>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#profile_user">Buyer Profile</button>
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#profile_message">Ask a question</button>
-                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="modal inmodal fade" id="profile_message" tabindex="-1" role="dialog"  aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title">Send Message</h4>
-                    <small class="font-bold">Send a message to GSMStockMarket.com</small>
-                </div>
-                <div class="modal-body">
-                    <p><strong>Form here</strong> generic stuff bla bla</p>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Send Message</button>
-                </div>
-            </div>
-        </div>
-    </div>  
-    
-    <div class="modal inmodal fade" id="profile_user" tabindex="-1" role="dialog"  aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title"View Profile</h4>
-                    <small class="font-bold">Project Melon Limited</small>
-                </div>
-                <div class="modal-body">
-                    <img src="public/main/template/gsm/images/marketplace/profile_summary.jpg" />
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>  
-    
-    <div class="modal inmodal fade" id="price_graph" tabindex="-1" role="dialog"  aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title">iPhone 4S Buy &amp; Sell Data</h4>
-                	<span>Buying Price</span> / <span style="color:#8fd9ca">Selling Price</span>
-                </div>
-                <div class="modal-body">
-                    <img src="public/main/template/gsm/images/marketplace/product_data.jpg" />
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>  
+ 
 
     <!-- Data Tables -->
     <link href="public/main/template/core/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">

@@ -14,6 +14,9 @@
         </ol>
     </div>
 </div>
+<?php $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id);
+if($member->membership > 1 && $member->marketplace == 'active'){ ?>
+
 <?php msg_alert(); 
 $member_id=$this->session->userdata('members_id');?>
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -327,7 +330,193 @@ $member_id=$this->session->userdata('members_id');?>
   </div>
 </div>
 </div>
+    
+
+
+<?php } else {?>
+<?php if($member->membership == 1 ){ ?>
+            <div class="alert alert-info" style="margin:15px 15px -15px">
+        <p><i class="fa fa-info-circle"></i> <strong>This is a Demo</strong> Silver members and above with criteria met will have access to the live marketplace. You can search by product category and make/model, if you are looking to narrow your results down further you can view the advanced search options. Any extra details you need can be found by clicking on the <i class="fa fa-question-circle cursor"></i> icons. This section of the marketplace displays all offers companies on GSMStockMarket would like to buy and whom you can sell your stocks too. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
+            </div>
+
+<?php } else if($member->membership == 2 && $member->marketplace == 'inactive'){?>
+            <div class="alert alert-warning" style="margin:15px 15px -15px">
+                <p><i class="fa fa-warning"></i> You still need to supply 2 trade references so we can enable your membership to view profiles and access the marketplace. <a class="alert-link" href="tradereference">Submit trade references</a>.</p>
+            </div>
+
+<?php }?>    
+    
+    
+    
+<div class="wrapper wrapper-content animated fadeInRight">
+<div class="row">
+    <div class="col-lg-12">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>Offers Sent to Buy (Items I want to buy)</h5>
+        </div>
+        <div class="ibox-content">
+        <table class="table table-striped table-bordered table-hover selling_offers" >
+        <thead>
+        <tr>
+            <th>Status</th>
+            <th>End Date</th>
+            <th>Make &amp; Model</th>
+            <th>Condition</th>
+            <th>Price</th>
+            <th>QTY</th>
+            <th>Spec</th>
+            <th>Options</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-center"><span class="label label-info">Offers Waiting (5)</span></td>
+                <td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+3 days")); ?>"></span></p></td>
+                <td>Apple iPhone 5</td>
+                <td>New</td>
+                <td>GBP 112</td>
+                <td>200</td>
+                <td>EU</td>
+                <td class="text-center"><button type="button" class="btn btn-info" style="font-size:10px"><i class="fa fa-paste"></i> View Offer</button></td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>Offers sent to Sell (Items I want to sell)</h5>
+        </div>
+        <div class="ibox-content">
+        <table class="table table-striped table-bordered table-hover buying_requests" >
+        <thead>
+        <tr>
+            <th>Status</th>
+            <th>End Date</th>
+            <th>Make &amp; Model</th>
+            <th>Condition</th>
+            <th>Price</th>
+            <th>QTY</th>
+            <th>Spec</th>
+            <th>Options</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-center"><span class="label label-info">Offers Waiting (1)</span></td>
+                <td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+3 days")); ?>"></span></p></td>
+                <td>Nokia Lumia 640 XL</td>
+                <td>Refurbished</td>
+                <td>GBP 112</td>
+                <td>95</td>
+                <td>US</td>
+                <td class="text-center"><button type="button" class="btn btn-info" style="font-size:10px"><i class="fa fa-paste"></i> View Offer</button></td>
+            </tr>   
+        </tbody>
+        </table>
+        </div>
+    </div>
     </div> 
+    </div>
+
+<hr>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>Offers Received (Items I want to sell)</h5>
+        </div>
+        <div class="ibox-content">
+        <table class="table table-striped table-bordered table-hover selling_offers" >
+        <thead>
+        <tr>
+            <th>Status</th>
+            <th>End Date</th>
+            <th>Make &amp; Model</th>
+            <th>Condition</th>
+            <th>Price</th>
+            <th>QTY</th>
+            <th>Spec</th>
+            <th>Options</th>
+        </tr>
+        </thead>
+        <tbody> 
+            <tr>
+                <td class="text-center"><span class="label label-info">Offers Waiting (9)</span></td>
+                <td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+1 days")); ?>"></span></p></td>
+                <td>Samsung Galaxy S4 (i9500)</td>
+                <td>New</td>
+                <td>GBP 125</td>
+                <td>350</td>
+                <td>UK</td>
+                <td class="text-center"><button type="button" class="btn btn-info" style="font-size:10px"><i class="fa fa-paste"></i> View Offer</button></td>
+            </tr>
+            <tr>
+                <td class="text-center"><span class="label label-info">Offers Waiting (4)</span></td>
+                <td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+2 days")); ?>"></span></p></td>
+                <td>Samsung Galaxy S3 (i9300)</td>
+                <td>Used Grade A</td>
+                <td>GBP 45</td>
+                <td>50</td>
+                <td>EU</td>
+                <td class="text-center"><button type="button" class="btn btn-info" style="font-size:10px"><i class="fa fa-paste"></i> View Offer</button></td>
+            </tr>
+            <tr>
+                <td class="text-center"><span class="label label-info">Offers Waiting (1)</span></td>
+                <td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+4 days")); ?>"></span></p></td>
+                <td>Apple iPhone 5</td>
+                <td>New</td>
+                <td>GBP 112</td>
+                <td>200</td>
+                <td>EU</td>
+                <td class="text-center"><button type="button" class="btn btn-info" style="font-size:10px"><i class="fa fa-paste"></i> View Offer</button></td>
+            </tr>
+        </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>Offers Received (Items I want to buy)</h5>
+        </div>
+        <div class="ibox-content">
+        <table class="table table-striped table-bordered table-hover buying_requests" >
+        <thead>
+        <tr>
+            <th>Status</th>
+            <th>End Date</th>
+            <th>Make &amp; Model</th>
+            <th>Condition</th>
+            <th>Price</th>
+            <th>QTY</th>
+            <th>Spec</th>
+            <th>Options</th>
+        </tr>
+        </thead>
+        <tbody>  
+        </tbody>
+        </table>
+        </div>
+    </div>
+    </div>
+    
+    </div>
+    
+    
+<?php 
+
+} ?> 
+    
+    
 </div>
 <!-- Data Tables -->
 <link href="public/main/template/core/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
@@ -406,4 +595,16 @@ color: #fff;
      function counter_offer(offer_id) {
         $('.offer_id_insert').val(offer_id);  
     }
+</script>
+
+<script src="public/admin/js/jquery.countdown.min.js"></script>
+<script>
+jQuery(document).ready(function($) {
+    $('[data-countdown]').each(function() {
+       var $this = $(this), finalDate = $(this).data('countdown');
+       $this.countdown(finalDate, function(event) {
+         $this.html(event.strftime('%Dd %Hh %Mm %Ss'));
+       });
+     });
+});
 </script>

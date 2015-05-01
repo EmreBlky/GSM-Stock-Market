@@ -271,7 +271,7 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
 		<a href="events"><i class="fa fa-calendar"></i> <span class="nav-label">Events</span></a>
 </li>
 
-<?php if($url == 'imei') {?>
+<?php /* if($url == 'imei') {?>
 <li class="active">
 		<a href="imei/"><i class="fa fa-barcode"></i> <span class="nav-label">IMEI Services</span> 
 				<span class="fa arrow"></span>
@@ -305,7 +305,10 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
 		<a href="#"><i class="fa fa-users"></i> <span class="nav-label">Social Hub</span></a>
 </li>
 -->
-<?php } ?>
+<?php } */ ?>
+<li>
+		<a href="imei/"><i class="fa fa-barcode"></i> <span class="nav-label">IMEI Services</span></a>
+</li>
 
 <?php if($url == 'support') {?>
 <li class="active">

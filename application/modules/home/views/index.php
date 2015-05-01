@@ -6,9 +6,15 @@
     $overall = $this->feedback->overallScore($this->session->userdata('members_id'));
 ?>
 <div class="wrapper wrapper-content">
+<?php  $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id); if($member->membership == 2 && $member->marketplace == 'inactive'){?>
+            <div class="alert alert-warning" style="margin-bottom:25px;">
+                <p><i class="fa fa-warning"></i> Remember to supply 2 trade references so we can enable your membership to view profiles and access the marketplace. <a class="alert-link" href="tradereference">Submit trade references</a>.</p>
+            </div>
+
+<?php }?>
     <?php if($terms == 'no') {?>
     <div class="alert alert-warning" style="margin-bottom:25px;">
-        The terms and conditions have been updated. Please can you confirm that you have read and acknowledged the <a class="alert-link" href="legal/terms_conditions">Terms &amp; Conditions</a> before you can proced with using this website.
+        The terms and conditions have been updated. Please can you confirm that you have read and acknowledged the <a class="alert-link" href="legal/terms_conditions">Terms &amp; Conditions</a> before you can proceed with using this website.
     </div>
     <?php } ?>
     <?php if($this->session->userdata('membership') < 2) {?>

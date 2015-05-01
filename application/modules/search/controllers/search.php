@@ -146,10 +146,7 @@ class Search extends MX_Controller
     {
         $results_per_page = 20;
         $start = ($start * $results_per_page) - $results_per_page;
-
-        if($this->session->userdata('membership') < 2) {
-            redirect('preferences/notice');
-        }
+		
         $data['main'] = 'search';
         $data['title'] = 'GSM - Search Company';
         $data['page'] = 'company';

@@ -20,6 +20,19 @@
         </ol>
     </div>
   </div>
+  
+ <?php $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id);
+if($member->membership == 1 ){ ?>
+            <div class="alert alert-info" style="margin:15px 15px -15px">
+                <p><i class="fa fa-info-circle"></i> If you are looking to upgrade to silver membership we will also require two (2) trade references. You can submit them before upgrading so when your membership is accepted you can view the rest of our website straight away.</p>
+            </div>
+
+<?php } else if($member->membership == 2 && $member->marketplace == 'inactive'){?>
+            <div class="alert alert-warning" style="margin:15px 15px -15px">
+                <p><i class="fa fa-warning"></i> Remember to supply 2 trade references so we can enable your membership to view profiles and access the marketplace.</p>
+            </div>
+
+<?php }?>
 
   <div class="wrapper wrapper-content animated fadeInRight">
         
@@ -177,11 +190,7 @@
           </div><!-- Ibox Content -->
           <?php } else {?> 
           <div class="ibox-content" style="text-align:center">
-              <?php if($member->membership < 2) {?>
-                    <a href="preferences/subscription/confirm" class="btn btn-primary" style="font-size:2em;text-align:center">Submit References Now</a>
-              <?php } else {?>
                     <a href="tradereference/submit_refs" class="btn btn-primary" style="font-size:2em;text-align:center">Submit References Now</a>          
-              <?php }?>
           		</div><!-- Ibox Content -->
           <?php } ?> 
         </div>        
