@@ -143,7 +143,8 @@ $cust_id = $this->uri->segment(3);
             }
             
 </script>
-<?php if($member->membership < 2) {?>
+<?php $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id);
+if($member->marketplace == 'inactive'){ ?>
 
 			<div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
@@ -164,9 +165,15 @@ $cust_id = $this->uri->segment(3);
 
                 </div>
             </div>
+<?php if($member->membership == 1){ ?>
             <div class="alert alert-info" style="margin:15px 15px -15px">
-                <p><i class="fa fa-info-circle"></i> <strong>Only Silver members can view company profiles.</strong> Here you can view a company profile in great detail, you can see all their contact details and business activities and even view their feedback, trade rating, feed posts, marketplace listings and even do credit checks on the user which are available for Silver to Silver or above users included a apart of the subscription. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
+                <p><i class="fa fa-info-circle"></i> <strong>Only approved silver members can view company profiles.</strong> Here you can view a company profile in great detail, you can see all their contact details and business activities and even view their feedback, trade rating, feed posts, marketplace listings and even do credit checks on the user which are available for Silver to Silver or above users included a apart of the subscription. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
             </div>
+<?php } else { ?>
+            <div class="alert alert-warning" style="margin:15px 15px -15px">
+                <p><i class="fa fa-warning"></i> You still need to supply 2 trade references so we can enable your membership to view profiles and access the marketplace. <a class="alert-link" href="tradereference">Submit trade references</a>.</p>
+            </div>
+<?php } ?>
             <div class="row">
             <div class="col-lg-9">
                 <div class="wrapper wrapper-content animated fadeInUp">
@@ -1212,7 +1219,7 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                             <?php if(file_exists("public/main/template/gsm/creditdata/".$member_company->credit_report.".pdf")){?>
                         	<button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#creditdata"><i class="fa fa-check-square-o"></i> Request Credit Check</button>         
                             <?php } else {?>
-                                <button type="button" class="btn btn-info btn-sm btn-block"></i> No credit information available </button>                            
+                                <button type="button" class="btn btn-default btn-sm btn-block"></i> No Cre</button>                            
                             <?php } ?>    
                         </div>
                    </div>

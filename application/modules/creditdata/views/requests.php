@@ -5,9 +5,6 @@
 //  exit;
   
   ?>
-  <?php 
-    echo $this->session->flashdata('confirm');
-  ?>
   <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
       <h2>Report Requests</h2>
@@ -19,6 +16,9 @@
     </div>
   </div>
 
+  <?php 
+    echo $this->session->flashdata('confirm');
+  ?>
  <div class="wrapper wrapper-content animated fadeInRight">
   
                 <div class="row">

@@ -70,7 +70,7 @@ class Creditdata extends MX_Controller
     function my_reports()
     {
         $data['main'] = 'creditdata';
-	$data['title'] = 'My Reports';
+		$data['title'] = 'My Reports';
         $data['page'] = 'my-reports';
         
         $request = $this->creditdata_model->_custom_query_count("SELECT COUNT(*) AS count FROM creditdata WHERE requester_id = '".$this->session->userdata('members_id')."' AND request_action = 'accept'");
@@ -152,8 +152,11 @@ class Creditdata extends MX_Controller
                                     'member_name'       => 'GSM Support',
                                     'sent_member_id'    => $sid,
                                     'sent_member_name'  => $this->member_model->get_where($sid)->firstname.' '.$this->member_model->get_where($sid)->lastname,
-                                    'subject'           => 'Credit Check Accepted',
-                                    'body'              => 'You request for a credit check of company '.$this->company_model->get_where($this->member_model->get_where($mid)->company_id)->company_name.' was approved.',
+                                    'subject'           => 'Credit Check Request Accepted',
+                                    'body'              => '<p>You request for a credit check of company '.$this->company_model->get_where($this->member_model->get_where($mid)->company_id)->company_name.' was approved.</p>
+									<p>The company report will now be available in your <a href="creditdata/my_reports">Credit Check > My Reports</a> tab to view or download.</p>
+									<p><strong>Important!</strong> This data is for you only and you are not permitted to share this data with anyone else!</p>
+									',
                                     'inbox'             => 'yes',
                                     'sent'              => 'yes',
                                     'sent_belong'       => 5,
@@ -167,8 +170,8 @@ class Creditdata extends MX_Controller
         $this->mailbox_model->_insert($data_mail);
         
         $this->session->set_flashdata('confirm', '<div style="margin:15px 15px">    
-                                                                <div class="alert alert-success">
-                                                                    That request has been accepted.
+                                                                <div class="alert alert-success" style="margin:15px 15px -30px">
+                                                                    <i class="fa fa-thumbs-up"></i> You have accepted their request. Your company report has been sent!
                                                                 </div>
                                                             </div>');
         
@@ -187,8 +190,9 @@ class Creditdata extends MX_Controller
                                     'member_name'       => 'GSM Support',
                                     'sent_member_id'    => $sid,
                                     'sent_member_name'  => $this->member_model->get_where($sid)->firstname.' '.$this->member_model->get_where($sid)->lastname,
-                                    'subject'           => 'Credit Check Declined',
-                                    'body'              => 'You request for a credit check of company '.$this->company_model->get_where($this->member_model->get_where($mid)->company_id)->company_name.' was denied.',
+                                    'subject'           => 'Credit Check Request Declined',
+                                    'body'              => '<p>You request for a credit check of company '.$this->company_model->get_where($this->member_model->get_where($mid)->company_id)->company_name.' was denied.</p>
+									<p>If you would like to deal with this company we recommend you message them first and discuss your intentions as to why you would like their credit data.</p>',
                                     'inbox'             => 'yes',
                                     'sent'              => 'yes',
                                     'sent_belong'       => 5,
@@ -202,8 +206,8 @@ class Creditdata extends MX_Controller
         $this->mailbox_model->_insert($data_mail);
         
         $this->session->set_flashdata('confirm', '<div style="margin:15px 15px">    
-                                                                <div class="alert alert-success">
-                                                                    That request has been declined.
+                                                                <div class="alert alert-danger" style="margin:15px 15px -30px">
+                                                                    <i class="fa fa-thumbs-down"></i> You have declined their request! No reports have been sent.
                                                                 </div>
                                                             </div>');
         
