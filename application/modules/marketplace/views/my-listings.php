@@ -217,7 +217,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <thead>
         <tr>
             <th>Status</th>
-            <th>End Date</th>
+            <th>Start/End Date</th>
             <th>Make &amp; Model</th>
             <th>Condition</th>
             <th>Price</th>
@@ -240,6 +240,20 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                 <th class="text-center">
                 <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
                 <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> End Listing</button>
+                </th>
+            </tr>
+            <tr>
+                <td class="text-center"><span class="label label-success">Scheduled</span></td>
+                <td>11-May-15, 12:01</td>
+                <td>Sony Xperia Z</td>
+                <td>New</td>
+                <td>EUR 100</td>
+                <td>5000</td>
+                <td>EU</td>
+                <td>23-Apr-15, 12:q1</td>
+                <th class="text-center">
+                <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
+                <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> Remove</button>
                 </th>
             </tr>
         </tbody>
@@ -296,7 +310,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                 <td>23-Apr-15, 12:01</td>
                 <th class="text-center">
                 <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
-                <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> End Listing</button>
+                <button class="btn btn-success" type="button" style="font-size:10px"><i class="fa fa-arrow-up"></i> Relist</button>
+                <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> Remove</button>
                 </th>
             </tr>
         </tbody>
