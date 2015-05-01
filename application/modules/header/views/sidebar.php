@@ -240,9 +240,10 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
 				<?php
                                     $this->load->module('creditdata');
                                     $this->creditdata->request_count();
+                                    $this->creditdata->accept_count();
                                 ?>
-<!--				<li><a href="creditdata/requests"><i class="fa fa-thumbs-up"></i> <span class="nav-label">Requests</span><span class="label label-warning pull-right">2</span></a></li>-->
-				<li><a href="creditdata/my_reports"><i class="fa fa-list"></i> My Reports</a></li>
+                                <!-- <li><a href="creditdata/requests"><i class="fa fa-thumbs-up"></i> <span class="nav-label">Requests</span><span class="label label-warning pull-right">2</span></a></li>
+				<li><a href="creditdata/my_reports"><i class="fa fa-list"></i> My Reports</a></li> -->
 		</ul>
 </li>         
 <?php } else {?>
@@ -252,9 +253,10 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
                                 <?php
                                     $this->load->module('creditdata');
                                     $this->creditdata->request_count();
+                                    $this->creditdata->accept_count();
                                 ?>
-<!--				<li><a href="creditdata/requests"><i class="fa fa-thumbs-up"></i> <span class="nav-label">Requests</span><span class="label label-warning pull-right">2</span></a></li>-->
-				<li><a href="creditdata/my_reports"><i class="fa fa-list"></i> My Reports</a></li>
+                                <!-- <li><a href="creditdata/requests"><i class="fa fa-thumbs-up"></i> <span class="nav-label">Requests</span><span class="label label-warning pull-right">2</span></a></li>
+				<li><a href="creditdata/my_reports"><i class="fa fa-list"></i> My Reports</a></li> -->
 		</ul>
 </li>         
 <?php } ?>

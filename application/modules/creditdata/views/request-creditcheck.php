@@ -15,6 +15,7 @@
                 <small class="font-bold">You will need to get permission from this user to access their credit data</small>
             </div>
             <input type="hidden" name="requestee" id="requestee" value="<?php echo $member->id; ?>" />
+            <input type="hidden" name="credit_report" id="credit_report" value="<?php echo $this->company_model->get_where($this->member_model->get_where($member->id)->company_id)->credit_report; ?>" />
             <input type="hidden" name="requester" id="requester" value="<?php echo $this->session->userdata('members_id'); ?>" />
             <div class="modal-body">
                 <p class="text-navy"><strong>Notice:</strong> Please be aware although credit reports are free you will still need permission from the users company first.
@@ -50,11 +51,12 @@ $(document).ready(function(){
         //$("#submit_credit").hide(); 
         var mid             = $('#requestee').val();
         var sid             = $("#requester").val();
+        var credit_report   = $("#credit_report").val();
         var credit_type     = $('input[name=credit_type]:checked').val();
         
          $.ajax({
                 type: "POST",
-                url: "creditdata/processRequest/"+ mid +"/"+ sid +"/"+ credit_type +"",
+                url: "creditdata/processRequest/"+ mid +"/"+ sid +"/"+ credit_type +"/"+ credit_report +"",
                 dataType: "html",
                 success:function(data){
                   

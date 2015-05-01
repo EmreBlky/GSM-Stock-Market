@@ -17,42 +17,56 @@
                     <div class="ibox-title">
                         <h5>Credit Reports Available</h5>
                     </div>
-                    <div class="ibox-content">                        
+                    <div class="ibox-content">
+                        <?php 
+                            if($request_count > 0){
+                        ?>
                         <table class="table table-striped table-bordered table-hover dataTables-example" >
                         <thead>
-                        <tr>
-                            <th>Date Requested</th>
-                            <th>Company Name</th>
-                            <th>Country</th>
-                            <th>Options</th>
-                        </tr>
-                        </thead>
-                        <tbody>
                             <tr>
-                                <td>12 April 2015</td>
-                                <td>GSMStockMarket.com Limited</td>
-                                <td>United Kingdom</td>
-                                <td class="text-center">
-                                	<a href=""><button class="btn btn-warning" style="font-size:10px"><i class="fa fa-search"></i> View Report</button></a> 
-                                	<a href=""><button class="btn btn-info" style="font-size:10px"><i class="fa fa-save"></i> Download Report</button></a>
-                                	<a href=""><button class="btn btn-success" style="font-size:10px"><i class="fa fa-user"></i> View Profile</button></a>
-                                </td>
-                                
+                                <th>Date Requested</th>
+                                <th>Company Name</th>
+                                <th>Country</th>
+                                <th>Options</th>
                             </tr>
-                        </tbody>
-                    </table>                       
-                    
+                        </thead>
+                            <tbody>
+                            <?php foreach ($requests as $request) {?>    
+                                <tr>
+                                    <td><?php echo $request->date ;?></td>
+                                    <td><?php echo $this->company_model->get_where($this->member_model->get_where($request->request_id)->company_id)->company_name ;?></td>
+                                    <td><?php echo $this->country_model->get_where($this->company_model->get_where($this->member_model->get_where($request->requester_id)->company_id)->country)->country ;?></td>
+                                    <td class="text-center">
+                                            <a href="public/main/template/gsm/creditdata/<?php echo $request->credit_report;?>.pdf"><button class="btn btn-warning" style="font-size:10px"><i class="fa fa-search"></i> View Report</button></a> 
+                                            <a href=""><button class="btn btn-info" style="font-size:10px"><i class="fa fa-save"></i> Download Report</button></a>
+                                            <a href="member/profile/<?php echo $request->request_id;?>"><button class="btn btn-success" style="font-size:10px"><i class="fa fa-user"></i> View Profile</button></a>
+                                    </td>
 
+                                </tr>
+                            <?php } ?>    
+                            </tbody>
+                        </table>                       
+                        <?php } else { ?>
+                        <table class="table table-striped table-bordered table-hover" >
+                        <thead>
+                            <tr>
+                                <th>Date Requested</th>
+                                <th>Company Name</th>
+                                <th>Country</th>
+                                <th>Options</th>
+                            </tr>
+                        </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="4">There are no credit reports at present.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <?php }?>
                     </div>
-
-
-                    
-                    
-                    
                 </div>
             </div>
-            </div>
-          
+        </div>          
  </div><!-- /Wrapper -->
  
  

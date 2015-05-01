@@ -31,68 +31,59 @@
                             <?php 
                                 if($request_count > 0){
                             ?>
-                        <table class="table table-striped table-bordered table-hover dataTables-example" >
-                        <thead>
-                        <tr>
-                            <th>Date Requested</th>
-                            <th>Company Name</th>
-                            <th>Country</th>
-                            <th>Terms</th>
-                            <th>Options</th>
-                        </tr>
-                        </thead>                        
-                        <tbody>
-                            <?php foreach ($requests as $request) {?>
-                            <tr>
-                                <td><?php echo $request->date ;?></td>
-                                <td><?php echo $this->company_model->get_where($this->member_model->get_where($request->requester_id)->company_id)->company_name ;?></td>
-                                <td><?php echo $this->country_model->get_where($this->company_model->get_where($this->member_model->get_where($request->requester_id)->company_id)->country)->country ;?></td>
-                                <?php if($request->request_type == 'both'){ ?>
-                                    <td>My report in return</td>
-                                <?php } else {?>
-                                    <td>Your report only</td>
+                            <table class="table table-striped table-bordered table-hover dataTables-example" >
+                                <thead>
+                                    <tr>
+                                        <th>Date Requested</th>
+                                        <th>Company Name</th>
+                                        <th>Country</th>
+                                        <th>Terms</th>
+                                        <th>Options</th>
+                                    </tr>
+                                </thead>                        
+                                <tbody>
+                                <?php foreach ($requests as $request) {?>
+                                    <tr>
+                                        <td><?php echo $request->date ;?></td>
+                                        <td><?php echo $this->company_model->get_where($this->member_model->get_where($request->requester_id)->company_id)->company_name ;?></td>
+                                        <td><?php echo $this->country_model->get_where($this->company_model->get_where($this->member_model->get_where($request->requester_id)->company_id)->country)->country ;?></td>
+                                        <?php if($request->request_type == 'both'){ ?>
+                                            <td>My report in return</td>
+                                        <?php } else {?>
+                                            <td>Your report only</td>
+                                        <?php } ?>
+
+                                        <td class="text-center">
+                                                <a href="creditdata/acceptRequest/<?php echo $request->id;?>/<?php echo $request->request_id;?>/<?php echo $request->requester_id;?>"><button class="btn btn-primary" style="font-size:10px"><i class="fa fa-check"></i> Accept</button></a> 
+                                                <a href="creditdata/declineRequest/<?php echo $request->id;?>/<?php echo $request->request_id;?>/<?php echo $request->requester_id;?>"><button class="btn btn-danger" style="font-size:10px"><i class="fa fa-times"></i> Decline</button></a>
+                                                <a href="member/profile/<?php echo $request->requester_id;?>"><button class="btn btn-success" style="font-size:10px"><i class="fa fa-user"></i> View Profile</button></a>
+                                        </td>
+                                    </tr>
                                 <?php } ?>
-                                
-                                <td class="text-center">
-                                	<a href=""><button class="btn btn-primary" style="font-size:10px"><i class="fa fa-check"></i> Accept</button></a> 
-                                	<a href="creditdata/declineRequest/<?php echo $request->id;?>/<?php echo $request->request_id;?>/<?php echo $request->requester_id;?>"><button class="btn btn-danger" style="font-size:10px"><i class="fa fa-times"></i> Decline</button></a>
-                                	<a href="member/profile/<?php echo $request->requester_id;?>"><button class="btn btn-success" style="font-size:10px"><i class="fa fa-user"></i> View Profile</button></a>
-                                </td>
-                            </tr>
-                            <?php } ?>
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
                             <?php } else {?>
                             <table class="table table-striped table-bordered table-hover" >
-                        <thead>
-                        <tr>
-                            <th>Date Requested</th>
-                            <th>Company Name</th>
-                            <th>Country</th>
-                            <th>Terms</th>
-                            <th>Options</th>
-                        </tr>
-                        </thead>                        
-                        <tbody>
-                            <tr>
-                                <td colspan="6"> There are no credit request at present</td>
-                            </tr>
-                            </tbody>
-                        </table> 
+                                <thead>
+                                    <tr>
+                                        <th>Date Requested</th>
+                                        <th>Company Name</th>
+                                        <th>Country</th>
+                                        <th>Terms</th>
+                                        <th>Options</th>
+                                    </tr>
+                                </thead>                        
+                                <tbody>
+                                    <tr>
+                                        <td colspan="6"> There are no credit request at present</td>
+                                    </tr>
+                                </tbody>
+                            </table> 
                             <?php } ?>
-                                               
-                    
-
                     </div>
-
-
-                    
-                    
-                    
                 </div>
             </div>
-            </div>
-          
+        </div>          
  </div><!-- /Wrapper -->
  
  
