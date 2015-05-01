@@ -336,8 +336,6 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
   </div>
 </div>
 </div>
-    
-</div>
 
 <?php } else { ?>
 <?php if($member->membership == 1 ){ ?>

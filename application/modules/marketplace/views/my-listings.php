@@ -294,7 +294,6 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                 <td>GBP 25</td>
                 <td>10</td>
                 <td>US</td>
-                <td>30-Apr-15, 11:42</td>
                 <th class="text-center">
                 <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
                 <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> End Listing</button>
@@ -309,7 +308,6 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                 <td>USD 98</td>
                 <td>500</td>
                 <td>US</td>
-                <td>23-Apr-15, 12:01</td>
                 <th class="text-center">
                 <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
                 <button class="btn btn-success" type="button" style="font-size:10px"><i class="fa fa-arrow-up"></i> Relist</button>
