@@ -217,13 +217,13 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <thead>
         <tr>
             <th>Status</th>
-            <th>Start/End Date</th>
+            <th>Start Date</th>
+            <th>End Date</th>
             <th>Make &amp; Model</th>
             <th>Condition</th>
             <th>Price</th>
             <th>QTY</th>
             <th>Spec</th>
-            <th>Last updated</th>
             <th>Options</th>
         </tr>
         </thead>
@@ -231,12 +231,12 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <tr>
                 <td class="text-center"><span class="label label-primary">Active</span></td>
                 <td>06-May-15, 09:35</td>
+                <td>13-May-15, 09:35</td>
                 <td>Acer Liquid E3</td>
                 <td>New</td>
                 <td>GBP 50</td>
                 <td>1211</td>
                 <td>US</td>
-                <td>29-Apr-15, 09:35</td>
                 <th class="text-center">
                 <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
                 <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> End Listing</button>
@@ -244,13 +244,13 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             </tr>
             <tr>
                 <td class="text-center"><span class="label label-success">Scheduled</span></td>
-                <td>11-May-15, 12:01</td>
+                <td>11-May-15, 12:30</td>
+                <td>21-May-15, 12:30</td>
                 <td>Sony Xperia Z</td>
                 <td>New</td>
                 <td>EUR 100</td>
                 <td>5000</td>
                 <td>EU</td>
-                <td>23-Apr-15, 12:q1</td>
                 <th class="text-center">
                 <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
                 <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> Remove</button>
@@ -274,13 +274,13 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <thead>
         <tr>
             <th>Status</th>
+            <th>Start Date</th>
             <th>End Date</th>
             <th>Make &amp; Model</th>
             <th>Condition</th>
             <th>Price</th>
             <th>QTY</th>
             <th>Spec</th>
-            <th>Last updated</th>
             <th>Options</th>
         </tr>
         </thead>
@@ -288,12 +288,12 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <tr>
                 <td class="text-center"><span class="label label-primary">Active</span></td>
                 <td>10-May-15, 11:42</td>
+                <td>24-May-15, 11:42</td>
                 <td>Google Nexus</td>
                 <td>New</td>
                 <td>GBP 25</td>
                 <td>10</td>
                 <td>US</td>
-                <td>30-Apr-15, 11:42</td>
                 <th class="text-center">
                 <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
                 <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> End Listing</button>
@@ -301,13 +301,13 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             </tr>
             <tr>
                 <td class="text-center"><span class="label label-danger">Ended</span></td>
+                <td>23-Apr-15, 12:01</td>
                 <td>30-Apr-15, 12:01</td>
                 <td>LG G4</td>
                 <td>Used Grade A</td>
                 <td>USD 98</td>
                 <td>500</td>
                 <td>US</td>
-                <td>23-Apr-15, 12:01</td>
                 <th class="text-center">
                 <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
                 <button class="btn btn-success" type="button" style="font-size:10px"><i class="fa fa-arrow-up"></i> Relist</button>

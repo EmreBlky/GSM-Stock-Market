@@ -484,7 +484,6 @@ endif;
 </div>
 </div>
 
-
 <div class="row">
 <div class="col-lg-12">
 <div class="ibox float-e-margins">
@@ -537,6 +536,7 @@ endif;
         <th colspan="12"><center>No Such Listing Found</center>  </th><?php
         }?>
 </table>
+</div>
 </div>
 </div>
 </div>
@@ -1030,8 +1030,7 @@ endif;
 <th>Listing End</th>
 <th>Rating</th>
 <th>MPN/ISBN</th>
-<th>Make</th>
-<th>Model</th>
+<th>Make &amp; Model</th>
 <th>Product Type</th>
 <th>Condition</th>
 <th>Unit Price</th>
@@ -1045,8 +1044,7 @@ endif;
 <td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+2 days")); ?>"></span></p></td>
 <td><span class="fa fa-star star-Gold"></span> <span class="label label-success">98</span></td>
 <td>A1586</td>
-<td>Apple</td>
-<td>iPhone 6</td>
+<td>Apple iPhone 6</td>
 <td>Handset</td>
 <td>Refurbished</td>
 <td>USD 98</td>
@@ -1062,8 +1060,7 @@ endif;
 <td><p><span style="color:red" data-countdown="<?php echo date('m/d/Y', strtotime("+1 day")); ?>"></span></p></td>
 <td><span class="fa fa-star star-Gold"></span> <span class="label label-success">100</span></td>
 <td>A1586</td>
-<td>Apple</td>
-<td>iPhone 6</td>
+<td>Apple iPhone 6</td>
 <td>Handset</td>
 <td>Refurbished</td>
 <td>EUR 98</td>
@@ -1079,8 +1076,7 @@ endif;
 <td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+1 week")); ?>"></span></p></td>
 <td><span class="fa fa-star star-Silver"></span> <span class="label label-primary">94</span></td>
 <td>GH98-123456</td>
-<td>Samsung</td>
-<td>Galaxy S4 (i9500)</td>
+<td>Samsung Galaxy S4 (i9500)</td>
 <td>LCD</td>
 <td>New</td>
 <td>GBP 12</td>
@@ -1096,8 +1092,7 @@ endif;
 <td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+1 week 2 days")); ?>"></span></p></td>
 <td><span class="fa fa-star star-Silver"></span> <span class="label label-success">97</span></td>
 <td>GH98-123456</td>
-<td>Samsung</td>
-<td>Galaxy S4 (i9500)</td>
+<td>Samsung Galaxy S4 (i9500)</td>
 <td>LCD</td>
 <td>New</td>
 <td>GBP 12</td>
@@ -1113,8 +1108,7 @@ endif;
 <td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+2 days")); ?>"></span></p></td>
 <td><span class="fa fa-star star-Silver"></span> <span class="label label-primary">83</span></td>
 <td>A1586</td>
-<td>Apple</td>
-<td>iPhone 6</td>
+<td>Apple iPhone 6</td>
 <td>Handset</td>
 <td>Refurbished</td>
 <td>EUR 98</td>
@@ -1130,8 +1124,7 @@ endif;
 <td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+2 days")); ?>"></span></p></td>
 <td><span class="fa fa-star star-Silver"></span> <span class="label label-warning">75</span></td>
 <td>A1586</td>
-<td>Apple</td>
-<td>iPhone 6</td>
+<td>Apple iPhone 6</td>
 <td>Handset</td>
 <td>Refurbished</td>
 <td>EUR 98</td>
@@ -1147,8 +1140,7 @@ endif;
 <td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+2 days")); ?>"></span></p></td>
 <td><span class="fa fa-star star-Silver"></span> <span class="label label-danger">45</span></td>
 <td>A1586</td>
-<td>Apple</td>
-<td>iPhone 6</td>
+<td>Apple iPhone 6</td>
 <td>Handset</td>
 <td>Refurbished</td>
 <td>EUR 98</td>
@@ -1164,8 +1156,7 @@ endif;
 <td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+2 days")); ?>"></span></p></td>
 <td><span class="fa fa-star star-Gold"></span> <span class="label label-success">98</span></td>
 <td>A1586</td>
-<td>Apple</td>
-<td>iPhone 6</td>
+<td>Apple iPhone 6</td>
 <td>Handset</td>
 <td>Refurbished</td>
 <td>USD 98</td>
@@ -1190,12 +1181,7 @@ endif;
 
 } ?> 
 <!-- Daniel Added End -->
-
-
-
-
-
-</div>            
+      
             
  
 

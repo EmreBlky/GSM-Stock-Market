@@ -2021,7 +2021,7 @@ class Marketplace extends MX_Controller
     }*/
     
     function negotiation(){
-        $this->output->enable_profiler(TRUE);
+       // $this->output->enable_profiler(TRUE);
         $data['main'] = 'marketplace';        
         $data['title'] = 'GSM - Negotiation';        
         $data['page'] = 'negotiation';        
