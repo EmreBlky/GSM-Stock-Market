@@ -1,5 +1,5 @@
 <?php
-
+$cust_id = $this->uri->segment(3);
 //echo '<pre>';
 //print_r($member);
 //print_r($blocked);
@@ -183,9 +183,9 @@
                             <div class="row">
                                 <div class="col-lg-6">
                             		<style>
-										dl.full-width dt, dl.full-width dd {width:50%}
-										dl.full-width dd {margin-left:51%}
-									</style>
+                                                dl.full-width dt, dl.full-width dd {width:50%}
+                                                dl.full-width dd {margin-left:51%}
+                                        </style>
                                     
                               		<div class="m-r-md" style="text-align:center">
 										<?php if(file_exists("public/main/template/gsm/images/company/5.png")){?>
@@ -1271,30 +1271,11 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                                 </div>
                             </div>
                                  
-                            <div class="modal inmodal fade" id="creditdata" tabindex="-1" role="dialog"  aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                            <h4 class="modal-title">Request a Credit Check</h4>
-                                            <small class="font-bold">You will need to get permission from this user to access their credit data</small>
-                                        </div>
-                                        <input type="hidden" name="from" id="from" value="<?php echo $this->member_model->get_where($this->session->userdata('members_id'))->email; ?>" />
-                                        <input type="hidden" name="cust_name" id="cust_name" value="<?php echo $this->member_model->get_where($this->session->userdata('members_id'))->firstname. ' '.$this->member_model->get_where($this->session->userdata('members_id'))->lastname; ?>" />
-                                        <input type="hidden" name="report" id="report" value="<?php echo $member_info->id; ?>" />
-                                        <div class="modal-body">
-                                        <p class="text-navy"><strong>Notice:</strong> Please be aware although credit reports are free you will still need permission from the users company first.<br />The user can accept or decline at their own discretion, It is ideal to message them first before requesting a credit check so they know your intentions.</p><br />
-                                        <div class="radio i-checks"><label> <input type="radio" value="option1" name="creditdata"> <i></i> Request their company credit report and <strong>deny</strong> them access to yours.</label></div>
-                                        <div class="radio i-checks"><label> <input type="radio" checked="" value="option2" name="creditdata"> <i></i> Request their company credit report and <strong>allow</strong> them access to yours. (Recommended)</label></div>
-                                        </div>
-
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary" id="submit">Submit</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php
+                            
+                                $this->load->module('creditdata');
+                                $this->creditdata->request_creditcheck($cust_id);
+                            ?>
 <!-- Daniel Added Start -->
 <?php } ?> 
 <!-- Daniel Added End -->

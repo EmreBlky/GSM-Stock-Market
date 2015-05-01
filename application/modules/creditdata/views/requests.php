@@ -1,3 +1,13 @@
+  <?php
+  
+//  echo '<pre>';
+//  print_r($requests);
+//  exit;
+  
+  ?>
+  <?php 
+    echo $this->session->flashdata('confirm');
+  ?>
   <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
       <h2>Report Requests</h2>
@@ -17,7 +27,10 @@
                     <div class="ibox-title">
                         <h5>Companies Requesting your Credit Information</h5>
                     </div>
-                    <div class="ibox-content">                        
+                    <div class="ibox-content"> 
+                            <?php 
+                                if($request_count > 0){
+                            ?>
                         <table class="table table-striped table-bordered table-hover dataTables-example" >
                         <thead>
                         <tr>
@@ -27,32 +40,47 @@
                             <th>Terms</th>
                             <th>Options</th>
                         </tr>
-                        </thead>
+                        </thead>                        
+                        <tbody>
+                            <?php foreach ($requests as $request) {?>
+                            <tr>
+                                <td><?php echo $request->date ;?></td>
+                                <td><?php echo $this->company_model->get_where($this->member_model->get_where($request->requester_id)->company_id)->company_name ;?></td>
+                                <td><?php echo $this->country_model->get_where($this->company_model->get_where($this->member_model->get_where($request->requester_id)->company_id)->country)->country ;?></td>
+                                <?php if($request->request_type == 'both'){ ?>
+                                    <td>My report in return</td>
+                                <?php } else {?>
+                                    <td>Your report only</td>
+                                <?php } ?>
+                                
+                                <td class="text-center">
+                                	<a href=""><button class="btn btn-primary" style="font-size:10px"><i class="fa fa-check"></i> Accept</button></a> 
+                                	<a href="creditdata/declineRequest/<?php echo $request->id;?>"><button class="btn btn-danger" style="font-size:10px"><i class="fa fa-times"></i> Decline</button></a>
+                                	<a href="member/profile/<?php echo $request->requester_id;?>"><button class="btn btn-success" style="font-size:10px"><i class="fa fa-user"></i> View Profile</button></a>
+                                </td>
+                            </tr>
+                            <?php } ?>
+                            </tbody>
+                        </table>
+                            <?php } else {?>
+                            <table class="table table-striped table-bordered table-hover" >
+                        <thead>
+                        <tr>
+                            <th>Date Requested</th>
+                            <th>Company Name</th>
+                            <th>Country</th>
+                            <th>Terms</th>
+                            <th>Options</th>
+                        </tr>
+                        </thead>                        
                         <tbody>
                             <tr>
-                                <td>12 April 2015</td>
-                                <td>GSMStockMarket.com Limited</td>
-                                <td>United Kingdom</td>
-                                <td>My report in return</td>
-                                <td class="text-center">
-                                	<a href=""><button class="btn btn-primary" style="font-size:10px"><i class="fa fa-check"></i> Accept</button></a> 
-                                	<a href=""><button class="btn btn-danger" style="font-size:10px"><i class="fa fa-times"></i> Decline</button></a>
-                                	<a href=""><button class="btn btn-success" style="font-size:10px"><i class="fa fa-user"></i> View Profile</button></a>
-                                </td>
+                                <td colspan="6"> There are no credit request at present</td>
                             </tr>
-                            <tr>
-                                <td>12 April 2015</td>
-                                <td>GSMStockMarket.com Limited</td>
-                                <td>United Kingdom</td>
-                                <td>Your report only</td>
-                                <td class="text-center">
-                                	<a href=""><button class="btn btn-primary" style="font-size:10px"><i class="fa fa-check"></i> Accept</button></a> 
-                                	<a href=""><button class="btn btn-danger" style="font-size:10px"><i class="fa fa-times"></i> Decline</button></a>
-                                	<a href=""><button class="btn btn-success" style="font-size:10px"><i class="fa fa-user"></i> View Profile</button></a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>                       
+                            </tbody>
+                        </table> 
+                            <?php } ?>
+                                               
                     
 
                     </div>
