@@ -87,7 +87,7 @@ class Creditdata extends MX_Controller
     function declineRequest($id, $mid, $sid)
     {
         $data = array(
-                      'request_action' => 'dcline'  
+                      'request_action' => 'decline'  
         );
         $this->creditdata_model->_update($id, $data);
         
