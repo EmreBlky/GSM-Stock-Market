@@ -108,6 +108,7 @@ class Creditdata extends MX_Controller
                                     'parent_id'         => $this->input->post('parent_id'),
                                     'datetime'          => date('Y-m-d H:i:s')
                                   );
+        $this->mailbox_model->_insert($data_mail);
         
         $this->session->set_flashdata('confirm', '<div style="margin:15px 15px">    
                                                                 <div class="alert alert-success">
