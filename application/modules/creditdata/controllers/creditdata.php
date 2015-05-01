@@ -117,6 +117,25 @@ class Creditdata extends MX_Controller
                        'date' => date('j F Y'),
                     );
         $this->creditdata_model->_insert($data_sid);
+        
+        $data_mail = array(
+                                    'member_id'         => 5,
+                                    'member_name'       => 'GSM Support',
+                                    'sent_member_id'    => $mid,
+                                    'sent_member_name'  => $this->member_model->get_where($mid)->firstname.' '.$this->member_model->get_where($mid)->lastname,
+                                    'subject'           => 'Credit Check Sent',
+                                    'body'              => 'Company '.$this->company_model->get_where($this->member_model->get_where($mid)->company_id)->company_name.' has sent you their credit report.',
+                                    'inbox'             => 'yes',
+                                    'sent'              => 'yes',
+                                    'sent_belong'       => 5,
+                                    'draft'             => 'no',
+                                    'date'              => date('d-m-Y'),
+                                    'time'              => date('H:i'),
+                                    'sent_from'         => 'support',
+                                    'parent_id'         => $this->input->post('parent_id'),
+                                    'datetime'          => date('Y-m-d H:i:s')
+                                  );
+        $this->mailbox_model->_insert($data_mail);
             
         }
     }
