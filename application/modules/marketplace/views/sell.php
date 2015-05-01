@@ -483,7 +483,6 @@ endif;
 </div>
 </div>
 </div>
-</div>
 
 <div class="row">
 <div class="col-lg-12">
@@ -537,7 +536,6 @@ endif;
         <th colspan="12"><center>No Such Listing Found</center>  </th><?php
         }?>
 </table>
-</div>
 </div>
 </div>
 </div>
