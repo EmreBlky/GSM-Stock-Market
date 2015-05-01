@@ -720,7 +720,7 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                                     </dl>
                     
                     
-					<div class="row" style="margin-top:20px">
+                    <div class="row" style="margin-top:20px">
                     	<div class="col-lg-12">
                         	<button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#creditdata"><i class="fa fa-check-square-o"></i> Request Credit Check</button>         
                         </div>
@@ -851,9 +851,9 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                             <div class="row">
                                 <div class="col-lg-6">
                             		<style>
-										dl.full-width dt, dl.full-width dd {width:50%}
-										dl.full-width dd {margin-left:51%}
-									</style>
+                                                dl.full-width dt, dl.full-width dd {width:50%}
+                                                dl.full-width dd {margin-left:51%}
+                                        </style>
                                     
                               		<div class="m-r-md" style="text-align:center">
 										<?php if(file_exists("public/main/template/gsm/images/company/".$member_company->id.".png")){?>
@@ -1207,15 +1207,19 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                                     
                     
                     
-					<div class="row" style="margin-top:20px">
+                    <div class="row" style="margin-top:20px">
                     	<div class="col-lg-12">
+                            <?php if(file_exists("public/main/template/gsm/creditdata/".$member_company->credit_report.".pdf")){?>
                         	<button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#creditdata"><i class="fa fa-check-square-o"></i> Request Credit Check</button>         
+                            <?php } else {?>
+                                <button type="button" class="btn btn-info btn-sm btn-block"></i> No credit information available </button>                            
+                            <?php } ?>    
                         </div>
                    </div>
                    
                    
                    
-					<div class="row">
+			<div class="row">
                         <div class="col-lg-6" style="margin-top:15px">
 <!--                         	<button type="button" class="btn btn-warning btn-sm btn-block" data-toggle="modal" data-target="#report_user"><i class="fa fa-exclamation"></i> Report</button>-->
                             <button type="button" class="btn btn-warning btn-sm btn-block" id="report_user"><i class="fa fa-exclamation"></i> Report</button>

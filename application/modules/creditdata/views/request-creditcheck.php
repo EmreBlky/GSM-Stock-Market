@@ -22,6 +22,7 @@
                     <br />
                     The user can accept or decline at their own discretion, It is ideal to message them first before requesting a credit check so they know your intentions.</p>
                 <br />
+                <?php if(file_exists("public/main/template/gsm/creditdata/".$this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id)->credit_report.".pdf")){?>
                 <div class="radio i-checks">
                     <label>
                         <input type="radio" name="credit_type" class="credit_type" value="single"> <i></i> Request their company credit report and <strong>deny</strong> them access to yours.
@@ -32,6 +33,13 @@
                         <input type="radio" name="credit_type" class="credit_type" value="both" checked=""> <i></i> Request their company credit report and <strong>allow</strong> them access to yours. (Recommended)
                     </label>
                 </div>
+                <?php } else {?>
+                <div class="radio i-checks">
+                    <label>
+                        <input type="radio" name="credit_type" class="credit_type" value="single" checked=""> <i></i> Request their company credit report.
+                    </label>
+                </div>
+                <?php }?>
             </div>
 
             <div class="modal-footer">
