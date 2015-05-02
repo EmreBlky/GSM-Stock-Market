@@ -239,6 +239,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                 <td>US</td>
                 <th class="text-center">
                 <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
+                <button class="btn btn-primary" type="button" style="font-size:10px"><i class="fa fa-eye"></i> View</button>
                 <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> End Listing</button>
                 </th>
             </tr>
@@ -253,6 +254,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                 <td>EU</td>
                 <th class="text-center">
                 <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
+                <button class="btn btn-primary" type="button" style="font-size:10px"><i class="fa fa-eye"></i> View</button>
                 <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> Remove</button>
                 </th>
             </tr>
@@ -296,6 +298,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                 <td>US</td>
                 <th class="text-center">
                 <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
+                <button class="btn btn-primary" type="button" style="font-size:10px"><i class="fa fa-eye"></i> View</button>
                 <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> End Listing</button>
                 </th>
             </tr>
