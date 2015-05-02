@@ -175,14 +175,6 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
 										<li><a href="marketplace/sell_listing"> Create Sell Listing</a></li>
 								</ul>
 						</li>
-		       
-		<li><a href="marketplace/saved_listing"><i class="fa fa-save"></i> Saved Listings 
-    <?php $count_save_listing=count_save_listing(); 
-		if($count_save_listing){ ?> 
-    <span class="label label-success pull-right" id="count_save_listing">
-		<?php  echo $count_save_listing; ?></span>
-    <?php } ?>
-    </a></li>
 		
 		</ul>
 </li>
@@ -211,9 +203,6 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
 								</ul>
 						</li>
 		       
-		<li><a href="marketplace/saved_listing"><i class="fa fa-save"></i> Saved Listings   <span class="label label-success pull-right" id="count_save_listing"></span>
-    </a></li>
-		
 		</ul>
 </li>
 <?php } ?>
