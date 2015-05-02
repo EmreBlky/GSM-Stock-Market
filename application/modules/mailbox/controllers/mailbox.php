@@ -945,7 +945,7 @@ class Mailbox extends MX_Controller
                 $this->load->library('email', $config);
                 
                 $this->email->set_mailtype("html");
-                $email_body = '<div>'.$this->input->post('message').'</div>';
+                $email_body = '<div>'.$this->input->post('message').'<br/ >'.$this->input->post('cust_name').'</div>';
                 
                
                 $this->email->from($this->input->post('from'), $this->input->post('cust_name'));
@@ -957,8 +957,8 @@ class Mailbox extends MX_Controller
 
                 $this->email->send();
                 
-                $this->session->set_flashdata('title', 'GSM Support.');
-                $this->session->set_flashdata('message', 'Your email has been sent.');                
+                $this->session->set_flashdata('title', 'Platform Ticket');
+                $this->session->set_flashdata('message', 'Your ticket has been submitted. We will be in touch shortly.');                
                 //echo $this->email->print_debugger();
                 //exit;                
                 redirect('support/submit_ticket');

@@ -322,7 +322,66 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         </div>
     </div>
 </div>
-</div>       
+</div>     
+
+<div class="row">
+    <div class="col-lg-12">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>Saved Listings</h5>
+        </div>
+        <div class="ibox-content">
+        <table class="table table-striped table-bordered table-hover selling_offers" >
+        <thead>
+        <tr>
+            <th>Listing Type</th>
+            <th>MPN/ISBN</th>
+            <th>Make &amp; Model</th>
+            <th>Condition</th>
+            <th>Colour</th>
+            <th>Price</th>
+            <th>QTY</th>
+            <th>Spec</th>
+            <th>Options</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-center"><span class="label label-warning">Selling Offer</span></td>
+                <td>GH97-101929</td>
+                <td>Google Nexus</td>
+                <td>New</td>
+                <td>Red</td>
+                <td>GBP 25</td>
+                <td>10</td>
+                <td>US</td>
+                <th class="text-center">
+                <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
+                <button class="btn btn-success" type="button" style="font-size:10px"><i class="fa fa-arrow-up"></i> List Now</button>
+                <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> Remove</button>
+                </th>
+            </tr>
+            <tr>
+                <td class="text-center"><span class="label label-primary">Buying Request</span></td>
+                <td>GH97-101929</td>
+                <td>LG G4</td>
+                <td>Used Grade A</td>
+                <td>Blue</td>
+                <td>USD 98</td>
+                <td>500</td>
+                <td>US</td>
+                <th class="text-center">
+                <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
+                <button class="btn btn-success" type="button" style="font-size:10px"><i class="fa fa-arrow-up"></i> List Now</button>
+                <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> Remove</button>
+                </th>
+            </tr>
+        </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+</div>     
 </div>
 
 

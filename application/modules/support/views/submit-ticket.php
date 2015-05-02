@@ -22,7 +22,7 @@
                 <?php 
                     $title = $this->session->flashdata('title');
                     
-                        if($title == 'GSM Support.'){
+                        if($title == 'Platform Ticket'){
                            echo '<div class="alert alert-success">'.$this->session->flashdata('message').'</div>';                    
                         }  
 
@@ -61,7 +61,7 @@
 			<div class="form-group">
                         <label class="col-md-3 control-label">Message</label>
                             <div class="col-md-9">
-                                <textarea class="form-control" rows="8" name="message"></textarea>
+                                <textarea class="form-control" rows="8" name="message" required></textarea>
                             </div>                       
                     	</div>
 
