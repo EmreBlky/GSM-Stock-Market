@@ -127,7 +127,7 @@ if(!empty($listing_detail->image1))
 <div class="main_image_gallery">
 <img id="zoom_03" src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img1[3]; ?>" data-zoom-image="<?php echo base_url().'public/upload/listing/'.$img1[3]; ?>" class="gallerymainimg"/></div>
 <?php }else{ ?>
-<div class="main_image_gallery" style="text-align: center !important;">
+<div class="main_image_gallery" style="text-align: center;!important;">
 <img src="<?php echo base_url().'public/main/template/gsm/images/no_marketplace_photo.png'; ?>" class="gallerymainimg"/><br>
 <b>No images uploaded by listing owner.</b></div>
 <?php } ?>
@@ -206,7 +206,12 @@ if(!empty($listing_detail->image1))
       <?php }else{ ?>
         <a href="<?php echo base_url().'marketplace/listing_watch/'.$listing_detail->member_id.'/'.$listing_detail->id.'/'.$listing_detail->listing_type ?>" class="btn btn-warning">Watch</a>
         <?php } ?>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#profile_user">Seller Profile</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#profile_user"><?php if($listing_detail->listing_type==2){ ?>
+          Buyer Profile
+          <?php }elseif($listing_detail->listing_type==1){ ?>
+         Seller Profile
+          <?php } ?>
+    </button>
     <?php } ?>
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#profile_message">Ask a question</button>
         <a href="<?php echo base_url().'marketplace/sell' ?>" class="btn btn-white">Back</a>
