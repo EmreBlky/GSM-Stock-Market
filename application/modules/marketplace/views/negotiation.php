@@ -23,7 +23,7 @@ $member_id=$this->session->userdata('members_id');?>
     <div class="col-lg-12">
     <div class="ibox float-e-margins">
         <div class="ibox-title">
-            <h5>Items you are buying/Selling</h5>
+            <h5>Buying Request</h5>
         </div>
         <div class="ibox-content">
         <table class="table table-striped table-bordered table-hover buying_offers" >
@@ -40,18 +40,12 @@ $member_id=$this->session->userdata('members_id');?>
         </tr>
         </thead>
         <tbody>
-            <?php if(!empty($sell_buy_negotiation)){
-            
-            foreach ($sell_buy_negotiation as $value){
+            <?php if(!empty($sell_negotiation)){
+            foreach ($sell_negotiation as $value){
              ?>
             <tr>
-            <td><span class="btn btn-warning"><?php if($member_id == $value->listingmemberid){
-                if($value->offer_type==1){ echo '&nbsp;Sell&nbsp;';}else{ echo '&nbsp;Buy&nbsp;';}
-                }
-                else{
-                    if($value->offer_type==2){ echo '&nbsp;Sell&nbsp;';}else{ echo '&nbsp;Buy&nbsp;';}
-                }
-                    ?>
+            <td><span class="btn btn-warning">
+                &nbsp;Buy&nbsp;
                 </span>
             </td>
                 <td><?php echo date('d-M-y, H:i', strtotime($value->listing_end_datetime)); ?></td>
@@ -62,8 +56,8 @@ $member_id=$this->session->userdata('members_id');?>
                 <td><?php echo $value->spec; ?></td>
                 <td class="text-center">
                 <?php if($value->pay_asking_price){?>
-                <a class="btn btn-info" onclick="view_negotiation_payasking(<?php echo $value->offer_id;?>)" data-toggle="modal" data-target="#view_negotiation_payasking"><?php }else{ ?>
-                <a class="btn btn-info" onclick="view_negotiation_offer(<?php echo $value->offer_id;?>)" data-toggle="modal" data-target="#view_negotiation_offer"><?php } ?>
+                <a class="btn btn-info" onclick="view_negotiation_payasking(<?php echo $value->offer_id.','.$value->listing_id;?>)" data-toggle="modal" data-target="#view_negotiation_payasking"><?php }else{ ?>
+                <a class="btn btn-info" onclick="view_negotiation_offer(<?php echo $value->offer_id.','.$value->listing_id;?>)" data-toggle="modal" data-target="#view_negotiation_offer"><?php } ?>
                 <i class="fa fa-paste"></i> View Offer </a>
                 </td>
             </tr>
@@ -75,6 +69,56 @@ $member_id=$this->session->userdata('members_id');?>
 </div>
 </div>
 
+<div class="row">
+    <div class="col-lg-12">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>Selling Offer</h5>
+        </div>
+        <div class="ibox-content">
+        <table class="table table-striped table-bordered table-hover buying_offers" >
+        <thead>
+        <tr>
+            <th>Status</th>
+            <th>End Date</th>
+            <th>Make &amp; Model</th>
+            <th>Condition</th>
+            <th>Price</th>
+            <th>QTY</th>
+            <th>Spec</th>
+            <th>Options</th>
+        </tr>
+        </thead>
+        <tbody>
+            <?php if(!empty($buy_negotiation)){
+            
+            foreach ($buy_negotiation as $value){
+             ?>
+            <tr>
+            <td><span class="btn btn-warning">
+                &nbsp;Sell&nbsp;
+                </span>
+            </td>
+                <td><?php echo date('d-M-y, H:i', strtotime($value->listing_end_datetime)); ?></td>
+                <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
+                <td><?php echo $value->condition; ?></td>
+                <td data-toggle="tooltip" data-placement="left" title="t"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
+                <td><?php echo $value->qty_available; ?></td>
+                <td><?php echo $value->spec; ?></td>
+                <td class="text-center">
+                <?php if($value->pay_asking_price){?>
+                <a class="btn btn-info" onclick="view_negotiation_payasking(<?php echo $value->offer_id.','.$value->listing_id;?>)" data-toggle="modal" data-target="#view_negotiation_payasking"><?php }else{ ?>
+                <a class="btn btn-info" onclick="view_negotiation_offer(<?php echo $value->offer_id.','.$value->listing_id;?>)" data-toggle="modal" data-target="#view_negotiation_offer"><?php } ?>
+                <i class="fa fa-paste"></i> View Offer </a>
+                </td>
+            </tr>
+            <?php }} ?> 
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+</div>
 <div class="modal inmodal fade" id="view_negotiation_payasking" tabindex="-1" role="dialog"  aria-hidden="true">
 <div class="modal-dialog modal-lg">
 <div class="modal-content">
@@ -122,9 +166,11 @@ $member_id=$this->session->userdata('members_id');?>
   <div class="modal-body">
    <form action="<?php echo base_url()."marketplace/counter_offer_negotiation/";?>" method="post" accept-charset="utf-8">
       <div class="row">
-        <input type="text" name="qty" value="" placeholder="Quantity" class="form-control">
+       Quantity
+        <input type="text" name="qty" value="" placeholder="Quantity" class="form-control offer_qty_insert">
         <input type="hidden" name="offer_id" value="" class="offer_id_insert"><br>
-        <input type="text" name="per_unit_price" value="" placeholder="Per unit price"  class="form-control">
+        Per Unit Price
+        <input type="text" name="per_unit_price" value="" placeholder="Per unit price"  class="form-control offer_unit_price_insert">
     </div>
     <div class="modal-footer">
     <button type="submit" class="btn btn-primary">Send Offer</button>
@@ -292,14 +338,14 @@ color: #fff;
 }
 </style>
 <script>
-function view_negotiation_payasking(parent_id) {
-   $.post('<?php echo base_url() ?>marketplace/view_negotiation_payasking', {parent_id: parent_id,}, function(data) {
+function view_negotiation_payasking(parent_id,listing_id) {
+   $.post('<?php echo base_url() ?>marketplace/view_negotiation_payasking', {parent_id: parent_id,listing_id:listing_id}, function(data) {
        $('#view_negotiation_payasking_html').html(data);
    });
 }
 
-function view_negotiation_offer(parent_id) {
-   $.post('<?php echo base_url() ?>marketplace/view_negotiation_offer', {parent_id: parent_id,}, function(data) {
+function view_negotiation_offer(parent_id,listing_id) {
+   $.post('<?php echo base_url() ?>marketplace/view_negotiation_offer', {parent_id: parent_id,listing_id:listing_id}, function(data) {
        $('#view_negotiation_offer_html').html(data);
    });
 }
@@ -309,7 +355,9 @@ function view_negotiation_offer_sell(parent_id) {
        $('#view_negotiation_offer').html(data);
    });
 }
-function counter_offer(offer_id) {
-    $('.offer_id_insert').val(offer_id);  
+function counter_offer(offer_id,qty,unit_price) {
+    $('.offer_id_insert').val(offer_id); 
+    $('.offer_qty_insert').val(qty);
+    $('.offer_unit_price_insert').val(unit_price); 
 }
 </script>

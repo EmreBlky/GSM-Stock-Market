@@ -6,9 +6,29 @@ class Ajax extends MX_Controller
 		$this->load->module('marketplace');
 	}
 
-	function offer(){ echo all_offer(); }
-	function watch_listing(){ echo count_watch_listing();	}
-	function open_order(){ echo count_open_order(); }
-	function my_listing(){ echo countmy_listing(); }
-	function save_listing(){ echo count_save_listing(); }
-}
+	function watch_listing(){ 
+		if(count_watch_listing())
+			echo '<span class="label label-warning pull-right">'.count_watch_listing().'</span>';	
+	}
+	
+	function offer(){ 
+		if(all_offer())
+			echo '<span class="label label-info pull-right">'.all_offer().'</span>';	
+		}
+	
+	function open_order(){ 
+		if(count_open_order())
+			echo '<span class="label label-warning pull-right">'.count_open_order().'</span>';	
+	}
+	
+	function my_listing(){ 
+		if(countmy_listing())
+			echo '<span class="label label-warning pull-right">'.countmy_listing().'</span>';	
+	}
+	
+	function save_listing(){ 
+		if(count_save_listing())
+			echo '<span class="label label-success pull-right">'.count_save_listing().'</span>';	
+	}
+
+}//EndClass

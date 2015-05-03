@@ -19,176 +19,215 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <?php msg_alert(); ?>
 <div class="wrapper wrapper-content animated fadeInRight">
 <div class="row">
-    <div class="col-lg-12">
-    <div class="ibox float-e-margins">
-        <div class="ibox-title">
-            <h5>Selling Request</h5>
-        </div>
-        <div class="ibox-content">
-        <table class="table table-striped table-bordered table-hover buying_requests" >
-        <thead>
-        <tr>
-            <th>Status</th>
-            <th>End Date</th>
-            <th>Make &amp; Model</th>
-            <th>Condition</th>
-            <th>Price</th>
-            <th>QTY</th>
-            <th>Spec</th>
-            <th>Last updated</th>
-            <th>Options</th>
-        </tr>
-        </thead>
-        <tbody>
-         <?php if(!empty($buying_request)): ?>
-            <?php foreach ($buying_request as $value):
-            if(!empty($value->id)){
-             $offer_count = offer_count($value->id);   
-            }
-             ?>
-            <tr>
-                <td class="text-center">
-               
-                 <?php if (!empty($value->offer_status) && $value->offer_status == 1): ?>
-                <span class="label label-success">Active</span>
-                <?php else: ?>
-                 <span class="label label-info">Offers Waiting (<?php echo $offer_count; ?>)</span>
-                <?php endif ?> 
-                </td>
-                <td><?php echo date('d-M-y, H:i', strtotime($value->listing_end_datetime)); ?></td>
-                <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
-                <td><?php echo $value->condition; ?></td>
-                <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
-                <td><?php echo $value->qty_available; ?></td>
-                <td><?php echo $value->spec; ?></td>
-                <td><?php echo date('d-M-y, H:i', strtotime($value->updated)); ?></td>
-                <th class="text-center">
-                <a href="<?php echo base_url().'marketplace/sell_listing/'.$value->id; ?>" class="btn btn-warning" ><i class="fa fa-paste"></i> Edit</a>
-                <button class="btn btn-danger" type="button" ><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
-                </th>
-            </tr>
-                
-            <?php endforeach ?>
-        <?php endif; ?>
+<div class="col-lg-12">
+<div class="ibox float-e-margins">
+<div class="ibox-title">
+    <h5>Selling Request</h5>
+</div>
+<div class="ibox-content">
+<table class="table table-striped table-bordered table-hover buying_requests" >
+<thead>
+<tr>
+    <th>Status</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Make &amp; Model</th>
+    <th>Condition</th>
+    <th>Price</th>
+    <th>QTY</th>
+    <th>Spec</th>
+    <th>Options</th>
+</tr>
+</thead>
+<tbody>
+ <?php if(!empty($buying_request)): ?>
+    <?php foreach ($buying_request as $value):
+     ?>
+    <tr>
+        <td class="text-center">
+          <?php  
+            $current_datetime = strtotime(date('d-m-Y H:i:s')); 
+            $end_datetime = strtotime(date('d-m-Y H:i:s', strtotime($value->listing_end_datetime))); 
+            if($value->scheduled_status){ ?>
+                <span class="label label-success">Scheduled</span>
+            <?php }
+            elseif($current_datetime > $end_datetime){
+                ?> <span class="label label-danger">Ended</span><?php
+            } else{?>
+                <span class="label label-primary">Active</span>
+       <?php }?>
+        </td>
+        <td><?php echo date('d-M-y, H:i', strtotime($value->schedule_date_time)); ?></td>
+        <td><?php echo date('d-M-y, H:i', strtotime($value->listing_end_datetime)); ?></td>
+        <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
+        <td><?php echo $value->condition; ?></td>
+        <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
+        <td><?php echo $value->qty_available; ?></td>
+        <td><?php echo $value->spec; ?></td>
+        <th class="text-center">
+        <a href="<?php echo base_url().'marketplace/sell_listing/'.$value->id; ?>" class="btn btn-warning" ><i class="fa fa-paste"></i> Edit</a>
+        <?php 
+         if($end_datetime > $current_datetime){ ?>
+        <a href="<?php echo base_url().'marketplace/listing_detail/'.$value->id; ?>" class="btn btn-success" ><i class="fa fa-eye"></i>  View</a>
+        <a href="<?php echo base_url().'marketplace/listing_delete/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to end this listing ?');" ><i class="fa fa-times"></i> End Listing</a>
+       <?php }else{?>
+       <a class="btn btn-success">
+       <i class="fa fa-times"></i> Relist</a>
+       <a href="<?php echo base_url().'marketplace/end_listing_status/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to end this listing ?');" ><i class="fa fa-times"></i> End</a>
+        <?php } ?>
+      
+        </th>
+    </tr>
         
-        
-        
-        
-        </tbody>
-        </table>
-        </div>
-    </div>
-    </div>
-                    
-    <div class="modal inmodal fade" id="buyer_offers" tabindex="-1" role="dialog"  aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title">Buyers Offers</h4>
-                </div>
-                <div class="modal-body">
-                    <div id="offer_status_msg"></div>
-                    <div id="buyers_list"></div>
-                
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div> 
-    <div class="modal inmodal fade" id="view_offers" tabindex="-1" role="dialog"  aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title">Your Offers</h4>
-                </div>
-                <div class="modal-body">
-                    <div id="view_offer"></div>
-                
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>  
-    
-    <div class="modal inmodal fade" id="counteroffermodal" tabindex="-1" role="dialog"  aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title">Your Offers</h4>
-                </div>
-                <div class="modal-body">
-                    <div id="counter_offer_body"></div>
-                
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php endforeach ?>
+<?php endif; ?>
+</tbody>
+</table>
+</div>
+</div>
+</div>     
 
-    </div> 
+</div> 
 <div class="row">
-    <div class="col-lg-12">
-    <div class="ibox float-e-margins">
-        <div class="ibox-title">
-            <h5>Buying Requests</h5>
-        </div>
-        <div class="ibox-content">
-        <table class="table table-striped table-bordered table-hover selling_offers" >
-        <thead>
-        <tr>
-            <th>Status</th>
-            <th>End Date</th>
-            <th>Make &amp; Model</th>
-            <th>Condition</th>
-            <th>Price</th>
-            <th>QTY</th>
-            <th>Spec</th>
-            <th>Last updated</th>
-            <th>Options</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php if(!empty($sell_offer)): 
-        $session_member_id = $this->session->userdata('members_id'); ?>
-            <?php foreach ($sell_offer as $value):
-            $offer_count = offer_count($value->id); ?>
-            <tr>
-                <td class="text-center">
-                <span class="label label-info">
-                 <?php if (!empty($value->member_id) && $value->member_id == $session_member_id): ?>
-                    Offers Waiting (<?php echo $offer_count; ?>)
-                <?php else: ?>
-                    Offer Waiting
-                <?php endif ?> </span>
-                </td>
-                <td><?php echo date('d-M-y, H:i', strtotime($value->listing_end_datetime)); ?></td>
-                <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
-                <td><?php echo $value->condition; ?></td>
-                <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
-                <td><?php echo $value->qty_available; ?></td>
-                <td><?php echo $value->spec; ?></td>
-                <td><?php echo date('d-M-y, H:i', strtotime($value->updated)); ?></td>
-                <th class="text-center">
-                <a href="<?php echo base_url().'marketplace/buy_listing/'.$value->id; ?>" class="btn btn-warning" ><i class="fa fa-paste"></i> Edit</a>
-                <button class="btn btn-danger" type="button" ><i class="fa fa-times"></i> <span class="bold">Delete</span></button>
-                </th>
-            </tr>
-                
-            <?php endforeach ?>
-        <?php endif; ?>
-        </tbody>
-        </table>
-        </div>
-    </div>
+<div class="col-lg-12">
+<div class="ibox float-e-margins">
+<div class="ibox-title">
+    <h5>Buying Requests</h5>
+</div>
+<div class="ibox-content">
+<table class="table table-striped table-bordered table-hover selling_offers" >
+<thead>
+<tr>
+    <th>Status</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Make &amp; Model</th>
+    <th>Condition</th>
+    <th>Price</th>
+    <th>QTY</th>
+    <th>Spec</th>
+    <th>Options</th>
+</tr>
+</thead>
+<tbody>
+<?php if(!empty($sell_offer)): 
+$session_member_id = $this->session->userdata('members_id'); ?>
+    <?php foreach ($sell_offer as $value):
+    $offer_count = offer_count($value->id); ?>
+    <tr>
+        <td class="text-center">
+        <?php  
+            $current_datetime = strtotime(date('d-m-Y H:i:s')); 
+            $end_datetime = strtotime(date('d-m-Y H:i:s', strtotime($value->listing_end_datetime))); 
+            if($value->scheduled_status){ ?>
+                <span class="label label-success">Scheduled</span>
+            <?php }
+            elseif($current_datetime > $end_datetime){
+                ?> <span class="label label-danger">Ended</span><?php
+            } else{?>
+                <span class="label label-primary">Active</span>
+       <?php }?>
+        </td>
+        <td><?php echo date('d-M-y, H:i', strtotime($value->schedule_date_time)); ?></td>
+        <td><?php echo date('d-M-y, H:i', strtotime($value->listing_end_datetime)); ?></td>
+        <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
+        <td><?php echo $value->condition; ?></td>
+        <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
+        <td><?php echo $value->qty_available; ?></td>
+        <td><?php echo $value->spec; ?></td>
+        <th class="text-center">
+         <a href="<?php echo base_url().'marketplace/buy_listing/'.$value->id; ?>" class="btn btn-warning" ><i class="fa fa-paste"></i> Edit</a>
+        <?php 
+         if($end_datetime > $current_datetime){ ?>
+        <a href="<?php echo base_url().'marketplace/listing_detail/'.$value->id; ?>" class="btn btn-success" ><i class="fa fa-eye"></i>  View</a>
+        <a href="<?php echo base_url().'marketplace/listing_delete/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to end this listing ?');" ><i class="fa fa-times"></i> End Listing</a>
+       <?php }else{?>
+       <a class="btn btn-success">
+       <i class="fa fa-times"></i> Relist</a>
+       <a href="<?php echo base_url().'marketplace/end_listing_status/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to end this listing ?');" ><i class="fa fa-times"></i> End</a>
+        <?php } ?>
+
+        </th>
+    </tr>
+        
+    <?php endforeach ?>
+<?php endif; ?>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>   
+
+<div class="row">
+<div class="col-lg-12">
+<div class="ibox float-e-margins">
+<div class="ibox-title">
+    <h5>Saved Requests</h5>
+</div>
+<div class="ibox-content">
+<table class="table table-striped table-bordered table-hover selling_offers" >
+<thead>
+<tr>
+    <th>Listing Type</th>
+    <th>MPN/ISBN</th>
+    <th>Make &amp; Model</th>
+    <th>Condition</th>
+    <th>Color</th>
+    <th>Price</th>
+    <th>QTY</th>
+    <th>Spec</th>
+    <th>Options</th>
+</tr>
+</thead>
+<tbody>
+<?php if(!empty($saved_listing)): 
+$session_member_id = $this->session->userdata('members_id'); ?>
+    <?php foreach ($saved_listing as $value_save): ?>
+     
+    <tr>
+        <td class="text-center">
+         <?php if ($value_save->listing_type == 1): ?>
+         <span class="label label-success">
+            Buying Request
+          </span>  
+        <?php else: ?>  
+        <span class="label label-info">
+           Selling Offers
+        </span>   
+        <?php endif ?> 
+        </td>
+        <td><?php echo $value_save->product_mpn_isbn; ?></td>
+        <td><?php echo $value_save->product_make; ?> <?php echo $value_save->product_model; ?></td>
+        <td><?php echo $value_save->condition; ?></td>
+        <td><?php echo $value_save->product_color; ?></td>
+        <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value_save->currency), 'GBP', $value_save->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value_save->currency), 'EUR', $value_save->unit_price); ?>,$ <?php echo get_currency(currency_class($value_save->currency), 'USD', $value_save->unit_price); ?>"><?php echo currency_class($value_save->currency); ?> <?php echo $value_save->unit_price; ?></td>
+        <td><?php echo $value_save->qty_available; ?></td>
+        <td><?php echo $value_save->spec; ?></td>       
+        <th class="text-center">
+        <?php 
+        $date1 = strtotime(date('d-m-Y H:i:s', strtotime($value_save->listing_end_datetime))); 
+        $date2 = strtotime(date('d-m-Y H:i:s')); 
+         if($date1 > $date2){ ?>       
+        
+      <?php if ($value_save->listing_type == 1){ ?>    
+      <a href="<?php echo base_url().'marketplace/buy_listing/'.$value_save->id.'/saved_listing'; ?>" class="btn btn-warning" ><i class="fa fa-paste"></i> Edit</a>
+      <?php }else{ ?>
+      <a href="<?php echo base_url().'marketplace/sell_listing/'.$value_save->id.'/saved_listing'; ?>" class="btn btn-warning" ><i class="fa fa-paste"></i> Edit</a>
+      <?php } ?>
+       <?php }else{?>
+       <a class="btn btn-outline btn-danger"><i class="fa fa-times"></i> Expired </a>
+        <?php } ?>
+       <a href="<?php echo base_url().'marketplace/listing_delete/'.$value_save->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure');" ><i class="fa fa-times"></i> Delete</a>
+        </th>
+    </tr>
+        
+    <?php endforeach ?>
+<?php endif; ?>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 </div>       
 </div>

@@ -63,27 +63,29 @@ class Feedback extends MX_Controller
         }
     }
             
-    function leave_buy_feedback($mid, $sid)
+    function leave_buy_feedback($mid, $sid, $order_id)
     {
         $data['main'] = 'feedback';
         $data['base'] = $this->config->item('base_url');
         $data['mid'] = $mid;
         $data['sid'] = $sid;
+        $data['order_id'] = $order_id;
         //$data['member'] = $this->company_model->get_where($this->member_model->get_where($mid)->company_id)->company_name;
         $this->load->view('buy-feedback', $data);
     }
     
-    function leave_sell_feedback($mid, $sid)
+    function leave_sell_feedback($mid, $sid, $order_id)
     {
         $data['main'] = 'feedback';
         $data['base'] = $this->config->item('base_url');
         $data['mid'] = $mid;
+        $data['order_id'] = $order_id;
         $data['sid'] = $sid;
         //$data['member'] = $this->company_model->get_where($this->member_model->get_where($mid)->company_id)->company_name;
         $this->load->view('sell-feedback', $data);
     }
     
-    function processFeedback($mid, $sid, $rateDesc, $rateComms, $rateShip, $rateCompany, $body, $type)
+    function processFeedback($mid, $sid, $rateDesc, $rateComms, $rateShip, $rateCompany,$order_id,$ratetypeuser=0, $body, $type)
     {
         $data = array(                       
                     'member_id'             => $mid,
@@ -101,6 +103,17 @@ class Feedback extends MX_Controller
                     'type'                  => $type
                 );                    
         $this->feedback_model->_insert($data);
+      if($ratetypeuser==1){
+        $user_id = $this->session->userdata('members_id');
+        $order_id = $order_id;
+        $this->load->model('marketplace/marketplace_model'); 
+        $this->marketplace_model->update('make_offer',array('buyer_feedback_datetime'=>date('Y-m-d h:i:s'),'buyer_history'=>1),array('id'=>$order_id,'buyer_id'=>$user_id));
+      }elseif($ratetypeuser==2){
+        $user_id = $this->session->userdata('members_id');
+        $order_id = $order_id;
+        $this->load->model('marketplace/marketplace_model'); 
+        $this->marketplace_model->update('make_offer',array('seller_feedback_datetime'=>date('Y-m-d h:i:s'),'seller_history'=>1),array('id'=>$order_id,'seller_id'=>$user_id));
+      }
         
     }
     

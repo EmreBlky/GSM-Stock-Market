@@ -1,11 +1,3 @@
-<?php
-
-//echo '<pre>';
-//print_r($buy_order);
-//print_r($sell_order);
-//exit;
-
-?>
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
         <h2>Open Orders</h2>
@@ -84,7 +76,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             </div>
             </td>
             <td>
-            <a onclick="deal_info(<?php echo $value->listing_id;?>)" data-toggle="modal" data-target="#deal_infos" class="btn btn-primary" >Deal Info</a>
+            <a onclick="deal_info(<?php echo $value->listing_id;?>,<?php echo $value->makeofferid;?>)" data-toggle="modal" data-target="#deal_infos" class="btn btn-primary" >Deal Info</a>
         <?php if ($value->order_status == 1 && empty($value->payment_done)){ 
             ?>
             <a onclick="insert_order_id(<?php echo $value->makeofferid;?>)" data-toggle="modal" data-target="#payment_done" class="btn btn-warning" >Make Payment</a>
@@ -103,7 +95,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <?php
 
                 $this->load->module('feedback');
-                $this->feedback->leave_buy_feedback($value->seller_id, $value->buyer_id);
+                $this->feedback->leave_buy_feedback($value->seller_id, $value->buyer_id,$value->makeofferid);
             ?>
         <?php endforeach; ?>
     <?php endif; ?>
@@ -163,7 +155,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             </div>
             </td>
             <td>
-            <a onclick="deal_info(<?php echo $value->listing_id;?>)" data-toggle="modal" data-target="#deal_infos" class="btn btn-primary" >Deal Info</a>
+            <a onclick="deal_info(<?php echo $value->listing_id;?>,<?php echo $value->makeofferid;?>)" data-toggle="modal" data-target="#deal_infos" class="btn btn-primary" >Deal Info</a>
             <?php if (empty($value->order_status)){ ?>
             <a onclick="insert_order_id(<?php echo $value->makeofferid;?>)" data-toggle="modal" data-target="#insert_payment_info" class="btn btn-warning">Send Payment details</a><!-- modal for send payment detail -->
             <?php }elseif ($value->order_status == 1){ if($value->payment_done){?>
@@ -184,7 +176,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <?php
 
                 $this->load->module('feedback');
-                $this->feedback->leave_sell_feedback($value->seller_id, $value->buyer_id);
+                $this->feedback->leave_sell_feedback($value->seller_id, $value->buyer_id,$value->makeofferid);
             ?>
             <?php endforeach ?>
         <?php endif ?>
@@ -295,18 +287,18 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <div class="modal-content">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title">Payment Confirmation</h4>
+        <h4 class="modal-title">Payment Confirmation & Add Tracking / shipping Information</h4>
     </div>
     <div class="modal-body">
      <form action="<?php echo base_url()."marketplace/payment_confirm/";?>" method="post" accept-charset="utf-8">
         <div class="row">
          <input type="checkbox" name="payment_confirm" value="" required>
         <h4> Yes Payment received sucessfully.</h4>
-          <input type="hidden" name="order_id" value="" class="order_id_insert">
+         <textarea name="shipping_info" cols="8" rows="5" class="form-control" placeholder="Insert Tracking / Shipping information." required></textarea>
+        <input type="hidden" name="order_id" value="" class="order_id_insert">
       </div>
       <div class="modal-footer">
-         
-          <button type="submit" class="btn btn-primary" id="send_msg">Submit</button>
+          <button type="submit" class="btn btn-primary">Add Tracking / shipping Information</button>
       </div>  
       </form>
       </div>
@@ -482,9 +474,9 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 
 </div>
 <script>
- function deal_info(listing_id) {
+ function deal_info(listing_id,order_id) {
         var list = listing_id;
-       $.post('<?php echo base_url() ?>marketplace/deal_info/'+listing_id, function(data) {
+       $.post('<?php echo base_url() ?>marketplace/deal_info/'+listing_id+'/'+order_id, function(data) {
            $('#deal_info_data').html(data);
        });
     }
@@ -532,7 +524,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                     "sSwfPath": "public/main/template/core/js/plugins/dataTables/swf/copy_csv_xls_pdf.swf"
                 }
             });
-    		/* multi select */
+        	/* multi select */
        	var config = {
                 '.chosen-select'           : {search_contains:true},
                 '.chosen-select-deselect'  : {allow_single_deselect:true},
