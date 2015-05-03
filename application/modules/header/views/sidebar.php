@@ -130,43 +130,51 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
 				
 				
 				<li><a href="marketplace/watching"><i class="fa fa-eye"></i> Watching 
+        
+				<span id="count_watch_listing">
 				<?php $count_watch_listing=count_watch_listing(); 
 				if($count_watch_listing){ ?>
-				 <span class="label label-warning pull-right" id="count_watch_listing">
+				 <span class="label label-warning pull-right">
 				<?php  echo $count_watch_listing; ?>
 				</span><?php } ?>
+        </span>
 				</a></li> 
 				
 				<li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers
+        <span id="count_offer">
 				<?php 
 				$counteroffer=all_offer(); 
 				if($counteroffer){
 				?>
-				<span class="label label-info pull-right" id="count_offer">
+				<span class="label label-info pull-right">
 				<?php  echo $counteroffer; ?></span>
 				<?php } ?> 
+        </span>
 				</a></li>
 					
 				
 				<li><a href="marketplace/open_orders"><i class="fa fa-book"></i> Open Orders 
+        <span id="count_open_order">
         <?php 
 				$countopen_order=count_open_order(); 
 				if($countopen_order){ ?>
-        <span class="label label-warning pull-right" id="count_open_order">
+        <span class="label label-warning pull-right">
 						<?php  echo $countopen_order; ?>
 				</span>
 				<?php }?>
+        </span>
         </a></li>
 				<li><a href="marketplace/negotiation"><i class="fa fa-book"></i> Negotiation </a></li>
 				
-				
 				<li><a href="marketplace/listing"><i class="fa fa-list"></i> My Listings 
+        <span id="countmy_listing">
         <?php $countmy_listing=countmy_listing(); 
 				if($countmy_listing){ ?>
-        <span class="label label-warning pull-right" id="countmy_listing">
+        <span class="label label-warning pull-right">
 				<?php echo $countmy_listing; ?>
 				</span>
         <?php } ?>
+        </span>
         </a></li>
 				
 				<li><a href="marketplace/history"><i class="fa fa-file-text"></i> Order History</a></li>
@@ -175,6 +183,8 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
 										<li><a href="marketplace/sell_listing"> Create Sell Listing</a></li>
 								</ul>
 						</li>
+		       
+		
 		
 		</ul>
 </li>
@@ -188,21 +198,17 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
 	 <ul class="nav nav-second-level">
 				<li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Buy</a></li>
 				<li><a href="marketplace/sell"><i class="fa fa-tag"></i> Sell</a></li>
-				<li><a href="marketplace/watching"><i class="fa fa-eye"></i> Watching  <span class="label label-warning pull-right" id="count_watch_listing"></span></a></li> 
-				<li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers<span class="label label-info pull-right" id="count_offer"></span></a></li>
-				<li><a href="marketplace/open_orders"><i class="fa fa-book"></i> Open Orders <span class="label label-warning pull-right" id="count_open_order"></span>
-        </a></li>
-				<li><a href="marketplace/negotiation"><i class="fa fa-book"></i> Negotiation </a></li>
-				<li><a href="marketplace/listing"><i class="fa fa-list"></i> My Listings  <span class="label label-warning pull-right" id="countmy_listing"></span>
-        </a></li>
-				
+				<li><a href="marketplace/watching"><i class="fa fa-eye"></i> Watching</a></li>
+				<li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers<span class="label label-info pull-right">12</span></a></li>
+				<li><a href="marketplace/open_orders"><i class="fa fa-book"></i> Open Orders <span class="label label-warning pull-right">4</span></a></li>
+				<li><a href="marketplace/listing"><i class="fa fa-list"></i> My Listings</a></li>
 				<li><a href="marketplace/history"><i class="fa fa-file-text"></i> Order History</a></li>
-						<li><a href="javascript:void(0)"><i class="fa fa-plus"></i> Create Listing  <span class="fa arrow"></span></a>
-								<ul class="nav nav-second-level">		                                    <li><a href="marketplace/buy_listing"> Create Buy Listing</a></li>
-										<li><a href="marketplace/sell_listing"> Create Sell Listing</a></li>
-								</ul>
-						</li>
-		       
+								<li><a href="javascript:void(0)"><i class="fa fa-plus"></i> Create Listing  <span class="fa arrow"></span></a>
+										<ul class="nav nav-second-level">		                                    <li><a href="marketplace/buy_listing"><i class="fa fa-plus"></i> Create Buy Listing</a></li>
+												<li><a href="marketplace/sell_listing"><i class="fa fa-plus"></i> Create Sell Listing</a></li>
+										</ul>
+								</li>
+								
 		</ul>
 </li>
 <?php } ?>
@@ -222,47 +228,11 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
 </li>
 -->
 
-<?php if($url == 'creditdata') {?>
-<li class="active">
-		<a href=""><i class="fa fa-clipboard"></i> <span class="nav-label">Credit Check</span><span class="fa arrow"></span></a>
-		<ul class="nav nav-second-level">
-				<?php
-                                    $this->load->module('creditdata');
-                                    $this->creditdata->request_count();
-                                    $this->creditdata->accept_count();
-                                ?>
-                                <!-- <li><a href="creditdata/requests"><i class="fa fa-thumbs-up"></i> <span class="nav-label">Requests</span><span class="label label-warning pull-right">2</span></a></li>
-				<li><a href="creditdata/my_reports"><i class="fa fa-list"></i> My Reports</a></li> -->
-		</ul>
-</li>         
-<?php } else {?>
-<li>
-		<a href="creditcheck"><i class="fa fa-clipboard"></i> <span class="nav-label">Credit Check</span><span class="fa arrow"></span></a>
-		<ul class="nav nav-second-level">
-                                <?php
-                                    $this->load->module('creditdata');
-                                    $this->creditdata->request_count();
-                                    $this->creditdata->accept_count();
-                                ?>
-                                <!-- <li><a href="creditdata/requests"><i class="fa fa-thumbs-up"></i> <span class="nav-label">Requests</span><span class="label label-warning pull-right">2</span></a></li>
-				<li><a href="creditdata/my_reports"><i class="fa fa-list"></i> My Reports</a></li> -->
-		</ul>
-</li>         
-<?php } ?>
-
-
-<?php $mem_id = $this->member_model->get_where($this->session->userdata('members_id'))->membership; if($mem_id < 2){?>
-<li>
-		<a href="demo"><i class="fa fa-desktop"></i> <span class="nav-label">Request a Demo</span></a>
-</li>
-<?php } else{} ?>
-
-
 <li>
 		<a href="events"><i class="fa fa-calendar"></i> <span class="nav-label">Events</span></a>
 </li>
 
-<?php /* if($url == 'imei') {?>
+<?php if($url == 'imei') {?>
 <li class="active">
 		<a href="imei/"><i class="fa fa-barcode"></i> <span class="nav-label">IMEI Services</span> 
 				<span class="fa arrow"></span>
@@ -296,10 +266,7 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
 		<a href="#"><i class="fa fa-users"></i> <span class="nav-label">Social Hub</span></a>
 </li>
 -->
-<?php } */ ?>
-<li>
-		<a href="imei/"><i class="fa fa-barcode"></i> <span class="nav-label">IMEI Services</span></a>
-</li>
+<?php } ?>
 
 <?php if($url == 'support') {?>
 <li class="active">
@@ -348,16 +315,15 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
 </nav>
 <script type="text/javascript">
 function autoRefresh_div()
-{
+{	
 	$("#count_offer").load("<?php echo base_url().'header/ajax/offer'; ?>");
 	$("#count_watch_listing").load("<?php echo base_url().'header/ajax/watch_listing'; ?>");
 	$("#count_open_order").load("<?php echo base_url().'header/ajax/open_order'; ?>");
 	$("#countmy_listing").load("<?php echo base_url().'header/ajax/my_listing'; ?>");
 	$("#count_save_listing").load("<?php echo base_url().'header/ajax/save_listing'; ?>");
-	$("#count_watch_listing").load("<?php echo base_url().'header/ajax/watch_listing'; ?>");
 	
 }
 
 
-setInterval('autoRefresh_div()', 3000); // refresh div after 5 secs
+setInterval('autoRefresh_div()', 50000); 
 </script>
