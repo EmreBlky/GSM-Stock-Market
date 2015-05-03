@@ -107,14 +107,9 @@ class Marketplace extends MX_Controller
     
     function offers()
     {
-        $data['seller_offer_sent'] = $this->marketplace_model->listing_offer_common(2,2);
-
-        $data['buyer_offer_sent'] = $this->marketplace_model->listing_offer_common(1,2);
-
-        $data['seller_offer_recived'] = $this->marketplace_model->listing_offer_common(2,1,1);
-
-        $data['buyer_offer_recived'] = $this->marketplace_model->listing_offer_common(1,1,1);
-
+        $data['seller_offer'] = $this->marketplace_model->listing_offer_common(1);
+        $data['buying_request'] = $this->marketplace_model->listing_offer_common(2);
+        $this->output->enable_profiler(TRUE);
         $data['main'] = 'marketplace';        
         $data['title'] = 'GSM - Market Place: Offers';        
         $data['page'] = 'offers';
@@ -146,9 +141,9 @@ class Marketplace extends MX_Controller
         $this->templates->page($data);
     }
 
-    function invoice($invoice_id='')
+    function invoice($id='')
     {
-        $data['invoice'] = $this->marketplace_model->invoice($invoice_id);
+        $data['invoice'] = $this->marketplace_model->invoice($id);
 
         if(empty($data['invoice'])){
             redirect('marketplace/history');
@@ -446,6 +441,8 @@ class Marketplace extends MX_Controller
     
     function listing()
     {
+         $member_id=$this->session->userdata('members_id');
+         $data['saved_listing'] = $this->marketplace_model->get_result('listing', array('member_id'=>$member_id,'status'=>2));
         $data['sell_offer'] = $this->marketplace_model->listing_sell_offer();
         $data['buying_request'] = $this->marketplace_model->listing_buying_offer();
         
@@ -529,7 +526,7 @@ class Marketplace extends MX_Controller
      $member_id=$this->session->userdata('members_id');
     if($this->input->post('status')==1) {
         $this->form_validation->set_rules('schedule_date_time', '', '');
-        $this->form_validation->set_rules('product_mpn', 'product Mpn', 'required');
+        $this->form_validation->set_rules('product_mpn', 'product MPN/ISBN', '');
         $this->form_validation->set_rules('product_make', 'product make', 'required');
         $this->form_validation->set_rules('product_model', 'product model', 'required');
         $this->form_validation->set_rules('product_type', 'product type', 'required');
@@ -538,9 +535,8 @@ class Marketplace extends MX_Controller
         $this->form_validation->set_rules('spec', 'spec', 'required');
         $this->form_validation->set_rules('currency', 'currency', 'required');
         $this->form_validation->set_rules('unit_price', 'unit price', 'required|numeric');
-        /*if(isset($_POST['minimum_checkbox'])){
-          $this->form_validation->set_rules('min_price', 'min price', 'required|numeric');
-        }*/
+        $this->form_validation->set_rules('shipping_term', 'Shipping terms', 'required');
+
         if(isset($_POST['allowoffer_checkbox'])){
            $this->form_validation->set_rules('allow_offer', 'allow offer', 'required');
         }
@@ -622,6 +618,10 @@ class Marketplace extends MX_Controller
             $schedule_date_time=date('Y-m-d h:i:s');
             if($this->input->post('schedule_date_time')){
                 $schedule_date_time=$this->input->post('schedule_date_time');
+                 $schedule_date_time=date('Y-m-d h:i:s',strtotime($schedule_date_time));
+                  $data_insert['scheduled_status']   = 1;
+            }else{
+                 $data_insert['scheduled_status']   = 0;
             }
             
              $shipping_fee = array();
@@ -686,7 +686,8 @@ class Marketplace extends MX_Controller
         $data_insert['sell_shipping_fee']    =  json_encode($shipping_fee);
         $data_insert['product_desc']         =  $this->input->post('product_desc');
         $data_insert['duration']             =  $this->input->post('duration');
-        $data_insert['listing_end_datetime'] =  date('Y-m-d H:i:s', strtotime("+".$this->input->post('duration')." days"));            
+        //$sc_add_duration=strtotime($schedule_date_time);
+        $data_insert['listing_end_datetime'] =  date('Y-m-d H:i:s', strtotime($schedule_date_time."+".$this->input->post('duration')." days"));            
         $data_insert['member_id']            = $member_id; 
         $data_insert['status']               = $status; 
         if(!empty($list_id))
@@ -781,7 +782,7 @@ class Marketplace extends MX_Controller
             redirect('marketplace/listing');
         }elseif($status == 2){
            $this->session->set_flashdata('msg_success','Listing save for later, it will be under considration.');
-           redirect('marketplace/saved_listing');
+           redirect('marketplace/listing');
             
         }
         }
@@ -821,7 +822,9 @@ class Marketplace extends MX_Controller
         }else{
            $data['product_types']=FALSE;
         }
-        
+
+
+      //  $data['couriers'] = $this->marketplace_model->get_result('couriers');
         $this->load->module('templates');
         $this->templates->page($data);
     }
@@ -853,8 +856,8 @@ class Marketplace extends MX_Controller
      //$this->output->enable_profiler(TRUE);
      if($this->input->post('status')==1) {
         $this->form_validation->set_rules('schedule_date_time', '', '');
-        $this->form_validation->set_rules('product_mpn', 'product mpn', 'required');
-       
+        $this->form_validation->set_rules('product_mpn', 'product MPN/ISBN', '');
+
         $this->form_validation->set_rules('product_make', 'product make', 'required');
         $this->form_validation->set_rules('product_model', 'product model', 'required');
         $this->form_validation->set_rules('product_type', 'product type', 'required');
@@ -975,6 +978,9 @@ class Marketplace extends MX_Controller
             if($this->input->post('schedule_date_time')){
                 $schedule_date_time=$this->input->post('schedule_date_time');
                  $schedule_date_time=date('Y-m-d h:i:s',strtotime($schedule_date_time));
+                  $data_insert['scheduled_status']   = 1;
+            }else{
+                 $data_insert['scheduled_status']   = 0;
             }
 
         /*product mpn and isbn check*/
@@ -1016,7 +1022,7 @@ class Marketplace extends MX_Controller
             $data_insert['product_desc']         =  $this->input->post('product_desc');
             $data_insert['duration']             =  $this->input->post('duration');
             $enddatetoin=$schedule_date_time;
-            $data_insert['listing_end_datetime'] =  date('Y-m-d H:i:s', strtotime("+".$this->input->post('duration')." days"));            
+            $data_insert['listing_end_datetime'] =  date('Y-m-d H:i:s', strtotime($schedule_date_time."+".$this->input->post('duration')." days"));                
             $data_insert['member_id']            = $member_id; 
             $data_insert['status']               = $status; 
         if(!empty($list_id))
@@ -1111,7 +1117,7 @@ class Marketplace extends MX_Controller
             redirect('marketplace/listing');
         }elseif($status == 2){
            $this->session->set_flashdata('msg_success','Listing save for later, it will be under considration.');
-           redirect('marketplace/saved_listing');
+           redirect('marketplace/listing');
             
         }
         }
@@ -1285,6 +1291,66 @@ class Marketplace extends MX_Controller
         $this->load->module('templates');
         $this->templates->page($data);
     }
+
+public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
+
+    $data=array('Status'=>FALSE,'numrows'=>0);
+
+    if($_POST){
+
+        if($type=='MPNISBN'){
+
+            $mpnisbn=trim($_POST['mpnisbn']);
+
+            $query=$this->db->query("SELECT product_make FROM `listing_attributes` WHERE product_mpn_isbn ='$mpnisbn' GROUP BY product_make;");
+
+            if($query->num_rows()>0){
+                $data=array(
+                    'Status' =>TRUE,
+                    'numrows'=> $query->num_rows(),
+                    'product_make'=>$query->result()
+                    );
+
+            }else{
+                 $query=$this->db->query("SELECT product_make FROM `listing_attributes` GROUP BY product_make;");
+                   $data=array(
+                    'Status' =>TRUE,
+                    'numrows'=> $query->num_rows(),
+                    'product_make'=>$query->result()
+                    );
+            }
+
+            //MPNISBN
+        }elseif($type=='MAKE'){
+
+            $product_make=trim($_POST['make']);
+            $product_mpn_isbn=trim($_POST['mpnisbn']);
+
+            $query=$this->db->query("SELECT product_model FROM `listing_attributes` WHERE product_mpn_isbn ='$product_mpn_isbn' AND product_make like '%$product_make%' GROUP BY product_make;");
+
+            if($query->num_rows()>0){
+                $data=array(
+                    'Status' =>TRUE,
+                    'numrows'=> $query->num_rows(),
+                    'product_model'=>$query->result()
+                    );
+            }else{
+             $query=$this->db->query("SELECT product_model FROM `listing_attributes`  WHERE  product_make like '%$product_make%' GROUP BY product_make;");
+               $data=array(
+                'Status' =>FALSE,
+                'numrows'=> $query->num_rows(),
+                'product_model'=>$query->result()
+                );
+            }
+
+        }
+
+    }
+
+    header('Content-Type: application/json');
+    echo json_encode($data);
+
+}
 
   function get_attributes_info($type='MPN'){
     $check_status='false';
@@ -1558,11 +1624,13 @@ class Marketplace extends MX_Controller
         $data['page'] = 'listing_detail';
         //$data['page'] = 'buy_html';
         $data['member_id'] =$member_id;
-        if($data['listing_detail'] =  $this->marketplace_model->listingdetailv($id)){
-
+        if($data['listing_detail'] = $this->marketplace_model->get_row('listing',array('id'=>$id,'member_id'=>$member_id))){
+            $a=1;
+        }else{
+        $data['listing_detail'] =  $this->marketplace_model->listingdetailv($id);
         }
         if($data['listing_detail']==FALSE)   
-            redirect('marketplace/index');
+            redirect('marketplace/listing');
 
         $data['member'] = $this->marketplace_model->get_row('members',array('id'=> $data['listing_detail']->member_id));
         if($data['member']){
@@ -1853,7 +1921,15 @@ class Marketplace extends MX_Controller
       } 
      }
        if( $need_to_insert){
-
+        if($listing->listing_type==1){
+            $buyer_id_to_fix=$buyer_id;
+            $seller_id_to_fix=$listing->member_id;
+        }
+        elseif($listing->listing_type==2){
+            $buyer_id_to_fix=$listing->member_id;
+            $seller_id_to_fix=$buyer_id;
+        }
+        
         if($checkoffer=$this->marketplace_model->get_row('make_offer', array('buyer_id'=> $buyer_id,'seller_id' => $listing->member_id,'listing_id'=> $listing_id,'product_qty'   => $product_qty,'unit_price' => $unit_price))){
 
         $list=array('STATUS'=>7,'Message'=>'Offer is Already accepted.'); 
@@ -1861,8 +1937,10 @@ class Marketplace extends MX_Controller
         else{
          $total_price=  ($product_qty *  $unit_price) +  $shippingamount;
        $data_insert=array(
-                'buyer_id'      => $buyer_id,
-                'seller_id'     => $listing->member_id,
+                'buyer_id'      => $buyer_id_to_fix,
+                'seller_id'     => $seller_id_to_fix,
+                'offer_given_by'    => $buyer_id,
+                'offer_received_by'   => $listing->member_id,
                 'listing_id'    => $listing_id,
                 'product_qty'   => $product_qty,
                 'unit_price'    => $unit_price,
@@ -1942,27 +2020,36 @@ class Marketplace extends MX_Controller
     {
         $list = $this->input->post('listing_id');
         $setstatus = $this->input->post('status');
-        $make_offer = $this->marketplace_model->view_offer($list, $setstatus);
-        if(!empty($make_offer)){ ?>
-          <table class="table table-bordered" >
+        $member_id =  $this->session->userdata('members_id');
+        if($this->marketplace_model->get_row('listing',array('id'=>$list,'member_id'=>$member_id))){
+            $make_offer = $this->marketplace_model->view_offer($list, $setstatus);
+        }else{
+            $make_offer = $this->marketplace_model->view_offer($list, $setstatus,1);
+        }
+         $listingonfo=$this->marketplace_model->get_row('listing',array('id'=>$list));
+
+        if(!empty($make_offer)){ 
+            ?>
+            <h3 style="  margin-top: -46px;"><center><?php echo $listingonfo->total_qty.' x '.$listingonfo->product_make.' '.$listingonfo->product_model.' '.$listingonfo->condition.' '.$listingonfo->product_color.' @ '.currency_class($listingonfo->currency).' '.$listingonfo->unit_price;?></center></h3>
+          <table class="table table-bordered" style="margin-top: 46px;">
             <thead>
                 <tr>
                     <th>Country</th>
-                    <th>Company</th>
-                    <th>Rating</th>
-                    <th>Quantity</th>
+                    <th>Quantity Request</th>
+                    <th>Unit Price</th>
                     <th>Shipping</th>
                     <th>Grand Total</th>
                     <th>Options</th>
                 </tr>
             </thead>
             <tbody>
-        <?php foreach ($make_offer as $value) { ?>
+        <?php foreach ($make_offer as $value) { 
+           
+            ?>
         <tr>
             <td><img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" alt="Currency" /></td>
-            <td><?php echo $value->company_name; ?></td>
-            <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
             <td><?php echo $value->product_qty; ?></td>
+            <td><?php echo $value->unit_price;?>
             <td><?php echo $value->shipping; ?></td>
             <td><?php echo currency_class($value->buyer_currency).' '.number_format($value->total_price,2);
              ?></td>
@@ -1973,22 +2060,14 @@ class Marketplace extends MX_Controller
             $date2 = strtotime(date('d-m-y H:i:s')); 
 
             if($date1 > $date2){           
-            if($value->seller_id==$this->session->userdata('members_id')){
+            if($value->offer_received_by==$this->session->userdata('members_id')){
             ?>
-            <a onclick="counter_offer(<?php echo $value->id; ?>)" class="btn btn-warning"  data-toggle="modal" data-target="#form_counter_section" ><i class="fa fa-hand-o-down"></i> Counter Offer</a>
+            <a onclick="counter_offer(<?php echo $value->id.','.$value->product_qty.','.$value->unit_price;?>)" class="btn btn-warning"  data-toggle="modal" data-target="#form_counter_section" ><i class="fa fa-hand-o-down"></i> Counter Offer</a>
             <a href="<?php echo base_url().'marketplace/offer_status/'.$value->id.'/1/'.$value->buyer_id ?>" class="btn btn-outline btn-primary"><i class="fa fa-check"></i> Accept</a>
             <a href="<?php echo base_url().'marketplace/offer_status/'.$value->id.'/2/'.$value->buyer_id ?>" class="btn btn-outline btn-danger"><i class="fa fa-times"></i> Decline</a>
-            <?php }else{
-                if($value->offer_status==0){ ?>
+            <?php }else{ ?>
                 <div class="btn btn-outline btn-warning"><i class="fa fa-hand-o-down"></i>Awaiting</div>
-              <?php }elseif($value->offer_status==1){ ?>
-                <div class="btn btn-outline btn-primary"><i class="fa fa-check"></i>Accepted</div>
-              <?php }
-              elseif($value->offer_status==2){ ?>
-                <div class="btn btn-outline btn-dangerbtn-outline btn-danger"><i class="fa fa-times"></i>Declined</div> 
-                <?php }
-                elseif($value->offer_status==3){ ?>
-                <div class="btn btn-outline btn-dangerbtn-outline btn-danger"><i class="fa fa-hand-o-down"></i>Dummy (negotiation)</div> <?php }
+              <?php
                 }} else{?>
             <a class="btn btn-outline btn-danger"><i class="fa fa-times"></i> Offer Expired</a>
             <?php } ?>
@@ -1999,34 +2078,16 @@ class Marketplace extends MX_Controller
         </table>
         <?php }
     }
-
-    /*public function offer_status()
-    {
-       $list = $this->input->post('listing_id');
-       $buyer_id = $this->input->post('buyer_id');
-
-
-        $update_all = $this->marketplace_model->update('make_offer',array('offer_status'=>2), array('listing_id'=>$list));
-    if(!empty($update_all)){
-        
-       $query = $this->marketplace_model->update('make_offer',array('offer_status'=>1), array('listing_id'=>$list, 'buyer_id'=>$buyer_id));
-
-       if(!empty($query)){
-        echo "<span class='alert alert-success'> offer status updated successfully. order will be display on open order. </span>";
-       }else{
-        echo "<span class='alert alert-danger'>updation failed.</span>";
-       }
-    }
-
-    }*/
     
     function negotiation(){
-       // $this->output->enable_profiler(TRUE);
+        $this->output->enable_profiler(TRUE);
         $data['main'] = 'marketplace';        
         $data['title'] = 'GSM - Negotiation';        
         $data['page'] = 'negotiation';        
         
-        $data['sell_buy_negotiation']=$this->marketplace_model->sell_buy_negotiation();
+        $data['sell_negotiation']=$this->marketplace_model->sell_buy_negotiation(1);
+
+        $data['buy_negotiation']=$this->marketplace_model->sell_buy_negotiation(2);
 
         $this->load->module('templates');
         $this->templates->page($data);
@@ -2060,9 +2121,20 @@ class Marketplace extends MX_Controller
             $unit_price=number_format($uprice,2);
          }
          
+          if($listing->listing_type==1){
+            $buyer_id_to_fix=$buyer_id;
+            $seller_id_to_fix=$listing->member_id;
+        }
+        elseif($listing->listing_type==2){
+            $buyer_id_to_fix=$listing->member_id;
+            $seller_id_to_fix=$buyer_id;
+        }
+
         $data_insert=array(
-                'buyer_id'      => $buyer_id,
-                'seller_id'     => $listing->member_id,
+                'buyer_id'      => $buyer_id_to_fix,
+                'seller_id'     => $seller_id_to_fix,
+                'offer_given_by'    => $buyer_id,
+                'offer_received_by'   => $listing->member_id,
                 'listing_id'    => $listing_id,
                 'product_qty'   => $listing->qty_available,
                 'unit_price'    => $unit_price,
@@ -2075,14 +2147,17 @@ class Marketplace extends MX_Controller
                 'created'       => date('Y-m-d, H:i:s')
                 );
         $makeofferid=$this->marketplace_model->insert('make_offer',$data_insert);
-        if($listing->listing_type==1){$offer_type=2;
+        if($listing->listing_type==1){
+            $offer_type=2;
             }else
             {$offer_type=1;
             }
         $data_insert_negotiation=array(
-                'buyer_id'      => $buyer_id,
                 'offer_id'      => $makeofferid,
-                'seller_id'     => $listing->member_id,
+                'buyer_id'      => $buyer_id_to_fix,
+                'offer_given_by'    => $buyer_id,
+                'offer_received_by'   => $listing->member_id,
+                'seller_id'     => $seller_id_to_fix,
                 'listing_id'    => $listing_id,
                 'product_qty'   => $listing->qty_available,
                 'unit_price'    => $unit_price,
@@ -2123,7 +2198,7 @@ class Marketplace extends MX_Controller
        redirect($_SERVER['HTTP_REFERER']);
     }
 
-   function deal_info($listing_id='')
+   function deal_info($listing_id='',$order_id='')
     {
         if($deal_info =  $this->marketplace_model->get_row('listing',array('id'=>$listing_id))){
         ?>
@@ -2140,7 +2215,8 @@ class Marketplace extends MX_Controller
             </dl>
             <dl class="dl-horizontal">
                 <h4 style="text-align:center">Price</h4>
-                <dt>Buy Price:</dt> <dd>  <?php if(!empty($deal_info->currency)) { echo currency_class($deal_info->currency); } ?><?php if(!empty($deal_info->min_price)){ echo $deal_info->min_price; } ?></dd>
+                <dt>Buy Price:</dt> <dd>  <?php if(!empty($deal_info->currency)) { echo currency_class($deal_info->currency); } 
+                if(!empty($deal_info->unit_price)){ echo $deal_info->unit_price; } ?></dd>
                 <dt>Product Type:</dt> <dd>  <?php if(!empty($deal_info->product_type)){ echo $deal_info->product_type; } ?></dd>
                 <dt>Condition:</dt> <dd> <?php if(!empty($deal_info->condition)){ echo $deal_info->condition; } ?></dd>
                 <dt>Spec</dt> <dd><?php if(!empty($deal_info->spec)){ echo $deal_info->spec; } ?></dd>
@@ -2163,13 +2239,53 @@ class Marketplace extends MX_Controller
             <h4>Product Description</h4>
             <?php if(!empty($deal_info->product_desc)){ echo $deal_info->product_desc; } ?>
         </div>
-        <?php } 
+        <?php if($get_order_info=$this->marketplace_model->get_row('make_offer',array('id'=>$order_id))){
+        if($get_order_info->payment_detail){
+        ?>
+         <div class="col-lg-12">
+         <table class="table">
+                 <tr>
+                     <th>Date & Time</th>
+                     <th>Buyer Or Seller</th>
+                     <th>Status</th>
+                     <th>Detail</th>
+                 </tr>
+                 <tr><td>
+                     <?php echo date('d-M-y, H:i', strtotime($get_order_info->payment_infoadd_datetime)); ?>
+                    </td>
+                    <td>Seller</td>
+                    <td>Pay Info sent</td>
+                    <td><?php echo $get_order_info->payment_detail;?></td>
+                    </tr>
+                <?php if($get_order_info->payment_done_datetime !='0000-00-00 00:00:00'){ ?>
+                    <tr><td>
+                      <?php echo date('d-M-y, H:i', strtotime($get_order_info->payment_done_datetime)); ?>
+                    </td>
+                    <td>Buyer</td>
+                    <td>Pay sent</td>
+                    <td>Payment Sent</td>
+                    </tr>
+                    <?php } ?>
+
+                    <?php if($get_order_info->tracking_shipping){ ?>
+                    <tr><td>
+                      <?php echo date('d-M-y, H:i', strtotime($get_order_info->shipping_arrived_datetime)); ?>
+                    </td>
+                    <td>Seller</td>
+                    <td>Shipped</td>
+                    <td><?php echo $get_order_info->tracking_shipping;?></td>
+                    </tr>
+                    <?php } ?>
+
+         </table>
+         </div>
+        <?php }}}
     }
    public function insert_payment_info(){
       $payment_detail = $this->input->post('payment_info');
       $user_id = $this->session->userdata('members_id');
       $id = $this->input->post('order_id');
-      if($this->marketplace_model->update('make_offer',array('order_status'=>1,'payment_detail'=>$payment_detail),array('id'=>$id,'seller_id' =>$user_id))){
+      if($this->marketplace_model->update('make_offer',array('order_status'=>1,'payment_detail'=>$payment_detail,'payment_infoadd_datetime'=>date('Y-m-d h:i:s')),array('id'=>$id,'seller_id' =>$user_id))){
             $this->session->set_flashdata('msg_success','Payment information save sucessfully.');  
         }
         else{
@@ -2196,10 +2312,11 @@ class Marketplace extends MX_Controller
 
     public function payment_confirm(){
       if(isset($_POST['payment_confirm'])){
+        $shipping_detail = $this->input->post('shipping_info');
       $user_id = $this->session->userdata('members_id');
       $id = $this->input->post('order_id');
-      if($this->marketplace_model->update('make_offer',array('order_status'=>2,'payment_recevied_datetime'=>date('Y-m-d h:i:s')),array('id'=>$id,'seller_id'=>$user_id))){
-            $this->session->set_flashdata('msg_success','Payment received sucessfully.');  
+      if($this->marketplace_model->update('make_offer',array('order_status'=>3,'payment_recevied_datetime'=>date('Y-m-d h:i:s'),'tracking_shipping'=>$shipping_detail,'shipping_arrived_datetime'=>date('Y-m-d h:i:s')),array('id'=>$id,'seller_id'=>$user_id))){
+            $this->session->set_flashdata('msg_success','PShipping Information save sucessfully.');  
         }
         else{
           $this->session->set_flashdata('msg_info','Invalid.');  
@@ -2236,6 +2353,11 @@ class Marketplace extends MX_Controller
           $this->session->set_flashdata('msg_info','Invalid.');  
         }
        redirect($_SERVER['HTTP_REFERER']);
+   }
+
+   public function feedback_redirect(){
+    $this->session->set_flashdata('msg_success','Feedback save is sucessfully.');
+    redirect('marketplace/history');
    }
 
    public function buyer_feedback(){
@@ -2276,33 +2398,37 @@ class Marketplace extends MX_Controller
   {
     $member_id=$this->session->userdata('members_id');
     $parent_id = $this->input->post('parent_id');
+    $listing_id = $this->input->post('listing_id');
     $counter_offer_sec = $this->marketplace_model->view_negotiation_payasking($parent_id);
+
+    $listingonfo=$this->marketplace_model->get_row('listing',array('id'=>$listing_id));
+
     if(!empty($counter_offer_sec)){ ?>
-      <table class="table table-bordered" >
+    <h3 style="  margin-top: -46px;"><center><?php echo $listingonfo->total_qty.' x '.$listingonfo->product_make.' '.$listingonfo->product_model.' '.$listingonfo->condition.' '.$listingonfo->product_color.' @ '.currency_class($listingonfo->currency).' '.$listingonfo->unit_price;?></center></h3>
+
+      <table class="table table-bordered" style="margin-top: 46px;" >
         <thead>
-            <tr>
+            <tr >
                 <th>Country</th>
-                <th>Company</th>
-                <th>Rating</th>
-                <th>Quantity</th>
+                <th>Quantity Request</th>
+                <th>Unit Price</th>
                 <th>Shipping</th>
                 <th>Grand Total</th>
                 <th>Options</th>
             </tr>
         </thead>
         <tbody>
-    <?php foreach ($counter_offer_sec as $value) { ?>
+    <?php foreach ($counter_offer_sec as $value) { 
+        ?>
     <tr>
         <td><img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" alt="Currency" /></td>
-        <td><?php echo $value->company_name; ?></td>
-        <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
-        <td><?php echo $value->product_qty; ?></td>
-        <td><?php echo $value->shipping; ?></td>
-        <td><?php echo currency_class($value->buyer_currency).' '.number_format($value->total_price,2);
-         ?></td>
+            <td><?php echo $value->product_qty; ?></td>
+            <td><?php echo $value->unit_price;?>
+            <td><?php echo $value->shipping; ?></td>
+            <td><?php echo currency_class($value->buyer_currency).' '.number_format($value->total_price,2);
+             ?></td>
         <td class="text-center">
         <?php 
-         //date('m-d-Y',strtotime($date1 . "+1 days"));
         $date1 = strtotime(date('d-m-y H:i:s', strtotime($value->created . '+1 days'))); 
         $date2 = strtotime(date('d-m-y H:i:s')); 
 
@@ -2326,15 +2452,18 @@ class Marketplace extends MX_Controller
   {
     $member_id=$this->session->userdata('members_id');
     $parent_id = $this->input->post('parent_id');
+    $listing_id = $this->input->post('listing_id');
+    $counter_offer_sec = $this->marketplace_model->view_negotiation_payasking($parent_id);
+    $listingonfo=$this->marketplace_model->get_row('listing',array('id'=>$listing_id));
     $counter_offer_sec = $this->marketplace_model->view_negotiation($parent_id);
     if(!empty($counter_offer_sec)){ ?>
-      <table class="table table-bordered" >
+     <h3 style="  margin-top: -46px;"><center><?php echo $listingonfo->total_qty.' x '.$listingonfo->product_make.' '.$listingonfo->product_model.' '.$listingonfo->condition.' '.$listingonfo->product_color.' @ '.currency_class($listingonfo->currency).' '.$listingonfo->unit_price;?></center></h3>
+      <table class="table table-bordered"  style="margin-top: 46px;" >
         <thead>
             <tr>
-                <th>Country</th>
-                <th>Company</th>
-                <th>Rating</th>
-                <th>Quantity</th>
+                 <th>Country</th>
+                <th>Quantity Request</th>
+                <th>Unit Price</th>
                 <th>Shipping</th>
                 <th>Grand Total</th>
                 <th>Options</th>
@@ -2344,12 +2473,11 @@ class Marketplace extends MX_Controller
     <?php foreach ($counter_offer_sec as $value) { ?>
     <tr>
         <td><img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" alt="Currency" /></td>
-        <td><?php echo $value->company_name; ?></td>
-        <td><span class="fa fa-star" style="color:#FC3"></span> <span style="color:green">94</span></td>
-        <td><?php echo $value->product_qty; ?></td>
-        <td><?php echo $value->shipping; ?></td>
-        <td><?php echo currency_class($value->buyer_currency).' '.number_format($value->total_price,2);
-         ?></td>
+            <td><?php echo $value->product_qty; ?></td>
+            <td><?php echo $value->unit_price;?>
+            <td><?php echo $value->shipping; ?></td>
+            <td><?php echo currency_class($value->buyer_currency).' '.number_format($value->total_price,2);
+             ?></td>
         <td class="text-center">
         <?php 
          //date('m-d-Y',strtotime($date1 . "+1 days"));
@@ -2358,7 +2486,7 @@ class Marketplace extends MX_Controller
 
     if($value->access!=$member_id){
         if(empty($value->pay_asking_price)){?>
-        <a onclick="counter_offer(<?php echo $value->offer_id; ?>)" class="btn btn-warning"  data-toggle="modal" data-target="#form_counter_section" ><i class="fa fa-hand-o-down"></i> Counter Offer</a>
+        <a onclick="counter_offer(<?php echo $value->offer_id.','.$value->product_qty.','.$value->unit_price; ?>)" class="btn btn-warning"  data-toggle="modal" data-target="#form_counter_section" ><i class="fa fa-hand-o-down"></i> Counter Offer</a>
         <?php } ?>
         <a href="<?php echo base_url().'marketplace/offer_status_negotiation/'.$value->offer_id.'/'.$value->id.'/1/'.$value->buyer_id ?>" class="btn btn-outline btn-primary"><i class="fa fa-check"></i> Accept</a>
         <a href="<?php echo base_url().'marketplace/offer_status_negotiation/'.$value->offer_id.'/'.$value->id.'/2/'.$value->buyer_id ?>" class="btn btn-outline btn-danger"><i class="fa fa-times"></i> Decline</a>
@@ -2539,4 +2667,17 @@ class Marketplace extends MX_Controller
         $this->session->set_flashdata('msg_success','Offer accepted '); 
         redirect($_SERVER['HTTP_REFERER']);
     }
+
+   function end_listing_status($listing_id='')
+   {   
+       if(!empty($listing_id)){
+        $member_id =  $this->session->userdata('members_id');
+           $this->marketplace_model->update('listing', array('status'=>3),array('id'=>$listing_id,'member_id'=>$member_id));
+               $this->session->set_flashdata('msg_success', 'Listing ended successfully.');
+       }
+       else{
+            $this->session->set_flashdata('msg_info','Invalid listing id.'); 
+       }
+       redirect($_SERVER['HTTP_REFERER']);
+   }
 }
