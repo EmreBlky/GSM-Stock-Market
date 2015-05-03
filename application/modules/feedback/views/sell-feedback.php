@@ -43,6 +43,7 @@
                   </div>
 					
                   <div class="modal-footer">
+                  <input type="hidden" name="order_id" id="order_id" value="<?php echo $order_id; ?>"/>
                       <input type="hidden" name="sent_by" id="sent_by" value="<?php echo $mid; ?>"/>
                       <input type="hidden" name="sent_to" id="sent_to" value="<?php echo $sid; ?>"/>
                       <button type="button" id="submit_message" class="btn btn-primary">Leave Feedback</button>
@@ -73,6 +74,7 @@
         var rateShip        = $('.shipping-rating').val();
         var rateCompany     = $('.company-rating').val();
         var type            = 'sell';
+        var order_id        = $('#order_id').val();
                 
         //var subject = $("#subject").val().replace(/(\r\n|\n|\r)/gm, '%0D%0A');
         var body    = $("#summary_feedback").val().replace(/(\r\n|\n|\r)/gm, 'BREAK1');
@@ -82,13 +84,11 @@
         
          $.ajax({
                 type: "POST",
-                url: "feedback/processFeedback/"+ mid +"/"+ sid +"/"+ rateDesc +"/"+ rateComms +"/"+ rateShip +"/"+ rateCompany +"/"+ body +"/" + type + "",
+                url: "feedback/processFeedback/"+ mid +"/"+ sid +"/"+ rateDesc +"/"+ rateComms +"/"+ rateShip +"/"+ rateCompany +"/"+ order_id+"/"+ 2 +"/"+ body +"/" + type + "",
                 dataType: "html",
                 success:function(data){
-                  $('#summary_feedback').val('');  
-                  $('#seller_feedback').modal('hide');                  
-                  toastr.success('Your message has been sent.', 'Feedbac Alert');
-                  $("#submit_message").show('slow');
+                  
+                  window.location.href = "<?php echo base_url('marketplace/feedback_redirect')?>";
                 },
             });    
     });
