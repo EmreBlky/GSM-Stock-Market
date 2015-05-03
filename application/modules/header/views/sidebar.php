@@ -119,6 +119,27 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
 
 <?php if($url == 'marketplace') {?>
 <li class="active">
+		<a href="marketplace/notice"><i class="fa fa-line-chart"></i><span class="nav-label">Marketplace</span><span class="fa arrow"></span></a>
+	 	<ul class="nav nav-second-level">
+				<li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Buy</a></li>
+				<li><a href="marketplace/sell"><i class="fa fa-tag"></i> Sell</a></li>
+				<li><a href="marketplace/watching"><i class="fa fa-eye"></i> Watching <span class="label label-primary pull-right">4</span></a></li> 
+				<li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers <span class="label label-info pull-right">20</span></a></li>
+				<li><a href="marketplace/open_orders"><i class="fa fa-book"></i> Open Orders <span class="label label-warning pull-right">2/5</span></a></li>
+				<li><a href="marketplace/negotiation"><i class="fa fa-hand-o-up"></i> Negotiations <span class="label label-warning pull-right">1/2</span></a></li>
+				<li><a href="marketplace/listing"><i class="fa fa-list"></i> My Listings </a></li>
+				<li><a href="marketplace/history"><i class="fa fa-file-text"></i> Order History</a></li>
+				<li><a href="javascript:void(0)"><i class="fa fa-plus"></i> Create Listing  <span class="fa arrow"></span></a>
+				<ul class="nav nav-third-level">
+                	<li><a href="marketplace/buy_listing"><i class="fa fa-level-up"></i> Buying Request</a></li>
+                    <li><a href="marketplace/sell_listing"><i class="fa fa-level-down"></i> Selling Offer</a></li>
+				</ul>
+				</li>
+		       
+		</ul>
+</li>
+<?php /*
+<li class="active">
 		<a href="marketplace/notice">
 				<i class="fa fa-line-chart"></i> 
 				<span class="nav-label">Marketplace</span>
@@ -177,31 +198,25 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
 						</li>
 		
 		</ul>
-</li>
+</li><?php */ ?>
 <?php } else {?>
 <li>
-		<a href="marketplace/notice">
-				<i class="fa fa-line-chart"></i> 
-				<span class="nav-label">Marketplace</span>
-				<span class="fa arrow"></span>
-		</a>
-	 <ul class="nav nav-second-level">
+		<a href="marketplace/notice"><i class="fa fa-line-chart"></i><span class="nav-label">Marketplace</span><span class="fa arrow"></span></a>
+	 	<ul class="nav nav-second-level">
 				<li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Buy</a></li>
 				<li><a href="marketplace/sell"><i class="fa fa-tag"></i> Sell</a></li>
-				<li><a href="marketplace/watching"><i class="fa fa-eye"></i> Watching  <span class="label label-warning pull-right" id="count_watch_listing"></span></a></li> 
-				<li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers<span class="label label-info pull-right" id="count_offer"></span></a></li>
-				<li><a href="marketplace/open_orders"><i class="fa fa-book"></i> Open Orders <span class="label label-warning pull-right" id="count_open_order"></span>
-        </a></li>
-				<li><a href="marketplace/negotiation"><i class="fa fa-book"></i> Negotiation </a></li>
-				<li><a href="marketplace/listing"><i class="fa fa-list"></i> My Listings  <span class="label label-warning pull-right" id="countmy_listing"></span>
-        </a></li>
-				
+				<li><a href="marketplace/watching"><i class="fa fa-eye"></i> Watching <span class="label label-primary pull-right">4</span></a></li> 
+				<li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers <span class="label label-info pull-right">20</span></a></li>
+				<li><a href="marketplace/open_orders"><i class="fa fa-book"></i> Open Orders <span class="label label-warning pull-right">2/5</span></a></li>
+				<li><a href="marketplace/negotiation"><i class="fa fa-hand-o-up"></i> Negotiations <span class="label label-warning pull-right">1/2</span></a></li>
+				<li><a href="marketplace/listing"><i class="fa fa-list"></i> My Listings </a></li>
 				<li><a href="marketplace/history"><i class="fa fa-file-text"></i> Order History</a></li>
-						<li><a href="javascript:void(0)"><i class="fa fa-plus"></i> Create Listing  <span class="fa arrow"></span></a>
-								<ul class="nav nav-second-level">		                                    <li><a href="marketplace/buy_listing"> Create Buy Listing</a></li>
-										<li><a href="marketplace/sell_listing"> Create Sell Listing</a></li>
-								</ul>
-						</li>
+				<li><a href="javascript:void(0)"><i class="fa fa-plus"></i> Create Listing  <span class="fa arrow"></span></a>
+				<ul class="nav nav-third-level">
+                	<li><a href="marketplace/buy_listing"><i class="fa fa-level-up"></i> Buying Request</a></li>
+                    <li><a href="marketplace/sell_listing"><i class="fa fa-level-down"></i> Selling Offer</a></li>
+				</ul>
+				</li>
 		       
 		</ul>
 </li>
@@ -346,6 +361,7 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
 
 </div>
 </nav>
+<?php /*
 <script type="text/javascript">
 function autoRefresh_div()
 {
@@ -361,3 +377,4 @@ function autoRefresh_div()
 
 setInterval('autoRefresh_div()', 3000); // refresh div after 5 secs
 </script>
+*/ ?>
