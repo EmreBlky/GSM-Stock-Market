@@ -18,7 +18,7 @@
 <?php $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id);
 if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <div class="wrapper wrapper-content">
-  
+
 <div class="row">
 <?php if($check_securty){?>
 <form method="post" action="<?php echo current_url()?>"  class="validation form-horizontal"  enctype="multipart/form-data"/>
@@ -29,25 +29,39 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <h5>Listing Details</h5>
 </div>
 <?php if(validation_errors()){
-        ?><p class="bg-danger validation_message">Please check following errors validation below.</p><?php 
+        ?><p class="bg-danger validation_message">Please check following errors validation below.</p><?php
     }?>
 <div class="ibox-content"> <!-- Selling -->
 
-    <div class="form-group"><label class="col-md-3 control-label">Schedule Listing</label>
-         <div class="col-md-9"> 
-            <div class="input-group date form_datetime " data-date="<?php if(!empty($product_list->schedule_date_time)) echo $product_list->schedule_date_time; else echo date('Y').'-'.date('m').'-'.date('d') ?>" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
-                <input class="form-control" size="16" type="text" value="<?php if(!empty($product_list->schedule_date_time)){ 
-                    echo $product_list->schedule_date_time;} 
+
+     <div class="form-group"><label class="col-md-3 control-label">Schedule Listing</label>
+         <div class="col-md-9">
+
+
+ <?php  if(!empty($product_list->scheduled_status) && $product_list->scheduled_status==1 && $product_list->status==1){ ?>
+
+            <input type="text"  class="form-control" name="schedule_date_time1212" value="<?php if(!empty($product_list->schedule_date_time)) echo $product_list->schedule_date_time; ?>" disabled/>
+
+            <?php }else{ ?>
+
+           <div class="input-group date form_datetime " data-date="<?php if(!empty($product_list->schedule_date_time)) echo $product_list->schedule_date_time; else echo date('Y').'-'.date('m').'-'.date('d') ?>" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+
+                <input class="form-control"  placeholder="List Now" size="16" type="text" value="<?php if(!empty($product_list->schedule_date_time) && $product_list->scheduled_status){
+                    echo $product_list->schedule_date_time;}
                     elseif(isset($_POST['schedule_date_time']) && !empty($_POST['schedule_date_time'])){  echo set_value('schedule_date_time');}
-                else{ echo date('d F Y - H:i a');} ?>" readonly >
+                else{ /*echo date('d F Y - H:i a'); */ } ?>" readonly >
                 <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                 <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span><br>
             <input type="hidden" id="dtp_input1" value="<?php if(!empty($product_list->schedule_date_time)) echo $product_list->schedule_date_time; else echo set_value('schedule_date_time');?>" name="schedule_date_time"/>
             <?php echo form_error('schedule_date_time'); ?>
             </div>
             Listing can be scheduled for future dates, by selecting future date.
+
+<?php } ?>
+
             </div>
     </div>
+    <div class="hr-line-dashed"></div>
 
     <div class="form-group"><label class="col-md-3 control-label">MPN/ISBN</label>
         <div class="col-md-9">
@@ -63,29 +77,30 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
              <?php echo form_error('product_mpn'); ?>
         </div>
     </div>
-  
+
      <div class="form-group"><label class="col-md-3 control-label">Make</label>
         <div class="col-md-9">
-         <input type="text" list="make" id="product_make" class="form-control check_record" placeholder="Make"  name="product_make" value="<?php if(!empty($product_list->product_make)) echo $product_list->product_make; else echo set_value('product_make');?>"/>
-           <datalist id="make">
-            <?php if(!empty($product_makes)){ 
-                 foreach ($product_makes as $row) { ?>
-                <option value="<?php echo $row->product_make; ?>" <?php if(!empty($_POST) && $row->product_make==$_POST['product_make']){ echo'selected';}?><?php if(!empty($product_list->product_make) && $row->product_make == $product_list->product_make){ echo'selected';}?>><?php echo $row->product_make; ?></option>
-                 <?php }} ?>
-            </datalist>
+            <select data-placeholder="Make" class="chosen-select form-control" id="product_make" name="product_make">
+            <option value=""> Choose Make </option>
+            <?php if(!empty($product_makes)){
+            foreach ($product_makes as $row) { ?>
+            <option value="<?php echo $row->product_make; ?>" <?php if(!empty($_POST) && $row->product_make==$_POST['product_make']){ echo'selected';}?><?php if(!empty($product_list->product_make) && $row->product_make == $product_list->product_make){ echo'selected';}?>><?php echo $row->product_make; ?></option>
+            <?php }} ?>
+            </select>
         <?php echo form_error('product_make'); ?>
         </div>
     </div>
-    
+
    <div class="form-group"><label class="col-md-3 control-label">Model</label>
         <div class="col-md-9">
-         <input type="text" list="model" id="product_model" class="form-control check_record" placeholder="Model"  name="product_model" value="<?php if(!empty($product_list->product_model)) echo $product_list->product_model; else echo set_value('product_model');?>"/>
-           <datalist id="model">
-            <?php if(!empty($product_models)){ 
+
+            <select data-placeholder="Model" class="chosen-select form-control" id="product_model"   name="product_model">
+            <option value=""> Choose Model </option>
+            <?php if(!empty($product_models)){
                  foreach ($product_models as $row) { ?>
                 <option value="<?php echo $row->product_model; ?>" <?php if(!empty($_POST) && $row->product_model==$_POST['product_model']){ echo'selected';}?><?php if(!empty($product_list->product_model) && $row->product_model == $product_list->product_model){ echo'selected';}?>><?php echo $row->product_model; ?></option>
                  <?php }} ?>
-            </datalist>
+            </select>
         <?php echo form_error('product_model'); ?>
         </div>
     </div>
@@ -94,7 +109,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <div class="col-md-9">
          <input type="text" list="color" id="product_color" class="form-control check_record" placeholder="Colour"  name="product_color" value="<?php if(!empty($product_list->product_color)) echo $product_list->product_color; else echo set_value('product_color');?>"/>
            <datalist id="color">
-            <?php if(!empty($product_colors)){ 
+            <?php if(!empty($product_colors)){
                  foreach ($product_colors as $row) { ?>
                 <option value="<?php echo $row->product_color; ?>" <?php if(!empty($_POST) && $row->product_color==$_POST['product_color']){ echo'selected';}?><?php if(!empty($product_list->product_color) && $row->product_color == $product_list->product_color){ echo'selected';}?>><?php echo $row->product_color; ?></option>
                  <?php }} ?>
@@ -105,7 +120,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
     </div>
 
     <div class="form-group"><label class="col-md-3 control-label">Product Type</label>
-        <div class="col-md-9"> 
+        <div class="col-md-9">
         <select  name="product_type" id="product_type" class="form-control check_record">
                 <option selected value="0" >-Select Product Type-</option>
                 <?php if (!empty($product_types)): ?>
@@ -113,7 +128,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                     <optgroup label="<?php echo $row->category_name ?>">
                     <?php if (!empty($row->childs)): ?>
                     <?php foreach ($row->childs as $child): ?>
-                        <option value="<?php echo $child->category_name ?>" <?php if(!empty($_POST['product_type']) && $child->category_name==$_POST['product_type']){ echo'selected';}?> 
+                        <option value="<?php echo $child->category_name ?>" <?php if(!empty($_POST['product_type']) && $child->category_name==$_POST['product_type']){ echo'selected';}?>
                         <?php if(!empty($product_list->product_type) && $child->category_name==$product_list->product_type){ echo'selected="selected"';}?>>- <?php echo $child->category_name ?></option>
                         <?php endforeach ?>
                     <?php endif ?>
@@ -126,18 +141,19 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         </div>
     </div>
 
-    
-    
+
+
     <div class="hr-line-dashed"></div>
         <div class="form-group"><label class="col-md-3 control-label">Condition</label>
             <div class="col-md-9">
+
                 <select class="form-control" name="condition">
                 <option value="">Condition</option>
-                <?php $condition = condition(); 
+                <?php $condition = condition();
                 if($condition){
                     foreach ($condition as $key => $value){ ?>
                       <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['condition']){ echo'selected';}?><?php if(!empty($product_list->condition) && $value == $product_list->condition){ echo'selected="selected"';}?>><?php echo $value; ?></option>
-                      <?php } 
+                      <?php }
                 } ?>
                 </select>
                 <?php echo form_error('condition'); ?>
@@ -146,35 +162,41 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <div class="form-group"><label class="col-md-3 control-label">Spec</label>
         <div class="col-md-9">
             <select class="form-control" name="spec">
-                <option selected value="Any">Any</option>
-                <?php $spec = spec(); 
+                <option selected value="">Spec</option>
+                <?php $spec = spec();
                 if($spec){
                     foreach ($spec as $key => $value){ ?>
                       <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['spec']){ echo'selected';}?><?php if(!empty($product_list->spec) && $value==$product_list->spec){ echo'selected';}?>><?php echo $value; ?></option>
-                      <?php } 
+                      <?php }
                 } ?>
             </select>
             <?php echo form_error('spec'); ?>
         </div>
-    </div>     
-    <div class="hr-line-dashed"></div>
-    
-    <div class="form-group"><label class="col-md-3 control-label">Currency</label>
-        <div class="col-md-9">
-            <select class="form-control" name="currency">
-                    <?php $currency = currency(); 
-                    if($currency){
-                        $i=1;
-                    foreach ($currency as $key => $value){ ?>
-                      <option <?php if(!empty($_POST) && $i==$_POST['currency']){ echo'selected';}?><?php if(!empty($product_list->currency) && $i==$product_list->currency){ echo'selected';}?> value="<?php echo $i;?>"><?php echo $value; ?></option>
-                      <?php $i++;} 
-                    } ?>
-            </select>
-            <p class="small text-navy">Select the currency you wish this listing to be sold in.</p>
-            <?php echo form_error('currency'); ?>
-        </div>
     </div>
-    
+    <div class="hr-line-dashed"></div>
+
+        <div class="form-group"><label class="col-md-3 control-label">Currency </label>
+               <div class="col-md-9">
+                   <select class="form-control" name="currency">
+                       <?php $default_currency='';
+                      $default_currency = default_currency(); ?>
+                       <?php $currency = currency();
+                       if($currency){
+                           $i=1;
+                       foreach ($currency as $key => $value){ ?>
+                       <?php  $unit = explode(' ', $value); ?>
+                         <option <?php if(!empty($_POST) && $i==$_POST['currency']){ echo'selected';}elseif(!empty($product_list->currency) && $i==$product_list->currency){ echo'selected';}elseif($default_currency->currency==$unit[1]){ echo "selected"; } ?> value="<?php echo $i;?>"><?php echo $value; ?></option>
+                         <?php $i++;}
+                       } ?>
+                   </select>
+                   <p class="small text-navy"> Select the currency you wish this listing to be sold in.</p>
+                   <?php echo form_error('currency'); ?>
+               </div>
+           </div>
+
+
+
+
 
     <div class="form-group"><label class="col-md-3 control-label">Unit Price</label>
         <div class="col-md-9">
@@ -182,45 +204,45 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <?php echo form_error('unit_price'); ?>
         </div>
     </div>
-    
-    <div class="form-group"><label class="col-md-3 control-label">Min Unit Price</label>
+
+    <div class="form-group"><label class="col-md-3 control-label">Minimum Price</label>
         <div class="col-md-9">
             <div class="input-group m-b">
-            <span class="input-group-addon"> 
-            <input type="checkbox" name="minimum_checkbox" id="minimum_checkbox" <?php if(isset($_POST['minimum_checkbox']) ){ echo'checked';} elseif(!empty($product_list->min_price)){ echo'checked';}?>/> </span> 
+            <span class="input-group-addon">
+            <input type="checkbox" name="minimum_checkbox" id="minimum_checkbox" <?php if(isset($_POST['minimum_checkbox']) ){ echo'checked';} elseif(!empty($product_list->min_price)){ echo'checked';}?>/> </span>
 
-            <input type="text" class="form-control" placeholder="Minimum Unit Price" name="min_price" value="<?php if(!empty($product_list->min_price)) echo $product_list->min_price; else echo set_value('min_price');?>"
+            <input type="text" class="form-control" placeholder="What is your minumum price?" name="min_price" value="<?php if(!empty($product_list->min_price)) echo $product_list->min_price; else echo set_value('min_price');?>"
             <?php if(isset($_POST['minimum_checkbox']) ){ echo'';} elseif(empty($product_list->min_price) ){ echo'disabled';}?>></div>
-            <p class="small text-navy">Tick to allow offers. Any offers below this will be auto rejected.</p>
+            <p class="small text-navy">Tick allow offers. Any offers below this will be auto rejected, leave blank to allow any offers if ticked.</p>
             <?php echo form_error('min_price'); ?>
         </div>
     </div>
-    
+
     <div class="form-group"><label class="col-md-3 control-label">Quantity Available</label>
         <div class="col-md-9">
             <input type="type" class="form-control" name="total_qty" value="<?php if(!empty($product_list->total_qty)) echo $product_list->total_qty; else  echo set_value('total_qty');?>"/>
             <?php echo form_error('total_qty'); ?>
         </div>
     </div>
-    
+
     <div class="form-group"><label class="col-md-3 control-label">Min Order Quantity</label>
         <div class="col-md-9">
             <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="orderqunatity_checkbox" id="orderqunatity_checkbox"
-            <?php if(isset($_POST['orderqunatity_checkbox']) ){ echo'checked';} elseif(!empty($product_list->min_qty_order)){ echo'checked';}?>/> </span> 
+            <?php if(isset($_POST['orderqunatity_checkbox']) ){ echo'checked';} elseif(!empty($product_list->min_qty_order)){ echo'checked';}?>/> </span>
 
-            <input type="text" class="form-control" placeholder="Minimum Order Quantity" name="min_qty_order" value="<?php if(!empty($product_list->min_qty_order)) echo $product_list->min_qty_order; else echo set_value('min_qty_order');?>" 
+            <input type="text" class="form-control" placeholder="Minimum Order Quantity" name="min_qty_order" value="<?php if(!empty($product_list->min_qty_order)) echo $product_list->min_qty_order; else echo set_value('min_qty_order');?>"
 
             <?php if(isset($_POST['orderqunatity_checkbox']) ){ echo'';} elseif(empty($product_list->min_qty_order) ){ echo'disabled';}?>
             ></div>
-            <p class="small text-navy">Allow minimum order quantity otherwise users can only buy all.</p>
+            <p class="small text-navy">Allow minimum order quantity else full quantity sale available only</p>
             <?php echo form_error('min_qty_order'); ?>
         </div>
     </div>
-    
-    
-    <div class="hr-line-dashed"></div>  
-    
-    
+
+
+    <div class="hr-line-dashed"></div>
+
+
     <div class="form-group"><label class="col-md-3 control-label">Shipping Terms <button class="btn btn-success btn-circle" type="button" style="width:20px;height:20px;border-radius:10px;font-size:10px;padding:0;margin-bottom:0" data-toggle="modal" data-target="#shipping" title="Click for more information"><i class="fa fa-question"></i></button></label>
     <div class="col-md-9">
 
@@ -228,28 +250,36 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <option value="">Select Terms</option>
             <?php if($shippings){
                 foreach ($shippings as $row){  ?>
-                  <option value="<?php echo $row->id; ?>@@<?php echo $row->shipping_name; ?>" <?php if(!empty($_POST) && $row->id.'@@'.$row->shipping_name==$_POST['shipping_term']){ echo'selected="selected"';} ?><?php if(!empty($product_list->shipping_term) && $row->shipping_name == $product_list->shipping_term){ echo'selected="selected"'; } ?>><?php echo $row->shipping_name; ?> <?php echo $row->description; ?></option>
+                  <option value="<?php echo $row->id; ?>@@<?php echo $row->shipping_name; ?>" <?php //if(!empty($_POST) && $row->id.'@@'.$row->shipping_name==$_POST['shipping_term']){ echo'selected="selected"';} ?><?php //if(!empty($product_list->shipping_term) && $row->shipping_name == $product_list->shipping_term){ echo'selected="selected"'; } ?>><?php echo $row->shipping_name; ?> <?php echo $row->description; ?></option>
                   <?php }
             } ?>
         </select>
         <?php echo form_error('shipping_term'); ?>
+         <div id="shipping_termMsg"></div>
+
     </div>
     </div>
-    
+
     <div class="form-group"><label class="col-md-3 control-label">Courier</label>
 
         <div class="col-md-9">
-           <div id="couriers_data"> <?php $product = array(); if(!empty($product_list->courier)){ $product = explode(',', $product_list->courier); } 
+
+
+
+
+           <div id="couriers_data"> <?php $product = array(); if(!empty($product_list->courier)){ $product = explode(',', $product_list->courier); }
                     if (!empty($couriers)) {
                          foreach ($couriers as $key => $value): ?>
                              <label class="checkbox-inline i-checks iCheck-helper"><input type="checkbox" value="<?php echo $value->courier_name; ?>" name="courier[]" <?php if(!empty($product) && in_array($value->courier_name, $product)){ echo'checked';}?>/> <?php echo $value->courier_name;?> </label>
                         <?php endforeach;   } ?>
-               
+
             </div>
+            <br>
+            <div id="courierMsg"></div>
         </div>
     </div>
-    
-    
+
+
     <div class="form-group shipping-fee" <?php if(!empty($product_list->sell_shipping_fee)) echo 'style="display:block;"'; else echo 'style="display:none;"'; ?>>
         <label class="col-md-3 control-label">Shipping Fee</label>
         <div class="col-md-3">
@@ -265,8 +295,13 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <div class="col-md-3">
             <a class="btn btn-primary shipping-opt" id="add_shipping"><i class="fa fa-plus"></i> Add Shipping Option</a>
         </div>
+        <div class="clearfix"></div>
+        <div class="col-md-9 col-md-offset-3">
+            <div id="shipping_feesMsg"></div>
+        </div>
+
     </div>
-    
+
     <div class="form-group"><label class="col-md-3 control-label">Shipping and Handling Fee<br /><small class="text-navy">Add at least one (1) option</small></label>
     <div class="col-md-9">
     <table class="table table-bordered">
@@ -281,54 +316,56 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
       </thead>
       <tbody id="opt_table">
 
-      <?php 
+      <?php
       if(!empty($product_list->sell_shipping_fee)){
             $productlistjsondecode=json_decode($product_list->sell_shipping_fee);
-           
+
         if($productlistjsondecode){
         foreach($productlistjsondecode as $key => $value){
-         ?>  
+         ?>
           <tr><td><?php echo $value->shipping_term; ?><input type="hidden" name="shipping_terms[]" value="<?php if(!empty($value->shipping_term)) echo $value->shipping_term; ?>"/></td>
           <td><?php echo $value->coriars; ?><input type="hidden" name="coriars[]" value="<?php if(!empty($value->coriars)) echo $value->coriars; ?>"/></td>
           <td><?php echo $value->shipping_types; ?><input type="hidden" name="ship_types[]" value="<?php if(!empty($value->shipping_types)) echo $value->shipping_types; ?>"/></td>
           <td><?php echo $value->shipping_fees; ?><input type="hidden" name="shipping_fees[]" value="<?php if(!empty($value->shipping_fees)) echo $value->shipping_fees; ?>"/></td>
           <td style="text-align:center"><a class="wrapper btn btn-danger btn-circle" style="width:20px;height:20px;border-radius:10px;font-size:10px;padding:0;margin-bottom:0"><i class="fa fa-times"></i></a></td>
-          </tr>             
+          </tr>
     <?php   }}
         }
       ?>
-     
+
       </tbody>
     </table>
     </div>
     </div>
-    
-    
-    <div class="hr-line-dashed"></div>                                
-    
+
+
+    <div class="hr-line-dashed"></div>
+
      <div class="form-group"><label class="col-md-3 control-label">Product Description</label>
         <div class="col-md-9">
             <textarea type="type" class="form-control" rows="5" id="product_desc" name="product_desc"><?php if(!empty($product_list->product_desc)) echo $product_list->product_desc; else echo set_value('product_desc');?></textarea>
             <?php echo form_error('product_desc'); ?>
         </div>
     </div>
-    
+
+
     <div class="hr-line-dashed"></div>
-    
+
+
     <div class="form-group"><label class="col-md-3 control-label">List Duration</label>
         <div class="col-md-9">
             <select class="form-control" name="duration">
-            <?php $duration = list_duration(); 
+            <?php $duration = list_duration();
             if($duration){
                 foreach ($duration as $key => $value){ ?>
                   <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['duration']){ echo'selected';}
                     elseif(isset($product_list->duration) && $value==$product_list->duration){ echo'selected';}
                     elseif($value == 7){ echo'selected';}?>><?php echo $value; ?> day</option>
-                  <?php } 
+                  <?php }
             } ?>
             </select>
             <?php echo form_error('duration'); ?>
-        </div> 
+        </div>
     </div>
 
    <?php if (empty($product_list->id)): ?>
@@ -339,7 +376,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         </div>
     </div>
    <?php endif ?>
-    
+
     <div class="form-group">
         <div class="col-md-9 col-md-offset-3">
         <?php if ($this->uri->segment(4)!='' && $this->uri->segment(4)=='saved_listing'): ?>
@@ -347,15 +384,15 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <?php else: ?>
                  <a class="btn btn-danger" href="<?php echo base_url().'marketplace/listing/'; ?>">Cancel</a>
         <?php endif ?>
-           
+
         <?php if($this->uri->segment(3)==''): ?>
             <button class="btn btn-warning" type="submit" name="status" value="2">Save for later</button>
         <?php endif; ?>
-           <button class="btn btn-primary" type="submit" name="status" value="1">List Now</button>
+           <button class="btn btn-primary" type="submit" name="status" value="1" onclick="return validateFORM();">List Now</button>
         </div>
     </div>
-    
-    
+
+
  </div>
 </div>
 </div>
@@ -369,10 +406,10 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <div class="ibox-content">
             <div class="row">
                 <div class="col-md-12" style="text-align:center">
-               
+
                 <label  class="col-md-4" >Image 1</label>
                 <div  class="col-md-8">
-                <?php if (!empty($product_list->image1) && file_exists($product_list->image1)): 
+                <?php if (!empty($product_list->image1) && file_exists($product_list->image1)):
                 $img1 = explode('/', $product_list->image1)?>
                     <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img1[3]; ?>" class="thumbnail uplodedimage"/>
                 <?php endif ?>
@@ -381,7 +418,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                  <?php echo form_error('image1'); ?>
                  <label  class="col-md-4" >Image 2</label>
                 <div  class="col-md-8">
-                <?php if (!empty($product_list->image2) && file_exists($product_list->image2)): 
+                <?php if (!empty($product_list->image2) && file_exists($product_list->image2)):
                 $img2 = explode('/', $product_list->image2)?>
                     <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img2[3]; ?>" class="thumbnail uplodedimage"/>
                 <?php endif ?>
@@ -390,7 +427,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                  <?php echo form_error('image2'); ?>
                  <label  class="col-md-4" >Image 3</label>
                 <div  class="col-md-8">
-                <?php if (!empty($product_list->image3)&& file_exists($product_list->image3)): 
+                <?php if (!empty($product_list->image3)&& file_exists($product_list->image3)):
                 $img3 = explode('/', $product_list->image3)?>
                     <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img3[3]; ?>" class="thumbnail uplodedimage"/>
                 <?php endif ?>
@@ -399,7 +436,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                  <?php echo form_error('image3'); ?>
                  <label  class="col-md-4" >Image 4</label>
                 <div  class="col-md-8">
-                <?php if (!empty($product_list->image4)&& file_exists($product_list->image4)): 
+                <?php if (!empty($product_list->image4)&& file_exists($product_list->image4)):
                 $img4 = explode('/', $product_list->image4)?>
                     <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img4[3]; ?>" class="thumbnail uplodedimage"/>
                 <?php endif ?>
@@ -409,7 +446,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 
                   <label  class="col-md-4" >Image 5</label>
                 <div  class="col-md-8">
-                 <?php if (!empty($product_list->image5)&& file_exists($product_list->image5)): 
+                 <?php if (!empty($product_list->image5)&& file_exists($product_list->image5)):
                 $img5 = explode('/', $product_list->image5)?>
                     <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img5[3]; ?>" class="thumbnail uplodedimage"/>
                 <?php endif ?>
@@ -422,7 +459,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             </div>
             </div>
         </div>
-    </div>        
+    </div>
 </form>
 <?php } else{?>
     <p class="bg-danger validation_message">Invalid listing ID or you have not permission to access this listing.</p>
@@ -828,7 +865,30 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <?php } ?>
 
 
-            
+<!-- Multi Select -->
+<link href="public/main/template/core/css/plugins/chosen/chosen.css" rel="stylesheet">
+
+<!-- Chosen -->
+<script src="public/main/template/core/js/plugins/chosen/chosen.jquery.js"></script>
+
+<script>
+    jQuery(document).ready(function($) {
+            /* multi select */
+    var config = {
+        '.chosen-select'           : {search_contains:true},
+        '.chosen-select-deselect'  : {allow_single_deselect:true},
+        '.chosen-select-no-single' : {disable_search_threshold:10},
+        '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+        '.chosen-select-width'     : {width:"95%"}
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+
+
+    });
+</script>
+
     <!-- checkbox css -->
     <link href="public/main/template/core/css/plugins/iCheck/custom.css" rel="stylesheet">
 
@@ -845,7 +905,30 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 
     <script>
 
-
+   function validateFORM () {
+        var shipping_term = $('select[name="shipping_term"]').val();
+        if(shipping_term==''){
+            $('body').find('#shipping_termMsg').html('<span class="error">The Shipping terms field is required.</span>');
+            $('select[name="shipping_term"]').focus();
+             return false;
+        }else{
+            $('body').find('#shipping_termMsg').html('');
+            var courierLength =$('[name="courier[]"]:checked').length;
+            if(courierLength==0){
+                $('body').find('#courierMsg').html('<span class="error">Please select atleast one courier.</span>');
+                $('select[name="shipping_term"]').focus();
+                return false;
+            }else{
+                $('body').find('#courierMsg').html('');
+                 var shipping_feesLength =$('[name="shipping_fees[]"]').length;
+                 console.log('shipping_feesLength '+shipping_feesLength);
+                if(shipping_feesLength==0) {
+                    $('body').find('#shipping_feesMsg').html('<span class="error">Please select atleast one shipping and handling fee.</span>');
+                    $('select[name="shipping_type"]').focus();
+                    return false;
+                }            }
+        }
+    }
 
 
     function shippings_to_couriers (ship_id) {
@@ -884,11 +967,11 @@ $('.shipping-type').on('change',function(){
 
 
     var add_shipping1=0;
-    $("#add_shipping").on("click", function() { 
+    $("#add_shipping").on("click", function() {
         shipping_type = $('.shipping-type').val();
-     
-     
-    if(shipping_type !='' || shipping_type != 'Free_Shipping'){ 
+
+
+    if(shipping_type !='' || shipping_type != 'Free_Shipping'){
 
         var coriar = [];
         $('body').find('#couriers_data input:checked').each(function(index, val){
@@ -901,7 +984,7 @@ $('.shipping-type').on('change',function(){
         var shipping_term = trm[1];
         var core = coriar;
         var ship_type = shipping_type;
-       
+
         if(core=='' || core==null){
              alert('At least one courier must be selected to add the shipping option');
             return false;
@@ -915,26 +998,26 @@ $('.shipping-type').on('change',function(){
             shipping_fee = $('input[name="shipping_fee"]').val();
          }
 
-        $('#opt_table').append('<tr><td>'+shipping_term+'<input type="hidden" name="shipping_terms[]" value="'+shipping_term+'"/></td><td>'+core+'<input type="hidden" name="coriars[]" value="'+core+'"/></td><td>'+ship_type+'<input type="hidden" name="ship_types[]" value="'+ship_type+'"/></td><td>'+shipping_fee+'<input type="hidden" name="shipping_fees[]" value="'+shipping_fee+'"/></td><td style="text-align:center"><a class="wrapper btn btn-danger btn-circle" style="width:20px;height:20px;border-radius:10px;font-size:10px;padding:0;margin-bottom:0"><i class="fa fa-times"></i></a></td></tr>');  
+        $('#opt_table').append('<tr><td>'+shipping_term+'<input type="hidden" name="shipping_terms[]" value="'+shipping_term+'"/></td><td>'+core+'<input type="hidden" name="coriars[]" value="'+core+'"/></td><td>'+ship_type+'<input type="hidden" name="ship_types[]" value="'+ship_type+'"/></td><td>'+shipping_fee+'<input type="hidden" name="shipping_fees[]" value="'+shipping_fee+'"/></td><td style="text-align:center"><a class="wrapper btn btn-danger btn-circle" style="width:20px;height:20px;border-radius:10px;font-size:10px;padding:0;margin-bottom:0"><i class="fa fa-times"></i></a></td></tr>');
         }
         else{
             alert('Enter Shipping Fee');
             return false;
         }
 
-           
+
     });
 
 
 });
-   
+
 $('body').find('#opt_table').on("click", ".wrapper",function() {
        // alert($(this).html());
         $(this).closest("tr").remove();
 });
-   
 
-   
+
+
 </script>
 
    <script>/**
@@ -1084,8 +1167,8 @@ $(document).ready(function () {
 
 });
     </script>
-    
-    
+
+
 
 <!-- Jquery Validate -->
 
@@ -1119,168 +1202,66 @@ rules: {
 });
 </script>
 <script>
-   $(document).ready(function(){
-     $("#mpn1").change(function(){
-     var product_mpn_isbn = $(this).val(); 
-     var producttypes= <?php echo json_encode($product_types); ?>;
-     if(product_mpn_isbn){
-        $('.check_record').attr("disabled", "disabled");
-        jQuery.post('<?php echo base_url()?>marketplace/get_attributes_info/MPN',{product_mpn_isbn:product_mpn_isbn},
-        function(data){
-         var prod_make= <?php echo json_encode($product_makes); ?>;
-         var productcolors= <?php echo json_encode($product_colors); ?>;
-        if(data.STATUS=='true'){
-          if(prod_make){
-          var productmakehtml='<option  selected value="">Product Make</option>';
-            $.each(prod_make, function(index, val) {
-                productmakehtml +='<option value="'+val.product_make+'"';
-                if(val.product_make==data.product_make)
+
+$(document).ready(function(){
+
+     var test123 =function(mpn1,make){
+
+       // console.log(mpn1+ ' === '+make);
+
+         $.post('<?php echo base_url("marketplace/getAttributesInfo") ?>/MAKE/',{'make':make,'mpnisbn':mpn1}, function(data) {
+            productmakehtml='';
+           $.each(data.product_model, function(index, val) {
+                productmakehtml +='<option value="'+val.product_model+'"';
+                if(data.num_rows==1)
                 productmakehtml +=' Selected';
-                productmakehtml +=' >'+val.product_make+'</option>';
-             });
-             //$('#product_make').html(productmakehtml);
-              $('#product_make').val(data.product_make);
-            }
-            
-            if(producttypes){
-                //alert(producttypes);
-            var producttypehtml='<option  selected value="">Product Type</option>';
-            $.each(producttypes, function(index, val){producttypehtml +='<optgroup label="'+val.category_name +'">';
-                 if(val.childs){
-                    $.each(val.childs, function(index, val1){ 
-                     producttypehtml +='<option';
-                        if(val1.category_name==data.product_type)
-                        producttypehtml +=' selected="selected"';
-                        producttypehtml +=' >'+val1.category_name+'</option>';
-                     });
-                 }
-              producttypehtml +='</optgroup>';
-              });
-             $('#product_type').html(producttypehtml);
-            }
-
-             if(productcolors){
-            var productcolorhtml='<option  selected value="">Product Color</option>';
-            $.each(productcolors, function(index, val) {
-                productcolorhtml +='<option value="'+val.product_color+'"';
-                if(val.product_color==data.product_color)
-                productcolorhtml +=' Selected';
-                productcolorhtml +=' >'+val.product_color+'</option>';
-             });
-             $('#product_color').html(productcolorhtml);
-            }
-
-            $('input[name="product_model"]').val(data.product_model);
-            $('input[name="product_make"]').val(data.product_make);
-            $('input[name="product_color"]').val(data.product_color);
-           
-           } 
-            /* else{
-
-            if(prod_make){
-            var productmakehtml='<option "selected">Product Make</option>';
-            $.each(prod_make, function(index, val) {
-                productmakehtml +='<option value="'+val.product_make+'">'+val.product_make+'</option>';
-             });
-             $('#product_make').html(productmakehtml);
-            }
-            
-            if(producttypes){
-            var producttypehtml='<option "selected">Product Type</option>';
-            $.each(producttypes, function(index, val) {
-                producttypehtml +='<option value="'+val.product_type+'">'+val.product_type+'</option>';
-             });
-             $('#product_type').html(producttypehtml);
-            }
-
-            if(productcolors){
-            var productcolorhtml='<option "selected">Product Color</option>';
-            $.each(productcolors, function(index, val) {
-                productcolorhtml +='<option value="'+val.product_color+'">'+val.product_color+'</option>';
-             });
-             $('#product_color').html(productcolorhtml);
-            }
-
-            $('input[name="product_model"]').val(data.product_model);
-           } */
-          });
-           $('.check_record').removeAttr("disabled");   
-         }
-          else{
-            $('input[name="product_model"]').val('');
-            $('input[name="product_make"]').val('');
-            $('input[name="product_color"]').val('');
-            if(producttypes){
-                //alert(producttypes);
-            var producttypehtml='<option  selected value="">Product Type</option>';
-            $.each(producttypes, function(index, val){producttypehtml +='<optgroup label="'+val.category_name +'">';
-                 if(val.childs){
-                    $.each(val.childs, function(index, val1){ 
-                     producttypehtml +='<option';
-                        producttypehtml +=' >'+val1.category_name+'</option>';
-                     });
-                 }
-              producttypehtml +='</optgroup>';
-              });
-             $('#product_type').html(producttypehtml);
-            }
-         }
+                productmakehtml +=' >'+val.product_model+'</option>';
+           });
+           $('select[name="product_model"]').html(productmakehtml);
+           $('select[name="product_model"]').trigger("chosen:updated");
         });
 
-     $("#isbn1").change(function(){
-     var product_mpn_isbn = $(this).val();
-     if(product_mpn_isbn){
-        $('.check_record').attr("disabled", "disabled");
-        jQuery.post('<?php echo base_url()?>marketplace/get_attributes_info/ISBN',{product_mpn_isbn:product_mpn_isbn},
-        function(data){
-         var prod_make= <?php echo json_encode($product_makes); ?>;
-         var producttypes= <?php echo json_encode($product_types); ?>;
-         var productcolors= <?php echo json_encode($product_colors); ?>;
-        if(data.STATUS=='true'){
-          if(prod_make){
-          var productmakehtml='<option  selected value="">Product Make</option>';
-            $.each(prod_make, function(index, val) {
+    }
+
+    $(document).on('change', '#mpn1', function(event) {
+        event.preventDefault();
+        var  mpnisbn1 = $(this).val();
+        $.post('<?php echo base_url("marketplace/getAttributesInfo") ?>/MPNISBN/',{'mpnisbn':mpnisbn1}, function(data) {
+
+            productmakehtml='';
+            var mk1product_make=0;
+           $.each(data.product_make, function(index, val) {
                 productmakehtml +='<option value="'+val.product_make+'"';
-                if(val.product_make==data.product_make)
-                productmakehtml +=' Selected';
+                if(data.numrows=='1'){
+                productmakehtml +=' selected';
+                    mk1product_make=val.product_make;
+                   // console.log(data.numrows+ ' data.num_rows '+val.product_make);
+                }
                 productmakehtml +=' >'+val.product_make+'</option>';
-             });
-             $('#product_make').html(productmakehtml);
-            }
+           });
+           if(data.Status=true){
+           $('select[name="product_make"]').html(productmakehtml);
+           $('select[name="product_make"]').trigger("chosen:updated");
 
-            if(producttypes){
-            var producttypehtml='<option  selected value="">Product Type</option>';
-            $.each(producttypes, function(index, val) {
-                producttypehtml +='<option';
-                if(val.product_type==data.product_type)
-                producttypehtml +=' Selected';
-                producttypehtml +=' >'+val.product_type+'</option>';
-             });
-             $('#product_type').html(producttypehtml);
-            }
-
-             if(productcolors){
-            var productcolorhtml='<option  selected value="">Product Color</option>';
-            $.each(productcolors, function(index, val) {
-                productcolorhtml +='<option value="'+val.product_color+'"';
-                if(val.product_color==data.product_color)
-                productcolorhtml +=' Selected';
-                productcolorhtml +=' >'+val.product_color+'</option>';
-             });
-             $('#product_color').html(productcolorhtml);
-            }
-
-            $('input[name="product_model"]').val(data.product_model);
+            var product_make= mk1product_make;
+            //console.log(mpnisbn1+ ' ==!!!= '+product_make);
+               test123(mpnisbn1,product_make);
 
            }
 
-          });
-           $('.check_record').removeAttr("disabled");
-         }
+            //}
         });
+    });
 
+    $(document).on('change', '#product_make', function(event) {
+        event.preventDefault();
+            var mpn1 =$('#mpn1').val();
+            var product_make= $(this).val();
+            test123(mpn1,product_make);
 
-     });
+    });
+
+});
 
     $(document).ready(function() {
         $('#minimum_checkbox').change(function(event) {
@@ -1288,8 +1269,8 @@ rules: {
                 $('input[name="min_price"]').prop('disabled', false);
             }
             else{
-               $('input[name="min_price"]').val(''); 
-               $('input[name="min_price"]').prop('disabled', true); 
+               $('input[name="min_price"]').val('');
+               $('input[name="min_price"]').prop('disabled', true);
             }
         });
 
@@ -1298,7 +1279,7 @@ rules: {
                 $('select[name="allow_offer"]').prop('disabled', false);
             }
             else{
-               $('select[name="allow_offer"]').prop('disabled', true); 
+               $('select[name="allow_offer"]').prop('disabled', true);
             }
         });
 
@@ -1307,8 +1288,8 @@ rules: {
                 $('input[name="min_qty_order"]').prop('disabled', false);
             }
             else{
-                $('input[name="min_qty_order"]').val(''); 
-               $('input[name="min_qty_order"]').prop('disabled', true); 
+                $('input[name="min_qty_order"]').val('');
+               $('input[name="min_qty_order"]').prop('disabled', true);
             }
         });
 
@@ -1322,7 +1303,7 @@ rules: {
             $('.buying').hide();
             }else{
             $('.sell-offer').show();
-            $('.buying').show(); 
+            $('.buying').show();
             }
         });
     });
@@ -1343,7 +1324,7 @@ var today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(
         startView: 2,
         forceParse: 0,
         showMeridian: 1,
-        startDate: today 
+        startDate: today
     });
     </script>
 
