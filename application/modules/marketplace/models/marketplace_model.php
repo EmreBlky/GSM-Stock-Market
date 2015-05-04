@@ -11,7 +11,7 @@ class Marketplace_model extends MY_Model {
     public function insert($table_name='',  $data=''){
         $query=$this->db->insert($table_name, $data);
         if($query)
-        	return $this->db->insert_id();
+            return $this->db->insert_id();
 		else
 			return FALSE;		
 	}
@@ -209,7 +209,7 @@ class Marketplace_model extends MY_Model {
 		$this->db->from('listing');
 	
 		$this->db->where('listing.status', 1);
-		$this->db->where('listing.listing_type', 1);
+		$this->db->where('listing.listing_type', 2);
 		
 		$query = $this->db->get();
 	
@@ -319,7 +319,7 @@ class Marketplace_model extends MY_Model {
 		$this->db->from('listing');
 	
 		$this->db->where('listing.status', 1);
-		$this->db->where('listing.listing_type', 2);
+		$this->db->where('listing.listing_type', 1);
 		
 		$query = $this->db->get();
 		
