@@ -1,3 +1,5 @@
+<?php $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id);
+if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <script type="text/javascript">
 function changeContinent(cont){
 	if(cont!=''){
@@ -26,37 +28,26 @@ function changeRegion(regn){
 	}
 }
 </script>
-<div class="row wrapper border-bottom white-bg page-heading">
-<div class="col-lg-10">
-    <h2>Selling Offers</h2>
-    <ol class="breadcrumb">
-        <li>
-            <a href="/">Home</a>
-        </li>
-        <li>
-            Marketplace
-        </li>
-        <li class="active">
-            <strong>Buy</strong>
-        </li>
-    </ol>
-</div>
-<div class="col-lg-2">
-
-</div>
-</div>
-<?php $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id);
-if($member->membership > 1 && $member->marketplace == 'active'){ ?>
-            
-<div class="wrapper wrapper-content animated fadeInRight">
-<div class="row">
-
-                       
-<div class="col-lg-12">
-<div class="ibox float-e-margins">
-    <div class="ibox-title">
-        <h5>Search</h5>
+  <div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+      <h2>Selling Offers</h2>
+      <ol class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li>Marketplace</li>
+        <li class="active"><strong>Buy</strong></li>
+      </ol>
+    </div><!-- /col-lg-10 -->
+    <div class="col-lg-2">
     </div>
+  </div><!-- /row -->
+            
+  <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+          <div class="ibox-title">
+            <h5>Search</h5>
+          </div><!-- /ibox-title -->
 
 <?php
 $dataasa=array();
@@ -76,26 +67,26 @@ if(!empty($advance_search)):
 endif;
 ?>
 
-<div class="ibox-content">
- <form action="<?php echo base_url('marketplace/buy'); ?>/" method="get" accept-charset="utf-8" id="search">
-       <div class="row">
-        <div class="col-lg-3" style="padding-right:0">
-            	<select name="lc" class="form-control" tabindex="1">
-                	<option value="" selected="">All Categories</option>
-                      <?php if (!empty($listing_categories)): ?>
-                    <?php foreach ($listing_categories as $row): ?>
-                       <option value="<?php echo $row->category_name ?>" <?php if(!empty($_GET['lc']) && $row->category_name==$_GET['lc']){ echo'selected';}?> ><?php echo $row->category_name ?></option>
-                        <?php if (!empty($row->childs)): ?>
-                            <?php foreach ($row->childs as $child): ?>
-                                <option value="<?php echo $child->category_name ?>" <?php if(!empty($_GET['lc']) && $child->category_name==$_GET['lc']){ echo'selected';}?> ><?php echo $row->category_name.' > '.$child->category_name ?></option>
-                            <?php endforeach ?>
-                        <?php endif ?>
-                    <?php endforeach ?>
-                    <?php endif ?>
-                </select>
-            </div>
-    	<div class="col-lg-5" style="padding-right:0">
-           <select  name="query[]" data-placeholder="Make and Model" class="chosen-select form-control"  id="models" multiple tabindex="2">
+        <div class="ibox-content">
+          <form action="<?php echo base_url('marketplace/buy'); ?>/" method="get" accept-charset="utf-8" id="search">
+          <div class="row">
+            <div class="col-lg-3" style="padding-right:0">
+              <select name="lc" class="form-control" tabindex="1">
+                <option value="" selected="">All Categories</option>
+<?php if (!empty($listing_categories)): ?>
+<?php foreach ($listing_categories as $row): ?>
+                <option value="<?php echo $row->category_name ?>" <?php if(!empty($_GET['lc']) && $row->category_name==$_GET['lc']){ echo'selected';}?> ><?php echo $row->category_name ?></option>
+<?php if (!empty($row->childs)): ?>
+<?php foreach ($row->childs as $child): ?>
+                <option value="<?php echo $child->category_name ?>" <?php if(!empty($_GET['lc']) && $child->category_name==$_GET['lc']){ echo'selected';}?> ><?php echo $row->category_name.' > '.$child->category_name ?></option>
+<?php endforeach ?>
+<?php endif ?>
+<?php endforeach ?>
+<?php endif ?>
+              </select>
+            </div><!-- /col-lg-3 -->
+            <div class="col-lg-5" style="padding-right:0">
+              <select  name="query[]" data-placeholder="Make and Model" class="chosen-select form-control"  id="models" multiple tabindex="2">
               
               <?php 
 							$make_n_model = $dataasa['make_n_model'];
@@ -330,7 +321,7 @@ endif;
         
         
         
-        <td> <?php if(!empty($value->product_mpn_isbn)){ echo "MPN/ISBN: ".$value->product_mpn_isbn; } ?></td>
+        <td> <?php if(!empty($value->product_mpn_isbn)){ echo $value->product_mpn_isbn; } ?></td>
         <td><?php echo $value->product_make; ?> 
 				<?php echo $value->product_model; ?></td>
         <td><?php echo $value->product_type; ?></td>
@@ -356,8 +347,110 @@ endif;
 </div>
 </div>
 </div>
+<!-- Data Tables -->
+<link href="public/main/template/core/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+<link href="public/main/template/core/css/plugins/dataTables/dataTables.responsive.css" rel="stylesheet">
+<link href="public/main/template/core/css/plugins/dataTables/dataTables.tableTools.min.css" rel="stylesheet">
+
+<!-- Multi Select -->
+<link href="public/main/template/core/css/plugins/chosen/chosen.css" rel="stylesheet">
+
+<!-- Data Tables -->
+<script type="text/javascript" src="public/main/template/core/js/plugins/dataTables/jquery.dataTables.js"></script>
+<script type="text/javascript" src="public/main/template/core/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+<script type="text/javascript" src="public/main/template/core/js/plugins/dataTables/dataTables.responsive.js"></script>
+<script type="text/javascript" src="public/main/template/core/js/plugins/dataTables/dataTables.tableTools.min.js"></script>
+
+<!-- Chosen -->
+<script src="public/main/template/core/js/plugins/chosen/chosen.jquery.js"></script>
+
+
+<!-- Page-Level Scripts -->
+<script type="text/javascript">
+$(document).ready(function() {
+    <?php if($listing_buy): ?>
+    $('.dataTables-example').dataTable({
+        responsive: true,
+        "dom": 'T<"clear">lfrtip',
+        "tableTools": {
+            "sSwfPath": "public/main/template/core/js/plugins/dataTables/swf/copy_csv_xls_pdf.swf"
+        }
+    });
+    <?php endif; ?>
+	/* multi select */
+	var config = {
+        '.chosen-select'           : {search_contains:true},
+        '.chosen-select-deselect'  : {allow_single_deselect:true},
+        '.chosen-select-no-single' : {disable_search_threshold:10},
+        '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+        '.chosen-select-width'     : {width:"95%"}
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }			
+
+});
+</script>
+
+
+<style>
+body.DTTT_Print { background: #fff;}
+.DTTT_Print #page-wrapper {margin: 0;background:#fff;}
+button.DTTT_button, div.DTTT_button, a.DTTT_button {border: 1px solid #e7eaec;background: #fff;color: #676a6c;box-shadow: none;padding: 6px 8px;}
+button.DTTT_button:hover, div.DTTT_button:hover, a.DTTT_button:hover {border: 1px solid #d2d2d2;background: #fff;color: #676a6c;box-shadow: none;padding: 6px 8px;}
+.dataTables_filter label {margin-right: 5px;}
+
+
+/* chosen css override */
+.chosen-container-multi .chosen-choices li.search-field input[type="text"] {font-family:inherit;font-size:14px}
+.chosen-container-multi .chosen-choices {border-radius:5px;border:1px solid #e5e6e7}
+.chosen-container-multi .chosen-choices li.search-choice {color:#FFF;background:#1ab394}
+
+i.cursor:hover {cursor:pointer}
+
+</style>
+<script src="public/admin/js/jquery.countdown.min.js"></script>
+<script>
+jQuery(document).ready(function($) {
+    $('[data-countdown]').each(function() {
+       var $this = $(this), finalDate = $(this).data('countdown');
+       $this.countdown(finalDate, function(event) {
+         $this.html(event.strftime('%Dd %Hh %Mm %Ss'));
+       });
+     });
+});
+</script>
+
+<script type="text/javascript">
+$("#continent").val("<?php if(isset($_GET['continent'])) echo $_GET['continent'] ?>");
+$("#region").val("<?php if(isset($_GET['region'])) echo $_GET['region'] ?>");
+$("#countries").val(<?php if(isset($_GET['countries'])) echo $_GET['countries'] ?>);
+
+$('#reset').click(function(){
+        $('#search')[0].reset();
+  });
+</script>
 
 <?php } else {?>
+<div class="row wrapper border-bottom white-bg page-heading">
+<div class="col-lg-10">
+    <h2>Selling Offers</h2>
+    <ol class="breadcrumb">
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li>
+            Marketplace
+        </li>
+        <li class="active">
+            <strong>Buy</strong>
+        </li>
+    </ol>
+</div>
+<div class="col-lg-2">
+
+</div>
+</div>
 <?php if($member->membership == 1 ){ ?>
             <div class="alert alert-info" style="margin:15px 15px -15px">
         <p><i class="fa fa-info-circle"></i> <strong>This is a Demo</strong> Silver members and above with criteria met will have access to the live marketplace. You can search by product category and make/model, if you are looking to narrow your results down further you can view the advanced search options. Any extra details you need can be found by clicking on the <i class="fa fa-question-circle cursor"></i> icons. This section of the marketplace displays all offers companies on GSMStockMarket have for sale and which you can choose to make an offer on. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
@@ -1219,36 +1312,6 @@ endif;
 
 </div>
 <!-- Page-Level Scripts -->
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('.dataTables-example').dataTable({
-                responsive: true,
-                "dom": 'T<"clear">lfrtip',
-                "tableTools": {
-                    "sSwfPath": "public/main/template/core/js/plugins/dataTables/swf/copy_csv_xls_pdf.swf"
-                }
-            });
-			/* multi select */
-       	var config = {
-                '.chosen-select'           : {search_contains:true},
-                '.chosen-select-deselect'  : {allow_single_deselect:true},
-                '.chosen-select-no-single' : {disable_search_threshold:10},
-                '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
-                '.chosen-select-width'     : {width:"95%"}
-            }
-            for (var selector in config) {
-                $(selector).chosen(config[selector]);
-            }			
-
-        });
-    </script>
-<?php 
-
-} ?> 
-<!-- Daniel Added End -->
-
-    
-
 <!-- Data Tables -->
 <link href="public/main/template/core/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
 <link href="public/main/template/core/css/plugins/dataTables/dataTables.responsive.css" rel="stylesheet">
@@ -1270,7 +1333,6 @@ endif;
 <!-- Page-Level Scripts -->
 <script type="text/javascript">
 $(document).ready(function() {
-    <?php if($listing_buy): ?>
     $('.dataTables-example').dataTable({
         responsive: true,
         "dom": 'T<"clear">lfrtip',
@@ -1278,7 +1340,6 @@ $(document).ready(function() {
             "sSwfPath": "public/main/template/core/js/plugins/dataTables/swf/copy_csv_xls_pdf.swf"
         }
     });
-    <?php endif; ?>
 	/* multi select */
 	var config = {
         '.chosen-select'           : {search_contains:true},
@@ -1322,6 +1383,22 @@ jQuery(document).ready(function($) {
      });
 });
 </script>
+
+<script type="text/javascript">
+$("#continent").val("<?php if(isset($_GET['continent'])) echo $_GET['continent'] ?>");
+$("#region").val("<?php if(isset($_GET['region'])) echo $_GET['region'] ?>");
+$("#countries").val(<?php if(isset($_GET['countries'])) echo $_GET['countries'] ?>);
+
+$('#reset').click(function(){
+        $('#search')[0].reset();
+  });
+</script>
+<?php 
+
+} ?> 
+<!-- Daniel Added End -->
+
+
 
 
 <!-- Modal Data Seller Currency -->
@@ -1381,13 +1458,3 @@ jQuery(document).ready(function($) {
 	</div>
 </div>
 </div>
-
-<script type="text/javascript">
-$("#continent").val("<?php if(isset($_GET['continent'])) echo $_GET['continent'] ?>");
-$("#region").val("<?php if(isset($_GET['region'])) echo $_GET['region'] ?>");
-$("#countries").val(<?php if(isset($_GET['countries'])) echo $_GET['countries'] ?>);
-
-$('#reset').click(function(){
-        $('#search')[0].reset();
-  });
-</script>

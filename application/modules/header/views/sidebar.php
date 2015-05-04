@@ -116,7 +116,8 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
 <li>
 		<a href="addressbook"><i class="fa fa-book"></i> <span class="nav-label">Address Book</span></a>
 </li>
-
+<?php $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id);
+if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <?php if($url == 'marketplace') {?>
 <li class="active">
 		<a href="marketplace/notice">
@@ -212,21 +213,82 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
 		</ul>
 </li>
 <?php } ?>
+<?php } else {?>
+<?php if($url == 'marketplace') {?>
+<li class="active">
+<a href="marketplace/notice"><i class="fa fa-line-chart"></i> <span class="nav-label">Marketplace</span> <span class="fa arrow"></span></a>
+  <ul class="nav nav-second-level">
+    <li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Buy</a></li>
+    <li><a href="marketplace/sell"><i class="fa fa-tag"></i> Sell</a></li>
+    <li><a href="marketplace/watching"><i class="fa fa-eye"></i> Watching <span class="label label-warning pull-right">4</span></a></li>
+    <li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers<span class="label label-info pull-right">20</span></a></li>
+    <li><a href="marketplace/open_orders"><i class="fa fa-book"></i> Open Orders <span class="label label-warning pull-right">2/5</span></a></li>
+    <li><a href="marketplace/listing"><i class="fa fa-list"></i> My Listings</a></li>
+    <li><a href="marketplace/history"><i class="fa fa-file-text"></i> Order History</a></li>
+    <li><a href="javascript:void(0)"><i class="fa fa-plus"></i> Create Listing  <span class="fa arrow"></span></a>
+    <ul class="nav nav-third-level">		                                    
+      <li><a href="marketplace/buy_listing"><i class="fa fa-level-up"></i> Buying Request</a></li>
+      <li><a href="marketplace/sell_listing"><i class="fa fa-level-down"></i> Selling Offer</a></li>
+    </ul>
+    </li>
+  </ul>
+</li>
+<?php } else {?>
+<li>
+<a href="marketplace/notice"><i class="fa fa-line-chart"></i> <span class="nav-label">Marketplace</span> <span class="fa arrow"></span></a>
+  <ul class="nav nav-second-level">
+    <li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Buy</a></li>
+    <li><a href="marketplace/sell"><i class="fa fa-tag"></i> Sell</a></li>
+    <li><a href="marketplace/watching"><i class="fa fa-eye"></i> Watching <span class="label label-warning pull-right">4</span></a></li>
+    <li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers<span class="label label-info pull-right">20</span></a></li>
+    <li><a href="marketplace/open_orders"><i class="fa fa-book"></i> Open Orders <span class="label label-warning pull-right">2/5</span></a></li>
+    <li><a href="marketplace/listing"><i class="fa fa-list"></i> My Listings</a></li>
+    <li><a href="marketplace/history"><i class="fa fa-file-text"></i> Order History</a></li>
+    <li><a href="javascript:void(0)"><i class="fa fa-plus"></i> Create Listing  <span class="fa arrow"></span></a>
+    <ul class="nav nav-third-level">		                                    
+      <li><a href="marketplace/buy_listing"><i class="fa fa-level-up"></i> Buying Request</a></li>
+      <li><a href="marketplace/sell_listing"><i class="fa fa-level-down"></i> Selling Offer</a></li>
+    </ul>
+    </li>
+  </ul>
+</li>
+<?php }} ?>
 
 <li>
 		<a href="search/company"><i class="fa fa-search"></i> <span class="nav-label">Search</span></a>
-		<!--
-		<ul class="nav nav-second-level">
-				<li><a href="search/user"><i class="fa fa-user"></i> User Search</a></li>
-				<li><a href="search/company"><i class="fa fa-users"></i> Company Search</a></li>
-		</ul>
-		-->
 </li>
-<!--
-<li>
-		<a href=""><i class="fa fa-money"></i> <span class="nav-label">My Wallet</span><span class="label label-primary pull-right">£5.00</span></a>
-</li>
--->
+
+<?php if($url == 'creditdata') {?>
+		<li class="active">
+		        <a href=""><i class="fa fa-clipboard"></i> <span class="nav-label">Credit Check</span><span class="fa arrow"></span></a>
+	        <ul class="nav nav-second-level">
+	                <?php
+		                                    $this->load->module('creditdata');
+	                                    $this->creditdata->request_count();
+	                                    $this->creditdata->accept_count();
+		                                ?>
+	        </ul>
+		</li>         
+		<?php } else {?>
+		<li>
+		        <a href="creditcheck"><i class="fa fa-clipboard"></i> <span class="nav-label">Credit Check</span><span class="fa arrow"></span></a>
+		        <ul class="nav nav-second-level">
+		                                <?php
+		                                    $this->load->module('creditdata');
+		                                    $this->creditdata->request_count();
+	                                    $this->creditdata->accept_count();
+		                                ?>
+		        </ul>
+		</li>         
+		<?php } ?>
+	
+		
+		<?php $mem_id = $this->member_model->get_where($this->session->userdata('members_id'))->membership; if($mem_id < 2){?>
+		<li>
+		        <a href="demo"><i class="fa fa-desktop"></i> <span class="nav-label">Request a Demo</span></a>
+		</li>
+		<?php } else{} ?>
+
 
 <li>
 		<a href="events"><i class="fa fa-calendar"></i> <span class="nav-label">Events</span></a>
@@ -243,12 +305,7 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
 				<li><a href="imei/archive/"><i class="fa fa-book"></i> Archive</a></li>
 				<li><a href="imei/top_up/"><i class="fa fa-money"></i> <span class="nav-label">Top up</span><span class="label label-primary pull-right">£5.00</span></a></li>
 		</ul>
-</li>                    
-<!--
-<li>
-		<a href="#"><i class="fa fa-users"></i> <span class="nav-label">Social Hub</span></a>
-</li>
--->
+</li>     
 <?php } else {?>
 <li>
 		<a href="imei/"><i class="fa fa-barcode"></i> <span class="nav-label">IMEI Services</span> 
@@ -260,12 +317,7 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
 				<li><a href="imei/archive/"><i class="fa fa-book"></i> Archive</a></li>
 				<li><a href="imei/top_up/"><i class="fa fa-money"></i> <span class="nav-label">Top up</span><span class="label label-primary pull-right">£5.00</span></a></li>
 		</ul>
-</li>                    
-<!--
-<li>
-		<a href="#"><i class="fa fa-users"></i> <span class="nav-label">Social Hub</span></a>
-</li>
--->
+</li>   
 <?php } ?>
 
 <?php if($url == 'support') {?>

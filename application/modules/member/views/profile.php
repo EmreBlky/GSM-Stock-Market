@@ -302,7 +302,6 @@ if($member->marketplace == 'inactive'){ ?>
                                             <li class=""><a href="#feedback" data-toggle="tab">Feedback</a></li>
                                             <li class=""><a href="#selling-offers" data-toggle="tab">Selling Offers</a></li>
                                             <li class=""><a href="#buying-requests" data-toggle="tab">Buying Requests</a></li>
-                                            <li class=""><a href="#credit-information" data-toggle="tab">Credit Info</a></li>
                                         </ul>
                                     </div>
                                 </div>

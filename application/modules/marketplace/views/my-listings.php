@@ -269,8 +269,8 @@ $session_member_id = $this->session->userdata('members_id'); ?>
         <tbody>
             <tr>
                 <td class="text-center"><span class="label label-primary">Active</span></td>
-                <td>06-May-15, 09:35</td>
-                <td>13-May-15, 09:35</td>
+                <td><span><?php echo date("d-M, H:i", time()+220200); ?></span></td>
+                <td><span><?php echo date("d-M, H:i", time()+825000); ?></span></td>
                 <td>Acer Liquid E3</td>
                 <td>New</td>
                 <td>GBP 50</td>
@@ -284,8 +284,8 @@ $session_member_id = $this->session->userdata('members_id'); ?>
             </tr>
             <tr>
                 <td class="text-center"><span class="label label-success">Scheduled</span></td>
-                <td>11-May-15, 12:30</td>
-                <td>21-May-15, 12:30</td>
+                <td><span><?php echo date("d-M, H:i", time()+492000); ?></span></td>
+                <td><span><?php echo date("d-M, H:i", time()+1701600); ?></span></td>
                 <td>Sony Xperia Z</td>
                 <td>New</td>
                 <td>EUR 100</td>
@@ -328,8 +328,8 @@ $session_member_id = $this->session->userdata('members_id'); ?>
         <tbody>
             <tr>
                 <td class="text-center"><span class="label label-primary">Active</span></td>
-                <td>10-May-15, 11:42</td>
-                <td>24-May-15, 11:42</td>
+                <td><span><?php echo date("d-M, H:i", time()-202800); ?></span></td>
+                <td><span><?php echo date("d-M, H:i", time()+402000); ?></span></td>
                 <td>Google Nexus</td>
                 <td>New</td>
                 <td>GBP 25</td>
@@ -343,8 +343,8 @@ $session_member_id = $this->session->userdata('members_id'); ?>
             </tr>
             <tr>
                 <td class="text-center"><span class="label label-danger">Ended</span></td>
-                <td>23-Apr-15, 12:01</td>
-                <td>30-Apr-15, 12:01</td>
+                <td><span><?php echo date("d-M, H:i", time()-864000); ?></span></td>
+                <td><span><?php echo date("d-M, H:i", time()-259200); ?></span></td>
                 <td>LG G4</td>
                 <td>Used Grade A</td>
                 <td>USD 98</td>

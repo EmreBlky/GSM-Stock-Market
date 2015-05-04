@@ -295,9 +295,9 @@ class Register extends MX_Controller{
                             );
 
         $this->session->set_userdata($user_data);
-        $this->session->set_flashdata('confirm-login', '<div style="margin-top: 15px; margin-left: 10px;">    
+        $this->session->set_flashdata('confirm-login', '<div style="margin:15px 15px -30px;">    
                                                             <div class="alert alert-success">
-                                                                Thankyou. Your email has been validated and you account has been verified. An Email has been sent with your log in details.
+                                                                Your registration has been completed! We have emailed you your password. We advise changing it for added security.
                                                             </div>
                                                         </div>');
 

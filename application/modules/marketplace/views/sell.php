@@ -323,7 +323,7 @@ foreach ($listing_sell as $value) {?>
           <span class="label label-default"><?php echo $rating; ?></span>
       <?php } ?>
 </td>
-<td><?php if(!empty($value->product_mpn_isbn)){ echo "MPN/ISBN: ".$value->product_mpn_isbn; } ?></td>
+<td><?php if(!empty($value->product_mpn_isbn)){ echo $value->product_mpn_isbn; } ?></td>
 <td><?php echo $value->product_make; ?>
 	<?php echo $value->product_model; ?></td>
 <td><?php echo $value->product_type; ?></td>
@@ -350,6 +350,84 @@ foreach ($listing_sell as $value) {?>
 </div>
 </div>
 </div> 
+
+    <!-- Data Tables -->
+    <link href="public/main/template/core/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="public/main/template/core/css/plugins/dataTables/dataTables.responsive.css" rel="stylesheet">
+    <link href="public/main/template/core/css/plugins/dataTables/dataTables.tableTools.min.css" rel="stylesheet">
+    
+    <!-- Multi Select -->
+    <link href="public/main/template/core/css/plugins/chosen/chosen.css" rel="stylesheet">
+
+    <!-- Data Tables -->
+    <script type="text/javascript" src="public/main/template/core/js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="public/main/template/core/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <script type="text/javascript" src="public/main/template/core/js/plugins/dataTables/dataTables.responsive.js"></script>
+    <script type="text/javascript" src="public/main/template/core/js/plugins/dataTables/dataTables.tableTools.min.js"></script>
+
+    <!-- Chosen -->
+    <script src="public/main/template/core/js/plugins/chosen/chosen.jquery.js"></script>
+    
+    
+    <!-- Page-Level Scripts -->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            <?php  if(!empty($listing_sell)): ?>
+            $('.dataTables-example').dataTable({
+                responsive: true,
+                "dom": 'T<"clear">lfrtip',
+                "tableTools": {
+                    "sSwfPath": "public/main/template/core/js/plugins/dataTables/swf/copy_csv_xls_pdf.swf"
+                }
+            });
+            <?php endif; ?>
+			/* multi select */
+       	var config = {
+                '.chosen-select'           : {search_contains:true},
+                '.chosen-select-deselect'  : {allow_single_deselect:true},
+                '.chosen-select-no-single' : {disable_search_threshold:10},
+                '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+                '.chosen-select-width'     : {width:"95%"}
+            }
+            for (var selector in config) {
+                $(selector).chosen(config[selector]);
+            }			
+
+        });
+    </script>
+    
+<style>
+body.DTTT_Print { background: #fff;}
+.DTTT_Print #page-wrapper {margin: 0;background:#fff;}
+button.DTTT_button, div.DTTT_button, a.DTTT_button {border: 1px solid #e7eaec;background: #fff;color: #676a6c;box-shadow: none;padding: 6px 8px;}
+button.DTTT_button:hover, div.DTTT_button:hover, a.DTTT_button:hover {border: 1px solid #d2d2d2;background: #fff;color: #676a6c;box-shadow: none;padding: 6px 8px;}
+.dataTables_filter label {margin-right: 5px;}
+
+
+/* chosen css override */
+.chosen-container-multi .chosen-choices li.search-field input[type="text"] {font-family:inherit;font-size:14px}
+.chosen-container-multi .chosen-choices {border-radius:5px;border:1px solid #e5e6e7}
+.chosen-container-multi .chosen-choices li.search-choice {color:#FFF;background:#1ab394}
+</style>
+<script src="public/admin/js/jquery.countdown.min.js"></script>
+<script>
+jQuery(document).ready(function($) {
+    $('[data-countdown]').each(function() {
+       var $this = $(this), finalDate = $(this).data('countdown');
+       $this.countdown(finalDate, function(event) {
+         $this.html(event.strftime('%Dd %Hh %Mm %Ss'));
+       });
+     });
+});
+
+$("#continent").val("<?php if(isset($_GET['continent'])) echo $_GET['continent'] ?>");
+$("#region").val("<?php if(isset($_GET['region'])) echo $_GET['region'] ?>");
+$("#countries").val(<?php if(isset($_GET['countries'])) echo $_GET['countries'] ?>);
+
+$('#reset').click(function(){
+        $('#search')[0].reset();
+  });
+</script>
 
 <?php } else {?>
 <?php if($member->membership == 1 ){ ?>
@@ -1211,39 +1289,6 @@ foreach ($listing_sell as $value) {?>
 </div>
     
     
-    <!-- Page-Level Scripts -->
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('.dataTables-example').dataTable({
-                responsive: true,
-                "dom": 'T<"clear">lfrtip',
-                "tableTools": {
-                    "sSwfPath": "public/main/template/core/js/plugins/dataTables/swf/copy_csv_xls_pdf.swf"
-                }
-            });
-			/* multi select */
-       	var config = {
-                '.chosen-select'           : {search_contains:true},
-                '.chosen-select-deselect'  : {allow_single_deselect:true},
-                '.chosen-select-no-single' : {disable_search_threshold:10},
-                '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
-                '.chosen-select-width'     : {width:"95%"}
-            }
-            for (var selector in config) {
-                $(selector).chosen(config[selector]);
-            }			
-
-        });
-    </script>
-
-<?php 
-
-} ?> 
-<!-- Daniel Added End -->
-      
-            
- 
-
     <!-- Data Tables -->
     <link href="public/main/template/core/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
     <link href="public/main/template/core/css/plugins/dataTables/dataTables.responsive.css" rel="stylesheet">
@@ -1265,7 +1310,6 @@ foreach ($listing_sell as $value) {?>
     <!-- Page-Level Scripts -->
     <script type="text/javascript">
         $(document).ready(function() {
-            <?php  if(!empty($listing_sell)): ?>
             $('.dataTables-example').dataTable({
                 responsive: true,
                 "dom": 'T<"clear">lfrtip',
@@ -1273,7 +1317,6 @@ foreach ($listing_sell as $value) {?>
                     "sSwfPath": "public/main/template/core/js/plugins/dataTables/swf/copy_csv_xls_pdf.swf"
                 }
             });
-            <?php endif; ?>
 			/* multi select */
        	var config = {
                 '.chosen-select'           : {search_contains:true},
@@ -1321,3 +1364,68 @@ $('#reset').click(function(){
         $('#search')[0].reset();
   });
 </script>
+
+<?php 
+
+} ?> 
+<!-- Daniel Added End -->
+<!-- Modal Data Seller Currency -->
+<div class="modal inmodal fade" id="currency" tabindex="-1" role="dialog"  aria-hidden="true">
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title">Selling Currency</h4>
+            <small class="font-bold">Currencies available</small>
+        </div>
+
+        <div class="modal-body">
+          <p>When a seller has an item for sale they specify the currency they wish the item to be paid in. When you make an offer it will be in the currency they chose, but we will display a conversion of the price in the other currencies also on the listing which is managed by XE.com as a guide to help make trading easier for you.</p>
+          <p>Currencies traded on this website are in <strong>GBP &pound;</strong>, <strong>Euro &euro;</strong> and <strong>USD $</strong></p>
+        </div>
+	</div>
+</div>
+</div>
+
+<!-- Modal Data Item Condition -->
+<div class="modal inmodal fade" id="condition" tabindex="-1" role="dialog"  aria-hidden="true">
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title">Item Condition</h4>
+            <small class="font-bold">Condition categories</small>
+        </div>
+
+        <div class="modal-body">
+          <p><strong>New</strong> - An unused brand new product in mint condition.</p>
+          <p><strong>Refurbished</strong> - A product that has been used/repaired to near mint condition, almost brand new.</p>
+          <p><strong>Used</strong> - The product has been used but in great condition and in perfect working order.</p>
+          <p><strong>Grade A</strong> - Not new, but in excellent condition.</p>
+          <p><strong>Grade B</strong> - Good condition, may have light marks and scratches from minor user.</p>
+          <p><strong>Grade C</strong> - Fair condition, will have marks and scratches from heavier use.</p>
+          <p><strong>Grade F</strong> - Fault and/or broken condition, may have cracks.</p>
+        </div>
+	</div>
+</div>
+</div>
+
+<!-- Modal Data Seller Rating -->
+<div class="modal inmodal fade" id="currency" tabindex="-1" role="dialog"  aria-hidden="true">
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title">User Rating</h4>
+            <small class="font-bold">Rating System</small>
+        </div>
+
+        <div class="modal-body">
+          <p>The <strong>Rating System</strong> is decided upon a number of factors involving previous buying and selling of the users accounts. We measure their rating on </p>
+        </div>
+	</div>
+</div>
+</div>
+            
+ 
+

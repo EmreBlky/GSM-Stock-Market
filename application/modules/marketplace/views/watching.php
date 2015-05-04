@@ -141,11 +141,10 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <thead>
             <tr>
                 <th>Listing End</th>
-                <th>Make</th>
-                <th>Model</th>
+                <th>Make &amp; Model</th>
                 <th>Product Type</th>
                 <th>Condition</th>
-                <th>Price</th>
+                <th>Unit Price</th>
                 <th>QTY</th>
                 <th>Spec</th>
                 <th>Country</th>
@@ -154,9 +153,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             </thead>
             <tbody>
             <tr>
-                <td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+1 week 2 days")); ?>"></span></p></td>
-                <td>Samsung</td>
-                <td>Galaxy S2 (i9100)</td>
+                <td><span><?php echo date("d-M, H:i", time()+254983); ?></span></td>
+                <td>Samsung Galaxy S2 (i9100)</td>
                 <td>Handset</td>
                 <td>Used Grade A</td>
                 <td>GBP 40</td>
@@ -167,9 +165,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                 <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
             </tr>
             <tr>
-                <td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+3 days")); ?>"></span></p></td>
-                <td>Apple</td>
-                <td>iPhone 5</td>
+                <td><span><?php echo date("d-M, H:i", time()+374654); ?></span></td>
+                <td>Apple iPhone 5</td>
                 <td>Handset</td>
                 <td>New</td>
                 <td>GBP 112</td>
@@ -195,8 +192,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <thead>
             <tr>
                 <th>Listing End</th>
-                <th>Make</th>
-                <th>Model</th>
+                <th>Make &amp; Model</th>
                 <th>Product Type</th>
                 <th>Condition</th>
                 <th>Price</th>
@@ -208,9 +204,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             </thead>
             <tbody>
             <tr>
-                <td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+1 day")); ?>"></span></p></td>
-                <td>Apple</td>
-                <td>iPhone 6</td>
+                <td><span><?php echo date("d-M, H:i", time()+123456); ?></span></td>
+                <td>Apple iPhone 6</td>
                 <td>Handset</td>
                 <td>Refurbished</td>
                 <td>GBP 502</td>
@@ -221,15 +216,14 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                 <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
             </tr>
             <tr>
-                <td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+3 days")); ?>"></span></p></td>
-                <td>HTC</td>
-                <td>One X</td>
+                <td><span><?php echo date("d-M, H:i", time()+867543); ?></span></td>
+                <td>HTC One X</td>
                 <td>Handset</td>
                 <td>Used Grade C</td>
                 <td>USD 98</td>
                 <td>742</td>
                 <td>EU</td>
-                <td><img src="public/main/template/gsm/img/flags/UAE.png" /></td>
+                <td><img src="public/main/template/gsm/img/flags/United_Arab_Emirates.png" /></td>
                 <th><button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
                 <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
             </tr>
