@@ -429,6 +429,7 @@ class Marketplace extends MX_Controller
    
     function open_orders()
     {
+        $this->output->enable_profiler(TRUE);
         $data['sell_order'] = $this->marketplace_model->sell_order();
         $data['buy_order'] = $this->marketplace_model->buy_order();
         $data['main'] = 'marketplace';        
