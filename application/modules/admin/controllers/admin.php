@@ -798,7 +798,7 @@ class Admin extends MX_Controller
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
         if ($this->form_validation->run() == TRUE){
             $data_update=array(
-            'product_mpn' =>  $this->input->post('product_mpn'),
+            'product_mpn_isbn' =>  $this->input->post('product_mpn'),
            // 'product_isbn' =>  $this->input->post('product_isbn'),
             'product_make' =>  $this->input->post('product_make'),
             'product_model' =>  $this->input->post('product_model'),
