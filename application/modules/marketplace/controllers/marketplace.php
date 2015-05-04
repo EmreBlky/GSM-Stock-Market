@@ -1307,7 +1307,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
 
             $mpnisbn=trim($_POST['mpnisbn']);
 
-            $query=$this->db->query("SELECT product_make,product_color FROM `listing_attributes` WHERE product_mpn_isbn ='$mpnisbn' GROUP BY product_make;");
+            $query=$this->db->query("SELECT product_make,product_color,product_type FROM `listing_attributes` WHERE product_mpn_isbn ='$mpnisbn' GROUP BY product_make;");
                $color=array();
                  if($query->num_rows()>0){
                    foreach ($query->result() as $value) {
@@ -1324,7 +1324,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                  $data['product_colors']= $color;
 
             }else{
-                 $query=$this->db->query("SELECT product_make,product_color FROM `listing_attributes` GROUP BY product_make;");
+                 $query=$this->db->query("SELECT product_make,product_color,product_type FROM `listing_attributes` GROUP BY product_make;");
                     $color=array();
                  if($query->num_rows()>0){
                    foreach ($query->result() as $value) {
@@ -1333,7 +1333,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                    $color=array_unique($color);
                  }
                    $data=array(
-                    'Status' =>TRUE,
+                    'Status' =>FALSE,
                     'numrows'=> $query->num_rows(),
                     'product_make'=>$query->result(),
                     );
@@ -1716,6 +1716,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
             $this->mailbox_model->_insert($data);
 
             $this->session->set_flashdata('msg_success','Offer Accepted sucessfully and move in open order.');  
+            redirect('marketplace/open_orders');
           }elseif($status==2){
 
             $data = array(
