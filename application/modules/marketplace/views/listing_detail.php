@@ -207,9 +207,9 @@ if(!empty($listing_detail->image1))
         <a href="<?php echo base_url().'marketplace/listing_watch/'.$listing_detail->member_id.'/'.$listing_detail->id.'/'.$listing_detail->listing_type ?>" class="btn btn-warning">Watch</a>
         <?php } ?>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#profile_user"><?php if($listing_detail->listing_type==2){ ?>
-          Buyer Profile
-          <?php }elseif($listing_detail->listing_type==1){ ?>
          Seller Profile
+          <?php }elseif($listing_detail->listing_type==1){ ?>
+          Buyer Profile
           <?php } ?>
     </button>
     <?php } ?>
