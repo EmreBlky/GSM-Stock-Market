@@ -789,7 +789,7 @@ class Marketplace extends MX_Controller
         $data['page'] = 'sell-listing';
         $data['page_redirect'] = $page_redirct;
 
-        $data['listing_attributes'] =  $this->marketplace_model->get_result('listing_attributes');
+        $data['listing_attributes'] =  $this->marketplace_model->get_group_listing_attributes();
         $data['shippings'] =  $this->marketplace_model->get_result('shippings','','',array('shipping_name','ASC'));
         if(!empty($list_id)){
         $data['couriers'] =  $this->marketplace_model->get_couriers_by_group('courier_name');
@@ -1121,7 +1121,7 @@ class Marketplace extends MX_Controller
         $data['title'] = 'GSM - Market Place: Buy Listing';        
         $data['page'] = 'buy-listing';
 
-        $data['listing_attributes'] =  $this->marketplace_model->get_result('listing_attributes');
+        $data['listing_attributes'] =  $this->marketplace_model->get_group_listing_attributes();
         $data['shippings'] =  $this->marketplace_model->get_result('shippings','','',array('shipping_name','ASC'));
         if(!empty($list_id)){
         $data['couriers'] =  $this->marketplace_model->get_couriers_by_group('courier_name');
