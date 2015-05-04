@@ -1326,7 +1326,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
             $product_make=trim($_POST['make']);
             $product_mpn_isbn=trim($_POST['mpnisbn']);
 
-            $query=$this->db->query("SELECT product_model FROM `listing_attributes` WHERE product_mpn_isbn ='$product_mpn_isbn' AND product_make like '%$product_make%' GROUP BY product_make;");
+            $query=$this->db->query("SELECT product_model FROM `listing_attributes` WHERE product_mpn_isbn ='$product_mpn_isbn' AND product_make like '%$product_make%' GROUP BY product_model;");
 
             if($query->num_rows()>0){
                 $data=array(
@@ -1335,7 +1335,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                     'product_model'=>$query->result()
                     );
             }else{
-             $query=$this->db->query("SELECT product_model FROM `listing_attributes`  WHERE  product_make like '%$product_make%' GROUP BY product_make;");
+             $query=$this->db->query("SELECT product_model FROM `listing_attributes`  WHERE  product_make like '%$product_make%' GROUP BY product_model;");
                $data=array(
                 'Status' =>FALSE,
                 'numrows'=> $query->num_rows(),
