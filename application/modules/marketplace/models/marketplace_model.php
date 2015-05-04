@@ -730,21 +730,36 @@ class Marketplace_model extends MY_Model {
 	public function count_all_offer()
 	{
 		$member_id=$this->session->userdata('members_id');
-		$query=$this->db->query("SELECT count(id) as totaloffer from make_offer where (seller_id = ".$member_id." or buyer_id=".$member_id.") AND (offer_status=0)" );
-		return $query->row()->totaloffer;
+		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
+		$this->db->from('listing');
+		$this->db->join('make_offer','make_offer.listing_id=listing.id');
+		$this->db->where('listing.status', 1);
+		$this->db->where('make_offer.offer_status', 0);
+		$where_con="(`make_offer`.`seller_id`=".$member_id." OR "."`make_offer`.`buyer_id`=".$member_id.")";
+		$this->db->where($where_con);
+		return  $this->db->count_all_results();
 	}
 
 	public function count_open_order()
 	{
 		$member_id=$this->session->userdata('members_id');
-		$query=$this->db->query("SELECT count(id) as totalopenorder from make_offer where (seller_id = ".$member_id." or buyer_id=".$member_id.") AND offer_status=1 AND order_status < 5 AND seller_history=0 AND buyer_history=0" );
-		return $query->row()->totalopenorder;
+		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
+		$this->db->from('listing');
+		$this->db->join('make_offer','make_offer.listing_id=listing.id');
+		$this->db->where('listing.status', 1);
+		$this->db->where('make_offer.offer_status', 1);
+		$this->db->where('make_offer.order_status < 5');
+		$where_con="(`make_offer`.`seller_id`=".$member_id." OR "."`make_offer`.`buyer_id`=".$member_id.")";
+		$this->db->where($where_con);
+		
+		return  $this->db->count_all_results();
+
 	}
 
 	public function countmy_listing()
 	{
 		$member_id=$this->session->userdata('members_id');
-		$query=$this->db->query("SELECT count(id) as totallisting from listing where member_id=".$member_id." AND schedule_date_time <= '".date('Y-m-d h:i:s')."' AND `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'");
+		$query=$this->db->query("SELECT count(id) as totallisting from listing where member_id=".$member_id." AND (status = 0 or status = 1 or status = 2)");
 		return $query->row()->totallisting;
 	}
 
@@ -752,9 +767,15 @@ class Marketplace_model extends MY_Model {
 	public function count_watch_listing()
 	{
 		$member_id=$this->session->userdata('members_id');
-		$query=$this->db->query("SELECT count(id) as totalwatching
-			from listing_watch where user_id=".$member_id);
-		return $query->row()->totalwatching;
+		//$this->db->select(count(`listing_watch`.'id'));
+		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
+		$this->db->from('listing');
+		$this->db->join('listing_watch','listing_watch.listing_id=listing.id');
+		$this->db->where('listing.status', 1);
+		$this->db->where('listing_watch.user_id',$member_id);
+		//$query = $this->db->get();
+		
+		return  $this->db->count_all_results();
 	}
 
 	public function count_save_listing()
@@ -763,7 +784,18 @@ class Marketplace_model extends MY_Model {
 		$query=$this->db->query("SELECT count(id) as totalsavelisting from listing where status=0 and member_id=".$member_id);
 		return $query->row()->totalsavelisting;
 	}
-
+	/*public function count_all_negotiations()
+	{
+		$member_id=$this->session->userdata('members_id');
+		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
+		$this->db->from('listing0');
+		$this->db->join('negotiation','negotiation.listing_id=listing.id');
+		$this->db->where('listing.status', 1);
+		$this->db->where('negotiation.status', 0);
+		$this->db->where('negotiation.seller_id',$member_id);
+		$this->db->or_where('negotiation.buyer_id',$member_id);
+		return  $this->db->count_all_results();
+	}*/
 	public function get_regions($continent)
 	{
 		$this->db->distinct();
