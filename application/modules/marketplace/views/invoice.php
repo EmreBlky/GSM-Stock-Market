@@ -66,11 +66,11 @@
         <table class="table invoice-table">
             <thead>
             <tr>
-                <th>Item List</th>
-                <th>Quantity</th>
-                <th>Unit Price</th>
-                <th>Shipping</th>
-                <th>Total Price</th>
+                 <th>Item List</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Tax</th>
+                    <th>Total Price</th>
             </tr>
             </thead>
             <tbody>
@@ -108,23 +108,23 @@
     </table>
     <p class="small">This is just a transaction receipt and not a tax/vat invoice</p>
     <div class="text-right">
-    	<span  onclick="myFunction()" class="btn btn-primary"><i class="fa fa-print"></i> Print Transaction </span>
+        <a href="marketplace/invoice_print/<?php echo $invoice->id;?>" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i> Print Transaction </a>
     </div>
 </div>
 </div>
 </div>
 
 <script>
-function myFunction() {
-    window.print();
-}
+/*function myFunction() {
+    window.print('marketplace/invoice_print');
+}*/
 </script>
 <!-- Mainly scripts -->
-<script src="js/jquery-2.1.1.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
-<script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="public/main/template/core/js/jquery-2.1.1.js"></script>
+<script src="public/main/template/core/js/bootstrap.min.js"></script>
+<script src="public/main/template/core/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="public/main/template/core/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 
 <!-- Custom and plugin javascript -->
-<script src="js/inspinia.js"></script>
-<script src="js/plugins/pace/pace.min.js"></script>
+<script src="public/main/template/core/js/inspinia.js"></script>
+<script src="public/main/template/core/js/plugins/pace/pace.min.js"></script>
