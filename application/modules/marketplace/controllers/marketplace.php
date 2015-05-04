@@ -1299,45 +1299,56 @@ class Marketplace extends MX_Controller
 
 public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
 
-    $data=array('Status'=>FALSE,'numrows'=>0);
+    $data=array('Status'=>FALSE,'numrows'=>0,'product_colors'=>'');
 
     if($_POST){
-
         if($type=='MPNISBN'){
 
             $mpnisbn=trim($_POST['mpnisbn']);
 
-            $query=$this->db->query("SELECT product_make,product_color,product_type FROM `listing_attributes` WHERE product_mpn_isbn ='$mpnisbn' GROUP BY product_make;");
-               $color=array();
-                 if($query->num_rows()>0){
-                   foreach ($query->result() as $value) {
-                    $color[] =$value->product_color;
-                   }
-                   $color=array_unique($color);
-                 }
+            $query=$this->db->query("SELECT product_make,product_color,product_type FROM `listing_attributes` WHERE product_mpn_isbn ='$mpnisbn';");
+               
+                $product_makes=array();
+                $colors=array();
+                $product_types=array();
             if($query->num_rows()>0){
+              foreach ($query->result() as $value){
+                    $product_makes[] =$value->product_make; 
+                    if(!in_array($value->product_color, $colors)){   
+                        $colors[]     =$value->product_color; 
+                    }   
+                    $product_types[] =$value->product_type;    
+                    }             
+                   $product_makes=array_unique($product_makes);
+                   //$colors=array_unique($colors);
+                   $product_types=array_unique($product_types);
                 $data=array(
                     'Status' =>TRUE,
                     'numrows'=> $query->num_rows(),
-                    'product_make'=>$query->result(),
-                    );
-                 $data['product_colors']= $color;
-
+                    'product_make'=>$product_makes,
+                    'product_types'=>$product_types,
+                    'product_colors'=>$colors,
+                    );                
             }else{
                  $query=$this->db->query("SELECT product_make,product_color,product_type FROM `listing_attributes` GROUP BY product_make;");
-                    $color=array();
-                 if($query->num_rows()>0){
-                   foreach ($query->result() as $value) {
-                    $color[] =$value->product_color;
-                   }
-                   $color=array_unique($color);
-                 }
+                  
+                     if($query->num_rows()>0){
+                       foreach ($query->result() as $value){
+                        $product_makes[] =$value->product_make;    
+                        $colors[]        =$value->product_color;    
+                        $product_types[] =$value->product_type;    
+                        }             
+                       $product_makes=array_unique($product_makes);
+                       $colors=array_unique($colors);
+                       $product_types=array_unique($product_types);
+                     }
                    $data=array(
                     'Status' =>FALSE,
                     'numrows'=> $query->num_rows(),
-                    'product_make'=>$query->result(),
-                    );
-                    $data['product_colors']= $color;
+                    'product_make'=>$product_makes,
+                    'product_types'=>$product_types,
+                    'product_colors'=>$colors,
+                    );                    
             }
 
             //MPNISBN
@@ -1346,21 +1357,39 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
             $product_make=trim($_POST['make']);
             $product_mpn_isbn=trim($_POST['mpnisbn']);
 
-            $query=$this->db->query("SELECT product_model FROM `listing_attributes` WHERE product_mpn_isbn ='$product_mpn_isbn' AND product_make like '%$product_make%' GROUP BY product_model;");
+            $query=$this->db->query("SELECT product_model FROM `listing_attributes` WHERE product_mpn_isbn ='$product_mpn_isbn' AND product_make like '%$product_make%';");
 
             if($query->num_rows()>0){
-                $data=array(
+               $product_modal=array();
+                   
+                 if($query->num_rows()>0){
+                   foreach ($query->result() as $value){
+                    $product_modal[] =$value->product_model;    
+                    }             
+                   $product_modal=array_unique($product_modal);
+                 }
+                   $data=array(
                     'Status' =>TRUE,
                     'numrows'=> $query->num_rows(),
-                    'product_model'=>$query->result()
-                    );
+                    'product_make'=>$product_modal,
+                    
+                    );       
             }else{
-             $query=$this->db->query("SELECT product_model FROM `listing_attributes`  WHERE  product_make like '%$product_make%' GROUP BY product_model;");
-               $data=array(
-                'Status' =>FALSE,
-                'numrows'=> $query->num_rows(),
-                'product_model'=>$query->result()
-                );
+             $query=$this->db->query("SELECT product_model FROM `listing_attributes`  WHERE  product_make like '%$product_make%';");
+               $product_modal=array();
+                   
+                 if($query->num_rows()>0){
+                   foreach ($query->result() as $value){
+                    $product_modal[] =$value->product_model;    
+                    }             
+                   $product_modal=array_unique($product_modal);
+                 }
+                   $data=array(
+                    'Status' =>FALSE,
+                    'numrows'=> $query->num_rows(),
+                    'product_make'=>$product_modal,
+                    
+                    ); 
             }
 
         }
@@ -2306,7 +2335,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
       $payment_detail = $this->input->post('payment_info');
       $user_id = $this->session->userdata('members_id');
       $id = $this->input->post('order_id');
-      if($this->marketplace_model->update('make_offer',array('order_status'=>1,'payment_detail'=>$payment_detail,'payment_infoadd_datetime'=>date('Y-m-d h:i:s')),array('id'=>$id,'seller_id' =>$user_id))){
+      if($this->marketplace_model->update('make_offer',array('order_status'=>1,'payment_detail'=>$payment_detail,'payment_infoadd_datetime'=>date('Y-m-d h:i:s')),array('id'=>$id))){
             $this->session->set_flashdata('msg_success','Payment information save sucessfully.');  
         }
         else{
@@ -2319,7 +2348,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
     if(isset($_POST['payment_done'])){
       $user_id = $this->session->userdata('members_id');
       $id = $this->input->post('order_id');
-      if($this->marketplace_model->update('make_offer',array('payment_done_datetime'=>date('Y-m-d h:i:s'),'payment_done'=>1),array('id'=>$id,'buyer_id'=>$user_id))){
+      if($this->marketplace_model->update('make_offer',array('payment_done_datetime'=>date('Y-m-d h:i:s'),'payment_done'=>1),array('id'=>$id))){
             $this->session->set_flashdata('msg_success','Payment Done sucessfully.');  
         }else{
           $this->session->set_flashdata('msg_info','Invalid.');  
@@ -2336,7 +2365,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
         $shipping_detail = $this->input->post('shipping_info');
       $user_id = $this->session->userdata('members_id');
       $id = $this->input->post('order_id');
-      if($this->marketplace_model->update('make_offer',array('order_status'=>3,'payment_recevied_datetime'=>date('Y-m-d h:i:s'),'tracking_shipping'=>$shipping_detail,'shipping_arrived_datetime'=>date('Y-m-d h:i:s')),array('id'=>$id,'seller_id'=>$user_id))){
+      if($this->marketplace_model->update('make_offer',array('order_status'=>3,'payment_recevied_datetime'=>date('Y-m-d h:i:s'),'tracking_shipping'=>$shipping_detail,'shipping_arrived_datetime'=>date('Y-m-d h:i:s')),array('id'=>$id))){
             $this->session->set_flashdata('msg_success','PShipping Information save sucessfully.');  
         }
         else{
@@ -2351,7 +2380,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
       $shipping_detail = $this->input->post('shipping_info');
       $user_id = $this->session->userdata('members_id');
       $id = $this->input->post('order_id');
-      if($this->marketplace_model->update('make_offer',array('order_status'=>3,'tracking_shipping'=>$shipping_detail,'shipping_arrived_datetime'=>date('Y-m-d h:i:s')),array('id'=>$id,'seller_id' =>$user_id))){
+      if($this->marketplace_model->update('make_offer',array('order_status'=>3,'tracking_shipping'=>$shipping_detail,'shipping_arrived_datetime'=>date('Y-m-d h:i:s')),array('id'=>$id))){
             $this->session->set_flashdata('msg_success','Shipping Information save sucessfully.');  
         }
         else{
@@ -2364,7 +2393,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
       if(isset($_POST['shipping_received'])){
       $user_id = $this->session->userdata('members_id');
       $id = $this->input->post('order_id');
-      if($this->marketplace_model->update('make_offer',array('order_status'=>4,'shipping_recevied_datetime'=>date('Y-m-d h:i:s'),'shipping_received'=>1),array('id'=>$id,'buyer_id'=>$user_id))){
+      if($this->marketplace_model->update('make_offer',array('order_status'=>4,'shipping_recevied_datetime'=>date('Y-m-d h:i:s'),'shipping_received'=>1),array('id'=>$id))){
             $this->session->set_flashdata('msg_success','Order Statue changed sucessfully.');  
         }
         else{
