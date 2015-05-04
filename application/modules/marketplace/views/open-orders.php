@@ -64,7 +64,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <?php }elseif($value->order_status == 4){ $progress = "100%" ?>
             <td><span class="label label-primary">Shipment Arrived</span></td>
         <?php }?>
-            <td><?php echo $value->company_name; ?></td>
+            <td><?php $seller_cmp_info=comapny_info($value->seller_id);
+            echo $seller_cmp_info->company_name; ?></td>
             <td><?php echo $value->product_make; ?></td>
             <td><?php echo $value->product_type; ?></td>
             <td><?php echo $value->condition; ?></td>
@@ -143,7 +144,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <?php }elseif($value->order_status == 4){ $progress = "100%" ?>
             <td><span class="label label-primary">Shipment Arrived</span></td>
         <?php }?>
-            <td><?php echo $value->company_name; ?></td>
+            <td><?php $seller_cmp_info=comapny_info($value->buyer_id);
+            echo $seller_cmp_info->company_name; ?></td>
             <td><?php echo $value->product_make; ?></td>
             <td><?php echo $value->product_type; ?></td>
             <td><?php echo $value->condition; ?></td>
@@ -524,7 +526,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                     "sSwfPath": "public/main/template/core/js/plugins/dataTables/swf/copy_csv_xls_pdf.swf"
                 }
             });
-        	/* multi select */
+            /* multi select */
        	var config = {
                 '.chosen-select'           : {search_contains:true},
                 '.chosen-select-deselect'  : {allow_single_deselect:true},
