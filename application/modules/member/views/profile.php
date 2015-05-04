@@ -1218,7 +1218,7 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                             <?php if(file_exists("public/main/template/gsm/creditdata/".$member_company->credit_report.".pdf")){?>
                         	<button type="button" class="btn btn-info btn-sm btn-block" data-toggle="modal" data-target="#creditdata"><i class="fa fa-check-square-o"></i> Request Credit Check</button>         
                             <?php } else {?>
-                                <button type="button" class="btn btn-default btn-sm btn-block"></i> No Cre</button>                            
+                                <button type="button" class="btn btn-default btn-sm btn-block"><i class="fa fa-check-square-o"></i> No Credit Data</button>                            
                             <?php } ?>    
                         </div>
                    </div>
