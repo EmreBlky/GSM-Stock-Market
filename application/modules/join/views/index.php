@@ -1190,7 +1190,7 @@
                 <div class="hr-line-dashed"></div>
                 <div class="form-group">
                     <div class="col-md-6 col-md-offset-3">
-                        <div class="checkbox i-checks"><input type="checkbox" value="terms" name="terms" id="terms" required><label style="margin:-30px 0 0 20px"> You agree to create a free business profile account under Bronze Membership, no charges will be invoiced to you by GSMStockMarket.com Limited.</label></div>
+                        <div class="checkbox i-checks"><input type="checkbox" value="terms" name="terms" id="terms" required><label style="margin:-30px 0 0 20px"> You agree to our terms and conditions</label><a href="http://www.gsmstockmarket.com/terms-and-conditions/" target="_blank" class="btn btn-xs btn-primary">Read Terms</a></div>
                     </div>
                     <div class="col-md-3">
                         <input class="btn btn-primary" name="submit_form" type="submit" id="submit_form" value="Create Account"/>
