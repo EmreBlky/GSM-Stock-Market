@@ -1238,6 +1238,12 @@ $(document).ready(function(){
                    // console.log(data.numrows+ ' data.num_rows '+val.product_make);
                 }
                 productmakehtml +=' >'+val.product_make+'</option>';
+
+            $("#product_type option:selected").prop("selected", false);
+               if(data.Status==true){
+                
+                $('#product_type option[value='+val.product_type+']').prop("selected", true);
+              }
            });
            if(data.Status=true){
            $('select[name="product_make"]').html(productmakehtml);
