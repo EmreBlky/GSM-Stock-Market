@@ -17,7 +17,10 @@
 
     </div>
 </div>
-<?php $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id);
+<?php 
+$memberidlogin =  $this->session->userdata('members_id');
+
+$id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id);
 if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 
 <?php msg_alert(); ?>
@@ -64,7 +67,13 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <?php }elseif($value->order_status == 4){ $progress = "100%" ?>
             <td><span class="label label-primary">Shipment Arrived</span></td>
         <?php }?>
-            <td><?php $seller_cmp_info=comapny_info($value->seller_id);
+            <td><?php 
+            $seller_cmp_info='';
+            if($memberidlogin == $value->buyer_id){
+              $seller_cmp_info=comapny_info($value->seller_id);
+            }else{
+              $seller_cmp_info=comapny_info($value->buyer_id);
+            }
             echo $seller_cmp_info->company_name; ?></td>
             <td><?php echo $value->product_make; ?></td>
             <td><?php echo $value->product_type; ?></td>
@@ -144,7 +153,15 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <?php }elseif($value->order_status == 4){ $progress = "100%" ?>
             <td><span class="label label-primary">Shipment Arrived</span></td>
         <?php }?>
-            <td><?php $seller_cmp_info=comapny_info($value->buyer_id);
+            <td>
+
+            <?php $seller_cmp_info='';
+            if($memberidlogin == $value->buyer_id){
+              $seller_cmp_info=comapny_info($value->seller_id);
+            }else{
+              $seller_cmp_info=comapny_info($value->buyer_id);
+            }
+             $seller_cmp_info=comapny_info($value->seller_id);
             echo $seller_cmp_info->company_name; ?></td>
             <td><?php echo $value->product_make; ?></td>
             <td><?php echo $value->product_type; ?></td>
