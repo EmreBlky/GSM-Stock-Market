@@ -1302,22 +1302,37 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
 
             $mpnisbn=trim($_POST['mpnisbn']);
 
-            $query=$this->db->query("SELECT product_make FROM `listing_attributes` WHERE product_mpn_isbn ='$mpnisbn' GROUP BY product_make;");
-
+            $query=$this->db->query("SELECT product_make,product_color FROM `listing_attributes` WHERE product_mpn_isbn ='$mpnisbn' GROUP BY product_make;");
+               $color=array();
+                 if($query->num_rows()>0){
+                   foreach ($query->result() as $value) {
+                    $color[] =$value->product_color;
+                   }
+                   $color=array_unique($color);
+                 }
             if($query->num_rows()>0){
                 $data=array(
                     'Status' =>TRUE,
                     'numrows'=> $query->num_rows(),
-                    'product_make'=>$query->result()
+                    'product_make'=>$query->result(),
                     );
+                 $data['product_colors']= $color;
 
             }else{
-                 $query=$this->db->query("SELECT product_make FROM `listing_attributes` GROUP BY product_make;");
+                 $query=$this->db->query("SELECT product_make,product_color FROM `listing_attributes` GROUP BY product_make;");
+                    $color=array();
+                 if($query->num_rows()>0){
+                   foreach ($query->result() as $value) {
+                    $color[] =$value->product_color;
+                   }
+                   $color=array_unique($color);
+                 }
                    $data=array(
                     'Status' =>TRUE,
                     'numrows'=> $query->num_rows(),
-                    'product_make'=>$query->result()
+                    'product_make'=>$query->result(),
                     );
+                    $data['product_colors']= $color;
             }
 
             //MPNISBN
