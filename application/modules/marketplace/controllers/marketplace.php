@@ -107,8 +107,8 @@ class Marketplace extends MX_Controller
     
     function offers()
     {
-        $data['seller_offer'] = $this->marketplace_model->listing_offer_common(1);
-        $data['buying_request'] = $this->marketplace_model->listing_offer_common(2);
+        $data['seller_offer'] = $this->marketplace_model->listing_offer_common(2);
+        $data['buying_request'] = $this->marketplace_model->listing_offer_common(1);
         //$this->output->enable_profiler(TRUE);
         $data['main'] = 'marketplace';        
         $data['title'] = 'GSM - Market Place: Offers';        
@@ -1697,7 +1697,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
       function offer_status($id='',$status='0',$buyer_id)
     {
       $seller_id =  $this->session->userdata('members_id');
-      if($this->marketplace_model->update('make_offer',array('offer_status'=>$status,'invoice_no'=>$seller_id.'-'.$buyer_id.'-'.$id),array('id'=>$id, 'seller_id'=>$seller_id))){
+      if($this->marketplace_model->update('make_offer',array('offer_status'=>$status,'invoice_no'=>$seller_id.'-'.$buyer_id.'-'.$id),array('id'=>$id, 'offer_received_by'=>$seller_id))){
           if($status==1){
              $data = array(
                 'member_id'         => $seller_id,
