@@ -1281,9 +1281,13 @@ class Marketplace extends MX_Controller
         $this->templates->page($data);
     }
     
-    function invoice_print()
+    function invoice_print($id)
     {
+        $data['invoice'] = $this->marketplace_model->invoice($id);
 
+        if(empty($data['invoice'])){
+            redirect('marketplace/history');
+        }
         $data['main'] = 'marketplace';        
         $data['title'] = 'GSM - Market Place: Invoice Print';        
         $data['page'] = 'invoice-print';
