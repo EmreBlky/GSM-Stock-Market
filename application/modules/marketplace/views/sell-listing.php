@@ -483,7 +483,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 
 
 <div class="wrapper wrapper-content">
-  
+
 <div class="row">
 <?php if($check_securty){?>
 <form method="post" class="validation form-horizontal"  enctype="multipart/form-data"/>
@@ -494,15 +494,15 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <h5>Listing Details</h5>
 </div>
 <?php if(validation_errors()){
-        ?><p class="bg-danger validation_message">Please check following errors validation below.</p><?php 
+        ?><p class="bg-danger validation_message">Please check following errors validation below.</p><?php
     }?>
 <div class="ibox-content"> <!-- Selling -->
 
     <div class="form-group"><label class="col-md-3 control-label">Schedule Listing</label>
-         <div class="col-md-9"> 
+         <div class="col-md-9">
             <div class="input-group date form_datetime " data-date="<?php if(!empty($product_list->schedule_date_time)) echo $product_list->schedule_date_time; else echo date('Y').'-'.date('m').'-'.date('d') ?>" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
-                <input class="form-control" size="16" type="text" value="<?php if(!empty($product_list->schedule_date_time)){ 
-                    echo $product_list->schedule_date_time;} 
+                <input class="form-control" size="16" type="text" value="<?php if(!empty($product_list->schedule_date_time)){
+                    echo $product_list->schedule_date_time;}
                     elseif(isset($_POST['schedule_date_time']) && !empty($_POST['schedule_date_time'])){  echo set_value('schedule_date_time');}
                 else{ echo date('d F Y - H:i a');} ?>" readonly >
                 <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
@@ -528,12 +528,12 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
              <?php echo form_error('product_mpn'); ?>
         </div>
     </div>
-  
+
      <div class="form-group"><label class="col-md-3 control-label">Make</label>
         <div class="col-md-9">
          <input type="text" list="make" id="product_make" class="form-control check_record" placeholder="Make"  name="product_make" value="<?php if(!empty($product_list->product_make)) echo $product_list->product_make; else echo set_value('product_make');?>"/>
            <datalist id="make">
-            <?php if(!empty($product_makes)){ 
+            <?php if(!empty($product_makes)){
                  foreach ($product_makes as $row) { ?>
                 <option value="<?php echo $row->product_make; ?>" <?php if(!empty($_POST) && $row->product_make==$_POST['product_make']){ echo'selected';}?><?php if(!empty($product_list->product_make) && $row->product_make == $product_list->product_make){ echo'selected';}?>><?php echo $row->product_make; ?></option>
                  <?php }} ?>
@@ -541,12 +541,12 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <?php echo form_error('product_make'); ?>
         </div>
     </div>
-    
+
    <div class="form-group"><label class="col-md-3 control-label">Model</label>
         <div class="col-md-9">
          <input type="text" list="model" id="product_model" class="form-control check_record" placeholder="Model"  name="product_model" value="<?php if(!empty($product_list->product_model)) echo $product_list->product_model; else echo set_value('product_model');?>"/>
            <datalist id="model">
-            <?php if(!empty($product_models)){ 
+            <?php if(!empty($product_models)){
                  foreach ($product_models as $row) { ?>
                 <option value="<?php echo $row->product_model; ?>" <?php if(!empty($_POST) && $row->product_model==$_POST['product_model']){ echo'selected';}?><?php if(!empty($product_list->product_model) && $row->product_model == $product_list->product_model){ echo'selected';}?>><?php echo $row->product_model; ?></option>
                  <?php }} ?>
@@ -559,7 +559,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <div class="col-md-9">
          <input type="text" list="color" id="product_color" class="form-control check_record" placeholder="Colour"  name="product_color" value="<?php if(!empty($product_list->product_color)) echo $product_list->product_color; else echo set_value('product_color');?>"/>
            <datalist id="color">
-            <?php if(!empty($product_colors)){ 
+            <?php if(!empty($product_colors)){
                  foreach ($product_colors as $row) { ?>
                 <option value="<?php echo $row->product_color; ?>" <?php if(!empty($_POST) && $row->product_color==$_POST['product_color']){ echo'selected';}?><?php if(!empty($product_list->product_color) && $row->product_color == $product_list->product_color){ echo'selected';}?>><?php echo $row->product_color; ?></option>
                  <?php }} ?>
@@ -570,7 +570,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
     </div>
 
     <div class="form-group"><label class="col-md-3 control-label">Product Type</label>
-        <div class="col-md-9"> 
+        <div class="col-md-9">
         <select  name="product_type" id="product_type" class="form-control check_record">
                 <option selected value="0" >-Select Product Type-</option>
                 <?php if (!empty($product_types)): ?>
@@ -578,7 +578,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                     <optgroup label="<?php echo $row->category_name ?>">
                     <?php if (!empty($row->childs)): ?>
                     <?php foreach ($row->childs as $child): ?>
-                        <option value="<?php echo $child->category_name ?>" <?php if(!empty($_POST['product_type']) && $child->category_name==$_POST['product_type']){ echo'selected';}?> 
+                        <option value="<?php echo $child->category_name ?>" <?php if(!empty($_POST['product_type']) && $child->category_name==$_POST['product_type']){ echo'selected';}?>
                         <?php if(!empty($product_list->product_type) && $child->category_name==$product_list->product_type){ echo'selected="selected"';}?>>- <?php echo $child->category_name ?></option>
                         <?php endforeach ?>
                     <?php endif ?>
@@ -591,18 +591,18 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         </div>
     </div>
 
-    
-    
+
+
     <div class="hr-line-dashed"></div>
         <div class="form-group"><label class="col-md-3 control-label">Condition</label>
             <div class="col-md-9">
                 <select class="form-control" name="condition">
                 <option value="">Condition</option>
-                <?php $condition = condition(); 
+                <?php $condition = condition();
                 if($condition){
                     foreach ($condition as $key => $value){ ?>
                       <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['condition']){ echo'selected';}?><?php if(!empty($product_list->condition) && $value == $product_list->condition){ echo'selected="selected"';}?>><?php echo $value; ?></option>
-                      <?php } 
+                      <?php }
                 } ?>
                 </select>
                 <?php echo form_error('condition'); ?>
@@ -612,34 +612,34 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <div class="col-md-9">
             <select class="form-control" name="spec">
                 <option selected value="Any">Any</option>
-                <?php $spec = spec(); 
+                <?php $spec = spec();
                 if($spec){
                     foreach ($spec as $key => $value){ ?>
                       <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['spec']){ echo'selected';}?><?php if(!empty($product_list->spec) && $value==$product_list->spec){ echo'selected';}?>><?php echo $value; ?></option>
-                      <?php } 
+                      <?php }
                 } ?>
             </select>
             <?php echo form_error('spec'); ?>
         </div>
-    </div>     
+    </div>
     <div class="hr-line-dashed"></div>
-    
+
     <div class="form-group"><label class="col-md-3 control-label">Currency</label>
         <div class="col-md-9">
             <select class="form-control" name="currency">
-                    <?php $currency = currency(); 
+                    <?php $currency = currency();
                     if($currency){
                         $i=1;
                     foreach ($currency as $key => $value){ ?>
                       <option <?php if(!empty($_POST) && $i==$_POST['currency']){ echo'selected';}?><?php if(!empty($product_list->currency) && $i==$product_list->currency){ echo'selected';}?> value="<?php echo $i;?>"><?php echo $value; ?></option>
-                      <?php $i++;} 
+                      <?php $i++;}
                     } ?>
             </select>
             <p class="small text-navy">Select the currency you wish this listing to be sold in.</p>
             <?php echo form_error('currency'); ?>
         </div>
     </div>
-    
+
 
     <div class="form-group"><label class="col-md-3 control-label">Unit Price</label>
         <div class="col-md-9">
@@ -647,12 +647,12 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <?php echo form_error('unit_price'); ?>
         </div>
     </div>
-    
+
     <div class="form-group"><label class="col-md-3 control-label">Min Unit Price</label>
         <div class="col-md-9">
             <div class="input-group m-b">
-            <span class="input-group-addon"> 
-            <input type="checkbox" name="minimum_checkbox" id="minimum_checkbox" <?php if(isset($_POST['minimum_checkbox']) ){ echo'checked';} elseif(!empty($product_list->min_price)){ echo'checked';}?>/> </span> 
+            <span class="input-group-addon">
+            <input type="checkbox" name="minimum_checkbox" id="minimum_checkbox" <?php if(isset($_POST['minimum_checkbox']) ){ echo'checked';} elseif(!empty($product_list->min_price)){ echo'checked';}?>/> </span>
 
             <input type="text" class="form-control" placeholder="Minimum Unit Price" name="min_price" value="<?php if(!empty($product_list->min_price)) echo $product_list->min_price; else echo set_value('min_price');?>"
             <?php if(isset($_POST['minimum_checkbox']) ){ echo'';} elseif(empty($product_list->min_price) ){ echo'disabled';}?>></div>
@@ -660,20 +660,20 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <?php echo form_error('min_price'); ?>
         </div>
     </div>
-    
+
     <div class="form-group"><label class="col-md-3 control-label">Quantity Available</label>
         <div class="col-md-9">
             <input type="type" class="form-control" name="total_qty" value="<?php if(!empty($product_list->total_qty)) echo $product_list->total_qty; else  echo set_value('total_qty');?>"/>
             <?php echo form_error('total_qty'); ?>
         </div>
     </div>
-    
+
     <div class="form-group"><label class="col-md-3 control-label">Min Order Quantity</label>
         <div class="col-md-9">
             <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="orderqunatity_checkbox" id="orderqunatity_checkbox"
-            <?php if(isset($_POST['orderqunatity_checkbox']) ){ echo'checked';} elseif(!empty($product_list->min_qty_order)){ echo'checked';}?>/> </span> 
+            <?php if(isset($_POST['orderqunatity_checkbox']) ){ echo'checked';} elseif(!empty($product_list->min_qty_order)){ echo'checked';}?>/> </span>
 
-            <input type="text" class="form-control" placeholder="Minimum Order Quantity" name="min_qty_order" value="<?php if(!empty($product_list->min_qty_order)) echo $product_list->min_qty_order; else echo set_value('min_qty_order');?>" 
+            <input type="text" class="form-control" placeholder="Minimum Order Quantity" name="min_qty_order" value="<?php if(!empty($product_list->min_qty_order)) echo $product_list->min_qty_order; else echo set_value('min_qty_order');?>"
 
             <?php if(isset($_POST['orderqunatity_checkbox']) ){ echo'';} elseif(empty($product_list->min_qty_order) ){ echo'disabled';}?>
             ></div>
@@ -681,11 +681,11 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <?php echo form_error('min_qty_order'); ?>
         </div>
     </div>
-    
-    
-    <div class="hr-line-dashed"></div>  
-    
-    
+
+
+    <div class="hr-line-dashed"></div>
+
+
     <div class="form-group"><label class="col-md-3 control-label">Shipping Terms <button class="btn btn-success btn-circle" type="button" style="width:20px;height:20px;border-radius:10px;font-size:10px;padding:0;margin-bottom:0" data-toggle="modal" data-target="#shipping" title="Click for more information"><i class="fa fa-question"></i></button></label>
     <div class="col-md-9">
 
@@ -700,21 +700,21 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <?php echo form_error('shipping_term'); ?>
     </div>
     </div>
-    
+
     <div class="form-group"><label class="col-md-3 control-label">Courier</label>
 
         <div class="col-md-9">
-           <div id="couriers_data"> <?php $product = array(); if(!empty($product_list->courier)){ $product = explode(',', $product_list->courier); } 
+           <div id="couriers_data"> <?php $product = array(); if(!empty($product_list->courier)){ $product = explode(',', $product_list->courier); }
                     if (!empty($couriers)) {
                          foreach ($couriers as $key => $value): ?>
                              <label class="checkbox-inline i-checks iCheck-helper"><input type="checkbox" value="<?php echo $value->courier_name; ?>" name="courier[]" <?php if(!empty($product) && in_array($value->courier_name, $product)){ echo'checked';}?>/> <?php echo $value->courier_name;?> </label>
                         <?php endforeach;   } ?>
-               
+
             </div>
         </div>
     </div>
-    
-    
+
+
     <div class="form-group shipping-fee" <?php if(!empty($product_list->sell_shipping_fee)) echo 'style="display:block;"'; else echo 'style="display:none;"'; ?>>
         <label class="col-md-3 control-label">Shipping Fee</label>
         <div class="col-md-3">
@@ -731,7 +731,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <a class="btn btn-primary shipping-opt" id="add_shipping"><i class="fa fa-plus"></i> Add Shipping Option</a>
         </div>
     </div>
-    
+
     <div class="form-group"><label class="col-md-3 control-label">Shipping and Handling Fee<br /><small class="text-navy">Add at least one (1) option</small></label>
     <div class="col-md-9">
     <table class="table table-bordered">
@@ -746,54 +746,54 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
       </thead>
       <tbody id="opt_table">
 
-      <?php 
+      <?php
       if(!empty($product_list->sell_shipping_fee)){
             $productlistjsondecode=json_decode($product_list->sell_shipping_fee);
-           
+
         if($productlistjsondecode){
         foreach($productlistjsondecode as $key => $value){
-         ?>  
+         ?>
           <tr><td><?php echo $value->shipping_term; ?><input type="hidden" name="shipping_terms[]" value="<?php if(!empty($value->shipping_term)) echo $value->shipping_term; ?>"/></td>
           <td><?php echo $value->coriars; ?><input type="hidden" name="coriars[]" value="<?php if(!empty($value->coriars)) echo $value->coriars; ?>"/></td>
           <td><?php echo $value->shipping_types; ?><input type="hidden" name="ship_types[]" value="<?php if(!empty($value->shipping_types)) echo $value->shipping_types; ?>"/></td>
           <td><?php echo $value->shipping_fees; ?><input type="hidden" name="shipping_fees[]" value="<?php if(!empty($value->shipping_fees)) echo $value->shipping_fees; ?>"/></td>
           <td style="text-align:center"><a class="wrapper btn btn-danger btn-circle" style="width:20px;height:20px;border-radius:10px;font-size:10px;padding:0;margin-bottom:0"><i class="fa fa-times"></i></a></td>
-          </tr>             
+          </tr>
     <?php   }}
         }
       ?>
-     
+
       </tbody>
     </table>
     </div>
     </div>
-    
-    
-    <div class="hr-line-dashed"></div>                                
-    
+
+
+    <div class="hr-line-dashed"></div>
+
      <div class="form-group"><label class="col-md-3 control-label">Product Description</label>
         <div class="col-md-9">
             <textarea type="type" class="form-control" rows="5" id="product_desc" name="product_desc"><?php if(!empty($product_list->product_desc)) echo $product_list->product_desc; else echo set_value('product_desc');?></textarea>
             <?php echo form_error('product_desc'); ?>
         </div>
     </div>
-    
+
     <div class="hr-line-dashed"></div>
-    
+
     <div class="form-group"><label class="col-md-3 control-label">List Duration</label>
         <div class="col-md-9">
             <select class="form-control" name="duration">
-            <?php $duration = list_duration(); 
+            <?php $duration = list_duration();
             if($duration){
                 foreach ($duration as $key => $value){ ?>
                   <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['duration']){ echo'selected';}
                     elseif(isset($product_list->duration) && $value==$product_list->duration){ echo'selected';}
                     elseif($value == 7){ echo'selected';}?>><?php echo $value; ?> day</option>
-                  <?php } 
+                  <?php }
             } ?>
             </select>
             <?php echo form_error('duration'); ?>
-        </div> 
+        </div>
     </div>
 
    <?php if (empty($product_list->id)): ?>
@@ -804,15 +804,15 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         </div>
     </div>
    <?php endif ?>
-    
+
     <div class="form-group">
         <div class="col-md-9 col-md-offset-3">
             <button class="btn btn-warning" type="submit" name="status" >Save for later</button>
            <button class="btn btn-primary" type="submit" name="status">List Now</button>
         </div>
     </div>
-    
-    
+
+
  </div>
 </div>
 </div>
@@ -826,8 +826,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <div class="ibox-content">
             <div class="row">
                 <div class="col-md-12" style="text-align:center">
-               
-               
+
+
                 <label  class="col-md-4" >Image 1</label>
                 <div  class="col-md-8">
                  <input type="file" name="image1" class="btn default btn-file">
@@ -854,7 +854,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             </div>
             </div>
         </div>
-    </div>        
+    </div>
 </form>
 <?php } else{?>
     <p class="bg-danger validation_message">Invalid listing ID or you have not permission to access this listing.</p>
@@ -1244,12 +1244,20 @@ $(document).ready(function(){
            $('select[name="product_make"]').trigger("chosen:updated");
 
             var product_make= mk1product_make;
-            //console.log(mpnisbn1+ ' ==!!!= '+product_make);
                test123(mpnisbn1,product_make);
+            }
+            //colors select
+            var product_colorshtml='';
+            $.each(data.product_colors, function(index, val) {
+              product_colorshtml +='<option value="'+val+'"';
+              product_colorshtml +=' >'+val+'</option>';
+            });
 
-           }
-
-            //}
+          $('body').find('#color').val('');
+             $('body').find('#color').html(product_colorshtml);
+             if(data.product_colors.length){
+              $('#product_color').val(data.product_colors[0]);
+             }
         });
     });
 
@@ -1363,31 +1371,31 @@ var today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(
               <p>The seller makes the goods available at his/her premises. This term places the maximum obligation on the buyer and minimum obligations on the seller. The Ex Works term is often used when making an initial quotation for the sale of goods without any costs included. EXW means that a buyer incurs the risks for bringing the goods to their final destination. The seller does not load the goods on collecting vehicles and does not clear them for export. If the seller does load the goods, he does so at buyer's risk and cost. If parties wish seller to be responsible for the loading of the goods on departure and to bear the risk and all costs of such loading, this must be made clear by adding explicit wording to this effect in the contract of sale.</p>
               <p>The buyer arranges the pickup of the freight from the supplier's designated ship site, owns the in-transit freight, and is responsible for clearing the goods through Customs. The buyer is also responsible for completing all the export documentation.</p>
               <p>These documentary requirements may cause two principal issues. Firstly, the stipulation for the buyer to complete the export declaration can be an issue in certain jurisdictions (not least the European Union) where the customs regulations require the declarant to be either an individual or corporation resident within the jurisdiction. Secondly, most jurisdictions require companies to provide proof of export for tax purposes. In an Ex-Works shipment the buyer is under no obligation to provide such proof, or indeed to even export the goods. It is therefore of utmost importance that these matters are discussed with the buyer before the contract is agreed. It may well be that another Incoterm, such as FCA seller's premises, may be more suitable.</p>
-              
-              
+
+
               <strong>FOB – Free on Board (named port of shipment)</strong><br />
               <p>The seller must advance government tax in the country of origin as of commitment to load the goods on board a vessel designated by the buyer. Cost and risk are divided when the goods are sea transport in containers (see Incoterms 2010, ICC publication 715). The seller must instruct the buyer the details of the vessel and the port where the goods are to be loaded, and there is no reference to, or provision for, the use of a carrier or forwarder. This term has been greatly misused over the last three decades ever since Incoterms 1980 explained that FCA should be used for container shipments.</p>
               <p>It means the seller pays for transportation of goods to the port of shipment, loading cost. The buyer pays cost of marine freight transportation, insurance, unloading and transportation cost from the arrival port to destination. The passing of risk occurs when the goods are in buyer account. The buyer arranges for the vessel and the shipper has to load the goods and the named vessel at the named port of shipment with the dates stipulated in the contract of sale as informed by the buyer.</p>
-              
+
               <strong>CPT – Carriage Paid To (named place of destination)</strong><br />
               <p>CPT replaces the venerable C&F (cost and freight) and CFR terms for all shipping modes outside of non-containerised seafreight.</p>
               <p>The seller pays for the carriage of the goods up to the named place of destination. Risk transfers to buyer upon handing goods over to the first carrier at the place of shipment in the country of Export. The Shipper is responsible for origin costs including export clearance and freight costs for carriage to named place (usually a destination port or airport). The shipper is not responsible for delivery to the final destination (generally the buyer's facilities), or for buying insurance. If the buyer does require the seller to obtain insurance, the Incoterm CIP should be considered.</p>
-              
+
               <strong>CIP – Carriage and Insurance Paid to (named place of destination)</strong><br />
               <p>This term is broadly similar to the above CPT term, with the exception that the seller is required to obtain insurance for the goods while in transit. CIP requires the seller to insure the goods for 110% of their value under at least the minimum cover of the Institute Cargo Clauses of the Institute of London Underwriters (which would be Institute Cargo Clauses (C)), or any similar set of clauses. The policy should be in the same currency as the contract.</p>
-              
+
               <p>CIP can be used for all modes of transport, whereas the equivalent term CIF can only be used for non-containerised seafreight.</p>
               <strong>Data Source</strong><br />
               <p>Taken from <a href="http://en.wikipedia.org/wiki/Incoterms" target="_blank">Incoterms Wikipedia page</a></p>
 
 
-            
-            
-            
-            
-            
+
+
+
+
+
             </div>
-            
+
         </div>
     </div>
 </div>

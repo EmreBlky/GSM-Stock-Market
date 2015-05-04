@@ -95,7 +95,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
        
         <td style="text-align:right"><?php echo $value->total_price;?></td>
         <td>  <?php echo currency_class($value->buyer_currency); ?>   </td>
-        <th style="text-align:center"><a class="btn btn-primary" href="marketplace/invoice/<?php echo $value->invoice_no;?>">View Transaction</a></th>
+        <th style="text-align:center"><a class="btn btn-primary" href="marketplace/invoice/<?php echo $value->id;?>">View Transaction</a></th>
     </tr>
     <?php } } ?></tbody>
     </table>

@@ -108,12 +108,17 @@
     </table>
     <p class="small">This is just a transaction receipt and not a tax/vat invoice</p>
     <div class="text-right">
-    	<a href="marketplace/invoice_print" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i> Print Transaction </a>
+    	<span  onclick="myFunction()" class="btn btn-primary"><i class="fa fa-print"></i> Print Transaction </span>
     </div>
 </div>
 </div>
 </div>
 
+<script>
+function myFunction() {
+    window.print();
+}
+</script>
 <!-- Mainly scripts -->
 <script src="js/jquery-2.1.1.js"></script>
 <script src="js/bootstrap.min.js"></script>
