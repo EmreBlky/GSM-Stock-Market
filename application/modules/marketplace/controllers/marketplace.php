@@ -189,9 +189,7 @@ class Marketplace extends MX_Controller
         if(isset($_POST['minimum_checkbox'])){
           $this->form_validation->set_rules('min_price', 'min price', 'required|numeric');
         }
-        if(isset($_POST['allowoffer_checkbox'])){
-           $this->form_validation->set_rules('allow_offer', 'allow offer', 'required');
-        }
+       
         $this->form_validation->set_rules('total_qty', 'total quantity', 'required|numeric');
         if(isset($_POST['orderqunatity_checkbox'])){
            $this->form_validation->set_rules('min_qty_order', 'min quantity order', 'required|numeric');
@@ -538,9 +536,7 @@ class Marketplace extends MX_Controller
         $this->form_validation->set_rules('unit_price', 'unit price', 'required|numeric');
         $this->form_validation->set_rules('shipping_term', 'Shipping terms', 'required');
 
-        if(isset($_POST['allowoffer_checkbox'])){
-           $this->form_validation->set_rules('allow_offer', 'allow offer', 'required');
-        }
+       
         $this->form_validation->set_rules('total_qty', 'total quantity', 'required|numeric');
         if(isset($_POST['orderqunatity_checkbox'])){
            $this->form_validation->set_rules('min_qty_order', 'min quantity order', 'required|numeric');
@@ -874,9 +870,7 @@ class Marketplace extends MX_Controller
         if(isset($_POST['maximum_checkbox'])){
           $this->form_validation->set_rules('max_price', 'Max price', 'required|numeric');
         }
-        if(isset($_POST['allowoffer_checkbox'])){
-           $this->form_validation->set_rules('allow_offer', 'allow offer', 'required');
-        }
+       
         $this->form_validation->set_rules('total_qty', 'total quantity', 'required|numeric');
         if(isset($_POST['orderqunatity_checkbox'])){
            $this->form_validation->set_rules('min_qty_order', 'min quantity order', 'required|numeric');
@@ -1310,18 +1304,18 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                
                 $product_makes=array();
                 $colors=array();
-                $product_types=array();
+               
             if($query->num_rows()>0){
               foreach ($query->result() as $value){
                     $product_makes[] =$value->product_make; 
                     if(!in_array($value->product_color, $colors)){   
                         $colors[]     =$value->product_color; 
                     }   
-                    $product_types[] =$value->product_type;    
+                    $product_types =$value->product_type;    
                     }             
                    $product_makes=array_unique($product_makes);
                    //$colors=array_unique($colors);
-                   $product_types=array_unique($product_types);
+                  
                 $data=array(
                     'Status' =>TRUE,
                     'numrows'=> $query->num_rows(),
@@ -1335,12 +1329,13 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                      if($query->num_rows()>0){
                        foreach ($query->result() as $value){
                         $product_makes[] =$value->product_make;    
-                        $colors[]        =$value->product_color;    
-                        $product_types[] =$value->product_type;    
+                        if(!in_array($value->product_color, $colors)){   
+                        $colors[]     =$value->product_color; 
+                    }      
+                        $product_types =$value->product_type;    
                         }             
                        $product_makes=array_unique($product_makes);
-                       $colors=array_unique($colors);
-                       $product_types=array_unique($product_types);
+                      
                      }
                    $data=array(
                     'Status' =>FALSE,
