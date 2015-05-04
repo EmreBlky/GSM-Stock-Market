@@ -5,7 +5,7 @@
 if ( ! function_exists('clear_cache')) {
     function clear_cache(){
         $CI =& get_instance();
-    	$CI->output->set_header('Expires: Wed, 11 Jan 1984 05:00:00 GMT' );
+        $CI->output->set_header('Expires: Wed, 11 Jan 1984 05:00:00 GMT' );
 		$CI->output->set_header('Last-Modified: ' . gmdate( 'D, d M Y H:i:s' ) . 'GMT');
 		$CI->output->set_header("Cache-Control: no-cache, no-store, must-revalidate");
 		$CI->output->set_header("Pragma: no-cache");			
@@ -321,50 +321,78 @@ if ( ! function_exists('list_duration_class')) {
 	}
 }
 
-if ( ! function_exists('condition')) {	
+if ( ! function_exists('condition')) {
 	function condition($status='') {
-		$status_array = array(
-                            '1' => 'New',
-                            '2' => 'Used',
-                            '3' => 'Refurbished',
-                            ); 
-		return $status_array;
+		$CI =& get_instance();
+		$CI->load->model('marketplace_model');
+		if($query= $CI->marketplace_model->get_result('condition_attributes',array('status'=>1),array('id','condition'))):
+			$status_array=array();
+			foreach ($query as $row)
+			$status_array[$row->id]= $row->condition;
+			return $status_array;
+		else:
+			return FALSE;
+		endif;
 	}
 }
 
-if ( ! function_exists('condition_class')) {	
+if ( ! function_exists('condition_class')) {
 	function condition_class($status='') {
-		$status_array = array(
-                                '1' => 'New',
-	                            '2' => 'Used',
-	                            '3' => 'Refurbished',
-	                            ); 
-		return element($status, $status_array);
+		$CI =& get_instance();
+		$CI->load->model('marketplace_model');
+		if($query= $CI->marketplace_model->get_result('condition_attributes',array('status'=>1),array('id','condition'))):
+			$status_array=array();
+			foreach ($query as $row)
+			$status_array[$row->id]= $row->condition;
+			return element($status, $status_array);
+		else:
+			return FALSE;
+		endif;
 	}
 }
 
-if ( ! function_exists('spec')) {	
+if ( ! function_exists('spec')) {
 	function spec($status='') {
-		$status_array = array(
-                            '1' => 'EU',
-                            '2' => 'UK',
-                            '3' => 'US',
-                            '4'	=> 'ASIA'
-                            ); 
-		return $status_array;
+		$CI =& get_instance();
+		$CI->load->model('marketplace_model');
+		if($query= $CI->marketplace_model->get_result('spec_attributes',array('status'=>1),array('id','spec'))):
+			$status_array=array();
+			foreach ($query as $row)
+			$status_array[$row->id]= $row->spec;
+			return $status_array;
+		else:
+			return FALSE;
+		endif;
 	}
 }
 
-if ( ! function_exists('spec_class')) {	
+if ( ! function_exists('spec_class')) {
 	function spec_class($status='') {
-		$status_array = array(
-                                '1' => 'EU',
-	                            '2' => 'UK',
-	                            '3' => 'US',
-	                            '4'	=> 'ASIA'
-	                            ); 
-		return element($status, $status_array);
+
+		$CI =& get_instance();
+		$CI->load->model('marketplace_model');
+		if($query= $CI->marketplace_model->get_result('spec_attributes',array('status'=>1),array('id','spec'))):
+			$status_array=array();
+			foreach ($query as $row)
+			$status_array[$row->id]= $row->spec;
+			return element($status, $status_array);
+		else:
+			return FALSE;
+		endif;
 	}
+}
+
+ if(! function_exists('default_currency')){
+	   function default_currency(){
+      $CI = & get_instance();
+    $member_id='';
+	   	$member_id=$CI->session->userdata('members_id');
+      $CI->load->model('marketplace_model');
+     if($query=$CI->marketplace_model->get_row('members',array('id'=>$member_id)))
+	 	return $query;
+	 else
+	 	return false;
+ }
 }
 
 if ( ! function_exists('currency')) {	
