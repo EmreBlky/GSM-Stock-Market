@@ -1743,4 +1743,224 @@ class Admin extends MX_Controller
             redirect('admin/privacy_policy');
         }
     }
+     /*add Color attributes*/
+   
+
+    function color_attributes()
+    {
+        $this->check_authentication();//check login authentication
+
+
+        $data['color_attributes'] =  $this->admin_model->get_result('color_attributes');
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel: Listing Attribute Level';  
+        $data['page'] = 'color_attributes';
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+
+    function add_color_attribute()
+    {
+        $this->check_authentication();//check login authentication
+
+        $this->form_validation->set_rules('color_name', 'Color Name', 'required');
+        $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+        if ($this->form_validation->run() == TRUE){
+            $data_insert=array(
+            'color_name' =>  $this->input->post('color_name'),
+            'created' => date('Y-m-d h:i:s A'), 
+            );
+           $this->admin_model->insert('color_attributes',$data_insert);
+           $this->session->set_flashdata('msg_success','Color Attribute added successfully.');
+           redirect('admin/color_attributes');
+        }
+        
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel: Listing Attribute Level';  
+        $data['page'] = 'add_color_attribute';
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+
+     function edit_color_attribute($color_id='')
+    {
+        $this->check_authentication();//check login authentication
+        
+
+       $this->form_validation->set_rules('color_name', 'Color Name', 'required');      
+        $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+        if ($this->form_validation->run() == TRUE){
+            $data_update=array(
+             'color_name' =>  $this->input->post('color_name'),           
+             'updated' => date('Y-m-d h:i:s A'), 
+            );
+           $this->admin_model->update('color_attributes',$data_update,array('id'=>$color_id));
+           $this->session->set_flashdata('msg_success','Color attribute updated successfully.');
+           redirect('admin/color_attributes');
+        } 
+       
+        $data['color_attributes'] =  $this->admin_model->get_row('color_attributes',array('id'=>$color_id));
+       
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel: Listing Attribute Level';  
+        $data['page'] = 'edit_color_attribute';
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+
+    function delete_color_attribute($color_id='')
+    {
+        $this->check_authentication();//check login authentication
+        if(empty($color_id)){ redirect('admin/color_attributes'); } 
+
+        if($this->admin_model->delete('color_attributes',array('id'=>$color_id))){
+            $this->session->set_flashdata('msg_success','Color Attribute deleted successfully.');
+           redirect('admin/color_attributes'); 
+        }       
+      
+    }
+
+    /*   Specification */
+
+     function spec_attributes()
+    {
+        $this->check_authentication();//check login authentication
+        $data['spec_attributes'] =  $this->admin_model->get_result('spec_attributes');
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel: Listing Attribute Level';  
+        $data['page'] = 'spec_attributes';
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+
+    function add_spec_attribute()
+    {
+        $this->check_authentication();//check login authentication
+
+        $this->form_validation->set_rules('spec', 'Specification Name', 'required');
+        $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+        if ($this->form_validation->run() == TRUE){
+            $data_insert=array(
+            'spec' =>  $this->input->post('spec'),
+            'created' => date('Y-m-d h:i:s A'), 
+            );
+           $this->admin_model->insert('spec_attributes',$data_insert);
+           $this->session->set_flashdata('msg_success','Specification Attribute added successfully.');
+           redirect('admin/spec_attributes');
+        }
+        
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel: Listing Attribute Level';  
+        $data['page'] = 'add_spec_attribute';
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+
+     function edit_spec_attribute($spec_id='')
+    {
+        $this->check_authentication();//check login authentication
+       $this->form_validation->set_rules('spec', 'Specification', 'required');      
+        $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+        if ($this->form_validation->run() == TRUE){
+            $data_update=array(
+             'spec' =>  $this->input->post('spec'),           
+             'updated' => date('Y-m-d h:i:s A'), 
+            );
+           $this->admin_model->update('spec_attributes',$data_update,array('id'=>$spec_id));
+           $this->session->set_flashdata('msg_success','Specification attribute updated successfully.');
+           redirect('admin/spec_attributes');
+        } 
+       
+        $data['spec_attributes'] =  $this->admin_model->get_row('spec_attributes',array('id'=>$spec_id));
+       
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel: Listing Attribute Level';  
+        $data['page'] = 'edit_spec_attribute';
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+
+    function delete_spec_attribute($spec_id='')
+    {
+        $this->check_authentication();//check login authentication
+        if(empty($spec_id)){ redirect('admin/spec_attributes'); } 
+
+        if($this->admin_model->delete('spec_attributes',array('id'=>$spec_id))){
+            $this->session->set_flashdata('msg_success','Specification Attribute deleted successfully.');
+           redirect('admin/spec_attributes'); 
+        }       
+      
+    }
+
+       /*   Condition */
+
+     function condition()
+    {
+        $this->check_authentication();//check login authentication
+        $data['condition'] =  $this->admin_model->get_result('condition_attributes');
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel: Listing Attribute Level';  
+        $data['page'] = 'condition';
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+
+    function add_condition_attribute()
+    {
+        $this->check_authentication();//check login authentication
+
+        $this->form_validation->set_rules('condition', 'Condition', 'required');
+        $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+        if ($this->form_validation->run() == TRUE){
+            $data_insert=array(
+            'condition' =>  $this->input->post('condition'),
+            'created' => date('Y-m-d h:i:s A'), 
+            );
+           $this->admin_model->insert('condition_attributes',$data_insert);
+           $this->session->set_flashdata('msg_success','condition Attribute added successfully.');
+           redirect('admin/condition');
+        }
+        
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel: Listing Attribute Level';  
+        $data['page'] = 'add_condition_attribute';
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+
+     function edit_condition_attribute($spec_id='')
+    {
+        $this->check_authentication();//check login authentication
+       $this->form_validation->set_rules('condition', 'Condition', 'required');      
+        $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+        if ($this->form_validation->run() == TRUE){
+            $data_update=array(
+             'condition' =>  $this->input->post('condition'),           
+             'updated' => date('Y-m-d h:i:s A'), 
+            );
+           $this->admin_model->update('condition_attributes',$data_update,array('id'=>$spec_id));
+           $this->session->set_flashdata('msg_success','condition attribute updated successfully.');
+           redirect('admin/condition');
+        } 
+       
+        $data['condition'] =  $this->admin_model->get_row('condition_attributes',array('id'=>$spec_id));
+       
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel: Listing Attribute Level';  
+        $data['page'] = 'edit_condition_attribute';
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+
+    function delete_condition_attribute($spec_id='')
+    {
+        $this->check_authentication();//check login authentication
+        if(empty($spec_id)){ redirect('admin/condition'); } 
+
+        if($this->admin_model->delete('condition_attributes',array('id'=>$spec_id))){
+            $this->session->set_flashdata('msg_success','Condition Attribute deleted successfully.');
+           redirect('admin/condition'); 
+        }       
+      
+    }
 }
