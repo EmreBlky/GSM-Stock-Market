@@ -557,7 +557,7 @@ class Marketplace_model extends MY_Model {
 		$this->db->where('make_offer.seller_history','');
 
 		$this->db->where('make_offer.offer_status',1);
-		$this->db->where('make_offer.seller_id',$member_id);
+		$this->db->where('make_offer.buyer_id',$member_id);
 		$query = $this->db->get();
 			if($query->num_rows()>0)
 				return $query->result();
@@ -574,7 +574,7 @@ class Marketplace_model extends MY_Model {
 		//$this->db->where('listing.listing_type', 1);
 		$this->db->where('make_offer.offer_status',1);
 		$this->db->where('make_offer.buyer_history','');
-		$this->db->where('make_offer.buyer_id',$member_id);
+		$this->db->where('make_offer.seller_id',$member_id);
 		$query = $this->db->get();
 			if($query->num_rows()>0)
 				return $query->result();
