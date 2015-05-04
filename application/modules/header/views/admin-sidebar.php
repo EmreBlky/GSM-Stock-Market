@@ -70,10 +70,19 @@
                 </ul>
             </li>
             <?php } ?>
-            <?php if($url == 'add_listing_attribute' || $url == 'listing_attributes' || $url == 'listing' || $url == 'product_make' || $url == 'product_model' || $url == 'product_color' || $url == 'couriers' || $url == 'shippings' || $url == 'product_types') {?>
+            <?php if($url == 'add_listing_attribute' || $url == 'listing_attributes' || $url == 'listing' || $url == 'product_make' || $url == 'product_model' || $url == 'product_color' || $url == 'couriers' || $url == 'shippings' || $url == 'product_types'|| $url == 'color_attributes'|| $url == 'edit_color_attribute'|| $url == 'add_color_attribute'|| $url == 'add_spec_attribute'|| $url == 'spec_attributes'|| $url == 'edit_spec_attribute'|| $url == 'add_condition_attribute'|| $url == 'edit_condition_attribute'|| $url == 'condition') {?>
             <li class="active">
                 <a href="#"><i class="fa fa-shoppig-cart"></i> <span class="nav-label">Marketplace</span><span class="fa arrow"></span></a></a>
                 <ul class="nav nav-second-level">
+                     <li><a href="<?php echo base_url().'admin/add_color_attribute';?>"><span class="nav-label">Add Color </span></a></li>
+                    <li><a href="<?php echo base_url().'admin/color_attributes';?>"><span class="nav-label">View Color </span></a></li>
+
+                    <li><a href="<?php echo base_url().'admin/add_spec_attribute';?>"><span class="nav-label">Add Specification </span></a></li>
+                    <li><a href="<?php echo base_url().'admin/spec_attributes';?>"><span class="nav-label">View Specification </span></a></li>
+
+                    <li><a href="<?php echo base_url().'admin/add_condition_attribute';?>"><span class="nav-label">Add Condition </span></a></li>
+                    <li><a href="<?php echo base_url().'admin/condition';?>"><span class="nav-label">View Condition </span></a></li>
+
                     <li><a href="<?php echo base_url().'admin/add_listing_attribute';?>"><span class="nav-label">Add Listing Attributes</span></a></li>
                     <li><a href="<?php echo base_url().'admin/listing_attributes';?>"><span class="nav-label">View Listing Attributes</span></a></li>
                     <li><a href="<?php echo base_url().'admin/listing';?>"><span class="nav-label">View Listing</span></a></li>
@@ -89,6 +98,15 @@
             <li>
                 <a href="#"><i class="fa fa-line-chart"></i> <span class="nav-label">Marketplace</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
+                     <li><a href="<?php echo base_url().'admin/add_color_attribute';?>"><span class="nav-label">Add Color </span></a></li>
+                    <li><a href="<?php echo base_url().'admin/color_attributes';?>"><span class="nav-label">View Color </span></a></li>
+
+                    <li><a href="<?php echo base_url().'admin/add_spec_attribute';?>"><span class="nav-label">Add Specification </span></a></li>
+                    <li><a href="<?php echo base_url().'admin/spec_attributes';?>"><span class="nav-label">View Specification </span></a></li>
+
+                    <li><a href="<?php echo base_url().'admin/add_condition_attribute';?>"><span class="nav-label">Add Condition </span></a></li>
+                    <li><a href="<?php echo base_url().'admin/condition';?>"><span class="nav-label">View Condition </span></a></li>
+                    
                     <li><a href="<?php echo base_url().'admin/add_listing_attribute';?>"><span class="nav-label">Add Listing Attributes</span></a></li>
                     <li><a href="<?php echo base_url().'admin/listing_attributes';?>"><span class="nav-label">View Listing Attributes</span></a></li>
                     <li><a href="<?php echo base_url().'admin/listing';?>"><span class="nav-label">View Listing</span></a></li>
