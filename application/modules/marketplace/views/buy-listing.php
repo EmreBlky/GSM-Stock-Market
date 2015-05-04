@@ -111,15 +111,15 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 
     <div class="form-group"><label class="col-md-3 control-label">Colour</label>
         <div class="col-md-9">
-         <input type="text" list="color" id="product_color" class="form-control check_record" placeholder="Colour"  name="product_color" value="<?php if(!empty($product_list->product_color)) echo $product_list->product_color; else echo set_value('product_color');?>"/>
-           <datalist id="color">
-            <?php if(!empty($product_colors)){
+         <select data-placeholder="Model" class="chosen-select form-control" id="product_color"   name="product_color">
+            <option value=""> Choose Color </option>
+             <?php if(!empty($product_colors)){
                  foreach ($product_colors as $row) { ?>
                 <option value="<?php echo $row->product_color; ?>" <?php if(!empty($_POST) && $row->product_color==$_POST['product_color']){ echo'selected';}?><?php if(!empty($product_list->product_color) && $row->product_color == $product_list->product_color){ echo'selected';}?>><?php echo $row->product_color; ?></option>
                  <?php }} ?>
-            </datalist>
-        <?php echo form_error('product_color'); ?>
-        <input type="checkbox" name="color_allow" value="" <?php if(isset($_POST['color_allow']) ){ echo'checked';} elseif(!empty($product_list->allow_color)){ echo'checked';}?>> Allow offers for all colors.
+            </select>
+             <?php echo form_error('product_color'); ?>
+        
         </div>
     </div>
 
@@ -183,13 +183,19 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                        <?php $currency = currency();
                        if($currency){
                            $i=1;
+                          $default_curr='';
                        foreach ($currency as $key => $value){ ?>
-                       <?php  $unit = explode(' ', $value); ?>
-                         <option <?php if(!empty($_POST) && $i==$_POST['currency']){ echo'selected';}elseif(!empty($product_list->currency) && $i==$product_list->currency){ echo'selected';}elseif($default_currency->currency==$unit[1]){ echo "selected"; } ?> value="<?php echo $i;?>"><?php echo $value; ?></option>
+                       <?php  echo $unit = explode(' ', $value); ?>
+                       <?php if($default_currency->currency=='EURO'){
+                           $default_curr = 'EUR';
+                       }else{
+                        $default_curr = $default_currency->currency;
+                       } ?>
+                         <option <?php if(!empty($_POST) && $i==$_POST['currency']){ echo'selected';}elseif(!empty($product_list->currency) && $i==$product_list->currency){ echo'selected';}elseif($default_curr==$unit[1]){ echo "selected"; } ?> value="<?php echo $i;?>"><?php echo $value; ?></option>
                          <?php $i++;}
                        } ?>
                    </select>
-                   <p class="small text-navy"> Select the currency you wish this listing to be sold in.</p>
+                   <p class="small text-navy">Select the currency you wish this listing to be sold in.</p>
                    <?php echo form_error('currency'); ?>
                </div>
            </div>
@@ -947,25 +953,18 @@ $(".validation").validate({
 </script>
 <script>
    $(document).ready(function(){
-
-
-
      var test123 =function(mpn1,make){
-
-       // console.log(mpn1+ ' === '+make);
-
          $.post('<?php echo base_url("marketplace/getAttributesInfo") ?>/MAKE/',{'make':make,'mpnisbn':mpn1}, function(data) {
             productmakehtml='';
-           $.each(data.product_model, function(index, val) {
-                productmakehtml +='<option value="'+val.product_model+'"';
+           $.each(data.product_make, function(index, val) {
+                productmakehtml +='<option value="'+val+'"';
                 if(data.num_rows==1)
                 productmakehtml +=' Selected';
-                productmakehtml +=' >'+val.product_model+'</option>';
+                productmakehtml +=' >'+val+'</option>';
            });
            $('select[name="product_model"]').html(productmakehtml);
            $('select[name="product_model"]').trigger("chosen:updated");
         });
-
     }
 
     $(document).on('change', '#mpn1', function(event) {
@@ -973,23 +972,24 @@ $(".validation").validate({
         var  mpnisbn1 = $(this).val();
         $.post('<?php echo base_url("marketplace/getAttributesInfo") ?>/MPNISBN/',{'mpnisbn':mpnisbn1}, function(data) {
 
-            productmakehtml='';
+            productmakehtml='<option value="">Choose Make</option>';
             var mk1product_make=0;
+           
            $.each(data.product_make, function(index, val) {
-                productmakehtml +='<option value="'+val.product_make+'"';
-                if(data.numrows=='1'){
+                productmakehtml +='<option value="'+val+'"';
+                if(data.numrows >= '1'){
                 productmakehtml +=' selected';
-                    mk1product_make=val.product_make;
-                   // console.log(data.numrows+ ' data.num_rows '+val.product_make);
+                    mk1product_make=val;
                 }
-                productmakehtml +=' >'+val.product_make+'</option>';
+                productmakehtml +=' >'+val+'</option>';
 
+           });
               $("#product_type option:selected").prop("selected", false);
                if(data.Status==true){
-                
-                $('#product_type option[value='+val.product_type+']').prop("selected", true);
+               
+                $('#product_type option[value='+data.product_types+']').prop("selected", true);
               }
-           });
+
            if(data.Status=true){
            $('select[name="product_make"]').html(productmakehtml);
            $('select[name="product_make"]').trigger("chosen:updated");
@@ -1003,12 +1003,9 @@ $(".validation").validate({
               product_colorshtml +=' >'+val+'</option>';
             });
 
-          $('body').find('#color').val('');
-             $('body').find('#color').html(product_colorshtml);
-             if(data.product_colors.length){
-              $('#product_color').val(data.product_colors[0]);
-             }
-
+          $('body').find('#product_color').html('');
+            $('select[name="product_color"]').html(product_colorshtml);
+           $('select[name="product_color"]').trigger("chosen:updated");
         });
     });
 
@@ -1019,87 +1016,6 @@ $(".validation").validate({
             test123(mpn1,product_make);
 
     });
-
-   /*  $("#mpn1").change(function(){
-     var product_mpn_isbn = $(this).val();
-         var producttypes= <?php echo json_encode($product_types);?>;
-     if(product_mpn_isbn){
-        $('.check_record').attr("disabled", "disabled");
-        jQuery.post('<?php echo base_url()?>marketplace/get_attributes_info/MPN',{product_mpn_isbn:product_mpn_isbn},
-        function(data){
-         var prod_make= <?php echo json_encode($product_makes); ?>;
-         console.log(producttypes);
-         var productcolors= <?php echo json_encode($product_colors); ?>;
-        if(data.STATUS=='true'){
-          if(prod_make){
-          var productmakehtml='<option  selected value="">Product Make</option>';
-            $.each(prod_make, function(index, val) {
-                productmakehtml +='<option value="'+val.product_make+'"';
-                if(val.product_make==data.product_make)
-                productmakehtml +=' Selected';
-                productmakehtml +=' >'+val.product_make+'</option>';
-             });
-             $('#product_make').html(productmakehtml);
-            }
-
-            if(producttypes){
-                //alert(producttypes);
-            var producttypehtml='<option  selected value="">Product Type</option>';
-            $.each(producttypes, function(index, val){producttypehtml +='<optgroup label="'+val.category_name +'">';
-                 if(val.childs){
-                    $.each(val.childs, function(index, val1){
-                     producttypehtml +='<option';
-                        if(val1.category_name==data.product_type)
-                        producttypehtml +=' selected="selected"';
-                        producttypehtml +=' >'+val1.category_name+'</option>';
-                     });
-                 }
-              producttypehtml +='</optgroup>';
-              });
-             $('#product_type').html(producttypehtml);
-            }
-
-             if(productcolors){
-            var productcolorhtml='<option  selected value="">Product Color</option>';
-            $.each(productcolors, function(index, val) {
-                productcolorhtml +='<option value="'+val.product_color+'"';
-                if(val.product_color==data.product_color)
-                productcolorhtml +=' Selected';
-                productcolorhtml +=' >'+val.product_color+'</option>';
-             });
-             //$('#product_color').html(productcolorhtml);
-            }
-
-            $('input[name="product_model"]').val(data.product_model);
-            $('input[name="product_make"]').val(data.product_make);
-            $('input[name="product_color"]').val(data.product_color);
-
-           }
-
-          });
-           $('.check_record').removeAttr("disabled");
-         }
-         else{
-            $('input[name="product_model"]').val('');
-            $('input[name="product_make"]').val('');
-            $('input[name="product_color"]').val('');
-            if(producttypes){
-                //alert(producttypes);
-            var producttypehtml='<option  selected value="">Product Type</option>';
-            $.each(producttypes, function(index, val){producttypehtml +='<optgroup label="'+val.category_name +'">';
-                 if(val.childs){
-                    $.each(val.childs, function(index, val1){
-                     producttypehtml +='<option';
-                        producttypehtml +=' >'+val1.category_name+'</option>';
-                     });
-                 }
-              producttypehtml +='</optgroup>';
-              });
-             $('#product_type').html(producttypehtml);
-            }
-         }
-        });
-*/
      });
 
     $(document).ready(function() {
