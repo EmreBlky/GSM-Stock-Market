@@ -2,12 +2,12 @@
 function changeContinent(cont){
 if(cont!=''){
 $.ajax({
-	url: 'marketplace/ajax/getregions',
-	data: 'cont='+cont,
-	type: "POST",
-	success: function(responsedata){ 
-	$('#region').html(responsedata);
-	}
+  url: 'marketplace/ajax/getregions',
+  data: 'cont='+cont,
+  type: "POST",
+  success: function(responsedata){ 
+  $('#region').html(responsedata);
+  }
 });
 }
 }
@@ -15,13 +15,13 @@ $.ajax({
 function changeRegion(regn){
 if(regn!=''){
 $.ajax({
-	url: 'marketplace/ajax/getcountries',
-	data: 'regn='+regn,
-	type: "POST",
-	success: function(responsedata){ 
-	$('#countries').html(responsedata);
-	//$("#loader").hide();
-	}
+  url: 'marketplace/ajax/getcountries',
+  data: 'regn='+regn,
+  type: "POST",
+  success: function(responsedata){ 
+  $('#countries').html(responsedata);
+  //$("#loader").hide();
+  }
 });
 }
 }
@@ -70,7 +70,7 @@ $dataasa['make_n_model'][$row->product_make.'@@'.$row->product_model] = $row->pr
 $dataasa['product_type'][]  = $row->product_type;
 $dataasa['product_countrys'][]   = array('country_id'=>$row->country_id,'product_country'=>$row->product_country);
 $dataasa['product_color'][] = $row->product_color;
-$dataasa['region'][]     		= $row->region;
+$dataasa['region'][]        = $row->region;
 $dataasa['continent'][]     = $row->continent;
 }
 endif;
@@ -80,8 +80,8 @@ endif;
 <form action="<?php echo base_url('marketplace/sell'); ?>/" method="get" accept-charset="utf-8" id="search">
    <div class="row">
     <div class="col-lg-3" style="padding-right:0">
-    	<select name="lc" class="form-control" tabindex="1">
-        	<option value="" selected="">All Categories</option>
+      <select name="lc" class="form-control" tabindex="1">
+          <option value="" selected="">All Categories</option>
               <?php if (!empty($listing_categories)): ?>
             <?php foreach ($listing_categories as $row): ?>
                <option value="<?php echo $row->category_name ?>" <?php if(!empty($_GET['lc']) && $row->category_name==$_GET['lc']){ echo'selected';}?> ><?php echo $row->category_name ?></option>
@@ -94,21 +94,21 @@ endif;
             <?php endif ?>
         </select>
     </div>
-	<div class="col-lg-5" style="padding-right:0">
+  <div class="col-lg-5" style="padding-right:0">
        <select  name="query[]" data-placeholder="Make and Model" class="chosen-select form-control"  id="models" multiple tabindex="2">
        <?php 
-					$make_n_model = $dataasa['make_n_model'];
-					asort($make_n_model);
-					if(!empty($make_n_model)){
+          $make_n_model = $dataasa['make_n_model'];
+          asort($make_n_model);
+          if(!empty($make_n_model)){
       foreach ($make_n_model as $key => $val) { ?>
       <option value="<?php echo $key; ?>"><?php echo $val; ?></option>
       <?php }} ?>
         </select>
     </div>
-	<div class="col-lg-2">
-    	<input type="submit" class="btn btn-primary btn-block" value="Search"/>
+  <div class="col-lg-2">
+      <input type="submit" class="btn btn-primary btn-block" value="Search"/>
     </div>
-	<div class="col-lg-2">
+  <div class="col-lg-2">
             <button class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#AdvanceSearch" aria-expanded="true" aria-controls="collapseExample">Advanced Search</button>
     </div>
    
@@ -135,7 +135,7 @@ endif;
             </div>
             
             <div class="col-lg-2">
-             	<div class="form-group">
+              <div class="form-group">
                  <label for="">Item Condition <i class="fa fa-question-circle cursor" data-toggle="modal" data-target="#condition" title="Click for more information"></i></label>
                     <select name="condition" class="form-control" tabindex="3">
                         <option value="" selected="">Any</option>
@@ -147,7 +147,7 @@ endif;
             </div>   
                 
             <div class="col-lg-4">
-             	<div class="form-group">
+              <div class="form-group">
                  <label for="">Buyer Rating</label>
                         <div class="input-group">
                             <input type="text" class="input-sm form-control" name="start_rating" value="<?php if(isset($_GET['start_rating'])){ echo $_GET['start_rating']; }else{ echo '0';} ?>" maxlength="2"/>
@@ -197,7 +197,7 @@ foreach ($product_colors as $row) { ?>
             </div>
                  
              <div class="col-lg-4">
-             	<div class="form-group">
+              <div class="form-group">
                  <label for="">Listing Type</label>
                     <select name="listing_type_status" class="form-control">
                     <option value="" selected="selected">Any</option>
@@ -209,12 +209,12 @@ foreach ($product_colors as $row) { ?>
             </div>  
                 
  <div class="col-lg-4">
- 	<div class="form-group">
+  <div class="form-group">
      <label for="">Buyer Continent</label>
         <select name="continent" id="continent" class="form-control" id="continent" onchange="changeContinent(this.value);" >
         <option value="" selected="selected">All Continents</option>
         <?php if(!empty($dataasa['continent'])){
-								$continent = array_unique ($dataasa['continent']);
+                $continent = array_unique ($dataasa['continent']);
           foreach ($continent as $val) { ?>
           <option value="<?php echo $val; ?>"><?php echo $val; ?></option>
           <?php }} ?>
@@ -222,13 +222,13 @@ foreach ($product_colors as $row) { ?>
     </div>
 </div>        
   
-			 <div class="col-lg-4">                    
- 	<div class="form-group">
+       <div class="col-lg-4">                    
+  <div class="form-group">
      <label for="">Buyer Region</label>
         <select class="form-control" id="region" name="region" onchange="changeRegion(this.value);" >
         <option value="">All Regions</option>
          <?php if(!empty($dataasa['region'])){
-								$region = array_unique ($dataasa['region']);
+                $region = array_unique ($dataasa['region']);
           foreach ($region as $val) { ?>
           <option value="<?php echo $val; ?>"><?php echo $val; ?></option>
           <?php }} ?>
@@ -236,21 +236,21 @@ foreach ($product_colors as $row) { ?>
     </div>
 </div>
 
-			 <div class="col-lg-4">                        
+       <div class="col-lg-4">                        
     <div class="form-group">
          <label for="">Buyer Country
          </label>
          <select class="form-control" id="countries" name="countries">
           <option value="">All Countries</option>
           <?php if(!empty($dataasa['product_countrys'])){
-								$countries = array_unique($dataasa['product_countrys'], SORT_REGULAR);
+                $countries = array_unique($dataasa['product_countrys'], SORT_REGULAR);
           foreach ($countries as $id => $country) { ?>
           <option value="<?php echo $country['country_id']; ?>">
-							<?php echo $country['product_country']; ?></option>
+              <?php echo $country['product_country']; ?></option>
           <?php }} ?>
           </select>
     </div>
-</div>
+</div><!-- 
                 
              <div class="row">
                  <div class="col-lg-4 col-lg-offset-4">
@@ -258,7 +258,7 @@ foreach ($product_colors as $row) { ?>
                  <i class="fa fa-search"></i> Search Now</button>
             
                  </div>
-             </div>
+             </div> -->
          </form>
         </div>
         </div> <!-- AdvanceSearch -->
@@ -303,12 +303,12 @@ foreach ($listing_sell as $value) {?>
 <td><p><span data-countdown="<?php echo $value->listing_end_datetime; ?>"></span></p></td>
 <td><span class="fa fa-star" style="color:#FC3"></span> 
 <?php 
-		if(isset($value->rating))
-			$rating = $value->rating;
-		else
-			$rating = 0;
-		 ?>
-					<?php if($rating >= 95){ ?>
+    if(isset($value->rating))
+      $rating = $value->rating;
+    else
+      $rating = 0;
+     ?>
+          <?php if($rating >= 95){ ?>
           <span class="label label-success"><?php echo $rating; ?></span>
       <?php } elseif($rating <= 94 && $rating >= 80) {?>
           <span class="label label-primary"><?php echo $rating; ?></span>
@@ -322,7 +322,7 @@ foreach ($listing_sell as $value) {?>
 </td>
 <td><?php if(!empty($value->product_mpn_isbn)){ echo $value->product_mpn_isbn; } ?></td>
 <td><?php echo $value->product_make; ?>
-	<?php echo $value->product_model; ?></td>
+  <?php echo $value->product_model; ?></td>
 <td><?php echo $value->product_type; ?></td>
 <td><?php echo $value->condition; ?></td>
 
@@ -378,8 +378,8 @@ foreach ($listing_sell as $value) {?>
                 }
             });
             <?php endif; ?>
-			/* multi select */
-       	var config = {
+      /* multi select */
+        var config = {
                 '.chosen-select'           : {search_contains:true},
                 '.chosen-select-deselect'  : {allow_single_deselect:true},
                 '.chosen-select-no-single' : {disable_search_threshold:10},
@@ -388,7 +388,7 @@ foreach ($listing_sell as $value) {?>
             }
             for (var selector in config) {
                 $(selector).chosen(config[selector]);
-            }			
+            }     
 
         });
     </script>
@@ -453,8 +453,8 @@ $('#reset').click(function(){
 <form action="" method="get" accept-charset="utf-8">
    <div class="row">
     <div class="col-lg-3" style="padding-right:0">
-    	<select name="lc" class="form-control" tabindex="1">
-        	<option value="" selected="">All Categories</option>
+      <select name="lc" class="form-control" tabindex="1">
+          <option value="" selected="">All Categories</option>
             <option>Accessories</option>
             <option>Accessories > Batteries</option>
             <option>Accessories > Bluetooth</option>
@@ -477,7 +477,7 @@ $('#reset').click(function(){
             <option>Spare Parts > Tools</option>
         </select>
     </div>
-	<div class="col-lg-5" style="padding-right:0">
+  <div class="col-lg-5" style="padding-right:0">
        <select data-placeholder="Make and Model" class="chosen-select form-control" multiple tabindex="2">
         <option>Apple iPhone 3G</option>
         <option>Apple iPhone 3GS</option>
@@ -495,10 +495,10 @@ $('#reset').click(function(){
         <option>Samsung Galaxy S3 LTE (i9305)</option>
         </select>
     </div>
-	<div class="col-lg-2">
-    	<input type="submit" class="btn btn-primary btn-block" value="Search"/>
+  <div class="col-lg-2">
+      <input type="submit" class="btn btn-primary btn-block" value="Search"/>
     </div>
-	<div class="col-lg-2">
+  <div class="col-lg-2">
             <button class="btn btn-danger btn-block" type="button" data-toggle="collapse" data-target="#AdvanceSearch" aria-expanded="true" aria-controls="collapseExample">Advanced Search</button>
     </div>
    
@@ -525,7 +525,7 @@ $('#reset').click(function(){
             </div>
             
             <div class="col-lg-2">
-             	<div class="form-group">
+              <div class="form-group">
                  <label for="">Item Condition <i class="fa fa-question-circle cursor" data-toggle="modal" data-target="#condition" title="Click for more information"></i></label>
                     <select name="condition" class="form-control" tabindex="3">
                         <option value="" selected="">Any</option>
@@ -541,7 +541,7 @@ $('#reset').click(function(){
             </div>   
                 
             <div class="col-lg-4">
-             	<div class="form-group">
+              <div class="form-group">
                  <label for="">Seller Rating</label>
                         <div class="input-group">
                             <input type="text" class="input-sm form-control" name="start" value="0"/>
@@ -552,7 +552,7 @@ $('#reset').click(function(){
             </div>
                 
              <div class="col-lg-4">
-             	<div class="form-group">
+              <div class="form-group">
                  <label for="">Item Colour</label>
                     <select name="color" class="form-control" tabindex="3">
                         <option value="" selected="">Any</option>
@@ -598,7 +598,7 @@ $('#reset').click(function(){
             </div>
                 
             <div class="col-lg-4">
-             	<div class="form-group">
+              <div class="form-group">
                  <label for="">Listing Type</label>
                     <select name="continent" class="form-control">
                     <option value="" selected="selected">Any</option>
@@ -610,7 +610,7 @@ $('#reset').click(function(){
             </div>  
                 
             <div class="col-lg-4">
-             	<div class="form-group">
+              <div class="form-group">
                  <label for="">Seller Continent</label>
                     <select name="continent" class="form-control" id="continent">
                     <option value="" selected="selected">All Continents</option>
@@ -624,7 +624,7 @@ $('#reset').click(function(){
             </div>        
               
             <div class="col-lg-4">                    
-             	<div class="form-group">
+              <div class="form-group">
                  <label for="">Seller Region</label>
                     <select class="form-control" id="regions" name="region">
                     <option value="">All Regions</option>
@@ -1314,8 +1314,8 @@ $('#reset').click(function(){
                     "sSwfPath": "public/main/template/core/js/plugins/dataTables/swf/copy_csv_xls_pdf.swf"
                 }
             });
-			/* multi select */
-       	var config = {
+      /* multi select */
+        var config = {
                 '.chosen-select'           : {search_contains:true},
                 '.chosen-select-deselect'  : {allow_single_deselect:true},
                 '.chosen-select-no-single' : {disable_search_threshold:10},
@@ -1324,7 +1324,7 @@ $('#reset').click(function(){
             }
             for (var selector in config) {
                 $(selector).chosen(config[selector]);
-            }			
+            }     
 
         });
     </script>
@@ -1380,7 +1380,7 @@ $('#reset').click(function(){
           <p>When a seller has an item for sale they specify the currency they wish the item to be paid in. When you make an offer it will be in the currency they chose, but we will display a conversion of the price in the other currencies also on the listing which is managed by XE.com as a guide to help make trading easier for you.</p>
           <p>Currencies traded on this website are in <strong>GBP &pound;</strong>, <strong>Euro &euro;</strong> and <strong>USD $</strong></p>
         </div>
-	</div>
+  </div>
 </div>
 </div>
 
@@ -1403,7 +1403,7 @@ $('#reset').click(function(){
           <p><strong>Grade C</strong> - Fair condition, will have marks and scratches from heavier use.</p>
           <p><strong>Grade F</strong> - Fault and/or broken condition, may have cracks.</p>
         </div>
-	</div>
+  </div>
 </div>
 </div>
 
@@ -1420,7 +1420,7 @@ $('#reset').click(function(){
         <div class="modal-body">
           <p>The <strong>Rating System</strong> is decided upon a number of factors involving previous buying and selling of the users accounts. We measure their rating on </p>
         </div>
-	</div>
+  </div>
 </div>
 </div>
             
