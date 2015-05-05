@@ -251,7 +251,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <option value="">Select Terms</option>
             <?php if($shippings){
                 foreach ($shippings as $row){  ?>
-                  <option value="<?php echo $row->id; ?>@@<?php echo $row->shipping_name; ?>" <?php //if(!empty($_POST) && $row->id.'@@'.$row->shipping_name==$_POST['shipping_term']){ echo'selected="selected"';} ?><?php //if(!empty($product_list->shipping_term) && $row->shipping_name == $product_list->shipping_term){ echo'selected="selected"'; } ?>><?php echo $row->shipping_name; ?> <?php echo $row->description; ?></option>
+                  <option value="<?php echo $row->id; ?>@@<?php echo $row->shipping_name; ?>" <?php //if(!empty($_POST) && $row->id.'@@'.$row->shipping_name==$_POST['shipping_term']){ echo'selected="selected"';} ?><?php if(!empty($product_list->shipping_term) && $row->shipping_name == $product_list->shipping_term){ echo'selected="selected"'; } ?>><?php echo $row->shipping_name; ?> <?php echo $row->description; ?></option>
                   <?php }
             } ?>
         </select>
@@ -264,10 +264,6 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
     <div class="form-group"><label class="col-md-3 control-label">Courier</label>
 
         <div class="col-md-9">
-
-
-
-
            <div id="couriers_data"> <?php $product = array(); if(!empty($product_list->courier)){ $product = explode(',', $product_list->courier); }
                     if (!empty($couriers)) {
                          foreach ($couriers as $key => $value): ?>
@@ -1203,7 +1199,7 @@ rules: {
 });
 </script>
 <script>
-$(document).ready(function(){
+ $(document).ready(function(){
      var test123 =function(mpn1,make){
          $.post('<?php echo base_url("marketplace/getAttributesInfo") ?>/MAKE/',{'make':make,'mpnisbn':mpn1}, function(data) {
             productmakehtml='';
@@ -1268,6 +1264,21 @@ $(document).ready(function(){
             var mpn1 =$('#mpn1').val();
             var product_make= $(this).val();
             test123(mpn1,product_make);     
+        });
+        $(document).on('change', '#product_model', function(event) {
+        event.preventDefault();
+            var product_model= $(this).val();
+             $.post('<?php echo base_url("marketplace/getAttributesInfo") ?>/MODAL/',{'product_model':product_model}, function(data) {
+            product_colorshtml='';
+           $.each(data.product_color, function(index, val) {
+                product_colorshtml +='<option value="'+val+'"';
+                if(data.num_rows==1)
+                product_colorshtml +=' Selected';
+                product_colorshtml +=' >'+val+'</option>';
+           });
+           $('select[name="product_color"]').html(product_colorshtml);
+           $('select[name="product_color"]').trigger("chosen:updated");
+          });
         });
      });
 
