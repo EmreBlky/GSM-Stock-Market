@@ -109,7 +109,7 @@ class Marketplace extends MX_Controller
     {
         $data['seller_offer'] = $this->marketplace_model->listing_offer_common(1);
         $data['buying_request'] = $this->marketplace_model->listing_offer_common(2);
-        $this->output->enable_profiler(TRUE);
+        //////$this->output->enable_profiler(TRUE);
         $data['main'] = 'marketplace';        
         $data['title'] = 'GSM - Market Place: Offers';        
         $data['page'] = 'offers';
@@ -170,7 +170,7 @@ class Marketplace extends MX_Controller
     {   
 
         $member_id=$this->session->userdata('members_id');
-        //////$this->output->enable_profiler(TRUE);
+        //////////$this->output->enable_profiler(TRUE);
 
         $this->form_validation->set_rules('listing_categories', 'listing category', 'required');
 
@@ -427,7 +427,7 @@ class Marketplace extends MX_Controller
    
     function open_orders()
     {
-        $this->output->enable_profiler(TRUE);
+        ////$this->output->enable_profiler(TRUE);
         $data['sell_order'] = $this->marketplace_model->sell_order();
         $data['buy_order'] = $this->marketplace_model->buy_order();
         $data['main'] = 'marketplace';        
@@ -850,7 +850,7 @@ class Marketplace extends MX_Controller
 
      $member_id=$this->session->userdata('members_id');
 
-     //////$this->output->enable_profiler(TRUE);
+     ////////$this->output->enable_profiler(TRUE);
      if($this->input->post('status')==1) {
         $this->form_validation->set_rules('schedule_date_time', '', '');
         $this->form_validation->set_rules('product_mpn', 'product MPN/ISBN', '');
@@ -1265,7 +1265,7 @@ class Marketplace extends MX_Controller
 
     function history()
     {
-        $this->output->enable_profiler(TRUE);
+        //$this->output->enable_profiler(TRUE);
         $data['sell_order'] = $this->marketplace_model->order_history_sell();
         $data['buy_order'] = $this->marketplace_model->order_history_buy();
         
@@ -1658,7 +1658,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
 
     function listing_detail($id=0)
     {
-        //////$this->output->enable_profiler(TRUE);
+        ////////$this->output->enable_profiler(TRUE);
         if(empty($id) || !is_numeric($id)) {
          redirect('marketplace/index'); 
         }
@@ -2128,7 +2128,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
     }
     
     function negotiation(){
-        ////$this->output->enable_profiler(TRUE);
+        //////////$this->output->enable_profiler(TRUE);
         $data['main'] = 'marketplace';        
         $data['title'] = 'GSM - Negotiation';        
         $data['page'] = 'negotiation';        
