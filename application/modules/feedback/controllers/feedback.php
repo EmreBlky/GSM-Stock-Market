@@ -107,12 +107,12 @@ class Feedback extends MX_Controller
         $user_id = $this->session->userdata('members_id');
         $order_id = $order_id;
         $this->load->model('marketplace/marketplace_model'); 
-        $this->marketplace_model->update('make_offer',array('buyer_feedback_datetime'=>date('Y-m-d h:i:s'),'buyer_history'=>1),array('id'=>$order_id,'buyer_id'=>$user_id));
+        $this->marketplace_model->update('make_offer',array('buyer_feedback_datetime'=>date('Y-m-d h:i:s')),array('id'=>$order_id,'buyer_id'=>$user_id));
       }elseif($ratetypeuser==2){
         $user_id = $this->session->userdata('members_id');
         $order_id = $order_id;
         $this->load->model('marketplace/marketplace_model'); 
-        $this->marketplace_model->update('make_offer',array('seller_feedback_datetime'=>date('Y-m-d h:i:s'),'seller_history'=>1),array('id'=>$order_id,'seller_id'=>$user_id));
+        $this->marketplace_model->update('make_offer',array('seller_feedback_datetime'=>date('Y-m-d h:i:s')),array('id'=>$order_id,'seller_id'=>$user_id));
       }
         
     }
