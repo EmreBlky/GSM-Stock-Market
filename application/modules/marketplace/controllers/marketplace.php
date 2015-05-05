@@ -71,7 +71,7 @@ class Marketplace extends MX_Controller
     
     function sell()
     {
-        
+
         $data['listing_sell'] = $this->marketplace_model->listing_sell();
         $member_id=$this->session->userdata('members_id');
         $data['advance_search'] = $this->marketplace_model->advance_search($member_id,1);
@@ -888,7 +888,7 @@ class Marketplace extends MX_Controller
         }
 
     }else{
-        $this->form_validation->set_rules('listing_type','listing type', '');
+        $this->form_validation->set_rules('listing_type','listing type','');
     } 
     if(!empty($_FILES['image1']['name'])){
             $this->form_validation->set_rules('image1','','callback_image1_check');
@@ -1128,6 +1128,7 @@ class Marketplace extends MX_Controller
 
         $data['product_colors'] =  $this->marketplace_model->get_result_by_group('product_color');
         $data['product_makes'] =  $this->marketplace_model->get_result_by_group('product_make');
+        $data['product_models'] =  $this->marketplace_model->get_result_by_group('product_model');
         //$data['product_types'] =  $this->marketplace_model->get_result_by_group('product_type');
 
         $data['pro_type'] =  $this->marketplace_model->get_result('listing_attributes','',array('product_type'));
@@ -1136,6 +1137,7 @@ class Marketplace extends MX_Controller
          if(is_numeric($list_id)){
           if($data['product_list']   =  $this->marketplace_model->get_row('listing',array('id'=>$list_id,'member_id'=>$member_id,'listing_type'=>1))){
             $check_securty=1;
+            $data['listing_product_make']=$this->marketplace_model->get_modal_by_make($data['product_list']->product_make);
           }
          }
         }
@@ -1305,7 +1307,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                 $product_makes=array();
                 $colors=array();
                
-            if($query->num_rows()>0){
+            if($query->num_rows()>0 && !empty($mpnisbn)){
               foreach ($query->result() as $value){
                     $product_makes[] =$value->product_make; 
                     if(!in_array($value->product_color, $colors)){   
@@ -1329,11 +1331,11 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                      if($query->num_rows()>0){
                        foreach ($query->result() as $value){
                         if(!in_array($value->product_make, $product_makes)){   
-                         $product_makes[] =$value->product_make;  
-                        }  
-                        if(!in_array($value->product_color, $colors)){   
-                          $colors[]     =$value->product_color; 
-                        }      
+                            $product_makes[] =$value->product_make;  
+                         }  
+                         if(!in_array($value->product_color, $colors)){   
+                             $colors[]     =$value->product_color; 
+                         }      
                         $product_types =$value->product_type;    
                         }
                      }
@@ -1348,47 +1350,71 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
 
             //MPNISBN
         }elseif($type=='MAKE'){
-
-            $product_make=trim($_POST['make']);
-            $product_mpn_isbn=trim($_POST['mpnisbn']);
-
-            $query=$this->db->query("SELECT product_model FROM `listing_attributes` WHERE product_mpn_isbn ='$product_mpn_isbn' AND product_make like '%$product_make%';");
-
-            if($query->num_rows()>0){
-               $product_modal=array();
-                   
-                 if($query->num_rows()>0){
-                   foreach ($query->result() as $value){
-                    $product_modal[] =$value->product_model;    
-                    }             
-                   $product_modal=array_unique($product_modal);
-                 }
-                   $data=array(
-                    'Status' =>TRUE,
-                    'numrows'=> $query->num_rows(),
-                    'product_make'=>$product_modal,
-                    
-                    );       
-            }else{
-             $query=$this->db->query("SELECT product_model FROM `listing_attributes`  WHERE  product_make like '%$product_make%';");
-               $product_modal=array();
-                   
-                 if($query->num_rows()>0){
-                   foreach ($query->result() as $value){
-                    $product_modal[] =$value->product_model;    
-                    }             
-                   $product_modal=array_unique($product_modal);
-                 }
-                   $data=array(
-                    'Status' =>FALSE,
-                    'numrows'=> $query->num_rows(),
-                    'product_make'=>$product_modal,
-                    
-                    ); 
+        $product_make=trim($_POST['make']);
+        $product_mpn_isbn=trim($_POST['mpnisbn']);
+        $query=$this->db->query("SELECT product_model FROM `listing_attributes` WHERE product_mpn_isbn ='$product_mpn_isbn' AND product_make like '%$product_make%';");
+        if($query->num_rows()>0 && !empty($product_make)){
+           $product_modal=array();
+             if($query->num_rows()>0){
+               foreach ($query->result() as $value){
+                $product_modal[] =$value->product_model;    
+                }             
+               $product_modal=array_unique($product_modal);
+             }
+               $data=array(
+                'Status' =>TRUE,
+                'numrows'=> $query->num_rows(),
+                'product_make'=>$product_modal,
+                );       
+        }else{
+         $query=$this->db->query("SELECT product_model FROM `listing_attributes`  WHERE  product_make like '%$product_make%';");
+           $product_modal=array();
+             if($query->num_rows()>0){
+               foreach ($query->result() as $value){
+                $product_modal[] =$value->product_model;    
+                }             
+               $product_modal=array_unique($product_modal);
+             }
+               $data=array(
+                'Status' =>FALSE,
+                'numrows'=> $query->num_rows(),
+                'product_make'=>$product_modal,
+                ); 
             }
-
         }
-
+        elseif($type=='MODAL'){
+        $product_modal=trim($_POST['product_model']);
+        $query=$this->db->query("SELECT product_color FROM `listing_attributes` WHERE  product_model like '%$product_modal%';");
+        if($query->num_rows()>0){
+           $product_color=array();
+             if($query->num_rows()>0){
+               foreach ($query->result() as $value){
+                $product_color[] =$value->product_color;    
+                }             
+               $product_color=array_unique($product_color);
+             }
+               $data=array(
+                'Status' =>TRUE,
+                'numrows'=> $query->num_rows(),
+                'product_color'=>$product_color,
+                );       
+        }else{
+         $query=$this->db->query("SELECT product_color FROM `listing_attributes`;");
+            if($query->num_rows()>0){
+            $product_color=array();
+             if($query->num_rows()>0){
+               foreach ($query->result() as $value){
+                $product_color[] =$value->product_color;    
+                }             
+               $product_color=array_unique($product_color);
+             }
+               $data=array(
+                'Status' =>TRUE,
+                'numrows'=> $query->num_rows(),
+                'product_color'=>$product_color,
+                );
+            }}
+        }
     }
 
     header('Content-Type: application/json');
