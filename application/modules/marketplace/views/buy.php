@@ -251,10 +251,7 @@ endif;
                      <div class="col-lg-4 col-lg-offset-4">
                      <button type="submit" class="btn btn-lg btn-primary" name="search" >
                      <i class="fa fa-search"></i> Search Now</button>
-                 <a href="<?php echo base_url().'marketplace/buy'; ?>">
-                     <button type="button" id="reset" class="btn btn-lg btn-primary" name="clear" onclick="javascript:location.href=marketplace/buy" >
-                     <i class="fa"></i> Reset</button>
-                     </a>
+                
                      </div>
                  </div>
              </form>
