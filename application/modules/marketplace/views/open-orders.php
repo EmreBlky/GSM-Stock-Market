@@ -161,7 +161,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             }else{
               $seller_cmp_info=comapny_info($value->buyer_id);
             }
-             $seller_cmp_info=comapny_info($value->seller_id);
+             
             echo $seller_cmp_info->company_name; ?></td>
             <td><?php echo $value->product_make; ?></td>
             <td><?php echo $value->product_type; ?></td>
