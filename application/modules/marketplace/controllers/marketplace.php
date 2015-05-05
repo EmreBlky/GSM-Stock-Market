@@ -71,6 +71,7 @@ class Marketplace extends MX_Controller
     
     function sell()
     {
+        
         $data['listing_sell'] = $this->marketplace_model->listing_sell();
         $member_id=$this->session->userdata('members_id');
         $data['advance_search'] = $this->marketplace_model->advance_search($member_id,1);
@@ -109,7 +110,7 @@ class Marketplace extends MX_Controller
     {
         $data['seller_offer'] = $this->marketplace_model->listing_offer_common(1);
         $data['buying_request'] = $this->marketplace_model->listing_offer_common(2);
-        //////$this->output->enable_profiler(TRUE);
+        //$this->output->enable_profiler(TRUE);
         $data['main'] = 'marketplace';        
         $data['title'] = 'GSM - Market Place: Offers';        
         $data['page'] = 'offers';
@@ -850,7 +851,7 @@ class Marketplace extends MX_Controller
 
      $member_id=$this->session->userdata('members_id');
 
-     ////////$this->output->enable_profiler(TRUE);
+     //$this->output->enable_profiler(TRUE);
      if($this->input->post('status')==1) {
         $this->form_validation->set_rules('schedule_date_time', '', '');
         $this->form_validation->set_rules('product_mpn', 'product MPN/ISBN', '');
@@ -887,9 +888,7 @@ class Marketplace extends MX_Controller
         }
 
     }else{
-        
-        $this->form_validation->set_rules('listing_type', 'listing type', '');
-
+        $this->form_validation->set_rules('listing_type','listing type', '');
     } 
     if(!empty($_FILES['image1']['name'])){
             $this->form_validation->set_rules('image1','','callback_image1_check');
