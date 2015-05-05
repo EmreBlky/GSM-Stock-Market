@@ -107,9 +107,9 @@ class Marketplace extends MX_Controller
     
     function offers()
     {
-        $data['seller_offer'] = $this->marketplace_model->listing_offer_common(2);
-        $data['buying_request'] = $this->marketplace_model->listing_offer_common(1);
-        //$this->output->enable_profiler(TRUE);
+        $data['seller_offer'] = $this->marketplace_model->listing_offer_common(1);
+        $data['buying_request'] = $this->marketplace_model->listing_offer_common(2);
+        $this->output->enable_profiler(TRUE);
         $data['main'] = 'marketplace';        
         $data['title'] = 'GSM - Market Place: Offers';        
         $data['page'] = 'offers';
@@ -1265,6 +1265,7 @@ class Marketplace extends MX_Controller
 
     function history()
     {
+        $this->output->enable_profiler(TRUE);
         $data['sell_order'] = $this->marketplace_model->order_history_sell();
         $data['buy_order'] = $this->marketplace_model->order_history_buy();
         
@@ -1770,9 +1771,10 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
   function pay_asking_status($id='',$negotiation_id='',$status='0',$buyer_id)
     {
        $seller_id =  $this->session->userdata('members_id');
+       if($status==1){
        $this->marketplace_model->update('negotiation',array('status'=>$status),array('id'=>$negotiation_id));
-       if($this->marketplace_model->update('make_offer',array('offer_status'=>$status,'invoice_no'=>$seller_id.'-'.$buyer_id.'-'.$id),array('id'=>$id, 'seller_id'=>$seller_id))){
-          if($status==1){
+       if($this->marketplace_model->update('make_offer',array('offer_status'=>$status,'invoice_no'=>$seller_id.'-'.$buyer_id.'-'.$id),array('id'=>$id))){
+          
              $data = array(
                 'member_id'         => $seller_id,
                 'sent_member_id'    => $buyer_id,
@@ -1790,7 +1792,8 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
 
             $this->session->set_flashdata('msg_success','Offer Accepted sucessfully and move in open order.');
             redirect('marketplace/open_orders');
-        }
+       
+    }
      else{
         $data = array(
                 'member_id'         => $seller_id,
@@ -1967,12 +1970,12 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
      }
        if( $need_to_insert){
         if($listing->listing_type==1){
-            $buyer_id_to_fix=$buyer_id;
-            $seller_id_to_fix=$listing->member_id;
-        }
-        elseif($listing->listing_type==2){
             $buyer_id_to_fix=$listing->member_id;
             $seller_id_to_fix=$buyer_id;
+        }
+        elseif($listing->listing_type==2){
+            $buyer_id_to_fix=$buyer_id;
+            $seller_id_to_fix=$listing->member_id;
         }
         
         if($checkoffer=$this->marketplace_model->get_row('make_offer', array('buyer_id'=> $buyer_id,'seller_id' => $listing->member_id,'listing_id'=> $listing_id,'product_qty'   => $product_qty,'unit_price' => $unit_price))){
@@ -2167,12 +2170,12 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
          }
          
           if($listing->listing_type==1){
-            $buyer_id_to_fix=$buyer_id;
-            $seller_id_to_fix=$listing->member_id;
-        }
-        elseif($listing->listing_type==2){
             $buyer_id_to_fix=$listing->member_id;
             $seller_id_to_fix=$buyer_id;
+        }
+        elseif($listing->listing_type==2){
+            $buyer_id_to_fix=$buyer_id;
+            $seller_id_to_fix=$listing->member_id;
         }
 
         $data_insert=array(
