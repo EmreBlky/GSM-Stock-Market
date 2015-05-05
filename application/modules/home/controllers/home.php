@@ -10,6 +10,8 @@ class Home extends MX_Controller
 
     function index()
     {
+        echo $_SERVER['HTTP_HOST'];
+        exit;
         if ( ! $this->session->userdata('logged_in') )
         { 
             redirect('login');

@@ -127,7 +127,7 @@ if(!empty($listing_detail->image1))
 <div class="main_image_gallery">
 <img id="zoom_03" src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img1[3]; ?>" data-zoom-image="<?php echo base_url().'public/upload/listing/'.$img1[3]; ?>" class="gallerymainimg"/></div>
 <?php }else{ ?>
-<div class="main_image_gallery" style="text-align: center;!important;">
+<div class="main_image_gallery" style="text-align: center !important;">
 <img src="<?php echo base_url().'public/main/template/gsm/images/no_marketplace_photo.png'; ?>" class="gallerymainimg"/><br>
 <b>No images uploaded by listing owner.</b></div>
 <?php } ?>

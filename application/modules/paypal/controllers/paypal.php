@@ -69,89 +69,6 @@ class Paypal extends MX_Controller
                             );
         $this->transaction_model->_insert($data_trans);
         
-        $data_mail = array(
-                                    'member_id'         => 5,
-                                    'member_name'       => $this->member_model->get_where(5)->firstname.' '.$this->member_model->get_where(5)->lastname,
-                                    'sent_member_id'    => $this->session->userdata('members_id'),
-                                    'sent_member_name'  => $this->member_model->get_where($this->session->userdata('members_id'))->firstname.' '.$this->member_model->get_where($this->session->userdata('members_id'))->lastname,                        
-                                    'subject'           => 'PayPal Transaction - '.$invoice.'',
-                                    'body'              => '<p>Thank you for upgrading your membership on GSMStockMarket.com.</p>
-                                                            <p>To view the full invoice you can go to <strong>Preferences > My Subscription</strong> and print off a copy direct from within your account.</p>
-															<p>If you have any billing issues or queries please do not hesitate to email us at billing@gsmstockmarket.com, message us through the submit a ticket system or call us on +44 (0)1494 717321</p>
-															<P>Kind Regards,<br>GSMStockMarket.com Team</p>',
-                                    'inbox'             => 'yes',
-                                    'sent'              => 'yes',
-                                    'date'              => date('d-m-Y'),
-                                    'time'              => date('H:i'),
-                                    'sent_from'         => 'support',
-                                    'datetime'          => date('Y-m-d H:i:s')
-                                  ); 
-        $this->mailbox_model->_insert($data_mail);
-        
-        $email_support = $this->notification_model->get_where_multiple('member_id', $this->session->userdata('members_id'))->email_support;
-                      
-            if($email_support == 'yes'){
-
-                  $this->load->module('emails');
-                  $config = Array(
-                                  'protocol' => 'smtp',
-                                  'smtp_host' => 'ssl://server.gsmstockmarket.com',
-                                  'smtp_port' => 465,
-                                  'smtp_user' => 'noreply@gsmstockmarket.com',
-                                  'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
-                                  'charset' => 'utf-8',
-                                  'wordwrap' => TRUE,
-                                  'newline' => "\r\n",
-                                  'crlf'    => ""
-
-                              );
-
-                  $this->load->library('email', $config);
-                  $this->email->set_mailtype("html");
-                  $email_body = '<table class="body-wrap" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;background-color: #f6f6f6;width: 100%;">
-                            <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
-                                <td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;"></td>
-                                <td class="container" width="600" style="margin: 0 auto !important;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;display: block !important;max-width: 600px !important;clear: both !important;">
-                                    <div class="content" style="margin: 0 auto;padding: 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;max-width: 600px;display: block;">
-                                        <table class="main" width="100%" cellpadding="0" cellspacing="0" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;background: #fff;border: 1px solid #e9e9e9;border-radius: 3px;">
-                                            <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
-                                                <td class="content-wrap" style="margin: 0;padding: 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
-                                                    <table cellpadding="0" cellspacing="0" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
-                                                        <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
-                                                            <td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
-                                                                <img class="img-responsive" src="'.$base.'public/main/template/gsm/images/email/header.png" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;max-width: 100%;">
-                                                            </td>
-                                                        </tr>
-                                                        <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
-                                                            <td class="content-block" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
-                                                                <h3 style="margin: 40px 0 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Grande&quot;, sans-serif;box-sizing: border-box;font-size: 18px;color: #000;line-height: 1.2;font-weight: 400;">You have a message from the support team @ GSM Stockmarket.</h3>
-                                                            </td>
-                                                        </tr>
-                                                        
-                                                        <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
-                                                            <td class="content-block aligncenter" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;text-align: center;">
-                                                                <a href="'.$base.'" class="btn-primary" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;color: #FFF;text-decoration: none;background-color: #1ab394;border: solid #1ab394;border-width: 5px 10px;line-height: 2;font-weight: bold;text-align: center;cursor: pointer;display: inline-block;border-radius: 5px;text-transform: capitalize;">Log in to view account</a>
-                                                            </td>
-                                                        </tr>
-                                                      </table>
-                                                </td>
-                                            </tr>
-                                        </table></div>
-                                </td>
-                                <td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;"></td>
-                            </tr>
-                        </table>';
-
-
-                  $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Support');
-
-                  //$list = array('tim@gsmstockmarket.com', 'info@gsmstockmarket.com');
-                  $this->email->to($this->member_model->get_where($this->session->userdata('members_id'))->email);
-                  $this->email->subject('You have a message in your inbox');
-                  $this->email->message($email_body);
-
-                  $this->email->send();                          
-            }
         
         $base                           = $this->config->item('base_url');
         $config['business']             = 'info@gsmstockmarket.com';
@@ -275,20 +192,107 @@ class Paypal extends MX_Controller
                 $this->session->set_userdata('membership', 2);
                 
                 $this->load->module('emails');
-                $config = Array(
-                                'protocol' => 'smtp',
-                                'smtp_host' => 'ssl://server.gsmstockmarket.com',
-                                'smtp_port' => 465,
-                                'smtp_user' => 'noreply@gsmstockmarket.com',
-                                'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
-                                'charset' => 'utf-8',
-                                'wordwrap' => TRUE,
-                                'newline' => "\r\n",
-                                'crlf'    => ""
-
-                            );
                 
+                $config = Array(
+                          'protocol' => 'smtp',
+                          'smtp_host' => 'ssl://server.gsmstockmarket.com',
+                          'smtp_port' => 465,
+                          'smtp_user' => 'noreply@gsmstockmarket.com',
+                          'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
+                          'charset' => 'utf-8',
+                          'wordwrap' => TRUE,
+                          'newline' => "\r\n",
+                          'crlf'    => ""
+
+                      );
+
                 $this->load->library('email', $config);
+                
+                $data_mail = array(
+                                    'member_id'         => 5,
+                                    'member_name'       => $this->member_model->get_where(5)->firstname.' '.$this->member_model->get_where(5)->lastname,
+                                    'sent_member_id'    => $this->session->userdata('members_id'),
+                                    'sent_member_name'  => $this->member_model->get_where($this->session->userdata('members_id'))->firstname.' '.$this->member_model->get_where($this->session->userdata('members_id'))->lastname,                        
+                                    'subject'           => 'PayPal Transaction - '.$this->input->post('invoice').'',
+                                    'body'              => '<p>Thank you for upgrading your membership on GSMStockMarket.com.</p>
+                                                            <p>To view the full invoice you can go to <strong>Preferences > My Subscription</strong> and print off a copy direct from within your account.</p>
+															<p>If you have any billing issues or queries please do not hesitate to email us at billing@gsmstockmarket.com, message us through the submit a ticket system or call us on +44 (0)1494 717321</p>
+															<P>Kind Regards,<br>GSMStockMarket.com Team</p>',
+                                    'inbox'             => 'yes',
+                                    'sent'              => 'yes',
+                                    'date'              => date('d-m-Y'),
+                                    'time'              => date('H:i'),
+                                    'sent_from'         => 'support',
+                                    'datetime'          => date('Y-m-d H:i:s')
+                                  ); 
+        $this->mailbox_model->_insert($data_mail);
+        
+        $email_support = $this->notification_model->get_where_multiple('member_id', $this->session->userdata('members_id'))->email_support;
+                      
+            if($email_support == 'yes'){
+
+                  
+                  $this->email->set_mailtype("html");
+                  $email_body = '<table class="body-wrap" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;background-color: #f6f6f6;width: 100%;">
+                            <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                <td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;"></td>
+                                <td class="container" width="600" style="margin: 0 auto !important;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;display: block !important;max-width: 600px !important;clear: both !important;">
+                                    <div class="content" style="margin: 0 auto;padding: 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;max-width: 600px;display: block;">
+                                        <table class="main" width="100%" cellpadding="0" cellspacing="0" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;background: #fff;border: 1px solid #e9e9e9;border-radius: 3px;">
+                                            <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                <td class="content-wrap" style="margin: 0;padding: 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                                                    <table cellpadding="0" cellspacing="0" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                        <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                            <td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                                                                <img class="img-responsive" src="'.$base.'public/main/template/gsm/images/email/header.png" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;max-width: 100%;">
+                                                            </td>
+                                                        </tr>
+                                                        <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                            <td class="content-block" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                                                                <h3 style="margin: 40px 0 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Grande&quot;, sans-serif;box-sizing: border-box;font-size: 18px;color: #000;line-height: 1.2;font-weight: 400;">You have a message from the support team @ GSM Stockmarket.</h3>
+                                                            </td>
+                                                        </tr>
+                                                        
+                                                        <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                            <td class="content-block aligncenter" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;text-align: center;">
+                                                                <a href="'.$base.'" class="btn-primary" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;color: #FFF;text-decoration: none;background-color: #1ab394;border: solid #1ab394;border-width: 5px 10px;line-height: 2;font-weight: bold;text-align: center;cursor: pointer;display: inline-block;border-radius: 5px;text-transform: capitalize;">Log in to view account</a>
+                                                            </td>
+                                                        </tr>
+                                                      </table>
+                                                </td>
+                                            </tr>
+                                        </table></div>
+                                </td>
+                                <td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;"></td>
+                            </tr>
+                        </table>';
+
+
+                  $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Support');
+
+                  //$list = array('tim@gsmstockmarket.com', 'info@gsmstockmarket.com');
+                  $this->email->to($this->member_model->get_where($this->session->userdata('members_id'))->email);
+                  $this->email->subject('You have a message in your inbox');
+                  $this->email->message($email_body);
+
+                  $this->email->send();                          
+            }
+                
+//                $this->load->module('emails');
+//                $config = Array(
+//                                'protocol' => 'smtp',
+//                                'smtp_host' => 'ssl://server.gsmstockmarket.com',
+//                                'smtp_port' => 465,
+//                                'smtp_user' => 'noreply@gsmstockmarket.com',
+//                                'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
+//                                'charset' => 'utf-8',
+//                                'wordwrap' => TRUE,
+//                                'newline' => "\r\n",
+//                                'crlf'    => ""
+//
+//                            );
+//                
+//                $this->load->library('email', $config);
                 //$this->load->library('email');
                 //$this->email->newline = "\r\n";
                 //$this->email->crlf = "\r\n";
