@@ -977,8 +977,8 @@ $(".validation").validate({
            
            $.each(data.product_make, function(index, val) {
                 productmakehtml +='<option value="'+val+'"';
-                if(data.numrows >= '1'){
-                productmakehtml +=' selected';
+                if(data.numrows >= '1' && mpnisbn1!=""){
+                productmakehtml +=' selected="selected"';
                     mk1product_make=val;
                 }
                 productmakehtml +=' >'+val+'</option>';
@@ -997,10 +997,14 @@ $(".validation").validate({
                test123(mpnisbn1,product_make);
            }
            //colors select
-            var product_colorshtml='';
+            var product_colorshtml='<option value="">Choose Color</option>';
             $.each(data.product_colors, function(index, val) {
               product_colorshtml +='<option value="'+val+'"';
+              if(data.numrows >= '1' && mpnisbn1!=""){
+                product_colorshtml +=' selected="selected"';
+                }
               product_colorshtml +=' >'+val+'</option>';
+
             });
 
           $('body').find('#product_color').html('');
@@ -1008,14 +1012,12 @@ $(".validation").validate({
            $('select[name="product_color"]').trigger("chosen:updated");
         });
     });
-
     $(document).on('change', '#product_make', function(event) {
         event.preventDefault();
             var mpn1 =$('#mpn1').val();
             var product_make= $(this).val();
-            test123(mpn1,product_make);
-
-    });
+            test123(mpn1,product_make);     
+        });
      });
 
     $(document).ready(function() {
