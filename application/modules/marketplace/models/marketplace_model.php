@@ -12,7 +12,7 @@ class Marketplace_model extends MY_Model {
         $query=$this->db->insert($table_name, $data);
         if($query)
             return $this->db->insert_id();
-		else
+    	else
 			return FALSE;		
 	}
 

@@ -799,10 +799,10 @@ class Admin extends MX_Controller
         if ($this->form_validation->run() == TRUE){
             $data_update=array(
             'product_mpn_isbn' =>  $this->input->post('product_mpn'),
-           // 'product_isbn' =>  $this->input->post('product_isbn'),
+            //'product_isbn' =>  $this->input->post('product_isbn'),
             'product_make' =>  $this->input->post('product_make'),
             'product_model' =>  $this->input->post('product_model'),
-            //'product_type' =>  $this->input->post('product_type'),
+            'product_type' =>  $this->input->post('product_type'),
             'product_color' =>  $this->input->post('product_color'),
             'updated' => date('Y-m-d h:i:s A'), 
             );
