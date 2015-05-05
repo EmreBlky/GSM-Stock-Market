@@ -12,7 +12,7 @@ class Marketplace_model extends MY_Model {
         $query=$this->db->insert($table_name, $data);
         if($query)
             return $this->db->insert_id();
-		else
+    	else
 			return FALSE;		
 	}
 
@@ -206,7 +206,7 @@ class Marketplace_model extends MY_Model {
 
 		$this->db->where("listing.schedule_date_time <= '".date('Y-m-d h:i:s')."' and listing.listing_end_datetime >= '".date('Y-m-d h:i:s')."'" );
 		
-		$this->db->from('listing');
+		$this->db->from('listing0');
 	
 		$this->db->where('listing.status', 1);
 		$this->db->where('listing.listing_type', 2);
@@ -316,7 +316,7 @@ class Marketplace_model extends MY_Model {
 
 		$this->db->where("listing.schedule_date_time <= '".date('Y-m-d h:i:s')."' and listing.listing_end_datetime >= '".date('Y-m-d h:i:s')."'" );
 		
-		$this->db->from('listing');
+		$this->db->from('listing0');
 	
 		$this->db->where('listing.status', 1);
 		$this->db->where('listing.listing_type', 1);
