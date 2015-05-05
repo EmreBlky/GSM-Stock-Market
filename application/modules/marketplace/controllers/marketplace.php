@@ -1759,38 +1759,38 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
              $data = array(
                 'member_id'         => $seller_id,
                 'sent_member_id'    => $buyer_id,
-                'subject'           => 'Offer is accepted',
-                'body'              => 'Offer is accepted',
+                'subject'           => 'Offer Dccepted',
+                'body'              => 'Your offer has been accepted, proceed to open orders to view the status of your order.',
                 'inbox'             => 'yes',
                 'sent'              => 'yes',
                 'date'              => date('d-m-Y'),
                 'time'              => date('H:i:s'),
                 'sent_from'         => 'market',
-                'datetime'          => date('Y-m-d H:i:s')
+                'datetime'          => date('Y-m-d H:i')
               ); 
            $this->load->model('mailbox/mailbox_model', 'mailbox_model');
             $this->mailbox_model->_insert($data);
 
-            $this->session->set_flashdata('msg_success','Offer Accepted sucessfully and move in open order.');  
+            $this->session->set_flashdata('msg_success','Offer Accepted. An order has been created in <strong>Open Orders</strong>. The user has been notified.');  
             redirect('marketplace/open_orders');
           }elseif($status==2){
 
             $data = array(
                 'member_id'         => $seller_id,
                 'sent_member_id'    => $buyer_id,
-                'subject'           => 'Offer is declined',
-                'body'              => 'Offer is declined Do you want to resent it.',
+                'subject'           => 'Offer Declined',
+                'body'              => 'Your offer has been declined, try submitting a better offer.',
                 'inbox'             => 'yes',
                 'sent'              => 'yes',
                 'date'              => date('d-m-Y'),
-                'time'              => date('H:i:s'),
+                'time'              => date('H:i'),
                 'sent_from'         => 'market',
-                'datetime'          => date('Y-m-d H:i:s')
+                'datetime'          => date('Y-m-d H:i')
               ); 
            $this->load->model('mailbox/mailbox_model', 'mailbox_model');
             $this->mailbox_model->_insert($data);
 
-            $this->session->set_flashdata('msg_success','Offer Declined sucessfully.'); 
+            $this->session->set_flashdata('msg_success','Offer Declined. The user has been notified.'); 
           }
         }
         else{
@@ -1809,19 +1809,19 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
              $data = array(
                 'member_id'         => $seller_id,
                 'sent_member_id'    => $buyer_id,
-                'subject'           => 'Pay asking price is accepted',
-                'body'              => 'Pay asking price is accepted',
+                'subject'           => 'Offer accepted',
+                'body'              => 'Your offer to pay the asking price has been accepted by the user, proceed to open orders to view the status of your order.',
                 'inbox'             => 'yes',
                 'sent'              => 'yes',
                 'date'              => date('d-m-Y'),
                 'time'              => date('H:i:s'),
                 'sent_from'         => 'market',
-                'datetime'          => date('Y-m-d H:i:s')
+                'datetime'          => date('Y-m-d H:i')
               ); 
            $this->load->model('mailbox/mailbox_model', 'mailbox_model');
             $this->mailbox_model->_insert($data);
 
-            $this->session->set_flashdata('msg_success','Offer Accepted sucessfully and move in open order.');
+            $this->session->set_flashdata('msg_success','Offer Accepted. An order has been created in <strong>Open Orders</strong>. The user has been notified.');
             redirect('marketplace/open_orders');
        
     }
@@ -1829,14 +1829,14 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
         $data = array(
                 'member_id'         => $seller_id,
                 'sent_member_id'    => $buyer_id,
-                'subject'           => 'Pay asking price is declined',
-                'body'              => 'Pay asking price is declined Do you want to resent it.',
+                'subject'           => 'Offer Declined',
+                'body'              => 'Your offer to pay the asking price has been decline, try contacting the user as they may not have the quantity available.',
                 'inbox'             => 'yes',
                 'sent'              => 'yes',
                 'date'              => date('d-m-Y'),
                 'time'              => date('H:i:s'),
                 'sent_from'         => 'market',
-                'datetime'          => date('Y-m-d H:i:s')
+                'datetime'          => date('Y-m-d H:i')
               ); 
            $this->load->model('mailbox/mailbox_model', 'mailbox_model');
             $this->mailbox_model->_insert($data);
@@ -1886,7 +1886,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
      $this->marketplace_model->update('make_offer',array('offer_status'=>3),array('id'=>$offer_id));
 
      $this->marketplace_model->insert('negotiation',$data_insert_negotiation);
-        $this->session->set_flashdata('msg_success','Offer move to negotiation.'); 
+        $this->session->set_flashdata('msg_success','Offer has been moved to <strong>Negotiations</strong> page until a deal has been met.'); 
         }
         else{
             $this->session->set_flashdata('msg_info','Invalid.');
@@ -1992,7 +1992,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
            $need_to_insert++;
         }
         if(empty($need_to_insert)){
-            $list=array('STATUS'=>4,'Message'=>'Offer is not accepted.');
+            $list=array('STATUS'=>4,'Message'=>'Offer has been auto declined.');
         }
         }
         else{
@@ -2011,7 +2011,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
         
         if($checkoffer=$this->marketplace_model->get_row('make_offer', array('buyer_id'=> $buyer_id,'seller_id' => $listing->member_id,'listing_id'=> $listing_id,'product_qty'   => $product_qty,'unit_price' => $unit_price))){
 
-        $list=array('STATUS'=>7,'Message'=>'Offer is Already accepted.'); 
+        $list=array('STATUS'=>7,'Message'=>'Offer has been accepted.'); 
         }
         else{
          $total_price=  ($product_qty *  $unit_price) +  $shippingamount;
