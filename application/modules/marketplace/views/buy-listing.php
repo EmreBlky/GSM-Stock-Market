@@ -80,7 +80,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
              <?php echo form_error('product_mpn'); ?>
         </div>
     </div>
-
+    
     <div class="form-group"><label class="col-md-3 control-label">Make</label>
         <div class="col-md-9">
 
@@ -715,9 +715,6 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 </div>
 
 <?php } ?>
-
-<!-- Multi Select -->
-<link href="public/main/template/core/css/plugins/chosen/chosen.css" rel="stylesheet">
 
 <!-- Chosen -->
 <script src="public/main/template/core/js/plugins/chosen/chosen.jquery.js"></script>

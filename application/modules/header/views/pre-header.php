@@ -25,6 +25,10 @@
     <link href="public/main/template/core/css/animate.css" rel="stylesheet">
     <link href="public/main/template/core/css/plugins/toastr/toastr.min.css" rel="stylesheet">
     <!-- Alert Styles -->
+    
+    <!-- Multi Select -->
+    <link href="public/main/template/core/css/plugins/chosen/chosen.css" rel="stylesheet">
+    
     <link href="public/main/template/core/css/style.css" rel="stylesheet">
     <link href="public/main/template/gsm/css/style.css" rel="stylesheet">
     <!-- GSM Override -->
