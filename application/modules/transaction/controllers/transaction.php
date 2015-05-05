@@ -222,20 +222,31 @@ class Transaction extends MX_Controller
     
     function invoice($inv_id)
     {
-        $data_activity = array(
-                                'activity' => 'Transactions: Invoice',
-                                'time' => date('H:i:s'),
-                                'date' => date('d-m-Y')
-                                );
-        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
+        $mem_id = $this->transaction_model->get_where($inv_id)->buyer_id;
         
-        $data['transaction'] = $this->transaction_model->get_where($inv_id);
+        if($mem_id == $this->session->userdata('members_id')){
+            
+            $data_activity = array(
+                                    'activity' => 'Transactions: Invoice',
+                                    'time' => date('H:i:s'),
+                                    'date' => date('d-m-Y')
+                                    );
+            $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
+
+            $mem_id = $this->transaction_model->get_where($inv_id)->buyer_id;
+
+            $data['transaction'] = $this->transaction_model->get_where($inv_id);
+
+            $data['main'] = 'transaction';
+            $data['title'] = 'Transaction: Invoice';
+            $data['page'] = 'invoice';
+            $this->load->module('templates');
+            $this->templates->page($data);
         
-        $data['main'] = 'transaction';
-	$data['title'] = 'Transaction: Invoice';
-        $data['page'] = 'invoice';
-        $this->load->module('templates');
-        $this->templates->page($data);
+        }
+        else{
+            redirect('home/');
+        }
     }
     
     function invoice_print($inv_id)
