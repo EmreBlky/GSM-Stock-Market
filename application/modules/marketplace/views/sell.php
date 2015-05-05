@@ -256,10 +256,7 @@ foreach ($product_colors as $row) { ?>
                  <div class="col-lg-4 col-lg-offset-4">
                  <button type="submit" class="btn btn-lg btn-primary" name="search" >
                  <i class="fa fa-search"></i> Search Now</button>
-             <a href="<?php echo base_url().'marketplace/sell'; ?>">
-                 <button type="button" id="reset" class="btn btn-lg btn-primary" name="clear">
-                 <i class="fa"></i> Reset</button>
-                 </a>
+            
                  </div>
              </div>
          </form>
@@ -1428,4 +1425,3 @@ $('#reset').click(function(){
 </div>
             
  
-
