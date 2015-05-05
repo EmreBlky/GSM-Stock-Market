@@ -102,17 +102,25 @@ class Feedback extends MX_Controller
                     'datetime'              => date('Y-m-d H:i:s'),
                     'type'                  => $type
                 );                    
-        $this->feedback_model->_insert($data);
-      if($ratetypeuser==1){
-        $user_id = $this->session->userdata('members_id');
-        $order_id = $order_id;
+       $this->feedback_model->_insert($data);
         $this->load->model('marketplace/marketplace_model'); 
-        $this->marketplace_model->update('make_offer',array('buyer_feedback_datetime'=>date('Y-m-d h:i:s')),array('id'=>$order_id,'buyer_id'=>$user_id));
-      }elseif($ratetypeuser==2){
-        $user_id = $this->session->userdata('members_id');
-        $order_id = $order_id;
+       $make_offer=$this->marketplace_model->get_row('make_offer',array('id'=>$order_id));
+       $setfield='';
+       $user_id = $this->session->userdata('members_id');
+        if($user_id == $make_offer->buyer_id){
+          $setfield='buyer_history';
+          $datetimefield='buyer_feedback_datetime';
+        }else{
+          $setfield='seller_history';
+          $datetimefield='seller_feedback_datetime';
+        }
+      if($ratetypeuser==1 && !empty($setfield) && !empty($datetimefield)){
         $this->load->model('marketplace/marketplace_model'); 
-        $this->marketplace_model->update('make_offer',array('seller_feedback_datetime'=>date('Y-m-d h:i:s')),array('id'=>$order_id,'seller_id'=>$user_id));
+        $this->marketplace_model->update('make_offer',array($datetimefield=>date('Y-m-d h:i:s'),$setfield=>1),array('id'=>$order_id));
+
+      }elseif($ratetypeuser==2 && !empty($setfield)){
+        $this->load->model('marketplace/marketplace_model'); 
+        $this->marketplace_model->update('make_offer',array($datetimefield=>date('Y-m-d h:i:s'),$setfield=>1),array('id'=>$order_id));
       }
         
     }
