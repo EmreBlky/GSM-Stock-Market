@@ -77,7 +77,11 @@ class Paypal extends MX_Controller
         $config['return']               = $base .'paypal/notify_payment';
         $config['cancel_return']        = $base .'paypal/cancel_return';
         $config['notify_url']           = $base .'paypal/process'; //IPN Post
-        $config['production']           = TRUE; //Its false by default and will use sandbox
+        if($_SERVER['HTTP_HOST'] == 'localhost' || $_SERVER['HTTP_HOST'] == 'secure-dev.gsmstockmarket.com'){
+           $config['production']           = FALSE; //Its false by default and will use sandbox 
+        }else{
+           $config['production']           = TRUE; //Its false by default and will use sandbox 
+        }
         //$config['discount_rate_cart']   = 20; //This means 20% discount
         $config["invoice"]              = $invoice; //The invoice id
         
