@@ -1325,18 +1325,18 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                     'product_colors'=>$colors,
                     );                
             }else{
-                 $query=$this->db->query("SELECT product_make,product_color,product_type FROM `listing_attributes` GROUP BY product_make;");
+                 $query=$this->db->query("SELECT product_make,product_color,product_type FROM `listing_attributes`;");
                   
                      if($query->num_rows()>0){
                        foreach ($query->result() as $value){
-                        $product_makes[] =$value->product_make;    
+                        if(!in_array($value->product_make, $product_makes)){   
+                         $product_makes[] =$value->product_make;  
+                        }  
                         if(!in_array($value->product_color, $colors)){   
-                        $colors[]     =$value->product_color; 
-                    }      
+                          $colors[]     =$value->product_color; 
+                        }      
                         $product_types =$value->product_type;    
-                        }             
-                       $product_makes=array_unique($product_makes);
-                      
+                        }
                      }
                    $data=array(
                     'Status' =>FALSE,
