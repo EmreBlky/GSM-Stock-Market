@@ -15,8 +15,6 @@ class Member extends MX_Controller
         $this->load->model('company/company_model', 'company_model');
         $this->load->model('country/country_model', 'country_model');
         $this->load->model('viewed/viewed_model', 'viewed_model');
-        
-        
     }
 
     function index()

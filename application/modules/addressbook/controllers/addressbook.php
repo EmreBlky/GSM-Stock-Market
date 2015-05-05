@@ -425,12 +425,21 @@ class Addressbook extends MX_Controller
     
     function add($mid, $individual, $company, $business1, $business2, $business3, $country)
     {
+        $this->load->model('favourite/favourite_model', 'favourite_model');
+        $faves = $this->favourite_model->_custom_query_count("SELECT COUNT(*) AS count FROM favourite WHERE member_id = '".$this->session->userdata('members_id')."' AND favourite_id = '".$mid."'");
+        
+        if($faves[0]->count > 0){
+           $fave = 'yes'; 
+        }
+        else{
+            $fave = 'no';
+        }
         $data = array(
                         'member_id'                     => $this->session->userdata('members_id'),
                         'address_member_id'             => $mid,
                         'individual'                    => $this->characterReplace($individual),
                         'company'                       => $this->characterReplace($company),
-                        'favourite'                     => 'no',
+                        'favourite'                     => $fave,
                         'business_activities'           => $this->characterReplace($business1),
                         'second_business_activities'    => $this->characterReplace($business2),
                         'third_business_activities'     => $this->characterReplace($business3),

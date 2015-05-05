@@ -19,6 +19,8 @@ class Mailbox extends MX_Controller
         $this->load->model('member/member_model', 'member_model');
         $this->load->model('activity/activity_model', 'activity_model');
         $this->load->model('notification/notification_model', 'notification_model');
+        $this->load->model('favourite/favourite_model', 'favourite_model');
+        $this->load->model('addressbook/addressbook_model', 'addressbook_model');
         $this->load->library('pagination');
         
         
