@@ -68,7 +68,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 
         <div class="form-group"><label class="col-md-3 control-label">MPN/ISBN</label>
         <div class="col-md-9">
-            <input type="text" id="mpn1" list="mpn" class="form-control check_record" placeholder="MPN/ISBN"  name="product_mpn" value="<?php if(!empty($product_list->product_mpn_isbn)) echo $product_list->product_mpn_isbn; ?><?php if(!empty($_POST['product_mpn'])) echo $_POST['product_mpn']; ?>"/>
+            <input type="text" id="mpn1" list="mpn" class="form-control check_record" placeholder="MPN/ISBN"  name="product_mpn" value="<?php if(!empty($_POST['product_mpn'])) echo $_POST['product_mpn']; elseif(!empty($product_list->product_mpn_isbn)) echo $product_list->product_mpn_isbn; ?>"/>
             <datalist id="mpn">
             <?php if(!empty($listing_attributes)){
                  foreach ($listing_attributes as $row) { ?>
@@ -80,7 +80,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
              <?php echo form_error('product_mpn'); ?>
         </div>
     </div>
-    
+
     <div class="form-group"><label class="col-md-3 control-label">Make</label>
         <div class="col-md-9">
 
@@ -88,7 +88,9 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <option value=""> Choose Make </option>
            <?php if(!empty($product_makes)){
              foreach ($product_makes as $row) { ?>
-            <option value="<?php echo $row->product_make; ?>" <?php if(!empty($_POST) && $row->product_make==$_POST['product_make']){ echo'selected';}?><?php if(!empty($product_list->product_make) && $row->product_make == $product_list->product_make){ echo'selected';}?>><?php echo $row->product_make; ?></option>
+            <option value="<?php echo $row->product_make; ?>"
+             <?php if(!empty($_POST) && $row->product_make==$_POST['product_make']){ echo'selected';}
+                elseif(!empty($product_list->product_make) && $row->product_make == $product_list->product_make){ echo'selected';}?>><?php echo $row->product_make; ?></option>
              <?php }} ?>
         </select>
         <?php echo form_error('product_make'); ?>
@@ -716,6 +718,9 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 
 <?php } ?>
 
+<!-- Multi Select -->
+<link href="public/main/template/core/css/plugins/chosen/chosen.css" rel="stylesheet">
+
 <!-- Chosen -->
 <script src="public/main/template/core/js/plugins/chosen/chosen.jquery.js"></script>
 
@@ -1015,7 +1020,23 @@ $(".validation").validate({
             var product_make= $(this).val();
             test123(mpn1,product_make);     
         });
+        $(document).on('change', '#product_model', function(event) {
+        event.preventDefault();
+            var product_model= $(this).val();
+             $.post('<?php echo base_url("marketplace/getAttributesInfo") ?>/MODAL/',{'product_model':product_model}, function(data) {
+            product_colorshtml='';
+           $.each(data.product_color, function(index, val) {
+                product_colorshtml +='<option value="'+val+'"';
+                if(data.num_rows==1)
+                product_colorshtml +=' Selected';
+                product_colorshtml +=' >'+val+'</option>';
+           });
+           $('select[name="product_color"]').html(product_colorshtml);
+           $('select[name="product_color"]').trigger("chosen:updated");
+          });
+        });
      });
+
 
     $(document).ready(function() {
         $('#shipping_checkbox').change(function(event) {
