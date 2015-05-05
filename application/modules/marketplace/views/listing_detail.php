@@ -127,7 +127,7 @@ if(!empty($listing_detail->image1))
 <div class="main_image_gallery">
 <img id="zoom_03" src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img1[3]; ?>" data-zoom-image="<?php echo base_url().'public/upload/listing/'.$img1[3]; ?>" class="gallerymainimg"/></div>
 <?php }else{ ?>
-<div class="main_image_gallery" style="text-align: center !important;">
+<div class="main_image_gallery" style="text-align: center;!important;">
 <img src="<?php echo base_url().'public/main/template/gsm/images/no_marketplace_photo.png'; ?>" class="gallerymainimg"/><br>
 <b>No images uploaded by listing owner.</b></div>
 <?php } ?>
@@ -165,7 +165,7 @@ if(!empty($listing_detail->image1))
     <?php if(!empty($listing_detail->listing_end_datetime)) { ?> 
     <span class="countdowncounter" <?php 
     $date1 = $listing_detail->listing_end_datetime;; 
-    $date2 = date('d-m-y H:i:s'); 
+    $date2 = date('d-m-Y H:i:s'); 
     $diff = abs(strtotime($date2) - strtotime($date1));
     $years   = floor($diff / (365*60*60*24)); 
     $months  = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));  
