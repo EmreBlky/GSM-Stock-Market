@@ -293,7 +293,9 @@ class Marketplace extends MX_Controller
             'product_type'          =>  $this->input->post('product_type'),
             'product_color'         =>  $this->input->post('product_color'),
             'condition'             =>  $this->input->post('condition'),    
-            'spec'                  =>  $this->input->post('spec'),
+            'spec'                  =>  $this->input->post('spec'), 
+            'device_capacity'       =>  $this->input->post('device_capacity'), 
+            'device_sim'            =>  $this->input->post('device_sim'),
             'currency'              =>  $this->input->post('currency'),
             'unit_price'            =>  $this->input->post('unit_price'),
             'min_price'             =>  $min_price,
@@ -671,6 +673,8 @@ class Marketplace extends MX_Controller
         $data_insert['product_color']        =  $this->input->post('product_color');
         $data_insert['condition']            =  $this->input->post('condition');    
         $data_insert['spec']                 =  $this->input->post('spec');
+        $data_insert['device_capacity']      =  $this->input->post('device_capacity');   
+        $data_insert['device_sim']           =  $this->input->post('device_sim');
 
         $data_insert['currency']             =  $this->input->post('currency');
         $data_insert['unit_price']           =  $this->input->post('unit_price');
@@ -1000,7 +1004,9 @@ class Marketplace extends MX_Controller
             $data_insert['product_type']         =  $this->input->post('product_type');
             $data_insert['product_color']        =  $this->input->post('product_color');
             $data_insert['condition']            =  $this->input->post('condition');    
-            $data_insert['spec']                 =  $this->input->post('spec');
+            $data_insert['spec']                 =  $this->input->post('spec');   
+            $data_insert['device_capacity']      =  $this->input->post('device_capacity');   
+            $data_insert['device_sim']           =  $this->input->post('device_sim');
             $data_insert['currency']             =  $this->input->post('currency');
             $data_insert['unit_price']           =  $this->input->post('unit_price');
             //$data_insert['min_price']            =  $min_price;

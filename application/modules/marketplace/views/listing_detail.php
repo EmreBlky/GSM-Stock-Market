@@ -1,13 +1,12 @@
 <div class="row wrapper border-bottom white-bg page-heading">
 <div class="col-lg-10">
-<h2></h2>
+<h2><?php if($listing_detail->listing_type==1){ ?>Selling Offer
+<?php }elseif($listing_detail->listing_type==2){ ?>Buying Request
+<?php } ?></h2>
 <ol class="breadcrumb">
-    <li>
-        <a href="/">Home</a>
-    </li>
-    <li class="active">
-        <strong>Listing Details</strong>
-    </li>
+    <li><a href="/">Home</a></li>
+    <li>Marketplace</li>
+    <li class="active"><strong>Listing Details</strong></li>
 </ol>
 </div>
 <div class="col-lg-2">
@@ -22,13 +21,13 @@
 <h5>Listing Details - 
 
 <?php if($listing_detail->listing_type==1){ ?>
-<span class="label label-info  pull-right">This is a Sell listing</span>
+<span class="label label-info  pull-right">This is a Selling Offer</span>
 <?php }elseif($listing_detail->listing_type==2){ ?>
-<span class="label label-info  pull-right">This is a Buy listing</span>
+<span class="label label-info  pull-right">This is a Buying Request</span>
 <?php } ?>
 
 <?php if (!empty($member_id) && $member_id==$listing_detail->member_id): ?>
-<span class="label label-danger pull-right">( this is your listing )</span>
+<span class="label label-danger pull-right">(this is your listing)</span>
 <?php endif ?></h5>
 </div>
 <div class="ibox-content">
@@ -37,9 +36,8 @@
 <div class="col-lg-5">               
     <dl class="dl-horizontal">
         <h4>Product Details</h4>
-        <dt>Make:</dt> <dd>  <?php if(!empty($listing_detail->product_make)) { echo $listing_detail->product_make; } ?></dd>
-        <dt>Model:</dt> <dd>  <?php if(!empty($listing_detail->product_model)) { echo $listing_detail->product_model; } ?></dd>
-        <!-- <dt>Memory:</dt> <dd> <?php //if(!empty($listing_detail->product_make)) { echo $listing_detail->product_make; } ?></dd> -->
+        <dt>MPN/ISBN</dt> <dd>  <?php if(!empty($listing_detail->product_mpn_isbn)) { echo $listing_detail->product_mpn_isbn; } ?></dd>
+        <dt>Make &amp; Model:</dt> <dd>  <?php if(!empty($listing_detail->product_make)) { echo $listing_detail->product_make; } ?> <?php if(!empty($listing_detail->product_model)) { echo $listing_detail->product_model; } ?> <?php if(!empty($listing_detail->device_capacity)) { echo $listing_detail->device_capacity; } ?></dd>
         <dt>Colour:</dt> <dd>  <?php if(!empty($listing_detail->product_color)) { echo $listing_detail->product_color; } ?>
           <?php if($listing_detail->allow_color){?>
           <b>( Allow offers for all colors )</b>
@@ -48,9 +46,8 @@
         <dt>Product Type:</dt> <dd>  <?php if(!empty($listing_detail->product_type)) { echo $listing_detail->product_type; } ?></dd>
         <dt>Condition:</dt> <dd>  <?php if(!empty($listing_detail->condition)) { echo $listing_detail->condition; } ?></dd> 
         <dt>Spec</dt> <dd>  <?php if(!empty($listing_detail->spec)) { echo $listing_detail->spec; } ?></dd>
-        <dt>MPN/ISBN</dt> <dd>  <?php if(!empty($listing_detail->product_mpn_isbn)) { echo $listing_detail->product_mpn_isbn; } ?></dd>
         
-       <!--  <dt>Network</dt> <dd>  <?php //if(!empty($listing_detail->product_make)) { echo $listing_detail->product_make; } ?></dd> -->
+        <br />
         <dt>Quantity</dt> <dd> <?php if(!empty($listing_detail->qty_available)) { echo $listing_detail->qty_available; } 
           $min_qty_to_sell=0;
           if($listing_detail->min_qty_order){
@@ -58,7 +55,7 @@
           }
         ?></dd>
 
-        <dt>Minimum order quantity</dt> <dd> <?php 
+        <dt>Min Order QTY</dt> <dd> <?php 
         $min_qty_to_sell=0;          
           if($listing_detail->min_qty_order){
             $min_qty_to_sell=$listing_detail->min_qty_order;

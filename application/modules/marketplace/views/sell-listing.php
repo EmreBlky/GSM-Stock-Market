@@ -143,7 +143,64 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 
 
 
-    <div class="hr-line-dashed"></div>
+    	<div class="hr-line-dashed Handset Tablet listing_hide"></div>
+        
+        <div class="form-group Handset listing_hide"><label class="col-md-3 control-label">Spec</label>
+        <div class="col-md-9">
+            <select class="form-control" name="spec">
+                <option selected value="">Spec</option>
+                <?php $spec = spec();
+                if($spec){
+                    foreach ($spec as $key => $value){ ?>
+                      <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['spec']){ echo'selected';}?><?php if(!empty($product_list->spec) && $value==$product_list->spec){ echo'selected';}?>><?php echo $value; ?></option>
+                      <?php }
+                } ?>
+            </select>
+            <?php echo form_error('spec'); ?>
+        </div>
+    	</div>
+        
+        <div class="form-group Handset Tablet listing_hide"><label class="col-md-3 control-label">Capacity</label>
+        <div class="col-md-9">
+            <select class="form-control" name="device_capacity">
+                <option selected value="">- Device capacity -</option>
+                <option value="2GB">2GB</option>
+                <option value="4GB">4GB</option>
+                <option value="8GB">8GB</option>
+                <option value="16GB">16GB</option>
+                <option value="32GB">32GB</option>
+                <option value="64GB">64GB</option>
+                <option value="128GB">128GB</option>
+                <option value="256GB">256GB</option>
+                <option value="Unknown">Unknown</option>
+            </select>
+        </div>
+    	</div>
+        
+        <div class="form-group Handset listing_hide"><label class="col-md-3 control-label">Sim Status</label>
+        <div class="col-md-9">
+            <select class="form-control" name="device_sim">
+                <option selected value="">- Device sim status -</option>
+                <option value="Sim Free">Sim Free</option>
+                <option value="Network Unlocked">Network Unlocked</option>
+                <option value="Network Locked">Network Locked</option>
+                <option value="Unknown">Unknown</option>
+            </select>
+        </div>
+    	</div>
+
+<script>
+$(document).ready(function () {
+  $('.listing_hide').hide();
+  $('#product_type').change(function () {
+    $('.hidden').hide();
+    $('.'+$(this).val()).show();
+  })
+});
+</script>
+        
+        <div class="hr-line-dashed"></div>
+        
         <div class="form-group"><label class="col-md-3 control-label">Condition</label>
             <div class="col-md-9">
 
@@ -159,20 +216,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                 <?php echo form_error('condition'); ?>
             </div>
         </div>
-        <div class="form-group"><label class="col-md-3 control-label">Spec</label>
-        <div class="col-md-9">
-            <select class="form-control" name="spec">
-                <option selected value="">Spec</option>
-                <?php $spec = spec();
-                if($spec){
-                    foreach ($spec as $key => $value){ ?>
-                      <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['spec']){ echo'selected';}?><?php if(!empty($product_list->spec) && $value==$product_list->spec){ echo'selected';}?>><?php echo $value; ?></option>
-                      <?php }
-                } ?>
-            </select>
-            <?php echo form_error('spec'); ?>
-        </div>
-    </div>
+        
     <div class="hr-line-dashed"></div>
  <div class="form-group"><label class="col-md-3 control-label">Currency </label>
                <div class="col-md-9">
@@ -862,8 +906,6 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <?php } ?>
 
 
-<!-- Multi Select -->
-<link href="public/main/template/core/css/plugins/chosen/chosen.css" rel="stylesheet">
 
 <!-- Chosen -->
 <script src="public/main/template/core/js/plugins/chosen/chosen.jquery.js"></script>
@@ -1403,3 +1445,6 @@ var today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(
         </div>
     </div>
 </div>
+<style>
+.chosen-container-single .chosen-single {border-color:#e5e6e7;color:#555}
+</style>

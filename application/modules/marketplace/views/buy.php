@@ -284,9 +284,8 @@ endif;
          &amp; Model</th>
         <th>Product Type</th>
         <th>Condition</th>
-        <th>Price</th>
+        <th>Unit Price</th>
         <th>QTY</th>
-        <th>Spec</th>
         <th>Country</th>
         <th>Options</th>
     </tr>
@@ -296,7 +295,7 @@ endif;
         <tr data-toggle="modal" data-target="#myModal5">
         <td><p><span data-countdown="<?php echo $value->listing_end_datetime; ?>"></span></p></td>
         
-        <td><span class="fa fa-star" style="color:#FC3"></span> 
+        <td class="text-center">
         <?php 
         if(isset($value->rating))
           $rating = $value->rating;
@@ -318,15 +317,13 @@ endif;
         
         
         
-        <td> <?php if(!empty($value->product_mpn_isbn)){ echo $value->product_mpn_isbn; } ?></td>
-        <td><?php echo $value->product_make; ?> 
-        <?php echo $value->product_model; ?></td>
+        <td><?php if(!empty($value->product_mpn_isbn)){ echo $value->product_mpn_isbn; } ?></td>
+        <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php echo $value->device_capacity; ?> <?php echo $value->spec; ?></td>
         <td><?php echo $value->product_type; ?></td>
         <td><?php echo $value->condition; ?></td>
-        <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo $value->unit_price; ?></td>
+        <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo  currency_class($value->currency) ?> <?php echo $value->unit_price; ?></td>
         <td><?php echo $value->total_qty; ?></td>
-        <td><?php echo $value->spec; ?></td>
-        <td>
+        <td class="text-center">
        <!-- <span style="display:none"><?php //echo $value->country ?></span>-->
         <img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" title="<?php echo $value->product_country ?>" />
         </td>
