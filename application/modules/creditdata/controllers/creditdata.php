@@ -24,12 +24,12 @@ class Creditdata extends MX_Controller
 	$data['title'] = 'Requests';
         $data['page'] = 'requests';
         
-        $request = $this->creditdata_model->_custom_query_count("SELECT COUNT(*) AS count FROM creditdata WHERE request_id = '".$this->session->userdata('members_id')."' AND request_action = 'review'");
+        $request = $this->creditdata_model->_custom_query_count("SELECT COUNT(*) AS count FROM creditdata WHERE request_id = '".$this->session->userdata('members_id')."' AND request_action = 'review' AND awaiting_approval = 'no'");
         
         if($request[0]->count > 0){
             
             $data['request_count'] = $request[0]->count;
-            $data['requests'] = $this->creditdata_model->get_where_multiples_order('date', 'DESC', 'request_id', $this->session->userdata('members_id'), 'request_action', 'review');
+            $data['requests'] = $this->creditdata_model->get_where_multiples_order('date', 'DESC', 'request_id', $this->session->userdata('members_id'), 'request_action', 'review', 'awaiting_approval', 'no');
         }
         else{
             $data['request_count'] = 0;
@@ -41,7 +41,7 @@ class Creditdata extends MX_Controller
     
     function request_count()
     {
-         $request = $this->creditdata_model->_custom_query_count("SELECT COUNT(*) AS count FROM creditdata WHERE request_id = '".$this->session->userdata('members_id')."' AND request_action = 'review'");
+         $request = $this->creditdata_model->_custom_query_count("SELECT COUNT(*) AS count FROM creditdata WHERE request_id = '".$this->session->userdata('members_id')."' AND request_action = 'review' AND awaiting_approval = 'no'");
         
          if($request[0]->count > 0){
              
@@ -116,7 +116,7 @@ class Creditdata extends MX_Controller
                        'request_type' => $type,
                        'date' => date('j F Y'),
                        'awaiting_approval' => 'yes',
-                       'awaiting_request_id' => $sid
+                       'awaiting_request_id' => $mid
                     );
         $this->creditdata_model->_insert($data_sid);
         
@@ -124,9 +124,12 @@ class Creditdata extends MX_Controller
                                     'member_id'         => 5,
                                     'member_name'       => 'GSM Support',
                                     'sent_member_id'    => $mid,
-                                    'sent_member_name'  => $this->member_model->get_where($mid)->firstname.' '.$this->member_model->get_where($mid)->lastname,
+                                    'sent_member_name'  => 'GSM Support',
                                     'subject'           => 'Credit Check Sent',
-                                    'body'              => 'Company '.$this->company_model->get_where($this->member_model->get_where($mid)->company_id)->company_name.' has sent you their credit report.',
+                                    'body'              => 'Company '.$this->company_model->get_where($this->member_model->get_where($sid)->company_id)->company_name.' has sent you their credit report.'
+            . '                                             <br/>'
+            . '                                             <br/>'
+            . '                                             To view this, please accept their request to view your report.',
                                     'inbox'             => 'yes',
                                     'sent'              => 'yes',
                                     'sent_belong'       => 5,
@@ -148,6 +151,18 @@ class Creditdata extends MX_Controller
                       'request_action' => 'accept'  
         );
         $this->creditdata_model->_update($id, $data);
+        
+        $acount = $this->creditdata_model->_custom_query_count("SELECT COUNT(*) AS count FROM creditdata WHERE awaiting_request_id = '".$mid."' AND request_id = '".$sid."'");
+       
+        if($acount[0]->count > 0){
+            
+            $data_update = array(
+                                'request_action'    => 'accept',
+                                'awaiting_approval' => 'no'
+                                );
+            $this->creditdata_model->_update_where($data_update, 'awaiting_request_id', $mid, 'request_id', $sid);
+        }
+        //$aid = $this->creditdata_model->get_where_multiple('');
         
         $data_mail = array(
                                     'member_id'         => 5,

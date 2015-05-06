@@ -43,6 +43,7 @@
                                 </thead>                        
                                 <tbody>
                                 <?php foreach ($requests as $request) {?>
+                                    <?php if($request->awaiting_approval != 'yes'){?>
                                     <tr>
                                         <td><?php echo $request->date ;?></td>
                                         <td><?php echo $this->company_model->get_where($this->member_model->get_where($request->requester_id)->company_id)->company_name ;?></td>
@@ -59,6 +60,7 @@
                                                 <a href="member/profile/<?php echo $request->requester_id;?>"><button class="btn btn-success" style="font-size:10px"><i class="fa fa-user"></i> View Profile</button></a>
                                         </td>
                                     </tr>
+                                    <?php } ?>
                                 <?php } ?>
                                 </tbody>
                             </table>
