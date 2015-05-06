@@ -683,6 +683,11 @@ $(document).ready(function() {
       alert('Mention per unit price.');
       return false;
      }
+   var shipping_terms=$('input[name="coriartoselect1"]').val();
+    if(shipping_terms==''){
+     alert('Please Select the Shipping Term.');
+     return false;
+    }
     $.post('<?php echo base_url("marketplace/make_offer")?>', $( ".make_offer" ).serialize(), function(data) {
       if(data.STATUS=='1'){
         window.location = "<?php echo base_url().'marketplace/redirect_link'?>";
