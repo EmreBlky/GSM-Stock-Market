@@ -68,7 +68,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 
         <div class="form-group"><label class="col-md-3 control-label">MPN/ISBN</label>
         <div class="col-md-9">
-            <input type="text" id="mpn1" list="mpn" class="form-control check_record" placeholder="MPN/ISBN"  name="product_mpn" value="<?php if(!empty($product_list->product_mpn_isbn)) echo $product_list->product_mpn_isbn; ?><?php if(!empty($_POST['product_mpn'])) echo $_POST['product_mpn']; ?>"/>
+            <input type="text" id="mpn1" list="mpn" class="form-control check_record" placeholder="MPN/ISBN"  name="product_mpn" value="<?php if(!empty($_POST['product_mpn'])) echo $_POST['product_mpn']; elseif(!empty($product_list->product_mpn_isbn)) echo $product_list->product_mpn_isbn; ?>"/>
             <datalist id="mpn">
             <?php if(!empty($listing_attributes)){
                  foreach ($listing_attributes as $row) { ?>
@@ -80,7 +80,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
              <?php echo form_error('product_mpn'); ?>
         </div>
     </div>
-    
+
     <div class="form-group"><label class="col-md-3 control-label">Make</label>
         <div class="col-md-9">
 
@@ -88,7 +88,9 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <option value=""> Choose Make </option>
            <?php if(!empty($product_makes)){
              foreach ($product_makes as $row) { ?>
-            <option value="<?php echo $row->product_make; ?>" <?php if(!empty($_POST) && $row->product_make==$_POST['product_make']){ echo'selected';}?><?php if(!empty($product_list->product_make) && $row->product_make == $product_list->product_make){ echo'selected';}?>><?php echo $row->product_make; ?></option>
+            <option value="<?php echo $row->product_make; ?>"
+             <?php if(!empty($_POST) && $row->product_make==$_POST['product_make']){ echo'selected';}
+                elseif(!empty($product_list->product_make) && $row->product_make == $product_list->product_make){ echo'selected';}?>><?php echo $row->product_make; ?></option>
              <?php }} ?>
         </select>
         <?php echo form_error('product_make'); ?>
@@ -143,7 +145,65 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             </select>
             <?php echo form_error('product_type'); ?>
         </div>
-    </div>
+    	</div>
+        
+        
+        <div class="hr-line-dashed Handset Tablet listing_hide"></div>
+        
+         <div class="form-group Handset listing_hide"><label class="col-md-3 control-label">Spec</label>
+            <div class="col-md-9">
+                <select class="form-control" name="spec">
+                    <option selected value="">Spec</option>
+                    <?php $spec = spec();
+                    if($spec){
+                        foreach ($spec as $key => $value){ ?>
+                          <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['spec']){ echo'selected';}?><?php if(!empty($product_list->spec) && $value==$product_list->spec){ echo'selected';}?>><?php echo $value; ?></option>
+                          <?php }
+                    } ?>
+                </select>
+                <?php echo form_error('spec'); ?>
+            </div>
+        </div>
+        
+        <div class="form-group Handset Tablet listing_hide"><label class="col-md-3 control-label">Capacity</label>
+        <div class="col-md-9">
+            <select class="form-control" name="device_capacity">
+                <option selected value="">- Device capacity -</option>
+                <option value="2GB">2GB</option>
+                <option value="4GB">4GB</option>
+                <option value="8GB">8GB</option>
+                <option value="16GB">16GB</option>
+                <option value="32GB">32GB</option>
+                <option value="64GB">64GB</option>
+                <option value="128GB">128GB</option>
+                <option value="256GB">256GB</option>
+                <option value="Unknown">Unknown</option>
+            </select>
+        </div>
+    	</div>
+        
+        <div class="form-group Handset listing_hide"><label class="col-md-3 control-label">Sim Status</label>
+        <div class="col-md-9">
+            <select class="form-control" name="device_sim">
+                <option selected value="">- Device sim status -</option>
+                <option value="Sim Free">Sim Free</option>
+                <option value="Network Unlocked">Network Unlocked</option>
+                <option value="Network Locked">Network Locked</option>
+                <option value="Unknown">Unknown</option>
+            </select>
+        </div>
+    	</div>
+
+<script>
+$(document).ready(function () {
+  $('.listing_hide').hide();
+  $('#product_type').change(function () {
+    $('.hidden').hide();
+    $('.'+$(this).val()).show();
+  })
+});
+</script>
+
         <div class="hr-line-dashed"></div>
         <div class="form-group"><label class="col-md-3 control-label">Condition</label>
             <div class="col-md-9">
@@ -159,20 +219,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                 <?php echo form_error('condition'); ?>
             </div>
         </div>
-         <div class="form-group"><label class="col-md-3 control-label">Spec</label>
-            <div class="col-md-9">
-                <select class="form-control" name="spec">
-                    <option selected value="">Spec</option>
-                    <?php $spec = spec();
-                    if($spec){
-                        foreach ($spec as $key => $value){ ?>
-                          <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['spec']){ echo'selected';}?><?php if(!empty($product_list->spec) && $value==$product_list->spec){ echo'selected';}?>><?php echo $value; ?></option>
-                          <?php }
-                    } ?>
-                </select>
-                <?php echo form_error('spec'); ?>
-            </div>
-        </div>
+        
+        
         <div class="hr-line-dashed"></div>
 
        <div class="form-group"><label class="col-md-3 control-label">Currency </label>
@@ -716,6 +764,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 
 <?php } ?>
 
+
 <!-- Chosen -->
 <script src="public/main/template/core/js/plugins/chosen/chosen.jquery.js"></script>
 
@@ -1015,7 +1064,23 @@ $(".validation").validate({
             var product_make= $(this).val();
             test123(mpn1,product_make);     
         });
+        $(document).on('change', '#product_model', function(event) {
+        event.preventDefault();
+            var product_model= $(this).val();
+             $.post('<?php echo base_url("marketplace/getAttributesInfo") ?>/MODAL/',{'product_model':product_model}, function(data) {
+            product_colorshtml='';
+           $.each(data.product_color, function(index, val) {
+                product_colorshtml +='<option value="'+val+'"';
+                if(data.num_rows==1)
+                product_colorshtml +=' Selected';
+                product_colorshtml +=' >'+val+'</option>';
+           });
+           $('select[name="product_color"]').html(product_colorshtml);
+           $('select[name="product_color"]').trigger("chosen:updated");
+          });
+        });
      });
+
 
     $(document).ready(function() {
         $('#shipping_checkbox').change(function(event) {
@@ -1163,3 +1228,7 @@ var today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(
 </div>
 </div><!-- /row -->
 </div>
+
+<style>
+.chosen-container-single .chosen-single {border-color:#e5e6e7;color:#555}
+</style>

@@ -71,7 +71,7 @@ class Marketplace extends MX_Controller
     
     function sell()
     {
-        
+
         $data['listing_sell'] = $this->marketplace_model->listing_sell();
         $member_id=$this->session->userdata('members_id');
         $data['advance_search'] = $this->marketplace_model->advance_search($member_id,1);
@@ -293,7 +293,9 @@ class Marketplace extends MX_Controller
             'product_type'          =>  $this->input->post('product_type'),
             'product_color'         =>  $this->input->post('product_color'),
             'condition'             =>  $this->input->post('condition'),    
-            'spec'                  =>  $this->input->post('spec'),
+            'spec'                  =>  $this->input->post('spec'), 
+            'device_capacity'       =>  $this->input->post('device_capacity'), 
+            'device_sim'            =>  $this->input->post('device_sim'),
             'currency'              =>  $this->input->post('currency'),
             'unit_price'            =>  $this->input->post('unit_price'),
             'min_price'             =>  $min_price,
@@ -671,6 +673,8 @@ class Marketplace extends MX_Controller
         $data_insert['product_color']        =  $this->input->post('product_color');
         $data_insert['condition']            =  $this->input->post('condition');    
         $data_insert['spec']                 =  $this->input->post('spec');
+        $data_insert['device_capacity']      =  $this->input->post('device_capacity');   
+        $data_insert['device_sim']           =  $this->input->post('device_sim');
 
         $data_insert['currency']             =  $this->input->post('currency');
         $data_insert['unit_price']           =  $this->input->post('unit_price');
@@ -888,7 +892,7 @@ class Marketplace extends MX_Controller
         }
 
     }else{
-        $this->form_validation->set_rules('listing_type','listing type', '');
+        $this->form_validation->set_rules('listing_type','listing type','');
     } 
     if(!empty($_FILES['image1']['name'])){
             $this->form_validation->set_rules('image1','','callback_image1_check');
@@ -1000,7 +1004,9 @@ class Marketplace extends MX_Controller
             $data_insert['product_type']         =  $this->input->post('product_type');
             $data_insert['product_color']        =  $this->input->post('product_color');
             $data_insert['condition']            =  $this->input->post('condition');    
-            $data_insert['spec']                 =  $this->input->post('spec');
+            $data_insert['spec']                 =  $this->input->post('spec');   
+            $data_insert['device_capacity']      =  $this->input->post('device_capacity');   
+            $data_insert['device_sim']           =  $this->input->post('device_sim');
             $data_insert['currency']             =  $this->input->post('currency');
             $data_insert['unit_price']           =  $this->input->post('unit_price');
             //$data_insert['min_price']            =  $min_price;
@@ -1128,6 +1134,7 @@ class Marketplace extends MX_Controller
 
         $data['product_colors'] =  $this->marketplace_model->get_result_by_group('product_color');
         $data['product_makes'] =  $this->marketplace_model->get_result_by_group('product_make');
+        $data['product_models'] =  $this->marketplace_model->get_result_by_group('product_model');
         //$data['product_types'] =  $this->marketplace_model->get_result_by_group('product_type');
 
         $data['pro_type'] =  $this->marketplace_model->get_result('listing_attributes','',array('product_type'));
@@ -1136,6 +1143,7 @@ class Marketplace extends MX_Controller
          if(is_numeric($list_id)){
           if($data['product_list']   =  $this->marketplace_model->get_row('listing',array('id'=>$list_id,'member_id'=>$member_id,'listing_type'=>1))){
             $check_securty=1;
+            $data['listing_product_make']=$this->marketplace_model->get_modal_by_make($data['product_list']->product_make);
           }
          }
         }
@@ -1305,7 +1313,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                 $product_makes=array();
                 $colors=array();
                
-            if($query->num_rows()>0){
+            if($query->num_rows()>0 && !empty($mpnisbn)){
               foreach ($query->result() as $value){
                     $product_makes[] =$value->product_make; 
                     if(!in_array($value->product_color, $colors)){   
@@ -1329,11 +1337,11 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                      if($query->num_rows()>0){
                        foreach ($query->result() as $value){
                         if(!in_array($value->product_make, $product_makes)){   
-                         $product_makes[] =$value->product_make;  
-                        }  
-                        if(!in_array($value->product_color, $colors)){   
-                          $colors[]     =$value->product_color; 
-                        }      
+                            $product_makes[] =$value->product_make;  
+                         }  
+                         if(!in_array($value->product_color, $colors)){   
+                             $colors[]     =$value->product_color; 
+                         }      
                         $product_types =$value->product_type;    
                         }
                      }
@@ -1348,47 +1356,71 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
 
             //MPNISBN
         }elseif($type=='MAKE'){
-
-            $product_make=trim($_POST['make']);
-            $product_mpn_isbn=trim($_POST['mpnisbn']);
-
-            $query=$this->db->query("SELECT product_model FROM `listing_attributes` WHERE product_mpn_isbn ='$product_mpn_isbn' AND product_make like '%$product_make%';");
-
-            if($query->num_rows()>0){
-               $product_modal=array();
-                   
-                 if($query->num_rows()>0){
-                   foreach ($query->result() as $value){
-                    $product_modal[] =$value->product_model;    
-                    }             
-                   $product_modal=array_unique($product_modal);
-                 }
-                   $data=array(
-                    'Status' =>TRUE,
-                    'numrows'=> $query->num_rows(),
-                    'product_make'=>$product_modal,
-                    
-                    );       
-            }else{
-             $query=$this->db->query("SELECT product_model FROM `listing_attributes`  WHERE  product_make like '%$product_make%';");
-               $product_modal=array();
-                   
-                 if($query->num_rows()>0){
-                   foreach ($query->result() as $value){
-                    $product_modal[] =$value->product_model;    
-                    }             
-                   $product_modal=array_unique($product_modal);
-                 }
-                   $data=array(
-                    'Status' =>FALSE,
-                    'numrows'=> $query->num_rows(),
-                    'product_make'=>$product_modal,
-                    
-                    ); 
+        $product_make=trim($_POST['make']);
+        $product_mpn_isbn=trim($_POST['mpnisbn']);
+        $query=$this->db->query("SELECT product_model FROM `listing_attributes` WHERE product_mpn_isbn ='$product_mpn_isbn' AND product_make like '%$product_make%';");
+        if($query->num_rows()>0 && !empty($product_make)){
+           $product_modal=array();
+             if($query->num_rows()>0){
+               foreach ($query->result() as $value){
+                $product_modal[] =$value->product_model;    
+                }             
+               $product_modal=array_unique($product_modal);
+             }
+               $data=array(
+                'Status' =>TRUE,
+                'numrows'=> $query->num_rows(),
+                'product_make'=>$product_modal,
+                );       
+        }else{
+         $query=$this->db->query("SELECT product_model FROM `listing_attributes`  WHERE  product_make like '%$product_make%';");
+           $product_modal=array();
+             if($query->num_rows()>0){
+               foreach ($query->result() as $value){
+                $product_modal[] =$value->product_model;    
+                }             
+               $product_modal=array_unique($product_modal);
+             }
+               $data=array(
+                'Status' =>FALSE,
+                'numrows'=> $query->num_rows(),
+                'product_make'=>$product_modal,
+                ); 
             }
-
         }
-
+        elseif($type=='MODAL'){
+        $product_modal=trim($_POST['product_model']);
+        $query=$this->db->query("SELECT product_color FROM `listing_attributes` WHERE  product_model like '%$product_modal%';");
+        if($query->num_rows()>0){
+           $product_color=array();
+             if($query->num_rows()>0){
+               foreach ($query->result() as $value){
+                $product_color[] =$value->product_color;    
+                }             
+               $product_color=array_unique($product_color);
+             }
+               $data=array(
+                'Status' =>TRUE,
+                'numrows'=> $query->num_rows(),
+                'product_color'=>$product_color,
+                );       
+        }else{
+         $query=$this->db->query("SELECT product_color FROM `listing_attributes`;");
+            if($query->num_rows()>0){
+            $product_color=array();
+             if($query->num_rows()>0){
+               foreach ($query->result() as $value){
+                $product_color[] =$value->product_color;    
+                }             
+               $product_color=array_unique($product_color);
+             }
+               $data=array(
+                'Status' =>TRUE,
+                'numrows'=> $query->num_rows(),
+                'product_color'=>$product_color,
+                );
+            }}
+        }
     }
 
     header('Content-Type: application/json');
@@ -1727,38 +1759,38 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
              $data = array(
                 'member_id'         => $seller_id,
                 'sent_member_id'    => $buyer_id,
-                'subject'           => 'Offer is accepted',
-                'body'              => 'Offer is accepted',
+                'subject'           => 'Offer Dccepted',
+                'body'              => 'Your offer has been accepted, proceed to open orders to view the status of your order.',
                 'inbox'             => 'yes',
                 'sent'              => 'yes',
                 'date'              => date('d-m-Y'),
                 'time'              => date('H:i:s'),
                 'sent_from'         => 'market',
-                'datetime'          => date('Y-m-d H:i:s')
+                'datetime'          => date('Y-m-d H:i')
               ); 
            $this->load->model('mailbox/mailbox_model', 'mailbox_model');
             $this->mailbox_model->_insert($data);
 
-            $this->session->set_flashdata('msg_success','Offer Accepted sucessfully and move in open order.');  
+            $this->session->set_flashdata('msg_success','Offer Accepted. An order has been created in <strong>Open Orders</strong>. The user has been notified.');  
             redirect('marketplace/open_orders');
           }elseif($status==2){
 
             $data = array(
                 'member_id'         => $seller_id,
                 'sent_member_id'    => $buyer_id,
-                'subject'           => 'Offer is declined',
-                'body'              => 'Offer is declined Do you want to resent it.',
+                'subject'           => 'Offer Declined',
+                'body'              => 'Your offer has been declined, try submitting a better offer.',
                 'inbox'             => 'yes',
                 'sent'              => 'yes',
                 'date'              => date('d-m-Y'),
-                'time'              => date('H:i:s'),
+                'time'              => date('H:i'),
                 'sent_from'         => 'market',
-                'datetime'          => date('Y-m-d H:i:s')
+                'datetime'          => date('Y-m-d H:i')
               ); 
            $this->load->model('mailbox/mailbox_model', 'mailbox_model');
             $this->mailbox_model->_insert($data);
 
-            $this->session->set_flashdata('msg_success','Offer Declined sucessfully.'); 
+            $this->session->set_flashdata('msg_success','Offer Declined. The user has been notified.'); 
           }
         }
         else{
@@ -1777,19 +1809,19 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
              $data = array(
                 'member_id'         => $seller_id,
                 'sent_member_id'    => $buyer_id,
-                'subject'           => 'Pay asking price is accepted',
-                'body'              => 'Pay asking price is accepted',
+                'subject'           => 'Offer accepted',
+                'body'              => 'Your offer to pay the asking price has been accepted by the user, proceed to open orders to view the status of your order.',
                 'inbox'             => 'yes',
                 'sent'              => 'yes',
                 'date'              => date('d-m-Y'),
                 'time'              => date('H:i:s'),
                 'sent_from'         => 'market',
-                'datetime'          => date('Y-m-d H:i:s')
+                'datetime'          => date('Y-m-d H:i')
               ); 
            $this->load->model('mailbox/mailbox_model', 'mailbox_model');
             $this->mailbox_model->_insert($data);
 
-            $this->session->set_flashdata('msg_success','Offer Accepted sucessfully and move in open order.');
+            $this->session->set_flashdata('msg_success','Offer Accepted. An order has been created in <strong>Open Orders</strong>. The user has been notified.');
             redirect('marketplace/open_orders');
        
     }
@@ -1797,14 +1829,14 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
         $data = array(
                 'member_id'         => $seller_id,
                 'sent_member_id'    => $buyer_id,
-                'subject'           => 'Pay asking price is declined',
-                'body'              => 'Pay asking price is declined Do you want to resent it.',
+                'subject'           => 'Offer Declined',
+                'body'              => 'Your offer to pay the asking price has been decline, try contacting the user as they may not have the quantity available.',
                 'inbox'             => 'yes',
                 'sent'              => 'yes',
                 'date'              => date('d-m-Y'),
                 'time'              => date('H:i:s'),
                 'sent_from'         => 'market',
-                'datetime'          => date('Y-m-d H:i:s')
+                'datetime'          => date('Y-m-d H:i')
               ); 
            $this->load->model('mailbox/mailbox_model', 'mailbox_model');
             $this->mailbox_model->_insert($data);
@@ -1854,7 +1886,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
      $this->marketplace_model->update('make_offer',array('offer_status'=>3),array('id'=>$offer_id));
 
      $this->marketplace_model->insert('negotiation',$data_insert_negotiation);
-        $this->session->set_flashdata('msg_success','Offer move to negotiation.'); 
+        $this->session->set_flashdata('msg_success','Offer has been moved to <strong>Negotiations</strong> page until a deal has been met.'); 
         }
         else{
             $this->session->set_flashdata('msg_info','Invalid.');
@@ -1960,7 +1992,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
            $need_to_insert++;
         }
         if(empty($need_to_insert)){
-            $list=array('STATUS'=>4,'Message'=>'Offer is not accepted.');
+            $list=array('STATUS'=>4,'Message'=>'Offer has been auto declined.');
         }
         }
         else{
@@ -1979,7 +2011,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
         
         if($checkoffer=$this->marketplace_model->get_row('make_offer', array('buyer_id'=> $buyer_id,'seller_id' => $listing->member_id,'listing_id'=> $listing_id,'product_qty'   => $product_qty,'unit_price' => $unit_price))){
 
-        $list=array('STATUS'=>7,'Message'=>'Offer is Already accepted.'); 
+        $list=array('STATUS'=>7,'Message'=>'Offer has been accepted.'); 
         }
         else{
          $total_price=  ($product_qty *  $unit_price) +  $shippingamount;

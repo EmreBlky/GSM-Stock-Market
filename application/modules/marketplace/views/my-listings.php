@@ -48,14 +48,15 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
           <?php  
             $current_datetime = strtotime(date('d-m-Y H:i:s')); 
             $end_datetime = strtotime(date('d-m-Y H:i:s', strtotime($value->listing_end_datetime))); 
-            if($value->scheduled_status){ ?>
-                <span class="label label-success">Scheduled</span>
-            <?php }
-            elseif($current_datetime > $end_datetime){
+            $start_datetime = strtotime(date('d-m-Y H:i:s', strtotime($value->schedule_date_time))); 
+           
+            if($current_datetime > $end_datetime){
                 ?> <span class="label label-danger">Ended</span><?php
-            } else{?>
+            } elseif($current_datetime >= $start_datetime){?>
                 <span class="label label-primary">Active</span>
-       <?php }?>
+       <?php }else{ if($value->scheduled_status){ ?>
+                <span class="label label-success">Scheduled</span>
+            <?php }}?>
         </td>
         <td><?php echo date('d-M-y, H:i', strtotime($value->schedule_date_time)); ?></td>
         <td><?php echo date('d-M-y, H:i', strtotime($value->listing_end_datetime)); ?></td>
@@ -119,14 +120,15 @@ $session_member_id = $this->session->userdata('members_id'); ?>
         <?php  
             $current_datetime = strtotime(date('d-m-Y H:i:s')); 
             $end_datetime = strtotime(date('d-m-Y H:i:s', strtotime($value->listing_end_datetime))); 
-            if($value->scheduled_status){ ?>
-                <span class="label label-success">Scheduled</span>
-            <?php }
-            elseif($current_datetime > $end_datetime){
+            $start_datetime = strtotime(date('d-m-Y H:i:s', strtotime($value->schedule_date_time))); 
+           
+            if($current_datetime > $end_datetime){
                 ?> <span class="label label-danger">Ended</span><?php
-            } else{?>
+            } elseif($current_datetime >= $start_datetime){?>
                 <span class="label label-primary">Active</span>
-       <?php }?>
+       <?php }else{ if($value->scheduled_status){ ?>
+                <span class="label label-success">Scheduled</span>
+            <?php }}?>
         </td>
         <td><?php echo date('d-M-y, H:i', strtotime($value->schedule_date_time)); ?></td>
         <td><?php echo date('d-M-y, H:i', strtotime($value->listing_end_datetime)); ?></td>
