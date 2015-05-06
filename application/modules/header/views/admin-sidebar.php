@@ -74,8 +74,7 @@
             <li class="active">
                 <a href="#"><i class="fa fa-shoppig-cart"></i> <span class="nav-label">Marketplace</span><span class="fa arrow"></span></a></a>
                 <ul class="nav nav-second-level">
-                     <li><a href="<?php echo base_url().'admin/add_color_attribute';?>"><span class="nav-label">Add Color </span></a></li>
-                    <li><a href="<?php echo base_url().'admin/color_attributes';?>"><span class="nav-label">View Color </span></a></li>
+                    
 
                     <li><a href="<?php echo base_url().'admin/add_spec_attribute';?>"><span class="nav-label">Add Specification </span></a></li>
                     <li><a href="<?php echo base_url().'admin/spec_attributes';?>"><span class="nav-label">View Specification </span></a></li>
