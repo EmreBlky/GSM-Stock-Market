@@ -24,7 +24,7 @@
                         <table class="table table-striped table-bordered table-hover dataTables-example" >
                         <thead>
                             <tr>
-                                <th>Date Requested</th>
+                                <th>Date Received</th>
                                 <th>Company Name</th>
                                 <th>Country</th>
                                 <th>Options</th>

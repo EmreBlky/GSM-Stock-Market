@@ -111,10 +111,12 @@ class Creditdata extends MX_Controller
             
             $data_sid = array(
                        'request_id' => $sid,
-                       'requester_id' => $mid,
-                       'request_action' => 'accept',
+                       'requester_id' => $mid,                       
                        'credit_report' => $sid_credit,
+                       'request_type' => $type,
                        'date' => date('j F Y'),
+                       'awaiting_approval' => 'yes',
+                       'awaiting_request_id' => $sid
                     );
         $this->creditdata_model->_insert($data_sid);
         

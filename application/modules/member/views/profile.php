@@ -887,7 +887,7 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                                     
                                     <dl class="dl-horizontal full-width">                                    
                                         <dt>Phone Number:</dt>
-                                        <dd> <?php echo $member_info->phone_number?></dd>
+                                        <dd>(<?php echo $this->country_model->get_where($member_info->dial_phone)->dial_code; ?>) <?php echo $member_info->phone_number?></dd>
                                     </dl>
                                     
                                     <dl class="dl-horizontal full-width">
