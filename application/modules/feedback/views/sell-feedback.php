@@ -64,7 +64,7 @@
         $('.company-rating').rating({'showCaption':true, 'stars':'5', 'min':'0', 'max':'5', 'step':'1', 'size':'xs', 'starCaptions': {0:'Very unlikely', 1:'Very unlikely', 2:'Unlikely', 3:'Neither likely or unlikely', 4:'Likely', 5:'Very likely'}});
         
          $("#submit_message").click(function(){
-        
+        alert('test');
         //$("#submit_message").hide(); 
         var mid             = $('#sent_by').val();
         var sid             = $("#sent_to").val();
