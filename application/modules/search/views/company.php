@@ -275,17 +275,20 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                             <img class="img-circle m-t-xs img-responsive" src="public/main/template/gsm/images/company/no_company.jpg" style="margin-bottom:10px">
                         <?php } ?>
                         
-                        <?php $overall = $result->rating; ?>
+                        <?php                        
+                            $this->load->module('feedback');
+                            $overall = $this->feedback->overallScore($result->id);
+                        ?>
                         <?php if($overall >= 95){ ?>
-                            <span class="label label-success"><?php echo $result->rating; ?></span>
+                            <span class="label label-success"><?php echo $overall; ?></span>
                         <?php } elseif($overall <= 94 && $overall >= 80) {?>
-                            <span class="label label-primary"><?php echo $result->rating; ?></span>
+                            <span class="label label-primary"><?php echo $overall; ?></span>
                         <?php } elseif($overall <= 79 && $overall >= 51) {?>
-                            <span class="label label-warning"><?php echo $result->rating; ?></span>
+                            <span class="label label-warning"><?php echo $overall; ?></span>
                         <?php } elseif($overall <= 50 && $overall >= 1) {?>
-                            <span class="label label-danger"><?php echo $result->rating; ?></span>
+                            <span class="label label-danger"><?php echo $overall; ?></span>
                         <?php } else { ?> 
-                            <span class="label label-default"><?php echo $result->rating; ?></span>
+                            <span class="label label-default"><?php echo $overall; ?></span>
                         <?php } ?>
 
                         <div class="m-t-xs font-bold"><?php echo $result->membership . " Member"; ?></div>
