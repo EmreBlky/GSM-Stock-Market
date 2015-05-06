@@ -6,7 +6,7 @@ if ( ! function_exists('clear_cache')) {
     function clear_cache(){
         $CI =& get_instance();
         $CI->output->set_header('Expires: Wed, 11 Jan 1984 05:00:00 GMT' );
-    	$CI->output->set_header('Last-Modified: ' . gmdate( 'D, d M Y H:i:s' ) . 'GMT');
+        $CI->output->set_header('Last-Modified: ' . gmdate( 'D, d M Y H:i:s' ) . 'GMT');
 		$CI->output->set_header("Cache-Control: no-cache, no-store, must-revalidate");
 		$CI->output->set_header("Pragma: no-cache");			
 	}
@@ -545,6 +545,29 @@ if(!function_exists('company_name')){
 		 	return false;
      } 
    }
+
+    if(! function_exists('count_order_history')){
+   	   function count_order_history(){
+          $CI = & get_instance();
+          $CI->load->model('marketplace_model');
+         if($query=$CI->marketplace_model->count_order_history())
+		 	return $query;
+		 else
+		 	return false;
+     } 
+   }
+
+   if(! function_exists('count_negotiation')){
+   	   function count_negotiation(){
+          $CI = & get_instance();
+          $CI->load->model('marketplace_model');
+         if($query=$CI->marketplace_model->count_negotiation())
+		 	return $query;
+		 else
+		 	return false;
+     } 
+   }
+
 
     if(! function_exists('count_watch_listing')){
    	   function count_watch_listing(){
