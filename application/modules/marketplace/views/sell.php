@@ -297,8 +297,8 @@ foreach ($product_colors as $row) { ?>
 </thead>
 <?php if($listing_sell){
 foreach ($listing_sell as $value) {?>
-<tr data-toggle="modal" data-target="#myModal5">
-<td><p><span data-countdown="<?php echo $value->listing_end_datetime; ?>"></span></p></td>
+<tr>
+<td><?php echo date('d-M, H:i', strtotime($value->listing_end_datetime)); ?></td>
 <td class="text-center">
 <?php 
     if(isset($value->rating))

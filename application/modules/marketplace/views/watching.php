@@ -21,7 +21,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 
 <?php msg_alert(); ?>
 <div class="wrapper wrapper-content animated fadeInRight">
-    </div> <div class="row">
+    <div class="row">
         <div class="col-lg-12">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
@@ -32,13 +32,12 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <thead>
             <tr>
                 <th>Listing End</th>
-                <th>Make</th>
-                <th>Model</th>
+                <th>MPN/ISBN</th>
+                <th>Make &amp; Model</th>
                 <th>Product Type</th>
                 <th>Condition</th>
-                <th>Price</th>
+                <th>Unit Price</th>
                 <th>QTY</th>
-                <th>Spec</th>
                 <th>Country</th>
                 <th>Options</th>
             </tr>
@@ -47,19 +46,18 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <?php  if(!empty($buying_request)): ?>
             <?php foreach ($buying_request as $value): ?>
             <tr>
-                <td><?php echo $value->listing_end_datetime; ?></td>
-                <td><?php echo $value->product_make; ?></td>
-                <td><?php echo $value->product_model; ?></td>
+                <td><?php echo date('d-M, H:i', strtotime($value->listing_end_datetime)); ?></td>
+                <td><?php if(!empty($value->product_mpn_isbn)){ echo $value->product_mpn_isbn; } ?></td>
+                <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php echo $value->spec; ?></td>
                 <td><?php echo $value->product_type; ?></td>
                 <td><?php echo $value->condition; ?></td>
                 <td data-toggle="tooltip" data-placement="left" title="mouseover currency"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
                 <td><?php echo $value->total_qty; ?></td>
-                <td><?php echo $value->spec; ?></td>
-                <td><img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" title="<?php echo $value->product_country ?>" /></td>
+                <td class="text-center"><img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" title="<?php echo $value->product_country ?>" /></td>
                 <th>
                 
-                <a href="<?php echo base_url().'marketplace/listing_unwatch/'.$value->id ?>" class="btn btn-danger">Unwatch</a>
-                <a href="<?php echo base_url().'marketplace/listing_detail/'.$value->id ?>" class="btn btn-primary">More Info</a></th>
+                <a href="<?php echo base_url().'marketplace/listing_unwatch/'.$value->id ?>" class="btn btn-danger" style="font-size:10px">Unwatch</a>
+                <a href="<?php echo base_url().'marketplace/listing_detail/'.$value->id ?>" class="btn btn-primary" style="font-size:10px">More Info</a></th>
             </tr>
                 
             <?php endforeach ?>
@@ -68,6 +66,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             </table>
             </div>
         </div>
+    </div>
     </div>
     <div class="row">
         <div class="col-lg-12">
@@ -80,10 +79,11 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <thead>
             <tr>
                 <th>Listing End</th>
+                <th>MPN/ISBN</th>
                 <th>Make &amp; Model</th>
                 <th>Product Type</th>
                 <th>Condition</th>
-                <th>Price</th>
+                <th>Unit Price</th>
                 <th>QTY</th>
                 <th>Country</th>
                 <th>Options</th>
@@ -93,7 +93,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <?php  if(!empty($seller_offer)): ?>
             <?php foreach ($seller_offer as $value): ?>
             <tr>
-                <td><?php echo $value->listing_end_datetime; ?></td>
+                <td><?php echo date('d-M, H:i', strtotime($value->listing_end_datetime)); ?></td>
+                <td><?php if(!empty($value->product_mpn_isbn)){ echo $value->product_mpn_isbn; } ?></td>
                 <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php echo $value->spec; ?></td>
                 <td><?php echo $value->product_type; ?></td>
                 <td><?php echo $value->condition; ?></td>

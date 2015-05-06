@@ -32,6 +32,7 @@ $member_id=$this->session->userdata('members_id');?>
         <tr>
             <th>Status</th>
             <th>End Date</th>
+            <th>MPN/ISBN</th>
             <th>Make &amp; Model</th>
             <th>Condition</th>
             <th>Price</th>
@@ -55,7 +56,8 @@ $member_id=$this->session->userdata('members_id');?>
                     echo"<span class='label label-warning'>Offers Sent</sapn>";
                     }?>
                 </td>
-                <td><?php echo date('d-M-y, H:i', strtotime($value->listing_end_datetime)); ?></td>
+                <td><?php echo date('d-M, H:i', strtotime($value->listing_end_datetime)); ?></td>
+                <td><?php if(!empty($value->product_mpn_isbn)){ echo $value->product_mpn_isbn; } ?></td>
                 <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
                 <td><?php echo $value->condition; ?></td>
                 <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
@@ -85,11 +87,11 @@ $member_id=$this->session->userdata('members_id');?>
         <tr>
             <th>Status</th>
             <th>End Date</th>
+            <th>MPN/ISBN</th>
             <th>Make &amp; Model</th>
             <th>Condition</th>
             <th>Price</th>
             <th>QTY</th>
-            <th>Spec</th>
             <th>Options</th>
         </tr>
         </thead>
@@ -109,12 +111,12 @@ $member_id=$this->session->userdata('members_id');?>
                     echo"<span class='label label-warning'>Offers Sent</sapn>";
                     }?>
                 </td>
-                <td><?php echo date('d-M-y, H:i', strtotime($value->listing_end_datetime)); ?></td>
-                <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
+                <td><?php echo date('d-M, H:i', strtotime($value->listing_end_datetime)); ?></td>
+                <td><?php if(!empty($value->product_mpn_isbn)){ echo $value->product_mpn_isbn; } ?></td>
+                <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> </td>
                 <td><?php echo $value->condition; ?></td>
                 <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
                 <td><?php echo $value->qty_available; ?></td>
-                <td><?php echo $value->spec; ?></td>
                 <td class="text-center">
                 <a onclick="view_offer(<?php echo $value->id; ?>,1)" class="btn btn-info"  data-toggle="modal" data-target="#view_offers"><i class="fa fa-paste"></i> View Offer </a>
                 </td>

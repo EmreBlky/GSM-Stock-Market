@@ -34,9 +34,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
     <th>End Date</th>
     <th>Make &amp; Model</th>
     <th>Condition</th>
-    <th>Price</th>
+    <th>Unit Price</th>
     <th>QTY</th>
-    <th>Spec</th>
     <th>Options</th>
 </tr>
 </thead>
@@ -60,22 +59,21 @@ $session_member_id = $this->session->userdata('members_id'); ?>
                 <span class="label label-success">Scheduled</span>
             <?php }}?>
         </td>
-        <td><?php echo date('d-M-y, H:i', strtotime($value->schedule_date_time)); ?></td>
-        <td><?php echo date('d-M-y, H:i', strtotime($value->listing_end_datetime)); ?></td>
-        <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
+        <td><?php echo date('d-M, H:i', strtotime($value->schedule_date_time)); ?></td>
+        <td><?php echo date('d-M, H:i', strtotime($value->listing_end_datetime)); ?></td>
+        <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php echo $value->spec; ?></td>
         <td><?php echo $value->condition; ?></td>
         <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
         <td><?php echo $value->qty_available; ?></td>
-        <td><?php echo $value->spec; ?></td>
         <th class="text-center">
-         <a href="<?php echo base_url().'marketplace/buy_listing/'.$value->id; ?>" class="btn btn-warning" ><i class="fa fa-paste"></i> Edit</a>
+         <a href="<?php echo base_url().'marketplace/buy_listing/'.$value->id; ?>" class="btn btn-warning" style="font-size:10px"><i class="fa fa-paste"></i> Edit</a>
         <?php 
          if($end_datetime > $current_datetime){ ?>
-        <a href="<?php echo base_url().'marketplace/listing_detail/'.$value->id; ?>" class="btn btn-success" ><i class="fa fa-eye"></i>  View</a>
-        <a href="<?php echo base_url().'marketplace/listing_delete/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to end this listing ?');" ><i class="fa fa-times"></i> End Listing</a>
+        <a href="<?php echo base_url().'marketplace/listing_detail/'.$value->id; ?>" class="btn btn-success" style="font-size:10px"><i class="fa fa-eye"></i>  View</a>
+        <a href="<?php echo base_url().'marketplace/listing_delete/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to end this listing ?');" style="font-size:10px"><i class="fa fa-times"></i> End</a>
        <?php }else{?>
-       <a class="btn btn-success">
-       <i class="fa fa-times"></i> Relist</a>
+       <a class="btn btn-success" style="font-size:10px">
+       <i class="fa fa-arrow-up"></i> Relist</a>
        <a href="<?php echo base_url().'marketplace/end_listing_status/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to end this listing ?');" ><i class="fa fa-times"></i> End</a>
         <?php } ?>
 
@@ -95,7 +93,7 @@ $session_member_id = $this->session->userdata('members_id'); ?>
 <div class="col-lg-12">
 <div class="ibox float-e-margins">
 <div class="ibox-title">
-    <h5>Selling Request</h5>
+    <h5>Selling Offers</h5>
 </div>
 <div class="ibox-content">
 <table class="table table-striped table-bordered table-hover buying_requests" >
@@ -106,9 +104,8 @@ $session_member_id = $this->session->userdata('members_id'); ?>
     <th>End Date</th>
     <th>Make &amp; Model</th>
     <th>Condition</th>
-    <th>Price</th>
+    <th>Unit Price</th>
     <th>QTY</th>
-    <th>Spec</th>
     <th>Options</th>
 </tr>
 </thead>
@@ -131,22 +128,21 @@ $session_member_id = $this->session->userdata('members_id'); ?>
                 <span class="label label-success">Scheduled</span>
             <?php }}?>
         </td>
-        <td><?php echo date('d-M-y, H:i', strtotime($value->schedule_date_time)); ?></td>
-        <td><?php echo date('d-M-y, H:i', strtotime($value->listing_end_datetime)); ?></td>
-        <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
+        <td><?php echo date('d-M, H:i', strtotime($value->schedule_date_time)); ?></td>
+        <td><?php echo date('d-M, H:i', strtotime($value->listing_end_datetime)); ?></td>
+        <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php echo $value->spec; ?></td>
         <td><?php echo $value->condition; ?></td>
         <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
         <td><?php echo $value->qty_available; ?></td>
-        <td><?php echo $value->spec; ?></td>
         <th class="text-center">
-        <a href="<?php echo base_url().'marketplace/sell_listing/'.$value->id; ?>" class="btn btn-warning" ><i class="fa fa-paste"></i> Edit</a>
+        <a href="<?php echo base_url().'marketplace/sell_listing/'.$value->id; ?>" class="btn btn-warning" style="font-size:10px"><i class="fa fa-paste"></i> Edit</a>
         <?php 
          if($end_datetime > $current_datetime){ ?>
-        <a href="<?php echo base_url().'marketplace/listing_detail/'.$value->id; ?>" class="btn btn-success" ><i class="fa fa-eye"></i>  View</a>
-        <a href="<?php echo base_url().'marketplace/listing_delete/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to end this listing ?');" ><i class="fa fa-times"></i> End Listing</a>
+        <a href="<?php echo base_url().'marketplace/listing_detail/'.$value->id; ?>" class="btn btn-success" style="font-size:10px"><i class="fa fa-eye"></i> View</a>
+        <a href="<?php echo base_url().'marketplace/listing_delete/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to end this listing ?');" style="font-size:10px"><i class="fa fa-times"></i> End</a>
        <?php }else{?>
        <a class="btn btn-success">
-       <i class="fa fa-times"></i> Relist</a>
+       <i class="fa fa-arrow-up" style="font-size:10px"></i> Relist</a>
        <a href="<?php echo base_url().'marketplace/end_listing_status/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to end this listing ?');" ><i class="fa fa-times"></i> End</a>
         <?php } ?>
       
@@ -179,9 +175,8 @@ $session_member_id = $this->session->userdata('members_id'); ?>
     <th>Make &amp; Model</th>
     <th>Condition</th>
     <th>Color</th>
-    <th>Price</th>
+    <th>Unit Price</th>
     <th>QTY</th>
-    <th>Spec</th>
     <th>Options</th>
 </tr>
 </thead>
@@ -197,18 +192,17 @@ $session_member_id = $this->session->userdata('members_id'); ?>
             Buying Request
           </span>  
         <?php else: ?>  
-        <span class="label label-info">
+        <span class="label label-warning">
            Selling Offers
         </span>   
         <?php endif ?> 
         </td>
         <td><?php echo $value_save->product_mpn_isbn; ?></td>
-        <td><?php echo $value_save->product_make; ?> <?php echo $value_save->product_model; ?></td>
+        <td><?php echo $value_save->product_make; ?> <?php echo $value_save->product_model; ?> </td>
         <td><?php echo $value_save->condition; ?></td>
         <td><?php echo $value_save->product_color; ?></td>
         <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value_save->currency), 'GBP', $value_save->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value_save->currency), 'EUR', $value_save->unit_price); ?>,$ <?php echo get_currency(currency_class($value_save->currency), 'USD', $value_save->unit_price); ?>"><?php echo currency_class($value_save->currency); ?> <?php echo $value_save->unit_price; ?></td>
         <td><?php echo $value_save->qty_available; ?></td>
-        <td><?php echo $value_save->spec; ?></td>       
         <th class="text-center">
         <?php 
         $date1 = strtotime(date('d-m-Y H:i:s', strtotime($value_save->listing_end_datetime))); 
@@ -216,14 +210,14 @@ $session_member_id = $this->session->userdata('members_id'); ?>
          if($date1 > $date2){ ?>       
         
       <?php if ($value_save->listing_type == 1){ ?>    
-      <a href="<?php echo base_url().'marketplace/buy_listing/'.$value_save->id.'/saved_listing'; ?>" class="btn btn-warning" ><i class="fa fa-paste"></i> Edit</a>
+      <a href="<?php echo base_url().'marketplace/buy_listing/'.$value_save->id.'/saved_listing'; ?>" class="btn btn-warning" style="font-size:10px"><i class="fa fa-paste"></i> Edit</a>
       <?php }else{ ?>
-      <a href="<?php echo base_url().'marketplace/sell_listing/'.$value_save->id.'/saved_listing'; ?>" class="btn btn-warning" ><i class="fa fa-paste"></i> Edit</a>
+      <a href="<?php echo base_url().'marketplace/sell_listing/'.$value_save->id.'/saved_listing'; ?>" class="btn btn-warning" style="font-size:10px"><i class="fa fa-paste"></i> Edit</a>
       <?php } ?>
        <?php }else{?>
-       <a class="btn btn-outline btn-danger"><i class="fa fa-times"></i> Expired </a>
+       <a class="btn btn-outline btn-danger" style="font-size:10px"><i class="fa fa-times"></i> Expired</a>
         <?php } ?>
-       <a href="<?php echo base_url().'marketplace/listing_delete/'.$value_save->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure');" ><i class="fa fa-times"></i> Delete</a>
+       <a href="<?php echo base_url().'marketplace/listing_delete/'.$value_save->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure');" style="font-size:10px"><i class="fa fa-times"></i> Delete</a>
         </th>
     </tr>
         

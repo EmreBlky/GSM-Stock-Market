@@ -293,7 +293,7 @@ endif;
     <?php if($listing_buy){
         foreach ($listing_buy as $value) {?>
         <tr>
-        <td><p><span data-countdown="<?php echo $value->listing_end_datetime; ?>"></span></p></td>
+        <td><?php echo date('d-M, H:i', strtotime($value->listing_end_datetime)); ?></td>
         
         <td class="text-center">
         <?php 
