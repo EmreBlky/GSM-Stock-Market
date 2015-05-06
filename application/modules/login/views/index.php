@@ -46,3 +46,10 @@
         <?php if(isset($error)){echo $error;} ?>
     <p class="m-t"> <small>GSMStockMarket.com Limited &copy; <?php echo date("Y");?></small> </p>
 </div>
+
+<script>
+$( document ).ready(function() {
+        var url = '<?php echo $base; ?>/login/';
+		$(location).attr('href',url);
+    });
+</script>

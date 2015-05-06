@@ -21,50 +21,6 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 
 <?php msg_alert(); ?>
 <div class="wrapper wrapper-content animated fadeInRight">
-    <div class="row">
-        <div class="col-lg-12">
-        <div class="ibox float-e-margins">
-            <div class="ibox-title">
-                <h5>Watching - Selling Offers</h5>
-            </div>
-            <div class="ibox-content">
-            <table id="marketplace" class="table table-striped table-bordered table-hover dataTables-example" >
-            <thead>
-            <tr>
-                <th>Listing End</th>
-                <th>Make &amp; Model</th>
-                <th>Product Type</th>
-                <th>Condition</th>
-                <th>Price</th>
-                <th>QTY</th>
-                <th>Country</th>
-                <th>Options</th>
-            </tr>
-            </thead>
-            <tbody>
-        <?php  if(!empty($seller_offer)): ?>
-            <?php foreach ($seller_offer as $value): ?>
-            <tr>
-                <td><?php echo $value->listing_end_datetime; ?></td>
-                <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php echo $value->spec; ?></td>
-                <td><?php echo $value->product_type; ?></td>
-                <td><?php echo $value->condition; ?></td>
-                <td data-toggle="tooltip" data-placement="left" title="mouseover currency"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
-                <td><?php echo $value->total_qty; ?></td>
-                <td class="text-center"><img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" title="<?php echo $value->product_country ?>" /></td>
-                <th>
-                <a href="<?php echo base_url().'marketplace/listing_unwatch/'.$value->id ?>" class="btn btn-danger" style="font-size:10px">Unwatch</a>
-                <a href="<?php echo base_url().'marketplace/listing_detail/'.$value->id ?>" class="btn btn-primary" style="font-size:10px">More Info</a></th>
-            </tr>
-                
-            <?php endforeach ?>
-        <?php endif; ?>
-            
-            </tbody>
-            </table>
-            </div>
-        </div>
-    </div>
     </div> <div class="row">
         <div class="col-lg-12">
         <div class="ibox float-e-margins">
@@ -113,6 +69,50 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Watching - Selling Offers</h5>
+            </div>
+            <div class="ibox-content">
+            <table id="marketplace" class="table table-striped table-bordered table-hover dataTables-example" >
+            <thead>
+            <tr>
+                <th>Listing End</th>
+                <th>Make &amp; Model</th>
+                <th>Product Type</th>
+                <th>Condition</th>
+                <th>Price</th>
+                <th>QTY</th>
+                <th>Country</th>
+                <th>Options</th>
+            </tr>
+            </thead>
+            <tbody>
+        <?php  if(!empty($seller_offer)): ?>
+            <?php foreach ($seller_offer as $value): ?>
+            <tr>
+                <td><?php echo $value->listing_end_datetime; ?></td>
+                <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php echo $value->spec; ?></td>
+                <td><?php echo $value->product_type; ?></td>
+                <td><?php echo $value->condition; ?></td>
+                <td data-toggle="tooltip" data-placement="left" title="mouseover currency"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
+                <td><?php echo $value->total_qty; ?></td>
+                <td class="text-center"><img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" title="<?php echo $value->product_country ?>" /></td>
+                <th>
+                <a href="<?php echo base_url().'marketplace/listing_unwatch/'.$value->id ?>" class="btn btn-danger" style="font-size:10px">Unwatch</a>
+                <a href="<?php echo base_url().'marketplace/listing_detail/'.$value->id ?>" class="btn btn-primary" style="font-size:10px">More Info</a></th>
+            </tr>
+                
+            <?php endforeach ?>
+        <?php endif; ?>
+            
+            </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
 <?php } else {?>
 <?php if($member->membership == 1 ){ ?>
             <div class="alert alert-info" style="margin:15px 15px -15px">
@@ -125,7 +125,58 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             </div>
 
 <?php }?>
-<div class="wrapper wrapper-content animated fadeInRight">
+<div class="wrapper wrapper-content animated fadeInRight"><div class="row">
+        <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Watching - Buying Requests</h5>
+            </div>
+            <div class="ibox-content">
+            <table id="marketplace" class="table table-striped table-bordered table-hover dataTables-example" >
+            <thead>
+            <tr>
+                <th>Listing End</th>
+                <th>Make &amp; Model</th>
+                <th>Product Type</th>
+                <th>Condition</th>
+                <th>Price</th>
+                <th>QTY</th>
+                <th>Spec</th>
+                <th>Country</th>
+                <th>Options</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><span><?php echo date("d-M, H:i", time()+123456); ?></span></td>
+                <td>Apple iPhone 6</td>
+                <td>Handset</td>
+                <td>Refurbished</td>
+                <td>GBP 502</td>
+                <td>200</td>
+                <td>UK</td>
+                <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
+                <th><button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+            </tr>
+            <tr>
+                <td><span><?php echo date("d-M, H:i", time()+867543); ?></span></td>
+                <td>HTC One X</td>
+                <td>Handset</td>
+                <td>Used Grade C</td>
+                <td>USD 98</td>
+                <td>742</td>
+                <td>EU</td>
+                <td><img src="public/main/template/gsm/img/flags/United_Arab_Emirates.png" /></td>
+                <th><button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
+                <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+            </tr>
+            </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+    </div>
     <div class="row">
         <div class="col-lg-12">
         <div class="ibox float-e-margins">
@@ -169,57 +220,6 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                 <td>200</td>
                 <td>EU</td>
                 <td><img src="public/main/template/gsm/img/flags/Germany.png" /></td>
-                <th><button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-            </tr>
-            </tbody>
-            </table>
-            </div>
-        </div>
-    </div>
-    </div> <div class="row">
-        <div class="col-lg-12">
-        <div class="ibox float-e-margins">
-            <div class="ibox-title">
-                <h5>Watching - Buying Requests</h5>
-            </div>
-            <div class="ibox-content">
-            <table id="marketplace" class="table table-striped table-bordered table-hover dataTables-example" >
-            <thead>
-            <tr>
-                <th>Listing End</th>
-                <th>Make &amp; Model</th>
-                <th>Product Type</th>
-                <th>Condition</th>
-                <th>Price</th>
-                <th>QTY</th>
-                <th>Spec</th>
-                <th>Country</th>
-                <th>Options</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><span><?php echo date("d-M, H:i", time()+123456); ?></span></td>
-                <td>Apple iPhone 6</td>
-                <td>Handset</td>
-                <td>Refurbished</td>
-                <td>GBP 502</td>
-                <td>200</td>
-                <td>UK</td>
-                <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
-                <th><button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
-            </tr>
-            <tr>
-                <td><span><?php echo date("d-M, H:i", time()+867543); ?></span></td>
-                <td>HTC One X</td>
-                <td>Handset</td>
-                <td>Used Grade C</td>
-                <td>USD 98</td>
-                <td>742</td>
-                <td>EU</td>
-                <td><img src="public/main/template/gsm/img/flags/United_Arab_Emirates.png" /></td>
                 <th><button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
                 <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
             </tr>

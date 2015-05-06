@@ -198,7 +198,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 $(document).ready(function () {
   $('.listing_hide').hide();
   $('#product_type').change(function () {
-    $('.hidden').hide();
+    $('.listing_hide').hide();
     $('.'+$(this).val()).show();
   })
 });

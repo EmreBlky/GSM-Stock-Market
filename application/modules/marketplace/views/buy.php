@@ -292,7 +292,7 @@ endif;
     </thead>
     <?php if($listing_buy){
         foreach ($listing_buy as $value) {?>
-        <tr data-toggle="modal" data-target="#myModal5">
+        <tr>
         <td><p><span data-countdown="<?php echo $value->listing_end_datetime; ?>"></span></p></td>
         
         <td class="text-center">
@@ -958,8 +958,7 @@ $('#reset').click(function(){
 <td>
 <img src="public/main/template/gsm/img/flags/Sweden.png" />
 </td>
-<th>
-<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+<td><a class="btn btn-primary" style="font-size:10px"  data-toggle="modal" data-target="#upgrade">More Info</a></td>
 </tr>
 <tr>
 <td><span><?php echo date("d-M, H:i", time()+162400); ?></span></td>
@@ -974,8 +973,7 @@ $('#reset').click(function(){
 <td>
 <img src="public/main/template/gsm/img/flags/Sweden.png" />
 </td>
-<th>
-<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+<td><a class="btn btn-primary" style="font-size:10px"  data-toggle="modal" data-target="#upgrade">More Info</a></td>
 </tr>
 <tr>
 <td><span style="color:red"><?php echo date("d-M, H:i", time()+32900); ?></span></td>
@@ -990,8 +988,7 @@ $('#reset').click(function(){
 <td>
 <img src="public/main/template/gsm/img/flags/Norway.png" />
 </td>
-<th>
-<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+<td><a class="btn btn-primary" style="font-size:10px"  data-toggle="modal" data-target="#upgrade">More Info</a></td>
 </tr>
 <tr>
 <td><span style="color:red"><?php echo date("d-M, H:i", time()+52200); ?></span></td>
@@ -1006,8 +1003,7 @@ $('#reset').click(function(){
 <td>
 <img src="public/main/template/gsm/img/flags/France.png" />
 </td>
-<th>
-<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+<td><a class="btn btn-primary" style="font-size:10px"  data-toggle="modal" data-target="#upgrade">More Info</a></td>
 </tr>
 <tr>
 <td><span style="color:red"><?php echo date("d-M, H:i", time()+12400); ?></span></td>
@@ -1022,8 +1018,7 @@ $('#reset').click(function(){
 <td>
 <img src="public/main/template/gsm/img/flags/United_Kingdom.png" />
 </td>
-<th>
-<a href="marketplace/listing_detail/"><button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></a></th>
+<td><a class="btn btn-primary" style="font-size:10px"  data-toggle="modal" data-target="#upgrade">More Info</a></td>
 </tr>
 <tr>
 <td><span><?php echo date("d-M, H:i", time()+233300); ?></span></td>
@@ -1038,8 +1033,7 @@ $('#reset').click(function(){
 <td>
 <img src="public/main/template/gsm/img/flags/United_Kingdom.png" />
 </td>
-<th>
-<a href="marketplace/listing_detail/"><button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></a></th>
+<td><a class="btn btn-primary" style="font-size:10px"  data-toggle="modal" data-target="#upgrade">More Info</a></td>
 </tr>
 <tr>
 <td><span><?php echo date("d-M, H:i", time()+345600); ?></span></td>
@@ -1054,8 +1048,7 @@ $('#reset').click(function(){
 <td>
 <img src="public/main/template/gsm/img/flags/Germany.png" />
 </td>
-<th>
-<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+<td><a class="btn btn-primary" style="font-size:10px"  data-toggle="modal" data-target="#upgrade">More Info</a></td>
 </tr>
 <tr>
 <td><span><?php echo date("d-M, H:i", time()+712345); ?></span></td>
@@ -1070,8 +1063,7 @@ $('#reset').click(function(){
 <td>
 <img src="public/main/template/gsm/img/flags/Germany.png" />
 </td>
-<th>
-<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+<td><a class="btn btn-primary" style="font-size:10px"  data-toggle="modal" data-target="#upgrade">More Info</a></td>
 </tr>
 <tr>
 <td><span><?php echo date("d-M, H:i", time()+623456); ?></span></td>
@@ -1086,8 +1078,7 @@ $('#reset').click(function(){
 <td>
 <img src="public/main/template/gsm/img/flags/Germany.png" />
 </td>
-<th>
-<a href="marketplace/listing_detail/"><button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></a></th>
+<td><a class="btn btn-primary" style="font-size:10px"  data-toggle="modal" data-target="#upgrade">More Info</a></td>
 </tr>
 <tr>
 <td><span><?php echo date("d-M, H:i", time()+567890); ?></span></td>
@@ -1102,8 +1093,7 @@ $('#reset').click(function(){
 <td>
 <img src="public/main/template/gsm/img/flags/United_States.png" />
 </td>
-<th>
-<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+<td><a class="btn btn-primary" style="font-size:10px"  data-toggle="modal" data-target="#upgrade">More Info</a></td>
 </tr>
 <tr>
 <td><span><?php echo date("d-M, H:i", time()+987654); ?></span></td>
@@ -1118,8 +1108,7 @@ $('#reset').click(function(){
 <td>
 <img src="public/main/template/gsm/img/flags/Spain.png" />
 </td>
-<th>
-<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+<td><a class="btn btn-primary" style="font-size:10px"  data-toggle="modal" data-target="#upgrade">More Info</a></td>
 </tr>
 <tr>
 <td><span><?php echo date("d-M, H:i", time()+876543); ?></span></td>
@@ -1134,8 +1123,7 @@ $('#reset').click(function(){
 <td>
 <img src="public/main/template/gsm/img/flags/United_Kingdom.png" />
 </td>
-<th>
-<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+<td><a class="btn btn-primary" style="font-size:10px"  data-toggle="modal" data-target="#upgrade">More Info</a></td>
 </tr>
 <tr>
 <td><span><?php echo date("d-M, H:i", time()+678965); ?></span></td>
@@ -1150,8 +1138,7 @@ $('#reset').click(function(){
 <td>
 <img src="public/main/template/gsm/img/flags/Denmark.png" />
 </td>
-<th>
-<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+<td><a class="btn btn-primary" style="font-size:10px"  data-toggle="modal" data-target="#upgrade">More Info</a></td>
 </tr>
 <tr>
 <td><span><?php echo date("d-M, H:i", time()+345123); ?></span></td>
@@ -1166,8 +1153,7 @@ $('#reset').click(function(){
 <td>
 <img src="public/main/template/gsm/img/flags/Italy.png" />
 </td>
-<th>
-<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+<td><a class="btn btn-primary" style="font-size:10px"  data-toggle="modal" data-target="#upgrade">More Info</a></td>
 </tr>
 <tr>
 <td><span><?php echo date("d-M, H:i", time()+456773); ?></span></td>
@@ -1182,8 +1168,7 @@ $('#reset').click(function(){
 <td>
 <img src="public/main/template/gsm/img/flags/Italy.png" />
 </td>
-<th>
-<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+<td><a class="btn btn-primary" style="font-size:10px"  data-toggle="modal" data-target="#upgrade">More Info</a></td>
 </tr>
 <tr>
 <td><span><?php echo date("d-M, H:i", time()+412773); ?></span></td>
@@ -1198,8 +1183,7 @@ $('#reset').click(function(){
 <td>
 <img src="public/main/template/gsm/img/flags/United_Kingdom.png" />
 </td>
-<th>
-<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+<td><a class="btn btn-primary" style="font-size:10px"  data-toggle="modal" data-target="#upgrade">More Info</a></td>
 </tr>
 <tr>
 <td><span><?php echo date("d-M, H:i", time()+556773); ?></span></td>
@@ -1214,8 +1198,7 @@ $('#reset').click(function(){
 <td>
 <img src="public/main/template/gsm/img/flags/United_Kingdom.png" />
 </td>
-<th>
-<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+<td><a class="btn btn-primary" style="font-size:10px"  data-toggle="modal" data-target="#upgrade">More Info</a></td>
 </tr>
 <tr>
 <td><span><?php echo date("d-M, H:i", time()+556793); ?></span></td>
@@ -1230,8 +1213,7 @@ $('#reset').click(function(){
 <td>
 <img src="public/main/template/gsm/img/flags/United_Kingdom.png" />
 </td>
-<th>
-<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+<td><a class="btn btn-primary" style="font-size:10px"  data-toggle="modal" data-target="#upgrade">More Info</a></td>
 </tr>
 <tr>
 <td><span><?php echo date("d-M, H:i", time()+236773); ?></span></td>
@@ -1246,8 +1228,7 @@ $('#reset').click(function(){
 <td>
 <img src="public/main/template/gsm/img/flags/Belgium.png" />
 </td>
-<th>
-<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+<td><a class="btn btn-primary" style="font-size:10px"  data-toggle="modal" data-target="#upgrade">More Info</a></td>
 </tr>
 <tr>
 <td><span><?php echo date("d-M, H:i", time()+236773); ?></span></td>
@@ -1262,8 +1243,7 @@ $('#reset').click(function(){
 <td>
 <img src="public/main/template/gsm/img/flags/Poland.png" />
 </td>
-<th>
-<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+<td><a class="btn btn-primary" style="font-size:10px"  data-toggle="modal" data-target="#upgrade">More Info</a></td>
 </tr>
 <tr>
 <td><span><?php echo date("d-M, H:i", time()+236773); ?></span></td>
@@ -1278,8 +1258,7 @@ $('#reset').click(function(){
 <td>
 <img src="public/main/template/gsm/img/flags/Netherlands.png" />
 </td>
-<th>
-<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+<td><a class="btn btn-primary" style="font-size:10px"  data-toggle="modal" data-target="#upgrade">More Info</a></td>
 </tr>
 <tr>
 <td><span><?php echo date("d-M, H:i", time()+236773); ?></span></td>
@@ -1294,8 +1273,7 @@ $('#reset').click(function(){
 <td>
 <img src="public/main/template/gsm/img/flags/Netherlands.png" />
 </td>
-<th>
-<button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+<td><a class="btn btn-primary" style="font-size:10px"  data-toggle="modal" data-target="#upgrade">More Info</a></td>
 </tr>
 </table>
 
@@ -1387,9 +1365,32 @@ $('#reset').click(function(){
         $('#search')[0].reset();
   });
 </script>
-<?php 
 
-} ?> 
+
+
+<!-- Modal Data Seller Rating -->
+<div class="modal inmodal fade" id="upgrade" tabindex="-1" role="dialog"  aria-hidden="true">
+<div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title">Upgrade Subscription</h4>
+            <small class="font-bold">Access unavailble</small>
+        </div>
+
+        <div class="modal-body">
+          <p>The <strong>Upgrade your subscription</strong> to silver membership to access this page.</p>
+          <p>Get started today by submitted two (2) trade references and upgrading to silver to membership to use our marketplace and search for companies on our platform</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+            <a href="preferences/subscription" class="btn btn-primary">Upgrade Now</a>
+        </div>
+  </div>
+</div>
+</div>
+
+<?php } ?> 
 <!-- Daniel Added End -->
 
 

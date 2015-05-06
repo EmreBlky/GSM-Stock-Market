@@ -18,77 +18,7 @@
 if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <?php msg_alert(); ?>
 <div class="wrapper wrapper-content animated fadeInRight">
-<div class="row">
-<div class="col-lg-12">
-<div class="ibox float-e-margins">
-<div class="ibox-title">
-    <h5>Selling Request</h5>
-</div>
-<div class="ibox-content">
-<table class="table table-striped table-bordered table-hover buying_requests" >
-<thead>
-<tr>
-    <th>Status</th>
-    <th>Start Date</th>
-    <th>End Date</th>
-    <th>Make &amp; Model</th>
-    <th>Condition</th>
-    <th>Price</th>
-    <th>QTY</th>
-    <th>Spec</th>
-    <th>Options</th>
-</tr>
-</thead>
-<tbody>
- <?php if(!empty($buying_request)): ?>
-    <?php foreach ($buying_request as $value):
-     ?>
-    <tr>
-        <td class="text-center">
-          <?php  
-            $current_datetime = strtotime(date('d-m-Y H:i:s')); 
-            $end_datetime = strtotime(date('d-m-Y H:i:s', strtotime($value->listing_end_datetime))); 
-            $start_datetime = strtotime(date('d-m-Y H:i:s', strtotime($value->schedule_date_time))); 
-           
-            if($current_datetime > $end_datetime){
-                ?> <span class="label label-danger">Ended</span><?php
-            } elseif($current_datetime >= $start_datetime){?>
-                <span class="label label-primary">Active</span>
-       <?php }else{ if($value->scheduled_status){ ?>
-                <span class="label label-success">Scheduled</span>
-            <?php }}?>
-        </td>
-        <td><?php echo date('d-M-y, H:i', strtotime($value->schedule_date_time)); ?></td>
-        <td><?php echo date('d-M-y, H:i', strtotime($value->listing_end_datetime)); ?></td>
-        <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
-        <td><?php echo $value->condition; ?></td>
-        <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
-        <td><?php echo $value->qty_available; ?></td>
-        <td><?php echo $value->spec; ?></td>
-        <th class="text-center">
-        <a href="<?php echo base_url().'marketplace/sell_listing/'.$value->id; ?>" class="btn btn-warning" ><i class="fa fa-paste"></i> Edit</a>
-        <?php 
-         if($end_datetime > $current_datetime){ ?>
-        <a href="<?php echo base_url().'marketplace/listing_detail/'.$value->id; ?>" class="btn btn-success" ><i class="fa fa-eye"></i>  View</a>
-        <a href="<?php echo base_url().'marketplace/listing_delete/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to end this listing ?');" ><i class="fa fa-times"></i> End Listing</a>
-       <?php }else{?>
-       <a class="btn btn-success">
-       <i class="fa fa-times"></i> Relist</a>
-       <a href="<?php echo base_url().'marketplace/end_listing_status/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to end this listing ?');" ><i class="fa fa-times"></i> End</a>
-        <?php } ?>
-      
-        </th>
-    </tr>
-        
-    <?php endforeach ?>
-<?php endif; ?>
-</tbody>
-</table>
-</div>
-</div>
-</div>     
 
-</div> 
 <div class="row">
 <div class="col-lg-12">
 <div class="ibox float-e-margins">
@@ -160,6 +90,79 @@ $session_member_id = $this->session->userdata('members_id'); ?>
 </div>
 </div>
 </div>   
+
+<div class="row">
+<div class="col-lg-12">
+<div class="ibox float-e-margins">
+<div class="ibox-title">
+    <h5>Selling Request</h5>
+</div>
+<div class="ibox-content">
+<table class="table table-striped table-bordered table-hover buying_requests" >
+<thead>
+<tr>
+    <th>Status</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Make &amp; Model</th>
+    <th>Condition</th>
+    <th>Price</th>
+    <th>QTY</th>
+    <th>Spec</th>
+    <th>Options</th>
+</tr>
+</thead>
+<tbody>
+ <?php if(!empty($buying_request)): ?>
+    <?php foreach ($buying_request as $value):
+     ?>
+    <tr>
+        <td class="text-center">
+          <?php  
+            $current_datetime = strtotime(date('d-m-Y H:i:s')); 
+            $end_datetime = strtotime(date('d-m-Y H:i:s', strtotime($value->listing_end_datetime))); 
+            $start_datetime = strtotime(date('d-m-Y H:i:s', strtotime($value->schedule_date_time))); 
+           
+            if($current_datetime > $end_datetime){
+                ?> <span class="label label-danger">Ended</span><?php
+            } elseif($current_datetime >= $start_datetime){?>
+                <span class="label label-primary">Active</span>
+       <?php }else{ if($value->scheduled_status){ ?>
+                <span class="label label-success">Scheduled</span>
+            <?php }}?>
+        </td>
+        <td><?php echo date('d-M-y, H:i', strtotime($value->schedule_date_time)); ?></td>
+        <td><?php echo date('d-M-y, H:i', strtotime($value->listing_end_datetime)); ?></td>
+        <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
+        <td><?php echo $value->condition; ?></td>
+        <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
+        <td><?php echo $value->qty_available; ?></td>
+        <td><?php echo $value->spec; ?></td>
+        <th class="text-center">
+        <a href="<?php echo base_url().'marketplace/sell_listing/'.$value->id; ?>" class="btn btn-warning" ><i class="fa fa-paste"></i> Edit</a>
+        <?php 
+         if($end_datetime > $current_datetime){ ?>
+        <a href="<?php echo base_url().'marketplace/listing_detail/'.$value->id; ?>" class="btn btn-success" ><i class="fa fa-eye"></i>  View</a>
+        <a href="<?php echo base_url().'marketplace/listing_delete/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to end this listing ?');" ><i class="fa fa-times"></i> End Listing</a>
+       <?php }else{?>
+       <a class="btn btn-success">
+       <i class="fa fa-times"></i> Relist</a>
+       <a href="<?php echo base_url().'marketplace/end_listing_status/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to end this listing ?');" ><i class="fa fa-times"></i> End</a>
+        <?php } ?>
+      
+        </th>
+    </tr>
+        
+    <?php endforeach ?>
+<?php endif; ?>
+</tbody>
+</table>
+</div>
+</div>
+</div>     
+
+</div> 
+
 
 <div class="row">
 <div class="col-lg-12">
@@ -251,6 +254,64 @@ $session_member_id = $this->session->userdata('members_id'); ?>
     <div class="col-lg-12">
     <div class="ibox float-e-margins">
         <div class="ibox-title">
+            <h5>Buying Requests</h5>
+        </div>
+        <div class="ibox-content">
+        <table class="table table-striped table-bordered table-hover selling_offers" >
+        <thead>
+        <tr>
+            <th>Status</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Make &amp; Model</th>
+            <th>Condition</th>
+            <th>Price</th>
+            <th>QTY</th>
+            <th>Spec</th>
+            <th>Options</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-center"><span class="label label-primary">Active</span></td>
+                <td><span><?php echo date("d-M, H:i", time()-202800); ?></span></td>
+                <td><span><?php echo date("d-M, H:i", time()+402000); ?></span></td>
+                <td>Google Nexus</td>
+                <td>New</td>
+                <td>GBP 25</td>
+                <td>10</td>
+                <td>US</td>
+                <th class="text-center">
+                <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
+                <button class="btn btn-primary" type="button" style="font-size:10px"><i class="fa fa-eye"></i> View</button>
+                <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> End Listing</button>
+                </th>
+            </tr>
+            <tr>
+                <td class="text-center"><span class="label label-danger">Ended</span></td>
+                <td><span><?php echo date("d-M, H:i", time()-864000); ?></span></td>
+                <td><span><?php echo date("d-M, H:i", time()-259200); ?></span></td>
+                <td>LG G4</td>
+                <td>Used Grade A</td>
+                <td>USD 98</td>
+                <td>500</td>
+                <td>US</td>
+                <th class="text-center">
+                <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
+                <button class="btn btn-success" type="button" style="font-size:10px"><i class="fa fa-arrow-up"></i> Relist</button>
+                <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> Remove</button>
+                </th>
+            </tr>
+        </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+</div>   
+<div class="row">
+    <div class="col-lg-12">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
             <h5>Selling Offers</h5>
         </div>
         <div class="ibox-content">
@@ -306,64 +367,7 @@ $session_member_id = $this->session->userdata('members_id'); ?>
     </div>
 
     </div> 
-<div class="row">
-    <div class="col-lg-12">
-    <div class="ibox float-e-margins">
-        <div class="ibox-title">
-            <h5>Buying Requests</h5>
-        </div>
-        <div class="ibox-content">
-        <table class="table table-striped table-bordered table-hover selling_offers" >
-        <thead>
-        <tr>
-            <th>Status</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Make &amp; Model</th>
-            <th>Condition</th>
-            <th>Price</th>
-            <th>QTY</th>
-            <th>Spec</th>
-            <th>Options</th>
-        </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="text-center"><span class="label label-primary">Active</span></td>
-                <td><span><?php echo date("d-M, H:i", time()-202800); ?></span></td>
-                <td><span><?php echo date("d-M, H:i", time()+402000); ?></span></td>
-                <td>Google Nexus</td>
-                <td>New</td>
-                <td>GBP 25</td>
-                <td>10</td>
-                <td>US</td>
-                <th class="text-center">
-                <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
-                <button class="btn btn-primary" type="button" style="font-size:10px"><i class="fa fa-eye"></i> View</button>
-                <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> End Listing</button>
-                </th>
-            </tr>
-            <tr>
-                <td class="text-center"><span class="label label-danger">Ended</span></td>
-                <td><span><?php echo date("d-M, H:i", time()-864000); ?></span></td>
-                <td><span><?php echo date("d-M, H:i", time()-259200); ?></span></td>
-                <td>LG G4</td>
-                <td>Used Grade A</td>
-                <td>USD 98</td>
-                <td>500</td>
-                <td>US</td>
-                <th class="text-center">
-                <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
-                <button class="btn btn-success" type="button" style="font-size:10px"><i class="fa fa-arrow-up"></i> Relist</button>
-                <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> Remove</button>
-                </th>
-            </tr>
-        </tbody>
-        </table>
-        </div>
-    </div>
-</div>
-</div>     
+  
 
 <div class="row">
     <div class="col-lg-12">
