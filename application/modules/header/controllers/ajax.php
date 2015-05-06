@@ -1,34 +1,39 @@
 <?php
 class Ajax extends MX_Controller 
 {
-	function __construct(){	
+    function __construct(){	
 		parent::__construct();
 		$this->load->module('marketplace');
 	}
 
 	function watch_listing(){ 
-		if(count_watch_listing())
-			echo '<span class="label label-warning pull-right">'.count_watch_listing().'</span>';	
+		if($a=count_watch_listing())
+			echo '<span class="label label-warning pull-right">'.$a.'</span>';	
 	}
 	
 	function offer(){ 
-		if(all_offer())
-			echo '<span class="label label-info pull-right">'.all_offer().'</span>';	
+		if($a=all_offer())
+			echo '<span class="label label-info pull-right">'.$a.'</span>';	
 		}
 	
 	function open_order(){ 
-		if(count_open_order())
-			echo '<span class="label label-warning pull-right">'.count_open_order().'</span>';	
+		if($a=count_open_order())
+			echo '<span class="label label-warning pull-right">'.$a.'</span>';	
 	}
 	
 	function my_listing(){ 
-		if(countmy_listing())
-			echo '<span class="label label-warning pull-right">'.countmy_listing().'</span>';	
+		if($a=countmy_listing())
+			echo '<span class="label label-warning pull-right">'.$a.'</span>';	
 	}
 	
-	function save_listing(){ 
-		if(count_save_listing())
-			echo '<span class="label label-success pull-right">'.count_save_listing().'</span>';	
+	function count_negotiation_ajax(){ 
+		if($a=count_negotiation())
+			echo '<span class="label label-success pull-right">'.$a.'</span>';	
+	}
+
+	function count_order_history(){ 
+		if($a=count_order_history())
+			echo '<span class="label label-success pull-right">'.$a.'</span>';	
 	}
 
 }//EndClass

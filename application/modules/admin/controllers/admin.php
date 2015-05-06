@@ -663,7 +663,7 @@ class Admin extends MX_Controller
         $this->form_validation->set_rules('product_make', 'product make', 'required');
         $this->form_validation->set_rules('product_model', 'product model', 'required');
         $this->form_validation->set_rules('product_type', 'product type', 'required');
-        $this->form_validation->set_rules('product_color', 'product color', 'required');
+        $this->form_validation->set_rules('product_color', 'product color', '');
 
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
         if ($this->form_validation->run() == TRUE){
@@ -793,7 +793,7 @@ class Admin extends MX_Controller
         $this->form_validation->set_rules('product_make', 'product_make', 'required');
         $this->form_validation->set_rules('product_model', 'product_model', 'required');
         //$this->form_validation->set_rules('product_type', 'product_type', 'required');
-        $this->form_validation->set_rules('product_color', 'product_color', 'required');
+        $this->form_validation->set_rules('product_color', 'product_color', '');
        
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
         if ($this->form_validation->run() == TRUE){
