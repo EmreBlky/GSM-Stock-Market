@@ -62,8 +62,8 @@
         $('.shipping-rating').rating({'showCaption':true, 'stars':'5', 'min':'0', 'max':'5', 'step':'1', 'size':'xs', 'starCaptions': {0:'Very Slowly', 1:'Very Slowly', 2:'Slowly', 3:'Neither slowly nor quickly', 4:'Quickly', 5:'Very quickly'}});
         $('.company-rating').rating({'showCaption':true, 'stars':'5', 'min':'0', 'max':'5', 'step':'1', 'size':'xs', 'starCaptions': {0:'Very unlikely', 1:'Very unlikely', 2:'Unlikely', 3:'Neither likely or unlikely', 4:'Likely', 5:'Very likely'}});
         
-         $("#submit_message").click(function(){
-        
+        $(document).on('click', '#submit_message', function(event) {
+           event.preventDefault();
         //$("#submit_message").hide(); 
         var mid             = $('#sent_by').val();
         var sid             = $("#sent_to").val();
