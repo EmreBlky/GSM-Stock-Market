@@ -1169,8 +1169,6 @@ class Profile extends MX_Controller
         $this->viewed_model->_delete_where('viewed_id', $mid);
         $this->viewed_model->_delete_where('viewer_id', $mid);
         
-        
-        
         $this->session->set_flashdata('confirm-delete', '<div style="margin:15px 15px">    
                                                                 <div class="alert alert-warning">
                                                                     That account has been deleted.
