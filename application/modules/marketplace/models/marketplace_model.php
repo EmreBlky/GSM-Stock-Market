@@ -9,7 +9,7 @@ class Marketplace_model extends MY_Model {
         $query=$this->db->insert($table_name, $data);
         if($query)
             return $this->db->insert_id();
-    	else
+        else
 			return FALSE;		
 	}
 	public function get_result($table_name='', $id_array='',$columns=array(),$order_by=array(),$limit=''){
@@ -324,7 +324,7 @@ class Marketplace_model extends MY_Model {
 			else
 				return FALSE;
 	}
-	
+
 	public function listing_offer_common($case='1'){
 		$member_id=$this->session->userdata('members_id');
 		$this->db->select('listing.*');
@@ -625,6 +625,7 @@ class Marketplace_model extends MY_Model {
 			$this->db->where('negotiation.seller_id',$member_id);
 			
 		}
+		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
 		$this->db->from('negotiation');
 		$this->db->join('listing','listing.id=negotiation.listing_id');
 		$this->db->where('negotiation.status',0);
@@ -705,11 +706,35 @@ class Marketplace_model extends MY_Model {
 		$this->db->where('listing.status', 1);
 		$this->db->where('make_offer.offer_status', 1);
 		$this->db->where('make_offer.order_status < 5');
-		$where_con="(`make_offer`.`seller_id`=".$member_id." OR "."`make_offer`.`buyer_id`=".$member_id.")";
+		$where_con="((`make_offer`.`seller_id`=".$member_id." and `make_offer`.`seller_history`=0 ) OR (`make_offer`.`buyer_id`=".$member_id." and `make_offer`.`buyer_history`=0 ))";
 		$this->db->where($where_con);
 		
 		return  $this->db->count_all_results();
 	}
+
+	public function count_order_history()
+	{
+		$member_id=$this->session->userdata('members_id');
+		$this->db->from('make_offer');
+		$this->db->where('make_offer.offer_status', 1);
+		$where_con="((`make_offer`.`seller_id`=".$member_id." and `make_offer`.`seller_history`=0 ) OR (`make_offer`.`buyer_id`=".$member_id." and `make_offer`.`buyer_history`=0 ))";
+		$this->db->where($where_con);
+		return  $this->db->count_all_results();
+	}
+
+	public function count_negotiation()
+	{
+		$member_id=$this->session->userdata('members_id');
+		$where_con="(`negotiation`.`seller_id`=".$member_id." OR `negotiation`.`buyer_id`=".$member_id.")";
+		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
+		$this->db->where($where_con);
+		$this->db->from('negotiation');
+		$this->db->join('listing','listing.id=negotiation.listing_id');
+		$this->db->where('negotiation.status',0);
+		
+		return  $this->db->count_all_results();
+	}
+
 	public function countmy_listing()
 	{
 		$member_id=$this->session->userdata('members_id');
