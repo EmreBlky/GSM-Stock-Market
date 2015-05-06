@@ -717,7 +717,7 @@ class Marketplace_model extends MY_Model {
 		$member_id=$this->session->userdata('members_id');
 		$this->db->from('make_offer');
 		$this->db->where('make_offer.offer_status', 1);
-		$where_con="((`make_offer`.`seller_id`=".$member_id." and `make_offer`.`seller_history`=0 ) OR (`make_offer`.`buyer_id`=".$member_id." and `make_offer`.`buyer_history`=0 ))";
+		$where_con="((`make_offer`.`seller_id`=".$member_id." and `make_offer`.`seller_history`=1 ) OR (`make_offer`.`buyer_id`=".$member_id." and `make_offer`.`buyer_history`=1 ))";
 		$this->db->where($where_con);
 		return  $this->db->count_all_results();
 	}
