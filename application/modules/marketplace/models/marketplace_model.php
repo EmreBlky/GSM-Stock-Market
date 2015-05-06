@@ -1,13 +1,10 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
 class Marketplace_model extends MY_Model {
-
     function __construct()
     {        
         parent::__construct();
         $this->table = 'marketplace';
     }
-
     public function insert($table_name='',  $data=''){
         $query=$this->db->insert($table_name, $data);
         if($query)
@@ -15,7 +12,6 @@ class Marketplace_model extends MY_Model {
     	else
 			return FALSE;		
 	}
-
 	public function get_result($table_name='', $id_array='',$columns=array(),$order_by=array(),$limit=''){
 		if(!empty($columns)):
 			$all_columns = implode(",", $columns);
@@ -38,18 +34,15 @@ class Marketplace_model extends MY_Model {
 		else
 			return FALSE;
 	}
-
 	public function get_result_by_group( $columns=''){
 		$this->db->group_by($columns); 
 		$this->db->order_by($columns, "asc"); 
-
 		$query=$this->db->get('listing_attributes');
 		if($query->num_rows()>0)
 			return $query->result();
 		else
 			return FALSE;
 	}
-
 	public function get_result_product_type()
 	{
 		$this->db->select('product_type');
@@ -61,12 +54,10 @@ class Marketplace_model extends MY_Model {
 		else
 			return FALSE;
 	}
-
 	public function get_couriers_by_group($columns='')
 	{
 		$this->db->group_by($columns); 
 		$this->db->order_by($columns, "asc"); 
-
 		$query=$this->db->get('couriers');
 		if($query->num_rows()>0){
 		
@@ -75,7 +66,6 @@ class Marketplace_model extends MY_Model {
 			return FALSE;
 		}
 	}
-
 	public function get_row($table_name='', $id_array='',$columns=array(),$order_by=array()){
 		
 		if(!empty($columns)):
@@ -105,17 +95,14 @@ class Marketplace_model extends MY_Model {
 		endif;
 		return $this->db->update($table_name, $data);		
 	}
-
 	public function delete($table_name='', $id_array=''){		
 	 return $this->db->delete($table_name, $id_array);
 	}
-
     public function listing_buy($offset='', $per_page=''){
     
 		$member_id=$this->session->userdata('members_id');
 		
 		$this->db->select('listing.*');
-
 		if(!empty($_GET['mpn'])){
 			$this->db->where("listing.product_mpn_isbn",trim($_GET['mpn']));
 		}
@@ -134,7 +121,6 @@ class Marketplace_model extends MY_Model {
 			$this->db->where("(listing.unit_price >= $price_range_start AND listing.unit_price <= $price_range_end)");
 		}
 		
-
 		if(!empty($_GET['start_rating']) && !empty($_GET['end_rating'])){
 			$this->db->select('feedback_score as rating');
 		  $this->db->join('feedback', 'feedback.member_id=listing.member_id');
@@ -153,7 +139,6 @@ class Marketplace_model extends MY_Model {
 		if(!empty($_GET['region'])){
 			$this->db->where("country.region = '".trim($_GET['region'])."'");
 		}
-
 		
 		if(!empty($_GET['countries'])){
 			$this->db->where('company.country = '.trim($_GET['countries']));
@@ -163,7 +148,6 @@ class Marketplace_model extends MY_Model {
 		if(!empty($_GET['date'])){
 			$this->db->like("listing.listing_end_datetime",trim($_GET['date']),'after');
 		}
-
 		if(!empty($_GET['lc'])){
 			$this->db->like('`listing`.product_type', $_GET['lc']);
 		}
@@ -203,11 +187,10 @@ class Marketplace_model extends MY_Model {
 			$this->db->where($query_str);
 		}
 		
-
 		$this->db->where("listing.schedule_date_time <= '".date('Y-m-d h:i:s')."' and listing.listing_end_datetime >= '".date('Y-m-d h:i:s')."'" );
 		
 		$this->db->from('listing');
-	
+		$this->db->group_by('listing.id');
 		$this->db->where('listing.status', 1);
 		$this->db->where('listing.listing_type', 2);
 		
@@ -244,7 +227,6 @@ class Marketplace_model extends MY_Model {
 			$this->db->where("(listing.unit_price >= $price_range_start AND listing.unit_price <= $price_range_end)");
 		}
 		
-
 		if(!empty($_GET['start_rating']) && !empty($_GET['end_rating'])){
 			$this->db->select('feedback_score as rating');
 		  $this->db->join('feedback', 'feedback.member_id=listing.member_id');
@@ -263,7 +245,6 @@ class Marketplace_model extends MY_Model {
 		if(!empty($_GET['region'])){
 			$this->db->where("country.region = '".trim($_GET['region'])."'");
 		}
-
 		
 		if(!empty($_GET['countries'])){
 			$this->db->where('company.country = '.trim($_GET['countries']));
@@ -273,7 +254,6 @@ class Marketplace_model extends MY_Model {
 		if(!empty($_GET['date'])){
 			$this->db->like("listing.listing_end_datetime",trim($_GET['date']),'after');
 		}
-
 		if(!empty($_GET['lc'])){
 			$this->db->like('`listing`.product_type', $_GET['lc']);
 		}
@@ -291,7 +271,6 @@ class Marketplace_model extends MY_Model {
 		if(!empty($_GET['listing_type_status'])){
 			$this->db->like('`listing`.listing_type_status', $_GET['listing_type_status']);
 		}
-
 		if( !empty($_GET['query']) ){
 			/*$querytoset="'".implode("','", $_GET['query'])."'";
 			$where_con="(`listing`.`product_make` IN (".$querytoset.") OR `listing`.`product_model` IN (".$querytoset."))";
@@ -312,12 +291,10 @@ class Marketplace_model extends MY_Model {
 			$query_str .= ")";
 			$this->db->where($query_str);
 		}
-
-
 		$this->db->where("listing.schedule_date_time <= '".date('Y-m-d h:i:s')."' and listing.listing_end_datetime >= '".date('Y-m-d h:i:s')."'" );
 		
 		$this->db->from('listing');
-	
+		$this->db->group_by('listing.id');
 		$this->db->where('listing.status', 1);
 		$this->db->where('listing.listing_type', 1);
 		
@@ -330,8 +307,6 @@ class Marketplace_model extends MY_Model {
 			return FALSE;
 		
 	}
-
-
 	public function listing_counter_offer(){
 		$member_id=$this->session->userdata('members_id');
 		$this->db->select('listing.*,company.country  AS country_id,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
@@ -349,9 +324,8 @@ class Marketplace_model extends MY_Model {
 			else
 				return FALSE;
 	}
-
+	
 	public function listing_offer_common($case='1'){
-
 		$member_id=$this->session->userdata('members_id');
 		$this->db->select('listing.*');
 		if($case==1){
@@ -375,11 +349,9 @@ class Marketplace_model extends MY_Model {
 			else
 				return FALSE;
 	}
-
 	public function listing_sell_offer(){
 		$member_id=$this->session->userdata('members_id');
 		$this->db->select('listing.*,company.country  AS country_id,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
-
 		$this->db->from('listing');
 		$this->db->join('company','company.admin_member_id=listing.member_id');
 		$this->db->group_by('listing.id');
@@ -393,7 +365,6 @@ class Marketplace_model extends MY_Model {
 			else
 				return FALSE;
 	}
-
 	public function listing_buying_offer(){
 		$member_id=$this->session->userdata('members_id');
 		$this->db->select('listing.*,company.country  AS country_id,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
@@ -409,7 +380,6 @@ class Marketplace_model extends MY_Model {
 			else
 				return FALSE;
 	}
-
 	public function question_asked($listing_id=0){
 		 $user_id =  $this->session->userdata('members_id');
 		$this->db->select('listing_question.*,members.firstname,,members.lastname');
@@ -425,8 +395,6 @@ class Marketplace_model extends MY_Model {
 			else
 				return FALSE;
 	}
-
-
 	public function get_buyers_offer($list_id=0){
 		$member_id = $this->session->userdata('members_id');
 		$this->db->select('company.*,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country,make_offer.*');
@@ -440,7 +408,6 @@ class Marketplace_model extends MY_Model {
 			else
 				return FALSE;
 	}
-
 	public function view_offer($list_id=0,$status=0,$case=''){
 		$this->db->select('make_offer.*,company.company_name,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
 		$member_id =  $this->session->userdata('members_id');
@@ -462,8 +429,6 @@ class Marketplace_model extends MY_Model {
 			else
 				return FALSE;
 	}
-
-
 	public function get_shippings_to_couriers_data($couriers=array()){
 		$this->db->from('couriers');
 		if(empty($couriers)) return FALSE;
@@ -474,9 +439,7 @@ class Marketplace_model extends MY_Model {
 		else
 			return FALSE;
 	}
-
 	public function advance_search($member_id=0,$listing_type=0){
-
 		$this->db->select('listing.product_mpn_isbn, listing.product_make, listing.product_model, listing.product_type, company.country AS country_id,ct.country AS product_country, ct.*, listing.product_color');
 		
 		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
@@ -491,11 +454,8 @@ class Marketplace_model extends MY_Model {
 		else
 			return FALSE;
 	}
-
 	public function get_watch_list($member_id, $listing_type=0){
-
 		$this->db->select('listing.id,listing.listing_end_datetime,listing.product_mpn_isbn,listing.product_make,listing.product_model,listing.product_type,listing.condition,listing.unit_price,listing.total_qty,listing.spec,listing.currency,company.country AS country_id,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
-
 		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
 		$this->db->from('listing');
 		$this->db->join('company','company.id=listing.member_id');
@@ -509,7 +469,6 @@ class Marketplace_model extends MY_Model {
 		else
 			return FALSE;
 	}
-
 	public function listingdetailv($id){
 		$this->db->where('id',$id);
 		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
@@ -535,7 +494,6 @@ class Marketplace_model extends MY_Model {
 			return FALSE;
 		}
 	}
-
 	public function count_offer($list_id=0)
 	{
 		$this->db->from('make_offer');
@@ -544,7 +502,6 @@ class Marketplace_model extends MY_Model {
 		return $this->db->count_all_results();
 		
 	}
-
 	public function get_group_listing_attributes()
 	{
 		
@@ -567,7 +524,6 @@ class Marketplace_model extends MY_Model {
 		//$this->db->where('listing.listing_type', 2);
 		
 		$this->db->where('make_offer.seller_history','');
-
 		$this->db->where('make_offer.offer_status',1);
 		$this->db->where('make_offer.seller_id',$member_id);
 		$query = $this->db->get();
@@ -576,7 +532,6 @@ class Marketplace_model extends MY_Model {
 			else
 				return FALSE;
 	}
-
 	public function buy_order(){
 		$member_id=$this->session->userdata('members_id');
 		$this->db->select('listing.*,company.company_name,make_offer.id as makeofferid,make_offer.listing_id,make_offer.seller_id,make_offer.buyer_id,make_offer.buyer_currency,make_offer.product_qty,make_offer.unit_price,make_offer.total_price,make_offer.shipping,make_offer.shipping_price,make_offer.offer_status,make_offer.order_status,make_offer.payment_detail,make_offer.payment_done,make_offer.shipping_received,make_offer.tracking_shipping,make_offer.buyer_feedback,make_offer.seller_feedback,make_offer.seller_history,make_offer.buyer_history,make_offer.payment_done_datetime,make_offer.payment_recevied_datetime,make_offer.shipping_arrived_datetime,make_offer.shipping_recevied_datetime,make_offer.buyer_feedback_datetime,make_offer.seller_feedback_datetime,make_offer.created');
@@ -593,7 +548,6 @@ class Marketplace_model extends MY_Model {
 			else
 				return FALSE;
 	}
-
 	public function offerattempt($list_id=0)
 	{
 		$member_id=$this->session->userdata('members_id');
@@ -611,7 +565,6 @@ class Marketplace_model extends MY_Model {
 			return FALSE;
 		
 	}
-
 	public function order_history_sell()
 	{
 		$member_id=$this->session->userdata('members_id');
@@ -621,7 +574,6 @@ class Marketplace_model extends MY_Model {
 		//$this->db->where('listing.listing_type', 2);
 		
 		$this->db->where('make_offer.seller_history','1');
-
 		$this->db->where('make_offer.offer_status',1);
 		$this->db->where('make_offer.seller_id',$member_id);
 		$query = $this->db->get();
@@ -630,7 +582,6 @@ class Marketplace_model extends MY_Model {
 			else
 				return FALSE;
 	}
-
 	public function order_history_buy()
 	{
 		$member_id=$this->session->userdata('members_id');
@@ -647,7 +598,6 @@ class Marketplace_model extends MY_Model {
 			else
 				return FALSE;
 	}
-
 	public function invoice($id)
 	{
 		$member_id=$this->session->userdata('members_id');
@@ -700,14 +650,12 @@ class Marketplace_model extends MY_Model {
 			else
 				return FALSE;
 	}
-
 	public function view_negotiation_payasking($parent_id=''){
 		$member_id=$this->session->userdata('members_id');
 		$this->db->select('negotiation.*,company.company_name,listing.product_mpn_isbn,listing.product_make,listing.product_model,listing.product_type,listing.product_color,listing.condition,listing.product_desc,listing.listing_end_datetime,listing.currency,listing.qty_available,listing.spec,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
 		
 		$where_condition="(`negotiation`.`status` != 1)";
 		$this->db->where($where_condition);
-
 		$this->db->where('negotiation.offer_id',$parent_id);
 		$this->db->from('negotiation');
 		$this->db->join('company','company.admin_member_id=negotiation.offer_given_by');
@@ -718,14 +666,12 @@ class Marketplace_model extends MY_Model {
 			else
 				return FALSE;
 	}
-
 	public function view_negotiation($parent_id=''){
 		$member_id=$this->session->userdata('members_id');
 		$this->db->select('negotiation.*,company.company_name,listing.product_mpn_isbn,listing.product_make,listing.product_model,listing.product_type,listing.product_color,listing.condition,listing.product_desc,listing.listing_end_datetime,listing.currency,listing.qty_available,listing.spec,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
 	
 		$where_condition="(`negotiation`.`status` != 1)";
 		$this->db->where($where_condition);
-
 		$this->db->where('negotiation.offer_id',$parent_id);
 		$this->db->from('negotiation');
 		$this->db->order_by("id", "desc"); 
@@ -738,7 +684,6 @@ class Marketplace_model extends MY_Model {
 			else
 				return FALSE;
 	}
-
 	public function count_all_offer()
 	{
 		$member_id=$this->session->userdata('members_id');
@@ -751,7 +696,6 @@ class Marketplace_model extends MY_Model {
 		$this->db->where($where_con);
 		return  $this->db->count_all_results();
 	}
-
 	public function count_open_order()
 	{
 		$member_id=$this->session->userdata('members_id');
@@ -765,16 +709,13 @@ class Marketplace_model extends MY_Model {
 		$this->db->where($where_con);
 		
 		return  $this->db->count_all_results();
-
 	}
-
 	public function countmy_listing()
 	{
 		$member_id=$this->session->userdata('members_id');
 		$query=$this->db->query("SELECT count(id) as totallisting from listing where member_id=".$member_id." AND (status = 0 or status = 1 or status = 2)");
 		return $query->row()->totallisting;
 	}
-
 	
 	public function count_watch_listing()
 	{
@@ -789,7 +730,6 @@ class Marketplace_model extends MY_Model {
 		
 		return  $this->db->count_all_results();
 	}
-
 	public function count_save_listing()
 	{
 		$member_id=$this->session->userdata('members_id');
@@ -819,13 +759,23 @@ class Marketplace_model extends MY_Model {
 		else
 			return false;
 	}
-
 	public function get_countries($region)
 	{
 		$this->db->distinct();
 		$this->db->select('country');
 		$this->db->where('region', $region); 
 		$query=$this->db->get('country');
+		if($query->num_rows()>0)
+			return $query->result();
+		else
+			return false;
+	}
+	public function get_modal_by_make($product_make='')
+	{
+		$this->db->select('product_model');
+		$this->db->where('product_make', $product_make);
+		$this->db->group_by('product_model'); 
+		$query=$this->db->get('listing_attributes');
 		if($query->num_rows()>0)
 			return $query->result();
 		else
