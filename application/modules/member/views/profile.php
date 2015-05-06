@@ -38,6 +38,9 @@ $cust_id = $this->uri->segment(3);
                 window.location.replace("support/submit_ticket");
                
             });
+            
+           
+          
   });
 </script>
 <script type="text/javascript">
@@ -141,6 +144,28 @@ $cust_id = $this->uri->segment(3);
                         },
                 });
             }
+            
+             function editProfile(id){
+            
+                    var answer = confirm("Are you sure you would like to edit this account?");
+                        if (answer) {
+                            window.location = "profile/edit_profile/" + id;
+                            return true;
+                        }else{
+                            return false;
+                        }
+            };
+            
+            function deleteProfile(id){
+            
+                    var answer = confirm("Are you sure you would like to delete this account?");
+                        if (answer) {
+                            window.location = "profile/delete_profile/" + id;
+                            return true;
+                        }else{
+                            return false;
+                        }
+            };
             
 </script>
 <?php $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id);
@@ -848,7 +873,8 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                                     
                                     <div class="m-b-md">
                                         <?php if($this->session->userdata('members_id') == 5){?>
-                                            <a href="profile/edit_profile/<?php echo $member_info->id;?>" class="btn btn-white btn-xs pull-right">Edit Profile</a>
+                                            <button type="button" onclick="editProfile('<?php echo $member_info->id;?>');" class="btn btn-white btn-xs pull-right" style="margin-left:5px;">Edit Profile</button>                                            
+                                            <button type="button" onclick="deleteProfile('<?php echo $member_info->id;?>');" class="btn btn-white btn-xs pull-right">Delete Profile</button>
                                         <?php }?>
                                         <h2><?php echo $member_company->company_name;?></h2>
                                     </div>

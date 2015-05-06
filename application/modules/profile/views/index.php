@@ -48,7 +48,7 @@ if($member->membership == 1 ){ ?>
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="m-b-md">
-                                        <?php if($member_company->admin_member_id == $this->session->userdata('members_id')){?>
+                                        <?php if($member_company->admin_member_id == $this->session->userdata('members_id')){?> 
                                             <a href="profile/edit_profile" class="btn btn-white btn-xs pull-right">Edit Profile</a>
                                         <?php }?>
                                         <h2><?php echo $member_company->company_name;?></h2>

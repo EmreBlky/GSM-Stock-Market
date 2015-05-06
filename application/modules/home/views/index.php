@@ -1,5 +1,6 @@
 <?php 
   echo $this->session->flashdata('confirm-login'); 
+  echo $this->session->flashdata('confirm-delete');
 ?>
 <?php                                        
     $this->load->module('feedback');

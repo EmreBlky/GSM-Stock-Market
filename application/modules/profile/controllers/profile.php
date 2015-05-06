@@ -10,7 +10,7 @@ class Profile extends MX_Controller
             redirect('login');
         }
         
-        $this->load->model('member/member_model', 'member_model');
+        $this->load->model('member/member_model', 'member_model');        
         $this->load->model('block/block_model', 'block_model');
         $this->load->model('company/company_model', 'company_model');
         $this->load->model('viewed/viewed_model', 'viewed_model');
@@ -1113,6 +1113,70 @@ class Profile extends MX_Controller
                       'profile_completion' =>  $profile_score 
                       );
         $this->member_model->_update($mid, $data);
+    }
+    
+    function delete_profile($mid)
+    {
+        $this->load->model('addressbook/addressbook_model', 'addressbook_model');
+        $this->load->model('attending/attending_model', 'attending_model');
+        $this->load->model('buying/buying_model', 'buying_model');
+        $this->load->model('creditdata/creditdata_model', 'creditdata_model');
+        $this->load->model('favourite/favourite_model', 'favourite_model'); 
+        $this->load->model('feed/feed_model', 'feed_model'); 
+        $this->load->model('feedback/feedback_model', 'feedback_model');  
+        $this->load->model('mailbox/mailbox_model', 'mailbox_model');
+        $this->load->model('make_offer/make_offer_model', 'make_offer_model');
+        $this->load->model('negotiation/negotiation_model', 'negotiation_model');
+        $this->load->model('notification/notification_model', 'notification_model');
+        $this->load->model('offer_attempt/offer_attempt_model', 'offer_attempt_model');
+        $this->load->model('report/report_model', 'report_model');
+        $this->load->model('selling/selling_model', 'selling_model');
+        $this->load->model('tradereference/tradereference_model', 'tradereference_model');
+        $this->load->model('transaction/transaction_model', 'transaction_model');
+        $this->load->model('viewed/viewed_model', 'viewed_model');
+        
+        $this->member_model->_delete($mid);
+        $this->company_model->_delete_where('admin_member_id', $mid);
+        
+        $this->addressbook_model->_delete_where('member_id', $mid);
+        $this->addressbook_model->_delete_where('address_member_id', $mid);
+        $this->activity_model->_delete_where('member_id', $mid);
+        $this->attending_model->_delete_where('member_id', $mid);
+        $this->block_model->_delete_where('member_id', $mid);
+        $this->block_model->_delete_where('block_member_id', $mid);
+        $this->buying_model->_delete_where('buying_member_id', $mid);
+        $this->creditdata_model->_delete_where('request_id', $mid);
+        $this->creditdata_model->_delete_where('requester_id', $mid);
+        $this->favourite_model->_delete_where('member_id', $mid);
+        $this->favourite_model->_delete_where('favourite_id', $mid);
+        $this->feed_model->_delete_where('member_id', $mid);
+        $this->feedback_model->_delete_where('member_id', $mid);
+        $this->feedback_model->_delete_where('feedback_member_id', $mid);
+        $this->mailbox_model->_delete_where('member_id', $mid);
+        $this->mailbox_model->_delete_where('sent_member_id', $mid);
+        $this->make_offer_model->_delete_where('seller_id', $mid);
+        $this->make_offer_model->_delete_where('buyer_id', $mid);
+        $this->negotiation_model->_delete_where('buyer_id', $mid);
+        $this->negotiation_model->_delete_where('seller_id', $mid);
+        $this->notification_model->_delete_where('member_id', $mid);
+        $this->offer_attempt_model->_delete_where('buyer_id', $mid);
+        $this->report_model->_delete_where('report_id', $mid);
+        $this->report_model->_delete_where('abuse_id', $mid);
+        $this->selling_model->_delete_where('selling_member_id', $mid);
+        $this->tradereference_model->_delete_where('member_id', $mid);
+        //$this->transaction_model->_delete_where('buyer_id', $mid);
+        //$this->transaction_model->_delete_where('seller_id', $mid);
+        $this->viewed_model->_delete_where('viewed_id', $mid);
+        $this->viewed_model->_delete_where('viewer_id', $mid);
+        
+        
+        
+        $this->session->set_flashdata('confirm-delete', '<div style="margin:15px 15px">    
+                                                                <div class="alert alert-warning">
+                                                                    That account has been deleted.
+                                                                </div>
+                                                            </div>');
+        redirect('home/');
     }
 
 }
