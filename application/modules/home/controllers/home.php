@@ -389,5 +389,30 @@ class Home extends MX_Controller
         print_r($_POST);
 
     }
+    
+    function update_date()
+    {
+        $this->load->model('member/member_model', 'member_model');
+        
+        $this->member_model->_custom_query_action("UPDATE members SET date = '31-03-2015' WHERE date = '31-03-15'");
+        //exit;
+        
+        $customers = $this->member_model->get_all();
+               
+        //echo '<pre>';
+        //print_r($customers);
+        
+        foreach ($customers as $customer){
+            
+            $date = explode('-', $customer->date);
+            
+            $data = array(
+                          'date_activated' => $date[2].'-'.$date[1].'-'.$date[0]
+                        );
+            $this->member_model->_update($customer->id, $data);
+        }
+        //$date = explode('-', $member->date);
+        //echo $date[0]; 
+    }
 
 }

@@ -94,7 +94,8 @@ class Register extends MX_Controller{
 //                                        'mobile'    => $this->input->post('mobile'),
                                     'email'     => $this->input->post('email'),
                                     'validation_code' => $validation_code,
-                                    'date'      => date('d-m-y'),
+                                    'date'      => date('d-m-Y'),
+                                    'date_activated'      => date('Y-m-d'),
                                     'password' => md5($this->input->post('password'))
                                   );
 
@@ -511,7 +512,8 @@ class Register extends MX_Controller{
                                         'lastname'          => $name[1].' '.$name[2].' '.$name[3],
                                         'username'          => '',
                                         'email'             => $email,
-                                        'date'              => date('d-m-y'),
+                                        'date'              => date('d-m-Y'),
+                                        'date_activated'    => date('Y-m-d'),
                                         'password'          => md5($password),
                                         'unhash_password'   => $password,
                                         'validation_code'   => $validation_code,

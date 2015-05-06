@@ -4,6 +4,7 @@
 //echo $invoice;
 //print_r($transaction);
 //exit;
+ $this->load->model('trial/trial_model', 'trial_model');
 
 ?>            <div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
@@ -44,7 +45,14 @@
                                                 dl.full-width dd {margin-left:51%}
                                         </style>
                                     <dl class="dl-horizontal full-width">
-                                        <dt>Current Subscription:</dt> <dd><?php echo $this->membership_model->get_where($member->membership)->membership?> Member</dd>
+                                        <?php
+                                            $ttcount = $this->trial_model->_custom_query_count("SELECT COUNT(*) AS count FROM trial WHERE member_id = '".$member->id."' AND status = 'free'");
+                                            if($ttcount[0]->count > 0){
+                                        ?>
+                                            <dt>Current Subscription:</dt> <dd><?php echo $this->membership_model->get_where($member->membership)->membership?> Member (Free Trial)</dd>
+                                        <?php } else {?>
+                                            <dt>Current Subscription:</dt> <dd><?php echo $this->membership_model->get_where($member->membership)->membership?> Member</dd>                                        
+                                        <?php }?>
                                         <dt>Join Date:</dt> <dd><?php echo $member->date; ?></dd>
                                     </dl>
                             </div>
@@ -66,6 +74,16 @@
                                     <dl class="dl-horizontal full-width">
                                         <dt>Current Subscription:</dt> <dd> Bronze Member</dd>
                                         <dt>Join Date:</dt> <dd><?php echo $member->date; ?></dd>
+                                        <?php
+                                            if($member->date_activated < '2015-05-10'){
+                                                $tcount = $this->trial_model->_custom_query_count("SELECT COUNT(*) AS count FROM trial WHERE member_id = '".$member->id."'");
+                                                if($tcount[0]->count < 1){
+                                        ?>
+                                            <dt>30 Day Free Trial:</dt> <dd> <a href="trial/activate/<?php echo $member->id; ?>" class="btn btn-white btn-xs"><b>Activate</b></a> </dd>
+                                        <?php
+                                                }
+                                            }
+                                        ?>
                                     </dl>
                             </div>
                         </div>
@@ -73,8 +91,8 @@
                     <div class="col-lg-6">
                         <div class="ibox">
                             <div class="ibox-title">
-                                <span class="label label-primary pull-right">Accout Eligible</span>
-                                <h5>Upgrade to Silver Membership</h5>
+                                <span class="label label-primary pull-right">Accout Eligible</span>                                
+                                    <h5>Upgrade to Silver Membership</h5>                                
                             </div>
                             <div class="ibox-content" style="min-height:89px;text-align:center">
                         	<label class="control-label">Subscription: </label>                            
