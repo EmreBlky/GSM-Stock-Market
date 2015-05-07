@@ -94,19 +94,27 @@
 
           <div class="form-group"><label class="col-md-3 control-label">Product color</label>
             <div class="col-md-9">
-                <select name="product_color"  placeholder="Mention color" class="form-control">
+               <!--  <select name="product_color"  placeholder="Mention color" class="form-control">
                    <option value="" >Select Product colors</option>
-                    <?php if (!empty($colors)): ?>
-                    <?php foreach ($colors as $row): ?>
-                       <option value="<?php echo $row->product_color ?>" <?php if(!empty($_POST['product_color']) && $row->product_color == $_POST['product_color']){ echo'selected';}?>><?php echo $row->product_color ?></option>
-                    <?php endforeach ?>
-                    <?php endif ?>
-                </select>
+                    <?php //if (!empty($colors)): ?>
+                    <?php //foreach ($colors as $row): ?>
+                       <option value="<?php //echo $row->product_color ?>" <?php //if(!empty($_POST['product_color']) && $row->product_color == $_POST['product_color']){ echo'selected';}?>><?php //echo $row->product_color ?></option>
+                    <?php //endforeach ?>
+                    <?php //endif ?>
+                </select> -->
+                 <input type="type" class="form-control" placeholder="Eg : Black, White, Blue" name="product_color" value="<?php echo set_value('product_color');  ?>" />
                 <?php echo form_error('product_color'); ?>
+                <p>Please add comma seperated multiple colors</p>
             </div>
           </div>
 
-
+          <div class="form-group"><label class="col-md-3 control-label">Product capacity</label>
+            <div class="col-md-9">             
+                 <input type="type" class="form-control" placeholder="Eg : 2GB,4GB,8GB" name="product_capacity" value="<?php echo set_value('product_capacity');  ?>" />
+                <?php echo form_error('product_capacity'); ?>
+                <p>Please add comma seperated multiple values</p>
+            </div>
+          </div>
 
          <div class="form-group">
             <div class="col-md-9 col-md-offset-3">

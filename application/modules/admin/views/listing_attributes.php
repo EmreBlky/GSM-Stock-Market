@@ -37,7 +37,7 @@
                 <td><?php if(!empty($row->product_make)){ echo $row->product_make; } ?></td>
                 <td><?php if(!empty($row->product_model)){ echo $row->product_model; } ?></td>
                 <td><?php if(!empty($row->product_type)){ echo $row->product_type; } ?></td>
-                 <td><?php if(!empty($row->product_color)){ echo $row->product_color; } ?></td>
+                 <td><?php if(!empty($row->product_color)){ echo unserialize($row->product_color); } ?></td>
 
                 <th>
                 <a href="<?php echo base_url().'admin/edit_listing_attribute/'.$row->id;  ?>" class="btn btn-primary" >Edit</a>

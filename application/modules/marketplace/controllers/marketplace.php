@@ -1754,8 +1754,8 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
       function offer_status($id='',$status='0',$buyer_id)
     {
       $seller_id =  $this->session->userdata('members_id');
-      if($this->marketplace_model->update('make_offer',array('offer_status'=>$status,'invoice_no'=>$seller_id.'-'.$buyer_id.'-'.$id),array('id'=>$id, 'offer_received_by'=>$seller_id))){
-          if($status==1){
+      if($status==1){
+          $this->marketplace_model->update('make_offer',array('offer_status'=>$status,'invoice_no'=>$seller_id.'-'.$buyer_id.'-'.$id),array('id'=>$id, 'offer_received_by'=>$seller_id));
              $data = array(
                 'member_id'         => $seller_id,
                 'sent_member_id'    => $buyer_id,
@@ -1774,12 +1774,17 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
             $this->session->set_flashdata('msg_success','Offer Accepted. An order has been created in <strong>Open Orders</strong>. The user has been notified.');  
             redirect('marketplace/open_orders');
           }elseif($status==2){
-
+           
+            $message = "";
+            if( $offer_info=$this->marketplace_model->get_row('make_offer', array('id'=>$id))){
+                $message = "<br>Offer sent info - <br>Per unit price : ".$offer_info->unit_price."<br>Quantity : ".$offer_info->product_qty."<br>Shipping : ".$offer_info->shipping_price."<br>To resend a better offer<a href='marketplace/listing_detail"."/".$offer_info->listing_id."'> Click here</a>";
+            }
+            $this->marketplace_model->update('make_offer',array('offer_status'=>$status),array('id'=>$id, 'offer_received_by'=>$seller_id));
             $data = array(
                 'member_id'         => $seller_id,
                 'sent_member_id'    => $buyer_id,
                 'subject'           => 'Offer Declined',
-                'body'              => 'Your offer has been declined, try submitting a better offer.',
+                'body'              => 'Your offer has been declined, try submitting a better offer.'. $message,
                 'inbox'             => 'yes',
                 'sent'              => 'yes',
                 'date'              => date('d-m-Y'),
@@ -1792,7 +1797,6 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
 
             $this->session->set_flashdata('msg_success','Offer Declined. The user has been notified.'); 
           }
-        }
         else{
           $this->session->set_flashdata('msg_info','Invalid.');  
         }
@@ -1802,8 +1806,8 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
   function pay_asking_status($id='',$negotiation_id='',$status='0',$buyer_id)
     {
        $seller_id =  $this->session->userdata('members_id');
-       if($status==1){
        $this->marketplace_model->update('negotiation',array('status'=>$status),array('id'=>$negotiation_id));
+       if($status==1){
        if($this->marketplace_model->update('make_offer',array('offer_status'=>$status,'invoice_no'=>$seller_id.'-'.$buyer_id.'-'.$id),array('id'=>$id))){
           
              $data = array(
@@ -1826,6 +1830,8 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
        
     }
      else{
+        
+       $this->marketplace_model->update('make_offer',array('offer_status'=>$status),array('id'=>$id, 'offer_received_by'=>$seller_id));
         $data = array(
                 'member_id'         => $seller_id,
                 'sent_member_id'    => $buyer_id,
@@ -2011,7 +2017,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
         
         if($checkoffer=$this->marketplace_model->get_row('make_offer', array('buyer_id'=> $buyer_id,'seller_id' => $listing->member_id,'listing_id'=> $listing_id,'product_qty'   => $product_qty,'unit_price' => $unit_price))){
 
-        $list=array('STATUS'=>7,'Message'=>'Offer has been accepted.'); 
+        $list=array('STATUS'=>7,'Message'=>'This Offer has been already made.'); 
         }
         else{
          $total_price=  ($product_qty *  $unit_price) +  $shippingamount;
@@ -2685,9 +2691,34 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
   function offer_status_negotiation($id='',$negotiation_id='0',$status='0',$buyer_id)
     {
       $seller_id =  $this->session->userdata('members_id');
+
+
       $this->marketplace_model->update('negotiation',array('status'=>$status),array('id'=>$negotiation_id));
 
+            
       $negotiation_o=$this->marketplace_model->get_row('negotiation',array('id'=>$negotiation_id));
+        $user1=$seller_id;
+        $user2=$buyer_id;
+      if($user1 == $user2){
+        if($user2 != $negotiation_o->buyer_id){
+            $user1=$seller_id;
+            $user2=$negotiation_o->buyer_id;
+        }
+        else{
+            $user1=$negotiation_o->buyer_id;
+            $user2=$seller_id;
+        }
+      }
+      if($user1 == $user2){
+        if($user2 != $negotiation_o->buyer_id){
+            $user1=$negotiation_o->buyer_id;
+            $user2=$seller_id;
+        }
+        else{
+            $user1=$seller_id;
+            $user2=$negotiation_o->buyer_id;
+        }
+      }
 
       $make_offer=$this->marketplace_model->get_row('make_offer',array('id'=>$id));
 
@@ -2696,11 +2727,12 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
       $grand_price=$per_unit_price * $qty;
       $total_price=$grand_price + $make_offer->shipping_price;
 
-      if($this->marketplace_model->update('make_offer',array('offer_status'=>$status,'invoice_no'=>$seller_id.'-'.$buyer_id.'-'.$id,'unit_price'=>$per_unit_price,'product_qty'=>$qty,'grand_total'=>$grand_price,'total_price'=>$total_price),array('id'=>$id))){
-          if($status==1){
+      if($status==1){
+        $this->marketplace_model->update('make_offer',array('offer_status'=>$status,'invoice_no'=>$seller_id.'-'.$buyer_id.'-'.$id,'unit_price'=>$per_unit_price,'product_qty'=>$qty,'grand_total'=>$grand_price,'total_price'=>$total_price),array('id'=>$id));
+
              $data = array(
-                'member_id'         => $seller_id,
-                'sent_member_id'    => $buyer_id,
+                'member_id'         => $user1,
+                'sent_member_id'    => $user2,
                 'subject'           => 'Offer is accepted',
                 'body'              => 'Offer is accepted',
                 'inbox'             => 'yes',
@@ -2717,11 +2749,17 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
             redirect('marketplace/open_orders');
           }elseif($status==2){
 
+            $message = "";
+            if( $offer_info=$this->marketplace_model->get_row('make_offer', array('id'=>$id))){
+                $message = "<br>Offer sent info - <br>Per unit price : ".$offer_info->unit_price."<br>Quantity : ".$offer_info->product_qty."<br>Shipping : ".$offer_info->shipping_price."<br>To resend a better offer<a href='marketplace/listing_detail"."/".$offer_info->listing_id."'> Click here</a>";
+            }
+            $this->marketplace_model->update('make_offer',array('offer_status'=>$status),array('id'=>$id));
+
             $data = array(
-                'member_id'         => $seller_id,
-                'sent_member_id'    => $buyer_id,
+                'member_id'         => $user1,
+                'sent_member_id'    => $user2,
                 'subject'           => 'Offer is declined',
-                'body'              => 'Offer is declined Do you want to resent it.',
+                'body'              => 'Offer is declined Do you want to resent it.'.$message,
                 'inbox'             => 'yes',
                 'sent'              => 'yes',
                 'date'              => date('d-m-Y'),
@@ -2734,7 +2772,6 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
 
             $this->session->set_flashdata('msg_success','Offer Declined sucessfully.'); 
           }
-        }
         else{
           $this->session->set_flashdata('msg_info','Invalid.');  
         }
@@ -2759,4 +2796,69 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
        }
        redirect($_SERVER['HTTP_REFERER']);
    }
+
+   public function import($type='csv'){
+        
+        if($this->read_csv_xls_xlsx(array('file'=>'Workbook6.csv','path'=>'public/')))
+        {
+            echo "Data is inserted";
+        }else{
+            echo "Eroor";
+        }
+    }
+
+
+    private function read_csv_xls_xlsx($param=array()){
+        
+    if(!isset($param['file']) && empty($param['file'])){
+        $this->session->set_flashdata('msg_error','File Name can\'t be blank, Please try again.');
+        return FALSE;
+    }
+
+    if(!isset($param['path']) && empty($param['path'])){
+        $this->session->set_flashdata('msg_error','File Path can\'t be blank, Please try again.');
+        return FALSE;
+    }
+
+    $filename = $param['path'].$param['file'];
+
+    if(file_exists($filename)){
+        require(APPPATH.'libraries/spreadsheet-reader/php-excel-reader/excel_reader2.php');
+        require(APPPATH.'libraries/spreadsheet-reader/SpreadsheetReader.php');
+
+        $Reader = new SpreadsheetReader($filename);
+        $l=0; $u=0;$i=0;
+        $listing_data=array();
+       
+
+        foreach ($Reader as $row):
+            
+            if((!empty($row[1])) && $l>0){
+                $listing_data['product_mpn_isbn'] = $row[0];
+                 if($row[1]){
+                    $listing_data['product_mpn_isbn'] = $row[1];
+                 }
+                $listing_data['product_make'] = $row[2];
+                $listing_data['product_model'] = $row[3];
+                $listing_data['product_type'] = $row[5];
+                if($row[4]){
+                    $color=explode(',',$row[4]);
+                    $listing_data['product_color'] = json_encode($color);
+                }
+                if($row[6]){
+                    $capacity=explode(',',$row[6]);
+                    $listing_data['product_capacity'] = json_encode($capacity);
+                }
+                $listing_data['created']    = date('Y-m-d h:i:s A');
+                $this->marketplace_model->insert('listing_attributes', $listing_data);                    
+               }
+            $l++;
+        endforeach;
+       
+        return TRUE;
+        }else{
+            $this->session->set_flashdata('msg_error','Product does not exist, Please try again.');
+            return FALSE;
+        }
+    }
 }

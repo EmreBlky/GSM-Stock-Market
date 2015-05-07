@@ -60,7 +60,17 @@ $session_member_id = $this->session->userdata('members_id'); ?>
             <?php }}?>
         </td>
         <td><?php echo date('d-M, H:i', strtotime($value->schedule_date_time)); ?></td>
-        <td><?php echo date('d-M, H:i', strtotime($value->listing_end_datetime)); ?></td>
+        <td><span <?php 
+            $enddatetime = $value->listing_end_datetime;; 
+            $current_date = date('d-m-Y H:i:s'); 
+            $diff = abs(strtotime($current_date) - strtotime($enddatetime));
+            $years   = floor($diff / (365*60*60*24)); 
+            $months  = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));  
+            $days    = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+            if($days <=1){
+              echo "style='color:red!important'";
+            }
+            ?>><?php echo date('d-M, H:i', strtotime($value->listing_end_datetime)); ?></span></td>
         <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php echo $value->spec; ?></td>
         <td><?php echo $value->condition; ?></td>
         <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
@@ -74,7 +84,7 @@ $session_member_id = $this->session->userdata('members_id'); ?>
        <?php }else{?>
        <a class="btn btn-success" style="font-size:10px">
        <i class="fa fa-arrow-up"></i> Relist</a>
-       <a href="<?php echo base_url().'marketplace/end_listing_status/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to end this listing ?');" ><i class="fa fa-times"></i> End</a>
+       <a href="<?php echo base_url().'marketplace/end_listing_status/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to delete this listing?');" style="font-size:10px"><i class="fa fa-times"></i> Delete</a>
         <?php } ?>
 
         </th>
@@ -129,7 +139,17 @@ $session_member_id = $this->session->userdata('members_id'); ?>
             <?php }}?>
         </td>
         <td><?php echo date('d-M, H:i', strtotime($value->schedule_date_time)); ?></td>
-        <td><?php echo date('d-M, H:i', strtotime($value->listing_end_datetime)); ?></td>
+        <td><span <?php 
+            $enddatetime = $value->listing_end_datetime;; 
+            $current_date = date('d-m-Y H:i:s'); 
+            $diff = abs(strtotime($current_date) - strtotime($enddatetime));
+            $years   = floor($diff / (365*60*60*24)); 
+            $months  = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));  
+            $days    = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+            if($days <=1){
+              echo "style='color:red!important'";
+            }
+            ?>><?php echo date('d-M, H:i', strtotime($value->listing_end_datetime)); ?></span></td>
         <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php echo $value->spec; ?></td>
         <td><?php echo $value->condition; ?></td>
         <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
@@ -143,7 +163,7 @@ $session_member_id = $this->session->userdata('members_id'); ?>
        <?php }else{?>
        <a class="btn btn-success">
        <i class="fa fa-arrow-up" style="font-size:10px"></i> Relist</a>
-       <a href="<?php echo base_url().'marketplace/end_listing_status/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to end this listing ?');" ><i class="fa fa-times"></i> End</a>
+       <a href="<?php echo base_url().'marketplace/end_listing_status/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to end delete this isting?');" style="font-size:10px"><i class="fa fa-times"></i> Delete</a>
         <?php } ?>
       
         </th>
@@ -475,7 +495,16 @@ border-color: #ec4758;
 color: #fff;
 }
 </style>
+<script src="public/admin/js/jquery.countdown.min.js"></script>
 <script>
+jQuery(document).ready(function($) {
+    $('[data-countdown]').each(function() {
+       var $this = $(this), finalDate = $(this).data('countdown');
+       $this.countdown(finalDate, function(event) {
+         $this.html(event.strftime('%Dd %Hh %Mm %Ss'));
+       });
+     });
+});
  function get_buyers_offer(listing_id) {
     var list = listing_id;
        $.post('<?php echo base_url() ?>marketplace/get_buyers_offer', {listing_id: list}, function(data) {

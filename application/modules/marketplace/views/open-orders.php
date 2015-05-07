@@ -52,14 +52,14 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <?php foreach ($buy_order as  $value): ?>
         <tr>
         <?php if ($value->order_status == 0){ $progress = "0%"; ?>
-            <td><span class="label label-warning">Awaiting Payment Info</span></td>
+            <td><span class="label label-primary">Awaiting Payment Info</span></td>
             <?php }elseif ($value->order_status == 1 ){ 
                 if(empty($value->payment_done)){
                 $progress = "25%"; ?>
                  <td><span class="label label-warning">Awaiting Payment</span></td>
         <?php }else{
                 $progress = "50%"; ?>
-                 <td><span class="label label-warning">Awaiting Payment Confirmation</span></td>
+                 <td><span class="label label-primary">Awaiting Payment Confirmation</span></td>
             <?php } }elseif($value->order_status == 2){ $progress = "50%"?>
             <td><span class="label label-primary">Payment Sent</span></td>
         <?php }elseif($value->order_status == 3){ $progress = "75%" ?>
@@ -143,13 +143,13 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <?php foreach ($sell_order as $value): ?>
         <tr>
         <?php if ($value->order_status == 0){ $progress = "0%"; ?>
-            <td><span class="label label-warning">Awaiting Payment Info</span></td>
+            <td><span class="label label-primary">Awaiting Payment Info</span></td>
         <?php }elseif ($value->order_status == 1){ $progress = "25%"; ?>
-            <td><span class="label label-warning">Awaiting Payment</span></td>
+            <td><span class="label label-<?php if($value->payment_done){?>warning<?php } else{?>primary<?php } ?>">Awaiting Payment</span></td>
         <?php }elseif($value->order_status == 2){ $progress = "50%"?>
             <td><span class="label label-primary">Payment Received</span></td>
         <?php }elseif($value->order_status == 3){ $progress = "75%" ?>
-            <td><span class="label label-warning">Awaiting shipping conformation</span></td>
+            <td><span class="label label-primary">Awaiting shipping conformation</span></td>
         <?php }elseif($value->order_status == 4){ $progress = "100%" ?>
             <td><span class="label label-primary">Shipment Arrived</span></td>
         <?php }?>
