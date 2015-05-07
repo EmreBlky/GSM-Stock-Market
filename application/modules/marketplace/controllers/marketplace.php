@@ -2691,9 +2691,19 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
   function offer_status_negotiation($id='',$negotiation_id='0',$status='0',$buyer_id)
     {
       $seller_id =  $this->session->userdata('members_id');
+
+
       $this->marketplace_model->update('negotiation',array('status'=>$status),array('id'=>$negotiation_id));
 
+            
       $negotiation_o=$this->marketplace_model->get_row('negotiation',array('id'=>$negotiation_id));
+      $user1=$seller_id;
+      $user2=$buyer_id;
+
+      if($user2 != $negotiation_o->buyer_id){
+          $user1=$buyer_id;
+          $user2=$seller_id;
+        }
 
       $make_offer=$this->marketplace_model->get_row('make_offer',array('id'=>$id));
 
@@ -2706,8 +2716,8 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
         $this->marketplace_model->update('make_offer',array('offer_status'=>$status,'invoice_no'=>$seller_id.'-'.$buyer_id.'-'.$id,'unit_price'=>$per_unit_price,'product_qty'=>$qty,'grand_total'=>$grand_price,'total_price'=>$total_price),array('id'=>$id));
 
              $data = array(
-                'member_id'         => $seller_id,
-                'sent_member_id'    => $buyer_id,
+                'member_id'         => $user1,
+                'sent_member_id'    => $user2,
                 'subject'           => 'Offer is accepted',
                 'body'              => 'Offer is accepted',
                 'inbox'             => 'yes',
@@ -2731,8 +2741,8 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
             $this->marketplace_model->update('make_offer',array('offer_status'=>$status),array('id'=>$id));
 
             $data = array(
-                'member_id'         => $seller_id,
-                'sent_member_id'    => $buyer_id,
+                'member_id'         => $user1,
+                'sent_member_id'    => $user2,
                 'subject'           => 'Offer is declined',
                 'body'              => 'Offer is declined Do you want to resent it.'.$message,
                 'inbox'             => 'yes',
