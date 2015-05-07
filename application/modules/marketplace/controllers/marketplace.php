@@ -1754,8 +1754,8 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
       function offer_status($id='',$status='0',$buyer_id)
     {
       $seller_id =  $this->session->userdata('members_id');
-      if($this->marketplace_model->update('make_offer',array('offer_status'=>$status,'invoice_no'=>$seller_id.'-'.$buyer_id.'-'.$id),array('id'=>$id, 'offer_received_by'=>$seller_id))){
-          if($status==1){
+      if($status==1){
+          $this->marketplace_model->update('make_offer',array('offer_status'=>$status,'invoice_no'=>$seller_id.'-'.$buyer_id.'-'.$id),array('id'=>$id, 'offer_received_by'=>$seller_id));
              $data = array(
                 'member_id'         => $seller_id,
                 'sent_member_id'    => $buyer_id,
@@ -1774,12 +1774,17 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
             $this->session->set_flashdata('msg_success','Offer Accepted. An order has been created in <strong>Open Orders</strong>. The user has been notified.');  
             redirect('marketplace/open_orders');
           }elseif($status==2){
-
+           
+            $message = "";
+            if( $offer_info=$this->marketplace_model->get_row('make_offer', array('id'=>$id))){
+                $message = "<br>Offer sent info - <br>Per unit price : ".$offer_info->unit_price."<br>Quantity : ".$offer_info->product_qty."<br>Shipping : ".$offer_info->shipping_price."<br><a href='Marketplace/listing_detail/'".$offer_info->listing_id."'>To resend a better offer Click here</a>";
+            }
+            $this->marketplace_model->update('make_offer',array('offer_status'=>$status),array('id'=>$id, 'offer_received_by'=>$seller_id));
             $data = array(
                 'member_id'         => $seller_id,
                 'sent_member_id'    => $buyer_id,
                 'subject'           => 'Offer Declined',
-                'body'              => 'Your offer has been declined, try submitting a better offer.',
+                'body'              => 'Your offer has been declined, try submitting a better offer.'. $message,
                 'inbox'             => 'yes',
                 'sent'              => 'yes',
                 'date'              => date('d-m-Y'),
@@ -1792,7 +1797,6 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
 
             $this->session->set_flashdata('msg_success','Offer Declined. The user has been notified.'); 
           }
-        }
         else{
           $this->session->set_flashdata('msg_info','Invalid.');  
         }
@@ -1802,8 +1806,8 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
   function pay_asking_status($id='',$negotiation_id='',$status='0',$buyer_id)
     {
        $seller_id =  $this->session->userdata('members_id');
-       if($status==1){
        $this->marketplace_model->update('negotiation',array('status'=>$status),array('id'=>$negotiation_id));
+       if($status==1){
        if($this->marketplace_model->update('make_offer',array('offer_status'=>$status,'invoice_no'=>$seller_id.'-'.$buyer_id.'-'.$id),array('id'=>$id))){
           
              $data = array(
@@ -1826,6 +1830,8 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
        
     }
      else{
+        
+       $this->marketplace_model->update('make_offer',array('offer_status'=>$status),array('id'=>$id, 'offer_received_by'=>$seller_id));
         $data = array(
                 'member_id'         => $seller_id,
                 'sent_member_id'    => $buyer_id,
@@ -2696,8 +2702,9 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
       $grand_price=$per_unit_price * $qty;
       $total_price=$grand_price + $make_offer->shipping_price;
 
-      if($this->marketplace_model->update('make_offer',array('offer_status'=>$status,'invoice_no'=>$seller_id.'-'.$buyer_id.'-'.$id,'unit_price'=>$per_unit_price,'product_qty'=>$qty,'grand_total'=>$grand_price,'total_price'=>$total_price),array('id'=>$id))){
-          if($status==1){
+      if($status==1){
+        $this->marketplace_model->update('make_offer',array('offer_status'=>$status,'invoice_no'=>$seller_id.'-'.$buyer_id.'-'.$id,'unit_price'=>$per_unit_price,'product_qty'=>$qty,'grand_total'=>$grand_price,'total_price'=>$total_price),array('id'=>$id));
+
              $data = array(
                 'member_id'         => $seller_id,
                 'sent_member_id'    => $buyer_id,
@@ -2717,11 +2724,17 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
             redirect('marketplace/open_orders');
           }elseif($status==2){
 
+            $message = "";
+            if( $offer_info=$this->marketplace_model->get_row('make_offer', array('id'=>$id))){
+                $message = "<br>Offer sent info - <br>Per unit price : ".$offer_info->unit_price."<br>Quantity : ".$offer_info->product_qty."<br>Shipping : ".$offer_info->shipping_price."<br><a href='Marketplace/listing_detail/'".$offer_info->listing_id."'>To resend a better offer Click here</a>";
+            }
+            $this->marketplace_model->update('make_offer',array('offer_status'=>$status),array('id'=>$id));
+
             $data = array(
                 'member_id'         => $seller_id,
                 'sent_member_id'    => $buyer_id,
                 'subject'           => 'Offer is declined',
-                'body'              => 'Offer is declined Do you want to resent it.',
+                'body'              => 'Offer is declined Do you want to resent it.'.$message,
                 'inbox'             => 'yes',
                 'sent'              => 'yes',
                 'date'              => date('d-m-Y'),
@@ -2734,7 +2747,6 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
 
             $this->session->set_flashdata('msg_success','Offer Declined sucessfully.'); 
           }
-        }
         else{
           $this->session->set_flashdata('msg_info','Invalid.');  
         }
