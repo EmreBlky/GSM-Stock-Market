@@ -140,7 +140,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers
 <span class="count_offer_sidbar_ajax">
 	<?php  if($counteroffer){ ?>
-		<span class="label label-info pull-right">
+		<span class="label label-warning pull-right">
 	<?php  echo $counteroffer; ?></span>
 	<?php } ?></span>
 </a></li>
