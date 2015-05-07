@@ -2017,7 +2017,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
         
         if($checkoffer=$this->marketplace_model->get_row('make_offer', array('buyer_id'=> $buyer_id,'seller_id' => $listing->member_id,'listing_id'=> $listing_id,'product_qty'   => $product_qty,'unit_price' => $unit_price))){
 
-        $list=array('STATUS'=>7,'Message'=>'Offer has been accepted.'); 
+        $list=array('STATUS'=>7,'Message'=>'This Offer has been already made.'); 
         }
         else{
          $total_price=  ($product_qty *  $unit_price) +  $shippingamount;
@@ -2697,13 +2697,28 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
 
             
       $negotiation_o=$this->marketplace_model->get_row('negotiation',array('id'=>$negotiation_id));
-      $user1=$seller_id;
-      $user2=$buyer_id;
-
-      if($user2 != $negotiation_o->buyer_id){
-          $user1=$buyer_id;
-          $user2=$seller_id;
+        $user1=$seller_id;
+        $user2=$buyer_id;
+      if($user1 == $user2){
+        if($user2 != $negotiation_o->buyer_id){
+            $user1=$seller_id;
+            $user2=$negotiation_o->buyer_id;
         }
+        else{
+            $user1=$negotiation_o->buyer_id;
+            $user2=$seller_id;
+        }
+      }
+      if($user1 == $user2){
+        if($user2 != $negotiation_o->buyer_id){
+            $user1=$negotiation_o->buyer_id;
+            $user2=$seller_id;
+        }
+        else{
+            $user1=$seller_id;
+            $user2=$negotiation_o->buyer_id;
+        }
+      }
 
       $make_offer=$this->marketplace_model->get_row('make_offer',array('id'=>$id));
 
