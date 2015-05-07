@@ -2292,7 +2292,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                 <h4 style="text-align:center">Product Details</h4>
                 <dt>Make:</dt> <dd> <?php if(!empty($deal_info->product_make)){ echo $deal_info->product_make; } ?></dd>
                 <dt>Model:</dt> <dd>  <?php if(!empty($deal_info->product_model)){ echo $deal_info->product_model; } ?></dd>
-                <dt>Memory:</dt> <dd>  16GB</dd>
+                <dt>Capacity:</dt> <dd>  <?php if(!empty($deal_info->device_capacity)){ echo $deal_info->device_capacity; } ?></dd>
                 <dt>Colour:</dt> <dd> <?php if(!empty($deal_info->product_color)){ echo $deal_info->product_color; } ?></dd>
                 <dt>Product Type:</dt> <dd> <?php if(!empty($deal_info->product_type)){ echo $deal_info->product_type; } ?></dd>
                 <dt>Condition:</dt> <dd><?php if(!empty($deal_info->condition)){ echo $deal_info->condition; } ?></dd>

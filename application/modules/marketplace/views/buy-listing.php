@@ -68,7 +68,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 
         <div class="form-group"><label class="col-md-3 control-label">MPN/ISBN</label>
         <div class="col-md-9">
-            <input type="text" id="mpn1" list="mpn" class="form-control check_record" placeholder="MPN/ISBN"  name="product_mpn" value="<?php if(!empty($_POST['product_mpn'])) echo $_POST['product_mpn']; elseif(!empty($product_list->product_mpn_isbn)) echo $product_list->product_mpn_isbn; ?>"/>
+            <input type="text" id="mpn1" list="mpn" class="form-control check_record" placeholder="e.g A1586 or SM-G925"  name="product_mpn" value="<?php if(!empty($_POST['product_mpn'])) echo $_POST['product_mpn']; elseif(!empty($product_list->product_mpn_isbn)) echo $product_list->product_mpn_isbn; ?>"/>
             <datalist id="mpn">
             <?php if(!empty($listing_attributes)){
                  foreach ($listing_attributes as $row) { ?>
@@ -85,7 +85,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <div class="col-md-9">
 
           <select data-placeholder="Make" class="chosen-select form-control" id="product_make" name="product_make">
-            <option value=""> Choose Make </option>
+            <option value="" disabled selected>e.g Apple or Samsung</option>
            <?php if(!empty($product_makes)){
              foreach ($product_makes as $row) { ?>
             <option value="<?php echo $row->product_make; ?>"
@@ -100,8 +100,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
     <div class="form-group"><label class="col-md-3 control-label">Model</label>
         <div class="col-md-9">
 
-         <select data-placeholder="Model" class="chosen-select form-control" id="product_model"   name="product_model">
-            <option value=""> Choose Model </option>
+         <select data-placeholder="- Model -" class="chosen-select form-control" id="product_model"   name="product_model">
+            <option value="" disabled selected>e.g: iPhone 4S or Galaxy S6 Edge</option>
              <?php if(!empty($product_models)){
                  foreach ($product_models as $row) { ?>
                 <option value="<?php echo $row->product_model; ?>" <?php if(!empty($_POST) && $row->product_model==$_POST['product_model']){ echo'selected';}?><?php if(!empty($product_list->product_model) && $row->product_model == $product_list->product_model){ echo'selected';}?>><?php echo $row->product_model; ?></option>
@@ -114,7 +114,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
     <div class="form-group"><label class="col-md-3 control-label">Colour</label>
         <div class="col-md-9">
          <select data-placeholder="Model" class="chosen-select form-control" id="product_color"   name="product_color">
-            <option value=""> Choose Color </option>
+            <option value="" selected disabled>e.g Space Gray or Blue Sapphire</option>
              <?php if(!empty($product_colors)){
                  foreach ($product_colors as $row) { ?>
                 <option value="<?php echo $row->product_color; ?>" <?php if(!empty($_POST) && $row->product_color==$_POST['product_color']){ echo'selected';}?><?php if(!empty($product_list->product_color) && $row->product_color == $product_list->product_color){ echo'selected';}?>><?php echo $row->product_color; ?></option>
@@ -202,6 +202,7 @@ $(document).ready(function () {
     $('.'+$(this).val()).show();
   })
 });
+
 </script>
 
         <div class="hr-line-dashed"></div>
@@ -262,7 +263,7 @@ $(document).ready(function () {
                 <div class="input-group m-b"><span class="input-group-addon">
                 <input type="checkbox" name="maximum_checkbox" id="maximum_checkbox" <?php if(isset($_POST['maximum_checkbox']) ){ echo'checked';} elseif(!empty($product_list->max_price)){ echo'checked';}?>/> </span>
 
-                <input type="text" class="form-control" placeholder="Maxiumum Unit Price" name="max_price" value="<?php if(!empty($product_list->max_price)) echo $product_list->max_price; else echo set_value('max_price');?>" <?php if(isset($_POST['maximum_checkbox']) ){ echo'';} elseif(empty($product_list->max_price) ){ echo'disabled';}?>>
+                <input type="text" class="form-control" placeholder="Maximum Unit Price" name="max_price" value="<?php if(!empty($product_list->max_price)) echo $product_list->max_price; else echo set_value('max_price');?>" <?php if(isset($_POST['maximum_checkbox']) ){ echo'';} elseif(empty($product_list->max_price) ){ echo'disabled';}?>>
 
                 </div>
                 <p class="small text-navy">tick to enable. Any offers below this will be auto rejected, leave blank to allow any offers if ticked.</p>
@@ -516,7 +517,7 @@ $(document).ready(function () {
 
     <div class="form-group"><label class="col-md-3 control-label">Model</label>
         <div class="col-md-9">
-         <input type="text" list="model" id="product_model" class="form-control check_record" placeholder="Model"  name="product_model" value="<?php if(!empty($product_list->product_model)) echo $product_list->product_model; else echo set_value('product_model');?>"/>
+         <input type="text" list="model" id="product_model" class="form-control check_record" placeholder="e.g iPhone 4S or Galaxy S6 Edge"  name="product_model" value="<?php if(!empty($product_list->product_model)) echo $product_list->product_model; else echo set_value('product_model');?>"/>
            <datalist id="model">
             <?php if(!empty($product_models)){
                  foreach ($product_models as $row) { ?>
@@ -1018,7 +1019,7 @@ $(".validation").validate({
         var  mpnisbn1 = $(this).val();
         $.post('<?php echo base_url("marketplace/getAttributesInfo") ?>/MPNISBN/',{'mpnisbn':mpnisbn1}, function(data) {
 
-            productmakehtml='<option value="">Choose Make</option>';
+            productmakehtml='<option value="" selected disabled>- Choose Make -</option>';
             var mk1product_make=0;
            
            $.each(data.product_make, function(index, val) {
@@ -1043,7 +1044,7 @@ $(".validation").validate({
                test123(mpnisbn1,product_make);
            }
            //colors select
-            var product_colorshtml='<option value="">Choose Color</option>';
+            var product_colorshtml='<option value="">- Choose Color -</option>';
             $.each(data.product_colors, function(index, val) {
               product_colorshtml +='<option value="'+val+'"';
               if(data.numrows >= '1' && mpnisbn1!=""){
