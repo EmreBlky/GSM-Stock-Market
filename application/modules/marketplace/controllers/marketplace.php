@@ -1777,7 +1777,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
            
             $message = "";
             if( $offer_info=$this->marketplace_model->get_row('make_offer', array('id'=>$id))){
-                $message = "<br>Offer sent info - <br>Per unit price : ".$offer_info->unit_price."<br>Quantity : ".$offer_info->product_qty."<br>Shipping : ".$offer_info->shipping_price."<br><a href='Marketplace/listing_detail/'".$offer_info->listing_id."'>To resend a better offer Click here</a>";
+                $message = "<br>Offer sent info - <br>Per unit price : ".$offer_info->unit_price."<br>Quantity : ".$offer_info->product_qty."<br>Shipping : ".$offer_info->shipping_price."<br>To resend a better offer<a href='marketplace/listing_detail/"."/".$offer_info->listing_id."'> Click here</a>";
             }
             $this->marketplace_model->update('make_offer',array('offer_status'=>$status),array('id'=>$id, 'offer_received_by'=>$seller_id));
             $data = array(
@@ -2726,7 +2726,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
 
             $message = "";
             if( $offer_info=$this->marketplace_model->get_row('make_offer', array('id'=>$id))){
-                $message = "<br>Offer sent info - <br>Per unit price : ".$offer_info->unit_price."<br>Quantity : ".$offer_info->product_qty."<br>Shipping : ".$offer_info->shipping_price."<br><a href='Marketplace/listing_detail/'".$offer_info->listing_id."'>To resend a better offer Click here</a>";
+                $message = "<br>Offer sent info - <br>Per unit price : ".$offer_info->unit_price."<br>Quantity : ".$offer_info->product_qty."<br>Shipping : ".$offer_info->shipping_price."<br>To resend a better offer<a href='marketplace/listing_detail/"."/".$offer_info->listing_id."'> Click here</a>";
             }
             $this->marketplace_model->update('make_offer',array('offer_status'=>$status),array('id'=>$id));
 
