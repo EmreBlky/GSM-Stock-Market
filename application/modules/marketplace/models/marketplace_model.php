@@ -731,7 +731,7 @@ class Marketplace_model extends MY_Model {
 		$this->db->from('negotiation');
 		$this->db->join('listing','listing.id=negotiation.listing_id');
 		$this->db->where('negotiation.status',0);
-		
+		$this->db->or_where('negotiation.status',3);
 		return  $this->db->count_all_results();
 	}
 
