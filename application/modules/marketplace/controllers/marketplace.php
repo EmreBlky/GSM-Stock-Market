@@ -2796,4 +2796,69 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
        }
        redirect($_SERVER['HTTP_REFERER']);
    }
+
+   public function import($type='csv'){
+        
+        if($this->read_csv_xls_xlsx(array('file'=>'Workbook6.csv','path'=>'public/')))
+        {
+            echo "Data is inserted";
+        }else{
+            echo "Eroor";
+        }
+    }
+
+
+    private function read_csv_xls_xlsx($param=array()){
+        
+    if(!isset($param['file']) && empty($param['file'])){
+        $this->session->set_flashdata('msg_error','File Name can\'t be blank, Please try again.');
+        return FALSE;
+    }
+
+    if(!isset($param['path']) && empty($param['path'])){
+        $this->session->set_flashdata('msg_error','File Path can\'t be blank, Please try again.');
+        return FALSE;
+    }
+
+    $filename = $param['path'].$param['file'];
+
+    if(file_exists($filename)){
+        require(APPPATH.'libraries/spreadsheet-reader/php-excel-reader/excel_reader2.php');
+        require(APPPATH.'libraries/spreadsheet-reader/SpreadsheetReader.php');
+
+        $Reader = new SpreadsheetReader($filename);
+        $l=0; $u=0;$i=0;
+        $listing_data=array();
+       
+
+        foreach ($Reader as $row):
+            
+            if((!empty($row[1])) && $l>0){
+                $listing_data['product_mpn_isbn'] = $row[0];
+                 if($row[1]){
+                    $listing_data['product_mpn_isbn'] = $row[1];
+                 }
+                $listing_data['product_make'] = $row[2];
+                $listing_data['product_model'] = $row[3];
+                $listing_data['product_type'] = $row[5];
+                if($row[4]){
+                    $color=explode(',',$row[4]);
+                    $listing_data['product_color'] = json_encode($color);
+                }
+                if($row[6]){
+                    $capacity=explode(',',$row[6]);
+                    $listing_data['product_capacity'] = json_encode($capacity);
+                }
+                $listing_data['created']    = date('Y-m-d h:i:s A');
+                $this->marketplace_model->insert('listing_attributes', $listing_data);                    
+               }
+            $l++;
+        endforeach;
+       
+        return TRUE;
+        }else{
+            $this->session->set_flashdata('msg_error','Product does not exist, Please try again.');
+            return FALSE;
+        }
+    }
 }
