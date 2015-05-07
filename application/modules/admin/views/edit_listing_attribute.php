@@ -79,10 +79,28 @@
               </div>
           </div>
 
+          <!-- <div class="form-group"><label class="col-md-3 control-label">Product color</label>
+            <div class="col-md-9">
+                <input type="type" class="form-control" placeholder="Product color" name="product_color" value="<?php //if(!empty($listing_attributes->product_color)){ echo $listing_attributes->product_color; }else{ echo set_value('product_color'); } ?>"/>
+                <?php //echo form_error('product_color'); ?>
+            </div>
+          </div> -->
+
           <div class="form-group"><label class="col-md-3 control-label">Product color</label>
             <div class="col-md-9">
-                <input type="type" class="form-control" placeholder="Product color" name="product_color" value="<?php if(!empty($listing_attributes->product_color)){ echo $listing_attributes->product_color; }else{ echo set_value('product_color'); } ?>"/>
+                 <input type="type" class="form-control" placeholder="Eg : Black, White, Blue" name="product_color" value="<?php if(!empty($listing_attributes->product_color)){ print_r(unserialize($listing_attributes->product_color))
+                 ; }else{ echo set_value('product_color'); } ?>" />
                 <?php echo form_error('product_color'); ?>
+                <p>Please add comma seperated multiple colors</p>
+            </div>
+          </div>
+
+          <div class="form-group"><label class="col-md-3 control-label">Product capacity</label>
+            <div class="col-md-9">             
+                 <input type="type" class="form-control" placeholder="Eg : 2GB,4GB,8GB" name="product_capacity" value="<?php  if(!empty($listing_attributes->product_capacity)){ print_r(unserialize($listing_attributes->product_capacity))
+                 ; }else{echo set_value('product_capacity'); } ?>" />
+                <?php echo form_error('product_capacity'); ?>
+                <p>Please add comma seperated multiple values</p>
             </div>
           </div>
 
