@@ -212,7 +212,7 @@ if($count_order_history){ ?>
 	</span></a></li>
 	<li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers<span class="count_offer_sidbar_ajax">
 	<?php  if($counteroffer){ ?>
-		<span class="label label-info pull-right">
+		<span class="label label-warning pull-right">
 	<?php  echo $counteroffer; ?></span>
 	<?php } ?></span></a></li>
 	<li><a href="marketplace/open_orders"><i class="fa fa-book"></i> Open Orders <span class="count_open_order_class">
