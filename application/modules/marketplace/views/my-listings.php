@@ -61,7 +61,17 @@ $session_member_id = $this->session->userdata('members_id'); ?>
             <?php }}?>
         </td>
         <td><?php echo date('d-M-y, H:i', strtotime($value->schedule_date_time)); ?></td>
-        <td><?php echo date('d-M-y, H:i', strtotime($value->listing_end_datetime)); ?></td>
+        <td><span <?php 
+            $enddatetime = $value->listing_end_datetime;; 
+            $current_date = date('d-m-Y H:i:s'); 
+            $diff = abs(strtotime($current_date) - strtotime($enddatetime));
+            $years   = floor($diff / (365*60*60*24)); 
+            $months  = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));  
+            $days    = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+            if($days <=1){
+              echo "style='color:red!important'";
+            }
+            ?> data-countdown="<?php echo $value->listing_end_datetime; ?>"></td>
         <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
         <td><?php echo $value->condition; ?></td>
         <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
@@ -132,7 +142,17 @@ $session_member_id = $this->session->userdata('members_id'); ?>
             <?php }}?>
         </td>
         <td><?php echo date('d-M-y, H:i', strtotime($value->schedule_date_time)); ?></td>
-        <td><?php echo date('d-M-y, H:i', strtotime($value->listing_end_datetime)); ?></td>
+         <td><span <?php 
+            $enddatetime = $value->listing_end_datetime;; 
+            $current_date = date('d-m-Y H:i:s'); 
+            $diff = abs(strtotime($current_date) - strtotime($enddatetime));
+            $years   = floor($diff / (365*60*60*24)); 
+            $months  = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));  
+            $days    = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+            if($days <=1){
+              echo "style='color:red!important'";
+            }
+            ?> data-countdown="<?php echo $value->listing_end_datetime; ?>"></td>
         <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
         <td><?php echo $value->condition; ?></td>
         <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
@@ -481,7 +501,16 @@ border-color: #ec4758;
 color: #fff;
 }
 </style>
+<script src="public/admin/js/jquery.countdown.min.js"></script>
 <script>
+jQuery(document).ready(function($) {
+    $('[data-countdown]').each(function() {
+       var $this = $(this), finalDate = $(this).data('countdown');
+       $this.countdown(finalDate, function(event) {
+         $this.html(event.strftime('%Dd %Hh %Mm %Ss'));
+       });
+     });
+});
  function get_buyers_offer(listing_id) {
     var list = listing_id;
        $.post('<?php echo base_url() ?>marketplace/get_buyers_offer', {listing_id: list}, function(data) {

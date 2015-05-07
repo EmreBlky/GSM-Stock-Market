@@ -116,46 +116,46 @@ endif;
 <!-- </form>-->
 <div class="row">
 
-    <div class="col-lg-12">
+<div class="col-lg-12">
 
-        <div id="AdvanceSearch"   <?php if(isset($_GET['search'])) echo 'class="collapse in" aria-expanded="true"'; else echo 'class="collapse"'; ?> style="margin-top:10px">
-        <div class="well0 row">
+<div id="AdvanceSearch"   <?php if(isset($_GET['search'])) echo 'class="collapse in" aria-expanded="true"'; else echo 'class="collapse"'; ?> style="margin-top:10px">
+<div class="well0 row">
 
 
-            <div class="col-lg-2">
-                <div class="form-group">
-                 <label for="">Buyer Currency <i class="fa fa-question-circle cursor" data-toggle="modal" data-target="#currency" title="Click for more information"></i></label>
-                    <select name="currency" class="form-control" tabindex="1">
-                        <option value="" selected="">Any</option>
-                        <option <?php if( isset($_GET['currency']) && $_GET['currency']==1) echo 'selected="selected"'; ?> value="1">GBP &pound;</option>
-                        <option <?php if( isset($_GET['currency']) && $_GET['currency']==2) echo 'selected="selected"'; ?> value="2">Euro &euro;</option>
-                        <option <?php if( isset($_GET['currency']) && $_GET['currency']==3) echo 'selected="selected"'; ?> value="3">USD $</option>
-                    </select>
-                </div>
+<div class="col-lg-2">
+    <div class="form-group">
+     <label for="">Buyer Currency <i class="fa fa-question-circle cursor" data-toggle="modal" data-target="#currency" title="Click for more information"></i></label>
+        <select name="currency" class="form-control" tabindex="1">
+            <option value="" selected="">Any</option>
+            <option <?php if( isset($_GET['currency']) && $_GET['currency']==1) echo 'selected="selected"'; ?> value="1">GBP &pound;</option>
+            <option <?php if( isset($_GET['currency']) && $_GET['currency']==2) echo 'selected="selected"'; ?> value="2">Euro &euro;</option>
+            <option <?php if( isset($_GET['currency']) && $_GET['currency']==3) echo 'selected="selected"'; ?> value="3">USD $</option>
+        </select>
+    </div>
+</div>
+
+<div class="col-lg-2">
+  <div class="form-group">
+     <label for="">Item Condition <i class="fa fa-question-circle cursor" data-toggle="modal" data-target="#condition" title="Click for more information"></i></label>
+        <select name="condition" class="form-control" tabindex="3">
+            <option value="" selected="">Any</option>
+              <option <?php if(isset($_GET['condition']) && $_GET['condition']=='New') echo 'selected="selected"'; ?> value="New">New</option>
+              <option <?php if(isset($_GET['condition']) && $_GET['condition']=='Used') echo 'selected="selected"'; ?> value="Used">Used</option>
+              <option <?php if(isset($_GET['condition']) && $_GET['condition']=='Refurbished') echo 'selected="selected"'; ?> value="Refurbished">Refurbished</option>
+        </select>
+    </div>                        
+</div>   
+    
+<div class="col-lg-4">
+  <div class="form-group">
+     <label for="">Buyer Rating</label>
+            <div class="input-group">
+                <input type="text" class="input-sm form-control" name="start_rating" value="<?php if(isset($_GET['start_rating'])){ echo $_GET['start_rating']; }else{ echo '0';} ?>" maxlength="2"/>
+                <span class="input-group-addon">to</span>
+                <input type="text" class="input-sm form-control" name="end_rating" value="<?php if(isset($_GET['end_rating'])){ echo $_GET['end_rating']; }else{ echo '100';} ?>" maxlength="3" />
             </div>
-            
-            <div class="col-lg-2">
-              <div class="form-group">
-                 <label for="">Item Condition <i class="fa fa-question-circle cursor" data-toggle="modal" data-target="#condition" title="Click for more information"></i></label>
-                    <select name="condition" class="form-control" tabindex="3">
-                        <option value="" selected="">Any</option>
-                          <option <?php if(isset($_GET['condition']) && $_GET['condition']=='New') echo 'selected="selected"'; ?> value="New">New</option>
-                          <option <?php if(isset($_GET['condition']) && $_GET['condition']=='Used') echo 'selected="selected"'; ?> value="Used">Used</option>
-                          <option <?php if(isset($_GET['condition']) && $_GET['condition']=='Refurbished') echo 'selected="selected"'; ?> value="Refurbished">Refurbished</option>
-                    </select>
-                </div>                        
-            </div>   
-                
-            <div class="col-lg-4">
-              <div class="form-group">
-                 <label for="">Buyer Rating</label>
-                        <div class="input-group">
-                            <input type="text" class="input-sm form-control" name="start_rating" value="<?php if(isset($_GET['start_rating'])){ echo $_GET['start_rating']; }else{ echo '0';} ?>" maxlength="2"/>
-                            <span class="input-group-addon">to</span>
-                            <input type="text" class="input-sm form-control" name="end_rating" value="<?php if(isset($_GET['end_rating'])){ echo $_GET['end_rating']; }else{ echo '100';} ?>" maxlength="3" />
-                        </div>
-                </div>
-            </div>
+    </div>
+</div>
                 
 <div class="col-lg-4">
 <div class="form-group">
@@ -171,42 +171,42 @@ foreach ($product_colors as $row) { ?>
 </select>
 </div>
 </div> 
-            
-            <div class="col-lg-4">                        
-                 <div class="form-group">
-                 <label for="">Unit Price Range</label>
-                        <div class="input-group">
-                            <input type="text" class="input-sm form-control" id="price_range_start" name="price_range_start"  value="<?php if(isset($_GET['price_range_start'])) echo $_GET['price_range_start']; ?>"/>
-                            <span class="input-group-addon">to</span>
-                            <input type="text" class="input-sm form-control" id="price_range_end" name="price_range_end" value="<?php if(isset($_GET['price_range_end'])) echo $_GET['price_range_end']; ?>" />
-                        </div>
-                </div>
-            </div>      
-              
-             <div class="col-lg-4">
-                <div class="form-group">
-                  <label for="">MPN/ISBN</label>
-                    <input type="type" class="form-control" id="mpn" list="mpns" name="mpn" placeholder="MPN/ISBN" value="<?php if(!empty($_GET['mpn'])) echo $_GET['mpn'] ?>">
-                     <datalist id="mpns">
-                    <?php if(!empty($dataasa['product_mpn'])){
-                         foreach (array_unique ($dataasa['product_mpn']) as $row) { ?>
-                       <option value="<?php echo $row; ?>"><?php echo $row; ?></option>
-                         <?php }} ?>
-                    </datalist>
-                </div>
-            </div>
-                 
-             <div class="col-lg-4">
-              <div class="form-group">
-                 <label for="">Listing Type</label>
-                    <select name="listing_type_status" class="form-control">
-                    <option value="" selected="selected">Any</option>
-                    <option <?php if(isset($_GET['listing_type_status']) && $_GET['listing_type_status']==1) echo 'selected="selected"'; ?> value="1">Fixed Listing</option>
-                    <option <?php if(isset($_GET['listing_type_status']) && $_GET['listing_type_status']==2) echo 'selected="selected"'; ?> value="2">Tiered Listing</option>
-                    <option <?php if(isset($_GET['listing_type_status']) && $_GET['listing_type_status']==3) echo 'selected="selected"'; ?> value="3">Auction Listing</option>
-                    </select>
-                </div>
-            </div>  
+  
+  <div class="col-lg-4">                        
+       <div class="form-group">
+       <label for="">Unit Price Range</label>
+              <div class="input-group">
+                  <input type="text" class="input-sm form-control" id="price_range_start" name="price_range_start"  value="<?php if(isset($_GET['price_range_start'])) echo $_GET['price_range_start']; ?>"/>
+                  <span class="input-group-addon">to</span>
+                  <input type="text" class="input-sm form-control" id="price_range_end" name="price_range_end" value="<?php if(isset($_GET['price_range_end'])) echo $_GET['price_range_end']; ?>" />
+              </div>
+      </div>
+  </div>      
+    
+   <div class="col-lg-4">
+      <div class="form-group">
+        <label for="">MPN/ISBN</label>
+          <input type="type" class="form-control" id="mpn" list="mpns" name="mpn" placeholder="MPN/ISBN" value="<?php if(!empty($_GET['mpn'])) echo $_GET['mpn'] ?>">
+           <datalist id="mpns">
+          <?php if(!empty($dataasa['product_mpn'])){
+               foreach (array_unique ($dataasa['product_mpn']) as $row) { ?>
+             <option value="<?php echo $row; ?>"><?php echo $row; ?></option>
+               <?php }} ?>
+          </datalist>
+      </div>
+  </div>
+       
+   <div class="col-lg-4">
+    <div class="form-group">
+       <label for="">Listing Type</label>
+          <select name="listing_type_status" class="form-control">
+          <option value="" selected="selected">Any</option>
+          <option <?php if(isset($_GET['listing_type_status']) && $_GET['listing_type_status']==1) echo 'selected="selected"'; ?> value="1">Fixed Listing</option>
+          <option <?php if(isset($_GET['listing_type_status']) && $_GET['listing_type_status']==2) echo 'selected="selected"'; ?> value="2">Tiered Listing</option>
+          <option <?php if(isset($_GET['listing_type_status']) && $_GET['listing_type_status']==3) echo 'selected="selected"'; ?> value="3">Auction Listing</option>
+          </select>
+      </div>
+  </div>  
                 
  <div class="col-lg-4">
   <div class="form-group">
@@ -222,7 +222,7 @@ foreach ($product_colors as $row) { ?>
     </div>
 </div>        
   
-       <div class="col-lg-4">                    
+<div class="col-lg-4">                    
   <div class="form-group">
      <label for="">Buyer Region</label>
         <select class="form-control" id="region" name="region" onchange="changeRegion(this.value);" >
@@ -251,19 +251,19 @@ foreach ($product_colors as $row) { ?>
           </select>
     </div>
 </div><!-- 
-                
-             <div class="row">
-                 <div class="col-lg-4 col-lg-offset-4">
-                 <button type="submit" class="btn btn-lg btn-primary" name="search" >
-                 <i class="fa fa-search"></i> Search Now</button>
-            
-                 </div>
-             </div> -->
-         </form>
-        </div>
-        </div> <!-- AdvanceSearch -->
+        
+     <div class="row">
+         <div class="col-lg-4 col-lg-offset-4">
+         <button type="submit" class="btn btn-lg btn-primary" name="search" >
+         <i class="fa fa-search"></i> Search Now</button>
+    
+         </div>
+     </div> -->
+ </form>
+</div>
+</div> <!-- AdvanceSearch -->
 
-    </div>
+</div>
 </div>
 
 </div><!-- /ibox-content -->
@@ -298,7 +298,17 @@ foreach ($product_colors as $row) { ?>
 <?php if($listing_sell){
 foreach ($listing_sell as $value) {?>
 <tr data-toggle="modal" data-target="#myModal5">
-<td><p><span data-countdown="<?php echo $value->listing_end_datetime; ?>"></span></p></td>
+<td><p><span <?php 
+    $enddatetime = $value->listing_end_datetime;; 
+    $current_date = date('d-m-Y H:i:s'); 
+    $diff = abs(strtotime($current_date) - strtotime($enddatetime));
+    $years   = floor($diff / (365*60*60*24)); 
+    $months  = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));  
+    $days    = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+    if($days <=1){
+      echo "style='color:red!important'";
+    }
+    ?> data-countdown="<?php echo $value->listing_end_datetime; ?>"></span></p></td>
 <td class="text-center">
 <?php 
     if(isset($value->rating))
