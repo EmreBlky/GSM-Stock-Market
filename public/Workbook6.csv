@@ -1,1 +1,71 @@
-MPN/ISBN,Model Number,Make,Model,Colour,Product Type,Capacity,gsm_name,test3,Samsung,Galaxy S6 Edge,"White Pearl, Black Sapphire, Gold Platinum, Green Emerald",Handset,"16GB, 32GB, 64GB, 128GB",,test4,Samsung,Galaxy S6 Edge,"White Pearl, Black Sapphire, Gold Platinum, Green Emerald",Handset,"16GB, 32GB, 64GB, 128GB",test1,,Samsung,Galaxy S6 Edge,Green Emerald,LCD,,test2,,Samsung,Galaxy S6 Edge,Gold Platinum,LCD,,,,,,,,,
+MPN/ISBN;Make;Model;Colour;Product Type;Capacity
+GT-N8000;Samsung;Galaxy Note 10.1 (3G + Wifi);Black, White;Tablet;16GB, 32GB, 64GB
+GT-N8020;Samsung;Galaxy Note 10.1 (LTE, 3G + Wifi);Black, White;Tablet;16GB, 32GB, 64GB
+GT-N8005;Samsung;Galaxy Note 10.1 (TR-Model, no voice calls);Black, White;Tablet;16GB, 32GB, 64GB
+GT-N8010;Samsung;Galaxy Note 10.1 (Wifi);Black, White;Tablet;16GB, 32GB, 64GB
+GT-N8013;Samsung;Galaxy Note 10.1 (Wifi);Black, White;Tablet;16GB, 32GB, 64GB
+SM-P601;Samsung;Galaxy Note 10.1 2014 Edition (3G + Wifi);Black, White;Tablet;16GB, 32GB, 64GB
+SM-P605;Samsung;Galaxy Note 10.1 2014 Edition (LTE, 3G + Wifi);Black, White;Tablet;16GB, 32GB, 64GB
+SM-P600;Samsung;Galaxy Note 10.1 2014 Edition (Wifi);Black, White;Tablet;16GB, 32GB, 64GB
+SM-G920F;Samsung;Galaxy S6;White Pearl, Black Sapphire, Gold Platinum, Blue Topaz;Handset;32GB, 64GB, 128GB
+SM-G920F;Samsung;Galaxy S6;White Pearl, Black Sapphire, Gold Platinum, Blue Topaz;Handset;32GB, 64GB, 128GB
+SM-G920I;Samsung;Galaxy S6;White Pearl, Black Sapphire, Gold Platinum, Blue Topaz;Handset;32GB, 64GB, 128GB
+SM-G925F;Samsung;Galaxy S6 Edge;White Pearl, Black Sapphire, Gold Platinum, Green Emerald;Handset;32GB, 64GB, 128GB
+SM-G925I;Samsung;Galaxy S6 Edge;White Pearl, Black Sapphire, Gold Platinum, Green Emerald;Handset;32GB, 64GB, 128GB
+SM-T116NU;Samsung;Galaxy Tab 3 V;Black, White;Tablet;8GB
+SM-T350;Samsung;Galaxy Tab A 8.0;Smoky Titanium, Smoky Blue, White;Tablet;16GB, 32GB
+SM-T550;Samsung;Galaxy Tab A 9.7;Smoky Titanium, Smoky Blue, White;Tablet;16GB, 32GB
+SM-G388F;Samsung;Galaxy Xcover 3;Gray;Handset;8GB
+A1219;Apple;iPad;Black;Tablet;16GB, 32GB, 64GB
+A1416;Apple;iPad (3rd generation);Black, White;Tablet;16GB, 32GB, 64GB
+A1430;Apple;iPad (3rd generation) Wi-Fi + Cellular;Black, White;Tablet;16GB, 32GB, 64GB
+A1403;Apple;iPad (3rd generation) Wi-Fi + Cellular (VZ);Black, White;Tablet;16GB, 32GB, 64GB
+A1458;Apple;iPad (4th generation);Black, White;Tablet;16GB, 32GB, 64GB, 128GB
+A1459;Apple;iPad (4th generation) Wi-Fi + Cellular;Black, White;Tablet;16GB, 32GB, 64GB, 128GB
+A1460;Apple;iPad (4th generation) Wi-Fi + Cellular (MM);Black, White;Tablet;16GB, 32GB, 64GB, 128GB
+A1337;Apple;iPad (Wi-Fi + 3G);Black;Tablet;16GB, 32GB, 64GB
+A1395;Apple;iPad 2;Black, White;Tablet;16GB, 32GB, 64GB
+A1396;Apple;IPad 2 (Wi-Fi + 3G);Black, White;Tablet;16GB, 32GB, 64GB
+A1474;Apple;iPad Air;Black, White;Tablet;16GB, 32GB, 64GB, 128GB
+A1566;Apple;iPad Air 2;Silver, Space Gray, Gold;Tablet;16GB, 32GB, 64GB, 128GB
+A1567;Apple;iPad Air 2 Wi-Fi + Cellular;Silver, Space Gray, Gold;Tablet;16GB, 32GB, 64GB, 128GB
+A1475;Apple;iPad Air Wi-Fi + Cellular;Black, White;Tablet;16GB, 32GB, 64GB, 128GB
+A1476;Apple;iPad Air Wi-Fi + Cellular (TD-LTE);Black, White;Tablet;16GB, 32GB, 64GB, 128GB
+A1432;Apple;iPad Mini;Black, White;Tablet;16GB, 32GB, 64GB
+A1489;Apple;iPad Mini 2;Black, White;Tablet;16GB, 32GB, 64GB, 128GB
+A1490;Apple;iPad Mini 2 Wi-Fi + Cellular;Black, White;Tablet;16GB, 32GB, 64GB, 128GB
+A1491;Apple;iPad Mini 2 Wi-Fi + Cellular (TD-LTE);Black, White;Tablet;16GB, 32GB, 64GB, 128GB
+A1599;Apple;iPad Mini 3 Wi-Fi;Silver, Space Gray, Gold;Tablet;16GB, 64GB, 128GB
+A1600;Apple;iPad Mini 3 Wi-Fi + 4G;Silver, Space Gray, Gold;Tablet;16GB, 64GB, 128GB
+A1454;Apple;iPad Mini Wi-Fi + Cellular;Black, White;Tablet;16GB, 32GB, 64GB
+A1455;Apple;iPad Mini Wi-Fi + Cellular (MM);Black, White;Tablet;16GB, 32GB, 64GB
+A1203;Apple;iPhone;Black;Handset;4GB, 8GB, 16GB
+A1241;Apple;iPhone 3G;Black, White;Handset;8GB, 16GB
+A1324;Apple;iPhone 3G;Black, White;Handset;8GB, 16GB
+A1303;Apple;iPhone 3GS;Black, White;Handset;8GB, 16GB, 32GB
+A1325;Apple;iPhone 3GS;Black, White;Handset;8GB, 16GB, 32GB
+A1332;Apple;iPhone 4;Black, White;Handset;8GB, 16GB, 32GB
+A1387;Apple;iPhone 4S;Black, White;Handset;8GB, 16GB, 32GB, 64GB
+A1431;Apple;iPhone 4S;Black, White;Handset;8GB, 16GB, 32GB, 64GB
+A1428;Apple;iPhone 5;Black, Silver;Handset;16GB, 32GB, 64GB
+A1442;Apple;iPhone 5;Black, Silver;Handset;16GB, 32GB, 64GB
+A1507;Apple;iPhone 5C;White, Blue, Green, Yellow, Pink;Handset;8GB, 16GB, 32GB
+A1516;Apple;iPhone 5C;White, Blue, Green, Yellow, Pink;Handset;8GB, 16GB, 32GB
+A1526;Apple;iPhone 5C;White, Blue, Green, Yellow, Pink;Handset;8GB, 16GB, 32GB
+A1529;Apple;iPhone 5C;White, Blue, Green, Yellow, Pink;Handset;8GB, 16GB, 32GB
+A1532;Apple;iPhone 5C;White, Blue, Green, Yellow, Pink;Handset;8GB, 16GB, 32GB
+A1457;Apple;iPhone 5S;Space Gray, Silver, Gold;Handset;16GB, 32GB, 64GB
+A1518;Apple;iPhone 5S;Space Gray, Silver, Gold;Handset;16GB, 32GB, 64GB
+A1528;Apple;iPhone 5S;Space Gray, Silver, Gold;Handset;16GB, 32GB, 64GB
+A1530;Apple;iPhone 5S;Space Gray, Silver, Gold;Handset;16GB, 32GB, 64GB
+A1533;Apple;iPhone 5S;Space Gray, Silver, Gold;Handset;16GB, 32GB, 64GB
+A1586;Apple;iPhone 6;Space Gray, Silver, Gold;Handset;16GB, 64GB, 128GB
+A1589;Apple;iPhone 6;Space Gray, Silver, Gold;Handset;16GB, 64GB, 128GB
+A1524;Apple;iPhone 6 Plus;Space Gray, Silver, Gold;Handset;16GB, 64GB, 128GB
+A1593;Apple;iPhone 6 Plus;Space Gray, Silver, Gold;Handset;16GB, 64GB, 128GB
+A1553;Apple;Watch 38mm case;Stainless Steel, Space Black Stainless Steel;Watch;
+A1554;Apple;Watch 42mm case;Stainless Steel, Space Black Stainless Steel;Watch;
+A1553;Apple;Watch Edition 38mm case;18-Karat Rose Gold (White Cap), 18-Karat Rose Gold (Black Cap), 18-Karat Yellow Gold (Red Cap), 18-Karat Yellow Gold (Black Cap);Watch;
+A1554;Apple;Watch Edition 42mm case;18-Karat Rose Gold (White Cap), 18-Karat Yellow Gold (Black Cap), 18-Karat Yellow Gold (Blue Cap);Watch;
+A1553;Apple;Watch Sport 38mm case;Silver Aluminium, Space Gray Aluminium;Watch;
+A1554;Apple;Watch Sport 42mm case;Silver Aluminium, Space Gray Aluminium;Watch;
