@@ -1354,14 +1354,22 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                
             if($query->num_rows()>0 && !empty($mpnisbn)){
               foreach ($query->result() as $value){
-                    $product_makes[] =$value->product_make; 
-                    if(!in_array($value->product_color, $colors)){   
-                        $colors[]     =$value->product_color; 
-                    }   
+                    foreach ($query->result() as $value){
+                      $product_makes[] =$value->product_make; 
+                    if(!empty($value->product_color)){
+                    $color_arr=json_decode($value->product_color);
+                    foreach ($color_arr as $row_color) {
+                      if(!in_array($row_color, $colors)){   
+                        $colors[] = $row_color; 
+                      }   
+                    }
                     $product_types =$value->product_type;    
+                    }
                     }             
-                   $product_makes=array_unique($product_makes);
-                   //$colors=array_unique($colors);
+                    $product_makes=array_unique($product_makes);
+                  }             
+               $product_makes=array_unique($product_makes);
+               //$colors=array_unique($colors);
                   
                 $data=array(
                     'Status' =>TRUE,
@@ -1373,17 +1381,21 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
             }else{
                  $query=$this->db->query("SELECT product_make,product_color,product_type FROM `listing_attributes`;");
                   
-                     if($query->num_rows()>0){
-                       foreach ($query->result() as $value){
-                        if(!in_array($value->product_make, $product_makes)){   
-                            $product_makes[] =$value->product_make;  
-                         }  
-                         if(!in_array($value->product_color, $colors)){   
-                             $colors[]     =$value->product_color; 
-                         }      
-                        $product_types =$value->product_type;    
-                        }
-                     }
+                  if($query->num_rows()>0){
+                    foreach ($query->result() as $value){
+                      $product_makes[] =$value->product_make; 
+                    if(!empty($value->product_color)){
+                    $color_arr=json_decode($value->product_color);
+                    foreach ($color_arr as $row_color) {
+                      if(!in_array($row_color, $colors)){   
+                        $colors[] = $row_color; 
+                      }   
+                    }
+                    }
+                    $product_types =$value->product_type;    
+                    }             
+                    $product_makes=array_unique($product_makes);
+                   }
                    $data=array(
                     'Status' =>FALSE,
                     'numrows'=> $query->num_rows(),
@@ -1434,25 +1446,37 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
            $product_color=array();
              if($query->num_rows()>0){
                foreach ($query->result() as $value){
-                $product_color[] =$value->product_color;    
+                 if(!empty($value->product_color)){
+                    $color_arr=json_decode($value->product_color);
+                    foreach ($color_arr as $row_color) {
+                      if(!in_array($row_color, $product_color)){   
+                        $product_color[] = $row_color; 
+                      }   
+                    }
+                    } 
                 }             
-               $product_color=array_unique($product_color);
              }
-               $data=array(
-                'Status' =>TRUE,
-                'numrows'=> $query->num_rows(),
-                'product_color'=>$product_color,
-                );       
+       $data=array(
+        'Status' =>TRUE,
+        'numrows'=> $query->num_rows(),
+        'product_color'=>$product_color,
+        );       
         }else{
          $query=$this->db->query("SELECT product_color FROM `listing_attributes`;");
             if($query->num_rows()>0){
             $product_color=array();
              if($query->num_rows()>0){
                foreach ($query->result() as $value){
-                $product_color[] =$value->product_color;    
+                  if(!empty($value->product_color)){
+                    $color_arr=json_decode($value->product_color);
+                    foreach ($color_arr as $row_color) {
+                      if(!in_array($row_color, $product_color)){   
+                        $product_color[] = $row_color; 
+                      }   
+                    }
+                  }    
                 }             
-               $product_color=array_unique($product_color);
-             }
+              }
                $data=array(
                 'Status' =>TRUE,
                 'numrows'=> $query->num_rows(),
@@ -2872,30 +2896,22 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
 
         foreach ($Reader as $row):
             
-            if((!empty($row[0])) && $l>0){
-            if($row[0]){
+            if((!empty($row[1])) && $l>0){
                 $listing_data['product_mpn_isbn'] = $row[0];
-            }
-             if($row[1]){
-                $listing_data['product_mpn_isbn'] = $row[1];
-             }
-            if($row[2]){
+                 if($row[1]){
+                    $listing_data['product_mpn_isbn'] = $row[1];
+                 }
                 $listing_data['product_make'] = $row[2];
-            }
-            if($row[3]){
                 $listing_data['product_model'] = $row[3];
-              }
-            if($row[4]){
-                $color=explode(',',$row[4]);
-                $listing_data['product_color'] = json_encode($color);
-            }
-           if($row[5]){   
-            $listing_data['product_type'] = $row[5];
-            }    
-            if($row[6]){
-                $capacity=explode(',',$row[6]);
-                $listing_data['product_capacity'] = json_encode($capacity);
-            }
+                $listing_data['product_type'] = $row[5];
+                if($row[4]){
+                    $color=explode(',',$row[4]);
+                    $listing_data['product_color'] = json_encode($color);
+                }
+                if($row[6]){
+                    $capacity=explode(',',$row[6]);
+                    $listing_data['product_capacity'] = json_encode($capacity);
+                }
                 $listing_data['created']    = date('Y-m-d h:i:s A');
                 $this->marketplace_model->insert('listing_attributes', $listing_data);                    
                }
