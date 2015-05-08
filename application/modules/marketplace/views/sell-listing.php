@@ -1098,7 +1098,7 @@ $(document).on('change', '#mpn1', function(event) {
        
        $.each(data.product_make, function(index, val) {
             productmakehtml +='<option value="'+val+'"';
-            if(data.numrows >= '1' && mpnisbn1!=""){
+            if(data.condition==1){
             productmakehtml +=' selected="selected"';
                 mk1product_make=val;
             }
@@ -1126,7 +1126,7 @@ $(document).on('change', '#mpn1', function(event) {
         var product_colorshtml='<option value="">Choose Color</option>';
         $.each(data.product_colors, function(index, val) {
           product_colorshtml +='<option value="'+val+'"';
-          if(data.numrows >= '1' && mpnisbn1!=""){
+          if(data.condition==1){
             product_colorshtml +=' selected="selected"';
             }
           product_colorshtml +=' >'+val+'</option>';
@@ -1137,8 +1137,8 @@ $(document).on('change', '#mpn1', function(event) {
         $('select[name="product_color"]').html(product_colorshtml);
        $('select[name="product_color"]').trigger("chosen:updated");
     });
-});
-$(document).on('change', '#product_make', function(event) {
+  });
+  $(document).on('change', '#product_make', function(event) {
     event.preventDefault();
         var mpn1 =$('#mpn1').val();
         var product_make= $(this).val();
