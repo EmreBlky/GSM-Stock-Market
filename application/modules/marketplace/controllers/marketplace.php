@@ -2872,22 +2872,30 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
 
         foreach ($Reader as $row):
             
-            if((!empty($row[1])) && $l>0){
+            if((!empty($row[0])) && $l>0){
+            if($row[0]){
                 $listing_data['product_mpn_isbn'] = $row[0];
-                 if($row[1]){
-                    $listing_data['product_mpn_isbn'] = $row[1];
-                 }
+            }
+             if($row[1]){
+                $listing_data['product_mpn_isbn'] = $row[1];
+             }
+            if($row[2]){
                 $listing_data['product_make'] = $row[2];
+            }
+            if($row[3]){
                 $listing_data['product_model'] = $row[3];
-                $listing_data['product_type'] = $row[5];
-                if($row[4]){
-                    $color=explode(',',$row[4]);
-                    $listing_data['product_color'] = json_encode($color);
-                }
-                if($row[6]){
-                    $capacity=explode(',',$row[6]);
-                    $listing_data['product_capacity'] = json_encode($capacity);
-                }
+              }
+            if($row[4]){
+                $color=explode(',',$row[4]);
+                $listing_data['product_color'] = json_encode($color);
+            }
+           if($row[5]){   
+            $listing_data['product_type'] = $row[5];
+            }    
+            if($row[6]){
+                $capacity=explode(',',$row[6]);
+                $listing_data['product_capacity'] = json_encode($capacity);
+            }
                 $listing_data['created']    = date('Y-m-d h:i:s A');
                 $this->marketplace_model->insert('listing_attributes', $listing_data);                    
                }
