@@ -1,71 +1,171 @@
-MPN/ISBN;Make;Model;Colour;Product Type;Capacity
-GT-N8000;Samsung;Galaxy Note 10.1 (3G + Wifi);Black, White;Tablet;16GB, 32GB, 64GB
-GT-N8020;Samsung;Galaxy Note 10.1 (LTE, 3G + Wifi);Black, White;Tablet;16GB, 32GB, 64GB
-GT-N8005;Samsung;Galaxy Note 10.1 (TR-Model, no voice calls);Black, White;Tablet;16GB, 32GB, 64GB
-GT-N8010;Samsung;Galaxy Note 10.1 (Wifi);Black, White;Tablet;16GB, 32GB, 64GB
-GT-N8013;Samsung;Galaxy Note 10.1 (Wifi);Black, White;Tablet;16GB, 32GB, 64GB
-SM-P601;Samsung;Galaxy Note 10.1 2014 Edition (3G + Wifi);Black, White;Tablet;16GB, 32GB, 64GB
-SM-P605;Samsung;Galaxy Note 10.1 2014 Edition (LTE, 3G + Wifi);Black, White;Tablet;16GB, 32GB, 64GB
-SM-P600;Samsung;Galaxy Note 10.1 2014 Edition (Wifi);Black, White;Tablet;16GB, 32GB, 64GB
-SM-G920F;Samsung;Galaxy S6;White Pearl, Black Sapphire, Gold Platinum, Blue Topaz;Handset;32GB, 64GB, 128GB
-SM-G920F;Samsung;Galaxy S6;White Pearl, Black Sapphire, Gold Platinum, Blue Topaz;Handset;32GB, 64GB, 128GB
-SM-G920I;Samsung;Galaxy S6;White Pearl, Black Sapphire, Gold Platinum, Blue Topaz;Handset;32GB, 64GB, 128GB
-SM-G925F;Samsung;Galaxy S6 Edge;White Pearl, Black Sapphire, Gold Platinum, Green Emerald;Handset;32GB, 64GB, 128GB
-SM-G925I;Samsung;Galaxy S6 Edge;White Pearl, Black Sapphire, Gold Platinum, Green Emerald;Handset;32GB, 64GB, 128GB
-SM-T116NU;Samsung;Galaxy Tab 3 V;Black, White;Tablet;8GB
-SM-T350;Samsung;Galaxy Tab A 8.0;Smoky Titanium, Smoky Blue, White;Tablet;16GB, 32GB
-SM-T550;Samsung;Galaxy Tab A 9.7;Smoky Titanium, Smoky Blue, White;Tablet;16GB, 32GB
-SM-G388F;Samsung;Galaxy Xcover 3;Gray;Handset;8GB
-A1219;Apple;iPad;Black;Tablet;16GB, 32GB, 64GB
-A1416;Apple;iPad (3rd generation);Black, White;Tablet;16GB, 32GB, 64GB
-A1430;Apple;iPad (3rd generation) Wi-Fi + Cellular;Black, White;Tablet;16GB, 32GB, 64GB
-A1403;Apple;iPad (3rd generation) Wi-Fi + Cellular (VZ);Black, White;Tablet;16GB, 32GB, 64GB
-A1458;Apple;iPad (4th generation);Black, White;Tablet;16GB, 32GB, 64GB, 128GB
-A1459;Apple;iPad (4th generation) Wi-Fi + Cellular;Black, White;Tablet;16GB, 32GB, 64GB, 128GB
-A1460;Apple;iPad (4th generation) Wi-Fi + Cellular (MM);Black, White;Tablet;16GB, 32GB, 64GB, 128GB
-A1337;Apple;iPad (Wi-Fi + 3G);Black;Tablet;16GB, 32GB, 64GB
-A1395;Apple;iPad 2;Black, White;Tablet;16GB, 32GB, 64GB
-A1396;Apple;IPad 2 (Wi-Fi + 3G);Black, White;Tablet;16GB, 32GB, 64GB
-A1474;Apple;iPad Air;Black, White;Tablet;16GB, 32GB, 64GB, 128GB
-A1566;Apple;iPad Air 2;Silver, Space Gray, Gold;Tablet;16GB, 32GB, 64GB, 128GB
-A1567;Apple;iPad Air 2 Wi-Fi + Cellular;Silver, Space Gray, Gold;Tablet;16GB, 32GB, 64GB, 128GB
-A1475;Apple;iPad Air Wi-Fi + Cellular;Black, White;Tablet;16GB, 32GB, 64GB, 128GB
-A1476;Apple;iPad Air Wi-Fi + Cellular (TD-LTE);Black, White;Tablet;16GB, 32GB, 64GB, 128GB
-A1432;Apple;iPad Mini;Black, White;Tablet;16GB, 32GB, 64GB
-A1489;Apple;iPad Mini 2;Black, White;Tablet;16GB, 32GB, 64GB, 128GB
-A1490;Apple;iPad Mini 2 Wi-Fi + Cellular;Black, White;Tablet;16GB, 32GB, 64GB, 128GB
-A1491;Apple;iPad Mini 2 Wi-Fi + Cellular (TD-LTE);Black, White;Tablet;16GB, 32GB, 64GB, 128GB
-A1599;Apple;iPad Mini 3 Wi-Fi;Silver, Space Gray, Gold;Tablet;16GB, 64GB, 128GB
-A1600;Apple;iPad Mini 3 Wi-Fi + 4G;Silver, Space Gray, Gold;Tablet;16GB, 64GB, 128GB
-A1454;Apple;iPad Mini Wi-Fi + Cellular;Black, White;Tablet;16GB, 32GB, 64GB
-A1455;Apple;iPad Mini Wi-Fi + Cellular (MM);Black, White;Tablet;16GB, 32GB, 64GB
-A1203;Apple;iPhone;Black;Handset;4GB, 8GB, 16GB
-A1241;Apple;iPhone 3G;Black, White;Handset;8GB, 16GB
-A1324;Apple;iPhone 3G;Black, White;Handset;8GB, 16GB
-A1303;Apple;iPhone 3GS;Black, White;Handset;8GB, 16GB, 32GB
-A1325;Apple;iPhone 3GS;Black, White;Handset;8GB, 16GB, 32GB
-A1332;Apple;iPhone 4;Black, White;Handset;8GB, 16GB, 32GB
-A1387;Apple;iPhone 4S;Black, White;Handset;8GB, 16GB, 32GB, 64GB
-A1431;Apple;iPhone 4S;Black, White;Handset;8GB, 16GB, 32GB, 64GB
-A1428;Apple;iPhone 5;Black, Silver;Handset;16GB, 32GB, 64GB
-A1442;Apple;iPhone 5;Black, Silver;Handset;16GB, 32GB, 64GB
-A1507;Apple;iPhone 5C;White, Blue, Green, Yellow, Pink;Handset;8GB, 16GB, 32GB
-A1516;Apple;iPhone 5C;White, Blue, Green, Yellow, Pink;Handset;8GB, 16GB, 32GB
-A1526;Apple;iPhone 5C;White, Blue, Green, Yellow, Pink;Handset;8GB, 16GB, 32GB
-A1529;Apple;iPhone 5C;White, Blue, Green, Yellow, Pink;Handset;8GB, 16GB, 32GB
-A1532;Apple;iPhone 5C;White, Blue, Green, Yellow, Pink;Handset;8GB, 16GB, 32GB
-A1457;Apple;iPhone 5S;Space Gray, Silver, Gold;Handset;16GB, 32GB, 64GB
-A1518;Apple;iPhone 5S;Space Gray, Silver, Gold;Handset;16GB, 32GB, 64GB
-A1528;Apple;iPhone 5S;Space Gray, Silver, Gold;Handset;16GB, 32GB, 64GB
-A1530;Apple;iPhone 5S;Space Gray, Silver, Gold;Handset;16GB, 32GB, 64GB
-A1533;Apple;iPhone 5S;Space Gray, Silver, Gold;Handset;16GB, 32GB, 64GB
-A1586;Apple;iPhone 6;Space Gray, Silver, Gold;Handset;16GB, 64GB, 128GB
-A1589;Apple;iPhone 6;Space Gray, Silver, Gold;Handset;16GB, 64GB, 128GB
-A1524;Apple;iPhone 6 Plus;Space Gray, Silver, Gold;Handset;16GB, 64GB, 128GB
-A1593;Apple;iPhone 6 Plus;Space Gray, Silver, Gold;Handset;16GB, 64GB, 128GB
-A1553;Apple;Watch 38mm case;Stainless Steel, Space Black Stainless Steel;Watch;
-A1554;Apple;Watch 42mm case;Stainless Steel, Space Black Stainless Steel;Watch;
-A1553;Apple;Watch Edition 38mm case;18-Karat Rose Gold (White Cap), 18-Karat Rose Gold (Black Cap), 18-Karat Yellow Gold (Red Cap), 18-Karat Yellow Gold (Black Cap);Watch;
-A1554;Apple;Watch Edition 42mm case;18-Karat Rose Gold (White Cap), 18-Karat Yellow Gold (Black Cap), 18-Karat Yellow Gold (Blue Cap);Watch;
-A1553;Apple;Watch Sport 38mm case;Silver Aluminium, Space Gray Aluminium;Watch;
-A1554;Apple;Watch Sport 42mm case;Silver Aluminium, Space Gray Aluminium;Watch;
+MPN/ISBN,Make,Model,Colour,Product Type
+A1203,Apple,iPhone,Handset,Black
+A1219,Apple,iPad,Tablet,Black
+A1241,Apple,iPhone 3G,Handset,Black
+A1241,Apple,iPhone 3G,Handset,White
+A1303,Apple,iPhone 3GS,Handset,White
+A1303,Apple,iPhone 3GS,Handset,Black
+A1324,Apple,iPhone 3G,Handset,Black
+A1324,Apple,iPhone 3G,Handset,White
+A1325,Apple,iPhone 3GS,Handset,White
+A1325,Apple,iPhone 3GS,Handset,Black
+A1332,Apple,iPhone 4,Handset,Black
+A1332,Apple,iPhone 4,Handset,White
+A1337,Apple,iPad (Wi-Fi + 3G),Tablet,Black
+A1387,Apple,iPhone 4S,Handset,Black
+A1387,Apple,iPhone 4S,Handset,White
+A1395,Apple,iPad 2,Tablet,Black
+A1395,Apple,iPad 2,Tablet,White
+A1396,Apple,iPad (Wi-Fi + 3G),Tablet,Black
+A1396,Apple,iPad (Wi-Fi + 3G),Tablet,White
+A1403,Apple,iPad (3rd generation) Wi-Fi + Cellular (VZ),Tablet,White
+A1403,Apple,iPad (3rd generation) Wi-Fi + Cellular (VZ),Tablet,Black
+A1416,Apple,iPad (3rd generation),Tablet,White
+A1416,Apple,iPad (3rd generation),Tablet,Black
+A1428,Apple,iPhone 5,Handset,Black
+A1428,Apple,iPhone 5,Handset,Silver
+A1430,Apple,iPad (3rd generation) Wi-Fi + Cellular,Tablet,Black
+A1430,Apple,iPad (3rd generation) Wi-Fi + Cellular,Tablet,White
+A1431,Apple,iPhone 4S,Handset,White
+A1431,Apple,iPhone 4S,Handset,Black
+A1432,Apple,iPad Mini,Tablet,Black
+A1432,Apple,iPad Mini,Tablet,White
+A1442,Apple,iPhone 5,Handset,Black
+A1442,Apple,iPhone 5,Handset,Silver
+A1454,Apple,iPad Mini Wi-Fi + Cellular,Tablet,White
+A1454,Apple,iPad Mini Wi-Fi + Cellular,Tablet,Black
+A1455,Apple,iPad Mini Wi-Fi + Cellular (MM),Tablet,White
+A1455,Apple,iPad Mini Wi-Fi + Cellular (MM),Tablet,Black
+A1457,Apple,iPhone 5S,Handset,Space Gray
+A1457,Apple,iPhone 5S,Handset,Silver
+A1457,Apple,iPhone 5S,Handset,Gold
+A1458,Apple,iPad (4th generation),Tablet,Black
+A1458,Apple,iPad (4th generation),Tablet,White
+A1459,Apple,iPad (4th generation) Wi-Fi + Cellular,Tablet,Black
+A1459,Apple,iPad (4th generation) Wi-Fi + Cellular,Tablet,White
+A1460,Apple,iPad (4th generation) Wi-Fi + Cellular (MM),Tablet,White
+A1460,Apple,iPad (4th generation) Wi-Fi + Cellular (MM),Tablet,Black
+A1474,Apple,iPad Air,Tablet,Black
+A1474,Apple,iPad Air,Tablet,White
+A1475,Apple,iPad Air Wi-Fi + Cellular,Tablet,Black
+A1475,Apple,iPad Air Wi-Fi + Cellular,Tablet,White
+A1476,Apple,iPad Air Wi-Fi + Cellular (TD-LTE),Tablet,Black
+A1476,Apple,iPad Air Wi-Fi + Cellular (TD-LTE),Tablet,White
+A1489,Apple,iPad Mini 2,Tablet,Black
+A1489,Apple,iPad Mini 2,Tablet,White
+A1490,Apple,iPad Mini 2 Wi-Fi + Cellular,Tablet,Black
+A1490,Apple,iPad Mini 2 Wi-Fi + Cellular,Tablet,White
+A1491,Apple,iPad Mini 2 Wi-Fi + Cellular (TD-LTE),Tablet,Black
+A1491,Apple,iPad Mini 2 Wi-Fi + Cellular (TD-LTE),Tablet,White
+A1507,Apple,iPhone 5C,Handset,White
+A1507,Apple,iPhone 5C,Handset,Blue
+A1507,Apple,iPhone 5C,Handset,Green
+A1507,Apple,iPhone 5C,Handset,Yellow
+A1516,Apple,iPhone 5C,Handset,Pink
+A1518,Apple,iPhone 5S,Handset,Space Gray
+A1518,Apple,iPhone 5S,Handset,Silver
+A1518,Apple,iPhone 5S,Handset,Gold
+A1524,Apple,iPhone 6 Plus,Handset,Space Gray
+A1524,Apple,iPhone 6 Plus,Handset,Silver
+A1524,Apple,iPhone 6 Plus,Handset,Gold
+A1526,Apple,iPhone 5C,Handset,White
+A1526,Apple,iPhone 5C,Handset,Blue
+A1526,Apple,iPhone 5C,Handset,Green
+A1526,Apple,iPhone 5C,Handset,Yellow
+A1526,Apple,iPhone 5C,Handset,Pink
+A1528,Apple,iPhone 5S,Handset,Space Gray
+A1528,Apple,iPhone 5S,Handset,Silver
+A1528,Apple,iPhone 5S,Handset,Gold
+A1529,Apple,iPhone 5C,Handset,White
+A1529,Apple,iPhone 5C,Handset,Blue
+A1529,Apple,iPhone 5C,Handset,Green
+A1529,Apple,iPhone 5C,Handset,Yellow
+A1529,Apple,iPhone 5C,Handset,Pink
+A1530,Apple,iPhone 5S,Handset,Space Gray
+A1530,Apple,iPhone 5S,Handset,Silver
+A1530,Apple,iPhone 5S,Handset,Gold
+A1532,Apple,iPhone 5C,Handset,White
+A1532,Apple,iPhone 5C,Handset,Blue
+A1532,Apple,iPhone 5C,Handset,Green
+A1532,Apple,iPhone 5C,Handset,Yellow
+A1532,Apple,iPhone 5C,Handset,Pink
+A1533,Apple,iPhone 5S,Handset,Space Gray
+A1533,Apple,iPhone 5S,Handset,Silver
+A1533,Apple,iPhone 5S,Handset,Gold
+A1553,Apple,Watch 38mm case,Watch,Stainless Steel
+A1553,Apple,Watch 38mm case,Watch,Space Black Stainless Steel
+A1553,Apple,Watch Sport 38mm case,Watch,Silver Aluminium
+A1553,Apple,Watch Sport 38mm case,Watch,Silver Aluminium
+A1553,Apple,Watch Edition 38mm case,Watch,18-Karat Rose Gold (White Cap)
+A1553,Apple,Watch Edition 38mm case,Watch,18-Karat Rose Gold (Black Cap)
+A1553,Apple,Watch Edition 38mm case,Watch,18-Karat Yellow Gold (Red Cap)
+A1553,Apple,Watch Edition 38mm case,Watch,18-Karat Yellow Gold (Black Cap)
+A1554,Apple,Watch 42mm case,Watch,Stainless Steel
+A1554,Apple,Watch 42mm case,Watch,Space Black Stainless Steel
+A1554,Apple,Watch Sport 42mm case,Watch,Space Gray Aluminium
+A1554,Apple,Watch Sport 42mm case,Watch,Silver Aluminium
+A1554,Apple,Watch Edition 42mm case,Watch,18-Karat Rose Gold (White Cap)
+A1554,Apple,Watch Edition 42mm case,Watch,18-Karat Yellow Gold (Black Cap)
+A1554,Apple,Watch Edition 42mm case,Watch,18-Karat Yellow Gold (Blue Cap)
+A1566,Apple,iPad Air 2,Tablet,Silver
+A1566,Apple,iPad Air 2,Tablet,Space Gray
+A1566,Apple,iPad Air 2,Tablet,Gold
+A1567,Apple,iPad Air 2 Wi-Fi + Cellular,Tablet,Silver
+A1567,Apple,iPad Air 2 Wi-Fi + Cellular,Tablet,Space Gray
+A1567,Apple,iPad Air 2 Wi-Fi + Cellular,Tablet,Gold
+A1586,Apple,iPhone 6,Handset,Space Gray
+A1586,Apple,iPhone 6,Handset,Silver
+A1586,Apple,iPhone 6,Handset,Gold
+A1589,Apple,iPhone 6,Handset,Space Gray
+A1589,Apple,iPhone 6,Handset,Silver
+A1589,Apple,iPhone 6,Handset,Gold
+A1593,Apple,iPhone 6 Plus,Handset,Space Gray
+A1593,Apple,iPhone 6 Plus,Handset,Silver
+A1593,Apple,iPhone 6 Plus,Handset,Gold
+A1599,Apple,iPad Mini 3,Tablet,Silver
+A1599,Apple,iPad Mini 3,Tablet,Space Gray
+A1599,Apple,iPad Mini 3,Tablet,Gold
+A1600,Apple,iPad Mini 3 Wi-Fi + Cellular,Tablet,Silver
+A1600,Apple,iPad Mini 3 Wi-Fi + Cellular,Tablet,Space Gray
+A1600,Apple,iPad Mini 3 Wi-Fi + Cellular,Tablet,Gold
+GT-N8000,Samsung,Galaxy Note 10.1 (3G + Wifi),Tablet,Black
+GT-N8000,Samsung,Galaxy Note 10.1 (3G + Wifi),Tablet,White
+GT-N8005,Samsung,"Galaxy Note 10.1 (TR-Model, no voice calls)",Tablet,Black
+GT-N8005,Samsung,"Galaxy Note 10.1 (TR-Model, no voice calls)",Tablet,White
+GT-N8010,Samsung,Galaxy Note 10.1 (Wifi),Tablet,Black
+GT-N8010,Samsung,Galaxy Note 10.1 (Wifi),Tablet,White
+GT-N8013,Samsung,Galaxy Note 10.1 (Wifi),Tablet,Black
+GT-N8013,Samsung,Galaxy Note 10.1 (Wifi),Tablet,White
+GT-N8020,Samsung,"Galaxy Note 10.1 (LTE, 3G + Wifi)",Tablet,Black
+GT-N8020,Samsung,"Galaxy Note 10.1 (LTE, 3G + Wifi)",Tablet,White
+SM-G388F,Samsung,Galaxy Xcover 3,Handset,Gray
+SM-G920F,Samsung,Galaxy S6,Handset,White Pearl
+SM-G920F,Samsung,Galaxy S6,Handset,Black Sapphire
+SM-G920F,Samsung,Galaxy S6,Handset,Gold Platinum
+SM-G920F,Samsung,Galaxy S6,Handset,Blue Topaz
+SM-G920I,Samsung,Galaxy S6,Handset,White Pearl
+SM-G920I,Samsung,Galaxy S6,Handset,Black Sapphire
+SM-G920I,Samsung,Galaxy S6,Handset,Gold Platinum
+SM-G920I,Samsung,Galaxy S6,Handset,Blue Topaz
+SM-G925F,Samsung,Galaxy S6 Edge,Handset,White Pearl
+SM-G925F,Samsung,Galaxy S6 Edge,Handset,Black Sapphire
+SM-G925F,Samsung,Galaxy S6 Edge,Handset,Gold Platinum
+SM-G925F,Samsung,Galaxy S6 Edge,Handset,Green Emerald
+SM-G925I,Samsung,Galaxy S6 Edge,Handset,White Pearl
+SM-G925I,Samsung,Galaxy S6 Edge,Handset,Black Sapphire
+SM-G925I,Samsung,Galaxy S6 Edge,Handset,Gold Platinum
+SM-G925I,Samsung,Galaxy S6 Edge,Handset,Green Emerald
+SM-P600,Samsung,Galaxy Note 10.1 2014 Edition (Wifi),Tablet,White
+SM-P600,Samsung,Galaxy Note 10.1 2014 Edition (Wifi),Tablet,Black
+SM-P601,Samsung,Galaxy Note 10.1 2014 Edition (3G + Wifi),Tablet,Black
+SM-P601,Samsung,Galaxy Note 10.1 2014 Edition (3G + Wifi),Tablet,White
+SM-P605,Samsung,"Galaxy Note 10.1 2014 Edition (LTE, 3G + Wifi)",Tablet,Black
+SM-P605,Samsung,"Galaxy Note 10.1 2014 Edition (LTE, 3G + Wifi)",Tablet,White
+SM-T116NU,Samsung,Galaxy Tab 3 V,Tablet,White
+SM-T116NU,Samsung,Galaxy Tab 3 V,Tablet,Black
+SM-T350,Samsung,Galaxy Tab A 8.0,Tablet,Smoky Titanium
+SM-T350,Samsung,Galaxy Tab A 8.0,Tablet,Smoky Blue
+SM-T350,Samsung,Galaxy Tab A 8.0,Tablet,White
+SM-T550,Samsung,Galaxy Tab A 9.7,Tablet,Smoky Titanium
+SM-T550,Samsung,Galaxy Tab A 9.7,Tablet,Smoky Blue
+SM-T550,Samsung,Galaxy Tab A 9.7,Tablet,White
