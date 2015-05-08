@@ -65,7 +65,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 
     <div class="form-group"><label class="col-md-3 control-label">MPN/ISBN</label>
         <div class="col-md-9">
-            <input type="type" id="mpn1" list="mpn" class="form-control check_record" placeholder="MPN/ISBN"  name="product_mpn" value="<?php if(!empty($product_list->product_mpn_isbn)) echo $product_list->product_mpn_isbn; ?><?php if(!empty($_POST['product_mpn'])) echo $_POST['product_mpn']; ?>"/>
+            <input type="type" id="mpn1" list="mpn" class="form-control check_record" placeholder="e.g A1586 or SM-G925" name="product_mpn" value="<?php if(!empty($product_list->product_mpn_isbn)) echo $product_list->product_mpn_isbn; ?><?php if(!empty($_POST['product_mpn'])) echo $_POST['product_mpn']; ?>"/>
             <datalist id="mpn">
             <?php if(!empty($listing_attributes)){
                  foreach ($listing_attributes as $row) { ?>
@@ -81,7 +81,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
      <div class="form-group"><label class="col-md-3 control-label">Make</label>
         <div class="col-md-9">
             <select data-placeholder="Make" class="chosen-select form-control" id="product_make" name="product_make">
-            <option value=""> Choose Make </option>
+            <option value="" disabled selected>e.g Apple or Samsung</option>
             <?php if(!empty($product_makes)){
             foreach ($product_makes as $row) { ?>
             <option value="<?php echo $row->product_make; ?>" <?php if(!empty($_POST) && $row->product_make==$_POST['product_make']){ echo'selected';}?><?php if(!empty($product_list->product_make) && $row->product_make == $product_list->product_make){ echo'selected';}?>><?php echo $row->product_make; ?></option>
@@ -95,7 +95,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <div class="col-md-9">
 
             <select data-placeholder="Model" class="chosen-select form-control" id="product_model"   name="product_model">
-            <option value=""> Choose Model </option>
+            <option value="" disabled selected>e.g: iPhone 4S or Galaxy S6 Edge</option>
             <?php if(!empty($product_models)){
                  foreach ($product_models as $row) { ?>
                 <option value="<?php echo $row->product_model; ?>" <?php if(!empty($_POST) && $row->product_model==$_POST['product_model']){ echo'selected';}?><?php if(!empty($product_list->product_model) && $row->product_model == $product_list->product_model){ echo'selected';}?>><?php echo $row->product_model; ?></option>
@@ -108,7 +108,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
      <div class="form-group"><label class="col-md-3 control-label">Colour</label>
         <div class="col-md-9">
          <select data-placeholder="Model" class="chosen-select form-control" id="product_color"   name="product_color">
-            <option value=""> Choose Color </option>
+            <option value="" selected disabled>e.g Space Gray or Blue Sapphire</option>
              <?php if(!empty($product_colors)){
                  foreach ($product_colors as $row) { ?>
                 <option value="<?php echo $row->product_color; ?>" <?php if(!empty($_POST) && $row->product_color==$_POST['product_color']){ echo'selected';}?><?php if(!empty($product_list->product_color) && $row->product_color == $product_list->product_color){ echo'selected';}?>><?php echo $row->product_color; ?></option>
@@ -256,7 +256,7 @@ $(document).ready(function () {
             <span class="input-group-addon">
             <input type="checkbox" name="minimum_checkbox" id="minimum_checkbox" <?php if(isset($_POST['minimum_checkbox']) ){ echo'checked';} elseif(!empty($product_list->min_price)){ echo'checked';}?>/> </span>
 
-            <input type="text" class="form-control" placeholder="What is your minumum price?" name="min_price" value="<?php if(!empty($product_list->min_price)) echo $product_list->min_price; else echo set_value('min_price');?>"
+            <input type="text" class="form-control" placeholder="What is your minimum price?" name="min_price" value="<?php if(!empty($product_list->min_price)) echo $product_list->min_price; else echo set_value('min_price');?>"
             <?php if(isset($_POST['minimum_checkbox']) ){ echo'';} elseif(empty($product_list->min_price) ){ echo'disabled';}?>></div>
             <p class="small text-navy">Tick allow offers. Any offers below this will be auto rejected, leave blank to allow any offers if ticked.</p>
             <?php echo form_error('min_price'); ?>
@@ -290,7 +290,6 @@ $(document).ready(function () {
 
     <div class="form-group"><label class="col-md-3 control-label">Shipping Terms <button class="btn btn-success btn-circle" type="button" style="width:20px;height:20px;border-radius:10px;font-size:10px;padding:0;margin-bottom:0" data-toggle="modal" data-target="#shipping" title="Click for more information"><i class="fa fa-question"></i></button></label>
     <div class="col-md-9">
-
         <select class="form-control" name="shipping_term" onchange="shippings_to_couriers(this.value);">
             <option value="">Select Terms</option>
             <?php if($shippings){
@@ -337,6 +336,7 @@ $(document).ready(function () {
             <a class="btn btn-primary shipping-opt" id="add_shipping"><i class="fa fa-plus"></i> Add Shipping Option</a>
         </div>
         <div class="clearfix"></div>
+        <p class="text-navy small">Select the drop down above and add custom shipping options to this table to provide buyers multiple shipping options.</p>
         <div class="col-md-9 col-md-offset-3">
             <div id="shipping_feesMsg"></div>
         </div>
