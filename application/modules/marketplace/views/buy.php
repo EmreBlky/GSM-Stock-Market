@@ -30,7 +30,7 @@ $.ajax({
 </script>
 <div class="row wrapper border-bottom white-bg page-heading">
 <div class="col-lg-10">
-  <h2>Selling Offers</h2>
+  <h2>Buying Request</h2>
   <ol class="breadcrumb">
     <li><a href="/">Home</a></li>
     <li>Marketplace</li>
