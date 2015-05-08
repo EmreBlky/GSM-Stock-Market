@@ -669,10 +669,12 @@ class Admin extends MX_Controller
             $product_capacity='';
             $product_color='';
             if(!empty($this->input->post('product_color'))){
-                $product_color = serialize($this->input->post('product_color')); 
+                $colors = explode(',',$this->input->post('product_color'));
+                $product_color = json_encode($colors);
             }
-             if(!empty($this->input->post('product_capacity'))){
-                $product_capacity = serialize($this->input->post('product_capacity')); 
+            if(!empty($this->input->post('product_capacity'))){
+                $capacity=explode(',',$this->input->post('product_capacity'));
+                $product_capacity = json_encode($capacity);
             }
             $data_insert=array(
             'product_mpn_isbn' =>  $this->input->post('product_mpn'),
@@ -809,10 +811,12 @@ class Admin extends MX_Controller
             $product_capacity='';
             $product_color='';
             if(!empty($this->input->post('product_color'))){
-                $product_color = serialize($this->input->post('product_color')); 
+                $colors = explode(',',$this->input->post('product_color'));
+                $product_color = json_encode($colors);
             }
-             if(!empty($this->input->post('product_capacity'))){
-                $product_capacity = serialize($this->input->post('product_capacity')); 
+            if(!empty($this->input->post('product_capacity'))){
+                $capacity=explode(',',$this->input->post('product_capacity'));
+                $product_capacity = json_encode($capacity);
             }
             $data_update=array(
             'product_mpn_isbn' =>  $this->input->post('product_mpn'),
