@@ -184,7 +184,6 @@ class Marketplace extends MX_Controller
         $this->form_validation->set_rules('product_type', 'product type', 'required');
         $this->form_validation->set_rules('product_color', 'product color', 'required');
         $this->form_validation->set_rules('condition', 'condition', 'required');
-        $this->form_validation->set_rules('spec', 'spec', 'required');
         $this->form_validation->set_rules('currency', 'currency', 'required');
         $this->form_validation->set_rules('unit_price', 'unit price', 'required|numeric');
         if(isset($_POST['minimum_checkbox'])){
