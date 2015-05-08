@@ -1338,21 +1338,21 @@ class Marketplace extends MX_Controller
         $this->templates->page($data);
     }
 
+
 public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
 
-    $data=array('Status'=>FALSE,'numrows'=>0,'product_colors'=>'');
+    $data=array('Status'=>FALSE,'numrows'=>0,'product_colors'=>'','condition'=>0);
 
     if($_POST){
         if($type=='MPNISBN'){
 
             $mpnisbn=trim($_POST['mpnisbn']);
 
-            $query=$this->db->query("SELECT product_make,product_color,product_type FROM `listing_attributes` WHERE product_mpn_isbn ='$mpnisbn';");
-               
                 $product_makes=array();
                 $colors=array();
-               
-            if($query->num_rows()>0 && !empty($mpnisbn)){
+            $query=$this->db->query("SELECT product_make,product_color,product_type FROM `listing_attributes` WHERE product_mpn_isbn ='$mpnisbn';");
+            if($query->num_rows() > 0 && $mpnisbn != ""){
+
               foreach ($query->result() as $value){
                     foreach ($query->result() as $value){
                       $product_makes[] =$value->product_make; 
@@ -1377,6 +1377,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                     'product_make'=>$product_makes,
                     'product_types'=>$product_types,
                     'product_colors'=>$colors,
+                    'condition'=>1
                     );                
             }else{
                  $query=$this->db->query("SELECT product_make,product_color,product_type FROM `listing_attributes`;");
@@ -1402,6 +1403,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                     'product_make'=>$product_makes,
                     'product_types'=>$product_types,
                     'product_colors'=>$colors,
+                    'condition'=>0
                     );                    
             }
 
@@ -1422,6 +1424,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                 'Status' =>TRUE,
                 'numrows'=> $query->num_rows(),
                 'product_make'=>$product_modal,
+                'condition'=>1
                 );       
         }else{
          $query=$this->db->query("SELECT product_model FROM `listing_attributes`  WHERE  product_make like '%$product_make%';");
@@ -1436,6 +1439,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                 'Status' =>FALSE,
                 'numrows'=> $query->num_rows(),
                 'product_make'=>$product_modal,
+                'condition'=>0
                 ); 
             }
         }
@@ -1460,6 +1464,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
         'Status' =>TRUE,
         'numrows'=> $query->num_rows(),
         'product_color'=>$product_color,
+        'condition'=>1
         );       
         }else{
          $query=$this->db->query("SELECT product_color FROM `listing_attributes`;");
@@ -1481,6 +1486,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                 'Status' =>TRUE,
                 'numrows'=> $query->num_rows(),
                 'product_color'=>$product_color,
+                'condition'=>0
                 );
             }}
         }
@@ -1490,7 +1496,6 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
     echo json_encode($data);
 
 }
-
   function get_attributes_info($type='MPN'){
     $check_status='false';
      $list=array('STATUS'=>$check_status);
