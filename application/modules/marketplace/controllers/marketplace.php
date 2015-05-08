@@ -533,7 +533,13 @@ class Marketplace extends MX_Controller
         $this->form_validation->set_rules('product_type', 'product type', 'required');
         $this->form_validation->set_rules('product_color', 'product color', 'required');
         $this->form_validation->set_rules('condition', 'condition', 'required');
-        $this->form_validation->set_rules('spec', 'spec', 'required');
+        if(isset($_POST)){
+            if($_POST['product_type'] == 'Handset'){
+              $this->form_validation->set_rules('spec','spec','required');
+              $this->form_validation->set_rules('device_capacity', 'device capacity', 'required');
+              $this->form_validation->set_rules('device_sim', 'device sim', 'required');
+           }
+        }
         $this->form_validation->set_rules('currency', 'currency', 'required');
         $this->form_validation->set_rules('unit_price', 'unit price', 'required|numeric');
         $this->form_validation->set_rules('shipping_term', 'Shipping terms', 'required');
@@ -799,9 +805,22 @@ class Marketplace extends MX_Controller
         $data['couriers'] =  $this->marketplace_model->get_couriers_by_group('courier_name');
         }
 
-        $data['product_colors'] =  $this->marketplace_model->get_result_by_group('product_color');
+        $product_colors =$this->marketplace_model->get_result_by_group('product_color');
+        $product_color_un=array();
+        
+        foreach ($product_colors as $value) {
+            if(!empty($value->product_color)){
+            $color_arr=json_decode($value->product_color);
+            foreach ($color_arr as $row_color) {
+              if(!in_array($row_color, $product_color_un)){   
+                $product_color_un[] = $row_color; 
+              }   
+            }
+          } 
+        }
+        $data['product_colors'] =$product_color_un;
         $data['product_makes'] =  $this->marketplace_model->get_result_by_group('product_make');
-        //$data['pro_type'] =  $this->marketplace_model->get_result_by_group('product_type');
+       $data['product_models'] =  $this->marketplace_model->get_result_by_group('product_model');
 
         $data['pro_type'] =  $this->marketplace_model->get_result_product_type();
         $check_securty=0;
@@ -864,8 +883,15 @@ class Marketplace extends MX_Controller
         $this->form_validation->set_rules('product_type', 'product type', 'required');
         $this->form_validation->set_rules('product_color', 'product color', 'required');
         $this->form_validation->set_rules('condition', 'condition', 'required');
-        $this->form_validation->set_rules('spec', 'spec', 'required');
+       if(isset($_POST)){
+            if($_POST['product_type'] == 'Handset'){
+              $this->form_validation->set_rules('spec','spec','required');
+              $this->form_validation->set_rules('device_capacity', 'device capacity', 'required');
+              $this->form_validation->set_rules('device_sim', 'device sim', 'required');
+           }
+        }
         $this->form_validation->set_rules('currency', 'currency', 'required');
+        $this->form_validation->set_rules('courier', 'Shipping Terms', 'required');
         $this->form_validation->set_rules('unit_price', 'unit price', 'required|numeric');
         /*if(isset($_POST['minimum_checkbox'])){
           $this->form_validation->set_rules('min_price', 'min price', 'required|numeric');
@@ -1131,9 +1157,24 @@ class Marketplace extends MX_Controller
         $data['couriers'] =  $this->marketplace_model->get_couriers_by_group('courier_name');
         }
 
-        $data['product_colors'] =  $this->marketplace_model->get_result_by_group('product_color');
+        $product_colors =$this->marketplace_model->get_result_by_group('product_color');
+        $product_color_un=array();
+        
+        foreach ($product_colors as $value) {
+            if(!empty($value->product_color)){
+            $color_arr=json_decode($value->product_color);
+            foreach ($color_arr as $row_color) {
+              if(!in_array($row_color, $product_color_un)){   
+                $product_color_un[] = $row_color; 
+              }   
+            }
+          } 
+        }
+
+        $data['product_colors'] =$product_color_un;
         $data['product_makes'] =  $this->marketplace_model->get_result_by_group('product_make');
         $data['product_models'] =  $this->marketplace_model->get_result_by_group('product_model');
+       
         //$data['product_types'] =  $this->marketplace_model->get_result_by_group('product_type');
 
         $data['pro_type'] =  $this->marketplace_model->get_result('listing_attributes','',array('product_type'));
@@ -1162,7 +1203,6 @@ class Marketplace extends MX_Controller
         $this->load->module('templates');
         $this->templates->page($data);
     }
-
     function listing_watch($seller_id='', $listing_id='',$listing_type='')
     {
         $user_id =  $this->session->userdata('members_id');
