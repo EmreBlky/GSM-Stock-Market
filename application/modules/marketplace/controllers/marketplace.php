@@ -1369,6 +1369,23 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                //$colors=array_unique($colors);
                   //print_r($product_makes);
                   sort($product_makes);
+                  if(empty($colors)){
+                    $query_color=$this->db->query("SELECT product_color FROM `listing_attributes`;");
+                    if($query_color->num_rows()>0){
+                    $colors=array();
+                     if($query_color->num_rows()>0){
+                       foreach ($query_color->result() as $value){
+                          if(!empty($value->product_color)){
+                            $color_arr=json_decode($value->product_color);
+                            foreach ($color_arr as $row_color) {
+                              if(!in_array($row_color, $colors)){   
+                                $colors[] = $row_color; 
+                              }   
+                            }
+                          }    
+                        }             
+                      }
+                    }}
                   sort($colors);
 
                     //print_r($product_makes);
@@ -1450,7 +1467,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
         }
         elseif($type=='MODAL'){
         $product_modal=trim($_POST['product_model']);
-        $query=$this->db->query("SELECT product_color FROM `listing_attributes0` WHERE  product_model like '%$product_modal%';");
+        $query=$this->db->query("SELECT product_color FROM `listing_attributes` WHERE  product_model like '%$product_modal%';");
         if($query->num_rows()>0){
            $product_color=array();
              if($query->num_rows()>0){
