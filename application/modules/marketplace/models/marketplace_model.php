@@ -339,8 +339,8 @@ class Marketplace_model extends MY_Model {
 		$this->db->where('make_offer.offer_status',0);
 		
 		$this->db->where('listing.status', 1);
-		$this->db->group_by('make_offer.id');
 		$this->db->group_by('listing.id');
+		//$this->db->group_by('make_offer.id');
 		$this->db->order_by('make_offer.id','desc');
 		//$this->db->where('listing.listing_type', $listing_type);
 		$this->db->from('listing');
