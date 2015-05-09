@@ -1352,8 +1352,6 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                 $colors=array();
             $query=$this->db->query("SELECT product_make,product_color,product_type FROM `listing_attributes` WHERE product_mpn_isbn ='$mpnisbn';");
             if($query->num_rows() > 0 && $mpnisbn != ""){
-
-              foreach ($query->result() as $value){
                     foreach ($query->result() as $value){
                       $product_makes[] =$value->product_make; 
                     if(!empty($value->product_color)){
@@ -1363,9 +1361,8 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                         $colors[] = $row_color; 
                       }   
                     }
-                    $product_types =$value->product_type;    
-                    }
                     }             
+                    $product_types =$value->product_type;    
                     $product_makes=array_unique($product_makes);
                   }             
                $product_makes=array_unique($product_makes);
@@ -1453,7 +1450,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
         }
         elseif($type=='MODAL'){
         $product_modal=trim($_POST['product_model']);
-        $query=$this->db->query("SELECT product_color FROM `listing_attributes` WHERE  product_model like '%$product_modal%';");
+        $query=$this->db->query("SELECT product_color FROM `listing_attributes0` WHERE  product_model like '%$product_modal%';");
         if($query->num_rows()>0){
            $product_color=array();
              if($query->num_rows()>0){
