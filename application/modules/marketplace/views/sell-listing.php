@@ -1052,7 +1052,7 @@ rules: {
 });
 </script>
 <script>
- $(document).ready(function () {
+$(document).ready(function () {
   $('.listing_hide').hide();
   $(document).on('change', '#product_type', function(event) {
     $('.Handset').hide();
@@ -1098,7 +1098,7 @@ $(document).on('change', '#mpn1', function(event) {
        
        $.each(data.product_make, function(index, val) {
             productmakehtml +='<option value="'+val+'"';
-            if(data.condition==1){
+            if(data.condition == '1'){
             productmakehtml +=' selected="selected"';
                 mk1product_make=val;
             }
@@ -1127,7 +1127,7 @@ $(document).on('change', '#mpn1', function(event) {
         var product_colorshtml='<option value="">Choose Color</option>';
         $.each(data.product_colors, function(index, val) {
           product_colorshtml +='<option value="'+val+'"';
-          if(data.condition==1){
+          if(data.condition == '1' && data.product_colors.length==1){
             product_colorshtml +=' selected="selected"';
             }
           product_colorshtml +=' >'+val+'</option>';
@@ -1138,29 +1138,28 @@ $(document).on('change', '#mpn1', function(event) {
         $('select[name="product_color"]').html(product_colorshtml);
        $('select[name="product_color"]').trigger("chosen:updated");
     });
-  });
-  $(document).on('change', '#product_make', function(event) {
+});
+$(document).on('change', '#product_make', function(event) {
     event.preventDefault();
         var mpn1 =$('#mpn1').val();
         var product_make= $(this).val();
         modelselect(mpn1,product_make);     
     });
-
-  $(document).on('change', '#product_model', function(event) {
-  event.preventDefault();
-      var product_model= $(this).val();
-       $.post('<?php echo base_url("marketplace/getAttributesInfo") ?>/MODAL/',{'product_model':product_model}, function(data) {
-      product_colorshtml='<option>Choose Colour</option>';
-     $.each(data.product_color, function(index, val) {
-          product_colorshtml +='<option value="'+val+'"';
-          if(data.num_rows==1)
-          product_colorshtml +=' Selected';
-          product_colorshtml +=' >'+val+'</option>';
-     });
-     $('select[name="product_color"]').html(product_colorshtml);
-     $('select[name="product_color"]').trigger("chosen:updated");
+    $(document).on('change', '#product_model', function(event) {
+    event.preventDefault();
+        var product_model= $(this).val();
+         $.post('<?php echo base_url("marketplace/getAttributesInfo") ?>/MODAL/',{'product_model':product_model}, function(data) {
+        product_colorshtml='<option>Choose Colour</option>';
+       $.each(data.product_color, function(index, val) {
+            product_colorshtml +='<option value="'+val+'"';
+            if(data.num_rows==1 && data.product_color.length==1)
+            product_colorshtml +=' Selected';
+            product_colorshtml +=' >'+val+'</option>';
+       });
+       $('select[name="product_color"]').html(product_colorshtml);
+       $('select[name="product_color"]').trigger("chosen:updated");
+      });
     });
-  });
  });
 
 $(document).ready(function() {
