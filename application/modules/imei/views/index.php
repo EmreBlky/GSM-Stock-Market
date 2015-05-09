@@ -17,9 +17,11 @@
             <div class="col-lg-12">
                 <div class="wrapper wrapper-content animated fadeInRight">
                     <div class="alert alert-warning" style="margin-bottom:10px;">
-                      <p>This feature is currently unavailable. The IMEI services will launch soon</p>
+                      <p>Terms of service for mobicode here</p>
+                      <button class="btn btn-primary">Accept (Create Account)</button>
+                      <a href=""><button class="btn btn-danger">Decline</button></a>
                     </div>
-                    
+                   
                 </div>
             </div>
         
