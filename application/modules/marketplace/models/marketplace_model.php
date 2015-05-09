@@ -358,7 +358,7 @@ class Marketplace_model extends MY_Model {
 		$this->db->join('company','company.admin_member_id=listing.member_id');
 		$this->db->group_by('listing.id');
 		$this->db->where('status', 1);
-		$this->db->where('listing.id','desc');
+		$this->db->order_by('listing.id','desc');
 		//$this->db->where_or('scheduled_status', 1);
 		$this->db->where('listing_type', 1);
 		$this->db->where('member_id',$member_id);
@@ -374,7 +374,7 @@ class Marketplace_model extends MY_Model {
 		$this->db->from('listing');
 		$this->db->join('company','company.admin_member_id=listing.member_id');
 		$this->db->where('status', 1);
-		$this->db->where('listing.id','desc');
+		$this->db->order_by('listing.id','desc');
 		//$this->db->where_or('scheduled_status', 1);
 		$this->db->where('listing_type', 2);
 		$this->db->where('member_id',$member_id);
