@@ -47,7 +47,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
     </div>
 <div class="hr-line-dashed"></div>
 <div class="form-group"><label class="col-md-3 control-label">MPN/ISBN</label>
-<div class="col-md-9">
+<div class="col-md-7">
     <input type="text" id="mpn1" list="mpn" class="form-control check_record" placeholder="e.g A1586 or SM-G925"  name="product_mpn" value="<?php if(!empty($_POST['product_mpn'])) echo $_POST['product_mpn']; elseif(!empty($product_list->product_mpn_isbn)) echo $product_list->product_mpn_isbn; ?>"/>
     <datalist id="mpn">
     <?php if(!empty($listing_attributes)){
@@ -58,6 +58,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
          <?php } } ?>
     </datalist>
      <?php echo form_error('product_mpn'); ?>
+</div>
+<div class="col-md-2">
 </div>
 </div>
 <div class="form-group"><label class="col-md-3 control-label">Make</label>
@@ -935,7 +937,7 @@ $(document).on('change', '#mpn1', function(event) {
         var product_colorshtml='<option value="">Choose Color</option>';
         $.each(data.product_colors, function(index, val) {
           product_colorshtml +='<option value="'+val+'"';
-          if(data.condition == '1'){
+          if(data.condition == '1' && data.product_colors.length==1){
             product_colorshtml +=' selected="selected"';
             }
           product_colorshtml +=' >'+val+'</option>';
@@ -960,7 +962,7 @@ $(document).on('change', '#product_make', function(event) {
         product_colorshtml='<option>Choose Colour</option>';
        $.each(data.product_color, function(index, val) {
             product_colorshtml +='<option value="'+val+'"';
-            if(data.num_rows==1)
+            if(data.num_rows==1 && data.product_color.length==1)
             product_colorshtml +=' Selected';
             product_colorshtml +=' >'+val+'</option>';
        });
