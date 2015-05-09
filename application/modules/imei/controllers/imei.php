@@ -5,6 +5,8 @@ class Imei extends MX_Controller
     function __construct()
     {
         parent::__construct();
+        $this->load->model('imei/imei_model', 'imei');
+
         if ( ! $this->session->userdata('logged_in'))
         { 
             redirect('login');
@@ -13,6 +15,15 @@ class Imei extends MX_Controller
         if ($this->session->userdata('terms') == 'no')
         { 
             redirect('legal/terms_conditions');
+        }
+
+        $has_imei_account = $this->imei->has_imei_account();
+
+        $current_uri = uri_string();
+
+        if (!$has_imei_account && $current_uri !== 'imei')
+        {
+            redirect('imei');
         }
         
         $this->load->model('activity/activity_model', 'activity_model');
