@@ -441,7 +441,7 @@ class Marketplace extends MX_Controller
     }
     
     function listing()
-    {
+    {   $this->output->enable_profiler(TRUE);
          $member_id=$this->session->userdata('members_id');
          $data['saved_listing'] = $this->marketplace_model->get_result('listing', array('member_id'=>$member_id,'status'=>2));
         $data['sell_offer'] = $this->marketplace_model->listing_sell_offer();
