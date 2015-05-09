@@ -50,7 +50,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
     </div>
     <div class="hr-line-dashed"></div>
     <div class="form-group"><label class="col-md-3 control-label">MPN/ISBN</label>
-      <div class="col-md-9">
+      <div class="col-md-7">
           <input type="type" id="mpn1" list="mpn" class="form-control check_record" placeholder="MPN/ISBN"  name="product_mpn" value="<?php if(!empty($product_list->product_mpn_isbn)) echo $product_list->product_mpn_isbn; ?><?php if(!empty($_POST['product_mpn'])) echo $_POST['product_mpn']; ?>"/>
           <datalist id="mpn">
           <?php if(!empty($listing_attributes)){
@@ -61,6 +61,9 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                <?php }} ?>
           </datalist>
            <?php echo form_error('product_mpn'); ?>
+      </div>
+      <div class="col-md-2">
+      <span class="btn btn-primary">Check</span>
       </div>
     </div>
      <div class="form-group"><label class="col-md-3 control-label">Make</label>
