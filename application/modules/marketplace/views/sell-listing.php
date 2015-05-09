@@ -1106,6 +1106,7 @@ $(document).on('change', '#mpn1', function(event) {
 
        });
         $("#product_type option:selected").prop("selected", false);
+        $('.Handset').hide();
          if(data.Status==true){
          if(data.product_types == 'Handset'){
             $('.Handset').show();

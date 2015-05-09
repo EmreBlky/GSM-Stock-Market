@@ -441,7 +441,7 @@ class Marketplace extends MX_Controller
     }
     
     function listing()
-    {   $this->output->enable_profiler(TRUE);
+    {   //$this->output->enable_profiler(TRUE);
          $member_id=$this->session->userdata('members_id');
          $data['saved_listing'] = $this->marketplace_model->get_result('listing', array('member_id'=>$member_id,'status'=>2));
         $data['sell_offer'] = $this->marketplace_model->listing_sell_offer();
@@ -1370,7 +1370,11 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                   }             
                $product_makes=array_unique($product_makes);
                //$colors=array_unique($colors);
-                  
+                  //print_r($product_makes);
+                  sort($product_makes);
+                  sort($colors);
+
+                    //print_r($product_makes);
                 $data=array(
                     'Status' =>TRUE,
                     'numrows'=> $query->num_rows(),
@@ -1396,6 +1400,8 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                     $product_types =$value->product_type;    
                     }             
                     $product_makes=array_unique($product_makes);
+                   sort($product_makes);
+                   sort($colors);
                    }
                    $data=array(
                     'Status' =>FALSE,
@@ -1420,6 +1426,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                 }             
                $product_modal=array_unique($product_modal);
              }
+             sort($product_modal);
                $data=array(
                 'Status' =>TRUE,
                 'numrows'=> $query->num_rows(),
@@ -1435,6 +1442,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                 }             
                $product_modal=array_unique($product_modal);
              }
+             sort($product_modal);
                $data=array(
                 'Status' =>FALSE,
                 'numrows'=> $query->num_rows(),
@@ -1460,6 +1468,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                     } 
                 }             
              }
+              sort($product_color);
        $data=array(
         'Status' =>TRUE,
         'numrows'=> $query->num_rows(),
@@ -1482,6 +1491,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                   }    
                 }             
               }
+               sort($product_color);
                $data=array(
                 'Status' =>TRUE,
                 'numrows'=> $query->num_rows(),
@@ -2214,8 +2224,9 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
 
             if($date1 > $date2){           
             if($value->offer_received_by==$this->session->userdata('members_id')){
-            ?>
+            if(empty($value->pay_asking_price)){?>
             <a onclick="counter_offer(<?php echo $value->id.','.$value->product_qty.','.$value->unit_price;?>)" class="btn btn-warning"  data-toggle="modal" data-target="#form_counter_section" ><i class="fa fa-hand-o-down"></i> Counter Offer</a>
+            <?php } ?>
             <a href="<?php echo base_url().'marketplace/offer_status/'.$value->id.'/1/'.$value->buyer_id ?>" class="btn btn-outline btn-primary"><i class="fa fa-check"></i> Accept</a>
             <a href="<?php echo base_url().'marketplace/offer_status/'.$value->id.'/2/'.$value->buyer_id ?>" class="btn btn-outline btn-danger"><i class="fa fa-times"></i> Decline</a>
             <?php }else{ ?>
@@ -2296,37 +2307,11 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                 'shipping_price'=> $total_price - $grand_total,
                 'shipping'      => $shipping,
                 'buyer_currency'=> $listing->currency,
-                'offer_status'  => 3,
+                'offer_status'  => 0,
+                'pay_asking_price'=> 1,
                 'created'       => date('Y-m-d, H:i:s')
                 );
         $makeofferid=$this->marketplace_model->insert('make_offer',$data_insert);
-        if($listing->listing_type==1){
-            $offer_type=2;
-            }else
-            {$offer_type=1;
-            }
-        $data_insert_negotiation=array(
-                'offer_id'      => $makeofferid,
-                'buyer_id'      => $buyer_id_to_fix,
-                'offer_given_by'    => $buyer_id,
-                'offer_received_by'   => $listing->member_id,
-                'seller_id'     => $seller_id_to_fix,
-                'listing_id'    => $listing_id,
-                'product_qty'   => $listing->qty_available,
-                'unit_price'    => $unit_price,
-                'grand_total'   => $grand_total,
-                'total_price'   => $total_price,
-                'shipping_price'=> $total_price - $grand_total,
-                'shipping'      => $shipping,
-                'buyer_currency'=> $listing->currency,
-                'status'        => 0,
-                'access'        => $buyer_id,
-                'pay_asking_price'=> 1,
-                'offer_type'    => $offer_type,
-                'created'       => date('Y-m-d, H:i:s')
-                );
-
-         $this->marketplace_model->insert('negotiation',$data_insert_negotiation);
 
         $this->session->set_flashdata('msg_success','Request inserted sucessfully...! ');
       }
@@ -2910,10 +2895,12 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                 $listing_data['product_model'] = $row[3];
                 $listing_data['product_type'] = $row[5];
                 if($row[4]){
+                    $color='';
                     $color=explode(',',$row[4]);
                     $listing_data['product_color'] = json_encode($color);
                 }
                 if($row[6]){
+                    $capacity='';
                     $capacity=explode(',',$row[6]);
                     $listing_data['product_capacity'] = json_encode($capacity);
                 }
