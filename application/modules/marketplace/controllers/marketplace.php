@@ -1370,22 +1370,22 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                 }             
              }
            if(empty($product_color)){
-                    $query_color=$this->db->query("SELECT product_color FROM `listing_attributes`;");
-                    if($query_color->num_rows()>0){
-                    $product_color=array();
-                     if($query_color->num_rows()>0){
-                       foreach ($query_color->result() as $value){
-                          if(!empty($value->product_color)){
-                            $color_arr=json_decode($value->product_color);
-                            foreach ($color_arr as $row_color) {
-                              if(!in_array($row_color, $product_color)){   
-                                $product_color[] = $row_color; 
-                              }   
-                            }
-                          }    
-                        }             
-                      }
-                    }}  
+            $query_color=$this->db->query("SELECT product_color FROM `listing_attributes0`;");
+            if($query_color->num_rows()>0){
+            $product_color=array();
+             if($query_color->num_rows()>0){
+               foreach ($query_color->result() as $value){
+                  if(!empty($value->product_color)){
+                    $color_arr=json_decode($value->product_color);
+                    foreach ($color_arr as $row_color) {
+                      if(!in_array($row_color, $product_color)){   
+                        $product_color[] = $row_color; 
+                      }   
+                    }
+                  }    
+                }             
+              }
+            }}  
         sort($product_color);
        $data=array(
         'Status' =>TRUE,
