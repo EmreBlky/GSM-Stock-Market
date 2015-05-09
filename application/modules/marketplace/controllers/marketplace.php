@@ -1370,7 +1370,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                 }             
              }
            if(empty($product_color)){
-            $query_color=$this->db->query("SELECT product_color FROM `listing_attributes0`;");
+            $query_color=$this->db->query("SELECT product_color FROM `listing_attributes`;");
             if($query_color->num_rows()>0){
             $product_color=array();
              if($query_color->num_rows()>0){
