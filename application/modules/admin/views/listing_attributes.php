@@ -18,6 +18,7 @@
             <th>Model</th>
             <th>Product Type</th>
             <th>Color</th>
+            <th>Capacity</th>
             <th>Options</th>
         </tr>
         </thead>
@@ -28,7 +29,6 @@
                 <td><?php if(!empty($row->id)){ echo '#'.$row->id; } ?></td>
                 <td><?php if($row->user_type==1){ echo 'Admin'; }else{ echo'User';} ?></td>
                 <td>
-
                 <?php if(!empty($row->product_mpn_isbn)){ echo "MPN/ISBN: ".$row->product_mpn_isbn; } ?>
                    <!--  <br> -->
                 <?php //if(!empty($row->product_isbn)){ echo "ISBN: ".$row->product_isbn; } ?>
@@ -37,8 +37,9 @@
                 <td><?php if(!empty($row->product_make)){ echo $row->product_make; } ?></td>
                 <td><?php if(!empty($row->product_model)){ echo $row->product_model; } ?></td>
                 <td><?php if(!empty($row->product_type)){ echo $row->product_type; } ?></td>
-                 <td><?php if(!empty($row->product_color)){ echo unserialize($row->product_color); } ?></td>
-
+                 <td><?php 
+                  if(!empty($row->product_color)){ echo implode(',',json_decode($row->product_color)); } ?></td>
+                  <td><?php if(!empty($row->product_capacity)){ echo implode(' ,',(json_decode($row->product_capacity))); } ?></td>
                 <th>
                 <a href="<?php echo base_url().'admin/edit_listing_attribute/'.$row->id;  ?>" class="btn btn-primary" >Edit</a>
                 <a href="<?php echo base_url().'admin/delete_listing_attribute/'.$row->id;  ?>" onclick="confirm('Are your sure');"  class="btn btn-danger" >Delete</a>
@@ -47,7 +48,7 @@
 
             <?php }
             } else{?>
-        <tr><td colspan="7"><center><h3>No Listing Attributes are available.</h3></center></td></tr>
+        <tr><td colspan="9"><center><h3>No Listing Attributes are available.</h3></center></td></tr>
         <?php } ?>
         </tbody>
         </table>

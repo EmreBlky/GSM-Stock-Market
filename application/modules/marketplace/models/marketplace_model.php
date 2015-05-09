@@ -10,7 +10,7 @@ class Marketplace_model extends MY_Model {
         if($query)
             return $this->db->insert_id();
         else
-			return FALSE;		
+        	return FALSE;		
 	}
 	public function get_result($table_name='', $id_array='',$columns=array(),$order_by=array(),$limit=''){
 		if(!empty($columns)):
@@ -339,7 +339,9 @@ class Marketplace_model extends MY_Model {
 		$this->db->where('make_offer.offer_status',0);
 		
 		$this->db->where('listing.status', 1);
-		$this->db->group_by('make_offer.id');
+		$this->db->group_by('listing.id');
+		//$this->db->group_by('make_offer.id');
+		$this->db->order_by('make_offer.id','desc');
 		//$this->db->where('listing.listing_type', $listing_type);
 		$this->db->from('listing');
 		$this->db->join('make_offer','make_offer.listing_id=listing.id');
@@ -356,6 +358,7 @@ class Marketplace_model extends MY_Model {
 		$this->db->join('company','company.admin_member_id=listing.member_id');
 		$this->db->group_by('listing.id');
 		$this->db->where('status', 1);
+		$this->db->order_by('listing.id','desc');
 		//$this->db->where_or('scheduled_status', 1);
 		$this->db->where('listing_type', 1);
 		$this->db->where('member_id',$member_id);
@@ -371,6 +374,7 @@ class Marketplace_model extends MY_Model {
 		$this->db->from('listing');
 		$this->db->join('company','company.admin_member_id=listing.member_id');
 		$this->db->where('status', 1);
+		$this->db->order_by('listing.id','desc');
 		//$this->db->where_or('scheduled_status', 1);
 		$this->db->where('listing_type', 2);
 		$this->db->where('member_id',$member_id);

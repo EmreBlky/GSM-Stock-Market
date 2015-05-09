@@ -184,7 +184,6 @@ class Marketplace extends MX_Controller
         $this->form_validation->set_rules('product_type', 'product type', 'required');
         $this->form_validation->set_rules('product_color', 'product color', 'required');
         $this->form_validation->set_rules('condition', 'condition', 'required');
-        $this->form_validation->set_rules('spec', 'spec', 'required');
         $this->form_validation->set_rules('currency', 'currency', 'required');
         $this->form_validation->set_rules('unit_price', 'unit price', 'required|numeric');
         if(isset($_POST['minimum_checkbox'])){
@@ -442,7 +441,7 @@ class Marketplace extends MX_Controller
     }
     
     function listing()
-    {
+    {   $this->output->enable_profiler(TRUE);
          $member_id=$this->session->userdata('members_id');
          $data['saved_listing'] = $this->marketplace_model->get_result('listing', array('member_id'=>$member_id,'status'=>2));
         $data['sell_offer'] = $this->marketplace_model->listing_sell_offer();
@@ -534,7 +533,13 @@ class Marketplace extends MX_Controller
         $this->form_validation->set_rules('product_type', 'product type', 'required');
         $this->form_validation->set_rules('product_color', 'product color', 'required');
         $this->form_validation->set_rules('condition', 'condition', 'required');
-        $this->form_validation->set_rules('spec', 'spec', 'required');
+        if(isset($_POST)){
+            if($_POST['product_type'] == 'Handset'){
+              $this->form_validation->set_rules('spec','spec','required');
+              $this->form_validation->set_rules('device_capacity', 'device capacity', 'required');
+              $this->form_validation->set_rules('device_sim', 'device sim', 'required');
+           }
+        }
         $this->form_validation->set_rules('currency', 'currency', 'required');
         $this->form_validation->set_rules('unit_price', 'unit price', 'required|numeric');
         $this->form_validation->set_rules('shipping_term', 'Shipping terms', 'required');
@@ -800,9 +805,22 @@ class Marketplace extends MX_Controller
         $data['couriers'] =  $this->marketplace_model->get_couriers_by_group('courier_name');
         }
 
-        $data['product_colors'] =  $this->marketplace_model->get_result_by_group('product_color');
+        $product_colors =$this->marketplace_model->get_result_by_group('product_color');
+        $product_color_un=array();
+        
+        foreach ($product_colors as $value) {
+            if(!empty($value->product_color)){
+            $color_arr=json_decode($value->product_color);
+            foreach ($color_arr as $row_color) {
+              if(!in_array($row_color, $product_color_un)){   
+                $product_color_un[] = $row_color; 
+              }   
+            }
+          } 
+        }
+        $data['product_colors'] =$product_color_un;
         $data['product_makes'] =  $this->marketplace_model->get_result_by_group('product_make');
-        //$data['pro_type'] =  $this->marketplace_model->get_result_by_group('product_type');
+       $data['product_models'] =  $this->marketplace_model->get_result_by_group('product_model');
 
         $data['pro_type'] =  $this->marketplace_model->get_result_product_type();
         $check_securty=0;
@@ -865,8 +883,15 @@ class Marketplace extends MX_Controller
         $this->form_validation->set_rules('product_type', 'product type', 'required');
         $this->form_validation->set_rules('product_color', 'product color', 'required');
         $this->form_validation->set_rules('condition', 'condition', 'required');
-        $this->form_validation->set_rules('spec', 'spec', 'required');
+       if(isset($_POST)){
+            if($_POST['product_type'] == 'Handset'){
+              $this->form_validation->set_rules('spec','spec','required');
+              $this->form_validation->set_rules('device_capacity', 'device capacity', 'required');
+              $this->form_validation->set_rules('device_sim', 'device sim', 'required');
+           }
+        }
         $this->form_validation->set_rules('currency', 'currency', 'required');
+        $this->form_validation->set_rules('courier', 'Shipping Terms', 'required');
         $this->form_validation->set_rules('unit_price', 'unit price', 'required|numeric');
         /*if(isset($_POST['minimum_checkbox'])){
           $this->form_validation->set_rules('min_price', 'min price', 'required|numeric');
@@ -1132,9 +1157,24 @@ class Marketplace extends MX_Controller
         $data['couriers'] =  $this->marketplace_model->get_couriers_by_group('courier_name');
         }
 
-        $data['product_colors'] =  $this->marketplace_model->get_result_by_group('product_color');
+        $product_colors =$this->marketplace_model->get_result_by_group('product_color');
+        $product_color_un=array();
+        
+        foreach ($product_colors as $value) {
+            if(!empty($value->product_color)){
+            $color_arr=json_decode($value->product_color);
+            foreach ($color_arr as $row_color) {
+              if(!in_array($row_color, $product_color_un)){   
+                $product_color_un[] = $row_color; 
+              }   
+            }
+          } 
+        }
+
+        $data['product_colors'] =$product_color_un;
         $data['product_makes'] =  $this->marketplace_model->get_result_by_group('product_make');
         $data['product_models'] =  $this->marketplace_model->get_result_by_group('product_model');
+       
         //$data['product_types'] =  $this->marketplace_model->get_result_by_group('product_type');
 
         $data['pro_type'] =  $this->marketplace_model->get_result('listing_attributes','',array('product_type'));
@@ -1163,7 +1203,6 @@ class Marketplace extends MX_Controller
         $this->load->module('templates');
         $this->templates->page($data);
     }
-
     function listing_watch($seller_id='', $listing_id='',$listing_type='')
     {
         $user_id =  $this->session->userdata('members_id');
@@ -1299,30 +1338,38 @@ class Marketplace extends MX_Controller
         $this->templates->page($data);
     }
 
+
 public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
 
-    $data=array('Status'=>FALSE,'numrows'=>0,'product_colors'=>'');
+    $data=array('Status'=>FALSE,'numrows'=>0,'product_colors'=>'','condition'=>0);
 
     if($_POST){
         if($type=='MPNISBN'){
 
             $mpnisbn=trim($_POST['mpnisbn']);
 
-            $query=$this->db->query("SELECT product_make,product_color,product_type FROM `listing_attributes` WHERE product_mpn_isbn ='$mpnisbn';");
-               
                 $product_makes=array();
                 $colors=array();
-               
-            if($query->num_rows()>0 && !empty($mpnisbn)){
+            $query=$this->db->query("SELECT product_make,product_color,product_type FROM `listing_attributes` WHERE product_mpn_isbn ='$mpnisbn';");
+            if($query->num_rows() > 0 && $mpnisbn != ""){
+
               foreach ($query->result() as $value){
-                    $product_makes[] =$value->product_make; 
-                    if(!in_array($value->product_color, $colors)){   
-                        $colors[]     =$value->product_color; 
-                    }   
+                    foreach ($query->result() as $value){
+                      $product_makes[] =$value->product_make; 
+                    if(!empty($value->product_color)){
+                    $color_arr=json_decode($value->product_color);
+                    foreach ($color_arr as $row_color) {
+                      if(!in_array($row_color, $colors)){   
+                        $colors[] = $row_color; 
+                      }   
+                    }
                     $product_types =$value->product_type;    
+                    }
                     }             
-                   $product_makes=array_unique($product_makes);
-                   //$colors=array_unique($colors);
+                    $product_makes=array_unique($product_makes);
+                  }             
+               $product_makes=array_unique($product_makes);
+               //$colors=array_unique($colors);
                   
                 $data=array(
                     'Status' =>TRUE,
@@ -1330,27 +1377,33 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                     'product_make'=>$product_makes,
                     'product_types'=>$product_types,
                     'product_colors'=>$colors,
+                    'condition'=>1
                     );                
             }else{
                  $query=$this->db->query("SELECT product_make,product_color,product_type FROM `listing_attributes`;");
                   
-                     if($query->num_rows()>0){
-                       foreach ($query->result() as $value){
-                        if(!in_array($value->product_make, $product_makes)){   
-                            $product_makes[] =$value->product_make;  
-                         }  
-                         if(!in_array($value->product_color, $colors)){   
-                             $colors[]     =$value->product_color; 
-                         }      
-                        $product_types =$value->product_type;    
-                        }
-                     }
+                  if($query->num_rows()>0){
+                    foreach ($query->result() as $value){
+                      $product_makes[] =$value->product_make; 
+                    if(!empty($value->product_color)){
+                    $color_arr=json_decode($value->product_color);
+                    foreach ($color_arr as $row_color) {
+                      if(!in_array($row_color, $colors)){   
+                        $colors[] = $row_color; 
+                      }   
+                    }
+                    }
+                    $product_types =$value->product_type;    
+                    }             
+                    $product_makes=array_unique($product_makes);
+                   }
                    $data=array(
                     'Status' =>FALSE,
                     'numrows'=> $query->num_rows(),
                     'product_make'=>$product_makes,
                     'product_types'=>$product_types,
                     'product_colors'=>$colors,
+                    'condition'=>0
                     );                    
             }
 
@@ -1371,6 +1424,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                 'Status' =>TRUE,
                 'numrows'=> $query->num_rows(),
                 'product_make'=>$product_modal,
+                'condition'=>1
                 );       
         }else{
          $query=$this->db->query("SELECT product_model FROM `listing_attributes`  WHERE  product_make like '%$product_make%';");
@@ -1385,6 +1439,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                 'Status' =>FALSE,
                 'numrows'=> $query->num_rows(),
                 'product_make'=>$product_modal,
+                'condition'=>0
                 ); 
             }
         }
@@ -1395,29 +1450,43 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
            $product_color=array();
              if($query->num_rows()>0){
                foreach ($query->result() as $value){
-                $product_color[] =$value->product_color;    
+                 if(!empty($value->product_color)){
+                    $color_arr=json_decode($value->product_color);
+                    foreach ($color_arr as $row_color) {
+                      if(!in_array($row_color, $product_color)){   
+                        $product_color[] = $row_color; 
+                      }   
+                    }
+                    } 
                 }             
-               $product_color=array_unique($product_color);
              }
-               $data=array(
-                'Status' =>TRUE,
-                'numrows'=> $query->num_rows(),
-                'product_color'=>$product_color,
-                );       
+       $data=array(
+        'Status' =>TRUE,
+        'numrows'=> $query->num_rows(),
+        'product_color'=>$product_color,
+        'condition'=>1
+        );       
         }else{
          $query=$this->db->query("SELECT product_color FROM `listing_attributes`;");
             if($query->num_rows()>0){
             $product_color=array();
              if($query->num_rows()>0){
                foreach ($query->result() as $value){
-                $product_color[] =$value->product_color;    
+                  if(!empty($value->product_color)){
+                    $color_arr=json_decode($value->product_color);
+                    foreach ($color_arr as $row_color) {
+                      if(!in_array($row_color, $product_color)){   
+                        $product_color[] = $row_color; 
+                      }   
+                    }
+                  }    
                 }             
-               $product_color=array_unique($product_color);
-             }
+              }
                $data=array(
                 'Status' =>TRUE,
                 'numrows'=> $query->num_rows(),
                 'product_color'=>$product_color,
+                'condition'=>0
                 );
             }}
         }
@@ -1427,7 +1496,6 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
     echo json_encode($data);
 
 }
-
   function get_attributes_info($type='MPN'){
     $check_status='false';
      $list=array('STATUS'=>$check_status);
