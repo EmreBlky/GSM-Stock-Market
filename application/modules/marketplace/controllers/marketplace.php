@@ -1257,7 +1257,6 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                $product_makes=array_unique($product_makes);
                //$colors=array_unique($colors);
                   //print_r($product_makes);
-               print_r($colors);
                   sort($product_makes);
                   if(empty($colors)){
                     $query_color=$this->db->query("SELECT product_color FROM `listing_attributes`;");
