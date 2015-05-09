@@ -10,7 +10,7 @@ class Marketplace_model extends MY_Model {
         if($query)
             return $this->db->insert_id();
         else
-    		return FALSE;		
+        	return FALSE;		
 	}
 	public function get_result($table_name='', $id_array='',$columns=array(),$order_by=array(),$limit=''){
 		if(!empty($columns)):
