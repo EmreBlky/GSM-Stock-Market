@@ -193,7 +193,7 @@ class Marketplace_model extends MY_Model {
 		$this->db->group_by('listing.id');
 		$this->db->where('listing.status', 1);
 		$this->db->where('listing.listing_type', 2);
-		
+		$this->db->where("`listing`.`min_qty_order` <= `listing`.`qty_available`");
 		$query = $this->db->get();
 	
 		if($query->num_rows()>0)
@@ -297,7 +297,7 @@ class Marketplace_model extends MY_Model {
 		$this->db->group_by('listing.id');
 		$this->db->where('listing.status', 1);
 		$this->db->where('listing.listing_type', 1);
-		
+		$this->db->where("`listing`.`min_qty_order` <= `listing`.`qty_available`");
 		$query = $this->db->get();
 		
 			
@@ -478,6 +478,7 @@ class Marketplace_model extends MY_Model {
 		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
 		$this->db->from('listing');
 		$this->db->where('listing.status', 1);
+		$this->db->where("`listing`.`min_qty_order` <= `listing`.`qty_available`");
 		$query = $this->db->get();
 		if($query->num_rows()>0)
 			return $query->row();
