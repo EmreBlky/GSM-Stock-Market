@@ -1,7 +1,7 @@
 <div class="row wrapper border-bottom white-bg page-heading">
 <div class="col-lg-10">
-<h2><?php if($listing_detail->listing_type==1){ ?>Selling Offer
-<?php }elseif($listing_detail->listing_type==2){ ?>Buying Request
+<h2><?php if($listing_detail->listing_type==2){ ?>Selling Offer
+<?php }elseif($listing_detail->listing_type==1){ ?>Buying Request
 <?php } ?></h2>
 <ol class="breadcrumb">
     <li><a href="/">Home</a></li>
@@ -20,9 +20,9 @@
 <div class="ibox-title">
 <h5>Listing Details - 
 
-<?php if($listing_detail->listing_type==1){ ?>
+<?php if($listing_detail->listing_type==2){ ?>
 <span class="label label-info  pull-right">This is a Selling Offer</span>
-<?php }elseif($listing_detail->listing_type==2){ ?>
+<?php }elseif($listing_detail->listing_type==1){ ?>
 <span class="label label-info  pull-right">This is a Buying Request</span>
 <?php } ?>
 
