@@ -5,16 +5,17 @@ class Join extends MX_Controller
     function __construct()
     {
         ob_start();
-        parent::__construct();       
+        parent::__construct();  
+        $this->load->model('member/member_model', 'member_model');
+        $this->load->model('company/company_model', 'company_model');
+        $this->load->model('country/country_model', 'country_model');
 
     }
     
     function validateAccount()
     {
         $this->session->set_userdata('logged_in', 1);
-        $this->load->model('member/member_model', 'member_model');
-        $this->load->model('company/company_model', 'company_model');
-        $this->load->model('country/country_model', 'country_model'); 
+        
         
         $data['country'] = $this->country_model->_custom_query("SELECT * FROM country ORDER BY country ASC");
         
@@ -29,10 +30,6 @@ class Join extends MX_Controller
     function index()
     {
         $this->session->set_userdata('logged_in', 1);
-        
-        $this->load->model('member/member_model', 'member_model');
-        $this->load->model('company/company_model', 'company_model');
-        $this->load->model('country/country_model', 'country_model'); 
         
         $data['country'] = $this->country_model->_custom_query("SELECT * FROM country ORDER BY country ASC");
 
@@ -51,8 +48,7 @@ class Join extends MX_Controller
         
         $this->session->set_userdata('logged_in', 1);
         
-        $this->load->model('member/member_model', 'member_model');
-        $this->load->model('company/company_model', 'company_model');
+        
         $this->load->helper('string');        
         
         $base = $this->config->item('base_url');
@@ -122,6 +118,7 @@ class Join extends MX_Controller
 
                     $password = random_string('alnum', 8);            
                     $validation_code = random_string('alnum', 4).'-'. random_string('alnum', 4).'-'. random_string('alnum', 4).'-'. random_string('alnum', 4);
+                    $invitation_code = random_string('alnum', 3).'-'. random_string('alnum', 3).'-'. random_string('alnum', 3);
 
                     $data = array(
                         'email' => $this->input->post('email'),
@@ -144,7 +141,6 @@ class Join extends MX_Controller
                         'linkedin' => $this->input->post('linkedin'),
                         'skype' => $this->input->post('skype'),
                         'role' => $this->input->post('company_role'),
-                        'currency' => $this->input->post('currency'),
                         'terms_conditions' => 'yes'
                     );
 
@@ -171,8 +167,10 @@ class Join extends MX_Controller
                         'other_business' => $bsectors4 . $bsectors5,
                         'company_profile' => '',
                         'company_profile_approval' => $this->input->post('company_profile'),
-                        'vat_tax' => $this->input->post('vat_tax'),
+                        'vat_tax' => $this->input->post('vat_tax'),                        
+                        'currency' => $this->input->post('currency'),
                         'company_number' => $this->input->post('company_number'),
+                        'invitation_code' => $invitation_code
                     );
                     
                     $cid = $this->company_model->_insert($data);
@@ -269,6 +267,151 @@ class Join extends MX_Controller
         
         $this->session->unset_userdata('logged_in');
         
-    }    
+    } 
+    
+    function invites($invite_code = NULL)
+    {
+        //$this->session->set_userdata('logged_in', 1);
+        
+        $data['company_id'] = $this->company_model->get_where_multiple('invitation_code', $invite_code)->id;
+        $data['country'] = $this->country_model->_custom_query("SELECT * FROM country ORDER BY country ASC");
+        
+        $data['title'] = 'GSM - Edit Profile';
+        $this->load->view('invites', $data);
+        //$this->session->unset_userdata('logged_in');
+    }
+    
+    function inviteCreate($cid)
+    {
+        $this->load->library('form_validation');
+
+            $this->form_validation->set_rules('email', 'Email', 'xss_clean');
+            $this->form_validation->set_rules('title', 'Title', 'xss_clean');
+            $this->form_validation->set_rules('firstname', 'First Name', 'xss_clean');
+            $this->form_validation->set_rules('lastname', 'Surname', 'xss_clean');
+            $this->form_validation->set_rules('phone_number', 'Phone Number', 'xss_clean');
+            $this->form_validation->set_rules('mobile_number', 'Mobile Number', 'xss_clean');
+            $this->form_validation->set_rules('address_line_1', 'Address Line 1', 'xss_clean');
+            $this->form_validation->set_rules('language', 'Language', 'xss_clean');
+            $this->form_validation->set_rules('facebook', 'Facebook', 'xss_clean');
+            $this->form_validation->set_rules('twitter', 'Twitter', 'xss_clean');
+            $this->form_validation->set_rules('gplus', 'Google Plus', 'xss_clean');
+            $this->form_validation->set_rules('linkedin', 'LinkedIn', 'xss_clean');
+            $this->form_validation->set_rules('skype', 'Skype', 'xss_clean');
+            $this->form_validation->set_rules('role', 'Position', 'xss_clean');
+            
+            if ($this->form_validation->run()) {
+                
+                $password = random_string('alnum', 8);            
+                    
+                $data = array(
+                    'email' => $this->input->post('email'),
+                    'title' => $this->input->post('title'),                    
+                    'dial_mobile' => $this->input->post('phone_number'),
+                    'mobile_number' => $this->input->post('mobile_number'),
+                    'firstname' => $this->input->post('firstname'),
+                    'lastname' => $this->input->post('lastname'),
+                    'date' => date('d-m-Y'),
+                    'password' => md5($password),
+                    'unhash_password' => $password,
+                    'validated' => 'yes',
+                    'language' => $this->input->post('language'),
+                    'facebook' => $this->input->post('facebook'),
+                    'twitter' => $this->input->post('twitter'),
+                    'gplus' => $this->input->post('gplus'),
+                    'linkedin' => $this->input->post('linkedin'),
+                    'skype' => $this->input->post('skype'),
+                    'role' => $this->input->post('company_role'),
+                    'profile_completion' => 90,
+                    'company_id' => $cid,
+                    'date_activated' => date('Y-m-d'),
+                    'terms_conditions' => 'yes'
+                );
+                
+                $this->member_model->_insert($data);
+                
+                $this->load->module('emails');
+                    $config = Array(
+                                'protocol' => 'smtp',
+                                'smtp_host' => 'ssl://server.gsmstockmarket.com',
+                                'smtp_port' => 465,
+                                'smtp_user' => 'noreply@gsmstockmarket.com',
+                                'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
+                                'charset' => 'utf-8',
+                                'wordwrap' => TRUE,
+                                'newline' => "\r\n",
+                                'crlf'    => ""
+
+                            );
+                
+                $this->load->library('email', $config);
+                //$this->load->library('email');
+                //$this->email->newline = "\r\n";
+                //$this->email->crlf = "\r\n";
+                $this->email->set_mailtype("html");
+                $email_body = '
+                                <table class="body-wrap" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;background-color: #f6f6f6;width: 100%;">
+                                    <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                            <td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;"></td>
+                                            <td class="container" width="600" style="margin: 0 auto !important;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;display: block !important;max-width: 600px !important;clear: both !important;">
+                                                    <div class="content" style="margin: 0 auto;padding: 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;max-width: 600px;display: block;">
+                                                            <table class="main" width="100%" cellpadding="0" cellspacing="0" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;background: #fff;border: 1px solid #e9e9e9;border-radius: 3px;">
+                                                                    <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                                            <td class="content-wrap" style="margin: 0;padding: 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                                                                                    <table cellpadding="0" cellspacing="0" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                                                            <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                                                                    <td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                                                                                                            <img class="img-responsive" src="https://secure.gsmstockmarket.com/public/main/template/gsm/images/email/header.png" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;max-width: 100%;">
+                                                                                                    </td>
+                                                                                            </tr>
+                                                                                            <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                                                                    <td class="content-block" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                                                                                                            <h3 style="margin: 40px 0 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Grande&quot;, sans-serif;box-sizing: border-box;font-size: 18px;color: #000;line-height: 1.2;font-weight: 400;">Thank you for signing up to GSMStockMarket.com</h3>
+                                                                                                    </td>
+                                                                                            </tr>
+                                                                                            <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                                                                    <td class="content-block" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                                                                                                            <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">Dear '.$this->input->post('firstname').',</p>
+                                                                                                            <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">Thank you for registering with GSMStockmarket.com.</p>
+                                                                                                    </td>
+                                                                                            </tr>
+                                                                                            <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                                                                    <td class="content-block" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                                                                                                            Plase find your pre-generated password: '.$password.'. Please log into your account and changed this as soon as possible.
+                                                                                                    </td>
+                                                                                            </tr>
+
+                                                                                            <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                                                                    <td class="content-block aligncenter" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;text-align: center;">
+                                                                                                            <a href="'.$base.'login" class="btn-primary" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;color: #FFF;text-decoration: none;background-color: #1ab394;border: solid #1ab394;border-width: 5px 10px;line-height: 2;font-weight: bold;text-align: center;cursor: pointer;display: inline-block;border-radius: 5px;">Log into your account.</a>
+                                                                                                    </td>
+                                                                                            </tr>
+
+                                                                                      </table>
+                                                                            </td>
+                                                                    </tr>
+                                                            </table></div>
+                                            </td>
+                                            <td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;"></td>
+                                    </tr>
+                            </table>';
+                
+                $cust_email = $this->input->post('email');
+                $this->email->from('noreply@gsmstockmarket.com', 'GSMStockMarket.com');
+
+                $list = array('tim@gsmstockmarket.com', 'signup@gsmstockmarket.com');
+                $this->email->to($cust_email);
+                $this->email->bcc($list);
+                $this->email->subject('Thank you for registering.');
+                $this->email->message($email_body);
+
+                $this->email->send();
+                //echo $this->email->print_debugger();
+                //exit;
+                    
+                redirect('http://www.gsmstockmarket.com/success');
+                
+            }
+    }
     
 }

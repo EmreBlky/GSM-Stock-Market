@@ -494,7 +494,8 @@ class Profile extends MX_Controller
     //        echo "</pre>";
             //$data['country'] = $this->country_model->get_all();
             $data['country'] = $this->country_model->_custom_query("SELECT * FROM country ORDER BY country ASC");
-
+            $data['admin_id'] = $this->company_model->get_where($this->member_model->get_where_multiple('id', $this->session->userdata('members_id'))->company_id)->admin_member_id;
+        
 
             $data['main'] = 'profile';
             $data['title'] = 'GSM - Edit Profile';
@@ -609,8 +610,7 @@ class Profile extends MX_Controller
                 'gplus' => $this->input->post('gplus'),
                 'linkedin' => $this->input->post('linkedin'),
                 'skype' => $this->input->post('skype'),
-                'role' => $this->input->post('role'),
-                'currency' => $this->input->post('currency')    
+                'role' => $this->input->post('role'),    
             );
 
             $this->load->model('member/member_model', 'member_model');
@@ -636,7 +636,8 @@ class Profile extends MX_Controller
                     'business_sector_3' => $this->input->post('btertiary'),
                     'other_business' => $bsectors4 . $bsectors5,
                     'company_profile' => $company_bio_new,
-                    'vat_tax' => $this->input->post('vat_tax')
+                    'vat_tax' => $this->input->post('vat_tax'),
+                    'currency' => $this->input->post('currency')
                 );
             }
             else{
@@ -661,6 +662,7 @@ class Profile extends MX_Controller
                     'company_profile_approval' => $company_bio_new,
                     'vat_tax' => $this->input->post('vat_tax'),
                     'company_number' => $this->input->post('company_number'),
+                    'currency' => $this->input->post('currency')
                 );
             }
             
@@ -802,8 +804,7 @@ class Profile extends MX_Controller
                 'gplus' => $this->input->post('gplus'),
                 'linkedin' => $this->input->post('linkedin'),
                 'skype' => $this->input->post('skype'),
-                'role' => $this->input->post('role'),
-                'currency' => $this->input->post('currency') 
+                'role' => $this->input->post('role'), 
             );
 
             $this->load->model('member/member_model', 'member_model');
@@ -831,6 +832,7 @@ class Profile extends MX_Controller
                     'company_profile' => $company_bio_new,
                     'vat_tax' => $this->input->post('vat_tax'),
                     'company_number' => $this->input->post('company_number'),
+                    'currency' => $this->input->post('currency')
                 );
             }
             else{
@@ -855,6 +857,7 @@ class Profile extends MX_Controller
                     'company_profile_approval' => $company_bio_new,
                     'vat_tax' => $this->input->post('vat_tax'),
                     'company_number' => $this->input->post('company_number'),
+                    'currency' => $this->input->post('currency')
                 );
             }
             

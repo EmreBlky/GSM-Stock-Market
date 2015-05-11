@@ -380,6 +380,7 @@ if($count_order_history){ ?>
 		<li><a href="preferences/subscription"><i class="fa fa-cubes"></i> My Subscription</a></li>
 		<li><a href="preferences/notification"><i class="fa fa-newspaper-o"></i> Notifications</a></li>
 		<li><a href="tradereference/"><i class="fa fa-slideshare"></i> Trade Reference</a></li>
+                <li><a href="preferences/invitation"><i class="fa fa-sitemap"></i> Invitations</a></li>
 		<!-- <li><a href="preferences/newsletter"><i class="fa fa-newspaper-o"></i> Newsletter</a></li> -->
 </ul>
 </li>
@@ -391,6 +392,7 @@ if($count_order_history){ ?>
 		<li><a href="preferences/subscription"><i class="fa fa-cubes"></i> My Subscription</a></li>
 		<li><a href="preferences/notification"><i class="fa fa-newspaper-o"></i> Notifications</a></li>
 		<li><a href="tradereference/"><i class="fa fa-slideshare"></i> Trade Reference</a></li>
+                <li><a href="preferences/invitation"><i class="fa fa-sitemap"></i> Invitations</a></li>
 </ul>
 </li>
 <?php } ?>
