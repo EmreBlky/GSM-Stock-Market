@@ -210,7 +210,9 @@ if(!empty($listing_detail->image1))
           <?php } ?>
     </button>
     <?php } ?>
+    <?php if (!empty($member_id) && $member_id!=$listing_detail->member_id){?>
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#profile_message">Ask a question</button>
+        <?php } ?>
         <a href="<?php echo base_url().'marketplace/sell' ?>" class="btn btn-white">Back</a>
     </div>
             
@@ -279,10 +281,13 @@ if(!empty($listing_detail->image1))
                 
                 $othercal=$value->shipping_term.' ('.$value->coriars.') '.$value->shipping_name_display;?>
                  <option data-other="<?php echo $othercal;?>"
-                 value="<?php if(empty($value->shipping_fees)){ echo "0";}else{ 
+                 value="<?php 
+                  if(empty($value->shipping_fees)){ echo "0";}
+                  else{ 
                   if($value->shipping_types == 'Price_per_unit'){ 
-                    echo $value->shipping_fees * $listing_detail->qty_available; }else{ echo $value->shipping_fees;}
-                    } ?>">
+                    echo '1'; }
+                    else{ echo '2';}  
+                   } ?>">
                    <?php 
                    echo currency_class($listing_detail->currency).' &nbsp;'.$othershippingfee.'&nbsp;'.$othercal;
                       ?>
@@ -329,7 +334,9 @@ if(!empty($listing_detail->image1))
     <br>
     <div class="input-group m-b">
     <span class="input-group-addon">QTY</span> 
-    <input type="text" name="product_qty" class="form-control" value="<?php echo set_value('product_qty'); ?>" required="" />
+    <input type="text" name="product_qty" class="form-control" value="<?php echo set_value('product_qty'); ?>" required   
+         min="<?php if(!empty($listing_detail->min_qty_order)) { echo $listing_detail->min_qty_order; } ?>" 
+         max="<?php if(!empty($listing_detail->qty_available)) { echo $listing_detail->qty_available; } ?>" />
     <span class="input-group-addon">@</span>
      <input type="hidden" name="listing_id" class="form-control" value="<?php echo $listing_detail->id; ?>" />
     </div> 
