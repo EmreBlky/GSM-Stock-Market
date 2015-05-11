@@ -70,7 +70,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
    <?php if(!empty($product_makes)){
      foreach ($product_makes as $row) { ?>
     <option value="<?php echo $row->product_make; ?>"
-     <?php if(!empty($_POST) && $row->product_make==$_POST['product_make']){ echo'selected';}
+     <?php if(!empty($_POST['product_make']) && $row->product_make==$_POST['product_make']){ echo'selected';}
         elseif(!empty($product_list->product_make) && $row->product_make == $product_list->product_make){ echo'selected';}?>><?php echo $row->product_make; ?></option>
      <?php }} ?>
 </select>
@@ -83,7 +83,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
     <option value="" disabled selected>e.g: iPhone 4S or Galaxy S6 Edge</option>
      <?php if(!empty($product_models)){
          foreach ($product_models as $row) { ?>
-        <option value="<?php echo $row->product_model; ?>" <?php if(!empty($_POST) && $row->product_model==$_POST['product_model']){ echo'selected';}?><?php if(!empty($product_list->product_model) && $row->product_model == $product_list->product_model){ echo'selected';}?>><?php echo $row->product_model; ?></option>
+        <option value="<?php echo $row->product_model; ?>" <?php if(!empty($_POST['product_model']) && $row->product_model==$_POST['product_model']){ echo'selected';}?><?php if(!empty($product_list->product_model) && $row->product_model == $product_list->product_model){ echo'selected';}?>><?php echo $row->product_model; ?></option>
          <?php }} ?>
     </select>
 <?php echo form_error('product_model'); ?>
