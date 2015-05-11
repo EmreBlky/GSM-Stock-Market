@@ -1,7 +1,7 @@
 <div class="row wrapper border-bottom white-bg page-heading">
 <div class="col-lg-10">
-<h2><?php if($listing_detail->listing_type==1){ ?>Selling Offer
-<?php }elseif($listing_detail->listing_type==2){ ?>Buying Request
+<h2><?php if($listing_detail->listing_type==2){ ?>Selling Offer
+<?php }elseif($listing_detail->listing_type==1){ ?>Buying Request
 <?php } ?></h2>
 <ol class="breadcrumb">
     <li><a href="/">Home</a></li>
