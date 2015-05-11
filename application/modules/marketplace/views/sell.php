@@ -28,7 +28,7 @@ $.ajax({
 </script>
 <div class="row wrapper border-bottom white-bg page-heading">
 <div class="col-lg-10">
-<h2>Buying Request</h2>
+<h2>Buying Requests</h2>
 <ol class="breadcrumb">
     <li>
         <a href="/">Home</a>
@@ -276,7 +276,7 @@ foreach ($product_colors as $row) { ?>
 <div class="col-lg-12">
 <div class="ibox float-e-margins">
 <div class="ibox-title">
-<h5>Live Marketplace - Buying Request</h5>
+<h5>Live Marketplace - Buying Requests</h5>
 </div>
 <div class="ibox-content">
 
