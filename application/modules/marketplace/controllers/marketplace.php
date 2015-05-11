@@ -956,9 +956,18 @@ class Marketplace extends MX_Controller
             $data_insert['member_id']            = $member_id; 
             $data_insert['status']               = $status; 
         if(!empty($list_id)){
+          if($this->input->post('schedule_date_time')){
+            $schedule_date_time=$this->input->post('schedule_date_time');
+            $schedule_date_time=date('Y-m-d h:i:s',strtotime($schedule_date_time));
+            $data_insert['duration']             =  $this->input->post('duration');
+            $data_insert['listing_end_datetime'] =  date('Y-m-d H:i:s', strtotime($schedule_date_time."+".$this->input->post('duration')." days"));    
+            }
             $data_insert['updated']              = date('Y-m-d h:i:s A');
         }
         else{
+            $data_insert['schedule_date_time']   =  $schedule_date_time;
+            $data_insert['duration']             =  $this->input->post('duration');
+            $data_insert['listing_end_datetime'] =  date('Y-m-d H:i:s', strtotime($schedule_date_time."+".$this->input->post('duration')." days"));            
             $data_insert['updated']              = date('Y-m-d h:i:s A');
             $data_insert['created']              = date('Y-m-d h:i:s A');
         }
@@ -1660,6 +1669,8 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
 
     function listing_detail($id=0)
     {
+        /*print_r($_POST);
+        die();*/
         if(empty($id) || !is_numeric($id)) {
          redirect('marketplace/index'); 
         }
@@ -2203,7 +2214,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                 'pay_asking_price'  => 1,
                 'created'           => date('Y-m-d, H:i:s')
                 );
-       
+
         $makeofferid=$this->marketplace_model->insert('make_offer',$data_insert);
         $this->session->set_flashdata('msg_success','Request inserted sucessfully...! ');
       }
