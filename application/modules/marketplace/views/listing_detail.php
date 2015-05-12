@@ -262,7 +262,7 @@ if(!empty($listing_detail->image1))
               <option value="">Select Shipping Terms</option>
               <?php 
                foreach ($core as $key => $value): ?>
-                 <option data-other="<?php echo $value;?>" value="<?php echo $listing_detail->shipping_charges;?>">
+                 <option data-other="<?php echo $value;?>" shipping-type="2" value="<?php echo $listing_detail->shipping_charges;?>">
                    <?php echo  $value; ?>
                  </option>
               <?php endforeach; ?>
@@ -271,7 +271,7 @@ if(!empty($listing_detail->image1))
               ?>
               
               <select name="coriar" id="core" class="form-control payaskinginputselect" required>
-              <option value="">Select Shipping Terms</option>
+              <option value="" disabled="">Select Shipping Terms</option>
               <?php 
                foreach(json_decode($listing_detail->sell_shipping_fee) as $key => $value){
                 $othershippingfee='0';
@@ -280,14 +280,10 @@ if(!empty($listing_detail->image1))
                 } 
                 
                 $othercal=$value->shipping_term.' ('.$value->coriars.') '.$value->shipping_name_display;?>
-                 <option data-other="<?php echo $othercal;?>"
-                 value="<?php 
-                  if(empty($value->shipping_fees)){ echo "0";}
-                  else{ 
-                  if($value->shipping_types == 'Price_per_unit'){ 
-                    echo '1'; }
-                    else{ echo '2';}  
-                   } ?>">
+                 <option data-other="<?php echo $othercal;?>" value="<?php echo $othershippingfee;?>" shipping-type="<?php 
+                  if(empty($value->shipping_fees)){ echo "3";}
+                  else{ if($value->shipping_types == 'Price_per_unit'){ 
+                    echo '1'; } else{ echo '2';} } ?>">
                    <?php 
                    echo currency_class($listing_detail->currency).' &nbsp;'.$othershippingfee.'&nbsp;'.$othercal;
                       ?>
@@ -635,22 +631,23 @@ $('[data-countdown]').each(function() {
 <?php if(!empty($listing_detail->unit_price) && !empty($listing_detail->qty_available)) { ?>
 $('.payaskinginputselect').on('change', function(){
   var valuetoset=$('#core').val();
-  if(valuetoset){
   var per_unit_price= "<?php echo $listing_detail->unit_price; ?>";
   var total_qty_user= parseInt($('#total_qty_user').val());
-  var total_gross_price=parseFloat(parseInt(valuetoset) + (per_unit_price * total_qty_user));
-  if(total_gross_price != 'NaN'){
-    total_gross_price=total_gross_price.toFixed(2);
-  }else{
-    total_gross_price=0;
+  var valueshipping_type=$('#core option:selected').attr('shipping-type');
+  var shipping_price =valuetoset;
+  if(valueshipping_type == 1){
+   shipping_price= valuetoset * total_qty_user;
   }
+  var total_gross_price=parseFloat(parseInt(shipping_price) + (per_unit_price * total_qty_user));
+    if(total_gross_price != 'NaN'){
+      total_gross_price=total_gross_price.toFixed(2);
+    }
+    else{
+      total_gross_price=0;
+    }
    $('#gross_price').html('<?php echo currency_class($listing_detail->currency).' '; ?>'+total_gross_price);
    $('input[name="total_calgross_price"]').val(total_gross_price);
    $('input[name="shippingselected"]').val($('option:selected', this).attr('data-other'));
-  }else{
-    valuetoset='Please choose any shipping term.';
-      $('#gross_price').html(valuetoset);
-  }
  
 });
 
