@@ -236,6 +236,8 @@ if(!empty($listing_detail->image1))
       <input type="hidden" name="listing_id" class="form-control" value="<?php echo $listing_detail->id; ?>"/>
       <input type="hidden" name="total_calgross_price" value="">
       <input type="hidden" name="shippingselected" value="">
+      <input type="hidden" name="shippingtermpayasking" value="">
+      <input type="hidden" name="shippingpricepayasking" value="">
 
        <div class="col-lg-5">
       <dl class="dl-horizontal">
@@ -382,10 +384,10 @@ if(!empty($listing_detail->image1))
                    echo currency_class($listing_detail->currency).' &nbsp;'.$othershippingfee.'&nbsp;'.$othercal;
                       ?>
                  </option>
-              <?php } ?>
+              <?php $ivarible++; } ?>
             </select>
            <?php 
-           $ivarible++;  }} ?>
+             }} ?>
           
         </dl>        
     </div>
@@ -634,6 +636,8 @@ $('.payaskinginputselect').on('change', function(){
   var per_unit_price= "<?php echo $listing_detail->unit_price; ?>";
   var total_qty_user= parseInt($('#total_qty_user').val());
   var valueshipping_type=$('#core option:selected').attr('shipping-type');
+  var valueshipping_type_name=$('#core option:selected').attr('data-other');
+
   var shipping_price =valuetoset;
   if(valueshipping_type == 1){
    shipping_price= valuetoset * total_qty_user;
@@ -645,6 +649,9 @@ $('.payaskinginputselect').on('change', function(){
     else{
       total_gross_price=0;
     }
+   $('input[name="shippingpricepayasking"]').val(shipping_price);
+   $('input[name="shippingtermpayasking"]').val(shipping_price);
+
    $('#gross_price').html('<?php echo currency_class($listing_detail->currency).' '; ?>'+total_gross_price);
    $('input[name="total_calgross_price"]').val(total_gross_price);
    $('input[name="shippingselected"]').val($('option:selected', this).attr('data-other'));
