@@ -654,26 +654,36 @@ class Admin extends MX_Controller
         }
     }
 /*add listing attributes*/
-    function add_listing_attribute()
+  function add_listing_attribute()
     {
         $this->check_authentication();//check login authentication
-
         $this->form_validation->set_rules('product_mpn', 'product mpn', '');
         //$this->form_validation->set_rules('product_isbn', 'product isbn', '');
         $this->form_validation->set_rules('product_make', 'product make', 'required');
         $this->form_validation->set_rules('product_model', 'product model', 'required');
-        $this->form_validation->set_rules('product_type', 'product type', 'required');
+        $this->form_validation->set_rules('product_type', 'product type', '');
         $this->form_validation->set_rules('product_color', 'product color', '');
-
+        $this->form_validation->set_rules('product_capacity', 'product capacity', '');
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
         if ($this->form_validation->run() == TRUE){
+            $product_capacity='';
+            $product_color='';
+            if(!empty($this->input->post('product_color'))){
+                $colors = explode(',',$this->input->post('product_color'));
+                $product_color = json_encode($colors);
+            }
+            if(!empty($this->input->post('product_capacity'))){
+                $capacity=explode(',',$this->input->post('product_capacity'));
+                $product_capacity = json_encode($capacity);
+            }
             $data_insert=array(
             'product_mpn_isbn' =>  $this->input->post('product_mpn'),
             //'product_isbn' =>  $this->input->post('product_isbn'),
             'product_make' =>  $this->input->post('product_make'),
             'product_model' =>  $this->input->post('product_model'),
             'product_type' =>  $this->input->post('product_type'),
-            'product_color' =>  $this->input->post('product_color'),
+            'product_color' => $product_color ,
+            'product_capacity' => $product_capacity,
             'created' => date('Y-m-d h:i:s A'), 
             );
            $this->admin_model->insert('listing_attributes',$data_insert);
@@ -792,11 +802,22 @@ class Admin extends MX_Controller
        // $this->form_validation->set_rules('product_isbn', 'product isbn', '');
         $this->form_validation->set_rules('product_make', 'product_make', 'required');
         $this->form_validation->set_rules('product_model', 'product_model', 'required');
-        //$this->form_validation->set_rules('product_type', 'product_type', 'required');
+        $this->form_validation->set_rules('product_type', 'product_type', '');
         $this->form_validation->set_rules('product_color', 'product_color', '');
+         $this->form_validation->set_rules('product_capacity', 'product capacity', '');
        
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
         if ($this->form_validation->run() == TRUE){
+            $product_capacity='';
+            $product_color='';
+            if(!empty($this->input->post('product_color'))){
+                $colors = explode(',',$this->input->post('product_color'));
+                $product_color = json_encode($colors);
+            }
+            if(!empty($this->input->post('product_capacity'))){
+                $capacity=explode(',',$this->input->post('product_capacity'));
+                $product_capacity = json_encode($capacity);
+            }
             $data_update=array(
             'product_mpn_isbn' =>  $this->input->post('product_mpn'),
             //'product_isbn' =>  $this->input->post('product_isbn'),
@@ -804,6 +825,8 @@ class Admin extends MX_Controller
             'product_model' =>  $this->input->post('product_model'),
             'product_type' =>  $this->input->post('product_type'),
             'product_color' =>  $this->input->post('product_color'),
+            'product_color' => $product_color ,
+            'product_capacity' => $product_capacity,
             'updated' => date('Y-m-d h:i:s A'), 
             );
            $this->admin_model->update('listing_attributes',$data_update,array('id'=>$list_id));
@@ -834,9 +857,7 @@ class Admin extends MX_Controller
         if($this->admin_model->delete('listing_attributes',array('id'=>$list_id))){
             $this->session->set_flashdata('msg_success','Listing Attribute deleted successfully.');
            redirect('admin/listing_attributes'); 
-        } 
-       
-      
+        }
     }
 
     public function couriers(){

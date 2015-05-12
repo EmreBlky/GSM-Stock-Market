@@ -48,7 +48,7 @@ $member_id=$this->session->userdata('members_id');?>
                 &nbsp;Buy&nbsp;
                 </span>
             </td>
-                <td><?php echo date('d-M-y, H:i', strtotime($value->listing_end_datetime)); ?></td>
+                <td><?php echo date('d-M, H:i', strtotime($value->listing_end_datetime)); ?></td>
                 <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
                 <td><?php echo $value->condition; ?></td>
                 <td data-toggle="tooltip" data-placement="left" title="t"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
@@ -99,7 +99,7 @@ $member_id=$this->session->userdata('members_id');?>
                 &nbsp;Sell&nbsp;
                 </span>
             </td>
-                <td><?php echo date('d-M-y, H:i', strtotime($value->listing_end_datetime)); ?></td>
+                <td><?php echo date('d-M, H:i', strtotime($value->listing_end_datetime)); ?></td>
                 <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
                 <td><?php echo $value->condition; ?></td>
                 <td data-toggle="tooltip" data-placement="left" title="t"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>

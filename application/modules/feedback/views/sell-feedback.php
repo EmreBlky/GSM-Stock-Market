@@ -4,7 +4,7 @@
               <div class="modal-content">
                   <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                      <h4 class="modal-title">Leave Feedback 123</h4>
+                      <h4 class="modal-title">Leave Feedback </h4>
                       <small class="font-bold"><strong >Feedback</strong> for <?php echo $this->company_model->get_where($this->member_model->get_where($sid)->company_id)->company_name; ?></small>
                   </div>
                   <div class="modal-body">

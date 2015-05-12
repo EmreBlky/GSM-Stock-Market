@@ -10,7 +10,7 @@ class Marketplace_model extends MY_Model {
         if($query)
             return $this->db->insert_id();
         else
-			return FALSE;		
+        	return FALSE;		
 	}
 	public function get_result($table_name='', $id_array='',$columns=array(),$order_by=array(),$limit=''){
 		if(!empty($columns)):
@@ -193,7 +193,7 @@ class Marketplace_model extends MY_Model {
 		$this->db->group_by('listing.id');
 		$this->db->where('listing.status', 1);
 		$this->db->where('listing.listing_type', 2);
-		
+		$this->db->where("`listing`.`min_qty_order` <= `listing`.`qty_available`");
 		$query = $this->db->get();
 	
 		if($query->num_rows()>0)
@@ -297,7 +297,7 @@ class Marketplace_model extends MY_Model {
 		$this->db->group_by('listing.id');
 		$this->db->where('listing.status', 1);
 		$this->db->where('listing.listing_type', 1);
-		
+		$this->db->where("`listing`.`min_qty_order` <= `listing`.`qty_available`");
 		$query = $this->db->get();
 		
 			
@@ -339,7 +339,9 @@ class Marketplace_model extends MY_Model {
 		$this->db->where('make_offer.offer_status',0);
 		
 		$this->db->where('listing.status', 1);
-		$this->db->group_by('make_offer.id');
+		$this->db->group_by('listing.id');
+		//$this->db->group_by('make_offer.id');
+		$this->db->order_by('make_offer.id','desc');
 		//$this->db->where('listing.listing_type', $listing_type);
 		$this->db->from('listing');
 		$this->db->join('make_offer','make_offer.listing_id=listing.id');
@@ -356,6 +358,7 @@ class Marketplace_model extends MY_Model {
 		$this->db->join('company','company.admin_member_id=listing.member_id');
 		$this->db->group_by('listing.id');
 		$this->db->where('status', 1);
+		$this->db->order_by('listing.id','desc');
 		//$this->db->where_or('scheduled_status', 1);
 		$this->db->where('listing_type', 1);
 		$this->db->where('member_id',$member_id);
@@ -371,6 +374,7 @@ class Marketplace_model extends MY_Model {
 		$this->db->from('listing');
 		$this->db->join('company','company.admin_member_id=listing.member_id');
 		$this->db->where('status', 1);
+		$this->db->order_by('listing.id','desc');
 		//$this->db->where_or('scheduled_status', 1);
 		$this->db->where('listing_type', 2);
 		$this->db->where('member_id',$member_id);
@@ -474,6 +478,7 @@ class Marketplace_model extends MY_Model {
 		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
 		$this->db->from('listing');
 		$this->db->where('listing.status', 1);
+		$this->db->where("`listing`.`min_qty_order` <= `listing`.`qty_available`");
 		$query = $this->db->get();
 		if($query->num_rows()>0)
 			return $query->row();
@@ -693,7 +698,7 @@ class Marketplace_model extends MY_Model {
 		$this->db->join('make_offer','make_offer.listing_id=listing.id');
 		$this->db->where('listing.status', 1);
 		$this->db->where('make_offer.offer_status', 0);
-		$where_con="(`make_offer`.`seller_id`=".$member_id." OR "."`make_offer`.`buyer_id`=".$member_id.")";
+		$where_con="(`make_offer`.`offer_received_by`=".$member_id.")";
 		$this->db->where($where_con);
 		return  $this->db->count_all_results();
 	}
@@ -725,13 +730,13 @@ class Marketplace_model extends MY_Model {
 	public function count_negotiation()
 	{
 		$member_id=$this->session->userdata('members_id');
-		$where_con="(`negotiation`.`seller_id`=".$member_id." OR `negotiation`.`buyer_id`=".$member_id.")";
+		$where_con="(`negotiation`.`offer_received_by`=".$member_id.")";
 		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
 		$this->db->where($where_con);
 		$this->db->from('negotiation');
 		$this->db->join('listing','listing.id=negotiation.listing_id');
 		$this->db->where('negotiation.status',0);
-		
+		//$this->db->or_where('negotiation.status',3);
 		return  $this->db->count_all_results();
 	}
 

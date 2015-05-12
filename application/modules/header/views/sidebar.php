@@ -140,7 +140,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers
 <span class="count_offer_sidbar_ajax">
 	<?php  if($counteroffer){ ?>
-		<span class="label label-info pull-right">
+		<span class="label label-warning pull-right">
 	<?php  echo $counteroffer; ?></span>
 	<?php } ?></span>
 </a></li>
@@ -212,7 +212,7 @@ if($count_order_history){ ?>
 	</span></a></li>
 	<li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers<span class="count_offer_sidbar_ajax">
 	<?php  if($counteroffer){ ?>
-		<span class="label label-info pull-right">
+		<span class="label label-warning pull-right">
 	<?php  echo $counteroffer; ?></span>
 	<?php } ?></span></a></li>
 	<li><a href="marketplace/open_orders"><i class="fa fa-book"></i> Open Orders <span class="count_open_order_class">
@@ -331,26 +331,26 @@ if($count_order_history){ ?>
 <?php if($url == 'imei') {?>
 <li class="active">
 <a href="imei/"><i class="fa fa-barcode"></i> <span class="nav-label">IMEI Services</span> 
-		<!--<span class="fa arrow"></span>-->
-</a><!--
+		<span class="fa arrow"></span>
+</a>
 <ul class="nav nav-second-level">
 		<li><a href="imei/imei_lookup/"><i class="fa fa-eye"></i> IMEI Lookup</a></li>
 		<li><a href="imei/unlocking/"><i class="fa fa-unlock-alt"></i> Unlocking</a></li>
 		<li><a href="imei/archive/"><i class="fa fa-book"></i> Archive</a></li>
 		<li><a href="imei/top_up/"><i class="fa fa-money"></i> <span class="nav-label">Top up</span><span class="label label-primary pull-right">£5.00</span></a></li>
-</ul>-->
+</ul>
 </li>     
 <?php } else {?>
 <li>
 <a href="imei/"><i class="fa fa-barcode"></i> <span class="nav-label">IMEI Services</span> 
-		<!--<span class="fa arrow"></span>-->
+		<span class="fa arrow"></span>
 </a>
-<!-- <ul class="nav nav-second-level">
+<ul class="nav nav-second-level">
 		<li><a href="imei/imei_lookup/"><i class="fa fa-eye"></i> IMEI Lookup</a></li>
 		<li><a href="imei/unlocking/"><i class="fa fa-unlock-alt"></i> Unlocking</a></li>
 		<li><a href="imei/archive/"><i class="fa fa-book"></i> Archive</a></li>
 		<li><a href="imei/top_up/"><i class="fa fa-money"></i> <span class="nav-label">Top up</span><span class="label label-primary pull-right">£5.00</span></a></li>
-</ul>-->
+</ul>
 </li>   
 <?php } ?>
 

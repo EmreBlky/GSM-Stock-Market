@@ -23,6 +23,19 @@ class Imei_model extends MY_Model {
 		return $hpi_check_data;
 	}
 
+	function has_imei_account()
+	{
+		$query = $this->db->get_where('imei_accounts', array('member_id' => $this->session->userdata('members_id')));
+
+		$imei_account = false;
+		if ($query->num_rows() > 0)
+		{
+			$imei_account = true;
+		}
+
+		return $imei_account;
+	}
+
 	public static function lookup_imei($imei)
 	{
 		$CI = get_instance();
