@@ -1869,11 +1869,23 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
         $listing=$this->marketplace_model->get_row('listing', array('id'=>$offerdetail->listing_id));
         if($listing->listing_type==1){$offer_type=2;}
         else{$offer_type=1;}
+        $sendermemid=$this->session->userdata('members_id');
+
+         if($sendermemid == $offerdetail->offer_given_by){
+            $sendermemid = $offerdetail->offer_received_by;
+            $recmemid=$offerdetail->offer_given_by;
+        }
+        else{
+            $sendermemid = $offerdetail->offer_given_by;
+            $recmemid=$offerdetail->offer_received_by;
+        }
         $data_insert_negotiation=array(
             'buyer_id'      => $offerdetail->buyer_id,
             'offer_id'      => $offerdetail->id,
             'seller_id'     => $offerdetail->seller_id,
             'listing_id'    => $offerdetail->listing_id,
+            'offer_given_by'=>$recmemid,
+            'offer_received_by'=>$sendermemid,
             'product_qty'   => $qty,
             'unit_price'    => $per_unit_price,
             'grand_total'   => $grand_total,
@@ -2577,6 +2589,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
    function counter_offer_negotiation(){
     if($_POST){
         $mellerid =  $this->session->userdata('members_id');
+
         $offer_id=$_POST['offer_id'];
         $qty=$_POST['qty'];
         $per_unit_price=$_POST['per_unit_price'];
@@ -2585,11 +2598,22 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
         $listing=$this->marketplace_model->get_row('listing', array('id'=>$offerdetail->listing_id));
         if($listing->listing_type==1){$offer_type=2;}
         else{$offer_type=1;}
+        $negotiation_detail=$this->marketplace_model->get_row('negotiation',array('offer_id'=>$offer_id));
+        $sendermemid=$this->session->userdata('members_id');
+        if($sendermemid == $negotiation_detail->offer_given_by){            $sendermemid = $negotiation_detail->offer_received_by;
+            $recmemid=$negotiation_detail->offer_given_by;
+        }
+        else{
+            $sendermemid = $negotiation_detail->offer_given_by;
+            $recmemid=$negotiation_detail->offer_received_by;
+        }
         $data_insert_negotiation=array(
             'buyer_id'      => $offerdetail->buyer_id,
             'offer_id'      => $offerdetail->id,
             'seller_id'     => $offerdetail->seller_id,
             'listing_id'    => $offerdetail->listing_id,
+            'offer_given_by'=>$recmemid,
+            'offer_received_by'=>$sendermemid,
             'product_qty'   => $qty,
             'unit_price'    => $per_unit_price,
             'grand_total'   => $grand_total,
