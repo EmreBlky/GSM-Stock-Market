@@ -204,9 +204,9 @@ class Preferences extends MX_Controller
     
     function sendInvites()
     {
-        echo '<pre>';
+        //echo '<pre>';
         //print_r($_POST);
-        
+        $base = $this->config->item('base_url');
         $this->load->module('emails');
                 
         $config = Array(
@@ -227,8 +227,8 @@ class Preferences extends MX_Controller
                   
         $invitor = $this->member_model->get_where($this->session->userdata('members_id'));
         
-        print_r($invitor);
-        exit;
+        //print_r($invitor);
+        //exit;
         
         $invite_code = $this->company_model->get_where_multiple('admin_member_id', $this->session->userdata('members_id'))->invitation_code;
         
@@ -250,7 +250,10 @@ class Preferences extends MX_Controller
                           You have been invited to join '.$invitor->firstname.' '.$invitor->lastname.' ('.$this->company_model->get_where($invitor->company_id)->company_name.') at GSMStockmarket.com.'
                     . '   <br/>
                           <br/>
-                          Please click on the link below to register your account with GSMStockmarket.com
+                          Message from Invitee: '.$this->input->post('email_message').'
+                          <br/>
+                          <br/>    
+                          Please <a href="'.$base.'join/invites/'.$invite_code.'">CLICK HERE</a> to register your account with GSMStockmarket.com
                           <br/>
                           <br/>
                           ';
@@ -262,7 +265,7 @@ class Preferences extends MX_Controller
 
             $this->email->send();
             
-            echo $email[$count].'<br/>';
+            //echo $email[$count].'<br/>';
             
         $count++;    
         }
