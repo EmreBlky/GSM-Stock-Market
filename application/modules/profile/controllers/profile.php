@@ -177,6 +177,7 @@ class Profile extends MX_Controller
      */
     function companyImage()
     {
+        if($this->session->userdata('members_id') == 5 || $this->session->userdata('members_id') == $admin_id) {
         $mid = $this->input->post('support_pic_edit');
         
         if($mid > 0){
@@ -289,7 +290,7 @@ class Profile extends MX_Controller
             }
             
         }
-        
+      }
     }
 
     function profileImage()
