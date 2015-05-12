@@ -43,7 +43,7 @@
         $("#phone_number").val(value);
         $("#mobile_phone").val(value);
     }
-
+<?php if($this->session->userdata('members_id') == 5 || $this->session->userdata('members_id') == $admin_id) { ?>
     function validate_info() {
 
         var total = getCheckedBoxesCount();
@@ -134,7 +134,7 @@
         return true;
     }
 
-
+<?php } ?>
     function getCheckedBoxesCount() {
         var count = 1;
         var total = 0;
