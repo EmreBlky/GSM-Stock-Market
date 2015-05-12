@@ -212,16 +212,9 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-            <!-- <h4 class="modal-title">23 x Refurbished Apple iPhone 4S 16GB</h4> -->
-            <strong style="color:green">Selling Offer</strong> from GSMStockMarket.com Limited
+         <div id="deal_info_data"></div>
         </div>
-        <div class="modal-body">
-            <div class="row">
-                <div id="deal_info_data"></div>
-          </div>
-        </div>
-    </div>
-    </div>
+      </div>
     </div>
     
 <div class="modal inmodal fade" id="insert_payment_info" tabindex="-1" role="dialog" aria-hidden="true">
@@ -544,7 +537,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                 }
             });
             /* multi select */
-       	var config = {
+           var config = {
                 '.chosen-select'           : {search_contains:true},
                 '.chosen-select-deselect'  : {allow_single_deselect:true},
                 '.chosen-select-no-single' : {disable_search_threshold:10},

@@ -2251,7 +2251,15 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
    function deal_info($listing_id='',$order_id='')
     {
         if($deal_info =  $this->marketplace_model->get_row('listing',array('id'=>$listing_id))){
+            $company_name=company_name($deal_info->member_id);
         ?>
+        <h2><center><?php echo $deal_info->product_make.' '.$deal_info->product_model.' '.$deal_info->condition.' '.$deal_info->product_color.' @ '.currency_class($deal_info->currency).' '.$deal_info->unit_price;?></center></h2> 
+         <strong style="color:green"><?php if($deal_info->listing_type==1){?>Selling Offer<?php } else{ ?> Buying Request <?php } ?>
+         </strong> from <?php echo $company_name->company_name;?>
+         <hr>
+        </div>
+        <div class="modal-body">
+         <div class="row">
         <div class="col-lg-6">
             <dl class="dl-horizontal">
                 <h4 style="text-align:center">Product Details</h4>
@@ -2327,6 +2335,8 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                     <?php } ?>
          </table>
          </div>
+         </div>
+        </div>
         <?php }}}
     }
    public function insert_payment_info(){
