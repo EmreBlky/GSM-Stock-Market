@@ -232,6 +232,9 @@ if(!empty($listing_detail->image1))
   </div>
   <div class="modal-body">
     <div class="row">
+     <?php if (!empty($min_qty_to_sell)){ ?>
+       <span>You will not able enter quantity to below <b><?php echo $min_qty_to_sell ?></b> otherwise it would not be accepted. </span><br>
+     <?php } ?>
     <form method="post" action="<?php echo base_url().'marketplace/pay_asking_price'?>" class="make_offer">
       <input type="hidden" name="listing_id" class="form-control" value="<?php echo $listing_detail->id; ?>"/>
       <input type="hidden" name="total_calgross_price" value="">
@@ -324,7 +327,7 @@ if(!empty($listing_detail->image1))
   <div class="row">
     <dl class="dl-horizontal"  disabled>
  <?php if (!empty($min_qty_to_sell)){ ?>
-  <span>you will not able enter quantity to below <b><?php echo $min_qty_to_sell ?></b> otherwise would be auto rejected. </span><br>
+  <span>You will not able enter quantity to below <b><?php echo $min_qty_to_sell ?></b> otherwise it would not be accepted. </span><br>
 <?php } ?>
 <form method="post" action="<?php echo base_url().'marketplace/make_offer'?>" class="make_offer">
 <div class="row">
