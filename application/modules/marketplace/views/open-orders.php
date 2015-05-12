@@ -86,7 +86,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             </div>
             </td>
             <td>
-            <a onclick="deal_info(<?php echo $value->listing_id;?>,<?php echo $value->makeofferid;?>)" data-toggle="modal" data-target="#deal_infos" class="btn btn-primary" >Deal Info</a>
+            <a onclick="deal_info(<?php echo $value->listing_id;?>,<?php echo $value->makeofferid;?>,1)" data-toggle="modal" data-target="#deal_infos" class="btn btn-primary" >Deal Info</a>
         <?php if ($value->order_status == 1 && empty($value->payment_done)){ 
             ?>
             <a onclick="insert_order_id(<?php echo $value->makeofferid;?>)" data-toggle="modal" data-target="#payment_done" class="btn btn-warning" >Make Payment</a>
@@ -174,7 +174,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             </div>
             </td>
             <td>
-            <a onclick="deal_info(<?php echo $value->listing_id;?>,<?php echo $value->makeofferid;?>)" data-toggle="modal" data-target="#deal_infos" class="btn btn-primary" >Deal Info</a>
+            <a onclick="deal_info(<?php echo $value->listing_id;?>,<?php echo $value->makeofferid;?>,2)" data-toggle="modal" data-target="#deal_infos" class="btn btn-primary" >Deal Info</a>
             <?php if (empty($value->order_status)){ ?>
             <a onclick="insert_order_id(<?php echo $value->makeofferid;?>)" data-toggle="modal" data-target="#insert_payment_info" class="btn btn-warning">Send Payment details</a><!-- modal for send payment detail -->
             <?php }elseif ($value->order_status == 1){ if($value->payment_done){?>
@@ -486,9 +486,9 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 
 </div>
 <script>
- function deal_info(listing_id,order_id) {
+ function deal_info(listing_id,order_id,status) {
         var list = listing_id;
-       $.post('<?php echo base_url() ?>marketplace/deal_info/'+listing_id+'/'+order_id, function(data) {
+       $.post('<?php echo base_url() ?>marketplace/deal_info/'+listing_id+'/'+order_id+'/'+status, function(data) {
            $('#deal_info_data').html(data);
        });
     }
