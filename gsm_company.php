@@ -1,10 +1,12 @@
 <?php
 
+echo $_SERVER['SERVER_NAME'];
+exit;
 //mysql_connect('109.203.125.38', 'gsmstock_admin', 'zv.4qAb17ph$;?$PF!');
 //mysql_select_db('gsmstock_secure');
 
-mysql_connect('localhost', 'root', 'Rwt189K72');
-mysql_select_db('gsmstock_secure');
+//mysql_connect('localhost', 'root', 'Rwt189K72');
+//mysql_select_db('gsmstock_secure');
 
 function random_string($type = 'alnum', $len = 8)
 {

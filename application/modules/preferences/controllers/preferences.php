@@ -248,8 +248,8 @@ class Preferences extends MX_Controller
                           Dear sir/ madam,
                           <br/>
                           <br/>
-                          You have been invited to join '.$invitor->firstname.' '.$invitor->lastname.' ('.$this->company_model->get_where($invitor->company_id)->company_name.') at GSMStockmarket.com.'
-                    . '   <br/>
+                          You have been invited to join '.$invitor->firstname.' '.$invitor->lastname.' ('.$this->company_model->get_where($invitor->company_id)->company_name.') at GSMStockmarket.com.
+                          <br/>
                           <br/>
                           Message from Invitee: '.$this->input->post('email_message').'
                           <br/>
@@ -270,6 +270,13 @@ class Preferences extends MX_Controller
             
         $count++;    
         }
+        
+        $this->session->set_flashdata('confirm', '<div style="margin:0 15px">    
+                                                            <div class="alert alert-warning">
+                                                                Your invites have been sent.
+                                                            </div>
+                                                        </div>');
+        redirect('preferences/invitation');
         
     }
 	
