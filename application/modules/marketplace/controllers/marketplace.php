@@ -1932,16 +1932,16 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
       if($listing->listing_type==1){
         $core =  explode(',', $listing->courier);
         $shippingterm = $core[$shippingterm_index];
+         $shippingamount =$listing->shipping_charges;
       }
       elseif($listing->listing_type==2){
         $value=json_decode($listing->sell_shipping_fee);
         $shippingterm = $value[$shippingterm_index]->shipping_term.' ('.$value[$shippingterm_index]->coriars.') '.$value[$shippingterm_index]->shipping_name_display;
-        if($value[$shippingterm_index]->shipping_types=='Free_Shipping'){
-            $shippingamount =0;
-        }elseif($value[$shippingterm_index]->shipping_types=='Price_per_unit'){
-            $shippingamount =$value[$shippingterm_index]->shipping_types * $product_qty;
-        }elseif($value[$shippingterm_index]->shipping_types=='Flat_fee'){
-            $shippingamount =$value[$shippingterm_index]->shipping_types;
+
+        if($value[$shippingterm_index]->shipping_types=='Price_per_unit'){
+            $shippingamount = $value[$shippingterm_index]->shipping_fees * $product_qty;
+        }else{
+            $shippingamount = $value[$shippingterm_index]->shipping_fees;
         }
         } 
       }
@@ -2006,10 +2006,10 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
             $seller_id_to_fix=$listing->member_id;
         }
         
-        if($checkoffer=$this->marketplace_model->get_row('make_offer', array('buyer_id'=> $buyer_id,'seller_id' => $listing->member_id,'listing_id'=> $listing_id,'product_qty'   => $product_qty,'unit_price' => $unit_price))){
+        /*if($checkoffer=$this->marketplace_model->get_row('make_offer', array('buyer_id'=> $buyer_id,'seller_id' => $listing->member_id,'listing_id'=> $listing_id,'product_qty'   => $product_qty,'unit_price' => $unit_price))){
         $list=array('STATUS'=>7,'Message'=>'This Offer has been already made.'); 
         }
-        else{
+        else{*/
          $total_price=  ($product_qty *  $unit_price) +  $shippingamount;
        $data_insert=array(
                 'buyer_id'      => $buyer_id_to_fix,
@@ -2029,7 +2029,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                 );
         $this->marketplace_model->insert('make_offer',$data_insert);
         $list=array('STATUS'=>1,'Message'=>'Offer added sucessfully.');
-        }
+        /*}*/
        }
        else{
          $data_insert_offer_attempt=array(
@@ -2172,13 +2172,14 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
     }
     public function pay_asking_price()
     {   
+        print_r($_POST);
         if($_POST){
         $buyer_id=$this->session->userdata('members_id');
         $listing_id=$_POST['listing_id'];
         $shipping=$_POST['shippingselected']; 
         $productqty=$_POST['total_qty_user'];
-        $shipping_price=$_POST['coriar'];
-       
+        $shipping_price=$_POST['shippingpricepayasking'];
+        
         if($listing=$this->marketplace_model->get_row('listing', array('id'=>$listing_id))){
             
          $unit_price=$listing->unit_price;
@@ -2186,7 +2187,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
          if(!empty($listing->unit_price) && !empty($listing->qty_available)){ 
             $grand_total= $listing->unit_price * $productqty;
          }
-        $total_price= $grand_total + $shipping_price;
+        $total_price= $_POST['total_calgross_price'];
                  
         if($listing->listing_type==1){
           $buyer_id_to_fix=$listing->member_id;
@@ -2214,7 +2215,6 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                 'pay_asking_price'  => 1,
                 'created'           => date('Y-m-d, H:i:s')
                 );
-
         $makeofferid=$this->marketplace_model->insert('make_offer',$data_insert);
         $this->session->set_flashdata('msg_success','Request inserted sucessfully...! ');
       }
