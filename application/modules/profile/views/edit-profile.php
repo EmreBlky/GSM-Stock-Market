@@ -1744,7 +1744,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                         <div class="col-md-3" style="padding-right:0">
                             <?php
                             $this->load->module('country');
-                            $this->country->select_mobile($company->id);
+                            $this->country->select_mobile($company->country);
                             ?>
                         </div>
                         <div class="col-md-6">
