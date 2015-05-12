@@ -43,7 +43,7 @@
         $("#phone_number").val(value);
         $("#mobile_phone").val(value);
     }
-<?php if($this->session->userdata('members_id') == 5 || $this->session->userdata('members_id') == $admin_id) { ?>
+<?php if($this->session->userdata('members_id') == 5 || $this->session->userdata('members_id') == $admin_id){ ?>
     function validate_info() {
 
         var total = getCheckedBoxesCount();
@@ -1744,7 +1744,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                         <div class="col-md-3" style="padding-right:0">
                             <?php
                             $this->load->module('country');
-                            $this->country->select_mobile($company->country);
+                            $this->country->select_mobile($member->id);
                             ?>
                         </div>
                         <div class="col-md-6">
