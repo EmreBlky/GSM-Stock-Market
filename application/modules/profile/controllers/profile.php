@@ -784,10 +784,8 @@ class Profile extends MX_Controller
             }
                 
             }
-            else{
-                
-                $company_bio = strip_tags($this->company_model->get_where_multiple('admin_member_id', $this->session->userdata('members_id'))->company_profile);
-                $company_bio_new = $this->input->post('company_profile');
+            else{              
+            
 
             $data = array(
                 'email' => $this->input->post('email'),
@@ -809,6 +807,11 @@ class Profile extends MX_Controller
 
             $this->load->model('member/member_model', 'member_model');
             $this->member_model->_update($this->session->userdata('members_id'), $data);
+            
+            if($this->session->userdata('members_id') == 5 || $this->session->userdata('members_id') == $admin_id) {    
+                
+                $company_bio = strip_tags($this->company_model->get_where_multiple('admin_member_id', $this->session->userdata('members_id'))->company_profile);
+                $company_bio_new = $this->input->post('company_profile');
 
             if($company_bio == $company_bio_new){
                 
@@ -862,6 +865,8 @@ class Profile extends MX_Controller
             }
             
             $this->company_model->_update($this->member_model->get_where($this->session->userdata('members_id'))->company_id, $data);
+            
+            }
             
             $this->profile_completion($this->session->userdata('members_id'));
 //
