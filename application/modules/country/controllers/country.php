@@ -76,7 +76,7 @@ class Country extends MX_Controller
     {
         if(isset($mid)){           
             
-            $mpid = $this->$this->company_model->get_where($this->member_model->get_where($mid)->company_id)->country;
+            $mpid = $this->country_model->get_where($this->company_model->get_where($this->member_model->get_where($mid)->company_id)->country)->id;
             
 //            echo '<pre>';
 //            print_r($pid);
