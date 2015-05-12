@@ -2172,7 +2172,6 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
     }
     public function pay_asking_price()
     {   
-        print_r($_POST);
         if($_POST){
         $buyer_id=$this->session->userdata('members_id');
         $listing_id=$_POST['listing_id'];
