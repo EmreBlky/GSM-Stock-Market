@@ -226,7 +226,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <div class="input-group m-b">
         <span class="input-group-addon">
         <input type="checkbox" name="minimum_checkbox" id="minimum_checkbox" <?php if(isset($_POST['minimum_checkbox']) ){ echo'checked';} elseif(!empty($product_list->min_price)){ echo'checked';}?>/> </span>
-        <input type="text" class="form-control" placeholder="What is your minumum price?" name="min_price" value="<?php if(!empty($product_list->min_price)) echo $product_list->min_price; else echo set_value('min_price');?>"
+        <input type="text" class="form-control" placeholder="What is your minumum price?" name="min_price" value="<?php if(!empty($product_list->min_price)){ echo $product_list->min_price; }
+        elseif(isset($_POST['min_price'])){  echo $_POST['min_price'];}?>"
         <?php if(isset($_POST['minimum_checkbox']) ){ echo'';} elseif(empty($product_list->min_price) ){ echo'disabled';}?>></div>
         <p class="small text-navy">Tick allow offers. Any offers below this will be auto rejected, leave blank to allow any offers if ticked.</p>
         <?php echo form_error('min_price'); ?>
@@ -242,7 +243,9 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <div class="col-md-9">
     <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="orderqunatity_checkbox" id="orderqunatity_checkbox"
     <?php if(isset($_POST['orderqunatity_checkbox']) ){ echo'checked';} elseif(!empty($product_list->min_qty_order)){ echo'checked';}?>/> </span>
-    <input type="text" class="form-control" placeholder="Minimum Order Quantity" name="min_qty_order" value="<?php if(!empty($product_list->min_qty_order)) echo $product_list->min_qty_order; else echo set_value('min_qty_order');?>"
+    <input type="text" class="form-control" placeholder="Minimum Order Quantity" name="min_qty_order" value="<?php if(!empty($product_list->min_qty_order)){ echo $product_list->min_qty_order;} 
+    elseif(isset($_POST['min_qty_order'])){  echo $_POST['min_qty_order'];} ?>"
+
     <?php if(isset($_POST['orderqunatity_checkbox']) ){ echo'';} elseif(empty($product_list->min_qty_order) ){ echo'disabled';}?>
     ></div>
     <p class="small text-navy">Allow minimum order quantity else full quantity sale available only</p>
