@@ -60,5 +60,24 @@ class Support extends MX_Controller
         $this->load->module('templates');
         $this->templates->page($data);
     }	
+    
+    function feedback()
+    {
+        $data_activity = array(
+                                'activity' => 'Support: Feedback',
+                                'time' => date('H:i:s'),
+                                'date' => date('d-m-Y')
+                                );
+        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
+        
+        $data['main'] = 'support';        
+        $data['title'] = 'GSM - Questionnaire';        
+        $data['page'] = 'feedback';
+        
+        $data['member'] = $this->member_model->get_where($this->session->userdata('members_id'));
+        
+        $this->load->module('templates');
+        $this->templates->page($data);
+    }	
 	
 }
