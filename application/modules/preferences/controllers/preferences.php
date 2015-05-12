@@ -16,6 +16,7 @@ class Preferences extends MX_Controller
         }
         
         $this->load->model('member/member_model', 'member_model');
+        $this->load->model('company/company_model', 'company_model');
         $this->load->model('membership/membership_model', 'membership_model');
         $this->load->model('transaction/transaction_model', 'transaction_model');
         $this->load->model('activity/activity_model', 'activity_model');
