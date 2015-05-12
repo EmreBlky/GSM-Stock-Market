@@ -13,6 +13,7 @@
 <div class="col-lg-2">
 </div>
 </div>
+$_POST
 <?php $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id);
 if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <div class="wrapper wrapper-content">
@@ -99,7 +100,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             $k=0;
                foreach ($product_colors as $row) { 
                 ?>
-              <option value="<?php echo $row; ?>" <?php if(!empty($_POST) && $row==$_POST['product_color']){ echo'selected';}?><?php if(!empty($product_list->product_color) && $row == $product_list->product_color){ echo'selected';}?>><?php echo $row; ?></option>
+              <option value="<?php echo $row; ?>" <?php if(!empty($_POST['product_color']) && $row==$_POST['product_color']){ echo'selected';}?><?php if(!empty($product_list->product_color) && $row == $product_list->product_color){ echo'selected';}?>><?php echo $row; ?></option>
                <?php $k++;}} ?>
           </select>
            <?php echo form_error('product_color'); ?>
@@ -125,7 +126,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
     <?php echo form_error('product_type'); ?>
 </div>
 </div>
-<span class="Handset <?php if(!empty($_POST) && $_POST['product_type']=='Handset'){  echo 'SHOW';}
+<span class="Handset <?php if(!empty($_POST['product_type']) && $_POST['product_type']=='Handset'){  echo 'SHOW';}
     elseif(!empty($product_list->product_type) && $product_list->product_type =='Handset'){
           echo 'SHOW';
     }else{ echo'listing_hide';} ?>">
@@ -137,7 +138,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <?php $spec = spec();
             if($spec){
                 foreach ($spec as $key => $value){ ?>
-                  <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['spec']){ echo'selected';}
+                  <option value="<?php echo $value; ?>" <?php if(!empty($_POST['spec']) && $value==$_POST['spec']){ echo'selected';}
                    elseif(!empty($product_list->spec) && $value==$product_list->spec){ echo'selected';}?>><?php echo $value; ?></option>
                   <?php }
             } ?>
@@ -149,14 +150,14 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <div class="col-md-9">
     <select class="form-control" name="device_capacity">
         <option selected value="">- Device capacity -</option>
-        <option value="2GB" <?php if(!empty($_POST) && '2GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '2GB'==$product_list->device_capacity){ echo'selected';}?>>2GB</option>
-        <option value="4GB" <?php if(!empty($_POST) && '4GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '4GB'==$product_list->device_capacity){ echo'selected';}?>>4GB</option>
-        <option value="8GB" <?php if(!empty($_POST) && '8GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '8GB'==$product_list->device_capacity){ echo'selected';}?>>8GB</option>
-        <option value="16GB" <?php if(!empty($_POST) && '16GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '16GB'==$product_list->device_capacity){ echo'selected';}?>>16GB</option>
-        <option value="32GB" <?php if(!empty($_POST) && '32GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '32GB'==$product_list->device_capacity){ echo'selected';}?>>32GB</option>
-        <option value="64GB" <?php if(!empty($_POST) && '64GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '64GB'==$product_list->device_capacity){ echo'selected';}?>>64GB</option>
-        <option value="128GB" <?php if(!empty($_POST) && '128GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '128GB'==$product_list->device_capacity){ echo'selected';}?>>128GB</option>
-        <option value="256GB" <?php if(!empty($_POST) && '256GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '256GB'==$product_list->device_capacity){ echo'selected';}?>>256GB</option>
+        <option value="2GB" <?php if(!empty($_POST['device_capacity']) && '2GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '2GB'==$product_list->device_capacity){ echo'selected';}?>>2GB</option>
+        <option value="4GB" <?php if(!empty($_POST['device_capacity']) && '4GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '4GB'==$product_list->device_capacity){ echo'selected';}?>>4GB</option>
+        <option value="8GB" <?php if(!empty($_POST['device_capacity']) && '8GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '8GB'==$product_list->device_capacity){ echo'selected';}?>>8GB</option>
+        <option value="16GB" <?php if(!empty($_POST['device_capacity']) && '16GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '16GB'==$product_list->device_capacity){ echo'selected';}?>>16GB</option>
+        <option value="32GB" <?php if(!empty($_POST['device_capacity']) && '32GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '32GB'==$product_list->device_capacity){ echo'selected';}?>>32GB</option>
+        <option value="64GB" <?php if(!empty($_POST['device_capacity']) && '64GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '64GB'==$product_list->device_capacity){ echo'selected';}?>>64GB</option>
+        <option value="128GB" <?php if(!empty($_POST['device_capacity']) && '128GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '128GB'==$product_list->device_capacity){ echo'selected';}?>>128GB</option>
+        <option value="256GB" <?php if(!empty($_POST['device_capacity']) && '256GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '256GB'==$product_list->device_capacity){ echo'selected';}?>>256GB</option>
         <option value="Unknown">Unknown</option>
     </select>
 </div>
@@ -165,10 +166,10 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <div class="col-md-9">
     <select class="form-control" name="device_sim">
         <option selected >- Device sim status -</option>
-        <option <?php if(!empty($_POST) && 'Sim Free'==$_POST['device_sim']){ echo'selected';} elseif(!empty($product_list->device_sim) && 'Sim Free'==$product_list->device_sim){ echo'selected';}?> value="Sim Free">Sim Free</option>
-        <option <?php if(!empty($_POST) && 'Network Unlocked'==$_POST['device_sim']){ echo'selected';} elseif(!empty($product_list->device_sim) && 'Network Unlocked'==$product_list->device_sim){ echo'selected';}?>>Network Unlocked</option>
-        <option <?php if(!empty($_POST) && 'Network Locked'==$_POST['device_sim']){ echo'selected';} elseif(!empty($product_list->device_sim) && 'Network Locked'==$product_list->device_sim){ echo'selected';}?> value="Network Locked">Network Locked</option>
-        <option <?php if(!empty($_POST) && 'Unknown'==$_POST['device_sim']){ echo'selected';} elseif(!empty($product_list->device_sim) && 'Unknown'==$product_list->device_sim){ echo'selected';}?> value="Unknown">Unknown</option>
+        <option <?php if(!empty($_POST['device_sim']) && 'Sim Free'==$_POST['device_sim']){ echo'selected';} elseif(!empty($product_list->device_sim) && 'Sim Free'==$product_list->device_sim){ echo'selected';}?> value="Sim Free">Sim Free</option>
+        <option <?php if(!empty($_POST['device_sim']) && 'Network Unlocked'==$_POST['device_sim']){ echo'selected';} elseif(!empty($product_list->device_sim) && 'Network Unlocked'==$product_list->device_sim){ echo'selected';}?>>Network Unlocked</option>
+        <option <?php if(!empty($_POST['device_sim']) && 'Network Locked'==$_POST['device_sim']){ echo'selected';} elseif(!empty($product_list->device_sim) && 'Network Locked'==$product_list->device_sim){ echo'selected';}?> value="Network Locked">Network Locked</option>
+        <option <?php if(!empty($_POST['device_sim']) && 'Unknown'==$_POST['device_sim']){ echo'selected';} elseif(!empty($product_list->device_sim) && 'Unknown'==$product_list->device_sim){ echo'selected';}?> value="Unknown">Unknown</option>
     </select>
 </div>
 </div>
@@ -182,7 +183,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
     <?php $condition = condition();
     if($condition){
         foreach ($condition as $key => $value){ ?>
-          <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['condition']){ echo'selected';}?><?php if(!empty($product_list->condition) && $value == $product_list->condition){ echo'selected="selected"';}?>><?php echo $value; ?></option>
+          <option value="<?php echo $value; ?>" <?php if(!empty($_POST['condition']) && $value==$_POST['condition']){ echo'selected';}?><?php if(!empty($product_list->condition) && $value == $product_list->condition){ echo'selected="selected"';}?>><?php echo $value; ?></option>
           <?php }
     } ?>
     </select>
@@ -206,7 +207,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
            }else{
             $default_curr = $default_currency->currency;
            } ?>
-             <option <?php if(!empty($_POST) && $i==$_POST['currency']){ echo'selected';}elseif(!empty($product_list->currency) && $i==$product_list->currency){ echo'selected';}elseif($default_curr==$unit[1]){ echo "selected"; } ?> value="<?php echo $i;?>"><?php echo $value; ?></option>
+             <option <?php if(!empty($_POST['currency']) && $i==$_POST['currency']){ echo'selected';}elseif(!empty($product_list->currency) && $i==$product_list->currency){ echo'selected';}elseif($default_curr==$unit[1]){ echo "selected"; } ?> value="<?php echo $i;?>"><?php echo $value; ?></option>
              <?php $i++;}
            } ?>
        </select>
@@ -500,7 +501,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
            <datalist id="make">
             <?php if(!empty($product_makes)){
                  foreach ($product_makes as $row) { ?>
-                <option value="<?php echo $row->product_make; ?>" <?php if(!empty($_POST) && $row->product_make==$_POST['product_make']){ echo'selected';}?><?php if(!empty($product_list->product_make) && $row->product_make == $product_list->product_make){ echo'selected';}?>><?php echo $row->product_make; ?></option>
+                <option value="<?php echo $row->product_make; ?>" <?php if(!empty($_POST['product_make']) && $row->product_make==$_POST['product_make']){ echo'selected';}?><?php if(!empty($product_list->product_make) && $row->product_make == $product_list->product_make){ echo'selected';}?>><?php echo $row->product_make; ?></option>
                  <?php }} ?>
             </datalist>
         <?php echo form_error('product_make'); ?>
@@ -512,7 +513,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
            <datalist id="model">
             <?php if(!empty($product_models)){
                  foreach ($product_models as $row) { ?>
-                <option value="<?php echo $row->product_model; ?>" <?php if(!empty($_POST) && $row->product_model==$_POST['product_model']){ echo'selected';}?><?php if(!empty($product_list->product_model) && $row->product_model == $product_list->product_model){ echo'selected';}?>><?php echo $row->product_model; ?></option>
+                <option value="<?php echo $row->product_model; ?>" <?php if(!empty($_POST['product_model']) && $row->product_model==$_POST['product_model']){ echo'selected';}?><?php if(!empty($product_list->product_model) && $row->product_model == $product_list->product_model){ echo'selected';}?>><?php echo $row->product_model; ?></option>
                  <?php }} ?>
             </datalist>
         <?php echo form_error('product_model'); ?>
@@ -524,7 +525,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
            <datalist id="color">
             <?php if(!empty($product_colors)){
                  foreach ($product_colors as $row) { ?>
-                <option value="<?php echo $row->product_color; ?>" <?php if(!empty($_POST) && $row->product_color==$_POST['product_color']){ echo'selected';}?><?php if(!empty($product_list->product_color) && $row->product_color == $product_list->product_color){ echo'selected';}?>><?php echo $row->product_color; ?></option>
+                <option value="<?php echo $row->product_color; ?>" <?php if(!empty($_POST['product_color']) && $row->product_color==$_POST['product_color']){ echo'selected';}?><?php if(!empty($product_list->product_color) && $row->product_color == $product_list->product_color){ echo'selected';}?>><?php echo $row->product_color; ?></option>
                  <?php }} ?>
             </datalist>
         <?php echo form_error('product_color'); ?>
@@ -559,7 +560,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                 <?php $condition = condition();
                 if($condition){
                     foreach ($condition as $key => $value){ ?>
-                      <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['condition']){ echo'selected';}?><?php if(!empty($product_list->condition) && $value == $product_list->condition){ echo'selected="selected"';}?>><?php echo $value; ?></option>
+                      <option value="<?php echo $value; ?>" <?php if(!empty($_POST['condition']) && $value==$_POST['condition']){ echo'selected';}?><?php if(!empty($product_list->condition) && $value == $product_list->condition){ echo'selected="selected"';}?>><?php echo $value; ?></option>
                       <?php }
                 } ?>
                 </select>
@@ -573,7 +574,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                 <?php $spec = spec();
                 if($spec){
                     foreach ($spec as $key => $value){ ?>
-                      <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['spec']){ echo'selected';}?><?php if(!empty($product_list->spec) && $value==$product_list->spec){ echo'selected';}?>><?php echo $value; ?></option>
+                      <option value="<?php echo $value; ?>" <?php if(!empty($_POST['spec']) && $value==$_POST['spec']){ echo'selected';}?><?php if(!empty($product_list->spec) && $value==$product_list->spec){ echo'selected';}?>><?php echo $value; ?></option>
                       <?php }
                 } ?>
             </select>
@@ -588,7 +589,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                     if($currency){
                         $i=1;
                     foreach ($currency as $key => $value){ ?>
-                      <option <?php if(!empty($_POST) && $i==$_POST['currency']){ echo'selected';}?><?php if(!empty($product_list->currency) && $i==$product_list->currency){ echo'selected';}?> value="<?php echo $i;?>"><?php echo $value; ?></option>
+                      <option <?php if(!empty($_POST['currency']) && $i==$_POST['currency']){ echo'selected';}?><?php if(!empty($product_list->currency) && $i==$product_list->currency){ echo'selected';}?> value="<?php echo $i;?>"><?php echo $value; ?></option>
                       <?php $i++;}
                     } ?>
             </select>
@@ -637,7 +638,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <option value="">Select Terms</option>
             <?php if($shippings){
                 foreach ($shippings as $row){  ?>
-                  <option value="<?php echo $row->id; ?>@@<?php echo $row->shipping_name; ?>" <?php if(!empty($_POST) && $row->id.'@@'.$row->shipping_name==$_POST['shipping_term']){ echo'selected="selected"';} ?><?php if(!empty($product_list->shipping_term) && $row->shipping_name == $product_list->shipping_term){ echo'selected="selected"'; } ?>><?php echo $row->shipping_name; ?> <?php echo $row->description; ?></option>
+                  <option value="<?php echo $row->id; ?>@@<?php echo $row->shipping_name; ?>" <?php if(!empty($_POST['shipping_term']) && $row->id.'@@'.$row->shipping_name==$_POST['shipping_term']){ echo'selected="selected"';} ?><?php if(!empty($product_list->shipping_term) && $row->shipping_name == $product_list->shipping_term){ echo'selected="selected"'; } ?>><?php echo $row->shipping_name; ?> <?php echo $row->description; ?></option>
                   <?php }
             } ?>
         </select>
@@ -716,7 +717,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <?php $duration = list_duration();
             if($duration){
                 foreach ($duration as $key => $value){ ?>
-                  <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['duration']){ echo'selected';}
+                  <option value="<?php echo $value; ?>" <?php if(!empty($_POST['duration']) && $value==$_POST['duration']){ echo'selected';}
                     elseif(isset($product_list->duration) && $value==$product_list->duration){ echo'selected';}
                     elseif($value == 7){ echo'selected';}?>><?php echo $value; ?> day</option>
                   <?php }
