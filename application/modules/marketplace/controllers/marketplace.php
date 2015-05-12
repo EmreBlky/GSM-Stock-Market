@@ -2248,13 +2248,13 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
         }
        redirect($_SERVER['HTTP_REFERER']);
     }
-   function deal_info($listing_id='',$order_id='')
+   function deal_info($listing_id='',$order_id='',$status='')
     {
         if($deal_info =  $this->marketplace_model->get_row('listing',array('id'=>$listing_id))){
             $company_name=company_name($deal_info->member_id);
         ?>
         <h2><center><?php echo $deal_info->product_make.' '.$deal_info->product_model.' '.$deal_info->condition.' '.$deal_info->product_color.' @ '.currency_class($deal_info->currency).' '.$deal_info->unit_price;?></center></h2> 
-         <strong style="color:green"><?php if($deal_info->listing_type==2){?>Selling Offer<?php } else{ ?> Buying Request <?php } ?>
+         <strong style="color:green"><?php if($status==2){?>Selling Offer<?php } else{ ?> Buying Request <?php } ?>
          </strong> from <?php echo $company_name->company_name;?>
          <hr>
         </div>
