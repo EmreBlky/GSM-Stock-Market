@@ -280,7 +280,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             foreach ($duration as $key => $value){ ?>
               <option value="<?php echo $value; ?>" <?php if(!empty($_POST['duration']) && $value==$_POST['duration']){ echo'selected';}
             elseif(isset($product_list->duration) && $value==$product_list->duration){ echo'selected';}
-            elseif($value == 7){ echo'selected';}?>><?php echo $value; ?> day</option>
+            elseif($value == 7){ if(empty($_POST['duration'])){ echo'selected';}} ?>><?php echo $value; ?> day</option>
               <?php }
         } ?>
         </select>
