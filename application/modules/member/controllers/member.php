@@ -15,6 +15,7 @@ class Member extends MX_Controller
         $this->load->model('company/company_model', 'company_model');
         $this->load->model('country/country_model', 'country_model');
         $this->load->model('viewed/viewed_model', 'viewed_model');
+        $this->load->model('block/block_model', 'block_model');
     }
 
     function index()
@@ -52,13 +53,16 @@ class Member extends MX_Controller
 
             $this->viewed_model->_insert($data);
             }
+            
+            $cid = $this->member_model->get_where_multiple('id', $pid)->company_id;
+            $data['company_users'] = $this->member_model->get_where_multiples('company_id', $cid);
             $data['base'] = $this->config->item('base_url');
             $data['main'] = 'member';        
             $data['title'] = 'GSM - Members Page';        
             $data['page'] = 'profile';
             $data['member_info'] = $this->member_model->get_where($pid);
             $data['member_company'] = $this->company_model->get_where($this->member_model->get_where($pid)->company_id);
-            $this->load->model('block/block_model', 'block_model');
+            $data['pid'] = $pid;
             $data['blocked'] = $this->block_model->get_where_multiples('member_id', $this->session->userdata('members_id'), 'block_member_id', $pid);
 
                     /* Daniel Added Start */

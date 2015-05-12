@@ -4,7 +4,7 @@
 //print_r($company_users);
 //exit;
 $this->load->model('membership/membership_model', 'membership_model');
-
+$comp_member_count = count($company_users);
 
 ?>	
             
@@ -172,6 +172,10 @@ if($member->membership == 1 ){ ?>
                                             <li class=""><a href="#selling-offers" data-toggle="tab">Selling Offers</a></li>
                                             <li class=""><a href="#buying-requests" data-toggle="tab">Buying Requests</a></li>
                                             <li class=""><a href="#credit-information" data-toggle="tab">Credit Info</a></li>
+                                            <li class=""><a href="#events" data-toggle="tab">Events Attending</a></li>
+                                            <?php if($comp_member_count > 1) {?>
+                                                <li class=""><a href="#company_users" data-toggle="tab">Company Members</a></li>
+                                            <?php } ?>
                                         </ul>
                                     </div>
                                 </div>
@@ -228,13 +232,57 @@ if($member->membership == 1 ){ ?>
                                 </div>
                                 
                                 <div class="tab-pane no_sub" id="credit-information">
-									<div class="row">
-                    					<div class="col-lg-12" style="text-align:center;margin:15px 0">
-                        					<p>View your credit check information. Silver members and above only.</p>
-                        				</div>
-                   					</div>
+                                    <div class="row">
+                                        <div class="col-lg-12" style="text-align:center;margin:15px 0">
+                                           <p>View your credit check information. Silver members and above only.</p>
+                                        </div>
+                                    </div>
                                 	
                                 </div>
+                                    
+                                <div class="tab-pane" id="events">
+                                
+                                    <?php
+                                    
+                                        $this->load->module('attending');
+                                        $this->attending->attending_list($this->session->userdata('members_id'));
+                                    ?>
+                                    
+                                </div>
+                                    
+                                <div class="tab-pane" id="company_users">
+                                
+                                   <?php
+
+                                        foreach($company_users as $cu){
+                                            if($cu->id != $this->session->userdata('members_id')){
+                                    ?>
+
+                                        <div class="feed-element">
+                                            <a href="member/profile/<?php echo $cu->id; ?>" class="pull-left">
+                <!--                                <img alt="image" class="img-circle" src="img/a1.jpg">-->
+                                                <?php if(file_exists("public/main/template/gsm/images/members/".$cu->id.".png")){?>
+                                                    <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/template/gsm/images/members/<?php echo $cu->id; ?>.png">
+                                                <?php } else {?>
+                                                    <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/template/gsm/images/members/no_profile.jpg">
+                                                <?php }?>  
+                                            </a>
+                                            <div class="media-body">
+                                                <b>Name:</b> <?php echo $this->member_model->get_where($cu->id)->title; ?> <?php echo $this->member_model->get_where($cu->id)->firstname; ?> <?php echo $this->member_model->get_where($cu->id)->lastname; ?>
+                                                <br/>
+                                                <b>Role:</b> <?php echo $this->member_model->get_where($cu->id)->role; ?>
+                                                <br/>
+                                                <b>Mobile:</b> <?php echo $this->member_model->get_where($cu->id)->mobile_number; ?>                                
+                                            </div>
+                                        </div>
+
+                                    <?php
+                                            }
+                                            //echo $cu->id.'<br/>';
+                                        }
+                                    ?>
+                                    
+                                </div>       
                                 
                                 </div>
 
@@ -266,7 +314,8 @@ if($member->membership == 1 ){ ?>
                                         <dd> <?php echo $member_info->role?></dd>
                                         <dt>Mobile Number:</dt> 
                                         <dd> <?php echo $member_info->mobile_number?></dd>
-                                    </dl>  
+                                    </dl> 
+                    
                 </div>
             </div>
         </div>
