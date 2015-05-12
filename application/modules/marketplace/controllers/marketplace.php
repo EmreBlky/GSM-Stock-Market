@@ -2254,7 +2254,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
             $company_name=company_name($deal_info->member_id);
         ?>
         <h2><center><?php echo $deal_info->product_make.' '.$deal_info->product_model.' '.$deal_info->condition.' '.$deal_info->product_color.' @ '.currency_class($deal_info->currency).' '.$deal_info->unit_price;?></center></h2> 
-         <strong style="color:green"><?php if($deal_info->listing_type==1){?>Selling Offer<?php } else{ ?> Buying Request <?php } ?>
+         <strong style="color:green"><?php if($deal_info->listing_type==2){?>Selling Offer<?php } else{ ?> Buying Request <?php } ?>
          </strong> from <?php echo $company_name->company_name;?>
          <hr>
         </div>
@@ -2372,7 +2372,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
       $user_id = $this->session->userdata('members_id');
       $id = $this->input->post('order_id');
       if($this->marketplace_model->update('make_offer',array('order_status'=>3,'payment_recevied_datetime'=>date('Y-m-d h:i:s'),'tracking_shipping'=>$shipping_detail,'shipping_arrived_datetime'=>date('Y-m-d h:i:s')),array('id'=>$id))){
-            $this->session->set_flashdata('msg_success','PShipping Information save sucessfully.');  
+            $this->session->set_flashdata('msg_success','Shipping Information save sucessfully.');  
         }
         else{
           $this->session->set_flashdata('msg_info','Invalid.');  
