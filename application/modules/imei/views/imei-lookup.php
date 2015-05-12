@@ -58,7 +58,7 @@
                   { 
                         if (data.imei_code == false)
                         {
-                          alert('IMEI code invalid.');
+                          alert('Lookup failed. IMEI Code may be invalid or you may not have enough credit.');
                         }
                         else if (data.imei_code == true)
                         {

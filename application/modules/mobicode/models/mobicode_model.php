@@ -12,7 +12,7 @@
 
 	/* Enter your API key here */
 
-	define('MOBICODE_API_KEY', '(4DF7-D3D1-73F7-AF15)'); // user_1
+	//define('MOBICODE_API_KEY', '(4DF7-D3D1-73F7-AF15)'); // user_1
 	
 	/* Set this value to true if something goes wrong and you want to display error messages */
 	
@@ -48,8 +48,23 @@
 	
 	/* Here comes the main class */
 	
-	class Mobicode_model
+	class Mobicode_model extends MY_Model
 	{
+		function __construct()
+		{
+			$query = $this->db->get_where('imei_accounts', array('member_id' => $this->session->userdata('members_id')));
+
+			if ($query->num_rows() > 0)
+			{
+				$row = $query->row();
+				define('MOBICODE_API_KEY', $row->api_key);
+			}
+			else
+			{
+				define('MOBICODE_API_KEY', '(4DF7-D3D1-73F7-AF15)');
+			}
+		}
+
 		/*
 			mixed MOBICODE::CallAPI (string $Action, array $Parameters)
 			Call the MOBICODE API.
