@@ -223,7 +223,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
     <div class="col-md-9">
         <div class="input-group m-b"><span class="input-group-addon">
         <input type="checkbox" name="maximum_checkbox" id="maximum_checkbox" <?php if(isset($_POST['maximum_checkbox']) ){ echo'checked';} elseif(!empty($product_list->max_price)){ echo'checked';}?>/> </span>
-        <input type="text" class="form-control" placeholder="Maximum Unit Price" name="max_price" value="<?php if(!empty($product_list->max_price)) echo $product_list->max_price; else echo set_value('max_price');?>" <?php if(isset($_POST['maximum_checkbox']) ){ echo'';} elseif(empty($product_list->max_price) ){ echo'disabled';}?>>
+        <input type="text" class="form-control" placeholder="Maximum Unit Price" name="max_price" value="<?php if(!empty($product_list->max_price)){ echo $product_list->max_price;
+        }elseif(isset($_POST['max_price'])){  echo $_POST['max_price'];}?>" <?php if(isset($_POST['maximum_checkbox']) ){ echo'';} elseif(empty($product_list->max_price) ){ echo'disabled';}?>>
         </div>
         <p class="small text-navy">tick to enable. Any offers below this will be auto rejected, leave blank to allow any offers if ticked.</p>
         <?php echo form_error('max_price'); ?>
@@ -257,7 +258,9 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <div class="form-group"><label class="col-md-3 control-label">Shipping Charges</label>
 <div class="col-md-9">
    <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="shipping_checkbox" id="shipping_checkbox" <?php if(isset($_POST['shipping_checkbox']) ){ echo'checked';} elseif(!empty($product_list->shipping_charges)) echo 'checked'; ?>/> </span>
-     <input type="text" class="form-control" placeholder="" name="shipping_charges" value="<?php if(!empty($product_list->shipping_charges)) echo $product_list->shipping_charges; else  echo set_value('shipping_charges');?>" <?php if(isset($_POST['shipping_charges']) ){ echo'';} elseif(empty($product_list->shipping_charges) ){ echo'disabled';}?>></div>
+     <input type="text" class="form-control" placeholder="" name="shipping_charges" value="<?php if(!empty($product_list->shipping_charges)){ echo $product_list->shipping_charges;} 
+     elseif(isset($_POST['shipping_charges'])){  echo $_POST['shipping_charges'];} ?>" 
+     <?php if(isset($_POST['shipping_charges']) ){ echo'';} elseif(empty($product_list->shipping_charges) ){ echo'disabled';}?>></div>
    <p class="small text-navy">Allow additional shipping charges. Leave unticked for all quotes to include free shipping</p>
 </div>
 </div>
@@ -567,7 +570,9 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         } ?>
         </div>
         </div>
+
         <div class="form-group"><label class="col-md-3 control-label">Shipping Charges</label>
+
         <div class="col-md-9">
            <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="shipping_checkbox" id="shipping_checkbox" <?php if(isset($_POST['shipping_checkbox']) ){ echo'checked';} elseif(!empty($product_list->shipping_charges)) echo 'checked'; ?>/> </span>
              <input type="text" class="form-control" placeholder="" name="shipping_charges" value="<?php if(!empty($product_list->shipping_charges)) echo $product_list->shipping_charges; else  echo set_value('shipping_charges');?>" <?php if(isset($_POST['shipping_charges']) ){ echo'';} elseif(empty($product_list->shipping_charges) ){ echo'disabled';}?>></div>
