@@ -528,37 +528,28 @@ class Profile extends MX_Controller
         $valueThree = isset($_POST['btertiary']) && !empty($_POST['btertiary']) ? $_POST['btertiary'] : '';
         $bsectorsArray = isset($_POST['bsectors']) && !empty($_POST['bsectors']) ? $_POST['bsectors'] : '';
         
-        $admin_id = $this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id)->admin_id;
+        $admin_id = $this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id)->admin_member_id;
 
         if($this->session->userdata('members_id') == 5 || $this->session->userdata('members_id') == $admin_id) {
 
-        $key = array_search($valueOne, $bsectorsArray);
-        unset($bsectorsArray[$key]);
-        $key = array_search($valueTwo, $bsectorsArray);
-        unset($bsectorsArray[$key]);
-        $key = array_search($valueThree, $bsectorsArray);
-        unset($bsectorsArray[$key]);
+            $key = array_search($valueOne, $bsectorsArray);
+            unset($bsectorsArray[$key]);
+            $key = array_search($valueTwo, $bsectorsArray);
+            unset($bsectorsArray[$key]);
+            $key = array_search($valueThree, $bsectorsArray);
+            unset($bsectorsArray[$key]);
 
-        $bsectorsArray = array_values($bsectorsArray);
+            $bsectorsArray = array_values($bsectorsArray);
 
 
-        if (isset($bsectorsArray[0])) {
-            $bsectors4 = $bsectorsArray[0];
-        }
+            if (isset($bsectorsArray[0])) {
+                $bsectors4 = $bsectorsArray[0];
+            }
 
-        if (isset($bsectorsArray[1])) {
-            $bsectors5 = ', ' . $bsectorsArray[1];
-        }
-        /* Faisal Code End Here 2-25-2015
-         * 
-         */
-
-//        if (isset($_POST['bsectors'][3])) {
-//            $bsectors4 = $_POST['bsectors'][3];
-//        }
-//        if (isset($_POST['bsectors'][4])) {
-//            $bsectors5 = ', ' . $_POST['bsectors'][4];
-//        }
+            if (isset($bsectorsArray[1])) {
+                $bsectors5 = ', ' . $bsectorsArray[1];
+            }
+     
         }
 
         $this->load->library('form_validation');
