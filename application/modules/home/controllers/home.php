@@ -5,11 +5,12 @@ class Home extends MX_Controller
     {
         parent::__construct();
         //unset($data_activity);
-        
+        $this->load->model('home_model');
     }
 
     function index()
-    {        
+    {     
+        //$this->output->enable_profiler(TRUE);
         if ( ! $this->session->userdata('logged_in') )
         { 
             redirect('login');
@@ -29,7 +30,15 @@ class Home extends MX_Controller
         
         $this->load->model('member/member_model', 'member_model');
         $data['terms'] = $this->member_model->get_where($this->session->userdata('members_id'))->terms_conditions;
-
+       
+        $data['total_sales_transaction'] = $this->home_model->total_sales_transaction();          
+        $data['total_purchase_transaction'] = $this->home_model->total_purchase_transaction();     
+        //$data['buying_requests'] = $this->home_model->buying_requests();     
+        //$data['selling_offers'] = $this->home_model->selling_offers();  
+        
+        $data['buying_requests'] = $this->home_model->listing_offer_common(1);
+        $data['selling_offers'] = $this->home_model->listing_offer_common(2);
+        $data['watch_listing'] = $this->home_model->get_watch_list(); 
         $this->load->module('templates');
         $this->templates->page($data);
 
