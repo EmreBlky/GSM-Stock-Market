@@ -271,14 +271,15 @@ class Join extends MX_Controller
     
     function invites($invite_code = NULL)
     {
-        //$this->session->set_userdata('logged_in', 1);
+       $this->session->set_userdata('logged_in', 1);
         
-        $data['company_id'] = $this->company_model->get_where_multiple('invitation_code', $invite_code)->id;
-        $data['country'] = $this->country_model->_custom_query("SELECT * FROM country ORDER BY country ASC");
+            $data['company_id'] = $this->company_model->get_where_multiple('invitation_code', $invite_code)->id;
+            $data['country'] = $this->country_model->_custom_query("SELECT * FROM country ORDER BY country ASC");
+
+            $data['title'] = 'GSM - Edit Profile';
+            $this->load->view('invites', $data);
         
-        $data['title'] = 'GSM - Edit Profile';
-        $this->load->view('invites', $data);
-        //$this->session->unset_userdata('logged_in');
+        $this->session->unset_userdata('logged_in');
     }
     
     function inviteCreate($cid)
