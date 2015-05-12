@@ -1,10 +1,19 @@
 <?php
 
-mysql_connect('109.203.125.38', 'gsmstock_admin', 'zv.4qAb17ph$;?$PF!');
-mysql_select_db('gsmstock_securelive');
-
-//mysql_connect('localhost', 'root', 'People1205');
-//mysql_select_db('gsmstock_secure');
+$url = $_SERVER['SERVER_NAME'];
+//exit;
+if($url == 'localhost'){
+    mysql_connect('localhost', 'root', 'Rwt189K72');
+    mysql_select_db('gsmstock_secure');
+}
+elseif($url == 'secure-dev.gsmstockmarket.com'){
+    mysql_connect('109.203.125.38', 'gsmstock_admin', 'zv.4qAb17ph$;?$PF!');
+    mysql_select_db('gsmstock_secure');
+}
+else{
+    mysql_connect('5.77.55.42', 'gsmstock_admin', 'zv.4qAb17ph$;?$PF!');
+    mysql_select_db('gsmstock_secure');
+}
 
 function country($code)
 {
