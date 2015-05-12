@@ -90,7 +90,7 @@ if($member->membership == 1 ){ ?>
                                     
                                     <dl class="dl-horizontal full-width">                                    
                                         <dt>Phone Number:</dt>
-                                        <dd>(<?php echo $this->country_model->get_where($member_info->dial_phone)->dial_code; ?>) <?php echo $member_info->phone_number?></dd>
+                                        <dd>(<?php echo $this->country_model->get_where($member_company->dial_phone)->dial_code; ?>) <?php echo $member_company->phone_number?></dd>
                                     </dl>
                                     
                                     <dl class="dl-horizontal full-width">
