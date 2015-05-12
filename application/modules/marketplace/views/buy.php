@@ -30,7 +30,7 @@ $.ajax({
 </script>
 <div class="row wrapper border-bottom white-bg page-heading">
 <div class="col-lg-10">
-  <h2>Buying Request</h2>
+  <h2>Selling Offers</h2>
   <ol class="breadcrumb">
     <li><a href="/">Home</a></li>
     <li>Marketplace</li>
@@ -270,7 +270,7 @@ endif;
 <div class="col-lg-12">
 <div class="ibox float-e-margins">
 <div class="ibox-title">
-    <h5>Live Marketplace - Buying Request</h5>
+    <h5>Live Marketplace - Selling Offers</h5>
 </div>
 <div class="ibox-content">
 

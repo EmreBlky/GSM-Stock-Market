@@ -607,7 +607,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
         </div>
     </div>
     
-    
+    <?php if($this->session->userdata('members_id') == 5 || $this->session->userdata('members_id') == $admin_id) {?>
     
     <?php if(isset($support_edit)){ echo '<div style="margin:0 15px">    
                                                                 <div class="alert alert-warning">
@@ -880,18 +880,18 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                     <div class="form-group"><label class="col-md-3 control-label">Currency <span style="color:red">*</span></label>
                         <div class="col-md-3" style="padding-right:0">
                             <select class="form-control m-b" name="currency">
-                                <?php if($member->currency == 'GBP'){ ?>
-                                    <option value="<?php echo $member->currency?>" selected>GBP - British Pound (&pound;)</option>
+                                <?php if($company->currency == 'GBP'){ ?>
+                                    <option value="<?php echo $company->currency?>" selected>GBP - British Pound (&pound;)</option>
                                 	<option value="USD">USD - US Dollar ($)</option>
                                 	<option value="EURO">EUR - Euro (&euro;)</option>   
-                                <?php } elseif($member->currency == 'USD') {?>
+                                <?php } elseif($company->currency == 'USD') {?>
                                 	<option value="GBP">GBP - British Pound (&pound;)</option>
-                                    <option value="<?php echo $member->currency?>" selected>USD - US Dollar ($)</option>
+                                    <option value="<?php echo $company->currency?>" selected>USD - US Dollar ($)</option>
                                		<option value="EURO">EUR - Euro (&euro;)</option>  
                                 <?php } else { ?>
                                 	<option value="GBP">GBP - British Pound (&pound;)</option>
                                 	<option value="USD">USD - US Dollar ($)</option>
-                                    <option value="<?php echo $member->currency?>" selected>EUR - Euro (&euro;)</option>
+                                    <option value="<?php echo $company->currency?>" selected>EUR - Euro (&euro;)</option>
                                 <?php } ?>                                                                                            
                             </select>
                         </div>
@@ -1568,7 +1568,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
 
         </div>
     </div>
-
+    <?php } ?>
 
     <div class="row">
         <div class="col-lg-8">

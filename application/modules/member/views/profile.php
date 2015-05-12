@@ -3,8 +3,9 @@ $cust_id = $this->uri->segment(3);
 //echo '<pre>';
 //print_r($member);
 //print_r($blocked);
+//print_r($company_users);
 //exit;
-
+$comp_member_count = count($company_users);
 ?>
 <script type="text/javascript">
 
@@ -773,6 +774,7 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                         <?php }?>        
                          </div>
                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -1065,6 +1067,9 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                                             <li class=""><a href="#selling-offers" data-toggle="tab">Selling Offers</a></li>
                                             <li class=""><a href="#buying-requests" data-toggle="tab">Buying Requests</a></li>
                                             <li class=""><a href="#events" data-toggle="tab">Events Attending</a></li>
+                                            <?php if($comp_member_count > 1) {?>
+                                                <li class=""><a href="#company_users" data-toggle="tab">Company Members</a></li>
+                                            <?php } ?>
                                         </ul>
                                     </div>
                                 </div>
@@ -1072,6 +1077,7 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                                 <div class="panel-body">
 
                                 <div class="tab-content">
+                                    
                                 <div class="tab-pane active" id="feedposts">
                                     
                                 <?php
@@ -1214,6 +1220,40 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                                     ?>
                                     
                                 </div>
+                                    
+                                <div class="tab-pane" id="company_users">
+                                
+                                   <?php
+
+                                        foreach($company_users as $cu){
+                                            if($cu->id != $pid){
+                                    ?>
+
+                                        <div class="feed-element">
+                                            <a href="member/profile/<?php echo $cu->id; ?>" class="pull-left">
+                <!--                                <img alt="image" class="img-circle" src="img/a1.jpg">-->
+                                                <?php if(file_exists("public/main/template/gsm/images/members/".$cu->id.".png")){?>
+                                                    <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/template/gsm/images/members/<?php echo $cu->id; ?>.png">
+                                                <?php } else {?>
+                                                    <img alt="image" class="img-circle" src="<?php echo $base; ?>public/main/template/gsm/images/members/no_profile.jpg">
+                                                <?php }?>  
+                                            </a>
+                                            <div class="media-body">
+                                                <b>Name:</b> <?php echo $this->member_model->get_where($cu->id)->title; ?> <?php echo $this->member_model->get_where($cu->id)->firstname; ?> <?php echo $this->member_model->get_where($cu->id)->lastname; ?>
+                                                <br/>
+                                                <b>Role:</b> <?php echo $this->member_model->get_where($cu->id)->role; ?>
+                                                <br/>
+                                                <b>Mobile:</b> <?php echo $this->member_model->get_where($cu->id)->mobile_number; ?>                                
+                                            </div>
+                                        </div>
+
+                                    <?php
+                                            }
+                                            //echo $cu->id.'<br/>';
+                                        }
+                                    ?>
+                                    
+                                </div>    
                                 
                                 </div>
 
@@ -1278,6 +1318,7 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                         <?php }?>        
                          </div>
                    </div>
+                    
                 </div>
             </div>
         </div>   

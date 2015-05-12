@@ -70,7 +70,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
    <?php if(!empty($product_makes)){
      foreach ($product_makes as $row) { ?>
     <option value="<?php echo $row->product_make; ?>"
-     <?php if(!empty($_POST) && $row->product_make==$_POST['product_make']){ echo'selected';}
+     <?php if(!empty($_POST['product_make']) && $row->product_make==$_POST['product_make']){ echo'selected';}
         elseif(!empty($product_list->product_make) && $row->product_make == $product_list->product_make){ echo'selected';}?>><?php echo $row->product_make; ?></option>
      <?php }} ?>
 </select>
@@ -83,7 +83,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
     <option value="" disabled selected>e.g: iPhone 4S or Galaxy S6 Edge</option>
      <?php if(!empty($product_models)){
          foreach ($product_models as $row) { ?>
-        <option value="<?php echo $row->product_model; ?>" <?php if(!empty($_POST) && $row->product_model==$_POST['product_model']){ echo'selected';}?><?php if(!empty($product_list->product_model) && $row->product_model == $product_list->product_model){ echo'selected';}?>><?php echo $row->product_model; ?></option>
+        <option value="<?php echo $row->product_model; ?>" <?php if(!empty($_POST['product_model']) && $row->product_model==$_POST['product_model']){ echo'selected';}?><?php if(!empty($product_list->product_model) && $row->product_model == $product_list->product_model){ echo'selected';}?>><?php echo $row->product_model; ?></option>
          <?php }} ?>
     </select>
 <?php echo form_error('product_model'); ?>
@@ -98,7 +98,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
       $k=0;
          foreach ($product_colors as $row) { 
           ?>
-        <option value="<?php echo $row; ?>" <?php if(!empty($_POST) && $row==$_POST['product_color']){ echo'selected';}?><?php if(!empty($product_list->product_color) && $row == $product_list->product_color){ echo'selected';}?>><?php echo $row; ?></option>
+        <option value="<?php echo $row; ?>" <?php if(!empty($_POST['product_color']) && $row==$_POST['product_color']){ echo'selected';}?><?php if(!empty($product_list->product_color) && $row == $product_list->product_color){ echo'selected';}?>><?php echo $row; ?></option>
          <?php $k++;}} ?>
     </select>
      <?php echo form_error('product_color'); ?>
@@ -124,7 +124,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
     <?php echo form_error('product_type'); ?>
 </div>
 </div>
-<span class="Handset <?php if(!empty($_POST) && $_POST['product_type']=='Handset'){  echo 'SHOW';}
+<span class="Handset <?php if(!empty($_POST['product_type']) && $_POST['product_type']=='Handset'){  echo 'SHOW';}
     elseif(!empty($product_list->product_type) && $product_list->product_type =='Handset'){
           echo 'SHOW';
     }else{ echo'listing_hide';} ?>">
@@ -136,7 +136,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <?php $spec = spec();
             if($spec){
                 foreach ($spec as $key => $value){ ?>
-                  <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['spec']){ echo'selected';}
+                  <option value="<?php echo $value; ?>" <?php if(!empty($_POST['spec']) && $value==$_POST['spec']){ echo'selected';}
                    elseif(!empty($product_list->spec) && $value==$product_list->spec){ echo'selected';}?>><?php echo $value; ?></option>
                   <?php }
             } ?>
@@ -148,22 +148,14 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <div class="col-md-9">
     <select class="form-control" name="device_capacity">
         <option selected value="">- Device capacity -</option>
-        <option value="2GB" <?php if(!empty($_POST) && '2GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '2GB'==$product_list->device_capacity){ echo'selected';}?>>2GB</option>
-
-        <option value="4GB" <?php if(!empty($_POST) && '4GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '4GB'==$product_list->device_capacity){ echo'selected';}?>>4GB</option>
-
-        <option value="8GB" <?php if(!empty($_POST) && '8GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '8GB'==$product_list->device_capacity){ echo'selected';}?>>8GB</option>
-
-        <option value="16GB" <?php if(!empty($_POST) && '16GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '16GB'==$product_list->device_capacity){ echo'selected';}?>>16GB</option>
-
-        <option value="32GB" <?php if(!empty($_POST) && '32GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '32GB'==$product_list->device_capacity){ echo'selected';}?>>32GB</option>
-
-        <option value="64GB" <?php if(!empty($_POST) && '64GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '64GB'==$product_list->device_capacity){ echo'selected';}?>>64GB</option>
-
-        <option value="128GB" <?php if(!empty($_POST) && '128GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '128GB'==$product_list->device_capacity){ echo'selected';}?>>128GB</option>
-
-        <option value="256GB" <?php if(!empty($_POST) && '256GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '256GB'==$product_list->device_capacity){ echo'selected';}?>>256GB</option>
-
+        <option value="2GB" <?php if(!empty($_POST['device_capacity']) && '2GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '2GB'==$product_list->device_capacity){ echo'selected';}?>>2GB</option>
+        <option value="4GB" <?php if(!empty($_POST['device_capacity']) && '4GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '4GB'==$product_list->device_capacity){ echo'selected';}?>>4GB</option>
+        <option value="8GB" <?php if(!empty($_POST['device_capacity']) && '8GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '8GB'==$product_list->device_capacity){ echo'selected';}?>>8GB</option>
+        <option value="16GB" <?php if(!empty($_POST['device_capacity']) && '16GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '16GB'==$product_list->device_capacity){ echo'selected';}?>>16GB</option>
+        <option value="32GB" <?php if(!empty($_POST['device_capacity']) && '32GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '32GB'==$product_list->device_capacity){ echo'selected';}?>>32GB</option>
+        <option value="64GB" <?php if(!empty($_POST['device_capacity']) && '64GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '64GB'==$product_list->device_capacity){ echo'selected';}?>>64GB</option>
+        <option value="128GB" <?php if(!empty($_POST['device_capacity']) && '128GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '128GB'==$product_list->device_capacity){ echo'selected';}?>>128GB</option>
+        <option value="256GB" <?php if(!empty($_POST['device_capacity']) && '256GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '256GB'==$product_list->device_capacity){ echo'selected';}?>>256GB</option>
         <option value="Unknown">Unknown</option>
     </select>
 </div>
@@ -172,13 +164,10 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <div class="col-md-9">
     <select class="form-control" name="device_sim">
         <option selected >- Device sim status -</option>
-        <option <?php if(!empty($_POST) && 'Sim Free'==$_POST['device_sim']){ echo'selected';} elseif(!empty($product_list->device_sim) && 'Sim Free'==$product_list->device_sim){ echo'selected';}?> value="Sim Free">Sim Free</option>
-
-        <option <?php if(!empty($_POST) && 'Network Unlocked'==$_POST['device_sim']){ echo'selected';} elseif(!empty($product_list->device_sim) && 'Network Unlocked'==$product_list->device_sim){ echo'selected';}?>>Network Unlocked</option>
-
-        <option <?php if(!empty($_POST) && 'Network Locked'==$_POST['device_sim']){ echo'selected';} elseif(!empty($product_list->device_sim) && 'Network Locked'==$product_list->device_sim){ echo'selected';}?> value="Network Locked">Network Locked</option>
-
-        <option <?php if(!empty($_POST) && 'Unknown'==$_POST['device_sim']){ echo'selected';} elseif(!empty($product_list->device_sim) && 'Unknown'==$product_list->device_sim){ echo'selected';}?> value="Unknown">Unknown</option>
+        <option <?php if(!empty($_POST['device_sim']) && 'Sim Free'==$_POST['device_sim']){ echo'selected';} elseif(!empty($product_list->device_sim) && 'Sim Free'==$product_list->device_sim){ echo'selected';}?> value="Sim Free">Sim Free</option>
+        <option <?php if(!empty($_POST['device_sim']) && 'Network Unlocked'==$_POST['device_sim']){ echo'selected';} elseif(!empty($product_list->device_sim) && 'Network Unlocked'==$product_list->device_sim){ echo'selected';}?>>Network Unlocked</option>
+        <option <?php if(!empty($_POST['device_sim']) && 'Network Locked'==$_POST['device_sim']){ echo'selected';} elseif(!empty($product_list->device_sim) && 'Network Locked'==$product_list->device_sim){ echo'selected';}?> value="Network Locked">Network Locked</option>
+        <option <?php if(!empty($_POST['device_sim']) && 'Unknown'==$_POST['device_sim']){ echo'selected';} elseif(!empty($product_list->device_sim) && 'Unknown'==$product_list->device_sim){ echo'selected';}?> value="Unknown">Unknown</option>
     </select>
 </div>
 </div>
@@ -192,7 +181,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <?php $condition = condition();
         if($condition){
             foreach ($condition as $key => $value){ ?>
-              <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['condition']){ echo'selected';}?><?php if(!empty($product_list->condition) && $value == $product_list->condition){ echo'selected="selected"';}?>><?php echo $value; ?></option>
+              <option value="<?php echo $value; ?>" <?php if(!empty($_POST['condition']) && $value==$_POST['condition']){ echo'selected';}?><?php if(!empty($product_list->condition) && $value == $product_list->condition){ echo'selected="selected"';}?>><?php echo $value; ?></option>
               <?php }
         } ?>
         </select>
@@ -234,7 +223,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
     <div class="col-md-9">
         <div class="input-group m-b"><span class="input-group-addon">
         <input type="checkbox" name="maximum_checkbox" id="maximum_checkbox" <?php if(isset($_POST['maximum_checkbox']) ){ echo'checked';} elseif(!empty($product_list->max_price)){ echo'checked';}?>/> </span>
-        <input type="text" class="form-control" placeholder="Maximum Unit Price" name="max_price" value="<?php if(!empty($product_list->max_price)) echo $product_list->max_price; else echo set_value('max_price');?>" <?php if(isset($_POST['maximum_checkbox']) ){ echo'';} elseif(empty($product_list->max_price) ){ echo'disabled';}?>>
+        <input type="text" class="form-control" placeholder="Maximum Unit Price" name="max_price" value="<?php if(!empty($product_list->max_price)){ echo $product_list->max_price;
+        }elseif(isset($_POST['max_price'])){  echo $_POST['max_price'];}?>" <?php if(isset($_POST['maximum_checkbox']) ){ echo'';} elseif(empty($product_list->max_price) ){ echo'disabled';}?>>
         </div>
         <p class="small text-navy">tick to enable. Any offers below this will be auto rejected, leave blank to allow any offers if ticked.</p>
         <?php echo form_error('max_price'); ?>
@@ -268,7 +258,9 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <div class="form-group"><label class="col-md-3 control-label">Shipping Charges</label>
 <div class="col-md-9">
    <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="shipping_checkbox" id="shipping_checkbox" <?php if(isset($_POST['shipping_checkbox']) ){ echo'checked';} elseif(!empty($product_list->shipping_charges)) echo 'checked'; ?>/> </span>
-     <input type="text" class="form-control" placeholder="" name="shipping_charges" value="<?php if(!empty($product_list->shipping_charges)) echo $product_list->shipping_charges; else  echo set_value('shipping_charges');?>" <?php if(isset($_POST['shipping_charges']) ){ echo'';} elseif(empty($product_list->shipping_charges) ){ echo'disabled';}?>></div>
+     <input type="text" class="form-control" placeholder="" name="shipping_charges" value="<?php if(!empty($product_list->shipping_charges)){ echo $product_list->shipping_charges;} 
+     elseif(isset($_POST['shipping_charges'])){  echo $_POST['shipping_charges'];} ?>" 
+     <?php if(isset($_POST['shipping_charges']) ){ echo'';} elseif(empty($product_list->shipping_charges) ){ echo'disabled';}?>></div>
    <p class="small text-navy">Allow additional shipping charges. Leave unticked for all quotes to include free shipping</p>
 </div>
 </div>
@@ -286,9 +278,9 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <?php $duration = list_duration();
         if($duration){
             foreach ($duration as $key => $value){ ?>
-              <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['duration']){ echo'selected';}
+              <option value="<?php echo $value; ?>" <?php if(!empty($_POST['duration']) && $value==$_POST['duration']){ echo'selected';}
             elseif(isset($product_list->duration) && $value==$product_list->duration){ echo'selected';}
-            elseif($value == 7){ echo'selected';}?>><?php echo $value; ?> day</option>
+            elseif($value == 7){ if(empty($_POST['duration'])){ echo'selected';}} ?>><?php echo $value; ?> day</option>
               <?php }
         } ?>
         </select>
@@ -578,7 +570,9 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         } ?>
         </div>
         </div>
+
         <div class="form-group"><label class="col-md-3 control-label">Shipping Charges</label>
+
         <div class="col-md-9">
            <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="shipping_checkbox" id="shipping_checkbox" <?php if(isset($_POST['shipping_checkbox']) ){ echo'checked';} elseif(!empty($product_list->shipping_charges)) echo 'checked'; ?>/> </span>
              <input type="text" class="form-control" placeholder="" name="shipping_charges" value="<?php if(!empty($product_list->shipping_charges)) echo $product_list->shipping_charges; else  echo set_value('shipping_charges');?>" <?php if(isset($_POST['shipping_charges']) ){ echo'';} elseif(empty($product_list->shipping_charges) ){ echo'disabled';}?>></div>

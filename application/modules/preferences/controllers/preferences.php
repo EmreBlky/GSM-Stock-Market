@@ -190,5 +190,83 @@ class Preferences extends MX_Controller
         $this->reference->view();
         
     }
+    
+    function invitation()
+    {
+        $data['main'] = 'preferences';        
+        $data['title'] = 'GSM - Invitations Page';        
+        $data['page'] = 'invitation'; 
+        //$data['notification'] = $this->notification_model->get_where_multiple('member_id', $this->session->userdata('members_id'));
+        
+        $this->load->module('templates');
+        $this->templates->page($data);
+    }
+    
+    function sendInvites()
+    {
+        echo '<pre>';
+        //print_r($_POST);
+        
+        $this->load->module('emails');
+                
+        $config = Array(
+                  'protocol' => 'smtp',
+                  'smtp_host' => 'ssl://server.gsmstockmarket.com',
+                  'smtp_port' => 465,
+                  'smtp_user' => 'noreply@gsmstockmarket.com',
+                  'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
+                  'charset' => 'utf-8',
+                  'wordwrap' => TRUE,
+                  'newline' => "\r\n",
+                  'crlf'    => ""
+
+              );
+
+        $this->load->library('email', $config);        
+        $this->email->set_mailtype("html");
+                  
+        $invitor = $this->member_model->get_where($this->session->userdata('members_id'));
+        
+        print_r($invitor);
+        exit;
+        
+        $invite_code = $this->company_model->get_where_multiple('admin_member_id', $this->session->userdata('members_id'))->invitation_code;
+        
+        $email_address = $this->input->post('email_address');
+        $email_message = $this->input->post('email_message');
+        
+        $email = str_replace(' ', '', $email_address);
+        $email = explode(',', $email);
+        
+        //print_r($email);
+        $count = 0;
+        
+        while($count < count($email)){
+            
+            $email_body = ' 
+                          Dear sir/ madam,
+                          <br/>
+                          <br/>
+                          You have been invited to join '.$invitor->firstname.' '.$invitor->lastname.' ('.$this->company_model->get_where($invitor->company_id)->company_name.') at GSMStockmarket.com.'
+                    . '   <br/>
+                          <br/>
+                          Please click on the link below to register your account with GSMStockmarket.com
+                          <br/>
+                          <br/>
+                          ';
+            $this->email->from($invitor->email, $invitor->firstname.' '.$invitor->lastname);
+            //$list = array('tim@gsmstockmarket.com', 'info@gsmstockmarket.com');
+            $this->email->to($email[$count]);
+            $this->email->subject('You have been invited to join GSM Stockmarket.com');
+            $this->email->message($email_body);
+
+            $this->email->send();
+            
+            echo $email[$count].'<br/>';
+            
+        $count++;    
+        }
+        
+    }
 	
 }
