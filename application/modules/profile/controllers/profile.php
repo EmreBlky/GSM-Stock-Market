@@ -527,7 +527,10 @@ class Profile extends MX_Controller
         $valueTwo = isset($_POST['bsecondary']) && !empty($_POST['bsecondary']) ? $_POST['bsecondary'] : '';
         $valueThree = isset($_POST['btertiary']) && !empty($_POST['btertiary']) ? $_POST['btertiary'] : '';
         $bsectorsArray = isset($_POST['bsectors']) && !empty($_POST['bsectors']) ? $_POST['bsectors'] : '';
+        
+        $admin_id = $this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id)->admin_id;
 
+        if($this->session->userdata('members_id') == 5 || $this->session->userdata('members_id') == $admin_id) {
 
         $key = array_search($valueOne, $bsectorsArray);
         unset($bsectorsArray[$key]);
@@ -556,7 +559,7 @@ class Profile extends MX_Controller
 //        if (isset($_POST['bsectors'][4])) {
 //            $bsectors5 = ', ' . $_POST['bsectors'][4];
 //        }
-
+        }
 
         $this->load->library('form_validation');
 
