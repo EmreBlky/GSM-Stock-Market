@@ -193,7 +193,7 @@ if($member->marketplace == 'inactive'){ ?>
             </div>
 <?php if($member->membership == 1){ ?>
             <div class="alert alert-info" style="margin:15px 15px -15px">
-                <p><i class="fa fa-info-circle"></i> <strong>Only approved silver members can view company profiles.</strong> Here you can view a company profile in great detail, you can see all their contact details and business activities and even view their feedback, trade rating, feed posts, marketplace listings and even do credit checks on the user which are available for Silver to Silver or above users included a apart of the subscription. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
+                <p><i class="fa fa-info-circle"></i> <strong>Only approved silver members can view company profiles.</strong> Here you can view a company profile in great detail, you can see all their business activities and even view their feedback, trade rating, feed posts, marketplace listings and even do credit checks on the user which are available for Silver to Silver or above users included a apart of the subscription. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
             </div>
 <?php } else { ?>
             <div class="alert alert-warning" style="margin:15px 15px -15px">
@@ -898,13 +898,15 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                                             <img src="public/main/template/gsm/images/company/no_company.jpg" class="img-responsive" style="margin:0 auto;max-height:150px">
                                         <?php }?>
                             		</div>                                        
-                                        
+                                    
                                     <dl class="dl-horizontal full-width" style="margin-top:20px">
                                         <dt>Company Number:</dt> 
                                         <dd><?php echo $member_company->company_number;?></dd>
                                         <dt>VAT/Tax Number:</dt> 
                                         <dd><?php echo $member_company->vat_tax;?></dd>
-                                    </dl>                                    
+                                    </dl>             
+                                        
+                                    <?php if($member->membership > 3){ ?>                   
                                     <dl class="dl-horizontal full-width">
                                         <dt>Address:</dt> <dd>  
                                             <?php echo $member_company->address_line_1;?><br/>
@@ -927,6 +929,7 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                                             <?php echo $member_info->phone_number?>
                                         </dd>
                                     </dl>
+                                    <?php } else {} ?>
                                     
                                     <dl class="dl-horizontal full-width">
                                         <dt>Primary Business:</dt>
@@ -975,6 +978,7 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                                         <dt>Member Since:</dt> <dd> <?php echo $member_info->date?></dd>
                                     </dl>
                                     
+                                    <?php if($member->membership > 3){ ?>                                    
                                     <dl class="dl-horizontal full-width" >
                                         <dt>Facebook:</dt> 
                                         <dd> <?php echo $member_info->facebook?></dd>
@@ -988,6 +992,7 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                                         <dd> <?php echo $member_info->skype?></dd>
                                         
                                     </dl>
+                                    <?php } else {} ?>
                                     
                                     <div class="row">
                                         <?php ?>
@@ -1100,114 +1105,24 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                                 	<table class="table table-hover no-margins">
                                         <thead>
                                             <tr>
-                                            	<th class="mobihide">Make</th>
-                                                <th>Model</th>
+                                            	<th class="mobihide">Make &amp; Model</th>
                                                 <th>Price</th>
                                                 <th class="mobihide">Qty</th>
                                                 <th>Status</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-primary">Active</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-primary">Active</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-success">Completed</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-success">Completed</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-warning">Pending</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-danger">Cancelled</span></td>
-                                            </tr>
-                                        </tbody>
                                     </table>
                                 </div>
                                 <div class="tab-pane no_sub" id="buying-requests">
                                 	<table class="table table-hover no-margins">
                                         <thead>
                                             <tr>
-                                            	<th class="mobihide">Make</th>
-                                                <th>Model</th>
+                                            	<th class="mobihide">Make &amp; Model</th>
                                                 <th>Price</th>
                                                 <th class="mobihide">Qty</th>
                                                 <th>Status</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-primary">Active</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-primary">Active</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-success">Completed</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-success">Completed</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-warning">Pending</span></td>
-                                            </tr>
-                                            <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>i9105 Galaxy S2 Plus</td>
-                                                <td>£23,505.00</td>
-                                                <td class="mobihide">400</td>
-                                                <td><span class="label label-danger">Cancelled</span></td>
-                                            </tr>
-                                        </tbody>
                                     </table>
                                 </div>
                                 
@@ -1283,8 +1198,10 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                                         <dd> <?php echo $member_info->title?> <?php echo $member_info->firstname?> <?php echo $member_info->lastname?></dd>
                                         <dt>Role:</dt> 
                                         <dd> <?php echo $member_info->role?></dd>
+                                    	<?php if($member->membership > 3){ ?> 
                                         <dt>Mobile Number:</dt> 
                                         <dd> <?php echo $member_info->mobile_number?></dd>
+                                        <?php } else {} ?>
                                     </dl>  
                                     
                     

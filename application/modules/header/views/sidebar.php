@@ -126,36 +126,40 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 		<span class="fa arrow"></span>
 </a>
 <ul class="nav nav-second-level">
-<li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i>Buy</a></li>
-<li><a href="marketplace/sell"><i class="fa fa-tag"></i> Sell</a></li>
-<li><a href="marketplace/watching"><i class="fa fa-eye"></i> Watching <span class="count_watch_listing_class">
+
+	<li><a href="javascript:void(0)"><i class="fa fa-plus"></i> Create Listing  <span class="fa arrow"></span></a>
+		<ul class="nav nav-second-level">		
+		<li><a href="marketplace/buy_listing"><i class="fa fa-level-up"></i> Buying Request</a></li>
+		<li><a href="marketplace/sell_listing"><i class="fa fa-level-down"></i> Selling Offer</a></li>
+		</ul>
+	</li>
+    
+	<li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Buy</a></li>
+	<li><a href="marketplace/sell"><i class="fa fa-tag"></i> Sell</a></li>
+	<li><a href="marketplace/watching"><i class="fa fa-eye"></i> Watching <span class="count_watch_listing_class">
 	<?php 
 	if($count_watch_listing){ ?>
 	 <span class="label label-warning pull-right">
 	<?php  echo $count_watch_listing; ?>
 	</span><?php } ?>
-</span>
-</a></li> 
-		
-<li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers
-<span class="count_offer_sidbar_ajax">
+	</span></a></li>
+    
+	<li><a href="marketplace/listing"><i class="fa fa-list"></i> My Listings<span class="countmy_listing_class_ajax">
+<?php 
+if($countmy_listing){ ?>
+<span class="label label-warning pull-right">
+		<?php echo $countmy_listing; ?>
+		</span>
+<?php } ?>
+</span></a></li>
+
+	<li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers<span class="count_offer_sidbar_ajax">
 	<?php  if($counteroffer){ ?>
 		<span class="label label-warning pull-right">
 	<?php  echo $counteroffer; ?></span>
-	<?php } ?></span>
-</a></li>
-			
-		
-<li><a href="marketplace/open_orders"><i class="fa fa-book"></i> Open Orders 
-<span class="count_open_order_class">
-<?php 
-if($countopen_order){ ?>
-<span class="label label-warning pull-right">
-		<?php  echo $countopen_order; ?>
-	</span><?php }?></span>
-</a></li>
+	<?php } ?></span></a></li>
 
-<li><a href="marketplace/negotiation"><i class="fa fa-book"></i> Negotiation 
+<li><a href="marketplace/negotiation"><i class="fa fa-book"></i> Negotiations 
 <span class="count_negotiation_ajax">
 <?php 
 if($count_negotiation){ ?>
@@ -165,19 +169,13 @@ if($count_negotiation){ ?>
 <?php } ?>
 </span>
 </a></li>
-
-<li><a href="marketplace/listing"><i class="fa fa-list"></i> My Listings 
-<span class="countmy_listing_class_ajax">
+	<li><a href="marketplace/open_orders"><i class="fa fa-book"></i> Open Orders <span class="count_open_order_class">
 <?php 
-if($countmy_listing){ ?>
+if($countopen_order){ ?>
 <span class="label label-warning pull-right">
-		<?php echo $countmy_listing; ?>
-		</span>
-<?php } ?>
-</span>
-</a></li>
-		
-<li><a href="marketplace/history"><i class="fa fa-file-text"></i> Order History <span class="count_order_history">
+		<?php  echo $countopen_order; ?>
+	</span><?php }?></span></a></li>
+	<li><a href="marketplace/history"><i class="fa fa-file-text"></i> Order History<span class="count_order_history">
 <?php 
 if($count_order_history){ ?>
 <span class="label label-warning pull-right">
@@ -185,12 +183,7 @@ if($count_order_history){ ?>
 		</span>
 <?php } ?>
 </span></a></li>
-<li><a href="javascript:void(0)"><i class="fa fa-plus"></i> Create Listing  <span class="fa arrow"></span></a>
-	<ul class="nav nav-second-level">		
-	<li><a href="marketplace/buy_listing"> Create Buy Listing</a></li>
-	<li><a href="marketplace/sell_listing"> Create Sell Listing</a></li>
-	</ul>
-</li>
+						
 </ul>
 </li>
 <?php } else {?>
@@ -201,6 +194,14 @@ if($count_order_history){ ?>
 		<span class="fa arrow"></span>
 </a>
 <ul class="nav nav-second-level">
+
+	<li><a href="javascript:void(0)"><i class="fa fa-plus"></i> Create Listing  <span class="fa arrow"></span></a>
+		<ul class="nav nav-second-level">		
+		<li><a href="marketplace/buy_listing"><i class="fa fa-level-up"></i> Buying Request</a></li>
+		<li><a href="marketplace/sell_listing"><i class="fa fa-level-down"></i> Selling Offer</a></li>
+		</ul>
+	</li>
+    
 	<li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Buy</a></li>
 	<li><a href="marketplace/sell"><i class="fa fa-tag"></i> Sell</a></li>
 	<li><a href="marketplace/watching"><i class="fa fa-eye"></i> Watching <span class="count_watch_listing_class">
@@ -210,17 +211,7 @@ if($count_order_history){ ?>
 	<?php  echo $count_watch_listing; ?>
 	</span><?php } ?>
 	</span></a></li>
-	<li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers<span class="count_offer_sidbar_ajax">
-	<?php  if($counteroffer){ ?>
-		<span class="label label-warning pull-right">
-	<?php  echo $counteroffer; ?></span>
-	<?php } ?></span></a></li>
-	<li><a href="marketplace/open_orders"><i class="fa fa-book"></i> Open Orders <span class="count_open_order_class">
-<?php 
-if($countopen_order){ ?>
-<span class="label label-warning pull-right">
-		<?php  echo $countopen_order; ?>
-	</span><?php }?></span></a></li>
+    
 	<li><a href="marketplace/listing"><i class="fa fa-list"></i> My Listings<span class="countmy_listing_class_ajax">
 <?php 
 if($countmy_listing){ ?>
@@ -229,6 +220,29 @@ if($countmy_listing){ ?>
 		</span>
 <?php } ?>
 </span></a></li>
+
+	<li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers<span class="count_offer_sidbar_ajax">
+	<?php  if($counteroffer){ ?>
+		<span class="label label-warning pull-right">
+	<?php  echo $counteroffer; ?></span>
+	<?php } ?></span></a></li>
+
+<li><a href="marketplace/negotiation"><i class="fa fa-book"></i> Negotiations 
+<span class="count_negotiation_ajax">
+<?php 
+if($count_negotiation){ ?>
+<span class="label label-warning pull-right">
+		<?php echo $count_negotiation; ?>
+		</span>
+<?php } ?>
+</span>
+</a></li>
+	<li><a href="marketplace/open_orders"><i class="fa fa-book"></i> Open Orders <span class="count_open_order_class">
+<?php 
+if($countopen_order){ ?>
+<span class="label label-warning pull-right">
+		<?php  echo $countopen_order; ?>
+	</span><?php }?></span></a></li>
 	<li><a href="marketplace/history"><i class="fa fa-file-text"></i> Order History<span class="count_order_history">
 <?php 
 if($count_order_history){ ?>
@@ -237,12 +251,6 @@ if($count_order_history){ ?>
 		</span>
 <?php } ?>
 </span></a></li>
-	<li><a href="javascript:void(0)"><i class="fa fa-plus"></i> Create Listing  <span class="fa arrow"></span></a>
-		<ul class="nav nav-second-level">		
-		<li><a href="marketplace/buy_listing"><i class="fa fa-plus"></i> Create Buy Listing</a></li>
-		<li><a href="marketplace/sell_listing"><i class="fa fa-plus"></i> Create Sell Listing</a></li>
-		</ul>
-	</li>
 						
 </ul>
 </li>
@@ -331,26 +339,26 @@ if($count_order_history){ ?>
 <?php if($url == 'imei') {?>
 <li class="active">
 <a href="imei/"><i class="fa fa-barcode"></i> <span class="nav-label">IMEI Services</span> 
-		<span class="fa arrow"></span>
-</a>
+		<!--<span class="fa arrow"></span>-->
+</a><!--
 <ul class="nav nav-second-level">
 		<li><a href="imei/imei_lookup/"><i class="fa fa-eye"></i> IMEI Lookup</a></li>
 		<li><a href="imei/unlocking/"><i class="fa fa-unlock-alt"></i> Unlocking</a></li>
 		<li><a href="imei/archive/"><i class="fa fa-book"></i> Archive</a></li>
 		<li><a href="imei/top_up/"><i class="fa fa-money"></i> <span class="nav-label">Top up</span><span class="label label-primary pull-right">£5.00</span></a></li>
-</ul>
+</ul>-->
 </li>     
 <?php } else {?>
 <li>
 <a href="imei/"><i class="fa fa-barcode"></i> <span class="nav-label">IMEI Services</span> 
-		<span class="fa arrow"></span>
-</a>
+		<!--<span class="fa arrow"></span>-->
+</a><!--
 <ul class="nav nav-second-level">
 		<li><a href="imei/imei_lookup/"><i class="fa fa-eye"></i> IMEI Lookup</a></li>
 		<li><a href="imei/unlocking/"><i class="fa fa-unlock-alt"></i> Unlocking</a></li>
 		<li><a href="imei/archive/"><i class="fa fa-book"></i> Archive</a></li>
 		<li><a href="imei/top_up/"><i class="fa fa-money"></i> <span class="nav-label">Top up</span><span class="label label-primary pull-right">£5.00</span></a></li>
-</ul>
+</ul>-->
 </li>   
 <?php } ?>
 
@@ -379,8 +387,8 @@ if($count_order_history){ ?>
 		<li><a href="preferences/password"><i class="fa fa-lock"></i> Change Password</a></li>
 		<li><a href="preferences/subscription"><i class="fa fa-cubes"></i> My Subscription</a></li>
 		<li><a href="preferences/notification"><i class="fa fa-newspaper-o"></i> Notifications</a></li>
-		<li><a href="tradereference/"><i class="fa fa-slideshare"></i> Trade Reference</a></li>
-                <li><a href="preferences/invitation"><i class="fa fa-sitemap"></i> Invitations</a></li>
+		<li><a href="tradereference/"><i class="fa fa-slideshare"></i> Trade Reference</a></li><!-- 
+                <li><a href="preferences/invitation"><i class="fa fa-sitemap"></i> Invitations</a></li> -->
 		<!-- <li><a href="preferences/newsletter"><i class="fa fa-newspaper-o"></i> Newsletter</a></li> -->
 </ul>
 </li>
@@ -391,8 +399,8 @@ if($count_order_history){ ?>
 		<li><a href="preferences/password"><i class="fa fa-lock"></i> Change Password</a></li>
 		<li><a href="preferences/subscription"><i class="fa fa-cubes"></i> My Subscription</a></li>
 		<li><a href="preferences/notification"><i class="fa fa-newspaper-o"></i> Notifications</a></li>
-		<li><a href="tradereference/"><i class="fa fa-slideshare"></i> Trade Reference</a></li>
-                <li><a href="preferences/invitation"><i class="fa fa-sitemap"></i> Invitations</a></li>
+		<li><a href="tradereference/"><i class="fa fa-slideshare"></i> Trade Reference</a></li><!-- 
+                <li><a href="preferences/invitation"><i class="fa fa-sitemap"></i> Invitations</a></li> -->
 </ul>
 </li>
 <?php } ?>
