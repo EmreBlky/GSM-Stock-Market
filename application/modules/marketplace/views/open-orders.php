@@ -105,7 +105,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <?php
 
                 $this->load->module('feedback');
-                $this->feedback->leave_buy_feedback($value->buyer_id, $value->seller_id, $value->makeofferid);
+                $this->feedback->leave_buy_feedback($value->seller_id, $value->buyer_id,$value->makeofferid);
             ?>
         <?php endforeach; ?>
     <?php endif; ?>
@@ -195,7 +195,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <?php
 
                 $this->load->module('feedback');
-                $this->feedback->leave_sell_feedback($value->seller_id, $value->buyer_id,$value->makeofferid);
+                $this->feedback->leave_sell_feedback($value->buyer_id, $value->seller_id, $value->makeofferid);
             ?>
             <?php endforeach ?>
         <?php endif ?>
