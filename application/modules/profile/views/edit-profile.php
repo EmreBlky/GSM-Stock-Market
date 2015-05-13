@@ -607,14 +607,13 @@ echo form_open_multipart('profile/profileEdit', $attributes);
         </div>
     </div>
     
-    <?php if($this->session->userdata('members_id') == 5 || $this->session->userdata('members_id') == $admin_id) {?>
-    
     <?php if(isset($support_edit)){ echo '<div style="margin:0 15px">    
                                                                 <div class="alert alert-warning">
                                                                     *** WARNING *** Support Edit Enabled
                                                                 </div>
                                                             </div>';}?>
-    <div class="row">
+    
+    <div class="row" <?php if($this->session->userdata('members_id') != 5 || $this->session->userdata('members_id') != $admin_id) {echo 'style="display:none;"';}?> >
         <div class="col-lg-8">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
@@ -1342,7 +1341,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
         </div>
         <?php echo form_close() ?>
 
-        <div class="col-lg-4">
+        <div class="col-lg-4" >
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>Company Photo</h5>
@@ -1568,8 +1567,6 @@ echo form_open_multipart('profile/profileEdit', $attributes);
 
         </div>
     </div>
-    <?php } ?>
-
     <div class="row">
         <div class="col-lg-8">
             <div class="ibox float-e-margins">
@@ -1936,7 +1933,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                                         <?php                        
                                         }  
                                         ?>
-                                        </form>
+                                        <?php echo form_close() ?>
                                         <!-- Form Div -->
                                     </div>
                                 </div>
