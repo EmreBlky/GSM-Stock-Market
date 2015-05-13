@@ -91,9 +91,11 @@
                                 <h5>Orders</h5>
                                 <div class="pull-right">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-xs btn-white">Today</button>
                                         <button type="button" class="btn btn-xs btn-white active">Monthly</button>
+                                        <button type="button" class="btn btn-xs btn-white">Quarterly</button>
+                                        <button type="button" class="btn btn-xs btn-white">Semi-Annually</button>
                                         <button type="button" class="btn btn-xs btn-white">Annual</button>
+                                        <button type="button" class="btn btn-xs btn-white">Lifetime</button>
                                     </div>
                                 </div>
                             </div>
@@ -168,8 +170,7 @@
                                         <table class="table table-hover no-margins">
                                             <thead>
                                             <tr>
-                                            	<th class="mobihide">Make</th>
-                                                <th>Model</th>
+                                            	<th class="mobihide">Make &amp; Model</th>
                                                 <th>Unit Price</th>
                                                 <th class="mobihide">Qty</th>
                                                 <th>Status</th>
@@ -177,58 +178,50 @@
                                             </thead>
                                             <tbody>
                                             <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>Galaxy S4 (i9505)</td>
-                                                <td>£194.00</td>
+                                            	<td class="mobihide">Samsung Galaxy S4 (i9505)</td>
+                                                <td>GBP 194.00</td>
                                                 <td class="mobihide">325</td>
                                                 <td><span class="label label-info">7 Offers</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>Galaxy S4 Mini (i9515)</td>
-                                                <td>£117.00</td>
+                                            	<td class="mobihide">Samsung Galaxy S4 Mini (i9515)</td>
+                                                <td>GBP 117.00</td>
                                                 <td class="mobihide">219</td>
                                                 <td><span class="label label-info">3 Offers</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>Galaxy S5 (i9600)</td>
-                                                <td>£245.00</td>
+                                            	<td class="mobihide">Samsung Galaxy S5 (i9600)</td>
+                                                <td>GBP 245.00</td>
                                                 <td class="mobihide">95</td>
                                                 <td><span class="label label-info">1 Offers</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">Apple</td>
-                                                <td>Iphone 5C 16GB</td>
-                                                <td>£250.00</td>
+                                            	<td class="mobihide">Apple iPhone 5C 16GB</td>
+                                                <td>GBP 250.00</td>
                                                 <td class="mobihide">216</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">Apple</td>
-                                                <td>iPhone 5 64GB</td>
-                                                <td>£24.00</td>
+                                            	<td class="mobihide">Apple iPhone 5 64GB</td>
+                                                <td>GBP 24.00</td>
                                                 <td class="mobihide">100</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">Apple</td>
-                                                <td>iPhone 6 16GB</td>
-                                                <td>£454.00</td>
+                                            	<td class="mobihide">Apple iPhone 6 16GB</td>
+                                                <td>GBP 454.00</td>
                                                 <td class="mobihide">46</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">BlackBerry</td>
-                                                <td>9720</td>
-                                                <td>£74.00</td>
+                                            	<td class="mobihide">BlackBerry 9720</td>
+                                                <td>GBP 74.00</td>
                                                 <td class="mobihide">34</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">Motorla</td>
-                                                <td>Nexus 6 32GB</td>
-                                                <td>£355.00</td>
+                                            	<td class="mobihide">Motorla Nexus 6 32GB</td>
+                                                <td>GBP 355.00</td>
                                                 <td class="mobihide">23</td>
                                                 <td><span class="label label-danger">Ended</span></td>
                                             </tr>
@@ -253,67 +246,58 @@
                                         <table class="table table-hover no-margins">
                                             <thead>
                                             <tr>
-                                            	<th class="mobihide">Make</th>
-                                                <th>Model</th>
-                                                <th>Price</th>
+                                            	<th class="mobihide">Make &amp; Model</th>
+                                                <th>Unit Price</th>
                                                 <th class="mobihide">Qty</th>
                                                 <th>Status</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>Note 3 (N9000)</td>
-                                                <td>£285.00</td>
+                                            	<td class="mobihide">Samsung Note 3 (N9000)</td>
+                                                <td>GBP 285.00</td>
                                                 <td class="mobihide">91</td>
                                                 <td><span class="label label-info">4 Offers</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">Amazon</td>
-                                                <td>Fire Phone</td>
-                                                <td>£115.00</td>
+                                            	<td class="mobihide">Amazon Fire Phone</td>
+                                                <td>GBP 115.00</td>
                                                 <td class="mobihide">400</td>
                                                 <td><span class="label label-info">2 Offers</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">BlackBerry</td>
-                                                <td>9810</td>
-                                                <td>£95.00</td>
+                                            	<td class="mobihide">BlackBerry 9810</td>
+                                                <td>GBP 95.00</td>
                                                 <td class="mobihide">200</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">BlackBerry</td>
-                                                <td>Q10</td>
-                                                <td>£127.00</td>
+                                            	<td class="mobihide">BlackBerry Q10</td>
+                                                <td>GBP 127.00</td>
                                                 <td class="mobihide">100</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">BlackBerry</td>
-                                                <td>Z30</td>
-                                                <td>£165.00</td>
+                                            	<td class="mobihide">BlackBerry Z30</td>
+                                                <td>GBP 165.00</td>
                                                 <td class="mobihide">74</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">Sony</td>
-                                                <td>Z3 Compact</td>
-                                                <td>£230</td>
+                                            	<td class="mobihide">Sony Z3 Compact</td>
+                                                <td>GBP 230</td>
                                                 <td class="mobihide">60</td>
                                                 <td><span class="label label-danger">Ended</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>P3110 Tab</td>
-                                                <td>£56</td>
+                                            	<td class="mobihide">Samsung P3110 Tab</td>
+                                                <td>GBP 56</td>
                                                 <td class="mobihide">10</td>
                                                 <td><span class="label label-danger">Ended</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>Galaxy S3 (i9300)</td>
-                                                <td>£106.00</td>
+                                            	<td class="mobihide">Samsung Galaxy S3 (i9300)</td>
+                                                <td>GBP 106.00</td>
                                                 <td class="mobihide">45</td>
                                                 <td><span class="label label-danger">Ended</span></td>
                                             </tr>
@@ -338,67 +322,58 @@
                                         <table class="table table-hover no-margins">
                                             <thead>
                                             <tr>
-                                            	<th class="mobihide">Make</th>
-                                                <th>Model</th>
-                                                <th>Price</th>
+                                            	<th class="mobihide">Make &amp; Model</th>
+                                                <th>Unit Price</th>
                                                 <th class="mobihide">Qty</th>
                                                 <th>Status</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <tr>
-                                            	<td class="mobihide">Apple</td>
-                                                <td>iPhone 5 64GB</td>
-                                                <td>£24.00</td>
+                                            	<td class="mobihide">Apple iPhone 5 64GB</td>
+                                                <td>GBP 24.00</td>
                                                 <td class="mobihide">100</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">Apple</td>
-                                                <td>iPhone 6 16GB</td>
-                                                <td>£454.00</td>
+                                            	<td class="mobihide">Apple iPhone 6 16GB</td>
+                                                <td>GBP 454.00</td>
                                                 <td class="mobihide">46</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">BlackBerry</td>
-                                                <td>9720</td>
-                                                <td>£74.00</td>
+                                            	<td class="mobihide">BlackBerry 9720</td>
+                                                <td>GBP 74.00</td>
                                                 <td class="mobihide">34</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">Motorla</td>
-                                                <td>Nexus 6 32GB</td>
-                                                <td>£355.00</td>
+                                            	<td class="mobihide">Motorla Nexus 6 32GB</td>
+                                                <td>GBP 355.00</td>
                                                 <td class="mobihide">23</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">BlackBerry</td>
-                                                <td>Z30</td>
-                                                <td>£165.00</td>
+                                            	<td class="mobihide">BlackBerry Z30</td>
+                                                <td>GBP 165.00</td>
                                                 <td class="mobihide">74</td>
                                                 <td><span class="label label-primary">Active</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">Sony</td>
-                                                <td>Z3 Compact</td>
-                                                <td>£230</td>
+                                            	<td class="mobihide">Sony Z3 Compact</td>
+                                                <td>GBP 230</td>
                                                 <td class="mobihide">60</td>
                                                 <td><span class="label label-danger">Ended</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>P3110 Tab</td>
-                                                <td>£56</td>
+                                            	<td class="mobihide">Samsung P3110 Tab</td>
+                                                <td>GBP 56</td>
                                                 <td class="mobihide">10</td>
                                                 <td><span class="label label-danger">Ended</span></td>
                                             </tr>
                                             <tr>
-                                            	<td class="mobihide">Samsung</td>
-                                                <td>Galaxy S3 (i9300)</td>
-                                                <td>£106.00</td>
+                                            	<td class="mobihide">Samsung Galaxy S3 (i9300)</td>
+                                                <td>GBP 106.00</td>
                                                 <td class="mobihide">45</td>
                                                 <td><span class="label label-danger">Ended</span></td>
                                             </tr>
@@ -690,9 +665,11 @@
                                 <h5>Orders</h5>
                                 <div class="pull-right">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-xs btn-white">Today</button>
                                         <button type="button" class="btn btn-xs btn-white active">Monthly</button>
+                                        <button type="button" class="btn btn-xs btn-white">Quarterly</button>
+                                        <button type="button" class="btn btn-xs btn-white">Semi-Annually</button>
                                         <button type="button" class="btn btn-xs btn-white">Annual</button>
+                                        <button type="button" class="btn btn-xs btn-white">Lifetime</button>
                                     </div>
                                 </div>
                             </div>
@@ -759,8 +736,7 @@
                                         <table class="table table-hover no-margins">
                                             <thead>
                                             <tr>
-                                            	<th class="mobihide">Make</th>
-                                                <th>Model</th>
+                                            	<th class="mobihide">Make &amp; Model</th>
                                                 <th>Unit Price</th>
                                                 <th class="mobihide">Qty</th>
                                                 <th>Status</th>
@@ -780,8 +756,7 @@
                                         <table class="table table-hover no-margins">
                                             <thead>
                                             <tr>
-                                            	<th class="mobihide">Make</th>
-                                                <th>Model</th>
+                                            	<th class="mobihide">Make &amp; Model</th>
                                                 <th>Unit Price</th>
                                                 <th class="mobihide">Qty</th>
                                                 <th>Status</th>
@@ -801,8 +776,7 @@
                                         <table class="table table-hover no-margins">
                                             <thead>
                                             <tr>
-                                            	<th class="mobihide">Make</th>
-                                                <th>Model</th>
+                                            	<th class="mobihide">Make &amp; Model</th>
                                                 <th>Unit Price</th>
                                                 <th class="mobihide">Qty</th>
                                                 <th>Status</th>
