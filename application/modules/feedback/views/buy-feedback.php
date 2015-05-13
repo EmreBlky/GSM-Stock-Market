@@ -89,7 +89,8 @@
 
                       window.location.href = "<?php echo base_url('marketplace/feedback_redirect')?>";
                     },
-                });    
+                }); 
+            return FALSE;
         });
     
     });
