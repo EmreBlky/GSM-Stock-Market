@@ -64,36 +64,37 @@
         $('.company-rating').rating({'showCaption':true, 'stars':'5', 'min':'0', 'max':'5', 'step':'1', 'size':'xs', 'starCaptions': {0:'Very unlikely', 1:'Very unlikely', 2:'Unlikely', 3:'Neither likely or unlikely', 4:'Likely', 5:'Very likely'}});
         
         $(document).on('click', '#submit_message', function(event) {
-        event.preventDefault();
-        //function submitFeedback(mid, sid, order_id){
-        // alert('test');
-        $("#submit_message").hide(); 
-        var mid             = $('#sent_by').val();
-        var sid             = $("#sent_to").val();
-        //var rateDesc        = $('.description-rating').val();
-        var rateDesc        = 5;
-        var rateComms       = $('.communication-rating').val();
-        var rateShip        = $('.shipping-rating').val();
-        var rateCompany     = $('.company-rating').val();
-        var type            = 'sell';
-        var order_id        = $('#order_id').val();
-                
-        //var subject = $("#subject").val().replace(/(\r\n|\n|\r)/gm, '%0D%0A');
-        var body    = $("#summary_feedback").val().replace(/(\r\n|\n|\r)/gm, 'BREAK1');
-        var body    = body.replace(/\//g, 'SLASH1');
-        var body    = body.replace(/\?/g, 'QUEST1');
-        var body    = body.replace(/\%/g, 'PERCENT1');
-        
-         $.ajax({
-                type: "POST",
-                url: "feedback/processFeedback/"+ mid +"/"+ sid +"/"+ rateDesc +"/"+ rateComms +"/"+ rateShip +"/"+ rateCompany +"/"+ order_id+"/"+ 2 +"/"+ body +"/" + type + "",
-                dataType: "html",
-                success:function(data){
-                  
-                  window.location.href = "<?php echo base_url('marketplace/feedback_redirect')?>";
-                },
-            });    
-    });
+            event.preventDefault();
+            //function submitFeedback(mid, sid, order_id){
+            // alert('test');
+            $("#submit_message").hide(); 
+            var mid             = $('#sent_by').val();
+            var sid             = $("#sent_to").val();
+            //var rateDesc        = $('.description-rating').val();
+            var rateDesc        = 5;
+            var rateComms       = $('.communication-rating').val();
+            var rateShip        = $('.shipping-rating').val();
+            var rateCompany     = $('.company-rating').val();
+            var type            = 'sell';
+            var order_id        = $('#order_id').val();
+
+            //var subject = $("#subject").val().replace(/(\r\n|\n|\r)/gm, '%0D%0A');
+            var body    = $("#summary_feedback").val().replace(/(\r\n|\n|\r)/gm, 'BREAK1');
+            var body    = body.replace(/\//g, 'SLASH1');
+            var body    = body.replace(/\?/g, 'QUEST1');
+            var body    = body.replace(/\%/g, 'PERCENT1');
+
+             $.ajax({
+                    type: "POST",
+                    url: "feedback/processFeedback/"+ mid +"/"+ sid +"/"+ rateDesc +"/"+ rateComms +"/"+ rateShip +"/"+ rateCompany +"/"+ order_id+"/"+ 2 +"/"+ body +"/" + type + "",
+                    dataType: "html",
+                    success:function(data){
+
+                      window.location.href = "<?php echo base_url('marketplace/feedback_redirect')?>";
+                    },
+                });    
+        });
+    
     });
     </script>
     
