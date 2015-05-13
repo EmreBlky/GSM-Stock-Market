@@ -68,9 +68,9 @@ $one = '
                     </style>
                     <?php if($list->type == 'sell') {?>
                     <dl class="dl-horizontal">
-                        <dt>Type:</dt> 
+                        <dt>From:</dt> 
                         <dd>  
-                            Buyer
+                            Seller
                         </dd>
                         <dt>Communication:</dt> 
                         <dd>  
@@ -169,9 +169,9 @@ $one = '
                     </dl>
                     <?php } else { ?>
                     <dl class="dl-horizontal">
-                        <dt>Type:</dt> 
+                        <dt>From:</dt> 
                         <dd>  
-                            Seller
+                            Buyer
                         </dd>
                         <dt>Communication:</dt> 
                         <dd>  
