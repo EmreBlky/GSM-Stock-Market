@@ -43,10 +43,10 @@
 
 
     <!-- Cropper -->
-    <link href="public/main/template/core/css/plugins/cropper/cropper.min.css" rel="stylesheet">
-    <link href="public/main/template/core/css/plugins/cropper/main.css" rel="stylesheet">
-    <script src="public/main/template/core/js/plugins/cropper/cropper.js"></script>
-    <script src="public/main/template/core/js/plugins/cropper/main.js"></script>
+    <link href="public/main/template/gsm/css/plugins/cropper/cropper.min.css" rel="stylesheet">
+    <link href="public/main/template/gsm/css/plugins/cropper/main.css" rel="stylesheet">
+    <script src="public/main/template/gsm/js/plugins/cropper/cropper.js"></script>
+    <script src="public/main/template/gsm/js/plugins/cropper/main.js"></script>
     <script type="text/javascript">
         $(document).on("click", "#deleteMemberImage", function () {
             $(this).parent().prev('.avatar-view').html('<img src="public/main/template/gsm/images/members/no_profile.jpg" />');

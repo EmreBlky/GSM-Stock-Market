@@ -940,6 +940,7 @@
         <script src="public/main/template/core/js/plugins/flot/jquery.flot.resize.js"></script>
         <script src="public/main/template/core/js/plugins/flot/jquery.flot.pie.js"></script>
         <script src="public/main/template/core/js/plugins/flot/jquery.flot.symbol.js"></script>
+    	<script src="public/main/template/core/js/plugins/flot/jquery.flot.time.js"></script>
         <!-- jQuery UI -->
         <script src="public/main/template/core/js/plugins/jquery-ui/jquery-ui.min.js"></script>
     
