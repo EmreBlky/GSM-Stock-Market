@@ -44,7 +44,7 @@
 <!--                      <input type="hidden" name="sent_by" id="sent_by" value="<?php echo $mid; ?>"/>
                       <input type="hidden" name="order_id" id="order_id" value="<?php echo $order_id; ?>"/>
                       <input type="hidden" name="sent_to" id="sent_to" value="<?php echo $sid; ?>"/>-->
-                      <button type="button" onclick="submitFeedback('<?php echo $mid; ?>', '<?php echo $sid; ?>', '<?php echo $order_id; ?>');"id="submit_message" class="btn btn-primary">Leave Feedback</button>
+                      <button type="button" onclick="submitFeedback(<?php echo $mid; ?>, <?php echo $sid; ?>, <?php echo $order_id; ?>);"id="submit_message" class="btn btn-primary">Leave Feedback</button>
                       <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
                   </div>
               </div>
