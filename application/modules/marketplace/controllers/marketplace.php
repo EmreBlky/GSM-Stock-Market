@@ -508,8 +508,8 @@ class Marketplace extends MX_Controller
         }
         
         $this->form_validation->set_rules('product_desc', 'product description', 'required');
-        $this->form_validation->set_rules('duration', 'duration', 'required');
         if(empty($list_id)){
+        $this->form_validation->set_rules('duration', 'duration', 'required');
             $this->form_validation->set_rules('termsandcondition', 'Terms and condition', 'required');
         }
       }else{
@@ -842,9 +842,9 @@ class Marketplace extends MX_Controller
             
         }
         $this->form_validation->set_rules('product_desc', 'product description', 'required');
-        $this->form_validation->set_rules('duration', 'duration', 'required');
         if(empty($list_id)){
-            $this->form_validation->set_rules('termsandcondition', 'Terms and condition', 'required');
+        $this->form_validation->set_rules('duration', 'duration', 'required');
+        $this->form_validation->set_rules('termsandcondition', 'Terms and condition', 'required');
         }
     }else{
         $this->form_validation->set_rules('listing_type','listing type','');
