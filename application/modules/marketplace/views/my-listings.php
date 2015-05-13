@@ -67,7 +67,7 @@ $session_member_id = $this->session->userdata('members_id'); ?>
             $years   = floor($diff / (365*60*60*24)); 
             $months  = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));  
             $days    = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
-            if($days <=1){
+            if($days <1){
               echo "style='color:red!important'";
             }
             ?>><?php echo date('d-M, H:i', strtotime($value->listing_end_datetime)); ?></span></td>
@@ -146,7 +146,7 @@ $session_member_id = $this->session->userdata('members_id'); ?>
             $years   = floor($diff / (365*60*60*24)); 
             $months  = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));  
             $days    = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
-            if($days <=1){
+            if($days <1){
               echo "style='color:red!important'";
             }
             ?>><?php echo date('d-M, H:i', strtotime($value->listing_end_datetime)); ?></span></td>
