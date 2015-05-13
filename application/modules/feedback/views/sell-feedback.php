@@ -46,7 +46,7 @@
                   <input type="hidden" name="order_id" id="order_id" value="<?php echo $order_id; ?>"/>
                       <input type="hidden" name="sent_by" id="sent_by" value="<?php echo $mid; ?>"/>
                       <input type="hidden" name="sent_to" id="sent_to" value="<?php echo $sid; ?>"/>
-                      <button type="button" id="submit_message" class="btn btn-primary">Leave Feedback</button>
+                      <button type="button" onclick="submitFeedback('<?php echo $mid; ?>', '<?php echo $sid; ?>', '<?php echo $order_id; ?>');"id="submit_message" class="btn btn-primary">Leave Feedback</button>
                       <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
                   </div>
               </div>
@@ -63,19 +63,20 @@
         $('.shipping-rating').rating({'showCaption':true, 'stars':'5', 'min':'0', 'max':'5', 'step':'1', 'size':'xs', 'starCaptions': {0:'Very Slowly', 1:'Very Slowly', 2:'Slowly', 3:'Neither slowly nor quickly', 4:'Quickly', 5:'Very quickly'}});
         $('.company-rating').rating({'showCaption':true, 'stars':'5', 'min':'0', 'max':'5', 'step':'1', 'size':'xs', 'starCaptions': {0:'Very unlikely', 1:'Very unlikely', 2:'Unlikely', 3:'Neither likely or unlikely', 4:'Likely', 5:'Very likely'}});
         
-        $(document).on('click', '#submit_message', function(event) {
-           event.preventDefault();
+        //$(document).on('click', '#submit_message', function(event) {
+        //event.preventDefault();
+        function submitFeedback(mid, sid, order_id){
        // alert('test');
         //$("#submit_message").hide(); 
-        var mid             = $('#sent_by').val();
-        var sid             = $("#sent_to").val();
+        //var mid             = $('#sent_by').val();
+        //var sid             = $("#sent_to").val();
         //var rateDesc        = $('.description-rating').val();
         var rateDesc        = 5;
         var rateComms       = $('.communication-rating').val();
         var rateShip        = $('.shipping-rating').val();
         var rateCompany     = $('.company-rating').val();
         var type            = 'sell';
-        var order_id        = $('#order_id').val();
+        //var order_id        = $('#order_id').val();
                 
         //var subject = $("#subject").val().replace(/(\r\n|\n|\r)/gm, '%0D%0A');
         var body    = $("#summary_feedback").val().replace(/(\r\n|\n|\r)/gm, 'BREAK1');
@@ -92,7 +93,7 @@
                   window.location.href = "<?php echo base_url('marketplace/feedback_redirect')?>";
                 },
             });    
-    });
+    }
     });
     </script>
     
