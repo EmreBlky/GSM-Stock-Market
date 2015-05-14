@@ -49,27 +49,21 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
   </div>
     </div>
     <div class="hr-line-dashed"></div>
-    <div class="form-group"><label class="col-md-3 control-label">MPN/ISBN</label>
-      <div class="col-md-7">
-          <input type="type" list="mpn" class="form-control check_record check_record_by_mpnisbn" placeholder="MPN/ISBN"  name="product_mpn" value="<?php if(!empty($product_list->product_mpn_isbn)) echo $product_list->product_mpn_isbn; ?><?php if(!empty($_POST['product_mpn'])) echo $_POST['product_mpn']; ?>"/>
-          <datalist id="mpn">
-          <?php if(!empty($listing_attributes)){
-               foreach ($listing_attributes as $row) { ?>
-                 <?php if (!empty($row->product_mpn_isbn)): ?>
-              <option value="<?php echo $row->product_mpn_isbn; ?>"><?php echo $row->product_mpn_isbn; ?></option>
-                <?php endif ?>
-               <?php }} ?>
-          </datalist>
-           <?php echo form_error('product_mpn'); ?>
+    <div class="form-group"><label class="col-md-3 control-label">MPN/ISBN<br /><small class="text-navy">Search our database</small></label>
+      <div class="col-md-6" style="padding-right:0">
+          <input type="type" list="mpn" class="form-control check_record check_record_by_mpnisbn" placeholder="Enter a Part Number e.g GH97-15959B"  name="product_mpn" value="<?php if(!empty($product_list->product_mpn_isbn)) echo $product_list->product_mpn_isbn; ?><?php if(!empty($_POST['product_mpn'])) echo $_POST['product_mpn']; ?>"/>
       </div>
-      <div class="col-md-2">
-      <span class="btn btn-xs btn-primary"  id="mpn1">Check MPN/ISBN</span>
+      <div class="col-md-3">
+      	<button class="btn btn-primary btn-block" type="submit" id="mpn1" style="font-size:10px;padding:9px 12px 8px"><i class="fa fa-search"></i> Check MPN/ISBN</button>
+      </div>
+      <div class="col-md-9 col-md-offset-3">
+      <small class="text-navy">Enter your MPN/ISBN or Manufacturer ID. For example, if you are selling an Apple iPhone 5C related item you can enter the manufactuer ID <strong>A1526</strong> and our system will help you fill out the listing with any data we may have.</small>
       </div>
     </div>
-     <div class="form-group"><label class="col-md-3 control-label">Make</label>
+     <div class="form-group"><label class="col-md-3 control-label">Make <span style="color:red">*</span></label>
         <div class="col-md-9">
-            <select data-placeholder="Make" class="chosen-select form-control" id="product_make" name="product_make">
-            <option value="" selected>e.g Apple or Samsung</option>
+            <select class="chosen-select form-control" id="product_make" name="product_make">
+            <option value="" selected disabled>Enter your item make/manufacturer. e.g Samsung</option>
             <?php if(!empty($product_makes)){
             foreach ($product_makes as $row) { ?>
             <option value="<?php echo $row->product_make; ?>" <?php if(!empty($_POST['product_make']) && $row->product_make==$_POST['product_make']){ echo'selected';} elseif(!empty($product_list->product_make) && $row->product_make == $product_list->product_make){ echo'selected';}?>><?php echo $row->product_make; ?></option>
@@ -78,10 +72,10 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <?php echo form_error('product_make'); ?>
         </div>
     </div>
-   <div class="form-group"><label class="col-md-3 control-label">Model</label>
+   <div class="form-group"><label class="col-md-3 control-label">Model <span style="color:red">*</span></label>
 <div class="col-md-9">
- <select data-placeholder="- Model -" class="chosen-select form-control" id="product_model"   name="product_model">
-    <option value="" selected>e.g: iPhone 4S or Galaxy S6 Edge</option>
+ <select class="chosen-select form-control custom-input" id="product_model"  name="product_model">
+    <option value="" selected disabled>Enter your item model. e.g iPhone 4S or Galaxy S6 Edge</option>
      <?php if(!empty($product_models)){
          foreach ($product_models as $row) { ?>
         <option value="<?php echo $row->product_model; ?>" <?php if(!empty($_POST['product_model']) && $row->product_model==$_POST['product_model']){ echo'selected';}elseif(!empty($product_list->product_model) && $row->product_model == $product_list->product_model){ echo'selected';}?>><?php echo $row->product_model; ?></option>
@@ -90,10 +84,11 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <?php echo form_error('product_model'); ?>
 </div>
 </div>
-     <div class="form-group"><label class="col-md-3 control-label">Colour</label>
+     <div class="form-group"><label class="col-md-3 control-label">Colour <span style="color:red">*</span></label>
       <div class="col-md-9">
-       <select data-placeholder="Model" class="chosen-select form-control" id="product_color" name="product_color">
-          <option value=""> Choose Color </option>
+       <select class="chosen-select form-control" id="product_color" name="product_color">
+          <option value="" selected disabled>What is the primary colour of the item?</option>
+          <option value="None">No Colour</option>
            <?php 
            if(!empty($product_colors)){
             $k=0;
@@ -105,10 +100,10 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
            <?php echo form_error('product_color'); ?>
       </div>
     </div>
-<div class="form-group"><label class="col-md-3 control-label">Product Type</label>
+<div class="form-group"><label class="col-md-3 control-label">Product Type <span style="color:red">*</span></label>
 <div class="col-md-9">
-<select  name="product_type" id="product_type" class="form-control check_record">
-  <option selected value="0" >-Select Product Type-</option>
+<select data-placeholder="Select a category for your item" name="product_type" id="product_type" class="form-control check_record">
+  <option selected value="0" disabled>Select a category for your item</option>
   <?php if (!empty($product_types)): ?>
   <?php foreach ($product_types as $row): ?>
       <optgroup label="<?php echo $row->category_name ?>">
@@ -132,8 +127,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <div class="hr-line-dashed Tablet"></div>
  <div class="form-group"><label class="col-md-3 control-label">Spec</label>
     <div class="col-md-9">
-        <select class="form-control" name="spec">
-            <option selected value="">Spec</option>
+        <select data-placeholder="What market is this item for?" class="form-control" name="spec">
+            <option selected value="" disabled>What market is this item for?</option>
             <?php $spec = spec();
             if($spec){
                 foreach ($spec as $key => $value){ ?>
@@ -147,8 +142,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 </div>
 <div class="form-group Tablet"><label class="col-md-3 control-label">Capacity</label>
 <div class="col-md-9">
-    <select class="form-control" name="device_capacity">
-        <option selected value="">- Device capacity -</option>
+    <select data-placeholder="What is the hard drive capacity on the item?" class="form-control" name="device_capacity">
+        <option selected value="">What is the hard drive capacity on the item?</option>
         <option value="2GB" <?php if(!empty($_POST['device_capacity']) && '2GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '2GB'==$product_list->device_capacity){ echo'selected';}?>>2GB</option>
         <option value="4GB" <?php if(!empty($_POST['device_capacity']) && '4GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '4GB'==$product_list->device_capacity){ echo'selected';}?>>4GB</option>
         <option value="8GB" <?php if(!empty($_POST['device_capacity']) && '8GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '8GB'==$product_list->device_capacity){ echo'selected';}?>>8GB</option>
@@ -163,7 +158,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 </div>
 <div class="form-group"><label class="col-md-3 control-label">Sim Status</label>
 <div class="col-md-9">
-    <select class="form-control" name="device_sim">
+    <select data-placeholder="What is the hard drive capacity on the item?" class="form-control" name="device_sim">
         <option selected >- Device sim status -</option>
         <option <?php if(!empty($_POST['device_sim']) && 'Sim Free'==$_POST['device_sim']){ echo'selected';} elseif(!empty($product_list->device_sim) && 'Sim Free'==$product_list->device_sim){ echo'selected';}?> value="Sim Free">Sim Free</option>
         <option <?php if(!empty($_POST['device_sim']) && 'Network Unlocked'==$_POST['device_sim']){ echo'selected';} elseif(!empty($product_list->device_sim) && 'Network Unlocked'==$product_list->device_sim){ echo'selected';}?>>Network Unlocked</option>
@@ -175,10 +170,10 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 </span>
         
 <div class="hr-line-dashed"></div>
-<div class="form-group"><label class="col-md-3 control-label">Condition</label>
+<div class="form-group"><label class="col-md-3 control-label">Condition <span style="color:red">*</span></label>
 <div class="col-md-9">
-    <select class="form-control" name="condition">
-    <option value="">Condition</option>
+    <select data-placeholder="What condition is the item in?" class="form-control" name="condition">
+    <option value="" selected disabled>What condition is the item in?</option>
     <?php $condition = condition();
     if($condition){
         foreach ($condition as $key => $value){ ?>
@@ -187,7 +182,10 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
     } ?>
     </select>
     <?php echo form_error('condition'); ?>
-</div>
+</div>      
+      <div class="col-md-9 col-md-offset-3">
+      <small class="text-navy">Not sure on which condition option to choose? View our condition descriptions <strong>here</strong> for a more in-depth description.</small>
+      </div>
 </div>
 <div class="hr-line-dashed"></div>
  <div class="form-group"><label class="col-md-3 control-label">Currency </label>
@@ -214,7 +212,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
        <?php echo form_error('currency'); ?>
    </div>
 </div>
-<div class="form-group"><label class="col-md-3 control-label">Unit Price</label>
+<div class="form-group"><label class="col-md-3 control-label">Unit Price <span style="color:red">*</span></label>
     <div class="col-md-9">
         <input type="type" class="form-control" name="unit_price" value="<?php if(!empty($product_list->unit_price)) echo $product_list->unit_price; else echo set_value('unit_price');?>"/>
         <?php echo form_error('unit_price'); ?>
@@ -232,7 +230,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <?php echo form_error('min_price'); ?>
     </div>
 </div>
-<div class="form-group"><label class="col-md-3 control-label">Quantity Available</label>
+<div class="form-group"><label class="col-md-3 control-label">Quantity Available <span style="color:red">*</span></label>
   <div class="col-md-9">
       <input type="type" class="form-control" name="total_qty" value="<?php if(!empty($product_list->total_qty)) echo $product_list->total_qty; else  echo set_value('total_qty');?>"/>
       <?php echo form_error('total_qty'); ?>
@@ -291,7 +289,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <input type="text" class="form-control shipping-opt" name="shipping_fee" disabled/>
         </div>
         <div class="col-md-3">
-            <a class="btn btn-primary shipping-opt" id="add_shipping"><i class="fa fa-plus"></i> Add Shipping Option</a>
+            <a class="btn btn-primary btn-block shipping-opt" id="add_shipping" style="font-size:10px;padding:9px 12px"><i class="fa fa-plus"></i> Add Shipping Option</a>
         </div>
         <div class="clearfix"></div>
         <div class="col-md-9 col-md-offset-3">
@@ -375,7 +373,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <?php if($this->uri->segment(3)==''): ?>
             <button class="btn btn-warning" type="submit" name="status" value="2">Save for later</button>
         <?php endif; ?>
-           <button class="btn btn-primary" type="submit" name="status" value="1" onclick="return validateFORM();">List Now</button>
+           	<button class="btn btn-primary" type="submit" name="status" value="1">List Now</button>
         </div>
     </div>
  </div>
@@ -674,7 +672,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <input type="text" class="form-control shipping-opt" name="shipping_fee" disabled/>
         </div>
         <div class="col-md-3">
-            <a class="btn btn-primary shipping-opt" id="add_shipping"><i class="fa fa-plus"></i> Add Shipping Option</a>
+            <a class="btn btn-primary shipping-opt" id="add_shipping" style="font-size:10px"><i class="fa fa-plus"></i> Add Shipping Option</a>
         </div>
     </div>
     <div class="form-group"><label class="col-md-3 control-label">Shipping and Handling Fee<br /><small class="text-navy">Add at least one (1) option</small></label>
@@ -802,7 +800,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         '.chosen-select-deselect'  : {allow_single_deselect:true},
         '.chosen-select-no-single' : {disable_search_threshold:10},
         '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
-        '.chosen-select-width'     : {width:"95%"}
+        '.chosen-select-width'     : {width:"95%"},
     }
     for (var selector in config) {
         $(selector).chosen(config[selector]);
@@ -908,159 +906,60 @@ $('body').find('#opt_table').on("click", ".wrapper",function() {
         $(this).closest("tr").remove();
 });
 </script>
-   <script>/**
- * Character counter and limiter plugin for textfield and textarea form elements
- * @author Sk8erPeter
- */ (function ($) {
-    $.fn.characterCounter = function (params) {
-        // merge default and user parameters
-        params = $.extend({
-            // define maximum characters
-            maximumCharacters: 1000,
-            // create typed character counter DOM element on the fly
-            characterCounterNeeded: true,
-            // create remaining character counter DOM element on the fly
-            charactersRemainingNeeded: true,
-            // chop text to the maximum characters
-            chopText: false,
-            // place character counter before input or textarea element
-            positionBefore: false,
-            // class for limit excess
-            limitExceededClass: "character-counter-limit-exceeded",
-            // suffix text for typed characters
-            charactersTypedSuffix: " characters typed",
-            // suffix text for remaining characters
-            charactersRemainingSuffixText: " characters left",
-            // whether to use the short format (e.g. 123/1000)
-            shortFormat: false,
-            // separator for the short format
-            shortFormatSeparator: "/"
-        }, params);
-        // traverse all nodes
-        this.each(function () {
-            var $this = $(this),
-                $pluginElementsWrapper,
-                $characterCounterSpan,
-                $charactersRemainingSpan;
-            // return if the given element is not a textfield or textarea
-            if (!$this.is("input[type=text]") && !$this.is("textarea")) {
-                return this;
-            }
-            // create main parent div
-            if (params.characterCounterNeeded || params.charactersRemainingNeeded) {
-                // create the character counter element wrapper
-                $pluginElementsWrapper = $('<div>', {
-                    'class': 'character-counter-main-wrapper'
-                });
-                if (params.positionBefore) {
-                    $pluginElementsWrapper.insertBefore($this);
-                } else {
-                    $pluginElementsWrapper.insertAfter($this);
-                }
-            }
-            if (params.characterCounterNeeded) {
-                $characterCounterSpan = $('<span>', {
-                    'class': 'counter character-counter',
-                        'text': 0
-                });
-                if (params.shortFormat) {
-                    $characterCounterSpan.appendTo($pluginElementsWrapper);
-                    var $shortFormatSeparatorSpan = $('<span>', {
-                        'html': params.shortFormatSeparator
-                    }).appendTo($pluginElementsWrapper);
-                } else {
-                    // create the character counter element wrapper
-                    var $characterCounterWrapper = $('<div>', {
-                        'class': 'character-counter-wrapper',
-                            'html': params.charactersTypedSuffix
-                    });
-                    $characterCounterWrapper.prepend($characterCounterSpan);
-                    $characterCounterWrapper.appendTo($pluginElementsWrapper);
-                }
-            }
-            if (params.charactersRemainingNeeded) {
-                $charactersRemainingSpan = $('<span>', {
-                    'class': 'counter characters-remaining',
-                        'text': params.maximumCharacters
-                });
-                if (params.shortFormat) {
-                    $charactersRemainingSpan.appendTo($pluginElementsWrapper);
-                } else {
-                    // create the character counter element wrapper
-                    var $charactersRemainingWrapper = $('<div>', {
-                        'class': 'characters-remaining-wrapper',
-                            'html': params.charactersRemainingSuffixText
-                    });
-                    $charactersRemainingWrapper.prepend($charactersRemainingSpan);
-                    $charactersRemainingWrapper.appendTo($pluginElementsWrapper);
-                }
-            }
-            $this.keyup(function () {
-                var typedText = $this.val();
-                var textLength = typedText.length;
-                var charactersRemaining = params.maximumCharacters - textLength;
-                // chop the text to the desired length
-                if (charactersRemaining < 0 && params.chopText) {
-                    $this.val(typedText.substr(0, params.maximumCharacters));
-                    charactersRemaining = 0;
-                    textLength = params.maximumCharacters;
-                }
-                if (params.characterCounterNeeded) {
-                    $characterCounterSpan.text(textLength);
-                }
-                if (params.charactersRemainingNeeded) {
-                    $charactersRemainingSpan.text(charactersRemaining);
-                    if (charactersRemaining <= 0) {
-                        if (!$charactersRemainingSpan.hasClass(params.limitExceededClass)) {
-                            $charactersRemainingSpan.addClass(params.limitExceededClass);
-                        }
-                    } else {
-                        $charactersRemainingSpan.removeClass(params.limitExceededClass);
-                    }
-                }
-            });
-        });
-        // allow jQuery chaining
-        return this;
-    };
-})(jQuery);
-$(document).ready(function () {
-    $('#product_desc').characterCounter({
-        maximumCharacters: 500,
-        characterCounterNeeded: false,
-        chopText: true
-    });
-});
-    </script>
+ 
 <!-- Jquery Validate -->
 <script>
-$(document).ready(function(){
+$.validator.setDefaults({ ignore: ":hidden:not(select)" })
 $(".validation").validate({
-rules: {
- password: {
-     required: true,
-     minlength: 3
- },
- url: {
-     required: true,
-     url: true
- },
- number: {
-     required: true,
-     number: true
- },
- min: {
-     required: true,
-     minlength: 6
- },
- max: {
-     required: true,
-     maxlength: 4
- }
-}
+  rules: {
+    product_desc: "required",
+    product_make: "required",
+    condition: "required",
+  },
+  messages: {
+    product_desc: "Please specify your name",
+    product_make: {
+      required: "We need your email address to contact you",
+    }
+  }
 });
+
+$(document).ready(function(){
+    $('#TextBoxId').keypress(function(e){
+      if(e.keyCode==13)
+      $('#linkadd').click();
+    });
+	var select, chosen;
+
+    // cache the select element as we'll be using it a few times
+    select = $(".custom-input");
+
+    // init the chosen plugin
+    select.chosen();
+    
+    // get the chosen object
+    chosen = select.data('chosen');
+
+    // Bind the keyup event to the search box input
+    chosen.dropdown.find('input').on('keyup', function(e)
+    {
+        // if we hit Enter and the results list is empty (no matches) add the option
+        if (e.which == 13 && chosen.dropdown.find('li.no-results').length > 0)
+        {
+            var option = $("<option>").val(this.value).text(this.value);
+           
+            // add the new option
+            select.prepend(option);
+            // automatically select it
+            select.find(option).prop('selected', true);
+            // trigger the update
+            select.trigger("chosen:updated");
+        }
+    });
+	
 });
 </script>
+
 <script>
 $(document).ready(function () {
   $('.listing_hide').hide();
@@ -1070,7 +969,7 @@ $(document).ready(function () {
   })
 });          
 $(document).ready(function(){
-     var test123 =function(mpn1,make){
+	 var test123 =function(mpn1,make){
      $.post('<?php echo base_url("marketplace/getAttributesInfo") ?>/MAKE/',{'make':make,'mpnisbn':mpn1}, function(data) {
         productmakehtml='<option>Choose Model</option>';
        $.each(data.product_make, function(index, val) {
@@ -1288,3 +1187,13 @@ var today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(
 <style>
 .chosen-container-single .chosen-single {border-color:#e5e6e7;color:#555}
 </style>
+
+<!-- Database Models -->
+<datalist id="mpn">
+<?php if(!empty($listing_attributes)){
+     foreach ($listing_attributes as $row) { ?>
+       <?php if (!empty($row->product_mpn_isbn)): ?>
+    <option value="<?php echo $row->product_mpn_isbn; ?>"><?php echo $row->product_mpn_isbn; ?></option>
+      <?php endif ?>
+     <?php }} ?>
+</datalist>

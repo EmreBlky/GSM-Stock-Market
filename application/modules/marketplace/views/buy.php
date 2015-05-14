@@ -278,10 +278,9 @@ endif;
 <thead>
 <tr>
     <th>Listing End</th>
-    <th>Rating</th>
+    <th style="display:none">Rating</th>
     <th>MPN/ISBN</th>
-    <th>Make
-     &amp; Model</th>
+    <th>Make &amp; Model</th>
     <th>Product Type</th>
     <th>Condition</th>
     <th>Unit Price</th>
@@ -305,7 +304,7 @@ endif;
     }
     ?>><?php echo date('d-M, H:i', strtotime($value->listing_end_datetime)); ?></span></td>
         
-        <td class="text-center">
+        <td class="text-center" style="display:none">
         <?php 
         if(isset($value->rating))
           $rating = $value->rating;

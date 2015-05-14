@@ -1768,7 +1768,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
              $data = array(
                 'member_id'         => $seller_id,
                 'sent_member_id'    => $buyer_id,
-                'subject'           => 'Offer Dccepted',
+                'subject'           => 'Offer Accepted',
                 'body'              => 'Your offer has been accepted, proceed to open orders to view the status of your order.',
                 'inbox'             => 'yes',
                 'sent'              => 'yes',

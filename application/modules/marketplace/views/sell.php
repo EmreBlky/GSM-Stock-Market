@@ -284,7 +284,7 @@ foreach ($product_colors as $row) { ?>
 <thead>
 <tr>
 <th>Listing End</th>
-<th>Rating</th>
+<th style="display:none">Rating</th>
 <th>MPN/ISBN</th>
 <th>Make &amp; Model</th>
 <th>Product Type</th>
@@ -309,7 +309,7 @@ foreach ($listing_sell as $value) {?>
       echo "style='color:red!important'";
     }
     ?>><?php echo date('d-M, H:i', strtotime($value->listing_end_datetime)); ?></span></td>
-<td class="text-center">
+<td class="text-center" style="display:none">
 <?php 
     if(isset($value->rating))
       $rating = $value->rating;
