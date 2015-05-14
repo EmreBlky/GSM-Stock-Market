@@ -39,6 +39,11 @@ class Home extends MX_Controller
         $data['buying_requests'] = $this->home_model->listing_offer_common(1);
         $data['selling_offers'] = $this->home_model->listing_offer_common(2);
         $data['watch_listing'] = $this->home_model->get_watch_list(); 
+        $order_type='2';
+          if(isset($_GET['q'])){
+            $order_type=$_GET['q'];
+            }
+        $data['order_type']=$order_type;
         $this->load->module('templates');
         $this->templates->page($data);
 

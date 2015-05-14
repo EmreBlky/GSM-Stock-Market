@@ -31,7 +31,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <div class="ibox-content"> <!-- Selling -->
 <div class="form-group"><label class="col-md-3 control-label">Schedule Listing</label>
 <div class="col-md-9">
- <?php  if(!empty($product_list->scheduled_status) && $product_list->scheduled_status==1 && $product_list->status==1){ ?>
+ <?php   if(!empty($product_list->status) && $product_list->status==1){ ?>
     <input type="text"  class="form-control" name="schedule_date_time1212" value="<?php if(!empty($product_list->schedule_date_time)) echo $product_list->schedule_date_time; ?>" disabled/>
     <?php }else{ ?>
    <div class="input-group date form_datetime " data-date="<?php if(!empty($product_list->schedule_date_time)) echo $product_list->schedule_date_time; else echo date('Y').'-'.date('m').'-'.date('d') ?>" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
@@ -51,7 +51,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
     <div class="hr-line-dashed"></div>
     <div class="form-group"><label class="col-md-3 control-label">MPN/ISBN</label>
       <div class="col-md-7">
-          <input type="type" id="mpn1" list="mpn" class="form-control check_record" placeholder="MPN/ISBN"  name="product_mpn" value="<?php if(!empty($product_list->product_mpn_isbn)) echo $product_list->product_mpn_isbn; ?><?php if(!empty($_POST['product_mpn'])) echo $_POST['product_mpn']; ?>"/>
+          <input type="type" list="mpn" class="form-control check_record check_record_by_mpnisbn" placeholder="MPN/ISBN"  name="product_mpn" value="<?php if(!empty($product_list->product_mpn_isbn)) echo $product_list->product_mpn_isbn; ?><?php if(!empty($_POST['product_mpn'])) echo $_POST['product_mpn']; ?>"/>
           <datalist id="mpn">
           <?php if(!empty($listing_attributes)){
                foreach ($listing_attributes as $row) { ?>
@@ -63,13 +63,13 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
            <?php echo form_error('product_mpn'); ?>
       </div>
       <div class="col-md-2">
-      <span class="btn btn-primary">Check</span>
+      <span class="btn btn-xs btn-primary"  id="mpn1">Check MPN/ISBN</span>
       </div>
     </div>
      <div class="form-group"><label class="col-md-3 control-label">Make</label>
         <div class="col-md-9">
             <select data-placeholder="Make" class="chosen-select form-control" id="product_make" name="product_make">
-            <option value="" disabled selected>e.g Apple or Samsung</option>
+            <option value="" selected>e.g Apple or Samsung</option>
             <?php if(!empty($product_makes)){
             foreach ($product_makes as $row) { ?>
             <option value="<?php echo $row->product_make; ?>" <?php if(!empty($_POST['product_make']) && $row->product_make==$_POST['product_make']){ echo'selected';} elseif(!empty($product_list->product_make) && $row->product_make == $product_list->product_make){ echo'selected';}?>><?php echo $row->product_make; ?></option>
@@ -81,7 +81,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
    <div class="form-group"><label class="col-md-3 control-label">Model</label>
 <div class="col-md-9">
  <select data-placeholder="- Model -" class="chosen-select form-control" id="product_model"   name="product_model">
-    <option value="" disabled selected>e.g: iPhone 4S or Galaxy S6 Edge</option>
+    <option value="" selected>e.g: iPhone 4S or Galaxy S6 Edge</option>
      <?php if(!empty($product_models)){
          foreach ($product_models as $row) { ?>
         <option value="<?php echo $row->product_model; ?>" <?php if(!empty($_POST['product_model']) && $row->product_model==$_POST['product_model']){ echo'selected';}elseif(!empty($product_list->product_model) && $row->product_model == $product_list->product_model){ echo'selected';}?>><?php echo $row->product_model; ?></option>
@@ -340,17 +340,21 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
     <div class="hr-line-dashed"></div>
     <div class="form-group"><label class="col-md-3 control-label">List Duration</label>
         <div class="col-md-9">
-            <select class="form-control" name="duration">
-            <?php $duration = list_duration();
-            if($duration){
-                foreach ($duration as $key => $value){ ?>
-                  <option value="<?php echo $value; ?>" <?php if(!empty($_POST) && $value==$_POST['duration']){ echo'selected';}
-                    elseif(isset($product_list->duration) && $value==$product_list->duration){ echo'selected';}
-                    elseif($value == 7){ if(empty($_POST['duration'])){ echo'selected';}}?>><?php echo $value; ?> day</option>
-                  <?php }
-            } ?>
-            </select>
-            <?php echo form_error('duration'); ?>
+            <?php if(!empty($product_list->duration)){
+                    ?><input disabled  class="form-control" value="<?php echo $product_list->duration;?> day"><?php 
+                }else{ ?>
+                <select class="form-control" name="duration">
+                <?php $duration = list_duration();
+                if($duration){
+                      foreach ($duration as $key => $value){ ?>
+              <option value="<?php echo $value; ?>" <?php if(!empty($_POST['duration']) && $value==$_POST['duration']){ echo'selected';}
+            elseif(isset($product_list->duration) && $value==$product_list->duration){ echo'selected';}
+            elseif($value == 7){ if(empty($_POST['duration'])){ echo'selected';}} ?>><?php echo $value; ?> day</option>
+              <?php }
+                } ?>
+                </select>
+                <?php echo form_error('duration'); ?>
+                <?php } ?>
         </div>
     </div>
    <?php if (empty($product_list->id)): ?>
@@ -1094,11 +1098,19 @@ $(document).ready(function(){
     });
 }
 
-$(document).on('change', '#mpn1', function(event) {
+$(document).on('click', '#mpn1', function(event) {
     event.preventDefault();
-    var  mpnisbn1 = $(this).val();
+    var  mpnisbn1 = $('.check_record_by_mpnisbn').val();
+     if(mpnisbn1 == "null" || mpnisbn1 == ""){
+        alert('Please put MPN/ISBN to check');
+        return false;
+    }
+    
     $.post('<?php echo base_url("marketplace/getAttributesInfo") ?>/MPNISBN/',{'mpnisbn':mpnisbn1}, function(data) {
-
+      if(data.Status == false){
+          /*       alert('No such MPN/ISBN found in our Database.');*/
+           return false;
+         }
         productmakehtml='<option value="">Choose Make</option>';
         var mk1product_make=0;
        

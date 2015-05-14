@@ -1,5 +1,4 @@
-<!-- <iframe src="http://imei.gsmstockmarket.com" height="1750px" width="100%"></iframe> -->
-            <div class="row wrapper border-bottom white-bg page-heading">
+			<div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-12">
                     <h2>IMEI Services</h2>
                     <ol class="breadcrumb">
@@ -12,7 +11,7 @@
                     </ol>
                 </div>
             </div>
-            
+            <?php if($this->session->userdata('membership') > 3) {?>
             
             <div class="col-lg-12">
                 <div class="wrapper wrapper-content animated fadeInRight">
@@ -47,3 +46,10 @@
         })
       })
       </script>
+      
+      <?php }?>
+	  <?php if($this->session->userdata('membership') < 4) {?>
+		                    <div class="alert alert-warning" style="margin-top:15px;">
+		                      This feature is currently unavailable. The IMEI services will launch soon
+		                    </div>
+	                  <?php }?>
