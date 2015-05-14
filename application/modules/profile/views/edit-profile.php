@@ -5,6 +5,7 @@
 //echo "<pre>";
 //print_r($company);
 //echo "</pre>";
+//echo $admin_id;
 ?>
 
 
@@ -613,7 +614,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                                                                 </div>
                                                             </div>';}?>
     
-    <div class="row" <?php if($this->session->userdata('members_id') != 5 || $this->session->userdata('members_id') != $admin_id) {echo 'style="display:none;"';}?> >
+    <div class="row" <?php if($this->session->userdata('members_id') != 5 && $this->session->userdata('members_id') != $admin_id) {echo 'style="display:none;"';}?> >
         <div class="col-lg-8">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
