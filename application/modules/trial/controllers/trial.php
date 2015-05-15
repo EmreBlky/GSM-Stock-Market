@@ -43,7 +43,7 @@ class Trial extends MX_Controller
                                     'member_name'       => 'GSM Support',
                                     'sent_member_id'    => $mid,
                                     'sent_member_name'  => $this->member_model->get_where($mid)->firstname.' '.$this->member_model->get_where($mid)->lastname,
-                                    'subject'           => 'Free Trail Activated',
+                                    'subject'           => '30 Day Trial Activated',
                                     'body'              => 'Congratulations. Your free 30 day trial has been activated',
                                     'inbox'             => 'yes',
                                     'sent'              => 'yes',
@@ -126,7 +126,7 @@ class Trial extends MX_Controller
 
             $this->email->send();
             
-            $this->session->set_flashdata('confirm', '<div style="margin-top:15px">    
+            $this->session->set_flashdata('confirm', '<div style="margin:15px 15px -30px">    
                                                                 <div class="alert alert-success">
                                                                     Your account has been upgraded with a 30 day trial.
                                                                 </div>
@@ -134,9 +134,9 @@ class Trial extends MX_Controller
             redirect('home/');
         }
         else{
-            $this->session->set_flashdata('confirm', '<div style="margin-top:15px">    
+            $this->session->set_flashdata('confirm', '<div style="margin:15px 15px -30px">    
                                                                 <div class="alert alert-warning">
-                                                                    Your account has already had a 30 day free trail. Please upgrade your account.
+                                                                    Your account has already had a 30 day free trial. Please upgrade your account.
                                                                 </div>
                                                             </div>');
             redirect('home/');

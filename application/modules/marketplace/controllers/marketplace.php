@@ -1764,7 +1764,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
             redirect($_SERVER['HTTP_REFERER']);
             }
         }
-          $this->marketplace_model->update('make_offer',array('offer_status'=>$status,'invoice_no'=>$seller_id.'-'.$buyer_id.'-'.$id),array('id'=>$id, 'offer_received_by'=>$seller_id));
+          $this->marketplace_model->update('make_offer',array('offer_status'=>$status,'invoice_no'=>$seller_id.'-'.$id),array('id'=>$id, 'offer_received_by'=>$seller_id));
              $data = array(
                 'member_id'         => $seller_id,
                 'sent_member_id'    => $buyer_id,
@@ -1813,7 +1813,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
        $seller_id =  $this->session->userdata('members_id');
        $this->marketplace_model->update('negotiation',array('status'=>$status),array('id'=>$negotiation_id));
        if($status==1){
-       if($this->marketplace_model->update('make_offer',array('offer_status'=>$status,'invoice_no'=>$seller_id.'-'.$buyer_id.'-'.$id),array('id'=>$id))){
+       if($this->marketplace_model->update('make_offer',array('offer_status'=>$status,'invoice_no'=>$seller_id.'-'.$id),array('id'=>$id))){
           
              $data = array(
                 'member_id'         => $seller_id,
@@ -2721,7 +2721,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
       $grand_price=$per_unit_price * $qty;
       $total_price=$grand_price + $make_offer->shipping_price;
       if($status==1){
-        $this->marketplace_model->update('make_offer',array('offer_status'=>$status,'invoice_no'=>$seller_id.'-'.$buyer_id.'-'.$id,'unit_price'=>$per_unit_price,'product_qty'=>$qty,'grand_total'=>$grand_price,'total_price'=>$total_price),array('id'=>$id));
+        $this->marketplace_model->update('make_offer',array('offer_status'=>$status,'invoice_no'=>$seller_id.'-'.$id,'unit_price'=>$per_unit_price,'product_qty'=>$qty,'grand_total'=>$grand_price,'total_price'=>$total_price),array('id'=>$id));
              $data = array(
                 'member_id'         => $user1,
                 'sent_member_id'    => $user2,
@@ -2730,7 +2730,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                 'inbox'             => 'yes',
                 'sent'              => 'yes',
                 'date'              => date('d-m-Y'),
-                'time'              => date('H:i:s'),
+                'time'              => date('H:i'),
                 'sent_from'         => 'market',
                 'datetime'          => date('Y-m-d H:i:s')
               ); 
@@ -2752,7 +2752,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                 'inbox'             => 'yes',
                 'sent'              => 'yes',
                 'date'              => date('d-m-Y'),
-                'time'              => date('H:i:s'),
+                'time'              => date('H:i'),
                 'sent_from'         => 'market',
                 'datetime'          => date('Y-m-d H:i:s')
               ); 
