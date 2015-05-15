@@ -318,10 +318,24 @@ if($count_order_history){ ?>
 
 
 <?php $mem_id = $this->member_model->get_where($this->session->userdata('members_id'))->membership; if($mem_id < 2){?>
+<!--
 <li>
         <a href="demo"><i class="fa fa-desktop"></i> <span class="nav-label">Request a Demo</span></a>
 </li>
+-->
+
+
+<?php
+if($member->date_activated < '2015-05-15'){
+?>
+<li>
+        <a href="preferences/subscription"><i class="fa fa-desktop"></i> <span class="nav-label">30 Day Trial</span></a>
+</li>
+<?php
+	}
+?>
 <?php } else{} ?>
+
 
 
 <li>
