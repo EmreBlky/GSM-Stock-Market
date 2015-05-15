@@ -1185,4 +1185,3 @@ class Profile extends MX_Controller
     }
 
 }
-
