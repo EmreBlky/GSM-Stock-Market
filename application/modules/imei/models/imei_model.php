@@ -73,6 +73,8 @@ class Imei_model extends MY_Model {
 		$CI = get_instance();
 		$hpi_checks = $CI->imei_model->get_where_custom('member_id', $CI->session->userdata('members_id'));
 
+		$hpi_check_data = false;
+
 		foreach($hpi_checks->result() as $data)
 		{
 			$hpi_check_data[] = $data;
