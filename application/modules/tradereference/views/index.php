@@ -4,11 +4,6 @@
 //    print_r($trade_ref);
 //    exit;
 ?>
-<?php     
-    echo $this->session->flashdata('trade-confirmation'); 
-    echo $this->session->flashdata('confirm-resend');
-?>
-
   <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
       <h2>Overview</h2>
@@ -19,7 +14,10 @@
           <li class="active"><strong>Overview</strong></li>
         </ol>
     </div>
-  </div>
+  </div><?php     
+    echo $this->session->flashdata('trade-confirmation'); 
+    echo $this->session->flashdata('confirm-resend');
+?>
   
  <?php $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id);
 if($member->membership == 1 ){ ?>

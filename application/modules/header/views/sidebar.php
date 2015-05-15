@@ -260,38 +260,30 @@ if($count_order_history){ ?>
 <li class="active">
 <a href="marketplace/notice"><i class="fa fa-line-chart"></i> <span class="nav-label">Marketplace</span> <span class="fa arrow"></span></a>
 <ul class="nav nav-second-level">
+<li><a href="javascript:void(0)" data-toggle="modal" data-target="#upgrade"><i class="fa fa-plus"></i> Create Listing</a></li>
 <li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Buy</a></li>
 <li><a href="marketplace/sell"><i class="fa fa-tag"></i> Sell</a></li>
 <li><a href="marketplace/watching"><i class="fa fa-eye"></i> Watching <span class="label label-warning pull-right">4</span></a></li>
-<li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers<span class="label label-info pull-right">20</span></a></li>
-<li><a href="marketplace/open_orders"><i class="fa fa-book"></i> Open Orders <span class="label label-warning pull-right">2/5</span></a></li>
 <li><a href="marketplace/listing"><i class="fa fa-list"></i> My Listings</a></li>
+<li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers<span class="label label-info pull-right">15</span></a></li>
+<li><a href="javascript:void(0)" data-toggle="modal" data-target="#upgrade"><i class="fa fa-eye"></i> Negotiations <span class="label label-warning pull-right">2</span></a></li>
+<li><a href="marketplace/open_orders"><i class="fa fa-book"></i> Open Orders <span class="label label-warning pull-right">2/5</span></a></li>
 <li><a href="marketplace/history"><i class="fa fa-file-text"></i> Order History</a></li>
-<li><a href="javascript:void(0)"><i class="fa fa-plus"></i> Create Listing  <span class="fa arrow"></span></a>
-<ul class="nav nav-third-level">		                                    
-<li><a href="marketplace/buy_listing"><i class="fa fa-level-up"></i> Buying Request</a></li>
-<li><a href="marketplace/sell_listing"><i class="fa fa-level-down"></i> Selling Offer</a></li>
-</ul>
-</li>
 </ul>
 </li>
 <?php } else {?>
 <li>
 <a href="marketplace/notice"><i class="fa fa-line-chart"></i> <span class="nav-label">Marketplace</span> <span class="fa arrow"></span></a>
 <ul class="nav nav-second-level">
+<li><a href="javascript:void(0)" data-toggle="modal" data-target="#upgrade"><i class="fa fa-plus"></i> Create Listing</a></li>
 <li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Buy</a></li>
 <li><a href="marketplace/sell"><i class="fa fa-tag"></i> Sell</a></li>
 <li><a href="marketplace/watching"><i class="fa fa-eye"></i> Watching <span class="label label-warning pull-right">4</span></a></li>
-<li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers<span class="label label-info pull-right">20</span></a></li>
-<li><a href="marketplace/open_orders"><i class="fa fa-book"></i> Open Orders <span class="label label-warning pull-right">2/5</span></a></li>
 <li><a href="marketplace/listing"><i class="fa fa-list"></i> My Listings</a></li>
+<li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers<span class="label label-info pull-right">15</span></a></li>
+<li><a href="javascript:void(0)" data-toggle="modal" data-target="#upgrade"><i class="fa fa-eye"></i> Negotiations <span class="label label-warning pull-right">2</span></a></li>
+<li><a href="marketplace/open_orders"><i class="fa fa-book"></i> Open Orders <span class="label label-warning pull-right">2/5</span></a></li>
 <li><a href="marketplace/history"><i class="fa fa-file-text"></i> Order History</a></li>
-<li><a href="javascript:void(0)"><i class="fa fa-plus"></i> Create Listing  <span class="fa arrow"></span></a>
-<ul class="nav nav-third-level">		                                    
-<li><a href="marketplace/buy_listing"><i class="fa fa-level-up"></i> Buying Request</a></li>
-<li><a href="marketplace/sell_listing"><i class="fa fa-level-down"></i> Selling Offer</a></li>
-</ul>
-</li>
 </ul>
 </li>
 <?php }} ?>
@@ -423,3 +415,25 @@ function autoRefresh_div()
 
 setInterval('autoRefresh_div()', 50000); 
 </script>
+
+<!-- Modal Upgrade -->
+<div class="modal inmodal fade" id="upgrade" tabindex="-1" role="dialog"  aria-hidden="true">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Upgrade Subscription</h4>
+        <small class="font-bold">Access unavailble</small>
+    </div>
+
+    <div class="modal-body">
+      <p>The <strong>Upgrade your subscription</strong> to silver membership to access this page.</p>
+      <p>Get started today by submitted two (2) trade references and upgrading to silver to membership to use our marketplace and search for companies on our platform</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+        <a href="preferences/subscription" class="btn btn-primary">Upgrade Now</a>
+    </div>
+</div>
+</div>
+</div>

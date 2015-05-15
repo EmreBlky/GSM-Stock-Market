@@ -209,48 +209,12 @@ $member_id=$this->session->userdata('members_id');?>
     
     
 <div class="wrapper wrapper-content animated fadeInRight">
+
 <div class="row">
     <div class="col-lg-12">
     <div class="ibox float-e-margins">
         <div class="ibox-title">
-            <h5>Offers Sent to Buy (Items I want to buy)</h5>
-        </div>
-        <div class="ibox-content">
-        <table class="table table-striped table-bordered table-hover selling_offers" >
-        <thead>
-        <tr>
-            <th>Status</th>
-            <th>End Date</th>
-            <th>Make &amp; Model</th>
-            <th>Condition</th>
-            <th>Price</th>
-            <th>QTY</th>
-            <th>Spec</th>
-            <th>Options</th>
-        </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="text-center"><span class="label label-info">Offers Waiting (5)</span></td>
-                <td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+3 days")); ?>"></span></p></td>
-                <td>Apple iPhone 5</td>
-                <td>New</td>
-                <td>GBP 112</td>
-                <td>200</td>
-                <td>EU</td>
-                <td class="text-center"><button type="button" class="btn btn-info" style="font-size:10px"><i class="fa fa-paste"></i> View Offer</button></td>
-            </tr>
-            </tbody>
-        </table>
-        </div>
-    </div>
-</div>
-</div>
-<div class="row">
-    <div class="col-lg-12">
-    <div class="ibox float-e-margins">
-        <div class="ibox-title">
-            <h5>Offers sent to Sell (Items I want to sell)</h5>
+            <h5>Buying Requests</h5>
         </div>
         <div class="ibox-content">
         <table class="table table-striped table-bordered table-hover buying_requests" >
@@ -269,13 +233,13 @@ $member_id=$this->session->userdata('members_id');?>
         <tbody>
             <tr>
                 <td class="text-center"><span class="label label-info">Offers Waiting (1)</span></td>
-                <td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+3 days")); ?>"></span></p></td>
+                <td><span><?php echo date("d-M, H:i", time()+492000); ?></span></td>
                 <td>Nokia Lumia 640 XL</td>
                 <td>Refurbished</td>
                 <td>GBP 112</td>
                 <td>95</td>
                 <td>US</td>
-                <td class="text-center"><button type="button" class="btn btn-info" style="font-size:10px"><i class="fa fa-paste"></i> View Offer</button></td>
+                <td class="text-center"><button type="button" class="btn btn-info" style="font-size:10px"><i class="fa fa-paste" data-toggle="modal" data-target="#upgrade"></i> View Offer</button></td>
             </tr>   
         </tbody>
         </table>
@@ -284,12 +248,11 @@ $member_id=$this->session->userdata('members_id');?>
     </div> 
     </div>
 
-<hr>
 <div class="row">
   <div class="col-lg-12">
     <div class="ibox float-e-margins">
         <div class="ibox-title">
-            <h5>Offers Received (Items I want to sell)</h5>
+            <h5>Selling Offers</h5>
         </div>
         <div class="ibox-content">
         <table class="table table-striped table-bordered table-hover selling_offers" >
@@ -308,69 +271,40 @@ $member_id=$this->session->userdata('members_id');?>
         <tbody> 
             <tr>
                 <td class="text-center"><span class="label label-info">Offers Waiting (9)</span></td>
-                <td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+1 days")); ?>"></span></p></td>
+                <td><span><?php echo date("d-M, H:i", time()+96000); ?></span></td>
                 <td>Samsung Galaxy S4 (i9500)</td>
                 <td>New</td>
                 <td>GBP 125</td>
                 <td>350</td>
                 <td>UK</td>
-                <td class="text-center"><button type="button" class="btn btn-info" style="font-size:10px"><i class="fa fa-paste"></i> View Offer</button></td>
+                <td class="text-center"><button type="button" class="btn btn-info" style="font-size:10px data-toggle="modal" data-target="#upgrade""><i class="fa fa-paste"></i> View Offer</button></td>
             </tr>
             <tr>
                 <td class="text-center"><span class="label label-info">Offers Waiting (4)</span></td>
-                <td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+2 days")); ?>"></span></p></td>
+                <td><span><?php echo date("d-M, H:i", time()+112000); ?></span></td>
                 <td>Samsung Galaxy S3 (i9300)</td>
                 <td>Used Grade A</td>
                 <td>GBP 45</td>
                 <td>50</td>
                 <td>EU</td>
-                <td class="text-center"><button type="button" class="btn btn-info" style="font-size:10px"><i class="fa fa-paste"></i> View Offer</button></td>
+                <td class="text-center"><button type="button" class="btn btn-info" style="font-size:10px" data-toggle="modal" data-target="#upgrade"><i class="fa fa-paste"></i> View Offer</button></td>
             </tr>
             <tr>
                 <td class="text-center"><span class="label label-info">Offers Waiting (1)</span></td>
-                <td><p><span data-countdown="<?php echo date('m/d/Y', strtotime("+4 days")); ?>"></span></p></td>
+                <td><span><?php echo date("d-M, H:i", time()+252000); ?></span></td>
                 <td>Apple iPhone 5</td>
                 <td>New</td>
                 <td>GBP 112</td>
                 <td>200</td>
                 <td>EU</td>
-                <td class="text-center"><button type="button" class="btn btn-info" style="font-size:10px"><i class="fa fa-paste"></i> View Offer</button></td>
+                <td class="text-center"><button type="button" class="btn btn-info" style="font-size:10px" data-toggle="modal" data-target="#upgrade"><i class="fa fa-paste"></i> View Offer</button></td>
             </tr>
         </tbody>
         </table>
         </div>
     </div>
 </div>
-</div>
-<div class="row">
-    <div class="col-lg-12">
-    <div class="ibox float-e-margins">
-        <div class="ibox-title">
-            <h5>Offers Received (Items I want to buy)</h5>
-        </div>
-        <div class="ibox-content">
-        <table class="table table-striped table-bordered table-hover buying_requests" >
-        <thead>
-        <tr>
-            <th>Status</th>
-            <th>End Date</th>
-            <th>Make &amp; Model</th>
-            <th>Condition</th>
-            <th>Price</th>
-            <th>QTY</th>
-            <th>Spec</th>
-            <th>Options</th>
-        </tr>
-        </thead>
-        <tbody>  
-        </tbody>
-        </table>
-        </div>
-    </div>
-    </div>
-    
-    </div>
-    
+</div>    
     
 <?php 
 

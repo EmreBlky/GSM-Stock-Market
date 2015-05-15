@@ -388,7 +388,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <div style="width: 25%;" class="progress-bar"></div>
             </div>
             </td>
-            <td><button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button> <button type="button" class="btn btn-warning" style="font-size:10px">Make Payment</button></td>
+            <td><button type="button" class="btn btn-primary" style="font-size:10px" data-toggle="modal" data-target="#upgrade">Deal Info</button> <button type="button" class="btn btn-warning" style="font-size:10px" data-toggle="modal" data-target="#upgrade">Make Payment</button></td>
         </tr>
         <tr>
             <td class="text-center"><span class="label label-primary">Payment Sent</span></td>
@@ -402,7 +402,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <div style="width: 50%;" class="progress-bar"></div>
             </div>
             </td>
-            <td><button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button></td>
+            <td><button type="button" class="btn btn-primary" style="font-size:10px" data-toggle="modal" data-target="#upgrade">Deal Info</button></td>
         </tr>
         <tr>
             <td class="text-center"><span class="label label-warning">Shipment Sent</span></td>
@@ -416,7 +416,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <div style="width: 75%;" class="progress-bar"></div>
             </div>
             </td>
-            <td><button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button> <button type="button" class="btn btn-warning" style="font-size:10px">Items Received</button></td>
+            <td><button type="button" class="btn btn-primary" style="font-size:10px" data-toggle="modal" data-target="#upgrade">Deal Info</button> <button type="button" class="btn btn-warning" style="font-size:10px" data-toggle="modal" data-target="#upgrade">Items Received</button></td>
         </tr>
         </tbody>
         </table>
@@ -459,7 +459,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <div style="width: 25%;" class="progress-bar"></div>
             </div>
             </td>
-            <td><button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button></td>
+            <td><button type="button" class="btn btn-primary" style="font-size:10px" data-toggle="modal" data-target="#upgrade">Deal Info</button></td>
         </tr>
         <tr>
             <td class="text-center"><span class="label label-primary">Deal Complete</span></td>
@@ -473,7 +473,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <div style="width: 100%;" class="progress-bar"></div>
             </div>
             </td>
-            <td><button type="button" class="btn btn-primary" style="font-size:10px">Deal Info</button> <button type="button" class="btn btn-info" style="font-size:10px">Leave Feedback</button></td>
+            <td><button type="button" class="btn btn-primary" style="font-size:10px" data-toggle="modal" data-target="#upgrade">Deal Info</button> <button type="button" class="btn btn-info" style="font-size:10px" data-toggle="modal" data-target="#upgrade">Leave Feedback</button></td>
         </tr>
         </tbody>
         </table>

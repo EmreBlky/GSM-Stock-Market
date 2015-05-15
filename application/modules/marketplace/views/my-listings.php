@@ -296,9 +296,9 @@ $session_member_id = $this->session->userdata('members_id'); ?>
                 <td>10</td>
                 <td>US</td>
                 <th class="text-center">
-                <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
-                <button class="btn btn-primary" type="button" style="font-size:10px"><i class="fa fa-eye"></i> View</button>
-                <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> End Listing</button>
+                <button class="btn btn-warning" type="button" style="font-size:10px" data-toggle="modal" data-target="#upgrade"><i class="fa fa-paste"></i> Edit</button>
+                <button class="btn btn-primary" type="button" style="font-size:10px" data-toggle="modal" data-target="#upgrade"><i class="fa fa-eye"></i> View</button>
+                <button class="btn btn-danger" type="button" style="font-size:10px" data-toggle="modal" data-target="#upgrade"><i class="fa fa-times"></i> End Listing</button>
                 </th>
             </tr>
             <tr>
@@ -311,9 +311,9 @@ $session_member_id = $this->session->userdata('members_id'); ?>
                 <td>500</td>
                 <td>US</td>
                 <th class="text-center">
-                <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
-                <button class="btn btn-success" type="button" style="font-size:10px"><i class="fa fa-arrow-up"></i> Relist</button>
-                <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> Remove</button>
+                <button class="btn btn-warning" type="button" style="font-size:10px" data-toggle="modal" data-target="#upgrade"><i class="fa fa-paste"></i> Edit</button>
+                <button class="btn btn-success" type="button" style="font-size:10px" data-toggle="modal" data-target="#upgrade"><i class="fa fa-arrow-up"></i> Relist</button>
+                <button class="btn btn-danger" type="button" style="font-size:10px" data-toggle="modal" data-target="#upgrade"><i class="fa fa-times"></i> Remove</button>
                 </th>
             </tr>
         </tbody>
@@ -354,9 +354,9 @@ $session_member_id = $this->session->userdata('members_id'); ?>
                 <td>1211</td>
                 <td>US</td>
                 <th class="text-center">
-                <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
-                <button class="btn btn-primary" type="button" style="font-size:10px"><i class="fa fa-eye"></i> View</button>
-                <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> End Listing</button>
+                <button class="btn btn-warning" type="button" style="font-size:10px" data-toggle="modal" data-target="#upgrade"><i class="fa fa-paste"></i> Edit</button>
+                <button class="btn btn-primary" type="button" style="font-size:10px" data-toggle="modal" data-target="#upgrade"><i class="fa fa-eye"></i> View</button>
+                <button class="btn btn-danger" type="button" style="font-size:10px" data-toggle="modal" data-target="#upgrade"><i class="fa fa-times"></i> End Listing</button>
                 </th>
             </tr>
             <tr>
@@ -369,9 +369,9 @@ $session_member_id = $this->session->userdata('members_id'); ?>
                 <td>5000</td>
                 <td>EU</td>
                 <th class="text-center">
-                <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
-                <button class="btn btn-primary" type="button" style="font-size:10px"><i class="fa fa-eye"></i> View</button>
-                <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> Remove</button>
+                <button class="btn btn-warning" type="button" style="font-size:10px" data-toggle="modal" data-target="#upgrade"><i class="fa fa-paste"></i> Edit</button>
+                <button class="btn btn-primary" type="button" style="font-size:10px" data-toggle="modal" data-target="#upgrade"><i class="fa fa-eye"></i> View</button>
+                <button class="btn btn-danger" type="button" style="font-size:10px" data-toggle="modal" data-target="#upgrade"><i class="fa fa-times"></i> Remove</button>
                 </th>
             </tr>
         </tbody>
@@ -415,9 +415,9 @@ $session_member_id = $this->session->userdata('members_id'); ?>
                 <td>10</td>
                 <td>US</td>
                 <th class="text-center">
-                <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
-                <button class="btn btn-success" type="button" style="font-size:10px"><i class="fa fa-arrow-up"></i> List Now</button>
-                <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> Remove</button>
+                <button class="btn btn-warning" type="button" style="font-size:10px" data-toggle="modal" data-target="#upgrade"><i class="fa fa-paste"></i> Edit</button>
+                <button class="btn btn-success" type="button" style="font-size:10px" data-toggle="modal" data-target="#upgrade"><i class="fa fa-arrow-up"></i> List Now</button>
+                <button class="btn btn-danger" type="button" style="font-size:10px" data-toggle="modal" data-target="#upgrade"><i class="fa fa-times"></i> Remove</button>
                 </th>
             </tr>
             <tr>
@@ -430,9 +430,9 @@ $session_member_id = $this->session->userdata('members_id'); ?>
                 <td>500</td>
                 <td>US</td>
                 <th class="text-center">
-                <button class="btn btn-warning" type="button" style="font-size:10px"><i class="fa fa-paste"></i> Edit</button>
-                <button class="btn btn-success" type="button" style="font-size:10px"><i class="fa fa-arrow-up"></i> List Now</button>
-                <button class="btn btn-danger" type="button" style="font-size:10px"><i class="fa fa-times"></i> Remove</button>
+                <button class="btn btn-warning" type="button" style="font-size:10px" data-toggle="modal" data-target="#upgrade"><i class="fa fa-paste"></i> Edit</button>
+                <button class="btn btn-success" type="button" style="font-size:10px" data-toggle="modal" data-target="#upgrade"><i class="fa fa-arrow-up"></i> List Now</button>
+                <button class="btn btn-danger" type="button" style="font-size:10px" data-toggle="modal" data-target="#upgrade"><i class="fa fa-times"></i> Remove</button>
                 </th>
             </tr>
         </tbody>

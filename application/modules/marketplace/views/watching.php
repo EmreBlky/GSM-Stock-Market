@@ -157,8 +157,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                 <td>200</td>
                 <td>UK</td>
                 <td><img src="public/main/template/gsm/img/flags/United_Kingdom.png" /></td>
-                <th><button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+                <th><button type="button" class="btn btn-danger" style="font-size:10px" data-toggle="modal" data-target="#upgrade">Unwatch</button>
+                <button type="button" class="btn btn-primary" style="font-size:10px" data-toggle="modal" data-target="#upgrade">More Info</button></th>
             </tr>
             <tr>
                 <td><span><?php echo date("d-M, H:i", time()+867543); ?></span></td>
@@ -169,8 +169,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                 <td>742</td>
                 <td>EU</td>
                 <td><img src="public/main/template/gsm/img/flags/United_Arab_Emirates.png" /></td>
-                <th><button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+                <th><button type="button" class="btn btn-danger" style="font-size:10px" data-toggle="modal" data-target="#upgrade">Unwatch</button>
+                <button type="button" class="btn btn-primary" style="font-size:10px" data-toggle="modal" data-target="#upgrade">More Info</button></th>
             </tr>
             </tbody>
             </table>
@@ -209,8 +209,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                 <td>1000</td>
                 <td>EU</td>
                 <td><img src="public/main/template/gsm/img/flags/Sweden.png" /></td>
-                <th><button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+                <th><button type="button" class="btn btn-danger" style="font-size:10px" data-toggle="modal" data-target="#upgrade">Unwatch</button>
+                <button type="button" class="btn btn-primary" style="font-size:10px" data-toggle="modal" data-target="#upgrade">More Info</button></th>
             </tr>
             <tr>
                 <td><span><?php echo date("d-M, H:i", time()+374654); ?></span></td>
@@ -221,8 +221,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                 <td>200</td>
                 <td>EU</td>
                 <td><img src="public/main/template/gsm/img/flags/Germany.png" /></td>
-                <th><button type="button" class="btn btn-danger" style="font-size:10px">Unwatch</button>
-                <button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></th>
+                <th><button type="button" class="btn btn-danger" style="font-size:10px" data-toggle="modal" data-target="#upgrade">Unwatch</button>
+                <button type="button" class="btn btn-primary" style="font-size:10px" data-toggle="modal" data-target="#upgrade">More Info</button></th>
             </tr>
             </tbody>
             </table>

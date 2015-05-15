@@ -106,7 +106,7 @@
             rules: {
                 comment: {
                     required: true,
-                    minlength: 100
+                    minlength: 25
                 },
             }
         });
