@@ -39,7 +39,6 @@ class Imei_model extends MY_Model {
 
 		$xml = simplexml_load_string($xml_string);
 
-		var_dump($xml);
 		if (isset($xml->Success))
 		{
 			if ((string)$xml->Success === 'OK')
@@ -82,6 +81,7 @@ class Imei_model extends MY_Model {
 		
 		return $hpi_check_data;
 	}
+
 
 	function get_imei_account()
 	{
