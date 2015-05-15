@@ -177,7 +177,6 @@ class Profile extends MX_Controller
      */
     function companyImage()
     {
-        if($this->session->userdata('members_id') == 5 || $this->session->userdata('members_id') == $admin_id) {
         $mid = $this->input->post('support_pic_edit');
         
         if($mid > 0){
@@ -290,7 +289,7 @@ class Profile extends MX_Controller
             }
             
         }
-      }
+        
     }
 
     function profileImage()
@@ -611,6 +610,8 @@ class Profile extends MX_Controller
             $this->load->model('member/member_model', 'member_model');
             $this->member_model->_update($mid, $data);
             
+            //$admin_id = $this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id)->admin_member_id;
+
             if($this->session->userdata('members_id') == 5 || $this->session->userdata('members_id') == $admin_id) {
 
                 if($company_bio == $company_bio_new){
@@ -1185,3 +1186,4 @@ class Profile extends MX_Controller
     }
 
 }
+
