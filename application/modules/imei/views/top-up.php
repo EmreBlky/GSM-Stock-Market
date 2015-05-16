@@ -87,6 +87,19 @@ if ($encrypted != false)
                 var vat = parseFloat((amount / 100 * 20)).toFixed(2);
                 var total = (parseFloat(subtotal) + parseFloat(vat)).toFixed(2);
 
+                if (isNaN(subtotal))
+                {
+                  subtotal = 0;
+                }
+                if (isNaN(vat))
+                {
+                  vat = 0;
+                }
+                if (isNaN(total))
+                {
+                  total = 0;
+                }
+
                 $('#credit-amount').val(amount);
                 $('#topup-subtotal').text(subtotal);
                 $('#topup-vat').text(vat);
