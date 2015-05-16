@@ -17,4 +17,13 @@ class Ajax extends CI_Controller
 
         echo json_encode(array('imei_code' => $imei_code));
     }
+
+    function get_current_balance()
+    {
+        $this->load->model('imei/imei_model', 'imei');
+
+        $current_balance = $this->imei->get_current_balance();  
+
+        echo json_encode(array('current_balance' => $current_balance));
+    }
 }

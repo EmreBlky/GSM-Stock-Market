@@ -156,6 +156,24 @@ class Imei_model extends MY_Model {
 		return $bulk_orders;	
 	}
 
+	function get_current_balance()
+	{
+		$current_balance = 0;
+
+		$XML = $this->MobiCode->CallAPI('AccountInfo');
+		if (is_string($XML)) {
+			$data = $this->MobiCode->ParseXML($XML);
+
+			$current_balance = $data['Credits'];
+		}
+
+		$update_data = array('credit' => $current_balance);
+		$this->db->where('member_id', $this->session->userdata('members_id'));
+		$this->db->update('imei_accounts', $update_data);
+
+		return $current_balance;
+	}
+
 	function get_order_info($order_id)
 	{
 		$order_info = false;

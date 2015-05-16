@@ -133,18 +133,34 @@ if ($encrypted != false)
       <div class="col-lg-5">
         <div class="ibox">
           <div class="ibox-title">
-          	<a class="pull-right"><button type="button" class="btn btn-white btn-xs"><i class="fa fa-refresh"></i> Refresh Balance</button></a>
+          	<a class="pull-right"><button type="button" class="btn btn-white btn-xs" id='refresh-balance'><i class="fa fa-refresh"></i> Refresh Balance</button></a>
             <h5>Current Balance</h5>
           </div>
           
           <div class="ibox-content">                    
-            <p class="text-center" style="font-size:4em">&pound;0.00</p>
+            <p class="text-center" style="font-size:4em">&pound;<span id='display-current-balance'><?=$current_balance?></span></p>
             
           </div><!-- Ibox Content -->
         </div>        
       </div><!-- /col -->
       
     </div>  <!-- /row -->
+
+                <script type="text/javascript">
+                $(document).ready(function(){
+                  $('#refresh-balance').click(function(){
+                    $.ajax(
+                    {
+                        url:'/ajax/get_current_balance/',
+                        dataType: "json",
+                        success: function(data)
+                        { 
+                          $('#display-current-balance').text(data.current_balance);
+                        }
+                    });
+                  })
+                });
+                </script>
     
     
                 <div class="row">

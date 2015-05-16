@@ -145,6 +145,7 @@ class Imei extends MX_Controller
         $data['title'] = 'IMEI Top up';        
         $data['page'] = 'top-up';
         $data['encrypted'] = $encrypted;
+        $data['current_balance'] = $this->imei_model->get_current_balance();
         
         $this->load->module('templates');
         $this->templates->page($data);
