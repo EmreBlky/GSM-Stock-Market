@@ -138,7 +138,7 @@ if ($encrypted != false)
           </div>
           
           <div class="ibox-content">                    
-            <p class="text-center" style="font-size:4em">&pound;<span id='display-current-balance'><?=$current_balance?></span></p>
+            <p class="text-center" style="font-size:4em"><span id='display-current-balance'><?=$current_balance?></span></p>
             
           </div><!-- Ibox Content -->
         </div>        
@@ -162,7 +162,7 @@ if ($encrypted != false)
                 });
                 </script>
     
-    
+    <!--
                 <div class="row">
                 <div class="col-lg-12">
                 <div class="ibox">
@@ -207,6 +207,7 @@ if ($encrypted != false)
                 </div>
             </div>
             </div>
+            -->
     
           
   </div><!-- /Wrapper -->
@@ -274,18 +275,7 @@ $(document).ready(function() {
         "tableTools": {
             "sSwfPath": "public/main/template/core/js/plugins/dataTables/swf/copy_csv_xls_pdf.swf"
         }
-    });
-	/* multi select */
-	var config = {
-        '.chosen-select'           : {search_contains:true},
-        '.chosen-select-deselect'  : {allow_single_deselect:true},
-        '.chosen-select-no-single' : {disable_search_threshold:10},
-        '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
-        '.chosen-select-width'     : {width:"95%"}
-    }
-    for (var selector in config) {
-        $(selector).chosen(config[selector]);
-    }			
+    });			
 
 });
 </script>
