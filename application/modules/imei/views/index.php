@@ -11,7 +11,6 @@
                     </ol>
                 </div>
             </div>
-            <?php if($this->session->userdata('membership') > 3) {?>
             
             <div class="col-lg-12">
                 <div class="wrapper wrapper-content animated fadeInRight">
@@ -46,10 +45,3 @@
         })
       })
       </script>
-      
-      <?php }?>
-	  <?php if($this->session->userdata('membership') < 4) {?>
-		                    <div class="alert alert-warning" style="margin-top:15px;">
-		                      This feature is currently unavailable. The IMEI services will launch soon
-		                    </div>
-	                  <?php }?>
