@@ -182,7 +182,7 @@ class Imei_model extends MY_Model {
 	{
 		$encrypted = false;
 
-	    $XML = $this->MobiCode->CallAPI('PayPalButton', array('qty'=>'1', 'return_url' => 'http://greggs.dev/imei/top_up?paypal=yes'));
+	    $XML = $this->MobiCode->CallAPI('PayPalButton', array('qty'=>'1', 'return_url' => current_url()));
 
 	    if (is_string($XML)) 
 	    {
