@@ -42,7 +42,7 @@
                         <tbody>
 
                         <?php
-                            if (isset($hpi_checks))
+                            if (isset($hpi_checks) && is_array($hpi_checks) && count($hpi_checks) > 0)
                             {
                                 foreach($hpi_checks as $hpi_check)
                                 {
