@@ -52,7 +52,7 @@ class Imei extends MX_Controller
     
     function imei_lookup()
     {
-        $lookup = false;   
+        $lookup = false; 
 
         if (isset($_POST['lookup-service']))
         {
@@ -114,12 +114,13 @@ class Imei extends MX_Controller
         $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
 
         $hpi_checks = $this->imei_model->get_hpi_checks();
+        $this->imei_model->fetch_api_orders();
         
         $data['main'] = 'imei';        
         $data['title'] = 'IMEI Archive';        
         $data['page'] = 'archive';
         $data['hpi_checks'] = $hpi_checks;
-        $data['get_api_orders'] = $this->imei_model->get_api_orders();
+        $data['bulk_orders'] = $this->imei_model->get_bulk_orders();
         
         $this->load->module('templates');
         $this->templates->page($data);

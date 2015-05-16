@@ -67,7 +67,7 @@ class Imei_model extends MY_Model {
 		return $account_created;
 	}
 
-	public function get_api_orders()
+	public function fetch_api_orders()
 	{
 		$this->db->select('*');
 		$this->db->where('member_id', $this->session->userdata('members_id'));
@@ -142,6 +142,18 @@ class Imei_model extends MY_Model {
 		return $imei_account;
 	}
 
+	function get_bulk_orders()
+	{
+		$orders = $this->db->get_where('bulk_lookup_orders', array('member_id' => $this->session->userdata('members_id')));
+
+		foreach($orders->result() as $order)
+		{
+			$bulk_orders[] = $order;
+		}
+
+		return $bulk_orders;	
+	}
+
 	function has_imei_account()
 	{
 		$query = $this->db->get_where('imei_accounts', array('member_id' => $this->session->userdata('members_id')));
@@ -167,10 +179,10 @@ class Imei_model extends MY_Model {
 
 			$xml = simplexml_load_string($xml_string);
 
-			if ((string)$xml->Status == 'Solved')
+			if ((string)$xml->Status == 'solved')
 			{
 				//success
-				$file_path = 'http://imei.gsmstockmarket.com/files/mobiguard/2103/2015/Apr/'. $xml->MobiCheck->cert_id .'.pdf';
+				$file_path = 'http://imei.gsmstockmarket.com/files/mobiguard/2103/2015/'. Date('M') .'/'. $xml->MobiCheck->cert_id .'.pdf';
 
 				$data = array(
 				   'id' => (string)$xml->ID,
@@ -228,6 +240,7 @@ class Imei_model extends MY_Model {
 		   'duplicates' => $data['Duplicates'],
 		   'rejected' => $data['Rejected'],
 		   'created_at' => date('Y-m-d H:i:s'),
+		   'notes' => 'Test Bulk from API',
 		);
 
 		$this->db->insert('bulk_lookup_orders', $data);

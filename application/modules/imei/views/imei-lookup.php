@@ -212,7 +212,7 @@
             {
               ?>
               <p>Lookup Success!</p>
-              <p>Report Path: <?=$lookup_results['report_path']?></p>
+              <p>Please check the archive for the report path</p>
               <?php
             }
 

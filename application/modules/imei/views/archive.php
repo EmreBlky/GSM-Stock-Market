@@ -33,31 +33,39 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                        	<td>12 May 2015</td>
-                            <td>1293085</td>
-                            <td>ImeiHPI Bulk Check</td>
-                            <td>bulk check 111</td>
-                            <td class="text-center"><label class="label label-primary" >Complete</label></td>
-                            <td class="text-center"><a class="btn btn-primary" style="font-size:10px" href="imei/report/">View Report</a></td>
-						</tr>
-                        <tr>
-                        	<td>13 May 2015</td>
-                            <td>1293086</td>
-                            <td>ImeiHPI Check</td>
-                            <td>Make & Model for single imei?</td>
-                            <td class="text-center"><label class="label label-warning" >Processing</label></td>
-                            <td class="text-center"><label class="btn btn-default" style="font-size:10px" href="imei/report/">View Report</label></td>
-						</tr>
-                        <tr>
-                        	<td>14 May 2015</td>
-                            <td>1293087</td>
-                            <td>ImeiHPI Check</td>
-                            <td>Apple iPhone (A1542)</td>
-                            <td class="text-center"><label class="label label-danger" >Failed</label></td>
-                            <td class="text-center"><label class="btn btn-default" style="font-size:10px" href="imei/report/">View Report</label></td>
-						</tr>
+
+                        <?php
+                        if (count($bulk_orders) > 0 && is_array($bulk_orders))
+                        {
+                            foreach($bulk_orders as $bulk)
+                            {
+                                echo '<tr>';
+                                echo '<td>' . $bulk->created_at . '</td>';
+                                echo '<td>' . $bulk->order_id . '</td>';
+                                echo '<td>ImeiHPI Bulk Check</td>';
+                                echo '<td>' . $bulk->reference . '</td>';
+                                echo '<td class="text-center"><label class="label label-primary" >Complete</label></td>';
+                                echo '<td class="text-center"><a class="btn btn-primary" style="font-size:10px" href="imei/report/">View Report</a></td>';
+                                echo '</tr>';
+                            }
+                        }
                         
+                        if (count($hpi_checks) > 0 && is_array($hpi_checks))
+                        {
+                            foreach($hpi_checks as $single)
+                            {
+                                echo '<tr>';
+                                echo '<td>' . $single->created_at . '</td>';
+                                echo '<td>' . $single->id . '</td>';
+                                echo '<td>ImeiHPI Single Lookup</td>';
+                                echo '<td>Reference</td>';
+                                echo '<td class="text-center"><label class="label label-primary" >Complete</label></td>';
+                                echo '<td class="text-center"><a class="btn btn-primary" style="font-size:10px" href="imei/report/">View Report</a></td>';
+                                echo '</tr>';
+                            }    
+                        }
+                        ?>
+                     
                         <?php /*
                             if (isset($hpi_checks) && is_array($hpi_checks) && count($hpi_checks) > 0)
                             {
