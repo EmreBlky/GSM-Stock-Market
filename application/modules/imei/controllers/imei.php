@@ -150,7 +150,7 @@ class Imei extends MX_Controller
         $this->templates->page($data);
     }
 
-    function report()
+    function report($order_id)
     {
         $this->load->model('activity/activity_model', 'activity_model');
         $data_activity = array(
@@ -159,10 +159,14 @@ class Imei extends MX_Controller
                                 'date' => date('d-m-Y')
                                 );
         $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
+
+        $this->imei_model->fetch_api_orders();
         
         $data['main'] = 'imei';
 		$data['title'] = 'Report';
         $data['page'] = 'report';
+        $data['order_info'] = $this->imei_model->get_order_info($order_id);
+        $data['order_id'] = $order_id;
 		
         $this->load->module('templates');
         $this->templates->page($data);

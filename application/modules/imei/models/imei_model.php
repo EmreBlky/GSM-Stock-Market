@@ -156,6 +156,37 @@ class Imei_model extends MY_Model {
 		return $bulk_orders;	
 	}
 
+	function get_order_info($order_id)
+	{
+		$order_info = false;
+
+		$query = $this->db->get_where('bulk_lookup_lines', array('member_id' => $this->session->userdata('members_id'), 'orderid' => $order_id));
+
+		if ($query->num_rows() > 0)
+		{
+			foreach($query->result() as $order)
+			{
+				$order_info[] = $order;
+			}
+		}
+
+		if ($order_info === false)
+		{
+			// see if its hpi
+			$query = $this->db->get_where('hpi_checks', array('member_id' => $this->session->userdata('members_id'), 'id' => $order_id));
+
+			if ($query->num_rows() > 0)
+			{
+				foreach($query->result() as $order)
+				{
+					$order_info[] = $order;
+				}
+			}			
+		}
+
+		return $order_info;
+	}
+
 	function has_imei_account()
 	{
 		$query = $this->db->get_where('imei_accounts', array('member_id' => $this->session->userdata('members_id')));

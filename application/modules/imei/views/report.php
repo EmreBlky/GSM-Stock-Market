@@ -15,7 +15,7 @@
                 <div class="col-lg-12">
                 <div class="ibox">
                     <div class="ibox-title">
-                        <h5>Order Number: 0123456</h5>
+                        <h5>Order Number: <?=$order_id?></h5>
                     </div>
                     <div class="ibox-content">                        
                         <table class="table table-striped table-bordered table-hover dataTables-example" >
@@ -30,30 +30,37 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                        	<td>90301098303383</td>
-                            <td>UHD29072-08SJI99</td>
-                            <td>Apple</td>
-                            <td>iPhone (A1234)</td>
-                            <td>A10</td>
-                            <td class="text-center"><label class="label label-primary" ><i class="fa fa-check"></i> Passed</label></td>
-						</tr>
-                        <tr>
-                        	<td>32232323832333</td>
-                            <td>U22DS072-DSA299</td>
-                            <td>Samsung</td>
-                            <td>GT-9829</td>
-                            <td>B12</td>
-                            <td class="text-center"><label class="label label-warning" ><i class="fa fa-exclamation"></i> Warning</label></td>
-						</tr>
-                        <tr>
+
+                            <?php
+
+                            if (!isset($order_info) || !is_array($order_info))
+                            {
+                                echo '<tr>This order is still processing. Please try again later</tr>';
+                            }
+                            else
+                            {
+                                foreach($order_info as $row)
+                                {
+                                    echo '<tr>';
+                                    echo '<td>' . $row->serial . '</td>';
+                                    echo '<td>' . (isset($row->cert_id) ? $row->cert_id : 'n/a') . '</td>';
+                                    echo '<td>' . $row->make . '</td>';
+                                    echo '<td>' . $row->model . '</td>';
+                                    echo '<td>' . (isset($row->reference) ? $row->reference : 'n/a') . '</td>';
+                                    echo '<td>' . $row->result . '</td>';
+                                    echo '</tr>';
+                                }
+                            }
+                        ?>
+
+                        <!--<tr>
                         	<td>01928379202333</td>
                             <td>UHD29072-08SJI99</td>
                             <td>Samsung</td>
                             <td>SM-G900</td>
                             <td>A13</td>
                             <td class="text-center"><label class="label label-danger" ><i class="fa fa-times"></i> Failed</label></td>
-						</tr>
+						</tr>-->
                         </tbody>
                     </table>                       
                     
