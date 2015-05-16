@@ -146,6 +146,8 @@ class Imei_model extends MY_Model {
 	{
 		$orders = $this->db->get_where('bulk_lookup_orders', array('member_id' => $this->session->userdata('members_id')));
 
+		$bulk_orders = false;
+
 		foreach($orders->result() as $order)
 		{
 			$bulk_orders[] = $order;
