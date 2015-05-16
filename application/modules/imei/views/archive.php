@@ -58,7 +58,7 @@
                                 echo '<td>' . $single->created_at . '</td>';
                                 echo '<td>' . $single->id . '</td>';
                                 echo '<td>ImeiHPI Single Lookup</td>';
-                                echo '<td>Reference</td>';
+                                echo '<td>' . $single->make . '/' . $single->model . '</td>';
                                 echo '<td class="text-center"><label class="label label-primary" >Complete</label></td>';
                                 echo '<td class="text-center"><a class="btn btn-primary" style="font-size:10px" href="imei/report/' . $single->id . '">View Report</a></td>';
                                 echo '</tr>';
