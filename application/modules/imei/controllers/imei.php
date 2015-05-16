@@ -148,7 +148,7 @@ class Imei extends MX_Controller
         $this->templates->page($data);
     }
 
-    function archive_view()
+    function report()
     {
         $this->load->model('activity/activity_model', 'activity_model');
         $data_activity = array(
