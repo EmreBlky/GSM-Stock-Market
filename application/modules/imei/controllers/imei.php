@@ -119,6 +119,7 @@ class Imei extends MX_Controller
         $data['title'] = 'IMEI Archive';        
         $data['page'] = 'archive';
         $data['hpi_checks'] = $hpi_checks;
+        $data['get_api_orders'] = $this->imei_model->get_api_orders();
         
         $this->load->module('templates');
         $this->templates->page($data);

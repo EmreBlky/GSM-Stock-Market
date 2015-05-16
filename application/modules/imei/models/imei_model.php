@@ -67,6 +67,49 @@ class Imei_model extends MY_Model {
 		return $account_created;
 	}
 
+	public function get_api_orders()
+	{
+		$this->db->select('*');
+		$this->db->where('member_id', $this->session->userdata('members_id'));
+		$this->db->where('api_pulled', 0);
+		$this->db->order_by('Bulk_ID', 'desc');
+		$query = $this->db->get('bulk_lookup_orders');
+
+		if ($query->num_rows() > 0)
+		{
+			foreach ($query->result() as $row)
+			{
+				$XML = $this->MobiCode->CallAPI('FetchBulkImeiCheck', array('Bulk_ID' => $row->bulk_id));
+
+				if (is_string($XML)) {
+					$data = $this->MobiCode->ParseXML($XML);
+
+					# because the api takes time to run the results so make sure the results are included in the XML before trying to store them
+					if (array_key_exists('results', $data))
+					{
+						foreach ($data['results'] as $result)
+						{
+							$data = array();
+							foreach ($result as $k => $v)
+							{
+								$data[$k] = $v;
+							}
+
+							$data['member_id'] = $this->session->userdata('members_id');
+							$data['created_at'] = date('Y-m-d H:i:s');
+							$this->db->insert('bulk_lookup_lines', $data);
+						}
+
+						// so the api is only called once for per order
+						$update_data = array('api_pulled' => 1);
+						$this->db->where('order_id', $data['orderid']);
+						$this->db->update('bulk_lookup_orders', $update_data);
+					}
+				}				
+			}
+		}
+	}
+
 	public static function get_hpi_checks()
 	{
 		$CI = get_instance();
@@ -149,6 +192,8 @@ class Imei_model extends MY_Model {
 				);
 
 				$CI->db->insert('hpi_checks', $data);
+
+				$imei_lookup = array('report_path' => $file_path);
 			}
 			else if ((string)$xml->Error_no == '1012')
 			{
@@ -166,14 +211,27 @@ class Imei_model extends MY_Model {
 
 	function lookup_bulk_imei($imeis)
 	{
-		$XML = $this->MobiCode->CallAPI('PlaceBulkImeiCheck', array('IMEIs' => array(0 => array('imei' => '352240023880624', 'ref' => '10003'), 1 => array('imei' => '353472030678506', 'ref' => '10004'), 2 => array('imei' => '352558061319308', 'ref' => '10005'), 3 => array('imei' => 'reject me', 'ref' => 'also reject')),
+		$XML = $this->MobiCode->CallAPI('PlaceBulkImeiCheck', array('IMEIs' => array(0 => array('imei' => '352240023880624', 'ref' => '10003'), 1 => array('imei' => '013406002247322', 'ref' => '10004'), 2 => array('imei' => '352558061319308', 'ref' => '10005'), 3 => array('imei' => '865980021375339', 'ref' => 'also reject')),
 		'BulkRef'=>'10064',
 		'Notes' => 'Test Bulk From API'));
 
 		if (is_string($XML)) {
 			/* Parse the XML stream */
 			$data = $this->MobiCode->ParseXML($XML);
-		}	
+		}
+
+		$data = array(
+		   'member_id' => $this->session->userdata('members_id'),
+		   'order_id' => $data['Order_ID'],
+		   'bulk_id' => $data['Bulk_ID'],
+		   'checks_submitted' => $data['Checks_Submitted'],
+		   'duplicates' => $data['Duplicates'],
+		   'rejected' => $data['Rejected'],
+		   'created_at' => date('Y-m-d H:i:s'),
+		);
+
+		$this->db->insert('bulk_lookup_orders', $data);
+		// store the bulk ref somewhere	
 
 		return $data;
 	}

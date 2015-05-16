@@ -197,15 +197,35 @@
         <div class="ibox">
           <div class="ibox-title"><h5>Lookup Results</h5></div>    
           <div class="ibox-content">
+
+            <?php
+              if (array_key_exists('Bulk_ID', $lookup_results))
+              {
+            ?>
             <p>Order ID : <?=$lookup_results['Order_ID']?></p>
             <p>Bulk ID : <?=$lookup_results['Bulk_ID']?></p>
             <p>Checks Submitted : <?=$lookup_results['Checks_Submitted']?></p>
             <p>Duplicates : <?=$lookup_results['Duplicates']?></p>
             <p>Rejected : <?=count($lookup_results['Rejected'])?></p>
-            <p><?php foreach($lookup_results['Rejected'] as $rejected)
+            <?=var_dump($lookup_results)?>
+            <p>
+              <?php foreach($lookup_results['Rejected'] as $rejected)
+              {
+                echo '- ' . $rejected['imei'] . '<br />';
+              } 
+              ?>
+            </p>
+            <?php 
+            } 
+            else if (array_key_exists('report_path', $lookup_results))
             {
-              echo '- ' . $rejected['imei'] . '<br />';
-            } ?></p>
+              ?>
+              <p>Lookup Success!</p>
+              <p>Report Path: <?=$lookup_results['report_path']?></p>
+              <?php
+            }
+
+            ?>
           </div>
         </div>
       </div>
