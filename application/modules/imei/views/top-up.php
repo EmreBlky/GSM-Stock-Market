@@ -46,7 +46,7 @@ if ($encrypted != false)
             <div class="form-group">
               <label class="col-lg-6 control-label">Credits (top up amount)</label>
               <div class="col-lg-4">
-              <input type="text" class="form-control" />
+              <input type="text" class="form-control" name='credit-amount' id='credit-amount' />
               </div>
             </div>
                
@@ -63,19 +63,37 @@ if ($encrypted != false)
               
               <label class="col-lg-6 control-label">Sub Total</label>
               <div class="col-lg-6">
-                <p class="form-control-static">&pound;0.00</p>
+                <p class="form-control-static">&pound;<span id='topup-subtotal'>0.00</span></p>
               </div>
               
               <label class="col-lg-6 control-label">VAT @ 20.00%</label>
               <div class="col-lg-6">
-                <p class="form-control-static">&pound;0.00</p>
+                <p class="form-control-static">&pound;<span id='topup-vat'>0.00</span></p>
               </div>
               
               <label class="col-lg-6 control-label">Order Total</label>
               <div class="col-lg-6">
-                <p class="form-control-static">&pound;0.00</p>
+                <p class="form-control-static">&pound;<span id='topup-total'>0.00</span></p>
               </div>
             </div>
+
+            <script type="text/javascript">
+            $(document).ready(function(){
+              $('#credit-amount').on('input propertychange paste', function() {
+                var amount = $('#credit-amount').val();
+                var amount = amount.replace(/\D/g,'');
+
+                var subtotal = parseFloat(amount).toFixed(2);
+                var vat = parseFloat((amount / 100 * 20)).toFixed(2);
+                var total = (parseFloat(subtotal) + parseFloat(vat)).toFixed(2);
+
+                $('#credit-amount').val(amount);
+                $('#topup-subtotal').text(subtotal);
+                $('#topup-vat').text(vat);
+                $('#topup-total').text(total);
+              })
+            })
+            </script>
             
             
             <div class="hr-line-dashed"></div>

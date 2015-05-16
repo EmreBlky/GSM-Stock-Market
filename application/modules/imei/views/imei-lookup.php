@@ -256,9 +256,8 @@
 
                   var value = parseFloat((count * 0.10)).toFixed(2);
                   $('#lookup-cost').text(value);
+                });
               });
-              });
-              
             </script>
                
             <div class="imei_input form-group" id="1-62">
