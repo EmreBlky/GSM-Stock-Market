@@ -191,7 +191,7 @@
       <p>Insufficient fund in your IMEI Services account. <a class="alert-link" href="imei/top_up">Top up now.</a></p>
     </div>
 
-    <?php if (isset($lookup_results)) { ?>
+    <?php if ($lookup_results != false) { ?>
     <div class="row">
       <div class="col-lg-12">
         <div class="ibox">
