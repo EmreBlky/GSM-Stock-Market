@@ -102,93 +102,6 @@
                 </div>
             </div>
             </div>    
-    
-    <!--
-                <div class="row">
-                <div class="col-lg-12">
-                <div class="ibox">
-                    <div class="ibox-title">
-                        <h5>List code requests</h5>
-                    </div>
-                    <div class="ibox-content">                        
-                        <table class="table table-striped table-bordered table-hover dataTables-example" >
-                        <thead>
-                        <tr>
-                            <th>Date Submitted</th>
-                            <th>Order ID</th>
-                            <th>Acc ID</th>
-                            <th>Account</th>
-                            <th>Sales Cat</th>
-                            <th>IMEI</th>
-                            <th>Service</th>
-                            <th>Model</th>
-                            <th>Status</th>
-                            <th>ImeiHPI</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td style="text-align:center"><button type="button" class="btn btn-outline btn-info" style="font-size:10px" data-toggle="modal" data-target="#order_id"><i class="fa fa-search"></i> 123456789</button></td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                                <td style="text-align:center"><button type="button" class="btn btn-outline btn-info" style="font-size:10px" data-toggle="modal" data-target="#imei"><i class="fa fa-search"></i> 123456789</button></td>
-                                <td>7</td>
-                                <td>8</td>
-                                <td>9</td>
-                                <td>10</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td style="text-align:center"><button type="button" class="btn btn-outline btn-info" style="font-size:10px" data-toggle="modal" data-target="#order_id"><i class="fa fa-search"></i> 123456789</button></td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                                <td style="text-align:center"><button type="button" class="btn btn-outline btn-info" style="font-size:10px" data-toggle="modal" data-target="#imei"><i class="fa fa-search"></i> 123456789</button></td>
-                                <td>7</td>
-                                <td>8</td>
-                                <td>9</td>
-                                <td>10</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td style="text-align:center"><button type="button" class="btn btn-outline btn-info" style="font-size:10px" data-toggle="modal" data-target="#order_id"><i class="fa fa-search"></i> 123456789</button></td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                                <td style="text-align:center"><button type="button" class="btn btn-outline btn-info" style="font-size:10px" data-toggle="modal" data-target="#imei"><i class="fa fa-search"></i> 123456789</button></td>
-                                <td>7</td>
-                                <td>8</td>
-                                <td>9</td>
-                                <td>10</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td style="text-align:center"><button type="button" class="btn btn-outline btn-info" style="font-size:10px" data-toggle="modal" data-target="#order_id"><i class="fa fa-search"></i> 123456789</button></td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                                <td style="text-align:center"><button type="button" class="btn btn-outline btn-info" style="font-size:10px" data-toggle="modal" data-target="#imei"><i class="fa fa-search"></i> 123456789</button></td>
-                                <td>7</td>
-                                <td>8</td>
-                                <td>9</td>
-                                <td>10</td>
-                            </tr>
-                        </tbody>
-                    </table>                       
-                    
-
-                    </div>
-
-
-                    
-                    
-                    
-                </div>
-            </div>
-            </div>
-    -->
           
   </div><!-- /Wrapper -->
   
@@ -244,18 +157,7 @@ $(document).ready(function() {
         "tableTools": {
             "sSwfPath": "public/main/template/core/js/plugins/dataTables/swf/copy_csv_xls_pdf.swf"
         }
-    });
-	/* multi select */
-	var config = {
-        '.chosen-select'           : {search_contains:true},
-        '.chosen-select-deselect'  : {allow_single_deselect:true},
-        '.chosen-select-no-single' : {disable_search_threshold:10},
-        '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
-        '.chosen-select-width'     : {width:"95%"}
-    }
-    for (var selector in config) {
-        $(selector).chosen(config[selector]);
-    }			
+    });		
 
 });
 </script>
