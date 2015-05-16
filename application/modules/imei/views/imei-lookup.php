@@ -246,6 +246,20 @@
                   </select>
               </div>
             </div>
+
+            <script type='text/javascript'>
+              $(document).ready(function(){
+                $('#bulk_imeis').on('input propertychange paste', function() {
+                  var text = $("#bulk_imeis").val();   
+                  var lines = text.split(/\r|\r\n|\n/);
+                  var count = lines.length;
+
+                  var value = parseFloat((count * 0.10)).toFixed(2);
+                  $('#lookup-cost').text(value);
+              });
+              });
+              
+            </script>
                
             <div class="imei_input form-group" id="1-62">
               <label class="col-lg-3 col-lg-offset-1 control-label">IMEI <span style="color:red">*</span></label>
@@ -257,7 +271,7 @@
             <div class="imei_input form-group" id="1-129">
               <label class="col-lg-3 col-lg-offset-1 control-label">IMEI Bulk<span style="color:red">*</span><br /><p class="text-navy"></p></label>
               <div class="col-lg-6">
-              	<textarea class="form-control" name="imei_bulk" rows="5"></textarea>
+              	<textarea class="form-control" name="imei_bulk" rows="5" id='bulk_imeis'></textarea>
               	<button class="btn btn-primary imei_bulk pull-right" style="margin-top:10px">.CSV Bulk Import IMEI</button>
               </div>
             </div>
@@ -279,7 +293,7 @@
             <div class="hr-line-dashed"></div>
             <div class="form-group">
               <div class="col-lg-3 col-lg-offset-4">
-              	<label> <input type="checkbox" class="i-checks" name="agree" required> Confirm charge of &pound;00.00 (whatever total is)</label>
+              	<label> <input type="checkbox" class="i-checks" name="agree" required> Confirm charge of <span id='lookup-cost'>0.10</span> credits (* this is an approximation, imeis of incorrect formats will not be billed)</label>
               </div>
               <div class="col-lg-3">
               	<button class="btn btn-primary pull-right" name='place-imei-order'>Place Order</button>

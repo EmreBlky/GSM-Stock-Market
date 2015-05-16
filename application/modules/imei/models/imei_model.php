@@ -256,12 +256,26 @@ class Imei_model extends MY_Model {
 
 	function lookup_bulk_imei($imeis)
 	{
-		$XML = $this->MobiCode->CallAPI('PlaceBulkImeiCheck', array('IMEIs' => array(0 => array('imei' => '352240023880624', 'ref' => '10003'), 1 => array('imei' => '013406002247322', 'ref' => '10004'), 2 => array('imei' => '352558061319308', 'ref' => '10005'), 3 => array('imei' => '865980021375339', 'ref' => 'also reject')),
+		$imeis = preg_split("/\\r\\n|\\r|\\n/", $imeis);
+		$bulk_lookup = array();
+
+		foreach ($imeis as $imei)
+		{
+			$line = str_getcsv($imei);
+
+			$valid_imei = $this->MobiCode->CheckIMEI($line[0]);
+
+			if ($valid_imei)
+			{
+				$bulk_lookup[] = array('imei' => $line[0], 'ref' => ltrim($line[1]));
+			}
+		}
+
+		$XML = $this->MobiCode->CallAPI('PlaceBulkImeiCheck', array('IMEIs' => $bulk_lookup,
 		'BulkRef'=>'10064',
 		'Notes' => 'Test Bulk From API'));
 
 		if (is_string($XML)) {
-			/* Parse the XML stream */
 			$data = $this->MobiCode->ParseXML($XML);
 		}
 
@@ -277,7 +291,6 @@ class Imei_model extends MY_Model {
 		);
 
 		$this->db->insert('bulk_lookup_orders', $data);
-		// store the bulk ref somewhere	
 
 		return $data;
 	}

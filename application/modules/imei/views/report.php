@@ -41,6 +41,18 @@
                             {
                                 foreach($order_info as $row)
                                 {
+                                    switch($row->result)
+                                    {
+                                        case 'passed':
+                                            $row->result = '<label class="label label-primary" ><i class="fa fa-times"></i> Passed</label>';
+                                            break;
+                                        case 'failed':
+                                            $row->result = '<label class="label label-danger" ><i class="fa fa-times"></i> Failed</label>';
+                                            break;
+                                        default:
+                                            break;
+                                    }
+
                                     echo '<tr>';
                                     echo '<td>' . $row->serial . '</td>';
                                     echo '<td>' . (isset($row->cert_id) ? $row->cert_id : 'n/a') . '</td>';
