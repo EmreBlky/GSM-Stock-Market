@@ -172,5 +172,22 @@ class Imei extends MX_Controller
         $this->load->module('templates');
         $this->templates->page($data);
     } 
+    
+    function success()
+    {
+        $data_activity = array(
+                                'activity' => 'IMEI: Success',
+                                'time' => date('H:i:s'),
+                                'date' => date('d-m-Y')
+                                );
+        $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
+        
+        $data['main'] = 'imei';        
+        $data['title'] = 'Success';        
+        $data['page'] = 'success';
+        
+        $this->load->module('templates');
+        $this->templates->page($data);
+    }
 	
 }
