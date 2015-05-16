@@ -242,7 +242,7 @@ class Imei_model extends MY_Model {
 		   'duplicates' => $data['Duplicates'],
 		   'rejected' => $data['Rejected'],
 		   'created_at' => date('Y-m-d H:i:s'),
-		   'notes' => 'Test Bulk from API',
+		   'reference' => 'Test Bulk from API',
 		);
 
 		$this->db->insert('bulk_lookup_orders', $data);
