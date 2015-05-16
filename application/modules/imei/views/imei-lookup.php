@@ -10,14 +10,14 @@
   </div>
 
   <div class="wrapper wrapper-content animated fadeInRight">
-      <div class="alert alert-warning" style="margin-bottom:10px;">
+      <!--<div class="alert alert-warning" style="margin-bottom:10px;">
       <p>This feature is currently unavailable. The IMEI services will launch soon</p>
-    </div>
+    </div>-->
   
     <div class="row">
     <form class="form-horizontal validation"> 
     
-      <div class="col-lg-12">
+      <!--<div class="col-lg-12">
         <div class="ibox">
           <div class="ibox-title"><h5>Device Start</h5></div>
           
@@ -35,9 +35,9 @@
               </div>
             </div>
             
-          </div><!-- Ibox Content -->
+          </div>
         </div>        
-      </div><!-- /col -->
+      </div>--><!-- /col -->
       
       <script type="text/javascript">
       $(document).ready(function(){
@@ -190,9 +190,30 @@
       <div class="alert alert-danger" style="margin-bottom:10px;">
       <p>Insufficient fund in your IMEI Services account. <a class="alert-link" href="imei/top_up">Top up now.</a></p>
     </div>
+
+    <?php if (isset($lookup_results)) { ?>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="ibox">
+          <div class="ibox-title"><h5>Lookup Results</h5></div>    
+          <div class="ibox-content">
+            <p>Order ID : <?=$lookup_results['Order_ID']?></p>
+            <p>Bulk ID : <?=$lookup_results['Bulk_ID']?></p>
+            <p>Checks Submitted : <?=$lookup_results['Checks_Submitted']?></p>
+            <p>Duplicates : <?=$lookup_results['Duplicates']?></p>
+            <p>Rejected : <?=count($lookup_results['Rejected'])?></p>
+            <p><?php foreach($lookup_results['Rejected'] as $rejected)
+            {
+              echo '- ' . $rejected['imei'] . '<br />';
+            } ?></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <?php } ?>
   
     <div class="row">
-    <form class="form-horizontal validation"> 
+    <form class="form-horizontal validation" method='POST' name='unlocking-service-form' action=''> 
     
       <div class="col-lg-12">
         <div class="ibox">
@@ -203,7 +224,7 @@
             <div class="form-group">
               <label class="col-lg-3 col-lg-offset-1 control-label">Service <span style="color:red">*</span></label>
               <div class="col-lg-6">
-              	<select id="service" class="form-control">
+              	<select id="service" class="form-control" name='lookup-service'>
                   <optgroup label="0">
                   <option value="0" id="service-0-0">Please Select Service ....</option>
                   </optgroup>
@@ -225,7 +246,7 @@
             <div class="imei_input form-group" id="1-129">
               <label class="col-lg-3 col-lg-offset-1 control-label">IMEI Bulk<span style="color:red">*</span><br /><p class="text-navy"></p></label>
               <div class="col-lg-6">
-              	<textarea class="form-control" name="imei" rows="5"></textarea>
+              	<textarea class="form-control" name="imei_bulk" rows="5"></textarea>
               	<button class="btn btn-primary imei_bulk pull-right" style="margin-top:10px">.CSV Bulk Import IMEI</button>
               </div>
             </div>
@@ -250,7 +271,7 @@
               	<label> <input type="checkbox" class="i-checks" name="agree" required> Confirm charge of &pound;00.00 (whatever total is)</label>
               </div>
               <div class="col-lg-3">
-              	<button class="btn btn-primary pull-right">Place Order</button>
+              	<button class="btn btn-primary pull-right" name='place-imei-order'>Place Order</button>
               </div>
             </div>
             

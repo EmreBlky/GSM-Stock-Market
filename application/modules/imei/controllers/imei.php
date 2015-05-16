@@ -6,6 +6,7 @@ class Imei extends MX_Controller
     {
         parent::__construct();
         $this->load->model('imei/imei_model', 'imei');
+        $this->load->model('mobicode/mobicode_model', 'MobiCode');
 
         if ( ! $this->session->userdata('logged_in'))
         { 
@@ -51,6 +52,25 @@ class Imei extends MX_Controller
     
     function imei_lookup()
     {
+        $lookup = false;   
+
+        if (isset($_POST['lookup-service']))
+        {
+            if ($_POST['lookup-service'] !== 0)
+            {
+                # lookup switch
+                switch ($_POST['lookup-service'])
+                {
+                    case '1-62':
+                        $lookup = $this->imei_model->lookup_imei($_POST['imei']);
+                        break;
+                    case '1-129':
+                        $lookup = $this->imei_model->lookup_bulk_imei($_POST['imei_bulk']);
+                        break;
+                }
+            }
+        }
+        
         $data_activity = array(
                                 'activity' => 'IMEI: TAC Code Lookup',
                                 'time' => date('H:i:s'),
@@ -61,6 +81,7 @@ class Imei extends MX_Controller
         $data['main'] = 'imei';        
         $data['title'] = 'IMEI TAC Code Lookup';        
         $data['page'] = 'imei-lookup';
+        $data['lookup_results'] = $lookup;
         
         $this->load->module('templates');
         $this->templates->page($data);
@@ -105,16 +126,23 @@ class Imei extends MX_Controller
     
     function top_up()
     {
+        $encrypted = false;
+        if (isset($_POST['top-up-account']))
+        {
+            $encrypted = $this->imei_model->top_up_account();
+        }
+
         $data_activity = array(
-                                'activity' => 'IMEI: Top Up',
-                                'time' => date('H:i:s'),
-                                'date' => date('d-m-Y')
-                                );
+            'activity' => 'IMEI: Top Up',
+            'time' => date('H:i:s'),
+            'date' => date('d-m-Y')
+        );
         $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
         
         $data['main'] = 'imei';        
         $data['title'] = 'IMEI Top up';        
         $data['page'] = 'top-up';
+        $data['encrypted'] = $encrypted;
         
         $this->load->module('templates');
         $this->templates->page($data);

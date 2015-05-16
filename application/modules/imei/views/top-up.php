@@ -13,9 +13,29 @@
       <div class="alert alert-warning" style="margin-bottom:10px;">
       <p>This feature is currently unavailable. The IMEI services will launch soon</p>
     </div>
-  
+
+
+<?php
+if ($encrypted != false)
+{
+?>
+  <form name="form2" id="form2" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_self"> 
+  <input type="hidden" name="encrypted" value="<?=$encrypted; ?>">
+  <input type="hidden" name="cmd" value="_s-xclick">
+  <label>
+  <input type="submit" name="button" id="button" class='hidden' value="off we go to paypal" />
+  </label> </form>
+  <script type="text/javascript">
+
+    $('#form2').submit();
+
+  </script>
+<?php
+}
+?>
+
     <div class="row">
-    <form method="get" class="form-horizontal"> 
+    <form method="POST" action='' class="form-horizontal"> 
     
       <div class="col-lg-7">
         <div class="ibox">
@@ -62,15 +82,15 @@
             <div class="form-group">
               <div class="col-lg-4 col-lg-offset-2">
                             <select id="pay_option" class="form-control pull-right" style="width:auto">
-                              <option value="option1" disabled selected>Payment Method</option>
+                              <option value="option1" selected>Payment Method</option>
                               <option value="option2">PayPal</option>
                               <option value="option3">Credit/Debit Card</option>
                             </select>
               </div>
               <div class="col-lg-6">
               				<p id="option1" class="pay_button text-danger" style="margin:8px 0">Select payment method.</p>
-                            <button id="option2" class="pay_button btn btn-primary">Pay Now</button>
-                            <button id="option3" class="pay_button btn btn-primary">Pay Now</button>
+                            <button id="option2" class="pay_button btn btn-primary" name='top-up-account'>Pay Now</button>
+                            <!--<button id="option3" class="pay_button btn btn-primary">Pay Now</button>-->
               </div>
             </div>
             
@@ -144,7 +164,7 @@
   
 <script>
 $(document).ready(function () {
-  $('.pay_button').hide();
+  //$('.pay_button').hide();
   $('#option1').show();
   $('#pay_option').change(function () {
     $('.pay_button').hide();

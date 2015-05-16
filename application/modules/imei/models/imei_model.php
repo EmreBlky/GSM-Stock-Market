@@ -163,5 +163,40 @@ class Imei_model extends MY_Model {
 
 		return $imei_lookup;
 	}
+
+	function lookup_bulk_imei($imeis)
+	{
+		$XML = $this->MobiCode->CallAPI('PlaceBulkImeiCheck', array('IMEIs' => array(0 => array('imei' => '352240023880624', 'ref' => '10003'), 1 => array('imei' => '353472030678506', 'ref' => '10004'), 2 => array('imei' => '352558061319308', 'ref' => '10005'), 3 => array('imei' => 'reject me', 'ref' => 'also reject')),
+		'BulkRef'=>'10064',
+		'Notes' => 'Test Bulk From API'));
+
+		if (is_string($XML)) {
+			/* Parse the XML stream */
+			$data = $this->MobiCode->ParseXML($XML);
+		}	
+
+		return $data;
+	}
+
+	function top_up_account()
+	{
+		$encrypted = false;
+
+	    $XML = $this->MobiCode->CallAPI('PayPalButton', array('qty'=>'1', 'return_url' => 'http://greggs.dev/imei/top_up?paypal=yes'));
+
+	    if (is_string($XML)) 
+	    {
+	        /* Parse the XML stream */
+	        $Data = $this->MobiCode->ParseXML($XML);
+	        if (is_array($Data)) {
+	            if (isset($Data['Error'])) {
+	            }
+	            $encrypted = $Data['encrypted']; 
+	        }
+
+	    }
+
+	    return $encrypted;
+	}
 }
 

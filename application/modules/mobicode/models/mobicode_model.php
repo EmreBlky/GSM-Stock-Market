@@ -57,7 +57,8 @@
 			if ($query->num_rows() > 0)
 			{
 				$row = $query->row();
-				define('MOBICODE_API_KEY', $row->api_key);
+				//define('MOBICODE_API_KEY', $row->api_key);
+				define('MOBICODE_API_KEY', '(4DF7-D3D1-73F7-AF15)');
 			}
 			else
 			{
@@ -149,8 +150,8 @@
 
 			/* Configure the parser */
 			$Parser = xml_parser_create('UTF-8');
-			xml_set_element_handler($Parser, array('MOBICODE', 'XML_Start'), array('MOBICODE', 'XML_End'));
-			xml_set_character_data_handler($Parser, array('MOBICODE', 'XML_CData'));
+			xml_set_element_handler($Parser, array('Mobicode_model', 'XML_Start'), array('Mobicode_model', 'XML_End'));
+			xml_set_character_data_handler($Parser, array('Mobicode_model', 'XML_CData'));
 			xml_parser_set_option($Parser, XML_OPTION_CASE_FOLDING, 0);
 			
 			/* Start parsing, check the success of both parsing and analyzing */
