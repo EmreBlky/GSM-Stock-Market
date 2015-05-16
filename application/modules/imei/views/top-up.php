@@ -101,7 +101,10 @@ if ($encrypted != false)
     
       <div class="col-lg-5">
         <div class="ibox">
-          <div class="ibox-title"><h5>Current Balance</h5></div>
+          <div class="ibox-title">
+          	<a class="pull-right"><button type="button" class="btn btn-white btn-xs"><i class="fa fa-refresh"></i> Refresh Balance</button></a>
+            <h5>Current Balance</h5>
+          </div>
           
           <div class="ibox-content">                    
             <p class="text-center" style="font-size:4em">&pound;0.00</p>

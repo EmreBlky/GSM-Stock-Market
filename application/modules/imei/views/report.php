@@ -1,86 +1,59 @@
   <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
-      <h2>Archive</h2>
+      <h2>View Report</h2>
           <ol class="breadcrumb">
           <li><a href="/">Home</a></li>
           <li>IMEI Services</li>
-          <li class="active"><strong>Archive</strong></li>
+          <li><a href="imei/archive/">Archive</a></li>
+          <li class="active"><strong>View Report</strong></li>
         </ol>
     </div>
   </div>
-
   <div class="wrapper wrapper-content animated fadeInRight">
-      <div class="alert alert-warning" style="margin-bottom:10px;">
-      <p>This feature is currently unavailable. The IMEI services will launch soon</p>
-    </div>
 
                 <div class="row">
                 <div class="col-lg-12">
                 <div class="ibox">
                     <div class="ibox-title">
-                        <h5>ImeiHPI Check Archive</h5>
+                        <h5>Order Number: 0123456</h5>
                     </div>
                     <div class="ibox-content">                        
                         <table class="table table-striped table-bordered table-hover dataTables-example" >
                         <thead>
                         <tr>
-                            <th>Order Date</th>
-                            <th>Order ID</th>
-                            <th>Service</th>
+                            <th>IMEI Number</th>
+                            <th>Certificate ID</th>
+                            <th>Make</th>
+                            <th>Model</th>
                             <th>Reference</th>
-                            <th>Status</th>
-                            <th>Options</th>
+                            <th>Result</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                        	<td>12 May 2015</td>
-                            <td>1293085</td>
-                            <td>ImeiHPI Bulk Check</td>
-                            <td>bulk check 111</td>
-                            <td class="text-center"><label class="label label-primary" >Complete</label></td>
-                            <td class="text-center"><a class="btn btn-primary" style="font-size:10px" href="imei/report/">View Report</a></td>
+                        	<td>90301098303383</td>
+                            <td>UHD29072-08SJI99</td>
+                            <td>Apple</td>
+                            <td>iPhone (A1234)</td>
+                            <td>A10</td>
+                            <td class="text-center"><label class="label label-primary" ><i class="fa fa-check"></i> Passed</label></td>
 						</tr>
                         <tr>
-                        	<td>13 May 2015</td>
-                            <td>1293086</td>
-                            <td>ImeiHPI Check</td>
-                            <td>Make & Model for single imei?</td>
-                            <td class="text-center"><label class="label label-warning" >Processing</label></td>
-                            <td class="text-center"><label class="btn btn-default" style="font-size:10px" href="imei/report/">View Report</label></td>
+                        	<td>32232323832333</td>
+                            <td>U22DS072-DSA299</td>
+                            <td>Samsung</td>
+                            <td>GT-9829</td>
+                            <td>B12</td>
+                            <td class="text-center"><label class="label label-warning" ><i class="fa fa-exclamation"></i> Warning</label></td>
 						</tr>
                         <tr>
-                        	<td>14 May 2015</td>
-                            <td>1293087</td>
-                            <td>ImeiHPI Check</td>
-                            <td>Apple iPhone (A1542)</td>
-                            <td class="text-center"><label class="label label-danger" >Failed</label></td>
-                            <td class="text-center"><label class="btn btn-default" style="font-size:10px" href="imei/report/">View Report</label></td>
+                        	<td>01928379202333</td>
+                            <td>UHD29072-08SJI99</td>
+                            <td>Samsung</td>
+                            <td>SM-G900</td>
+                            <td>A13</td>
+                            <td class="text-center"><label class="label label-danger" ><i class="fa fa-times"></i> Failed</label></td>
 						</tr>
-                        
-                        <?php /*
-                            if (isset($hpi_checks) && is_array($hpi_checks) && count($hpi_checks) > 0)
-                            {
-                                foreach($hpi_checks as $hpi_check)
-                                {
-                                    echo '<tr>';
-                                        echo '<td>' . $hpi_check->created_at . '</td>';
-                                        echo '<td>' . $hpi_check->cert_id . '</td>';
-                                        echo '<td>' . $hpi_check->serial . '</td>';
-                                        echo '<td>' . $hpi_check->make . ' ' . $hpi_check->model . '</td>'; /*
-                                        echo '<td>' . $hpi_check->colour_code . '</td>';
-                                        echo '<td>' . $hpi_check->colour . '</td>';
-                                        echo '<td>' . $hpi_check->cr_count . '</td>';
-                                        echo '<td>' . $hpi_check->police_lost_property . '</td>';
-                                        echo '<td>' . $hpi_check->owner_temp_block . '</td>';
-                                        echo '<td>' . $hpi_check->expired_owner_temp_block . '</td>'; 
-                                        echo '<td style="color:' . $hpi_check->colour . '">' . $hpi_check->result . '</td>';
-                                        echo '<td>' . $hpi_check->recycled_previously . '</td>';
-                                        echo '<td class="text-center"><a target="_blank" class="label label-warning" href="' . $hpi_check->report_path . '">View Report</a> <a target="_blank" class="label label-primary" download href="' . $hpi_check->report_path . '">Download Report</a></td>';
-                                    echo '</tr>';
-                                }
-                            }
-                       */ ?>
                         </tbody>
                     </table>                       
                     

@@ -9,37 +9,29 @@
     </div>
   </div>
 
-  <div class="wrapper wrapper-content animated fadeInRight">
-      <!--<div class="alert alert-warning" style="margin-bottom:10px;">
-      <p>This feature is currently unavailable. The IMEI services will launch soon</p>
-    </div>-->
-  
-    <div class="row">
-    <form class="form-horizontal validation"> 
-    
-      <!--<div class="col-lg-12">
-        <div class="ibox">
-          <div class="ibox-title"><h5>Device Start</h5></div>
-          
-          <div class="ibox-content">
-          
-            <div class="form-group">
-              <div class="col-lg-4 col-lg-offset-3">
 
-              <input type="text" placeholder="Enter IMEI" class="form-control"  maxlength="15" name="imei" id="lookup-imei"/><br />
+<!-- Jquery Validate -->
+<script src="public/main/template/core/js/plugins/validate/jquery.validate.min.js"></script>
 
-              <p class="text-navy">Please enter IMEI for Mobile Phones, and Serial Numbers for all other Devices, Consoles, Laptops etc</p>
-              </div>
-              <div class="col-lg-3">
-              	<button class="btn btn-primary" id="lookup-imei-submit">Submit IMEI HPI</button>
-              </div>
-            </div>
-            
-          </div>
-        </div>        
-      </div>--><!-- /col -->
-      
-      <script type="text/javascript">
+<script>
+    $(document).ready(function () {
+
+        $(".validation").validate({
+            rules: {
+                imei: {
+                    required: true,
+                    digits: true,
+                    minlength: 15,
+					maxlength: 15
+                },
+                agree: {
+                    required: true
+                }
+            }
+        });
+    });
+</script>
+<script type="text/javascript">
       $(document).ready(function(){
         $('#lookup-imei-submit').click(function(e)
         {
@@ -75,7 +67,40 @@
         })
       })
       </script>
-    <?php /*
+      
+      
+ <?php /* <div class="wrapper wrapper-content animated fadeInRight">
+      <!--<div class="alert alert-warning" style="margin-bottom:10px;">
+      <p>This feature is currently unavailable. The IMEI services will launch soon</p>
+    </div>-->
+  
+    <div class="row">
+    <form class="form-horizontal validation"> 
+    
+      <!--<div class="col-lg-12">
+        <div class="ibox">
+          <div class="ibox-title"><h5>Device Start</h5></div>
+          
+          <div class="ibox-content">
+          
+            <div class="form-group">
+              <div class="col-lg-4 col-lg-offset-3">
+
+              <input type="text" placeholder="Enter IMEI" class="form-control"  maxlength="15" name="imei" id="lookup-imei"/><br />
+
+              <p class="text-navy">Please enter IMEI for Mobile Phones, and Serial Numbers for all other Devices, Consoles, Laptops etc</p>
+              </div>
+              <div class="col-lg-3">
+              	<button class="btn btn-primary" id="lookup-imei-submit">Submit IMEI HPI</button>
+              </div>
+            </div>
+            
+          </div>
+        </div>        
+      </div>--><!-- /col -->
+      
+      
+    
       <div class="col-lg-12">
         <div class="ibox">
           <div class="ibox-title"><h5>Initial IMEI TAC Code Lookup:</h5></div>
@@ -140,47 +165,13 @@
             
           </div><!-- Ibox Content -->
         </div>        
-      </div><!-- /col -->*/?>
+      </div><!-- /col -->
     
     </form>  
     </div>  <!-- /row -->
     
           
-  </div><!-- /Wrapper -->  
-
-<!-- Jquery Validate -->
-<script src="public/main/template/core/js/plugins/validate/jquery.validate.min.js"></script>
-
-<script>
-    $(document).ready(function () {
-
-        $(".validation").validate({
-            rules: {
-                imei: {
-                    required: true,
-                    digits: true,
-                    minlength: 15,
-					maxlength: 15
-                },
-                agree: {
-                    required: true
-                }
-            }
-        });
-    });
-</script>
-
-
-  <div class="row wrapper border-bottom white-bg page-heading">
-    <div class="col-lg-12">
-      <h2>Mobile Unlocking</h2>
-          <ol class="breadcrumb">
-          <li><a href="/">Home</a></li>
-          <li>IMEI Services</li>
-          <li class="active"><strong>Unlocking</strong></li>
-        </ol>
-    </div>
-  </div>
+  </div><!-- /Wrapper -->  */?>
 
   <div class="wrapper wrapper-content animated fadeInRight">
       <div class="alert alert-warning" style="margin-bottom:10px;">
@@ -309,25 +300,3 @@ $(document).ready(function () {
           });
       });
   </script>
-
-<!-- Jquery Validate -->
-<script src="public/main/template/core/js/plugins/validate/jquery.validate.min.js"></script>
-
-<script>
-    $(document).ready(function () {
-
-        $(".validation").validate({
-            rules: {
-                imei: {
-                    required: true,
-                    digits: true,
-                    minlength: 15,
-					maxlength: 15
-                },
-                agree: {
-                    required: true
-                }
-            }
-        });
-    });
-</script>
