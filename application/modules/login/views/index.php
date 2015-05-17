@@ -6,8 +6,7 @@
 
     </div>
     <h3>Welcome to GSMStockMarket</h3>
-    <p>The worlds best B2B trading platform.
-        <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
+    <p>The worlds most innovative B2B trading platform
     </p>
     <?php echo form_open('login/login_validation'); ?>
         <div class="form-group">

@@ -6,7 +6,7 @@
 
     </div>
     <h3>Welcome to GSMStockMarket</h3>
-    <p>The worlds best B2B trading platform.</p>
+    <p>The worlds most innovative B2B trading platform</p>
     <?php 
         $title = $this->session->flashdata('title');
 
