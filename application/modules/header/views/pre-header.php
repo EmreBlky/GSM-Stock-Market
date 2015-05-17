@@ -29,7 +29,7 @@
     <!-- Multi Select -->
     <link href="public/main/template/core/css/plugins/chosen/chosen.css" rel="stylesheet">
     
-    <link href="public/main/template/core/css/style.css" rel="stylesheet">
+    <link href="public/main/template/core/css/style.min.css" rel="stylesheet">
     <link href="public/main/template/gsm/css/style.css" rel="stylesheet">
     <!-- GSM Override -->
 
