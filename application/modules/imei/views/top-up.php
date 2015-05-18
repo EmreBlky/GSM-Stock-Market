@@ -163,35 +163,45 @@ if ($encrypted != false)
                 <div class="col-lg-12">
                 <div class="ibox">
                     <div class="ibox-title">
-                        <h5>Top up invoices</h5>
+                        <h5>Top up transaction history</h5>
                     </div>
                     <div class="ibox-content">                        
                         <table class="table table-striped table-bordered table-hover dataTables-example" >
                         <thead>
                         <tr>
-                            <th>Date Time</th>
-                            <th>Type</th>
+                            <th>Date</th>
                             <th>Number</th>
-                            <th>Processor</th>
-                            <th>Name</th>
-                            <th>Total</th>
                             <th>Transaction ID</th>
+                            <th>Processor</th>
+                            <th>Total</th>
                             <th>Options</th>
                         </tr>
                         </thead>
                         <tbody>
-                        		<tr>No topup invoices available.
-                                </tr>
-                            <!--<tr>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                                <td>6</td>
-                                <td>7</td>
-                                <td style="text-align:center"><a href="" class="btn btn-primary" style="font-size:10px">View Invoice</a></td>
-                            </tr>-->
+                            <tr>
+                                <td>16 May, 2015</td>
+                                <td>1024</td>
+                                <td>8P487761SN323023M</td>
+                                <td>PayPal</td>
+                                <td>&pound; 36.00</td>
+                                <td style="text-align:center"><a href="imei/transaction" class="btn btn-primary" style="font-size:10px">View Transaction</a></td>
+                            </tr>
+                            <tr>
+                                <td>17 May, 2015</td>
+                                <td>1027</td>
+                                <td>UHSI9899SN323023M</td>
+                                <td>PayPal</td>
+                                <td>&pound; 14.40</td>
+                                <td style="text-align:center"><a href="imei/transaction" class="btn btn-primary" style="font-size:10px">View Transaction</a></td>
+                            </tr>
+                            <tr>
+                                <td>19 May, 2015</td>
+                                <td>1029</td>
+                                <td>370207JJIS323023M</td>
+                                <td>PayPal</td>
+                                <td>&pound; 150.00</td>
+                                <td style="text-align:center"><a href="imei/transaction" class="btn btn-primary" style="font-size:10px">View Transaction</a></td>
+                            </tr>
                         </tbody>
                     </table>                       
                     
