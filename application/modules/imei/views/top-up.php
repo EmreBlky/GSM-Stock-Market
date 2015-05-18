@@ -31,7 +31,7 @@ if ($encrypted != false)
 ?>
 
     <div class="row">
-    <form method="POST" action='' class="form-horizontal validation"> 
+    <form method="POST" action='' class="form-horizontal"> 
     
       <div class="col-lg-7">
         <div class="ibox">
@@ -109,13 +109,13 @@ if ($encrypted != false)
             <div class="form-group">
               <div class="col-lg-4 col-lg-offset-2">
                             <select id="pay_option" class="form-control pull-right" style="width:auto">
-                              <option value="option1" selected disabled>Payment Method</option>
-                              <option value="option2">PayPal</option>
+                              <option value="option1" disabled>Payment Method</option>
+                              <option value="option2" selected>PayPal</option>
                               <option value="option2">Credit/Debit Card</option>
                             </select>
               </div>
               <div class="col-lg-6">
-              				<p id="option1" class="pay_button text-danger" style="margin:8px 0">Select payment method.</p>
+              				<!--<p id="option1" class="pay_button text-danger" style="margin:8px 0">Select payment method.</p>-->
                             <button id="option2" class="pay_button btn btn-primary" name='top-up-account'>Pay Now</button>
                             <!--<button id="option3" class="pay_button btn btn-primary">Pay Now</button>-->
               </div>
@@ -158,6 +158,7 @@ if ($encrypted != false)
                 });
                 </script>
     
+    <!--
                 <div class="row">
                 <div class="col-lg-12">
                 <div class="ibox">
@@ -179,7 +180,7 @@ if ($encrypted != false)
                         </tr>
                         </thead>
                         <tbody>
-                            <!--<tr>
+                            <tr>
                                 <td>1</td>
                                 <td>2</td>
                                 <td>3</td>
@@ -188,9 +189,6 @@ if ($encrypted != false)
                                 <td>6</td>
                                 <td>7</td>
                                 <td style="text-align:center"><a href="" class="btn btn-primary" style="font-size:10px">View Invoice</a></td>
-                            </tr>-->
-                            <tr>
-                            No topup invoices available
                             </tr>
                         </tbody>
                     </table>                       
@@ -205,6 +203,7 @@ if ($encrypted != false)
                 </div>
             </div>
             </div>
+            -->
     
           
   </div><!-- /Wrapper -->
@@ -212,7 +211,7 @@ if ($encrypted != false)
   
 <script>
 $(document).ready(function () {
-  $('.pay_button').hide();
+  //$('.pay_button').hide();
   $('#option1').show();
   $('#pay_option').change(function () {
     $('.pay_button').hide();
@@ -275,18 +274,4 @@ $(document).ready(function() {
     });			
 
 });
-</script>
-<script>
-    $(document).ready(function () {
-
-        $(".validation").validate({
-            rules: {
-				creditamount: {
-                    required: true,
-                    number: true,
-                    minlength: 6
-                },
-            }
-        });
-    });
 </script>
