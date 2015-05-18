@@ -51,12 +51,12 @@ class Login extends MX_Controller{
 //        echo '<pre>';
 //        print_r($_POST);
 //        exit;
-        
+        echo 1;
         $base = $this->config->item('base_url');
         $email = $this->member_model->_custom_query_count("SELECT COUNT(*) AS count FROM members WHERE email = '".$this->input->post('email')."'");
-        
+        echo 2;
         if($email[0]->count > 0){
-            
+        echo 3;    
             $password = random_string('alnum', 8);
             $validation_code = random_string('alnum', 4).'-'. random_string('alnum', 4).'-'. random_string('alnum', 4).'-'. random_string('alnum', 4);
 
@@ -155,6 +155,7 @@ class Login extends MX_Controller{
            
         }
         else{
+            echo 4;
             $this->session->set_flashdata('title', 'error');
             $this->session->set_flashdata('message', 'That email address has not been recognised. Please try again.');
 
