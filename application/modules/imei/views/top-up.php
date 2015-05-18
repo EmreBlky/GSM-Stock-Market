@@ -42,7 +42,7 @@ if ($encrypted != false)
             <div class="form-group">
               <label class="col-lg-6 control-label">Credits (top up amount)</label>
               <div class="col-lg-4">
-              <input type="text" class="form-control" name='credit-amount' id='credit-amount' />
+              <input type="text" class="form-control" name='credit-amount' id='credit-amount' required/>
               </div>
             </div>
                
@@ -109,8 +109,8 @@ if ($encrypted != false)
             <div class="form-group">
               <div class="col-lg-4 col-lg-offset-2">
                             <select id="pay_option" class="form-control pull-right" style="width:auto">
-                              <option value="option1" disabled>Payment Method</option>
-                              <option value="option2" selected>PayPal</option>
+                              <option value="option1" selected>Payment Method</option>
+                              <option value="option2">PayPal</option>
                               <option value="option2">Credit/Debit Card</option>
                             </select>
               </div>
