@@ -35,7 +35,7 @@
 
                             if (!isset($order_info) || !is_array($order_info))
                             {
-                                echo '<tr>This order is still processing. Please try again later</tr>';
+                                echo '<tr>This order is in a queue for processing. Please try again later.</tr>';
                             }
                             else
                             {
@@ -44,7 +44,7 @@
                                     switch($row->result)
                                     {
                                         case 'passed':
-                                            $row->result = '<label class="label label-primary" ><i class="fa fa-check"></i> Passed</label>';
+                                            $row->result = '<label class="label label-primary"><i class="fa fa-check"></i> Passed</label>';
                                             break;
                                         case 'failed':
                                             $row->result = '<label class="label label-danger" ><i class="fa fa-times"></i> Failed</label>';
@@ -59,7 +59,7 @@
                                     echo '<td>' . $row->make . '</td>';
                                     echo '<td>' . $row->model . '</td>';
                                     echo '<td>' . (isset($row->reference) ? $row->reference : 'n/a') . '</td>';
-                                    echo '<td>' . $row->result . '</td>';
+                                    echo '<td class="text-center">' . $row->result . '</td>';
                                     echo '</tr>';
                                 }
                             }

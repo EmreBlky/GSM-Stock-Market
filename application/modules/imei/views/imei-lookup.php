@@ -68,11 +68,14 @@
       })
       </script>
     
-      <div class="alert alert-danger" style="margin-bottom:10px;">
-      <p>Insufficient fund in your IMEI Services account. <a class="alert-link" href="imei/top_up">Top up now.</a></p>
-    </div>
 
+  <div class="wrapper wrapper-content animated fadeInRight">
+  
     <?php if ($lookup_results != false) { ?>
+    <div class="alert alert-success" style="margin:-15px 0 15px">
+    <p><i class="fa fa-thumbs-o-up"></i> Your order has been completed! We are now processing your report, this may take a while depending on how many IMEI's you submitted.<br />Once finished you can view your report in full from the <a class="alert-link" href="imei/archive">Archive page.</a></p>
+    </div>
+    
     <div class="row">
       <div class="col-lg-12">
         <div class="ibox">
@@ -126,9 +129,7 @@
               <label class="col-lg-3 col-lg-offset-1 control-label">Service <span style="color:red">*</span></label>
               <div class="col-lg-6">
               	<select id="service" class="form-control" name='lookup-service'>
-                  <optgroup label="0">
-                  <option value="0" id="service-0-0">Please Select Service ....</option>
-                  </optgroup>
+                  <option value="0" id="service-0-0" selected disabled>Please Select Service ....</option>
                   <optgroup label="Device Check Services">
                   <option value="1-62" id="service-1-0">1-62 - ImeiHPI Check (0.10 Credits)</option>
                   <option value="1-129" id="service-1-1">1-129 - ImeiHPI Bulk Check (0.10 Credits)</option>
@@ -158,6 +159,7 @@
             </div>
                
             <div class="imei_input form-group" id="1-129">
+            <div class="form-group">
               <label class="col-lg-3 col-lg-offset-1 control-label">IMEI Bulk<span style="color:red">*</span><br /><p class="text-navy">Enter one (1) IMEI number per line. Seperate with a comma to add a reference to each IMEI report e.g<br />012345678910123, IMEI1<br />012345678910123, IMEI2</p></label>
               <div class="col-lg-6">
               	<textarea class="form-control" name="imei_bulk" rows="5" id='bulk_imeis'></textarea><!--
@@ -165,18 +167,19 @@
               </div>
             </div>
                
-            <div class="form-group" id="1-129">              
+            <div class="form-group">              
               <label class="col-lg-3 col-lg-offset-1 control-label">Bulk IMEI Reference</label>
               <div class="col-lg-6">
               	<input type="text" class="form-control">
               </div>              
             </div>
                
-            <div class="form-group" id="1-129">
+            <div class="form-group">
               <label class="col-lg-3 col-lg-offset-1 control-label">Optional Notes</label>
               <div class="col-lg-6">
               	<textarea class="form-control" rows="5"></textarea>
               </div>
+            </div>
             </div>            
             
             <div class="hr-line-dashed"></div>
