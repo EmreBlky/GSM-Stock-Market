@@ -57,8 +57,8 @@
 			if ($query->num_rows() > 0)
 			{
 				$row = $query->row();
-				//define('MOBICODE_API_KEY', $row->api_key);
-				define('MOBICODE_API_KEY', '(4DF7-D3D1-73F7-AF15)');
+				define('MOBICODE_API_KEY', $row->api_key);
+				//define('MOBICODE_API_KEY', '(4DF7-D3D1-73F7-AF15)');
 			}
 			else
 			{
