@@ -309,8 +309,9 @@ class Register extends MX_Controller{
     function reset($vcode)
     {
        $base = $this->config->item('base_url'); 
-       $v_count = $this->member_model->count_where('validation_code', $vcode);
-        
+       echo $v_count = $this->member_model->count_where('validation_code', $vcode);
+       exit;
+       
         if($v_count > 0){
             
                         

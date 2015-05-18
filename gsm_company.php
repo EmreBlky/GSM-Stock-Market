@@ -7,16 +7,13 @@ if($url == 'localhost'){
     mysql_select_db('gsmstock_secure');
 }
 elseif($url == 'secure-dev.gsmstockmarket.com'){
-    mysql_connect('109.203.125.38', 'gsmstock_admin', 'zv.4qAb17ph$;?$PF!');
-    mysql_select_db('gsmstock_secure');
+    mysql_connect('alpha.tebihost.com', 'deviousd_gsmdev', 'CnXvfXN^s9w=');
+    mysql_select_db('deviousd_gsmdev');
 }
 else{
-    mysql_connect('5.77.55.42', 'gsmstock_admin', 'zv.4qAb17ph$;?$PF!');
-    mysql_select_db('gsmstock_securelive');
+    mysql_connect('localhost', 'gsmstock_admin', 'zv.4qAb17ph$;?$PF!');
+    mysql_select_db('gsmstock_secure');
 }
-
-
-
 
 function random_string($type = 'alnum', $len = 8)
 {
