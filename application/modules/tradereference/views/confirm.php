@@ -59,7 +59,7 @@
             //print_r($members);
             //echo '</pre>';
             ?>
-              <p>Hello <?php echo ucfirst($name); ?> of <?php echo $company?>,<br /><?php echo $this->company_model->get_where($this->member_model->get_where_multiple('id', $member)->company_id)->company_name;?> have requested a trade reference from you.</p>
+              <p>Hello <?php echo ucfirst($name); ?> of <?php echo $company?>,<br /><br /><?php echo $this->company_model->get_where($this->member_model->get_where_multiple('id', $member)->company_id)->company_name;?> have requested a trade reference from you.</p>
               <p>Please could you comment on your previous transactions with the above company.</p>
                 <div class="form-group">
                 <?php
