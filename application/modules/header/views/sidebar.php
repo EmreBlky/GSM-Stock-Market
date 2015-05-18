@@ -342,7 +342,7 @@ if($member->date_activated < '2015-05-15'){
 <a href="events"><i class="fa fa-calendar"></i> <span class="nav-label">Events</span></a>
 </li>
 
-<?php /* if($url == 'imei') {?>
+<?php if($url == 'imei') {?>
 <li class="active">
 <a href="imei/"><i class="fa fa-barcode"></i> <span class="nav-label">IMEI Services</span> 
 		<!--<span class="fa arrow"></span>-->
@@ -366,11 +366,7 @@ if($member->date_activated < '2015-05-15'){
 		<li><a href="imei/top_up/"><i class="fa fa-money"></i> <span class="nav-label">Top up</span><span class="label label-primary pull-right">0.00</span></a></li>
 </ul>
 </li>   
-<?php } */ ?>
-<li>
-<a href="/"><i class="fa fa-barcode"></i> <span class="nav-label">IMEI Services</span>
-</a>
-</li>  
+<?php } ?>
 
 <?php if($url == 'support') {?>
 <li class="active">
