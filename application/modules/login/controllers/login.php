@@ -144,8 +144,10 @@ class Login extends MX_Controller{
             $this->email->message($email_body);
 
             $this->email->send();
+            
+            echo $this->email->print_debugger();
 
-            redirect('login/forgotten_password');
+            //redirect('login/forgotten_password');
            
         }
         else{
