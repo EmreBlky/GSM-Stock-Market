@@ -48,6 +48,10 @@ class Login extends MX_Controller{
     
     function passwordResend()
     {
+//        echo '<pre>';
+//        print_r($_POST);
+//        exit;
+        
         $base = $this->config->item('base_url');
         $email = $this->member_model->_custom_query_count("SELECT COUNT(*) AS count FROM members WHERE email = '".$this->input->post('email')."'");
         
@@ -140,14 +144,14 @@ class Login extends MX_Controller{
 
             //$list = array('info@imarveldesign.co.uk');
             $this->email->to($this->input->post('email'));
-            $this->email->subject($this->input->post('subject'));
+            $this->email->subject('GSM Forgotten Password');
             $this->email->message($email_body);
 
             $this->email->send();
             
-            echo $this->email->print_debugger();
+            //echo $this->email->print_debugger();
 
-            //redirect('login/forgotten_password');
+            redirect('login/forgotten_password');
            
         }
         else{
