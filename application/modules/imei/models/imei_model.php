@@ -317,7 +317,9 @@ class Imei_model extends MY_Model {
 	{
 		$encrypted = false;
 
-	    $XML = $this->MobiCode->CallAPI('PayPalButton', array('qty'=>'1', 'return_url' => current_url()));
+		$top_up_amount = $_POST['credit-amount'];
+
+	    $XML = $this->MobiCode->CallAPI('PayPalButton', array('qty'=> $top_up_amount, 'return_url' => current_url()));
 
 	    if (is_string($XML)) 
 	    {
