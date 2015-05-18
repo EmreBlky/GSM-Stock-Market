@@ -11,7 +11,7 @@ elseif($url == 'secure-dev.gsmstockmarket.com'){
     mysql_select_db('deviousd_gsmdev');
 }
 else{
-    mysql_connect('5.77.55.42', 'gsmstock_admin', 'zv.4qAb17ph$;?$PF!');
+    mysql_connect('localhost', 'gsmstock_admin', 'zv.4qAb17ph$;?$PF!');
     mysql_select_db('gsmstock_secure');
 }
 
