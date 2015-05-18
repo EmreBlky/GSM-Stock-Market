@@ -111,13 +111,12 @@ if ($encrypted != false)
                             <select id="pay_option" class="form-control pull-right" style="width:auto">
                               <option value="option1" selected disabled>Payment Method</option>
                               <option value="option2">PayPal</option>
-                              <option value="option3">Credit/Debit Card</option>
+                              <option value="option2">Credit/Debit Card</option>
                             </select>
               </div>
               <div class="col-lg-6">
               				<p id="option1" class="pay_button text-danger" style="margin:8px 0">Select payment method.</p>
                             <button id="option2" class="pay_button btn btn-primary" name='top-up-account'>Pay Now</button>
-                            <button id="option3" class="pay_button btn btn-primary" name='top-up-account'>Pay Now</button>
                             <!--<button id="option3" class="pay_button btn btn-primary">Pay Now</button>-->
               </div>
             </div>
