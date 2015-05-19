@@ -286,32 +286,43 @@ class Tradereference extends MX_Controller
         
         if($code){
             
-            $confirm_code = substr($code, -7);
-            $members = $this->tradereference_model->_custom_query("SELECT member_id, ".$confirm_code."_company, ".$confirm_code."_name, ".$confirm_code."_email, ".$confirm_code."_phone, ".$confirm_code."_confirm FROM tradereference WHERE (trade_1_code = '".$code."') OR (trade_2_code = '".$code."') ");
-            $data['message'] = 'no';
-            //$member = $members[0]->member_id;
-            //echo '<pre>';
-            //print_r($member);
-            //echo $confirm_code;
-            //$data['main'] = 'tradereference';
+            $tcount = $this->tradereference_model->_custom_query_count("SELECT COUNT(*) AS count FROM tradereference WHERE trade_1_code = '".$code."' OR trade_2_code = '".$code."'");
             
-            $data['cc'] = $confirm_code;
-            $data['member'] = $members[0]->member_id;
+            if($tcount[0]->count > 0){
+                
+                $confirm_code = substr($code, -7);
+                $members = $this->tradereference_model->_custom_query("SELECT member_id, ".$confirm_code."_company, ".$confirm_code."_name, ".$confirm_code."_email, ".$confirm_code."_phone, ".$confirm_code."_confirm FROM tradereference WHERE (trade_1_code = '".$code."') OR (trade_2_code = '".$code."') ");
+                $data['message'] = 'no';
+                //$member = $members[0]->member_id;
+                //echo '<pre>';
+                //print_r($member);
+                //echo $confirm_code;
+                //$data['main'] = 'tradereference';
 
-            if($confirm_code == 'trade_1'){            
+                $data['cc'] = $confirm_code;
+                $data['member'] = $members[0]->member_id;
 
-                $data['company'] = $members[0]->trade_1_company;
-                $data['name'] = $members[0]->trade_1_name;
-                $data['confirm'] = 'trade_1_confirm';
+                if($confirm_code == 'trade_1'){            
 
+                    $data['company'] = $members[0]->trade_1_company;
+                    $data['name'] = $members[0]->trade_1_name;
+                    $data['confirm'] = 'trade_1_confirm';
+
+                }
+                else{
+
+                    $data['company'] = $members[0]->trade_2_company;
+                    $data['name'] = $members[0]->trade_2_name;
+                    $data['confirm'] = 'trade_2_confirm';
+
+                }
+                
             }
             else{
-
-                $data['company'] = $members[0]->trade_2_company;
-                $data['name'] = $members[0]->trade_2_name;
-                $data['confirm'] = 'trade_2_confirm';
-
+                
+                $data['message'] = 'expired';
             }
+            
         }
         else{
             $data['message'] = 'yes';

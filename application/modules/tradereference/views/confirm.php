@@ -19,6 +19,7 @@
 <body class="gray-bg">
 
 <?php if($message == 'yes') {?>
+    
 <div class="wrapper wrapper-content">
   <div class="row">
     <div style="margin-bottom:30px;text-align:center"><img src="public/main/template/gsm/images/gsm.png"></div>
@@ -38,8 +39,7 @@
   </div>
 </div>
 
-
-<?php } else { ?>
+<?php } elseif($message == 'no') { ?>
 <div class="wrapper wrapper-content">
   <div class="row">
     <div style="margin-bottom:30px;text-align:center"><img src="public/main/template/gsm/images/gsm.png"></div>
@@ -89,7 +89,27 @@
 
   </div>
 </div>
-<?php } ?>
+<?php } else {?>
+    
+    <div class="wrapper wrapper-content">
+  <div class="row">
+    <div style="margin-bottom:30px;text-align:center"><img src="public/main/template/gsm/images/gsm.png"></div>
+    
+      <div class="col-lg-6 col-lg-offset-3">
+        <div class="ibox">
+          <div class="ibox-title"><h5>Expired Code</h5></div>
+        	
+          <div class="ibox-content" style="padding-bottom:5px">
+          	<p>The code you are trying to use has expired. Please advise the trader to get a new one generated for you.</p>
+          </div><!-- Ibox Content -->
+        
+        </div>        
+      </div>
+
+  </div>
+</div>
+    
+<?php }?>
 </body>
 </html>
 
