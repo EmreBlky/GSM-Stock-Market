@@ -159,8 +159,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 
 <div class="form-group"><label class="col-md-3 control-label">Sim Status</label>
 <div class="col-md-9">
-    <select data-placeholder="What is the hard drive capacity on the item?" class="form-control" name="device_sim">
-        <option selected >- Device sim status -</option>
+    <select data-placeholder="What is the devices sim status?" class="form-control" name="device_sim">
+        <option selected dsiabled>What is the phone sim status?</option>
         <option <?php if(!empty($_POST['device_sim']) && 'Sim Free'==$_POST['device_sim']){ echo'selected';} elseif(!empty($product_list->device_sim) && 'Sim Free'==$product_list->device_sim){ echo'selected';}?> value="Sim Free">Sim Free</option>
         <option <?php if(!empty($_POST['device_sim']) && 'Network Unlocked'==$_POST['device_sim']){ echo'selected';} elseif(!empty($product_list->device_sim) && 'Network Unlocked'==$product_list->device_sim){ echo'selected';}?>>Network Unlocked</option>
         <option <?php if(!empty($_POST['device_sim']) && 'Network Locked'==$_POST['device_sim']){ echo'selected';} elseif(!empty($product_list->device_sim) && 'Network Locked'==$product_list->device_sim){ echo'selected';}?> value="Network Locked">Network Locked</option>

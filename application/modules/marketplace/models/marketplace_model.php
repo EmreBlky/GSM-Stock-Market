@@ -187,7 +187,7 @@ class Marketplace_model extends MY_Model {
 			$this->db->where($query_str);
 		}
 		
-		$this->db->where("listing.schedule_date_time <= '".date('Y-m-d h:i:s')."' and listing.listing_end_datetime >= '".date('Y-m-d h:i:s')."'" );
+		$this->db->where("listing.schedule_date_time <= '".date('Y-m-d H:i:s')."' and listing.listing_end_datetime >= '".date('Y-m-d H:i:s')."'" );
 		
 		$this->db->from('listing');
 		$this->db->group_by('listing.id');
@@ -291,7 +291,7 @@ class Marketplace_model extends MY_Model {
 			$query_str .= ")";
 			$this->db->where($query_str);
 		}
-		$this->db->where("listing.schedule_date_time <= '".date('Y-m-d h:i:s')."' and listing.listing_end_datetime >= '".date('Y-m-d h:i:s')."'" );
+		$this->db->where("listing.schedule_date_time <= '".date('Y-m-d H:i:s')."' and listing.listing_end_datetime >= '".date('Y-m-d H:i:s')."'" );
 		
 		$this->db->from('listing');
 		$this->db->group_by('listing.id');
@@ -312,7 +312,7 @@ class Marketplace_model extends MY_Model {
 		$this->db->select('listing.*,company.country  AS country_id,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
 		$where_condition="(`make_offer`.`seller_id` = ".$member_id." OR `make_offer`.`buyer_id`=".$member_id.")";
 		$this->db->where($where_condition);
-		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
+		$this->db->where("schedule_date_time <= '".date('Y-m-d H:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d H:i:s')."'" );
 		$this->db->where('listing.status', 1);
 		$this->db->where('listing.listing_type', 2);
 		$this->db->from('listing');
@@ -335,7 +335,7 @@ class Marketplace_model extends MY_Model {
 			$this->db->where('make_offer.seller_id',$member_id);
 			
 		}
-		$this->db->where("listing.schedule_date_time <= '".date('Y-m-d h:i:s')."' and listing.listing_end_datetime >= '".date('Y-m-d h:i:s')."'" );
+		$this->db->where("listing.schedule_date_time <= '".date('Y-m-d H:i:s')."' and listing.listing_end_datetime >= '".date('Y-m-d H:i:s')."'" );
 		$this->db->where('make_offer.offer_status',0);
 		
 		$this->db->where('listing.status', 1);
@@ -446,7 +446,7 @@ class Marketplace_model extends MY_Model {
 	public function advance_search($member_id=0,$listing_type=0){
 		$this->db->select('listing.product_mpn_isbn, listing.product_make, listing.product_model, listing.product_type, company.country AS country_id,ct.country AS product_country, ct.*, listing.product_color');
 		
-		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
+		$this->db->where("schedule_date_time <= '".date('Y-m-d H:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d H:i:s')."'" );
 		$this->db->from('listing');
 		$this->db->join('company','company.id=listing.member_id');
 		$this->db->join('country AS ct', 'ct.id=company.country');
@@ -460,7 +460,7 @@ class Marketplace_model extends MY_Model {
 	}
 	public function get_watch_list($member_id, $listing_type=0){
 		$this->db->select('listing.id,listing.listing_end_datetime,listing.product_mpn_isbn,listing.product_make,listing.product_model,listing.product_type,listing.condition,listing.unit_price,listing.total_qty,listing.spec,listing.currency,company.country AS country_id,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
-		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
+		$this->db->where("schedule_date_time <= '".date('Y-m-d H:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d H:i:s')."'" );
 		$this->db->from('listing');
 		$this->db->join('company','company.id=listing.member_id');
 		$this->db->join('listing_watch','listing_watch.listing_id=listing.id');
@@ -475,7 +475,7 @@ class Marketplace_model extends MY_Model {
 	}
 	public function listingdetailv($id){
 		$this->db->where('id',$id);
-		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
+		$this->db->where("schedule_date_time <= '".date('Y-m-d H:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d H:i:s')."'" );
 		$this->db->from('listing');
 		$this->db->where('listing.status', 1);
 		$this->db->where("`listing`.`min_qty_order` <= `listing`.`qty_available`");
@@ -630,7 +630,7 @@ class Marketplace_model extends MY_Model {
 			$this->db->where('negotiation.seller_id',$member_id);
 			
 		}
-		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
+		$this->db->where("schedule_date_time <= '".date('Y-m-d H:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d H:i:s')."'" );
 		$this->db->from('negotiation');
 		$this->db->join('listing','listing.id=negotiation.listing_id');
 		$this->db->where('negotiation.status',0);
@@ -693,7 +693,7 @@ class Marketplace_model extends MY_Model {
 	public function count_all_offer()
 	{
 		$member_id=$this->session->userdata('members_id');
-		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
+		$this->db->where("schedule_date_time <= '".date('Y-m-d H:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d H:i:s')."'" );
 		$this->db->from('listing');
 		$this->db->join('make_offer','make_offer.listing_id=listing.id');
 		$this->db->where('listing.status', 1);
@@ -705,7 +705,7 @@ class Marketplace_model extends MY_Model {
 	public function count_open_order()
 	{
 		$member_id=$this->session->userdata('members_id');
-		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
+		$this->db->where("schedule_date_time <= '".date('Y-m-d H:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d H:i:s')."'" );
 		$this->db->from('listing');
 		$this->db->join('make_offer','make_offer.listing_id=listing.id');
 		$this->db->where('listing.status', 1);
@@ -731,7 +731,7 @@ class Marketplace_model extends MY_Model {
 	{
 		$member_id=$this->session->userdata('members_id');
 		$where_con="(`negotiation`.`offer_received_by`=".$member_id.")";
-		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
+		$this->db->where("schedule_date_time <= '".date('Y-m-d H:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d H:i:s')."'" );
 		$this->db->where($where_con);
 		$this->db->from('negotiation');
 		$this->db->join('listing','listing.id=negotiation.listing_id');
@@ -751,7 +751,7 @@ class Marketplace_model extends MY_Model {
 	{
 		$member_id=$this->session->userdata('members_id');
 		//$this->db->select(count(`listing_watch`.'id'));
-		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
+		$this->db->where("schedule_date_time <= '".date('Y-m-d H:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d H:i:s')."'" );
 		$this->db->from('listing');
 		$this->db->join('listing_watch','listing_watch.listing_id=listing.id');
 		$this->db->where('listing.status', 1);
@@ -769,7 +769,7 @@ class Marketplace_model extends MY_Model {
 	/*public function count_all_negotiations()
 	{
 		$member_id=$this->session->userdata('members_id');
-		$this->db->where("schedule_date_time <= '".date('Y-m-d h:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d h:i:s')."'" );
+		$this->db->where("schedule_date_time <= '".date('Y-m-d H:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d H:i:s')."'" );
 		$this->db->from('listing0');
 		$this->db->join('negotiation','negotiation.listing_id=listing.id');
 		$this->db->where('listing.status', 1);
