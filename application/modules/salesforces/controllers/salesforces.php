@@ -60,9 +60,27 @@ class Salesforces extends MX_Controller
         $name1 = explode(' ', $custname1);
         $name2 = explode(' ', $custname2);
         
+        $firstName1 = $name1[0];
+        
+        if(isset($name1[1])){
+            $lastName1  = $name1[1];
+        }
+        else{
+            $lastName1  = 'no-surname';
+        }
+        
+        $firstName2 = $name2[0];
+        
+        if(isset($name2[1])){
+            $lastName2  = $name2[1];
+        }
+        else{
+            $lastName2  = 'no-surname';
+        }
+        
         $field1 = array (
-                        'FirstName'             => $name1[0],
-                        'LastName'              => $name1[1],
+                        'FirstName'             => $firstName1,
+                        'LastName'              => $lastName1,
                         'company'               => $company1,
                         'Email'                 => $email1,
                         'Phone'                 => $phone1,
@@ -76,8 +94,8 @@ class Salesforces extends MX_Controller
             $sObject1->type = 'Lead';
 
             $field2 = array (
-                            'FirstName'             => $name2[0],
-                            'LastName'              => $name2[1],
+                            'FirstName'             => $firstName2,
+                            'LastName'              => $lastName2,
                             'company'               => $company2,
                             'Email'                 => $email2,
                             'Phone'                 => $phone2,
