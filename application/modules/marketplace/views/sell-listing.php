@@ -1,12 +1,12 @@
 <div class="row wrapper border-bottom white-bg page-heading">
 <div class="col-lg-10">
-    <h2></h2>
+    <h2>Creating a Selling Offer (WTS)</h2>
     <ol class="breadcrumb">
         <li>
             <a href="/">Home</a>
         </li>
         <li class="active">
-            <strong>Sell Offer listing</strong>
+            <strong>Selling Offer listing</strong>
         </li>
     </ol>
 </div>
@@ -44,12 +44,12 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
     <input type="hidden" id="dtp_input1" value="<?php if(!empty($product_list->schedule_date_time)) echo $product_list->schedule_date_time; else echo set_value('schedule_date_time');?>" name="schedule_date_time"/>
     <?php echo form_error('schedule_date_time'); ?>
     </div>
-    Listing can be scheduled for future dates, by selecting future date.
+    <small class="text-navy">Listing can be scheduled for future dates, choose a start date and time for your listing.</small>
 <?php } ?>
   </div>
     </div>
     <div class="hr-line-dashed"></div>
-    <div class="form-group"><label class="col-md-3 control-label">MPN/ISBN<br /><small class="text-navy">Search our database</small></label>
+    <div class="form-group"><label class="col-md-3 control-label">MPN/ISBN <span style="color:red">*</span><br /><small class="text-navy">Search our database</small></label>
       <div class="col-md-6" style="padding-right:0">
           <input type="type" list="mpn" class="form-control check_record check_record_by_mpnisbn" placeholder="Enter a Part Number e.g GH97-15959B"  name="product_mpn" value="<?php if(!empty($product_list->product_mpn_isbn)) echo $product_list->product_mpn_isbn; ?><?php if(!empty($_POST['product_mpn'])) echo $_POST['product_mpn']; ?>"/>
       </div>
@@ -87,7 +87,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
      <div class="form-group"><label class="col-md-3 control-label">Colour <span style="color:red">*</span></label>
       <div class="col-md-9">
        <select class="chosen-select form-control" id="product_color" name="product_color">
-          <option value="" selected disabled>What is the primary colour of the item?</option>
+          <option value="None" selected disabled>What is the primary colour of the item?</option>
           <option value="None">No Colour</option>
            <?php 
            if(!empty($product_colors)){
@@ -156,6 +156,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
     </select>
 </div>
 </div>
+
 <div class="form-group"><label class="col-md-3 control-label">Sim Status</label>
 <div class="col-md-9">
     <select data-placeholder="What is the hard drive capacity on the item?" class="form-control" name="device_sim">
@@ -165,6 +166,13 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <option <?php if(!empty($_POST['device_sim']) && 'Network Locked'==$_POST['device_sim']){ echo'selected';} elseif(!empty($product_list->device_sim) && 'Network Locked'==$product_list->device_sim){ echo'selected';}?> value="Network Locked">Network Locked</option>
         <option <?php if(!empty($_POST['device_sim']) && 'Unknown'==$_POST['device_sim']){ echo'selected';} elseif(!empty($product_list->device_sim) && 'Unknown'==$product_list->device_sim){ echo'selected';}?> value="Unknown">Unknown</option>
     </select>
+</div>
+</div>
+
+<div class="form-group"><label class="col-md-3 control-label">IMEI Report</label>
+<div class="col-md-9">
+    <input type="text" disabled="" placeholder="IMEI services coming soon" class="form-control">
+    <small class="text-navy">Link your IMEI reports to your handset listings to providing in-depth handset data to potential buyers.</small>
 </div>
 </div>
 </span>
@@ -188,7 +196,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
       </div>
 </div>
 <div class="hr-line-dashed"></div>
- <div class="form-group"><label class="col-md-3 control-label">Currency </label>
+ <div class="form-group"><label class="col-md-3 control-label">Currency <span style="color:red">*</span></label>
    <div class="col-md-9">
        <select class="form-control" name="currency">
            <?php $default_currency='';
@@ -214,7 +222,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 </div>
 <div class="form-group"><label class="col-md-3 control-label">Unit Price <span style="color:red">*</span></label>
     <div class="col-md-9">
-        <input type="type" class="form-control" name="unit_price" value="<?php if(!empty($product_list->unit_price)) echo $product_list->unit_price; else echo set_value('unit_price');?>"/>
+        <input type="type" class="form-control two-digits" name="unit_price" value="<?php if(!empty($product_list->unit_price)) echo $product_list->unit_price; else echo set_value('unit_price');?>"/>
+       <p class="small text-navy">Your price per individual item.</p>
         <?php echo form_error('unit_price'); ?>
     </div>
 </div>
@@ -223,16 +232,16 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <div class="input-group m-b">
         <span class="input-group-addon">
         <input type="checkbox" name="minimum_checkbox" id="minimum_checkbox" <?php if(isset($_POST['minimum_checkbox']) ){ echo'checked';} elseif(!empty($product_list->min_price)){ echo'checked';}?>/> </span>
-        <input type="text" class="form-control" placeholder="What is your minumum price?" name="min_price" value="<?php if(!empty($product_list->min_price)){ echo $product_list->min_price; }
+        <input type="text" class="form-control two-digits" placeholder="What is your minimum price?" name="min_price" value="<?php if(!empty($product_list->min_price)){ echo $product_list->min_price; }
         elseif(isset($_POST['min_price'])){  echo $_POST['min_price'];}?>"
         <?php if(isset($_POST['minimum_checkbox']) ){ echo'';} elseif(empty($product_list->min_price) ){ echo'disabled';}?>></div>
-        <p class="small text-navy">Tick allow offers. Any offers below this will be auto rejected, leave blank to allow any offers if ticked.</p>
+        <p class="small text-navy">Tick to allow offers on unit price. Any offers below this will be auto rejected, leave blank to allow offers of any price if ticked.</p>
         <?php echo form_error('min_price'); ?>
     </div>
 </div>
 <div class="form-group"><label class="col-md-3 control-label">Quantity Available <span style="color:red">*</span></label>
   <div class="col-md-9">
-      <input type="type" class="form-control" name="total_qty" value="<?php if(!empty($product_list->total_qty)) echo $product_list->total_qty; else  echo set_value('total_qty');?>"/>
+      <input type="type" class="form-control no-digits" name="total_qty" value="<?php if(!empty($product_list->total_qty)) echo $product_list->total_qty; else  echo set_value('total_qty');?>"/>
       <?php echo form_error('total_qty'); ?>
   </div>
 </div>
@@ -240,12 +249,12 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <div class="col-md-9">
     <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="orderqunatity_checkbox" id="orderqunatity_checkbox"
     <?php if(isset($_POST['orderqunatity_checkbox']) ){ echo'checked';} elseif(!empty($product_list->min_qty_order)){ echo'checked';}?>/> </span>
-    <input type="text" class="form-control" placeholder="Minimum Order Quantity" name="min_qty_order" value="<?php if(!empty($product_list->min_qty_order)){ echo $product_list->min_qty_order;} 
+    <input type="text" class="form-control no-digits" placeholder="Minimum Order Quantity" name="min_qty_order" value="<?php if(!empty($product_list->min_qty_order)){ echo $product_list->min_qty_order;} 
     elseif(isset($_POST['min_qty_order'])){  echo $_POST['min_qty_order'];} ?>"
 
     <?php if(isset($_POST['orderqunatity_checkbox']) ){ echo'';} elseif(empty($product_list->min_qty_order) ){ echo'disabled';}?>
     ></div>
-    <p class="small text-navy">Allow minimum order quantity else full quantity sale available only</p>
+    <p class="small text-navy">Allow minimum order quantity else users can only buy the full quantity sale available only.</p>
     <?php echo form_error('min_qty_order'); ?>
 </div>
 </div>
@@ -326,6 +335,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
       ?>
       </tbody>
     </table>
+    <p style="color:red"><strong>Notice:</strong> Make sure you add at least one shipping option to the table so buyers can send you offers. If you have no shipping options in this table you will be unable to sell this item even though it may be listed!</p>
     </div>
     </div>
     <div class="hr-line-dashed"></div>
@@ -907,21 +917,80 @@ $('body').find('#opt_table').on("click", ".wrapper",function() {
 });
 </script>
  
+ 
+ 
+ 
+    <table class="table table-bordered">
+      <thead>
+      </thead>
+      <tbody id="opt_table">
+ 
+ 
 <!-- Jquery Validate -->
 <script>
 $.validator.setDefaults({ ignore: ":hidden:not(select)" })
 $(".validation").validate({
   rules: {
+    product_mpn: "required",
     product_desc: "required",
     product_make: "required",
+    product_model: "required",
+    product_color: "required",
+    product_type: "required",
+    unit_price: { required: true,number: true },
+    total_qty: { required: true,number: true },
     condition: "required",
+    termsandcondition: "required",
   },
   messages: {
-    product_desc: "Please specify your name",
+    product_desc: "Make sure you have entered a thorough description of the item you have for sale.",
+    product_mpn: {
+      required: "We required some sort of product identifying number.",
+	},
     product_make: {
-      required: "We need your email address to contact you",
+      required: "Select your products make from the list below",
+	},
+    product_model: {
+      required: "Buyers will need to know what model this product is for.",
+	},
+    product_color: {
+      required: "Make sure buyers know what colour the product is.",
+	},
+    product_type: {
+      required: "We require a category to put your product listing under.",
+	},
+   unit_price: {
+      required: "You need to specify a unit price!",
+	},
+    total_qty: {
+      required: "How many do you have for sale?",
+	},
+    condition: {
+      required: "Buyers will need to know what condition the item is.",
     }
   }
+});
+
+// apply the two-digits behaviour to elements with 'two-digits' as their class
+$( function() {
+    $('.two-digits').keyup(function(){
+        if($(this).val().indexOf('.')!=-1){         
+            if($(this).val().split(".")[1].length > 2){                
+                if( isNaN( parseFloat( this.value ) ) ) return;
+                this.value = parseFloat(this.value).toFixed(2);
+            }  
+         }            
+         return this; //for chaining
+    });
+    $('.no-digits').keyup(function(){
+        if($(this).val().indexOf('.')!=-1){         
+            if($(this).val().split(".")[1].length > 0){                
+                if( isNaN( parseFloat( this.value ) ) ) return;
+                this.value = parseFloat(this.value).toFixed(0);
+            }  
+         }            
+         return this; //for chaining
+    });
 });
 
 $(document).ready(function(){
