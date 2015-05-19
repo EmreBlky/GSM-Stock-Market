@@ -15,7 +15,9 @@
             <div class="col-lg-12">
                 <div class="wrapper wrapper-content animated fadeInRight">
                     <div class="alert alert-warning" style="margin-bottom:10px;">
-                      <p>IMEI Services Coming Soon...</p>
+                      <p>Terms of service for mobicode here</p>
+                      <button class="btn btn-primary" id='create-mobicode-account'>Accept (Create Account)</button>
+                      <a href=""><button class="btn btn-danger">Decline</button></a>
                     </div>
                    
                 </div>
