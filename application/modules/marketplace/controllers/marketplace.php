@@ -233,7 +233,7 @@ class Marketplace extends MX_Controller
                     $courier=$courierinfo.','.$value;
                 }*/
             }
-            $schedule_date_time=date('Y-m-d h:i:s');
+            $schedule_date_time=date('Y-m-d H:i:s');
             if($this->input->post('schedule_date_time')){
                 $schedule_date_time=$this->input->post('schedule_date_time');
             }
@@ -281,7 +281,7 @@ class Marketplace extends MX_Controller
             'listing_end_datetime'  =>  date('Y-m-d H:i:s', strtotime("+".$this->input->post('duration')." days")),            
             'member_id'             => $member_id, 
             'status'                => $status, 
-            'created'               => date('Y-m-d h:i:s A'),
+            'created'               => date('Y-m-d H:i:s A'),
             );
         $list_update = '';
         if(!empty($list_id)){
@@ -568,10 +568,10 @@ class Marketplace extends MX_Controller
             }else{
                $allow_color='';
             }
-            $schedule_date_time=date('Y-m-d h:i:s');
+            $schedule_date_time=date('Y-m-d H:i:s');
             if($this->input->post('schedule_date_time')){
                 $schedule_date_time=$this->input->post('schedule_date_time');
-                 $schedule_date_time=date('Y-m-d h:i:s',strtotime($schedule_date_time));
+                 $schedule_date_time=date('Y-m-d H:i:s',strtotime($schedule_date_time));
                   $data_insert['scheduled_status']   = 1;
             }else{
                  $data_insert['scheduled_status']   = 0;
@@ -641,18 +641,18 @@ class Marketplace extends MX_Controller
         if(!empty($list_id)){
           if($this->input->post('schedule_date_time')){
             $schedule_date_time=$this->input->post('schedule_date_time');
-            $schedule_date_time=date('Y-m-d h:i:s',strtotime($schedule_date_time));
+            $schedule_date_time=date('Y-m-d H:i:s',strtotime($schedule_date_time));
             $data_insert['duration']             =  $this->input->post('duration');
             $data_insert['listing_end_datetime'] =  date('Y-m-d H:i:s', strtotime($schedule_date_time."+".$this->input->post('duration')." days"));    
             }
-            $data_insert['updated']              = date('Y-m-d h:i:s A');
+            $data_insert['updated']              = date('Y-m-d H:i:s A');
         }
         else{
             $data_insert['schedule_date_time']   =  $schedule_date_time;
             $data_insert['duration']             =  $this->input->post('duration');
             $data_insert['listing_end_datetime'] =  date('Y-m-d H:i:s', strtotime($schedule_date_time."+".$this->input->post('duration')." days"));            
-            $data_insert['updated']              = date('Y-m-d h:i:s A');
-            $data_insert['created']              = date('Y-m-d h:i:s A');
+            $data_insert['updated']              = date('Y-m-d H:i:s A');
+            $data_insert['created']              = date('Y-m-d H:i:s A');
         }
            
         $list_update = '';
@@ -908,10 +908,10 @@ class Marketplace extends MX_Controller
             if($courier_array=$this->input->post('courier')){
                $courier = implode(',', $courier_array);
             }
-            $schedule_date_time=date('Y-m-d h:i:s');
+            $schedule_date_time=date('Y-m-d H:i:s');
             if($this->input->post('schedule_date_time')){
                 $schedule_date_time=$this->input->post('schedule_date_time');
-                 $schedule_date_time=date('Y-m-d h:i:s',strtotime($schedule_date_time));
+                 $schedule_date_time=date('Y-m-d H:i:s',strtotime($schedule_date_time));
                   $data_insert['scheduled_status']   = 1;
             }else{
                  $data_insert['scheduled_status']   = 0;
@@ -958,18 +958,18 @@ class Marketplace extends MX_Controller
         if(!empty($list_id)){
           if($this->input->post('schedule_date_time')){
             $schedule_date_time=$this->input->post('schedule_date_time');
-            $schedule_date_time=date('Y-m-d h:i:s',strtotime($schedule_date_time));
+            $schedule_date_time=date('Y-m-d H:i:s',strtotime($schedule_date_time));
             $data_insert['duration']             =  $this->input->post('duration');
             $data_insert['listing_end_datetime'] =  date('Y-m-d H:i:s', strtotime($schedule_date_time."+".$this->input->post('duration')." days"));    
             }
-            $data_insert['updated']              = date('Y-m-d h:i:s A');
+            $data_insert['updated']              = date('Y-m-d H:i:s A');
         }
         else{
             $data_insert['schedule_date_time']   =  $schedule_date_time;
             $data_insert['duration']             =  $this->input->post('duration');
             $data_insert['listing_end_datetime'] =  date('Y-m-d H:i:s', strtotime($schedule_date_time."+".$this->input->post('duration')." days"));            
-            $data_insert['updated']              = date('Y-m-d h:i:s A');
-            $data_insert['created']              = date('Y-m-d h:i:s A');
+            $data_insert['updated']              = date('Y-m-d H:i:s A');
+            $data_insert['created']              = date('Y-m-d H:i:s A');
         }
             
         $list_update = '';
@@ -2343,7 +2343,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
       $payment_detail = $this->input->post('payment_info');
       $user_id = $this->session->userdata('members_id');
       $id = $this->input->post('order_id');
-      if($this->marketplace_model->update('make_offer',array('order_status'=>1,'payment_detail'=>$payment_detail,'payment_infoadd_datetime'=>date('Y-m-d h:i:s')),array('id'=>$id))){
+      if($this->marketplace_model->update('make_offer',array('order_status'=>1,'payment_detail'=>$payment_detail,'payment_infoadd_datetime'=>date('Y-m-d H:i:s')),array('id'=>$id))){
             $this->session->set_flashdata('msg_success','Payment information save sucessfully.');  
         }
         else{
@@ -2355,7 +2355,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
     if(isset($_POST['payment_done'])){
       $user_id = $this->session->userdata('members_id');
       $id = $this->input->post('order_id');
-      if($this->marketplace_model->update('make_offer',array('payment_done_datetime'=>date('Y-m-d h:i:s'),'payment_done'=>1),array('id'=>$id))){
+      if($this->marketplace_model->update('make_offer',array('payment_done_datetime'=>date('Y-m-d H:i:s'),'payment_done'=>1),array('id'=>$id))){
             $this->session->set_flashdata('msg_success','Payment Done sucessfully.');  
         }else{
           $this->session->set_flashdata('msg_info','Invalid.');  
@@ -2371,7 +2371,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
         $shipping_detail = $this->input->post('shipping_info');
       $user_id = $this->session->userdata('members_id');
       $id = $this->input->post('order_id');
-      if($this->marketplace_model->update('make_offer',array('order_status'=>3,'payment_recevied_datetime'=>date('Y-m-d h:i:s'),'tracking_shipping'=>$shipping_detail,'shipping_arrived_datetime'=>date('Y-m-d h:i:s')),array('id'=>$id))){
+      if($this->marketplace_model->update('make_offer',array('order_status'=>3,'payment_recevied_datetime'=>date('Y-m-d H:i:s'),'tracking_shipping'=>$shipping_detail,'shipping_arrived_datetime'=>date('Y-m-d H:i:s')),array('id'=>$id))){
             $this->session->set_flashdata('msg_success','Shipping Information save sucessfully.');  
         }
         else{
@@ -2386,7 +2386,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
       $shipping_detail = $this->input->post('shipping_info');
       $user_id = $this->session->userdata('members_id');
       $id = $this->input->post('order_id');
-      if($this->marketplace_model->update('make_offer',array('order_status'=>3,'tracking_shipping'=>$shipping_detail,'shipping_arrived_datetime'=>date('Y-m-d h:i:s')),array('id'=>$id))){
+      if($this->marketplace_model->update('make_offer',array('order_status'=>3,'tracking_shipping'=>$shipping_detail,'shipping_arrived_datetime'=>date('Y-m-d H:i:s')),array('id'=>$id))){
             $this->session->set_flashdata('msg_success','Shipping Information save sucessfully.');  
         }
         else{
@@ -2398,7 +2398,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
       if(isset($_POST['shipping_received'])){
       $user_id = $this->session->userdata('members_id');
       $id = $this->input->post('order_id');
-      if($this->marketplace_model->update('make_offer',array('order_status'=>4,'shipping_recevied_datetime'=>date('Y-m-d h:i:s'),'shipping_received'=>1),array('id'=>$id))){
+      if($this->marketplace_model->update('make_offer',array('order_status'=>4,'shipping_recevied_datetime'=>date('Y-m-d H:i:s'),'shipping_received'=>1),array('id'=>$id))){
             $this->session->set_flashdata('msg_success','Order Statue changed sucessfully.');  
         }
         else{
@@ -2417,7 +2417,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
     if($_POST['feedback']){
       $user_id = $this->session->userdata('members_id');
       $id = $this->input->post('order_id');
-      if($this->marketplace_model->update('make_offer',array('buyer_feedback'=>$_POST['feedback'],'buyer_feedback_datetime'=>date('Y-m-d h:i:s'),'buyer_history'=>1),array('id'=>$id,'buyer_id'=>$user_id))){
+      if($this->marketplace_model->update('make_offer',array('buyer_feedback'=>$_POST['feedback'],'buyer_feedback_datetime'=>date('Y-m-d H:i:s'),'buyer_history'=>1),array('id'=>$id,'buyer_id'=>$user_id))){
             $this->session->set_flashdata('msg_success','Feedback save is sucessfully.');  
         }
         else{
@@ -2433,7 +2433,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
     if($_POST['feedback']){
       $user_id = $this->session->userdata('members_id');
       $id = $this->input->post('order_id');
-      if($this->marketplace_model->update('make_offer',array('seller_feedback'=>$_POST['feedback'],'seller_feedback_datetime'=>date('Y-m-d h:i:s'),'seller_history'=>1),array('id'=>$id,'seller_id'=>$user_id))){
+      if($this->marketplace_model->update('make_offer',array('seller_feedback'=>$_POST['feedback'],'seller_feedback_datetime'=>date('Y-m-d H:i:s'),'seller_history'=>1),array('id'=>$id,'seller_id'=>$user_id))){
             $this->session->set_flashdata('msg_success','Feedback save is sucessfully.');  
         }
         else{
@@ -2829,7 +2829,7 @@ public function getAttributesInfo($type='MPNISBN',$IsbnMpn=''){
                     $capacity=explode(',',$row[6]);
                     $listing_data['product_capacity'] = json_encode($capacity);
                 }
-                $listing_data['created']    = date('Y-m-d h:i:s A');
+                $listing_data['created']    = date('Y-m-d H:i:s A');
                 $this->marketplace_model->insert('listing_attributes', $listing_data);                    
                }
             $l++;

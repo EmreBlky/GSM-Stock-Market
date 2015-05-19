@@ -1,6 +1,6 @@
 <div class="row wrapper border-bottom white-bg page-heading">
 <div class="col-lg-10">
-    <h2></h2>
+    <h2>Create a Buying Request (WTB)</h2>
     <ol class="breadcrumb">
         <li>
             <a href="/">Home</a>
@@ -40,15 +40,15 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span><br>
     </div>
     <?php echo form_error('schedule_date_time'); ?>
-     Listing can be scheduled for future dates, by selecting future date.
+    <small class="text-navy">Listing can be scheduled for future dates, choose a start date and time for your listing.</small>
     <input type="hidden" id="dtp_input1" value="<?php if(!empty($product_list->schedule_date_time)) echo $product_list->schedule_date_time; else echo set_value('schedule_date_time');?>" name="schedule_date_time"/><br/>
     <?php } ?>
     </div>
     </div>
 <div class="hr-line-dashed"></div>
-<div class="form-group"><label class="col-md-3 control-label">MPN/ISBN</label>
-<div class="col-md-7">
-    <input type="text"list="mpn" class="form-control check_record check_record_by_mpnisbn" placeholder="e.g A1586 or SM-G925"  name="product_mpn" value="<?php if(!empty($_POST['product_mpn'])) echo $_POST['product_mpn']; elseif(!empty($product_list->product_mpn_isbn)) echo $product_list->product_mpn_isbn; ?>"/>
+    <div class="form-group"><label class="col-md-3 control-label">MPN/ISBN <span style="color:red">*</span><br /><small class="text-navy">Search our database</small></label>
+<div class="col-md-6">
+    <input type="text"list="mpn" class="form-control check_record check_record_by_mpnisbn" placeholder="Enter a Part Number e.g GH97-15959B" name="product_mpn" value="<?php if(!empty($_POST['product_mpn'])) echo $_POST['product_mpn']; elseif(!empty($product_list->product_mpn_isbn)) echo $product_list->product_mpn_isbn; ?>"/>
     <datalist id="mpn">
     <?php if(!empty($listing_attributes)){
          foreach ($listing_attributes as $row) { ?>
@@ -59,14 +59,17 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
     </datalist>
      <?php echo form_error('product_mpn'); ?>
 </div>
-<div class="col-md-2">
-<span class="btn btn-xs btn-primary"  id="mpn1">Check MPN/ISBN</span>
+      <div class="col-md-3">
+      	<button class="btn btn-primary btn-block" type="submit" id="mpn1" style="font-size:10px;padding:9px 12px 8px"><i class="fa fa-search"></i> Check MPN/ISBN</button>
+      </div>
+      <div class="col-md-9 col-md-offset-3">
+      <small class="text-navy">Enter a MPN/ISBN or Manufacturer ID. For example, if you want to buy an Apple iPhone 5C handset you can enter the manufactuer ID <strong>A1526</strong> and our system will help you fill out the listing with any data we may have.</small>
+      </div>
 </div>
-</div>
-<div class="form-group"><label class="col-md-3 control-label">Make</label>
+<div class="form-group"><label class="col-md-3 control-label">Make <span style="color:red">*</span></label>
 <div class="col-md-9">
   <select data-placeholder="Make" class="chosen-select form-control" id="product_make" name="product_make">
-    <option value="" selected>e.g Apple or Samsung</option>
+            <option value="" selected disabled>Enter your desired item make/manufacturer. e.g Samsung</option>
    <?php if(!empty($product_makes)){
      foreach ($product_makes as $row) { ?>
     <option value="<?php echo $row->product_make; ?>"
@@ -77,10 +80,10 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <?php echo form_error('product_make'); ?>
 </div>
 </div>
-<div class="form-group"><label class="col-md-3 control-label">Model</label>
+<div class="form-group"><label class="col-md-3 control-label">Model <span style="color:red">*</span></label>
 <div class="col-md-9">
  <select data-placeholder="- Model -" class="chosen-select form-control" id="product_model"   name="product_model">
-    <option value="" selected>e.g: iPhone 4S or Galaxy S6 Edge</option>
+    <option value="" selected disabled>Enter your desired item model. e.g iPhone 4S or Galaxy S6 Edge</option>
      <?php if(!empty($product_models)){
          foreach ($product_models as $row) { ?>
         <option value="<?php echo $row->product_model; ?>" <?php if(!empty($_POST['product_model']) && $row->product_model==$_POST['product_model']){ echo'selected';}?><?php if(!empty($product_list->product_model) && $row->product_model == $product_list->product_model){ echo'selected';}?>><?php echo $row->product_model; ?></option>
@@ -89,10 +92,11 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <?php echo form_error('product_model'); ?>
 </div>
 </div>
-<div class="form-group"><label class="col-md-3 control-label">Colour</label>
+<div class="form-group"><label class="col-md-3 control-label">Colour <span style="color:red">*</span></label>
 <div class="col-md-9">
  <select data-placeholder="Model" class="chosen-select form-control" id="product_color" name="product_color">
-    <option value=""> Choose Color </option>
+          <option value="None" selected disabled>What is the desired primary colour of the item?</option>
+          <option value="None">No Colour</option>
      <?php 
      if(!empty($product_colors)){
       $k=0;
@@ -104,10 +108,10 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
      <?php echo form_error('product_color'); ?>
 </div>
 </div>
-<div class="form-group"><label class="col-md-3 control-label">Product Type</label>
+<div class="form-group"><label class="col-md-3 control-label">Product Type <span style="color:red">*</span></label>
 <div class="col-md-9">
 <select  name="product_type" id="product_type" class="form-control check_record">
-    <option selected value="" >-Select Product Type-</option>
+  <option selected value="0" disabled>What category does your item come under?</option>
     <?php if (!empty($product_types)): ?>
     <?php foreach ($product_types as $row): ?>
         <optgroup label="<?php echo $row->category_name ?>">
@@ -131,8 +135,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <div class="hr-line-dashed Tablet"></div>
  <div class="form-group"><label class="col-md-3 control-label">Spec</label>
     <div class="col-md-9">
-        <select class="form-control" name="spec">
-            <option selected value="">Spec</option>
+        <select data-placeholder="Which spec are you looking to buy?" class="form-control" name="spec">
+            <option selected value="" disabled>Which spec are you looking to buy?</option>
             <?php $spec = spec();
             if($spec){
                 foreach ($spec as $key => $value){ ?>
@@ -146,8 +150,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 </div>
 <div class="form-group Tablet"><label class="col-md-3 control-label">Capacity</label>
 <div class="col-md-9">
-    <select class="form-control" name="device_capacity">
-        <option selected value="">- Device capacity -</option>
+    <select data-placeholder="What hard drive capacity are you after?" class="form-control" name="device_capacity">
+        <option selected value="">What hard drive capacity are you after?</option>
         <option value="2GB" <?php if(!empty($_POST['device_capacity']) && '2GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '2GB'==$product_list->device_capacity){ echo'selected';}?>>2GB</option>
         <option value="4GB" <?php if(!empty($_POST['device_capacity']) && '4GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '4GB'==$product_list->device_capacity){ echo'selected';}?>>4GB</option>
         <option value="8GB" <?php if(!empty($_POST['device_capacity']) && '8GB'==$_POST['device_capacity']){ echo'selected';} elseif(!empty($product_list->device_capacity) && '8GB'==$product_list->device_capacity){ echo'selected';}?>>8GB</option>
@@ -162,8 +166,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 </div>
 <div class="form-group"><label class="col-md-3 control-label">Sim Status</label>
 <div class="col-md-9">
-    <select class="form-control" name="device_sim">
-        <option selected >- Device sim status -</option>
+    <select data-placeholder="What sim status do you require?" class="form-control" name="device_sim">
+        <option selected >What sim status do you require?</option>
         <option <?php if(!empty($_POST['device_sim']) && 'Sim Free'==$_POST['device_sim']){ echo'selected';} elseif(!empty($product_list->device_sim) && 'Sim Free'==$product_list->device_sim){ echo'selected';}?> value="Sim Free">Sim Free</option>
         <option <?php if(!empty($_POST['device_sim']) && 'Network Unlocked'==$_POST['device_sim']){ echo'selected';} elseif(!empty($product_list->device_sim) && 'Network Unlocked'==$product_list->device_sim){ echo'selected';}?>>Network Unlocked</option>
         <option <?php if(!empty($_POST['device_sim']) && 'Network Locked'==$_POST['device_sim']){ echo'selected';} elseif(!empty($product_list->device_sim) && 'Network Locked'==$product_list->device_sim){ echo'selected';}?> value="Network Locked">Network Locked</option>
@@ -176,8 +180,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <div class="hr-line-dashed"></div>
 <div class="form-group"><label class="col-md-3 control-label">Condition</label>
     <div class="col-md-9">
-        <select class="form-control" name="condition">
-        <option value="">Condition</option>
+    <select data-placeholder="What item condition do you require?" class="form-control" name="condition">
+    <option value="" selected disabled>What item condition do you require?</option>
         <?php $condition = condition();
         if($condition){
             foreach ($condition as $key => $value){ ?>
@@ -187,6 +191,10 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         </select>
         <?php echo form_error('condition'); ?>
     </div>
+    
+      <div class="col-md-9 col-md-offset-3">
+      <small class="text-navy">Not sure on which condition option to choose? View our condition descriptions <strong>here</strong> for a more in-depth description.</small>
+      </div>
 </div>
 <div class="hr-line-dashed"></div>
 <div class="form-group"><label class="col-md-3 control-label">Currency </label>
@@ -209,7 +217,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                  <?php $i++;}
                } ?>
            </select>
-           <p class="small text-navy">Select the currency you wish this listing to be sold in.</p>
+           <p class="small text-navy">Select the currency you wish to buy with for this listing.</p>
            <?php echo form_error('currency'); ?>
        </div>
    </div>
@@ -217,6 +225,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
     <div class="col-md-9">
         <input type="type" class="form-control" name="unit_price" value="<?php if(!empty($product_list->unit_price)) echo $product_list->unit_price; else echo set_value('unit_price');?>"/>
         <?php echo form_error('unit_price'); ?>
+       <p class="small text-navy">Your requested price per individual item.</p>
     </div>
 </div>
  <div class="form-group"><label class="col-md-3 control-label">Max Unit Price</label>
@@ -226,7 +235,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <input type="text" class="form-control" placeholder="Maximum Unit Price" name="max_price" value="<?php if(!empty($product_list->max_price)){ echo $product_list->max_price;
         }elseif(isset($_POST['max_price'])){  echo $_POST['max_price'];}?>" <?php if(isset($_POST['maximum_checkbox']) ){ echo'';} elseif(empty($product_list->max_price) ){ echo'disabled';}?>>
         </div>
-        <p class="small text-navy">tick to enable. Any offers below this will be auto rejected, leave blank to allow any offers if ticked.</p>
+        <p class="small text-navy">Tick to enable. Any offers above this will be auto rejected, leave blank to allow any offers if ticked.</p>
         <?php echo form_error('max_price'); ?>
     </div>
 </div>
@@ -235,6 +244,9 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <input type="type" class="form-control" name="total_qty" value="<?php if(!empty($product_list->total_qty)) echo $product_list->total_qty; else  echo set_value('total_qty');?>"/>
         <?php echo form_error('total_qty'); ?>
     </div>
+      <div class="col-md-9 col-md-offset-3">
+      <small class="text-navy">How many of thie item would you like?</small>
+      </div>
 </div>
 <div class="hr-line-dashed"></div>
 <div class="form-group"><label class="col-md-3 control-label">Shipping Terms <button class="btn btn-success btn-circle" type="button" style="width:20px;height:20px;border-radius:10px;font-size:10px;padding:0;margin-bottom:0" data-toggle="modal" data-target="#shipping" title="Click for more information"><i class="fa fa-question"></i></button></label>
@@ -252,6 +264,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
              <?php echo $row->shipping_name; ?></label>
       <?php }
 } ?>
+        <p class="small text-navy">How would you like the item(s) to be shipped to you?</p>
  <?php echo form_error('courier'); ?>
 </div>
 </div>
