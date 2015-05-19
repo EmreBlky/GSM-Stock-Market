@@ -277,7 +277,7 @@ $member_id=$this->session->userdata('members_id');?>
                 <td>GBP 125</td>
                 <td>350</td>
                 <td>UK</td>
-                <td class="text-center"><button type="button" class="btn btn-info" style="font-size:10px data-toggle="modal" data-target="#upgrade""><i class="fa fa-paste"></i> View Offer</button></td>
+                <td class="text-center"><button type="button" class="btn btn-info" style="font-size:10px" data-toggle="modal" data-target="#upgrade""><i class="fa fa-paste"></i> View Offer</button></td>
             </tr>
             <tr>
                 <td class="text-center"><span class="label label-info">Offers Waiting (4)</span></td>
