@@ -18,7 +18,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <div class="wrapper wrapper-content">
 <div class="row">
 <?php if($check_securty){?>
-<form method="post" action="<?php echo current_url()?>"  class="validation form-horizontal"  enctype="multipart/form-data"/>
+<form method="post" action="<?php echo current_url()?>"  class="validation form-horizontal"  enctype="multipart/form-data" onsubmit="return validateFORM();"/>
 <div class="col-lg-7">
 <?php msg_alert(); ?>
 <div class="ibox float-e-margins">
