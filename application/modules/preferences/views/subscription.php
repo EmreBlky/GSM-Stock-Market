@@ -66,7 +66,7 @@
                             <div class="ibox-title">
                             	<h5>Current Subscription</h5>
                             </div>
-                            <div class="ibox-content" style="min-height:130px">
+                            <div class="ibox-content element">
                             		<style>
                                                 dl.full-width dt, dl.full-width dd {width:50%}
                                                 dl.full-width dd {margin-left:51%}
@@ -74,18 +74,19 @@
                                     <dl class="dl-horizontal full-width">
                                         <dt>Current Subscription:</dt> <dd> Bronze Member</dd>
                                         <dt>Join Date:</dt> <dd><?php echo $member->date; ?></dd>
+                                    </dl>
                                         <?php
                                             if($member->date_activated < '2015-05-15'){
                                                 $tcount = $this->trial_model->_custom_query_count("SELECT COUNT(*) AS count FROM trial WHERE member_id = '".$member->id."'");
                                                 if($tcount[0]->count < 1){
                                         ?>
-                                        <br />
-                                        <dt>30 Day Free Trial:</dt> <dd> <a href="trial/activate/<?php echo $member->id; ?>" class="btn btn-primary btn-xs">Activate Now</a> </dd>
+                                        <div class="text-center">
+                                        <a href="trial/activate/<?php echo $member->id; ?>" class="btn btn-primary" style="font-size:2em;margin:0 auto">Activate Free 30 Day Trial Now</a>
+                                        </div>
                                         <?php
                                                 }
                                             }
                                         ?>
-                                    </dl>
                             </div>
                         </div>
                     </div>
@@ -95,7 +96,7 @@
                                 <span class="label label-primary pull-right">Accout Eligible</span>                                
                                     <h5>Upgrade to Silver Membership</h5>                                
                             </div>
-                            <div class="ibox-content" style="min-height:130px;text-align:center">
+                            <div class="ibox-content text-center element">
                         	<label class="control-label">Subscription: </label>                            
                             <select id="selectMe" class="form-control" style="width:auto;display:inline-block">
                               <option value="option1_6">PayPal (6 Months)</option>
@@ -656,5 +657,13 @@ $(document).ready(function () {
     $('.payment_method').hide();
     $('#'+$(this).val()).show();
   })
+});
+</script>
+
+<script type="text/javascript" src="public/main/template/gsm/js/jquery.matchHeight-min.js"></script>
+
+<script type="text/javascript">
+	$(function() {
+    $('.element').matchHeight();
 });
 </script>
