@@ -1422,7 +1422,7 @@ class Admin extends MX_Controller
 
         $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
         
-        $var1 = 'member';
+        $var1 = 'company';
         $var1_model = $var1.'_model';
 
         $this->load->model(''.$var1.'/'.$var1.'_model', ''.$var1.'_model');
@@ -1432,6 +1432,11 @@ class Admin extends MX_Controller
 
         $this->load->model(''.$var2.'/'.$var2.'_model', ''.$var2.'_model');
         
+        $var3 = 'member';
+        $var3_model = $var3.'_model';
+
+        $this->load->model(''.$var3.'/'.$var3.'_model', ''.$var3.'_model');
+        
         $data = array(
                     $code.'_admin_approve' => 'yes'
                     );
@@ -1440,6 +1445,7 @@ class Admin extends MX_Controller
         $trade1 = $this->{$var_model}->get_where_multiple('id', $id)->trade_1_admin_approve;
         $trade2 = $this->{$var_model}->get_where_multiple('id', $id)->trade_2_admin_approve;
         $mid = $this->{$var_model}->get_where_multiple('id', $id)->member_id;
+        $cid = $this->{$var3_model}->get_where_multiple('id', $this->{$var_model}->get_where_multiple('id', $id)->member_id)->company_id;
         
         if($trade1 == 'yes' && $trade2 == 'yes'){
             
@@ -1449,15 +1455,16 @@ class Admin extends MX_Controller
             $this->{$var_model}->_update_where($data, 'id', $id);
             
             $data_mem = array(
-                        'marketplace' => 'active'
+                        //'marketplace' => 'active'
+                        'credit_report' => 'credit_check'
                         );
-            $this->{$var1_model}->_update_where($data_mem, 'id', $mid); 
+            $this->{$var1_model}->_update_where($data_mem, 'id', $cid); 
             
             $data_mail = array(
                                     'member_id'         => 5,
                                     'sent_member_id'    => $mid,
                                     'subject'           => 'Trade Reference Approved',
-                                    'body'              => 'Your 2 Trade References have been approved. You are now able to access the Market Place.',
+                                    'body'              => 'Your 2 Trade References have been approved.',
                                     'inbox'             => 'yes',
                                     'sent'              => 'yes',
                                     'date'              => date('d-m-Y'),
@@ -2050,6 +2057,11 @@ class Admin extends MX_Controller
         
         $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
         
+        $var1 = 'member';
+        $var1_model = $var1.'_model';
+        
+        $this->load->model(''.$var1.'/'.$var1.'_model', ''.$var1.'_model');
+        
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('name', 'Document Name', 'xss_clean');
@@ -2079,7 +2091,14 @@ class Admin extends MX_Controller
                 $this->upload->initialize($config);
                 $this->upload->do_upload();
                 
-            } 
+            }
+            
+            $data = array(
+                           'marketplace' => 'active' 
+                        );
+            
+            $this->{$var1_model}->_update_where($data, 'company_id', $mid);
+            
             $this->session->set_flashdata('message', '<div style="margin:15px">    
                                                                 <div class="alert alert-success">
                                                                     That has been updated.
