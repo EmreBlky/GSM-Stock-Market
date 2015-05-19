@@ -66,6 +66,7 @@ class Tradereference extends MX_Controller
 //        echo '<pre>';
 //        print_r($_POST);
 //        exit;        
+        $this->load->module('salesforces');
         
         $this->load->helper('string');
         $this->load->library('form_validation');		            
@@ -120,6 +121,8 @@ class Tradereference extends MX_Controller
                     
                 }
                 else{
+                    
+                    $trader = $this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id)->company_name;
                 
                     $data = array(
                                 'trade_1_company'   => $this->input->post('trade_1_company'),
@@ -136,7 +139,7 @@ class Tradereference extends MX_Controller
                                 'trade_2_code'      => $code2,
                     );
                     $this->tradereference_model->_update_where($data, 'member_id', $this->session->userdata('members_id'));
-
+                    $this->salesforces->insertSalesforce($this->input->post('trade_1_name'), $email1, $this->input->post('trade_1_phone'), $this->input->post('trade_1_company'), $this->input->post('trade_1_country'), $this->input->post('trade_2_name'), $email2, $this->input->post('trade_1_phone'), $this->input->post('trade_2_company'), $this->input->post('trade_2_country'), $trader);
                 }
 
                 $this->load->module('emails');

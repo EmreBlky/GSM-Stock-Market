@@ -193,8 +193,6 @@ if($member->membership == 1 ){ ?>
           <?php } ?> 
         </div>        
       </div><!-- /col -->
-    
-    </form>  
     </div>  <!-- /row -->
     
           
