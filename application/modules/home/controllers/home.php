@@ -16,7 +16,7 @@ class Home extends MX_Controller
             redirect('login');
         }
         
-        if($this->session->userdata('logged_in') == 4){
+        if($this->session->userdata('members_id') == 4){
             redirect('login/logout');
         }
         
