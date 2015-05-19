@@ -16,6 +16,10 @@ class Home extends MX_Controller
             redirect('login');
         }
         
+        if($this->session->userdata('members_id') == 4){
+            redirect('login/logout');
+        }
+        
          $this->load->model('activity/activity_model', 'activity_model');
          $data_activity = array(
                                 'activity' => 'Home',

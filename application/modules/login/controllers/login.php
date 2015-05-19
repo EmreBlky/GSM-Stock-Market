@@ -327,8 +327,8 @@ class Login extends MX_Controller{
                     
                     $admin_data = array(
                                                     'admin_members_id'  	=> $aid,
-                                                    'members_id'                => 5,
-                                                    'membership'                => 2,
+                                                    'members_id'                => 4,
+                                                    //'membership'                => 2,
                                                     //'username'                  => $member->username,
                                                     'admin_firstname'           => $admin->firstname,
                                                     'admin_lastname'            => $admin->lastname,
@@ -357,12 +357,13 @@ class Login extends MX_Controller{
     function logout()
     {
         $mid = $this->session->userdata('members_id');
-                
-        $data = array(
-                        'online_status' => 'offline'
-                      );
-        $this->member_model->_update($mid, $data);
         
+        if($mid > 4){
+            $data = array(
+                            'online_status' => 'offline'
+                          );
+            $this->member_model->_update($mid, $data);
+        }
         $this->session->unset_userdata('members_id');
         $this->session->unset_userdata('terms'); 
         $this->session->unset_userdata('membership');

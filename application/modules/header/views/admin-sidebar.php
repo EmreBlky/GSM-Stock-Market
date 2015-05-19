@@ -16,7 +16,7 @@
                 <a href="#"><i class="fa fa-user"></i> <span class="nav-label">Edit Subscriptions</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="admin/user_level"><i class="fa fa-cog"></i> <span class="nav-label">User Level</span></a></li>
-                    <li><a href="admin/subscription_access"><i class="fa fa-cog"></i> <span class="nav-label">Subscription Access</span></a></li>
+<!--                    <li><a href="admin/subscription_access"><i class="fa fa-cog"></i> <span class="nav-label">Subscription Access</span></a></li>-->
                 </ul>
             </li>
             <?php } else { ?>
@@ -24,7 +24,7 @@
                 <a href="#"><i class="fa fa-user"></i> <span class="nav-label">Edit Subscriptions</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li><a href="admin/user_level"><i class="fa fa-cog"></i> <span class="nav-label">User Level</span></a></li>
-                    <li><a href="admin/subscription_access"><i class="fa fa-cog"></i> <span class="nav-label">Subscription Access</span></a></li>
+<!--                    <li><a href="admin/subscription_access"><i class="fa fa-cog"></i> <span class="nav-label">Subscription Access</span></a></li>-->
                 </ul>
             </li>
             <?php }?>
@@ -54,21 +54,21 @@
             <?php } ?>
             
             <?php if($url == 'edit_use' || $url == 'edit_company') {?>
-            <li class="active">
+<!--            <li class="active">
                 <a href="#"><i class="fa fa-users"></i> <span class="nav-label">Edit Profiles</span><span class="fa arrow"></span></a></a>
                 <ul class="nav nav-second-level">
                     <li><a href="admin/edit_user"><i class="fa fa-user"></i> <span class="nav-label">Edit User</span></a></li>
                     <li><a href="admin/edit_company"><i class="fa fa-users"></i> <span class="nav-label">Edit Company</span></a></li>
                 </ul>
-            </li>
+            </li>-->
             <?php } else { ?>
-            <li>
+<!--            <li>
                 <a href="#"><i class="fa fa-users"></i> <span class="nav-label">Edit Profiles</span><span class="fa arrow"></span></a></a>
                 <ul class="nav nav-second-level">
                     <li><a href="#"><i class="fa fa-user"></i> <span class="nav-label">Edit User</span></a></li>
                     <li><a href="#"><i class="fa fa-users"></i> <span class="nav-label">Edit Company</span></a></li>
                 </ul>
-            </li>
+            </li>-->
             <?php } ?>
             <?php if($url == 'add_listing_attribute' || $url == 'listing_attributes' || $url == 'listing' || $url == 'product_make' || $url == 'product_model' || $url == 'product_color' || $url == 'couriers' || $url == 'shippings' || $url == 'product_types'|| $url == 'color_attributes'|| $url == 'edit_color_attribute'|| $url == 'add_color_attribute'|| $url == 'add_spec_attribute'|| $url == 'spec_attributes'|| $url == 'edit_spec_attribute'|| $url == 'add_condition_attribute'|| $url == 'edit_condition_attribute'|| $url == 'condition') {?>
             <li class="active">
