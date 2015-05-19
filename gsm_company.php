@@ -12,7 +12,7 @@ elseif($url == 'secure-dev.gsmstockmarket.com'){
 }
 else{
     mysql_connect('localhost', 'gsmstock_admin', 'zv.4qAb17ph$;?$PF!');
-    mysql_select_db('gsmstock_secure');
+    mysql_select_db('gsmstock_securelive');
 }
 
 function random_string($type = 'alnum', $len = 8)

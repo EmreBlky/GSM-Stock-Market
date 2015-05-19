@@ -189,5 +189,25 @@ class Imei extends MX_Controller
         $this->load->module('templates');
         $this->templates->page($data);
     }
+    
+    function transaction()
+    {
+        $data['main'] = 'imei';        
+        $data['title'] = 'Transaction';        
+        $data['page'] = 'transaction';
+        
+        $this->load->module('templates');
+        $this->templates->page($data);
+    }
+    
+    function transaction_print()
+    {
+        $data['main'] = 'imei';        
+        $data['title'] = 'Transaction Print';        
+        $data['page'] = 'transaction-print';
+        
+        $data['base'] = $this->config->item('base_url');
+        $this->load->view('transaction-print', $data);
+    }
 	
 }
