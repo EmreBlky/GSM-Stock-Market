@@ -23,6 +23,17 @@ class Admin extends MX_Controller
     
     }
     
+    function seo_friendly($name)
+    {
+
+        $name = str_replace(" ", "-", $name);
+        $name = str_replace("_", "-", $name);
+        $name = strtolower($name);
+
+        return $name;
+
+    }
+    
     function dashboard()
     { 
         
@@ -1983,5 +1994,100 @@ class Admin extends MX_Controller
            redirect('admin/condition'); 
         }       
       
+    }
+    
+    function credit_check()
+    {
+        //echo 'CREDIT CHECK';
+        
+        $var = 'company';
+        $var_model = $var.'_model';
+        
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');        
+        
+        $count = $this->{$var_model}->_custom_query_count('SELECT COUNT(*) AS count FROM company WHERE credit_report = "credit_check"');
+        
+        if($count[0]->count > 0){
+            
+           $data['credit_count'] = $count[0]->count;
+           $data['credit'] = $this->{$var_model}->get_where_multiples('credit_report', 'credit_check');
+        }
+        else{
+            
+            $data['credit_count'] =  0;
+        }
+        
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel: CRedit Check';  
+        $data['page'] = 'credit-check';
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+    
+    function edit_credit($cid)
+    {
+        $var = 'company';
+        $var_model = $var.'_model';
+        
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        
+        $data['company'] = $this->{$var_model}->get_where($cid);
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel: CRedit Check - Company';  
+        $data['page'] = 'credit-check';
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+    
+    function creditAdd($mid)
+    {
+        //echo '<pre>';
+        //print_r($_FILES);
+        //print_r($_POST);
+        
+        $var = 'company';
+        $var_model = $var.'_model';
+        
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('name', 'Document Name', 'xss_clean');
+        if ($this->form_validation->run()) {
+            
+            $data = array(
+                           'credit_report' =>  $this->seo_friendly($this->input->post('name'))
+                        );
+            
+            $this->{$var_model}->_update_where($data, 'id', $mid);
+            $files = $_FILES;
+            
+            if ($files['userfile']['size'] > 0) {
+                
+                $this->load->library('upload');
+                $base = $this->config->item('base_url');
+
+                $config['upload_path'] = dirname($_SERVER["SCRIPT_FILENAME"]) . '/public/main/template/gsm/creditdata/';
+                $config['upload_url'] = $base . 'public/main/template/gsm/creditdata/';
+                $config['allowed_types'] = 'gif|jpg|png|pdf';
+                $config['file_name'] = $this->seo_friendly($this->input->post('name'));
+                $config['max_size'] = 4000;
+                $config['overwrite'] = TRUE;
+                //$config['max_width'] = 1500;
+                //$config['max_height'] = 1500;
+
+                $this->upload->initialize($config);
+                $this->upload->do_upload();
+                
+            } 
+            $this->session->set_flashdata('message', '<div style="margin:15px">    
+                                                                <div class="alert alert-success">
+                                                                    That has been updated.
+                                                                </div>
+                                                            </div>');
+
+            redirect('admin/credit_check/');
+        }
+        
     }
 }
