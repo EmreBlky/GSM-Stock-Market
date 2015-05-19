@@ -6,6 +6,9 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
 //exit;
 ?>
 <?php $url = $this->uri->segment(1);?>
+<style>
+.nav>li>a i {width:1em}
+</style>
 <nav class="navbar-default navbar-static-side" role="navigation">
 <div class="sidebar-collapse">
 <ul class="nav" id="side-menu">                    
@@ -31,6 +34,26 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
 <li>
 <a href="<?php echo $base; ?>"><i class="fa fa-desktop"></i> <span class="nav-label">Dashboard</span></a>
 </li>
+
+<?php $mem_id = $this->member_model->get_where($this->session->userdata('members_id'))->membership; if($mem_id < 2){?>
+<!--
+<li>
+        <a href="demo"><i class="fa fa-desktop"></i> <span class="nav-label">Request a Demo</span></a>
+</li>
+-->
+
+
+<?php
+if($member->date_activated < '2015-05-15'){
+?>
+<li>
+        <a href="preferences/subscription" style="color:yellow"><i class="fa fa-bolt"></i> <span class="nav-label">Free 30 Day Trial</span></a>
+</li>
+<?php
+	}
+?>
+<?php } else{} ?>
+
 
 <?php if($url == 'profile') {?>
 <li class="active">
@@ -291,52 +314,7 @@ if($count_order_history){ ?>
 <li>
 <a href="search/company"><i class="fa fa-search"></i> <span class="nav-label">Search</span></a>
 </li>
-
-<?php if($url == 'creditdata') {?>
-<li class="active">
-        <a href=""><i class="fa fa-clipboard"></i> <span class="nav-label">Credit Check</span><span class="fa arrow"></span></a>
-    <ul class="nav nav-second-level">
-            <?php
-                $this->load->module('creditdata');
-            $this->creditdata->request_count();
-            $this->creditdata->accept_count();
-            ?>
-</ul>
-</li>         
-<?php } else {?>
-<li>
-        <a href="creditcheck"><i class="fa fa-clipboard"></i> <span class="nav-label">Credit Check</span><span class="fa arrow"></span></a>
-        <ul class="nav nav-second-level">
-                                <?php
-                                    $this->load->module('creditdata');
-                                    $this->creditdata->request_count();
-                                $this->creditdata->accept_count();
-                                ?>
-        </ul>
-</li>         
-<?php } ?>
-
-
-<?php $mem_id = $this->member_model->get_where($this->session->userdata('members_id'))->membership; if($mem_id < 2){?>
-<!--
-<li>
-        <a href="demo"><i class="fa fa-desktop"></i> <span class="nav-label">Request a Demo</span></a>
 </li>
--->
-
-
-<?php
-if($member->date_activated < '2015-05-15'){
-?>
-<li>
-        <a href="preferences/subscription"><i class="fa fa-desktop"></i> <span class="nav-label">30 Day Trial</span></a>
-</li>
-<?php
-	}
-?>
-<?php } else{} ?>
-
-
 
 <li>
 <a href="events"><i class="fa fa-calendar"></i> <span class="nav-label">Events</span></a>
@@ -367,6 +345,31 @@ if($member->date_activated < '2015-05-15'){
 </ul>
 </li>   
 <?php } ?>
+
+<?php if($url == 'creditdata') {?>
+<li class="active">
+        <a href=""><i class="fa fa-clipboard"></i> <span class="nav-label">Credit Check</span><span class="fa arrow"></span></a>
+    <ul class="nav nav-second-level">
+            <?php
+                $this->load->module('creditdata');
+            $this->creditdata->request_count();
+            $this->creditdata->accept_count();
+            ?>
+</ul>
+</li>         
+<?php } else {?>
+<li>
+        <a href="creditcheck"><i class="fa fa-clipboard"></i> <span class="nav-label">Credit Check</span><span class="fa arrow"></span></a>
+        <ul class="nav nav-second-level">
+                                <?php
+                                    $this->load->module('creditdata');
+                                    $this->creditdata->request_count();
+                                $this->creditdata->accept_count();
+                                ?>
+        </ul>
+</li>         
+<?php } ?>
+
 
 <?php if($url == 'support') {?>
 <li class="active">
