@@ -230,4 +230,15 @@ class Creditdata extends MX_Controller
         
         redirect('creditdata/requests');
     }
+    
+    function admin_creditdata_count()
+    {
+        $count = $this->company_model->_custom_query_count('SELECT COUNT(*) AS count FROM company WHERE credit_report = "credit_check"');
+        
+        if($count[0]->count > 0){
+            echo '<span class="label label-warning pull-right">'.$count[0]->count.'</span>';            
+        }
+       
+        
+    }
 }

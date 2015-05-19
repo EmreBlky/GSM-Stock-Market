@@ -23,6 +23,17 @@ class Admin extends MX_Controller
     
     }
     
+    function seo_friendly($name)
+    {
+
+        $name = str_replace(" ", "-", $name);
+        $name = str_replace("_", "-", $name);
+        $name = strtolower($name);
+
+        return $name;
+
+    }
+    
     function dashboard()
     { 
         
@@ -1411,7 +1422,7 @@ class Admin extends MX_Controller
 
         $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
         
-        $var1 = 'member';
+        $var1 = 'company';
         $var1_model = $var1.'_model';
 
         $this->load->model(''.$var1.'/'.$var1.'_model', ''.$var1.'_model');
@@ -1421,6 +1432,11 @@ class Admin extends MX_Controller
 
         $this->load->model(''.$var2.'/'.$var2.'_model', ''.$var2.'_model');
         
+        $var3 = 'member';
+        $var3_model = $var3.'_model';
+
+        $this->load->model(''.$var3.'/'.$var3.'_model', ''.$var3.'_model');
+        
         $data = array(
                     $code.'_admin_approve' => 'yes'
                     );
@@ -1429,6 +1445,7 @@ class Admin extends MX_Controller
         $trade1 = $this->{$var_model}->get_where_multiple('id', $id)->trade_1_admin_approve;
         $trade2 = $this->{$var_model}->get_where_multiple('id', $id)->trade_2_admin_approve;
         $mid = $this->{$var_model}->get_where_multiple('id', $id)->member_id;
+        $cid = $this->{$var3_model}->get_where_multiple('id', $this->{$var_model}->get_where_multiple('id', $id)->member_id)->company_id;
         
         if($trade1 == 'yes' && $trade2 == 'yes'){
             
@@ -1438,15 +1455,16 @@ class Admin extends MX_Controller
             $this->{$var_model}->_update_where($data, 'id', $id);
             
             $data_mem = array(
-                        'marketplace' => 'active'
+                        //'marketplace' => 'active'
+                        'credit_report' => 'credit_check'
                         );
-            $this->{$var1_model}->_update_where($data_mem, 'id', $mid); 
+            $this->{$var1_model}->_update_where($data_mem, 'id', $cid); 
             
             $data_mail = array(
                                     'member_id'         => 5,
                                     'sent_member_id'    => $mid,
                                     'subject'           => 'Trade Reference Approved',
-                                    'body'              => 'Your 2 Trade References have been approved. You are now able to access the Market Place.',
+                                    'body'              => 'Your 2 Trade References have been approved.',
                                     'inbox'             => 'yes',
                                     'sent'              => 'yes',
                                     'date'              => date('d-m-Y'),
@@ -1983,5 +2001,112 @@ class Admin extends MX_Controller
            redirect('admin/condition'); 
         }       
       
+    }
+    
+    function credit_check()
+    {
+        //echo 'CREDIT CHECK';
+        
+        $var = 'company';
+        $var_model = $var.'_model';
+        
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');        
+        
+        $count = $this->{$var_model}->_custom_query_count('SELECT COUNT(*) AS count FROM company WHERE credit_report = "credit_check"');
+        
+        if($count[0]->count > 0){
+            
+           $data['credit_count'] = $count[0]->count;
+           $data['credit'] = $this->{$var_model}->get_where_multiples('credit_report', 'credit_check');
+        }
+        else{
+            
+            $data['credit_count'] =  0;
+        }
+        
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel: CRedit Check';  
+        $data['page'] = 'credit-check';
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+    
+    function edit_credit($cid)
+    {
+        $var = 'company';
+        $var_model = $var.'_model';
+        
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        
+        $data['company'] = $this->{$var_model}->get_where($cid);
+        $data['main'] = 'admin';        
+        $data['title'] = 'GSM - Admin Panel: CRedit Check - Company';  
+        $data['page'] = 'credit-check';
+        $this->load->module('templates');
+        $this->templates->admin($data);
+    }
+    
+    function creditAdd($mid)
+    {
+        //echo '<pre>';
+        //print_r($_FILES);
+        //print_r($_POST);
+        
+        $var = 'company';
+        $var_model = $var.'_model';
+        
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        
+        $var1 = 'member';
+        $var1_model = $var1.'_model';
+        
+        $this->load->model(''.$var1.'/'.$var1.'_model', ''.$var1.'_model');
+        
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('name', 'Document Name', 'xss_clean');
+        if ($this->form_validation->run()) {
+            
+            $data = array(
+                           'credit_report' =>  $this->seo_friendly($this->input->post('name'))
+                        );
+            
+            $this->{$var_model}->_update_where($data, 'id', $mid);
+            $files = $_FILES;
+            
+            if ($files['userfile']['size'] > 0) {
+                
+                $this->load->library('upload');
+                $base = $this->config->item('base_url');
+
+                $config['upload_path'] = dirname($_SERVER["SCRIPT_FILENAME"]) . '/public/main/template/gsm/creditdata/';
+                $config['upload_url'] = $base . 'public/main/template/gsm/creditdata/';
+                $config['allowed_types'] = 'gif|jpg|png|pdf';
+                $config['file_name'] = $this->seo_friendly($this->input->post('name'));
+                $config['max_size'] = 4000;
+                $config['overwrite'] = TRUE;
+                //$config['max_width'] = 1500;
+                //$config['max_height'] = 1500;
+
+                $this->upload->initialize($config);
+                $this->upload->do_upload();
+                
+            }
+            
+            $data = array(
+                           'marketplace' => 'active' 
+                        );
+            
+            $this->{$var1_model}->_update_where($data, 'company_id', $mid);
+            
+            $this->session->set_flashdata('message', '<div style="margin:15px">    
+                                                                <div class="alert alert-success">
+                                                                    That has been updated.
+                                                                </div>
+                                                            </div>');
+
+            redirect('admin/credit_check/');
+        }
+        
     }
 }
