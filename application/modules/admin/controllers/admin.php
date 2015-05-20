@@ -1523,12 +1523,13 @@ class Admin extends MX_Controller
         $mid = $this->{$var_model}->get_where_multiple('id', $id)->member_id;
         
         $data = array(
-                    $code.'_company' => '',
-                    $code.'_name' => '',
-                    $code.'_email' => '',
-                    $code.'_phone' => '',
-                    $code.'_country' => '',
-                    $code.'_comments' => '',
+                    $code.'_company' => 'Declined - Please resubmit',
+                    $code.'_name' => 'Declined - Please resubmit',
+                    $code.'_email' => 'Declined - Please resubmit',
+                    $code.'_phone' => 'Declined - Please resubmit',
+                    $code.'_country' => '211',
+                    $code.'_comments' => 'Declined - Please resubmit',
+                    $code.'_confirm' => 'yes_declined',
                     $code.'_admin_approve' => 'declined'
                     );
         $trade_mem = $this->{$var_model}->_update_where($data, 'id', $id);

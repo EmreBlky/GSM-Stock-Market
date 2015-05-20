@@ -148,18 +148,21 @@ if($member->membership == 1 ){ ?>
                                 <td><?php echo $trade_ref->trade_1_email ;?></td>
                                 <td><?php echo $trade_ref->trade_1_phone ;?></td>
                                 <td><?php echo $this->country_model->get_where($trade_ref->trade_1_country)->country ;?></td>
-                                <?php if($trade_ref->trade_1_confirm == 'yes' && $trade_ref->trade_1_admin_approve == 'declined') {?>
+                                <?php if($trade_ref->trade_1_confirm != 'no' && $trade_ref->trade_1_admin_approve == 'declined') {?>
                                     <td style="text-align:center"><span class="label label-danger">Declined</span></td>
-                                <?php } elseif($trade_ref->trade_1_confirm == 'yes' && $trade_ref->trade_1_admin_approve != 'declined') {?>
+                                <?php } elseif($trade_ref->trade_1_confirm != 'no' && $trade_ref->trade_1_admin_approve != 'declined') {?>
                                     <td style="text-align:center"><span class="label label-primary">Confirmed</span></td>
                                 <?php } else {?>
                                     <td style="text-align:center"><span class="label label-warning">Awaiting Confirmation</span></td>
                                 <?php } ?>                                
                                 <td style="text-align:center">
-                                    <?php if($trade_ref->trade_1_confirm == 'no' || $trade_ref->trade_1_admin_approve == 'declined') {?>                                    
-                                    <a href="tradereference/submit_refs/trade_1" class="btn btn-warning" style="font-size:10px">Edit</a>
-                                    <a href="tradereference/resend/<?php echo $trade_ref->member_id ;?>/<?php echo $trade_ref->trade_1_name ;?>/<?php echo $trade_ref->trade_1_email ;?>/<?php echo $trade_ref->trade_1_code ;?>" class="btn btn-success" style="font-size:10px">Resend Email</a>
+                                    <?php if($trade_ref->trade_1_confirm == 'no' && $trade_ref->trade_1_admin_approve != 'declined') {?> 
+                                        <a href="tradereference/submit_refs/trade_1" class="btn btn-warning" style="font-size:10px">Edit</a>
+                                        <a href="tradereference/resend/<?php echo $trade_ref->member_id ;?>/<?php echo $trade_ref->trade_1_name ;?>/<?php echo $trade_ref->trade_1_email ;?>/<?php echo $trade_ref->trade_1_code ;?>" class="btn btn-success" style="font-size:10px">Resend Email</a>
                                     <?php } ?>
+                                    <?php if($trade_ref->trade_1_admin_approve == 'declined') {?>                                    
+                                        <a href="tradereference/submit_refs/trade_1" class="btn btn-warning" style="font-size:10px">Select New Ref</a>
+                               <?php } ?>
                                 </td>
                             </tr>
                             <tr>
@@ -167,17 +170,20 @@ if($member->membership == 1 ){ ?>
                                 <td><?php echo $trade_ref->trade_2_email ;?></td>
                                 <td><?php echo $trade_ref->trade_2_phone ;?></td>
                                 <td><?php echo $this->country_model->get_where($trade_ref->trade_2_country)->country  ;?></td>
-                                <?php if($trade_ref->trade_2_confirm == 'yes' && $trade_ref->trade_2_admin_approve == 'declined') {?>
+                                <?php if($trade_ref->trade_2_confirm != 'no' && $trade_ref->trade_2_admin_approve == 'declined') {?>
                                     <td style="text-align:center"><span class="label label-danger">Declined</span></td>
-                                <?php } elseif($trade_ref->trade_2_confirm == 'yes' && $trade_ref->trade_2_admin_approve != 'declined') {?>
+                                <?php } elseif($trade_ref->trade_2_confirm != 'no' && $trade_ref->trade_2_admin_approve != 'declined') {?>
                                     <td style="text-align:center"><span class="label label-primary">Confirmed</span></td>
                                 <?php } else {?>
                                     <td style="text-align:center"><span class="label label-warning">Awaiting Confirmation</span></td>
                                 <?php } ?>   
                                 <td style="text-align:center">
-                                    <?php if($trade_ref->trade_2_confirm == 'no' || $trade_ref->trade_2_admin_approve == 'declined') {?>
-                                    <a href="tradereference/submit_refs/trade_2" class="btn btn-warning" style="font-size:10px">Edit</a> 
-                                    <a href="tradereference/resend/<?php echo $trade_ref->member_id; ?>/<?php echo $trade_ref->trade_2_name ;?>/<?php echo $trade_ref->trade_2_email ;?>/<?php echo $trade_ref->trade_2_code ;?>" class="btn btn-success" style="font-size:10px">Resend Email</a>
+                                    <?php if($trade_ref->trade_2_confirm == 'no' && $trade_ref->trade_2_admin_approve != 'declined') {?>
+                                        <a href="tradereference/submit_refs/trade_2" class="btn btn-warning" style="font-size:10px">Edit</a>
+                                        <a href="tradereference/resend/<?php echo $trade_ref->member_id; ?>/<?php echo $trade_ref->trade_2_name ;?>/<?php echo $trade_ref->trade_2_email ;?>/<?php echo $trade_ref->trade_2_code ;?>" class="btn btn-success" style="font-size:10px">Resend Email</a>
+                                    <?php } ?>
+                                    <?php if($trade_ref->trade_2_admin_approve == 'declined') {?>
+                                        <a href="tradereference/submit_refs/trade_2" class="btn btn-warning" style="font-size:10px">Select New Ref</a>
                                     <?php } ?>
                                 </td>
                             </tr>
