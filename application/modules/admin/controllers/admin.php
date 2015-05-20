@@ -1399,6 +1399,11 @@ class Admin extends MX_Controller
 
         $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
         
+        $var1 = 'country';
+        $var1_model = $var1.'_model';
+        
+        $this->load->model(''.$var1.'/'.$var1.'_model', ''.$var1.'_model');
+        
         if(isset($id)){
             $trade_mem = $this->{$var_model}->_custom_query("SELECT id, member_id, ".$code."_company AS company, ".$code."_name AS name, ".$code."_email AS email, ".$code."_phone AS phone, ".$code."_country AS country, ".$code."_comments AS comments FROM tradereference WHERE id = '".$id."'");
             $data['ref'] = $trade_mem[0];
@@ -1518,6 +1523,12 @@ class Admin extends MX_Controller
         $mid = $this->{$var_model}->get_where_multiple('id', $id)->member_id;
         
         $data = array(
+                    $code.'_company' => '',
+                    $code.'_name' => '',
+                    $code.'_email' => '',
+                    $code.'_phone' => '',
+                    $code.'_country' => '',
+                    $code.'_comments' => '',
                     $code.'_admin_approve' => 'declined'
                     );
         $trade_mem = $this->{$var_model}->_update_where($data, 'id', $id);
