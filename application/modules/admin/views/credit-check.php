@@ -67,6 +67,7 @@ if(is_numeric($id)){?>
                         <thead>
                             <tr>
                                 <th>Company</th>
+                                <th>Membership Type</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -75,7 +76,10 @@ if(is_numeric($id)){?>
                             <tr>                            
                                 <td>
                                     <span class="pie"><?php echo $this->company_model->get_where($this->member_model->get_where($credit->id)->company_id)->company_name; ?></span>
-                                </td>                            
+                                </td>
+                                <td>
+                                   <span class="pie"><?php echo $this->membership_model->get_where($this->member_model->get_where($credit->id)->membership)->membership; ?></span> 
+                                </td>
                                 <td>
                                     <a href="admin/edit_credit/<?php echo $credit->id;?>"><i class="fa fa-book"></i> Edit</a>
                                 </td>

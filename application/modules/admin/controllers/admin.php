@@ -2034,7 +2034,12 @@ class Admin extends MX_Controller
         $var = 'company';
         $var_model = $var.'_model';
         
-        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');        
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');  
+        
+        $var1 = 'membership';
+        $var1_model = $var1.'_model';
+        
+        $this->load->model(''.$var1.'/'.$var1.'_model', ''.$var1.'_model');
         
         $count = $this->{$var_model}->_custom_query_count('SELECT COUNT(*) AS count FROM company WHERE credit_report = "credit_check"');
         
