@@ -131,8 +131,8 @@
               	<select id="service" class="form-control" name='lookup-service'>
                   <option value="0" id="service-0-0" selected disabled>Please Select Service ....</option>
                   <optgroup label="Device Check Services">
-                  <option value="1-62" id="service-1-0">1-62 - ImeiHPI Check (0.10 Credits)</option>
-                  <option value="1-129" id="service-1-1">1-129 - ImeiHPI Bulk Check (0.10 Credits)</option>
+                  <option value="1-62" id="service-1-0">ImeiHPI Check (0.10 Credits)</option>
+                  <option value="1-129" id="service-1-1">ImeiHPI Bulk Check (0.10 Credits)</option>
                   </optgroup>
                   </select>
               </div>
