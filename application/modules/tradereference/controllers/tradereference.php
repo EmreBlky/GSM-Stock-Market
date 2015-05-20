@@ -139,7 +139,7 @@ class Tradereference extends MX_Controller
                                 'trade_2_code'      => $code2,
                     );
                     $this->tradereference_model->_update_where($data, 'member_id', $this->session->userdata('members_id'));
-                    $this->salesforces->insertSalesforce($this->input->post('trade_1_name'), $email1, $this->input->post('trade_1_phone'), $this->input->post('trade_1_company'), $this->input->post('trade_1_country'), $this->input->post('trade_2_name'), $email2, $this->input->post('trade_1_phone'), $this->input->post('trade_2_company'), $this->input->post('trade_2_country'), $trader);
+                    $this->salesforces->insertSalesforce($this->input->post('trade_1_name'), $email1, $this->input->post('trade_1_phone'), $this->input->post('trade_1_company'), $this->country_model->get_where($this->input->post('trade_1_country'))->country, $this->input->post('trade_2_name'), $email2, $this->input->post('trade_2_phone'), $this->input->post('trade_2_company'), $this->country_model->get_where($this->input->post('trade_2_country'))->country, $trader);
                 }
 
                 $this->load->module('emails');
