@@ -148,7 +148,7 @@
                               <?php if($trade_ref->trade_1_country != '') {?>
                                   <option value="<?php echo $trade_ref->trade_1_country; ?>"><?php echo $this->country_model->get_where($trade_ref->trade_1_country)->country; ?></option>
                                   <?php } else {?>
-                                  <option value="211">Please select country</option>
+                                  <option value="">Please select country</option>
                                   <?php } ?>
                               <?php foreach ($country_one as $country_one) {?>        
                                   <option value="<?php echo $country_one->id; ?>"><?php echo $country_one->country; ?></option>
@@ -290,7 +290,7 @@
                               <?php if($trade_ref->trade_2_country != '') {?>
                                   <option value="<?php echo $trade_ref->trade_2_country; ?>"><?php echo $this->country_model->get_where($trade_ref->trade_2_country)->country; ?></option>
                                   <?php } else {?>
-                                  <option value="211">Please select country</option>
+                                  <option value="">Please select country</option>
                                   <?php } ?>
                               <?php foreach ($country_two as $country_two) {?>        
                                   <option value="<?php echo $country_two->id; ?>"><?php echo $country_two->country; ?></option>
@@ -431,7 +431,7 @@
                     <div class="form-group">
                     	<label class="col-md-3 control-label">Country <span style="color:red">*</span></label>
                         <div class="col-md-9">
-                          <select name="trade_1_country" class="form-control">
+                            <select name="trade_1_country" class="form-control" required="required">
                               <?php if($trade_ref->trade_1_country != '') {?>
                                   <option value="<?php echo $trade_ref->trade_1_country; ?>"><?php echo $this->country_model->get_where($trade_ref->trade_1_country)->country; ?></option>
                                   <?php } else {?>
@@ -576,7 +576,7 @@
                     <div class="form-group">
                     	<label class="col-md-3 control-label">Country <span style="color:red">*</span></label>
                         <div class="col-md-9">
-                          <select name="trade_2_country" class="form-control">
+                          <select name="trade_2_country" class="form-control" required="required">
                               <?php if($trade_ref->trade_2_country != '') {?>
                                   <option value="<?php echo $trade_ref->trade_2_country; ?>"><?php echo $this->country_model->get_where($trade_ref->trade_2_country)->country; ?></option>
                                   <?php } else {?>

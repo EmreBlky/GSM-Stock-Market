@@ -79,9 +79,13 @@ class Preferences extends MX_Controller
                     );
                     $this->member_model->_update($this->session->userdata('members_id'), $data);
                     
-                    $this->session->set_flashdata('title', 'Password Success');
-                    $this->session->set_flashdata('message', 'Your password has been successfully updated.');
-                    redirect('preferences/password');
+                    $this->session->set_flashdata('confirm', '<div style="margin-top: 15px">    
+                                                                <div class="alert alert-success">
+                                                                    Your password has been successfully updated.
+                                                                </div>
+                                                            </div>');
+                    redirect('home/');
+                    
                 }
             }
             else{
