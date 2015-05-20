@@ -20,9 +20,15 @@ if(is_numeric($id)){?>
                     View Company Trade Reference
                 </h2>
                 <div class="mail-tools tooltip-demo m-t-md">                    
-                    <h5>                        
+                                           
                         <span class="font-noraml">From: <?php echo $ref->name; ?> (<?php echo $ref->company; ?>)</span>
-                    </h5>
+                        <br/>
+                        <span class="font-noraml">Email: <?php echo $ref->email; ?></span>
+                        <br/>
+                        <span class="font-noraml">Phone: <?php echo $ref->phone; ?></span>
+                        <br/>
+                        <span class="font-noraml">Country: <?php echo $this->country_model->get_where($ref->country)->country; ?></span>
+                    
                 </div>
             </div>
                 <div class="mail-box">

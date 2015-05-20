@@ -1303,9 +1303,14 @@ class Admin extends MX_Controller
     function upgradeApprove($id)
     {
         $var = 'transaction';
-        $var_model = $var.'_model';
-        
+        $var_model = $var.'_model';        
         $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        
+        $var1 = 'country';
+        $var1_model = $var1.'_model';
+        
+        $this->load->model(''.$var1.'/'.$var1.'_model', ''.$var1.'_model');
+        
         $mem = $this->{$var_model}->get_where($id)->buyer_id;
         $item = $this->{$var_model}->get_where($id)->item;
         
@@ -1395,7 +1400,7 @@ class Admin extends MX_Controller
         $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
         
         if(isset($id)){
-            $trade_mem = $this->{$var_model}->_custom_query("SELECT id, member_id, ".$code."_company AS company, ".$code."_name AS name, ".$code."_email AS email, ".$code."_phone AS phone, ".$code."_comments AS comments FROM tradereference WHERE id = '".$id."'");
+            $trade_mem = $this->{$var_model}->_custom_query("SELECT id, member_id, ".$code."_company AS company, ".$code."_name AS name, ".$code."_email AS email, ".$code."_phone AS phone, ".$code."_country AS country, ".$code."_comments AS comments FROM tradereference WHERE id = '".$id."'");
             $data['ref'] = $trade_mem[0];
             $data['code'] = $code;
         }

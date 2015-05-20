@@ -90,7 +90,7 @@ if($member->membership == 1 ){ ?>
             </div>
             
             <div class="col-md-12">             
-              <label class="col-md-9 control-label" style="text-align:right">2 Trade references confirmed by companies</label>
+              <label class="col-md-9 control-label" style="text-align:right">2 Trade references received - GSM checking</label>
               <div class="col-md-3">
                   <?php if($trade_ref->trade_1_confirm == 'yes') {?>
                         <i class="fa fa-check" style="color:green"></i>
@@ -108,7 +108,7 @@ if($member->membership == 1 ){ ?>
             </div>
             
             <div class="col-md-12">             
-              <label class="col-md-9 control-label" style="text-align:right">Trade references confirmed by GSM Stock Market</label>
+              <label class="col-md-9 control-label" style="text-align:right">Approved by GSM Stock Market</label>
               <div class="col-md-3">
                    <?php if($member->marketplace == 'active') { ?>
                         <i class="fa fa-check" style="color:green"></i>
