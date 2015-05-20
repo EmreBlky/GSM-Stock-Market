@@ -233,7 +233,7 @@ class Imei_model extends MY_Model {
 			if ((string)$xml->Status == 'solved')
 			{
 				//success // Rem: 2103 might be ze account id so may need to change for sub accounts \o/ 
-				$file_path = 'http://imei.gsmstockmarket.com/files/mobiguard/'.$xml->ID.'/'. Date('Y') .'/'. Date('M') .'/'. $xml->MobiCheck->cert_id .'.pdf';
+				$file_path = 'http://imei.gsmstockmarket.com/files/mobiguard/2174/'. Date('Y') .'/'. Date('M') .'/'. $xml->MobiCheck->cert_id .'.pdf';
 
 				$data = array(
 				   'id' => (string)$xml->ID,
