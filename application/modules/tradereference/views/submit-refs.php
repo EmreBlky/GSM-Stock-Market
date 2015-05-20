@@ -148,7 +148,7 @@
                               <?php if($trade_ref->trade_1_country != '') {?>
                                   <option value="<?php echo $trade_ref->trade_1_country; ?>"><?php echo $this->country_model->get_where($trade_ref->trade_1_country)->country; ?></option>
                                   <?php } else {?>
-                                  <option value="">Please select country</option>
+                                  <option value="211">Please select country</option>
                                   <?php } ?>
                               <?php foreach ($country_one as $country_one) {?>        
                                   <option value="<?php echo $country_one->id; ?>"><?php echo $country_one->country; ?></option>
@@ -290,7 +290,7 @@
                               <?php if($trade_ref->trade_2_country != '') {?>
                                   <option value="<?php echo $trade_ref->trade_2_country; ?>"><?php echo $this->country_model->get_where($trade_ref->trade_2_country)->country; ?></option>
                                   <?php } else {?>
-                                  <option value="">Please select country</option>
+                                  <option value="211">Please select country</option>
                                   <?php } ?>
                               <?php foreach ($country_two as $country_two) {?>        
                                   <option value="<?php echo $country_two->id; ?>"><?php echo $country_two->country; ?></option>
