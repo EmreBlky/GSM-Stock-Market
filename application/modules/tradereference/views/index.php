@@ -106,6 +106,18 @@ if($member->membership == 1 ){ ?>
                   
               </div>
             </div>
+              
+            <div class="col-md-12">             
+              <label class="col-md-9 control-label" style="text-align:right">Credit checked by GSM</label>
+              <div class="col-md-3">
+                   <?php if($member->marketplace == 'active') { ?>
+                        <i class="fa fa-check" style="color:green"></i>
+                   <?php } else {?>
+                        <i class="fa fa-times" style="color:red"></i>
+                   <?php }?>
+                  
+              </div>
+             </div>  
             
             <div class="col-md-12">             
               <label class="col-md-9 control-label" style="text-align:right">Approved by GSM Stock Market</label>
