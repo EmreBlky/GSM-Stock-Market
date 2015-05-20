@@ -1,5 +1,5 @@
 <div class="row wrapper border-bottom white-bg page-heading">
-<div class="col-lg-10">
+<div class="col-lg-9">
     <h2>Creating a Selling Offer (WTS)</h2>
     <ol class="breadcrumb">
         <li>
@@ -10,7 +10,8 @@
         </li>
     </ol>
 </div>
-<div class="col-lg-2">
+<div class="col-lg-3">
+	<a class="btn btn-success pull-right" style="margin-top:20px" href="javascript:void(0);" onclick="javascript:introJs().setOption('showProgress', true).start();">Enable Tutorial</a>
 </div>
 </div>
 <?php $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id);
@@ -49,6 +50,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
   </div>
     </div>
     <div class="hr-line-dashed"></div>
+    <section data-step="1" data-intro="Cross check your MPN/ISBN with our database to help you auto fill your listing with ease." data-position='right'>
     <div class="form-group"><label class="col-md-3 control-label">MPN/ISBN <span style="color:red">*</span><br /><small class="text-navy">Search our database</small></label>
       <div class="col-md-6" style="padding-right:0">
           <input type="type" list="mpn" class="form-control check_record check_record_by_mpnisbn" placeholder="Enter a Part Number e.g GH97-15959B"  name="product_mpn" value="<?php if(!empty($product_list->product_mpn_isbn)) echo $product_list->product_mpn_isbn; ?><?php if(!empty($_POST['product_mpn'])) echo $_POST['product_mpn']; ?>"/>
@@ -60,6 +62,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
       <small class="text-navy">Enter your MPN/ISBN or Manufacturer ID. For example, if you are selling an Apple iPhone 5C related item you can enter the manufactuer ID <strong>A1526</strong> and our system will help you fill out the listing with any data we may have.</small>
       </div>
     </div>
+    </section>
+    <section data-step="2" data-intro="Once you have your MPN/ISBN you can auto complete these fields automatically or customize your own listing from a range of Makes in our database and if we don't have a model you need you can enter your own." data-position='right'>
      <div class="form-group"><label class="col-md-3 control-label">Make <span style="color:red">*</span></label>
         <div class="col-md-9">
             <select class="chosen-select form-control" id="product_make" name="product_make">
@@ -120,6 +124,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
     <?php echo form_error('product_type'); ?>
 </div>
 </div>
+</section>
 <span class="Handset <?php if(!empty($_POST['product_type']) && $_POST['product_type']=='Handset'){  echo 'SHOW';}
     elseif(!empty($product_list->product_type) && $product_list->product_type =='Handset'){
           echo 'SHOW';
@@ -178,6 +183,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 </span>
         
 <div class="hr-line-dashed"></div>
+    <section data-step="3" data-intro="After completing your items basic data let buyers know what condition your listed item is with our in-depth condition options" data-position='right'>
 <div class="form-group"><label class="col-md-3 control-label">Condition <span style="color:red">*</span></label>
 <div class="col-md-9">
     <select data-placeholder="What condition is the item in?" class="form-control" name="condition">
@@ -195,7 +201,9 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
       <small class="text-navy">Not sure on which condition option to choose? View our condition descriptions <strong>here</strong> for a more in-depth description.</small>
       </div>
 </div>
+</section>
 <div class="hr-line-dashed"></div>
+<section data-step="4" data-intro="Choose which currency you wish to sell in. All payments will be taken in the listing currency to allow you access to a worldwide audience. All listings will have approximation exchange rates of other currencies in Euro, GBP and USD free of charge!" data-position='right'>
  <div class="form-group"><label class="col-md-3 control-label">Currency <span style="color:red">*</span></label>
    <div class="col-md-9">
        <select class="form-control" name="currency">
@@ -220,6 +228,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
        <?php echo form_error('currency'); ?>
    </div>
 </div>
+</section>
+<section data-step="5" data-intro="Set your unit price and the minimum price at which you would like to sell if you would like to allow offers on your listing." data-position='right'>
 <div class="form-group"><label class="col-md-3 control-label">Unit Price <span style="color:red">*</span></label>
     <div class="col-md-9">
         <input type="type" class="form-control two-digits" name="unit_price" value="<?php if(!empty($product_list->unit_price)) echo $product_list->unit_price; else echo set_value('unit_price');?>"/>
@@ -239,6 +249,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <?php echo form_error('min_price'); ?>
     </div>
 </div>
+</section>
+<section data-step="6" data-intro="Manage your stock availability here by entering how many units you have available to sell. You can also specify a minimum order quantity to sell in batches." data-position='right'>
 <div class="form-group"><label class="col-md-3 control-label">Quantity Available <span style="color:red">*</span></label>
   <div class="col-md-9">
       <input type="type" class="form-control no-digits" name="total_qty" value="<?php if(!empty($product_list->total_qty)) echo $product_list->total_qty; else  echo set_value('total_qty');?>"/>
@@ -258,7 +270,9 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
     <?php echo form_error('min_qty_order'); ?>
 </div>
 </div>
+</section>
   <div class="hr-line-dashed"></div>
+    <section data-step="7" data-intro="Display in-depth shipping options by creating custom options with our shipping terms and couriers on top of listing item shipping free, priced per unit or just a flat fee to widen your selling audience" data-position='right'>
     <div class="form-group"><label class="col-md-3 control-label">Shipping Terms <button class="btn btn-success btn-circle" type="button" style="width:20px;height:20px;border-radius:10px;font-size:10px;padding:0;margin-bottom:0" data-toggle="modal" data-target="#shipping" title="Click for more information"><i class="fa fa-question"></i></button></label>
 <div class="col-md-9">
     <select class="form-control" name="shipping_term" onchange="shippings_to_couriers(this.value);">
@@ -338,6 +352,9 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
     <p style="color:red"><strong>Notice:</strong> Make sure you add at least one shipping option to the table so buyers can send you offers. If you have no shipping options in this table you will be unable to sell this item even though it may be listed!</p>
     </div>
     </div>
+    </section>
+    
+    <section data-step="8" data-intro="Describe your item to potential buyers and select a listing duration and once you have added some optional images of your item on the right hand side you are ready to go!" data-position='right'>
     <div class="hr-line-dashed"></div>
      <div class="form-group"><label class="col-md-3 control-label">Product Description</label>
         <div class="col-md-9">
@@ -373,6 +390,9 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         </div>
     </div>
    <?php endif ?>
+   </section>
+   
+    <section data-step="9" data-intro="In a rush? Save your listing for later. If you're all set then click list now and your item will be on our worldwide marketplace in a matter of seconds!" data-position='right'>
     <div class="form-group">
         <div class="col-md-9 col-md-offset-3">
         <?php if ($this->uri->segment(4)!='' && $this->uri->segment(4)=='saved_listing'): ?>
@@ -386,6 +406,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
            	<button class="btn btn-primary" type="submit" name="status" value="1">List Now</button>
         </div>
     </div>
+    </section>
  </div>
 </div>
 </div>
@@ -1266,3 +1287,7 @@ var today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(
       <?php endif ?>
      <?php }} ?>
 </datalist>
+
+
+<link href="public/main/template/gsm/css/plugins/intro/introjs.min.css" rel="stylesheet">
+<script type="text/javascript" src="public/main/template/gsm/js/plugins/intro/intro.min.js" charset="UTF-8"></script>

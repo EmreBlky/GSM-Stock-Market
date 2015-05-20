@@ -847,33 +847,105 @@ $(document).ready(function () {
 });
 </script>
 <!-- Jquery Validate -->
-<script src="public/main/template/core/js/plugins/validate/jquery.validate.min.js"></script>
 <script>
-$(document).ready(function(){
+$.validator.setDefaults({ ignore: ":hidden:not(select)" })
 $(".validation").validate({
- rules: {
-     password: {
-         required: true,
-         minlength: 3
-     },
-     url: {
-         required: true,
-         url: true
-     },
-     number: {
-         required: true,
-         number: true
-     },
-     min: {
-         required: true,
-         minlength: 6
-     },
-     max: {
-         required: true,
-         maxlength: 4
-     }
- }
+  rules: {
+    product_mpn: "required",
+    product_desc: "required",
+    product_make: "required",
+    product_model: "required",
+    product_color: "required",
+    product_type: "required",
+    unit_price: { required: true,number: true },
+    total_qty: { required: true,number: true },
+    condition: "required",
+    termsandcondition: "required",
+  },
+  messages: {
+    product_desc: "Make sure you have entered a thorough description of the item you have for sale.",
+    product_mpn: {
+      required: "We required some sort of product identifying number.",
+	},
+    product_make: {
+      required: "Select your products make from the list below",
+	},
+    product_model: {
+      required: "Buyers will need to know what model this product is for.",
+	},
+    product_color: {
+      required: "Make sure buyers know what colour the product is.",
+	},
+    product_type: {
+      required: "We require a category to put your product listing under.",
+	},
+   unit_price: {
+      required: "You need to specify a unit price!",
+	},
+    total_qty: {
+      required: "How many do you have for sale?",
+	},
+    condition: {
+      required: "Buyers will need to know what condition the item is.",
+    }
+  }
 });
+
+// apply the two-digits behaviour to elements with 'two-digits' as their class
+$( function() {
+    $('.two-digits').keyup(function(){
+        if($(this).val().indexOf('.')!=-1){         
+            if($(this).val().split(".")[1].length > 2){                
+                if( isNaN( parseFloat( this.value ) ) ) return;
+                this.value = parseFloat(this.value).toFixed(2);
+            }  
+         }            
+         return this; //for chaining
+    });
+    $('.no-digits').keyup(function(){
+        if($(this).val().indexOf('.')!=-1){         
+            if($(this).val().split(".")[1].length > 0){                
+                if( isNaN( parseFloat( this.value ) ) ) return;
+                this.value = parseFloat(this.value).toFixed(0);
+            }  
+         }            
+         return this; //for chaining
+    });
+});
+
+$(document).ready(function(){
+    $('#TextBoxId').keypress(function(e){
+      if(e.keyCode==13)
+      $('#linkadd').click();
+    });
+	var select, chosen;
+
+    // cache the select element as we'll be using it a few times
+    select = $(".custom-input");
+
+    // init the chosen plugin
+    select.chosen();
+    
+    // get the chosen object
+    chosen = select.data('chosen');
+
+    // Bind the keyup event to the search box input
+    chosen.dropdown.find('input').on('keyup', function(e)
+    {
+        // if we hit Enter and the results list is empty (no matches) add the option
+        if (e.which == 13 && chosen.dropdown.find('li.no-results').length > 0)
+        {
+            var option = $("<option>").val(this.value).text(this.value);
+           
+            // add the new option
+            select.prepend(option);
+            // automatically select it
+            select.find(option).prop('selected', true);
+            // trigger the update
+            select.trigger("chosen:updated");
+        }
+    });
+	
 });
 </script>
 <script>
