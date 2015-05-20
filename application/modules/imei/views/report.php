@@ -53,7 +53,7 @@
                                             break;
                                     } */
                                     switch(isset($row->checkColour) ? $row->checkColour : 'n/a')
-                                    {
+                                    { 
                                         case 'green':
                                             $row->result = '<label class="label label-primary"><i class="fa fa-check"></i> Passed</label>';
                                             break;
