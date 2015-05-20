@@ -42,9 +42,9 @@ class Join extends MX_Controller
     
     function profileCreate()
     {
-        echo '<pre>';
-        print_r($_POST);
-        exit;
+//        echo '<pre>';
+//        print_r($_POST);
+//        exit;
         
         $this->session->set_userdata('logged_in', 1);
         
