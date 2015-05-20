@@ -40,7 +40,7 @@
                             else
                             {
                                 foreach($order_info as $row)
-                                {
+                                { /*
                                     switch($row->result)
                                     {
                                         case 'passed':
@@ -51,6 +51,20 @@
                                             break;
                                         default:
                                             break;
+                                    } */
+                                    switch(isset($row->checkColour) ? $row->checkColour : 'n/a')
+                                    {
+                                        case 'green':
+                                            $row->result = '<label class="label label-primary"><i class="fa fa-check"></i> Passed</label>';
+                                            break;
+                                        case 'red':
+                                            $row->result = '<label class="label label-danger" ><i class="fa fa-times"></i> Failed</label>';
+                                            break;
+                                        case 'amber':
+                                            $row->result = '<label class="label label-warning" ><i class="fa fa-exclamation"></i> Warning</label>';
+                                            break;
+                                        default:
+                                            break;
                                     }
 
                                     echo '<tr>';
@@ -58,7 +72,7 @@
                                     echo '<td>' . (isset($row->cert_id) ? $row->cert_id : 'n/a') . '</td>';
                                     echo '<td>' . $row->make . '</td>';
                                     echo '<td>' . $row->model . '</td>';
-                                    echo '<td>' . (isset($row->reference) ? $row->reference : 'n/a') . '</td>';
+                                    echo '<td>' . (isset($row->ref) ? $row->ref : 'n/a') . '</td>';
                                     echo '<td class="text-center">' . $row->result . '</td>';
                                     echo '</tr>';
                                 }
