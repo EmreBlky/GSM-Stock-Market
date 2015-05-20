@@ -37,7 +37,6 @@ class Join extends MX_Controller
         $data['title'] = 'GSM - Edit Profile';
         $data['page'] = 'edit-profile';
         $this->load->view('index', $data);
-        $this->session->unset_userdata('logged_in');
         
         $this->session->unset_userdata('logged_in');
     }
@@ -260,6 +259,7 @@ class Join extends MX_Controller
                 $this->email->send();
                 //echo $this->email->print_debugger();
                 //exit;
+                 $this->session->unset_userdata('logged_in');
                     
                 redirect('http://www.gsmstockmarket.com/success');
 

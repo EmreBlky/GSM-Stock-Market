@@ -10,6 +10,8 @@ class Home extends MX_Controller
 
     function index()
     {     
+        //echo '<pre>';
+        //print_r($this->session->userdata);
         //$this->output->enable_profiler(TRUE);
         if ( ! $this->session->userdata('logged_in') )
         { 
