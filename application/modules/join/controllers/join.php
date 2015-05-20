@@ -38,6 +38,8 @@ class Join extends MX_Controller
         $data['page'] = 'edit-profile';
         $this->load->view('index', $data);
         $this->session->unset_userdata('logged_in');
+        
+        $this->session->unset_userdata('logged_in');
     }
     
     function profileCreate()
