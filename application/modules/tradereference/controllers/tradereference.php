@@ -139,7 +139,7 @@ class Tradereference extends MX_Controller
                                 'trade_2_code'      => $code2,
                     );
                     $this->tradereference_model->_update_where($data, 'member_id', $this->session->userdata('members_id'));
-                    $this->salesforces->insertSalesforce($this->input->post('trade_1_name'), $email1, $this->input->post('trade_1_phone'), $this->input->post('trade_1_company'), $this->input->post('trade_1_country'), $this->input->post('trade_2_name'), $email2, $this->input->post('trade_1_phone'), $this->input->post('trade_2_company'), $this->input->post('trade_2_country'), $trader);
+                    $this->salesforces->insertSalesforce($this->input->post('trade_1_name'), $email1, $this->input->post('trade_1_phone'), $this->input->post('trade_1_company'), $this->country_model->get_where($this->input->post('trade_1_country'))->country, $this->input->post('trade_2_name'), $email2, $this->input->post('trade_2_phone'), $this->input->post('trade_2_company'), $this->country_model->get_where($this->input->post('trade_2_country'))->country, $trader);
                 }
 
                 $this->load->module('emails');
@@ -177,7 +177,7 @@ class Tradereference extends MX_Controller
                                     <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
                                     <td class="content-block" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
                                     <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">Dear '.$this->input->post('trade_1_name').',</p>
-                                    <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">Our client '.$this->member_model->get_where($this->session->userdata('members_id'))->firstname.' '.$this->member_model->get_where($this->session->userdata('members_id'))->lastname.' of '.$this->country_model->get_where($this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id)->company_name.', '.$this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id)->country)->country.' has kindly requested that you provide a trade reference on their behalf.</p>
+                                    <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">Our client '.$this->member_model->get_where($this->session->userdata('members_id'))->firstname.' '.$this->member_model->get_where($this->session->userdata('members_id'))->lastname.' of '.$this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id)->company_name.', '.$this->country_model->get_where($this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id)->country)->country.' has kindly requested that you provide a trade reference on their behalf.</p>
                                     <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">We ensure our platform is a trusted and safe trading environment for all registered members so require these references as extra checks before we allow them full access to our platform.</p>
                                     <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">Please could you click on the link below to confirm that you know the company, you have had business dealings with them and that they are trustworthy.</p>
                                     </td>
@@ -232,7 +232,7 @@ class Tradereference extends MX_Controller
                                     <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
                                     <td class="content-block" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
                                     <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">Dear '.$this->input->post('trade_2_name').',</p>
-                                    <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">Our client '.$this->member_model->get_where($this->session->userdata('members_id'))->firstname.' '.$this->member_model->get_where($this->session->userdata('members_id'))->lastname.' of '.$this->country_model->get_where($this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id)->company_name.', '.$this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id)->country)->country.' has kindly requested that you provide a trade reference on their behalf.</p>
+                                    <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">Our client '.$this->member_model->get_where($this->session->userdata('members_id'))->firstname.' '.$this->member_model->get_where($this->session->userdata('members_id'))->lastname.' of '.$this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id)->company_name.', '.$this->country_model->get_where($this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id)->country)->country.' has kindly requested that you provide a trade reference on their behalf.</p>
                                     <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">We ensure our platform is a trusted and safe trading environment for all registered members so require these references as extra checks before we allow them full access to our platform.</p>
                                     <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">Please could you click on the link below to confirm that you know the company, you have had business dealings with them and that they are trustworthy.</p>
                                     </td>
@@ -286,32 +286,43 @@ class Tradereference extends MX_Controller
         
         if($code){
             
-            $confirm_code = substr($code, -7);
-            $members = $this->tradereference_model->_custom_query("SELECT member_id, ".$confirm_code."_company, ".$confirm_code."_name, ".$confirm_code."_email, ".$confirm_code."_phone, ".$confirm_code."_confirm FROM tradereference WHERE (trade_1_code = '".$code."') OR (trade_2_code = '".$code."') ");
-            $data['message'] = 'no';
-            //$member = $members[0]->member_id;
-            //echo '<pre>';
-            //print_r($member);
-            //echo $confirm_code;
-            //$data['main'] = 'tradereference';
+            $tcount = $this->tradereference_model->_custom_query_count("SELECT COUNT(*) AS count FROM tradereference WHERE trade_1_code = '".$code."' OR trade_2_code = '".$code."'");
             
-            $data['cc'] = $confirm_code;
-            $data['member'] = $members[0]->member_id;
+            if($tcount[0]->count > 0){
+                
+                $confirm_code = substr($code, -7);
+                $members = $this->tradereference_model->_custom_query("SELECT member_id, ".$confirm_code."_company, ".$confirm_code."_name, ".$confirm_code."_email, ".$confirm_code."_phone, ".$confirm_code."_confirm FROM tradereference WHERE (trade_1_code = '".$code."') OR (trade_2_code = '".$code."') ");
+                $data['message'] = 'no';
+                //$member = $members[0]->member_id;
+                //echo '<pre>';
+                //print_r($member);
+                //echo $confirm_code;
+                //$data['main'] = 'tradereference';
 
-            if($confirm_code == 'trade_1'){            
+                $data['cc'] = $confirm_code;
+                $data['member'] = $members[0]->member_id;
 
-                $data['company'] = $members[0]->trade_1_company;
-                $data['name'] = $members[0]->trade_1_name;
-                $data['confirm'] = 'trade_1_confirm';
+                if($confirm_code == 'trade_1'){            
 
+                    $data['company'] = $members[0]->trade_1_company;
+                    $data['name'] = $members[0]->trade_1_name;
+                    $data['confirm'] = 'trade_1_confirm';
+
+                }
+                else{
+
+                    $data['company'] = $members[0]->trade_2_company;
+                    $data['name'] = $members[0]->trade_2_name;
+                    $data['confirm'] = 'trade_2_confirm';
+
+                }
+                
             }
             else{
-
-                $data['company'] = $members[0]->trade_2_company;
-                $data['name'] = $members[0]->trade_2_name;
-                $data['confirm'] = 'trade_2_confirm';
-
+                
+                $data['message'] = 'expired';
             }
+            
         }
         else{
             $data['message'] = 'yes';

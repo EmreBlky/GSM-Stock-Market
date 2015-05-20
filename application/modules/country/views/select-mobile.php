@@ -7,7 +7,7 @@
 
         } else{
     ?>
-        <option value="">Please Select</option>
+        <option value="211">Please Select</option>
     <?php        
         }?>
     <?php foreach ($select_mobile as $country_mobile) {?>
