@@ -1,7 +1,6 @@
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-lg-12">
-            <h2>My Listings <?php  echo "Server Address: ", $_SERVER['SERVER_ADDR']; // displays the server ip address. 
-?> </h2>
+            <h2>My Listings</h2>
             <ol class="breadcrumb">
                 <li><a href="/">Home</a></li>
                 <li>Marketplace</li>
