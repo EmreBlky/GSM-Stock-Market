@@ -62,7 +62,7 @@
 		$months  = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));  
 		$days    = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
 		if($days <1){ echo "style='color:red!important'";}?>><?php echo date('d-M, H:i', strtotime($value->listing_end_datetime)); ?></span></td>
-						<td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php if ($value->capacity > 0) { ?><?php echo $value->capacity; ?><?php } ?> <?php echo $value->spec; ?></td>
+						<td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php if ($value->device_capacity > 0) { ?><?php echo $value->device_capacity; ?><?php } ?> <?php echo $value->spec; ?></td>
                         
         <td><?php echo $value->condition; ?></td>
         <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
@@ -95,7 +95,7 @@
 <div class="col-lg-12">
 <div class="ibox float-e-margins">
 <div class="ibox-title">
-    <h5>Selling Offers </h5>
+    <h5>Selling Offers (WTS)</h5>
 </div>
 <div class="ibox-content">
 <table class="table table-striped table-bordered table-hover buying_requests" >
@@ -170,7 +170,7 @@
 </div>     
 
 </div> 
-
+<?php /*
 
 <div class="row">
 <div class="col-lg-12">
@@ -240,7 +240,9 @@ $session_member_id = $this->session->userdata('members_id'); ?>
 </div>
 </div>
 </div>
-</div>       
+</div>
+*/ ?>
+       
 </div>
 
 <!-- Data Tables -->

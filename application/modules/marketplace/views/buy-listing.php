@@ -1,18 +1,18 @@
 <div class="row wrapper border-bottom white-bg page-heading">
-<div class="col-lg-10">
-    <h2>Create a Buying Request (WTB)</h2>
-    <ol class="breadcrumb">
-        <li>
-            <a href="/">Home</a>
-        </li>
-        <li class="active">
-            <strong>Buying Request</strong>
-        </li>
-    </ol>
+    <div class="col-lg-9">
+        <h2>Create a Buying Request (WTB)</h2>
+        <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li>Marketplace</li>
+            <li>Buy</li>
+            <li class="active"><strong>Create Listing</strong></li>
+        </ol>
+    </div>
+    <div class="col-lg-3">
+        <a class="btn btn-success pull-right" style="margin-top:25px;margin-right:10px" href="javascript:void(0);" onclick="javascript:introJs().setOption('showProgress', true).start();">Enable Tutorial</a>
+    </div>
 </div>
-<div class="col-lg-2">
-</div>
-</div>
+
 <?php $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id);
 if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <div class="wrapper wrapper-content">

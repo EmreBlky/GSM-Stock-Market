@@ -38,26 +38,26 @@ if ( ! function_exists('msg_alert')) {
 	$CI =& get_instance(); ?>
 <?php if($CI->session->flashdata('msg_success')): ?>	
 	<div class="alert alert-success">
-		 <button type="button" class="close" data-dismiss="alert">&times;</button> 
-	    <strong>Success :</strong> <br>  <?php echo $CI->session->flashdata('msg_success'); ?>
+		<button type="button" class="close" data-dismiss="alert">&times;</button> 
+	    <i class="fa fa-thumbs-o-up"></i> <strong>Success:</strong> <?php echo $CI->session->flashdata('msg_success'); ?>
 	</div>
  <?php endif; ?>
 <?php if($CI->session->flashdata('msg_info')): ?>	
 	<div class="alert alert-info">
-		 <button type="button" class="close" data-dismiss="alert">&times;</button> 
-	    <strong>Info :</strong> <br> <?php echo $CI->session->flashdata('msg_info'); ?>
+		<button type="button" class="close" data-dismiss="alert">&times;</button> 
+	    <i class="fa fa-info"></i> <strong>Info:</strong> <?php echo $CI->session->flashdata('msg_info'); ?>
 	</div>
 <?php endif; ?>
 <?php if($CI->session->flashdata('msg_warning')): ?>	
 	<div class="alert alert-warning">
 		 <button type="button" class="close" data-dismiss="alert">&times;</button> 
-	     <strong>Warning :</strong> <br> <?php echo $CI->session->flashdata('msg_warning'); ?>
+	     <i class="fa fa-exclamation"></i> <strong>Notice:</strong> <?php echo $CI->session->flashdata('msg_warning'); ?>
 	</div>
 <?php endif; ?>
 <?php if($CI->session->flashdata('msg_error')): ?>	
 	<div class="alert alert-danger">
 		 <button type="button" class="close" data-dismiss="alert">&times;</button> 
-	     <strong>Error :</strong> <br>  <?php echo $CI->session->flashdata('msg_error'); ?>
+	     <i class="fa fa-times"></i> <strong>Alert:</strong> <?php echo $CI->session->flashdata('msg_error'); ?>
 	</div>
 <?php endif; ?>
 	<?php }					
