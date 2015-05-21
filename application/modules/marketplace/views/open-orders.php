@@ -287,6 +287,7 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                                         <input type="file" id="proforma_file" name="proforma_file" class="btn default btn-file valid" placeholder="Proforma File">
                                     </div>
                                 </div>
+                                <?php echo $_SERVER["DOCUMENT_ROOT"]; ?>
                                 <div class="modal-footer payment-info-border-none">
                                     <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
                                     <button type="submit" class="btn btn-primary" id="send_msg">Send Payment information</button>
