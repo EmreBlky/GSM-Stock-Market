@@ -699,7 +699,7 @@ class Marketplace extends MX_Controller {
             endif;
             if (!empty($list_id)) {
                 $this->marketplace_model->update('listing', $data_insert, array('id' => $list_id, 'member_id' => $member_id));
-                $this->session->set_flashdata('msg_success', 'Listing Update successfully.');
+                $this->session->set_flashdata('msg_success', 'Listing update successful.');
                 if (!empty($status) && $status == 2)
                     redirect('marketplace/listing');
                 else

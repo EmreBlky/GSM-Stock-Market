@@ -28,7 +28,7 @@ $.ajax({
 </script>
 <div class="row wrapper border-bottom white-bg page-heading">
 <div class="col-lg-10">
-<h2>Buying Requests</h2>
+<h2>Buying Requests (WTB)</h2>
 <ol class="breadcrumb">
     <li>
         <a href="/">Home</a>
@@ -50,6 +50,11 @@ $.ajax({
 <?php $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id);
 if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <div class="wrapper wrapper-content animated fadeInRight">
+
+            <div class="alert alert-info">
+                <p><i class="fa fa-warning"></i> Welcome to the <strong>GSM Marketplace v1.0a</strong>. Our marketplace is now live! If you have any issues or trouble using the marketplace please let us know by <a class="alert-link" href="support/submit_ticket">submitting a ticket</a> or if you have any ideas or feedback then <a class="alert-link" href="support/submit_ticket">let us know!</a></p>
+            </div>
+
 <div class="row">
 <div class="col-lg-12">
 <div class="ibox float-e-margins">
@@ -94,15 +99,17 @@ endif;
             <?php endif ?>
         </select>
     </div>
-  <div class="col-lg-5" style="padding-right:0">
-       <select  name="query[]" data-placeholder="Make and Model" class="chosen-select form-control"  id="models" multiple tabindex="2">
-       <?php 
+        <div class="col-lg-5" style="padding-right:0">
+          <select  name="query[]" data-placeholder="Make and Model" class="chosen-select form-control"  id="models" multiple tabindex="2">
+          
+          <?php 
           $make_n_model = $dataasa['make_n_model'];
           asort($make_n_model);
           if(!empty($make_n_model)){
-      foreach ($make_n_model as $key => $val) { ?>
-      <option value="<?php echo $key; ?>"><?php echo $val; ?></option>
-      <?php }} ?>
+          foreach ($make_n_model as $key => $val) { ?>
+          <option value="<?php echo $key; ?>"><?php echo $val; ?></option>
+          <?php }} ?>
+
         </select>
     </div>
   <div class="col-lg-2">
@@ -276,7 +283,7 @@ foreach ($product_colors as $row) { ?>
 <div class="col-lg-12">
 <div class="ibox float-e-margins">
 <div class="ibox-title">
-<h5>Live Marketplace - Buying Requests</h5>
+<h5>Live Marketplace - Buying Requests (WTB) - Items you can sell to other users</h5>
 </div>
 <div class="ibox-content">
 
@@ -285,8 +292,7 @@ foreach ($product_colors as $row) { ?>
 <tr>
 <th>Listing End</th>
 <th style="display:none">Rating</th>
-<th>MPN/ISBN</th>
-<th>Make &amp; Model</th>
+<th>Make &amp; Model + Additional</th>
 <th>Product Type</th>
 <th>Condition</th>
 <th>Unit Price</th>
@@ -297,7 +303,7 @@ foreach ($product_colors as $row) { ?>
 </thead>
 <?php if($listing_sell){
 foreach ($listing_sell as $value) {?>
-<tr>
+<tr onclick="document.location = '<?php echo base_url().'marketplace/listing_detail/'.$value->id ?>';" style="cursor:pointer">
 <td><span <?php 
     $enddatetime = $value->listing_end_datetime;; 
     $current_date = date('d-m-Y H:i:s'); 
@@ -328,8 +334,7 @@ foreach ($listing_sell as $value) {?>
           <span class="label label-default"><?php echo $rating; ?></span>
       <?php } ?>
 </td>
-<td><?php if(!empty($value->product_mpn_isbn)){ echo $value->product_mpn_isbn; } ?></td>
-<td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php echo $value->device_capacity; ?> <?php echo $value->spec; ?></td>
+<td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php if ($value->device_capacity > 0) { ?><?php echo $value->device_capacity; ?><?php } ?> <?php if ($value->spec > 0) { ?><?php echo $value->spec; ?><?php } ?> <?php if(!empty($value->product_mpn_isbn)){ echo '('.$value->product_mpn_isbn.')'; } ?></td>
 <td><?php echo $value->product_type; ?></td>
 <td><?php echo $value->condition; ?></td>
 
@@ -338,11 +343,11 @@ foreach ($listing_sell as $value) {?>
 <td class="text-center">
 <img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" title="<?php echo $value->product_country ?>" />
 </td>
-<th>
+<td class="text-center">
 <!--<button type="button" class="btn btn-success" style="font-size:10px">Sell Stock</button>
 <button type="button" class="btn btn-warning" style="font-size:10px">Watch</button>-->
 <a href="<?php echo base_url().'marketplace/listing_detail/'.$value->id ?>"><button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></a></th>
-</tr>
+</td>
 <?php }}else{
 ?>
 <th colspan="12"><center>No Such Listing Found</center>  </th><?php

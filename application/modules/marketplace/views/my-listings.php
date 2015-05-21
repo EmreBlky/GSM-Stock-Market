@@ -57,8 +57,8 @@
             $end_datetime = strtotime(date('d-m-Y H:i:s', strtotime($value->listing_end_datetime))); 
             $start_datetime = strtotime(date('d-m-Y H:i:s', strtotime($value->schedule_date_time))); 
            
-            if($current_datetime > $end_datetime){
-                ?> <span class="label label-danger">Ended</span><?php
+            if($current_datetime > $end_datetime || $value->qty_available == 0){
+                ?> <span class="label label-danger">Inactive</span><?php
             } elseif($current_datetime >= $start_datetime){?>
                 <span class="label label-primary">Active</span>
        <?php }else{ if($value->scheduled_status){ ?>
@@ -77,7 +77,7 @@
                         
         <td><?php echo $value->condition; ?></td>
         <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
-        <td><?php echo $value->qty_available; ?></td>
+        <td <?php if ($value->qty_available == 0) { ?>style="color:red"<?php }?>><?php echo $value->qty_available; ?></td>
         <th class="text-center">
          <a href="<?php echo base_url().'marketplace/buy_listing/'.$value->id; ?>" class="btn btn-warning" style="font-size:10px"><i class="fa fa-paste"></i> Edit</a>
         <?php 
@@ -85,9 +85,9 @@
         <a href="<?php echo base_url().'marketplace/listing_detail/'.$value->id; ?>" class="btn btn-success" style="font-size:10px"><i class="fa fa-eye"></i>  View</a>
         <a href="<?php echo base_url().'marketplace/listing_delete/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to end this listing ?');" style="font-size:10px"><i class="fa fa-times"></i> End</a>
        <?php }else{?>
-       <a class="btn btn-success" style="font-size:10px">
+       <a class="btn btn-success" style="font-size:10px;display:none">
        <i class="fa fa-arrow-up"></i> Relist</a>
-       <a href="<?php echo base_url().'marketplace/end_listing_status/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to delete this listing?');" style="font-size:10px"><i class="fa fa-times"></i> Delete</a>
+       <a href="<?php echo base_url().'marketplace/end_listing_status/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to delete this listing?');" style="font-size:10px"><i class="fa fa-times"></i> Remove</a>
         <?php } ?>
 
         </th>
@@ -134,15 +134,17 @@
             $end_datetime = strtotime(date('d-m-Y H:i:s', strtotime($value->listing_end_datetime))); 
             $start_datetime = strtotime(date('d-m-Y H:i:s', strtotime($value->schedule_date_time))); 
            
-            if($current_datetime > $end_datetime){
-                ?> <span class="label label-danger">Ended</span><?php
+            if($current_datetime > $end_datetime || $value->qty_available == 0){
+                ?> <span class="label label-danger">Inactive</span><?php
             } elseif($current_datetime >= $start_datetime){?>
                 <span class="label label-primary">Active</span>
        <?php }else{ if($value->scheduled_status){ ?>
                 <span class="label label-success">Scheduled</span>
             <?php }}?>
         </td>
-        <td><?php echo date('d-M, H:i', strtotime($value->schedule_date_time)); ?></td>
+        <td><?php echo date('d-M, H:i', strtotime($value->created)); ?></td>
+        
+        
         <td><span <?php 
             $enddatetime = $value->listing_end_datetime;; 
             $current_date = date('d-m-Y H:i:s'); 
@@ -157,7 +159,7 @@
         <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php if ($value->device_capacity > 0) { ?><?php echo $value->device_capacity; ?><?php } ?> <?php if ($value->spec > 0) { ?><?php echo $value->spec; ?><?php } ?></td>
         <td><?php echo $value->condition; ?></td>
         <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
-        <td><?php echo $value->qty_available; ?></td>
+        <td <?php if ($value->qty_available == 0) { ?>style="color:red"<?php }?>><?php echo $value->qty_available; ?></td>
         <th class="text-center">
         <a href="<?php echo base_url().'marketplace/sell_listing/'.$value->id; ?>" class="btn btn-warning" style="font-size:10px"><i class="fa fa-paste"></i> Edit</a>
         <?php 
@@ -165,9 +167,9 @@
         <a href="<?php echo base_url().'marketplace/listing_detail/'.$value->id; ?>" class="btn btn-success" style="font-size:10px"><i class="fa fa-eye"></i> View</a>
         <a href="<?php echo base_url().'marketplace/listing_delete/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to end this listing ?');" style="font-size:10px"><i class="fa fa-times"></i> End</a>
        <?php }else{?>
-       <a class="btn btn-success" style="font-size:10px">
+       <a class="btn btn-success" style="font-size:10px;display:none">
        <i class="fa fa-arrow-up"></i> Relist</a>
-       <a href="<?php echo base_url().'marketplace/end_listing_status/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to end delete this isting?');" style="font-size:10px"><i class="fa fa-times"></i> Delete</a>
+       <a href="<?php echo base_url().'marketplace/end_listing_status/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to end delete this isting?');" style="font-size:10px"><i class="fa fa-times"></i> Remove</a>
         <?php } ?>
       
         </th>
