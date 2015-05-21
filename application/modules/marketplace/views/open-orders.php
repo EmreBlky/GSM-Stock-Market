@@ -280,14 +280,14 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                                 </div>
 
                                 <div class="row margin-top12">
-                                    <div class="col-md-6">
+                                    <div class="col-md-6 padding-left0">
                                         <input type="text" name="seller_reference" value="" class="form-control" placeholder="Reference">
                                     </div>
                                     <div class="col-md-6">
                                         <input type="file" name="proforma_file" class="btn default btn-file valid" placeholder="Proforma File">
                                     </div>
                                 </div>
-                                <div class="modal-footer">
+                                <div class="modal-footer payment-info-border-none">
                                     <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
                                     <button type="submit" class="btn btn-primary" id="send_msg">Send Payment information</button>
                                 </div>
