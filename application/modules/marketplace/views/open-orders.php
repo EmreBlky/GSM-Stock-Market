@@ -230,7 +230,16 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
               <textarea name="payment_info" cols="8" rows="5" class="form-control" placeholder="Insert payment information."></textarea>
               <input type="hidden" name="order_id" value="" class="order_id_insert">
           </div>
-          <div class="modal-footer">
+
+             <div class="row">
+                 <input type="text" name="seller_reference" value="" class="form-control" placeholder="Reference">
+             </div>
+
+             <div class="row">
+                 <input type="file" name="proforma_file" class="form-control" placeholder="Proforma File">
+             </div>
+
+             <div class="modal-footer">
               <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
               <button type="submit" class="btn btn-primary" id="send_msg">Send Payment information</button>
           </div>  
