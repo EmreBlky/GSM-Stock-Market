@@ -2371,13 +2371,24 @@ class Marketplace extends MX_Controller {
     public function insert_payment_info() {
         $payment_detail = $this->input->post('payment_info');
         $seller_reference = $this->input->post('seller_reference');
+        $reference_file_name = $_FILES['proforma_file']['name'];
+
+        if (!empty($_FILES['proforma_file']['name'])) :
+            $config1['upload_path'] = './public/upload/listing/reference_files/';
+            $config1['allowed_types'] = 'gif|jpg|png|jpeg|pdf';
+            $config1['max_size'] = '20000';
+            $this->load->library('upload');
+            $this->upload->initialize($config1);
+            $this->upload->data(); // upload image
+        endif;
         $user_id = $this->session->userdata('members_id');
         $id = $this->input->post('order_id');
-        if ($this->marketplace_model->update('make_offer', array('order_status' => 1, 'payment_detail' => $payment_detail, 'seller_reference' => $seller_reference, 'payment_infoadd_datetime' => date('Y-m-d H:i:s')), array('id' => $id))) {
+        if ($this->marketplace_model->update('make_offer', array('order_status' => 1, 'payment_detail' => $payment_detail, 'seller_reference' => $seller_reference, 'proforma_file' => $reference_file_name, 'payment_infoadd_datetime' => date('Y-m-d H:i:s')), array('id' => $id))) {
             $this->session->set_flashdata('msg_success', 'Payment information save sucessfully.');
         } else {
             $this->session->set_flashdata('msg_info', 'Invalid.');
         }
+
         redirect($_SERVER['HTTP_REFERER']);
     }
 
