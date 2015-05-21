@@ -1,6 +1,8 @@
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-lg-12">
-            <h2>My Listings</h2>
+            <h2>My Listings <?php 
+echo "Remote Address: ", $_SERVER['REMOTE_ADDR']; // displays the remote ip address. 
+?> </h2>
             <ol class="breadcrumb">
                 <li><a href="/">Home</a></li>
                 <li>Marketplace</li>
@@ -95,7 +97,7 @@
 <div class="col-lg-12">
 <div class="ibox float-e-margins">
 <div class="ibox-title">
-    <h5>Selling Offers</h5>
+    <h5>Selling Offers </h5>
 </div>
 <div class="ibox-content">
 <table class="table table-striped table-bordered table-hover buying_requests" >
