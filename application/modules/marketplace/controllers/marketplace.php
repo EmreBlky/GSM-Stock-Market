@@ -2377,9 +2377,13 @@ class Marketplace extends MX_Controller {
             $config1['upload_path'] = './public/upload/listing/reference_files/';
             $config1['allowed_types'] = 'gif|jpg|png|jpeg|pdf';
             $config1['max_size'] = '20000';
-            $this->load->library('upload');
-            $this->upload->initialize($config1);
-            $this->upload->data(); // upload image
+            $this->load->library('upload', $config1);
+            //   $this->upload->initialize($config1);
+            if (!$this->upload->do_upload()) {
+                $error = array('error' => $this->upload->display_errors());
+            } else {
+                $data = array('upload_data' => $this->upload->data());
+            }
         endif;
         $user_id = $this->session->userdata('members_id');
         $id = $this->input->post('order_id');
