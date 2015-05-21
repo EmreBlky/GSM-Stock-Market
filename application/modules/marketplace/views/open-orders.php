@@ -273,7 +273,7 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                             <h4 class="modal-title">Payment Information</h4>
                         </div>
                         <div class="modal-body">
-                            <form action="<?php echo base_url() . "marketplace/insert_payment_info/"; ?>" method="post" accept-charset="utf-8">
+                            <form action="<?php echo base_url() . "marketplace/insert_payment_info/"; ?>" method="post" accept-charset="utf-8" onsubmit="return ValidatePaymentInformation();">
                                 <div class="row">
                                     <textarea name="payment_info" cols="8" rows="5" class="form-control" placeholder="Insert payment information."></textarea>
                                     <input type="hidden" name="order_id" value="" class="order_id_insert">
