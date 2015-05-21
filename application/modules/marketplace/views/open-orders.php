@@ -283,8 +283,8 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                                     <input type="text" name="seller_reference" value="" class="form-control" placeholder="Reference">
                                 </div>
 
-                                <div class="row" style="padding:10px;">
-                                    <input type="file" name="proforma_file" class="form-control" placeholder="Proforma File">
+                                <div class="row">
+                                    <input type="file" style="padding-bottom:40px;" name="proforma_file" class="form-control" placeholder="Proforma File">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
