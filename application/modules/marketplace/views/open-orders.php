@@ -284,7 +284,7 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                                 </div>
 
                                 <div class="row margin-top12">
-                                    <input type="file" name="proforma_file" class="form-control padding-bottom40" placeholder="Proforma File">
+                                    <input type="file" name="proforma_file" class="btn default btn-file valid" placeholder="Proforma File">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
