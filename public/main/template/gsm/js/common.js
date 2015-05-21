@@ -18,7 +18,7 @@ function ValidatePaymentInformation()
 
     if (FileExtension != '' || FileExtension.trim() != "")
     {
-        if ($.inArray(FileExtension, ["png", "jpg", "pdf", 'jpeg']) == -1) {
+        if ($.inArray(FileExtension, ["png", "jpg", "pdf", "jpeg", "gif"]) == -1) {
             $("#proforma_file").addClass('errorClass');
             ValidationResults = false;
         } else {
