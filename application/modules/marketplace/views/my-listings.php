@@ -83,7 +83,7 @@
         <?php 
          if($end_datetime > $current_datetime){ ?>
         <a href="<?php echo base_url().'marketplace/listing_detail/'.$value->id; ?>" class="btn btn-success" style="font-size:10px"><i class="fa fa-eye"></i>  View</a>
-        <a href="<?php echo base_url().'marketplace/listing_delete/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to end this listing ?');" style="font-size:10px"><i class="fa fa-times"></i> End</a>
+        <a href="<?php echo base_url().'marketplace/listing_delete/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to end this listing ?');" style="font-size:10px"><i class="fa fa-times"></i> Remove</a>
        <?php }else{?>
        <a class="btn btn-success" style="font-size:10px;display:none">
        <i class="fa fa-arrow-up"></i> Relist</a>
@@ -165,7 +165,7 @@
         <?php 
          if($end_datetime > $current_datetime){ ?>
         <a href="<?php echo base_url().'marketplace/listing_detail/'.$value->id; ?>" class="btn btn-success" style="font-size:10px"><i class="fa fa-eye"></i> View</a>
-        <a href="<?php echo base_url().'marketplace/listing_delete/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to end this listing ?');" style="font-size:10px"><i class="fa fa-times"></i> End</a>
+        <a href="<?php echo base_url().'marketplace/listing_delete/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to end this listing ?');" style="font-size:10px"><i class="fa fa-times"></i> Remove</a>
        <?php }else{?>
        <a class="btn btn-success" style="font-size:10px;display:none">
        <i class="fa fa-arrow-up"></i> Relist</a>
