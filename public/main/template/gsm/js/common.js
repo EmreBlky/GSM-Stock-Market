@@ -15,11 +15,10 @@ function ValidatePaymentInformation()
         ValidationResults = true;
 
     }
-    console.log(FileExtension);
-    return false;
+
     if (FileExtension != '' || FileExtension.trim() != "")
     {
-        if ($.inArray(ext, ["jpg", "pdf", 'jpeg']) == -1) {
+        if ($.inArray(FileExtension, ["jpg", "pdf", 'jpeg']) == -1) {
             $("#proforma_file").addClass('errorClass');
             ValidationResults = false;
         } else {
@@ -27,6 +26,8 @@ function ValidatePaymentInformation()
             ValidationResults = true;
         }
     }
+    console.log(ValidationResults);
+    return false;
 
     return ValidationResults;
 
