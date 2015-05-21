@@ -2371,7 +2371,7 @@ class Marketplace extends MX_Controller {
     public function insert_payment_info() {
         $payment_detail = $this->input->post('payment_info');
         $seller_reference = $this->input->post('seller_reference');
-        $reference_file_name = $_FILES['proforma_file']['name'];
+        $proforma_file = $_FILES['proforma_file']['name'];
 
         if (!empty($_FILES['proforma_file']['name'])) :
             $config1['upload_path'] = './public/upload/listing/reference_files/';
@@ -2383,7 +2383,7 @@ class Marketplace extends MX_Controller {
         endif;
         $user_id = $this->session->userdata('members_id');
         $id = $this->input->post('order_id');
-        if ($this->marketplace_model->update('make_offer', array('order_status' => 1, 'payment_detail' => $payment_detail, 'seller_reference' => $seller_reference, 'proforma_file' => $reference_file_name, 'payment_infoadd_datetime' => date('Y-m-d H:i:s')), array('id' => $id))) {
+        if ($this->marketplace_model->update('make_offer', array('order_status' => 1, 'payment_detail' => $payment_detail, 'seller_reference' => $seller_reference, 'proforma_file' => $proforma_file, 'payment_infoadd_datetime' => date('Y-m-d H:i:s')), array('id' => $id))) {
             $this->session->set_flashdata('msg_success', 'Payment information save sucessfully.');
         } else {
             $this->session->set_flashdata('msg_info', 'Invalid.');
