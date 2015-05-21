@@ -327,7 +327,7 @@ endif;
         
         
         <td><?php if(!empty($value->product_mpn_isbn)){ echo $value->product_mpn_isbn; } ?></td>
-        <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php echo $value->device_capacity; ?> <?php echo $value->spec; ?></td>
+        <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php if ($value->device_capacity > 0) { ?><?php echo $value->device_capacity; ?><?php } ?> <?php if ($value->spec > 0) { ?><?php echo $value->spec; ?><?php } ?></td>
         <td><?php echo $value->product_type; ?></td>
         <td><?php echo $value->condition; ?></td>
         <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo  currency_class($value->currency) ?> <?php echo $value->unit_price; ?></td>
