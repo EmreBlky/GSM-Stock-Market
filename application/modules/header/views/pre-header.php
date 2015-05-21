@@ -47,7 +47,6 @@
         <link href="public/main/template/gsm/css/plugins/cropper/main.css" rel="stylesheet">
         <script src="public/main/template/gsm/js/plugins/cropper/cropper.js"></script>
         <script src="public/main/template/gsm/js/plugins/cropper/main.js"></script>
-        <script src="public/main/template/gsm/js/common.js"></script>
         <script type="text/javascript">
             $(document).on("click", "#deleteMemberImage", function() {
                 $(this).parent().prev('.avatar-view').html('<img src="public/main/template/gsm/images/members/no_profile.jpg" />');
@@ -65,7 +64,7 @@
             $(document).on("click", "#changeCompanyImage", function() {
                 $(this).parent().prev('.avatar-view').click();
             })
-        </script> 
+        </script>
 
 
         <script src="public/main/template/core/js/plugins/metisMenu/jquery.metisMenu.js"></script>
@@ -75,16 +74,16 @@
         <script type="text/javascript" src="public/admin/js/jquery.elevatezoom.js"></script>
         <script type="text/javascript" src="public/admin/js/jquery.fancybox.js?v=2.1.5"></script>
         <link rel="stylesheet" href="public/main/template/gsm/css/jquery.fancybox.css" />
-                    <script src="public/main/template/core/js/plugins/validate/jquery.validate.min.js"></script>
+        <script src="public/main/template/core/js/plugins/validate/jquery.validate.min.js"></script>
 
 
         <script type="text/javascript">
                     var weekdaystxt = ["Sun", "Mon", "Tues", "Wed", "Th u rs", "Fri", "Sat"]
                     function showLocalTime(container, servermode, offsetMinutes, displayversion){
-                            if (!document.getElementById || !document.getElementById(container)) return
-                            this.container = document.getElementById (container)
-                    this.displayversion = displayversio n
-                            var servertimestring = (se r vermode == "s erver-php")? '<? print date("F d, Y H:i:s", time())?>' : (servermode = = "server-ssi")? '<!--#config timefmt="%B %d, %Y %H:%M:%S"-->               <!--#echo var="DATE_LOCAL" -->' : '<%= Now() %>'
+                    if (!document.getElementById || !document.getElementById(container)) return
+                            this.container = document.getElementById ( container)
+                            this.displayversion = displayversio n
+                            var servertimestring = (se r vermode ==  "s erver-php")? '<? print date("F d, Y H:i:s", time())?>' : (servermode = =  "server-ssi")? '<!--#config timefmt="%B %d, %Y %H:%M:%S"-->               <!--#echo var="DATE_LOCAL" -->' : '<%= Now() %>'
                                                 this.localtime = this.serverdate = new Date(servertimestring)
                                                 this.localtime.setTime(this.serverdate.getTime() + offsetMinutes * 300 * 1000) //add user offset to server time
                                                 this.updateTime()

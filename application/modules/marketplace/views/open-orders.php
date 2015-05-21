@@ -1,3 +1,5 @@
+<script src="public/main/template/gsm/js/common.js"></script>
+<!-- Common JS For Vaidations -->
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
         <h2>Open Orders</h2>
@@ -286,7 +288,7 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                                     <div class="col-md-6">
                                         <input type="file" id="proforma_file" name="proforma_file" class="btn default btn-file valid" placeholder="Proforma File">
                                     </div>
-                                </div> 
+                                </div>
                                 <div class="modal-footer payment-info-border-none">
                                     <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
                                     <button type="submit" class="btn btn-primary" id="send_msg">Send Payment information</button>
