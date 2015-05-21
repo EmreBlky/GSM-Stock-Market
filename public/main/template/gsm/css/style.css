@@ -6,7 +6,7 @@ img.fullhw {height:100%;width:100%}
 .nopadding {padding:0}
 .margin-top12{margin-top: 12px;}
 .payment-info-border-none{ border-top:none !important;}
-.padding-left0{padding-left: none !important;}
+.padding-left0{padding-left: 0px !important;}
 @media (min-width: 768px) {
     .gsm-contact {text-align:right}
     .gsm-contact button {font-size:10px}
