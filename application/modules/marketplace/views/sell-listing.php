@@ -33,9 +33,6 @@
 <h5>Listing Details</h5>
 <a class="btn btn-info btn-xs pull-right" href="javascript:void(0);" onclick="javascript:introJs().setOption('showProgress', true).start();"><i class="fa fa-info"></i> Display Listing Tutorial</a>
 </div>
-<?php if(validation_errors()){
-        ?><p class="bg-danger validation_message">Please check following errors validation below.</p><?php
-    }?>
 <div class="ibox-content"> <!-- Selling -->
 <div style="display:none">
 <div class="form-group"><label class="col-md-3 control-label">Schedule Listing</label>
@@ -102,8 +99,8 @@
 </div>
      <div class="form-group"><label class="col-md-3 control-label">Colour <span style="color:red">*</span></label>
       <div class="col-md-9">
-       <select class="chosen-select form-control" id="product_color" name="product_color">
-          <option value="None" selected disabled>What is the primary colour of the item?</option>
+ 		<select data-placeholder="What is the primary colour of the item?" class="chosen-select form-control" id="product_color" name="product_color">
+          <option value="" selected disabled>What is the primary colour of the item?</option>
           <option value="None">No Colour</option>
            <?php 
            if(!empty($product_colors)){
