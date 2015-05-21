@@ -65,7 +65,7 @@
             $(document).on("click", "#changeCompanyImage", function() {
                 $(this).parent().prev('.avatar-view').click();
             })
-        </script>
+        </script> 
 
 
         <script src="public/main/template/core/js/plugins/metisMenu/jquery.metisMenu.js"></script>
@@ -83,30 +83,30 @@
                     function showLocalTime(container, servermode, offsetMinutes, displayversion){
                             if (!document.getElementById || !document.getElementById(container)) return
                             this.container = document.getElementById (container)
-                            this.displayversion = displayversio n
-                    var servertimestring = (se r vermode == "s erver-php")? '<? print date("F d, Y H:i:s", time())?>' : (servermode = = "server-ssi")? '<!--#config timefmt="%B %d, %Y %H:%M:%S"-->               <!--#echo var="DATE_LOCAL" -->' : '<%= Now() %>'
-                                        this.localtime = this.serverdate = new Date(servertimestring)
-                                        this.localtime.setTime(this.serverdate.getTime() + offsetMinutes * 300 * 1000) //add user offset to server time
-                                        this.updateTime()
-                                        this.updateContainer()
+                    this.displayversion = displayversio n
+                            var servertimestring = (se r vermode == "s erver-php")? '<? print date("F d, Y H:i:s", time())?>' : (servermode = = "server-ssi")? '<!--#config timefmt="%B %d, %Y %H:%M:%S"-->               <!--#echo var="DATE_LOCAL" -->' : '<%= Now() %>'
+                                                this.localtime = this.serverdate = new Date(servertimestring)
+                                                this.localtime.setTime(this.serverdate.getTime() + offsetMinutes * 300 * 1000) //add user offset to server time
+                                                this.updateTime()
+                                                this.updateContainer()
+                                        }
+                                showLocalTime.prototype.updateTime = function () {
+                                var thisobj = this
+                                        this.localtime.setSeconds(this.localtime.getSeconds() + 1)
+                                        setTimeout(function () {
+                                        thisobj.updateTime()
+                                        }, 1000) //update time every second
                                 }
-                        showLocalTime.prototype.updateTime = function () {
-                        var thisobj = this
-                                this.localtime.setSeconds(this.localtime.getSeconds() + 1)
-                                setTimeout(function () {
-                                thisobj.updateTime()
-                                }, 1000) //update time every second
-                        }
-                        showLocalTime.prototype.updateContainer = function () {
-                        var thisobj = this
-                                if (this.displayversion == "long")
-                                this.container.innerHTML = this.localtime.toLocaleString()
-                                else {
-                                var hour = this.localtime.getHours()
-                                        var minutes = this.localtime.getMinutes()
-                                        var seconds = this.localtime.getSeconds()
-                                        var ampm = "";
-                                        var dayofweek = weekdaystxt[this.localtime.getDay()]
+                                showLocalTime.prototype.updateContainer = function () {
+                                var thisobj = this
+                                        if (this.displayversion == "long")
+                                        this.container.innerHTML = this.localtime.toLocaleString()
+                                        else {
+                                        var hour = this.localtime.getHours()
+                                                var minutes = this.localtime.getMinutes()
+                                                var seconds = this.localtime.getSeconds()
+                                                var ampm = "";
+                                                var dayofweek = weekdaystxt[this.localtime.getDay()]
                                                 this.container.innerHTML = formatField(hour) + ":" + formatField(minutes) + " " + ampm + ""
                 }
                 setTimeout(function () {
