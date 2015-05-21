@@ -75,17 +75,17 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                                                 $progress = "50%"
                                                 ?>
                                                 <td><span class="label label-primary">Payment Sent</span></td>
-                                            <?php
+                                                <?php
                                             } elseif ($value->order_status == 3) {
                                                 $progress = "75%"
                                                 ?>
                                                 <td><span class="label label-warning">Awaiting Shipment confirmation</span></td>
-                                            <?php
+                                                <?php
                                             } elseif ($value->order_status == 4) {
                                                 $progress = "100%"
                                                 ?>
                                                 <td><span class="label label-primary">Shipment Arrived</span></td>
-                                                <?php } ?>
+                                            <?php } ?>
                                             <td><?php
                                                 $seller_cmp_info = '';
                                                 if ($memberidlogin == $value->buyer_id) {
@@ -107,8 +107,8 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                                             </td>
                                             <td>
                                                 <a onclick="deal_info(<?php echo $value->listing_id; ?>,<?php echo $value->makeofferid; ?>, 1)" data-toggle="modal" data-target="#deal_infos" class="btn btn-primary" >Deal Info</a>
-            <?php if ($value->order_status == 1 && empty($value->payment_done)) {
-                ?>
+                                                <?php if ($value->order_status == 1 && empty($value->payment_done)) {
+                                                    ?>
                                                     <a onclick="insert_order_id(<?php echo $value->makeofferid; ?>)" data-toggle="modal" data-target="#payment_done" class="btn btn-warning" >Make Payment</a>
                                                     <!-- modal paymment info -->
 
@@ -121,18 +121,18 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                                                         ?>
                                                         <a onclick="insert_order_id(<?php echo $value->makeofferid; ?>)" data-toggle="modal" data-target="#buyer_feedback" class="btn btn-info">Leave Feedback</a>
                                                         <!-- modal leave feedback buyer-->
-                <?php
-                }
-            }
-            ?>
+                                                        <?php
+                                                    }
+                                                }
+                                                ?>
                                             </td>
                                         </tr>
                                         <?php
                                         $this->load->module('feedback');
                                         $this->feedback->leave_buy_feedback($value->seller_id, $value->buyer_id, $value->makeofferid);
                                         ?>
-        <?php endforeach; ?>
-    <?php endif; ?>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
                             </tbody>
                         </table>
 
@@ -163,35 +163,35 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                                 </tr>
                             </thead>
                             <tbody>
-                                    <?php if (!empty($sell_order)): $progress = '0%'; ?>
-                                        <?php foreach ($sell_order as $value): ?>
+                                <?php if (!empty($sell_order)): $progress = '0%'; ?>
+                                    <?php foreach ($sell_order as $value): ?>
                                         <tr>
                                             <?php
                                             if ($value->order_status == 0) {
                                                 $progress = "0%";
                                                 ?>
                                                 <td><span class="label label-primary">Awaiting Payment Info</span></td>
-                                            <?php
+                                                <?php
                                             } elseif ($value->order_status == 1) {
                                                 $progress = "25%";
                                                 ?>
                                                 <td><span class="label label-<?php if ($value->payment_done) { ?>warning<?php } else { ?>primary<?php } ?>">Awaiting Payment</span></td>
-                                            <?php
+                                                <?php
                                             } elseif ($value->order_status == 2) {
                                                 $progress = "50%"
                                                 ?>
                                                 <td><span class="label label-primary">Payment Received</span></td>
-                                            <?php
+                                                <?php
                                             } elseif ($value->order_status == 3) {
                                                 $progress = "75%"
                                                 ?>
                                                 <td><span class="label label-primary">Awaiting shipping conformation</span></td>
                                                 <?php
-                                                } elseif ($value->order_status == 4) {
-                                                    $progress = "100%"
-                                                    ?>
+                                            } elseif ($value->order_status == 4) {
+                                                $progress = "100%"
+                                                ?>
                                                 <td><span class="label label-primary">Shipment Arrived</span></td>
-                                                <?php } ?>
+                                            <?php } ?>
                                             <td>
 
                                                 <?php
@@ -218,10 +218,10 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                                                 <a onclick="deal_info(<?php echo $value->listing_id; ?>,<?php echo $value->makeofferid; ?>, 2)" data-toggle="modal" data-target="#deal_infos" class="btn btn-primary" >Deal Info</a>
                                                 <?php if (empty($value->order_status)) { ?>
                                                     <a onclick="insert_order_id(<?php echo $value->makeofferid; ?>)" data-toggle="modal" data-target="#insert_payment_info" class="btn btn-warning">Send Payment details</a><!-- modal for send payment detail -->
-            <?php
-            } elseif ($value->order_status == 1) {
-                if ($value->payment_done) {
-                    ?>
+                                                    <?php
+                                                } elseif ($value->order_status == 1) {
+                                                    if ($value->payment_done) {
+                                                        ?>
                                                         <a onclick="insert_order_id(<?php echo $value->makeofferid; ?>)" data-toggle="modal" data-target="#payment_confirm" class="btn btn-warning" >Payment Confirm</a>
                                                     <?php } /* else{?>
                                                       <a class="btn btn-warning" >Awaiting Payment</a>
@@ -230,23 +230,23 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                                                 <?php } elseif ($value->order_status == 2) { ?>
                                                     <a onclick="insert_order_id(<?php echo $value->makeofferid; ?>)" data-toggle="modal" data-target="#add_tracking_shipping_info" class="btn btn-warning" >Add tracking / Shipping Info</a>
                                                     <!-- modal to add shipping information -->
-                                            <?php
-                                        } elseif ($value->order_status == 4 && empty($value->seller_feedback)) {
-                                            if (empty($value->seller_feedback)) {
-                                                ?>
+                                                    <?php
+                                                } elseif ($value->order_status == 4 && empty($value->seller_feedback)) {
+                                                    if (empty($value->seller_feedback)) {
+                                                        ?>
                                                         <a onclick="insert_order_id(<?php echo $value->makeofferid; ?>)" data-toggle="modal" data-target="#seller_feedback" class="btn btn-info">Leave Feedback</a>
                                                         <!-- modal leave feedback seller-->
-                <?php
-                }
-            }
-            ?></td>
+                                                        <?php
+                                                    }
+                                                }
+                                                ?></td>
                                         </tr>
-            <?php
-            $this->load->module('feedback');
-            $this->feedback->leave_sell_feedback($value->buyer_id, $value->seller_id, $value->makeofferid);
-            ?>
-        <?php endforeach ?>
-    <?php endif ?>
+                                        <?php
+                                        $this->load->module('feedback');
+                                        $this->feedback->leave_sell_feedback($value->buyer_id, $value->seller_id, $value->makeofferid);
+                                        ?>
+                                    <?php endforeach ?>
+                                <?php endif ?>
                             </tbody>
                         </table>
 
@@ -287,7 +287,7 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                                     <input type="file" name="proforma_file" class="form-control" placeholder="Proforma File">
                                 </div>
                                 <div class="row">
-                                    &nbsp;
+                                    &nbsp; 
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
@@ -310,7 +310,7 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                         <div class="modal-body">
                             <form action="<?php echo base_url() . "marketplace/payment_done/"; ?>" method="post" accept-charset="utf-8">
                                 <div class="row">
-    <?php if ($value->payment_detail) { ?>
+                                    <?php if ($value->payment_detail) { ?>
                                         <h5>Payment Info - <?php echo $value->payment_detail; ?></h5> <?php } ?>
                                     <input type="checkbox" name="payment_done" value="" required>
                                     <h4>Yes I have done payment.</h4>
@@ -337,7 +337,7 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                         <div class="modal-body">
                             <form action="<?php echo base_url() . "marketplace/shipping_received/"; ?>" method="post" accept-charset="utf-8">
                                 <div class="row">
-    <?php if ($value->tracking_shipping) { ?>
+                                    <?php if ($value->tracking_shipping) { ?>
                                         <h5>Tracking / shipping Info - <?php echo $value->tracking_shipping; ?></h5> <?php } ?>
                                     <input type="checkbox" name="shipping_received" value="" required>
                                     <h4>Yes I have recevied the items.</h4>
@@ -401,17 +401,17 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
             </div>
 
         <?php } else { ?>
-    <?php if ($member->membership == 1) { ?>
+            <?php if ($member->membership == 1) { ?>
                 <div class="alert alert-info" style="margin:15px 15px -15px">
                     <p><i class="fa fa-info-circle"></i> <strong>This is a Demo</strong> Silver members and above with criteria met will have access to the live marketplace. This is our order management system, it can assist you in the progress of an order. Send payment details, add tracking information and check up on the status of your order. Labels in yellow are actions waiting on you and labels in green are actions waiting on the company you are trading with. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
                 </div>
 
-    <?php } else if ($member->membership == 2 && $member->marketplace == 'inactive') { ?>
+            <?php } else if ($member->membership == 2 && $member->marketplace == 'inactive') { ?>
                 <div class="alert alert-warning" style="margin:15px 15px -15px">
                     <p><i class="fa fa-warning"></i> You still need to supply 2 trade references so we can enable your membership to view profiles and access the marketplace. <a class="alert-link" href="tradereference">Submit trade references</a>.</p>
                 </div>
 
-    <?php } ?>
+            <?php } ?>
             <div class="wrapper wrapper-content animated fadeInRight">
 
                 <div class="row">
@@ -541,7 +541,7 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                         </div>
                     </div>
                 </div>
-<?php } ?>
+            <?php } ?>
 
         </div>
         <script>
