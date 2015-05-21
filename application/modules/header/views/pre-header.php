@@ -75,6 +75,7 @@
     <script type="text/javascript" src="public/admin/js/jquery.fancybox.js?v=2.1.5"></script>
     <link rel="stylesheet" href="public/main/template/gsm/css/jquery.fancybox.css" />
     <script src="public/main/template/core/js/plugins/validate/jquery.validate.min.js"></script>
+    <script src="public/main/template/gsm/js/common.js"></script>
 
     
     <script type="text/javascript">
