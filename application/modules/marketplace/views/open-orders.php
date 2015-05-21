@@ -279,11 +279,11 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                                     <input type="hidden" name="order_id" value="" class="order_id_insert">
                                 </div>
 
-                                <div class="row">
+                                <div class="row" style="margin-top: 12px;">
                                     <input type="text" name="seller_reference" value="" class="form-control" placeholder="Reference">
                                 </div>
 
-                                <div class="row">
+                                <div class="row" style="margin-top: 12px;">
                                     <input type="file" style="padding-bottom:40px;" name="proforma_file" class="form-control" placeholder="Proforma File">
                                 </div>
                                 <div class="modal-footer">
