@@ -2,7 +2,7 @@ function ValidatePaymentInformation()
 {
     var ValidationResults = false;
     var PaymentInformation = $('#payment_info').val();
-    if (PaymentInformation == '' || PaymentInformation.trim())
+    if (PaymentInformation == '' || PaymentInformation.trim() == "")
     {
         $("#payment_info").addClass('errorClass');
         ValidationResults = false;
