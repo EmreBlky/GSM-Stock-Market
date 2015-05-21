@@ -22,6 +22,10 @@
             <div class="alert alert-warning">
                 <p><i class="fa fa-warning"></i> <strong>This is a Demo</strong> You still need to supply 2 trade references so we can enable your membership to view profiles and access the marketplace. <a class="alert-link" href="tradereference">Submit trade references</a>.</p>
             </div>
+<?php } else {?>
+            <div class="alert alert-info">
+                <p><i class="fa fa-warning"></i> Welcome to the <strong>GSM Marketplace v1.0a</strong>. Our marketplace is now live! If you have any issues or trouble using the marketplace please let us know by <a class="alert-link" href="support/submit_ticket">submitting a ticket</a> or if you have any ideas or feedback then <a class="alert-link" href="support/submit_ticket">let us know!</a></p>
+            </div>
 <?php } ?>
 <div class="row">
 <?php if($check_securty){?>
@@ -58,7 +62,7 @@
 </div>
 
     <section data-step="1" data-intro="Cross check your MPN/ISBN with our database to help you auto fill your listing with ease." data-position='right'>
-    <div class="form-group"><label class="col-md-3 control-label">MPN/ISBN <span style="color:red">*</span><br /><small class="text-navy">Search our database</small></label>
+    <div class="form-group"><label class="col-md-3 control-label">MPN/ISBN<br /><small class="text-navy">Search our database</small></label>
       <div class="col-md-6" style="padding-right:0">
           <input type="type" list="mpn" class="form-control check_record check_record_by_mpnisbn" placeholder="Enter a Part Number e.g GH97-15959B"  name="product_mpn" value="<?php if(!empty($product_list->product_mpn_isbn)) echo $product_list->product_mpn_isbn; ?><?php if(!empty($_POST['product_mpn'])) echo $_POST['product_mpn']; ?>"/>
       </div>
@@ -80,7 +84,7 @@
             <option value="<?php echo $row->product_make; ?>" <?php if(!empty($_POST['product_make']) && $row->product_make==$_POST['product_make']){ echo'selected';} elseif(!empty($product_list->product_make) && $row->product_make == $product_list->product_make){ echo'selected';}?>><?php echo $row->product_make; ?></option>
             <?php }} ?>
             </select>
-        <?php echo form_error('product_make'); ?>
+			<div id="product_make_error"></div>
         </div>
     </div>
    <div class="form-group"><label class="col-md-3 control-label">Model <span style="color:red">*</span></label>
@@ -92,7 +96,7 @@
         <option value="<?php echo $row->product_model; ?>" <?php if(!empty($_POST['product_model']) && $row->product_model==$_POST['product_model']){ echo'selected';}elseif(!empty($product_list->product_model) && $row->product_model == $product_list->product_model){ echo'selected';}?>><?php echo $row->product_model; ?></option>
          <?php }} ?>
     </select>
-<?php echo form_error('product_model'); ?>
+	<div id="product_model_error"></div>
 </div>
 </div>
      <div class="form-group"><label class="col-md-3 control-label">Colour <span style="color:red">*</span></label>
@@ -108,7 +112,7 @@
               <option value="<?php echo $row; ?>" <?php if(!empty($_POST['product_color']) && $row==$_POST['product_color']){ echo'selected';}?><?php if(!empty($product_list->product_color) && $row == $product_list->product_color){ echo'selected';}?>><?php echo $row; ?></option>
                <?php $k++;}} ?>
           </select>
-           <?php echo form_error('product_color'); ?>
+	<div id="product_color_error"></div>
       </div>
     </div>
 <div class="form-group"><label class="col-md-3 control-label">Product Type <span style="color:red">*</span></label>
@@ -128,7 +132,7 @@
   <?php endforeach ?>
   <?php endif ?>
     </select>
-    <?php echo form_error('product_type'); ?>
+	<div id="product_type_error"></div>
 </div>
 </div>
 </section>
@@ -181,20 +185,14 @@
 </div>
 </div>
 
-<div class="form-group"><label class="col-md-3 control-label">IMEI Report</label>
-<div class="col-md-9">
-    <input type="text" disabled="" placeholder="IMEI services coming soon" class="form-control">
-    <small class="text-navy">Link your IMEI reports to your handset listings to providing in-depth handset data to potential buyers.</small>
-</div>
-</div>
 </span>
         
 <div class="hr-line-dashed"></div>
     <section data-step="3" data-intro="After completing your items basic data let buyers know what condition your listed item is with our in-depth condition options" data-position='right'>
 <div class="form-group"><label class="col-md-3 control-label">Condition <span style="color:red">*</span></label>
 <div class="col-md-9">
-    <select data-placeholder="What condition is the item in?" class="form-control" name="condition">
-    <option value="" selected disabled>What condition is the item in?</option>
+    <select data-placeholder="What condition are you after?" class="form-control" name="condition">
+    <option value="" selected disabled>What condition are you after?</option>
     <?php $condition = condition();
     if($condition){
         foreach ($condition as $key => $value){ ?>
@@ -202,8 +200,8 @@
           <?php }
     } ?>
     </select>
-    <?php echo form_error('condition'); ?>
 </div>      
+	<div class="col-md-9 col-md-offset-3" id="product_condition_error"></div>
       <div class="col-md-9 col-md-offset-3">
       <small class="text-navy">Not sure on which condition option to choose? View our condition descriptions <strong>here</strong> for a more in-depth description.</small>
       </div>
@@ -231,15 +229,16 @@
              <?php $i++;}
            } ?>
        </select>
-       <p class="small text-navy">Select the currency you wish this listing to be sold in.</p>
+       <p class="small text-navy">Select the currency you wish to buy in.</p>
        <?php echo form_error('currency'); ?>
    </div>
 </div>
 </section>
-<div class="form-group"><label class="col-md-3 control-label">Unit Price</label>
+<section data-step="5" data-intro="Enter your desired unit price which you would like to buy at. Set a maximum price and auto decline price to get the best deal easier and then choose how many of this item you would like to buy." data-position='right'>
+<div class="form-group"><label class="col-md-3 control-label">Unit Price <span style="color:red">*</span></label>
     <div class="col-md-9">
-        <input type="type" class="form-control" name="unit_price" value="<?php if(!empty($product_list->unit_price)) echo $product_list->unit_price; else echo set_value('unit_price');?>"/>
-        <?php echo form_error('unit_price'); ?>
+        <input type="type" class="form-control two-digits" name="unit_price" value="<?php if(!empty($product_list->unit_price)) echo $product_list->unit_price; else echo set_value('unit_price');?>"/>
+	<div id="unit_price_error"></div>
        <p class="small text-navy">Your requested price per individual item.</p>
     </div>
 </div>
@@ -247,24 +246,26 @@
     <div class="col-md-9">
         <div class="input-group m-b"><span class="input-group-addon">
         <input type="checkbox" name="maximum_checkbox" id="maximum_checkbox" <?php if(isset($_POST['maximum_checkbox']) ){ echo'checked';} elseif(!empty($product_list->max_price)){ echo'checked';}?>/> </span>
-        <input type="text" class="form-control" placeholder="Maximum Unit Price" name="max_price" value="<?php if(!empty($product_list->max_price)){ echo $product_list->max_price;
+        <input type="text" class="form-control two-digits" placeholder="Maximum Unit Price" name="max_price" value="<?php if(!empty($product_list->max_price)){ echo $product_list->max_price;
         }elseif(isset($_POST['max_price'])){  echo $_POST['max_price'];}?>" <?php if(isset($_POST['maximum_checkbox']) ){ echo'';} elseif(empty($product_list->max_price) ){ echo'disabled';}?>>
         </div>
         <p class="small text-navy">Tick to enable. Any offers above this will be auto rejected, leave blank to allow any offers if ticked.</p>
         <?php echo form_error('max_price'); ?>
     </div>
 </div>
-<div class="form-group"><label class="col-md-3 control-label">Quantity requested</label>
+<div class="form-group"><label class="col-md-3 control-label">Desired QTY <span style="color:red">*</span></label>
     <div class="col-md-9">
-        <input type="type" class="form-control" name="total_qty" value="<?php if(!empty($product_list->total_qty)) echo $product_list->total_qty; else  echo set_value('total_qty');?>"/>
-        <?php echo form_error('total_qty'); ?>
+        <input type="type" class="form-control no-digits" name="total_qty" value="<?php if(!empty($product_list->total_qty)) echo $product_list->total_qty; else  echo set_value('total_qty');?>"/>
     </div>
+		<div class="col-md-9 col-md-offset-3" id="total_qty_error"></div>
       <div class="col-md-9 col-md-offset-3">
-      <small class="text-navy">How many of thie item would you like?</small>
+      <small class="text-navy">How many of this item would you like to buy?</small>
       </div>
 </div>
+</section>
 <div class="hr-line-dashed"></div>
-<div class="form-group"><label class="col-md-3 control-label">Shipping Terms <button class="btn btn-success btn-circle" type="button" style="width:20px;height:20px;border-radius:10px;font-size:10px;padding:0;margin-bottom:0" data-toggle="modal" data-target="#shipping" title="Click for more information"><i class="fa fa-question"></i></button></label>
+<section data-step="6" data-intro="Select which shipping method you would like to have the items shipped by." data-position='right'>
+<div class="form-group"><label class="col-md-3 control-label">Shipping Terms <span style="color:red">*</span><button class="btn btn-success btn-circle" type="button" style="width:20px;height:20px;border-radius:10px;font-size:10px;padding:0;margin-bottom:0" data-toggle="modal" data-target="#shipping" title="Click for more information"><i class="fa fa-question"></i></button></label>
  <?php $product = array();
  if(!empty($product_list->courier)){ $product = explode(',', $product_list->courier);  } ?>
 <div class="col-md-9">
@@ -279,10 +280,13 @@
              <?php echo $row->shipping_name; ?></label>
       <?php }
 } ?>
+	<div id="courier_error"></div>
         <p class="small text-navy">How would you like the item(s) to be shipped to you?</p>
  <?php echo form_error('courier'); ?>
 </div>
 </div>
+</section>
+<div style="display:none">
 <div class="form-group"><label class="col-md-3 control-label">Shipping Charges</label>
 <div class="col-md-9">
    <div class="input-group m-b"><span class="input-group-addon"> <input type="checkbox" name="shipping_checkbox" id="shipping_checkbox" <?php if(isset($_POST['shipping_checkbox']) ){ echo'checked';} elseif(!empty($product_list->shipping_charges)) echo 'checked'; ?>/> </span>
@@ -292,15 +296,19 @@
    <p class="small text-navy">Allow additional shipping charges. Leave unticked for all quotes to include free shipping</p>
 </div>
 </div>
+</div>
 <div class="hr-line-dashed"></div>
-<div class="form-group"><label class="col-md-3 control-label">Product Description</label>
+<section data-step="7" data-intro="Enter an optional description to help sellers match your desired product you want to buy." data-position='right'>
+<div class="form-group"><label class="col-md-3 control-label">Product Description<br /><small class="text-navy">Add any useful information sellers would like to know. This will be displayed at the bottom of the listing.</small></label>
     <div class="col-md-9">
         <textarea type="type" class="form-control" rows="5" id="product_desc" name="product_desc"><?php if(!empty($product_list->product_desc)) echo $product_list->product_desc; else echo set_value('product_desc');?></textarea>
         <?php echo form_error('product_desc'); ?>
     </div>
 </div>
+</section>
 <div class="hr-line-dashed"></div>
-<div class="form-group"><label class="col-md-3 control-label">List Duration</label>
+<section data-step="8" data-intro="Choose how long you wish to list this buying request for then list it now and your listing will be live on the marketplace within seconds!" data-position='right'>
+<div class="form-group"><label class="col-md-3 control-label">List Duration <span style="color:red">*</span></label>
     <div class="col-md-9">
         <?php if(!empty($product_list->duration)){
                     ?><input disabled  class="form-control" value="<?php echo $product_list->duration;?> day"><?php 
@@ -319,14 +327,6 @@
                 <?php } ?>
     </div>
 </div>
-<?php if (empty($product_list->id)): ?>
-<div class="form-group"><label class="col-md-3 control-label">Terms &amp; Conditions</label>
-    <div class="col-md-9">
-    <input type="checkbox" class="checkbox-inline i-checks" name="termsandcondition" <?php if(!empty($_POST['termsandcondition']) ){ echo'checked';}?>/> I agree to the GSMStockMarket.com Limited Terms and Conditions
-     <?php echo form_error('termsandcondition'); ?>
-    </div>
-</div>
-<?php endif ?>
 <div class="form-group">
         <div class="col-md-9 col-md-offset-3">
         
@@ -342,10 +342,11 @@
            	<button class="btn btn-primary" type="submit" name="status" value="1">Create and List Now</button>
         <?php } else {?>              <!--
             <button class="btn btn-warning" data-toggle="modal" data-target="#upgrade">Save for later</button>-->
-           	<button class="btn btn-primary" data-toggle="modal" data-target="#upgrade">Create and List Now</button>
+           	<a class="btn btn-primary" data-toggle="modal" data-target="#upgrade">Create and List Now</a>
         <?php } ?>
         </div>
 </div>
+</section>
 </div>
  </div>
 </div>
@@ -405,7 +406,7 @@
      </div>
      <?php echo form_error('image5'); ?>
     </div>
-    <p class="small" style="text-align:center">You may have up to five (5) product images per listing.</p>
+    <p class="small" style="text-align:center">You may have up to five (5) product images per listing.<br />Accepted types: <strong>.JPG, .JPEG, .PNG, .GIF</strong></p>
 </div>
 </div>
 </div>
@@ -547,8 +548,6 @@ $('body').find('#opt_table').on("click", ".wrapper",function() {
 $.validator.setDefaults({ ignore: ":hidden:not(select)" })
 $(".validation").validate({
   rules: {
-    product_mpn: "required",
-    product_desc: "required",
     product_make: "required",
     product_model: "required",
     product_color: "required",
@@ -556,35 +555,78 @@ $(".validation").validate({
     unit_price: { required: true,number: true },
     total_qty: { required: true,number: true },
     condition: "required",
-    termsandcondition: "required",
+    "courier[]": { required: true, 
+                    minlength: 1 
+            } 
   },
   messages: {
-    product_desc: "Make sure you have entered a thorough description of the item you have for sale.",
-    product_mpn: {
-      required: "We required some sort of product identifying number.",
-	},
     product_make: {
-      required: "Select your products make from the list below",
+      required: "Select the make of your desired product.",
 	},
     product_model: {
-      required: "Buyers will need to know what model this product is for.",
+      required: "Sellers will need to know what model this product is for, You can free type this if it doesn't exist.",
 	},
     product_color: {
-      required: "Make sure buyers know what colour the product is.",
+      required: "Make sure sellers know what colour you would like.",
 	},
     product_type: {
-      required: "We require a category to put your product listing under.",
+      required: "We require a category to put your listing under.",
 	},
    unit_price: {
-      required: "You need to specify a unit price!",
+      required: "You need to specify a desired unit price!",
 	},
     total_qty: {
-      required: "How many do you have for sale?",
+      required: "How many do you want to buy?",
 	},
     condition: {
-      required: "Buyers will need to know what condition the item is.",
+      required: "Sellers would like to know what condition you require.",
+    },
+    "courier[]": {
+      required: "You need to select at least one (1) shipping option.",
     }
-  }
+  },
+  errorPlacement: function(error, element){
+    if(element.attr("name") == "product_make"){
+        error.appendTo($('#product_make_error'));
+    }else{
+        error.appendTo( element.parent().next() );
+    }
+    if(element.attr("name") == "product_model"){
+        error.appendTo($('#product_model_error'));
+    }else{
+        error.appendTo( element.parent().next() );
+    }
+    if(element.attr("name") == "product_color"){
+        error.appendTo($('#product_color_error'));
+    }else{
+        error.appendTo( element.parent().next() );
+    }
+    if(element.attr("name") == "product_type"){
+        error.appendTo($('#product_type_error'));
+    }else{
+        error.appendTo( element.parent().next() );
+    }
+    if(element.attr("name") == "product_condition"){
+        error.appendTo($('#product_condition_error'));
+    }else{
+        error.appendTo( element.parent().next() );
+    }
+    if(element.attr("name") == "total_qty"){
+        error.appendTo($('#total_qty_error'));
+    }else{
+        error.appendTo( element.parent().next() );
+    }
+    if(element.attr("name") == "unit_price"){
+        error.appendTo($('#unit_price_error'));
+    }else{
+        error.appendTo( element.parent().next() );
+    }
+    if(element.attr("name") == "courier[]"){
+        error.appendTo($('#courier_error'));
+    }else{
+        error.appendTo( element.parent().next() );
+    }
+}
 });
 
 // apply the two-digits behaviour to elements with 'two-digits' as their class
@@ -656,7 +698,7 @@ $(document).ready(function () {
 $(document).ready(function(){
 	 var test123 =function(mpn1,make){
      $.post('<?php echo base_url("marketplace/getAttributesInfo") ?>/MAKE/',{'make':make,'mpnisbn':mpn1}, function(data) {
-        productmakehtml='<option>Choose Model</option>';
+        productmakehtml='<option value="">Choose Model</option>';
        $.each(data.product_make, function(index, val) {
             productmakehtml +='<option value="'+val+'"';
             if(data.numrows>=1)
@@ -751,7 +793,7 @@ $(document).on('change', '#product_make', function(event) {
     event.preventDefault();
         var product_model= $(this).val();
          $.post('<?php echo base_url("marketplace/getAttributesInfo") ?>/MODAL/',{'product_model':product_model}, function(data) {
-        product_colorshtml='<option>Choose Colour</option>';
+        product_colorshtml='<option value="">Choose Colour</option>';
        $.each(data.product_color, function(index, val) {
             product_colorshtml +='<option value="'+val+'"';
             if(data.num_rows==1 && data.product_color.length==1)
@@ -765,13 +807,13 @@ $(document).on('change', '#product_make', function(event) {
  });
 
 $(document).ready(function() {
-    $('#minimum_checkbox').change(function(event) {
+    $('#maximum_checkbox').change(function(event) {
         if ($(this).is(':checked')) {
-            $('input[name="min_price"]').prop('disabled', false);
+            $('input[name="max_price"]').prop('disabled', false);
         }
         else{
-           $('input[name="min_price"]').val('');
-           $('input[name="min_price"]').prop('disabled', true);
+           $('input[name="max_price"]').val('');
+           $('input[name="max_price"]').prop('disabled', true);
         }
     });
     $('#allowoffer_checkbox').change(function(event) {

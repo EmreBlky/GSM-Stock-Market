@@ -22,6 +22,10 @@
             <div class="alert alert-warning">
                 <p><i class="fa fa-warning"></i> <strong>This is a Demo</strong> You still need to supply 2 trade references so we can enable your membership to view profiles and access the marketplace. <a class="alert-link" href="tradereference">Submit trade references</a>.</p>
             </div>
+<?php } else {?>
+            <div class="alert alert-info">
+                <p><i class="fa fa-warning"></i> Welcome to the <strong>GSM Marketplace v1.0a</strong>. Our marketplace is now live! If you have any issues or trouble using the marketplace please let us know by <a class="alert-link" href="support/submit_ticket">submitting a ticket</a> or if you have any ideas or feedback then <a class="alert-link" href="support/submit_ticket">let us know!</a></p>
+            </div>
 <?php } ?>
 <div class="row">
 <?php if($check_securty){?>
@@ -260,7 +264,7 @@
 </div>
 </section>
 <section data-step="6" data-intro="Manage your stock availability here by entering how many units you have available to sell. You can also specify a minimum order quantity to sell in batches." data-position='right'>
-<div class="form-group"><label class="col-md-3 control-label">Quantity Available <span style="color:red">*</span></label>
+<div class="form-group"><label class="col-md-3 control-label">QTY Available <span style="color:red">*</span></label>
   <div class="col-md-9">
       <input type="type" class="form-control no-digits" name="total_qty" value="<?php if(!empty($product_list->total_qty)) echo $product_list->total_qty; else  echo set_value('total_qty');?>"/>
     <p class="small text-navy">How many of this item do you have available to sell?</p>
@@ -410,7 +414,7 @@
            	<button class="btn btn-primary" type="submit" name="status" value="1">Create and List Now</button>
         <?php } else {?>              <!--
             <button class="btn btn-warning" data-toggle="modal" data-target="#upgrade">Save for later</button>-->
-           	<button class="btn btn-primary" data-toggle="modal" data-target="#upgrade">Create and List Now</button>
+           	<a class="btn btn-primary" data-toggle="modal" data-target="#upgrade">Create and List Now</a>
         <?php } ?>
         </div>
     </div>

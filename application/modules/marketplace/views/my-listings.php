@@ -19,6 +19,10 @@
             <div class="alert alert-warning">
                 <p><i class="fa fa-warning"></i> You still need to supply 2 trade references so we can enable your membership to view profiles and access the marketplace. <a class="alert-link" href="tradereference">Submit trade references</a>.</p>
             </div>
+<?php } else {?>
+            <div class="alert alert-info">
+                <p><i class="fa fa-warning"></i> Welcome to the <strong>GSM Marketplace v1.0a</strong>. Our marketplace is now live! If you have any issues or trouble using the marketplace please let us know by <a class="alert-link" href="support/submit_ticket">submitting a ticket</a> or if you have any ideas or feedback then <a class="alert-link" href="support/submit_ticket">let us know!</a></p>
+            </div>
 
 <?php } ?>
 	<?php msg_alert(); ?>
@@ -27,6 +31,7 @@
 				<div class="ibox float-e-margins">
 				<div class="ibox-title">
 					<h5>Buying Requests (WTB)</h5>
+                    <a href="marketplace/buy_listing/" class="pull-right btn btn-primary btn-xs" style="margin-right:8px"><i class="fa fa-plus"></i> Create WTB Listing</a>
 				</div>
 				<div class="ibox-content">
 					<table class="table table-striped table-bordered table-hover selling_offers" >
@@ -102,6 +107,7 @@
 <div class="ibox float-e-margins">
 <div class="ibox-title">
     <h5>Selling Offers (WTS)</h5>
+    <a href="marketplace/sell_listing/" class="pull-right btn btn-primary btn-xs" style="margin-right:8px"><i class="fa fa-plus"></i> Create WTS Listing</a>
 </div>
 <div class="ibox-content">
 <table class="table table-striped table-bordered table-hover buying_requests" >

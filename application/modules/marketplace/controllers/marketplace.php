@@ -173,7 +173,6 @@ class Marketplace extends MX_Controller {
         if (empty($list_id)) {
             $this->form_validation->set_rules('courier[]', 'courier', 'required');
         }
-        $this->form_validation->set_rules('product_desc', 'product description', 'required');
         $this->form_validation->set_rules('duration', 'duration', 'required');
         if (empty($list_id)) {
             $this->form_validation->set_rules('image1', '', 'callback_image1_check[' . $list_id . ']');
@@ -490,7 +489,6 @@ class Marketplace extends MX_Controller {
                 $this->form_validation->set_rules('min_qty_order', 'min quantity order', 'required|numeric');
             }
 
-            $this->form_validation->set_rules('product_desc', 'product description', 'required');
             if (empty($list_id)) {
                 $this->form_validation->set_rules('duration', 'duration', 'required');
             }
@@ -816,7 +814,6 @@ class Marketplace extends MX_Controller {
             if (empty($list_id)) {
                 $this->form_validation->set_rules('courier[]', 'courier', 'required');
             }
-            $this->form_validation->set_rules('product_desc', 'product description', 'required');
             if (empty($list_id)) {
                 $this->form_validation->set_rules('duration', 'duration', 'required');
             }
