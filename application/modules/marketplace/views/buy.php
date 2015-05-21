@@ -291,7 +291,7 @@ endif;
 </thead>
     <?php if($listing_buy){
         foreach ($listing_buy as $value) {?>
-        <tr>
+        <tr onclick="document.location = '<?php echo base_url().'marketplace/listing_detail/'.$value->id ?>';" style="cursor:pointer">
         <td><span <?php 
     $enddatetime = $value->listing_end_datetime;; 
     $current_date = date('d-m-Y H:i:s'); 
@@ -336,8 +336,8 @@ endif;
        <!-- <span style="display:none"><?php //echo $value->country ?></span>-->
         <img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" title="<?php echo $value->product_country ?>" />
         </td>
-        <th>
-        <a href="<?php echo base_url().'marketplace/listing_detail/'.$value->id ?>"><button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></a></th>
+        <td class="text-center">
+        <a href="<?php echo base_url().'marketplace/listing_detail/'.$value->id ?>"><button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></a></td>
     </tr>
        <?php }}else{
         ?>
