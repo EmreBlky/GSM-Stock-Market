@@ -18,7 +18,8 @@
                             <input type="text" name="seller_reference" value="" class="form-control" placeholder="Reference">
                         </div>
                         <div class="col-md-6">
-                            <input type="file" id="proforma_file" name="proforma_file" class="btn default btn-file valid">
+                            <input type="file" id="proforma_file" name="proforma_file" class="btn default btn-file valid"><br />
+                            <strong>Allowed formats</strong>: .PDF, .JPG, .JPEG, .PNG, .GIF
                         </div>
                     </div>
                     <div class="modal-footer payment-info-border-none">

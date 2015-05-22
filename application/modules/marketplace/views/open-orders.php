@@ -27,7 +27,6 @@ $member = $this->member_model->get_where($id);
 if ($member->membership > 1 && $member->marketplace == 'active') {
     ?>
 
-<<<<<<< HEAD
 <?php msg_alert(); ?>
 <div class="wrapper wrapper-content animated fadeInRight">
 
@@ -55,21 +54,6 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                         <tbody>
                         <?php if (!empty($buy_order)): ?>
                             <?php foreach ($buy_order as $value): ?>
-=======
-    <div class="wrapper wrapper-content animated fadeInRight">
-    <?php msg_alert(); ?>
-
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h5>Open Orders (WTB) - Item you are buying</h5>
-                    </div>
-                    <div class="ibox-content">
-
-                        <table id="marketplace" class="table table-striped table-bordered table-hover dataTables-example" >
-                            <thead>
->>>>>>> f849559d04f15bfb5cbcfdc0afccaadf03267a61
                                 <tr>
                                     <?php
                                     if ($value->order_status == 0) {
@@ -159,7 +143,6 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
         </div>
     </div>
 
-<<<<<<< HEAD
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
@@ -184,18 +167,6 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                         <tbody>
                         <?php if (!empty($sell_order)): $progress = '0%'; ?>
                             <?php foreach ($sell_order as $value): ?>
-=======
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h5>Open Orders (WTS) - Items you are selling</h5>
-                    </div>
-                    <div class="ibox-content">
-
-                        <table id="marketplace" class="table table-striped table-bordered table-hover dataTables-example" >
-                            <thead>
->>>>>>> f849559d04f15bfb5cbcfdc0afccaadf03267a61
                                 <tr>
                                     <?php
                                     if ($value->order_status == 0) {
@@ -299,28 +270,7 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
 
     <?php require_once __DIR__."/snippets/seller_payment_info_send_modal.php" ?>
 
-<<<<<<< HEAD
     <?php require_once __DIR__."/snippets/buyer_payment_info_modal.php" ?>
-=======
-                                <div class="row margin-top12">
-                                    <div class="col-md-6 padding-left0">
-                                        <input type="text" name="seller_reference" value="" class="form-control" placeholder="Reference">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input type="file" id="proforma_file" name="proforma_file" class="btn default btn-file valid" placeholder="Proforma File" required><br />
-                                        <strong>Allowed formats</strong>: .PDF, .JPG, .JPEG, .PNG, .GIF
-                                    </div>
-                                </div>
-                                <div class="modal-footer payment-info-border-none">
-                                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary" id="send_msg">Send Payment information</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
->>>>>>> f849559d04f15bfb5cbcfdc0afccaadf03267a61
 
     <div class="modal inmodal fade" id="shipping_received" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -456,12 +406,8 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
 
                     </div>
                 </div>
-<<<<<<< HEAD
             </div>
-=======
-            <?php } ?>
-</div>
->>>>>>> f849559d04f15bfb5cbcfdc0afccaadf03267a61
+
         </div>
 
         <div class="row">
