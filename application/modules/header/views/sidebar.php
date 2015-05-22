@@ -433,6 +433,29 @@ function autoRefresh_div()
 setInterval('autoRefresh_div()', 50000); 
 </script>
 
+<?php if($member->membership > 1 && $member->marketplace == 'inactive'){ ?>
+<!-- Modal Upgrade -->
+<div class="modal inmodal fade" id="upgrade" tabindex="-1" role="dialog"  aria-hidden="true">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Trade References Required</h4>
+        <small class="font-bold">Access unavailble</small>
+    </div>
+
+    <div class="modal-body">
+      <p>This page is unavailable until we have approved two (2) trade references for your account and have run a credit check on your company.</p>
+      <p>Once this has been completed you will be able to have full access to our live marketplace. <a href="tradereference">Submit your trade references now</a>.</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+        <a href="preferences/subscription" class="btn btn-primary">Upgrade Now</a>
+    </div>
+</div>
+</div>
+</div>
+<?php } else { ?>
 <!-- Modal Upgrade -->
 <div class="modal inmodal fade" id="upgrade" tabindex="-1" role="dialog"  aria-hidden="true">
 <div class="modal-dialog modal-lg">
@@ -454,3 +477,4 @@ setInterval('autoRefresh_div()', 50000);
 </div>
 </div>
 </div>
+<?php } ?>
