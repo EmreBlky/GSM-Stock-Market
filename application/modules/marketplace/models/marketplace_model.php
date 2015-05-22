@@ -29,16 +29,13 @@ class Marketplace_model extends MY_Model {
         $config['max_size']	= '20000';
 
         $this->load->library('upload', $config);
-        print_r($config);
 
         if ( !$this->upload->do_upload($file_name))
         {
-            print_r($this->upload->display_errors());exit;
             return array('error' => $this->upload->display_errors());
         }
         else
         {
-            print_r(array('upload_data' => $this->upload->data($file_name)));exit;
             return array('upload_data' => $this->upload->data($file_name));
         }
     }
