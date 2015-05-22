@@ -25,7 +25,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <div class="col-lg-12">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>Watching - Buying Requests</h5>
+                <h5>Watching - Buying Requests (WTB)</h5>
             </div>
             <div class="ibox-content">
             <table id="marketplace" class="table table-striped table-bordered table-hover dataTables-example" >
@@ -72,7 +72,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <div class="col-lg-12">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>Watching - Selling Offers</h5>
+                <h5>Watching - Selling Offers (WTS)</h5>
             </div>
             <div class="ibox-content">
             <table id="marketplace" class="table table-striped table-bordered table-hover dataTables-example" >

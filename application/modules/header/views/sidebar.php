@@ -157,8 +157,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 		</ul>
 	</li>
     
-	<li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Buy</a></li>
-	<li><a href="marketplace/sell"><i class="fa fa-tag"></i> Sell</a></li>
+	<li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Selling Offers</a></li>
+	<li><a href="marketplace/sell"><i class="fa fa-tag"></i> Buying Requests</a></li>
 	<li><a href="marketplace/watching"><i class="fa fa-eye"></i> Watching <span class="count_watch_listing_class">
 	<?php 
 	if($count_watch_listing){ ?>
@@ -225,8 +225,8 @@ if($count_order_history){ ?>
 		</ul>
 	</li>
     
-	<li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Buy</a></li>
-	<li><a href="marketplace/sell"><i class="fa fa-tag"></i> Sell</a></li>
+	<li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Selling Offers</a></li>
+	<li><a href="marketplace/sell"><i class="fa fa-tag"></i> Buying Requests</a></li>
 	<li><a href="marketplace/watching"><i class="fa fa-eye"></i> Watching <span class="count_watch_listing_class">
 	<?php 
 	if($count_watch_listing){ ?>
@@ -284,8 +284,8 @@ if($count_order_history){ ?>
 <a href="marketplace/notice"><i class="fa fa-line-chart"></i> <span class="nav-label">Marketplace</span> <span class="fa arrow"></span></a>
 <ul class="nav nav-second-level">
 <li><a href="javascript:void(0)" data-toggle="modal" data-target="#upgrade"><i class="fa fa-plus"></i> Create Listing</a></li>
-<li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Buy</a></li>
-<li><a href="marketplace/sell"><i class="fa fa-tag"></i> Sell</a></li>
+<li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Selling Offers</a></li>
+<li><a href="marketplace/sell"><i class="fa fa-tag"></i> Buying Requests</a></li>
 <li><a href="marketplace/watching"><i class="fa fa-eye"></i> Watching <span class="label label-warning pull-right">4</span></a></li>
 <li><a href="marketplace/listing"><i class="fa fa-list"></i> My Listings</a></li>
 <li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers<span class="label label-info pull-right">15</span></a></li>
@@ -299,8 +299,8 @@ if($count_order_history){ ?>
 <a href="marketplace/notice"><i class="fa fa-line-chart"></i> <span class="nav-label">Marketplace</span> <span class="fa arrow"></span></a>
 <ul class="nav nav-second-level">
 <li><a href="javascript:void(0)" data-toggle="modal" data-target="#upgrade"><i class="fa fa-plus"></i> Create Listing</a></li>
-<li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Buy</a></li>
-<li><a href="marketplace/sell"><i class="fa fa-tag"></i> Sell</a></li>
+<li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Selling Offers</a></li>
+<li><a href="marketplace/sell"><i class="fa fa-tag"></i> Buying Requests</a></li>
 <li><a href="marketplace/watching"><i class="fa fa-eye"></i> Watching <span class="label label-warning pull-right">4</span></a></li>
 <li><a href="marketplace/listing"><i class="fa fa-list"></i> My Listings</a></li>
 <li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers<span class="label label-info pull-right">15</span></a></li>
@@ -433,6 +433,29 @@ function autoRefresh_div()
 setInterval('autoRefresh_div()', 50000); 
 </script>
 
+<?php if($member->membership > 1 && $member->marketplace == 'inactive'){ ?>
+<!-- Modal Upgrade -->
+<div class="modal inmodal fade" id="upgrade" tabindex="-1" role="dialog"  aria-hidden="true">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Trade References Required</h4>
+        <small class="font-bold">Access unavailble</small>
+    </div>
+
+    <div class="modal-body">
+      <p>This page is unavailable until we have approved two (2) trade references for your account and have run a credit check on your company.</p>
+      <p>Once this has been completed you will be able to have full access to our live marketplace. <a href="tradereference">Submit your trade references now</a>.</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+        <a href="preferences/subscription" class="btn btn-primary">Upgrade Now</a>
+    </div>
+</div>
+</div>
+</div>
+<?php } else { ?>
 <!-- Modal Upgrade -->
 <div class="modal inmodal fade" id="upgrade" tabindex="-1" role="dialog"  aria-hidden="true">
 <div class="modal-dialog modal-lg">
@@ -454,3 +477,4 @@ setInterval('autoRefresh_div()', 50000);
 </div>
 </div>
 </div>
+<?php } ?>

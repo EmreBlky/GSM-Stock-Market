@@ -20,21 +20,23 @@
 $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id);
 if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 
-<?php msg_alert(); ?>
 <div class="wrapper wrapper-content animated fadeInRight">
+
+<?php msg_alert(); ?>
 <div class="row">
 
 <div class="col-lg-12">
 <div class="ibox float-e-margins">
     <div class="ibox-title">
-        <h5>Sales Transactions</h5>
+        <h5>Sales Transactions (WTS)</h5>
     </div>
     <div class="ibox-content">
 
     <table id="marketplace" class="table table-striped table-bordered table-hover dataTables-example" >
     <thead>
     <tr>
-        <th>Inv No</th>
+        <th>Transaction ID</th><!--
+        <th>Reference</th>-->
         <th>Date</th>
         <th>Buyer</th>
         <th>Shipping</th>
@@ -48,7 +50,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
       <?php if(!empty($sell_order)){
         foreach ($sell_order as $value){ ?>
     <tr>
-        <td><?php echo $value->invoice_no;?></td>
+        <td><?php echo $value->invoice_no;?></td><?php /*
+        <td><?php echo $value->seller_reference;?></td>*/ ?>
         <td><?php echo date('d-M-y, H:i', strtotime($value->shipping_recevied_datetime)); ?></td>
         <td><?php 
             $seller_cmp_info='';
@@ -75,14 +78,14 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <div class="col-lg-12">
 <div class="ibox float-e-margins">
     <div class="ibox-title">
-        <h5>Buy Transactions</h5>
+        <h5>Buy Transactions (WTB)</h5>
     </div>
     <div class="ibox-content">
 
     <table id="marketplace" class="table table-striped table-bordered table-hover dataTables-example" >
     <thead>
     <tr>
-        <th>Inv No</th>
+        <th>Transaction ID</th>
         <th>Date</th>
         <th>Seller</th>
         <th>Shipping</th>

@@ -78,7 +78,9 @@ function country($name)
                         </div>
                         
                         <div class="col-lg-10">
-                            <h3 style="margin:0;display:inline-block"><strong><?php echo $event->name;?></h3><a href="<?php echo $event->website;?>" target="_blank"><button class="btn btn-primary pull-right" type="button" style="font-size:10px;margin-right:15px"><i class="fa fa-globe"></i>&nbsp;Visit Website</button></a>
+                            <h3 style="margin:0;display:inline-block"><strong><?php echo $event->name;?></h3>
+                            <a href="<?php echo $event->website;?>" target="_blank"><button class="btn btn-primary pull-right" type="button" style="font-size:10px;margin-right:15px"><i class="fa fa-globe"></i>&nbsp;Visit Website</button></a>
+                            <a href="profile/edit_profile"><button class="btn btn-info pull-right" type="button" style="font-size:10px;margin-right:15px"><i class="fa fa-plus"></i>&nbsp;Add My Company to this Event</button></a>
                             <p class="text-navy"><i class="fa fa-map-marker text-center" style="width:1em"></i> <?php echo $event->location;?>, <?php echo $event->venue;?><br /><i class="fa fa-calendar text-center" style="width:1em"></i> <?php echo $event->date;?></strong></p>
                             <p><?php echo $event->description;?></p>
                         </div>
