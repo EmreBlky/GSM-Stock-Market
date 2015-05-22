@@ -197,7 +197,7 @@
         
 <div class="hr-line-dashed"></div>
     <section data-step="3" data-intro="After completing your items basic data let buyers know what condition your listed item is with our in-depth condition options" data-position='right'>
-<div class="form-group"><label class="col-md-3 control-label">Condition <span style="color:red">*</span></label>
+    <div class="form-group"><label class="col-md-3 control-label" data-toggle="modal" data-target="#condition" style="cursor:pointer">Condition <i class="fa fa-question-circle"></i><span style="color:red">*</span></label>
 <div class="col-md-9">
     <select data-placeholder="What condition is the item in?" class="form-control" name="condition">
     <option value="" selected disabled>What condition is the item in?</option>
@@ -211,7 +211,7 @@
     <?php echo form_error('condition'); ?>
 </div>      
       <div class="col-md-9 col-md-offset-3">
-      <small class="text-navy">Not sure on which condition option to choose? View our condition descriptions <strong>here</strong> for a more in-depth description.</small>
+      <small class="text-navy">Not sure on which condition option to choose? View our condition descriptions <strong data-toggle="modal" data-target="#condition">here</strong> for a more in-depth description.</small>
       </div>
 </div>
 </section>
@@ -287,7 +287,7 @@
 </section>
   <div class="hr-line-dashed"></div>
     <section data-step="7" data-intro="Display in-depth shipping options by creating custom options with our shipping terms and couriers on top of listing item shipping free, priced per unit or just a flat fee to widen your selling audience" data-position='right'>
-    <div class="form-group"><label class="col-md-3 control-label">Shipping Terms <button class="btn btn-success btn-circle" type="button" style="width:20px;height:20px;border-radius:10px;font-size:10px;padding:0;margin-bottom:0" data-toggle="modal" data-target="#shipping" title="Click for more information"><i class="fa fa-question"></i></button></label>
+    <div class="form-group"><label class="col-md-3 control-label" data-toggle="modal" data-target="#shipping" style="cursor:pointer">Shipping Terms <i class="fa fa-question-circle"></i></label>
 <div class="col-md-9">
     <select class="form-control" name="shipping_term" onchange="shippings_to_couriers(this.value);">
         <option value="">Select Terms</option>
@@ -938,6 +938,39 @@ var today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate(
               <p>CIP can be used for all modes of transport, whereas the equivalent term CIF can only be used for non-containerised seafreight.</p>
               <strong>Data Source</strong><br />
               <p>Taken from <a href="http://en.wikipedia.org/wiki/Incoterms" target="_blank">Incoterms Wikipedia page</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal inmodal fade" id="condition" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Item Conditions</h4>
+                <small class="font-bold">Condition and Gradings</small>
+            </div>
+            <div class="modal-body">
+              <strong>New</strong><br />
+              <p>An unused brand new product.</p>
+              <strong>Refurbished (OEM)</strong><br />
+              <p>to “as new” condition from the manufacturer of the item.</p>
+              <strong>Refurbished (Seller)</strong><br />
+              <p>to “as new” condition from the seller of the item.</p>
+              <strong>Grade A</strong><br />
+              <p>Excellent condition, may have very light signs of use.</p>
+              <strong>Grade B</strong><br />
+              <p>Good Condition, will have marks/scratches from medium use.</p>
+              <strong>Grade C</strong><br />
+              <p>Fair Condition, will have marks/scratches from heavier use.</p>
+              <strong>Grade F (BER)</strong><br />
+              <p>Faulty. Beyond Economical Repair.</p>
+              <strong>Used</strong><br />
+              <p>Mixed used conditions and grades, may be untested. See item description for more information.</p>
+              <p style="color:red">It is very important that you follow these grading guidelines closely. All resolution processes with strictly follow these definitions.</p>
+              
+              
             </div>
         </div>
     </div>
