@@ -43,11 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="order-history.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="order-history.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/modules/marketplace/views/order-history.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7413509" vertical-offset="702" max-vertical-offset="5256">
-              <caret line="64" column="61" selection-start-line="64" selection-start-column="61" selection-end-line="64" selection-end-column="61" />
+            <state vertical-scroll-proportion="8.307693" vertical-offset="1026" max-vertical-offset="5256">
+              <caret line="45" column="12" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="12" />
               <folding>
                 <element signature="n#style#0;n#td#3;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
               </folding>
@@ -65,11 +65,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="open-orders.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="open-orders.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/modules/marketplace/views/open-orders.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.0" vertical-offset="2030" max-vertical-offset="10800">
-              <caret line="133" column="56" selection-start-line="133" selection-start-column="56" selection-end-line="133" selection-end-column="56" />
+            <state vertical-scroll-proportion="0.5420099" vertical-offset="2875" max-vertical-offset="10800">
+              <caret line="170" column="41" selection-start-line="170" selection-start-column="41" selection-end-line="170" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -96,11 +96,11 @@
         <option value="$PROJECT_DIR$/application/modules/marketplace/models/marketplace_model.php" />
         <option value="$PROJECT_DIR$/application/modules/marketplace/views/snippets/payment_info_modal.php" />
         <option value="$PROJECT_DIR$/application/modules/marketplace/views/snippets/seller_payment_info_send.php" />
-        <option value="$PROJECT_DIR$/application/modules/marketplace/views/open-orders.php" />
         <option value="$PROJECT_DIR$/application/modules/marketplace/views/snippets/seller_payment_info_send_modal.php" />
         <option value="$PROJECT_DIR$/application/modules/marketplace/views/snippets/payment_confirmation_model.php" />
         <option value="$PROJECT_DIR$/application/modules/marketplace/controllers/marketplace.php" />
         <option value="$PROJECT_DIR$/application/modules/marketplace/views/order-history.php" />
+        <option value="$PROJECT_DIR$/application/modules/marketplace/views/open-orders.php" />
       </list>
     </option>
   </component>
@@ -727,14 +727,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/modules/marketplace/views/open-orders.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.0" vertical-offset="2030" max-vertical-offset="10800">
-          <caret line="133" column="56" selection-start-line="133" selection-start-column="56" selection-end-line="133" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/modules/marketplace/controllers/marketplace.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="63.5" vertical-offset="46435" max-vertical-offset="55152">
@@ -754,11 +746,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/modules/marketplace/views/order-history.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7413509" vertical-offset="702" max-vertical-offset="5256">
-          <caret line="64" column="61" selection-start-line="64" selection-start-column="61" selection-end-line="64" selection-end-column="61" />
+        <state vertical-scroll-proportion="8.307693" vertical-offset="1026" max-vertical-offset="5256">
+          <caret line="45" column="12" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="12" />
           <folding>
             <element signature="n#style#0;n#td#3;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/modules/marketplace/views/open-orders.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5420099" vertical-offset="2875" max-vertical-offset="10800">
+          <caret line="170" column="41" selection-start-line="170" selection-start-column="41" selection-end-line="170" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
