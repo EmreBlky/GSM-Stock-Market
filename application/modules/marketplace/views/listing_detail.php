@@ -1,11 +1,16 @@
 <div class="row wrapper border-bottom white-bg page-heading">
 <div class="col-lg-10">
-<h2><?php if($listing_detail->listing_type==2){ ?>Selling Offer
-<?php }elseif($listing_detail->listing_type==1){ ?>Buying Request
+<h2><?php if($listing_detail->listing_type==2){ ?>Selling Offer Listing
+<?php }elseif($listing_detail->listing_type==1){ ?>Buying Request Listing
 <?php } ?></h2>
 <ol class="breadcrumb">
     <li><a href="/">Home</a></li>
     <li>Marketplace</li>
+    <li><?php if($listing_detail->listing_type==2){ ?>
+          <a href="marketplace/buy">Selling Offers</a>
+          <?php }elseif($listing_detail->listing_type==1){ ?>
+          <a href="marketplace/sell">Buying Requests</a>
+          <?php } ?></li>
     <li class="active"><strong>Listing Details</strong></li>
 </ol>
 </div>
@@ -19,9 +24,9 @@
 <div class="ibox float-e-margins">
 <div class="ibox-title">
 <h5>Listing Details - <?php if($listing_detail->listing_type==2){ ?>
-          <span class="label label-info  pull-right">This is a Selling Offer</span>
+          <span class="label label-warning  pull-right">This is a Selling Offer</span>
           <?php }elseif($listing_detail->listing_type==1){ ?>
-         <span class="label label-info  pull-right">This is a Buying Request</span>
+         <span class="label label-primary  pull-right">This is a Buying Request</span>
           <?php } ?>
 
 
@@ -66,13 +71,14 @@
 
     </dl>
       <div class="hr-line-dashed"></div>
-    <dl class="dl-horizontal">
         <h4>Price</h4>
-        <dt>Sale Currency:</dt> <dd> <?php if(!empty($listing_detail->currency)) { echo currency_class($listing_detail->currency); } ?></dd>
-        <dt>GBP Price:</dt> <dd style="<?php if($listing_detail->currency==1){ echo"font-weight: bold;"; }?>">  &pound; <?php echo get_currency(currency_class($listing_detail->currency), 'GBP', $listing_detail->unit_price); ?></dd>
-        <dt >EUR Price:</dt> <dd style="<?php if($listing_detail->currency==2){ echo"font-weight: bold;"; }?>">  &euro; <?php echo get_currency(currency_class($listing_detail->currency), 'EUR', $listing_detail->unit_price); ?></dd>
-        <dt>USD Price:</dt> <dd style="<?php if($listing_detail->currency==3){ echo"font-weight: bold;"; }?>">  $ <?php echo get_currency(currency_class($listing_detail->currency), 'USD', $listing_detail->unit_price); ?></dd>
-    </dl>
+        <dl class="dl-horizontal">
+            <dt>Sale Currency:</dt> <dd> <?php if(!empty($listing_detail->currency)) { echo currency_class($listing_detail->currency); } ?></dd>
+            <dt>GBP Price:</dt> <dd style="<?php if($listing_detail->currency==1){ echo"font-weight: bold;"; }?>">  &pound; <?php echo get_currency(currency_class($listing_detail->currency), 'GBP', $listing_detail->unit_price); ?></dd>
+            <dt>EUR Price:</dt> <dd style="<?php if($listing_detail->currency==2){ echo"font-weight: bold;"; }?>">  &euro; <?php echo get_currency(currency_class($listing_detail->currency), 'EUR', $listing_detail->unit_price); ?></dd>
+            <dt>USD Price:</dt> <dd style="<?php if($listing_detail->currency==3){ echo"font-weight: bold;"; }?>">  $ <?php echo get_currency(currency_class($listing_detail->currency), 'USD', $listing_detail->unit_price); ?></dd>
+        </dl>
+        <p class="text-navy small">Exchange rate data is powered by jsonrates. We provide exchanges rates from multiple sources updated every 10 minutes.</p>
      <div class="hr-line-dashed"></div> 
     <?php if(!empty($listing_detail->courier) && $listing_detail->listing_type==1){   ?>
     <dl class="dl-horizontal">
