@@ -2379,10 +2379,7 @@ class Marketplace extends MX_Controller {
 
         $user_id = $this->session->userdata('members_id');
         $id = $this->input->post('order_id');
-
-        // upload file
         $proforma_file_name = $this->marketplace_model->getUploadedFileName( $_FILES['proforma_file']['name'], $id );
-        $this->marketplace_model->uploadFile( 'proforma_file' , $id );
 
         $arrayToUpdate = array(
             'order_status' => 1,
@@ -2393,32 +2390,9 @@ class Marketplace extends MX_Controller {
         );
         if ($this->marketplace_model->update( 'make_offer', $arrayToUpdate, array('id' => $id)) ) {
             $this->session->set_flashdata('msg_success', 'Your payment information has been submitted for the user to make payment.');
+            // upload file
+            $this->marketplace_model->uploadFile( 'proforma_file' , $id );
         } else {
-        $this->marketplace_model->uploadFile( $proforma_file_name , $this->proforma_file_dir );
-
-//        $filename = $_FILES['proforma_file']['name'];
-//        $fileExt = substr( $filename, strrpos($filename, '.') );
-//        $proforma_file_name = $id."-".mktime().$fileExt;
-
-//        $config['file_name'] = $proforma_file_name;
-//        $config['upload_path'] = $this->proforma_file_dir;
-//        $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf';
-//        $config['max_size']	= '20000';
-//
-//        $this->load->library('upload', $config);
-//
-//        if ( ! $this->upload->do_upload('proforma_file'))
-//        {
-//            $error = array('error' => $this->upload->display_errors());
-//        }
-//        else
-//        {
-//            $data = array('upload_data' => $this->upload->data('proforma_file'));
-//        }
-
-//        if ($this->marketplace_model->update('make_offer', array('order_status' => 1, 'payment_detail' => $payment_detail, 'seller_reference' => $seller_reference, 'proforma_file' => $proforma_file_name, 'payment_infoadd_datetime' => date('Y-m-d H:i:s')), array('id' => $id))) {
-//            $this->session->set_flashdata('msg_success', 'Payment information save sucessfully.');
-//			     } else {
             $this->session->set_flashdata('msg_info', 'There was an error processing your request.');
         }
 
