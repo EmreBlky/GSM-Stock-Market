@@ -175,11 +175,7 @@ class Marketplace extends MX_Controller {
         if (empty($list_id)) {
             $this->form_validation->set_rules('courier[]', 'courier', 'required');
         }
-        $this->form_validation->set_rules('product_desc', 'product description', 'required');
         $this->form_validation->set_rules('duration', 'duration', 'required');
-        if (empty($list_id)) {
-            $this->form_validation->set_rules('termsandcondition', 'Terms and condition', 'required');
-        }
         if (empty($list_id)) {
             $this->form_validation->set_rules('image1', '', 'callback_image1_check[' . $list_id . ']');
         }
@@ -343,7 +339,7 @@ class Marketplace extends MX_Controller {
             endif;
             if (!empty($list_id)) {
                 $this->marketplace_model->update('listing', $data_insert, array('id' => $list_id));
-                $this->session->set_flashdata('msg_success', 'Listing Update successfully.');
+                $this->session->set_flashdata('msg_success', 'Listing updated successfully.');
                 redirect('marketplace/listing');
             } else {
                 $this->marketplace_model->insert('listing', $data_insert);
@@ -465,7 +461,7 @@ class Marketplace extends MX_Controller {
             @unlink('public/upload/listing/thumbnail/' . $img5[3]);
         }
         $this->marketplace_model->delete('listing', array('id' => $listing_id, 'member_id' => $member_id));
-        $this->session->set_flashdata('msg_success', 'you have listing delete successfully.');
+        $this->session->set_flashdata('msg_success', 'you have deleted this listing successfully.');
         redirect('marketplace/listing');
     }
 
@@ -495,10 +491,8 @@ class Marketplace extends MX_Controller {
                 $this->form_validation->set_rules('min_qty_order', 'min quantity order', 'required|numeric');
             }
 
-            $this->form_validation->set_rules('product_desc', 'product description', 'required');
             if (empty($list_id)) {
                 $this->form_validation->set_rules('duration', 'duration', 'required');
-                $this->form_validation->set_rules('termsandcondition', 'Terms and condition', 'required');
             }
         } else {
             $this->form_validation->set_rules('listing_type', 'listing type', '');
@@ -707,7 +701,7 @@ class Marketplace extends MX_Controller {
             endif;
             if (!empty($list_id)) {
                 $this->marketplace_model->update('listing', $data_insert, array('id' => $list_id, 'member_id' => $member_id));
-                $this->session->set_flashdata('msg_success', 'Listing Update successfully.');
+                $this->session->set_flashdata('msg_success', 'Listing update successful.');
                 if (!empty($status) && $status == 2)
                     redirect('marketplace/listing');
                 else
@@ -716,12 +710,13 @@ class Marketplace extends MX_Controller {
                 $this->marketplace_model->insert('listing', $data_insert);
             }
             if ($status == 1) {
-                $this->session->set_flashdata('msg_success', 'Listing added successfully.');
+                $this->session->set_flashdata('msg_success', 'Your Selling Offer (WTS) listing has been created successfully.');
                 redirect('marketplace/listing');
             } elseif ($status == 2) {
-                $this->session->set_flashdata('msg_success', 'Listing save for later, it will be under considration.');
+                $this->session->set_flashdata('msg_warning', 'Your Selling Offer (WTS) listing has been saved for later. Edit the listing and complete to list it on the marketplace.');
                 redirect('marketplace/listing');
             }
+				
         }
         $data['main'] = 'marketplace';
         $data['title'] = 'GSM - Market Place: Sell Listing';
@@ -821,10 +816,8 @@ class Marketplace extends MX_Controller {
             if (empty($list_id)) {
                 $this->form_validation->set_rules('courier[]', 'courier', 'required');
             }
-            $this->form_validation->set_rules('product_desc', 'product description', 'required');
             if (empty($list_id)) {
                 $this->form_validation->set_rules('duration', 'duration', 'required');
-                $this->form_validation->set_rules('termsandcondition', 'Terms and condition', 'required');
             }
         } else {
             $this->form_validation->set_rules('listing_type', 'listing type', '');
@@ -1018,7 +1011,7 @@ class Marketplace extends MX_Controller {
             endif;
             if (!empty($list_id)) {
                 $this->marketplace_model->update('listing', $data_insert, array('id' => $list_id, 'member_id' => $member_id));
-                $this->session->set_flashdata('msg_success', 'Listing Update successfully.');
+                $this->session->set_flashdata('msg_success', 'Your Buying Request (WTB) listing has been updated successfully.');
                 if (!empty($status) && $status == 2)
                     redirect('marketplace/listing');
                 else
@@ -1027,10 +1020,10 @@ class Marketplace extends MX_Controller {
                 $this->marketplace_model->insert('listing', $data_insert);
             }
             if ($status == 1) {
-                $this->session->set_flashdata('msg_success', 'Listing added successfully.');
+                $this->session->set_flashdata('msg_success', 'Your Buying Request (WTB) listing has been created successfully.');
                 redirect('marketplace/listing');
             } elseif ($status == 2) {
-                $this->session->set_flashdata('msg_success', 'Listing save for later, it will be under considration.');
+                $this->session->set_flashdata('msg_warning', 'Your Buying Request (WTB) listing has been saved for later. Edit the listing and complete to list it on the marketplace.');
                 redirect('marketplace/listing');
             }
         }
@@ -1102,10 +1095,10 @@ class Marketplace extends MX_Controller {
                 'listing_type' => $listing_type
             );
             $this->marketplace_model->insert('listing_watch', $data_insert);
-            $this->session->set_flashdata('msg_info', 'Listing have been save sucessfully in your watch list.');
+            $this->session->set_flashdata('msg_success', 'This listing has been added to your watch list.');
             redirect('marketplace/listing_detail/' . $listing_id);
         } else {
-            $this->session->set_flashdata('msg_info', 'This item is already exist in your watch list.');
+            $this->session->set_flashdata('msg_info', 'This listing is already being watched');
             redirect('marketplace/listing_detail/' . $listing_id);
         }
     }
@@ -1113,9 +1106,9 @@ class Marketplace extends MX_Controller {
     function listing_unwatch($listing_id = '') {
         $user_id = $this->session->userdata('members_id');
         if ($this->marketplace_model->delete('listing_watch', array('listing_id' => $listing_id, 'user_id' => $user_id))) {
-            $this->session->set_flashdata('msg_success', 'Listing removed successfully from your watch list.');
+            $this->session->set_flashdata('msg_success', 'This listing has been removed from your watch list.');
         } else {
-            $this->session->set_flashdata('msg_info', 'Invalid...!');
+            $this->session->set_flashdata('msg_error', 'Invalid...!');
         }
         redirect($_SERVER['HTTP_REFERER']);
     }
@@ -1148,7 +1141,7 @@ class Marketplace extends MX_Controller {
             $this->load->model('mailbox/mailbox_model', 'mailbox_model');
             $this->mailbox_model->_insert($data);
             if (!empty($question_id)) {
-                $this->session->set_flashdata('msg_info', 'Your question sent successfully. You will get response as soon as possible');
+                $this->session->set_flashdata('msg_info', 'Your question has been sent to the user. They have been notified and will get back to your shortly.');
             } else {
                 $this->session->set_flashdata('msg_info', 'Please Try again.');
             }
@@ -1667,7 +1660,7 @@ class Marketplace extends MX_Controller {
             $data['listing_detail'] = $this->marketplace_model->listingdetailv($id);
         }
         if ($data['listing_detail'] == FALSE) {
-            $this->session->set_flashdata('msg_info', 'May this listing get deactivated or available quantities get completed.');
+            $this->session->set_flashdata('msg_info', 'This listing may get deactivated if quantities are not amended');
             redirect('marketplace/listing');
         }
         $data['member'] = $this->marketplace_model->get_row('members', array('id' => $data['listing_detail']->member_id));
@@ -1745,7 +1738,7 @@ class Marketplace extends MX_Controller {
                         }
                     } else {
                         /* available qty get over */
-                        $this->session->set_flashdata('msg_info', 'You are not able to accept this offer. First Update available quantities of listing.');
+                        $this->session->set_flashdata('msg_info', 'You do not have enough stock available. Amend your listing so you have enough a high enough quantity to accept this offer.');
                         redirect($_SERVER['HTTP_REFERER']);
                     }
                 }
@@ -1785,7 +1778,7 @@ class Marketplace extends MX_Controller {
                 );
                 $this->load->model('mailbox/mailbox_model', 'mailbox_model');
                 $this->mailbox_model->_insert($data);
-                $this->session->set_flashdata('msg_success', 'Offer Declined. The user has been notified.');
+                $this->session->set_flashdata('msg_error', 'Offer Declined. The user has been notified.');
             } else {
                 $this->session->set_flashdata('msg_info', 'Invalid.');
             }
@@ -1821,7 +1814,7 @@ class Marketplace extends MX_Controller {
                         'member_id' => $seller_id,
                         'sent_member_id' => $buyer_id,
                         'subject' => 'Offer Declined',
-                        'body' => 'Your offer to pay the asking price has been decline, try contacting the user as they may not have the quantity available.',
+                        'body' => 'Your offer to pay the asking price has been declined, try contacting the user as they may not have the quantity available.',
                         'inbox' => 'yes',
                         'sent' => 'yes',
                         'date' => date('d-m-Y'),
@@ -1831,7 +1824,7 @@ class Marketplace extends MX_Controller {
                     );
                     $this->load->model('mailbox/mailbox_model', 'mailbox_model');
                     $this->mailbox_model->_insert($data);
-                    $this->session->set_flashdata('msg_success', 'Offer Declined sucessfully.');
+                    $this->session->set_flashdata('msg_error', 'Offer Declined sucessfully.');
                     redirect($_SERVER['HTTP_REFERER']);
                 }
             } else {
@@ -1885,7 +1878,7 @@ class Marketplace extends MX_Controller {
                     );
                     $this->marketplace_model->update('make_offer', array('offer_status' => 3), array('id' => $offer_id));
                     $this->marketplace_model->insert('negotiation', $data_insert_negotiation);
-                    $this->session->set_flashdata('msg_success', 'Offer has been moved to <strong>Negotiations</strong> page until a deal has been met.');
+                    $this->session->set_flashdata('msg_success', 'Offer has been moved to <strong>Negotiations</strong> page until a deal has been agreed between both users.');
                 } else {
                     $this->session->set_flashdata('msg_info', 'Invalid.');
                     redirect($_SERVER['HTTP_REFERER']);
@@ -2204,7 +2197,7 @@ class Marketplace extends MX_Controller {
                     'created' => date('Y-m-d, H:i:s')
                 );
                 $makeofferid = $this->marketplace_model->insert('make_offer', $data_insert);
-                $this->session->set_flashdata('msg_success', 'Request inserted sucessfully...! ');
+                $this->session->set_flashdata('msg_success', 'Your offer has been sent to the user. If they accept an order will be created.');
             } else {
                 $this->session->set_flashdata('msg_error', 'Failed, Please try again.');
             }
@@ -2390,6 +2383,7 @@ class Marketplace extends MX_Controller {
 
         $user_id = $this->session->userdata('members_id');
         $id = $this->input->post('order_id');
+<<<<<<< HEAD
 
         $proforma_file_name = $this->marketplace_model->getUploadedFileName( $_FILES['proforma_file']['name'], $id );
         $this->marketplace_model->uploadFile( $proforma_file_name , $this->proforma_file_dir );
@@ -2416,8 +2410,12 @@ class Marketplace extends MX_Controller {
 
         if ($this->marketplace_model->update('make_offer', array('order_status' => 1, 'payment_detail' => $payment_detail, 'seller_reference' => $seller_reference, 'proforma_file' => $proforma_file_name, 'payment_infoadd_datetime' => date('Y-m-d H:i:s')), array('id' => $id))) {
             $this->session->set_flashdata('msg_success', 'Payment information save sucessfully.');
+=======
+        if ($this->marketplace_model->update('make_offer', array('order_status' => 1, 'payment_detail' => $payment_detail, 'seller_reference' => $seller_reference, 'proforma_file' => $proforma_file, 'payment_infoadd_datetime' => date('Y-m-d H:i:s')), array('id' => $id))) {
+            $this->session->set_flashdata('msg_success', 'Your payment information has been submitted for the user to make payment.');
+>>>>>>> 379622a07e3a48663a29a01465c431881418904b
         } else {
-            $this->session->set_flashdata('msg_info', 'Invalid.');
+            $this->session->set_flashdata('msg_info', 'There was an error processing your request.');
         }
 
         redirect($_SERVER['HTTP_REFERER']);
@@ -2428,7 +2426,7 @@ class Marketplace extends MX_Controller {
             $user_id = $this->session->userdata('members_id');
             $id = $this->input->post('order_id');
             if ($this->marketplace_model->update('make_offer', array('payment_done_datetime' => date('Y-m-d H:i:s'), 'payment_done' => 1), array('id' => $id))) {
-                $this->session->set_flashdata('msg_success', 'Payment Done sucessfully.');
+                $this->session->set_flashdata('msg_success', 'Payment completed sucessfully.');
             } else {
                 $this->session->set_flashdata('msg_info', 'Invalid.');
             }
@@ -2471,7 +2469,7 @@ class Marketplace extends MX_Controller {
             $user_id = $this->session->userdata('members_id');
             $id = $this->input->post('order_id');
             if ($this->marketplace_model->update('make_offer', array('order_status' => 4, 'shipping_recevied_datetime' => date('Y-m-d H:i:s'), 'shipping_received' => 1), array('id' => $id))) {
-                $this->session->set_flashdata('msg_success', 'Order Statue changed sucessfully.');
+                $this->session->set_flashdata('msg_success', 'Order Status changed sucessfully.');
             } else {
                 $this->session->set_flashdata('msg_info', 'Invalid.');
             }
@@ -2482,7 +2480,7 @@ class Marketplace extends MX_Controller {
     }
 
     public function feedback_redirect() {
-        $this->session->set_flashdata('msg_success', 'Feedback save is sucessfully.');
+        $this->session->set_flashdata('msg_success', 'You have left feedback for this user. Your order can now be viewed in your <strong>Order History</strong>.');
         redirect('marketplace/history');
     }
 
@@ -2491,7 +2489,7 @@ class Marketplace extends MX_Controller {
             $user_id = $this->session->userdata('members_id');
             $id = $this->input->post('order_id');
             if ($this->marketplace_model->update('make_offer', array('buyer_feedback' => $_POST['feedback'], 'buyer_feedback_datetime' => date('Y-m-d H:i:s'), 'buyer_history' => 1), array('id' => $id, 'buyer_id' => $user_id))) {
-                $this->session->set_flashdata('msg_success', 'Feedback save is sucessfully.');
+                $this->session->set_flashdata('msg_success', 'You have left feedback for this user. Your order can now be viewed in your <strong>Order History</strong>');
             } else {
                 $this->session->set_flashdata('msg_info', 'Invalid.');
             }
@@ -2506,7 +2504,7 @@ class Marketplace extends MX_Controller {
             $user_id = $this->session->userdata('members_id');
             $id = $this->input->post('order_id');
             if ($this->marketplace_model->update('make_offer', array('seller_feedback' => $_POST['feedback'], 'seller_feedback_datetime' => date('Y-m-d H:i:s'), 'seller_history' => 1), array('id' => $id, 'seller_id' => $user_id))) {
-                $this->session->set_flashdata('msg_success', 'Feedback save is sucessfully.');
+                $this->session->set_flashdata('msg_success', 'You have left feedback for this user. Your order can now be viewed in your <strong>Order History</strong>');
             } else {
                 $this->session->set_flashdata('msg_info', 'Invalid.');
             }
@@ -2765,7 +2763,7 @@ class Marketplace extends MX_Controller {
                     }
                 } else {
                     /* available qty get over */
-                    $this->session->set_flashdata('msg_info', 'You are not able to accept this offer. First Update available quantities of listing.');
+                    $this->session->set_flashdata('msg_info', 'You do not have enough stock available. Amend your listing so you have enough a high enough quantity to accept this offer.');
                     redirect($_SERVER['HTTP_REFERER']);
                 }
             }
@@ -2814,7 +2812,7 @@ class Marketplace extends MX_Controller {
             );
             $this->load->model('mailbox/mailbox_model', 'mailbox_model');
             $this->mailbox_model->_insert($data);
-            $this->session->set_flashdata('msg_success', 'Offer Accepted sucessfully and move in open order.');
+            $this->session->set_flashdata('msg_success', 'You offer has been accepted and this transaction has been moved to <strong>Open Orders</strong>');
             redirect('marketplace/open_orders');
         } elseif ($status == 2) {
             $message = "";
@@ -2836,7 +2834,7 @@ class Marketplace extends MX_Controller {
             );
             $this->load->model('mailbox/mailbox_model', 'mailbox_model');
             $this->mailbox_model->_insert($data);
-            $this->session->set_flashdata('msg_success', 'Offer Declined sucessfully.');
+            $this->session->set_flashdata('msg_error', 'Offer Declined sucessfully.');
         } else {
             $this->session->set_flashdata('msg_info', 'Invalid.');
         }
@@ -2844,7 +2842,7 @@ class Marketplace extends MX_Controller {
     }
 
     public function redirect_link() {
-        $this->session->set_flashdata('msg_success', 'Offer accepted ');
+        $this->session->set_flashdata('msg_success', 'Offer Accepted ');
         redirect($_SERVER['HTTP_REFERER']);
     }
 

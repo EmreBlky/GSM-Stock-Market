@@ -30,7 +30,7 @@ $.ajax({
 </script>
 <div class="row wrapper border-bottom white-bg page-heading">
 <div class="col-lg-10">
-  <h2>Selling Offers</h2>
+  <h2>Selling Offers (WTS)</h2>
   <ol class="breadcrumb">
     <li><a href="/">Home</a></li>
     <li>Marketplace</li>
@@ -42,6 +42,11 @@ $.ajax({
 </div><!-- /row -->
         
 <div class="wrapper wrapper-content animated fadeInRight">
+
+            <div class="alert alert-info">
+                <p><i class="fa fa-warning"></i> Welcome to the <strong>GSM Marketplace v1.0a</strong>. Our marketplace is now live! If you have any issues or trouble using the marketplace please let us know by <a class="alert-link" href="support/submit_ticket">submitting a ticket</a> or if you have any ideas or feedback then <a class="alert-link" href="support/submit_ticket">let us know!</a></p>
+            </div>
+            
 <div class="row">
   <div class="col-lg-12">
     <div class="ibox float-e-margins">
@@ -270,7 +275,7 @@ endif;
 <div class="col-lg-12">
 <div class="ibox float-e-margins">
 <div class="ibox-title">
-    <h5>Live Marketplace - Selling Offers</h5>
+    <h5>Live Marketplace - Selling Offers (WTS) - Items you can buy from other users</h5>
 </div>
 <div class="ibox-content">
 
@@ -291,7 +296,7 @@ endif;
 </thead>
     <?php if($listing_buy){
         foreach ($listing_buy as $value) {?>
-        <tr>
+        <tr onclick="document.location = '<?php echo base_url().'marketplace/listing_detail/'.$value->id ?>';" style="cursor:pointer">
         <td><span <?php 
     $enddatetime = $value->listing_end_datetime;; 
     $current_date = date('d-m-Y H:i:s'); 
@@ -336,8 +341,8 @@ endif;
        <!-- <span style="display:none"><?php //echo $value->country ?></span>-->
         <img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" title="<?php echo $value->product_country ?>" />
         </td>
-        <th>
-        <a href="<?php echo base_url().'marketplace/listing_detail/'.$value->id ?>"><button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></a></th>
+        <td class="text-center">
+        <a href="<?php echo base_url().'marketplace/listing_detail/'.$value->id ?>"><button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></a></td>
     </tr>
        <?php }}else{
         ?>
