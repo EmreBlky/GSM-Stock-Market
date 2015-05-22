@@ -1719,12 +1719,12 @@ class Marketplace extends MX_Controller {
                         if ($min_qty_order >= $current_total_qty) {
                             /* available qty get over update tham */
                             $message_qty_over = "";
-                            $message_qty_over = 'Available quantities are less than minimum quantities. <br>Listing Info - ' . $listing_info->total_qty . ' x ' . $listing_info->product_make . ' ' . $listing_info->product_model . ' ' . $listing_info->condition . ' ' . $listing_info->product_color . ' @ ' . currency_class($listing_info->currency) . ' ' . $listing_info->unit_price . '<br>If You want to keep active this listing please update the quantities.';
+                            $message_qty_over = 'You are currently unable to sell/buy anymore of this listing, to keep it on the marketplace make sure you have a high enough quantity.<br><strong>sting Info</strong><br />' . $listing_info->total_qty . ' x ' . $listing_info->product_make . ' ' . $listing_info->product_model . ' ' . $listing_info->condition . ' ' . $listing_info->product_color . ' @ ' . currency_class($listing_info->currency) . ' ' . $listing_info->unit_price . '<br>If You want to keep active this listing please update the quantities.';
 
                             $data1 = array(
                                 'member_id' => 5,
                                 'sent_member_id' => $listing_info->member_id,
-                                'subject' => 'No more quantities are available',
+                                'subject' => 'Your listing has run out of stock!',
                                 'body' => $message_qty_over,
                                 'inbox' => 'yes',
                                 'sent' => 'yes',
@@ -2383,7 +2383,6 @@ class Marketplace extends MX_Controller {
 
         $user_id = $this->session->userdata('members_id');
         $id = $this->input->post('order_id');
-<<<<<<< HEAD
 
         $proforma_file_name = $this->marketplace_model->getUploadedFileName( $_FILES['proforma_file']['name'], $id );
         $this->marketplace_model->uploadFile( $proforma_file_name , $this->proforma_file_dir );
@@ -2410,11 +2409,7 @@ class Marketplace extends MX_Controller {
 
         if ($this->marketplace_model->update('make_offer', array('order_status' => 1, 'payment_detail' => $payment_detail, 'seller_reference' => $seller_reference, 'proforma_file' => $proforma_file_name, 'payment_infoadd_datetime' => date('Y-m-d H:i:s')), array('id' => $id))) {
             $this->session->set_flashdata('msg_success', 'Payment information save sucessfully.');
-=======
-        if ($this->marketplace_model->update('make_offer', array('order_status' => 1, 'payment_detail' => $payment_detail, 'seller_reference' => $seller_reference, 'proforma_file' => $proforma_file, 'payment_infoadd_datetime' => date('Y-m-d H:i:s')), array('id' => $id))) {
-            $this->session->set_flashdata('msg_success', 'Your payment information has been submitted for the user to make payment.');
->>>>>>> 379622a07e3a48663a29a01465c431881418904b
-        } else {
+			     } else {
             $this->session->set_flashdata('msg_info', 'There was an error processing your request.');
         }
 
