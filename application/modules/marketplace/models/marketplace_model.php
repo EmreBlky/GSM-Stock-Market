@@ -9,9 +9,9 @@ class Marketplace_model extends MY_Model {
         parent::__construct();
         $this->table = 'marketplace';
         $CI =& get_instance();
-        $this->proforma_file_dir = $CI->config->item('uploadDir')."/proforma_files/";
-        $this->bank_payment_file_dir = $CI->config->item('uploadDir')."/bank_payment_files/";
-        $this->tracking_file_dir = $CI->config->item('uploadDir')."/tracking_files/";
+        $this->proforma_file_dir = $CI->config->item('uploadDir')."proforma_files/";
+        $this->bank_payment_file_dir = $CI->config->item('uploadDir')."bank_payment_files/";
+        $this->tracking_file_dir = $CI->config->item('uploadDir')."tracking_files/";
     }
 
     public function getUploadedFileName($actualFilename , $idToAppend )
@@ -29,13 +29,16 @@ class Marketplace_model extends MY_Model {
         $config['max_size']	= '20000';
 
         $this->load->library('upload', $config);
+        print_r($config);
 
         if ( !$this->upload->do_upload($file_name))
         {
+            print_r($this->upload->display_errors());exit;
             return array('error' => $this->upload->display_errors());
         }
         else
         {
+            print_r(array('upload_data' => $this->upload->data($file_name)));exit;
             return array('upload_data' => $this->upload->data($file_name));
         }
     }
