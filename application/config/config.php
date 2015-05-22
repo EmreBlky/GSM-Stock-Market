@@ -400,4 +400,5 @@ $config['proxy_ips'] = '';
 
 
 // Naveed:================
-$config['uploadDir'] = $config['base_url']."public/upload/";
+//$config['uploadDir'] = $config['base_url']."public/upload/";
+$config['uploadDir'] = "./public/upload/";
