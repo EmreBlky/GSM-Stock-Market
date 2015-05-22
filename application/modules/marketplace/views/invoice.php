@@ -1,6 +1,6 @@
 <div class="row wrapper border-bottom white-bg page-heading">
 <div class="col-lg-8">
-<h2>Transaction</h2>
+<h2>Transaction ID - <?php echo $invoice->invoice_no;?></h2>
 <ol class="breadcrumb">
 <li>
     <a href="index.html">Home</a>
@@ -42,7 +42,7 @@
         </div>
 
         <div class="col-sm-6 text-right">
-            <h4>Transaction No.</h4>
+            <h4>Transaction ID.</h4>
             <h4 class="text-navy"><?php echo $invoice->invoice_no;?></h4>
             <span>To:</span>
             <address>
@@ -68,8 +68,8 @@
             <tr>
                  <th>Item List</th>
                     <th>Quantity</th>
-                    <th>Unit Price</th>
-                    <th>Tax</th>
+                    <th>Unit Price</th><!--
+                    <th>Tax</th>-->
                     <th>Total Price</th>
             </tr>
             </thead>
@@ -78,8 +78,8 @@
                 <td width="60%"><div><strong><?php echo $invoice->product_mpn_isbn.' '.$invoice->product_make.' '.$invoice->product_model.' '.$invoice->product_type.' '.$invoice->product_color;?></strong></div>
                     <small><?php echo $invoice->product_desc;?></small></td>
                 <td><?php echo $invoice->product_qty;?></td>
-                <td><?php echo $invoice->unit_price;?></td>
-                <td><?php echo $invoice->shipping_price;?></td>
+                <td><?php echo $invoice->unit_price;?></td><?php /*
+                <td><?php echo $invoice->shipping_price;?></td>*/ ?>
                 <td><?php echo $invoice->total_price;?></td>
             </tr>
             </tbody>
@@ -114,11 +114,6 @@
 </div>
 </div>
 
-<script>
-/*function myFunction() {
-    window.print('marketplace/invoice_print');
-}*/
-</script>
 <!-- Mainly scripts -->
 <script src="public/main/template/core/js/jquery-2.1.1.js"></script>
 <script src="public/main/template/core/js/bootstrap.min.js"></script>

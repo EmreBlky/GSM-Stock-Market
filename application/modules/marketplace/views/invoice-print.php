@@ -16,7 +16,7 @@
             </div>
 
             <div class="col-sm-6 text-right">
-                <h4>Invoice No.</h4>
+                <h4>Transaction ID.</h4>
                 <h4 class="text-navy"><?php echo $invoice->invoice_no;?></h4>
                 <span>To:</span>
                  <address>
@@ -42,8 +42,8 @@
                 <tr>
                     <th>Item List</th>
                     <th>Quantity</th>
-                    <th>Unit Price</th>
-                    <th>Tax</th>
+                    <th>Unit Price</th><!--
+                    <th>Tax</th>-->
                     <th>Total Price</th>
                 </tr>
                 </thead>
@@ -52,8 +52,8 @@
                      <td width="60%"><div><strong><?php echo $invoice->product_mpn_isbn.' '.$invoice->product_make.' '.$invoice->product_model.' '.$invoice->product_type.' '.$invoice->product_color;?></strong></div>
                     <small><?php echo $invoice->product_desc;?></small></td>
                 <td><?php echo $invoice->product_qty;?></td>
-                <td><?php echo $invoice->unit_price;?></td>
-                <td><?php echo $invoice->shipping_price;?></td>
+                <td><?php echo $invoice->unit_price;?></td><?php /*
+                <td><?php echo $invoice->shipping_price;?></td> */ ?>
                 <td><?php echo $invoice->total_price;?></td>
                 </tr>
                 </tbody>
@@ -80,11 +80,14 @@
         </tr>
         </tbody>
     </table>
-        <div class="well m-t"><strong>Comments</strong>
-            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less
-        </div>
+    <p class="small">This is just a transaction receipt and not a tax/vat invoice</p>
     </div>
 
+<script>
+function myFunction() {
+    window.print('marketplace/invoice_print');
+}
+</script>
 
 <!-- Mainly scripts -->
 <script src="public/main/template/core/js/jquery-2.1.1.js"></script>
