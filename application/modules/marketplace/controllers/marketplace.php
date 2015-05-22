@@ -2382,7 +2382,6 @@ class Marketplace extends MX_Controller {
 
         // upload file
         $proforma_file_name = $this->marketplace_model->getUploadedFileName( $_FILES['proforma_file']['name'], $id );
-<<<<<<< HEAD
         $this->marketplace_model->uploadFile( 'proforma_file' , $id );
 
         $arrayToUpdate = array(
@@ -2395,7 +2394,6 @@ class Marketplace extends MX_Controller {
         if ($this->marketplace_model->update( 'make_offer', $arrayToUpdate, array('id' => $id)) ) {
             $this->session->set_flashdata('msg_success', 'Your payment information has been submitted for the user to make payment.');
         } else {
-=======
         $this->marketplace_model->uploadFile( $proforma_file_name , $this->proforma_file_dir );
 
 //        $filename = $_FILES['proforma_file']['name'];
@@ -2418,10 +2416,9 @@ class Marketplace extends MX_Controller {
 //            $data = array('upload_data' => $this->upload->data('proforma_file'));
 //        }
 
-        if ($this->marketplace_model->update('make_offer', array('order_status' => 1, 'payment_detail' => $payment_detail, 'seller_reference' => $seller_reference, 'proforma_file' => $proforma_file_name, 'payment_infoadd_datetime' => date('Y-m-d H:i:s')), array('id' => $id))) {
-            $this->session->set_flashdata('msg_success', 'Payment information save sucessfully.');
-			     } else {
->>>>>>> f849559d04f15bfb5cbcfdc0afccaadf03267a61
+//        if ($this->marketplace_model->update('make_offer', array('order_status' => 1, 'payment_detail' => $payment_detail, 'seller_reference' => $seller_reference, 'proforma_file' => $proforma_file_name, 'payment_infoadd_datetime' => date('Y-m-d H:i:s')), array('id' => $id))) {
+//            $this->session->set_flashdata('msg_success', 'Payment information save sucessfully.');
+//			     } else {
             $this->session->set_flashdata('msg_info', 'There was an error processing your request.');
         }
 
