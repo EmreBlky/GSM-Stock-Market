@@ -64,7 +64,7 @@
     
     
     <section data-step="1" data-intro="Cross check your MPN/ISBN with our database to help you auto fill your listing with ease." data-position='right'>
-    <div class="form-group"><label class="col-md-3 control-label">MPN/ISBN <span style="color:red">*</span><br /><small class="text-navy">Search our database</small></label>
+    <div class="form-group"><label class="col-md-3 control-label">MPN/ISBN<br /><small class="text-navy">Search our database</small></label>
       <div class="col-md-6" style="padding-right:0">
           <input type="type" list="mpn" class="form-control check_record check_record_by_mpnisbn" placeholder="Enter a Part Number e.g GH97-15959B"  name="product_mpn" value="<?php if(!empty($product_list->product_mpn_isbn)) echo $product_list->product_mpn_isbn; ?><?php if(!empty($_POST['product_mpn'])) echo $_POST['product_mpn']; ?>"/>
       </div>
@@ -620,7 +620,6 @@ $('body').find('#opt_table').on("click", ".wrapper",function() {
 $.validator.setDefaults({ ignore: ":hidden:not(select)" })
 $(".validation").validate({
   rules: {
-    product_mpn: "required",
     product_desc: "required",
     product_make: "required",
     product_model: "required",
@@ -633,9 +632,6 @@ $(".validation").validate({
   },
   messages: {
     product_desc: "Make sure you have entered a thorough description of the item you have for sale.",
-    product_mpn: {
-      required: "We required some sort of product identifying number.",
-	},
     product_make: {
       required: "Select your products make from the list below",
 	},

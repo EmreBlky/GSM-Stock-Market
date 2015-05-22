@@ -157,8 +157,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 		</ul>
 	</li>
     
-	<li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Buy</a></li>
-	<li><a href="marketplace/sell"><i class="fa fa-tag"></i> Sell</a></li>
+	<li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Selling Offers</a></li>
+	<li><a href="marketplace/sell"><i class="fa fa-tag"></i> Buying Requests</a></li>
 	<li><a href="marketplace/watching"><i class="fa fa-eye"></i> Watching <span class="count_watch_listing_class">
 	<?php 
 	if($count_watch_listing){ ?>
@@ -225,8 +225,8 @@ if($count_order_history){ ?>
 		</ul>
 	</li>
     
-	<li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Buy</a></li>
-	<li><a href="marketplace/sell"><i class="fa fa-tag"></i> Sell</a></li>
+	<li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Selling Offers</a></li>
+	<li><a href="marketplace/sell"><i class="fa fa-tag"></i> Buying Requests</a></li>
 	<li><a href="marketplace/watching"><i class="fa fa-eye"></i> Watching <span class="count_watch_listing_class">
 	<?php 
 	if($count_watch_listing){ ?>
@@ -284,8 +284,8 @@ if($count_order_history){ ?>
 <a href="marketplace/notice"><i class="fa fa-line-chart"></i> <span class="nav-label">Marketplace</span> <span class="fa arrow"></span></a>
 <ul class="nav nav-second-level">
 <li><a href="javascript:void(0)" data-toggle="modal" data-target="#upgrade"><i class="fa fa-plus"></i> Create Listing</a></li>
-<li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Buy</a></li>
-<li><a href="marketplace/sell"><i class="fa fa-tag"></i> Sell</a></li>
+<li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Selling Offers</a></li>
+<li><a href="marketplace/sell"><i class="fa fa-tag"></i> Buying Requests</a></li>
 <li><a href="marketplace/watching"><i class="fa fa-eye"></i> Watching <span class="label label-warning pull-right">4</span></a></li>
 <li><a href="marketplace/listing"><i class="fa fa-list"></i> My Listings</a></li>
 <li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers<span class="label label-info pull-right">15</span></a></li>
@@ -299,8 +299,8 @@ if($count_order_history){ ?>
 <a href="marketplace/notice"><i class="fa fa-line-chart"></i> <span class="nav-label">Marketplace</span> <span class="fa arrow"></span></a>
 <ul class="nav nav-second-level">
 <li><a href="javascript:void(0)" data-toggle="modal" data-target="#upgrade"><i class="fa fa-plus"></i> Create Listing</a></li>
-<li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Buy</a></li>
-<li><a href="marketplace/sell"><i class="fa fa-tag"></i> Sell</a></li>
+<li><a href="marketplace/buy"><i class="fa fa-shopping-cart"></i> Selling Offers</a></li>
+<li><a href="marketplace/sell"><i class="fa fa-tag"></i> Buying Requests</a></li>
 <li><a href="marketplace/watching"><i class="fa fa-eye"></i> Watching <span class="label label-warning pull-right">4</span></a></li>
 <li><a href="marketplace/listing"><i class="fa fa-list"></i> My Listings</a></li>
 <li><a href="marketplace/offers"><i class="fa fa-list"></i> All Offers<span class="label label-info pull-right">15</span></a></li>
