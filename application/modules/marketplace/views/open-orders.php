@@ -27,14 +27,14 @@ $member = $this->member_model->get_where($id);
 if ($member->membership > 1 && $member->marketplace == 'active') {
     ?>
 
-    <?php msg_alert(); ?>
     <div class="wrapper wrapper-content animated fadeInRight">
+    <?php msg_alert(); ?>
 
         <div class="row">
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Open Orders - Item you are buying</h5>
+                        <h5>Open Orders (WTB) - Item you are buying</h5>
                     </div>
                     <div class="ibox-content">
 
@@ -147,7 +147,7 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Open Orders - Items you are selling</h5>
+                        <h5>Open Orders (WTS) - Items you are selling</h5>
                     </div>
                     <div class="ibox-content">
 
@@ -543,7 +543,7 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                     </div>
                 </div>
             <?php } ?>
-
+</div>
         </div>
         <script>
             function deal_info(listing_id, order_id, status) {

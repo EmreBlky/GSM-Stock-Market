@@ -47,7 +47,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-md-6 control-label">Mailbox messages from Members<br /><p class="text-navy">Receieve an email when you get messaged by a member.</p></label>
+                        <label class="col-md-6 control-label">Mailbox messages from Members<br /><p class="text-navy">Receive an email when you get messaged by a member.</p></label>
 
                         <div class="col-md-6">
 							<?php if($notification->email_members == 'yes') {?>
@@ -61,7 +61,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-md-6 control-label">Mailbox messages from Marketplace<br /><p class="text-navy">Receieve an email when you get messages from the marketplace.</p></label>
+                        <label class="col-md-6 control-label">Mailbox messages from Marketplace<br /><p class="text-navy">Receive an email when you get messages from the marketplace.</p></label>
 
                         <div class="col-md-6">
 							<?php if($notification->email_market == 'yes') {?>
@@ -75,7 +75,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-md-6 control-label">Mailbox messages from Support<br /><p class="text-navy">Receieve an email when you get messages from support.</p></label>
+                        <label class="col-md-6 control-label">Mailbox messages from Support<br /><p class="text-navy">Receive an email when you get messages from support.</p></label>
 
                         <div class="col-md-6">
 							<?php if($notification->email_support == 'yes') {?>
