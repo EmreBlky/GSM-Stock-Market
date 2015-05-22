@@ -13,8 +13,8 @@
                         <input type="hidden" name="order_id" value="" class="order_id_insert">
                     </div>
                     <div class="row">
-                        <label for="tracking_file">Add a Tracking Information File (Optional)</label>
-                        <input type="file" id="tracking_file" name="tracking_file" class="btn default btn-file valid"><br />
+                        <label for="tracking_file">Add a Tracking Information File </label>
+                        <input type="file" id="tracking_file" name="tracking_file" class="btn default btn-file valid" required><br />
                         <strong>Allowed formats</strong>: .PDF, .JPG, .JPEG, .PNG, .GIF</div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Add Tracking / Shipment Information</button>
