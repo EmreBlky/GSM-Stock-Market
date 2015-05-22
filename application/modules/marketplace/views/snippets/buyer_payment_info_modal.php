@@ -15,17 +15,19 @@
                     <div class="row margin-top12">
                         <div class="col-md-6 padding-left0">
                             <label><input type="checkbox" name="payment_done" value="" required> Yes I have done payment.</label>
+                            <p class="text-navy">We recommend uploading proof of payment so they buyer can track payment.</p>
                             <input type="hidden" name="order_id" value="" class="order_id_insert">
                         </div>
                         <div class="col-md-6">
                             <label for="bank_payment_file">Payment Receipt (Optional)</label>
-                            <input type="file" id="bank_payment_file" name="bank_payment_file" class="btn default btn-file valid">
+                            <input type="file" id="bank_payment_file" name="bank_payment_file" class="btn default btn-file valid"><br />
+                            <strong>Allowed formats</strong>: .PDF, .JPG, .JPEG, .PNG, .GIF
                         </div>
                     </div>
 
                     <div class="modal-footer">
 
-                        <button type="submit" class="btn btn-primary" id="send_msg">Submit</button>
+                        <button type="submit" class="btn btn-primary" id="send_msg">Confirm Payment</button>
                     </div>
                 </form>
             </div>
