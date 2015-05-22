@@ -5,6 +5,32 @@ class Marketplace_model extends MY_Model {
         parent::__construct();
         $this->table = 'marketplace';
     }
+
+    public function getUploadedFileName($actualFilename , $idToAppend )
+    {
+        $fileExt = substr( $actualFilename, strrpos($actualFilename, '.') );
+        return $idToAppend."-".mktime().$fileExt;
+    }
+
+    public function uploadFile( $fileNameToSave , $dir )
+    {
+        $config['file_name'] = $fileNameToSave;
+        $config['upload_path'] = $dir;
+        $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf';
+        $config['max_size']	= '20000';
+
+        $this->load->library('upload', $config);
+
+        if ( ! $this->upload->do_upload('proforma_file'))
+        {
+            return array('error' => $this->upload->display_errors());
+        }
+        else
+        {
+            return array('upload_data' => $this->upload->data('proforma_file'));
+        }
+    }
+    
     public function insert($table_name='',  $data=''){
         $query=$this->db->insert($table_name, $data);
         if($query)

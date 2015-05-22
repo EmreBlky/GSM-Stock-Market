@@ -4,6 +4,8 @@ if (!defined('BASEPATH'))
 
 class Marketplace extends MX_Controller {
 
+    public $proforma_file_dir;
+
     function __construct() {
         parent::__construct();
         if (!$this->session->userdata('logged_in')) {
@@ -13,9 +15,9 @@ class Marketplace extends MX_Controller {
         if ($this->session->userdata('terms') == 'no') {
             redirect('legal/terms_conditions');
         }
-        // if($this->session->userdata('membership') < 2) {
-        //     redirect('preferences/notice');
-        // }
+
+        $CI =& get_instance();
+        $this->proforma_file_dir = $CI->config->item('uploadDir')."/proforma/";
 
         $this->load->model('marketplace_model');
     }
@@ -2332,6 +2334,7 @@ class Marketplace extends MX_Controller {
                                         <th>Buyer Or Seller</th>
                                         <th>Status</th>
                                         <th>Detail</th>
+                                        <th>Attachment</th>
                                     </tr>
                                     <tr><td>
                                             <?php echo date('d-M-y, H:i', strtotime($get_order_info->payment_infoadd_datetime)); ?>
@@ -2339,6 +2342,19 @@ class Marketplace extends MX_Controller {
                                         <td>Seller</td>
                                         <td>Pay Info sent</td>
                                         <td><?php echo $get_order_info->payment_detail; ?></td>
+                                        <td>
+                                            <?php
+                                            if( !empty($get_order_info->proforma_file) )
+                                            {
+                                                $filePath = $this->proforma_file_dir.$get_order_info->proforma_file;
+                                                echo "<a href='{$filePath}' target='_blank'><span class='glyphicon glyphicon-paperclip'></span></a>";
+                                            }
+                                            else
+                                            {
+                                                echo "No attachment uploaded.";
+                                            }
+                                            ?>
+                                        </td>
                                     </tr>
                                     <?php if ($get_order_info->payment_done_datetime != '0000-00-00 00:00:00') { ?>
                                         <tr><td>
@@ -2371,23 +2387,34 @@ class Marketplace extends MX_Controller {
     public function insert_payment_info() {
         $payment_detail = $this->input->post('payment_info');
         $seller_reference = $this->input->post('seller_reference');
-        $proforma_file = $_FILES['proforma_file']['name'];
 
-        if (!empty($_FILES['proforma_file']['name'])) :
-            $config1['upload_path'] = './public/upload/listing/reference_files/';
-            $config1['allowed_types'] = 'gif|jpg|png|jpeg|pdf';
-            $config1['max_size'] = '20000';
-            $this->load->library('upload', $config1);
-            //   $this->upload->initialize($config1);
-            if (!$this->upload->do_upload()) {
-                $error = array('error' => $this->upload->display_errors());
-            } else {
-                $data = array('upload_data' => $this->upload->data());
-            }
-        endif;
         $user_id = $this->session->userdata('members_id');
         $id = $this->input->post('order_id');
-        if ($this->marketplace_model->update('make_offer', array('order_status' => 1, 'payment_detail' => $payment_detail, 'seller_reference' => $seller_reference, 'proforma_file' => $proforma_file, 'payment_infoadd_datetime' => date('Y-m-d H:i:s')), array('id' => $id))) {
+
+        $proforma_file_name = $this->marketplace_model->getUploadedFileName( $_FILES['proforma_file']['name'], $id );
+        $this->marketplace_model->uploadFile( $proforma_file_name , $this->proforma_file_dir );
+
+//        $filename = $_FILES['proforma_file']['name'];
+//        $fileExt = substr( $filename, strrpos($filename, '.') );
+//        $proforma_file_name = $id."-".mktime().$fileExt;
+
+//        $config['file_name'] = $proforma_file_name;
+//        $config['upload_path'] = $this->proforma_file_dir;
+//        $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf';
+//        $config['max_size']	= '20000';
+//
+//        $this->load->library('upload', $config);
+//
+//        if ( ! $this->upload->do_upload('proforma_file'))
+//        {
+//            $error = array('error' => $this->upload->display_errors());
+//        }
+//        else
+//        {
+//            $data = array('upload_data' => $this->upload->data('proforma_file'));
+//        }
+
+        if ($this->marketplace_model->update('make_offer', array('order_status' => 1, 'payment_detail' => $payment_detail, 'seller_reference' => $seller_reference, 'proforma_file' => $proforma_file_name, 'payment_infoadd_datetime' => date('Y-m-d H:i:s')), array('id' => $id))) {
             $this->session->set_flashdata('msg_success', 'Payment information save sucessfully.');
         } else {
             $this->session->set_flashdata('msg_info', 'Invalid.');

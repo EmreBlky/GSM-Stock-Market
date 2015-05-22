@@ -278,6 +278,7 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                             <form action="<?php echo base_url() . "marketplace/insert_payment_info/"; ?>" method="post" accept-charset="utf-8" onsubmit="return ValidatePaymentInformation();" enctype="multipart/form-data">
                                 <div class="row">
                                     <textarea id="payment_info" name="payment_info" cols="8" rows="5" class="form-control" placeholder="Insert payment information."></textarea>
+
                                     <input type="hidden" name="order_id" value="" class="order_id_insert">
                                 </div>
 
@@ -340,7 +341,7 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                                     <?php if ($value->tracking_shipping) { ?>
                                         <h5>Tracking / shipping Info - <?php echo $value->tracking_shipping; ?></h5> <?php } ?>
                                     <input type="checkbox" name="shipping_received" value="" required>
-                                    <h4>Yes I have recevied the items.</h4>
+                                    <h4>Yes I have received the items.</h4>
                                     <input type="hidden" name="order_id" value="" class="order_id_insert">
                                 </div>
                                 <div class="modal-footer">
@@ -364,7 +365,7 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                             <form action="<?php echo base_url() . "marketplace/payment_confirm/"; ?>" method="post" accept-charset="utf-8">
                                 <div class="row">
                                     <input type="checkbox" name="payment_confirm" value="" required>
-                                    <h4> Yes Payment received sucessfully.</h4>
+                                    <h4> Yes Payment received successfully.</h4>
                                     <textarea name="shipping_info" cols="8" rows="5" class="form-control" placeholder="Insert Tracking / Shipping information." required></textarea>
                                     <input type="hidden" name="order_id" value="" class="order_id_insert">
                                 </div>

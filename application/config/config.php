@@ -49,6 +49,8 @@ elseif($base_url == 'https://secure.gsmstockmarket.com/'){
 }
 elseif($base_url == 'http://secure-staging.gsmstockmarket.com/'){
 	$config['base_url']	= 'http://secure-staging.gsmstockmarket.com/';
+}elseif( $base_url == "http://localhost/2015-05-20-gsm/gsm-secure/" ){
+    $config['base_url'] = "http://localhost/2015-05-20-gsm/gsm-secure/";
 }
 
 /*
@@ -395,3 +397,7 @@ $config['proxy_ips'] = '';
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */
+
+
+// Naveed:================
+$config['uploadDir'] = $config['base_url']."public/upload/";
