@@ -27,23 +27,17 @@
       <file leaf-file-name="marketplace.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/modules/marketplace/controllers/marketplace.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.3640857" vertical-offset="41904" max-vertical-offset="54000">
+            <state vertical-scroll-proportion="1.3344316" vertical-offset="41922" max-vertical-offset="54000">
               <caret line="2332" column="114" selection-start-line="2332" selection-start-column="114" selection-end-line="2332" selection-end-column="114" />
               <folding>
-                <element signature="e#133427#133455#0#HTML" expanded="true" />
-                <element signature="e#133788#133813#0#HTML" expanded="true" />
-                <element signature="e#136772#136800#0#HTML" expanded="true" />
-                <element signature="e#137134#137159#0#HTML" expanded="true" />
-                <element signature="e#141254#141272#0#HTML" expanded="true" />
-                <element signature="e#141287#141306#0#HTML" expanded="true" />
-                <marker date="1432294189656" expanded="true" signature="61672:61779" placeholder="SELECT produ..." />
-                <marker date="1432294189656" expanded="true" signature="62859:62905" placeholder="SELECT produ..." />
-                <marker date="1432294189656" expanded="true" signature="64311:64383" placeholder="SELECT produ..." />
-                <marker date="1432294189656" expanded="true" signature="65909:66039" placeholder="SELECT produ..." />
-                <marker date="1432294189656" expanded="true" signature="66833:66923" placeholder="SELECT produ..." />
-                <marker date="1432294189656" expanded="true" signature="67742:67833" placeholder="SELECT produ..." />
-                <marker date="1432294189656" expanded="true" signature="68666:68712" placeholder="SELECT produ..." />
-                <marker date="1432294189656" expanded="true" signature="69988:70034" placeholder="SELECT produ..." />
+                <marker date="1432295811724" expanded="true" signature="61672:61779" placeholder="SELECT produ..." />
+                <marker date="1432295811724" expanded="true" signature="62859:62905" placeholder="SELECT produ..." />
+                <marker date="1432295811724" expanded="true" signature="64311:64383" placeholder="SELECT produ..." />
+                <marker date="1432295811724" expanded="true" signature="65909:66039" placeholder="SELECT produ..." />
+                <marker date="1432295811724" expanded="true" signature="66833:66923" placeholder="SELECT produ..." />
+                <marker date="1432295811724" expanded="true" signature="67742:67833" placeholder="SELECT produ..." />
+                <marker date="1432295811724" expanded="true" signature="68666:68712" placeholder="SELECT produ..." />
+                <marker date="1432295811724" expanded="true" signature="69988:70034" placeholder="SELECT produ..." />
               </folding>
             </state>
           </provider>
@@ -52,13 +46,9 @@
       <file leaf-file-name="marketplace_model.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/modules/marketplace/models/marketplace_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.7692308" vertical-offset="0" max-vertical-offset="16362">
+            <state vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="15732">
               <caret line="4" column="25" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="25" />
-              <folding>
-                <marker date="1432289120838" expanded="true" signature="19815:19857" placeholder="delete from ..." />
-                <marker date="1432289120838" expanded="true" signature="31605:31726" placeholder="SELECT count..listing..." />
-                <marker date="1432289120838" expanded="true" signature="32449:32528" placeholder="SELECT count..listing..." />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -66,27 +56,9 @@
       <file leaf-file-name="open-orders.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/modules/marketplace/views/open-orders.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="9.0" vertical-offset="5112" max-vertical-offset="11088">
+            <state vertical-scroll-proportion="0.0" vertical-offset="4878" max-vertical-offset="10044">
               <caret line="271" column="0" selection-start-line="271" selection-start-column="0" selection-end-line="271" selection-end-column="0" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#0;n#td#11;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#div#2;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#4;n#div#2;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#td#5;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#1;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#td#5;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#td#6;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#td#5;n#tr#2;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#td#6;n#tr#2;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#1;n#td#6;n#tr#2;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#td#5;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#td#5;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#0;n#td#6;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#button#1;n#td#6;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -94,7 +66,7 @@
       <file leaf-file-name="seller_payment_info_send_modal.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/modules/marketplace/views/snippets/seller_payment_info_send_modal.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.384615" vertical-offset="90" max-vertical-offset="720">
+            <state vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="666">
               <caret line="20" column="122" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="122" />
               <folding />
             </state>
@@ -104,7 +76,7 @@
       <file leaf-file-name="payment_confirmation_model.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/modules/marketplace/views/snippets/payment_confirmation_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.076923" vertical-offset="0" max-vertical-offset="594">
+            <state vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="540">
               <caret line="16" column="60" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="60" />
               <folding />
             </state>
@@ -364,15 +336,15 @@
       <BehatRunner />
       <method />
     </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
       <tasks />
       <pass-parent-env-vars>false</pass-parent-env-vars>
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <list size="0" />
@@ -391,13 +363,12 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24963397" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -409,6 +380,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -441,7 +413,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="4464">
           <caret line="1" column="22" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -449,7 +420,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="684" max-vertical-offset="7344">
           <caret line="52" column="71" selection-start-line="52" selection-start-column="71" selection-end-line="52" selection-end-column="71" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -457,11 +427,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="10944" max-vertical-offset="15210">
           <caret line="608" column="59" selection-start-line="608" selection-start-column="59" selection-end-line="608" selection-end-column="59" />
-          <folding>
-            <marker date="1432289120838" expanded="true" signature="19815:19857" placeholder="delete from ..." />
-            <marker date="1432289120838" expanded="true" signature="31605:31726" placeholder="SELECT count..listing..." />
-            <marker date="1432289120838" expanded="true" signature="32449:32528" placeholder="SELECT count..listing..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -469,9 +435,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3006">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1432185044434" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..members..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -479,7 +443,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="360">
           <caret line="6" column="48" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -487,7 +450,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="810">
           <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -495,25 +457,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2682" max-vertical-offset="11430">
           <caret line="149" column="63" selection-start-line="149" selection-start-column="63" selection-end-line="149" selection-end-column="63" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#11;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#5;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#1;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#5;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#td#6;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#5;n#tr#2;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#td#6;n#tr#2;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#1;n#td#6;n#tr#2;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#5;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#5;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#td#6;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#1;n#td#6;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -522,20 +466,14 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="51282">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#133427#133455#0#HTML" expanded="true" />
-            <element signature="e#133788#133813#0#HTML" expanded="true" />
-            <element signature="e#136772#136800#0#HTML" expanded="true" />
-            <element signature="e#137134#137159#0#HTML" expanded="true" />
-            <element signature="e#141254#141272#0#HTML" expanded="true" />
-            <element signature="e#141287#141306#0#HTML" expanded="true" />
-            <marker date="1432294189656" expanded="true" signature="61672:61779" placeholder="SELECT produ..." />
-            <marker date="1432294189656" expanded="true" signature="62859:62905" placeholder="SELECT produ..." />
-            <marker date="1432294189656" expanded="true" signature="64311:64383" placeholder="SELECT produ..." />
-            <marker date="1432294189656" expanded="true" signature="65909:66039" placeholder="SELECT produ..." />
-            <marker date="1432294189656" expanded="true" signature="66833:66923" placeholder="SELECT produ..." />
-            <marker date="1432294189656" expanded="true" signature="67742:67833" placeholder="SELECT produ..." />
-            <marker date="1432294189656" expanded="true" signature="68666:68712" placeholder="SELECT produ..." />
-            <marker date="1432294189656" expanded="true" signature="69988:70034" placeholder="SELECT produ..." />
+            <marker date="1432295811724" expanded="true" signature="61672:61779" placeholder="SELECT produ..." />
+            <marker date="1432295811724" expanded="true" signature="62859:62905" placeholder="SELECT produ..." />
+            <marker date="1432295811724" expanded="true" signature="64311:64383" placeholder="SELECT produ..." />
+            <marker date="1432295811724" expanded="true" signature="65909:66039" placeholder="SELECT produ..." />
+            <marker date="1432295811724" expanded="true" signature="66833:66923" placeholder="SELECT produ..." />
+            <marker date="1432295811724" expanded="true" signature="67742:67833" placeholder="SELECT produ..." />
+            <marker date="1432295811724" expanded="true" signature="68666:68712" placeholder="SELECT produ..." />
+            <marker date="1432295811724" expanded="true" signature="69988:70034" placeholder="SELECT produ..." />
           </folding>
         </state>
       </provider>
@@ -544,7 +482,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="360">
           <caret line="6" column="48" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -552,7 +489,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="810">
           <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -560,25 +496,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="10512">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#11;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#5;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#1;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#5;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#td#6;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#5;n#tr#2;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#td#6;n#tr#2;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#1;n#td#6;n#tr#2;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#5;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#5;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#td#6;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#1;n#td#6;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -740,7 +658,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="810">
           <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -776,7 +693,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="4464">
           <caret line="1" column="22" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -784,7 +700,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="684" max-vertical-offset="7344">
           <caret line="52" column="71" selection-start-line="52" selection-start-column="71" selection-end-line="52" selection-end-column="71" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -814,9 +729,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3078">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1432185044434" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..members..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -824,7 +737,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20757826" vertical-offset="0" max-vertical-offset="607">
           <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -832,39 +744,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8938356" vertical-offset="0" max-vertical-offset="810">
           <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/modules/marketplace/views/open-orders.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="9.0" vertical-offset="5112" max-vertical-offset="11088">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4878" max-vertical-offset="10044">
           <caret line="271" column="0" selection-start-line="271" selection-start-column="0" selection-end-line="271" selection-end-column="0" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#11;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#10;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#5;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#1;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#5;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#td#6;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#5;n#tr#2;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#td#6;n#tr#2;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#1;n#td#6;n#tr#2;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#5;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#5;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#td#6;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#1;n#td#6;n#tr#1;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#5;n#div#2;n#div#1;n#!!top" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/modules/marketplace/views/snippets/seller_payment_info_send_modal.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.384615" vertical-offset="90" max-vertical-offset="720">
+        <state vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="666">
           <caret line="20" column="122" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="122" />
           <folding />
         </state>
@@ -872,7 +765,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/modules/marketplace/views/snippets/payment_confirmation_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.076923" vertical-offset="0" max-vertical-offset="594">
+        <state vertical-scroll-proportion="0.0" vertical-offset="288" max-vertical-offset="540">
           <caret line="16" column="60" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="60" />
           <folding />
         </state>
@@ -880,35 +773,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/modules/marketplace/models/marketplace_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.7692308" vertical-offset="0" max-vertical-offset="16362">
+        <state vertical-scroll-proportion="0.0" vertical-offset="72" max-vertical-offset="15732">
           <caret line="4" column="25" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="25" />
-          <folding>
-            <marker date="1432289120838" expanded="true" signature="19815:19857" placeholder="delete from ..." />
-            <marker date="1432289120838" expanded="true" signature="31605:31726" placeholder="SELECT count..listing..." />
-            <marker date="1432289120838" expanded="true" signature="32449:32528" placeholder="SELECT count..listing..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/modules/marketplace/controllers/marketplace.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3640857" vertical-offset="41904" max-vertical-offset="54000">
+        <state vertical-scroll-proportion="1.3344316" vertical-offset="41922" max-vertical-offset="54000">
           <caret line="2332" column="114" selection-start-line="2332" selection-start-column="114" selection-end-line="2332" selection-end-column="114" />
           <folding>
-            <element signature="e#133427#133455#0#HTML" expanded="true" />
-            <element signature="e#133788#133813#0#HTML" expanded="true" />
-            <element signature="e#136772#136800#0#HTML" expanded="true" />
-            <element signature="e#137134#137159#0#HTML" expanded="true" />
-            <element signature="e#141254#141272#0#HTML" expanded="true" />
-            <element signature="e#141287#141306#0#HTML" expanded="true" />
-            <marker date="1432294189656" expanded="true" signature="61672:61779" placeholder="SELECT produ..." />
-            <marker date="1432294189656" expanded="true" signature="62859:62905" placeholder="SELECT produ..." />
-            <marker date="1432294189656" expanded="true" signature="64311:64383" placeholder="SELECT produ..." />
-            <marker date="1432294189656" expanded="true" signature="65909:66039" placeholder="SELECT produ..." />
-            <marker date="1432294189656" expanded="true" signature="66833:66923" placeholder="SELECT produ..." />
-            <marker date="1432294189656" expanded="true" signature="67742:67833" placeholder="SELECT produ..." />
-            <marker date="1432294189656" expanded="true" signature="68666:68712" placeholder="SELECT produ..." />
-            <marker date="1432294189656" expanded="true" signature="69988:70034" placeholder="SELECT produ..." />
+            <marker date="1432295811724" expanded="true" signature="61672:61779" placeholder="SELECT produ..." />
+            <marker date="1432295811724" expanded="true" signature="62859:62905" placeholder="SELECT produ..." />
+            <marker date="1432295811724" expanded="true" signature="64311:64383" placeholder="SELECT produ..." />
+            <marker date="1432295811724" expanded="true" signature="65909:66039" placeholder="SELECT produ..." />
+            <marker date="1432295811724" expanded="true" signature="66833:66923" placeholder="SELECT produ..." />
+            <marker date="1432295811724" expanded="true" signature="67742:67833" placeholder="SELECT produ..." />
+            <marker date="1432295811724" expanded="true" signature="68666:68712" placeholder="SELECT produ..." />
+            <marker date="1432295811724" expanded="true" signature="69988:70034" placeholder="SELECT produ..." />
           </folding>
         </state>
       </provider>
