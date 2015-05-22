@@ -287,7 +287,8 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                                         <input type="text" name="seller_reference" value="" class="form-control" placeholder="Reference">
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="file" id="proforma_file" name="proforma_file" class="btn default btn-file valid" placeholder="Proforma File">
+                                        <input type="file" id="proforma_file" name="proforma_file" class="btn default btn-file valid" placeholder="Proforma File" required><br />
+                                        <strong>Allowed formats</strong>: .PDF, .JPG, .JPEG, .PNG, .GIF
                                     </div>
                                 </div>
                                 <div class="modal-footer payment-info-border-none">
