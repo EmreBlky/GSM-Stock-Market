@@ -492,8 +492,8 @@ if(!empty($listing_detail->image1))
           <th class="text-right"></th>
           <th align="center">
 
-          <?php if (file_exists("public/main/template/gsm/images/company/".$member_company->id.".png")) { ?>
-                  <img src="public/main/template/gsm/images/company/<?php echo $member_company->id; ?>.png" width="200">
+          <?php if (file_exists("public/main/template/gsm/images/company/".$member->id.".png")) { ?>
+                  <img src="public/main/template/gsm/images/company/<?php echo $member->id; ?>.png" width="200">
               <?php } else { ?>
                   <img src="public/main/template/gsm/images/company/no_company.jpg"  width="200"/>
               <?php } ?>
