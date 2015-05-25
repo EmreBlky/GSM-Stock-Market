@@ -97,7 +97,7 @@ class Imei_model extends MY_Model {
 								$data[$k] = $v;
 							}
 
-							$data['cert_id'] = '/files/mobiguard/' . $imei_account->account_id .'/' . date('M') . '/' . $data['cert_id'] . '.pdf';
+							$data['cert_id'] = '/files/mobiguard/' . $imei_account->account_id .'/' . date('Y') . '/' . date('M') . '/' . $data['cert_id'] . '.pdf';
 
 							$data['member_id'] = $this->session->userdata('members_id');
 							$data['created_at'] = date('Y-m-d H:i:s');
@@ -259,8 +259,8 @@ class Imei_model extends MY_Model {
 				   'created_at' => date('Y-m-d H:i:s'),
 				);
 
-				$data['cert_id'] = '/files/mobiguard/' . $imei_account->account_id .'/' . date('M') . '/' . (string)$xml->MobiCheck->cert_id . '.pdf';
-				$data['report_path'] = '/files/mobiguard/' . $imei_account->account_id .'/' . date('M') . '/' . (string)$xml->MobiCheck->cert_id . '.pdf';
+				$data['cert_id'] = '/files/mobiguard/' . $imei_account->account_id .'/' . date('Y') . '/' . date('M') . '/' . (string)$xml->MobiCheck->cert_id . '.pdf';
+				$data['report_path'] = $data['cert_id'];
 
 				$CI->db->insert('hpi_checks', $data);
 

@@ -115,7 +115,7 @@
       </div>
     </div>
     <?php }
-    else {
+    else if (isset($lookup_results) && isset($lookup_results['Error'])) {
     ?>
     <div class="alert alert-danger" style="margin:-15px 0 15px">
     <p><i class="fa fa-thumbs-o-up"></i> <?=$lookup_results['Error'];?></p>
