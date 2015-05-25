@@ -261,12 +261,12 @@ class Imei_model extends MY_Model {
 			else if ((string)$xml->Error_no == '1012')
 			{
 				// insufficient funds
-				$imei_lookup = false;
+				$imei_lookup = 'Insufficient funds to make this request';
 			}
 		}
 		else
 		{
-			$imei_lookup = false;
+			$imei_lookup['Error'] = 'No Valid IMEIs to lookup';
 		}
 
 		return $imei_lookup;
@@ -321,7 +321,7 @@ class Imei_model extends MY_Model {
 		}
 		else 
 		{
-			$data = false;
+			$data['Error'] = 'No Valid IMEIs to lookup';
 		}
 
 		return $data;
