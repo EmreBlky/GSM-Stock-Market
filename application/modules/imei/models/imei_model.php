@@ -77,6 +77,8 @@ class Imei_model extends MY_Model {
 
 		if ($query->num_rows() > 0)
 		{
+			$imei_account = static::get_imei_account();
+
 			foreach ($query->result() as $row)
 			{
 				$XML = $this->MobiCode->CallAPI('FetchBulkImeiCheck', array('Bulk_ID' => $row->bulk_id));
@@ -94,6 +96,8 @@ class Imei_model extends MY_Model {
 							{
 								$data[$k] = $v;
 							}
+
+							$data['cert_id'] = '/files/mobiguard/' . $imei_account->account_id .'/' . date('M') . '/' . $data['cert_id'] . '.pdf';
 
 							$data['member_id'] = $this->session->userdata('members_id');
 							$data['created_at'] = date('Y-m-d H:i:s');

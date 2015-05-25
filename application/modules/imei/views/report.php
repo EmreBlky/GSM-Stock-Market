@@ -72,7 +72,7 @@
                                     echo '<td>' . $row->make . '</td>';
                                     echo '<td>' . $row->model . '</td>';
                                     echo '<td>' . (isset($row->ref) ? $row->ref : 'n/a') . '</td>';
-                                    echo '<td><a target="_blank" href="' . $row->report_path . '"><i class="fa fa-search"></i> ' . (isset($row->cert_id) ? $row->cert_id : 'n/a') . '</a></td>';
+                                    echo '<td><a target="_blank" href="http://imei.gsmstockmarket.com/' . $row->cert_id . '"><i class="fa fa-search"></i> ' . (isset($row->cert_id) ? $row->cert_id : 'n/a') . '</a></td>';
                                     echo '<td class="text-center">' . $row->result . '</td>';
                                     echo '</tr>';
                                 }
