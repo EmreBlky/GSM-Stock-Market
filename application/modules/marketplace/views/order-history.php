@@ -35,14 +35,13 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
     <table id="marketplace" class="table table-striped table-bordered table-hover dataTables-example" >
     <thead>
     <tr>
-        <th>Transaction ID</th><!--
-        <th>Reference</th>-->
+        <th>Transaction ID</th>
+        <th>Reference</th>
         <th>Date</th>
         <th>Buyer</th>
         <th>Shipping</th>
         <th>Total</th>
         <th>Currency</th>
-        <th>Seller Reference</th>
         <th>View Transaction</th>
     </tr>
     </thead>
@@ -65,7 +64,6 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
        
         <td style="text-align:right"><?php echo $value->total_price;?></td>
         <td>  <?php echo currency_class($value->buyer_currency); ?>   </td>
-        <td>  <?php echo $value->seller_reference; ?>   </td>
         <th class="text-center"><a class="btn btn-primary" href="marketplace/invoice/<?php echo $value->id;?>" style="font-size:10px">View Transaction</a></th>
     </tr>
     <?php } } ?></tbody>
