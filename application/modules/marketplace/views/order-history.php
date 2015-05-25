@@ -50,8 +50,8 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
       <?php if(!empty($sell_order)){
         foreach ($sell_order as $value){ ?>
     <tr>
-        <td><?php echo $value->invoice_no;?></td><?php /*
-        <td><?php echo $value->seller_reference;?></td>*/ ?>
+        <td><?php echo $value->invoice_no;?></td>
+        <td><?php echo $value->seller_reference;?></td>
         <td><?php echo date('d-M-y, H:i', strtotime($value->shipping_recevied_datetime)); ?></td>
         <td><?php 
             $seller_cmp_info='';
