@@ -71,7 +71,7 @@
 
   <div class="wrapper wrapper-content animated fadeInRight">
   
-    <?php if ($lookup_results != false) { ?>
+    <?php if ($lookup_results != false && !array_key_exists('Error', $lookup_results)) { ?>
     <div class="alert alert-success" style="margin:-15px 0 15px">
     <p><i class="fa fa-thumbs-o-up"></i> Your order has been completed! We are now processing your report, this may take a while depending on how many IMEI's you submitted.<br />Once finished you can view your report in full from the <a class="alert-link" href="imei/archive">Archive page.</a></p>
     </div>
@@ -114,7 +114,16 @@
         </div>
       </div>
     </div>
-    <?php } ?>
+    <?php }
+    else {
+    ?>
+    <div class="alert alert-danger" style="margin:-15px 0 15px">
+    <p><i class="fa fa-thumbs-o-up"></i> <?=$lookup_results['Error'];?></p>
+    </div>    
+    <?php
+    } ?>
+
+
   
     <div class="row">
     <form class="form-horizontal validation" method='POST' name='unlocking-service-form' action=''> 

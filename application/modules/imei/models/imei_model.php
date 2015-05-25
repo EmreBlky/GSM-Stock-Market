@@ -289,28 +289,43 @@ class Imei_model extends MY_Model {
 			}
 		}
 
-		$XML = $this->MobiCode->CallAPI('PlaceBulkImeiCheck', array('IMEIs' => $bulk_lookup,
-		'BulkRef'=>'10064',
-		'Notes' => 'Test Bulk From API'));
+		if (is_array($bulk_lookup) && count($bulk_lookup) > 0)
+		{
+			$XML = $this->MobiCode->CallAPI('PlaceBulkImeiCheck', array('IMEIs' => $bulk_lookup,
+			'BulkRef'=>'10064',
+			'Notes' => 'Test Bulk From API'));
 
-		if (is_string($XML)) {
-			$data = $this->MobiCode->ParseXML($XML);
+			if (is_string($XML)) {
+				$data = $this->MobiCode->ParseXML($XML);
+			}
+
+			if (isset($data['Error']))
+			{
+				
+			}
+			else
+			{
+				$data = array(
+				   'member_id' => $this->session->userdata('members_id'),
+				   'order_id' => $data['Order_ID'],
+				   'bulk_id' => $data['Bulk_ID'],
+				   'checks_submitted' => $data['Checks_Submitted'],
+				   'duplicates' => $data['Duplicates'],
+				   'rejected' => $data['Rejected'],
+				   'created_at' => date('Y-m-d H:i:s'),
+				   'reference' => 'Test Bulk from API',
+				);
+
+				$this->db->insert('bulk_lookup_orders', $data);
+			}			
+		}
+		else 
+		{
+			$data = false;
 		}
 
-		$data = array(
-		   'member_id' => $this->session->userdata('members_id'),
-		   'order_id' => $data['Order_ID'],
-		   'bulk_id' => $data['Bulk_ID'],
-		   'checks_submitted' => $data['Checks_Submitted'],
-		   'duplicates' => $data['Duplicates'],
-		   'rejected' => $data['Rejected'],
-		   'created_at' => date('Y-m-d H:i:s'),
-		   'reference' => 'Test Bulk from API',
-		);
-
-		$this->db->insert('bulk_lookup_orders', $data);
-
 		return $data;
+
 	}
 
 	function top_up_account()
