@@ -4,7 +4,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <?php $attributes = array('class' => 'avatar-form');
+            <?php $attributes = array('class' => 'avatar-form', 'id' => 'profileImageForm',);
             echo form_open_multipart('profile/profileImage', $attributes); ?>
             <div class="modal-header">
                 <button class="close" data-dismiss="modal" type="button">&times;</button>
@@ -92,8 +92,8 @@
 
 <script>
     $(function () {
-        $("#companyImgForm").submit(function () {
-            $.post("profile/companyImage",$(this).serialize(), function () {
+        $("#profileImageForm").submit(function () {
+            $.post("profile/profileImage",$(this).serialize(), function () {
                 location.reload();
             });
             return false;
