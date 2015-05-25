@@ -67,6 +67,21 @@
                                             break;
                                     }
 
+                                    switch(isset($row->colour) ? $row->colour : 'n/a')
+                                    { 
+                                        case 'GREEN':
+                                            $row->result = '<label class="label label-primary"><i class="fa fa-check"></i> Passed</label>';
+                                            break;
+                                        case 'RED':
+                                            $row->result = '<label class="label label-danger" ><i class="fa fa-times"></i> Failed</label>';
+                                            break;
+                                        case 'ORANGE':
+                                            $row->result = '<label class="label label-warning" ><i class="fa fa-exclamation"></i> Warning</label>';
+                                            break;
+                                        default:
+                                            break;
+                                    }
+
                                     echo '<tr>';
                                     echo '<td>' . $row->serial . '</td>';
                                     echo '<td>' . $row->make . '</td>';
