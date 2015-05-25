@@ -211,9 +211,7 @@ class Profile extends MX_Controller
                                 );
                     $this->company_model->_update($this->member_model->get_where($mid)->company_id, $data_image);
 
-                }               
-                
-                
+                }
             } else if (isset($_POST) && isset($_POST['reset'])) {
                 $path = dirname($_SERVER["SCRIPT_FILENAME"]) . '/public/main/template/gsm/images/company/';
                 unlink($path . $this->member_model->get_where($mid)->company_id . '.png');
@@ -289,7 +287,7 @@ class Profile extends MX_Controller
             }
             
         }
-        
+        echo "<script> alert('eheh');console.log('hehehhe');location.reload();</script>";
     }
 
     function profileImage()
@@ -415,11 +413,6 @@ class Profile extends MX_Controller
         $this->load->model('attending/attending_model', 'attending_model');
         
         $e_count = $this->events_model->count_where('status', 'active');
-//        
-//        echo '<pre>';
-//        echo $e_count;
-//        exit;
-        
         if($e_count > 0){
             $data['events'] = $this->events_model->get_where_multiples_order('sort_order', 'ASC', 'status', 'active');
             $data['events_count'] = $e_count;
@@ -444,10 +437,6 @@ class Profile extends MX_Controller
                     $data['bio_count'] = 0;
                 }
 
-        //        echo "<pre>";
-        //        print_r($data['company']);
-        //        echo "</pre>";
-                //$data['country'] = $this->country_model->get_all();
                 $data['country'] = $this->country_model->_custom_query("SELECT * FROM country ORDER BY country ASC");
                 $data['support_edit'] = 'yes';
                 $data['mid'] = $mid;
