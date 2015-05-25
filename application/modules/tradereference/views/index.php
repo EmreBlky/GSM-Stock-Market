@@ -43,9 +43,6 @@ if($member->membership == 1 ){ ?>
           	<p>To gain access to the GSM Stock Market marketplace you will need to submit <strong>two (2)</strong> trade references for us to confirm your business</p>
             <p>When adding these trade references you will be able to track whether they have confirmed you or not.</p>
             <p>Once the companies have confirmed your trade references we will confirm also and you will then have complete access to our marketplace.</p>
-          	 
-          
-                        
           </div><!-- Ibox Content -->
           
         </div>        
@@ -205,8 +202,12 @@ if($member->membership == 1 ){ ?>
                         
           </div><!-- Ibox Content -->
           <?php } else {?> 
-          <div class="ibox-content" style="text-align:center">
-                    <a href="tradereference/submit_refs" class="btn btn-primary" style="font-size:2em;text-align:center">Submit References Now</a>          
+          <div class="ibox-content">
+              		<h4>Why do we need trade references?</h4>          
+                    <p>Before we allow companies on our trading platform we ask all users to supply two (2) trade references.</p>
+                    <p>We require you to supply the details of companies you have dealt with in the last 3 months, just to verify that they have done business with you and that you are a real company and trustworthy.</p>
+                    <p>We do this for all companies to keep our platform as safe as possible for the end user.</p>
+                    <p class="text-center" style="margin-top:30px"><a href="tradereference/submit_refs" class="btn btn-primary" style="font-size:2em;text-align:center">Submit References Now</a></p>       
           		</div><!-- Ibox Content -->
           <?php } ?> 
         </div>        

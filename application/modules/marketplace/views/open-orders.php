@@ -27,9 +27,9 @@ $member = $this->member_model->get_where($id);
 if ($member->membership > 1 && $member->marketplace == 'active') {
     ?>
 
-<?php msg_alert(); ?>
 <div class="wrapper wrapper-content animated fadeInRight">
 
+<?php msg_alert(); ?>
 <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
@@ -59,13 +59,13 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                                     if ($value->order_status == 0) {
                                         $progress = "0%";
                                         ?>
-                                        <td><span class="label label-primary">Awaiting Payment Info</span></td>
+                                        <td><span class="label label-primary">Awaiting Proforma</span></td>
                                     <?php
                                     } elseif ($value->order_status == 1) {
                                         if (empty($value->payment_done)) {
                                             $progress = "25%";
                                             ?>
-                                            <td><span class="label label-warning">Awaiting Payment</span></td>
+                                            <td><span class="label label-warning">Send Payment</span></td>
                                         <?php
                                         } else {
                                             $progress = "50%";
@@ -81,7 +81,7 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                                     } elseif ($value->order_status == 3) {
                                         $progress = "75%"
                                         ?>
-                                        <td><span class="label label-warning">Awaiting Shipment confirmation</span></td>
+                                        <td><span class="label label-warning">Confirm Shipment Arrival</span></td>
                                     <?php
                                     } elseif ($value->order_status == 4) {
                                         $progress = "100%"
@@ -111,7 +111,7 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                                         <a onclick="deal_info(<?php echo $value->listing_id; ?>,<?php echo $value->makeofferid; ?>, 1)" data-toggle="modal" data-target="#deal_infos" class="btn btn-primary" >Deal Info</a>
                                         <?php if ($value->order_status == 1 && empty($value->payment_done)) {
                                             ?>
-                                            <a onclick="insert_order_id(<?php echo $value->makeofferid; ?>)" data-toggle="modal" data-target="#payment_done" class="btn btn-warning" >Make Payment</a>
+                                            <a onclick="insert_order_id(<?php echo $value->makeofferid; ?>)" data-toggle="modal" data-target="#payment_done" class="btn btn-warning" >Send Payment</a>
                                             <!-- modal paymment info -->
 
                                         <?php } elseif ($value->order_status == 3) { ?>
@@ -172,7 +172,7 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                                     if ($value->order_status == 0) {
                                         $progress = "0%";
                                         ?>
-                                        <td><span class="label label-primary">Awaiting Payment Info</span></td>
+                                        <td><span class="label label-warning">Send Proforma</span></td>
                                     <?php
                                     } elseif ($value->order_status == 1) {
                                         $progress = "25%";
@@ -219,12 +219,12 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                                     <td>
                                         <a onclick="deal_info(<?php echo $value->listing_id; ?>,<?php echo $value->makeofferid; ?>, 2)" data-toggle="modal" data-target="#deal_infos" class="btn btn-primary" >Deal Info</a>
                                         <?php if (empty($value->order_status)) { ?>
-                                            <a onclick="insert_order_id(<?php echo $value->makeofferid; ?>)" data-toggle="modal" data-target="#insert_payment_info" class="btn btn-warning">Send Payment details</a><!-- modal for send payment detail -->
+                                            <a onclick="insert_order_id(<?php echo $value->makeofferid; ?>)" data-toggle="modal" data-target="#insert_payment_info" class="btn btn-warning">Send Proforma</a><!-- modal for send payment detail -->
                                         <?php
                                         } elseif ($value->order_status == 1) {
                                             if ($value->payment_done) {
                                                 ?>
-                                                <a onclick="insert_order_id(<?php echo $value->makeofferid; ?>)" data-toggle="modal" data-target="#payment_confirm" class="btn btn-warning" >Payment Confirm</a>
+                                                <a onclick="insert_order_id(<?php echo $value->makeofferid; ?>)" data-toggle="modal" data-target="#payment_confirm" class="btn btn-warning" >Confirm Payment</a>
                                             <?php } /* else{?>
                                               <a class="btn btn-warning" >Awaiting Payment</a>
                                               <?php } */ ?>
@@ -316,7 +316,7 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary" id="send_msg">Send Payment information</button>
+                            <button type="submit" class="btn btn-primary" id="send_msg">Send Tracking Informaiton</button>
                         </div>
                     </form>
                 </div>
@@ -467,7 +467,7 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
             </div>
         </div>
         <?php } ?>
-
+</div>
     </div>
     <script>
         function deal_info(listing_id, order_id, status) {

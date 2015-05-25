@@ -11,10 +11,23 @@
   </div>
 
   <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+              		<h4>Why do we need trade references?</h4> 
+                    <p>Before we allow companies on our trading platform we ask all users to supply two (2) trade references.</p>
+                    <p>We require you to supply the details of companies you have dealt with in the last 3 months, just to verify that they have done business with you and that you are a real company and trustworthy.</p>
+                    <p>We do this for all companies to keep our platform as safe as possible for the end user.</p>
+                </div><!-- Ibox Content -->
+            </div>
+        </div>
+    </div>
 <?php
     $attributes = array('class' => 'form-horizontal');
     echo form_open('tradereference/updateRef', $attributes);
-?>  
+?> 
+ 
     <div class="row">
       <div class="col-lg-12">
         <div class="ibox float-e-margins">

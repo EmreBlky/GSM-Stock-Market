@@ -76,7 +76,7 @@
                                         <dt>Join Date:</dt> <dd><?php echo $member->date; ?></dd>
                                     </dl>
                                         <?php
-                                            if($member->date_activated < '2015-05-15'){
+                                            if($member->date_activated < '2015-06-01'){
                                                 $tcount = $this->trial_model->_custom_query_count("SELECT COUNT(*) AS count FROM trial WHERE member_id = '".$member->id."'");
                                                 if($tcount[0]->count < 1){
                                         ?>
