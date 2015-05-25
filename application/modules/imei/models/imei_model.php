@@ -230,14 +230,15 @@ class Imei_model extends MY_Model {
 
 		if ($imei_lookup !== false)
 		{
+			$imei_account = $CI->imei_model->get_imei_account();
+
 			$xml_string = $CI->MobiCode->CallAPI('PlaceOrder', array('Tool' => '1-62', 'IMEI' => $imei));
 
 			$xml = simplexml_load_string($xml_string);
 
 			if ((string)$xml->Status == 'solved')
 			{
-				//success // Rem: 2103 might be ze account id so may need to change for sub accounts \o/ 
-				$file_path = 'http://imei.gsmstockmarket.com/files/mobiguard/2103/'. Date('Y') .'/'. Date('M') .'/'. $xml->MobiCheck->cert_id .'.pdf';
+				$data['cert_id'] = '/files/mobiguard/' . $imei_account->account_id .'/' . date('M') . '/' . (string)$xml->MobiCheck->cert_id . '.pdf';
 
 				$data = array(
 				   'id' => (string)$xml->ID,
@@ -254,13 +255,16 @@ class Imei_model extends MY_Model {
 				   'expired_owner_temp_block' => (string)$xml->MobiCheck->expired_owner_temp_block,
 				   'result' => (string)$xml->MobiCheck->result,
 				   'recycled_previously' => (string)$xml->MobiCheck->recycled_previously,
-				   'report_path' => $file_path,
+				   'report_path' => (string)$xml->MobiCheck->cert_id,
 				   'created_at' => date('Y-m-d H:i:s'),
 				);
 
+				$data['cert_id'] = '/files/mobiguard/' . $imei_account->account_id .'/' . date('M') . '/' . (string)$xml->MobiCheck->cert_id . '.pdf';
+				$data['report_path'] = '/files/mobiguard/' . $imei_account->account_id .'/' . date('M') . '/' . (string)$xml->MobiCheck->cert_id . '.pdf';
+
 				$CI->db->insert('hpi_checks', $data);
 
-				$imei_lookup = array('report_path' => $file_path);
+				$imei_lookup = array('report_path' => $data['cert_id']);
 			}
 			else if ((string)$xml->Error_no == '1012')
 			{
