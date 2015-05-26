@@ -20,7 +20,9 @@ $this->load->model('company/company_model', 'company_model');
                 <div class="mail-tools tooltip-demo m-t-md">                    
                     <h5>
                         <span class="pull-right font-noraml"><?php echo $feedback->time.' '.$feedback->date;?></span>
-                        <span class="font-noraml">From: </span><?php echo $this->member_model->get_where($feedback->member_id)->firstname.' '.$this->member_model->get_where($feedback->member_id)->lastname.' ('.$this->company_model->get_where($this->member_model->get_where($feedback->member_id)->company_id)->company_name.')'; ?>
+                        <span class="font-noraml">From: </span><?php echo $this->member_model->get_where($feedback->member_id)->firstname.' '.$this->member_model->get_where($feedback->member_id)->lastname.' ('.$this->company_model->get_where($this->member_model->get_where($feedback->member_id)->company_id)->company_name.')'; ?>                    
+                        <br/><br/>
+                        <span class="font-noraml">For: </span><?php echo $this->member_model->get_where($feedback->feedback_member_id)->firstname.' '.$this->member_model->get_where($feedback->feedback_member_id)->lastname.' ('.$this->company_model->get_where($this->member_model->get_where($feedback->feedback_member_id)->company_id)->company_name.')'; ?>
                     </h5>
                 </div>
             </div>
