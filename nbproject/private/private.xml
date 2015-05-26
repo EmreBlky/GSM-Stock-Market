@@ -5,9 +5,15 @@
         <group>
             <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/core/MY_Model.php</file>
             <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/join/controllers/join.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/preferences/views/subscription.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/mailbox/controllers/mailbox.php</file>
-            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/trial/controllers/trial.php</file>
+            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/join/views/validate-account.php</file>
+            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/admin/controllers/admin.php</file>
+            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/admin/views/trade-refs.php</file>
+            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/join/views/index.php</file>
+            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/home/views/index.php</file>
+            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/admin/views/credit-check.php</file>
+            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/home/controllers/home.php</file>
+            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/tradereference/views/index.php</file>
+            <file>file:/C:/xampp/htdocs/projects/codeigniter/gsm-secure/application/modules/join/views/invites.php</file>
         </group>
     </open-files>
 </project-private>
