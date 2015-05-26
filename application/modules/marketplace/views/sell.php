@@ -357,6 +357,7 @@ foreach ($listing_sell as $value) {?>
 ?>
 <th colspan="12"><center>No Such Listing Found</center>  </th><?php
 }?>
+    </tr>
 </table>
 </div>
 </div>
