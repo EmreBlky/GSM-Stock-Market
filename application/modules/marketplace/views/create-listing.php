@@ -240,7 +240,7 @@
     
     <div class="form-group"><label class="col-md-3 control-label">Quantity Available</label>
         <div class="col-md-9">
-            <input type="type" class="form-control" name="total_qty" value="<?php if(!empty($product_list->total_qty)) echo $product_list->total_qty; else  echo set_value('total_qty');?>"/>
+            <input type="type" class="form-control" name="qty_available" value="<?php if(!empty($product_list->qty_available)) echo $product_list->qty_available; else  echo set_value('total_qty');?>"/>
             <?php echo form_error('total_qty'); ?>
         </div>
     </div>
@@ -586,7 +586,7 @@
     
     <div class="form-group"><label class="col-md-3 control-label">Quantity requested</label>
         <div class="col-md-9">
-            <input type="type" class="form-control" name="total_qty" value="<?php if(!empty($product_list->total_qty)) echo $product_list->total_qty; else  echo set_value('total_qty');?>"/>
+            <input type="type" class="form-control" name="qty_available" value="<?php if(!empty($product_list->qty_available)) echo $product_list->qty_available; else  echo set_value('total_qty');?>"/>
             <?php echo form_error('total_qty'); ?>
         </div>
     </div>

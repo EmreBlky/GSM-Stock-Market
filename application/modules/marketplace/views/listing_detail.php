@@ -1,11 +1,16 @@
 <div class="row wrapper border-bottom white-bg page-heading">
 <div class="col-lg-10">
-<h2><?php if($listing_detail->listing_type==2){ ?>Selling Offer
-<?php }elseif($listing_detail->listing_type==1){ ?>Buying Request
+<h2><?php if($listing_detail->listing_type==2){ ?>Selling Offer Listing
+<?php }elseif($listing_detail->listing_type==1){ ?>Buying Request Listing
 <?php } ?></h2>
 <ol class="breadcrumb">
     <li><a href="/">Home</a></li>
     <li>Marketplace</li>
+    <li><?php if($listing_detail->listing_type==2){ ?>
+          <a href="marketplace/buy">Selling Offers</a>
+          <?php }elseif($listing_detail->listing_type==1){ ?>
+          <a href="marketplace/sell">Buying Requests</a>
+          <?php } ?></li>
     <li class="active"><strong>Listing Details</strong></li>
 </ol>
 </div>
@@ -18,13 +23,12 @@
 <?php msg_alert(); ?>
 <div class="ibox float-e-margins">
 <div class="ibox-title">
-<h5>Listing Details - 
+<h5>Listing Details - <?php if($listing_detail->listing_type==2){ ?>
+          <span class="label label-warning  pull-right">This is a Selling Offer</span>
+          <?php }elseif($listing_detail->listing_type==1){ ?>
+         <span class="label label-primary  pull-right">This is a Buying Request</span>
+          <?php } ?>
 
-<?php if($listing_detail->listing_type!=1){ ?>
-<span class="label label-info  pull-right">This is a Selling Offer</span>
-<?php }elseif($listing_detail->listing_type==2){ ?>
-<span class="label label-info  pull-right">This is a Buying Request</span>
-<?php } ?>
 
 <?php if (!empty($member_id) && $member_id==$listing_detail->member_id): ?>
 <span class="label label-danger pull-right">(this is your listing)</span>
@@ -36,7 +40,7 @@
 <div class="col-lg-5">               
     <dl class="dl-horizontal">
         <h4>Product Details</h4>
-        <dt>MPN/ISBN</dt> <dd>  <?php if(!empty($listing_detail->product_mpn_isbn)) { echo $listing_detail->product_mpn_isbn; } ?></dd>
+        <?php if ($listing_detail->product_mpn_isbn > 0) { ?><dt>MPN/ISBN</dt> <dd>  <?php if(!empty($listing_detail->product_mpn_isbn)) { echo $listing_detail->product_mpn_isbn; } ?></dd><?php } else {} ?>
         <dt>Make &amp; Model:</dt> <dd>  <?php if(!empty($listing_detail->product_make)) { echo $listing_detail->product_make; } ?> <?php if(!empty($listing_detail->product_model)) { echo $listing_detail->product_model; } ?> <?php if(!empty($listing_detail->device_capacity)) { echo $listing_detail->device_capacity; } ?></dd>
         <dt>Colour:</dt> <dd>  <?php if(!empty($listing_detail->product_color)) { echo $listing_detail->product_color; } ?>
           <?php if($listing_detail->allow_color){?>
@@ -45,7 +49,7 @@
         </dd>
         <dt>Product Type:</dt> <dd>  <?php if(!empty($listing_detail->product_type)) { echo $listing_detail->product_type; } ?></dd>
         <dt>Condition:</dt> <dd>  <?php if(!empty($listing_detail->condition)) { echo $listing_detail->condition; } ?></dd> 
-        <dt>Spec</dt> <dd>  <?php if(!empty($listing_detail->spec)) { echo $listing_detail->spec; } ?></dd>
+        <?php if ($listing_detail->spec > 0) { ?><dt>Spec</dt> <dd>  <?php if(!empty($listing_detail->spec)) { echo $listing_detail->spec; } ?></dd><?php } else {} ?>
         
         <br />
         <dt>Quantity</dt> <dd> <?php if(!empty($listing_detail->qty_available)) { echo $listing_detail->qty_available; } 
@@ -54,7 +58,7 @@
             $min_qty_to_sell=$listing_detail->min_qty_order;
           }
         ?></dd>
-
+<?php if($listing_detail->listing_type==2){ ?>
         <dt>Min Order QTY</dt> <dd> <?php 
         $min_qty_to_sell=0;          
           if($listing_detail->min_qty_order){
@@ -62,16 +66,19 @@
           }
           echo $min_qty_to_sell;
         ?></dd>
+          <?php }elseif($listing_detail->listing_type==1){ ?>
+          <?php } ?>
 
     </dl>
       <div class="hr-line-dashed"></div>
-    <dl class="dl-horizontal">
         <h4>Price</h4>
-        <dt>Sale Currency:</dt> <dd> <?php if(!empty($listing_detail->currency)) { echo currency_class($listing_detail->currency); } ?></dd>
-        <dt>GBP Price:</dt> <dd style="<?php if($listing_detail->currency==1){ echo"font-weight: bold;"; }?>">  &pound; <?php echo get_currency(currency_class($listing_detail->currency), 'GBP', $listing_detail->unit_price); ?></dd>
-        <dt >EUR Price:</dt> <dd style="<?php if($listing_detail->currency==2){ echo"font-weight: bold;"; }?>">  &euro; <?php echo get_currency(currency_class($listing_detail->currency), 'EUR', $listing_detail->unit_price); ?></dd>
-        <dt>USD Price:</dt> <dd style="<?php if($listing_detail->currency==3){ echo"font-weight: bold;"; }?>">  $ <?php echo get_currency(currency_class($listing_detail->currency), 'USD', $listing_detail->unit_price); ?></dd>
-    </dl>
+        <dl class="dl-horizontal">
+            <dt>Sale Currency:</dt> <dd> <?php if(!empty($listing_detail->currency)) { echo currency_class($listing_detail->currency); } ?></dd>
+            <dt>GBP Price:</dt> <dd style="<?php if($listing_detail->currency==1){ echo"font-weight: bold;"; }?>">  &pound; <?php echo get_currency(currency_class($listing_detail->currency), 'GBP', $listing_detail->unit_price); ?></dd>
+            <dt>EUR Price:</dt> <dd style="<?php if($listing_detail->currency==2){ echo"font-weight: bold;"; }?>">  &euro; <?php echo get_currency(currency_class($listing_detail->currency), 'EUR', $listing_detail->unit_price); ?></dd>
+            <dt>USD Price:</dt> <dd style="<?php if($listing_detail->currency==3){ echo"font-weight: bold;"; }?>">  $ <?php echo get_currency(currency_class($listing_detail->currency), 'USD', $listing_detail->unit_price); ?></dd>
+        </dl>
+        <p class="text-navy small">Exchange rate data is powered by jsonrates. We provide exchanges rates from multiple sources updated every 10 minutes.</p>
      <div class="hr-line-dashed"></div> 
     <?php if(!empty($listing_detail->courier) && $listing_detail->listing_type==1){   ?>
     <dl class="dl-horizontal">
@@ -182,7 +189,11 @@ if(!empty($listing_detail->image1))
 <br>
 <div class="col-md-6 col-md-offset-3">
 <span>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" >Pay asking price</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal5" ><?php if($listing_detail->listing_type==2){ ?>
+         Pay asking price
+          <?php }elseif($listing_detail->listing_type==1){ ?>
+          Supply at asking price
+          <?php } ?></button>
 </span>&nbsp;<b>OR</b>&nbsp;
 <span><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal6" >Make an Offer</button></span>
 </div>
@@ -487,13 +498,13 @@ if(!empty($listing_detail->image1))
           <th class="text-right"></th>
           <th align="center">
 
-          <?php if (file_exists("public/main/template/gsm/images/members/".$member->id.".png")) { ?>
-                  <img src="public/main/template/gsm/images/members/<?php echo $member->id; ?>.png" width="200">
+          <?php if (file_exists("public/main/template/gsm/images/company/".$member->id.".png")) { ?>
+                  <img src="public/main/template/gsm/images/company/<?php echo $member->id; ?>.png" width="200">
               <?php } else { ?>
-                  <img src="public/main/template/gsm/images/members/no_profile.jpg"  <?php echo $member->id; ?> width="200"/>
+                  <img src="public/main/template/gsm/images/company/no_company.jpg"  width="200"/>
               <?php } ?>
           </th>
-      </tr>
+      </tr><?php /*
        <tr>
           <td colspan="2">&nbsp;</td>
       </tr>
@@ -540,7 +551,7 @@ if(!empty($listing_detail->image1))
       <tr>
           <th class="text-right">Skype: </th>
           <td> <?php if(!empty($member->skype)) echo $member->skype ?></td>
-      </tr>
+      </tr> */ ?>
   </table>
 </div>
 </div>

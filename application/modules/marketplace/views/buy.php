@@ -30,7 +30,7 @@ $.ajax({
 </script>
 <div class="row wrapper border-bottom white-bg page-heading">
 <div class="col-lg-10">
-  <h2>Selling Offers</h2>
+  <h2>Selling Offers (WTS)</h2>
   <ol class="breadcrumb">
     <li><a href="/">Home</a></li>
     <li>Marketplace</li>
@@ -42,6 +42,11 @@ $.ajax({
 </div><!-- /row -->
         
 <div class="wrapper wrapper-content animated fadeInRight">
+
+            <div class="alert alert-info">
+                <p><i class="fa fa-warning"></i> Welcome to the <strong>GSM Marketplace v1.0a</strong>. Our marketplace is now live! If you have any issues or trouble using the marketplace please let us know by <a class="alert-link" href="support/submit_ticket">submitting a ticket</a> or if you have any ideas or feedback then <a class="alert-link" href="support/submit_ticket">let us know!</a></p>
+            </div>
+            
 <div class="row">
   <div class="col-lg-12">
     <div class="ibox float-e-margins">
@@ -117,7 +122,7 @@ endif;
 
       <div class="col-lg-2">
           <div class="form-group">
-           <label for="">Selling Currency <i class="fa fa-question-circle cursor" data-toggle="modal" data-target="#currency" title="Click for more information"></i></label>
+           <label  data-toggle="modal" data-target="#currency" for="" style="cursor:pointer">Selling Currency <i class="fa fa-question-circle" title="Click for more information"></i></label>
               <select name="currency" class="form-control" tabindex="1">
                   <option value="" selected="">Any</option>
                   <option <?php if( isset($_GET['currency']) && $_GET['currency']==1) echo 'selected="selected"'; ?> value="1">GBP &pound;</option>
@@ -129,19 +134,24 @@ endif;
       
       <div class="col-lg-2">
         <div class="form-group">
-           <label for="">Item Condition <i class="fa fa-question-circle cursor" data-toggle="modal" data-target="#condition" title="Click for more information"></i></label>
+           <label data-toggle="modal" data-target="#condition" for="" style="cursor:pointer">Item Condition <i class="fa fa-question-circle" title="Click for more information"></i></label>
               <select name="condition" class="form-control" tabindex="3">
                   <option value="" selected="">Any</option>
-                    <option <?php if(isset($_GET['condition']) && $_GET['condition']=='New') echo 'selected="selected"'; ?> value="New">New</option>
-                    <option <?php if(isset($_GET['condition']) && $_GET['condition']=='Used') echo 'selected="selected"'; ?> value="Used">Used</option>
-                    <option <?php if(isset($_GET['condition']) && $_GET['condition']=='Refurbished') echo 'selected="selected"'; ?> value="Refurbished">Refurbished</option>
+              <option <?php if(isset($_GET['condition']) && $_GET['condition']=='New') echo 'selected="selected"'; ?> value="New">New</option>
+              <option <?php if(isset($_GET['condition']) && $_GET['condition']=='Refurbished (OEM)') echo 'selected="selected"'; ?> value="Refurbished (OEM)">Refurbished (OEM)</option>
+              <option <?php if(isset($_GET['condition']) && $_GET['condition']=='Refurbished (Seller)') echo 'selected="selected"'; ?> value="Refurbished (Seller)">Refurbished (Seller)</option>
+              <option <?php if(isset($_GET['condition']) && $_GET['condition']=='Grade A') echo 'selected="selected"'; ?> value="Grade A">Grade A</option>
+              <option <?php if(isset($_GET['condition']) && $_GET['condition']=='Grade B') echo 'selected="selected"'; ?> value="Grade B">Grade B</option>
+              <option <?php if(isset($_GET['condition']) && $_GET['condition']=='Grade C') echo 'selected="selected"'; ?> value="Grade C">Grade C</option>
+              <option <?php if(isset($_GET['condition']) && $_GET['condition']=='Grade F (BER)') echo 'selected="selected"'; ?> value="Grade F (BER)">Grade F (BER)</option>
+              <option <?php if(isset($_GET['condition']) && $_GET['condition']=='Used') echo 'selected="selected"'; ?> value="Used">Used</option>
               </select>
           </div>                        
       </div>   
           
       <div class="col-lg-4">
         <div class="form-group">
-           <label for="">Seller Rating</label>
+     <label data-toggle="modal" data-target="#rating" for="" style="cursor:pointer">Seller Rating <i class="fa fa-question-circle" title="Click for more information"></i></label>
                   <div class="input-group">
                       <input type="text" class="input-sm form-control" name="start_rating" value="<?php if(isset($_GET['start_rating'])){ echo $_GET['start_rating']; }else{ echo '0';} ?>" maxlength="2"/>
                       <span class="input-group-addon">to</span>
@@ -197,8 +207,8 @@ endif;
             <select name="listing_type_status" class="form-control">
             <option value="" selected="selected">Any</option>
             <option <?php if(isset($_GET['listing_type_status']) && $_GET['listing_type_status']==1) echo 'selected="selected"'; ?> value="1">Fixed Listing</option>
-            <option <?php if(isset($_GET['listing_type_status']) && $_GET['listing_type_status']==2) echo 'selected="selected"'; ?> value="2">Tiered Listing</option>
-            <option <?php if(isset($_GET['listing_type_status']) && $_GET['listing_type_status']==3) echo 'selected="selected"'; ?> value="3">Auction Listing</option>
+            <option <?php if(isset($_GET['listing_type_status']) && $_GET['listing_type_status']==2) echo 'selected="selected"'; ?> value="2" disabled>Tiered Listing</option>
+            <option <?php if(isset($_GET['listing_type_status']) && $_GET['listing_type_status']==3) echo 'selected="selected"'; ?> value="3" disabled>Auction Listing</option>
             </select>
         </div>
     </div>  
@@ -270,7 +280,7 @@ endif;
 <div class="col-lg-12">
 <div class="ibox float-e-margins">
 <div class="ibox-title">
-    <h5>Live Marketplace - Selling Offers</h5>
+    <h5>Live Marketplace - Selling Offers (WTS) - Items you can buy from other users</h5>
 </div>
 <div class="ibox-content">
 
@@ -279,8 +289,7 @@ endif;
 <tr>
     <th>Listing End</th>
     <th style="display:none">Rating</th>
-    <th>MPN/ISBN</th>
-    <th>Make &amp; Model</th>
+    <th>Make &amp; Model + Additional</th>
     <th>Product Type</th>
     <th>Condition</th>
     <th>Unit Price</th>
@@ -291,7 +300,7 @@ endif;
 </thead>
     <?php if($listing_buy){
         foreach ($listing_buy as $value) {?>
-        <tr>
+        <tr onclick="document.location = '<?php echo base_url().'marketplace/listing_detail/'.$value->id ?>';" style="cursor:pointer">
         <td><span <?php 
     $enddatetime = $value->listing_end_datetime;; 
     $current_date = date('d-m-Y H:i:s'); 
@@ -326,18 +335,18 @@ endif;
         
         
         
-        <td><?php if(!empty($value->product_mpn_isbn)){ echo $value->product_mpn_isbn; } ?></td>
-        <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php echo $value->device_capacity; ?> <?php echo $value->spec; ?></td>
+        
+		<td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php if ($value->device_capacity > 0) { ?><?php echo $value->device_capacity; ?><?php } ?> <?php if ($value->spec > 0) { ?><?php echo $value->spec; ?><?php } ?> <?php if(!empty($value->product_mpn_isbn)){ echo '('.$value->product_mpn_isbn.')'; } ?></td>
         <td><?php echo $value->product_type; ?></td>
         <td><?php echo $value->condition; ?></td>
         <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo  currency_class($value->currency) ?> <?php echo $value->unit_price; ?></td>
-        <td><?php echo $value->total_qty; ?></td>
+        <td><?php echo $value->qty_available; ?></td>
         <td class="text-center">
        <!-- <span style="display:none"><?php //echo $value->country ?></span>-->
         <img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" title="<?php echo $value->product_country ?>" />
         </td>
-        <th>
-        <a href="<?php echo base_url().'marketplace/listing_detail/'.$value->id ?>"><button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></a></th>
+        <td class="text-center">
+        <a href="<?php echo base_url().'marketplace/listing_detail/'.$value->id ?>"><button type="button" class="btn btn-primary" style="font-size:10px">More Info</button></a></td>
     </tr>
        <?php }}else{
         ?>
@@ -1403,31 +1412,40 @@ $('#reset').click(function(){
 </div>
 </div>
 
-<!-- Modal Data Item Condition -->
-<div class="modal inmodal fade" id="condition" tabindex="-1" role="dialog"  aria-hidden="true">
-<div class="modal-dialog modal-lg">
-<div class="modal-content">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title">Item Condition</h4>
-        <small class="font-bold">Condition categories</small>
-    </div>
 
-    <div class="modal-body">
-      <p><strong>New</strong> - An unused brand new product in mint condition.</p>
-      <p><strong>Refurbished</strong> - A product that has been used/repaired to near mint condition, almost brand new.</p>
-      <p><strong>Used</strong> - The product has been used but in great condition and in perfect working order.</p>
-      <p><strong>Grade A</strong> - Not new, but in excellent condition.</p>
-      <p><strong>Grade B</strong> - Good condition, may have light marks and scratches from minor user.</p>
-      <p><strong>Grade C</strong> - Fair condition, will have marks and scratches from heavier use.</p>
-      <p><strong>Grade F</strong> - Fault and/or broken condition, may have cracks.</p>
+<div class="modal inmodal fade" id="condition" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Item Conditions</h4>
+                <small class="font-bold">Condition and Gradings</small>
+            </div>
+            <div class="modal-body">
+              <strong>New</strong><br />
+              <p>An unused brand new product.</p>
+              <strong>Refurbished (OEM)</strong><br />
+              <p>to “as new” condition from the manufacturer of the item.</p>
+              <strong>Refurbished (Seller)</strong><br />
+              <p>to “as new” condition from the seller of the item.</p>
+              <strong>Grade A</strong><br />
+              <p>Excellent condition, may have very light signs of use.</p>
+              <strong>Grade B</strong><br />
+              <p>Good Condition, will have marks/scratches from medium use.</p>
+              <strong>Grade C</strong><br />
+              <p>Fair Condition, will have marks/scratches from heavier use.</p>
+              <strong>Grade F (BER)</strong><br />
+              <p>Faulty. Beyond Economical Repair.</p>
+              <strong>Used</strong><br />
+              <p>Mixed used conditions and grades, may be untested. See item description for more information.</p>
+              <p style="color:red">It is very important that you follow these grading guidelines closely. All resolution processes with strictly follow these definitions.</p>
+            </div>
+        </div>
     </div>
-</div>
-</div>
 </div>
 
 <!-- Modal Data Seller Rating -->
-<div class="modal inmodal fade" id="currency" tabindex="-1" role="dialog"  aria-hidden="true">
+<div class="modal inmodal fade" id="rating" tabindex="-1" role="dialog"  aria-hidden="true">
 <div class="modal-dialog modal-lg">
 <div class="modal-content">
     <div class="modal-header">
@@ -1437,7 +1455,7 @@ $('#reset').click(function(){
     </div>
 
     <div class="modal-body">
-      <p>The <strong>Rating System</strong> is decided upon a number of factors involving previous buying and selling of the users accounts. We measure their rating on </p>
+          <p>The <strong>Rating System</strong> is decided upon a number of factors involving previous buying and selling of the users accounts. We measure their rating on <strong>quality of goods</strong>, <strong>shipment speed</strong>, <strong>communication</strong> and <strong>payment effeciency</strong>.</p>
     </div>
 </div>
 </div>

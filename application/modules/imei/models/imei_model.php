@@ -77,6 +77,8 @@ class Imei_model extends MY_Model {
 
 		if ($query->num_rows() > 0)
 		{
+			$imei_account = static::get_imei_account();
+
 			foreach ($query->result() as $row)
 			{
 				$XML = $this->MobiCode->CallAPI('FetchBulkImeiCheck', array('Bulk_ID' => $row->bulk_id));
@@ -94,6 +96,8 @@ class Imei_model extends MY_Model {
 							{
 								$data[$k] = $v;
 							}
+
+							$data['cert_id'] = '/files/mobiguard/' . $imei_account->account_id .'/' . date('Y') . '/' . date('M') . '/' . $data['cert_id'] . '.pdf';
 
 							$data['member_id'] = $this->session->userdata('members_id');
 							$data['created_at'] = date('Y-m-d H:i:s');
@@ -226,14 +230,15 @@ class Imei_model extends MY_Model {
 
 		if ($imei_lookup !== false)
 		{
+			$imei_account = $CI->imei_model->get_imei_account();
+
 			$xml_string = $CI->MobiCode->CallAPI('PlaceOrder', array('Tool' => '1-62', 'IMEI' => $imei));
 
 			$xml = simplexml_load_string($xml_string);
 
 			if ((string)$xml->Status == 'solved')
 			{
-				//success // Rem: 2103 might be ze account id so may need to change for sub accounts \o/ 
-				$file_path = 'http://imei.gsmstockmarket.com/files/mobiguard/2174/'. Date('Y') .'/'. Date('M') .'/'. $xml->MobiCheck->cert_id .'.pdf';
+				$data['cert_id'] = '/files/mobiguard/' . $imei_account->account_id .'/' . date('M') . '/' . (string)$xml->MobiCheck->cert_id . '.pdf';
 
 				$data = array(
 				   'id' => (string)$xml->ID,
@@ -250,23 +255,26 @@ class Imei_model extends MY_Model {
 				   'expired_owner_temp_block' => (string)$xml->MobiCheck->expired_owner_temp_block,
 				   'result' => (string)$xml->MobiCheck->result,
 				   'recycled_previously' => (string)$xml->MobiCheck->recycled_previously,
-				   'report_path' => $file_path,
+				   'report_path' => (string)$xml->MobiCheck->cert_id,
 				   'created_at' => date('Y-m-d H:i:s'),
 				);
 
+				$data['cert_id'] = '/files/mobiguard/' . $imei_account->account_id .'/' . date('Y') . '/' . date('M') . '/' . (string)$xml->MobiCheck->cert_id . '.pdf';
+				$data['report_path'] = $data['cert_id'];
+
 				$CI->db->insert('hpi_checks', $data);
 
-				$imei_lookup = array('report_path' => $file_path);
+				$imei_lookup = array('report_path' => $data['cert_id']);
 			}
 			else if ((string)$xml->Error_no == '1012')
 			{
 				// insufficient funds
-				$imei_lookup = false;
+				$imei_lookup = 'Insufficient funds to make this request';
 			}
 		}
 		else
 		{
-			$imei_lookup = false;
+			$imei_lookup['Error'] = 'No Valid IMEIs to lookup';
 		}
 
 		return $imei_lookup;
@@ -289,28 +297,43 @@ class Imei_model extends MY_Model {
 			}
 		}
 
-		$XML = $this->MobiCode->CallAPI('PlaceBulkImeiCheck', array('IMEIs' => $bulk_lookup,
-		'BulkRef'=>'10064',
-		'Notes' => 'Test Bulk From API'));
+		if (is_array($bulk_lookup) && count($bulk_lookup) > 0)
+		{
+			$XML = $this->MobiCode->CallAPI('PlaceBulkImeiCheck', array('IMEIs' => $bulk_lookup,
+			'BulkRef'=>'10064',
+			'Notes' => 'Test Bulk From API'));
 
-		if (is_string($XML)) {
-			$data = $this->MobiCode->ParseXML($XML);
+			if (is_string($XML)) {
+				$data = $this->MobiCode->ParseXML($XML);
+			}
+
+			if (isset($data['Error']))
+			{
+				
+			}
+			else
+			{
+				$data = array(
+				   'member_id' => $this->session->userdata('members_id'),
+				   'order_id' => $data['Order_ID'],
+				   'bulk_id' => $data['Bulk_ID'],
+				   'checks_submitted' => $data['Checks_Submitted'],
+				   'duplicates' => $data['Duplicates'],
+				   'rejected' => $data['Rejected'],
+				   'created_at' => date('Y-m-d H:i:s'),
+				   'reference' => 'Test Bulk from API',
+				);
+
+				$this->db->insert('bulk_lookup_orders', $data);
+			}			
+		}
+		else 
+		{
+			$data['Error'] = 'No Valid IMEIs to lookup';
 		}
 
-		$data = array(
-		   'member_id' => $this->session->userdata('members_id'),
-		   'order_id' => $data['Order_ID'],
-		   'bulk_id' => $data['Bulk_ID'],
-		   'checks_submitted' => $data['Checks_Submitted'],
-		   'duplicates' => $data['Duplicates'],
-		   'rejected' => $data['Rejected'],
-		   'created_at' => date('Y-m-d H:i:s'),
-		   'reference' => 'Test Bulk from API',
-		);
-
-		$this->db->insert('bulk_lookup_orders', $data);
-
 		return $data;
+
 	}
 
 	function top_up_account()

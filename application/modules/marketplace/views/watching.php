@@ -25,7 +25,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <div class="col-lg-12">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>Watching - Buying Requests</h5>
+                <h5>Watching - Buying Requests (WTB)</h5>
             </div>
             <div class="ibox-content">
             <table id="marketplace" class="table table-striped table-bordered table-hover dataTables-example" >
@@ -52,7 +52,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                 <td><?php echo $value->product_type; ?></td>
                 <td><?php echo $value->condition; ?></td>
                 <td data-toggle="tooltip" data-placement="left" title="mouseover currency"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
-                <td><?php echo $value->total_qty; ?></td>
+                <td><?php echo $value->qty_available; ?></td>
                 <td class="text-center"><img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" title="<?php echo $value->product_country ?>" /></td>
                 <th>
                 
@@ -72,7 +72,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
         <div class="col-lg-12">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>Watching - Selling Offers</h5>
+                <h5>Watching - Selling Offers (WTS)</h5>
             </div>
             <div class="ibox-content">
             <table id="marketplace" class="table table-striped table-bordered table-hover dataTables-example" >
@@ -99,7 +99,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
                 <td><?php echo $value->product_type; ?></td>
                 <td><?php echo $value->condition; ?></td>
                 <td data-toggle="tooltip" data-placement="left" title="mouseover currency"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
-                <td><?php echo $value->total_qty; ?></td>
+                <td><?php echo $value->qty_available; ?></td>
                 <td class="text-center"><img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" title="<?php echo $value->product_country ?>" /></td>
                 <th>
                 <a href="<?php echo base_url().'marketplace/listing_unwatch/'.$value->id ?>" class="btn btn-danger" style="font-size:10px">Unwatch</a>

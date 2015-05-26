@@ -1,10 +1,45 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Marketplace_model extends MY_Model {
+    public $proforma_file_dir;
+    public $bank_payment_file_dir;
+    public $tracking_file_dir;
+
     function __construct()
     {        
         parent::__construct();
         $this->table = 'marketplace';
+        $CI =& get_instance();
+        $this->proforma_file_dir = $CI->config->item('uploadDir')."proforma_files/";
+        $this->bank_payment_file_dir = $CI->config->item('uploadDir')."bank_payment_files/";
+        $this->tracking_file_dir = $CI->config->item('uploadDir')."tracking_files/";
     }
+
+    public function getUploadedFileName($actualFilename , $idToAppend )
+    {
+        $fileExt = substr( $actualFilename, strrpos($actualFilename, '.') );
+        return $idToAppend."-".mktime().$fileExt;
+    }
+
+    public function uploadFile( $file_name , $id_to_append )
+    {
+        $config['file_name'] = $this->getUploadedFileName( $_FILES[$file_name]['name'], $id_to_append );
+        $dir = $file_name."_dir";
+        $config['upload_path'] = $this->$dir;
+        $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf';
+        $config['max_size']	= '20000';
+
+        $this->load->library('upload', $config);
+
+        if ( !$this->upload->do_upload($file_name))
+        {
+            return array('error' => $this->upload->display_errors());
+        }
+        else
+        {
+            return array('upload_data' => $this->upload->data($file_name));
+        }
+    }
+
     public function insert($table_name='',  $data=''){
         $query=$this->db->insert($table_name, $data);
         if($query)
