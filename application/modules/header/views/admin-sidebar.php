@@ -155,9 +155,11 @@
                 </ul>
             </li>
             <?php } ?>
+            <?php if($this->session->userdata('authority') == 'super_admin'){?>
             <li>
                 <a href="<?php echo base_url().'admin/credit_check';?>"><i class="fa fa fa-cc"></i> <span class="nav-label">Credit Check</span><?php $this->load->module('creditdata'); $this->creditdata->admin_creditdata_count();?></a>
-            </li>            
+            </li>
+            <?php } ?>
         </ul>
     </div>
 </nav>

@@ -329,7 +329,7 @@ class Login extends MX_Controller{
                                                     'admin_members_id'  	=> $aid,
                                                     'members_id'                => 4,
                                                     //'membership'                => 2,
-                                                    //'username'                  => $member->username,
+                                                    'authority'                 => $admin->authority,
                                                     'admin_firstname'           => $admin->firstname,
                                                     'admin_lastname'            => $admin->lastname,
                                                     'logged_in'                 => TRUE,

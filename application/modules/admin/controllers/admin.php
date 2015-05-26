@@ -540,6 +540,7 @@ class Admin extends MX_Controller
         
         $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
         $mem = $this->{$var_model}->get_where($id)->member_id;
+        $fem = $this->{$var_model}->get_where($id)->feedback_member_id;
         //echo $mem;
         //exit;
         $data = array(
@@ -557,9 +558,27 @@ class Admin extends MX_Controller
                                     'member_id'         => 5,
                                     'sent_member_id'    => $mem,
                                     'subject'           => 'Feedback Approved',
+                                    'member_name'       => 'GSM Support',
                                     'body'              => 'Your feedback has been approved',
                                     'inbox'             => 'yes',
                                     'sent'              => 'yes',
+                                    'sent_belong'       => 5,
+                                    'date'              => date('d-m-Y'),
+                                    'time'              => date('H:i'),
+                                    'sent_from'         => 'support',
+                                    'datetime'          => date('Y-m-d H:i:s')
+                                  ); 
+        $this->{$var1_model}->_insert($data);
+        
+        $data = array(
+                                    'member_id'         => 5,
+                                    'sent_member_id'    => $fem,
+                                    'subject'           => 'Feedback Received',
+                                    'body'              => 'You have received a new feedback',
+                                    'member_name'       => 'GSM Support',
+                                    'inbox'             => 'yes',
+                                    'sent'              => 'yes',
+                                    'sent_belong'       => 5,
                                     'date'              => date('d-m-Y'),
                                     'time'              => date('H:i'),
                                     'sent_from'         => 'support',
@@ -2056,6 +2075,7 @@ class Admin extends MX_Controller
     function credit_check()
     {
         //echo 'CREDIT CHECK';
+        if($this->session->userdata('authority') == 'super_admin'){
         
         $var = 'company';
         $var_model = $var.'_model';
@@ -2084,6 +2104,11 @@ class Admin extends MX_Controller
         $data['page'] = 'credit-check';
         $this->load->module('templates');
         $this->templates->admin($data);
+            
+        }
+        else{
+            redirect('admin/dashboard');
+        }
     }
     
     function edit_credit($cid)
