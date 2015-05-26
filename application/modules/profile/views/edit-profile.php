@@ -1716,7 +1716,7 @@ echo form_open_multipart('profile/profileEdit', $attributes);
     $(document).ready(function () {
         $('.i-checks').iCheck({
             checkboxClass: 'icheckbox_square-green',
-            radioClass: 'iradio_square-green'
+            radioClass: 'iradio_square-green',
         });
     });</script>
 

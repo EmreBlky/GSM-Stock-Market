@@ -89,14 +89,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    $(function () {
-        $("#profileImageForm").submit(function () {
-            $.post("profile/profileImage",$(this).serialize(), function () {
-                location.reload();
-            });
-            return false;
-        });
-    });
-</script>

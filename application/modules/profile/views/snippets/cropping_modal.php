@@ -87,13 +87,3 @@
         </div>
     </div>
 </div>
-<script>
-    $(function () {
-        $("#companyImgForm").submit(function () {
-            $.post("profile/companyImage",$(this).serialize(), function () {
-                location.reload();
-            });
-            return false;
-        });
-    });
-</script>

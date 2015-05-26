@@ -142,14 +142,7 @@ class Search extends MX_Controller
         }
     }
 
-    function company($start = 1)
-    {
-        $results_per_page = 20;
-        $start = ($start * $results_per_page) - $results_per_page;
-		
-        $data['main'] = 'search';
-        $data['title'] = 'GSM - Search Company';
-        $data['page'] = 'company';
+    private function getSearchResults($business_sector,$start, $results_per_page, $countOnly = false ){
 
         $where = " m.id <> " . $this->session->userdata('members_id');
 
@@ -157,7 +150,12 @@ class Search extends MX_Controller
         $where .= (!empty($term)) ? " AND c.company_name LIKE '%$term%'" : '';
 
         $business = $this->input->get('business', TRUE);
-        $where .= (!empty($business)) ? " AND (c.business_sector_1 LIKE '$business' OR c.business_sector_2 LIKE '$business' OR c.business_sector_3 LIKE '$business' OR other_business LIKE '%$business%')" : '';
+
+        if($business_sector == "all"){
+            $where .= (!empty($business)) ? " AND (c.business_sector_1 LIKE '$business' OR c.business_sector_2 LIKE '$business' OR c.business_sector_3 LIKE '$business' OR other_business LIKE '$business')" : '';
+        }else{
+            $where .= (!empty($business)) ? " AND c.$business_sector LIKE '$business'" : '';
+        }
 
         $region = $this->input->get('region', TRUE);
         $where .= (!empty($region)) ? " AND cnt.region LIKE '$region' " : '';
@@ -168,18 +166,44 @@ class Search extends MX_Controller
         $countries = $this->input->get('countries', TRUE);
         $where .= (!empty($countries)) ? " AND cnt.id = '$countries'" : '';
 
-        $sort = $this->getSortingString();
-
-
-        //$results_per_page = $this->config->item('results_per_page');
-
+        if($this->input->get('sort') == 'primary-business'){
+            $sort = " ORDER BY
+                business_sector_1 = '{$business}' DESC,
+                business_sector_2 = '{$business}' DESC,
+                business_sector_3 = '{$business}' DESC,
+                other_business = '{$business}' DESC"
+            ;
+        }else{
+            $sort = $this->getSortingString();
+        }
 
         $this->load->model('search_model');
         $this->load->model('country/country_model', 'country_model');
         $this->load->library('pagination');
 
-        $results = $this->search_model->searchCompanies($where, $business, $sort, $start, $results_per_page);
-        $total_results = $this->search_model->companiesCount($where);
+        if($countOnly){ return $this->search_model->companiesCount($where); }
+
+        return $this->search_model->searchCompanies($where, $business, $sort, $start, $results_per_page);
+    }
+
+    public function pr($obj,$label = ""){
+        echo "<pre><b>$label</b>:<br>";
+        print_r($obj);
+        echo "</pre>";
+    }
+
+    function company($start = 1)
+    {
+        $results_per_page = 20;
+        $start = ($start * $results_per_page) - $results_per_page;
+
+        $data['main'] = 'search';
+        $data['title'] = 'GSM - Search Company';
+        $data['page'] = 'company';
+
+        $results = $this->getSearchResults("all",$start,$results_per_page);
+
+        $total_results = $this->getSearchResults("all",$start,$results_per_page,true);
 
         $this->pagination->initialize(array(
             'base_url' => site_url('/search/company/'),

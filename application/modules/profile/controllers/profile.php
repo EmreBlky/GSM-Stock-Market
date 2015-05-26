@@ -287,7 +287,6 @@ class Profile extends MX_Controller
             }
             
         }
-        echo "<script> alert('eheh');console.log('hehehhe');location.reload();</script>";
     }
 
     function profileImage()
