@@ -2850,7 +2850,11 @@ class Marketplace extends MX_Controller {
     function end_listing_status($listing_id = '') {
         if (!empty($listing_id)) {
             $member_id = $this->session->userdata('members_id');
-            $this->marketplace_model->update('listing', array('status' => 3), array('id' => $listing_id, 'member_id' => $member_id));
+            $data = array(
+                //'status' => 3,
+                'listing_end_datetime' => date( 'Y-m-d H:i:s', (time() - 1) ),
+            );
+            $this->marketplace_model->update('listing', $data , array('id' => $listing_id, 'member_id' => $member_id));
             $this->session->set_flashdata('msg_success', 'Listing ended successfully.');
         } else {
             $this->session->set_flashdata('msg_info', 'Invalid listing id.');
@@ -2858,12 +2862,31 @@ class Marketplace extends MX_Controller {
         redirect($_SERVER['HTTP_REFERER']);
     }
 
-    public function import($type = 'csv') {
+    function re_list($listing_id = '', $days = 7){
+        if (empty($listing_id)) {
+            $this->session->set_flashdata('msg_info', 'Invalid listing id.');
+            redirect($_SERVER['HTTP_REFERER']);
+        }
 
+        if( $posted_duration = $this->input->post('duration') ){ $days = $posted_duration; }
+
+        $member_id = $this->session->userdata('members_id');
+        $time = time() + ($days*24*60*60);
+        $data = array(
+            //'status' => 3,
+            'listing_end_datetime' => date( 'Y-m-d H:i:s', $time ),
+        );
+        $this->marketplace_model->update('listing', $data , array('id' => $listing_id, 'member_id' => $member_id));
+        $this->session->set_flashdata('msg_success', 'Listing activated again successfully.');
+
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function import($type = 'csv') {
         if ($this->read_csv_xls_xlsx(array('file' => 'Workbook6.csv', 'path' => 'public/'))) {
             echo "Data is inserted";
         } else {
-            echo "Eroor";
+            echo "Error";
         }
     }
 
