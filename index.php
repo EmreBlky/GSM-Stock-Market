@@ -1,6 +1,6 @@
 <?php
 //echo '<pre>';
-//print_r(gd_info()); 
+//print_r($_SERVER);
 //exit;
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -204,6 +204,9 @@ if (defined('ENVIRONMENT'))
  * And away we go...
  *
  */
+
+require_once __DIR__."/application/libraries/Mailer.php";
+
 require_once BASEPATH.'core/CodeIgniter.php';
 
 /* End of file index.php */
