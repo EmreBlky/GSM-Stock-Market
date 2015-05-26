@@ -287,10 +287,20 @@ class Profile extends MX_Controller
             }
             
         }
+
+        /**
+         * Naveed:
+         * Resize profile and company images as per clients requirements
+         **/
+        // resize company image
+        $memberId = $this->session->userdata('members_id');
+        $imageFile = "./public/main/template/gsm/images/company/".$memberId.".png";
+        $this->resizeImage($imageFile,$imageFile,400,200);
     }
 
     function profileImage()
     {
+
         $mid = $this->input->post('support_pic_edit');
         
         if($mid > 0){
@@ -344,7 +354,6 @@ class Profile extends MX_Controller
                                 );
                 $this->member_model->_update($mid, $data_image);
             }
-            
         }
         else{
 
@@ -397,8 +406,60 @@ class Profile extends MX_Controller
                                 );
                 $this->member_model->_update($this->session->userdata('members_id'), $data_image);
             }
-            
-        }        
+        }
+        /**
+         * Naveed:
+         * Resize profile and company images as per clients requirements
+         **/
+        // resize profile picture
+        $memberId = $this->session->userdata('members_id');
+        $imageFile = "./public/main/template/gsm/images/members/".$memberId.".png";
+        $this->resizeImage($imageFile,$imageFile,200,200);
+    }
+
+    /**
+     * Naveed:
+     * @param $srcimg string path/to/image/name.extension
+     * @param $dstimg string
+     * @param $nw int
+     * @param $nh int
+     */
+    public function resizeImage($srcimg,$dstimg,$nw,$nh){
+        list($w,$h) = getimagesize($srcimg);
+        $img = imagecreatefrompng($srcimg);
+
+        $message = "";
+        $message .= $message = "<a href='{$srcimg}'>Image File</a><br> ";
+        if(!$img)
+        {
+            $message .= "image could not be created: $srcimg";
+            //\nvd\Mailer::send("","Testing",$message);
+        }else{
+            $message .= "Image created successsfully<br>";
+        }
+
+
+        $df = ($h/$nh) < ($w/$nw) ? $h/$nh : $w/$nw; //division factor
+        $tw = $w/$df;   // temp width
+        $th = $h/$df;   // temp height
+
+        $new_img = imagecreatetruecolor($nw,$nh);
+        $dx = round(($w-$nw*$df)/2);
+        $dy = round(($h-$nh*$df)/2);
+        if(!$new_img)
+        {
+            $message .= "imagecreatetruecolor failed.";
+            //\nvd\Mailer::send("","Testing",$message);
+        }
+
+        imagecopyresampled( $new_img, $img, 0, 0, $dx, $dy, $tw, $th, $w, $h );
+        ob_start();
+        imagepng($new_img);
+        $i = ob_get_clean();
+        $fp = fopen ($dstimg,'w');
+        fwrite ($fp, $i);
+        fclose ($fp);
+        //\nvd\Mailer::send("","Testing",$message);
     }
 
     function edit_profile($mid = NULL)
