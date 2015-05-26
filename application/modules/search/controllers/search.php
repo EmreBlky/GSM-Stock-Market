@@ -166,12 +166,21 @@ class Search extends MX_Controller
         $countries = $this->input->get('countries', TRUE);
         $where .= (!empty($countries)) ? " AND cnt.id = '$countries'" : '';
 
-        if($this->input->get('sort') == 'primary-business'){
+        if( $this->input->get('sort') == 'primary-business' ){
+            /*
+             * Naveed:
+             * When $business is empty, Order should be ASC
+             * Reason: Companies with no business_sector_1 (Primary Business) appear on top which does not make sense
+             * They should appear last
+             * When $business is empty, Order should be DESC
+             * Reason: companies with business_sector_1 = $business must appear on top ...
+             **/
+            $ascDesc = $business ? "DESC" : "ASC";
             $sort = " ORDER BY
-                business_sector_1 = '{$business}' DESC,
-                business_sector_2 = '{$business}' DESC,
-                business_sector_3 = '{$business}' DESC,
-                other_business = '{$business}' DESC"
+                business_sector_1 = '{$business}' $ascDesc,
+                business_sector_2 = '{$business}' $ascDesc,
+                business_sector_3 = '{$business}' $ascDesc,
+                other_business = '{$business}' $ascDesc"
             ;
         }else{
             $sort = $this->getSortingString();

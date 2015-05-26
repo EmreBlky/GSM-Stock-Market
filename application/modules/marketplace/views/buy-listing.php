@@ -255,7 +255,7 @@
 </div>
 <div class="form-group"><label class="col-md-3 control-label">Desired QTY <span style="color:red">*</span></label>
     <div class="col-md-9">
-        <input type="type" class="form-control no-digits" name="total_qty" value="<?php if(!empty($product_list->total_qty)) echo $product_list->total_qty; else  echo set_value('total_qty');?>"/>
+        <input type="type" class="form-control no-digits" name="total_qty" value="<?php if(!empty($product_list->qty_available)) echo $product_list->qty_available; else  echo set_value('qty_available');?>"/>
     </div>
 		<div class="col-md-9 col-md-offset-3" id="total_qty_error"></div>
       <div class="col-md-9 col-md-offset-3">

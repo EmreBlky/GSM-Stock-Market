@@ -797,7 +797,7 @@ $this->viewed->view_month();
                         <td><?php if(!empty($buy_value->product_make)){ echo $buy_value->product_make; } ?></td>
                         <td><?php if(!empty($buy_value->product_model)){ echo $buy_value->product_model; } ?></td>
                         <td><?php if(!empty($buy_value->unit_price)){  echo currency_class($buy_value->currency);  echo $buy_value->unit_price; } ?></td>
-                        <td><?php if(!empty($buy_value->total_qty)){ echo $buy_value->total_qty; } ?></td>
+                        <td><?php if(!empty($buy_value->qty_available)){ echo $buy_value->qty_available; } ?></td>
                         <td>
                          <?php $offer_count = offer_count($buy_value->id); ?>
                             <?php if($buy_value->member_id==$member_id){?>
@@ -836,7 +836,7 @@ $this->viewed->view_month();
                         <td><?php if(!empty($sell_value->product_make)){ echo $sell_value->product_make; } ?></td>
                         <td><?php if(!empty($sell_value->product_model)){ echo $sell_value->product_model; } ?></td>
                         <td><?php if(!empty($sell_value->unit_price)){ echo currency_class($sell_value->currency); echo $sell_value->unit_price; } ?></td>
-                        <td><?php if(!empty($sell_value->total_qty)){ echo $sell_value->total_qty; } ?></td>
+                        <td><?php if(!empty($sell_value->qty_available)){ echo $sell_value->qty_available; } ?></td>
                         <td>
                             <?php $offer_count = offer_count($sell_value->id); ?>
                             <?php if($sell_value->member_id==$member_id){?>
@@ -876,7 +876,7 @@ $this->viewed->view_month();
                          <td><?php if(!empty($value->product_make)){ echo $value->product_make; } ?></td>
                           <td><?php if(!empty($value->product_model)){ echo $value->product_model; } ?></td>
                           <td><?php if(!empty($value->unit_price)){ echo currency_class($value->currency); echo $value->unit_price; } ?></td>
-                           <td><?php if(!empty($value->total_qty)){ echo $value->total_qty; } ?></td>
+                           <td><?php if(!empty($value->qty_available)){ echo $value->qty_available; } ?></td>
                            <td>
                                <?php  
                             $current_datetime = strtotime(date('d-m-Y H:i:s')); 

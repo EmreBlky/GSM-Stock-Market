@@ -266,7 +266,7 @@
 <section data-step="6" data-intro="Manage your stock availability here by entering how many units you have available to sell. You can also specify a minimum order quantity to sell in batches." data-position='right'>
 <div class="form-group"><label class="col-md-3 control-label">QTY Available <span style="color:red">*</span></label>
   <div class="col-md-9">
-      <input type="type" class="form-control no-digits" name="total_qty" value="<?php if(!empty($product_list->total_qty)) echo $product_list->total_qty; else  echo set_value('total_qty');?>"/>
+      <input type="type" class="form-control no-digits" name="qty_available" value="<?php if(!empty($product_list->qty_available)) echo $product_list->qty_available; else  echo set_value('total_qty');?>"/>
     <p class="small text-navy">How many of this item do you have available to sell?</p>
       <?php echo form_error('total_qty'); ?>
   </div>

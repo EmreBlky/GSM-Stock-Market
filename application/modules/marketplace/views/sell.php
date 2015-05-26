@@ -344,7 +344,7 @@ foreach ($listing_sell as $value) {?>
 <td><?php echo $value->condition; ?></td>
 
 <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>, &euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,   $ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo  currency_class($value->currency) ?> <?php echo $value->unit_price; ?></td>
-<td><?php echo $value->total_qty; ?></td>
+<td><?php echo $value->qty_available; ?></td>
 <td class="text-center">
 <img src="public/main/template/gsm/img/flags/<?php echo str_replace(' ', '_', $value->product_country) ?>.png" alt="<?php echo $value->product_country ?>" title="<?php echo $value->product_country ?>" />
 </td>
