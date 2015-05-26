@@ -79,16 +79,8 @@
         <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
         <td <?php if ($value->qty_available == 0) { ?>style="color:red"<?php }?>><?php echo $value->qty_available; ?></td>
         <th class="text-center">
-         <a href="<?php echo base_url().'marketplace/buy_listing/'.$value->id; ?>" class="btn btn-warning" style="font-size:10px"><i class="fa fa-paste"></i> Edit</a>
-        <?php 
-         if($end_datetime > $current_datetime){ ?>
-        <a href="<?php echo base_url().'marketplace/listing_detail/'.$value->id; ?>" class="btn btn-success" style="font-size:10px"><i class="fa fa-eye"></i>  View</a>
-        <a href="<?php echo base_url().'marketplace/listing_delete/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to end this listing ?');" style="font-size:10px"><i class="fa fa-times"></i> Remove</a>
-       <?php }else{?>
-       <a class="btn btn-success" style="font-size:10px;display:none">
-       <i class="fa fa-arrow-up"></i> Relist</a>
-       <a href="<?php echo base_url().'marketplace/end_listing_status/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to delete this listing?');" style="font-size:10px"><i class="fa fa-times"></i> Remove</a>
-        <?php } ?>
+
+        <?php $listing_type = "buy_listing"; require __DIR__."/snippets/listing_options.php" ?>
 
         </th>
     </tr>
@@ -161,17 +153,9 @@
         <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
         <td <?php if ($value->qty_available == 0) { ?>style="color:red"<?php }?>><?php echo $value->qty_available; ?></td>
         <th class="text-center">
-        <a href="<?php echo base_url().'marketplace/sell_listing/'.$value->id; ?>" class="btn btn-warning" style="font-size:10px"><i class="fa fa-paste"></i> Edit</a>
-        <?php 
-         if($end_datetime > $current_datetime){ ?>
-        <a href="<?php echo base_url().'marketplace/listing_detail/'.$value->id; ?>" class="btn btn-success" style="font-size:10px"><i class="fa fa-eye"></i> View</a>
-        <a href="<?php echo base_url().'marketplace/listing_delete/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to end this listing ?');" style="font-size:10px"><i class="fa fa-times"></i> Remove</a>
-       <?php }else{?>
-       <a class="btn btn-success" style="font-size:10px;display:none">
-       <i class="fa fa-arrow-up"></i> Relist</a>
-       <a href="<?php echo base_url().'marketplace/end_listing_status/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to end delete this isting?');" style="font-size:10px"><i class="fa fa-times"></i> Remove</a>
-        <?php } ?>
-      
+
+            <?php $listing_type = "sell_listing"; require __DIR__."/snippets/listing_options.php" ?>
+
         </th>
     </tr>
         
@@ -259,6 +243,15 @@ $session_member_id = $this->session->userdata('members_id'); ?>
        
 </div>
 
+
+    <?php
+    /**
+     * Naveed: re-list-btn functionality
+     *
+     **/
+    require_once __DIR__."/snippets/re-list-modal.php"
+    ?>
+
 <!-- Data Tables -->
 <link href="public/main/template/core/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
 <link href="public/main/template/core/css/plugins/dataTables/dataTables.responsive.css" rel="stylesheet">
@@ -318,6 +311,17 @@ jQuery(document).ready(function($) {
          $this.html(event.strftime('%Dd %Hh %Mm %Ss'));
        });
      });
+    /**
+    * Naveed: re-list-btn functionality
+    *
+    **/
+    $(".re-list-btn").click(function () {
+        $("#re_list_modal").find("form").attr( "action", $(this).data("action") );
+//        alert("we'll show modal. don't worry.");
+//        return false;
+    });
+
+
 });
  function get_buyers_offer(listing_id) {
     var list = listing_id;
