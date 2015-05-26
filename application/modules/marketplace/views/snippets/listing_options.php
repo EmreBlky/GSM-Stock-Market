@@ -11,8 +11,6 @@ if( $end_datetime > $current_datetime ){ // active listing ?>
 
     <a data-action="<?php echo base_url().'marketplace/re_list/'.$value->id; ?>" data-toggle="modal" data-target="#re_list_modal" class="btn btn-success re-list-btn" style="font-size:10px;"><i class="fa fa-arrow-up"></i> Re-list</a>
 
-    <a href="<?php echo base_url().'marketplace/re_list/'.$value->id; ?>" data-listing="<?php echo $value->id; ?>" class="btn btn-success re-list-btn" style="font-size:10px;"><i class="fa fa-arrow-up"></i> Re-list2</a>
-
     <a href="<?php echo base_url().'marketplace/listing_delete/'.$value->id; ?>" class="btn btn-danger" onclick="return confirm('Are your sure you want to delete this listing?');" style="font-size:10px"><i class="fa fa-times"></i> Remove</a>
 
 <?php } ?>
