@@ -1737,6 +1737,32 @@ class Admin extends MX_Controller
         
     }
     
+    function eventDelete($eid)
+    {
+        $var = 'events';
+        $var_model = $var.'_model';
+
+        $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
+        
+        $this->{$var_model}->_delete($eid);
+        
+        $var1 = 'attending';
+        $var1_model = $var1.'_model';
+
+        $this->load->model(''.$var1.'/'.$var1.'_model', ''.$var1.'_model');
+        
+        $this->{$var1_model}->_delete_where('event_id', $eid);
+        
+        $this->session->set_flashdata('admin-events', '<div style="margin:0 15px">    
+                                                            <div class="alert alert-success">
+                                                                That has been deleted.
+                                                            </div>
+                                                        </div>');
+
+       redirect('admin/edit_event/');
+        
+    }
+    
     function terms_conditions()
     {
         $data['main'] = 'admin';        

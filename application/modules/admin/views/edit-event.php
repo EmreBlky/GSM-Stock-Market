@@ -301,7 +301,7 @@ if(is_numeric($id)){?>
                                     <td>
                                         <a href="admin/edit_event/<?php echo $event->id;?>"><i class="fa fa-pencil"></i> Edit</a>
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                        
-                                        <a href="admin/bioDecline/<?php echo $event->id;?>"><i class="fa fa-times text-warning"></i> Delete</a>
+                                        <a href="admin/eventDelete/<?php echo $event->id;?>"><i class="fa fa-times text-warning"></i> Delete</a>
                                     </td>
         <!--                            <td>A</td>-->
                                 </tr>
