@@ -127,8 +127,8 @@ class Feedback extends MX_Controller
     
     function overallScore($mid)
     {
-       $feedback_score =  $this->feedback_model->_custom_query("SELECT SUM(feedback_score) AS total FROM feedback WHERE member_id = '".$mid."' AND authorised = 'yes'");
-       $feedback_count =  $this->feedback_model->_custom_query("SELECT COUNT(*) AS count FROM feedback WHERE member_id = '".$mid."' AND authorised = 'yes'");
+       $feedback_score =  $this->feedback_model->_custom_query("SELECT SUM(feedback_score) AS total FROM feedback WHERE feedback_member_id = '".$mid."' AND authorised = 'yes'");
+       $feedback_count =  $this->feedback_model->_custom_query("SELECT COUNT(*) AS count FROM feedback WHERE feedback_member_id = '".$mid."' AND authorised = 'yes'");
        //echo '<pre>';
        //print_r($feedback_count);
        //echo $feedback_score[0]->total.'<br/>';
@@ -149,12 +149,12 @@ class Feedback extends MX_Controller
     function feedback_list($mid)
     {
         //$mid = $this->session->userdata('members_id');
-        $feedback =  $this->feedback_model->_custom_query("SELECT COUNT(*) AS count FROM feedback WHERE member_id = '".$mid."' AND authorised = 'yes'");
+        $feedback =  $this->feedback_model->_custom_query("SELECT COUNT(*) AS count FROM feedback WHERE feedback_member_id = '".$mid."' AND authorised = 'yes'");
         
         if($feedback[0]->count > 0){
             
             $data['feedback_count'] = $feedback[0]->count;
-            $data['feed_list'] = $this->feedback_model->get_where_multiples('member_id', $mid, 'authorised', 'yes');
+            $data['feed_list'] = $this->feedback_model->get_where_multiples('feedback_member_id', $mid, 'authorised', 'yes');
        
        } 
        else{
