@@ -470,6 +470,7 @@ class Marketplace extends MX_Controller {
             $this->form_validation->set_rules('product_type', 'product type', 'required');
             $this->form_validation->set_rules('product_color', 'product color', 'required');
             $this->form_validation->set_rules('condition', 'condition', 'required');
+			/*
             if (isset($_POST)) {
                 if ($_POST['product_type'] == 'Handset') {
                     $this->form_validation->set_rules('spec', 'spec', 'required');
@@ -477,6 +478,7 @@ class Marketplace extends MX_Controller {
                     $this->form_validation->set_rules('device_sim', 'device sim', 'required');
                 }
             }
+			*/
             $this->form_validation->set_rules('currency', 'currency', 'required');
             $this->form_validation->set_rules('unit_price', 'unit price', 'required|numeric');
             $this->form_validation->set_rules('shipping_term', 'Shipping terms', 'required');
@@ -787,6 +789,7 @@ class Marketplace extends MX_Controller {
             $this->form_validation->set_rules('product_type', 'product type', 'required');
             $this->form_validation->set_rules('product_color', 'product color', 'required');
             $this->form_validation->set_rules('condition', 'condition', 'required');
+			/*
             if (isset($_POST)) {
                 if ($_POST['product_type'] == 'Handset') {
                     $this->form_validation->set_rules('spec', 'spec', 'required');
@@ -794,6 +797,7 @@ class Marketplace extends MX_Controller {
                     $this->form_validation->set_rules('device_sim', 'device sim', 'required');
                 }
             }
+			*/
             $this->form_validation->set_rules('currency', 'currency', 'required');
             $this->form_validation->set_rules('courier', 'Shipping Terms', 'required');
             $this->form_validation->set_rules('unit_price', 'unit price', 'required|numeric');

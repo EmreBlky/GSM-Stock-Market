@@ -324,10 +324,22 @@ if($member->marketplace == 'inactive'){ ?>
                                 <div class="panel-heading">
                                     <div class="panel-options">
                                         <ul class="nav nav-tabs">
-                                            <li class="active"><a href="#feedposts" data-toggle="tab">Feed Posts</a></li>
-                                            <li class=""><a href="#feedback" data-toggle="tab">Feedback</a></li>
-                                            <li class=""><a href="#selling-offers" data-toggle="tab">Selling Offers</a></li>
-                                            <li class=""><a href="#buying-requests" data-toggle="tab">Buying Requests</a></li>
+                                            <li class="active">
+                                                <a href="#feedposts" data-toggle="tab">Feed Posts</a>
+                                                <p>Exceptional quality! Delivery was high-standard. Very, very delightful packaging. Wish all sellers were this first-rate.
+                                                    Item was of first-class quality. Ever so splendid packaging. Exceptionally high-standard delivery. Service was superior.
+                                                    The item was splendid. Swift to send. Quality of the wrapping was high-standard. Very, very pleased. Outstanding seller.</p>
+                                                <?php  ?>
+                                            </li>
+                                            <li class="">
+                                                <a href="#feedback" data-toggle="tab">Feedback</a>
+                                            </li>
+                                            <li class="">
+                                                <a href="#selling-offers" data-toggle="tab">Selling Offers</a>
+                                            </li>
+                                            <li class="">
+                                                <a href="#buying-requests" data-toggle="tab">Buying Requests</a>
+                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -1109,8 +1121,22 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                                                 <th>Price</th>
                                                 <th class="mobihide">Qty</th>
                                                 <th>Status</th>
+                                                <th>Options</th>
                                             </tr>
                                         </thead>
+                                        <tbody><?php if($sellingOffers) foreach ( $sellingOffers as $key => $value ){ ?>
+                                            <tr>
+                                                <td><?=$value->product_make?> <?=$value->product_model?></td>
+                                                <td><?=$value->unit_price?></td>
+                                                <td><?=$value->qty_available?></td>
+                                                <td><?php
+                                                    require __DIR__."/../../marketplace/views/snippets/get_status_of_the_listing.php";
+                                                    ?></td>
+                                                <td><a href="<?=base_url()?>marketplace/listing_detail/<?=$value->id?>" target="_blank">
+                                                        <button style="font-size:10px" class="btn btn-primary" type="button">More Info</button>
+                                                </a></td>
+                                            </tr>
+                                        <?php } ?></tbody>
                                     </table>
                                 </div>
                                 <div class="tab-pane no_sub" id="buying-requests">
@@ -1121,8 +1147,22 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                                                 <th>Price</th>
                                                 <th class="mobihide">Qty</th>
                                                 <th>Status</th>
+                                                <th>Options</th>
                                             </tr>
                                         </thead>
+                                        <tbody><?php if($buyingRequests) foreach ( $buyingRequests as $key => $value ){ ?>
+                                            <tr>
+                                                <td><?=$value->product_make?> <?=$value->product_model?></td>
+                                                <td><?=$value->unit_price?></td>
+                                                <td><?=$value->qty_available?></td>
+                                                <td><?php
+                                                    require __DIR__."/../../marketplace/views/snippets/get_status_of_the_listing.php";
+                                                ?></td>
+                                                <td><a href="<?=base_url()?>marketplace/listing_detail/<?=$value->id?>" target="_blank">
+                                                        <button style="font-size:10px" class="btn btn-primary" type="button">More Info</button>
+                                                    </a></td>
+                                            </tr>
+                                        <?php } ?></tbody>
                                     </table>
                                 </div>
                                 

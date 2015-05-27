@@ -2392,7 +2392,7 @@
                                                         <button type="button" class="btn btn-danger" style="font-size:10px">Pay asking price</button>
                                                     </p>
                                                         
-                                                    <dl class="dl-horizontal" style="margin-top:20px">
+                                                    <div class="dl-horizontal" style="margin-top:20px">
                                                         <h4>or Make an Offer</h4>
                                                         <dt><div class="input-group m-b"><span class="input-group-addon">QTY</span>  
                                                             <input type="text" class="form-control" /><span class="input-group-addon">@</span></dt> 
