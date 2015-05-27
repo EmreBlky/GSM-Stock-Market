@@ -187,7 +187,7 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                                     } elseif ($value->order_status == 3) {
                                         $progress = "75%"
                                         ?>
-                                        <td><span class="label label-primary">Awaiting shipping conformation</span></td>
+                                        <td><span class="label label-primary">Awaiting shipping confirmation</span></td>
                                     <?php
                                     } elseif ($value->order_status == 4) {
                                         $progress = "100%"
