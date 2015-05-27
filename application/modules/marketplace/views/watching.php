@@ -32,8 +32,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <thead>
             <tr>
                 <th>Listing End</th>
-                <th>MPN/ISBN</th>
-                <th>Make &amp; Model</th>
+                <th>Make &amp; Model + Additional</th>
                 <th>Product Type</th>
                 <th>Condition</th>
                 <th>Unit Price</th>
@@ -47,8 +46,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <?php foreach ($buying_request as $value): ?>
             <tr onclick="document.location = '<?php echo base_url().'marketplace/listing_detail/'.$value->id ?>';" style="cursor:pointer">
                 <td><?php echo date('d-M, H:i', strtotime($value->listing_end_datetime)); ?></td>
-                <td><?php if(!empty($value->product_mpn_isbn)){ echo $value->product_mpn_isbn; } ?></td>
-                <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php echo $value->spec; ?></td>
+				<td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php if ($value->device_capacity > 0) { ?><?php echo $value->device_capacity; ?><?php } ?> <?php if ($value->spec > 0) { ?><?php echo $value->spec; ?><?php } ?> <?php if(!empty($value->product_mpn_isbn)){ echo '('.$value->product_mpn_isbn.')'; } ?></td>
                 <td><?php echo $value->product_type; ?></td>
                 <td><?php echo $value->condition; ?></td>
                 <td data-toggle="tooltip" data-placement="left" title="mouseover currency"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
@@ -79,7 +77,6 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <thead>
             <tr>
                 <th>Listing End</th>
-                <th>MPN/ISBN</th>
                 <th>Make &amp; Model</th>
                 <th>Product Type</th>
                 <th>Condition</th>
@@ -94,7 +91,6 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <?php foreach ($seller_offer as $value): ?>
             <tr onclick="document.location = '<?php echo base_url().'marketplace/listing_detail/'.$value->id ?>';" style="cursor:pointer">
                 <td><?php echo date('d-M, H:i', strtotime($value->listing_end_datetime)); ?></td>
-                <td><?php if(!empty($value->product_mpn_isbn)){ echo $value->product_mpn_isbn; } ?></td>
                 <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php echo $value->spec; ?></td>
                 <td><?php echo $value->product_type; ?></td>
                 <td><?php echo $value->condition; ?></td>
