@@ -367,6 +367,7 @@
         <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img1[3]; ?>" class="thumbnail uplodedimage"/>
     <?php endif ?>
      <input type="file" name="image1" class="btn default btn-file">
+     <div id="image1_error"></div>
     </div>
      <?php echo form_error('image1'); ?>
      <label  class="col-md-4" >Image 2</label>
@@ -376,6 +377,7 @@
         <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img2[3]; ?>" class="thumbnail uplodedimage"/>
     <?php endif ?>
      <input type="file" name="image2" class="btn default btn-file">
+     <div id="image2_error"></div>
      </div>
      <?php echo form_error('image2'); ?>
      <label  class="col-md-4" >Image 3</label>
@@ -385,6 +387,7 @@
         <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img3[3]; ?>" class="thumbnail uplodedimage"/>
     <?php endif ?>
      <input type="file" name="image3" class="btn default btn-file">
+     <div id="image3_error"></div>
      </div>
      <?php echo form_error('image3'); ?>
      <label  class="col-md-4" >Image 4</label>
@@ -394,6 +397,7 @@
         <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img4[3]; ?>" class="thumbnail uplodedimage"/>
     <?php endif ?>
      <input type="file" name="image4" class="btn default btn-file">
+     <div id="image4_error"></div>
      </div>
      <?php echo form_error('image4'); ?>
        <label  class="col-md-4" >Image 5</label>
@@ -403,6 +407,7 @@
         <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img5[3]; ?>" class="thumbnail uplodedimage"/>
     <?php endif ?>
      <input type="file" name="image5" class="btn default btn-file">
+     <div id="image5_error"></div>
      </div>
      <?php echo form_error('image5'); ?>
     </div>
@@ -537,12 +542,8 @@ $('body').find('#opt_table').on("click", ".wrapper",function() {
  
  
  
-    <table class="table table-bordered">
-      <thead>
-      </thead>
-      <tbody id="opt_table">
- 
- 
+
+<script src="public/main/template/gsm/js/jquery.validate.file.js"></script>
 <!-- Jquery Validate -->
 <script>
 $.validator.setDefaults({ ignore: ":hidden:not(select)" })
@@ -557,7 +558,22 @@ $(".validation").validate({
     condition: "required",
     "courier[]": { required: true, 
                     minlength: 1 
-            } 
+            },
+	image1: {fileType: {types: ["jpg", "jpeg", "png", "gif"]},
+             maxFileSize: {"unit": "MB","size": 2},
+            },
+	image2: {fileType: {types: ["jpg", "jpeg", "png", "gif"]},
+             maxFileSize: {"unit": "MB","size": 2},
+            },
+	image3: {fileType: {types: ["jpg", "jpeg", "png", "gif"]},
+             maxFileSize: {"unit": "MB","size": 2},
+            },
+	image4: {fileType: {types: ["jpg", "jpeg", "png", "gif"]},
+             maxFileSize: {"unit": "MB","size": 2},
+            },
+	image5: {fileType: {types: ["jpg", "jpeg", "png", "gif"]},
+             maxFileSize: {"unit": "MB","size": 2},
+            },
   },
   messages: {
     product_make: {
@@ -623,6 +639,31 @@ $(".validation").validate({
     }
     if(element.attr("name") == "courier[]"){
         error.appendTo($('#courier_error'));
+    }else{
+        error.appendTo( element.parent().next() );
+    }
+    if(element.attr("name") == "image1"){
+        error.appendTo($('#image1'));
+    }else{
+        error.appendTo( element.parent().next() );
+    }
+    if(element.attr("name") == "image2"){
+        error.appendTo($('#image2'));
+    }else{
+        error.appendTo( element.parent().next() );
+    }
+    if(element.attr("name") == "image3"){
+        error.appendTo($('#image3'));
+    }else{
+        error.appendTo( element.parent().next() );
+    }
+    if(element.attr("name") == "image4"){
+        error.appendTo($('#image4'));
+    }else{
+        error.appendTo( element.parent().next() );
+    }
+    if(element.attr("name") == "image5"){
+        error.appendTo($('#image5'));
     }else{
         error.appendTo( element.parent().next() );
     }
