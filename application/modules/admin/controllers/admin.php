@@ -2118,6 +2118,11 @@ class Admin extends MX_Controller
         
         $this->load->model(''.$var.'/'.$var.'_model', ''.$var.'_model');
         
+        $var1 = 'country';
+        $var1_model = $var1.'_model';
+        
+        $this->load->model(''.$var1.'/'.$var1.'_model', ''.$var1.'_model');
+        
         $data['company'] = $this->{$var_model}->get_where($cid);
         $data['main'] = 'admin';        
         $data['title'] = 'GSM - Admin Panel: CRedit Check - Company';  
