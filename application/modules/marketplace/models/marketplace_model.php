@@ -133,9 +133,9 @@ class Marketplace_model extends MY_Model {
 	public function delete($table_name='', $id_array=''){		
 	 return $this->db->delete($table_name, $id_array);
 	}
-    public function listing_buy($offset='', $per_page=''){
+    public function listing_buy($member_id = null,$offset='', $per_page=''){
     
-		$member_id=$this->session->userdata('members_id');
+		//if(!$member_id) $member_id = $this->session->userdata('members_id');
 		
 		$this->db->select('listing.*');
 		if(!empty($_GET['mpn'])){
@@ -229,6 +229,10 @@ class Marketplace_model extends MY_Model {
 		$this->db->where('listing.status', 1);
 		$this->db->where('listing.listing_type', 2);
 		$this->db->where("`listing`.`min_qty_order` <= `listing`.`qty_available`");
+
+        // naveed: used by search / profile
+        if($member_id) $this->db->where('listing.member_id', $member_id);
+
 		$query = $this->db->get();
 	
 		if($query->num_rows()>0)
@@ -238,8 +242,8 @@ class Marketplace_model extends MY_Model {
 		
  }
 	
-  public function listing_sell($offset='', $per_page=''){
-		$member_id=$this->session->userdata('members_id');
+  public function listing_sell($member_id = null,$offset='', $per_page=''){
+		//$member_id=$this->session->userdata('members_id');
 		$this->db->select('listing.*');
 		if(!empty($_GET['rating'])){
 			//$this->db->or_where("product_mpn",trim($_GET['date']));
@@ -333,6 +337,10 @@ class Marketplace_model extends MY_Model {
 		$this->db->where('listing.status', 1);
 		$this->db->where('listing.listing_type', 1);
 		$this->db->where("`listing`.`min_qty_order` <= `listing`.`qty_available`");
+
+      // naveed: used by search / profile
+      if($member_id) $this->db->where('listing.member_id', $member_id);
+
 		$query = $this->db->get();
 		
 			

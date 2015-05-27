@@ -698,7 +698,7 @@ $(document).ready(function () {
 $(document).ready(function(){
 	 var test123 =function(mpn1,make){
      $.post('<?php echo base_url("marketplace/getAttributesInfo") ?>/MAKE/',{'make':make,'mpnisbn':mpn1}, function(data) {
-        productmakehtml='<option value="">Choose Model</option>';
+        productmakehtml='<option value="" selected disabled>Enter your item model. e.g iPhone 4S or Galaxy S6 Edge</option>';
        $.each(data.product_make, function(index, val) {
             productmakehtml +='<option value="'+val+'"';
             if(data.numrows>=1)
@@ -712,7 +712,7 @@ $(document).ready(function(){
 
  var modelselect =function(mpn1,make){
      $.post('<?php echo base_url("marketplace/getAttributesInfo") ?>/MAKE/',{'make':make,'mpnisbn':mpn1}, function(data) {
-        productmakehtml='<option>Choose Model</option>';
+        productmakehtml='<option value="" selected disabled>Enter your item model. e.g iPhone 4S or Galaxy S6 Edge</option>';
        $.each(data.product_make, function(index, val) {
             productmakehtml +='<option value="'+val+'"';
             if(data.num_rows==1)

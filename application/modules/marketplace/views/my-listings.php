@@ -52,18 +52,8 @@
 <?php foreach ($sell_offer as $value): $offer_count = offer_count($value->id); ?>
 					<tr>
 						<td class="text-center">
-          <?php  
-            $current_datetime = strtotime(date('d-m-Y H:i:s')); 
-            $end_datetime = strtotime(date('d-m-Y H:i:s', strtotime($value->listing_end_datetime))); 
-            $start_datetime = strtotime(date('d-m-Y H:i:s', strtotime($value->schedule_date_time))); 
-           
-            if($current_datetime > $end_datetime || $value->qty_available == 0){
-                ?> <span class="label label-danger">Inactive</span><?php
-            } elseif($current_datetime >= $start_datetime){?>
-                <span class="label label-primary">Active</span>
-       <?php }else{ if($value->scheduled_status){ ?>
-                <span class="label label-success">Scheduled</span>
-            <?php }}?></td>
+                            <?php require __DIR__."/snippets/get_status_of_the_listing.php" ?>
+                        </td>
 						<td><?php echo date('d-M, H:i', strtotime($value->schedule_date_time)); ?></td>
 						<td><span <?php 
 		$enddatetime = $value->listing_end_datetime;; 
