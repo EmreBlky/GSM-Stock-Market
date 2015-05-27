@@ -16,7 +16,11 @@ if(is_numeric($id)){?>
             <div class="mail-box-header">                
                 <h2>
                     <strong>Company: </strong><?php echo $company->company_name; ?>
-                </h2>                
+                </h2>
+                <br/>
+                <p><strong>VAT Number: </strong><span style="margin-left: 40px;"><?php echo $company->vat_tax; ?></span></p>                
+                <p><strong>Company Number: </strong><span style="margin-left: 5px;"><?php echo $company->company_number; ?></span></p>
+                <p><strong>Company Address: </strong><span style="margin-left: 5px;"><?php echo $company->address_line_1; ?>, <?php echo $company->town_city; ?>, <?php echo $company->county; ?>. <?php echo $company->post_code; ?>. <?php echo $this->country_model->get_where($company->country)->country; ?>.</span></p>
             </div>
                 <div class="mail-box">
                     <?php echo form_open_multipart('admin/creditAdd/'.$company->id.''); ?>
