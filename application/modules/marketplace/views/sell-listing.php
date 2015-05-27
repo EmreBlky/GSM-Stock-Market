@@ -105,6 +105,7 @@
       <div class="col-md-9">
  		<select data-placeholder="What is the primary colour of the item?" class="chosen-select form-control" id="product_color" name="product_color">
           <option value="" selected disabled>What is the primary colour of the item?</option>
+          <option value="Any">Any</option>
           <option value="None">No Colour</option>
            <?php 
            if(!empty($product_colors)){
