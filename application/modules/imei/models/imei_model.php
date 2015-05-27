@@ -289,6 +289,11 @@ class Imei_model extends MY_Model {
 		{
 			$line = str_getcsv($imei);
 
+			if (!isset($line[1]))
+			{
+				$line[1] = 'n/a';
+			}
+
 			$valid_imei = $this->MobiCode->CheckIMEI($line[0]);
 
 			if ($valid_imei)
