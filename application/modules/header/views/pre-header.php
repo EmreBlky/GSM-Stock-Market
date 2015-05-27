@@ -47,7 +47,14 @@
     <link href="public/main/template/gsm/css/plugins/cropper/main.css" rel="stylesheet">
     <script src="public/main/template/gsm/js/plugins/cropper/cropper.js"></script>
     <script src="public/main/template/gsm/js/plugins/cropper/main.js"></script>
+
     <script type="text/javascript">
+        // naveed: initialize tooltip
+        $(function(){
+            $("[data-toggle=tooltip]").tooltip();
+        });
+
+
         $(document).on("click", "#deleteMemberImage", function () {
             $(this).parent().prev('.avatar-view').html('<img src="public/main/template/gsm/images/members/no_profile.jpg" />');
             $.ajax('profile/profileImage', {type: 'post', data: {'reset': 1}, dataType: 'json'});
