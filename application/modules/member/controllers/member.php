@@ -34,7 +34,7 @@ class Member extends MX_Controller
     function profile($pid)
     {
 //        if ($this->session->userdata('membership') < 2)
-//        { 
+//        {
 //            redirect('home');
 //        }
         
@@ -52,26 +52,29 @@ class Member extends MX_Controller
                         );
 
             $this->viewed_model->_insert($data);
-            }
-            
-            $cid = $this->member_model->get_where_multiple('id', $pid)->company_id;
-            $data['company_users'] = $this->member_model->get_where_multiples('company_id', $cid);
-            $data['base'] = $this->config->item('base_url');
-            $data['main'] = 'member';        
-            $data['title'] = 'GSM - Members Page';        
-            $data['page'] = 'profile';
-            $data['member_info'] = $this->member_model->get_where($pid);
-            $data['member_company'] = $this->company_model->get_where($this->member_model->get_where($pid)->company_id);
-            $data['pid'] = $pid;
-            $data['blocked'] = $this->block_model->get_where_multiples('member_id', $this->session->userdata('members_id'), 'block_member_id', $pid);
+        }
 
-                    /* Daniel Added Start */
-            $data['member'] = $this->member_model->get_where($this->session->userdata('members_id'));
+        $cid = $this->member_model->get_where_multiple('id', $pid)->company_id;
+        $data['company_users'] = $this->member_model->get_where_multiples('company_id', $cid);
+        $data['base'] = $this->config->item('base_url');
+        $data['main'] = 'member';
+        $data['title'] = 'GSM - Members Page';
+        $data['page'] = 'profile';
+        $data['member_info'] = $this->member_model->get_where($pid);
+        $data['member_company'] = $this->company_model->get_where($this->member_model->get_where($pid)->company_id);
+        $data['pid'] = $pid;
+        $data['blocked'] = $this->block_model->get_where_multiples('member_id', $this->session->userdata('members_id'), 'block_member_id', $pid);
 
-                    /* Daniel Added End */
+                /* Daniel Added Start */
+        $data['member'] = $this->member_model->get_where($this->session->userdata('members_id'));
+                /* Daniel Added End */
+        // naveed
+        $this->load->model('marketplace/marketplace_model');
+        $data['sellingOffers'] = $this->marketplace_model->listing_sell($pid);
+        $data['buyingRequests'] = $this->marketplace_model->listing_buy($pid);
 
-            $this->load->module('templates');
-            $this->templates->page($data); 
+        $this->load->module('templates');
+        $this->templates->page($data);
         
     }
     

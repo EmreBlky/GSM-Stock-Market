@@ -332,10 +332,7 @@ endif;
                   <span class="label label-default"><?php echo $rating; ?></span>
               <?php } ?>
         </td>
-        
-        
-        
-        
+
 		<td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php if ($value->device_capacity > 0) { ?><?php echo $value->device_capacity; ?><?php } ?> <?php if ($value->spec > 0) { ?><?php echo $value->spec; ?><?php } ?> <?php if(!empty($value->product_mpn_isbn)){ echo '('.$value->product_mpn_isbn.')'; } ?></td>
         <td><?php echo $value->product_type; ?></td>
         <td><?php echo $value->condition; ?></td>
