@@ -45,7 +45,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <tbody>
             <?php  if(!empty($buying_request)): ?>
             <?php foreach ($buying_request as $value): ?>
-            <tr>
+            <tr onclick="document.location = '<?php echo base_url().'marketplace/listing_detail/'.$value->id ?>';" style="cursor:pointer">
                 <td><?php echo date('d-M, H:i', strtotime($value->listing_end_datetime)); ?></td>
                 <td><?php if(!empty($value->product_mpn_isbn)){ echo $value->product_mpn_isbn; } ?></td>
                 <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php echo $value->spec; ?></td>
@@ -92,7 +92,7 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             <tbody>
         <?php  if(!empty($seller_offer)): ?>
             <?php foreach ($seller_offer as $value): ?>
-            <tr>
+            <tr onclick="document.location = '<?php echo base_url().'marketplace/listing_detail/'.$value->id ?>';" style="cursor:pointer">
                 <td><?php echo date('d-M, H:i', strtotime($value->listing_end_datetime)); ?></td>
                 <td><?php if(!empty($value->product_mpn_isbn)){ echo $value->product_mpn_isbn; } ?></td>
                 <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php echo $value->spec; ?></td>
