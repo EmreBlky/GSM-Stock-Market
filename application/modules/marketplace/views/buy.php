@@ -1,4 +1,3 @@
-<?php use nvd\custom\libraries; ?>
 
 <?php $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id);
 if($member->membership > 1 && $member->marketplace == 'active'){ ?>
@@ -94,11 +93,7 @@ endif;
         </div><!-- /col-lg-3 -->
         <div class="col-lg-5" style="padding-right:0">
 
-            <?php $prePopulateValues = isset($_GET['query']) && !empty($_GET['query']);
-            $selectStyles = $prePopulateValues? 'style="display: none;"' : "";
-            ?>
-
-          <select  name="query[]" data-placeholder="Make and Model" class="chosen-select form-control"  id="models" multiple tabindex="2">
+        <select  name="query[]" data-placeholder="Make and Model" class="chosen-select form-control"  id="models" multiple tabindex="2">
           
           <?php 
           $make_n_model = $dataasa['make_n_model'];
@@ -110,23 +105,31 @@ endif;
 
         </select>
 
-            <?php /*if( $prePopulateValues ){ ?>
-                <div class="chosen-container chosen-container-multi" style="width: 426px;" title="" id="models_chosen">
-                    <ul class="chosen-choices">
-                        <?php foreach ( $_GET['query'] as $query ){ ?>
-                            <li class="search-choice"><span><?=urldecode($query)?></span><a class="search-choice-close" data-option-array-index="0"></a></li>
-                        <?php } ?>
-                        <li class="search-field"><input type="text" value="Make and Model" class="" autocomplete="off" style="width: 25px;" tabindex="2"></li>
-                    </ul>
-                    <div class="chosen-drop">
-                        <ul class="chosen-results">
-                            <?php foreach ( $_GET['query'] as $query ){ ?>
-                                <li class="" data-option-array-index="0"><?=urldecode($query)?></li>
-                            <?php } ?>
-                        </ul>
-                    </div>
-                </div>
-            <?php }*/ ?>
+        <?php
+        //nvd\custom\libraries\pr($_GET);
+        /*$prePopulateValues = isset($_GET['query']) && !empty($_GET['query']);
+        if( $prePopulateValues ){
+            $children = "";
+            foreach ( $_GET['query'] as $index => $query ){
+                $make_model = preg_replace("/@@/"," ",$query);
+                $children .= '<li class="search-choice"><span>'.$make_model.'</span><a class="search-choice-close" data-option-array-index="'.$index.'"></a></li>';
+            }
+        ?>
+            <script>
+                $(document).ready(function () {
+                    var chosenChoices = $(".chosen-choices");
+                    var chosenResultsLi = $(".chosen-results li");
+                    var children = '<?=$children?>';
+                    console.log(chosenChoices);
+                    console.log(chosenResultsLi);
+                    chosenChoices.css("background","red");
+                    chosenChoices.prepend(children);
+                    chosenChoices.find(".search-field").css("width","25").removeClass("default");
+                    chosenResultsLi.addClass("result-selected").removeClass("active-result");
+                });
+            </script>
+        <?php } */
+        ?>
 
     </div>
   <div class="col-lg-2">

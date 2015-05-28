@@ -502,7 +502,7 @@ class Marketplace_model extends MY_Model {
 			return FALSE;
 	}
 	public function get_watch_list($member_id, $listing_type=0){
-		$this->db->select('listing.id,listing.listing_end_datetime,listing.product_mpn_isbn,listing.product_make,listing.product_model,listing.product_type,listing.condition,listing.unit_price,listing.total_qty,listing.spec,listing.currency,company.country AS country_id,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
+		$this->db->select('listing.*,listing.id,listing.listing_end_datetime,listing.product_mpn_isbn,listing.product_make,listing.product_model,listing.product_type,listing.condition,listing.unit_price,listing.total_qty,listing.spec,listing.currency,company.country AS country_id,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
 		$this->db->where("schedule_date_time <= '".date('Y-m-d H:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d H:i:s')."'" );
 		$this->db->from('listing');
 		$this->db->join('company','company.id=listing.member_id');
