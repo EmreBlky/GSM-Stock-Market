@@ -12,9 +12,6 @@ class Marketplace_model extends MY_Model {
         $this->proforma_file_dir = $this->upload_dir."proforma_files/";
         $this->bank_payment_file_dir = $this->upload_dir."bank_payment_files/";
         $this->tracking_file_dir = $this->upload_dir."tracking_files/";
-        ChromePhp::log($this->proforma_file_dir);
-        ChromePhp::log($this->bank_payment_file_dir);
-        ChromePhp::log($this->tracking_file_dir);
     }
 
     public function getUploadedFileName($actualFilename , $idToAppend )

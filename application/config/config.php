@@ -396,7 +396,6 @@ $config['proxy_ips'] = '';
 // Naveed:================
 $config['uploadDir'] = "./public/upload/";
 
-ChromePhp::log("Upload Dir, From config: ".$config['uploadDir']);
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */
