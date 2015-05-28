@@ -1,21 +1,21 @@
 <?php
 
-require_once 'Mandrill/Templates.php';
-require_once 'Mandrill/Exports.php';
-require_once 'Mandrill/Users.php';
-require_once 'Mandrill/Rejects.php';
-require_once 'Mandrill/Inbound.php';
-require_once 'Mandrill/Tags.php';
-require_once 'Mandrill/Messages.php';
-require_once 'Mandrill/Whitelists.php';
-require_once 'Mandrill/Ips.php';
-require_once 'Mandrill/Internal.php';
-require_once 'Mandrill/Subaccounts.php';
-require_once 'Mandrill/Urls.php';
-require_once 'Mandrill/Webhooks.php';
-require_once 'Mandrill/Senders.php';
-require_once 'Mandrill/Metadata.php';
-require_once 'Mandrill/Exceptions.php';
+require_once __DIR__.'/Mandrill/Templates.php';
+require_once __DIR__.'/Mandrill/Exports.php';
+require_once __DIR__.'/Mandrill/Users.php';
+require_once __DIR__.'/Mandrill/Rejects.php';
+require_once __DIR__.'/Mandrill/Inbound.php';
+require_once __DIR__.'/Mandrill/Tags.php';
+require_once __DIR__.'/Mandrill/Messages.php';
+require_once __DIR__.'/Mandrill/Whitelists.php';
+require_once __DIR__.'/Mandrill/Ips.php';
+require_once __DIR__.'/Mandrill/Internal.php';
+require_once __DIR__.'/Mandrill/Subaccounts.php';
+require_once __DIR__.'/Mandrill/Urls.php';
+require_once __DIR__.'/Mandrill/Webhooks.php';
+require_once __DIR__.'/Mandrill/Senders.php';
+require_once __DIR__.'/Mandrill/Metadata.php';
+require_once __DIR__.'/Mandrill/Exceptions.php';
 
 class Mandrill {
     
