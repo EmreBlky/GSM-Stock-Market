@@ -9,6 +9,7 @@ class Marketplace_model extends MY_Model {
         parent::__construct();
         $this->table = 'marketplace';
         $CI =& get_instance();
+        ChromePhp::log($CI->config->item('uploadDir'));
         $this->proforma_file_dir = $CI->config->item('uploadDir')."proforma_files/";
         $this->bank_payment_file_dir = $CI->config->item('uploadDir')."bank_payment_files/";
         $this->tracking_file_dir = $CI->config->item('uploadDir')."tracking_files/";
@@ -25,6 +26,9 @@ class Marketplace_model extends MY_Model {
         $config['file_name'] = $this->getUploadedFileName( $_FILES[$file_name]['name'], $id_to_append );
         $dir = $file_name."_dir";
         $config['upload_path'] = $this->$dir;
+        ChromePhp::log($this->proforma_file_dir);
+        ChromePhp::log($this->bank_payment_file_dir);
+        ChromePhp::log($this->tracking_file_dir);
         $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf';
         $config['max_size']	= '20000';
 

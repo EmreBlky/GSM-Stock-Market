@@ -402,3 +402,5 @@ $config['proxy_ips'] = '';
 // Naveed:================
 //$config['uploadDir'] = $config['base_url']."public/upload/";
 $config['uploadDir'] = "./public/upload/";
+
+ChromePhp::log("Upload Dir, From config: ".$config['uploadDir']);
