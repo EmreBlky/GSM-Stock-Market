@@ -35,7 +35,6 @@ elseif($base_url == 'http://localhost/projects/codeigniter/gsm/gsm-secure/'){
         $config['base_url'] = 'http://localhost/projects/codeigniter/gsm-secure/';
 }
 elseif($base_url == 'http://localhost/secure.gsmstockmarket.com/'){
-    
         $config['base_url'] = 'http://localhost/secure.gsmstockmarket.com/';    
 }
 elseif($base_url == 'http://secure-dev.gsmstockmarket.com/'){

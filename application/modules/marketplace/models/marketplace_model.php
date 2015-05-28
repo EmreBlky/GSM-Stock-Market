@@ -9,6 +9,7 @@ class Marketplace_model extends MY_Model {
         parent::__construct();
         $this->table = 'marketplace';
         $CI =& get_instance();
+        ChromePhp::log($CI->config->item('base_url'));
         ChromePhp::log($CI->config->item('uploadDir'));
         $this->proforma_file_dir = $CI->config->item('uploadDir')."proforma_files/";
         $this->bank_payment_file_dir = $CI->config->item('uploadDir')."bank_payment_files/";
