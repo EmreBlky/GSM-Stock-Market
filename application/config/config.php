@@ -393,13 +393,11 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+// Naveed:================
+$config['uploadDir'] = "./public/upload/";
+
+ChromePhp::log("Upload Dir, From config: ".$config['uploadDir']);
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */
 
-
-// Naveed:================
-//$config['uploadDir'] = $config['base_url']."public/upload/";
-$config['uploadDir'] = "./public/upload/";
-
-ChromePhp::log("Upload Dir, From config: ".$config['uploadDir']);
