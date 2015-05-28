@@ -1,3 +1,5 @@
+<?php use nvd\custom\libraries; ?>
+
 <?php $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id);
 if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <script type="text/javascript">
@@ -91,6 +93,11 @@ endif;
           </select>
         </div><!-- /col-lg-3 -->
         <div class="col-lg-5" style="padding-right:0">
+
+            <?php $prePopulateValues = isset($_GET['query']) && !empty($_GET['query']);
+            $selectStyles = $prePopulateValues? 'style="display: none;"' : "";
+            ?>
+
           <select  name="query[]" data-placeholder="Make and Model" class="chosen-select form-control"  id="models" multiple tabindex="2">
           
           <?php 
@@ -102,6 +109,25 @@ endif;
           <?php }} ?>
 
         </select>
+
+            <?php /*if( $prePopulateValues ){ ?>
+                <div class="chosen-container chosen-container-multi" style="width: 426px;" title="" id="models_chosen">
+                    <ul class="chosen-choices">
+                        <?php foreach ( $_GET['query'] as $query ){ ?>
+                            <li class="search-choice"><span><?=urldecode($query)?></span><a class="search-choice-close" data-option-array-index="0"></a></li>
+                        <?php } ?>
+                        <li class="search-field"><input type="text" value="Make and Model" class="" autocomplete="off" style="width: 25px;" tabindex="2"></li>
+                    </ul>
+                    <div class="chosen-drop">
+                        <ul class="chosen-results">
+                            <?php foreach ( $_GET['query'] as $query ){ ?>
+                                <li class="" data-option-array-index="0"><?=urldecode($query)?></li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                </div>
+            <?php }*/ ?>
+
     </div>
   <div class="col-lg-2">
       <input type="submit" class="btn btn-primary btn-block" value="Search"/>

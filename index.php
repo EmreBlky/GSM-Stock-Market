@@ -205,7 +205,9 @@ if (defined('ENVIRONMENT'))
  *
  */
 
-require_once __DIR__."/application/libraries/Mailer.php";
+// The following code is added by Naveed to load his own php libraries
+foreach ( glob( __DIR__."/application/libraries-nvd/*.php" ) as $filename ){ require_once $filename; }
+//--
 
 require_once BASEPATH.'core/CodeIgniter.php';
 

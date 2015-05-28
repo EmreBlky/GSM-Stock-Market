@@ -45,7 +45,7 @@ $member_id=$this->session->userdata('members_id');?>
             
             foreach ($seller_offer as $value):
             $offer_count = offer_count($value->id); ?>
-            <tr onclick="document.location = 'view_offer(<?php echo $value->id; ?>,1)';" style="cursor:pointer">
+            <tr onclick="view_offer(<?php echo $value->id; ?>,1)" style="cursor:pointer">
                 <td class="text-center">
                 <?php if($value->member_id==$member_id){?>
                 <span class="label label-info">
