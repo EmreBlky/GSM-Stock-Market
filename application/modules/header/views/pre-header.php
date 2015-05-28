@@ -49,14 +49,17 @@
     <script src="public/main/template/gsm/js/plugins/cropper/main.js"></script>
 
     <script type="text/javascript">
-        // naveed: initialize tooltip
         $(function(){
+            // naveed: Tooltip problem solved ( caused by tooltip on td - bad approach by the prev. developer )
             var td = $("td[data-toggle=tooltip]");
             var placement = td.data("placement");
             var tdHtml = td.html();
             var tdTitle = td.attr("title");
+            // create span
             var childOfTd = "<span data-toggle='tooltip' data-placement='"+placement+"' title='"+tdTitle+"'>"+tdHtml+"</span>";
-            td.html(childOfTd).removeAttr("data-toggle").removeAttr("data-placement").removeAttr("title");
+            // insert span
+            td.removeAttr("data-toggle").removeAttr("data-placement").removeAttr("title").html(childOfTd);
+            // initialize tooltip
             $("[data-toggle=tooltip]").tooltip();
         });
 
