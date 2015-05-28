@@ -1,10 +1,3 @@
-<?php
-
-//echo '<pre>';
-//print_r($notification);
-
-?>
-
   <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
       <h2>Blacklist Check</h2>
@@ -27,8 +20,7 @@
           
           <div class="ibox-content">
               	<form action="notification/updateProfile" class="form-horizontal" method="post">
-          
-          
+
             <div class="form-group">
               <div class="col-lg-12">
 
@@ -88,20 +80,28 @@
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <label class="col-md-6 control-label">Show My Own Sell / Buy Offers<br /><p class="text-navy">Choose whether to show your own Buying Requests and Selling Offers in your Profile Page.</p></label>
+                        <div class="col-md-6">
+							<?php
+                            $yesChecked = ""; $noChecked = "checked";
+                            if( $option = 'yes') { $yesChecked = "checked"; $noChecked = ""; }
+                            ?>
+                            	<div class="radio-inline i-checks"><label> <input type="radio" name="====" value="yes" <?=$yesChecked?>/> <i></i> Yes </label></div>
+                            	<div class="radio-inline i-checks"><label> <input type="radio" name="====" value="no" <?=$noChecked?>/> <i></i> No </label></div>
+                        </div>
+                    </div>
+
                     <div class="hr-line-dashed"></div>
 
-                    <div class="form-group">                        
-                        <input type="submit" class="col-md-offset-6 btn btn-primary" value="Save Changes"/>                        
+                    <div class="form-group">
+                        <input type="submit" class="col-md-offset-6 btn btn-primary" value="Save Changes"/>
                     </div>
-                    
-                    
-                    
+
                   </div>
               
             </div>
-            
-          
-                        
+
           </div><!-- Ibox Content -->
           
         </div>        

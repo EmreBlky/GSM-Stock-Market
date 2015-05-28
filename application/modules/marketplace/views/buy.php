@@ -1,3 +1,5 @@
+<?php use nvd\custom\libraries; ?>
+
 <?php $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id);
 if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <script type="text/javascript">
@@ -91,6 +93,11 @@ endif;
           </select>
         </div><!-- /col-lg-3 -->
         <div class="col-lg-5" style="padding-right:0">
+
+            <?php $prePopulateValues = isset($_GET['query']) && !empty($_GET['query']);
+            $selectStyles = $prePopulateValues? 'style="display: none;"' : "";
+            ?>
+
           <select  name="query[]" data-placeholder="Make and Model" class="chosen-select form-control"  id="models" multiple tabindex="2">
           
           <?php 
@@ -102,6 +109,25 @@ endif;
           <?php }} ?>
 
         </select>
+
+            <?php /*if( $prePopulateValues ){ ?>
+                <div class="chosen-container chosen-container-multi" style="width: 426px;" title="" id="models_chosen">
+                    <ul class="chosen-choices">
+                        <?php foreach ( $_GET['query'] as $query ){ ?>
+                            <li class="search-choice"><span><?=urldecode($query)?></span><a class="search-choice-close" data-option-array-index="0"></a></li>
+                        <?php } ?>
+                        <li class="search-field"><input type="text" value="Make and Model" class="" autocomplete="off" style="width: 25px;" tabindex="2"></li>
+                    </ul>
+                    <div class="chosen-drop">
+                        <ul class="chosen-results">
+                            <?php foreach ( $_GET['query'] as $query ){ ?>
+                                <li class="" data-option-array-index="0"><?=urldecode($query)?></li>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                </div>
+            <?php }*/ ?>
+
     </div>
   <div class="col-lg-2">
       <input type="submit" class="btn btn-primary btn-block" value="Search"/>
@@ -336,7 +362,9 @@ endif;
 		<td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php if ($value->device_capacity > 0) { ?><?php echo $value->device_capacity; ?><?php } ?> <?php if ($value->spec > 0) { ?><?php echo $value->spec; ?><?php } ?> <?php if(!empty($value->product_mpn_isbn)){ echo '('.$value->product_mpn_isbn.')'; } ?></td>
         <td><?php echo $value->product_type; ?></td>
         <td><?php echo $value->condition; ?></td>
+
         <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo  currency_class($value->currency) ?> <?php echo $value->unit_price; ?></td>
+
         <td><?php echo $value->qty_available; ?></td>
         <td class="text-center">
        <!-- <span style="display:none"><?php //echo $value->country ?></span>-->
