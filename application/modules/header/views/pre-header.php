@@ -51,6 +51,12 @@
     <script type="text/javascript">
         // naveed: initialize tooltip
         $(function(){
+            var td = $("td[data-toggle=tooltip]");
+            var placement = td.data("placement");
+            var tdHtml = td.html();
+            var tdTitle = td.attr("title");
+            var childOfTd = "<span data-toggle='tooltip' data-placement='"+placement+"' title='"+tdTitle+"'>"+tdHtml+"</span>";
+            td.html(childOfTd).removeAttr("data-toggle").removeAttr("data-placement").removeAttr("title");
             $("[data-toggle=tooltip]").tooltip();
         });
 
@@ -58,16 +64,16 @@
         $(document).on("click", "#deleteMemberImage", function () {
             $(this).parent().prev('.avatar-view').html('<img src="public/main/template/gsm/images/members/no_profile.jpg" />');
             $.ajax('profile/profileImage', {type: 'post', data: {'reset': 1}, dataType: 'json'});
-        })
+        });
         $(document).on("click", "#changeMemberImage", function () {
             $(this).parent().prev('.avatar-view').click();
-        })
+        });
 
 
         $(document).on("click", "#deleteCompanyImage", function () {
             $(this).parent().prev('.avatar-view').html('<img src="public/main/template/gsm/images/company/no_company.jpg" />');
             $.ajax('profile/companyImage', {type: 'post', data: {'reset': 1}, dataType: 'json'});
-        })
+        });
         $(document).on("click", "#changeCompanyImage", function () {
             $(this).parent().prev('.avatar-view').click();
         })
