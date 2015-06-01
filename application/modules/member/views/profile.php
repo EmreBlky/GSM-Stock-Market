@@ -191,14 +191,13 @@ if($member->marketplace == 'inactive'){ ?>
 
                 </div>
             </div>
-<?php if($member->membership == 1){ ?>
-            <div class="alert alert-info" style="margin:15px 15px -15px">
-                <p><i class="fa fa-info-circle"></i> <strong>Only approved silver members can view company profiles.</strong> Here you can view a company profile in great detail, you can see all their business activities and even view their feedback, trade rating, feed posts, marketplace listings and even do credit checks on the user which are available for Silver to Silver or above users included a apart of the subscription. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
-            </div>
-<?php } else { ?>
-            <div class="alert alert-warning" style="margin:15px 15px -15px">
-                <p><i class="fa fa-warning"></i> You still need to supply 2 trade references so we can enable your membership to view profiles and access the marketplace. <a class="alert-link" href="tradereference">Submit trade references</a>.</p>
-            </div>
+<?php 	$id = $this->session->userdata('members_id');
+		$member = $this->member_model->get_where($id);
+		if($member->membership < 2){
+?>
+                <div class="alert alert-danger" style="margin:15px 15px -15px">
+    <p><i class="fa fa-warning"></i> Attention <?php echo $this->session->userdata('firstname');?>! Your account is <strong>Unverified</strong>. You will be unable to access the live platform until you have submitted <a class="alert-link" href="tradereference">two (2) trade references</a> to become a verified member.</p>
+    	</div>
 <?php } ?>
             <div class="row">
             <div class="col-lg-9">
@@ -208,7 +207,10 @@ if($member->marketplace == 'inactive'){ ?>
                             <div class="row">
                                 <div class="col-lg-12">
                                     
-                                    <div class="m-b-md">                                        
+                                    <div class="m-b-md">
+                                            <div class="pull-right" style="margin-right: 5px;">
+                                            	<button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="left" title="This user has been verified by GSM Stock Market"><i class="fa fa-check"></i> Account Verified</button>
+                                            </div>                  
                                         <h2>GSMStockMarket.com Limited</h2>
                                     </div>
                                 </div>
@@ -326,10 +328,6 @@ if($member->marketplace == 'inactive'){ ?>
                                         <ul class="nav nav-tabs">
                                             <li class="active">
                                                 <a href="#feedposts" data-toggle="tab">Feed Posts</a>
-                                                <p>Exceptional quality! Delivery was high-standard. Very, very delightful packaging. Wish all sellers were this first-rate.
-                                                    Item was of first-class quality. Ever so splendid packaging. Exceptionally high-standard delivery. Service was superior.
-                                                    The item was splendid. Swift to send. Quality of the wrapping was high-standard. Very, very pleased. Outstanding seller.</p>
-                                                <?php  ?>
                                             </li>
                                             <li class="">
                                                 <a href="#feedback" data-toggle="tab">Feedback</a>
@@ -894,9 +892,9 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                                         <?php }?>
                                             <div class="pull-right" style="margin-right: 5px;">
                                                 <?php if($member_company->marketplace == 'active') {?>
-                                                <span class="label label-primary">VERIFIED</span>
+                                            	<button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="left" title="This user has been verified by GSM Stock Market"><i class="fa fa-check"></i> Account Verified</button>
                                                 <?php } else {?>
-                                                <span class="label label-danger">UNVERIFIED</span>
+                                            	<button type="button" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="left" title="This company has not yet supplied trade references or has been credited checked by GSM Stock Market"><i class="fa fa-times"></i> Unverified</button>
                                                 <?php } ?>
                                             </div>
                                         <h2><?php echo $member_company->company_name;?></h2>
