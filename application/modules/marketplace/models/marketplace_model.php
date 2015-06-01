@@ -1,5 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Marketplace_model extends MY_Model {
+    public $upload_dir = "./public/upload/";
     public $proforma_file_dir;
     public $bank_payment_file_dir;
     public $tracking_file_dir;
@@ -8,10 +9,9 @@ class Marketplace_model extends MY_Model {
     {        
         parent::__construct();
         $this->table = 'marketplace';
-        $CI =& get_instance();
-        $this->proforma_file_dir = $CI->config->item('uploadDir')."proforma_files/";
-        $this->bank_payment_file_dir = $CI->config->item('uploadDir')."bank_payment_files/";
-        $this->tracking_file_dir = $CI->config->item('uploadDir')."tracking_files/";
+        $this->proforma_file_dir = $this->upload_dir."proforma_files/";
+        $this->bank_payment_file_dir = $this->upload_dir."bank_payment_files/";
+        $this->tracking_file_dir = $this->upload_dir."tracking_files/";
     }
 
     public function getUploadedFileName($actualFilename , $idToAppend )
@@ -502,7 +502,7 @@ class Marketplace_model extends MY_Model {
 			return FALSE;
 	}
 	public function get_watch_list($member_id, $listing_type=0){
-		$this->db->select('listing.id,listing.listing_end_datetime,listing.product_mpn_isbn,listing.product_make,listing.product_model,listing.product_type,listing.condition,listing.unit_price,listing.total_qty,listing.spec,listing.currency,company.country AS country_id,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
+		$this->db->select('listing.*,listing.id,listing.listing_end_datetime,listing.product_mpn_isbn,listing.product_make,listing.product_model,listing.product_type,listing.condition,listing.unit_price,listing.total_qty,listing.spec,listing.currency,company.country AS country_id,(SELECT country FROM country AS ct where ct.id=company.country) AS product_country');
 		$this->db->where("schedule_date_time <= '".date('Y-m-d H:i:s')."' and `listing_end_datetime` >= '".date('Y-m-d H:i:s')."'" );
 		$this->db->from('listing');
 		$this->db->join('company','company.id=listing.member_id');

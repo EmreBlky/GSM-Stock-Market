@@ -86,7 +86,7 @@
             <option value="<?php echo $row->product_make; ?>" <?php if(!empty($_POST['product_make']) && $row->product_make==$_POST['product_make']){ echo'selected';} elseif(!empty($product_list->product_make) && $row->product_make == $product_list->product_make){ echo'selected';}?>><?php echo $row->product_make; ?></option>
             <?php }} ?>
             </select>
-        <?php echo form_error('product_make'); ?>
+			<div id="product_make_error"></div>
         </div>
     </div>
    <div class="form-group"><label class="col-md-3 control-label">Model <span style="color:red">*</span></label>
@@ -98,13 +98,14 @@
         <option value="<?php echo $row->product_model; ?>" <?php if(!empty($_POST['product_model']) && $row->product_model==$_POST['product_model']){ echo'selected';}elseif(!empty($product_list->product_model) && $row->product_model == $product_list->product_model){ echo'selected';}?>><?php echo $row->product_model; ?></option>
          <?php }} ?>
     </select>
-<?php echo form_error('product_model'); ?>
+	<div id="product_model_error"></div>
 </div>
 </div>
      <div class="form-group"><label class="col-md-3 control-label">Colour <span style="color:red">*</span></label>
       <div class="col-md-9">
  		<select data-placeholder="What is the primary colour of the item?" class="chosen-select form-control" id="product_color" name="product_color">
           <option value="" selected disabled>What is the primary colour of the item?</option>
+          <option value="Any">Any</option>
           <option value="None">No Colour</option>
            <?php 
            if(!empty($product_colors)){
@@ -114,7 +115,7 @@
               <option value="<?php echo $row; ?>" <?php if(!empty($_POST['product_color']) && $row==$_POST['product_color']){ echo'selected';}?><?php if(!empty($product_list->product_color) && $row == $product_list->product_color){ echo'selected';}?>><?php echo $row; ?></option>
                <?php $k++;}} ?>
           </select>
-           <?php echo form_error('product_color'); ?>
+	<div id="product_color_error"></div>
       </div>
     </div>
 <div class="form-group"><label class="col-md-3 control-label">Product Type <span style="color:red">*</span></label>
@@ -134,7 +135,7 @@
   <?php endforeach ?>
   <?php endif ?>
     </select>
-    <?php echo form_error('product_type'); ?>
+	<div id="product_type_error"></div>
 </div>
 </div>
 </section>
@@ -246,8 +247,8 @@
 <div class="form-group"><label class="col-md-3 control-label">Unit Price <span style="color:red">*</span></label>
     <div class="col-md-9">
         <input type="type" class="form-control two-digits" name="unit_price" value="<?php if(!empty($product_list->unit_price)) echo $product_list->unit_price; else echo set_value('unit_price');?>"/>
+		<div id="unit_price_error"></div>
        <p class="small text-navy">Your price per individual item.</p>
-        <?php echo form_error('unit_price'); ?>
     </div>
 </div>
 <div class="form-group"><label class="col-md-3 control-label">Minimum Price</label>
@@ -267,8 +268,8 @@
 <div class="form-group"><label class="col-md-3 control-label">QTY Available <span style="color:red">*</span></label>
   <div class="col-md-9">
         <input type="type" class="form-control no-digits" name="total_qty" value="<?php if(!empty($product_list->qty_available)) echo $product_list->qty_available; else  echo set_value('qty_available');?>"/>
+			<div id="total_qty_error"></div>
     <p class="small text-navy">How many of this item do you have available to sell?</p>
-      <?php echo form_error('total_qty'); ?>
   </div>
 </div>
 <div class="form-group"><label class="col-md-3 control-label">Min Order Quantity</label>
@@ -427,7 +428,7 @@
             <div class="ibox-title">
                 <h5>Listing Pictures</h5>
                 <br>
-                <h4 class="danger">Item images Min size is 400 X 400 and Max size is 1200 X 1200.</h4>
+                <h4 class="danger">Item images Min size is 400 X 400 and Max size is 2400 X 2400.</h4>
             </div>
             <div class="ibox-content">
             <div class="row">
@@ -439,7 +440,8 @@
                     <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img1[3]; ?>" class="thumbnail uplodedimage"/>
                 <?php endif ?>
                  <input type="file" name="image1" class="btn default btn-file">
-                </div>
+                </div>                
+                <div id="image1_error col-md-offset-4"></div>
                  <?php echo form_error('image1'); ?>
                  <label  class="col-md-4" >Image 2</label>
                 <div  class="col-md-8">
@@ -447,8 +449,9 @@
                 $img2 = explode('/', $product_list->image2)?>
                     <img src="<?php echo base_url().'public/upload/listing/thumbnail/'.$img2[3]; ?>" class="thumbnail uplodedimage"/>
                 <?php endif ?>
-                 <input type="file" name="image2" class="btn default btn-file">
+                 <input type="file" name="image2" class="btn default btn-file" />
                  </div>
+                <div id="image2_error col-md-offset-4"></div>
                  <?php echo form_error('image2'); ?>
                  <label  class="col-md-4" >Image 3</label>
                 <div  class="col-md-8">
@@ -458,6 +461,7 @@
                 <?php endif ?>
                  <input type="file" name="image3" class="btn default btn-file">
                  </div>
+                <div id="image3_error col-md-offset-4"></div>
                  <?php echo form_error('image3'); ?>
                  <label  class="col-md-4" >Image 4</label>
                 <div  class="col-md-8">
@@ -467,6 +471,7 @@
                 <?php endif ?>
                  <input type="file" name="image4" class="btn default btn-file">
                  </div>
+                <div id="image4_error col-md-offset-4"></div>
                  <?php echo form_error('image4'); ?>
                   <label  class="col-md-4" >Image 5</label>
                 <div  class="col-md-8">
@@ -476,6 +481,7 @@
                 <?php endif ?>
                  <input type="file" name="image5" class="btn default btn-file">
                  </div>
+                <div id="image5_error col-md-offset-4"></div>
                  <?php echo form_error('image5'); ?>
                 </div>
                 <p class="small" style="text-align:center">You may have up to five (5) product images per listing.<br />Accepted types: <strong>.JPG, .JPEG, .PNG, .GIF</strong></p>
@@ -609,12 +615,8 @@ $('body').find('#opt_table').on("click", ".wrapper",function() {
  
  
  
-    <table class="table table-bordered">
-      <thead>
-      </thead>
-      <tbody id="opt_table">
- 
- 
+
+<script src="public/main/template/gsm/js/jquery.validate.file.js"></script> 
 <!-- Jquery Validate -->
 <script>
 $.validator.setDefaults({ ignore: ":hidden:not(select)" })
@@ -629,6 +631,21 @@ $(".validation").validate({
     total_qty: { required: true,number: true },
     condition: "required",
     termsandcondition: "required",
+	image1: {fileType: {types: ["jpg", "jpeg", "png", "gif"]},
+             maxFileSize: {"unit": "MB","size": 2},
+            },
+	image2: {fileType: {types: ["jpg", "jpeg", "png", "gif"]},
+             maxFileSize: {"unit": "MB","size": 2},
+            },
+	image3: {fileType: {types: ["jpg", "jpeg", "png", "gif"]},
+             maxFileSize: {"unit": "MB","size": 2},
+            },
+	image4: {fileType: {types: ["jpg", "jpeg", "png", "gif"]},
+             maxFileSize: {"unit": "MB","size": 2},
+            },
+	image5: {fileType: {types: ["jpg", "jpeg", "png", "gif"]},
+             maxFileSize: {"unit": "MB","size": 2},
+            },
   },
   messages: {
     product_desc: "Make sure you have entered a thorough description of the item you have for sale.",
@@ -653,7 +670,69 @@ $(".validation").validate({
     condition: {
       required: "Buyers will need to know what condition the item is.",
     }
-  }
+  },
+  errorPlacement: function(error, element){
+    if(element.attr("name") == "product_make"){
+        error.appendTo($('#product_make_error'));
+    }else{
+        error.appendTo( element.parent().next() );
+    }
+    if(element.attr("name") == "product_model"){
+        error.appendTo($('#product_model_error'));
+    }else{
+        error.appendTo( element.parent().next() );
+    }
+    if(element.attr("name") == "product_color"){
+        error.appendTo($('#product_color_error'));
+    }else{
+        error.appendTo( element.parent().next() );
+    }
+    if(element.attr("name") == "product_type"){
+        error.appendTo($('#product_type_error'));
+    }else{
+        error.appendTo( element.parent().next() );
+    }
+    if(element.attr("name") == "product_condition"){
+        error.appendTo($('#product_condition_error'));
+    }else{
+        error.appendTo( element.parent().next() );
+    }
+    if(element.attr("name") == "total_qty"){
+        error.appendTo($('#total_qty_error'));
+    }else{
+        error.appendTo( element.parent().next() );
+    }
+    if(element.attr("name") == "unit_price"){
+        error.appendTo($('#unit_price_error'));
+    }else{
+        error.appendTo( element.parent().next() );
+    }
+    if(element.attr("name") == "image1"){
+        error.appendTo($('div#image1_error'));
+    }else{
+        error.appendTo( element.parent().next() );
+    }
+    if(element.attr("name") == "image2"){
+        error.appendTo($('div#image2_error'));
+    }else{
+        error.appendTo( element.parent().next() );
+    }
+    if(element.attr("name") == "image3"){
+        error.appendTo($('div#image3_error'));
+    }else{
+        error.appendTo( element.parent().next() );
+    }
+    if(element.attr("name") == "image4"){
+        error.appendTo($('div#image4_error'));
+    }else{
+        error.appendTo( element.parent().next() );
+    }
+    if(element.attr("name") == "image5"){
+        error.appendTo($('div#image5_error'));
+    }else{
+        error.appendTo( element.parent().next() );
+    }
+}
 });
 
 // apply the two-digits behaviour to elements with 'two-digits' as their class

@@ -35,7 +35,6 @@ elseif($base_url == 'http://localhost/projects/codeigniter/gsm/gsm-secure/'){
         $config['base_url'] = 'http://localhost/projects/codeigniter/gsm-secure/';
 }
 elseif($base_url == 'http://localhost/secure.gsmstockmarket.com/'){
-    
         $config['base_url'] = 'http://localhost/secure.gsmstockmarket.com/';    
 }
 elseif($base_url == 'http://secure-dev.gsmstockmarket.com/'){
@@ -394,11 +393,10 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+// Naveed:================
+$config['uploadDir'] = "./public/upload/";
+
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */
 
-
-// Naveed:================
-//$config['uploadDir'] = $config['base_url']."public/upload/";
-$config['uploadDir'] = "./public/upload/";

@@ -358,7 +358,7 @@
                                             <p>You have selected <strong>Bank Transfer</strong> as your form of payment.</p>
 											<p>Once you click confirm purchase our system will send an email proforma invoice to your accounts email address with instructions on how to send your payment.<p/>
                                             <p>If you would like a printer friendly invoice you will be able to view and print the proforma invoice from within your account by going to <strong>Preferences > My Subscription</strong> and viewing the subscription history tab.</p>
-                                            <h4 style="color:red;margin-top:20px">IMPORTANT!</h5>
+                                            <h4 style="color:red;margin-top:20px">IMPORTANT!</h4>
                                             <p>- Make sure your payment is sent in the correct sum in &pound; (GBP)</p>
                                             <p>- Add the invoice number as reference to your payment to avoid delays</p>
                                             <p><strong style="color:red">Notice:</strong>You will still need to add two (2) trade references to your account and have them confirmed by GSMstockmarket before you have complete access.</p> 
@@ -384,7 +384,7 @@
                                             <p>You have selected <strong>Bank Transfer</strong> as your form of payment.</p>
 											<p>Once you click confirm purchase our system will send an email proforma invoice to your accounts email address with instructions on how to send your payment.<p/>
                                             <p>If you would like a printer friendly invoice you will be able to view and print the proforma invoice from within your account by going to <strong>Preferences > My Subscription</strong> and viewing the subscription history tab.</p>
-                                            <h4 style="color:red;margin-top:20px">IMPORTANT!</h5>
+                                            <h4 style="color:red;margin-top:20px">IMPORTANT!</h4>
                                             <p>- Make sure your payment is sent in the correct sum in &pound; (GBP)</p>
                                             <p>- Add the invoice number as reference to your payment to avoid delays</p>
                                             <p><strong style="color:red">Notice:</strong>You will still need to add two (2) trade references to your account and have them confirmed by GSMstockmarket before you have complete access.</p>  

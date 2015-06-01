@@ -632,7 +632,6 @@ class Marketplace extends MX_Controller {
 
             $list_update = '';
             if (!empty($list_id)) {
-
                 $list_update = $this->marketplace_model->get_row('listing', array('id' => $list_id));
             }
 
@@ -1417,17 +1416,21 @@ class Marketplace extends MX_Controller {
             return FALSE;
         }
         $image = getimagesize($_FILES['image1']['tmp_name']);
-        if ($image[0] >= 1200 || $image[1] >= 1200) {
-            $this->form_validation->set_message('image1_check', 'Oops! Your item image needs to be less than 1200 x 1200 pixels.');
+        if ($image[0] >= 2560 || $image[1] >= 2560) {
+            $this->form_validation->set_message('image1_check', 'Oops! Your item image needs to be less than 2560 x 2560 pixels.');
             return FALSE;
-        }
-        if ($image[0] < 400 || $image[1] < 400) {
+        }/*
+        if ($image[0] < 0 || $image[1] < 0) {
             $this->form_validation->set_message('image1_check', 'Oops! Your item image needs to be at least grater than 400 x 400 pixels.');
             return FALSE;
-        }
+        }*/
         if (!empty($_FILES['image1']['name'])):
+            //$data = $this->upload->data(); // upload image
+            $new_file = rtrim($_FILES['image1']['name'], '.jpg');
+            
             $config1['upload_path'] = './public/upload/listing/';
             $config1['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config1['file_name'] = $this->session->userdata('members_id').'-'.$new_file.'.jpg';
             $config1['max_size'] = '5024';
             $config1['max_width'] = '5024';
             $config1['max_height'] = '5024';
@@ -1439,12 +1442,13 @@ class Marketplace extends MX_Controller {
                 return FALSE;
             } else {
                 $data = $this->upload->data(); // upload image
+                $new_file = rtrim($data['file_name'], '.jpg');
                 //thumbimage
                 $param_thumb = array();
                 $param_thumb['source_path'] = './public/upload/listing/';
                 $param_thumb['destination_path'] = './public/upload/listing/thumbnail/';
-                $param_thumb['width'] = '400';
-                $param_thumb['height'] = '400';
+                $param_thumb['width'] = '75';
+                $param_thumb['height'] = '60';
                 $param_thumb['file_name'] = $data['file_name'];
                 create_thumbnail($param_thumb);
                 $this->session->unset_userdata('image1_check');
@@ -1457,18 +1461,18 @@ class Marketplace extends MX_Controller {
     function image2_check2($str) {
 
         if (empty($_FILES['image2']['name'])) {
-            $this->form_validation->set_message('image2_check2', 'Choose Image 1');
+            $this->form_validation->set_message('image2_check2', 'Choose Image 2');
             return FALSE;
         }
         $image = getimagesize($_FILES['image2']['tmp_name']);
-        if ($image[0] >= 1200 || $image[1] >= 1200) {
-            $this->form_validation->set_message('image2_check2', 'Oops! Your item image needs to be less than 1200 x 1200 pixels.');
+        if ($image[0] >= 2560 || $image[1] >= 2560) {
+            $this->form_validation->set_message('image2_check2', 'Oops! Your item image needs to be less than 2560 x 2560 pixels.');
             return FALSE;
-        }
-        if ($image[0] < 400 || $image[1] < 400) {
+        }/*
+        if ($image[0] < 1 || $image[1] < 1) {
             $this->form_validation->set_message('image4_check4', 'Oops! Your item image needs to be at least grater than 400 x 400 pixels.');
             return FALSE;
-        }
+        }*/
         if (!empty($_FILES['image2']['name'])):
             $config2['upload_path'] = './public/upload/listing/';
             $config2['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -1489,8 +1493,8 @@ class Marketplace extends MX_Controller {
                     $param_thumb = array();
                     $param_thumb['source_path'] = './public/upload/listing/';
                     $param_thumb['destination_path'] = './public/upload/listing/thumbnail/';
-                    $param_thumb['width'] = '400';
-                    $param_thumb['height'] = '400';
+                    $param_thumb['width'] = '75';
+                    $param_thumb['height'] = '60';
                     $param_thumb['file_name'] = $data['file_name'];
                     create_thumbnail($param_thumb);
                     $this->session->unset_userdata('image2_check2');
@@ -1503,18 +1507,18 @@ class Marketplace extends MX_Controller {
 
     function image3_check3($str) {
         if (empty($_FILES['image3']['name'])) {
-            $this->form_validation->set_message('image3_check3', 'Choose Image 1');
+            $this->form_validation->set_message('image3_check3', 'Choose Image 3');
             return FALSE;
         }
         $image = getimagesize($_FILES['image3']['tmp_name']);
-        if ($image[0] >= 1200 || $image[1] >= 1200) {
-            $this->form_validation->set_message('image3_check3', 'Oops! Your item image needs to be less than 1200 x 1200 pixels.');
+        if ($image[0] >= 2560 || $image[1] >= 2560) {
+            $this->form_validation->set_message('image3_check3', 'Oops! Your item image needs to be less than 2560 x 2560 pixels.');
             return FALSE;
-        }
-        if ($image[0] < 400 || $image[1] < 400) {
+        }/*
+        if ($image[0] < 1 || $image[1] < 1) {
             $this->form_validation->set_message('image4_check4', 'Oops! Your item image needs to be at least grater than 400 x 400 pixels.');
             return FALSE;
-        }
+        }*/
         if (!empty($_FILES['image3']['name'])):
             $config3['upload_path'] = './public/upload/listing/';
             $config3['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -1535,8 +1539,8 @@ class Marketplace extends MX_Controller {
                     $param_thumb = array();
                     $param_thumb['source_path'] = './public/upload/listing/';
                     $param_thumb['destination_path'] = './public/upload/listing/thumbnail/';
-                    $param_thumb['width'] = '400';
-                    $param_thumb['height'] = '400';
+                    $param_thumb['width'] = '75';
+                    $param_thumb['height'] = '60';
                     $param_thumb['file_name'] = $data['file_name'];
                     create_thumbnail($param_thumb);
                     $this->session->unset_userdata('image3_check3');
@@ -1553,14 +1557,14 @@ class Marketplace extends MX_Controller {
             return FALSE;
         }
         $image = getimagesize($_FILES['image4']['tmp_name']);
-        if ($image[0] >= 1200 || $image[1] >= 1200) {
-            $this->form_validation->set_message('image4_check4', 'Oops! Your item image needs to be less than 1200 x 1200 pixels.');
+        if ($image[0] >= 2560 || $image[1] >= 2560) {
+            $this->form_validation->set_message('image4_check4', 'Oops! Your item image needs to be less than 2560 x 2560 pixels.');
             return FALSE;
-        }
-        if ($image[0] < 400 || $image[1] < 400) {
+        }/*
+        if ($image[0] < 1 || $image[1] < 1) {
             $this->form_validation->set_message('image4_check4', 'Oops! Your item image needs to be at least grater than 400 x 400 pixels.');
             return FALSE;
-        }
+        }*/
 
         if (!empty($_FILES['image4']['name'])):
             $config4['upload_path'] = './public/upload/listing/';
@@ -1582,8 +1586,8 @@ class Marketplace extends MX_Controller {
                     $param_thumb = array();
                     $param_thumb['source_path'] = './public/upload/listing/';
                     $param_thumb['destination_path'] = './public/upload/listing/thumbnail/';
-                    $param_thumb['width'] = '400';
-                    $param_thumb['height'] = '400';
+                    $param_thumb['width'] = '75';
+                    $param_thumb['height'] = '60';
                     $param_thumb['file_name'] = $data['file_name'];
                     create_thumbnail($param_thumb);
                     $this->session->unset_userdata('image4_check4');
@@ -1596,19 +1600,18 @@ class Marketplace extends MX_Controller {
 
     function image5_check5($str = '') {
         if (empty($_FILES['image5']['name'])) {
-            $this->form_validation->set_message('image5_check5', 'Choose Image 1');
+            $this->form_validation->set_message('image5_check5', 'Choose Image 5');
             return FALSE;
         }
         $image = getimagesize($_FILES['image5']['tmp_name']);
-        if ($image[0] >= 1200 || $image[1] >= 1200) {
-            $this->form_validation->set_message('image5_check5', 'Oops! Your item image needs to be less than 1200 x 1200 pixels.');
+        if ($image[0] >= 2560 || $image[1] >= 2560) {
+            $this->form_validation->set_message('image5_check5', 'Oops! Your item image needs to be less than 2560 x 2560 pixels.');
             return FALSE;
-        }
-
-        if ($image[0] < 400 || $image[1] < 400) {
+        }/*
+        if ($image[0] < 1 || $image[1] < 1) {
             $this->form_validation->set_message('image5_check5', 'Oops! Your item image needs to be at least grater than 400 x 400 pixels.');
             return FALSE;
-        }
+        }*/
         if (!empty($_FILES['image5']['name'])):
             $config5['upload_path'] = './public/upload/listing/';
             $config5['allowed_types'] = 'gif|jpg|png|jpeg';
@@ -1629,8 +1632,8 @@ class Marketplace extends MX_Controller {
                     $param_thumb = array();
                     $param_thumb['source_path'] = './public/upload/listing/';
                     $param_thumb['destination_path'] = './public/upload/listing/thumbnail/';
-                    $param_thumb['width'] = '400';
-                    $param_thumb['height'] = '400';
+                    $param_thumb['width'] = '75';
+                    $param_thumb['height'] = '60';
                     $param_thumb['file_name'] = $data['file_name'];
                     create_thumbnail($param_thumb);
                     $this->session->unset_userdata('image5_check5');

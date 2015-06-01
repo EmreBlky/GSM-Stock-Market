@@ -5,9 +5,9 @@
  * Time: 11:21 AM
  */
 
-namespace nvd;
+namespace nvd\custom\libraries;
 
-require_once __DIR__."/mandrill/Mandrill.php";
+require_once __DIR__ . "/mandrill/Mandrill.php";
 
 class Mailer extends \Mandrill{
     public $apiKey = "iWXEJKCA9DGqgNXxP__oJA"; //naveed.malik@dynamologic.com

@@ -275,7 +275,7 @@ if(!empty($listing_detail->image1))
             $core =  explode(',', $listing_detail->courier);
             ?>
             <select name="coriar" id="core" class="form-control payaskinginputselect" required>
-              <option value="">Select Shipping Terms</option>
+              <option value="" disabled="" selected>Select Shipping Terms</option>
               <?php 
                foreach ($core as $key => $value): ?>
                  <option data-other="<?php echo $value;?>" shipping-type="2" value="<?php echo $listing_detail->shipping_charges;?>">
@@ -287,7 +287,7 @@ if(!empty($listing_detail->image1))
               ?>
               
               <select name="coriar" id="core" class="form-control payaskinginputselect" required>
-              <option value="" disabled="">Select Shipping Terms</option>
+              <option value="" disabled="" selected>Select Shipping Terms</option>
               <?php 
                foreach(json_decode($listing_detail->sell_shipping_fee) as $key => $value){
                 $othershippingfee='0';

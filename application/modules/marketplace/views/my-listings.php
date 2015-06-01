@@ -50,7 +50,7 @@
                     <tbody>
 <?php if(!empty($sell_offer)): $session_member_id = $this->session->userdata('members_id'); ?>
 <?php foreach ($sell_offer as $value): $offer_count = offer_count($value->id); ?>
-					<tr>
+					<tr onclick="document.location = '<?php echo base_url().'marketplace/listing_detail/'.$value->id ?>';" style="cursor:pointer">
 						<td class="text-center">
                             <?php require __DIR__."/snippets/get_status_of_the_listing.php" ?>
                         </td>
@@ -63,16 +63,16 @@
 		$months  = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));  
 		$days    = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
 		if($days <1){ echo "style='color:red!important'";}?>><?php echo date('d-M, H:i', strtotime($value->listing_end_datetime)); ?></span></td>
-						<td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php if ($value->device_capacity > 0) { ?><?php echo $value->device_capacity; ?><?php } ?> <?php echo $value->spec; ?></td>
+						<td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php if ($value->device_capacity > 0) { ?><?php echo $value->device_capacity; ?><?php }?> <?php if ($value->spec > 0) { ?><?php echo $value->spec; ?><?php }?></td>
                         
         <td><?php echo $value->condition; ?></td>
         <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
         <td <?php if ($value->qty_available == 0) { ?>style="color:red"<?php }?>><?php echo $value->qty_available; ?></td>
-        <th class="text-center">
+        <td class="text-center">
 
         <?php $listing_type = "buy_listing"; require __DIR__."/snippets/listing_options.php" ?>
 
-        </th>
+        </td>
     </tr>
         
     <?php endforeach ?>
@@ -109,7 +109,7 @@
  <?php if(!empty($buying_request)): ?>
     <?php foreach ($buying_request as $value):
      ?>
-    <tr>
+    <tr onclick="document.location = '<?php echo base_url().'marketplace/listing_detail/'.$value->id ?>';" style="cursor:pointer">
         <td class="text-center">
           <?php  
             $current_datetime = strtotime(date('d-m-Y H:i:s')); 
@@ -138,7 +138,7 @@
               echo "style='color:red!important'";
             }
             ?>><?php echo date('d-M, H:i', strtotime($value->listing_end_datetime)); ?></span></td>
-        <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php if ($value->device_capacity > 0) { ?><?php echo $value->device_capacity; ?><?php } ?> <?php if ($value->spec > 0) { ?><?php echo $value->spec; ?><?php } ?></td>
+        <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php if ($value->device_capacity > 0) { ?><?php echo $value->device_capacity; ?><?php } ?> <?php if ($value->spec > 0) { ?><?php echo $value->spec; ?><?php }?></td>
         <td><?php echo $value->condition; ?></td>
         <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
         <td <?php if ($value->qty_available == 0) { ?>style="color:red"<?php }?>><?php echo $value->qty_available; ?></td>

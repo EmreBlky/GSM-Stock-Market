@@ -1,3 +1,4 @@
+
 <?php $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id);
 if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 <script type="text/javascript">
@@ -91,17 +92,13 @@ endif;
           </select>
         </div><!-- /col-lg-3 -->
         <div class="col-lg-5" style="padding-right:0">
-          <select  name="query[]" data-placeholder="Make and Model" class="chosen-select form-control"  id="models" multiple tabindex="2">
-          
-          <?php 
-          $make_n_model = $dataasa['make_n_model'];
-          asort($make_n_model);
-          if(!empty($make_n_model)){
-          foreach ($make_n_model as $key => $val) { ?>
-          <option value="<?php echo $key; ?>"><?php echo $val; ?></option>
-          <?php }} ?>
+
+        <select  name="query[]" data-placeholder="Make and Model" class="chosen-select form-control"  id="models" multiple tabindex="2">
+
+            <?php require __DIR__."/snippets/search-pre-populate.php" ?>
 
         </select>
+
     </div>
   <div class="col-lg-2">
       <input type="submit" class="btn btn-primary btn-block" value="Search"/>
@@ -116,7 +113,9 @@ endif;
 
     <div class="col-lg-12">
 
-  <div id="AdvanceSearch"   <?php if(isset($_GET['search'])) echo 'class="collapse in" aria-expanded="true"'; else echo 'class="collapse"'; ?> style="margin-top:10px">
+        <?php require __DIR__."/snippets/advanced_search_prepopulate_implementation.php"; ?>
+
+  <div id="AdvanceSearch" <?=$advSearchInClass?> style="margin-top:10px">
   <div class="well0 row">
    <!--<form action="<?php // echo base_url('marketplace/buy'); ?>/" method="get" accept-charset="utf-8">-->
 
@@ -336,7 +335,9 @@ endif;
 		<td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php if ($value->device_capacity > 0) { ?><?php echo $value->device_capacity; ?><?php } ?> <?php if ($value->spec > 0) { ?><?php echo $value->spec; ?><?php } ?> <?php if(!empty($value->product_mpn_isbn)){ echo '('.$value->product_mpn_isbn.')'; } ?></td>
         <td><?php echo $value->product_type; ?></td>
         <td><?php echo $value->condition; ?></td>
+
         <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo  currency_class($value->currency) ?> <?php echo $value->unit_price; ?></td>
+
         <td><?php echo $value->qty_available; ?></td>
         <td class="text-center">
        <!-- <span style="display:none"><?php //echo $value->country ?></span>-->
