@@ -100,7 +100,7 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                                     <td><?php echo $value->product_make; ?></td>
                                     <td><?php echo $value->product_type; ?></td>
                                     <td><?php echo $value->condition; ?></td>
-                                    <td data-toggle="tooltip" data-placement="left" title="mouseover currency"><?php echo currency_class($value->currency) . ' ' . $value->unit_price; ?></td>
+                                    <td><?php echo currency_class($value->currency) . ' ' . $value->unit_price; ?></td>
                                     <td class="project-completion">
                                         <small><?php echo $progress ?> Complete</small>
                                         <div class="progress progress-mini">
@@ -209,7 +209,7 @@ if ($member->membership > 1 && $member->marketplace == 'active') {
                                     <td><?php echo $value->product_make; ?></td>
                                     <td><?php echo $value->product_type; ?></td>
                                     <td><?php echo $value->condition; ?></td>
-                                    <td data-toggle="tooltip" data-placement="left" title="mouseover currency"><?php echo currency_class($value->currency) . ' ' . $value->unit_price; ?></td>
+                                    <td><?php echo currency_class($value->currency) . ' ' . $value->unit_price; ?></td>
                                     <td class="project-completion">
                                         <small><?php echo $progress ?> Complete</small>
                                         <div class="progress progress-mini">
