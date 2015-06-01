@@ -11,10 +11,6 @@ function country($name)
 
     function sendMessage(mid, sid)
     {
-        //alert(mid);
-        //alert(sid);
-        //var mid     = $('#sent_by').val();
-        //var sid     = $("#sent_to").val();
         $("#submit_message_"+sid+"").hide();
         var subject = $("#subject_"+sid+"").val();
         var body    = $("#body_"+sid+"").val().replace(/(\r\n|\n|\r)/gm, 'BREAK1');
@@ -22,20 +18,54 @@ function country($name)
         var body    = body.replace(/\?/g, 'QUEST1');
         var body    = body.replace(/\%/g, 'PERCENT1');
         
-         $.ajax({
+        $.ajax({
                 type: "POST",
                 url: "mailbox/composeAjaxMail/"+ mid +"/"+ sid +"/"+ subject +"/"+body +"",
                 dataType: "html",
                 cache: true,
                 success:function(data){
-                    $("#body_"+sid+"").val('');
+                  $("#body_"+sid+"").val('');
                   $('#profile_message_'+sid+'').modal('hide');
                   toastr.success('Your message has been sent.', 'Message Alert');
                   $("#submit_message_"+sid+"").show('slow');
                 },
-            });
-            
+        });
     }
+    
+    function addCompany(eid, mid)
+    {
+        
+        $.ajax({
+                type: "POST",
+                url: "attending/addCompany/"+ eid +"/" + mid +"",
+                dataType: "html",
+                cache: true,
+                success:function(data){
+                  //$('#add_company').replaceWith('<button onclick="removeCompany(' + eid + ',' + mid + ');" id="remove_company" class="btn btn-default pull-right" type="button" style="font-size:10px;margin-right:15px"><i class="fa fa-minus"></i>&nbsp;Remove My Company from this Event</button>');
+                  location.reload();
+                },
+        });
+    }
+    
+    function removeCompany(eid, mid)
+    {
+        
+        $.ajax({
+                type: "POST",
+                url: "attending/removeCompany/"+ eid +"/" + mid +"",
+                dataType: "html",
+                cache: true,
+                success:function(data){
+                  //$('#remove_company').replaceWith('<button onclick="addCompany(' + eid + ',' + mid + ');" id="add_company" class="btn btn-info pull-right" type="button" style="font-size:10px;margin-right:15px"><i class="fa fa-plus"></i>&nbsp;Add My Company to this Event</button>');
+                  location.reload();                  
+                },
+                
+        });
+    
+        
+    }
+    
+    
 
 
 </script>
@@ -80,7 +110,11 @@ function country($name)
                         <div class="col-lg-10">
                             <h3 style="margin:0;display:inline-block"><strong><?php echo $event->name;?></h3>
                             <a href="<?php echo $event->website;?>" target="_blank"><button class="btn btn-primary pull-right" type="button" style="font-size:10px;margin-right:15px"><i class="fa fa-globe"></i>&nbsp;Visit Website</button></a>
-                            <a href="profile/edit_profile"><button class="btn btn-info pull-right" type="button" style="font-size:10px;margin-right:15px"><i class="fa fa-plus"></i>&nbsp;Add My Company to this Event</button></a>
+                            <?php if($att_count > 0) {?>
+                            <button onclick="removeCompany(<?php echo $event->id; ?>, <?php echo $this->session->userdata('members_id'); ?>);" id="remove_company" class="btn btn-default pull-right" type="button" style="font-size:10px;margin-right:15px"><i class="fa fa-minus"></i>&nbsp;Remove My Company from this Event</button>
+                            <?php } else {?>
+                            <button onclick="addCompany(<?php echo $event->id; ?>, <?php echo $this->session->userdata('members_id'); ?>);" id="add_company" class="btn btn-info pull-right" type="button" style="font-size:10px;margin-right:15px"><i class="fa fa-plus"></i>&nbsp;Add My Company to this Event</button>
+                            <?php } ?>
                             <p class="text-navy"><i class="fa fa-map-marker text-center" style="width:1em"></i> <?php echo $event->location;?>, <?php echo $event->venue;?><br /><i class="fa fa-calendar text-center" style="width:1em"></i> <?php echo $event->date;?></strong></p>
                             <p><?php echo $event->description;?></p>
                         </div>
