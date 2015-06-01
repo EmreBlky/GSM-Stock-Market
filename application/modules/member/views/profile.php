@@ -1,7 +1,7 @@
 <?php
 $cust_id = $this->uri->segment(3);
 //echo '<pre>';
-//print_r($member_info);
+//print_r($member);
 //print_r($blocked);
 //print_r($company_users);
 //exit;
@@ -891,9 +891,14 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                                         <?php }?>
                                         <?php if($this->session->userdata('admin_logged_in')){?>
                                             <button type="button" onclick="deleteProfile('<?php echo $member_info->id;?>');" class="btn btn-white btn-xs pull-right">Delete Profile</button>
-                                        <?php }?>    
-                                        <label class="label label-primary pull-right"><i class="fa fa-check"></i> Verified</label>
-                                        <label class="label label-danger pull-right"><i class="fa fa-times"></i> Unverified</label>
+                                        <?php }?>
+                                            <div class="pull-right" style="margin-right: 5px;">
+                                                <?php if($member_company->marketplace == 'active') {?>
+                                                <span class="label label-primary">VERIFIED</span>
+                                                <?php } else {?>
+                                                <span class="label label-danger">UNVERIFIED</span>
+                                                <?php } ?>
+                                            </div>
                                         <h2><?php echo $member_company->company_name;?></h2>
                                     </div>
                                 </div>
