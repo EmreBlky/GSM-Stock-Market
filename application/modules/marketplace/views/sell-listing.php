@@ -428,7 +428,7 @@
             <div class="ibox-title">
                 <h5>Listing Pictures</h5>
                 <br>
-                <h4 class="danger">Item images Min size is 400 X 400 and Max size is 1200 X 1200.</h4>
+                <h4 class="danger">Item images Min size is 400 X 400 and Max size is 2400 X 2400.</h4>
             </div>
             <div class="ibox-content">
             <div class="row">
