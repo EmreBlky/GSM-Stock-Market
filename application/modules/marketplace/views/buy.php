@@ -94,42 +94,10 @@ endif;
         <div class="col-lg-5" style="padding-right:0">
 
         <select  name="query[]" data-placeholder="Make and Model" class="chosen-select form-control"  id="models" multiple tabindex="2">
-          
-          <?php 
-          $make_n_model = $dataasa['make_n_model'];
-          asort($make_n_model);
-          if(!empty($make_n_model)){
-          foreach ($make_n_model as $key => $val) { ?>
-          <option value="<?php echo $key; ?>"><?php echo $val; ?></option>
-          <?php }} ?>
+
+            <?php require __DIR__."/snippets/search-pre-populate.php" ?>
 
         </select>
-
-        <?php
-        //nvd\custom\libraries\pr($_GET);
-        /*$prePopulateValues = isset($_GET['query']) && !empty($_GET['query']);
-        if( $prePopulateValues ){
-            $children = "";
-            foreach ( $_GET['query'] as $index => $query ){
-                $make_model = preg_replace("/@@/"," ",$query);
-                $children .= '<li class="search-choice"><span>'.$make_model.'</span><a class="search-choice-close" data-option-array-index="'.$index.'"></a></li>';
-            }
-        ?>
-            <script>
-                $(document).ready(function () {
-                    var chosenChoices = $(".chosen-choices");
-                    var chosenResultsLi = $(".chosen-results li");
-                    var children = '<?=$children?>';
-                    console.log(chosenChoices);
-                    console.log(chosenResultsLi);
-                    chosenChoices.css("background","red");
-                    chosenChoices.prepend(children);
-                    chosenChoices.find(".search-field").css("width","25").removeClass("default");
-                    chosenResultsLi.addClass("result-selected").removeClass("active-result");
-                });
-            </script>
-        <?php } */
-        ?>
 
     </div>
   <div class="col-lg-2">
@@ -145,7 +113,9 @@ endif;
 
     <div class="col-lg-12">
 
-  <div id="AdvanceSearch"   <?php if(isset($_GET['search'])) echo 'class="collapse in" aria-expanded="true"'; else echo 'class="collapse"'; ?> style="margin-top:10px">
+        <?php require __DIR__."/snippets/advanced_search_prepopulate_implementation.php"; ?>
+
+  <div id="AdvanceSearch" <?=$advSearchInClass?> style="margin-top:10px">
   <div class="well0 row">
    <!--<form action="<?php // echo base_url('marketplace/buy'); ?>/" method="get" accept-charset="utf-8">-->
 

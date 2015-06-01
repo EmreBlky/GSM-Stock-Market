@@ -102,17 +102,13 @@ endif;
         <div class="col-lg-5" style="padding-right:0">
           <select  name="query[]" data-placeholder="Make and Model" class="chosen-select form-control"  id="models" multiple tabindex="2">
           
-          <?php 
-          $make_n_model = $dataasa['make_n_model'];
-          asort($make_n_model);
-          if(!empty($make_n_model)){
-          foreach ($make_n_model as $key => $val) { ?>
-          <option value="<?php echo $key; ?>"><?php echo $val; ?></option>
-          <?php }} ?>
+          <?php require __DIR__."/snippets/search-pre-populate.php" ?>
 
         </select>
-    </div>
-  <div class="col-lg-2">
+
+        </div>
+
+       <div class="col-lg-2">
       <input type="submit" class="btn btn-primary btn-block" value="Search"/>
     </div>
   <div class="col-lg-2">
@@ -125,7 +121,10 @@ endif;
 
 <div class="col-lg-12">
 
-<div id="AdvanceSearch"   <?php if(isset($_GET['search'])) echo 'class="collapse in" aria-expanded="true"'; else echo 'class="collapse"'; ?> style="margin-top:10px">
+
+    <?php require __DIR__."/snippets/advanced_search_prepopulate_implementation.php"; ?>
+
+<div id="AdvanceSearch" <?=$advSearchInClass?> style="margin-top:10px">
 <div class="well0 row">
 
 
@@ -1427,5 +1426,4 @@ $('#reset').click(function(){
   </div>
 </div>
 </div>
-            
- 
+
