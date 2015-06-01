@@ -2179,10 +2179,16 @@ class Admin extends MX_Controller
             }
             
             $data = array(
-                           'marketplace' => 'active' 
+                           'membership' => 2 
                         );
             
             $this->{$var1_model}->_update_where($data, 'company_id', $mid);
+            
+            $data = array(
+                           'marketplace' => 'active' 
+                        );
+            
+            $this->{$var_model}->_update_where($data, 'id', $mid);
             
             $this->session->set_flashdata('message', '<div style="margin:15px">    
                                                                 <div class="alert alert-success">

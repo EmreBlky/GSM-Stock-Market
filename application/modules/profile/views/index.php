@@ -51,6 +51,13 @@ if($member->membership == 1 ){ ?>
                                         <?php if($member_company->admin_member_id == $this->session->userdata('members_id')){?> 
                                             <a href="profile/edit_profile" class="btn btn-white btn-xs pull-right">Edit Profile</a>
                                         <?php }?>
+                                            <div class="pull-right" style="margin-right: 5px;">
+                                                <?php if($member_company->marketplace == 'active') {?>
+                                                <span class="label label-primary">VERIFIED</span>
+                                                <?php } else {?>
+                                                <span class="label label-danger">UNVERIFIED</span>
+                                                <?php } ?>
+                                            </div>
                                         <h2><?php echo $member_company->company_name;?></h2>
                                     </div>
                                 </div>
