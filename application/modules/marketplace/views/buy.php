@@ -336,7 +336,7 @@ endif;
         <td><?php echo $value->product_type; ?></td>
         <td><?php echo $value->condition; ?></td>
 
-        <td><?php echo  currency_class($value->currency) ?> <?php echo $value->unit_price; ?></td>
+        <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo  currency_class($value->currency) ?> <?php echo $value->unit_price; ?></td>
 
         <td><?php echo $value->qty_available; ?></td>
         <td class="text-center">

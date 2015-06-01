@@ -66,7 +66,7 @@
 						<td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php if ($value->device_capacity > 0) { ?><?php echo $value->device_capacity; ?><?php }?> <?php if ($value->spec > 0) { ?><?php echo $value->spec; ?><?php }?></td>
                         
         <td><?php echo $value->condition; ?></td>
-        <td><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
+        <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
         <td <?php if ($value->qty_available == 0) { ?>style="color:red"<?php }?>><?php echo $value->qty_available; ?></td>
         <td class="text-center">
 
@@ -140,7 +140,7 @@
             ?>><?php echo date('d-M, H:i', strtotime($value->listing_end_datetime)); ?></span></td>
         <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php if ($value->device_capacity > 0) { ?><?php echo $value->device_capacity; ?><?php } ?> <?php if ($value->spec > 0) { ?><?php echo $value->spec; ?><?php }?></td>
         <td><?php echo $value->condition; ?></td>
-        <td><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
+        <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
         <td <?php if ($value->qty_available == 0) { ?>style="color:red"<?php }?>><?php echo $value->qty_available; ?></td>
         <th class="text-center">
 
