@@ -41,17 +41,9 @@ $member = $this->member_model->get_where($this->session->userdata('members_id'))
         <a href="demo"><i class="fa fa-desktop"></i> <span class="nav-label">Request a Demo</span></a>
 </li>
 -->
-
-
-<?php
-if($member->date_activated < '2015-05-15'){
-?>
 <li>
-        <a href="preferences/subscription" style="color:yellow"><i class="fa fa-bolt"></i> <span class="nav-label">Free 30 Day Trial</span></a>
+        <a href="tradereference/" style="color:yellow"><i class="fa fa-bolt"></i> <span class="nav-label">Verify my Account</span></a>
 </li>
-<?php
-	}
-?>
 <?php } else{} ?>
 
 
@@ -374,16 +366,16 @@ if($count_order_history){ ?>
 <?php if($url == 'support') {?>
 <li class="active">
 <a href=""><i class="fa fa-support"></i> <span class="nav-label">Support</span> <span class="fa arrow"></span></a>
-<ul class="nav nav-second-level">
-		<li><a href="http://support.gsmstockmarket.com/customer/portal/topics/744522-frequently-asked-questions/questions" target="_blank"><i class="fa fa-question"></i> FAQ</a></li>
+<ul class="nav nav-second-level"><!--
+		<li><a href="http://support.gsmstockmarket.com/customer/portal/topics/744522-frequently-asked-questions/questions" target="_blank"><i class="fa fa-question"></i> FAQ</a></li>-->
 		<li><a href="support/submit_ticket"><i class="fa fa-ticket"></i> Submit a Ticket</a></li>
 </ul>
 </li>
 <?php } else {?>
 <li>
 <a href=""><i class="fa fa-support"></i> <span class="nav-label">Support</span> <span class="fa arrow"></span></a>
-<ul class="nav nav-second-level">
-		<li><a href="http://support.gsmstockmarket.com/customer/portal/topics/744522-frequently-asked-questions/questions" target="_blank"><i class="fa fa-question"></i> FAQ</a></li>
+<ul class="nav nav-second-level"><!--
+		<li><a href="http://support.gsmstockmarket.com/customer/portal/topics/744522-frequently-asked-questions/questions" target="_blank"><i class="fa fa-question"></i> FAQ</a></li>-->
 		<li><a href="support/submit_ticket"><i class="fa fa-ticket"></i> Submit a Ticket</a></li>
 </ul>
 </li>
@@ -393,8 +385,8 @@ if($count_order_history){ ?>
 <li class="active">
 <a href=""><i class="fa fa-cog"></i> <span class="nav-label">Preferences</span> <span class="fa arrow"></span></a>
 <ul class="nav nav-second-level">
-		<li><a href="preferences/password"><i class="fa fa-lock"></i> Change Password</a></li>
-		<li><a href="preferences/subscription"><i class="fa fa-cubes"></i> My Subscription</a></li>
+		<li><a href="preferences/password"><i class="fa fa-lock"></i> Change Password</a></li><!--
+		<li><a href="preferences/subscription"><i class="fa fa-cubes"></i> My Subscription</a></li>-->
 		<li><a href="preferences/notification"><i class="fa fa-newspaper-o"></i> Notifications</a></li>
 		<li><a href="tradereference/"><i class="fa fa-slideshare"></i> Trade Reference</a></li><!-- 
                 <li><a href="preferences/invitation"><i class="fa fa-sitemap"></i> Invitations</a></li> -->
@@ -405,8 +397,8 @@ if($count_order_history){ ?>
 <li>
 <a href=""><i class="fa fa-cog"></i> <span class="nav-label">Preferences</span> <span class="fa arrow"></span></a>
 <ul class="nav nav-second-level">
-		<li><a href="preferences/password"><i class="fa fa-lock"></i> Change Password</a></li>
-		<li><a href="preferences/subscription"><i class="fa fa-cubes"></i> My Subscription</a></li>
+		<li><a href="preferences/password"><i class="fa fa-lock"></i> Change Password</a></li><!--
+		<li><a href="preferences/subscription"><i class="fa fa-cubes"></i> My Subscription</a></li>-->
 		<li><a href="preferences/notification"><i class="fa fa-newspaper-o"></i> Notifications</a></li>
 		<li><a href="tradereference/"><i class="fa fa-slideshare"></i> Trade Reference</a></li><!-- 
                 <li><a href="preferences/invitation"><i class="fa fa-sitemap"></i> Invitations</a></li> -->
@@ -433,46 +425,25 @@ function autoRefresh_div()
 setInterval('autoRefresh_div()', 50000); 
 </script>
 
-<?php if($member->membership > 1 && $member->marketplace == 'inactive'){ ?>
+<?php if($member->membership < 2){ ?>
 <!-- Modal Upgrade -->
 <div class="modal inmodal fade" id="upgrade" tabindex="-1" role="dialog"  aria-hidden="true">
 <div class="modal-dialog modal-lg">
 <div class="modal-content">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title">Trade References Required</h4>
-        <small class="font-bold">Access unavailble</small>
+        <h4 class="modal-title">Your account is <strong>Unverified</strong></h4>
+        <small class="font-bold">Verify your account now!</small>
     </div>
 
     <div class="modal-body">
       <p>This page is unavailable until we have approved two (2) trade references for your account and have run a credit check on your company.</p>
+      <p>This process is completely free and we do this for the benefit of our users to improve the security and safety of our platform.</p>
       <p>Once this has been completed you will be able to have full access to our live marketplace. <a href="tradereference">Submit your trade references now</a>.</p>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-        <a href="preferences/subscription" class="btn btn-primary">Upgrade Now</a>
-    </div>
-</div>
-</div>
-</div>
-<?php } else { ?>
-<!-- Modal Upgrade -->
-<div class="modal inmodal fade" id="upgrade" tabindex="-1" role="dialog"  aria-hidden="true">
-<div class="modal-dialog modal-lg">
-<div class="modal-content">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title">Upgrade Subscription</h4>
-        <small class="font-bold">Access unavailble</small>
-    </div>
-
-    <div class="modal-body">
-      <p>The <strong>Upgrade your subscription</strong> to silver membership to access this page.</p>
-      <p>Get started today by submitted two (2) trade references and upgrading to silver to membership to use our marketplace and search for companies on our platform</p>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-        <a href="preferences/subscription" class="btn btn-primary">Upgrade Now</a>
+        <a href="tradereference" class="btn btn-primary">Verify my Account</a>
     </div>
 </div>
 </div>

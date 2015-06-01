@@ -10,15 +10,14 @@
     </div>
 
 	<div class="wrapper wrapper-content animated fadeInRight">
-    <?php $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id); if($member->membership == 1){ ?>
-            <div class="alert alert-info">
-        <p><i class="fa fa-info-circle"></i> <strong>This is a Demo</strong> Silver members and above with criteria met will have access to the live marketplace. You can view your listings and edit them in real time on the marketplace. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
-            </div>
-
-<?php } else if($member->membership == 2 && $member->marketplace == 'inactive'){?>
-            <div class="alert alert-warning">
-                <p><i class="fa fa-warning"></i> You still need to supply 2 trade references so we can enable your membership to view profiles and access the marketplace. <a class="alert-link" href="tradereference">Submit trade references</a>.</p>
-            </div>
+    
+    <?php 	$id = $this->session->userdata('members_id');
+		$member = $this->member_model->get_where($id);
+		if($member->membership < 2){
+?>
+    <div class="alert alert-danger">
+    <p><i class="fa fa-warning"></i> Attention <?php echo $this->session->userdata('firstname');?>! Your account is <strong>Unverified</strong>. You will be unable to access the live platform until you have submitted <a class="alert-link" href="tradereference">two (2) trade references</a> to become a verified member.</p>
+    </div>
 <?php } else {?>
             <div class="alert alert-info">
                 <p><i class="fa fa-warning"></i> Welcome to the <strong>GSM Marketplace v1.0a</strong>. Our marketplace is now live! If you have any issues or trouble using the marketplace please let us know by <a class="alert-link" href="support/submit_ticket">submitting a ticket</a> or if you have any ideas or feedback then <a class="alert-link" href="support/submit_ticket">let us know!</a></p>
@@ -31,7 +30,9 @@
 				<div class="ibox float-e-margins">
 				<div class="ibox-title">
 					<h5>Buying Requests (WTB)</h5>
+                     <?php if($member->membership > 1){?>
                     <a href="marketplace/buy_listing/" class="pull-right btn btn-primary btn-xs" style="margin-right:8px"><i class="fa fa-plus"></i> Create WTB Listing</a>
+                    <?php } ?>
 				</div>
 				<div class="ibox-content">
 					<table class="table table-striped table-bordered table-hover selling_offers" >
@@ -89,7 +90,9 @@
 <div class="ibox float-e-margins">
 <div class="ibox-title">
     <h5>Selling Offers (WTS)</h5>
+                     <?php if($member->membership > 1){?>
     <a href="marketplace/sell_listing/" class="pull-right btn btn-primary btn-xs" style="margin-right:8px"><i class="fa fa-plus"></i> Create WTS Listing</a>
+                    <?php } ?>
 </div>
 <div class="ibox-content">
 <table class="table table-striped table-bordered table-hover buying_requests" >

@@ -26,18 +26,15 @@ $comp_member_count = count($company_users);
                 <div class="col-lg-2"></div>
             </div>
 
-<?php $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id);
-if($member->membership == 1 ){ ?>
-            <div class="alert alert-info" style="margin:15px 15px -15px">
-                <p><i class="fa fa-info-circle"></i> See what your profile looks like to others. Make sure you complete your profile and upload a company logo for maximum visibility on our platform.</p>
-            </div>
-
-<?php } else if($member->membership == 2 && $member->marketplace == 'inactive'){?>
-            <div class="alert alert-warning" style="margin:15px 15px -15px">
-                <p><i class="fa fa-warning"></i> Remember to supply 2 trade references so we can enable your membership to view profiles and access the marketplace. <a class="alert-link" href="tradereference">Submit trade references</a>.</p>
-            </div>
-
-<?php }?>
+<?php 	$id = $this->session->userdata('members_id');
+		$member = $this->member_model->get_where($id);
+		if($member->membership > 1){
+?>
+<?php } else { ?>
+    <div class="alert alert-danger" style="margin:15px 15px -15px">
+    <p><i class="fa fa-warning"></i> Attention <?php echo $this->session->userdata('firstname');?>! Your account is <strong>Unverified</strong>. You will be unable to access the live platform until you have submitted <a class="alert-link" href="tradereference">two (2) trade references</a> to become a verified member.</p>
+    </div>
+<?php } ?>
             
            <div class="row">
             <div class="col-lg-9">

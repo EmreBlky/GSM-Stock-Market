@@ -61,6 +61,14 @@ function country($name)
 
 
 <div class="wrapper wrapper-content  animated fadeInRight">
+<?php 	$id = $this->session->userdata('members_id');
+		$member = $this->member_model->get_where($id);
+		if($member->membership < 2 ){
+?>
+    <div class="alert alert-danger">
+    <p><i class="fa fa-warning"></i> Attention <?php echo $this->session->userdata('firstname');?>! Your account is <strong>Unverified</strong>. You will be unable to access the live platform until you have submitted <a class="alert-link" href="tradereference">two (2) trade references</a> to become a verified member.</p>
+    </div>
+<?php } ?>
 
 
 <div class="row">
@@ -214,10 +222,6 @@ if($mem_id > 1){
     </div>
     
     <?php } else{ ?>
-    
-    <div class="alert alert-info" style="margin:0 0 15px">
-    	<p><i class="fa fa-info-circle"></i> As a silver member you can view who is attending this event and message them on the website to setup a meeting or view their profile. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
-    </div>
     
     <div class="row">
     
