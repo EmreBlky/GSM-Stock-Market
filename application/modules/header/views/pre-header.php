@@ -51,14 +51,16 @@
     <script type="text/javascript">
         $(function(){
             // naveed: Tooltip problem solved ( caused by tooltip on td - bad approach by the prev. developer )
-            var td = $("td[data-toggle=tooltip]");
-            var placement = td.data("placement");
-            var tdHtml = td.html();
-            var tdTitle = td.attr("title");
-            // create span
-            var childOfTd = "<span data-toggle='tooltip' data-placement='"+placement+"' title='"+tdTitle+"'>"+tdHtml+"</span>";
-            // insert span
-            td.removeAttr("data-toggle").removeAttr("data-placement").removeAttr("title").html(childOfTd);
+            $("td[data-toggle=tooltip]").each(function () {
+                var td = $(this);
+                var placement = td.data("placement");
+                var tdHtml = td.html();
+                var tdTitle = td.attr("title");
+                // create span
+                var childOfTd = "<span data-toggle='tooltip' data-placement='"+placement+"' title='"+tdTitle+"'>"+tdHtml+"</span>";
+                // insert span
+                td.removeAttr("data-toggle").removeAttr("data-placement").removeAttr("title").html(childOfTd);
+            });
             // initialize tooltip
             $("[data-toggle=tooltip]").tooltip();
         });

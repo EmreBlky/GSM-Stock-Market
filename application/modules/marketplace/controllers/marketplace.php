@@ -632,7 +632,6 @@ class Marketplace extends MX_Controller {
 
             $list_update = '';
             if (!empty($list_id)) {
-
                 $list_update = $this->marketplace_model->get_row('listing', array('id' => $list_id));
             }
 
@@ -1448,8 +1447,8 @@ class Marketplace extends MX_Controller {
                 $param_thumb = array();
                 $param_thumb['source_path'] = './public/upload/listing/';
                 $param_thumb['destination_path'] = './public/upload/listing/thumbnail/';
-                $param_thumb['width'] = '400';
-                $param_thumb['height'] = '400';
+                $param_thumb['width'] = '75';
+                $param_thumb['height'] = '60';
                 $param_thumb['file_name'] = $data['file_name'];
                 create_thumbnail($param_thumb);
                 $this->session->unset_userdata('image1_check');
@@ -1494,8 +1493,8 @@ class Marketplace extends MX_Controller {
                     $param_thumb = array();
                     $param_thumb['source_path'] = './public/upload/listing/';
                     $param_thumb['destination_path'] = './public/upload/listing/thumbnail/';
-                    $param_thumb['width'] = '400';
-                    $param_thumb['height'] = '400';
+                    $param_thumb['width'] = '75';
+                    $param_thumb['height'] = '60';
                     $param_thumb['file_name'] = $data['file_name'];
                     create_thumbnail($param_thumb);
                     $this->session->unset_userdata('image2_check2');
@@ -1540,8 +1539,8 @@ class Marketplace extends MX_Controller {
                     $param_thumb = array();
                     $param_thumb['source_path'] = './public/upload/listing/';
                     $param_thumb['destination_path'] = './public/upload/listing/thumbnail/';
-                    $param_thumb['width'] = '400';
-                    $param_thumb['height'] = '400';
+                    $param_thumb['width'] = '75';
+                    $param_thumb['height'] = '60';
                     $param_thumb['file_name'] = $data['file_name'];
                     create_thumbnail($param_thumb);
                     $this->session->unset_userdata('image3_check3');
@@ -1587,8 +1586,8 @@ class Marketplace extends MX_Controller {
                     $param_thumb = array();
                     $param_thumb['source_path'] = './public/upload/listing/';
                     $param_thumb['destination_path'] = './public/upload/listing/thumbnail/';
-                    $param_thumb['width'] = '400';
-                    $param_thumb['height'] = '400';
+                    $param_thumb['width'] = '75';
+                    $param_thumb['height'] = '60';
                     $param_thumb['file_name'] = $data['file_name'];
                     create_thumbnail($param_thumb);
                     $this->session->unset_userdata('image4_check4');
@@ -1633,8 +1632,8 @@ class Marketplace extends MX_Controller {
                     $param_thumb = array();
                     $param_thumb['source_path'] = './public/upload/listing/';
                     $param_thumb['destination_path'] = './public/upload/listing/thumbnail/';
-                    $param_thumb['width'] = '400';
-                    $param_thumb['height'] = '400';
+                    $param_thumb['width'] = '75';
+                    $param_thumb['height'] = '60';
                     $param_thumb['file_name'] = $data['file_name'];
                     create_thumbnail($param_thumb);
                     $this->session->unset_userdata('image5_check5');

@@ -456,4 +456,110 @@ class Tradereference extends MX_Controller
 
             redirect('tradereference/');
     }
+    
+    function unconfirmed($reminder = NULL)
+    {
+        $trades_1 = $this->tradereference_model->get_where_multiples('trade_1_confirm', 'no');
+        
+        //echo '<h1>Trade 1</h1>';
+        //print_r($trade_1);
+        foreach($trades_1 as $trade_1){
+            
+            if($trade_1->trade_1_email){
+//                echo '<hr>';
+//                echo $trade_1->trade_1_name.'<br/>';
+//                echo $trade_1->trade_1_email.'<br/>';
+//                echo $trade_1->trade_1_code.'<br/>';
+//                echo '<hr>';
+                $this->chase_up($trade_1->trade_1_name, $trade_1->trade_1_email, $trade_1->trade_1_code, $reminder);
+            }
+        }
+        
+        //echo '<h1>Trade 2</h1>';        
+        $trades_2 = $this->tradereference_model->get_where_multiples('trade_2_confirm', 'no');
+        
+        //echo '<pre>';
+        //print_r($trade_1);
+        foreach($trades_2 as $trade_2){
+            
+            if($trade_2->trade_2_email){
+//                echo '<hr>';
+//                echo $trade_2->trade_2_name.'<br/>';
+//                echo $trade_2->trade_2_email.'<br/>';
+//                echo $trade_2->trade_2_code.'<br/>';
+//                echo '<hr>';
+                $this->chase_up($trade_2->trade_2_name, $trade_2->trade_2_email, $trade_2->trade_2_code, $reminder);
+            }
+        }
+    }
+            
+    function chase_up($name, $email, $code, $reminder = NULL){
+        
+        $this->load->module('emails');
+        $config = Array(
+                        'protocol' => 'smtp',
+                        'smtp_host' => 'ssl://server.gsmstockmarket.com',
+                        'smtp_port' => 465,
+                        'smtp_user' => 'noreply@gsmstockmarket.com',
+                        'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
+                        'charset' => 'utf-8',
+                        'wordwrap' => TRUE,
+                        'newline' => "\r\n",
+                        'crlf'    => ""
+                    );
+
+        $this->load->library('email', $config);
+        $this->email->set_mailtype("html");
+
+        $email_body = '<table class="body-wrap" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;background-color: #f6f6f6;width: 100%;">
+                                    <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                    <td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;"></td>
+                                    <td class="container" width="600" style="margin: 0 auto !important;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;display: block !important;max-width: 600px !important;clear: both !important;">
+                                    <div class="content" style="margin: 0 auto;padding: 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;max-width: 600px;display: block;">
+                                    <table class="main" width="100%" cellpadding="0" cellspacing="0" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;background: #fff;border: 1px solid #e9e9e9;border-radius: 3px;">
+                                    <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                    <td class="content-wrap" style="margin: 0;padding: 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                                    <table cellpadding="0" cellspacing="0" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                    <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                    <td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                                    <img class="img-responsive" src="'.$this->config->item('base_url').'public/main/template/gsm/images/email/header.png" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;max-width: 100%;">
+                                    </td>
+                                    </tr>
+                                    <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                    <td class="content-block" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                                    <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">Dear '.$name.',</p>
+                                    <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">You have been assigned as a reference for GSMStockMarket.com Limited.</p>
+                                    <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">Please could you click on the link below:</p>
+                                    </td>
+                                    </tr>
+                                    <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                    <td class="content-block aligncenter" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                                    <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">'.$this->config->item('base_url').'tradereference/confirm/'.$code.'</p>
+                                    </td>
+                                    </tr>
+                                    <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                    <td class="content-block" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                                    <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">If you need any assistance please call us on +44 (0)1494 717321 or use the online ticketing customer support within your account and we’ll be happy to help you.</p>
+                                    <p style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;margin-bottom: 10px;font-weight: normal;">Many Thanks,<br style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                    GSMStockMarket Team</p>
+                                    </td>
+                                    </tr>
+                                    </table>
+                                    </td>
+                                    </tr>
+                                    </table></div>
+                                    </td>
+                                    <td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;"></td>
+                                    </tr>
+                                    </table>';
+
+            $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Support');
+
+            $this->email->to($email);
+            $this->email->subject('GSM Stockmarket Trade Reference');
+            $this->email->message($email_body);
+
+            $this->email->send();
+        
+    }
 }

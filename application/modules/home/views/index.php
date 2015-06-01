@@ -9,14 +9,20 @@ $this->load->module('feedback');
 $overall = $this->feedback->overallScore($this->session->userdata('members_id'));
 ?>
 <div class="wrapper wrapper-content">
-<?php if($terms == 'no') {?>
+<?php  $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id); if($member->membership == 2 && $member->marketplace == 'inactive'){?>
+<div class="alert alert-warning" style="margin-bottom:25px;">
+<p><i class="fa fa-warning"></i> Remember to supply 2 trade references so we can enable your membership to view profiles and access the marketplace. <a class="alert-link" href="tradereference">Submit trade references</a>.</p>
+</div>
+
+<?php }?>
+<?php if( $terms == 'no' ) {?>
 <div class="alert alert-warning" style="margin-bottom:25px;">
 The terms and conditions have been updated. Please can you confirm that you have read and acknowledged the <a class="alert-link" href="legal/terms_conditions">Terms &amp; Conditions</a> before you can proceed with using this website.
 </div>
 <?php } ?>
 <?php if($this->session->userdata('membership') < 2) {?>
-<div class="alert alert-danger" style="margin-bottom:25px;">
-<p><i class="fa fa-warning"></i> Attention <?php echo $this->session->userdata('firstname');?>! Your account is <strong>Unverified</strong>. You will be unable to access the live platform until you have submitted <a class="alert-link" href="tradereference">two (2) trade references</a> to become a verified member.</p>
+<div class="alert alert-info" style="margin-bottom:25px;">
+Welcome <?php echo $this->session->userdata('firstname');?>! You currently have Bronze membership status. This Dashboard is an example of what Silver members will see. Your personalised Dashboard is a snapshot of total sales, purchases, number of profile visits, messages and your feedback rating from completed deals.  You can also see a summary of your Marketplace for current Buying requests, Selling offers and products you are watching. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>
 </div>
 <div class="row">
 
@@ -529,51 +535,51 @@ var mapData = {
 <?php } else {?>
 <div class="row">
 <?php 
-          $member_id=$this->session->userdata('members_id');
-          $current_currency='';
-                  $current_currency_no='';
-                  $current_currency_sign=''; 
-            $this->session->set_userdata('curent_currency',$member->currency);
-             
-             if(!empty($member->currency) && ($member->currency=='EURO') ){
-                $current_currency= '&euro;';
-                $current_currency_no = '2';
-                $current_currency_sign= 'EURO';
+    $member_id=$this->session->userdata('members_id');
+    $current_currency='';
+          $current_currency_no='';
+          $current_currency_sign='';
+    $this->session->set_userdata('curent_currency',$member->currency);
 
-              }elseif (!empty($member->currency) && ($member->currency=='USD')) {
-                $current_currency= '$';
-                $current_currency_no = '3';
-                $current_currency_sign= 'USD';
-              }elseif (!empty($member->currency) && ($member->currency=='GBP')) {
-                $current_currency= '&pound';
-                $current_currency_no = '1';
-                $current_currency_sign= 'GBP';
+     if(!empty($member->currency) && ($member->currency=='EURO') ){
+        $current_currency= '&euro;';
+        $current_currency_no = '2';
+        $current_currency_sign= 'EURO';
+
+      }elseif (!empty($member->currency) && ($member->currency=='USD')) {
+        $current_currency= '$';
+        $current_currency_no = '3';
+        $current_currency_sign= 'USD';
+      }elseif (!empty($member->currency) && ($member->currency=='GBP')) {
+        $current_currency= '&pound';
+        $current_currency_no = '1';
+        $current_currency_sign= 'GBP';
+    }
+    $total_sales_price='0';
+    $total_price='0';
+    if(!empty($total_sales_transaction)){
+        foreach ( $total_sales_transaction as $value ) {
+            if($value->buyer_currency!=$current_currency_no){
+                $total_price = get_currency(currency_class($value->buyer_currency), $current_currency_sign, $value->total_price);
+                $total_sales_price+= $total_price;
+            }else{
+               $total_sales_price+= $value->total_price;
             }
-                $total_sales_price='0';
-                $total_price='0';     
-                if(!empty($total_sales_transaction)){          
-                foreach ($total_sales_transaction as  $value) {                 
-                    if($value->buyer_currency!=$current_currency_no){                  
-                        $total_price = get_currency(currency_class($value->buyer_currency), $current_currency_sign, $value->total_price);
-                        $total_sales_price+= $total_price; 
-                    }else{
-                       $total_sales_price+= $value->total_price; 
-                    } 
-                 }
-               } 
-                $total_purchase_price='0';   
-                $total_price='0'; 
-               if(!empty($total_purchase_transaction)){             
-                foreach ($total_purchase_transaction as  $value_purchase) {                 
-                    if($value_purchase->buyer_currency!=$current_currency_no){                  
-                        $total_price = get_currency(currency_class($value_purchase->buyer_currency), $current_currency_sign, $value_purchase->total_price);
-                        $total_purchase_price+= $total_price; 
-                    }else{
-                       $total_purchase_price+= $value_purchase->total_price; 
-                    } 
-                 }
-                } 
-                ?>   
+        }
+    }
+    $total_purchase_price='0';
+    $total_price='0';
+    if(!empty($total_purchase_transaction)){
+        foreach ($total_purchase_transaction as  $value_purchase) {
+            if($value_purchase->buyer_currency!=$current_currency_no){
+                $total_price = get_currency(currency_class($value_purchase->buyer_currency), $current_currency_sign, $value_purchase->total_price);
+                $total_purchase_price+= $total_price;
+            }else{
+                $total_purchase_price+= $value_purchase->total_price;
+            }
+        }
+    }
+?>
 <div class="col-lg-3">
 
 <div class="ibox float-e-margins">
@@ -582,10 +588,10 @@ var mapData = {
 <h5>My Sales</h5>
 </div>
 <div class="ibox-content no_sub">
-<h1 class="no-margins">
-            <?php echo $current_currency;
-             echo $total_sales_price;
-             ?> </h1>
+    <h1 class="no-margins">
+        <?php echo $current_currency;
+         echo $total_sales_price;
+     ?> </h1>
 <div class="stat-percent font-bold text-success">0% <i class="fa fa-level-up"></i></div>
 <small>Total income</small>
 </div>
