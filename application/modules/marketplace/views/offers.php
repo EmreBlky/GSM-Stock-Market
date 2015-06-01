@@ -59,7 +59,7 @@ $member_id=$this->session->userdata('members_id');?>
 				<td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php if ($value->device_capacity > 0) { ?><?php echo $value->device_capacity; ?><?php } ?> <?php if ($value->spec > 0) { ?><?php echo $value->spec; ?><?php } ?> <?php if(!empty($value->product_mpn_isbn)){ echo '('.$value->product_mpn_isbn.')'; } ?></td>
                 <td><?php echo $value->product_type; ?></td>
                 <td><?php echo $value->condition; ?></td>
-                <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
+                <td><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
                 <td><?php echo $value->qty_available; ?></td>
                 <td class="text-center">
                 <a class="btn btn-info" onclick="view_offer(<?php echo $value->id; ?>,1)" data-toggle="modal" data-target="#buyer_offers"><i class="fa fa-paste"></i> View Offer </a>
@@ -113,7 +113,7 @@ $member_id=$this->session->userdata('members_id');?>
 				<td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?> <?php if ($value->device_capacity > 0) { ?><?php echo $value->device_capacity; ?><?php } ?> <?php if ($value->spec > 0) { ?><?php echo $value->spec; ?><?php } ?> <?php if(!empty($value->product_mpn_isbn)){ echo '('.$value->product_mpn_isbn.')'; } ?></td>
                 <td><?php echo $value->product_type; ?></td>
                 <td><?php echo $value->condition; ?></td>
-                <td data-toggle="tooltip" data-placement="left" title="&pound; <?php echo get_currency(currency_class($value->currency), 'GBP', $value->unit_price); ?>,&euro; <?php echo get_currency(currency_class($value->currency), 'EUR', $value->unit_price); ?>,$ <?php echo get_currency(currency_class($value->currency), 'USD', $value->unit_price); ?>"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
+                <td><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
                 <td><?php echo $value->qty_available; ?></td>
                 <td class="text-center">
                 <a onclick="view_offer(<?php echo $value->id; ?>,1)" class="btn btn-info"  data-toggle="modal" data-target="#view_offers"><i class="fa fa-paste"></i> View Offer </a>
