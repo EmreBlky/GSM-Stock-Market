@@ -51,7 +51,7 @@ $member_id=$this->session->userdata('members_id');?>
                 <td><?php echo date('d-M, H:i', strtotime($value->listing_end_datetime)); ?></td>
                 <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
                 <td><?php echo $value->condition; ?></td>
-                <td data-toggle="tooltip" data-placement="left" title="t"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
+                <td><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
                 <td><?php echo $value->qty_available; ?></td>
                 <td><?php echo $value->spec; ?></td>
                 <td class="text-center">
@@ -102,7 +102,7 @@ $member_id=$this->session->userdata('members_id');?>
                 <td><?php echo date('d-M, H:i', strtotime($value->listing_end_datetime)); ?></td>
                 <td><?php echo $value->product_make; ?> <?php echo $value->product_model; ?></td>
                 <td><?php echo $value->condition; ?></td>
-                <td data-toggle="tooltip" data-placement="left" title="t"><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
+                <td><?php echo currency_class($value->currency); ?> <?php echo $value->unit_price; ?></td>
                 <td><?php echo $value->qty_available; ?></td>
                 <td><?php echo $value->spec; ?></td>
                 <td class="text-center">
