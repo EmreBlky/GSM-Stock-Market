@@ -10,6 +10,8 @@
   </div>
 
   <div class="wrapper wrapper-content animated fadeInRight">
+      <?php echo $this->session->flashdata('confirm')?>
+      
 <?php
     $attributes = array('class' => 'form-horizontal');
     echo form_open('preferences/sendInvites', $attributes);

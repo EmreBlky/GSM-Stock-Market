@@ -2,7 +2,7 @@
 
 //echo '<pre>';
 //echo $credit_count;
-//print_r($company);
+//print_r($credit);
 //exit;
 
 ?>
@@ -79,10 +79,10 @@ if(is_numeric($id)){?>
                         <?php foreach($credit as $credit) {?>    
                             <tr>                            
                                 <td>
-                                    <span class="pie"><?php echo $this->company_model->get_where($this->member_model->get_where($credit->id)->company_id)->company_name; ?></span>
+                                    <span class="pie"><?php echo $credit->company_name; ?></span>
                                 </td>
                                 <td>
-                                   <span class="pie"><?php echo $this->membership_model->get_where($this->member_model->get_where($credit->id)->membership)->membership; ?></span> 
+                                   <span class="pie"><?php echo $this->membership_model->get_where($this->member_model->get_where($credit->admin_member_id)->membership)->membership; ?></span> 
                                 </td>
                                 <td>
                                     <a href="admin/edit_credit/<?php echo $credit->id;?>"><i class="fa fa-book"></i> Edit</a>
