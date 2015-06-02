@@ -83,11 +83,11 @@
     <p class="small">This is just a transaction receipt and not a tax/vat invoice</p>
     </div>
 
-<script>
-function myFunction() {
-    window.print('marketplace/invoice_print');
-}
-</script>
+
+
+    <script type="text/javascript">
+        window.print();
+    </script>
 
 <!-- Mainly scripts -->
 <script src="public/main/template/core/js/jquery-2.1.1.js"></script>
