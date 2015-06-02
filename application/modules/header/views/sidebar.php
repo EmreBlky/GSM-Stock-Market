@@ -1,8 +1,12 @@
 <?php
 $this->load->model('member/member_model', 'member_model');
+$this->load->model('company/company_model', 'company_model');
 $this->load->model('membership/membership_model', 'membership_model');
 $member = $this->member_model->get_where($this->session->userdata('members_id'));
+$company = $this->company_model->get_where($member->company_id);
 //echo $member->membership;
+//echo '<pre>';
+//print_r($company);
 //exit;
 ?>
 <?php $url = $this->uri->segment(1);?>
@@ -132,7 +136,7 @@ $countmy_listing=countmy_listing();
 $count_order_history=count_order_history();
 $count_negotiation=count_negotiation();
 
-if($member->membership > 1 && $member->marketplace == 'active'){ ?>
+if($member->membership > 1 && $company->marketplace == 'active'){ ?>
 <?php if($url == 'marketplace') {?>
 <li class="active">
 <a href="marketplace/notice">
