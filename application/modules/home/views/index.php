@@ -559,7 +559,7 @@ var mapData = {
     $total_price='0';
     if(!empty($total_sales_transaction)){
         foreach ( $total_sales_transaction as $value ) {
-            if($value->buyer_currency!=$current_currency_no){
+            if($value->buyer_currency != $current_currency_no){
                 $total_price = get_currency(currency_class($value->buyer_currency), $current_currency_sign, $value->total_price);
                 $total_sales_price+= $total_price;
             }else{
@@ -570,8 +570,8 @@ var mapData = {
     $total_purchase_price='0';
     $total_price='0';
     if(!empty($total_purchase_transaction)){
-        foreach ($total_purchase_transaction as  $value_purchase) {
-            if($value_purchase->buyer_currency!=$current_currency_no){
+        foreach ($total_purchase_transaction as $value_purchase) {
+            if($value_purchase->buyer_currency != $current_currency_no){
                 $total_price = get_currency(currency_class($value_purchase->buyer_currency), $current_currency_sign, $value_purchase->total_price);
                 $total_purchase_price+= $total_price;
             }else{

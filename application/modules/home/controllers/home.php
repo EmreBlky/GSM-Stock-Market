@@ -36,8 +36,12 @@ class Home extends MX_Controller
         
         $this->load->model('member/member_model', 'member_model');
         $data['terms'] = $this->member_model->get_where($this->session->userdata('members_id'))->terms_conditions;
-       
-        $data['total_sales_transaction'] = $this->home_model->total_sales_transaction();          
+
+        // Naveed:
+        $data['duration'] = $this->home_model->selectedDuration();
+
+        $data['total_sales_transaction'] = $this->home_model->recentSalesTransactions($data['duration']);
+        //\nvd\custom\libraries\pr($data['total_sales_transaction']); exit;
         $data['total_purchase_transaction'] = $this->home_model->total_purchase_transaction();     
         //$data['buying_requests'] = $this->home_model->buying_requests();     
         //$data['selling_offers'] = $this->home_model->selling_offers();  
@@ -50,6 +54,8 @@ class Home extends MX_Controller
             $order_type=$_GET['q'];
             }
         $data['order_type']=$order_type;
+
+
         $this->load->module('templates');
         $this->templates->page($data);
 

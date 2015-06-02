@@ -1,13 +1,47 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Home_model extends MY_Model {
+
+    public $durationArray = [
+        'Monthly' => 30,
+        'Quarterly' => 90,
+        'Semi-Annually' => 180,
+        'Annual' => 365,
+        'Lifetime' => '',
+    ];
+
     function __construct()
     {
-		
 		parent::__construct();
 		$this->table = 'pages';
 	
 	}
-	public function total_sales_transaction()
+
+    public function selectedDuration()
+    {
+        if( isset( $_GET['duration'] ) && array_key_exists( $_GET['duration'], $this->durationArray ) )
+            return $_GET['duration'];
+        return 'Monthly';
+    }
+
+    /**
+     * @param $duration
+     * @param null $endTimeStamp
+     * @return bool
+     */
+    public function recentSalesTransactions( $duration, $endTimeStamp = null ){
+        if(!$endTimeStamp) $endTimeStamp = time();
+        if( !array_key_exists($duration,$this->durationArray) || empty($this->durationArray[$duration]) )
+            return $this->total_sales_transaction(); // invalid duration string or it is equal to Lifetime
+        $seconds = $this->durationArray[$duration] * 24 * 60 * 60;
+        $startTimeStamp = $endTimeStamp - $seconds;
+        $startDate = date("Y-m-d H:i:s", $startTimeStamp); //format: 2015-05-09 08:52:01
+        $endDate = date("Y-m-d H:i:s", $endTimeStamp); //format: 2015-05-09 08:52:01
+        //echo "startDate: $startDate<br>";
+        //echo "endDate: $endDate<br>";
+        return $this->total_sales_transaction($startDate,$endDate);
+    }
+
+	public function total_sales_transaction( $startDateTime = null, $endDateTime = null )
 	{
 		 $member_id=$this->session->userdata('members_id');
 		// $this->db->select_sum('make_offer.total_price');
@@ -15,6 +49,8 @@ class Home_model extends MY_Model {
 		 $this->db->where('make_offer.seller_history','1');
 		 $this->db->where('make_offer.offer_status',1);
 		 $this->db->where('make_offer.seller_id',$member_id);
+        $startDateTime and $this->db->where("payment_recevied_datetime >= '{$startDateTime}'");
+        $endDateTime and $this->db->where("payment_recevied_datetime < '{$endDateTime}'");
          $query = $this->db->get('make_offer');
 			if($query->num_rows()>0)
 				return $query->result();
