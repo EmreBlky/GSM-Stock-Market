@@ -59,7 +59,7 @@ class Home extends MX_Controller
         $data['total_sales_price'] = $this->home_model->getTotal( $total_sales_transaction, $current_currency_no, $current_currency_sign  );
         $diff = $data['total_sales_price'] - $previous_sales_price;
         $divider = $diff > 0 ? $data['total_sales_price'] : $previous_sales_price;
-        $data['percent_sale_progress'] = round( $diff / $divider * 100 );
+        $data['percent_sale_progress'] = $divider > 0 ? round( $diff / $divider * 100 ) : 0;
 
         // Purchase Info --------------------------------------------------
         $total_purchase_transaction = $this->home_model->getTransactions( 'purchase', $data['duration'] );
@@ -68,7 +68,7 @@ class Home extends MX_Controller
         $previous_purchase_price = $this->home_model->getTotal( $previous_purchase_transaction, $current_currency_no, $current_currency_sign  );
         $diff = $data['total_purchase_price'] - $previous_purchase_price;
         $divider = $diff > 0 ? $data['total_purchase_price'] : $previous_purchase_price;
-        $data['percent_purchase_progress'] = round( $diff / $divider * 100 );
+        $data['percent_purchase_progress'] = $divider > 0 ? round( $diff / $divider * 100 ) : 0;
 
         // Profile Views --------------------------------------------------
         $data['profileViewsMarkup'] = $this->home_model->recentProfileViews($data['duration']);
