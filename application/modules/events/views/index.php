@@ -24,6 +24,17 @@
 
 
 <div class="wrapper wrapper-content  animated fadeInRight">
+
+<?php 	$id = $this->session->userdata('members_id');
+		$member = $this->member_model->get_where($id);
+		if($member->membership < 2 ){
+?>
+    <div class="alert alert-danger">
+    <p><i class="fa fa-warning"></i> Attention <?php echo $this->session->userdata('firstname');?>! Your account is <strong>Unverified</strong>. You will be unable to access the live platform until you have submitted <a class="alert-link" href="tradereference">two (2) trade references</a> to become a verified member.</p>
+    </div>
+<?php } ?>
+
+
 <?php if($events_count > 0) { ?>
     
     <?php if($events_active > 0){?>

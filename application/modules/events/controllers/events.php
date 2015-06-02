@@ -53,6 +53,15 @@ class Events extends MX_Controller
             $data['event'] = $this->events_model->get_where($eid);
             $data['attendees_count'] = 0;
         }
+        
+        $att_count = $this->attending_model->_custom_query_count("SELECT COUNT(*) AS count FROM attending WHERE member_id = '".$this->session->userdata('members_id')."' AND event_id = '".$eid."'");
+          
+        if($att_count[0]->count){
+            $data['att_count'] = $att_count[0]->count;
+        }
+        else{
+            $data['att_count'] = 0;
+        }
              
         $this->load->module('templates');
         $this->templates->page($data);

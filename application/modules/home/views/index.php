@@ -9,21 +9,18 @@ $this->load->module('feedback');
 $overall = $this->feedback->overallScore($this->session->userdata('members_id'));
 ?>
 <div class="wrapper wrapper-content">
-<?php  $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id); if($member->membership == 2 && $member->marketplace == 'inactive'){?>
-<div class="alert alert-warning" style="margin-bottom:25px;">
-<p><i class="fa fa-warning"></i> Remember to supply 2 trade references so we can enable your membership to view profiles and access the marketplace. <a class="alert-link" href="tradereference">Submit trade references</a>.</p>
-</div>
-
-<?php }?>
 <?php if( $terms == 'no' ) {?>
 <div class="alert alert-warning" style="margin-bottom:25px;">
 The terms and conditions have been updated. Please can you confirm that you have read and acknowledged the <a class="alert-link" href="legal/terms_conditions">Terms &amp; Conditions</a> before you can proceed with using this website.
 </div>
 <?php } ?>
-<?php if($this->session->userdata('membership') < 2) {?>
-<div class="alert alert-info" style="margin-bottom:25px;">
-Welcome <?php echo $this->session->userdata('firstname');?>! You currently have Bronze membership status. This Dashboard is an example of what Silver members will see. Your personalised Dashboard is a snapshot of total sales, purchases, number of profile visits, messages and your feedback rating from completed deals.  You can also see a summary of your Marketplace for current Buying requests, Selling offers and products you are watching. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>
-</div>
+<?php 	$id = $this->session->userdata('members_id');
+		$member = $this->member_model->get_where($id);
+		if($member->membership < 2){
+?>
+    <div class="alert alert-danger">
+    <p><i class="fa fa-warning"></i> Attention <?php echo $this->session->userdata('firstname');?>! Your account is <strong>Unverified</strong>. You will be unable to access the live platform until you have submitted <a class="alert-link" href="tradereference">two (2) trade references</a> to become a verified member.</p>
+    </div>
 <div class="row">
 
 <div class="col-lg-3">

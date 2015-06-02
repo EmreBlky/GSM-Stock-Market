@@ -75,11 +75,11 @@ function country($name)
         			
             
             <!-- Daniel Added Start -->
-            <?php if($member->membership < 2 && $viewed_count < 1) {?> 
-            <div class="alert alert-info" style="margin:0 15px 15px">
-                <p><i class="fa fa-info-circle"></i> This page displays all the users who have viewed your profile. They will be listed as most recent first and you will be able to message them directly or view their profiles from this page if you are Silver member or above. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
+            <?php if($member->membership < 2 && $viewed_count < 1) {?>
+            <div class="alert alert-danger" style="margin:0 15px 15px">
+              <p><i class="fa fa-warning"></i> Attention <?php echo $this->session->userdata('firstname');?>! Your account is <strong>Unverified</strong>. You will be unable to access the live platform until you have submitted <a class="alert-link" href="tradereference">two (2) trade references</a> to become a verified member.</p>
             </div>
-                    
+            
             <div class="col-lg-4"><!-- Profile Widget Start -->
                 <div class="contact-box example">
                     <a href="<?php echo $base;?>member/profile/5">

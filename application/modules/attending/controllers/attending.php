@@ -42,4 +42,18 @@ class Attending extends MX_Controller
         
         $this->load->view('attending-list', $data);
     }
+    
+    function addCompany($eid, $mid)
+    {
+        $data = array(
+                    'event_id'  => $eid,
+                    'member_id' => $mid
+                    );
+        $this->attending_model->_insert($data);
+    }
+    
+    function removeCompany($eid, $mid)
+    {
+        $this->attending_model->_delete_where('event_id', $eid, 'member_id', $mid);
+    }
 }
