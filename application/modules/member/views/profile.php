@@ -248,7 +248,7 @@ if($member->marketplace == 'inactive'){ ?>
                                     
                                     <dl class="dl-horizontal full-width">                                    
                                         <dt>Phone Number:</dt>
-                                        <dd>+44 (0)1494 717321</dd>
+                                        <dd>+44 (0)207 048 0120</dd>
                                     </dl>
                                     
                                     <dl class="dl-horizontal full-width">
@@ -758,7 +758,7 @@ Item was of exceptional quality. High-standard packaging. Ever so excellent deli
                                         <dt>Role:</dt> 
                                         <dd> Website</dd>
                                         <dt>Mobile Number:</dt> 
-                                        <dd> +44 (0)1494 717321</dd>
+                                        <dd>+44 (0)207 048 0120</dd>
                                     </dl>
                     
                     

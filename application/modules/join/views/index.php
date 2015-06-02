@@ -139,7 +139,7 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label">Company Number</label>
 						<div class="col-md-9">
-                            <input type="text" class="form-control" name="company_number" placeholder="Enter your companies registered number">
+                            <input type="text" class="form-control" name="company_number" placeholder="Enter your company's registered number">
                         </div>
                     </div>
 
@@ -868,7 +868,7 @@ $.validator.addMethod("customemail", function(value, element) {
     terms: "required",
   },
   messages: {
-    company_name: "We need to know your companies name!",
+    company_name: "We need to know your company's name!",
     address_line_1: {
       required: "What is the street name your company operates from?",
 	},

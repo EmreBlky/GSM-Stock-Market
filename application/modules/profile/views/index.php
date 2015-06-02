@@ -50,9 +50,9 @@ $comp_member_count = count($company_users);
                                         <?php }?>
                                             <div class="pull-right" style="margin-right: 5px;">
                                                 <?php if($member_company->marketplace == 'active') {?>
-                                                <span class="label label-primary">VERIFIED</span>
+                                            	<button type="button" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="left" title="Your company has been verified by GSM Stock Market"><i class="fa fa-check"></i> Account Verified</button>
                                                 <?php } else {?>
-                                                <span class="label label-danger">UNVERIFIED</span>
+                                            	<a href="tradereference"><button type="button" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="left" title="Your company has not yet supplied trade references or has been credited checked by GSM Stock Market"><i class="fa fa-times"></i> Unverified</button></a>
                                                 <?php } ?>
                                             </div>
                                         <h2><?php echo $member_company->company_name;?></h2>
