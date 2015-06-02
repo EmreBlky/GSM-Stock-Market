@@ -1,5 +1,7 @@
-<?php $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id);
-if($member->membership > 1 && $member->marketplace == 'active'){ ?>
+<?php 	$id = $this->session->userdata('members_id');
+		$member = $this->member_model->get_where($id);
+		if($member->membership > 1){
+?>
 
 <script type="text/javascript">
     var regions = <?php echo json_encode($regions); ?>;
@@ -450,19 +452,13 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
 
     </div>
 </div>
-<?php if($member->membership == 1 ){ ?>
-            <div class="alert alert-info" style="margin:15px 15px -15px">
-        <p><i class="fa fa-info-circle"></i> <strong>This is a Demo</strong> Silver members and above with criteria met will have access to company search feature. You can search for any company listed on our website and view their profile/send them a message. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
-            </div>
-
-<?php } else if($member->membership == 2 && $member->marketplace == 'inactive'){?>
-            <div class="alert alert-warning" style="margin:15px 15px -15px">
-                <p><i class="fa fa-warning"></i> You still need to supply 2 trade references so we can enable your membership to use our company search feature. <a class="alert-link" href="tradereference">Submit trade references</a>.</p>
-            </div>
-
-<?php }?>
 
 <div class="wrapper wrapper-content  animated fadeInRight">
+
+    <div class="alert alert-danger">
+    <p><i class="fa fa-warning"></i> Attention <?php echo $this->session->userdata('firstname');?>! Your account is <strong>Unverified</strong>. You will be unable to access the live platform until you have submitted <a class="alert-link" href="tradereference">two (2) trade references</a> to become a verified member.</p>
+    </div>
+        
 
 <div class="row">
         <div class="col-lg-12">

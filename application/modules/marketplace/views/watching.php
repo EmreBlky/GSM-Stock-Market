@@ -16,8 +16,10 @@
     <div class="col-lg-2">
     </div>
 </div>
-<?php $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id);
-if($member->membership > 1 && $member->marketplace == 'active'){ ?>
+<?php 	$id = $this->session->userdata('members_id');
+		$member = $this->member_model->get_where($id);
+		if($member->membership > 1){
+?>
 
 <?php msg_alert(); ?>
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -110,19 +112,12 @@ if($member->membership > 1 && $member->marketplace == 'active'){ ?>
             </div>
         </div>
     </div>
-<?php } else {?>
-<?php if($member->membership == 1 ){ ?>
-            <div class="alert alert-info" style="margin:15px 15px -15px">
-        <p><i class="fa fa-info-circle"></i> <strong>This is a Demo</strong> Silver members and above with criteria met will have access to the live marketplace. This section of the marketplace show all the items you are watching. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
-            </div>
-
-<?php } else if($member->membership == 2 && $member->marketplace == 'inactive'){?>
-            <div class="alert alert-warning" style="margin:15px 15px -15px">
-                <p><i class="fa fa-warning"></i> You still need to supply 2 trade references so we can enable your membership to view profiles and access the marketplace. <a class="alert-link" href="tradereference">Submit trade references</a>.</p>
-            </div>
-
-<?php }?>
-<div class="wrapper wrapper-content animated fadeInRight"><div class="row">
+<?php } else {?>        
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="alert alert-danger">
+    <p><i class="fa fa-warning"></i> Attention <?php echo $this->session->userdata('firstname');?>! Your account is <strong>Unverified</strong>. You will be unable to access the live platform until you have submitted <a class="alert-link" href="tradereference">two (2) trade references</a> to become a verified member.</p>
+    </div>
+<div class="row">
         <div class="col-lg-12">
         <div class="ibox float-e-margins">
             <div class="ibox-title">

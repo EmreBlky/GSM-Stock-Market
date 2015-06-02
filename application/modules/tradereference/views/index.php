@@ -6,12 +6,11 @@
 ?>
   <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
-      <h2>Overview</h2>
+      <h2>Trade References</h2>
           <ol class="breadcrumb">
           <li><a href="/">Home</a></li>
           <li>Preferences</li>
-          <li>Trade References</li>
-          <li class="active"><strong>Overview</strong></li>
+          <li class="active"><strong>Trade References</strong></li>
         </ol>
     </div>
   </div><?php     
@@ -19,20 +18,18 @@
     echo $this->session->flashdata('confirm-resend');
 ?>
   
- <?php $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id);
-if($member->membership == 1 ){ ?>
-            <div class="alert alert-info" style="margin:15px 15px -15px">
-                <p><i class="fa fa-info-circle"></i> If you are looking to upgrade to silver membership we will also require two (2) trade references. You can submit them before upgrading so when your membership is accepted you can view the rest of our website straight away.</p>
-            </div>
+  <div class="wrapper wrapper-content animated fadeInRight">
+<?php 	$id = $this->session->userdata('members_id');
+		$member = $this->member_model->get_where($id);
+		if($member->membership > 1){
+?>
 
-<?php } else if($member->membership == 2 && $member->marketplace == 'inactive'){?>
-            <div class="alert alert-warning" style="margin:15px 15px -15px">
-                <p><i class="fa fa-warning"></i> Remember to supply 2 trade references so we can enable your membership to view profiles and access the marketplace.</p>
+<?php } else {?>
+            <div class="alert alert-warning">
+                <p><i class="fa fa-warning"></i> To verify your account you will need to submit two (2) trade references and be credit checked by us to confirm your account.</p>
             </div>
 
 <?php }?>
-
-  <div class="wrapper wrapper-content animated fadeInRight">
         
     <div class="row">
       <div class="col-lg-6">
@@ -52,9 +49,9 @@ if($member->membership == 1 ){ ?>
         <div class="ibox">
           <div class="ibox-title">
               <?php if($member->marketplace == 'active') { ?>
-                <span class="label label-primary pull-right">Marketplace Active</span>
+                <span class="label label-primary pull-right">Account Verified</span>
               <?php } else {?>
-                <span class="label label-danger pull-right">Marketplace Inactive</span>
+                <span class="label label-danger pull-right">Account Unverified</span>
               <?php }?>
           
           <h5>Reference Status</h5></div>
@@ -63,9 +60,9 @@ if($member->membership == 1 ){ ?>
           <div class="row">
           
           	<div class="col-md-12">            
-              <label class="col-md-9 control-label" style="text-align:right">Silver Subscription</label>
+              <label class="col-md-9 control-label" style="text-align:right">Free Membership</label>
               <div class="col-md-3">
-                  <?php if($member->membership < 2) { ?>
+                  <?php if($member->membership == 0) { ?>
                     <i class="fa fa-times" style="color:red"></i>
                   <?php } else { ?>
                     <i class="fa fa-check" style="color:green"></i>
