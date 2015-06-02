@@ -1,8 +1,8 @@
 <?php
-echo '<pre>';
+//echo '<pre>';
 //    print_r($member);
-print_r($company);
-exit;
+//print_r($company);
+//exit;
 ?>
   <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
