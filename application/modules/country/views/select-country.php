@@ -1,4 +1,4 @@
-<select class="form-control m-b" name="country" onchange = "updateCode(this.value)">
+<select class="form-control" name="country" onchange = "updateCode(this.value)">
     <?php 
         if(isset($cid) && $cid > 0){
     ?>
