@@ -1,13 +1,78 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Home_model extends MY_Model {
+
+    public $durationArray = [
+        'Monthly' => 30,
+        'Quarterly' => 90,
+        'Semi-Annually' => 180,
+        'Annual' => 365,
+        'Lifetime' => '',
+    ];
+
     function __construct()
     {
-		
 		parent::__construct();
 		$this->table = 'pages';
-	
 	}
-	public function total_sales_transaction()
+
+    private function isValidDurationStr($durationStr)
+    {
+        return array_key_exists( $durationStr, $this->durationArray );
+    }
+
+    public function selectedDuration()
+    {
+        if( isset( $_GET['duration'] ) && array_key_exists( $_GET['duration'], $this->durationArray ) )
+            return $_GET['duration'];
+        return 'Monthly';
+    }
+
+    public function getNumOfDays($durationString){
+        if(array_key_exists($durationString, $this->durationArray))
+            return $this->durationArray[$durationString];
+        return null;
+    }
+
+    public function getTotal( $transactions, $current_currency_no, $current_currency_sign )
+    {
+        $total_price = 0;
+        if(!empty($transactions)){
+            foreach ( $transactions as $value ) {
+                if($value->buyer_currency != $current_currency_no){
+                    $price = get_currency(currency_class($value->buyer_currency), $current_currency_sign, $value->total_price);
+                    $total_price+= $price;
+                }else{
+                    $total_price+= $value->total_price;
+                }
+            }
+        }
+        return $total_price;
+    }
+
+    /**
+     * @param $duration: array_keys() of $this->durationArray
+     * @param null $endTimeStamp
+     * @param string $type = sales | purchase
+     * @return bool
+     * e.g. if $duration = "Monthly" and $endTimeStamp = time()
+     * it will return transactions from a month before today till today i.e. this month's transaction
+     */
+    public function getTransactions( $type, $duration, $endTimeStamp = null ){
+        if(!$endTimeStamp) $endTimeStamp = time();
+        if( !array_key_exists($duration,$this->durationArray) || empty($this->durationArray[$duration]) )
+            // invalid duration string or it is equal to Lifetime
+            return call_user_func_array( [ $this, 'total_'.$type.'_transaction' ], []);
+
+        $seconds = $this->durationArray[$duration] * 24 * 60 * 60;
+        $startTimeStamp = $endTimeStamp - $seconds;
+        $startDate = date("Y-m-d H:i:s", $startTimeStamp); //format: 2015-05-09 08:52:01
+        $endDate = date("Y-m-d H:i:s", $endTimeStamp); //format: 2015-05-09 08:52:01
+        //echo "startDate: $startDate<br>";
+        //echo "endDate: $endDate<br>";
+        return call_user_func_array( [ $this, 'total_'.$type.'_transaction' ], [ $startDate, $endDate ]);
+    }
+
+	public function total_sales_transaction( $startDateTime = null, $endDateTime = null )
 	{
 		 $member_id=$this->session->userdata('members_id');
 		// $this->db->select_sum('make_offer.total_price');
@@ -15,6 +80,8 @@ class Home_model extends MY_Model {
 		 $this->db->where('make_offer.seller_history','1');
 		 $this->db->where('make_offer.offer_status',1);
 		 $this->db->where('make_offer.seller_id',$member_id);
+        $startDateTime and $this->db->where("payment_recevied_datetime >= '{$startDateTime}'");
+        $endDateTime and $this->db->where("payment_recevied_datetime < '{$endDateTime}'");
          $query = $this->db->get('make_offer');
 			if($query->num_rows()>0)
 				return $query->result();
@@ -22,7 +89,7 @@ class Home_model extends MY_Model {
 				return FALSE;
 	}
      
-   public function total_purchase_transaction()
+   public function total_purchase_transaction( $startDateTime = null, $endDateTime = null )
 	{
 		$member_id=$this->session->userdata('members_id');
 		//$this->db->select_sum('make_offer.total_price');
@@ -30,6 +97,8 @@ class Home_model extends MY_Model {
 		$this->db->where('make_offer.offer_status',1);
 		$this->db->where('make_offer.buyer_history','1');
 		$this->db->where('make_offer.buyer_id',$member_id);
+        $startDateTime and $this->db->where("payment_recevied_datetime >= '{$startDateTime}'");
+        $endDateTime and $this->db->where("payment_recevied_datetime < '{$endDateTime}'");
 		$query = $this->db->get('make_offer');
 			if($query->num_rows()>0)
 				return $query->result();
@@ -80,4 +149,48 @@ class Home_model extends MY_Model {
 			else
 				return FALSE;
 	}
+
+    public function recentProfileViews( $durationString )
+    {
+        if( $this->isValidDurationStr($durationString) )
+        {
+            $startTimeStamp = strtotime('-'.$this->getNumOfDays($durationString).' days');
+            return $this->profileVies($startTimeStamp);
+        }
+        return $this->profileVies();
+
+    }
+
+    public function profileVies( $startTimeStamp = 0, $endTimeStamp = null )
+    {
+        // if no $startTimeStamp is provided, it will be the very beginning of epoch time
+        $start_date = date('Y-m-d H:i:s', $startTimeStamp);
+        // if no $endTimeStamp is provided, current time will be used
+        if( !$endTimeStamp ) $endTimeStamp = time();
+        $end_date = date( 'Y-m-d H:i:s', $endTimeStamp );
+
+        $this->load->module('viewed');
+        $count = $this->viewed_model->_custom_query_count("SELECT COUNT(*) AS viewed FROM viewed WHERE viewed_id = '".$this->session->userdata('members_id')."' AND record_date BETWEEN '".$start_date."' AND '".$end_date."'");
+
+        if($count[0]->viewed > 0){
+            return  '
+              <div class="ibox-content" style="min-height:89px">
+                <h1 class="no-margins">'.$count[0]->viewed.'</h1>
+                <!-- <div class="stat-percent font-bold">0%
+                <i class="fa fa-level-up"></i>
+                </div> -->
+                <small>New visits</small>
+              </div>';
+        }
+        else{
+            return
+            '<div class="ibox-content" style="min-height:89px">
+                    <h1 class="no-margins">0</h1>
+                    <div class="stat-percent font-bold">
+                    <!-- <i class="fa fa-level-up"></i> -->
+                    </div>
+                    <small>&nbsp;</small>
+                </div>';
+        }
+    }
 }

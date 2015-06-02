@@ -14,8 +14,8 @@ $overall = $this->feedback->overallScore($this->session->userdata('members_id'))
 The terms and conditions have been updated. Please can you confirm that you have read and acknowledged the <a class="alert-link" href="legal/terms_conditions">Terms &amp; Conditions</a> before you can proceed with using this website.
 </div>
 <?php } ?>
-<?php 	$id = $this->session->userdata('members_id');
-		$member = $this->member_model->get_where($id);
+<?php 	//$id = $this->session->userdata('members_id');
+		//$member = $this->member_model->get_where($id);
 		if($member->membership < 2){
 ?>
     <div class="alert alert-danger">
@@ -89,11 +89,19 @@ The terms and conditions have been updated. Please can you confirm that you have
 <h5>Orders</h5>
 <div class="pull-right">
     <div class="btn-group">
-        <button type="button" class="btn btn-xs btn-white active">Monthly</button>
-        <button type="button" class="btn btn-xs btn-white">Quarterly</button>
-        <button type="button" class="btn btn-xs btn-white">Semi-Annually</button>
-        <button type="button" class="btn btn-xs btn-white">Annual</button>
-        <button type="button" class="btn btn-xs btn-white">Lifetime</button>
+        <?php
+
+        foreach ( $durationsArray as $key => $value ){
+            $active = isset($_GET['duration']) && $_GET['duration'] == $value ? "active" : "";
+            echo "<a href='./?duration=$value' class='btn btn-xs btn-white $active'>$value</a>";
+        }
+
+        ?>
+<!--        <a href="./?duration=Monthly" class="btn btn-xs btn-white active">Monthly</a>-->
+<!--        <a  class="btn btn-xs btn-white">Quarterly</a>-->
+<!--        <a  class="btn btn-xs btn-white">Semi-Annually</a>-->
+<!--        <a  class="btn btn-xs btn-white">Annual</a>-->
+<!--        <a  class="btn btn-xs btn-white">Lifetime</a>-->
     </div>
 </div>
 </div>
@@ -532,56 +540,88 @@ var mapData = {
 <?php } else {?>
 <div class="row">
 <?php 
-    $member_id=$this->session->userdata('members_id');
-    $current_currency='';
-          $current_currency_no='';
-          $current_currency_sign='';
-    $this->session->set_userdata('curent_currency',$member->currency);
+$member_id = $member->id;
+//list( $current_currency, $current_currency_no, $current_currency_sign ) = $this->member_model->getCurrentCurrency_Num_Sign($member_id);
+//$current_currency='';
+//$current_currency_no='';
+//$current_currency_sign='';
+$this->session->set_userdata('curent_currency',$member->currency);
 
-     if(!empty($member->currency) && ($member->currency=='EURO') ){
-        $current_currency= '&euro;';
-        $current_currency_no = '2';
-        $current_currency_sign= 'EURO';
+// if(!empty($member->currency) && ($member->currency=='EURO') ){
+//    $current_currency= '&euro;';
+//    $current_currency_no = '2';
+//    $current_currency_sign= 'EURO';
+//
+//  }elseif (!empty($member->currency) && ($member->currency=='USD')) {
+//    $current_currency= '$';
+//    $current_currency_no = '3';
+//    $current_currency_sign= 'USD';
+//  }elseif (!empty($member->currency) && ($member->currency=='GBP')) {
+//    $current_currency= '&pound';
+//    $current_currency_no = '1';
+//    $current_currency_sign= 'GBP';
+//}
+//$total_sales_price='0';
+//$total_price='0';
+//if(!empty($total_sales_transaction)){
+//    foreach ( $total_sales_transaction as $value ) {
+//        if($value->buyer_currency != $current_currency_no){
+//            $total_price = get_currency(currency_class($value->buyer_currency), $current_currency_sign, $value->total_price);
+//            $total_sales_price+= $total_price;
+//        }else{
+//           $total_sales_price+= $value->total_price;
+//        }
+//    }
+//}
+//$total_purchase_price='0';
+//$total_price='0';
+//if(!empty($total_purchase_transaction)){
+//    foreach ($total_purchase_transaction as $value_purchase) {
+//        if($value_purchase->buyer_currency != $current_currency_no){
+//            $total_price = get_currency(currency_class($value_purchase->buyer_currency), $current_currency_sign, $value_purchase->total_price);
+//            $total_purchase_price+= $total_price;
+//        }else{
+//            $total_purchase_price+= $value_purchase->total_price;
+//        }
+//    }
+//}
 
-      }elseif (!empty($member->currency) && ($member->currency=='USD')) {
-        $current_currency= '$';
-        $current_currency_no = '3';
-        $current_currency_sign= 'USD';
-      }elseif (!empty($member->currency) && ($member->currency=='GBP')) {
-        $current_currency= '&pound';
-        $current_currency_no = '1';
-        $current_currency_sign= 'GBP';
+function getClassAttrForDiv($value){
+    switch (true)
+    {
+        case $value < 0:
+            return "danger";
+            break;
+        case $value > 0:
+            return "success";
+            break;
+        default:
+            return "info";
+            break;
     }
-    $total_sales_price='0';
-    $total_price='0';
-    if(!empty($total_sales_transaction)){
-        foreach ( $total_sales_transaction as $value ) {
-            if($value->buyer_currency!=$current_currency_no){
-                $total_price = get_currency(currency_class($value->buyer_currency), $current_currency_sign, $value->total_price);
-                $total_sales_price+= $total_price;
-            }else{
-               $total_sales_price+= $value->total_price;
-            }
-        }
+}
+
+function getClassAttrForArrow($value){
+    switch (true)
+    {
+        case $value < 0:
+            return "fa fa-level-down";
+            break;
+        case $value > 0:
+            return "fa fa-level-up";
+            break;
+        default:
+            return "fa fa-minus-square";
+            break;
     }
-    $total_purchase_price='0';
-    $total_price='0';
-    if(!empty($total_purchase_transaction)){
-        foreach ($total_purchase_transaction as  $value_purchase) {
-            if($value_purchase->buyer_currency!=$current_currency_no){
-                $total_price = get_currency(currency_class($value_purchase->buyer_currency), $current_currency_sign, $value_purchase->total_price);
-                $total_purchase_price+= $total_price;
-            }else{
-                $total_purchase_price+= $value_purchase->total_price;
-            }
-        }
-    }
+}
+
 ?>
 <div class="col-lg-3">
 
 <div class="ibox float-e-margins">
 <div class="ibox-title">
-<span class="label label-success pull-right">Monthly</span>
+<span class="label label-success pull-right"><?=$duration?></span>
 <h5>My Sales</h5>
 </div>
 <div class="ibox-content no_sub">
@@ -589,7 +629,7 @@ var mapData = {
         <?php echo $current_currency;
          echo $total_sales_price;
      ?> </h1>
-<div class="stat-percent font-bold text-success">0% <i class="fa fa-level-up"></i></div>
+<div class="stat-percent font-bold text-<?=getClassAttrForDiv($percent_sale_progress)?>"><?=$percent_sale_progress?>% <i class="<?=getClassAttrForArrow($percent_sale_progress)?>"></i></div>
 <small>Total income</small>
 </div>
 </div>
@@ -597,12 +637,12 @@ var mapData = {
 <div class="col-lg-3">
 <div class="ibox float-e-margins">
 <div class="ibox-title">
-<span class="label label-success pull-right">Monthly</span>
+<span class="label label-success pull-right"><?=$duration?></span>
 <h5>My Purchases</h5>
 </div>
 <div class="ibox-content no_sub">
 <h1 class="no-margins"><?php echo $current_currency; if(!empty($total_purchase_price)){ echo $total_purchase_price; }else{ echo '0'; } ?> </h1>
-<div class="stat-percent font-bold text-info">0% <i class="fa fa-level-up"></i></div>
+<div class="stat-percent font-bold text-info"><?=$percent_purchase_progress?>% <i class="<?=getClassAttrForArrow($percent_purchase_progress)?>"></i></div>
 <small>My Purchases</small>
 </div>
 </div>
@@ -611,7 +651,7 @@ var mapData = {
 <div class="ibox float-e-margins">
 <div class="ibox-title"> 
 <!-- <a href="#"><span class="label label-success pull-right">Yearly</span></a> -->
-<a href="#"><span class="label label-success pull-right">Monthly</span></a>
+<a href="#"><span class="label label-success pull-right"><?=$duration?></span></a>
 <!-- <a href="#"><span class="label label-success pull-right">Daily</span></a> -->
 <h5>My Profile Visits</h5>
 </div>
@@ -621,8 +661,10 @@ var mapData = {
 <small>New visits</small>
 </div>-->
 <?php
-$this->load->module('viewed');
-$this->viewed->view_month();
+//$this->load->module('viewed');
+//$this->viewed->view_month();
+echo $profileViewsMarkup;
+
 ?>
 </div>
 </div>
@@ -711,11 +753,14 @@ $this->viewed->view_month();
 <h5>Orders</h5>
 <div class="pull-right">
     <div class="btn-group">
-        <button type="button" class="btn btn-xs btn-white active">Monthly</button>
-        <button type="button" class="btn btn-xs btn-white">Quarterly</button>
-        <button type="button" class="btn btn-xs btn-white">Semi-Annually</button>
-        <button type="button" class="btn btn-xs btn-white">Annual</button>
-        <button type="button" class="btn btn-xs btn-white">Lifetime</button>
+        <?php
+
+        foreach ( $durationsArray as $key => $value ){
+            $active = (isset($_GET['duration']) && $_GET['duration'] == $value) ? "active" : "";
+            echo "<a href='./?duration=$value' class='btn btn-xs btn-white $active'>$value</a>";
+        }
+
+        ?>
     </div>
 </div>
 </div>
@@ -797,7 +842,7 @@ $this->viewed->view_month();
                         <td><?php if(!empty($buy_value->qty_available)){ echo $buy_value->qty_available; } ?></td>
                         <td>
                          <?php $offer_count = offer_count($buy_value->id); ?>
-                            <?php if($buy_value->member_id==$member_id){?>
+                            <?php if($buy_value->member_id == $member_id){?>
                             <span class="label label-info">
                              <?php echo $offer_count; ?>Offers 
                             </span>

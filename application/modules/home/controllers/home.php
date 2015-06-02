@@ -1,5 +1,5 @@
 <?php
-class Home extends MX_Controller 
+class Home extends MX_Controller
 {
     function __construct()
     {
@@ -36,20 +36,52 @@ class Home extends MX_Controller
         
         $this->load->model('member/member_model', 'member_model');
         $data['terms'] = $this->member_model->get_where($this->session->userdata('members_id'))->terms_conditions;
-       
-        $data['total_sales_transaction'] = $this->home_model->total_sales_transaction();          
-        $data['total_purchase_transaction'] = $this->home_model->total_purchase_transaction();     
-        //$data['buying_requests'] = $this->home_model->buying_requests();     
-        //$data['selling_offers'] = $this->home_model->selling_offers();  
-        
+
+        // Naveed:
+        // Member info --------------------------------------------------
+        $data['member'] = $this->member_model->get_where($this->session->userdata('members_id'));
+
+        // Duration Info --------------------------------------------------
+        $data['duration'] = $this->home_model->selectedDuration();
+        $data['durationsArray'] = array_keys( $this->home_model->durationArray );
+
+        // Currency Info --------------------------------------------------
+        list( $current_currency, $current_currency_no, $current_currency_sign ) = $this->member_model->getCurrentCurrency_Num_Sign($data['member']->id);
+        $data['current_currency'] = $current_currency;
+        $data['current_currency_no'] = $current_currency_no;
+        $data['current_currency_sign'] = $current_currency_sign;
+
+        // Sales Info --------------------------------------------------
+        $total_sales_transaction = $this->home_model->getTransactions( 'sales', $data['duration'] );
+        $timestamp = time() - ($this->home_model->getNumOfDays($data['duration']) * 24 * 60 * 60);
+        $previous_sales_transaction = $this->home_model->getTransactions( 'sales', $data['duration'], $timestamp );
+        $previous_sales_price = $this->home_model->getTotal( $previous_sales_transaction, $current_currency_no, $current_currency_sign  );
+        $data['total_sales_price'] = $this->home_model->getTotal( $total_sales_transaction, $current_currency_no, $current_currency_sign  );
+        $diff = $data['total_sales_price'] - $previous_sales_price;
+        $divider = $diff > 0 ? $data['total_sales_price'] : $previous_sales_price;
+        $data['percent_sale_progress'] = $divider > 0 ? round( $diff / $divider * 100 ) : 0;
+
+        // Purchase Info --------------------------------------------------
+        $total_purchase_transaction = $this->home_model->getTransactions( 'purchase', $data['duration'] );
+        $data['total_purchase_price'] = $this->home_model->getTotal( $total_purchase_transaction, $current_currency_no, $current_currency_sign  );
+        $previous_purchase_transaction = $this->home_model->getTransactions( 'purchase', $data['duration'], $timestamp );
+        $previous_purchase_price = $this->home_model->getTotal( $previous_purchase_transaction, $current_currency_no, $current_currency_sign  );
+        $diff = $data['total_purchase_price'] - $previous_purchase_price;
+        $divider = $diff > 0 ? $data['total_purchase_price'] : $previous_purchase_price;
+        $data['percent_purchase_progress'] = $divider > 0 ? round( $diff / $divider * 100 ) : 0;
+
+        // Profile Views --------------------------------------------------
+        $data['profileViewsMarkup'] = $this->home_model->recentProfileViews($data['duration']);
+
+        // Other Data ------------------------------------------------------
         $data['buying_requests'] = $this->home_model->listing_offer_common(1);
         $data['selling_offers'] = $this->home_model->listing_offer_common(2);
         $data['watch_listing'] = $this->home_model->get_watch_list(); 
         $order_type='2';
-          if(isset($_GET['q'])){
-            $order_type=$_GET['q'];
-            }
+        if(isset($_GET['q'])){ $order_type = $_GET['q']; }
         $data['order_type']=$order_type;
+
+        // Show the page
         $this->load->module('templates');
         $this->templates->page($data);
 
@@ -389,7 +421,6 @@ class Home extends MX_Controller
                 
         
     }
-            
 
     function confirmation($var = NULL)
     {

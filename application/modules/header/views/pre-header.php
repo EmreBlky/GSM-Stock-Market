@@ -140,6 +140,12 @@
         }
     </script>
 
+    <?php // added by Naveed ?>
+    <style>
+        .text-success {
+            color: #20a42b;
+        }
+    </style>
 
 </head>
 <?php
