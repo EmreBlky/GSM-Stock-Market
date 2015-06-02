@@ -2190,19 +2190,19 @@ class Admin extends MX_Controller
             
             foreach($member_company as $mem_comp){
             
-            $data = array(
-                           'membership' => 2 
-                        );
+                $data = array(
+                               'membership' => 2 
+                            );
+
+                $this->{$var1_model}->_update_where($data, 'company_id', $mem_comp->company_id);
             
-            $this->{$var1_model}->_update_where($data, 'company_id', $mem_comp->company_id);
+            }
             
             $data = array(
                            'marketplace' => 'active' 
                         );
             
-            $this->{$var_model}->_update_where($data, 'id', $mem_comp->id);
-            
-            }
+            $this->{$var_model}->_update_where($data, 'id', $mid);
             
             $this->load->module('emails');
             $config = Array(

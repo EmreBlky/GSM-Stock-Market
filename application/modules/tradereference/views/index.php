@@ -1,8 +1,8 @@
 <?php
-//    echo '<pre>';
+echo '<pre>';
 //    print_r($member);
-//    print_r($trade_ref);
-//    exit;
+print_r($company);
+exit;
 ?>
   <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-12">
@@ -48,7 +48,7 @@
       <div class="col-lg-6">
         <div class="ibox">
           <div class="ibox-title">
-              <?php if($member->marketplace == 'active') { ?>
+              <?php if($company->marketplace == 'active') { ?>
                 <span class="label label-primary pull-right">Account Verified</span>
               <?php } else {?>
                 <span class="label label-danger pull-right">Account Unverified</span>
@@ -104,7 +104,7 @@
             <div class="col-md-12">             
               <label class="col-md-9 control-label" style="text-align:right">Credit checked by GSM</label>
               <div class="col-md-3">
-                   <?php if($member->marketplace == 'active') { ?>
+                   <?php if($company->marketplace == 'active') { ?>
                         <i class="fa fa-check" style="color:green"></i>
                    <?php } else {?>
                         <i class="fa fa-times" style="color:red"></i>
@@ -116,7 +116,7 @@
             <div class="col-md-12">             
               <label class="col-md-9 control-label" style="text-align:right">Approved by GSM Stock Market</label>
               <div class="col-md-3">
-                   <?php if($member->marketplace == 'active') { ?>
+                   <?php if($company->marketplace == 'active') { ?>
                         <i class="fa fa-check" style="color:green"></i>
                    <?php } else {?>
                         <i class="fa fa-times" style="color:red"></i>
