@@ -30,6 +30,8 @@ class Tradereference extends MX_Controller
 	$data['title'] = 'GSM - Trade Reference';
         $data['page'] = 'index';
         $data['member'] = $this->member_model->get_where($this->session->userdata('members_id'));
+        $cid = $this->member_model->get_where($this->session->userdata('members_id'))->company_id;
+        $data['company'] = $this->company_model->get_where($cid);
         $data['trade_ref'] = $this->tradereference_model->get_where_multiple('member_id', $this->session->userdata('members_id'));
         
         

@@ -2137,6 +2137,7 @@ class Admin extends MX_Controller
         //print_r($_FILES);
         //print_r($_POST);
         
+        $base = $this->config->item('base_url');
         $var = 'company';
         $var_model = $var.'_model';
         
@@ -2147,9 +2148,18 @@ class Admin extends MX_Controller
         
         $this->load->model(''.$var1.'/'.$var1.'_model', ''.$var1.'_model');
         
+        $member_company = $this->{$var1_model}->get_where_multiples('company_id', $mid);
+        
+        $admin_email = $this->{$var1_model}->get_where($this->{$var_model}->get_where_multiple('id', $mid)->admin_member_id)->email;
+        
+        //echo '<pre>';
+        //print_r($test);
+        //exit;
+        
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('name', 'Document Name', 'xss_clean');
+        
         if ($this->form_validation->run()) {
             
             $data = array(
@@ -2178,17 +2188,82 @@ class Admin extends MX_Controller
                 
             }
             
-            $data = array(
-                           'membership' => 2 
-                        );
+            foreach($member_company as $mem_comp){
             
-            $this->{$var1_model}->_update_where($data, 'company_id', $mid);
+                $data = array(
+                               'membership' => 2 
+                            );
+
+                $this->{$var1_model}->_update_where($data, 'company_id', $mem_comp->company_id);
+            
+            }
             
             $data = array(
                            'marketplace' => 'active' 
                         );
             
             $this->{$var_model}->_update_where($data, 'id', $mid);
+            
+            $this->load->module('emails');
+            $config = Array(
+                'protocol' => 'smtp',
+                'smtp_host' => 'ssl://server.gsmstockmarket.com',
+                'smtp_port' => 465,
+                'smtp_user' => 'noreply@gsmstockmarket.com',
+                'smtp_pass' => 'ehT56.l}iW]I2ba3f0',
+                'charset' => 'utf-8',
+                'wordwrap' => TRUE,
+                'newline' => "\r\n",
+                'crlf'    => ""
+
+            );
+
+            $this->load->library('email', $config);
+
+            $this->email->set_mailtype("html");
+            $email_body = '
+                          <table class="body-wrap" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;background-color: #f6f6f6;width: 100%;">
+                            <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                    <td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;"></td>
+                                    <td class="container" width="600" style="margin: 0 auto !important;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;display: block !important;max-width: 600px !important;clear: both !important;">
+                                            <div class="content" style="margin: 0 auto;padding: 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;max-width: 600px;display: block;">
+                                                    <table class="main" width="100%" cellpadding="0" cellspacing="0" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;background: #fff;border: 1px solid #e9e9e9;border-radius: 3px;">
+                                                            <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                                    <td class="content-wrap" style="margin: 0;padding: 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                                                                            <table cellpadding="0" cellspacing="0" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                                                    <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                                                            <td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                                                                                                    <img class="img-responsive" src="'.$base.'public/main/template/gsm/images/email/header.png" style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;max-width: 100%;">
+                                                                                            </td>
+                                                                                    </tr>
+                                                                                    <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                                                            <td class="content-block" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;">
+                                                                                                    <h3 style="margin: 40px 0 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, &quot;Lucida Grande&quot;, sans-serif;box-sizing: border-box;font-size: 18px;color: #000;line-height: 1.2;font-weight: 400;">Market Place Access.</h3>
+                                                                                            </td>
+                                                                                    </tr>
+
+                                                                                    <tr style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;">
+                                                                                            <td class="content-block aligncenter" style="margin: 0;padding: 0 0 20px;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;text-align: center;">
+                                                                                                    <p>Your account has been credit checked and verified. You now have access to the Market Place</p>
+                                                                                            </td>
+                                                                                    </tr>
+                                                                              </table>
+                                                                    </td>
+                                                            </tr>
+                                                    </table></div>
+                                    </td>
+                                    <td style="margin: 0;padding: 0;font-family: &quot;Helvetica Neue&quot;, &quot;Helvetica&quot;, Helvetica, Arial, sans-serif;box-sizing: border-box;font-size: 14px;vertical-align: top;"></td>
+                            </tr>
+                    </table>';
+            
+            $this->email->from('noreply@gsmstockmarket.com', 'GSM Stockmarket Support Team');
+
+            $list = array($admin_email, 'info@gsmstockmarket.com');
+            $this->email->to($list);
+            $this->email->subject('Market Place Access');
+            $this->email->message($email_body);
+
+            $this->email->send();
             
             $this->session->set_flashdata('message', '<div style="margin:15px">    
                                                                 <div class="alert alert-success">
