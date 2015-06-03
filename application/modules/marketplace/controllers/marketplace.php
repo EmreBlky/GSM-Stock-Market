@@ -1628,10 +1628,10 @@ class Marketplace extends MX_Controller {
             $config5['max_width'] = '5024';
             $config5['max_height'] = '5024';
             $this->load->library('upload');
-            $this->upload->initialize($config2);
+            $this->upload->initialize($config5);
 
-            if (!$this->upload->do_upload('image2')) {
-                $this->form_validation->set_message('image2_check2', $this->upload->display_errors());
+            if (!$this->upload->do_upload('image5')) {
+                $this->form_validation->set_message('image5_check5', $this->upload->display_errors());
                 return FALSE;
             } else {
                 $data = $this->upload->data(); // upload image
@@ -1644,8 +1644,8 @@ class Marketplace extends MX_Controller {
                     $param_thumb['height'] = '400';
                 $param_thumb['file_name'] = $data['file_name'];
                 create_thumbnail($param_thumb);
-                $this->session->unset_userdata('image2_check');
-                $this->session->set_userdata('image2_check', array('image_url' => $config1['upload_path'] . $data['file_name'], 'image2' => $data['file_name']));
+                $this->session->unset_userdata('image5_check');
+                $this->session->set_userdata('image5_check', array('image_url' => $config5['upload_path'] . $data['file_name'], 'image5' => $data['file_name']));
                 return TRUE;
             }
         endif;
