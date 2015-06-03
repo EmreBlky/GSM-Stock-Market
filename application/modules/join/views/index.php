@@ -316,6 +316,7 @@
                         </div>
 
                         <div class="col-md-4">
+                            <div id="bsector_error" class="error_text"></div>
                             <div id="primary-business">
 
                                 <?php
@@ -328,9 +329,7 @@
                                 ?>
                                 <label class="col-md-12">Primary Business <span style="color:red">*</span></label>
 
-                                <select class="form-control m-b bsnssector" required="required" id="bprimary" name="bprimary"
-                                        style="float:left"
-                                        onchange="updateSelects1(this.value)">
+                                <select class="form-control m-b bsnssector" required="required" id="bprimary" name="bprimary" style="float:left" onchange="updateSelects1(this.value)">
                                     <?php
                                     if (isset($company->business_sector_1)) {
                                         foreach ($SelectedBiz As $SelectedBizOne) {
@@ -854,6 +853,13 @@ $.validator.addMethod("customemail", function(value, element) {
     }, 
     "Make sure your email is spelt correctly!"
 );
+$.validator.addMethod(
+  "phone",
+  function(phone_number, element) {
+    return this.optional(element) || /^\d{6,}$/.test(phone_number.replace(/\s/g, ''));
+  },
+    "Please enter a valid landline number (numbers only)"
+);
     $(document).ready(function () {
         $(".validation").validate({
   rules: {
@@ -863,10 +869,14 @@ $.validator.addMethod("customemail", function(value, element) {
     county: "required",
     country: "required",
     phone_number: "required",
-	telephone_number: {required: true, number: true},
+    terms: "required",
+	telephone_number: {required: true, phone: true},
 	email: {required: true, customemail: true},
 	email_again: { equalTo: "#email"},
-    terms: "required",
+	"bsectors[]": { 
+                    required: true, 
+                    minlength: 1 
+            } 
   },
   messages: {
     company_name: "We need to know your company's name!",
@@ -906,6 +916,8 @@ $.validator.addMethod("customemail", function(value, element) {
     terms: {
       required: "You must read and agree to our terms and conditions before using the trading platform!",
 	},
+	"bsectors[]": { required: "You must select at least one (1) business sector."
+    },
   },
   errorPlacement: function(error, element){
     if(element.attr("name") == "company_name"){
@@ -970,6 +982,11 @@ $.validator.addMethod("customemail", function(value, element) {
     }
     if(element.attr("name") == "terms"){
         error.appendTo($('#terms_error'));
+    }else{
+        error.appendTo( element.parent().next() );
+    }
+    if(element.attr("name") == "bsectors[]"){
+        error.appendTo($('#bsector_error'));
     }else{
         error.appendTo( element.parent().next() );
     }
