@@ -853,6 +853,13 @@ $.validator.addMethod("customemail", function(value, element) {
     }, 
     "Make sure your email is spelt correctly!"
 );
+$.validator.addMethod(
+  "phone",
+  function(phone_number, element) {
+    return this.optional(element) || /^\d{6,}$/.test(phone_number.replace(/\s/g, ''));
+  },
+    "Please enter a valid landline number (numbers only)"
+);
     $(document).ready(function () {
         $(".validation").validate({
   rules: {
@@ -862,7 +869,7 @@ $.validator.addMethod("customemail", function(value, element) {
     county: "required",
     country: "required",
     phone_number: "required",
-	telephone_number: {required: true, number: true},
+	telephone_number: {required: true, phone: true},
 	email: {required: true, customemail: true},
 	email_again: { equalTo: "#email"},
     terms: "required",
