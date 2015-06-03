@@ -18,10 +18,6 @@
             <div class="alert alert-info">
         <p><i class="fa fa-info-circle"></i> <strong>This is a Demo</strong> Silver members and above with criteria met will have access to the live marketplace. Looking to buy something? Create a buying request and let people send you offers. <a class="alert-link" href="preferences/subscription">Upgrade Now</a>.</p>
             </div>
-<?php } else if($member->membership == 2 && $member->marketplace == 'inactive'){?>
-            <div class="alert alert-warning">
-                <p><i class="fa fa-warning"></i> <strong>This is a Demo</strong> You still need to supply 2 trade references so we can enable your membership to view profiles and access the marketplace. <a class="alert-link" href="tradereference">Submit trade references</a>.</p>
-            </div>
 <?php } else {?>
             <div class="alert alert-info">
                 <p><i class="fa fa-warning"></i> Welcome to the <strong>GSM Marketplace v1.0a</strong>. Our marketplace is now live! If you have any issues or trouble using the marketplace please let us know by <a class="alert-link" href="support/submit_ticket">submitting a ticket</a> or if you have any ideas or feedback then <a class="alert-link" href="support/submit_ticket">let us know!</a></p>
@@ -102,9 +98,9 @@
      <div class="form-group"><label class="col-md-3 control-label">Colour <span style="color:red">*</span></label>
       <div class="col-md-9">
  		<select data-placeholder="What is the desired primary colour of the item?" class="chosen-select form-control" id="product_color" name="product_color">
-          <option value="" selected disabled>What is the desired primary colour of the item?</option>
-          <option value="Any">Any</option>
-          <option value="None">No Colour</option>
+          <option value="Any" selected disabled>What is the desired primary colour of the item?</option>
+          <option value="Any">All Colours (Any)</option>
+          <option value="None">No Colour (None)</option>
            <?php 
            if(!empty($product_colors)){
             $k=0;
@@ -810,7 +806,7 @@ $(document).on('click', '#mpn1', function(event) {
            test123(mpnisbn1,product_make);
        }
        //colors select
-        var product_colorshtml='<option value="">Choose Color</option>';
+        var product_colorshtml='<option value="Any">All Colours (Any)</option><option value="None">No Colour (None)</option>';
         $.each(data.product_colors, function(index, val) {
           product_colorshtml +='<option value="'+val+'"';
           if(data.condition == '1' && data.product_colors.length==1){
@@ -835,7 +831,7 @@ $(document).on('change', '#product_make', function(event) {
     event.preventDefault();
         var product_model= $(this).val();
          $.post('<?php echo base_url("marketplace/getAttributesInfo") ?>/MODAL/',{'product_model':product_model}, function(data) {
-        product_colorshtml='<option value="">Choose Colour</option>';
+        product_colorshtml='<option value="Any">All Colours (Any)</option><option value="None">No Colour (None)</option>';
        $.each(data.product_color, function(index, val) {
             product_colorshtml +='<option value="'+val+'"';
             if(data.num_rows==1 && data.product_color.length==1)
