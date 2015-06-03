@@ -10,9 +10,6 @@ class Home extends MX_Controller
 
     function index()
     {     
-        //echo '<pre>';
-        //print_r($this->session->userdata);
-        //$this->output->enable_profiler(TRUE);
         if ( ! $this->session->userdata('logged_in') )
         { 
             redirect('login');
@@ -43,7 +40,7 @@ class Home extends MX_Controller
 
         // Duration Info --------------------------------------------------
         $data['duration'] = $this->home_model->selectedDuration();
-        $data['durationsArray'] = array_keys( $this->home_model->durationArray );
+        $data['durationsArray'] = $this->home_model->durationArray;
 
         // Currency Info --------------------------------------------------
         list( $current_currency, $current_currency_no, $current_currency_sign ) = $this->member_model->getCurrentCurrency_Num_Sign($data['member']->id);
@@ -52,28 +49,36 @@ class Home extends MX_Controller
         $data['current_currency_sign'] = $current_currency_sign;
 
         // Sales Info --------------------------------------------------
-        $total_sales_transaction = $this->home_model->getTransactions( 'sales', $data['duration'] );
-        $timestamp = time() - ($this->home_model->getNumOfDays($data['duration']) * 24 * 60 * 60);
-        $previous_sales_transaction = $this->home_model->getTransactions( 'sales', $data['duration'], $timestamp );
-        $previous_sales_price = $this->home_model->getTotal( $previous_sales_transaction, $current_currency_no, $current_currency_sign  );
-        $data['total_sales_price'] = $this->home_model->getTotal( $total_sales_transaction, $current_currency_no, $current_currency_sign  );
-        $diff = $data['total_sales_price'] - $previous_sales_price;
-        //$divider = $diff > 0 ? $data['total_sales_price'] : $previous_sales_price;
-        $divider = $previous_sales_price;
-        $data['percent_sale_progress'] = $divider > 0 ? round( $diff / $divider * 100 ) : 0;
+        list( $data['total_sales_price'], $data['percent_sale_progress'] ) =
+            $this->getTotalPrice_PercentProgress('sales', $data['duration'],  $current_currency_no, $current_currency_sign );
+
+        // Monthly Income --------------------------------------------------
+        if( $data['duration'] == 'Monthly' ) // no need to call the function again
+        {
+            $data['monthlyIncome'] = $data['total_sales_price'];
+            $data['percent_monthly_sale_progress'] = $data['percent_sale_progress'];
+        }
+        else
+        {
+            list( $data['monthlyIncome'], $data['percent_monthly_sale_progress'] ) =
+                $this->getTotalPrice_PercentProgress('sales', 'Monthly',  $current_currency_no, $current_currency_sign );
+        }
 
         // Purchase Info --------------------------------------------------
-        $total_purchase_transaction = $this->home_model->getTransactions( 'purchase', $data['duration'] );
-        $data['total_purchase_price'] = $this->home_model->getTotal( $total_purchase_transaction, $current_currency_no, $current_currency_sign  );
-        $previous_purchase_transaction = $this->home_model->getTransactions( 'purchase', $data['duration'], $timestamp );
-        $previous_purchase_price = $this->home_model->getTotal( $previous_purchase_transaction, $current_currency_no, $current_currency_sign  );
-        $diff = $data['total_purchase_price'] - $previous_purchase_price;
-        //$divider = $diff > 0 ? $data['total_purchase_price'] : $previous_purchase_price;
-        $divider = $previous_purchase_price;
-        $data['percent_purchase_progress'] = $divider > 0 ? round( $diff / $divider * 100 ) : 0;
+        list( $data['total_purchase_price'], $data['percent_purchase_progress'] ) =
+            $this->getTotalPrice_PercentProgress('purchase', $data['duration'],  $current_currency_no, $current_currency_sign );
 
         // Profile Views --------------------------------------------------
         $data['profileViewsMarkup'] = $this->home_model->recentProfileViews($data['duration']);
+
+        // Orders Info -----------------------------------------------------
+        list( $data['ordersInPeriod'] , $data['ordersProgressInPeriod']) = $this->getNumOrders_PercentProgress('seller',$data['duration']);
+        // Monthly Orders Info -----------------------------------------------------
+        if( $data['duration'] == 'Monthly' ){
+            list( $data['ordersInLastMonth'] , $data['ordersProgressInLastMonth']) = [ $data['ordersInPeriod'] , $data['ordersProgressInPeriod'] ];
+        }else{
+            list( $data['ordersInLastMonth'] , $data['ordersProgressInLastMonth']) = $this->getNumOrders_PercentProgress('seller','Monthly');
+        }
 
         // Other Data ------------------------------------------------------
         $data['buying_requests'] = $this->home_model->listing_offer_common(1);
@@ -468,4 +473,32 @@ class Home extends MX_Controller
         //echo $date[0]; 
     }
 
+    /**
+     * @param $transactionType:       sales / purchase
+     * @param $duration:              Monthly / Quarterly .... etc
+     * @param $current_currency_no:   as returned by member_model->getCurrentCurrency_Num_Sign(id)
+     * @param $current_currency_sign: as returned by member_model->getCurrentCurrency_Num_Sign(id)
+     * @return array
+     */
+    private function getTotalPrice_PercentProgress($transactionType, $duration, $current_currency_no, $current_currency_sign )
+    {
+        $total_sales_transaction = $this->home_model->getTransactions( $transactionType, $duration );
+        $timestamp = time() - ($this->home_model->getNumOfDays($duration) * 24 * 60 * 60);
+        $previous_sales_transaction = $this->home_model->getTransactions( $transactionType, $duration, $timestamp );
+        $previous_sales_price = $this->home_model->getTotal( $previous_sales_transaction, $current_currency_no, $current_currency_sign  );
+        $totalPrice = $this->home_model->getTotal( $total_sales_transaction, $current_currency_no, $current_currency_sign  );
+        $diff = $totalPrice - $previous_sales_price;
+        $divider = $previous_sales_price;
+        $percentProgress = $divider > 0 ? round( $diff / $divider * 100 ) : '-';
+        return [$totalPrice,$percentProgress];
+    }
+
+    private function getNumOrders_PercentProgress( $sellerType, $duration ){
+        $ordersInPeriod = $this->home_model->getNumOrdersForDuration($sellerType,$duration);
+        $timestamp = time() - ($this->home_model->getNumOfDays($duration) * 24 * 60 * 60);
+        $previousOrders = $this->home_model->getNumOrdersForDuration($sellerType,$duration,$timestamp);
+        $diff = $ordersInPeriod - $previousOrders;
+        $percentProgress = $previousOrders > 0 ? round( $diff / $previousOrders * 100 ) : '-';
+        return [ $ordersInPeriod , $percentProgress ];
+    }
 }

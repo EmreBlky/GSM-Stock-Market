@@ -123,7 +123,8 @@ class Home_model extends MY_Model {
 		else
 			return FALSE;
 	}
-	public function listing_offer_common($case='1'){
+
+    public function listing_offer_common($case='1'){
 		$member_id=$this->session->userdata('members_id');
 		$this->db->select('listing.*');
 		if($case==1){
@@ -192,5 +193,40 @@ class Home_model extends MY_Model {
                     <small>&nbsp;</small>
                 </div>';
         }
+    }
+
+    public function getNumOrdersForDuration( $memberType, $durationStr, $endTimeStamp = null )
+    {
+        if( $this->isValidDurationStr($durationStr) && $days = $this->durationArray[$durationStr] )
+        {
+            if(!$endTimeStamp ) $endTimeStamp = time();
+            $startTimeStamp = $endTimeStamp - $days * 24 * 60 * 60;
+            return $this->getNumOrders($memberType,$startTimeStamp,$endTimeStamp);
+        }
+        // if it is not a valid duration string or if it is 'Lifetime':
+        return $this->getNumOrders($memberType); // return all orders
+    }
+
+    public function getNumOrders( $memberType, $startTimeStamp = 0, $endTimeStamp = null ){
+        if( !in_array( $memberType, ['seller','buyer'] ) ) return 0;
+
+        $startDateTime = date("Y-m-d H:i:s", $startTimeStamp);
+        if(!$endTimeStamp ) $endTimeStamp = time();
+        $endDateTime = date("Y-m-d H:i:s", $endTimeStamp);
+
+        $member_id=$this->session->userdata('members_id');
+
+        $this->db->select('COUNT(*) as orders');
+        $this->db->where("make_offer.{$memberType}_history","1");
+        $this->db->where("make_offer.offer_status",1);
+        $this->db->where("make_offer.{$memberType}_id",$member_id);
+        $startDateTime and $this->db->where("payment_recevied_datetime >= '{$startDateTime}'");
+        $endDateTime and $this->db->where("payment_recevied_datetime < '{$endDateTime}'");
+        $query = $this->db->get('make_offer');
+        if( $query->num_rows() > 0 ) {
+            $result = $query->result();
+            return $result[0]->orders;
+        }
+        return FALSE;
     }
 }

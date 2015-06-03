@@ -92,8 +92,8 @@ The terms and conditions have been updated. Please can you confirm that you have
         <?php
 
         foreach ( $durationsArray as $key => $value ){
-            $active = isset($_GET['duration']) && $_GET['duration'] == $value ? "active" : "";
-            echo "<a href='./?duration=$value' class='btn btn-xs btn-white $active'>$value</a>";
+            $active = isset($_GET['duration']) && $_GET['duration'] == $key ? "active" : "";
+            echo "<a href='./?duration=$key' class='btn btn-xs btn-white $active'>$key</a>";
         }
 
         ?>
@@ -756,8 +756,8 @@ echo $profileViewsMarkup;
         <?php
 
         foreach ( $durationsArray as $key => $value ){
-            $active = (isset($_GET['duration']) && $_GET['duration'] == $value) ? "active" : "";
-            echo "<a href='./?duration=$value' class='btn btn-xs btn-white $active'>$value</a>";
+            $active = (isset($_GET['duration']) && $_GET['duration'] == $key) ? "active" : "";
+            echo "<a href='./?duration=$key' class='btn btn-xs btn-white $active'>$key</a>";
         }
 
         ?>
@@ -774,27 +774,27 @@ echo $profileViewsMarkup;
 <div class="col-lg-3">
     <ul class="stat-list">
         <li>
-            <h2 class="no-margins">0</h2>
-            <small>Total sales orders in period</small>
-            <div class="stat-percent">0% <i class="fa fa-level-up text-navy"></i></div>
+            <h2 class="no-margins"><?=$ordersInPeriod?></h2>
+            <small>Total sales orders in the period</small>
+            <div class="stat-percent"><?=$ordersProgressInPeriod?>% <i class="<?=getClassAttrForArrow($ordersProgressInPeriod)?> text-navy"></i></div>
             <div class="progress progress-mini">
-                <div style="width: 0%;" class="progress-bar"></div>
+                <div style="width: <?=$ordersProgressInPeriod?>%;" class="progress-bar"></div>
             </div>
         </li>
         <li>
-            <h2 class="no-margins ">0</h2>
-            <small>Orders in last month</small>
-            <div class="stat-percent">0% <i class="fa fa-level-down text-navy"></i></div>
+            <h2 class="no-margins "><?=$ordersInLastMonth?></h2>
+            <small>Orders in last Month</small>
+            <div class="stat-percent"><?=$ordersProgressInLastMonth?>% <i class="<?=getClassAttrForArrow($ordersProgressInLastMonth)?> text-navy"></i></div>
             <div class="progress progress-mini">
-                <div style="width: 0%;" class="progress-bar"></div>
+                <div style="width: <?=$ordersProgressInLastMonth?>%;" class="progress-bar"></div>
             </div>
         </li>
         <li>
-            <h2 class="no-margins ">0</h2>
+            <h2 class="no-margins "><?=$monthlyIncome?></h2>
             <small>Monthly income from orders</small>
-            <div class="stat-percent">0% <i class="fa fa-bolt text-navy"></i></div>
+            <div class="stat-percent"><?=$percent_monthly_sale_progress?>% <i class="<?=getClassAttrForArrow($percent_monthly_sale_progress)?> text-navy"></i></div>
             <div class="progress progress-mini">
-                <div style="width: 0%;" class="progress-bar"></div>
+                <div style="width: <?=$percent_monthly_sale_progress?>%;" class="progress-bar"></div>
             </div>
         </li>
         </ul>
