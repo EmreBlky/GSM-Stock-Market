@@ -104,14 +104,14 @@ class Join extends MX_Controller
             if($email_activatedNo[0]->count > 0 && $email_activatedYes[0]->count < 1){
                 $this->session->set_flashdata('register_title', 'registered_not_activated');
                 $this->session->set_flashdata('message', 'That email address has been registered but not activated. Please activate your account via the confirmation email. <a href="'.$this->config->item('base_url').'login/resend/'.$this->input->post('email').'">Resend Email</a> or Please check your spam folder if you have not received one.');
-                redirect('join/validateAccount');
+                redirect('join/');
 
             }
             elseif($email_activatedNo[0]->count < 1 && $email_activatedYes[0]->count > 0){
                 $this->session->set_flashdata('register_title', 'registered_activated');
                 $this->session->set_flashdata('message', 'That email address has been registered and activated. Please log in with your username and passowrd <a href="'.$this->config->item('base_url').'login/">HERE</a>');
 
-                redirect('join/validateAccount');
+                redirect('join/');
             }
             else{
 
@@ -305,6 +305,7 @@ class Join extends MX_Controller
             
             if ($this->form_validation->run()) {
                 
+                $membership =  $this->member_model->get_where($this->company_model->get_where($cid)->admin_member_id)->membership;
                 $password = random_string('alnum', 8);            
                     
                 $data = array(
@@ -326,6 +327,7 @@ class Join extends MX_Controller
                     'skype' => $this->input->post('skype'),
                     'role' => $this->input->post('company_role'),
                     'profile_completion' => 90,
+                    'membership' => $membership,
                     'company_id' => $cid,
                     'date_activated' => date('Y-m-d'),
                     'terms_conditions' => 'yes'
