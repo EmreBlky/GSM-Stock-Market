@@ -28,11 +28,11 @@
       <div class="ibox float-e-margins">
       
       <div class="ibox-title">
-        <h5>GSMStockmarket.com - Terms and Conditions - May 2015</h5>
+        <h5>GSMStockmarket.com - Terms and Conditions - May 2016</h5>
       </div>
       
-      <div class="ibox-content">
-      <p>These Website Terms and Conditions are supplemented by:</p>
+      <div class="ibox-content">      
+<p>These Website Terms and Conditions are supplemented by:</p>
 <ul>
 <li>1. GSMStockmarket.com – Privacy Policy <button type="button" data-toggle="modal" data-target="#privacy_policy" class="btn btn-xs btn-primary">Read Policy</button></li>
 <li>2. GSMStockmarket.com – Website Acceptable Use Policy <button type="button" data-toggle="modal" data-target="#acceptable_usage" class="btn btn-xs btn-primary">Read Policy</button></li>
@@ -49,7 +49,7 @@ CLAUSE</strong></p>
 <li>2.	Our contract with You</li>
 <li>3.	Changes to terms</li>
 <li>4.	Member email facility</li>
-<li>5.	Initial Subscription Process</li>
+<li>5.	Initial Verification Process</li>
 <li>6.	Services provided by us</li>
 <li>7.	Third Party Services</li>
 <li>8.	Transactions between Silver Members and/or Gold Members</li>
@@ -67,23 +67,24 @@ CLAUSE</strong></p>
 <strong>Bronze Member/Membership:</strong> Bronze Members receive a free listing on Our Trading Platform for Your business so other Members can find and message You. <br />
 <strong>Buyer:</strong> The purchaser of Products via the Site. <br />
 <strong>Credit Checking Service:</strong> a Third Party Service provided by Creditsafe Business Solutions Limited (Company No. 03836192) to offer an in depth credit checking system on any company that is a Silver Member or Gold Member and provided to Silver Members and Gold Members free of charge. <br />
-<strong>Gold Member/Membership:</strong> Gold Members receive all the benefits of Silver Membership and are invited to subscribe by Us. <br />
+<strong>Gold Member/Membership:</strong> Gold Members receive all the benefits of Silver Membership and are invited to join the site by Us. <br />
 <strong>IMEI Service:</strong> a Third Party Service provided by Mobicode Limited (Company No. 07751351) where Silver and Gold Members can blacklist check all mobile phones by either single or bulk uploading IMEI numbers to Mobicode’s tac code database, MobiCHECK.<br />
-<strong>Initial Subscription Process:</strong> the process set out in clause 5.<br />
-<strong>Members:</strong> All of Bronze, Silver and Gold Members. <br />
+<strong>Initial Verification Process:</strong> the process set out in clause 5.<br />
+<strong>Members:</strong> All of Bronze, Silver, Gold and Platinum Members. <br />
 <strong>Order Management System:</strong> integrated order management system on the Site to let You keep track and up-to-date of all Your deals, update tracking numbers and shipping statuses.<br />
+<Strong>Platinum Member/Membership:</Strong> Platinum Members receive all the benefits of Gold Membership and shall pay the Subscription.<br />
 <strong>Products:</strong> Mobile Phones, related accessories, spare parts and data products.<br />
 <strong>Registration:</strong> completion of the registration information on entering the Site. <br />
 <strong>Seller:</strong> the seller of Products via the Site. <br />
 <strong>Services:</strong> access to and use of the Site and any additional services provided by Us including Third Party Services. <br /> 
 <strong>Silver Member/Membership:</strong>  have complete access to our Trading Platform and will be able to use Our Trading Platform to buy, sell and trade all Products with no trading limits or trading commission charged.<br />
 <strong>Site:</strong> is www.GSMstockmarket.com<br />
-<strong>Subscription:</strong> the annual subscription payable for Silver Membership at the prevailing rate.<br />
+<strong>Subscription:</strong> the annual subscription payable for Platinum Membership at the prevailing rate.<br />
 <strong>Terms:</strong> the terms and conditions set out in this document; Our Privacy Policy, Our Website Acceptable Use Policy and Our Terms of Website Use;<br /> 
 <strong>Third Party Service:</strong> the services provided by Third Party Service Suppliers;<br />
 <strong>Trade Reference:</strong> a reference provided by a business who extends credit or otherwise has a business relationship with You. <br />  
 <strong>Trading Platform:</strong> www.GSMstockmarket.com is a web-based platform for exchanging information between Buyers and Sellers of the Products;<br />
-<strong>We/Our/Us:</strong> GSMStockmarket.com Limited, Company No. 07458787, 3 Hazlemere Road, Penn, High Wycombe, Buckinghamshire, United Kingdom, HP10 8AA; and 
+<strong>We/Our/Us:</strong> GSMStockmarket.com Limited, Company No. 07458787, 83 Baker Street, London, W1U 6AG; and<br />
 <strong>You/Your:</strong> the business entity identified at Registration.</p>
  
 <p><strong>1.2</strong>	When We use the words "writing" or "written" in these Terms, this will include e-mail unless We say otherwise.</p>
@@ -91,8 +92,9 @@ CLAUSE</strong></p>
 <p><strong>2. OUR CONTRACT WITH YOU</strong><br />
 <strong>2.1</strong> Please ensure that You read these Terms carefully before You submit Your Registration.  If You think that there is a mistake, please contact Us to discuss.<br />
 <strong>2.2</strong> These Terms will become binding on You and Us when You submit Your Registration at which point a contract will come into existence between You and Us.<br />
-<strong>2.3</strong> Bronze Membership is free on Registration and can be upgraded to Silver Membership by completing the Initial Subscription Process.<br />
-<strong>2.4</strong> Access to Silver Membership is dependent upon the successful completion of the Initial Subscription Process and payment of the Subscription.<br />
+<strong>2.3</strong> Bronze Membership is free on Registration and can be upgraded to Silver Membership by completing the Initial Verification Process.<br />
+<strong>2.4</strong> Access to Silver Membership is dependent upon the successful completion of the Initial Verification Process.<br />
+<strong>2.5</strong> Access to Platinum Membership is dependent upon payment of the Subscription.</p>
 
 <p><strong>3. CHANGES TO TERMS</strong><br />
 <strong>3.1</strong>	We reserve the right to amend these Terms at any time by posting the amended Terms on the Site.</p>
@@ -101,26 +103,25 @@ CLAUSE</strong></p>
 <strong>4.1</strong> Upon Registration, each Member will be provided with an email facility to allow You to send or receive email through the Site.  You shall be responsible for all content of all messages of the email facility as well as the consequences of any such message.<br />
 <strong>4.2</strong>	We reserve the right to remove the email facility and offer no warranty that stored emails will remain available indefinitely.</strong>
    
-<p><strong>5. INITIAL SUBSCRIPTION PROCESS </strong><br />
-<strong>5.1</strong>	On completion of Your Registration, You may apply to upgrade from Bronze Membership to Silver Membership by making payment to us of the Subscription at the prevailing rate.<br />
+<p><strong>5. INITIAL VERIFICATION PROCESS</strong><br />
+<strong>5.1</strong>	On completion of Your Registration, You may apply to upgrade from Bronze Membership to Silver Membership by completing the Initial Verification Process.<br />
 <strong>5.2</strong>	You warrant that:<br />
 <ul>
 <li>(a)	the individual submitting the Registration on your behalf has the authority to bind You;</li>
 <li>(b)	the address used in the Registration process is the principal place of business of such entity; and</li>
 <li>(c)	all other information provided on Registration is true, accurate and complete.</li>
 </ul>
-<strong>5.3</strong> On receipt of Your Subscription payment in full, You will be asked to provide Us with the details of two businesses who have agreed to provide a Trade Reference for You and You give us authority to contact those businesses on Your behalf. <br />  
-<strong>5.4</strong>	Where You trade as a company, We will undertake a credit reference check on You. Where You trade as a sole trader or by way of a partnership or limited liability partnership, we reserve the right to request additional Trade References as necessary to satisfy our internal subscription requirements. <br />     
+<strong>5.3</strong>  You will be asked to provide Us with the details of two businesses who have agreed to provide a Trade Reference for You and You give us authority to contact those businesses on Your behalf. <br />  
+<strong>5.4</strong>	Where You trade as a company, We will undertake a credit reference check on You. Where You trade as a sole trader or by way of a partnership or limited liability partnership, we reserve the right to request additional Trade References as necessary to satisfy our internal verification requirements. <br />     
 <strong>5.5</strong>	Where we have not received satisfactory Trade References after 7 days of requesting them, we will re-request them and will contact You with an update.  <br />
-<strong>5.6</strong>	Where we have not received satisfactory Trade References within 28 days of requesting them, Your application for Silver Membership will be deemed unsuccessful.  We will refund Your Subscription payment less a 20% administration charge and a £20 bank transfer charge.  All refunds will be paid in pound sterling.    <br />
-<strong>5.7</strong>	On receipt of Your Subscription, two satisfactory Trade References and a positive credit reference check, Your upgrade to Silver Membership is complete and We will notify You to confirm this.  Your Subscription will run from the date of our confirmation of upgrade to Silver Membership.<br />
+<strong>5.6</strong>	Where we have not received satisfactory Trade References within 28 days of requesting them, Your application for Silver Membership will be deemed unsuccessful.<br />
+<strong>5.7</strong>	On receipt of two satisfactory Trade References and a positive credit reference check, Your upgrade to Silver Membership is complete and We will notify You to confirm this.<br />
 <strong>5.8</strong>	In order to protect our interests, We reserve the right to refuse to upgrade any Bronze Member to Silver Membership for whatever reason and are not required to provide You with reasons for such refusal.</p>  
 
 <p><strong>6. SERVICES PROVIDED BY US</strong><br />
 <strong>6.1</strong>	We will supply the Services to You for a period of 12 months from upgrade to Silver Membership although We reserve the right to determine the immediate, <br />temporary or permanent withdrawal of Your right to use Our Site in accordance with our <strong>Acceptable usage policy</strong>.<br />
-<strong>6.2</strong>	In the event that Your rights to use Our Site are temporarily or permanently withdrawn, You will not be entitled to a refund of Your Subscription. <br />  
-<strong>6.3</strong>	We may have to suspend the Services if We have to deal with technical problems or to make improvements to the Services. <br />
-<strong>6.4</strong>	We will provide You with a designated Account Management Service as part of the Subscription.</p>
+<strong>6.2</strong>	We may have to suspend the Services if We have to deal with technical problems or to make improvements to the Services. <br />
+<strong>6.3</strong>	We will provide You with a designated Account Management Service as part of your membership on the Site.</p>
 
 <p><strong>7. THIRD PARTY SERVICES</strong><br />
 <strong>7.1</strong>	The IMEI Service is a Third Party Service which will be provided directly from the IMEI Service provider to You via our Site.  You will be required to agree to the terms & conditions of the IMEI Service provider, a link to which can be <a href="http://www.mobicode.co.uk/privacy-policy.php" class="btn btn-white btn-xs" target="_blank">found here</a>.<br />
@@ -163,9 +164,9 @@ CLAUSE</strong></p>
 <strong>10.1</strong> You hereby agree to indemnify and hold Us, our affiliates, directors, officers, agents and employees harmless, from any and all losses, claims, demands, liabilities (including legal costs on a full indemnity basis) which may arise from Your use of the Site (including but not limited to the display of Your information on the Site) or from breach of any of the Terms.</p>
   
 <p><strong>11. INFORMATION ABOUT US AND HOW TO CONTACT US</strong><br />
-<strong>11.1</strong> We are a company registered in England and Wales. Our company registration number is 07458787 and have our registered office at 3 Hazlemere Road, Penn, High Wycombe, Buckinghamshire, United Kingdom, HP10 8AA. <br />
-<strong>11.2</strong> If You have any questions or if You have any complaints, please contact Us. You can contact Us by telephoning Our customer service team at +44 (0)1494 717 321 or by e-mailing Us at support@gsmstockmarket.com.<br />
-<strong>11.3</strong> If You wish to contact Us in writing, or if any clause in these Terms requires You to give Us notice in writing (for example, to cancel the contract for services which We have started to provide), You can send this to Us by e-mail, by hand, or by pre-paid post to GSMStockmarket.com Limited at 3 Hazlemere Road, Penn, High Wycombe, Buckinghamshire, United Kingdom, HP10 8AA or support@gsmstockmarket.com.  We will confirm receipt of this by contacting You in writing. If We have to contact You or give You notice in writing, We will do so by e-mail, by hand, or by pre-paid post to the address You provide to Us in the Order.</p>
+<strong>11.1</strong> We are a company registered in England and Wales. Our company registration number is 07458787 and have our registered office at 83 Baker Street, London, W1U 6AG.<br />
+<strong>11.2</strong> If You have any questions or if You have any complaints, please contact Us. You can contact Us by telephoning Our customer service team at +44 (0)20 7048 0120 or by e-mailing Us at support@gsmstockmarket.com.<br />
+<strong>11.3</strong> If You wish to contact Us in writing, or if any clause in these Terms requires You to give Us notice in writing (for example, to cancel the contract for services which We have started to provide), You can send this to Us by e-mail, by hand, or by pre-paid post to GSMStockmarket.com Limited at 83 Baker Street, London, W1U 6AG or support@gsmstockmarket.com.  We will confirm receipt of this by contacting You in writing. If We have to contact You or give You notice in writing, We will do so by e-mail, by hand, or by pre-paid post to the address You provide to Us in the Order.</p>
 
 <p><strong>12. HOW WE MAY USE YOUR PERSONAL INFORMATION</strong><br />
 <strong>12.1</strong> We will use the personal information You provide to Us to:</p>
@@ -232,7 +233,7 @@ These terms of use refer to the following additional terms, which also apply to 
 <li>Our Cookie Policy, which sets out information about the cookies on our site.</li> 
 </ul>
 <p><strong>INFORMATION ABOUT US</strong><br />
-www.gsmstockmarket.com is a site operated by GSMStockmarket.com Limited ("We"). We are registered in England and Wales under company number 07458787 and have our registered office at 3 Hazlemere Road, Penn, High Wycombe, Buckinghamshire, United Kingdom, HP10 8AA. Our main trading address is The Old Dairy, Hazlemere Cross Roads, High Wycombe, Buckinghamshire, United Kingdom, HP15 7LG.<br />
+www.gsmstockmarket.com is a site operated by GSMStockmarket.com Limited ("We"). We are registered in England and Wales under company number 07458787 and have our registered office at 83 Baker Street, London, W1U 6AG. Our main trading address is 83 Baker Street, London, W1U 6AG.<br />
 We are a limited company.</p>
 
 <p><strong>CHANGES TO THESE TERMS</strong><br />
@@ -353,7 +354,7 @@ Thank you for visiting our site.</p>
 
 <p>GSMStockmarket.com Limited ("We") are committed to protecting and respecting your privacy.<br />
 This policy (together with our <strong>terms of use</strong> and any other documents referred to on it) sets out the basis on which any personal data we collect from you, or that you provide to us, will be processed by us.  Please read the following carefully to understand our views and practices regarding your personal data and how we will treat it. By visiting www.gsmstockmarket.com you are accepting and consenting to the practices described in this policy. <br />
-For the purpose of the Data Protection Act 1998 (the Act), the data controller is GSMStockmarket.com of 3 Hazlemere Road, Penn, High Wycombe, Buckinghamshire, United Kingdom, HP10 8AA.</p>
+For the purpose of the Data Protection Act 1998 (the Act), the data controller is GSMStockmarket.com of 83 Baker Street, London, W1U 6AG.</p>
 
 <p><strong>INFORMATION WE MAY COLLECT FROM YOU</strong><br />
 We may collect and process the following data about you:</p>
@@ -448,7 +449,7 @@ Questions, comments and requests regarding this privacy policy are welcomed and 
 <p>This acceptable use policy sets out the terms between you and us under which you may access our website www.gsmstockmarket.com (our Site). This acceptable use policy applies to all users of, and visitors to, our Site.<br />
 Your use of our Site means that you accept, and agree to abide by, all the policies in this acceptable use policy, which supplement our <strong>terms of website use</strong>.</p>
 
-<p>www.gsmstockmarket.com is a Site operated by GSMStockmarket.com Limited ("We"). We are registered in England and Wales under company number 07458787 and have our registered office at 3 Hazlemere Road, Penn, High Wycombe, Buckinghamshire, United Kingdom, HP10 8AA. Our main trading address is The Old Dairy, Hazlemere Cross Roads, High Wycombe, Buckinghamshire, United Kingdom, HP15 7LG.</p>
+<p>www.gsmstockmarket.com is a Site operated by GSMStockmarket.com Limited ("We"). We are registered in England and Wales under company number 07458787 and have our registered office at 83 Baker Street, London, W1U 6AG. Our main trading address is 83 Baker Street, London, W1U 6AG.</p>
  
 <p><strong>PROHIBITED USES</strong><br />
 You may use our Site only for lawful purposes.  You may not use our Site:</p>
