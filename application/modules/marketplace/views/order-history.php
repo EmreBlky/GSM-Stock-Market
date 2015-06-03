@@ -16,7 +16,8 @@
 <div class="col-lg-2">
 </div><!-- /col-lg-2 spacer -->
 </div>
-<?php 	$id = $this->session->userdata('members_id');
+<?php 	$memberidlogin = $this->session->userdata('members_id');
+		$id = $this->session->userdata('members_id');
 		$member = $this->member_model->get_where($id);
 		if($member->membership > 1){
 ?>

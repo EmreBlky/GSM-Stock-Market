@@ -15,7 +15,7 @@
 
         } else{
     ?>
-        <option value="">Please Select</option>
+        <option value="276459" selected>English</option>
     <?php        
         }?>
     <?php foreach ($select as $select){?>

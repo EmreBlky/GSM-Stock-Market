@@ -392,7 +392,7 @@ class Home extends MX_Controller
                                 </tr>
                                 <tr>
                                 <td class="content-block">
-                                <p>If you need any assistance please call us on +44 (0)1494 717321 or use the online ticketing customer support within your account and we’ll be happy to help you.</p>
+                                <p>If you need any assistance please call us on +44 (0)207 048 0120 or use the online ticketing customer support within your account and we’ll be happy to help you.</p>
                                 <p>Many Thanks,<br />
                                 GSMStockMarket Team</p>
                                 </td>
