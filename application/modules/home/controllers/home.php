@@ -80,6 +80,11 @@ class Home extends MX_Controller
             list( $data['ordersInLastMonth'] , $data['ordersProgressInLastMonth']) = $this->getNumOrders_PercentProgress('seller','Monthly');
         }
 
+        // Graph Data ------------------------------------------------------
+        $data['graphSalesOrders'] = $this->home_model->getOrdersPerDayForDuration( "seller", $data['duration'], $endTimeStamp = null );
+        $data['graphPurchaseOrders'] =$this->home_model->getOrdersPerDayForDuration( "buyer", $data['duration'], $endTimeStamp = null );
+        //\nvd\custom\libraries\pr($data['graphPurchaseOrders']);exit;
+
         // Other Data ------------------------------------------------------
         $data['buying_requests'] = $this->home_model->listing_offer_common(1);
         $data['selling_offers'] = $this->home_model->listing_offer_common(2);

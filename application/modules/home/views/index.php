@@ -92,7 +92,7 @@ The terms and conditions have been updated. Please can you confirm that you have
         <?php
 
         foreach ( $durationsArray as $key => $value ){
-            $active = isset($_GET['duration']) && $_GET['duration'] == $key ? "active" : "";
+            $active = $duration == $key ? "active" : "";
             echo "<a href='./?duration=$key' class='btn btn-xs btn-white $active'>$key</a>";
         }
 
@@ -698,7 +698,7 @@ echo $profileViewsMarkup;
 </div>
 </div>
 
-<?php } elseif($overall <= 79 && $overall >= 51) {?>
+<?php } elseif($overall <= 79 && $overall >= 51) { ?>
 
 <div class="ibox float-e-margins">
 <div class="ibox-title">
@@ -756,7 +756,7 @@ echo $profileViewsMarkup;
         <?php
 
         foreach ( $durationsArray as $key => $value ){
-            $active = (isset($_GET['duration']) && $_GET['duration'] == $key) ? "active" : "";
+            $active = ($duration == $key) ? "active" : "";
             echo "<a href='./?duration=$key' class='btn btn-xs btn-white $active'>$key</a>";
         }
 
@@ -1075,17 +1075,88 @@ var mapData = {
 
 <script src="public/main/template/core/js/plugins/jsKnob/jquery.knob.js"></script>
 
-<script type="text/javascript"><!-- Message Box widget reload -->
+<script type="text/javascript">
 
 $(function() {
 
-getStatus();
+    getStatus();
+    // Graph Implementation
+    var yAxisMax = 4,
+        barWidth = 0.3*24*60*60*1000
+        ;
+    var saleOrders =
+        {
+            data: [],
+            label: "Sale Orders",
+            color: '#00bb96',
+            bars: {
+                align: "left",
+                fill: true,
+                fillColor: "#00bb96"
+            }
+        };
+    var purchaseOrders =
+        {
+            data: [],
+            label: "Purchase Orders",
+            color: '#454488',
+            bars: {
+                align: "right",
+                fill: true,
+                fillColor: "#454488"
+            }
+        };
+
+    // get Data
+    <?php
+
+    if( !empty($graphSalesOrders) ){
+        foreach ( $graphSalesOrders as $key => $obj ){
+            echo "saleOrders.data.push([".($obj->time*1000)." , {$obj->orders}]);";
+        }
+    }
+
+    if( !empty($graphPurchaseOrders) ){
+        foreach ( $graphPurchaseOrders as $key => $obj ){
+            echo "purchaseOrders.data.push([".($obj->time*1000)." , {$obj->orders}]);";
+        }
+    }
+
+     ?>
+
+    var data = [ saleOrders, purchaseOrders ];
+    console.log(data);
+    var options = {
+        xaxis: {
+            mode: "time",
+            timeformat: "%b %d",
+            autoscaleMargin: 1,
+            tickLength : 0
+        },
+//        yaxis: {
+//            autoscaleMargin: 0.5
+//        },
+        series: {
+            bars: {
+                show: true,
+                barWidth: barWidth
+            }
+        },
+        grid: {
+            borderWidth: 0
+        },
+        legend: {
+            position: 'nw'
+        }
+    };
+    $("#flot-dashboard-chart").plot( data, options );
+
 
 });
 
 function getStatus() { 
-$('#status').load('<?php echo $base;?>mailbox/mail_recent/10'); 
-setTimeout("getStatus()",10000);
+    $('#status').load('<?php echo $base;?>mailbox/mail_recent/10');
+    setTimeout("getStatus()",10000);
 }
 
 </script>
