@@ -156,13 +156,13 @@ class Home_model extends MY_Model {
         if( $this->isValidDurationStr($durationString) )
         {
             $startTimeStamp = strtotime('-'.$this->getNumOfDays($durationString).' days');
-            return $this->profileVies($startTimeStamp);
+            return $this->profileViews($startTimeStamp);
         }
-        return $this->profileVies();
+        return $this->profileViews();
 
     }
 
-    public function profileVies( $startTimeStamp = 0, $endTimeStamp = null )
+    public function profileViews( $startTimeStamp = 0, $endTimeStamp = null )
     {
         // if no $startTimeStamp is provided, it will be the very beginning of epoch time
         $start_date = date('Y-m-d H:i:s', $startTimeStamp);
@@ -197,14 +197,24 @@ class Home_model extends MY_Model {
 
     public function getNumOrdersForDuration( $memberType, $durationStr, $endTimeStamp = null )
     {
+        return $this->callFuncForDuration("getNumOrders", $memberType, $durationStr, $endTimeStamp );
+    }
+
+    private function callFuncForDuration( $func, $memberType, $durationStr, $endTimeStamp = null )
+    {
         if( $this->isValidDurationStr($durationStr) && $days = $this->durationArray[$durationStr] )
         {
             if(!$endTimeStamp ) $endTimeStamp = time();
             $startTimeStamp = $endTimeStamp - $days * 24 * 60 * 60;
-            return $this->getNumOrders($memberType,$startTimeStamp,$endTimeStamp);
+            return call_user_func_array( [ $this, $func ], [ $memberType,$startTimeStamp,$endTimeStamp ]);
         }
         // if it is not a valid duration string or if it is 'Lifetime':
-        return $this->getNumOrders($memberType); // return all orders
+        return call_user_func_array( [ $this, $func ], [ $memberType ]);
+    }
+
+    public function getOrdersPerDayForDuration( $memberType, $durationStr, $endTimeStamp = null )
+    {
+        return $this->callFuncForDuration("getOrdersPerDay", $memberType, $durationStr, $endTimeStamp );
     }
 
     public function getNumOrders( $memberType, $startTimeStamp = 0, $endTimeStamp = null ){
@@ -226,6 +236,44 @@ class Home_model extends MY_Model {
         if( $query->num_rows() > 0 ) {
             $result = $query->result();
             return $result[0]->orders;
+        }
+        return FALSE;
+    }
+
+    public function getOrdersPerDay( $memberType, $startTimeStamp = 0, $endTimeStamp = null )
+    {
+        if( !in_array( $memberType, ['seller','buyer'] ) ) return 0;
+
+        $startDateTime = date("Y-m-d H:i:s", $startTimeStamp);
+        if(!$endTimeStamp ) $endTimeStamp = time();
+        $endDateTime = date("Y-m-d H:i:s", $endTimeStamp);
+
+        $member_id=$this->session->userdata('members_id');
+
+        /*
+        SELECT
+        COUNT(*) as orders,
+        UNIX_TIMESTAMP(date(`payment_recevied_datetime`)) as time
+        FROM (`make_offer`)
+        WHERE `make_offer`.`seller_history` = '1'
+        AND `make_offer`.`offer_status` = 1
+        AND `make_offer`.`seller_id` = '167'
+        ...
+        ...
+        GROUP BY `payment_recevied_datetime`
+        ORDER BY `payment_recevied_datetime`
+        */
+        $this->db->select("COUNT(*) as orders, UNIX_TIMESTAMP(date(`payment_recevied_datetime`)) as time");
+        $this->db->where("make_offer.{$memberType}_history","1");
+        $this->db->where("make_offer.offer_status",1);
+        $this->db->where("make_offer.{$memberType}_id",$member_id);
+        $startDateTime and $this->db->where("payment_recevied_datetime >= '{$startDateTime}'");
+        $endDateTime and $this->db->where("payment_recevied_datetime < '{$endDateTime}'");
+        $this->db->group_by("payment_recevied_datetime");
+        $this->db->order_by("payment_recevied_datetime");
+        $query = $this->db->get('make_offer');
+        if( $query->num_rows() > 0 ) {
+            return $query->result();
         }
         return FALSE;
     }
