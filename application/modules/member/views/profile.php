@@ -6,6 +6,9 @@ $cust_id = $this->uri->segment(3);
 //print_r($company_users);
 //exit;
 $comp_member_count = count($company_users);
+$id = $this->session->userdata('members_id');
+$member = $this->member_model->get_where($id);
+$company = $this->company_model->get_where($member->company_id);
 ?>
 <script type="text/javascript">
 
@@ -169,8 +172,7 @@ $comp_member_count = count($company_users);
             };
             
 </script>
-<?php $id = $this->session->userdata('members_id');$member = $this->member_model->get_where($id);
-if($member->marketplace == 'inactive'){ ?>
+<?php if($compay->marketplace == 'inactive'){ ?>
 
 			<div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
