@@ -1447,8 +1447,8 @@ class Marketplace extends MX_Controller {
                 $param_thumb = array();
                 $param_thumb['source_path'] = './public/upload/listing/';
                 $param_thumb['destination_path'] = './public/upload/listing/thumbnail/';
-                $param_thumb['width'] = '75';
-                $param_thumb['height'] = '60';
+                    $param_thumb['width'] = '400';
+                    $param_thumb['height'] = '400';
                 $param_thumb['file_name'] = $data['file_name'];
                 create_thumbnail($param_thumb);
                 $this->session->unset_userdata('image1_check');
@@ -1474,8 +1474,12 @@ class Marketplace extends MX_Controller {
             return FALSE;
         }*/
         if (!empty($_FILES['image2']['name'])):
+            //$data = $this->upload->data(); // upload image
+            $new_file = rtrim($_FILES['image2']['name'], '.jpg');
+            
             $config2['upload_path'] = './public/upload/listing/';
             $config2['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config2['file_name'] = $this->session->userdata('members_id').'-'.$new_file.'.jpg';
             $config2['max_size'] = '5024';
             $config2['max_width'] = '5024';
             $config2['max_height'] = '5024';
@@ -1487,20 +1491,18 @@ class Marketplace extends MX_Controller {
                 return FALSE;
             } else {
                 $data = $this->upload->data(); // upload image
-                $upload_file = explode('.', $data['file_name']);
-
-                if (in_array($upload_file[1], array('gif', 'jpeg', 'jpg', 'png', 'bmp', 'jpe'))) {
-                    $param_thumb = array();
-                    $param_thumb['source_path'] = './public/upload/listing/';
-                    $param_thumb['destination_path'] = './public/upload/listing/thumbnail/';
-                    $param_thumb['width'] = '75';
-                    $param_thumb['height'] = '60';
-                    $param_thumb['file_name'] = $data['file_name'];
-                    create_thumbnail($param_thumb);
-                    $this->session->unset_userdata('image2_check2');
-                    $this->session->set_userdata('image2_check2', array('image_url' => $config2['upload_path'] . $data['file_name'], 'image2' => $data['file_name']));
-                    return TRUE;
-                }
+                $new_file = rtrim($data['file_name'], '.jpg');
+                //thumbimage
+                $param_thumb = array();
+                $param_thumb['source_path'] = './public/upload/listing/';
+                $param_thumb['destination_path'] = './public/upload/listing/thumbnail/';
+                    $param_thumb['width'] = '400';
+                    $param_thumb['height'] = '400';
+                $param_thumb['file_name'] = $data['file_name'];
+                create_thumbnail($param_thumb);
+                $this->session->unset_userdata('image2_check');
+                $this->session->set_userdata('image2_check', array('image_url' => $config2['upload_path'] . $data['file_name'], 'image2' => $data['file_name']));
+                return TRUE;
             }
         endif;
     }
@@ -1520,8 +1522,12 @@ class Marketplace extends MX_Controller {
             return FALSE;
         }*/
         if (!empty($_FILES['image3']['name'])):
+            //$data = $this->upload->data(); // upload image
+            $new_file = rtrim($_FILES['image3']['name'], '.jpg');
+            
             $config3['upload_path'] = './public/upload/listing/';
             $config3['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config3['file_name'] = $this->session->userdata('members_id').'-'.$new_file.'.jpg';
             $config3['max_size'] = '5024';
             $config3['max_width'] = '5024';
             $config3['max_height'] = '5024';
@@ -1533,20 +1539,18 @@ class Marketplace extends MX_Controller {
                 return FALSE;
             } else {
                 $data = $this->upload->data(); // upload image
-                $upload_file = explode('.', $data['file_name']);
-
-                if (in_array($upload_file[1], array('gif', 'jpeg', 'jpg', 'png', 'bmp', 'jpe'))) {
-                    $param_thumb = array();
-                    $param_thumb['source_path'] = './public/upload/listing/';
-                    $param_thumb['destination_path'] = './public/upload/listing/thumbnail/';
-                    $param_thumb['width'] = '75';
-                    $param_thumb['height'] = '60';
-                    $param_thumb['file_name'] = $data['file_name'];
-                    create_thumbnail($param_thumb);
-                    $this->session->unset_userdata('image3_check3');
-                    $this->session->set_userdata('image3_check3', array('image_url' => $config3['upload_path'] . $data['file_name'], 'image3' => $data['file_name']));
-                    return TRUE;
-                }
+                $new_file = rtrim($data['file_name'], '.jpg');
+                //thumbimage
+                $param_thumb = array();
+                $param_thumb['source_path'] = './public/upload/listing/';
+                $param_thumb['destination_path'] = './public/upload/listing/thumbnail/';
+                    $param_thumb['width'] = '400';
+                    $param_thumb['height'] = '400';
+                $param_thumb['file_name'] = $data['file_name'];
+                create_thumbnail($param_thumb);
+                $this->session->unset_userdata('image3_check');
+                $this->session->set_userdata('image3_check', array('image_url' => $config3['upload_path'] . $data['file_name'], 'image3' => $data['file_name']));
+                return TRUE;
             }
         endif;
     }
@@ -1565,10 +1569,13 @@ class Marketplace extends MX_Controller {
             $this->form_validation->set_message('image4_check4', 'Oops! Your item image needs to be at least grater than 400 x 400 pixels.');
             return FALSE;
         }*/
-
         if (!empty($_FILES['image4']['name'])):
+            //$data = $this->upload->data(); // upload image
+            $new_file = rtrim($_FILES['image4']['name'], '.jpg');
+            
             $config4['upload_path'] = './public/upload/listing/';
             $config4['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config4['file_name'] = $this->session->userdata('members_id').'-'.$new_file.'.jpg';
             $config4['max_size'] = '5024';
             $config4['max_width'] = '5024';
             $config4['max_height'] = '5024';
@@ -1580,20 +1587,18 @@ class Marketplace extends MX_Controller {
                 return FALSE;
             } else {
                 $data = $this->upload->data(); // upload image
-                $upload_file = explode('.', $data['file_name']);
-
-                if (in_array($upload_file[1], array('gif', 'jpeg', 'jpg', 'png', 'bmp', 'jpe'))) {
-                    $param_thumb = array();
-                    $param_thumb['source_path'] = './public/upload/listing/';
-                    $param_thumb['destination_path'] = './public/upload/listing/thumbnail/';
-                    $param_thumb['width'] = '75';
-                    $param_thumb['height'] = '60';
-                    $param_thumb['file_name'] = $data['file_name'];
-                    create_thumbnail($param_thumb);
-                    $this->session->unset_userdata('image4_check4');
-                    $this->session->set_userdata('image4_check4', array('image_url' => $config4['upload_path'] . $data['file_name'], 'image4' => $data['file_name']));
-                    return TRUE;
-                }
+                $new_file = rtrim($data['file_name'], '.jpg');
+                //thumbimage
+                $param_thumb = array();
+                $param_thumb['source_path'] = './public/upload/listing/';
+                $param_thumb['destination_path'] = './public/upload/listing/thumbnail/';
+                    $param_thumb['width'] = '400';
+                    $param_thumb['height'] = '400';
+                $param_thumb['file_name'] = $data['file_name'];
+                create_thumbnail($param_thumb);
+                $this->session->unset_userdata('image4_check');
+                $this->session->set_userdata('image4_check', array('image_url' => $config4['upload_path'] . $data['file_name'], 'image4' => $data['file_name']));
+                return TRUE;
             }
         endif;
     }
@@ -1612,9 +1617,13 @@ class Marketplace extends MX_Controller {
             $this->form_validation->set_message('image5_check5', 'Oops! Your item image needs to be at least grater than 400 x 400 pixels.');
             return FALSE;
         }*/
-        if (!empty($_FILES['image5']['name'])):
+        if (!empty($_FILES['image2']['name'])):
+            //$data = $this->upload->data(); // upload image
+            $new_file = rtrim($_FILES['image2']['name'], '.jpg');
+            
             $config5['upload_path'] = './public/upload/listing/';
             $config5['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config5['file_name'] = $this->session->userdata('members_id').'-'.$new_file.'.jpg';
             $config5['max_size'] = '5024';
             $config5['max_width'] = '5024';
             $config5['max_height'] = '5024';
@@ -1626,20 +1635,18 @@ class Marketplace extends MX_Controller {
                 return FALSE;
             } else {
                 $data = $this->upload->data(); // upload image
-                $upload_file = explode('.', $data['file_name']);
-
-                if (in_array($upload_file[1], array('gif', 'jpeg', 'jpg', 'png', 'bmp', 'jpe'))) {
-                    $param_thumb = array();
-                    $param_thumb['source_path'] = './public/upload/listing/';
-                    $param_thumb['destination_path'] = './public/upload/listing/thumbnail/';
-                    $param_thumb['width'] = '75';
-                    $param_thumb['height'] = '60';
-                    $param_thumb['file_name'] = $data['file_name'];
-                    create_thumbnail($param_thumb);
-                    $this->session->unset_userdata('image5_check5');
-                    $this->session->set_userdata('image5_check5', array('image_url' => $config5['upload_path'] . $data['file_name'], 'image5' => $data['file_name']));
-                    return TRUE;
-                }
+                $new_file = rtrim($data['file_name'], '.jpg');
+                //thumbimage
+                $param_thumb = array();
+                $param_thumb['source_path'] = './public/upload/listing/';
+                $param_thumb['destination_path'] = './public/upload/listing/thumbnail/';
+                    $param_thumb['width'] = '400';
+                    $param_thumb['height'] = '400';
+                $param_thumb['file_name'] = $data['file_name'];
+                create_thumbnail($param_thumb);
+                $this->session->unset_userdata('image5_check');
+                $this->session->set_userdata('image5_check', array('image_url' => $config5['upload_path'] . $data['file_name'], 'image5' => $data['file_name']));
+                return TRUE;
             }
         endif;
     }

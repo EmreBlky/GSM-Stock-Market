@@ -1,5 +1,10 @@
 <?php //echo $this->uri->segment(1); ?>
 <div>
+    <?php 
+        
+        echo $this->session->flashdata('resend');
+
+    ?>
     <div style="margin-bottom:30px">
 
         <img src="public/main/template/gsm/images/gsm.png">

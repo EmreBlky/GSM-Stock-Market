@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" media="screen" />  
 
     <!-- Animation CSS -->
-    <link rel="stylesheet" href="public/main/template/frontend/css/animate.min.css"/>
+    <link rel="stylesheet" href="/public/main/template/frontend/css/animate.min.css"/>
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
 
@@ -24,15 +25,15 @@
     <![endif]-->
 
     <!-- Custom styles -->  
-    <link rel="stylesheet" type="text/css" href="public/main/template/frontend/css/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/public/main/template/frontend/css/style.css" media="screen" />
     
     <!-- checkbox css -->
-    <link href="public/main/template/core/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="/public/main/template/core/css/plugins/iCheck/custom.css" rel="stylesheet">
     
     <!-- Icons -->    
-    <link href="public/main/template/gsm/images/icons/favicon.png" rel="shortcut icon" type="image/x-icon" />
-	<link href="public/main/template/gsm/images/icons/apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
-	<link href="public/main/template/gsm/images/icons/icon-hires.png" rel="icon" sizes="192x192" />
+    <link href="/public/main/template/gsm/images/icons/favicon.png" rel="shortcut icon" type="image/x-icon" />
+	<link href="/public/main/template/gsm/images/icons/apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
+	<link href="/public/main/template/gsm/images/icons/icon-hires.png" rel="icon" sizes="192x192" />
 
 
 
@@ -70,7 +71,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="pull-left" href="#">
-                    <img src="public/main/template/gsm/images/gsm.png" height="76" width="251" alt="Navi GSM Logo" />
+                    <img src="/public/main/template/gsm/images/gsm.png" height="76" width="251" alt="Navi GSM Logo" />
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -315,6 +316,7 @@
                         </div>
 
                         <div class="col-md-4">
+                            <div id="bsector_error" class="error_text"></div>
                             <div id="primary-business">
 
                                 <?php
@@ -327,9 +329,7 @@
                                 ?>
                                 <label class="col-md-12">Primary Business <span style="color:red">*</span></label>
 
-                                <select class="form-control m-b bsnssector" required="required" id="bprimary" name="bprimary"
-                                        style="float:left"
-                                        onchange="updateSelects1(this.value)">
+                                <select class="form-control m-b bsnssector" required="required" id="bprimary" name="bprimary" style="float:left" onchange="updateSelects1(this.value)">
                                     <?php
                                     if (isset($company->business_sector_1)) {
                                         foreach ($SelectedBiz As $SelectedBizOne) {
@@ -814,14 +814,14 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="//code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
-<script src="public/main/template/core/js/plugins/pace/pace.min.js"></script> <!-- -->
+<script src="/public/main/template/core/js/plugins/pace/pace.min.js"></script> <!-- -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script src="public/main/template/core/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-<script src="public/main/template/core/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-<script src="public/main/template/core/js/inspinia.js"></script>
+<script src="/public/main/template/core/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="/public/main/template/core/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="/public/main/template/core/js/inspinia.js"></script>
 
 <!-- iCheck -->
-<script src="public/main/template/core/js/plugins/iCheck/icheck.min.js"></script>
+<script src="/public/main/template/core/js/plugins/iCheck/icheck.min.js"></script>
 <script>
     $(document).ready(function () {
         $('.i-checks').iCheck({
@@ -844,7 +844,7 @@ $(function () {
 </script>
 
 <!-- Jquery Validate -->
-<script src="public/main/template/core/js/plugins/validate/jquery.validate.min.js"></script>
+<script src="/public/main/template/core/js/plugins/validate/jquery.validate.min.js"></script>
 
 <script>
 //Valid Email
@@ -852,6 +852,13 @@ $.validator.addMethod("customemail", function(value, element) {
         return /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(value);
     }, 
     "Make sure your email is spelt correctly!"
+);
+$.validator.addMethod(
+  "phone",
+  function(phone_number, element) {
+    return this.optional(element) || /^\d{6,}$/.test(phone_number.replace(/\s/g, ''));
+  },
+    "Please enter a valid landline number (numbers only)"
 );
     $(document).ready(function () {
         $(".validation").validate({
@@ -862,10 +869,14 @@ $.validator.addMethod("customemail", function(value, element) {
     county: "required",
     country: "required",
     phone_number: "required",
-	telephone_number: {required: true, number: true},
+    terms: "required",
+	telephone_number: {required: true, phone: true},
 	email: {required: true, customemail: true},
 	email_again: { equalTo: "#email"},
-    terms: "required",
+	"bsectors[]": { 
+                    required: true, 
+                    minlength: 1 
+            } 
   },
   messages: {
     company_name: "We need to know your company's name!",
@@ -905,6 +916,8 @@ $.validator.addMethod("customemail", function(value, element) {
     terms: {
       required: "You must read and agree to our terms and conditions before using the trading platform!",
 	},
+	"bsectors[]": { required: "You must select at least one (1) business sector."
+    },
   },
   errorPlacement: function(error, element){
     if(element.attr("name") == "company_name"){
@@ -969,6 +982,11 @@ $.validator.addMethod("customemail", function(value, element) {
     }
     if(element.attr("name") == "terms"){
         error.appendTo($('#terms_error'));
+    }else{
+        error.appendTo( element.parent().next() );
+    }
+    if(element.attr("name") == "bsectors[]"){
+        error.appendTo($('#bsector_error'));
     }else{
         error.appendTo( element.parent().next() );
     }
