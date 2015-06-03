@@ -869,10 +869,10 @@ $.validator.addMethod(
     county: "required",
     country: "required",
     phone_number: "required",
+    terms: "required",
 	telephone_number: {required: true, phone: true},
 	email: {required: true, customemail: true},
 	email_again: { equalTo: "#email"},
-    terms: "required",
 	"bsectors[]": { 
                     required: true, 
                     minlength: 1 
