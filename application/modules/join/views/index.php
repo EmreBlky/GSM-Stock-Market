@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" media="screen" />  
 
     <!-- Animation CSS -->
-    <link rel="stylesheet" href="public/main/template/frontend/css/animate.min.css"/>
+    <link rel="stylesheet" href="/public/main/template/frontend/css/animate.min.css"/>
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
 
@@ -24,15 +25,15 @@
     <![endif]-->
 
     <!-- Custom styles -->  
-    <link rel="stylesheet" type="text/css" href="public/main/template/frontend/css/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/public/main/template/frontend/css/style.css" media="screen" />
     
     <!-- checkbox css -->
-    <link href="public/main/template/core/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="/public/main/template/core/css/plugins/iCheck/custom.css" rel="stylesheet">
     
     <!-- Icons -->    
-    <link href="public/main/template/gsm/images/icons/favicon.png" rel="shortcut icon" type="image/x-icon" />
-	<link href="public/main/template/gsm/images/icons/apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
-	<link href="public/main/template/gsm/images/icons/icon-hires.png" rel="icon" sizes="192x192" />
+    <link href="/public/main/template/gsm/images/icons/favicon.png" rel="shortcut icon" type="image/x-icon" />
+	<link href="/public/main/template/gsm/images/icons/apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
+	<link href="/public/main/template/gsm/images/icons/icon-hires.png" rel="icon" sizes="192x192" />
 
 
 
@@ -70,7 +71,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="pull-left" href="#">
-                    <img src="public/main/template/gsm/images/gsm.png" height="76" width="251" alt="Navi GSM Logo" />
+                    <img src="/public/main/template/gsm/images/gsm.png" height="76" width="251" alt="Navi GSM Logo" />
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -139,7 +140,7 @@
                     <div class="form-group">
                         <label class="col-md-3 control-label">Company Number</label>
 						<div class="col-md-9">
-                            <input type="text" class="form-control" name="company_number" placeholder="Enter your companies registered number">
+                            <input type="text" class="form-control" name="company_number" placeholder="Enter your company's registered number">
                         </div>
                     </div>
 
@@ -814,14 +815,14 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="//code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
-<script src="public/main/template/core/js/plugins/pace/pace.min.js"></script> <!-- -->
+<script src="/public/main/template/core/js/plugins/pace/pace.min.js"></script> <!-- -->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script src="public/main/template/core/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-<script src="public/main/template/core/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-<script src="public/main/template/core/js/inspinia.js"></script>
+<script src="/public/main/template/core/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="/public/main/template/core/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="/public/main/template/core/js/inspinia.js"></script>
 
 <!-- iCheck -->
-<script src="public/main/template/core/js/plugins/iCheck/icheck.min.js"></script>
+<script src="/public/main/template/core/js/plugins/iCheck/icheck.min.js"></script>
 <script>
     $(document).ready(function () {
         $('.i-checks').iCheck({
@@ -844,7 +845,7 @@ $(function () {
 </script>
 
 <!-- Jquery Validate -->
-<script src="public/main/template/core/js/plugins/validate/jquery.validate.min.js"></script>
+<script src="/public/main/template/core/js/plugins/validate/jquery.validate.min.js"></script>
 
 <script>
 //Valid Email
@@ -868,7 +869,7 @@ $.validator.addMethod("customemail", function(value, element) {
     terms: "required",
   },
   messages: {
-    company_name: "We need to know your companies name!",
+    company_name: "We need to know your company's name!",
     address_line_1: {
       required: "What is the street name your company operates from?",
 	},

@@ -104,9 +104,9 @@
      <div class="form-group"><label class="col-md-3 control-label">Colour <span style="color:red">*</span></label>
       <div class="col-md-9">
  		<select data-placeholder="What is the primary colour of the item?" class="chosen-select form-control" id="product_color" name="product_color">
-          <option value="" selected disabled>What is the primary colour of the item?</option>
-          <option value="Any">Any</option>
-          <option value="None">No Colour</option>
+          <option value="Any" selected disabled>What is the primary colour of the item?</option>
+          <option value="Any">All Colours (Any)</option>
+          <option value="None">No Colour (None)</option>
            <?php 
            if(!empty($product_colors)){
             $k=0;
@@ -843,7 +843,7 @@ $(document).on('click', '#mpn1', function(event) {
           /*       alert('No such MPN/ISBN found in our Database.');*/
            return false;
          }
-        productmakehtml='<option value="">Choose Make</option>';
+        productmakehtml='<option value="Any">All Colours (Any)</option><option value="None">No Colour (None)</option>';
         var mk1product_make=0;
        
        $.each(data.product_make, function(index, val) {
@@ -874,7 +874,7 @@ $(document).on('click', '#mpn1', function(event) {
            test123(mpnisbn1,product_make);
        }
        //colors select
-        var product_colorshtml='<option value="">Choose Color</option>';
+        var product_colorshtml='<option value="Any">All Colours (Any)</option><option value="None">No Colour (None)</option>';
         $.each(data.product_colors, function(index, val) {
           product_colorshtml +='<option value="'+val+'"';
           if(data.condition == '1' && data.product_colors.length==1){
@@ -899,7 +899,7 @@ $(document).on('change', '#product_make', function(event) {
     event.preventDefault();
         var product_model= $(this).val();
          $.post('<?php echo base_url("marketplace/getAttributesInfo") ?>/MODAL/',{'product_model':product_model}, function(data) {
-        product_colorshtml='<option>Choose Colour</option>';
+        product_colorshtml='<option value="Any">All Colours (Any)</option><option value="None">No Colour (None)</option>';
        $.each(data.product_color, function(index, val) {
             product_colorshtml +='<option value="'+val+'"';
             if(data.num_rows==1 && data.product_color.length==1)
