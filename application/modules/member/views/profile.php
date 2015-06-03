@@ -172,7 +172,7 @@ $company = $this->company_model->get_where($member->company_id);
             };
             
 </script>
-<?php if($compay->marketplace == 'inactive'){ ?>
+<?php if($company->marketplace == 'inactive'){ ?>
 
 			<div class="row wrapper border-bottom white-bg page-heading">
                 <div class="col-lg-10">
