@@ -1477,12 +1477,12 @@ class Marketplace extends MX_Controller {
             //$data = $this->upload->data(); // upload image
             $new_file = rtrim($_FILES['image2']['name'], '.jpg');
             
-            $config1['upload_path'] = './public/upload/listing/';
-            $config1['allowed_types'] = 'gif|jpg|png|jpeg';
-            $config1['file_name'] = $this->session->userdata('members_id').'-'.$new_file.'.jpg';
-            $config1['max_size'] = '5024';
-            $config1['max_width'] = '5024';
-            $config1['max_height'] = '5024';
+            $config2['upload_path'] = './public/upload/listing/';
+            $config2['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config2['file_name'] = $this->session->userdata('members_id').'-'.$new_file.'.jpg';
+            $config2['max_size'] = '5024';
+            $config2['max_width'] = '5024';
+            $config2['max_height'] = '5024';
             $this->load->library('upload');
             $this->upload->initialize($config2);
 
@@ -1525,12 +1525,12 @@ class Marketplace extends MX_Controller {
             //$data = $this->upload->data(); // upload image
             $new_file = rtrim($_FILES['image3']['name'], '.jpg');
             
-            $config1['upload_path'] = './public/upload/listing/';
-            $config1['allowed_types'] = 'gif|jpg|png|jpeg';
-            $config1['file_name'] = $this->session->userdata('members_id').'-'.$new_file.'.jpg';
-            $config1['max_size'] = '5024';
-            $config1['max_width'] = '5024';
-            $config1['max_height'] = '5024';
+            $config3['upload_path'] = './public/upload/listing/';
+            $config3['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config3['file_name'] = $this->session->userdata('members_id').'-'.$new_file.'.jpg';
+            $config3['max_size'] = '5024';
+            $config3['max_width'] = '5024';
+            $config3['max_height'] = '5024';
             $this->load->library('upload');
             $this->upload->initialize($config3);
 
@@ -1573,12 +1573,12 @@ class Marketplace extends MX_Controller {
             //$data = $this->upload->data(); // upload image
             $new_file = rtrim($_FILES['image4']['name'], '.jpg');
             
-            $config1['upload_path'] = './public/upload/listing/';
-            $config1['allowed_types'] = 'gif|jpg|png|jpeg';
-            $config1['file_name'] = $this->session->userdata('members_id').'-'.$new_file.'.jpg';
-            $config1['max_size'] = '5024';
-            $config1['max_width'] = '5024';
-            $config1['max_height'] = '5024';
+            $config4['upload_path'] = './public/upload/listing/';
+            $config4['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config4['file_name'] = $this->session->userdata('members_id').'-'.$new_file.'.jpg';
+            $config4['max_size'] = '5024';
+            $config4['max_width'] = '5024';
+            $config4['max_height'] = '5024';
             $this->load->library('upload');
             $this->upload->initialize($config4);
 
@@ -1617,21 +1617,21 @@ class Marketplace extends MX_Controller {
             $this->form_validation->set_message('image5_check5', 'Oops! Your item image needs to be at least grater than 400 x 400 pixels.');
             return FALSE;
         }*/
-        if (!empty($_FILES['image5']['name'])):
+        if (!empty($_FILES['image2']['name'])):
             //$data = $this->upload->data(); // upload image
-            $new_file = rtrim($_FILES['image5']['name'], '.jpg');
+            $new_file = rtrim($_FILES['image2']['name'], '.jpg');
             
-            $config1['upload_path'] = './public/upload/listing/';
-            $config1['allowed_types'] = 'gif|jpg|png|jpeg';
-            $config1['file_name'] = $this->session->userdata('members_id').'-'.$new_file.'.jpg';
-            $config1['max_size'] = '5024';
-            $config1['max_width'] = '5024';
-            $config1['max_height'] = '5024';
+            $config5['upload_path'] = './public/upload/listing/';
+            $config5['allowed_types'] = 'gif|jpg|png|jpeg';
+            $config5['file_name'] = $this->session->userdata('members_id').'-'.$new_file.'.jpg';
+            $config5['max_size'] = '5024';
+            $config5['max_width'] = '5024';
+            $config5['max_height'] = '5024';
             $this->load->library('upload');
-            $this->upload->initialize($config5);
+            $this->upload->initialize($config2);
 
-            if (!$this->upload->do_upload('image5')) {
-                $this->form_validation->set_message('image5_check5', $this->upload->display_errors());
+            if (!$this->upload->do_upload('image2')) {
+                $this->form_validation->set_message('image2_check2', $this->upload->display_errors());
                 return FALSE;
             } else {
                 $data = $this->upload->data(); // upload image
@@ -1644,8 +1644,8 @@ class Marketplace extends MX_Controller {
                     $param_thumb['height'] = '400';
                 $param_thumb['file_name'] = $data['file_name'];
                 create_thumbnail($param_thumb);
-                $this->session->unset_userdata('image5_check');
-                $this->session->set_userdata('image5_check', array('image_url' => $config5['upload_path'] . $data['file_name'], 'image5' => $data['file_name']));
+                $this->session->unset_userdata('image2_check');
+                $this->session->set_userdata('image2_check', array('image_url' => $config1['upload_path'] . $data['file_name'], 'image2' => $data['file_name']));
                 return TRUE;
             }
         endif;
