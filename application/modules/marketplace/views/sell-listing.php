@@ -433,7 +433,7 @@
             <div class="ibox-content">
             <div class="row">
                 <div class="col-md-12" style="text-align:center">
-                <label  class="col-md-4" >Image 1</label>
+                <label  class="col-md-4" >Image</label>
                 <div  class="col-md-8">
                 <?php if (!empty($product_list->image1) && file_exists($product_list->image1)):
                 $img1 = explode('/', $product_list->image1)?>
@@ -443,6 +443,7 @@
                 </div>                
                 <div id="image1_error col-md-offset-4"></div>
                  <?php echo form_error('image1'); ?>
+                 <?php /*
                  <label  class="col-md-4" >Image 2</label>
                 <div  class="col-md-8">
                 <?php if (!empty($product_list->image2) && file_exists($product_list->image2)):
@@ -482,9 +483,9 @@
                  <input type="file" name="image5" class="btn default btn-file">
                  </div>
                 <div id="image5_error col-md-offset-4"></div>
-                 <?php echo form_error('image5'); ?>
+                 <?php echo form_error('image5'); ?> */ ?>
                 </div>
-                <p class="small" style="text-align:center">You may have up to five (5) product images per listing.<br />Accepted types: <strong>.JPG, .JPEG, .PNG, .GIF</strong></p>
+                <p class="small" style="text-align:center"><!--You may have up to five (5) product images per listing.<br />-->Accepted types: <strong>.JPG, .JPEG, .PNG, .GIF</strong></p>
             </div>
             </div>
         </div>
