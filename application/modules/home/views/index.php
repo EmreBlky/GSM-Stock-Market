@@ -1099,6 +1099,10 @@ $(function() {
             <?= $xAxisMin ? "min: $xAxisMin," : ""; ?>
             <?= $xAxisMax ? "max: $xAxisMax," : ""; ?>
         },
+        yaxis: {
+            tickSize: 1,
+            tickDecimals: 0
+        },
         series: {
             bars: {
                 show: true,
@@ -1113,7 +1117,7 @@ $(function() {
         }
     };
     $("#flot-dashboard-chart").plot( data, options );
-    
+
 });
 
 function getStatus() { 
