@@ -208,7 +208,7 @@ if (defined('ENVIRONMENT'))
 // The following code is added by Naveed to load his own php libraries
 foreach ( glob( __DIR__."/application/libraries-nvd/*.php" ) as $filename ){ require_once $filename; }
 //--
-
+session_start();
 require_once BASEPATH.'core/CodeIgniter.php';
 
 /* End of file index.php */

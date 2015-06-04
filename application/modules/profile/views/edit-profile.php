@@ -1,13 +1,3 @@
-<?php
-//echo '<pre>';
-//print_r($events);
-//exit;
-//echo "<pre>";
-//print_r($company);
-//echo "</pre>";
-//echo $admin_id;
-?>
-
 
 <script type="text/javascript" xmlns="http://www.w3.org/1999/html">
 
@@ -20,9 +10,6 @@
         $primarybusiness = 'none';
         $secondarybusiness = 'none';
         $tertiarybusiness = 'none';
-
-
-
 
         if (isset($company->business_sector_1) && !empty($company->business_sector_1))
             $primarybusiness = 'block';
@@ -563,6 +550,7 @@
         <?php } ?>;
     });</script>
 <?php
+
 $attributes = array('class' => 'form-horizontal validation', 'onsubmit' => 'return validate_info()');
 echo form_open_multipart('profile/profileEdit', $attributes);
 ?>
@@ -932,36 +920,10 @@ echo form_open_multipart('profile/profileEdit', $attributes);
                             ?>
                         </div>
                     </div>
-                    <!-- DYNAMO LOGIC - THIS IS EXAMPLE CODE I TRIED
-                    <script type="text/javascript">
-                                                    $(function() {
-                                                            $( 'input[name=bsectors]' ).on( 'change', function() {
-                                                                    var sel = $('#bprimary'), opt = $( '<option/>' );
-                                                                    sel.html( opt.clone().text( '[Select One]' ) );
-                                                                    $( 'input[name=besectors]:checked' ).each( function() {
-                                                                            sel.append( opt.clone().text( this.value ) );
-                                                                    });
-                                                                    if( sel.find( 'option' ).length > 1 ) {
-                                                                            $( '#primary-business' ).show();
-                                                                            if( sel.find( 'option' ).length === 2 ) {
-                                                                                    sel.find( 'option' ).eq( 1 ).attr( 'selected',true );
-                                                                            }
-                                                                    } else {
-                                                                            $( '#primary-business' ).hide();
-                                                                    }
-                                                            });
-                                                    });
-                                                    </script>
-                    -->
-
                     <?php
                     $other_business = explode(',', $company->other_business);
                     $other_business1 = isset($other_business[0]) ? trim($other_business[0]) : '';
                     $other_business2 = isset($other_business[1]) ? trim($other_business[1]) : '';
-
-                    //                    echo "<pre>";
-                    //                    print_r($company);
-                    //                    echo "</pre>";
                     ?>
                     <div class="form-group">
                         <label class="col-md-3 control-label">Business Sectors <span style="color:red">*</span><br/>

@@ -14,9 +14,8 @@ $overall = $this->feedback->overallScore($this->session->userdata('members_id'))
 The terms and conditions have been updated. Please can you confirm that you have read and acknowledged the <a class="alert-link" href="legal/terms_conditions">Terms &amp; Conditions</a> before you can proceed with using this website.
 </div>
 <?php } ?>
-<?php 	//$id = $this->session->userdata('members_id');
-		//$member = $this->member_model->get_where($id);
-		if($member->membership < 2){
+<?php
+if($member->membership < 2){
 ?>
     <div class="alert alert-danger">
     <p><i class="fa fa-warning"></i> Attention <?php echo $this->session->userdata('firstname');?>! Your account is <strong>Unverified</strong>. You will be unable to access the live platform until you have submitted <a class="alert-link" href="tradereference">two (2) trade references</a> to become a verified member.</p>
@@ -541,50 +540,8 @@ var mapData = {
 <div class="row">
 <?php 
 $member_id = $member->id;
-//list( $current_currency, $current_currency_no, $current_currency_sign ) = $this->member_model->getCurrentCurrency_Num_Sign($member_id);
-//$current_currency='';
-//$current_currency_no='';
-//$current_currency_sign='';
-$this->session->set_userdata('curent_currency',$member->currency);
 
-// if(!empty($member->currency) && ($member->currency=='EURO') ){
-//    $current_currency= '&euro;';
-//    $current_currency_no = '2';
-//    $current_currency_sign= 'EURO';
-//
-//  }elseif (!empty($member->currency) && ($member->currency=='USD')) {
-//    $current_currency= '$';
-//    $current_currency_no = '3';
-//    $current_currency_sign= 'USD';
-//  }elseif (!empty($member->currency) && ($member->currency=='GBP')) {
-//    $current_currency= '&pound';
-//    $current_currency_no = '1';
-//    $current_currency_sign= 'GBP';
-//}
-//$total_sales_price='0';
-//$total_price='0';
-//if(!empty($total_sales_transaction)){
-//    foreach ( $total_sales_transaction as $value ) {
-//        if($value->buyer_currency != $current_currency_no){
-//            $total_price = get_currency(currency_class($value->buyer_currency), $current_currency_sign, $value->total_price);
-//            $total_sales_price+= $total_price;
-//        }else{
-//           $total_sales_price+= $value->total_price;
-//        }
-//    }
-//}
-//$total_purchase_price='0';
-//$total_price='0';
-//if(!empty($total_purchase_transaction)){
-//    foreach ($total_purchase_transaction as $value_purchase) {
-//        if($value_purchase->buyer_currency != $current_currency_no){
-//            $total_price = get_currency(currency_class($value_purchase->buyer_currency), $current_currency_sign, $value_purchase->total_price);
-//            $total_purchase_price+= $total_price;
-//        }else{
-//            $total_purchase_price+= $value_purchase->total_price;
-//        }
-//    }
-//}
+$this->session->set_userdata('curent_currency',$member->currency);
 
 function getClassAttrForDiv($value){
     switch (true)

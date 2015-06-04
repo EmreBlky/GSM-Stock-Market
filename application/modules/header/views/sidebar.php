@@ -4,10 +4,7 @@ $this->load->model('company/company_model', 'company_model');
 $this->load->model('membership/membership_model', 'membership_model');
 $member = $this->member_model->get_where($this->session->userdata('members_id'));
 $company = $this->company_model->get_where($member->company_id);
-//echo $member->membership;
-//echo '<pre>';
-//print_r($company);
-//exit;
+
 ?>
 <?php $url = $this->uri->segment(1);?>
 <style>

@@ -2,7 +2,6 @@
 
 class Profile extends MX_Controller
 {
-
     function __construct()
     {
         parent::__construct();
@@ -482,7 +481,6 @@ class Profile extends MX_Controller
         }
         
        if(isset($mid)){
-           
            if($this->session->userdata('members_id') == 5){
                
                 $data['member'] = $this->member_model->get_where($mid);
@@ -514,8 +512,7 @@ class Profile extends MX_Controller
            }
            
        }
-       else{           
-           
+       else{
            $data_activity = array(
             'activity' => 'Edit Profile',
             'time' => date('H:i:s'),
@@ -524,7 +521,6 @@ class Profile extends MX_Controller
             $this->activity_model->_update_where($data_activity, 'member_id', $this->session->userdata('members_id'));
 
             $this->load->model('member/member_model', 'member_model');
-
 
             $data['member'] = $this->member_model->get_where($this->session->userdata('members_id'));
             $data['company'] = $this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id);
@@ -538,13 +534,8 @@ class Profile extends MX_Controller
                 $data['bio_count'] = 0;
             }
 
-    //        echo "<pre>";
-    //        print_r($data['company']);
-    //        echo "</pre>";
-            //$data['country'] = $this->country_model->get_all();
             $data['country'] = $this->country_model->_custom_query("SELECT * FROM country ORDER BY country ASC");
             $data['admin_id'] = $this->company_model->get_where($this->member_model->get_where_multiple('id', $this->session->userdata('members_id'))->company_id)->admin_member_id;
-        
 
             $data['main'] = 'profile';
             $data['title'] = 'GSM - Edit Profile';
@@ -557,20 +548,10 @@ class Profile extends MX_Controller
 
     function profileEdit()
     {
-        
-//        echo '<pre>';
-//        print_r($_POST);
-//        exit;
-        
         $mid = $this->input->post('support_edit');
 
         $bsectors4 = '';
         $bsectors5 = '';
-
-        /* Faisal Code Start Here 2-25-2015
-         * 
-         */
-
 
         $valueOne = isset($_POST['bprimary']) && !empty($_POST['bprimary']) ? $_POST['bprimary'] : '';
         $valueTwo = isset($_POST['bsecondary']) && !empty($_POST['bsecondary']) ? $_POST['bsecondary'] : '';
@@ -653,13 +634,12 @@ class Profile extends MX_Controller
                 'gplus' => $this->input->post('gplus'),
                 'linkedin' => $this->input->post('linkedin'),
                 'skype' => $this->input->post('skype'),
-                'role' => $this->input->post('role'),    
+                'role' => $this->input->post('role'),
+                'currency' => $this->input->post('currency')
             );
 
             $this->load->model('member/member_model', 'member_model');
             $this->member_model->_update($mid, $data);
-            
-            //$admin_id = $this->company_model->get_where($this->member_model->get_where($this->session->userdata('members_id'))->company_id)->admin_member_id;
 
             if($this->session->userdata('members_id') == 5 || $this->session->userdata('members_id') == $admin_id) {
 
@@ -718,12 +698,6 @@ class Profile extends MX_Controller
             }
             
             $this->profile_completion($mid);
-//
-//            echo '<pre>';
-//            print_r($_FILES);
-//            exit;
-//
-
 
             $files = $_FILES;
 
@@ -732,7 +706,6 @@ class Profile extends MX_Controller
                 foreach ($files['userfile']['size'] as $file) {
 
                     if ($file > 0) {
-
 
                         if ($files['userfile']['name'][0] != '') {
                             $this->load->library('upload');
@@ -760,10 +733,7 @@ class Profile extends MX_Controller
 
                             $this->load->library('image_lib');
                             $this->image_lib->initialize($config);
-                            //$this->image_lib->resize();
 
-                            //                    $this->upload->initialize($config);
-                            //
                             if (!$this->image_lib->resize()) {
                                 $error = array('error' => $this->image_lib->display_errors());
                                 $this->session->set_flashdata('msg_personal', $error['error']);
@@ -809,10 +779,7 @@ class Profile extends MX_Controller
 
                             $this->load->library('image_lib');
                             $this->image_lib->initialize($config);
-                            //$this->image_lib->resize();
 
-                            //                    $this->upload->initialize($config);
-                            //
                             if (!$this->image_lib->resize()) {
                                 $error = array('error' => $this->image_lib->display_errors());
                                 $this->session->set_flashdata('msg_personal', $error['error']);
@@ -827,15 +794,12 @@ class Profile extends MX_Controller
                         }
 
                     }
-                    //echo $file[$count].'<br/>';
                     $count++;
                 }
             }
                 
             }
-            else{              
-            
-
+            else{
             $data = array(
                 'email' => $this->input->post('email'),
                 'title' => $this->input->post('title'),
@@ -851,7 +815,8 @@ class Profile extends MX_Controller
                 'gplus' => $this->input->post('gplus'),
                 'linkedin' => $this->input->post('linkedin'),
                 'skype' => $this->input->post('skype'),
-                'role' => $this->input->post('role'), 
+                'role' => $this->input->post('role'),
+                'currency' => $this->input->post('currency')
             );
 
             $this->load->model('member/member_model', 'member_model');
@@ -918,12 +883,6 @@ class Profile extends MX_Controller
             }
             
             $this->profile_completion($this->session->userdata('members_id'));
-//
-//            echo '<pre>';
-//            print_r($_FILES);
-//            exit;
-//
-
 
             $files = $_FILES;
 
@@ -932,7 +891,6 @@ class Profile extends MX_Controller
                 foreach ($files['userfile']['size'] as $file) {
 
                     if ($file > 0) {
-
 
                         if ($files['userfile']['name'][0] != '') {
                             $this->load->library('upload');
@@ -960,10 +918,7 @@ class Profile extends MX_Controller
 
                             $this->load->library('image_lib');
                             $this->image_lib->initialize($config);
-                            //$this->image_lib->resize();
 
-                            //                    $this->upload->initialize($config);
-                            //
                             if (!$this->image_lib->resize()) {
                                 $error = array('error' => $this->image_lib->display_errors());
                                 $this->session->set_flashdata('msg_personal', $error['error']);
@@ -1009,10 +964,7 @@ class Profile extends MX_Controller
 
                             $this->load->library('image_lib');
                             $this->image_lib->initialize($config);
-                            //$this->image_lib->resize();
 
-                            //                    $this->upload->initialize($config);
-                            //
                             if (!$this->image_lib->resize()) {
                                 $error = array('error' => $this->image_lib->display_errors());
                                 $this->session->set_flashdata('msg_personal', $error['error']);
@@ -1027,7 +979,6 @@ class Profile extends MX_Controller
                         }
 
                     }
-                    //echo $file[$count].'<br/>';
                     $count++;
                 }
             }
@@ -1045,7 +996,6 @@ class Profile extends MX_Controller
                 $count = $this->attending_model->_custom_query_count("SELECT COUNT(*) AS count FROM attending WHERE member_id = '".$this->session->userdata('members_id')."' AND event_id = '".$key."'");
                 
                 if($count[0]->count < 1){
-                //echo $key.' - '.$value.'<br/>';
                     $data_attending = array(
                                             'event_id' => $key,
                                             'member_id' => $this->session->userdata('members_id')
@@ -1056,12 +1006,9 @@ class Profile extends MX_Controller
             }
             
             if(is_numeric($key) && $value == 'not_attending'){
-                //echo $key.' - '.$value.'<br/>';
                 $this->attending_model->_custom_query_action("DELETE FROM attending WHERE event_id = '".$key."' AND member_id = '".$this->session->userdata('members_id')."'");
             }
-            
         }
-        
         redirect('profile/', 'refresh');
     }
     
