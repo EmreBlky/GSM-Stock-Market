@@ -91,7 +91,7 @@ if($member->membership < 2){
         <?php
 
         foreach ( $durationsArray as $key => $value ){
-            $active = $duration == $key ? "active" : "";
+            $active = $durationStr == $key ? "active" : "";
             echo "<a href='./?duration=$key' class='btn btn-xs btn-white $active'>$key</a>";
         }
 
@@ -578,7 +578,7 @@ function getClassAttrForArrow($value){
 
 <div class="ibox float-e-margins">
 <div class="ibox-title">
-<span class="label label-success pull-right"><?=$duration?></span>
+<span class="label label-success pull-right"><?=$durationStr?></span>
 <h5>My Sales</h5>
 </div>
 <div class="ibox-content no_sub">
@@ -594,7 +594,7 @@ function getClassAttrForArrow($value){
 <div class="col-lg-3">
 <div class="ibox float-e-margins">
 <div class="ibox-title">
-<span class="label label-success pull-right"><?=$duration?></span>
+<span class="label label-success pull-right"><?=$durationStr?></span>
 <h5>My Purchases</h5>
 </div>
 <div class="ibox-content no_sub">
@@ -608,7 +608,7 @@ function getClassAttrForArrow($value){
 <div class="ibox float-e-margins">
 <div class="ibox-title"> 
 <!-- <a href="#"><span class="label label-success pull-right">Yearly</span></a> -->
-<a href="#"><span class="label label-success pull-right"><?=$duration?></span></a>
+<a href="#"><span class="label label-success pull-right"><?=$durationStr?></span></a>
 <!-- <a href="#"><span class="label label-success pull-right">Daily</span></a> -->
 <h5>My Profile Visits</h5>
 </div>
@@ -713,7 +713,7 @@ echo $profileViewsMarkup;
         <?php
 
         foreach ( $durationsArray as $key => $value ){
-            $active = ($duration == $key) ? "active" : "";
+            $active = ($durationStr == $key) ? "active" : "";
             echo "<a href='./?duration=$key' class='btn btn-xs btn-white $active'>$key</a>";
         }
 
@@ -1038,35 +1038,32 @@ $(function() {
 
     getStatus();
     // Graph Implementation
-    var yAxisMax = 4,
-        barWidth = 0.3*24*60*60*1000
-        ;
-    var saleOrders =
-        {
-            data: [],
-            label: "Sale Orders",
-            color: '#00bb96',
-            bars: {
-                align: "left",
-                fill: true,
-                fillColor: "#00bb96"
-            }
-        };
-    var purchaseOrders =
-        {
-            data: [],
-            label: "Purchase Orders",
-            color: '#454488',
-            bars: {
-                align: "right",
-                fill: true,
-                fillColor: "#454488"
-            }
-        };
+    var barWidth = 0.3*24*60*60*1000;
 
-    // get Data
+    var saleOrders = {
+        data: [],
+        label: "Sale Orders",
+        color: '#00bb96',
+        bars: {
+            align: "left",
+            fill: true,
+            fillColor: "#00bb96"
+        }
+    };
+
+    var purchaseOrders = {
+        data: [],
+        label: "Purchase Orders",
+        color: '#454488',
+        bars: {
+            align: "right",
+            fill: true,
+            fillColor: "#454488"
+        }
+    };
+
     <?php
-
+    // get Data
     if( !empty($graphSalesOrders) ){
         foreach ( $graphSalesOrders as $key => $obj ){
             echo "saleOrders.data.push([".($obj->time*1000)." , {$obj->orders}]);";
@@ -1079,6 +1076,16 @@ $(function() {
         }
     }
 
+    // x-axis min / max values
+    $xAxisMin = 0;
+    $xAxisMax = 0;
+    $validDurations = $durationsArray;
+    if(isset( $validDurations['Lifetime'] )) { unset( $validDurations['Lifetime'] ); }
+    if( array_key_exists( $durationStr, $validDurations ) ){
+        $xAxisMin = ( time() - $durationsArray[$durationStr] * 24 * 60 * 60 ) * 1000;
+        $xAxisMax = time() * 1000;
+    }
+
      ?>
 
     var data = [ saleOrders, purchaseOrders ];
@@ -1088,11 +1095,10 @@ $(function() {
             mode: "time",
             timeformat: "%b %d",
             autoscaleMargin: 1,
-            tickLength : 0
+            tickLength : 0,
+            <?= $xAxisMin ? "min: $xAxisMin," : ""; ?>
+            <?= $xAxisMax ? "max: $xAxisMax," : ""; ?>
         },
-//        yaxis: {
-//            autoscaleMargin: 0.5
-//        },
         series: {
             bars: {
                 show: true,
@@ -1107,8 +1113,7 @@ $(function() {
         }
     };
     $("#flot-dashboard-chart").plot( data, options );
-
-
+    
 });
 
 function getStatus() { 

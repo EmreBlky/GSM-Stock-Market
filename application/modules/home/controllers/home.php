@@ -39,7 +39,7 @@ class Home extends MX_Controller
         $data['member'] = $this->member_model->get_where($this->session->userdata('members_id'));
 
         // Duration Info --------------------------------------------------
-        $data['duration'] = $this->home_model->selectedDuration();
+        $data['durationStr'] = $this->home_model->selectedDuration();
         $data['durationsArray'] = $this->home_model->durationArray;
 
         // Currency Info --------------------------------------------------
@@ -50,10 +50,10 @@ class Home extends MX_Controller
 
         // Sales Info --------------------------------------------------
         list( $data['total_sales_price'], $data['percent_sale_progress'] ) =
-            $this->getTotalPrice_PercentProgress('sales', $data['duration'],  $current_currency_no, $current_currency_sign );
+            $this->getTotalPrice_PercentProgress('sales', $data['durationStr'],  $current_currency_no, $current_currency_sign );
 
         // Monthly Income --------------------------------------------------
-        if( $data['duration'] == 'Monthly' ) // no need to call the function again
+        if( $data['durationStr'] == 'Monthly' ) // no need to call the function again
         {
             $data['monthlyIncome'] = $data['total_sales_price'];
             $data['percent_monthly_sale_progress'] = $data['percent_sale_progress'];
@@ -66,23 +66,23 @@ class Home extends MX_Controller
 
         // Purchase Info --------------------------------------------------
         list( $data['total_purchase_price'], $data['percent_purchase_progress'] ) =
-            $this->getTotalPrice_PercentProgress('purchase', $data['duration'],  $current_currency_no, $current_currency_sign );
+            $this->getTotalPrice_PercentProgress('purchase', $data['durationStr'],  $current_currency_no, $current_currency_sign );
 
         // Profile Views --------------------------------------------------
-        $data['profileViewsMarkup'] = $this->home_model->recentProfileViews($data['duration']);
+        $data['profileViewsMarkup'] = $this->home_model->recentProfileViews($data['durationStr']);
 
         // Orders Info -----------------------------------------------------
-        list( $data['ordersInPeriod'] , $data['ordersProgressInPeriod']) = $this->getNumOrders_PercentProgress('seller',$data['duration']);
+        list( $data['ordersInPeriod'] , $data['ordersProgressInPeriod']) = $this->getNumOrders_PercentProgress('seller',$data['durationStr']);
         // Monthly Orders Info -----------------------------------------------------
-        if( $data['duration'] == 'Monthly' ){
+        if( $data['durationStr'] == 'Monthly' ){
             list( $data['ordersInLastMonth'] , $data['ordersProgressInLastMonth']) = [ $data['ordersInPeriod'] , $data['ordersProgressInPeriod'] ];
         }else{
             list( $data['ordersInLastMonth'] , $data['ordersProgressInLastMonth']) = $this->getNumOrders_PercentProgress('seller','Monthly');
         }
 
         // Graph Data ------------------------------------------------------
-        $data['graphSalesOrders'] = $this->home_model->getOrdersPerDayForDuration( "seller", $data['duration'], $endTimeStamp = null );
-        $data['graphPurchaseOrders'] =$this->home_model->getOrdersPerDayForDuration( "buyer", $data['duration'], $endTimeStamp = null );
+        $data['graphSalesOrders'] = $this->home_model->getOrdersPerDayForDuration( "seller", $data['durationStr'], $endTimeStamp = null );
+        $data['graphPurchaseOrders'] =$this->home_model->getOrdersPerDayForDuration( "buyer", $data['durationStr'], $endTimeStamp = null );
         //\nvd\custom\libraries\pr($data['graphPurchaseOrders']);exit;
 
         // Other Data ------------------------------------------------------
